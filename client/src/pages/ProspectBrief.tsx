@@ -246,7 +246,7 @@ export default function ProspectBrief() {
         <div style={{ marginBottom: 36 }}>
           <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 12 }}>The Question for {form.company}</div>
           <h1 style={{ fontSize: 28, fontWeight: 700, color: NAVY, lineHeight: 1.3, margin: "0 0 16px", fontFamily: "'Cormorant Garamond', serif" }}>
-            When the next strategic trigger fires — how many days will it take your organization to mobilize?
+            When the next high-stakes situation presents itself — how many days will it take your organization to mobilize?
           </h1>
           {form.concern && (
             <div style={{ padding: "14px 18px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 16 }}>
@@ -255,7 +255,7 @@ export default function ProspectBrief() {
             </div>
           )}
           <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.8, margin: 0 }}>
-            enterprise organizations spend an average of <strong>30 days</strong> just to mobilize when a strategic trigger fires — identifying stakeholders, aligning on a response, getting into the room. That coordination delay is not a talent problem. It is a structural problem built into the operating model.
+            enterprise organizations spend an average of <strong>30 days</strong> just to mobilize when a high-stakes situation presents itself — identifying stakeholders, aligning on a response, getting into the room. That coordination delay is not a talent problem. It is a structural problem built into the operating model.
             Readiness OS eliminates it. The decision is the same. The mobilization cycle is pre-staged. Response begins in <strong>12 minutes</strong>.
           </p>
         </div>

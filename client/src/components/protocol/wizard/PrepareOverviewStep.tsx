@@ -112,7 +112,7 @@ export default function PrepareOverviewStep({ data, onChange, playbook }: Prepar
         </h3>
         <p className="text-xs text-muted-foreground">
           Configure stakeholder assignments, pre-approved budgets, staged documents, and vendor contracts. 
-          These items ensure your organization is ready to execute in 12 minutes when a trigger fires.
+          These items ensure your organization is ready to execute in 12 minutes when a high-stakes situation presents itself.
         </p>
       </div>
 

@@ -82,7 +82,7 @@ export default function SituationIntentsHub() {
               </h1>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", margin: 0, maxWidth: 580 }}>
                 Define what you're protecting, what the executive needs to see, and who gets notified — 
-                per situation. This is what makes authorization instantaneous when a trigger fires.
+                per situation. This is what makes authorization instantaneous when a situation presents itself.
               </p>
             </div>
             <button

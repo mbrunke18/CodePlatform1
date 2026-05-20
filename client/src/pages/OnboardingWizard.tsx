@@ -332,7 +332,7 @@ export default function OnboardingWizard() {
           <div>
             <SectionLabel num="02" text="IDEA Framework Configuration" />
             <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Map your decision rights</h2>
-            <p style={{ fontSize: 14, color: MUTED, marginBottom: 12 }}>The IDEA Framework works because accountability is pre-defined. When a trigger fires, there's no question of who owns what. Configure that here.</p>
+            <p style={{ fontSize: 14, color: MUTED, marginBottom: 12 }}>The IDEA Framework works because accountability is pre-defined. When a situation presents itself, there's no question of who owns what. Configure that here.</p>
 
             <div style={{ padding: "16px 20px", background: `rgba(201,168,76,0.08)`, border: `1px solid rgba(201,168,76,0.25)`, marginBottom: 36, display: "flex", gap: 12, alignItems: "flex-start" }}>
               <Star size={16} color={GOLD} style={{ flexShrink: 0, marginTop: 2 }} />

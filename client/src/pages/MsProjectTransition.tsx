@@ -171,7 +171,7 @@ export default function MsProjectTransition() {
                 Microsoft is retiring MS Project because they're building something bigger — Azure AI Foundry, Copilot Studio, Teams-native workflows. They're building the engine. ServiceNow is trying to replace the old dashboard.
               </p>
               <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.7, marginBottom: 28 }}>
-                Readiness OS is the transmission. When a strategic trigger fires, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
+                Readiness OS is the transmission. When a high-stakes situation presents itself, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
               </p>
               <div style={{ padding: "20px 24px", background: NAVY, border: `2px solid ${GOLD}` }}>
                 <p style={{ ...CG, fontSize: 22, fontWeight: 600, color: "#F0EDE4", margin: "0 0 6px", lineHeight: 1.3 }}>

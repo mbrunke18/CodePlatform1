@@ -472,7 +472,7 @@ export default function HowItExecutes() {
                 },
                 {
                   q: "How is this different from Copilot or workflow tools?",
-                  a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Readiness OS orchestrates the cross-functional response the moment the trigger fires — before the stakeholder chaos starts.",
+                  a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Readiness OS orchestrates the cross-functional response the moment a situation presents itself — before the stakeholder chaos starts.",
                 },
               ].map((item, i) => (
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.7fr", border: "1px solid rgba(255,255,255,0.08)", borderTopWidth: i === 0 ? 1 : 0 }}>

@@ -302,7 +302,7 @@ export default function WorkspaceDetect({ embedded }: { embedded?: boolean } = {
                   <div>
                     <h3 className="font-semibold text-white">Trigger detected?</h3>
                     <p className="text-sm text-white/60">
-                      When a trigger fires, move to EXECUTE for coordinated response
+                      When a situation presents itself, move to EXECUTE for coordinated response
                     </p>
                   </div>
                 </div>

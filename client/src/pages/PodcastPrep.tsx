@@ -51,7 +51,7 @@ export default function PodcastPrep() {
         {/* Opening */}
         <Section label="How to Open · Say this. Then stop.">
           <Quote>
-            "The conversation I can carry for your audience is the gap most Microsoft customers don't realize they have. The AI stack is live — Copilot, Azure, Teams, M365. But when a strategic trigger fires — a competitive move, a regulatory action, an activist, an M&A — the organization still takes thirty days to mobilize. The technology is ready. The operating model isn't. I've watched that pattern at Ford, Toyota, Lockheed, Schwab. That's the conversation."
+            "The conversation I can carry for your audience is the gap most Microsoft customers don't realize they have. The AI stack is live — Copilot, Azure, Teams, M365. But when a high-stakes situation presents itself — a competitive move, a regulatory action, an activist, an M&A — the organization still takes thirty days to mobilize. The technology is ready. The operating model isn't. I've watched that pattern at Ford, Toyota, Lockheed, Schwab. That's the conversation."
           </Quote>
           <p style={{ fontSize: 10, color: "#9CA3AF", marginTop: 5 }}>~90 seconds spoken. Stop talking. Let him ask the next question.</p>
         </Section>
@@ -64,7 +64,7 @@ export default function PodcastPrep() {
             "I spent five years coaching at Stanford. Major college football is a billion-dollar operation that solved a coordination problem enterprise organizations are still wrestling with. Signal fires. They're executing across eleven roles in forty seconds. The mechanism is preparation — every situation they'll face has already been built, practiced, and owned before Saturday. Most enterprises don't have that. Every trigger, they start from scratch."
           </QA>
           <QA q="What's the takeaway for your audience?">
-            "The Microsoft investment isn't the problem. The operating model above it is. Most enterprises are running 2026 AI capability through a coordination model designed before AI existed. The fix isn't more technology. It's redesigning how the stack gets activated when a trigger fires."
+            "The Microsoft investment isn't the problem. The operating model above it is. Most enterprises are running 2026 AI capability through a coordination model designed before AI existed. The fix isn't more technology. It's redesigning how the stack gets activated when a situation presents itself."
           </QA>
           <QA q="What do you do / what's your company?">
             "I run a small company called VaughnMartin. But the episode isn't about the product — it's about the pattern."

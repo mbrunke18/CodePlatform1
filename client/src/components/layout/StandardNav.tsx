@@ -173,7 +173,7 @@ export default function StandardNav() {
         { label: "Strategic Monitoring", path: "/strategic-monitoring", icon: AlertCircle, description: "Active trigger monitoring — 15+ pre-staged response protocols, real-time coordination", featured: true },
         { label: "Concurrent Situation Board", path: "/concurrent-situations", icon: LayoutGrid, description: "Command view when multiple triggers compete for C-suite bandwidth", featured: true },
         { label: "Crisis Communications", path: "/crisis-communications", icon: MessageSquare, description: "5 audience-specific communications generated in 18 seconds" },
-        { label: "Financial Exposure Estimator", path: "/financial-exposure", icon: DollarSign, description: "Instant dollar-range exposure when a trigger fires — CFO's first question answered" },
+        { label: "Financial Exposure Estimator", path: "/financial-exposure", icon: DollarSign, description: "Instant dollar-range exposure when a situation presents itself — CFO's first question answered" },
       ],
     },
   ];
@@ -390,7 +390,7 @@ export default function StandardNav() {
               { path: '/command-tower', icon: Radio, label: 'Command Tower', sub: 'Executive wall display — auto-refreshing live feed for conference rooms', featured: true },
               { path: '/concurrent-situations', icon: LayoutGrid, label: 'Concurrent Situation Board', sub: 'Command view — multiple situations at once' },
               { path: '/crisis-communications', icon: MessageSquare, label: 'Crisis Communications', sub: '5 audience-specific messages in 18 seconds' },
-              { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a trigger fires' },
+              { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a situation presents itself' },
             ].map(l => megaItem(l))}
           </div>
         </div>
@@ -541,7 +541,7 @@ export default function StandardNav() {
         path: '/12-minute-experience',
         icon: Rocket,
         label: '12-Minute Test Drive',
-        sub: 'A trigger fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. No login required.',
+        sub: 'A situation presents itself. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. No login required.',
         featured: true,
       },
     ];

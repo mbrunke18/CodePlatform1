@@ -380,7 +380,7 @@ export default function Investors() {
               Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays that exist because humans couldn't process information fast enough to act decisively. Every vendor bolted AI onto that old model. We rebuilt from first principles. The category didn't exist. We built it.
             </p>
             <p className="text-base text-[#0A0F2E]/55 max-w-2xl mx-auto mb-8">
-              When a strategic trigger fires, competitors spend 30 days just mobilizing. Readiness OS compresses that to 12 minutes — because the response was staged before the trigger fired.
+              When a high-stakes situation presents itself, competitors spend 30 days just mobilizing. Readiness OS compresses that to 12 minutes — because the response was staged before the trigger fired.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">

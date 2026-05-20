@@ -54,7 +54,7 @@ const phases = [
     aiColor: "#2B8A6E",
     humanColor: "#C9A84C",
     description:
-      "AI monitors signals in 15-minute cycles across financial markets, competitive moves, regulatory changes, social media, and operational systems. When a trigger fires, AI matches it to your Readiness Protocol library and queues the activation decision — in seconds.",
+      "AI monitors signals in 15-minute cycles across financial markets, competitive moves, regulatory changes, social media, and operational systems. When a situation is detected, the system matches it to your Readiness Protocol library and queues the activation decision — in seconds.",
     aiActions: [
       "Monitor 24+ enterprise data sources in real time",
       "Detect compound disruptions across multiple domains",

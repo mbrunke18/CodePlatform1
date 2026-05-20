@@ -880,7 +880,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             {!debriefSuccess && (
               <div className="px-4 py-3 border-l-2 border-[#C9A84C] bg-[#C9A84C]/5">
                 <p className="text-xs font-bold text-[#0A0F2E]">Issues were flagged during this drill.</p>
-                <p className="text-xs text-gray-500">Document what broke down so the protocol can be updated before the next trigger fires.</p>
+                <p className="text-xs text-gray-500">Document what broke down so the protocol can be updated before the next situation presents itself.</p>
               </div>
             )}
 

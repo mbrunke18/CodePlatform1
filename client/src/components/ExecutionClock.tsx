@@ -80,7 +80,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
       <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 24, textAlign: 'center' }}>
         <Clock size={24} color="#DDD" style={{ margin: '0 auto 12px' }} />
         <div style={{ fontSize: 13, fontWeight: 600, color: '#999' }}>No execution events yet</div>
-        <div style={{ fontSize: 12, color: '#bbb', marginTop: 4 }}>The clock starts automatically when the first trigger fires</div>
+        <div style={{ fontSize: 12, color: '#bbb', marginTop: 4 }}>The clock starts automatically when the first situation is confirmed</div>
       </div>
     );
   }

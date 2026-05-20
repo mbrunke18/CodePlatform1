@@ -1675,7 +1675,7 @@ export default function ProtocolActivationConsole() {
             ? 'Strong execution. Review task-level performance in the ADVANCE workspace to identify 1–2 optimizations for the next activation cycle.'
             : perfScore >= 60
             ? 'Solid execution. Focus your ADVANCE debrief on timeline adherence — explore where time was lost and update task estimates accordingly.'
-            : 'This activation surfaced areas for improvement. Use the ADVANCE workspace to run a full debrief before the next trigger fires.';
+            : 'This activation surfaced areas for improvement. Use the ADVANCE workspace to run a full debrief before the next situation presents itself.';
 
           // ── Debrief type classification — Dr. Huang framework ──────────────
           // "If the window closes at acknowledgment, the debrief is already
@@ -1706,7 +1706,7 @@ export default function ProtocolActivationConsole() {
               color: GOLD,
               border: GOLD,
               bg: 'rgba(201,168,76,0.05)',
-              instruction: 'Some ownership transferred; some tasks remained silent at acknowledgment. This debrief encodes both optimization and recovery. The window partially held — but the silent tasks represent preparation that did not confirm ownership. Investigate each silent task before the next trigger fires.',
+              instruction: 'Some ownership transferred; some tasks remained silent at acknowledgment. This debrief encodes both optimization and recovery. The window partially held — but the silent tasks represent preparation that did not confirm ownership. Investigate each silent task before the next situation presents itself.',
               focusAreas: [
                 'For each silent task: was this assignment or ownership? Rebuild as ownership.',
                 'Did the owner participate in preparation, or receive the playbook after it was built?',

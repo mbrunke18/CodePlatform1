@@ -1203,7 +1203,7 @@ export default function NewUserJourney() {
                             <div className="w-8 h-8 bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">3</div>
                             <div>
                               <div className="text-gray-900 font-medium">Visit Command Center</div>
-                              <div className="text-sm text-gray-800">When a trigger fires, this is where 12-minute responses are orchestrated</div>
+                              <div className="text-sm text-gray-800">When a situation presents itself, this is where 12-minute responses are orchestrated</div>
                             </div>
                           </div>
                         </div>

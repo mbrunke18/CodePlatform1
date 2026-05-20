@@ -51,7 +51,7 @@ const PHASES: Phase[] = [
       "Readiness Protocols are tailored to your industry,",
       "org structure, and executive roles. Teams",
       "review and approve responses before any",
-      "trigger fires. Ownership built in.",
+      "situation presents itself. Ownership built in.",
     ],
     bullets: ["9 strategic domains configured", "221 trigger patterns mapped", "Executive roles pre-assigned", "Briefs reviewed and approved"],
     color: GOLD,

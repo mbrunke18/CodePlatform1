@@ -895,7 +895,7 @@ export default function TryDemo() {
                     <div style={{ width: 8, height: 8, borderRadius: 0, background: '#DC2626' }} />
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#DC2626' }}>The Current State</span>
                   </div>
-                  <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a2e', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>A strategic trigger fires. What happens next?</p>
+                  <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a2e', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>A high-stakes situation presents itself. What happens next?</p>
                   <p style={{ fontSize: 12, color: '#4B5563', marginBottom: 16, lineHeight: 1.6 }}>Your executives spend the next 30 days doing the same thing they always do — scheduling meetings, aligning stakeholders, improvising.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
@@ -1026,7 +1026,7 @@ export default function TryDemo() {
                 <div>
                   <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 4 }}>This Is Your Current Reality — Without Readiness OS</p>
                   <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, margin: 0 }}>
-                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a strategic trigger fires and no Readiness Protocol exists.
+                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a high-stakes situation presents itself and no Readiness Protocol exists.
                   </p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.68)', marginLeft: 'auto', flexShrink: 0 }}>

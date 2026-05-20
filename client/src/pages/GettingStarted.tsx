@@ -328,7 +328,7 @@ export default function GettingStarted() {
               </div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, marginBottom: 20 }}>
                 {isLive
-                  ? 'Readiness OS is configured and monitoring for your priority triggers. Execution will begin in 12 minutes when a trigger fires.'
+                  ? 'Readiness OS is configured and monitoring for your priority triggers. Execution will begin in 12 minutes when a situation presents itself.'
                   : 'Complete the critical items across all four phases to activate the 12-minute execution guarantee.'}
               </div>
               {!isLive && (

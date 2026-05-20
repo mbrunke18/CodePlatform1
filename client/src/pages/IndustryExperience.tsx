@@ -1151,7 +1151,7 @@ export default function IndustryExperience() {
                 <div className="w-2 h-2 bg-red-500 animate-pulse" />
                 SIGNAL DETECTED
               </motion.div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">The Trigger Fires</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">The Situation Arrives</h2>
               <p className="text-[#6B7280]">Your {industry.industry} trigger has detected a critical event</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }}

@@ -1090,11 +1090,11 @@ function ProblemSection() {
     {
       num: "00", title: "You Find Out Too Late", time: "T+Unknown",
       timeLabel: "Already Behind",
-      body: "A competitor filed. A regulator moved. A market window opened. Your organization finds out from a news headline, a public announcement, a filing you weren't watching. The trigger fired days or weeks ago — before your monitoring caught it.",
+      body: "A competitor filed. A regulator moved. A market window opened. Your organization finds out from a news headline, a public announcement, a filing you weren't watching. The situation had already developed — days or weeks before your monitoring caught it.",
       accent: RED_BORDER, terminal: false,
     },
     {
-      num: "01", title: "The Trigger Fires — Without Warning", time: "T+0",
+      num: "01", title: "The Situation Arrives — Without Warning", time: "T+0",
       timeLabel: "Missed",
       body: "Because no one defined what to watch for, in which domains, at what thresholds. No triggers are configured. No alerts are staged. The moment arrives — and the organization is already reacting to yesterday's signal.",
       accent: GOLD, terminal: false,
@@ -1409,7 +1409,7 @@ function AthletePreparationSection() {
   const mappings = [
     {
       athlete: "Athletes study their specific opponent — every week, not just before the game.",
-      platform: "Readiness OS monitors 248 signals every 15 minutes. Continuously. The environment is always being read — not just when a trigger fires.",
+      platform: "Readiness OS monitors 248 signals every 15 minutes. Continuously. The environment is always being read — not just when a situation presents itself.",
       icon: "◎",
     },
     {
@@ -1881,7 +1881,7 @@ function MicrosoftEcosystemBanner() {
               <em style={{ color: GOLD, fontStyle: 'italic' }}>None have the operating model to use it.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: 'rgba(240,237,228,0.55)', maxWidth: 620, margin: '0 auto 8px' }}>
-              Readiness OS is the operating model layer above your Microsoft investment. When a strategic trigger fires, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
+              Readiness OS is the operating model layer above your Microsoft investment. When a high-stakes situation presents itself, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
             </p>
             <p style={{ ...DM, fontSize: 13, color: TEAL, fontWeight: 600 }}>
               For investors: every Microsoft enterprise customer is an immediately addressable prospect.
@@ -1967,7 +1967,7 @@ function CompetitiveClaritySection() {
       tagColor: "#C9A84C",
       heading: "McKinsey tells you what to do.",
       headingEm: "We make sure it happens.",
-      body: "$300K–$500K buys you PDFs on SharePoint. Nobody can find them when a trigger fires. The $500K investment sits on a shelf while the organization still takes 30 days to coordinate.",
+      body: "$300K–$500K buys you PDFs on SharePoint. Nobody can find them when a situation presents itself. The $500K investment sits on a shelf while the organization still takes 30 days to coordinate.",
       verdict: "They documented it.",
       verdictSub: "Same 30-day mobilization cycle — with a custom PDF.",
       path: "/vs-consulting",
@@ -1989,7 +1989,7 @@ function CompetitiveClaritySection() {
       tagColor: "#2B8A6E",
       heading: "They described the problem.",
       headingEm: "We shipped the solution.",
-      body: "Every keynote, framework, and McKinsey deck proves the mobilization gap is real. The audience nods. The room agrees. The organization still takes 30 days to respond when a trigger fires.",
+      body: "Every keynote, framework, and McKinsey deck proves the mobilization gap is real. The audience nods. The room agrees. The organization still takes 30 days to respond when a high-stakes situation presents itself.",
       verdict: "They talked about it.",
       verdictSub: "Same 30-day mobilization cycle — better slides.",
       path: "/platform-reality",
@@ -2236,7 +2236,7 @@ function ExecutiveQASection() {
             },
             {
               q: "How is this different from Copilot, workflow tools, or consulting?",
-              a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Consulting advises between events. Readiness OS orchestrates the cross-functional response the moment the trigger fires — before the stakeholder chaos starts.",
+              a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Consulting advises between events. Readiness OS orchestrates the cross-functional response the moment a situation presents itself — before the stakeholder chaos starts.",
             },
           ].map((item, i) => (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr", border: "1px solid #E8E4DC", borderTopWidth: i === 0 ? 1 : 0 }}>
@@ -2697,7 +2697,7 @@ function HowPlaybooksWorkSection() {
     {
       num: "03",
       label: "Staged Before Any Trigger Fires",
-      body: "When a trigger fires, your response doesn't start — it deploys. The preparation phase is where the work happens. The 12 minutes is where it executes. That's the difference between a plan on a shelf and infrastructure that's ready to activate.",
+      body: "When a situation presents itself, your response doesn't start — it deploys. The preparation phase is where the work happens. The 12 minutes is where it executes. That's the difference between a plan on a shelf and infrastructure that's ready to activate.",
       accent: NAVY,
     },
   ];

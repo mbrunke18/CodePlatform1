@@ -102,7 +102,7 @@ export default function About() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
             <div>
               <p style={{ ...DM, fontSize: 15, color: "#444", lineHeight: 1.8, margin: "0 0 20px" }}>
-                Across Ford, Lockheed, and Charles Schwab — across supply disruptions, regulatory cycles, and market events — the same coordination failure appeared every time. A strategic trigger fires. The organization spends weeks figuring out who should be in the room before execution begins.
+                Across Ford, Lockheed, and Charles Schwab — across supply disruptions, regulatory cycles, and market events — the same coordination failure appeared every time. A high-stakes situation presents itself. The organization spends weeks figuring out who should be in the room before execution begins.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "#444", lineHeight: 1.8, margin: 0 }}>
                 Not a strategy failure. A mobilization failure. Every time.

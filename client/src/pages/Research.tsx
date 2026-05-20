@@ -484,7 +484,7 @@ export default function Research() {
               <div className="p-4 mb-6" style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
                 <p className="text-sm font-bold text-[#0A0F2E] mb-2 uppercase tracking-wider">What Gartner's stack doesn't show:</p>
                 <p className="text-sm text-foreground leading-relaxed">
-                  There is no layer for the operating model that <em>orchestrates</em> all of this technology into actual strategic execution. Enterprises have invested in every row of this diagram. None of them have the layer above it — the one that tells the organization what to do, when to do it, and how to move in 12 minutes when a trigger fires.
+                  There is no layer for the operating model that <em>orchestrates</em> all of this technology into actual strategic execution. Enterprises have invested in every row of this diagram. None of them have the layer above it — the one that tells the organization what to do, when to do it, and how to move in 12 minutes when a situation presents itself.
                 </p>
               </div>
 

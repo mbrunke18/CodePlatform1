@@ -435,7 +435,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5 }}
                   className="text-lg text-gray-800 mb-4"
                 >
-                  Time for a startup to Fortune 500 to mobilize after a strategic trigger fires:
+                  Time for a startup to Fortune 500 to mobilize after a high-stakes situation presents itself:
                 </motion.p>
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}

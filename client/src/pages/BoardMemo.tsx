@@ -99,7 +99,7 @@ function MemoDocument({ form }: { form: FormState }) {
           01 — THE PROBLEM
         </div>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8 }}>
-          {company} currently operates on a traditional mobilization model: when a strategic trigger fires — such as a {scenario.label.toLowerCase()} — we require approximately 30 days to identify decision-makers, align on approach, assign roles, and begin coordinated execution. This is the industry norm. It is also a structural liability.
+          {company} currently operates on a traditional mobilization model: when a high-stakes situation presents itself — such as a {scenario.label.toLowerCase()} — we require approximately 30 days to identify decision-makers, align on approach, assign roles, and begin coordinated execution. This is the industry norm. It is also a structural liability.
         </p>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8, marginTop: 10 }}>
           During that 30-day window, costs accumulate, regulatory exposure compounds, and competitive or operational damage extends unchecked. The mobilization delay is not a people problem — it is an operating model problem. We were never designed to move faster because human coordination was the bottleneck. AI changes that constraint.
@@ -148,7 +148,7 @@ function MemoDocument({ form }: { form: FormState }) {
           04 — WHY THIS APPROACH
         </div>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8 }}>
-          Readiness OS is not a technology tool — it is an operating model. It pre-stages execution for every scenario we are likely to face: tasks sequenced, budgets pre-authorized, executives mapped, and stakeholder communications pre-drafted. When a trigger fires, the response is already prepared. Executives authorize; the platform orchestrates. Human authority is preserved; coordination lag is eliminated.
+          Readiness OS is not a technology tool — it is an operating model. It pre-stages execution for every scenario we are likely to face: tasks sequenced, budgets pre-authorized, executives mapped, and stakeholder communications pre-drafted. When a situation presents itself, the response is already prepared. Executives authorize; the platform orchestrates. Human authority is preserved; coordination lag is eliminated.
         </p>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8, marginTop: 10 }}>
           Readiness OS aligns with the next wave of enterprise operating models: AI-enabled autonomy with governance. Rather than automating isolated tasks, the platform stages end-to-end response architecture — scenarios, trigger logic, authority gates, budgets, and communications — so leadership can authorize action at speed with full accountability. This creates both earlier situational awareness and faster coordinated execution without compromising control.

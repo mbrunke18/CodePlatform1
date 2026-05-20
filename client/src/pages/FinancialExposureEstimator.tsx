@@ -121,7 +121,7 @@ export default function FinancialExposureEstimator() {
               Financial Exposure <em style={{ color: GOLD }}>Estimator</em>
             </div>
             <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.6)', maxWidth: 580, lineHeight: 1.7 }}>
-              Instant dollar-range exposure estimate when a trigger fires. Answers the CFO's first question within 30 seconds of activation — quantifying what's at stake across revenue, recovery costs, regulatory penalties, and reputation impact.
+              Instant dollar-range exposure estimate when a high-stakes situation presents itself. Answers the CFO's first question within 30 seconds of activation — quantifying what's at stake across revenue, recovery costs, regulatory penalties, and reputation impact.
             </div>
           </div>
         </div>

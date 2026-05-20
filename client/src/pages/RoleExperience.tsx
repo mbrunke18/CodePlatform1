@@ -1401,7 +1401,7 @@ export default function RoleExperience() {
                 <div className="w-2 h-2 bg-red-500 animate-pulse" />
                 SIGNAL DETECTED
               </motion.div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Trigger Fires</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Situation Arrives</h2>
               <p className="text-gray-800">Your configured trigger has detected a real event</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }}

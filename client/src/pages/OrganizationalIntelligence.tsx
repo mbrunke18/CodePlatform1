@@ -309,7 +309,7 @@ export default function OrganizationalIntelligence() {
               )}
             </div>
             <p className="text-sm mb-5" style={{ color: IVORY, opacity: 0.65 }}>
-              Generated automatically from completed Close-Out Gates. Each update feeds back into your preparation architecture — making protocols more precise, signal detection more accurate, and ownership clearer before the next trigger fires.
+              Generated automatically from completed Close-Out Gates. Each update feeds back into your preparation architecture — making protocols more precise, signal detection more accurate, and ownership clearer before the next situation presents itself.
             </p>
 
             {updatesLoading ? (

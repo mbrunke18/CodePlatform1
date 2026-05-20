@@ -177,7 +177,7 @@ export default function WelcomeBrief() {
           <div style={{ display: 'inline-block', background: `${GOLD}10`, border: `1px solid ${GOLD}30`, padding: '14px 28px', maxWidth: 560 }}>
             <div style={{ fontSize: 12, color: GOLD, fontWeight: 700, letterSpacing: '0.5px', marginBottom: 4 }}>3,600× EXECUTION HEAD START</div>
             <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.55 }}>
-              When the first trigger fires, your organization activates in 12 minutes. Competitors spend 30 days just figuring out who needs to be in the room. That gap is structural — and it's already in your favor.
+              When the first situation presents itself, your organization activates in 12 minutes. Competitors spend 30 days just figuring out who needs to be in the room. That gap is structural — and it's already in your favor.
             </div>
           </div>
         </div>

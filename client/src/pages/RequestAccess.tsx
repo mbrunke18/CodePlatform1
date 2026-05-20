@@ -153,7 +153,7 @@ export default function RequestAccess() {
                   </p>
                   <div style={{ marginTop: 20, padding: "14px 18px", borderLeft: `2px solid ${GOLD}`, background: "rgba(201,168,76,0.05)" }}>
                     <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: "rgba(240,237,228,0.7)", lineHeight: 1.6, margin: 0 }}>
-                      Picture 9:12am — your trigger fires at 9:00. Your organization is already executing: every role activated, every task assigned, every stakeholder notified. Your competitor is scheduling their first call.
+                      Picture 9:12am — a high-stakes situation presents itself at 9:00. Your organization is already executing: every role activated, every task assigned, every stakeholder notified. Your competitor is scheduling their first call.
                     </p>
                   </div>
                 </div>

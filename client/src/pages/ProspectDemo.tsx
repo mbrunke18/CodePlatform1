@@ -320,7 +320,7 @@ export default function ProspectDemo() {
             </div>
 
             <p style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.68)" }}>
-              This is what {displayName} would see the moment a trigger fires. Everything pre-staged. Decision made in seconds.
+              This is what {displayName} would see the moment a high-stakes situation presents itself. Everything pre-staged. Decision made in seconds.
             </p>
           </div>
         </div>

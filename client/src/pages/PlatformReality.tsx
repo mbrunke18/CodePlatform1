@@ -93,7 +93,7 @@ export default function PlatformReality() {
           </h1>
 
           <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 680, margin: "0 auto 16px", lineHeight: 1.65 }}>
-            Every conference keynote, McKinsey deck, LinkedIn post, and framework whitepaper proves the mobilization problem is real. The audience nods. The room agrees. The organization goes home — and still takes 30 days to respond when a trigger fires.
+            Every conference keynote, McKinsey deck, LinkedIn post, and framework whitepaper proves the mobilization problem is real. The audience nods. The room agrees. The organization goes home — and still takes 30 days to respond when a high-stakes situation presents itself.
           </p>
 
           <p style={{ fontSize: 15, color: GOLD, fontWeight: 600, maxWidth: 520, margin: "0 auto 40px", lineHeight: 1.5, fontStyle: "italic" }}>
@@ -136,7 +136,7 @@ export default function PlatformReality() {
                   { step: "01", label: "The Problem is Named", body: "Speaker articulates the mobilization gap. Slide deck shows the 30-day response cycle. Room nods vigorously. Article gets 40,000 LinkedIn impressions." },
                   { step: "02", label: "The Framework is Sold", body: "A new model is proposed. Agile. Adaptive. Resilient. Five phases. Four pillars. A two-by-two matrix. The book is $28. The keynote is $75,000." },
                   { step: "03", label: "The Implementation Begins", body: "Workshops are scheduled. Champions are named. A steering committee convenes. Three months later, a validation program is approved." },
-                  { step: "04", label: "The Trigger Fires Anyway", body: "A competitor launches. A crisis hits. A key executive departs. The organization still takes 30 days to mobilize. The framework is on a shelf next to the McKinsey PDF." },
+                  { step: "04", label: "The Situation Arrives Anyway", body: "A competitor launches. A situation arrives. A key executive departs. The organization still takes 30 days to mobilize. The framework is on a shelf next to the McKinsey PDF." },
                 ].map((item) => (
                   <div key={item.step} style={{ display: "flex", alignItems: "flex-start", gap: 0, borderBottom: `1px solid #F3F4F6` }}>
                     <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: "rgba(220,38,38,0.15)", lineHeight: 1, padding: "20px 16px 20px 0", flexShrink: 0, width: 56 }}>{item.step}</div>

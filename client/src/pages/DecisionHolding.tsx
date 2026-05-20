@@ -171,7 +171,7 @@ export default function DecisionHolding() {
               Most governance frameworks assume the decision-holder will be available, informed, and unconstrained at the moment of the trigger. Jayashree Venkataraman's research shows that assumption fails across all four diagnostic layers simultaneously under real pressure.
             </p>
             <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, marginBottom: 40 }}>
-              Readiness OS does not improve the decision. It builds the hold location — the pre-staged structure of logic, behavior guardrails, ownership clarity, and capacity relief — so that when the trigger fires, the executive's role is authorization, not reconstruction.
+              Readiness OS does not improve the decision. It builds the hold location — the pre-staged structure of logic, behavior guardrails, ownership clarity, and capacity relief — so that when the situation presents itself, the executive's role is authorization, not reconstruction.
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>

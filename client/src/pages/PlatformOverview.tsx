@@ -25,7 +25,7 @@ const timelineSteps = [
     humanRole: [
       "Readiness Protocols reviewed and customized to your organization",
       "Executive authorization protocols established in advance",
-      "No action required when the trigger fires — preparation is already done",
+      "No action required when a situation presents itself — preparation is already done",
     ],
     color: "#C9A84C",
     badge: "I · IDENTIFY",
