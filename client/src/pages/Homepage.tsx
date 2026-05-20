@@ -2938,6 +2938,90 @@ export default function Homepage() {
         </div>
       </div>
 
+      {/* TRACK FORK — Buyer / Investor disambiguation */}
+      <div style={{ background: "#F0EDE4", padding: "64px 0" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+          <Reveal>
+            <div style={{ textAlign: "center", marginBottom: 40 }}>
+              <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>
+                Find Your Path
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px,3vw,36px)", fontWeight: 700, color: NAVY, margin: 0 }}>
+                Two conversations. One platform.
+              </h2>
+            </div>
+          </Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
+            {[
+              {
+                audience: "Enterprise Executive",
+                headline: "You need your organization ready before the situation arrives.",
+                body: "Readiness OS compresses your mobilization cycle from 30 days to 12 minutes — pre-staged before the situation presents itself, not assembled after.",
+                proof: ["90-day Founding Partner program", "170 Readiness Protocols — pre-staged", "100% investment credited to contract", "12-minute coordination from signal to war room"],
+                cta: "See What You Get in 90 Days",
+                ctaPath: "/founding-partner-brief",
+                accent: GOLD,
+              },
+              {
+                audience: "Investor",
+                headline: "First-mover in a new enterprise software category.",
+                body: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the orchestration layer above the $300B Microsoft investment.",
+                proof: ["$42B TAM — no incumbent owns this layer", "3,600× execution head start", "$750K raise · 18 months · 3 milestones", "Live product — no login required"],
+                cta: "View the Investor Overview",
+                ctaPath: "/investor",
+                accent: TEAL,
+              },
+            ].map((track, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <div style={{
+                  background: "#fff",
+                  borderTop: `4px solid ${track.accent}`,
+                  padding: "40px 40px 36px",
+                  display: "flex", flexDirection: "column" as const, gap: 0, height: "100%", boxSizing: "border-box" as const,
+                }}>
+                  <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: track.accent, marginBottom: 14 }}>
+                    {track.audience}
+                  </div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px,2vw,24px)", fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
+                    {track.headline}
+                  </h3>
+                  <p style={{ ...DM, fontSize: 14, color: "#374151", lineHeight: 1.7, marginBottom: 24 }}>
+                    {track.body}
+                  </p>
+                  <ul style={{ margin: "0 0 32px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column" as const, gap: 9 }}>
+                    {track.proof.map((p, j) => (
+                      <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                        <span style={{ color: track.accent, fontWeight: 700, fontSize: 13, lineHeight: 1.5, flexShrink: 0 }}>→</span>
+                        <span style={{ ...DM, fontSize: 13, color: "#374151", lineHeight: 1.45 }}>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ marginTop: "auto" }}>
+                    <Link href={track.ctaPath} onClick={() => trackCTA(`track_fork_${i}`)}>
+                      <button style={{
+                        width: "100%", padding: "14px 24px", background: NAVY,
+                        border: "none", cursor: "pointer",
+                        ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const,
+                        color: track.accent,
+                      }}>
+                        {track.cta} →
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.2}>
+            <div style={{ textAlign: "center", marginTop: 28 }}>
+              <Link href="/entry" style={{ ...DM, fontSize: 12, fontWeight: 600, color: "#6B7280", textDecoration: "none", letterSpacing: "0.06em", borderBottom: "1px solid rgba(107,114,128,0.3)", paddingBottom: 2 }}>
+                Not sure where to start? Begin here →
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
       {/* 2. HOOK — The readiness question */}
       <ScenarioHookSection />
 
