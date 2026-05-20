@@ -83,6 +83,9 @@ const SEARCH_ITEMS = [
   { label: 'Protocol Builder', path: '/protocol-builder', category: 'Demo', icon: ClipboardList },
   { label: 'Industry Scenarios', path: '/industry-demos', category: 'Demo', icon: Globe },
   { label: 'Founding Partner Program', path: '/founding-partner-program', category: 'Action', icon: Target },
+  { label: 'Founding Partner Brief — What You Get in 90 Days', path: '/founding-partner-brief', category: 'Action', icon: FileText },
+  { label: 'Readiness Operating Rhythm — Monthly Cadence', path: '/readiness-rhythm', category: 'Learn', icon: Activity },
+  { label: 'New Here? Start Here — First-Time Visitor Entry', path: '/entry', category: 'Learn', icon: Rocket },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
@@ -359,6 +362,7 @@ export default function StandardNav() {
             {[
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
               { path: '/how-it-executes', icon: Zap, label: 'How It Executes', sub: 'Watch the signal → protocol → execution chain in real time', featured: true },
+              { path: '/readiness-rhythm', icon: Activity, label: 'Readiness Operating Rhythm', sub: 'The monthly cadence that sustains preparation — continuous, not one-time', featured: true },
               { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
               { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Map · Monitor · Decide · Execute · Learn' },
               { path: '/the-proof', icon: Shield, label: 'Why Readiness OS', sub: 'The 30-day mobilization gap — and how we close it' },
@@ -428,6 +432,7 @@ export default function StandardNav() {
             {[
               { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
+              { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
               { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
               { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
               { path: '/vs-bcp', icon: Scale, label: 'Readiness OS vs. BCP', sub: 'Your BCP covers catastrophe. We cover the triggers that happen every year.' },
@@ -524,10 +529,17 @@ export default function StandardNav() {
   const renderExperienceDropdown = () => {
     const primaryDemos = [
       {
+        path: '/entry',
+        icon: Rocket,
+        label: 'New Here? Start Here',
+        sub: 'First visit? Get oriented in 60 seconds — pick your path: Enterprise Executive or Investor.',
+        featured: true,
+      },
+      {
         path: '/demo-hub',
         icon: LayoutGrid,
         label: 'Full Scenario Experience Center',
-        sub: '8 complete simulations — pick your industry or role. Ransomware · FDA Recall · Activist Investor · DOJ Investigation · Data Breach · Grid Failure · and more.',
+        sub: '12 complete simulations — pick your industry or role. Ransomware · FDA Recall · Activist Investor · DOJ Investigation · Data Breach · Grid Failure · and more.',
         featured: true,
       },
       {
