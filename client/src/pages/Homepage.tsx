@@ -714,11 +714,8 @@ function HeroSection() {
                 Before the Trigger Fires.
               </h1>
 
-              <p style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
-                Most organizations don't fail because they can't act — they fail because they see the signal too late. Readiness OS lets you define the triggers, thresholds, and escalation paths for every critical scenario so leadership decides in time, not after the fact. Detect earlier, on your terms. Execute in minutes. Improve every cycle.
-              </p>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(16px,1.2vw,18px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
-                Detect on your terms — so you don't find out after the window has closed.
+              <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
+                Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. Readiness OS compresses that cycle to 12 minutes. Pre-staged before the trigger. Authorized in real time. Executed with precision.
               </p>
 
               {/* CTAs — horizontal */}
@@ -735,7 +732,7 @@ function HeroSection() {
                   onClick={() => trackCTA("hero_testdrive")}
                   style={{ ...DM, background: "transparent", color: "rgba(255,255,255,0.72)", border: "1px solid rgba(255,255,255,0.18)", padding: "15px 28px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}
                 >
-                  12-Minute Experience
+                  Explore 12-Minute Experience
                 </Link>
               </div>
               <div style={{ marginBottom: 44 }}>
@@ -2299,18 +2296,36 @@ function CTASection() {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
             >
-              Request Founding Partner Access
+              Apply for Founding Partner Access
             </Link>
           </div>
+
+          {/* Trust strip */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 32, marginTop: 28, flexWrap: "wrap" as const }}>
+            {[
+              "Human authorization required — no Protocol activates without executive sign-off",
+              "Audit trail + governance controls",
+              "Enterprise integration-ready — Microsoft stack + others",
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                <span style={{ color: TEAL, fontSize: 12 }}>✓</span>
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.55)", letterSpacing: "0.02em" }}>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* AI monitors phrase */}
+          <div style={{ marginTop: 28, padding: "11px 28px", display: "inline-flex", alignItems: "center", gap: 10, border: "1px solid rgba(43,138,110,0.3)", background: "rgba(43,138,110,0.07)" }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0, display: "inline-block" }} />
+            <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(43,138,110,0.85)" }}>
+              AI monitors · Executives authorize · Authority stays human at every step
+            </span>
+          </div>
+
           <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 20, opacity: 0.6 }}>
             No long-term commitment required ·{" "}
             <Link href="/growth" style={{ color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
               View pricing →
-            </Link>
-          </p>
-          <p style={{ ...DM, fontSize: 13, marginTop: 12 }}>
-            <Link href="/12-minute-experience" style={{ color: GOLD, opacity: 0.7, textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
-              Or try it yourself first — no login required →
             </Link>
           </p>
           <p style={{ ...DM, fontSize: 13, marginTop: 8 }}>
@@ -2329,6 +2344,21 @@ function HomepageFooter() {
   return (
     <footer style={{ background: FOOTER_NAVY, borderTop: "1px solid rgba(201,168,76,0.2)", padding: "60px 0 40px" }}>
       <div style={{ ...CONTAINER }}>
+
+        {/* Decision Path strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, marginBottom: 52, background: "rgba(255,255,255,0.05)" }}>
+          {[
+            { q: "Not ready to commit?", cta: "Explore 12-Minute Experience", href: "/12-minute-experience", accent: "rgba(255,255,255,0.4)" },
+            { q: "Ready to evaluate?", cta: "Start 48-Hour Evaluation", href: "/request-evaluation", accent: GOLD },
+            { q: "Ready to deploy?", cta: "Apply for Full Access", href: "/request-access", accent: GOLD },
+          ].map((p, i) => (
+            <Link key={i} href={p.href} style={{ display: "block", background: FOOTER_NAVY, padding: "20px 24px", textDecoration: "none", borderTop: `2px solid ${i === 1 ? GOLD : "rgba(255,255,255,0.08)"}` }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 6 }}>{p.q}</div>
+              <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: p.accent, letterSpacing: "0.04em" }}>{p.cta} →</div>
+            </Link>
+          ))}
+        </div>
+
         <div className="hp-footer-cols" style={{ display: "flex", gap: 48, marginBottom: 40 }}>
 
           {/* Brand */}

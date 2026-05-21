@@ -42,6 +42,18 @@ const EVAL_EXCLUDES = [
   'Audit log access',
 ];
 
+const EVAL_STEPS = [
+  { n: '01', label: 'Workspace activated', detail: 'Guided onboarding link delivered within 24 hours of approval. Pre-seeded with realistic synthetic data across a full strategic scenario.' },
+  { n: '02', label: '3 guided workflows', detail: 'Walk the signal detection → protocol matching → executive authorization chain. Each workflow takes 15–20 minutes end to end.' },
+  { n: '03', label: 'Debrief + fit assessment', detail: 'A structured debrief surfaces protocol gaps, response time benchmarks, and a readiness fit score for your organization.' },
+];
+
+const TRUST_ITEMS = [
+  'Human authorization required — no Protocol activates without executive sign-off',
+  'Audit trail + governance controls',
+  'Enterprise integration-ready — Microsoft stack + others',
+];
+
 export default function RequestEvaluation() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -107,6 +119,24 @@ export default function RequestEvaluation() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* What happens step by step */}
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ ...BAR, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 16 }}>
+                  What Happens in 48 Hours
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+                  {EVAL_STEPS.map((step, i) => (
+                    <div key={step.n} style={{ display: 'flex', gap: 16, padding: '14px 0', borderBottom: i < EVAL_STEPS.length - 1 ? '1px solid #E8E4DC' : 'none' }}>
+                      <div style={{ ...BAR, fontSize: 16, fontWeight: 800, color: GOLD, flexShrink: 0, minWidth: 28, lineHeight: 1 }}>{step.n}</div>
+                      <div>
+                        <div style={{ ...BAR, fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3, letterSpacing: '0.04em' }}>{step.label}</div>
+                        <div style={{ fontSize: 12, color: '#6B7280', lineHeight: 1.6 }}>{step.detail}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div style={{ padding: '20px 24px', background: IVORY, border: `1px solid #E8E4DC`, ...BORDER_R }}>
@@ -199,6 +229,16 @@ export default function RequestEvaluation() {
                         Something went wrong. Please try again or email us directly.
                       </div>
                     )}
+
+                    {/* Trust strip */}
+                    <div style={{ padding: '14px 16px', background: '#F8F7F4', border: '1px solid #E8E4DC', ...BORDER_R, display: 'flex', flexDirection: 'column', gap: 7 }}>
+                      {TRUST_ITEMS.map(item => (
+                        <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                          <span style={{ color: TEAL, fontSize: 11, flexShrink: 0, marginTop: 1 }}>✓</span>
+                          <span style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.5 }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
 
                     <button
                       type="submit"

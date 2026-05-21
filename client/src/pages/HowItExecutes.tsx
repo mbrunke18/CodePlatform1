@@ -490,7 +490,7 @@ export default function HowItExecutes() {
         </div>
 
         {/* CTA */}
-        <div style={{ padding: "64px 48px", textAlign: "center" }}>
+        <div style={{ padding: "64px 48px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <h2 style={{ ...GEO, fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
               Ready to experience it yourself?
@@ -498,19 +498,41 @@ export default function HowItExecutes() {
             <p style={{ fontSize: 15, color: MUTED, marginBottom: 36, lineHeight: 1.7 }}>
               The 12-Minute Test Drive puts you in the role of an executive responding to a live trigger. Choose your scenario — watch the chain execute.
             </p>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 28 }}>
               <Link href="/12-minute-experience">
                 <button style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 32px", background: GOLD, color: NAVY, border: "none", cursor: "pointer" }}>
-                  Start the 12-Minute Test Drive →
+                  Explore 12-Minute Experience →
                 </button>
               </Link>
-              <Link href="/founding-partner-program">
+              <Link href="/request-evaluation">
                 <button style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 32px", background: "transparent", color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.2)", cursor: "pointer" }}>
-                  Apply for Founding Partner Access
+                  Start 48-Hour Evaluation
                 </button>
               </Link>
             </div>
+
+            {/* AI monitors callout */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "10px 24px", border: "1px solid rgba(43,138,110,0.3)", background: "rgba(43,138,110,0.07)" }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0, display: "inline-block" }} />
+              <span style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(43,138,110,0.85)" }}>
+                AI monitors · Executives authorize · Authority stays human at every step
+              </span>
+            </div>
           </div>
+        </div>
+
+        {/* Decision Path strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: "rgba(255,255,255,0.05)", margin: "0 48px 0" }}>
+          {[
+            { q: "Not ready to commit?", cta: "Explore 12-Minute Experience", href: "/12-minute-experience", highlight: false },
+            { q: "Ready to evaluate?", cta: "Start 48-Hour Evaluation", href: "/request-evaluation", highlight: true },
+            { q: "Ready to deploy?", cta: "Apply for Full Access", href: "/request-access", highlight: false },
+          ].map((p, i) => (
+            <Link key={i} href={p.href} style={{ display: "block", background: NAVY, padding: "20px 24px", textDecoration: "none", borderTop: `2px solid ${p.highlight ? GOLD : "rgba(255,255,255,0.08)"}` }}>
+              <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 6 }}>{p.q}</div>
+              <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 12, fontWeight: 700, color: p.highlight ? GOLD : "rgba(255,255,255,0.5)", letterSpacing: "0.04em" }}>{p.cta} →</div>
+            </Link>
+          ))}
         </div>
 
       </div>
