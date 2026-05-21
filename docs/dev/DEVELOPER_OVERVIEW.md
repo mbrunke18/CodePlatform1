@@ -1,13 +1,15 @@
-# VaughnMartin Execution OS — Developer Overview
-**Version:** March 2026 | **Domain:** vaughnmartin.com
+# VaughnMartin Readiness OS — Developer Overview
+
+**Version:** May 2026 | **Domain:** vaughnmartin.com
 
 ---
 
 ## What This Is
 
-A production-deployed Strategic Execution platform for Fortune 1000 companies. Core value: trigger any strategic event → the system automatically coordinates projects, tasks, documents, and budgets within 12 minutes. Built on the **IDEA Framework™** (Identify → Detect → Execute → Advance).
+A production-deployed Strategic Readiness platform for organizations from startup to Fortune 500. Core value: a strategic trigger fires → the system activates a pre-staged Readiness Protocol, coordinates projects, tasks, stakeholders, and budgets within **12 minutes**. Built on the **IDEA Framework™** (Identify → Detect → Execute → Advance).
 
 **Live deployment:** https://vaughnmartin.com  
+**GitHub:** https://github.com/mbrunke18/CodePlatform1  
 **Stack:** React 18 + TypeScript + Vite (frontend) / Node.js + Express + TypeScript (backend) / Neon PostgreSQL + Drizzle ORM (database)
 
 ---
@@ -17,25 +19,29 @@ A production-deployed Strategic Execution platform for Fortune 1000 companies. C
 ```
 /
 ├── client/src/
-│   ├── App.tsx              # All client routes (495 lines, 139 pages registered)
-│   ├── pages/               # 139 page components
-│   ├── components/          # 47 shared components
+│   ├── App.tsx              # All client routes (731 lines, 242 routes)
+│   ├── pages/               # 140+ page components
+│   ├── components/          # 47+ shared components
+│   │   ├── layout/          # StandardNav (1,319 lines), Footer, PageLayout
+│   │   └── ui/              # shadcn/ui primitives
 │   └── lib/
 │       └── queryClient.ts   # TanStack Query setup + apiRequest helper
 │
 ├── server/
-│   ├── index.ts             # Entry point, startup seeding, middleware (724 lines)
-│   ├── routes.ts            # All API routes in one file (8,558 lines)
-│   ├── storage.ts           # Drizzle DB abstraction layer (2,965 lines)
-│   ├── routes/              # 10 supplemental route files (sub-domain routes)
-│   ├── services/            # AI, job queue, collaboration, signal ingestion
-│   └── seeds/               # Database seed files (see Seeding section)
+│   ├── index.ts             # Entry point, startup seeding, middleware
+│   ├── routes.ts            # All API routes (~10,700 lines)
+│   ├── storage.ts           # Drizzle DB abstraction (~3,566 lines)
+│   ├── routes/              # Supplemental route files
+│   └── services/            # AI, job queue, Socket.IO, signal ingestion
 │
 ├── shared/
-│   └── schema.ts            # Drizzle schema — single source of truth (6,122 lines)
+│   └── schema.ts            # Drizzle schema — single source of truth (~6,900 lines)
+│
+├── docs/
+│   └── dev/                 # Developer reference docs
 │
 └── dist/                    # Pre-built production bundle (committed to repo)
-    ├── index.js             # Server bundle (1.9mb, built by esbuild)
+    ├── index.js             # Server bundle (esbuild, ~4.6MB)
     └── public/              # Vite frontend build output
 ```
 
@@ -48,6 +54,7 @@ npm install         # Install dependencies
 npm run dev         # Start dev server on :5000 (Vite + Express)
 npm run build       # Build production bundle into dist/
 npm run db:push     # Sync Drizzle schema changes to Neon DB (never write SQL manually)
+npx vitest run      # Run unit tests (189 tests)
 ```
 
 ---
@@ -56,38 +63,42 @@ npm run db:push     # Sync Drizzle schema changes to Neon DB (never write SQL ma
 
 - **Provider:** Replit OIDC via Passport.js
 - **Session:** express-session with PostgreSQL store
-- **New user flow:** First login → org auto-created → redirected to `/onboarding` (5-step wizard)
+- **New user flow:** First login → org auto-created → `/onboarding` wizard
 - **Middleware:** `requireAuth` (session check) → `requireOrgAccess` (org scope) → `requireRole()` (write operations)
-- **Roles:** admin, executive, strategist (write access); no role = read-only
-- **Public routes:** `/api/playbooks/templates`, demo endpoints, health checks
+- **Roles:** `admin`, `executive`, `strategist` (write access); no role = read-only
+- **Platform admin:** `PLATFORM_ADMIN_EMAIL` env secret bypasses allowlist
+- **Access gate:** `allowed_emails` table — open when empty, restrictive once any email added
+- **Blocked users:** Shown `/access-denied`
 
 ---
 
 ## Database
 
-- **Provider:** Neon serverless PostgreSQL (same instance for dev and production)
+- **Provider:** Neon serverless PostgreSQL (shared dev + production instance)
 - **ORM:** Drizzle — schema in `shared/schema.ts`, queries via `server/storage.ts`
-- **Migrations:** Never write SQL. Use `npm run db:push` to apply schema changes.
-- **Org-scoped:** Almost all tables have an `organization_id` column. Storage methods enforce org scope.
+- **Migrations:** Never write SQL. Use `npm run db:push`.
+- **Org-scoped:** Almost all tables have `organization_id`. Storage methods enforce scope.
 
 ### Key Tables
+
 | Table | Purpose |
 |-------|---------|
 | `users` | Auth users, roles, org membership |
 | `organizations` | Tenant orgs |
-| `playbook_library` | 170 strategic playbook templates (read-only library) |
-| `playbook_domains` | 9 domains (Financial Strategy, Market Dynamics, etc.) |
-| `playbook_categories` | Sub-categories within domains |
-| `playbooks` | User-activated/customized playbooks (per org) |
-| `strategic_signals` | Live market/news signals |
-| `action_items` | Tasks generated from playbook activation |
+| `playbook_library` | 170 Readiness Protocol templates + 12 compound (IDs 181–192) |
+| `playbook_domains` | 9 strategic domains |
+| `playbooks` | User-activated protocols per org |
+| `strategic_signals` | Live ingested market/news signals |
+| `action_items` | Tasks from protocol activation |
 | `background_jobs` | PostgreSQL-backed async job queue |
+| `allowed_emails` | Email allowlist |
 
 ---
 
-## Playbook Library (170 Playbooks)
+## Readiness Protocol Library (170 Protocols)
 
 ### Domain Breakdown
+
 | Domain | Count |
 |--------|-------|
 | Financial Strategy | 24 |
@@ -100,116 +111,75 @@ npm run db:push     # Sync Drizzle schema changes to Neon DB (never write SQL ma
 | Regulatory & Compliance | 15 |
 | Talent & Leadership | 14 |
 
-### Compound Playbooks (playbook_number 181–184)
-Four cross-domain playbooks added after the initial seed:
-1. Compound: Cyber + Regulatory Cascade (Technology & Innovation)
-2. Compound: Geopolitical + Supply Chain Disruption (Operational Excellence)
-3. Compound: Climate + Operations Cascade (Operational Excellence)
-4. Compound: AI + Workforce Transformation Crisis (AI Governance)
+### Compound Protocols (IDs 181–192)
 
-### Free Sample Playbooks (Unauthenticated Users)
-Three playbooks are matched **by name** and pinned to the top of the library with "Free Sample" badges. Name-matching is intentional — UUIDs change on reseed, names are stable:
-- "Aggressive Pricing Disruption"
-- "Compound: Geopolitical + Supply Chain Disruption"
-- "AI Competitive Disruption"
-
-### Production Seeding
-`server/index.ts` runs an **additive migration** on startup:
-- If `COUNT(playbook_library) >= 170`: skip
-- If `COUNT < 170`: insert only the 4 missing Compound playbooks by domain/category name lookup
-
-**Do not use:** `server/seeds/playbookLibrarySeed.ts` (stub, does nothing) or `playbookLibrarySeed_PARTIAL.ts` (covers only 3 domains, ~48 playbooks).
-
----
-
-## API Structure
-
-All routes in `server/routes.ts` except sub-domain routes in `server/routes/`:
-
-```
-GET  /api/health                     # Health check
-GET  /api/playbooks/templates        # Public — 170 library templates
-GET  /api/playbooks/templates/:id    # Single template detail
-POST /api/playbooks/templates/:id/copy  # Copy template to user's org
-GET  /api/organizations/:orgId/*     # Org-scoped resources (requires auth)
-GET  /api/signals                    # Live strategic signals
-POST /api/executive-summary          # AI-generated summary
-POST /api/analyze-pulse              # AI pulse analysis
-WS   /                               # Socket.IO real-time collaboration
-```
-
----
-
-## AI Integration
-
-- **Provider:** OpenAI GPT-4o via `server/services/openai-service.ts`
-- **Used for:** Pulse analysis, risk scoring, executive summaries, opportunity detection, playbook recommendations
-- **Job queue:** Long-running AI tasks are queued in `background_jobs` table and processed async
-- **Env var:** `OPENAI_API_KEY` (set via Replit Secrets)
-
----
-
-## Real-Time
-
-- **Socket.IO** server registered in `server/index.ts`, handlers in `server/services/collaboration-service.ts`
-- **Live signals:** `server/services/live-signal-ingestion.ts` polls external feeds every 15 minutes
-
----
-
-## Email
-
-- **Provider:** Resend (`RESEND_API_KEY`)
-- **From:** `noreply@vaughnmartin.com`
-- **Fallback:** Console.log when key is absent (dev-safe)
+12 cross-domain compound protocols requiring simultaneous multi-track execution. These span multiple strategic domains and activate when compound trigger patterns are detected.
 
 ---
 
 ## Design System
 
-All 139 pages use a consistent brand palette applied via Tailwind inline styles:
+See `docs/dev/DESIGN_SYSTEM.md` for full reference. Canonical colors:
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `NAVY` | `#0A0F2E` | Hero backgrounds, primary buttons, headings |
-| `NAVY_MID` | `#141B45` | Secondary dark surfaces |
-| `GOLD` | `#C9A84C` | Accents, metrics, labels (never background fill) |
-| `TEAL` | `#2B8A6E` | Success, progress, offense playbooks |
-| `OFF` | `#F8F7F4` | Light background sections |
-| `BORDER` | `#E8E4DC` | Card/section borders |
-| `MUTED` | `#6B7280` | Secondary text |
+| `NAVY` | `#0A0F2E` | Primary backgrounds, headings |
+| `GOLD` | `#C9A84C` | Accents, CTAs, labels |
+| `TEAL` | `#2B8A6E` | Secondary accent, compound indicators |
+| `IVORY` | `#F0EDE4` | Light panels |
 
-Red is preserved for crisis/alert severity. Yellow/orange for warnings. All Tailwind `purple-*`, `cyan-*`, `indigo-*`, `violet-*`, `blue-600+` classes have been removed from all pages.
+No purple anywhere. `border-radius: 0.15rem` on all interactive elements.
+
+---
+
+## Navigation
+
+See `docs/dev/NAVIGATION.md` for full route map.
+
+Three nav systems:
+1. **Homepage inline nav** — custom nav inside `Homepage.tsx`
+2. **`StandardNav`** — used on all other pages (`client/src/components/layout/StandardNav.tsx`)
+3. **`IDEASidebar`** — authenticated product navigation
 
 ---
 
 ## Deployment
 
-**Current setup:** `dist/` is committed to the repo. Production runs directly from `dist/` with no build step during deployment (avoids Replit's bundle timeout).
+`dist/` is committed to the repo. Production runs from `dist/` with no build step during deployment.
 
 ```
 Deployment config:
-  run: ["npm", "run", "start"]    # No build step
+  run: ["npm", "run", "start"]   # Runs from pre-built dist/
+  build: null                     # No build step (avoids Replit timeout)
 
-Before publishing:
-  npm run build                    # Rebuild dist/ locally, then publish
+Before every publish:
+  npm run build                   # Rebuild dist/ (~48s), then publish
 ```
 
-**Why:** `npm run build` takes ~23 seconds locally. In Replit's deployment environment it exceeded the bundle timeout. Pre-building and committing `dist/` resolves this permanently.
-
-**Critical `.replit` issue:** The `.replit` file persistently resets to include `build = ["npm", "run", "build"]` in the deployment block on each Replit checkpoint. This means every publish attempt will fail with a bundle timeout unless the build step is cleared first. Before every publish, the agent must use the Replit deployment config API to set `build: null` — this takes precedence over the `.replit` file. Developers cannot fix this by editing `.replit` directly (it resets automatically).
+**Critical `.replit` issue:** The `.replit` file resets to include `build = ["npm", "run", "build"]` on every Replit checkpoint. Deployment will timeout unless `build: null` is set via the Replit deployment config API before each publish. Editing `.replit` directly does not fix this.
 
 ---
 
-## Known Limitations / Watch Out For
+## Known Limitations
 
-1. **`server/routes.ts` is 8,558 lines** — consider splitting further into `server/routes/` sub-files for large feature areas
-2. **`shared/schema.ts` is 6,122 lines** — all types in one file; imports are easy but diffs are large
-3. **Playbook seeding:** The full 170-playbook seed has no clean re-runnable script. The production DB relies on the additive migration for the 4 Compound playbooks and an assumed 166-playbook baseline from an earlier seed.
-4. **`dist/` is committed:** Developers must remember to `npm run build` before publishing. Stale `dist/` = stale production.
-5. **`.replit` build reset:** The `.replit` file resets to include a build step on every Replit checkpoint. Deployment will timeout unless the build step is removed via the deployment config API before each publish. See Deployment section above.
-6. **Replit OIDC:** Authentication only works when running on Replit (dev or deployed). Local development outside Replit requires mocking auth.
-7. **Single database:** Dev and production share the same Neon PostgreSQL instance. Schema changes in dev affect production immediately.
-8. **Homepage logo rule:** Do NOT add `VaughnMartinLogo` inside hero content sections. The `StandardNav` carries the brand on every page. A second instance inside the hero creates a redundant/unprofessional double-logo effect (this was corrected in `Homepage.tsx` — hero content now opens directly with the eyebrow badge and headline).
+1. **`server/routes.ts` is ~10,700 lines** — consider splitting into `server/routes/` sub-files
+2. **`shared/schema.ts` is ~6,900 lines** — all types in one file; diffs are large
+3. **Single database** — dev and production share the same Neon instance; schema changes affect production immediately
+4. **`dist/` is committed** — run `npm run build` before publishing
+5. **Replit OIDC** — auth only works on Replit; requires mocking for local development
+
+---
+
+## Key Terminology (Enforced Platform-Wide)
+
+| ❌ Retired | ✅ Current |
+|-----------|-----------|
+| Playbook | Readiness Protocol |
+| Pilot Program | Founding Partner Program |
+| AI-powered / AI-driven | system-detected / signal-based / pre-staged |
+| Human-AI partnership | AI monitors, executives authorize |
+| Offense / Defense / Special Teams | Growth & Positioning / Risk & Resilience / Transformation |
+| 340× or 360× speed advantage | 3,600× Execution Head Start |
 
 ---
 
@@ -218,4 +188,3 @@ Before publishing:
 - **Org:** martybrunke
 - **Org ID:** `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`
 - **Contact:** mbrunke@vaughnmartin.com
-- **Access paths:** Scripted demo, self-serve free trial, enterprise pilot program

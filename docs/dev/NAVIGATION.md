@@ -1,262 +1,178 @@
-# VEXOR Navigation - Focused & Powerful
+# VaughnMartin Readiness OS — Navigation Architecture
 
-## Core Philosophy
-**Kill scope crawl. Preserve robustness. Deliver clarity.**
-
-64 pages exist → 10 in primary navigation → Everything else accessible but not cluttering the experience.
+**Last Updated:** May 2026
 
 ---
 
-## PRIMARY USER NAVIGATION (The Main Experience)
+## Navigation Components
 
-### 1. HOME `/`
-**Landing & Value Proposition**
+Three synchronized navigation systems exist:
 
-### 2. THE DEMO `/demo` or `/how-it-works`
-**ONE Powerful Interactive Experience**
-- Component: `InteractiveMasterDemo.tsx` (912 lines - the definitive VEXOR demo)
-- Shows complete PREPARE → MONITOR → EXECUTE → LEARN cycle
-- Interactive: Clear labeling of human input vs. AI action
-- **This is the demo.** All others are alternate formats preserved for sales flexibility.
+| Component | File | Used On |
+|-----------|------|---------|
+| Homepage inline nav | `client/src/pages/Homepage.tsx` (inline) | Homepage only |
+| `StandardNav` | `client/src/components/layout/StandardNav.tsx` | All other pages |
+| `IDEASidebar` | `client/src/components/layout/IDEASidebar.tsx` | Authenticated platform pages |
 
-### 3. PLAYBOOK LIBRARY `/playbook-library` or `/business-scenarios`
-**Browse 110 Strategic Playbooks Across 8 Domains**
-- Component: `PlaybookLibrary.tsx`
-- Replaces legacy "13 scenarios" structure
-- Filter by domain, search, preview details
-
-### 4. DASHBOARD `/dashboard`
-**Executive Command Center**
-- Strategic preparation overview
-- Preparedness scores
-- Active playbook status
-- Quick access to all modules
-
-### 5. AI RADAR `/ai-radar`
-**24/7 Trigger Monitoring (LIVE)**
-- Real-time signal monitoring
-- Trigger confidence scores
-- Recommended playbook activations
-- Manual override capability
-
-### 6. COMMAND CENTER `/command-center`
-**Playbook Execution (Executive War Room)**
-- Component: `ExecutiveWarRoomPage.tsx`
-- One-click activation
-- 12-minute execution tracking
-- Stakeholder coordination
-- Live task completion
-- Note: Same as `/war-room` (legacy route)
-
-### 7. LEARNING CENTER `/nfl-learning`
-**Strategic Learning & Institutional Memory**
-- Execution history
-- Success patterns
-- AI-generated insights
-- Playbook refinement
-
-### 8. INTEGRATIONS `/integrations`
-**Enterprise Integration Hub**
-- 12 pre-built connectors
-- Webhook configuration
-- Integration health
-
-### 9. SETTINGS `/settings`
-**Platform Administration**
-
-### 10. PRICING `/pricing`
-**Pricing & Packaging** (if needed in nav)
+All pages are wrapped by `PageLayout` (`client/src/components/layout/PageLayout.tsx`).
 
 ---
 
-## THE 4-PHASE PRODUCT MODULES (Organized by Methodology)
+## StandardNav — Unauthenticated Desktop Nav
 
-### PHASE 1: PREPARE
-- `/dashboard` - Command center overview
-- `/playbook-library` - 110 playbook templates
-- `/what-if-analyzer` - Scenario testing
-- `/practice-drills` - Strategic rehearsals with timer
-- `/drill-tracking` - Performance tracking
-- `/preparedness-report` - Readiness scoring
+Four top-level dropdown groups plus two icon links and one CTA button:
 
-### PHASE 2: MONITOR  
-- `/ai` - AI Intelligence Hub (5 modules consolidated)
-- `/ai-radar` - Live trigger monitoring
-- `/triggers-management` - Trigger configuration
+| Label | Type | Key Paths |
+|-------|------|-----------|
+| **What We Do** | Dropdown | `/how-it-works`, `/how-it-executes`, `/platform-overview`, `/idea-framework`, `/playbooks`, `/industry`, `/ecosystems`, `/getting-started`, `/mission-control`, `/command-tower`, `/situations-hub`, `/roadmap` |
+| **► See It Work** | Dropdown | `/12-minute-experience`, `/demo-hub`, `/master-demo`, `/try-demo`, `/proof-story`, `/protocol-builder`, `/demo/:scenarioId` |
+| **The Proof** | Dropdown | `/the-proof`, `/executive-brief`, `/research`, `/roi-calculator`, `/proof-story`, `/readiness-assessment`, `/growth`, `/customer-journey`, `/vs-consulting`, `/ms-project`, `/platform-reality` |
+| Guide | Icon + text | `/onboarding-guide` |
+| Directory | Icon + text | `/sitemap` |
+| **Request Founding Partner Access** | Gold CTA button | `/founding-partner-program` |
 
-### PHASE 3: EXECUTE
-- `/command-center` - Executive War Room (playbook activation)
-- `/playbook-activation/:triggerId/:playbookId` - PlaybookActivationConsole (dynamic route)
-- `/triggers-management` - Trigger configuration & management
-- `/collaboration` - Real-time team coordination
-
-### PHASE 4: LEARN
-- `/nfl-learning` - Strategic learning center
-- `/institutional-memory` - Decision outcomes
-- `/board-briefings` - Executive reports
+> **Note (May 2026):** "Investors" was removed from primary nav. Investor pages remain accessible at `/investor-landing`, `/investor-presentation`, `/investor-resources` via direct URL, footer, and `/sitemap`.
 
 ---
 
-## SUPPORTING MODULES (Accessible, Not in Primary Nav)
+## StandardNav — Authenticated Desktop Nav
 
-### Analytics & Intelligence
-- `/analytics` - Advanced analytics
-- `/executive-analytics-dashboard` - C-suite dashboard
-- `/decision-velocity` - Velocity metrics
-- `/audit-logging-center` - Enterprise audit trails
-- `/executive-suite` - C-suite command center
-- `/executive-scorecard` - Top 5 metrics
-- `/business-intelligence` - BI portal
-- `/operating-model-health` - McKinsey 12 elements
+When signed in, the center nav switches to the product navigation:
 
-### Specialized Views
-- `/pulse` - Pulse Intelligence (redirects to AI hub)
-- `/flux` - Flux Adaptations (redirects to AI hub)
-- `/prism` - Prism Insights (redirects to AI hub)
-- `/echo` - Echo Cultural Analytics (redirects to AI hub)
-- `/nova` - Nova Innovations (redirects to AI hub)
+| Label | Path |
+|-------|------|
+| Mission Control | `/mission-control` |
+| Protocols | `/playbooks` |
+| Execution | `/live-activation-center` |
+| Intelligence | `/intelligence-control-center` |
+| Command Tower | `/command-tower` |
 
 ---
 
-## ALTERNATE DEMO FORMATS (Preserved for Sales Flexibility)
+## Homepage Nav (Inline)
 
-**Primary Demo:** `/demo` → `InteractiveMasterDemo` (THIS IS THE ONE)
+Custom nav in `Homepage.tsx`. Not a separate component. Desktop:
 
-**Alternate Formats** (accessible via direct link, not in main nav):
-- `/demos` - DemoHub (portal to all formats)
-- `/watch-demo` - Video walkthrough
-- `/trade-show-demo` - Booth-optimized
-- `/executive-demo` - C-suite pitch
-- `/hybrid-demo` - Mixed live + video
-- `/executive-demo-walkthrough` - Step-by-step phases
+```
+What We Do | Readiness Infrastructure | ► See It Work | The Proof | Founder's Story | [Request Founding Partner Access]
+```
 
-**Why keep alternates?**
-- Sales teams have different customer preferences
-- Event-specific needs (trade shows, executive briefings)
-- No deletion = no broken links
-- Robustness preserved
+Mobile overlay menu (full-screen, navy background):
+- What We Do → `/platform-overview`
+- See It Work → `/demo-hub`  
+- The Proof → `/the-proof`
+- Founder's Story → `/founder-story`
+- Request Founding Partner Access
 
 ---
 
-## LEGACY PAGES (Backward Compatibility)
+## Alert Bar
 
-These still work but are being phased out:
-- `/crisis` → CrisisResponseCenter
-- `/war-room` → ExecutiveWarRoomPage
-- `/scenarios` → Legacy scenario management
-- `/templates` → ComprehensiveScenarios
-- `ScenarioGallery.tsx` → Replaced by PlaybookLibrary
-
-**Migration Path:**
-- Old links still work (no breaking changes)
-- New links use new structure
-- Gradual customer migration
+Persistent teal strip below `StandardNav` on all pages. Three slots:
+1. `SEE IT EXECUTE IN 12 MINUTES →` → `/12-minute-experience`
+2. `REQUEST FOUNDING PARTNER ACCESS` → `/founding-partner-program`
+3. `Executive Sign-In` → auth flow
 
 ---
 
-## SALES & MARKETING PAGES
+## Route Map (App.tsx — 731 lines, 242 routes)
 
-- `/` - Public landing page
-- `/demo` - THE interactive demo
-- `/pricing` - 3-tier pricing model
-- `/contact` - Lead capture & pilot application
-- `/our-story` - Company narrative & NFL methodology origin
-- `/vc-presentations` - Investor materials
+```
+Public Marketing
+  /                           Homepage
+  /founding-partner-program   Founding Partner Program
+  /platform-overview          Platform Overview
+  /how-it-works               How It Works
+  /how-it-executes            12-Minute Execution Chain (animated)
+  /idea-framework             IDEA Framework
+  /the-proof                  Why Readiness OS
+  /proof-story                Activation Narratives
+  /roi-calculator             ROI Calculator
+  /executive-brief            Printable Executive Brief
+  /security-compliance        Security & Compliance One-Pager
+  /growth                     Pricing & Plans
+  /research                   Research Foundation
+  /vs-consulting              vs. McKinsey / Big 4
+  /ms-project                 vs. Microsoft Project / ServiceNow
+  /platform-reality           Platform Reality
 
----
+Demo & Experience (all public)
+  /12-minute-experience       4-step interactive test drive (7 scenarios)
+  /demo-hub                   Full Scenario Experience Center (12 scenarios)
+  /master-demo                Activist Investor — 7-phase walkthrough
+  /try-demo                   Interactive demo (side-by-side before/after)
+  /demo/:scenarioId           All 12 scenarios → MasterDemo component
+  /industry-experience/:id    Industry-specific scenario
+  /industry-demos             Industry demos hub
 
-## ROUTE CONSOLIDATION
+Protocol Library (public browse; login to activate)
+  /playbooks                  170 Readiness Protocols + filters + search
+  /industry                   Industry Protocol Packs hub
+  /industry/:verticalKey      Single vertical pack detail
+  /protocol-builder           6-step wizard to build custom protocol
 
-### Canonical Routes (Use These)
-- `/demo` → InteractiveMasterDemo
-- `/playbook-library` → 110 Playbook Library
-- `/ai` → AI Intelligence Hub
-- `/dashboard` → Executive Dashboard
+Public Tools
+  /readiness-assessment       5-question readiness gap diagnostic
+  /command-tower              Live executive wall display (auto-refresh)
+  /situations-hub             9-Domain Coverage Board
 
-### Aliases (Also Work)
-- `/how-it-works` → Same as `/demo`
-- `/business-scenarios` → Same as `/playbook-library`
+Founding Partner Journey
+  /getting-started            Go-Live Readiness checklist (4 phases)
+  /onboarding-guide           Executive Onboarding Guide (PDF-ready)
+  /new-user-journey           8-step guided walkthrough
+  /request-access             Access request form
+  /founding-partner-program   Program page + application form
 
----
+Authenticated Platform
+  /dashboard                  Main user dashboard
+  /mission-control            Interactive operations center
+  /live-activation-center     War room — active protocol execution
+  /practice-drills            Drill library + post-drill debrief
+  /workspace                  All 4 IDEA phases in one surface
+  /settings, /settings-hub    Platform settings
+  /organization-setup         Org configuration
+  /intelligence-control-center Signal intelligence hub
+  /ai-radar                   Live signal monitoring dashboard
+  /signal-intelligence        Signal intelligence deep view
+  /triggers-management        Trigger configuration
+  /crisis-response-center     Crisis coordination
 
-## PAGE COUNT BREAKDOWN
+Investor & Executive Materials
+  /investor-landing           Full investor landing page
+  /investor-presentation      Slide-format investor deck
+  /investor-resources         Resource library
+  /roadshow-resources         Roadshow materials
+  /pitch-deck                 → redirects to /investor-presentation
 
-**Total Files:** 64 page components
-- **Primary Nav:** 10 core pages (visible in main menu)
-- **Product Modules:** 15 pages (organized by 4-phase methodology)
-- **Supporting:** 12 analytics/specialized pages
-- **Demos:** 7 demo formats (1 primary, 6 alternates)
-- **Legacy:** 10 backward-compatibility pages
-- **Marketing:** 5 sales/marketing pages
-- **Admin:** 5 admin/config pages
-
-**Strategy:**
-- ✅ All functionality preserved (no deletion)
-- ✅ Clear hierarchy (focused user journey)
-- ✅ No nav clutter (smart organization)
-- ✅ Single mental model (110 playbooks, 8 domains, 4 phases)
-
----
-
-## ELIMINATED REDUNDANCIES
-
-### ✅ Demo Consolidation
-**Before:** 7 competing demo experiences, unclear which to use
-**After:** ONE primary demo (InteractiveMasterDemo), others available as alternates
-
-### ✅ Mental Model Clarity
-**Before:** Mixed terminology (scenarios vs. playbooks, NFL vs. executive)
-**After:** Single model (110 playbooks across 8 domains)
-
-### ✅ Navigation Simplification
-**Before:** 64 pages competing for attention
-**After:** 10 primary pages, rest organized by purpose
-
-### ✅ AI Intelligence Consolidation
-**Before:** 5 separate AI module pages
-**After:** 1 AI Intelligence Hub with 5 modules as tabs/sections
-
----
-
-## USER JOURNEYS
-
-### New Prospect
-1. `/` (landing)
-2. `/demo` (interactive experience)
-3. `/playbook-library` (browse 110 playbooks)
-4. `/contact` (request pilot)
-
-### Pilot Customer  
-1. `/dashboard` (command center)
-2. `/playbook-library` (select & customize)
-3. `/practice-drills` (rehearse)
-4. `/ai-radar` (monitor triggers)
-5. `/command-center` (activate)
-6. `/nfl-learning` (review outcomes)
-
-### Executive
-1. `/executive-suite` (C-suite view)
-2. `/ai-radar` (check alerts)
-3. `/board-briefings` (review reports)
-4. Approve activation
-5. Monitor execution
+Key Redirects
+  /command-center             → /mission-control
+  /pitch-deck                 → /investor-presentation
+  /crisis-hub                 → /situations-hub
+  /product-tour, /video-tour  → /industry-demos
+```
 
 ---
 
-## IMPLEMENTATION STATUS
+## Search
 
-✅ **Completed:**
-- Single demo consolidation (`/demo` → InteractiveMasterDemo)
-- Playbook library terminology (110 playbooks, 8 domains)
-- Route organization (all pages preserved, clearly structured)
-- Updated replit.md with focused product vision
-
-🎯 **Result:**
-- **Same robustness** (all 64 pages functional)
-- **Clear focus** (10 primary pages in nav)
-- **Zero scope crawl** (everything has a purpose)
-- **Single mental model** (no confusion)
+Global search lives inside `StandardNav.tsx`. Toggles on clicking the magnifying glass icon. Searches all nav link labels and descriptions. Results navigate immediately on click.
 
 ---
 
-Last Updated: October 26, 2025 - **Scope crawl eliminated. Robustness preserved.**
+## Mobile Navigation (< 1024px)
+
+Hamburger opens a full-screen slide-over. Structure mirrors desktop dropdowns with accordion expansion. Implemented entirely in `StandardNav.tsx` (lines ~1000–1200).
+
+---
+
+## Terminology Rules (enforced in all nav copy)
+
+| ❌ Retired | ✅ Current |
+|-----------|-----------|
+| Pilot Program | Founding Partner Program |
+| Playbook | Readiness Protocol |
+| Offense / Defense / Special Teams | Growth & Positioning / Risk & Resilience / Transformation |
+| AI-powered, AI-driven, AI-generated | system-detected, signal-based, pre-staged |
+| Human-AI partnership | AI monitors, executives authorize |
+| 340× or 360× speed advantage | 3,600× Execution Head Start |
+| 72 hours (as response metric) | 12 minutes |

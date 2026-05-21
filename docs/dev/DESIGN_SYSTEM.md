@@ -1,98 +1,178 @@
-# M - PREMIUM DESIGN SYSTEM
-## Enterprise Executive Grade UI/UX Standards
+# VaughnMartin Readiness OS — Design System
 
-### Core Design Philosophy
-- **Minimalist Sophistication**: White space, breathing room, subtle elegance
-- **Executive Navy + Premium White**: Navy backgrounds with white text for authority, white backgrounds with navy text for clarity
-- **Zero Distractions**: Clear information hierarchy, single focal point per section
-- **Dark Mode Excellence**: Sophisticated, not gimmicky - professional all the way through
-- **Premium Typography**: Inter font family, precise hierarchy, generous line-height
-- **Micro-interactions**: Subtle, purposeful, not flashy
+**Last Updated:** May 2026
 
-### Color Palette (Executive Grade)
-- **Primary (Navy)**: #0A1F44 (hsl(218, 74%, 15%)) - Authority, trust, executive presence
-- **Secondary (Light)**: #F8F9FC (hsl(210, 30%, 98%)) - Clean, professional
-- **Accent (Gold)**: #D4AF37 (hsl(46, 65%, 40%)) - Premium, luxury, highlights
-- **Text Dark**: #1A2D4D (hsl(218, 50%, 20%))
-- **Text Light**: #E0E5F0 (hsl(210, 20%, 90%))
-- **Neutral Gray**: #64748B (hsl(218, 40%, 35%))
+---
 
-### Typography Hierarchy
-- **Title (H1)**: 3.5rem / 56px, bold, navy, with 1.3 line-height
-- **Subtitle (H2)**: 2rem / 32px, semibold, navy
-- **Heading (H3)**: 1.5rem / 24px, semibold, navy
-- **Body**: 1rem / 16px, regular, gray-700
-- **Small**: 0.875rem / 14px, regular, gray-600
-- **Caption**: 0.75rem / 12px, regular, gray-500
+## Brand Identity
 
-### Spacing Grid (8px Base)
-- xs: 4px
-- sm: 8px
-- md: 16px
-- lg: 24px
-- xl: 32px
-- 2xl: 48px
-- 3xl: 64px
+**Platform:** VaughnMartin Readiness OS  
+**Audience:** COO / CISO / CSO — startup to Fortune 500  
+**Tone:** Executive, authoritative, precise. Not corporate-bland. Not startup-casual.
 
-### Component Standards
-1. **Cards**: White bg, subtle border (hsl(210, 20%, 88%)), 8px rounded, shadow-sm
-2. **Buttons**: Navy bg, white text, 12px px, 8px py, rounded 6px, hover scale 102%
-3. **Inputs**: White bg, border gray-300, navy text, focus ring navy
-4. **Badges**: Navy bg, white text, 12px px, 4px py, rounded 4px
-5. **Dividers**: Single pixel, hsl(210, 20%, 88%)
+---
 
-### Dark Mode
-- **Background**: hsl(218, 30%, 8%) - Almost black but not pure
-- **Card**: hsl(218, 25%, 12%) - Subtle contrast
-- **Text**: hsl(210, 20%, 92%) - High contrast
-- **Border**: hsl(218, 18%, 22%) - Subtle, sophisticated
-- **Accent**: hsl(46, 65%, 60%) - Bright gold pops against dark
+## Color Palette (Exact Hex — Do Not Approximate)
 
-### Responsive Design
-- Mobile: 320px - no sidebars, full-width cards
-- Tablet: 768px - single column layouts, 2-column grids
-- Desktop: 1280px - full layouts, 3-4 column grids
-- Max width: 7xl (80rem / 1280px) for content
+| Name | Hex | Usage |
+|------|-----|-------|
+| `NAVY` | `#0A0F2E` | Primary background, headings, nav |
+| `NAVY_BG` | `#132558` | Secondary dark surfaces, card fills |
+| `GOLD` | `#C9A84C` | Accents, rules, key labels, CTAs |
+| `TEAL` | `#2B8A6E` | Secondary accent, success, compound scenarios |
+| `IVORY` | `#F0EDE4` | Light panel backgrounds, section alternates |
 
-### Information Architecture
-- **Hero/Header**: Large title, subtitle, CTA (32px top padding)
-- **Section**: Title, description, content grid (24px spacing)
-- **Cards**: Icon/badge, title, description, action
-- **Metrics**: Large numbers, small labels, icon accent
-- **Navigation**: Clear, scannable, consistent across all pages
+**Prohibited:** No purple anywhere on the platform. No `purple-*`, `violet-*`, `indigo-*`, `cyan-*`, or `blue-600+` Tailwind classes.
 
-### Accessibility (WCAG AAA)
-- Contrast: 7:1 minimum for body text
-- Focus: Clear 2px ring on interactive elements
-- Spacing: Touch targets 44px minimum
-- Keyboard: All interactive elements keyboard accessible
-- Color: Never color-only - always include icons/text indicators
+Red is reserved for crisis/critical severity only. Yellow/orange for warnings only.
 
-### Premium Interactions
-- Hover: Scale 102% + shadow increase
-- Click: Scale 98% (tactile feedback)
-- Transition: 200ms cubic-bezier(0.4, 0, 0.2, 1)
-- Loading: Subtle skeleton shimmer
-- Success: Green success indicator with icon
-- Error: Red error state with clear message
+---
 
-### Page Structure Template
-```
-1. Hero/Header Section (Navy bg, white text, large typography)
-2. Content Sections (White/Light bg, navy text)
-3. Supporting Information (Metrics, cards in grid)
-4. CTA/Action (Primary button, navy bg)
-5. Footer (Optional, navy bg or transparent)
+## Typography
+
+| Role | Font | Weight | Notes |
+|------|------|--------|-------|
+| Editorial headings | Cormorant Garamond | 600–700 | Serif — used for hero headlines, section headers |
+| Labels / caps | Barlow Condensed | 700 | `letter-spacing: 0.34em`, uppercase |
+| Body / UI | System sans-serif | 500 base | Global `font-weight: 500` minimum |
+| Logo monogram | Georgia (serif) | Bold | "VM" in TechSeal |
+| Logo arc text | Courier monospace | — | "VAUGHNMARTIN · READINESS OS" and "ANTE IGNEM PARATUS" |
+
+**Rule:** All visible text must be at least medium weight. No light/thin text in production copy.
+
+---
+
+## Logo — Authoritative Definition
+
+The logo is a **custom SVG React component**, not any PNG file.
+
+**Source:** `client/src/components/ExecuteIQLogo.tsx` → exported as `VaughnMartinLogo`  
+**Wrapper:** `client/src/components/VaughnMartinLogo.tsx`
+
+### Visual Anatomy
+
+1. **TechSeal** — circular badge
+   - Navy radial gradient fill (`#0A0F2E` → `#1a2860`)
+   - Gold outer ring (`#C9A84C`, 1px stroke)
+   - Tick marks around perimeter, cardinal diamonds at N/S/E/W
+   - "VM" monogram centered — Georgia serif bold, gold
+   - "VAUGHNMARTIN · READINESS OS" arced top — Courier monospace, gold
+   - "ANTE IGNEM PARATUS" arced bottom — Courier monospace, teal
+   - Teal signal pulse dot at 6 o'clock
+
+2. **Wordmark** (to the right of seal)
+   - "VaughnMartin" — Cormorant Garamond, weight 600
+   - Short gold rule
+   - "READINESS OS" — Barlow Condensed, weight 700, letter-spacing 0.34em, uppercase
+
+### Usage
+
+```tsx
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+
+<ExecuteIQLogo variant="full" color="navy" height={56} animated={true} />
+<ExecuteIQLogo variant="icon-only" color="navy" height={40} />
 ```
 
-### Design Audit Checklist
-- [ ] Hero section has clear title, subtitle, CTA
-- [ ] All cards have consistent styling
-- [ ] Typography hierarchy is clear (H1 > H2 > Body)
-- [ ] Spacing follows 8px grid
-- [ ] Dark mode works without colors changing meaning
-- [ ] All interactive elements have hover state
-- [ ] Focus rings visible on keyboard navigation
-- [ ] No scattered gradients - clean backgrounds only
-- [ ] Icons consistent with Lucide style
-- [ ] Mobile responsive tested
+**Never use** `poise-logo-official.png`, `poise-logo.png`, or any PNG from `attached_assets/` as the logo.
+
+---
+
+## Border Radius
+
+`border-radius: 0.15rem` — All buttons, cards, badges. Keeps them sharp and executive. No rounded corners.
+
+---
+
+## Layout
+
+- **Desktop-first.** Max content width: `max-w-7xl mx-auto px-8`
+- Mobile adjustments only if non-disruptive
+- All pages wrapped in `PageLayout` component
+
+---
+
+## Component Conventions
+
+### Buttons
+
+```tsx
+// Primary CTA — gold background
+style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
+  padding: "10px 20px", borderRadius: "0.15rem", letterSpacing: "0.04em" }}
+
+// Secondary — navy outline
+style={{ border: `1px solid ${NAVY}`, color: NAVY, background: "transparent" }}
+```
+
+### Section Labels
+
+```tsx
+import { SectionLabel } from "@/components/SectionLabel";
+<SectionLabel>PLATFORM ARCHITECTURE</SectionLabel>
+```
+
+Renders in gold, Barlow Condensed, 10–11px, letter-spacing 0.14em, uppercase.
+
+### Editorial Stats
+
+```tsx
+import { EditorialStat } from "@/components/EditorialStat";
+<EditorialStat value="170" label="Pre-staged Readiness Protocols" />
+```
+
+### Gold Rule
+
+```tsx
+import { GoldRule } from "@/components/GoldRule";
+<GoldRule />  // Short horizontal gold line separator
+```
+
+---
+
+## Page Structure Pattern
+
+```
+1. Hero — navy background, white headline, gold italic subline, CTA buttons
+2. Stat bar — key metrics (12 min, 3,600×, 170, 221) on ivory or navy
+3. Content sections — alternate navy / ivory / white
+4. CTA close — gold button + secondary outline button
+```
+
+---
+
+## Canonical Metrics (Use Exactly These)
+
+| Metric | Canonical Display | Never Say |
+|--------|-------------------|-----------|
+| Execution time | **12 minutes** | "12 min", "twelve minutes" |
+| Speed advantage | **3,600× Execution Head Start** | "340×", "360×", "speed advantage", "faster" |
+| Protocols | **170 Readiness Protocols** | "170 playbooks", "170 scenarios" |
+| Triggers | **221 trigger patterns** | "221 signals", "248+ triggers" |
+| Signal monitoring | **248+ signals monitored every 15 minutes** | — |
+| Baseline comparison | **30 days compressed to 12 minutes** | "72 hours", "1 week" |
+
+---
+
+## Dark Mode
+
+Light mode is default (white backgrounds). Dark mode is supported via `.dark` class on `document.documentElement`. Use explicit Tailwind variants:
+
+```tsx
+className="bg-white dark:bg-[#0A0F2E] text-[#0A0F2E] dark:text-white"
+```
+
+---
+
+## Design Audit Checklist
+
+- [ ] Brand colors used exactly (NAVY `#0A0F2E`, GOLD `#C9A84C`, TEAL `#2B8A6E`, IVORY `#F0EDE4`)
+- [ ] No purple, violet, indigo, or cyan anywhere
+- [ ] Typography: Cormorant Garamond for editorial, Barlow Condensed for labels
+- [ ] All text font-weight ≥ 500
+- [ ] Border radius 0.15rem on all interactive elements
+- [ ] Logo is the SVG component, not a PNG
+- [ ] Metric values match canonical table above
+- [ ] No retired language (AI-powered, Pilot Program, football terms)
+- [ ] "Request Founding Partner Access" (not "Apply for Pilot" or similar)
+- [ ] Desktop-first layout tested at 1280px+

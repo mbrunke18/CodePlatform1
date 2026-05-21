@@ -1,35 +1,28 @@
-# VaughnMartin — Execution OS Developer Guide
+# VaughnMartin Readiness OS — Developer Guide
 
-**Strategic Execution OS for Fortune 1000 Companies**
-
-This guide provides everything developers need to understand, review, and contribute to the VaughnMartin Execution OS.
+**Last Updated:** May 2026
 
 ---
 
 ## Quick Start
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Push database schema changes
-npm run db:push
+npm install         # Install dependencies
+npm run dev         # Start dev server on :5000 (Vite + Express, hot reload)
+npm run build       # Build production bundle into dist/
+npm run db:push     # Sync Drizzle schema to Neon DB (never write SQL manually)
+npx vitest run      # Run unit tests
 ```
-
-The app runs on port 5000 with hot reload enabled.
 
 ---
 
 ## Project Overview
 
 VaughnMartin Readiness OS compresses the 30-day mobilization cycle to 12-minute execution through:
-- **170 pre-built playbooks** across 9 strategic domains
-- **IDEA Framework™** (Identify, Detect, Execute, Advance)
-- **AI monitors, executives authorize** — no playbook activates without executive sign-off. The phrase "human-AI partnership" is RETIRED from all copy.
-- **248+ data points** across 20 signal categories, monitored in real time
+- **170 pre-staged Readiness Protocols** across 9 strategic domains
+- **IDEA Framework™** (Identify → Detect → Execute → Advance)
+- **AI monitors, executives authorize** — no protocol activates without executive sign-off
+- **221 trigger patterns** monitored across 248+ signal sources every 15 minutes
 
 ---
 
@@ -43,162 +36,149 @@ VaughnMartin Readiness OS compresses the 30-day mobilization cycle to 12-minute 
 | UI Components | Radix UI, shadcn/ui, Tailwind CSS |
 | State Management | TanStack Query v5 |
 | Routing | Wouter |
+| Forms | React Hook Form + Zod |
+| Animation | Framer Motion |
 | Backend | Node.js, Express.js, TypeScript |
 | Database | PostgreSQL (Neon serverless) |
 | ORM | Drizzle ORM |
 | Auth | Replit OIDC + Passport.js |
 | Real-time | Socket.IO |
-| AI | OpenAI GPT-4o |
+| AI | Azure OpenAI (primary), OpenAI GPT-4o (fallback) |
 
 ### Directory Structure
 
 ```
-├── client/                 # Frontend React application
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   │   ├── layout/     # StandardNav, Footer, PageLayout
-│   │   │   ├── ui/         # shadcn/ui primitives
-│   │   │   └── ...         # Feature-specific components
-│   │   ├── pages/          # Route pages
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── lib/            # Utilities and helpers
-│   │   └── navigation/     # Navigation configuration
-│   └── index.html          # Entry HTML with meta tags
-├── server/                 # Backend Express application
-│   ├── routes.ts           # API endpoints
-│   ├── storage.ts          # Database interface
-│   ├── seeds/              # Database seed data
-│   └── vite.ts             # Vite dev server integration
-├── shared/                 # Shared code between client/server
-│   ├── schema.ts           # Drizzle database schema
-│   └── constants/          # Framework constants, task library
-└── docs/                   # Documentation
+/
+├── client/src/
+│   ├── App.tsx              # All client routes (731 lines, 242 routes)
+│   ├── pages/               # 140+ page components
+│   ├── components/          # Shared components
+│   │   ├── layout/          # StandardNav, Footer, PageLayout, IDEASidebar
+│   │   └── ui/              # shadcn/ui primitives
+│   ├── contexts/            # React contexts (DemoController, CustomerContext, etc.)
+│   └── lib/
+│       └── queryClient.ts   # TanStack Query setup + apiRequest helper
+│
+├── server/
+│   ├── index.ts             # Entry point, middleware, startup seeding
+│   ├── routes.ts            # All API routes (~10,700 lines)
+│   ├── storage.ts           # Drizzle DB abstraction (~3,566 lines)
+│   ├── routes/              # Supplemental route files
+│   └── services/            # AI, job queue, Socket.IO, signal ingestion
+│
+├── shared/
+│   └── schema.ts            # Drizzle schema — single source of truth (~6,900 lines)
+│
+├── docs/
+│   └── dev/                 # Developer reference (this directory)
+│
+└── dist/                    # Pre-built production bundle (committed to repo)
+    ├── index.js             # Server bundle (esbuild)
+    └── public/              # Vite frontend build output
 ```
+
+---
+
+## Authentication & Access Control
+
+- **Provider:** Replit OIDC via Passport.js
+- **Session:** express-session with PostgreSQL store
+- **New user flow:** First login → org auto-created → `/onboarding` wizard
+- **Middleware chain:** `requireAuth` → `requireOrgAccess` → `requireRole()`
+- **Roles:** `admin`, `executive`, `strategist` (write access); no role = read-only
+- **Platform admin:** `PLATFORM_ADMIN_EMAIL` env var bypasses allowlist checks
+- **Public routes:** `/api/playbooks/templates`, demo endpoints, health checks
+- **Email allowlist:** `allowed_emails` table — open when empty, restrictive once any email is added
+
+---
+
+## Database
+
+- **Provider:** Neon serverless PostgreSQL (shared dev + production instance)
+- **ORM:** Drizzle — schema in `shared/schema.ts`, queries via `server/storage.ts`
+- **Migrations:** Never write SQL. Use `npm run db:push` to apply schema changes.
+- **Org-scoped:** Almost all tables have `organization_id`. Storage methods enforce scope.
+
+### Key Tables
+
+| Table | Purpose |
+|-------|---------|
+| `users` | Auth users, roles, org membership |
+| `organizations` | Tenant orgs |
+| `playbook_library` | 170 Readiness Protocol templates (read-only library) |
+| `playbook_domains` | 9 strategic domains |
+| `playbooks` | User-activated/customized protocols (per org) |
+| `strategic_signals` | Live market/news signals |
+| `action_items` | Tasks from protocol activation |
+| `background_jobs` | PostgreSQL-backed async job queue |
+| `allowed_emails` | Email allowlist for login gating |
+
+### Compound Protocols (playbook_number 181–192)
+
+12 cross-domain compound protocols added after the 170-protocol baseline seed. These span multiple domains and activate simultaneously on compound triggers.
 
 ---
 
 ## Design System
 
-### Brand Colors
+See `docs/dev/DESIGN_SYSTEM.md` for full reference. Key rules:
 
-| Name | Hex | Usage |
-|------|-----|-------|
-| Navy (Primary) | `#1A2B3D` | Headers, primary buttons |
-| Gold (Accent) | `#D4AF37` | CTAs, highlights, premium features |
-| Teal (Accent) | `#00A8A8` | Interactive elements, links |
-| White | `#FFFFFF` | Text on dark backgrounds |
-| Muted | `#94A3B8` | Secondary text |
+| Token | Value |
+|-------|-------|
+| `NAVY` | `#0A0F2E` |
+| `GOLD` | `#C9A84C` |
+| `TEAL` | `#2B8A6E` |
+| `IVORY` | `#F0EDE4` |
+| Editorial font | Cormorant Garamond |
+| Label font | Barlow Condensed |
+| Border radius | `0.15rem` |
 
-### Typography
+**No purple anywhere. No `AI-powered` in UI copy. No "Pilot Program" in user-facing text.**
 
-- **Headings**: Montserrat Bold
-- **Body**: Inter Regular
-- **Tagline**: "EXECUTE DECISIONS AT SCALE"
+---
 
-### Logo Component
+## Logo
+
+The logo is a **custom SVG React component**:
 
 ```tsx
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+// alias: import VaughnMartinLogo from "@/components/VaughnMartinLogo";
 
-// Variants
-<ExecuteIQLogo variant="full" />        // Icon + text + tagline
-<ExecuteIQLogo variant="icon-only" />   // Just concentric rings
-<ExecuteIQLogo variant="text-only" />   // Just wordmark
-
-// Colors
-<ExecuteIQLogo color="navy" />   // Dark backgrounds
-<ExecuteIQLogo color="white" />  // Light/dark hero sections
-<ExecuteIQLogo color="gold" />   // Premium sections
+<ExecuteIQLogo variant="full" color="navy" height={56} animated={true} />
+<ExecuteIQLogo variant="icon-only" color="navy" height={40} />
 ```
 
-### Layout Components
-
-```tsx
-// Standard page with nav + footer
-import PageLayout from '@/components/layout/PageLayout';
-
-<PageLayout>
-  {/* Page content */}
-</PageLayout>
-
-// Just navigation
-import StandardNav from '@/components/layout/StandardNav';
-```
+Never use PNG files from `client/src/assets/` as the logo.
 
 ---
 
-## IDEA Framework Modules
+## Navigation
 
-| Phase | Module | Description |
-|-------|--------|-------------|
-| **I**DENTIFY | Playbook Library | Build/customize playbooks from 170 templates |
-| **D**ETECT | Signal Intelligence | AI-powered trigger monitoring across 248+ data points |
-| **E**XECUTE | War Room | 12-minute coordinated response |
-| **A**DVANCE | Execution History | Institutional learning and debrief |
+See `docs/dev/NAVIGATION.md` for full route map and nav component reference.
 
-Plus **Mission Control** — executive radar with clickable triggers → playbook activation
-
----
-
-## Key Pages
-
-| Route | Purpose |
-|-------|---------|
-| `/` | Marketing homepage |
-| `/why-executeiq` | Origin story and value proposition |
-| `/how-it-works` | IDEA Framework explanation |
-| `/playbooks` | Playbook library browser |
-| `/dashboard` | Main user dashboard |
-| `/mission-control` | Executive command center |
-| `/pilot-program` | 90-day pilot signup |
-| `/investor` | Investor presentation |
-
----
-
-## Database Schema
-
-Key tables in `shared/schema.ts`:
-
-- `users` - User accounts
-- `organizations` - Company entities
-- `playbooks` - Strategic playbook definitions
-- `playbookTasks` - Tasks within playbooks
-- `triggers` - Event trigger configurations
-- `scenarios` - Active strategic scenarios
-- `sessions` - User sessions
-
-### Migrations
-
-Never write raw SQL. Use Drizzle:
-
-```bash
-npm run db:push        # Push schema to database
-npm run db:push --force # Force push (data loss warning)
-```
+Quick summary:
+- **Homepage:** Custom inline nav in `Homepage.tsx`
+- **All other pages:** `StandardNav` component (1,319 lines)
+- **Authenticated:** `IDEASidebar` for product navigation
 
 ---
 
 ## API Patterns
 
-### Endpoints
-
-All API routes are in `server/routes.ts`:
-
 ```typescript
 // GET list
-app.get('/api/playbooks', async (req, res) => { ... });
+app.get('/api/playbooks', requireAuth, async (req, res) => { ... });
 
 // GET single
-app.get('/api/playbooks/:id', async (req, res) => { ... });
+app.get('/api/playbooks/:id', requireAuth, async (req, res) => { ... });
 
-// POST create
-app.post('/api/playbooks', async (req, res) => { ... });
-
-// PATCH update
-app.patch('/api/playbooks/:id', async (req, res) => { ... });
-
-// DELETE
-app.delete('/api/playbooks/:id', async (req, res) => { ... });
+// POST create (validate with Zod before storage)
+app.post('/api/playbooks', requireAuth, requireRole('strategist'), async (req, res) => {
+  const validated = insertPlaybookSchema.parse(req.body);
+  const result = await storage.createPlaybook(validated);
+  res.json(result);
+});
 ```
 
 ### Frontend Data Fetching
@@ -207,12 +187,12 @@ app.delete('/api/playbooks/:id', async (req, res) => { ... });
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 
-// Fetch data
+// Query — default fetcher handles GET automatically
 const { data, isLoading } = useQuery({
   queryKey: ['/api/playbooks'],
 });
 
-// Mutate data
+// Mutation — use apiRequest for POST/PATCH/DELETE
 const mutation = useMutation({
   mutationFn: (data) => apiRequest('/api/playbooks', { method: 'POST', body: data }),
   onSuccess: () => queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] }),
@@ -229,6 +209,7 @@ const mutation = useMutation({
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl } from '@/components/ui/form';
+import { insertPlaybookSchema } from '@shared/schema';
 
 const form = useForm({
   resolver: zodResolver(insertPlaybookSchema),
@@ -236,88 +217,95 @@ const form = useForm({
 });
 ```
 
-### Cards
+### Toast
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-
-<Card>
-  <CardHeader>
-    <CardTitle>Title</CardTitle>
-  </CardHeader>
-  <CardContent>Content</CardContent>
-</Card>
+import { useToast } from '@/hooks/use-toast';  // correct import path
+const { toast } = useToast();
+toast({ title: "Protocol activated", description: "12-minute clock started." });
 ```
+
+### Environment Variables (Frontend)
+
+Use `import.meta.env.VITE_*` — not `process.env`. Variables must be prefixed `VITE_` to be available client-side.
+
+---
+
+## Deployment
+
+`dist/` is committed to the repo. Production runs from `dist/` with no build step during deployment (avoids Replit bundle timeout).
+
+```bash
+# Before every publish:
+npm run build     # Rebuild dist/ (~48s)
+# Then publish via Replit dashboard
+```
+
+**Critical:** The `.replit` file resets to include `build = ["npm", "run", "build"]` on every Replit checkpoint. This causes bundle timeout on publish. Before deploying, use the Replit deployment config API to set `build: null`. Do not try to fix this by editing `.replit` directly.
+
+---
+
+## Known Limitations
+
+1. **`server/routes.ts` is ~10,700 lines** — consider splitting into `server/routes/` sub-files for large areas
+2. **`shared/schema.ts` is ~6,900 lines** — all types in one file; easy to import but diffs are large
+3. **Single database** — dev and production share the same Neon instance; schema changes affect production immediately
+4. **`dist/` is committed** — run `npm run build` before publishing; stale `dist/` = stale production
+5. **Replit OIDC** — auth only works on Replit (dev or deployed); requires auth mocking for local development outside Replit
 
 ---
 
 ## Security
 
-- **Helmet** - Security headers (CSP, XSS protection)
-- **Rate Limiting** - 1000 req/15min API, 20 req/15min auth
-- **Session Security** - HTTP-only cookies, PostgreSQL store
-- **Secrets** - All sensitive data in environment variables
+- **Helmet** — security headers (CSP, XSS protection)
+- **Rate limiting** — 1000 req/15min API, 20 req/15min auth
+- **Session security** — HTTP-only cookies, PostgreSQL store
+- **Authorization** — `requireRole()` middleware; fail-closed on errors
+- **Secrets** — all sensitive values in environment variables (never in code)
+
+### Required Environment Variables
+
+| Variable | Purpose |
+|----------|---------|
+| `DATABASE_URL` | Neon PostgreSQL connection |
+| `SESSION_SECRET` | Express session encryption |
+| `PLATFORM_ADMIN_EMAIL` | Platform admin bypass |
+| `RESEND_API_KEY` | Email via Resend |
 
 ---
 
 ## Testing
 
 ```bash
-npm run test        # Run Vitest tests
-npm run test:ui     # Vitest with UI
+npx vitest run                   # Run all unit tests
+npx vitest run --reporter=verbose # Verbose output
 ```
 
+189 unit tests as of May 2026.
+
 ---
 
-## Review Checklist
+## Code Review Checklist
 
-### Code Quality
-- [ ] TypeScript types are complete (no `any` abuse)
-- [ ] Components are properly extracted and reusable
-- [ ] API routes validate input with Zod schemas
-- [ ] Error handling is comprehensive
+### Language Compliance
+- [ ] No `AI-powered`, `AI-driven`, `AI-generated`, `AI-detected` in UI copy
+- [ ] No `GPT-4o` in user-facing text (only in technical integration listings)
+- [ ] No `Pilot Program` — use `Founding Partner Program`
+- [ ] No `Offense / Defense / Special Teams` — use `Growth & Positioning / Risk & Resilience / Transformation`
+- [ ] No `human-AI partnership` — use `AI monitors, executives authorize`
+- [ ] Metrics: `3,600× Execution Head Start`, not `340×` or `speed advantage`
 
 ### Design Consistency
-- [ ] Uses brand colors (navy/gold/teal)
-- [ ] Uses Montserrat for headings, Inter for body
-- [ ] Logo appears in header and footer
-- [ ] Dark/light mode works correctly
+- [ ] Brand colors: NAVY `#0A0F2E`, GOLD `#C9A84C`, TEAL `#2B8A6E`, IVORY `#F0EDE4`
+- [ ] No purple anywhere
+- [ ] Logo is SVG component, not PNG
+- [ ] Border radius `0.15rem` on buttons/cards/badges
+- [ ] Font-weight ≥ 500 on all visible text
 
-### UX
-- [ ] Loading states shown during data fetching
-- [ ] Error states handled gracefully
-- [ ] Mobile responsive layouts
-- [ ] Navigation is intuitive
-
-### Performance
-- [ ] No unnecessary re-renders
-- [ ] Images optimized
-- [ ] Lazy loading where appropriate
-
----
-
-## Environment Variables
-
-**Required:**
-- `DATABASE_URL` - PostgreSQL connection
-- `SESSION_SECRET` - Express session encryption
-
-**Optional:**
-- `AI_INTEGRATIONS_OPENAI_API_KEY` - OpenAI access
-- `VITE_GA_MEASUREMENT_ID` - Google Analytics
-
----
-
-## Contributing
-
-1. Create a feature branch
-2. Make changes following existing patterns
-3. Test thoroughly
-4. Update documentation if needed
-5. Submit for review
-
----
-
-## Contact
-
-For questions about the codebase or architecture, refer to `replit.md` for additional context.
+### Code Quality
+- [ ] TypeScript types complete (no `any` abuse)
+- [ ] API routes validate input with Zod schemas
+- [ ] TanStack Query v5 object form: `useQuery({ queryKey: [...] })`
+- [ ] Cache invalidated after mutations
+- [ ] Loading/error states handled
+- [ ] No static imports of React (JSX transformer handles it)
