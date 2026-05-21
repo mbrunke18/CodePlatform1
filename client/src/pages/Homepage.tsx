@@ -716,30 +716,31 @@ function HeroSection() {
                 Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. Readiness OS compresses that cycle to 12 minutes. Pre-staged before the trigger. Authorized in real time. Executed with precision.
               </p>
 
-              {/* CTAs — horizontal */}
-              <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 20, flexWrap: "wrap" as const }}>
+              {/* CTAs — clear primary dominance, secondary recedes */}
+              <div style={{ marginBottom: 16 }}>
                 <Link
                   href="/founding-partner-program"
                   onClick={() => trackCTA("hero")}
-                  style={{ ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "15px 36px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
+                  style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 40px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
                 >
                   Request Founding Partner Access →
                 </Link>
+              </div>
+              <div style={{ display: "flex", gap: 24, alignItems: "center", marginBottom: 28, flexWrap: "wrap" as const }}>
                 <Link
                   href="/12-minute-experience"
                   onClick={() => trackCTA("hero_testdrive")}
-                  style={{ ...DM, background: "transparent", color: "rgba(255,255,255,0.72)", border: "1px solid rgba(255,255,255,0.18)", padding: "15px 28px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}
+                  style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
-                  Explore 12-Minute Experience
+                  See it execute in 12 minutes →
                 </Link>
-              </div>
-              <div style={{ marginBottom: 28 }}>
+                <span style={{ color: "rgba(255,255,255,0.14)", fontSize: 10 }}>or</span>
                 <Link
                   href="/contact"
                   onClick={() => trackCTA("hero_schedule")}
-                  style={{ ...DM, color: "rgba(255,255,255,0.5)", fontSize: 13, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.2)", paddingBottom: 2 }}
+                  style={{ ...DM, color: "rgba(255,255,255,0.38)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
-                  Or schedule a 30-minute conversation first →
+                  Schedule a conversation first →
                 </Link>
               </div>
 
