@@ -69,6 +69,92 @@ const LAYERS = [
   },
 ];
 
+const SOURCE_TIERS = [
+  {
+    tier: "LIVE",
+    label: "Active now — 15 pre-configured sources",
+    desc: "Running continuously. Zero setup required.",
+    badgeColor: TEAL,
+    badgeBg: "rgba(43,138,110,0.12)",
+    badgeBorder: "rgba(43,138,110,0.35)",
+    textColor: TEAL,
+    sources: [
+      { name: "NY Times Business", category: "Market news" },
+      { name: "BBC Business", category: "Market news" },
+      { name: "Reuters Business", category: "Market news" },
+      { name: "CNBC Business", category: "Financial" },
+      { name: "MarketWatch", category: "Financial" },
+      { name: "NPR Business", category: "Market news" },
+      { name: "Google News Finance", category: "Financial" },
+      { name: "Entrepreneur", category: "Market news" },
+      { name: "PR Newswire", category: "Corporate announcements" },
+      { name: "Federal Register", category: "Regulatory" },
+      { name: "SEC EDGAR", category: "Regulatory / filings" },
+      { name: "FTC", category: "Regulatory enforcement" },
+      { name: "DOJ", category: "Legal enforcement" },
+      { name: "FDA", category: "Safety / healthcare" },
+      { name: "CISA", category: "Cybersecurity" },
+    ],
+  },
+  {
+    tier: "ON REQUEST",
+    label: "Available now — activate for your industry",
+    desc: "Free public feeds. Added within one business day.",
+    badgeColor: GOLD,
+    badgeBg: "rgba(201,168,76,0.1)",
+    badgeBorder: "rgba(201,168,76,0.35)",
+    textColor: NAVY,
+    sources: [
+      { name: "AP Business News", category: "Market news" },
+      { name: "OSHA", category: "Workplace safety enforcement" },
+      { name: "Bureau of Labor Statistics", category: "Economic / labor data" },
+      { name: "Federal Reserve (FRED)", category: "Economic indicators" },
+      { name: "WHO Health Alerts", category: "Global health / recall" },
+      { name: "EPA Enforcement", category: "Environmental regulatory" },
+      { name: "FINRA", category: "Financial industry regulatory" },
+      { name: "State Dept / Geopolitical", category: "Geopolitical risk" },
+      { name: "CFPB", category: "Consumer financial protection" },
+      { name: "NTSB / FAA", category: "Transportation safety" },
+    ],
+  },
+  {
+    tier: "ENTERPRISE CONNECT",
+    label: "Customer's own internal systems",
+    desc: "Connects via Microsoft Fabric or direct API. Founding Partner roadmap.",
+    badgeColor: "#0078D4",
+    badgeBg: "rgba(0,120,212,0.08)",
+    badgeBorder: "rgba(0,120,212,0.3)",
+    textColor: NAVY,
+    sources: [
+      { name: "Salesforce", category: "CRM / pipeline signals" },
+      { name: "ServiceNow", category: "ITSM / incident triggers" },
+      { name: "Workday", category: "HR / attrition signals" },
+      { name: "SAP / Oracle ERP", category: "Operational data" },
+      { name: "Microsoft Sentinel", category: "SIEM / security events" },
+      { name: "CrowdStrike / Splunk", category: "Threat detection" },
+      { name: "SAP Ariba / Coupa", category: "Supply chain" },
+      { name: "Jira / Azure DevOps", category: "Engineering incident signals" },
+    ],
+  },
+  {
+    tier: "PREMIUM",
+    label: "Paid API — enterprise tier",
+    desc: "Available on request. Licensing costs passed through.",
+    badgeColor: "rgba(10,15,46,0.4)",
+    badgeBg: "rgba(10,15,46,0.04)",
+    badgeBorder: "rgba(10,15,46,0.15)",
+    textColor: "rgba(10,15,46,0.45)",
+    sources: [
+      { name: "Bloomberg Terminal", category: "Real-time financial / market data" },
+      { name: "Reuters Refinitiv", category: "Financial intelligence" },
+      { name: "LexisNexis / Factiva", category: "News archive / legal" },
+      { name: "S&P Capital IQ", category: "Company / credit intelligence" },
+      { name: "Moody's Analytics", category: "Credit risk" },
+      { name: "Dun & Bradstreet", category: "Supplier / counterparty risk" },
+    ],
+  },
+];
+
 const INTEGRATIONS = [
   { platform: "Microsoft Teams", status: "LIVE", desc: "Stakeholder channel notifications, role-specific briefings, war room coordination links", color: "#6264A7" },
   { platform: "Microsoft Outlook", status: "LIVE", desc: "Executive authorization requests, CEO inbox briefings, board-ready activation reports", color: GOLD },
@@ -170,6 +256,50 @@ export default function TechnicalArchitecture() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Signal Source Directory */}
+      <div style={{ background: "#F8F7F4", padding: "72px 32px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>Signal Source Directory</div>
+            <h2 style={{ ...GEO, fontSize: "clamp(24px,3vw,38px)", fontWeight: 600, color: NAVY, marginBottom: 10 }}>Every source your organization could need</h2>
+            <p style={{ ...BAR, fontSize: 14, color: "rgba(10,15,46,0.55)", lineHeight: 1.7, maxWidth: 640 }}>
+              15 sources are pre-configured and running on day one. Additional public feeds activate within one business day. Internal systems and premium data connect via Enterprise Connect.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+            {SOURCE_TIERS.map(tier => (
+              <div key={tier.tier}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+                  <span style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", padding: "4px 10px", background: tier.badgeBg, color: tier.badgeColor, border: `1px solid ${tier.badgeBorder}` }}>
+                    {tier.tier}
+                  </span>
+                  <div>
+                    <span style={{ ...BAR, fontSize: 12, fontWeight: 700, color: NAVY }}>{tier.label}</span>
+                    <span style={{ ...BAR, fontSize: 11, color: "rgba(10,15,46,0.45)", marginLeft: 10 }}>{tier.desc}</span>
+                  </div>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {tier.sources.map(src => (
+                    <div key={src.name} style={{ background: "#fff", border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${tier.badgeColor}`, padding: "8px 14px" }}>
+                      <div style={{ ...BAR, fontSize: 11, fontWeight: 700, color: tier.textColor === NAVY ? NAVY : tier.textColor }}>{src.name}</div>
+                      <div style={{ ...BRC, fontSize: 9, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(10,15,46,0.4)", marginTop: 2 }}>{src.category}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 32, padding: "16px 22px", background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", display: "flex", gap: 12, alignItems: "center" }}>
+            <span style={{ ...BAR, fontSize: 12, color: GOLD, fontWeight: 700, flexShrink: 0 }}>Source request:</span>
+            <span style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.6)", lineHeight: 1.6 }}>
+              Founding Partners can request any ON REQUEST source during onboarding. Enterprise Connect and Premium sources are scoped during the 90-day validation partnership.
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Microsoft Integration Map */}

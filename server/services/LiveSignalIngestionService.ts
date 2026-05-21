@@ -24,22 +24,35 @@ interface AnalyzedSignal {
 }
 
 const RSS_FEEDS: { url: string; source: string; category: string }[] = [
+  // Market & business news (baseline)
   { url: 'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml', source: 'NY Times Business', category: 'market' },
   { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business', category: 'market' },
-  { url: 'https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=corporate+regulatory+compliance', source: 'Federal Register', category: 'regulatory' },
   { url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114', source: 'CNBC Business', category: 'market' },
   { url: 'https://feeds.marketwatch.com/marketwatch/topstories/', source: 'MarketWatch', category: 'market' },
   { url: 'https://feeds.npr.org/1006/rss.xml', source: 'NPR Business', category: 'market' },
   { url: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen', source: 'Google News Finance', category: 'market' },
   { url: 'https://feeds.feedburner.com/entrepreneur/latest', source: 'Entrepreneur', category: 'market' },
+  { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters Business', category: 'market' },
+  // Regulatory & government enforcement
+  { url: 'https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=corporate+regulatory+compliance', source: 'Federal Register', category: 'regulatory' },
+  { url: 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=40&search_text=&output=atom', source: 'SEC EDGAR', category: 'regulatory' },
+  { url: 'https://www.ftc.gov/rss.xml', source: 'FTC', category: 'regulatory' },
+  { url: 'https://www.justice.gov/rss/news.xml', source: 'DOJ', category: 'regulatory' },
+  { url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-safety-recalls/rss.xml', source: 'FDA', category: 'regulatory' },
+  // Cybersecurity & threat intelligence
+  { url: 'https://www.cisa.gov/cybersecurity-advisories/all.xml', source: 'CISA', category: 'cybersecurity' },
+  // Corporate announcements
+  { url: 'https://www.prnewswire.com/rss/news-releases-list.rss', source: 'PR Newswire', category: 'market' },
 ];
 
 const SIGNAL_TYPE_MAP: Record<string, string[]> = {
   market: ['acquisition', 'merger', 'market share', 'revenue', 'earnings', 'IPO', 'stock', 'valuation', 'growth', 'decline'],
-  regulatory: ['regulation', 'compliance', 'SEC', 'FTC', 'antitrust', 'sanctions', 'policy', 'legislation', 'enforcement', 'fine'],
-  technology: ['AI', 'artificial intelligence', 'cybersecurity', 'breach', 'cloud', 'digital transformation', 'automation', 'quantum'],
+  regulatory: ['regulation', 'compliance', 'SEC', 'FTC', 'antitrust', 'sanctions', 'policy', 'legislation', 'enforcement', 'fine', 'DOJ', 'FDA', 'recall', 'violation', 'investigation', 'settlement'],
+  technology: ['AI', 'artificial intelligence', 'cloud', 'digital transformation', 'automation', 'quantum', 'software', 'platform'],
+  cybersecurity: ['ransomware', 'breach', 'vulnerability', 'exploit', 'malware', 'phishing', 'incident', 'cyberattack', 'zero-day', 'advisory', 'patch', 'CVE', 'CISA', 'threat actor'],
   competitor: ['competitor', 'rival', 'market leader', 'disruption', 'partnership', 'alliance', 'launch', 'expansion'],
   supply_chain: ['supply chain', 'logistics', 'shipping', 'tariff', 'trade war', 'shortage', 'inventory', 'procurement'],
+  geopolitical: ['sanctions', 'trade war', 'tariff', 'geopolitical', 'conflict', 'export control', 'diplomatic', 'embargo'],
 };
 
 const IMPACT_KEYWORDS: Record<string, string[]> = {
@@ -98,8 +111,12 @@ function classifyImpact(text: string): string {
 function calculateConfidence(item: RSSItem): number {
   let conf = 50;
   if (item.description.length > 100) conf += 10;
-  if (item.source.includes('Reuters') || item.source.includes('SEC')) conf += 15;
-  if (item.source.includes('BBC') || item.source.includes('NY Times')) conf += 10;
+  // Tier 1: authoritative government / regulatory sources — highest confidence
+  if (['SEC EDGAR', 'CISA', 'DOJ', 'FTC', 'FDA'].some(s => item.source.includes(s))) conf += 20;
+  // Tier 2: major wire services and financial sources
+  else if (['Reuters', 'Federal Register'].some(s => item.source.includes(s))) conf += 15;
+  // Tier 3: established news and financial media
+  else if (['BBC', 'NY Times', 'CNBC', 'MarketWatch', 'PR Newswire'].some(s => item.source.includes(s))) conf += 10;
   const date = new Date(item.pubDate);
   const hoursAgo = (Date.now() - date.getTime()) / (1000 * 60 * 60);
   if (hoursAgo < 6) conf += 15;

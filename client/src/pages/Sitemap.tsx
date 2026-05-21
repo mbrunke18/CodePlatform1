@@ -81,7 +81,7 @@ const SECTIONS: Section[] = [
       { name: 'Readiness Protocol Library', path: '/playbooks', desc: '170 pre-staged protocols across 9 strategic domains', icon: BookOpen },
       { name: 'Situation Intents', path: '/identify/situation-intents', desc: 'Define what your org is monitoring — IDEA configuration start', icon: Target },
       { name: 'Triggers Management', path: '/triggers-management', desc: '221 triggers — configure detection thresholds', icon: Zap },
-      { name: 'Signal Configuration', path: '/signal-configuration', desc: 'Tune your 8 RSS sources and 16 trigger patterns', icon: Radio },
+      { name: 'Signal Configuration', path: '/signal-configuration', desc: 'Configure your 15 pre-configured signal sources and trigger detection thresholds', icon: Radio },
       { name: 'Response Customization', path: '/playbook-customization', desc: 'Tailor Readiness Protocols to your org context', icon: ClipboardCheck },
       { name: 'Strategic Planning Hub', path: '/strategic', desc: 'Long-range readiness planning and scenario mapping', icon: Target },
       { name: 'Preparedness Report', path: '/preparedness-report', desc: 'Scored readiness across all 9 strategic domains', icon: Shield },
