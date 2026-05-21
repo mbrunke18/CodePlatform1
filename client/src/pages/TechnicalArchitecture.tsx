@@ -19,9 +19,9 @@ const LAYERS = [
     label: "Signal Detection",
     title: "Continuous Signal Ingestion",
     color: GOLD,
-    desc: "8 pre-configured signal sources active from day one — zero setup required. Each incoming signal is scored against 221 trigger pattern templates using weighted keyword matching and domain classification. The evaluation engine accepts any additional source an enterprise wants to connect.",
+    desc: "25 pre-configured signal sources active from day one — zero setup required. Each incoming signal is scored against 221 trigger pattern templates using weighted keyword matching and domain classification. The evaluation engine accepts any additional source an enterprise wants to connect.",
     details: [
-      { label: "Pre-configured sources", value: "SEC filings, Bloomberg headlines, Reuters, FDA alerts, CISA advisories, regulatory calendars, earnings transcripts, geopolitical wires — active immediately, no configuration required." },
+      { label: "Pre-configured sources", value: "25 live feeds covering market news, financial data, SEC EDGAR filings, government enforcement (FTC, DOJ, FDA, OSHA, EPA, CFPB, FINRA), cybersecurity (CISA), economic indicators (Federal Reserve, BLS), global health (WHO), geopolitical (State Dept), and corporate announcements — all active immediately, no configuration required." },
       { label: "Custom sources", value: "Additional enterprise feeds, internal systems (ERP alerts, incident logs, Salesforce signals), and industry-specific data sources connect to the same 221-pattern evaluation engine." },
       { label: "Cadence", value: "Every 15 minutes — continuous during market hours, hourly overnight" },
       { label: "Risk classification", value: "Each signal scored and classified as LOW, MEDIUM, or HIGH risk. Classification drives protocol prioritization and executive notification thresholds." },
@@ -72,7 +72,7 @@ const LAYERS = [
 const SOURCE_TIERS = [
   {
     tier: "LIVE",
-    label: "Active now — 15 pre-configured sources",
+    label: "Active now — 25 pre-configured sources",
     desc: "Running continuously. Zero setup required.",
     badgeColor: TEAL,
     badgeBg: "rgba(43,138,110,0.12)",
@@ -82,6 +82,7 @@ const SOURCE_TIERS = [
       { name: "NY Times Business", category: "Market news" },
       { name: "BBC Business", category: "Market news" },
       { name: "Reuters Business", category: "Market news" },
+      { name: "AP Business", category: "Market news" },
       { name: "CNBC Business", category: "Financial" },
       { name: "MarketWatch", category: "Financial" },
       { name: "NPR Business", category: "Market news" },
@@ -93,28 +94,35 @@ const SOURCE_TIERS = [
       { name: "FTC", category: "Regulatory enforcement" },
       { name: "DOJ", category: "Legal enforcement" },
       { name: "FDA", category: "Safety / healthcare" },
+      { name: "OSHA", category: "Workplace safety" },
+      { name: "EPA", category: "Environmental regulatory" },
+      { name: "FINRA", category: "Financial industry regulatory" },
+      { name: "CFPB", category: "Consumer financial protection" },
+      { name: "NTSB", category: "Transportation safety" },
       { name: "CISA", category: "Cybersecurity" },
+      { name: "Federal Reserve", category: "Economic indicators" },
+      { name: "Bureau of Labor Statistics", category: "Economic / labor data" },
+      { name: "WHO", category: "Global health" },
+      { name: "State Dept", category: "Geopolitical risk" },
     ],
   },
   {
     tier: "ON REQUEST",
-    label: "Available now — activate for your industry",
-    desc: "Free public feeds. Added within one business day.",
+    label: "Industry-specific & custom sources",
+    desc: "Trade associations, industry journals, and regional feeds. Scoped at onboarding.",
     badgeColor: GOLD,
     badgeBg: "rgba(201,168,76,0.1)",
     badgeBorder: "rgba(201,168,76,0.35)",
     textColor: NAVY,
     sources: [
-      { name: "AP Business News", category: "Market news" },
-      { name: "OSHA", category: "Workplace safety enforcement" },
-      { name: "Bureau of Labor Statistics", category: "Economic / labor data" },
-      { name: "Federal Reserve (FRED)", category: "Economic indicators" },
-      { name: "WHO Health Alerts", category: "Global health / recall" },
-      { name: "EPA Enforcement", category: "Environmental regulatory" },
-      { name: "FINRA", category: "Financial industry regulatory" },
-      { name: "State Dept / Geopolitical", category: "Geopolitical risk" },
-      { name: "CFPB", category: "Consumer financial protection" },
-      { name: "NTSB / FAA", category: "Transportation safety" },
+      { name: "Industry Trade Associations", category: "Sector-specific publications" },
+      { name: "State & Regional Regulators", category: "State-level enforcement" },
+      { name: "Healthcare IT / MedTech Publications", category: "Healthcare industry" },
+      { name: "Supply Chain Dive / Logistics Media", category: "Supply chain intelligence" },
+      { name: "Financial Times", category: "International financial news" },
+      { name: "Competitor-specific monitoring", category: "Competitive intelligence" },
+      { name: "Academic & Research Journals", category: "Industry research signals" },
+      { name: "Customer-specified publications", category: "Organization-defined" },
     ],
   },
   {
@@ -265,7 +273,7 @@ export default function TechnicalArchitecture() {
             <div style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>Signal Source Directory</div>
             <h2 style={{ ...GEO, fontSize: "clamp(24px,3vw,38px)", fontWeight: 600, color: NAVY, marginBottom: 10 }}>Every source your organization could need</h2>
             <p style={{ ...BAR, fontSize: 14, color: "rgba(10,15,46,0.55)", lineHeight: 1.7, maxWidth: 640 }}>
-              15 sources are pre-configured and running on day one. Additional public feeds activate within one business day. Internal systems and premium data connect via Enterprise Connect.
+              25 sources are pre-configured and running on day one — no setup required. Industry-specific custom feeds are added at onboarding. Internal systems and premium data connect via Enterprise Connect.
             </p>
           </div>
 

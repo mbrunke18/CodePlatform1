@@ -43,6 +43,23 @@ const RSS_FEEDS: { url: string; source: string; category: string }[] = [
   { url: 'https://www.cisa.gov/cybersecurity-advisories/all.xml', source: 'CISA', category: 'cybersecurity' },
   // Corporate announcements
   { url: 'https://www.prnewswire.com/rss/news-releases-list.rss', source: 'PR Newswire', category: 'market' },
+  // Labor & economic indicators
+  { url: 'https://www.bls.gov/feed/bls_latest.rss', source: 'Bureau of Labor Statistics', category: 'economic' },
+  { url: 'https://www.federalreserve.gov/feeds/press_all.xml', source: 'Federal Reserve', category: 'economic' },
+  // Workplace & environmental enforcement
+  { url: 'https://www.osha.gov/news/newsreleases/feed', source: 'OSHA', category: 'regulatory' },
+  { url: 'https://www.epa.gov/newsreleases/search/rss', source: 'EPA', category: 'regulatory' },
+  // Financial industry regulatory
+  { url: 'https://www.finra.org/newsroom/rss.xml', source: 'FINRA', category: 'regulatory' },
+  { url: 'https://www.consumerfinance.gov/about-us/newsroom/feed/', source: 'CFPB', category: 'regulatory' },
+  // Global health & safety
+  { url: 'https://www.who.int/rss-feeds/news-english.xml', source: 'WHO', category: 'health' },
+  // Transportation safety
+  { url: 'https://www.ntsb.gov/news/press-releases/Pages/feed.aspx', source: 'NTSB', category: 'regulatory' },
+  // Geopolitical
+  { url: 'https://www.state.gov/press-releases/feed/', source: 'State Dept', category: 'geopolitical' },
+  // Additional business news
+  { url: 'https://feeds.apnews.com/apf-business', source: 'AP Business', category: 'market' },
 ];
 
 const SIGNAL_TYPE_MAP: Record<string, string[]> = {
@@ -53,6 +70,8 @@ const SIGNAL_TYPE_MAP: Record<string, string[]> = {
   competitor: ['competitor', 'rival', 'market leader', 'disruption', 'partnership', 'alliance', 'launch', 'expansion'],
   supply_chain: ['supply chain', 'logistics', 'shipping', 'tariff', 'trade war', 'shortage', 'inventory', 'procurement'],
   geopolitical: ['sanctions', 'trade war', 'tariff', 'geopolitical', 'conflict', 'export control', 'diplomatic', 'embargo'],
+  economic: ['inflation', 'unemployment', 'interest rate', 'GDP', 'recession', 'jobs report', 'CPI', 'labor market', 'monetary policy', 'federal reserve', 'Fed rate'],
+  health: ['outbreak', 'pandemic', 'recall', 'safety alert', 'public health', 'WHO', 'FDA warning', 'contamination', 'epidemic', 'health emergency'],
 };
 
 const IMPACT_KEYWORDS: Record<string, string[]> = {

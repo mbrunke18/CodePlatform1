@@ -248,7 +248,7 @@ export default function OnboardingGuide() {
             <FeatureCard icon={Target} title="IDENTIFY" path="/workspace?tab=identify" color={NAVY}
               description="Configure your strategic triggers, risk thresholds, and monitoring scope. Define which signals matter to your organization and how sensitive the detection should be." />
             <FeatureCard icon={Radio} title="DETECT" path="/command-tower" color={TEAL}
-              description="Live monitoring dashboard. Real-time signal ingestion from 15 pre-configured sources every 15 minutes — news, regulatory, SEC filings, cybersecurity, and government enforcement feeds. Signal scoring, trigger detection, and automatic alerts." />
+              description="Live monitoring dashboard. Real-time signal ingestion from 25 pre-configured sources every 15 minutes — news, regulatory, SEC filings, cybersecurity, economic indicators, and government enforcement feeds. Signal scoring, trigger detection, and automatic alerts." />
             <FeatureCard icon={Zap} title="EXECUTE" path="/mission-control" color={GOLD}
               description="Activate protocols, assign tasks to role-specific teams, track acknowledgments, and monitor the 12-minute execution clock. Full audit trail on every action." />
             <FeatureCard icon={BarChart3} title="ADVANCE" path="/board-readiness" color={TEAL}
@@ -296,7 +296,7 @@ export default function OnboardingGuide() {
           />
           <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "32px 24px", marginBottom: 24 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-              <FlowStep icon={Globe} title="Signal Ingestion" detail={"15 pre-configured sources\nEvery 15 minutes\n248+ data points"} color={NAVY} />
+              <FlowStep icon={Globe} title="Signal Ingestion" detail={"25 pre-configured sources\nEvery 15 minutes\n248+ data points"} color={NAVY} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={Activity} title="Pattern Scoring" detail={"16 trigger patterns\n3+ keyword match\n72%+ confidence"} color={TEAL} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>

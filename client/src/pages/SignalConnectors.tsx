@@ -27,7 +27,7 @@ const CONNECTOR_CATALOG = [
   {
     id: 'rss-feeds',
     name: 'RSS Signal Feeds',
-    description: '8 pre-configured external signal sources: Reuters, Bloomberg, SEC EDGAR, and 5 additional sources. Runs every 15 minutes.',
+    description: '25 pre-configured external signal sources: news, regulatory enforcement (SEC, FTC, DOJ, FDA, OSHA, EPA, FINRA, CFPB), cybersecurity (CISA), economic indicators (Federal Reserve, BLS), global health (WHO), and geopolitical (State Dept). Runs every 15 minutes.',
     category: 'External',
     status: 'active',
     signalType: 'External',
