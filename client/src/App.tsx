@@ -625,6 +625,7 @@ function Router() {
         <Route path="/capabilities" component={PlatformCapabilities} />
         {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
         <Route path="/investor-presentation" component={InvestorPresentation} />
+        {renderRedirects(["/pitch-deck"], "/investor-presentation")}
         <Route path="/podcast-prep" component={PodcastPrep} />
         {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/industry-demos")}
         <Route path="/investor-resources" component={InvestorResources} />
