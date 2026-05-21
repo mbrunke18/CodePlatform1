@@ -217,13 +217,28 @@ export default function ProofStory() {
               <div style={{ width: 28, height: 1, background: GOLD }} />
             </div>
             <h1 style={{ ...GEO, fontSize: "clamp(36px,5vw,58px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 18 }}>
-              The trigger fires.<br /><em style={{ color: GOLD }}>The response was ready. Or it wasn't.</em>
+              The situation arrives.<br /><em style={{ color: GOLD }}>The response was ready. Or it wasn't.</em>
             </h1>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 620, margin: "0 auto 16px", lineHeight: 1.7 }}>
-              Three documented activation narratives across financial services, industrials, and manufacturing. Two versions of what happened. The only variable: whether the response was pre-staged before the trigger fired.
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 660, margin: "0 auto 28px", lineHeight: 1.7 }}>
+              Four activation narratives — growth opportunities seized, risks contained, transformations executed. Across every domain, two versions of what happened. The only variable: whether the response was pre-staged before the situation required it.
             </p>
+
+            {/* Domain coverage strip */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 0, maxWidth: 720, margin: "0 auto 24px", border: "1px solid rgba(201,168,76,0.18)" }}>
+              {[
+                { domain: "GROWTH & POSITIONING", situations: "Market windows · Competitor moves · M&A execution · Product launches", color: TEAL },
+                { domain: "RISK & RESILIENCE", situations: "Ransomware · Regulatory filings · Supply disruptions · Activist investors", color: GOLD },
+                { domain: "TRANSFORMATION", situations: "Workforce changes · Digital rollouts · Go-to-market pivots · Integrations", color: "rgba(255,255,255,0.55)" },
+              ].map((d, i) => (
+                <div key={d.domain} style={{ flex: 1, padding: "16px 18px", background: "rgba(255,255,255,0.03)", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none", textAlign: "left" }}>
+                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: d.color, marginBottom: 6 }}>{d.domain}</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.42)", lineHeight: 1.6 }}>{d.situations}</div>
+                </div>
+              ))}
+            </div>
+
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.32)", maxWidth: 540, margin: "0 auto", lineHeight: 1.6, fontStyle: "italic" }}>
-              Company names and identifying details have been anonymized. Financial figures, timelines, and outcomes reflect documented enterprise trigger events.
+              Company names and identifying details have been anonymized. Financial figures, timelines, and outcomes reflect documented enterprise activation events.
             </p>
           </div>
         </div>

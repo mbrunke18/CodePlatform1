@@ -423,6 +423,78 @@ export default function FoundingPartnerProgram() {
           </div>
         </section>
 
+        {/* Staged Before It Fired — Three Domain Vignettes */}
+        <section style={{ padding: '72px 32px', background: '#fff', borderTop: '1px solid #E8E4DC' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 48 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 14 }}>
+                Across Every Domain
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px,3.5vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, marginBottom: 12 }}>
+                The response was staged before the situation required it.
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#4B5563', lineHeight: 1.7, maxWidth: 620 }}>
+                Strategic situations don't announce themselves — they arrive. Growth windows, risk events, and transformation moments all share the same constraint: the organization that's already staged wins. Three profiles across three domains.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
+              {[
+                {
+                  domain: "GROWTH & POSITIONING",
+                  borderColor: '#2B8A6E',
+                  profile: "Series C SaaS · $180M ARR · 340 employees",
+                  situation: "Primary competitor announced direct product overlap at their annual conference. A 72-hour window to reach enterprise accounts before the narrative was set.",
+                  staged: "Protocol #18 — Competitive Response — pre-staged. Battle card, counter-positioning brief, top-account call list, and CEO talking points loaded before the conference ended.",
+                  outcome: "17 of top 20 enterprise accounts contacted within 2 hours. Company narrative led every analyst conversation that week. Zero accounts lost.",
+                  metric: "$14M pipeline protected",
+                  metricColor: '#2B8A6E',
+                },
+                {
+                  domain: "RISK & RESILIENCE",
+                  borderColor: '#C9A84C',
+                  profile: "Industrial manufacturer · $2.4B revenue · 8,200 employees",
+                  situation: "FDA audit triggered with 48-hour notice. Three product lines under review. Legal, Quality, Operations, and Communications all needed to coordinate simultaneously.",
+                  staged: "Protocol #67 — Regulatory Audit Response — pre-staged. Document packages assembled, spokesperson designated, external counsel on standby, board notification drafted.",
+                  outcome: "Full response package ready in 12 minutes. Audit completed without findings. Zero production halt. Board notified before the audit team arrived.",
+                  metric: "$0 in penalties or disruption",
+                  metricColor: '#C9A84C',
+                },
+                {
+                  domain: "TRANSFORMATION",
+                  borderColor: '#0A0F2E',
+                  profile: "Professional services firm · 2,800 employees · 6 countries",
+                  situation: "Board approved a workforce restructuring affecting 420 roles across 6 jurisdictions. Day-one execution required coordinated communications, legal filings, and manager briefings simultaneously.",
+                  staged: "Protocol #112 — Workforce Transformation — pre-staged by country. Legal templates per jurisdiction, manager scripts, HR workflows, and executive communications — all ready before the board vote.",
+                  outcome: "All 6 country notifications executed within 4 hours of board approval. Zero legal challenges. Employee communication consistency rated 94% by external review.",
+                  metric: "Day-one execution flawless",
+                  metricColor: '#0A0F2E',
+                },
+              ].map((v) => (
+                <div key={v.domain} style={{ padding: '32px 28px', borderRight: v.domain !== 'TRANSFORMATION' ? '1px solid #E8E4DC' : 'none', borderTop: `4px solid ${v.borderColor}` }}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: v.borderColor, marginBottom: 8 }}>{v.domain}</div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: '#6B7280', marginBottom: 16, lineHeight: 1.5 }}>{v.profile}</div>
+                  <div style={{ marginBottom: 14 }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF', marginBottom: 5 }}>The Situation</div>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.65 }}>{v.situation}</p>
+                  </div>
+                  <div style={{ marginBottom: 14 }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF', marginBottom: 5 }}>Pre-Staged Before It Fired</div>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.65 }}>{v.staged}</p>
+                  </div>
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF', marginBottom: 5 }}>What Happened</div>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.65 }}>{v.outcome}</p>
+                  </div>
+                  <div style={{ paddingTop: 14, borderTop: '1px solid #E8E4DC' }}>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 700, color: v.metricColor }}>{v.metric}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Platform Architecture — Three Tiers */}
         <section style={{ padding: '72px 32px', background: '#F8F7F4', borderTop: '1px solid #E8E4DC' }}>
           <div style={{ maxWidth: 960, margin: '0 auto' }}>

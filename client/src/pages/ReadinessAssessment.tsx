@@ -308,10 +308,13 @@ export default function ReadinessAssessment() {
                 5-Minute Diagnostic
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                How Ready Is Your Organization<br className="hidden md:block" /> to Execute Under Pressure?
+                When the situation arrives,<br className="hidden md:block" /> how fast can your organization act?
               </h1>
-              <p className="text-lg text-white/80 max-w-2xl mx-auto">
-                Answer 5 targeted questions and get an instant readiness score with specific gaps and recommendations for your strategic domain.
+              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-4">
+                A growth window. A risk event. A transformation moment. Every strategic situation shares the same constraint: the organization that's already staged responds in 12 minutes. The one that isn't spends 30 days mobilizing.
+              </p>
+              <p className="text-sm text-white/50 max-w-xl mx-auto">
+                Answer 5 targeted questions across your domain and get a personalized readiness gap score — with specific situations most likely to require fast coordination in your environment.
               </p>
             </div>
 
@@ -334,8 +337,8 @@ export default function ReadinessAssessment() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-white mb-2 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Select a Strategic Domain</h2>
-              <p className="text-sm text-white/60 text-center mb-6">Choose the area you want to assess</p>
+              <h2 className="text-lg font-semibold text-white mb-2 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Which situations does your organization need to act on fastest?</h2>
+              <p className="text-sm text-white/60 text-center mb-6">Select the domain that matters most right now — growth opportunities, risk events, or transformation moments</p>
 
               <div className="mb-6 max-w-md mx-auto">
                 <Label className="text-white/80 text-sm mb-2 block text-center">Company Name (optional)</Label>
