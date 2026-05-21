@@ -66,11 +66,18 @@ export default function SignalConfiguration() {
 
   const [showCalibration, setShowCalibration]             = useState(false);
   const [showSignalProfiles, setShowSignalProfiles]       = useState(false);
+  const [showFeedManager, setShowFeedManager]             = useState(false);
   const [profilePlaybookId, setProfilePlaybookId]         = useState('');
   const [profileForm, setProfileForm]                     = useState<any>(null);
+  const [localDisabledFeeds, setLocalDisabledFeeds]       = useState<string[] | null>(null);
 
-  const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[] }>({
+  const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[]; disabledFeeds: string[] }>({
     queryKey: ['/api/signal-monitoring-config'],
+  });
+
+  const { data: feedCatalog } = useQuery<{ source: string; category: string; url: string }[]>({
+    queryKey: ['/api/signal-feeds'],
+    placeholderData: [],
   });
   const { data: triggersData } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
@@ -96,6 +103,7 @@ export default function SignalConfiguration() {
   });
 
   const disabled: string[] = localDisabled ?? configData?.disabledDataPoints ?? [];
+  const disabledFeeds: string[] = localDisabledFeeds ?? configData?.disabledFeeds ?? [];
 
   const configMutation = useMutation({
     mutationFn: (d: string[]) => apiRequest('PATCH', '/api/signal-monitoring-config', { disabledDataPoints: d }),
@@ -105,6 +113,43 @@ export default function SignalConfiguration() {
       toast({ title: 'Save failed', variant: 'destructive' });
     },
   });
+
+  const feedMutation = useMutation({
+    mutationFn: (feeds: string[]) => apiRequest('PATCH', '/api/signal-monitoring-config', { disabledFeeds: feeds }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['/api/signal-monitoring-config'] }),
+    onError: () => {
+      setLocalDisabledFeeds(null);
+      toast({ title: 'Save failed', variant: 'destructive' });
+    },
+  });
+
+  const toggleFeed = useCallback((source: string) => {
+    const cur = localDisabledFeeds ?? configData?.disabledFeeds ?? [];
+    const next = cur.includes(source) ? cur.filter(s => s !== source) : [...cur, source];
+    setLocalDisabledFeeds(next);
+    feedMutation.mutate(next);
+  }, [localDisabledFeeds, configData, feedMutation]);
+
+  const feedsByCategory = useMemo(() => {
+    const groups: Record<string, { source: string; category: string }[]> = {};
+    for (const feed of (feedCatalog ?? [])) {
+      if (!groups[feed.category]) groups[feed.category] = [];
+      groups[feed.category].push(feed);
+    }
+    return groups;
+  }, [feedCatalog]);
+
+  const CATEGORY_META: Record<string, { label: string; color: string }> = {
+    market:       { label: 'Market & Business News',              color: GOLD },
+    regulatory:   { label: 'Regulatory & Government Enforcement', color: TEAL },
+    cybersecurity:{ label: 'Cybersecurity',                       color: '#EF4444' },
+    economic:     { label: 'Economic Indicators',                 color: NAVY },
+    health:       { label: 'Global Health',                       color: '#059669' },
+    geopolitical: { label: 'Geopolitical & Trade',                color: NAVY },
+  };
+
+  const totalFeeds  = feedCatalog?.length ?? 0;
+  const activeFeeds = totalFeeds - disabledFeeds.length;
 
   const toggleDp = useCallback((dpId: string) => {
     const cur = localDisabled ?? configData?.disabledDataPoints ?? [];
@@ -544,6 +589,140 @@ export default function SignalConfiguration() {
           }}
           editTrigger={editingTrigger}
         />
+      </div>
+
+      {/* ── Signal Feed Manager ─────────────────────────────────────────────── */}
+      <div className="flex-shrink-0 border-t-2" style={{ borderColor: GOLD }}>
+        <button
+          onClick={() => setShowFeedManager(v => !v)}
+          className="w-full flex items-center justify-between px-6 py-3 bg-white hover:bg-[#F8F7F4] transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <Globe className="w-4 h-4" style={{ color: GOLD }} />
+            <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>
+              Signal Feed Manager
+            </span>
+            <span className="text-[9px] font-black px-2 py-0.5" style={{ background: GOLD, color: NAVY }}>
+              {activeFeeds} / {totalFeeds} active
+            </span>
+            <span className="text-[9px] font-medium px-2 py-0.5 border" style={{ color: TEAL, borderColor: 'rgba(43,138,110,0.3)' }}>
+              Choose which feeds your org monitors
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-400 font-medium">
+              {showFeedManager ? 'Collapse' : 'Expand'}
+            </span>
+            <Globe className="w-3.5 h-3.5 text-gray-400" />
+          </div>
+        </button>
+
+        {showFeedManager && (
+          <div className="px-6 pb-6 bg-[#F8F7F4] border-t border-[#E8E4DC]">
+            <p className="text-[10px] text-gray-500 pt-4 pb-4 max-w-2xl">
+              All 39 pre-configured sources are active by default. Disable any feed your organization does not need. Disabled feeds are excluded from signal scoring and trigger detection for your organization.
+            </p>
+
+            {/* Stats row */}
+            <div className="flex items-center gap-6 mb-5">
+              {[
+                { label: 'Active Feeds', value: activeFeeds, color: TEAL },
+                { label: 'Paused Feeds', value: disabledFeeds.length, color: disabledFeeds.length > 0 ? '#EF4444' : '#9CA3AF' },
+                { label: 'Total Available', value: totalFeeds, color: GOLD },
+              ].map(s => (
+                <div key={s.label} className="text-center px-4 py-2 bg-white border border-[#E8E4DC]">
+                  <p className="text-[8px] font-bold uppercase tracking-widest text-gray-400">{s.label}</p>
+                  <p className="text-xl font-black" style={{ color: s.color }}>{s.value}</p>
+                </div>
+              ))}
+              <button
+                onClick={() => { setLocalDisabledFeeds([]); feedMutation.mutate([]); }}
+                className="ml-auto text-[9px] font-bold uppercase tracking-wider px-3 py-2"
+                style={{ background: NAVY, color: '#fff' }}
+              >
+                Enable All
+              </button>
+            </div>
+
+            {/* Feeds by category */}
+            <div className="space-y-4">
+              {Object.entries(feedsByCategory).map(([cat, feeds]) => {
+                const meta = CATEGORY_META[cat] ?? { label: cat, color: NAVY };
+                const catDisabled = feeds.filter(f => disabledFeeds.includes(f.source)).length;
+                const allCatOn = catDisabled === 0;
+                return (
+                  <div key={cat} className="bg-white border border-[#E8E4DC]">
+                    {/* Category header */}
+                    <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#F0EDE8]">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2" style={{ background: meta.color }} />
+                        <span className="text-[10px] font-black uppercase tracking-wider" style={{ color: NAVY }}>
+                          {meta.label}
+                        </span>
+                        <span className="text-[9px] font-bold px-1.5 py-0.5" style={{
+                          background: allCatOn ? 'rgba(43,138,110,0.1)' : 'rgba(239,68,68,0.08)',
+                          color: allCatOn ? TEAL : '#EF4444',
+                        }}>
+                          {feeds.length - catDisabled}/{feeds.length} active
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[9px] text-gray-400 font-medium">All</span>
+                        <Switch
+                          checked={allCatOn}
+                          onCheckedChange={checked => {
+                            const sources = feeds.map(f => f.source);
+                            const cur = localDisabledFeeds ?? configData?.disabledFeeds ?? [];
+                            const next = checked
+                              ? cur.filter(s => !sources.includes(s))
+                              : [...cur, ...sources.filter(s => !cur.includes(s))];
+                            setLocalDisabledFeeds(next);
+                            feedMutation.mutate(next);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    {/* Feed rows */}
+                    <div className="divide-y divide-[#F8F7F4]">
+                      {feeds.map(feed => {
+                        const isOn = !disabledFeeds.includes(feed.source);
+                        return (
+                          <div
+                            key={feed.source}
+                            className="flex items-center justify-between px-4 py-2.5 hover:bg-[#FAFAF9] transition-colors"
+                            style={{ opacity: isOn ? 1 : 0.5 }}
+                          >
+                            <div className="flex items-center gap-3 flex-1 min-w-0">
+                              <div className="w-1.5 h-1.5 flex-shrink-0" style={{ background: isOn ? meta.color : '#D1D5DB' }} />
+                              <span className="text-xs font-bold truncate" style={{ color: NAVY }}>{feed.source}</span>
+                              {!isOn && (
+                                <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 flex-shrink-0"
+                                  style={{ background: 'rgba(239,68,68,0.08)', color: '#EF4444' }}>
+                                  Paused
+                                </span>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: isOn ? TEAL : '#9CA3AF' }}>
+                                {isOn ? 'On' : 'Off'}
+                              </span>
+                              <Switch checked={isOn} onCheckedChange={() => toggleFeed(feed.source)} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center gap-3 mt-4 pt-3 border-t border-[#E8E4DC]">
+              <CheckCircle2 className="w-3.5 h-3.5" style={{ color: TEAL }} />
+              <span className="text-[10px] text-gray-400">Feed preferences saved automatically · Trigger-specific feed mapping available on Founding Partner roadmap</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── Protocol Signal Profiles Panel ────────────────────────────────── */}

@@ -58,8 +58,29 @@ const RSS_FEEDS: { url: string; source: string; category: string }[] = [
   { url: 'https://www.ntsb.gov/news/press-releases/Pages/feed.aspx', source: 'NTSB', category: 'regulatory' },
   // Geopolitical
   { url: 'https://www.state.gov/press-releases/feed/', source: 'State Dept', category: 'geopolitical' },
+  { url: 'https://www.whitehouse.gov/briefing-room/statements-releases/feed/', source: 'White House', category: 'geopolitical' },
   // Additional business news
   { url: 'https://feeds.apnews.com/apf-business', source: 'AP Business', category: 'market' },
+  { url: 'https://www.businesswire.com/rss/home/?rss=G1', source: 'Business Wire', category: 'market' },
+  // Financial system & banking regulatory
+  { url: 'https://www.fdic.gov/news/press-releases/feed.xml', source: 'FDIC', category: 'regulatory' },
+  { url: 'https://www.occ.gov/news-issuances/news-releases/feed.xml', source: 'OCC', category: 'regulatory' },
+  { url: 'https://home.treasury.gov/system/files/press-releases.rss', source: 'US Treasury', category: 'regulatory' },
+  // Health & safety
+  { url: 'https://www.hhs.gov/news/press/press-releases/rss.xml', source: 'HHS', category: 'health' },
+  // Energy
+  { url: 'https://www.eia.gov/rss/todayinenergy.xml', source: 'EIA', category: 'economic' },
+  { url: 'https://www.ferc.gov/news-events/news/press-releases/feed', source: 'FERC', category: 'regulatory' },
+  // Employment & labor
+  { url: 'https://www.eeoc.gov/newsroom/rss.xml', source: 'EEOC', category: 'regulatory' },
+  { url: 'https://www.nlrb.gov/news-publications/news-releases/rss.xml', source: 'NLRB', category: 'regulatory' },
+  // Trade & customs
+  { url: 'https://www.cbp.gov/newsroom/regional-media-release/feed', source: 'CBP', category: 'geopolitical' },
+  // International financial regulatory
+  { url: 'https://www.fca.org.uk/news/rss.xml', source: 'UK FCA', category: 'regulatory' },
+  { url: 'https://www.ecb.europa.eu/rss/press.html', source: 'ECB', category: 'economic' },
+  // Cybersecurity threat intelligence
+  { url: 'https://isc.sans.edu/rssfeed_full.xml', source: 'SANS Internet Storm Center', category: 'cybersecurity' },
 ];
 
 const SIGNAL_TYPE_MAP: Record<string, string[]> = {
@@ -131,11 +152,11 @@ function calculateConfidence(item: RSSItem): number {
   let conf = 50;
   if (item.description.length > 100) conf += 10;
   // Tier 1: authoritative government / regulatory sources — highest confidence
-  if (['SEC EDGAR', 'CISA', 'DOJ', 'FTC', 'FDA'].some(s => item.source.includes(s))) conf += 20;
-  // Tier 2: major wire services and financial sources
-  else if (['Reuters', 'Federal Register'].some(s => item.source.includes(s))) conf += 15;
+  if (['SEC EDGAR', 'CISA', 'DOJ', 'FTC', 'FDA', 'US Treasury', 'FDIC', 'OCC', 'EEOC', 'NLRB', 'FERC', 'White House', 'UK FCA', 'SANS Internet Storm Center'].some(s => item.source.includes(s))) conf += 20;
+  // Tier 2: major wire services, financial regulators, and economic data
+  else if (['Reuters', 'Federal Register', 'Federal Reserve', 'EIA', 'ECB', 'HHS', 'CBP'].some(s => item.source.includes(s))) conf += 15;
   // Tier 3: established news and financial media
-  else if (['BBC', 'NY Times', 'CNBC', 'MarketWatch', 'PR Newswire'].some(s => item.source.includes(s))) conf += 10;
+  else if (['BBC', 'NY Times', 'CNBC', 'MarketWatch', 'PR Newswire', 'Business Wire', 'AP Business'].some(s => item.source.includes(s))) conf += 10;
   const date = new Date(item.pubDate);
   const hoursAgo = (Date.now() - date.getTime()) / (1000 * 60 * 60);
   if (hoursAgo < 6) conf += 15;
@@ -359,3 +380,7 @@ class LiveSignalIngestionService {
 }
 
 export const liveSignalIngestionService = new LiveSignalIngestionService();
+
+export function getFeedCatalog(): { source: string; category: string; url: string }[] {
+  return RSS_FEEDS.map(f => ({ source: f.source, category: f.category, url: f.url }));
+}

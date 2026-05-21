@@ -27,7 +27,7 @@ const CONNECTOR_CATALOG = [
   {
     id: 'rss-feeds',
     name: 'RSS Signal Feeds',
-    description: '25 pre-configured external signal sources: news, regulatory enforcement (SEC, FTC, DOJ, FDA, OSHA, EPA, FINRA, CFPB), cybersecurity (CISA), economic indicators (Federal Reserve, BLS), global health (WHO), and geopolitical (State Dept). Runs every 15 minutes.',
+    description: '39 pre-configured external signal sources: news (NY Times, Reuters, BBC, AP, CNBC, Business Wire, PR Newswire), regulatory enforcement (SEC, FTC, DOJ, FDA, OSHA, EPA, FINRA, CFPB, EEOC, NLRB, FDIC, OCC, US Treasury, FERC, CBP, UK FCA), cybersecurity (CISA, SANS ISC), economic indicators (Federal Reserve, BLS, EIA, ECB), global health (WHO, HHS), and geopolitical (State Dept, White House). Runs every 15 minutes.',
     category: 'External',
     status: 'active',
     signalType: 'External',

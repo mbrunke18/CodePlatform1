@@ -3243,11 +3243,13 @@ export class DatabaseStorage implements IStorage {
   async upsertSignalMonitoringConfig(
     organizationId: string,
     disabledDataPoints: string[],
-    evaluationMode?: string
+    evaluationMode?: string,
+    disabledFeeds?: string[]
   ): Promise<SignalMonitoringConfig> {
     const existing = await this.getSignalMonitoringConfig(organizationId);
     const updateFields: Record<string, any> = { disabledDataPoints, updatedAt: new Date() };
     if (evaluationMode !== undefined) updateFields.evaluationMode = evaluationMode;
+    if (disabledFeeds !== undefined) updateFields.disabledFeeds = disabledFeeds;
 
     if (existing) {
       const [updated] = await db.update(signalMonitoringConfig)
@@ -3257,7 +3259,7 @@ export class DatabaseStorage implements IStorage {
       return updated;
     }
     const [created] = await db.insert(signalMonitoringConfig)
-      .values({ organizationId, disabledDataPoints, evaluationMode: evaluationMode || 'both' })
+      .values({ organizationId, disabledDataPoints, disabledFeeds: disabledFeeds || [], evaluationMode: evaluationMode || 'both' })
       .returning();
     return created;
   }

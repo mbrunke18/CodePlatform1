@@ -6268,6 +6268,7 @@ export const signalMonitoringConfig = pgTable('signal_monitoring_config', {
   id: uuid('id').primaryKey().defaultRandom(),
   organizationId: uuid('organization_id').notNull().references(() => organizations.id),
   disabledDataPoints: text('disabled_data_points').array().default([]),
+  disabledFeeds: text('disabled_feeds').array().default([]),
   // Controls which evaluation engine fires triggers:
   //   'configured' — use the org's configured trigger thresholds only (new engine)
   //   'default'    — use the original 16-pattern keyword scoring only (legacy engine)
