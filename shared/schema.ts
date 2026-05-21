@@ -83,6 +83,8 @@ export const users = pgTable("users", {
   plannedLeave: jsonb("planned_leave"), // Array of leave periods
   timezone: varchar("timezone", { length: 100 }), // User timezone for predictive execution
   accessLevel: varchar('access_level', { length: 50 }).default('basic'),
+  accessTier: varchar('access_tier', { length: 20 }).default('full'), // 'full' | 'eval48'
+  tierExpiresAt: timestamp('tier_expires_at'), // null = no expiry
   scopes: jsonb('scopes'), // Array of data scopes (org, business unit, team)
   executiveRole: varchar('executive_role', { length: 100 }), // CEO, CFO, COO, CIO, CHRO, CLO, Board, etc.
   industryVertical: varchar('industry_vertical', { length: 100 }), // Financial Services, Healthcare, etc.
@@ -90,6 +92,43 @@ export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+
+// Eval Invite Tokens — 48-hour guided evaluation access
+export const evalInviteTokens = pgTable('eval_invite_tokens', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  token: varchar('token', { length: 64 }).notNull().unique(),
+  email: varchar('email', { length: 255 }),
+  note: text('note'),
+  createdBy: varchar('created_by').references(() => users.id),
+  createdAt: timestamp('created_at').defaultNow(),
+  inviteExpiresAt: timestamp('invite_expires_at').notNull(),
+  tierDurationHours: integer('tier_duration_hours').default(48),
+  usedAt: timestamp('used_at'),
+  usedBy: varchar('used_by').references(() => users.id),
+});
+
+export const insertEvalInviteTokenSchema = createInsertSchema(evalInviteTokens).omit({ id: true, createdAt: true, usedAt: true, usedBy: true });
+export type EvalInviteToken = typeof evalInviteTokens.$inferSelect;
+export type InsertEvalInviteToken = z.infer<typeof insertEvalInviteTokenSchema>;
+
+// Eval Access Requests — public request form submissions
+export const evalAccessRequests = pgTable('eval_access_requests', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  firstName: varchar('first_name', { length: 100 }).notNull(),
+  lastName: varchar('last_name', { length: 100 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull(),
+  company: varchar('company', { length: 255 }).notNull(),
+  role: varchar('role', { length: 255 }).notNull(),
+  useCase: text('use_case'),
+  status: varchar('status', { length: 30 }).default('pending'), // pending | approved | rejected
+  reviewedBy: varchar('reviewed_by').references(() => users.id),
+  reviewedAt: timestamp('reviewed_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertEvalAccessRequestSchema = createInsertSchema(evalAccessRequests).omit({ id: true, createdAt: true, status: true, reviewedBy: true, reviewedAt: true });
+export type EvalAccessRequest = typeof evalAccessRequests.$inferSelect;
+export type InsertEvalAccessRequest = z.infer<typeof insertEvalAccessRequestSchema>;
 
 // Enhanced Organizations with enterprise intelligence features
 export const organizations = pgTable('organizations', {

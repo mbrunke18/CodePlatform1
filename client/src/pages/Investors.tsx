@@ -327,8 +327,8 @@ function FuturePositioningDiagram() {
         <div className="flex items-center gap-0">
           {[
             { label: "Platform Built", sub: "170 Readiness Protocols, IDEA Framework", color: NAVY },
-            { label: "Founding Partner Contracts", sub: "Design partners, real use cases", color: NAVY },
-            { label: "Data Network Effect", sub: "Every activation improves the system", color: TEAL },
+            { label: "Founding Partner Contracts", sub: "Design partners, real activation history", color: NAVY },
+            { label: "Institutional Memory Layer", sub: "Every activation deepens protocol precision", color: TEAL },
             { label: "Category Leader", sub: "Strategic Readiness Platform standard", color: GOLD },
           ].map((stage, i) => (
             <div key={i} className="flex items-center flex-1">
@@ -342,6 +342,13 @@ function FuturePositioningDiagram() {
               {i < 3 && <ArrowRight className="w-4 h-4 text-[#C9A84C] flex-shrink-0 mx-1 -mt-4" />}
             </div>
           ))}
+        </div>
+        <div className="mt-5 p-4 border-l-2 bg-[#EBF5F1]" style={{ borderColor: TEAL }}>
+          <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-1" style={{ color: TEAL }}>The Institutional Memory Moat</p>
+          <p className="text-xs font-medium leading-relaxed text-[#0A0F2E]/70">
+            Every activation writes a structured decision record into the Institutional Memory Engine — what triggered, who authorized, what executed, and what the outcome was. After 12 months of Founding Partner use, that dataset is irreplaceable: real trigger events, real executive judgment, in a real org structure. A competitor can license the same software on day one. They cannot buy 12 months of your preparation history.{' '}
+            <a href="/institutional-memory-engine" className="font-bold underline" style={{ color: TEAL }}>See the architecture →</a>
+          </p>
         </div>
       </div>
     </div>

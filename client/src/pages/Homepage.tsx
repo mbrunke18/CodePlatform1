@@ -1617,8 +1617,11 @@ function IDEASection() {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: 20, paddingTop: 16, borderTop: `1px solid ${BORDER}` }}>
-              <span style={{ ...DM, fontSize: 12, color: "#888", fontStyle: "italic" }}>
-                The loop closes back to ADVANCE — each execution cycle compounds organizational intelligence.
+              <span style={{ ...DM, fontSize: 12, color: "#555", fontStyle: "italic" }}>
+                The loop closes at <strong style={{ color: GOLD, fontStyle: "normal" }}>ADVANCE</strong> — the Institutional Memory Engine captures every decision, outcome, and failure mode. Each cycle, your organization becomes harder to catch off-guard.{' '}
+                <a href="/institutional-memory-engine" style={{ color: TEAL, fontWeight: 700, textDecoration: "none", borderBottom: `1px solid ${TEAL}` }}>
+                  See how the memory layer works →
+                </a>
               </span>
             </div>
           </div>

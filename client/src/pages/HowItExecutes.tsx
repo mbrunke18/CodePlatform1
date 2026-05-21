@@ -119,7 +119,7 @@ const CHAIN_STEPS = [
     desc: (s: typeof SCENARIOS[0]) => (s as any).compound
       ? `All ${s.tasks} tasks deployed across 2 active protocols. ${s.outcome.split('.')[0]}.`
       : `All ${s.tasks} tasks deployed. Response team coordinated. ${s.outcome.split('.')[0]}.`,
-    detail: () => `Full audit log captured. Debrief staged. Institutional memory updated for next activation.`,
+    detail: () => `Full audit log captured. Debrief staged. Outcome written to the Institutional Memory Engine — every decision, authorization, and result encoded for the next activation. The organization is now better prepared than before the trigger fired.`,
     color: TEAL, icon: "★",
   },
 ];
