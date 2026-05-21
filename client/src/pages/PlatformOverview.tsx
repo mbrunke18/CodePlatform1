@@ -35,7 +35,7 @@ const timelineSteps = [
     headline: "Detect",
     sub: "Signal fires — system responds instantly",
     aiRole: [
-      "Ingests signal across 24+ enterprise data sources",
+      "Ingests signal across 39 enterprise data sources",
       "Pattern-matches against 221 trigger definitions",
       "Scores urgency and compound disruption risk",
       "Surfaces the right Readiness Protocol with rationale and stakeholder map",
@@ -89,7 +89,7 @@ const timelineSteps = [
 ];
 
 const components = [
-  { name: "Signal Intelligence", desc: "24+ source monitoring in 15-min cycles", icon: Globe2 },
+  { name: "Signal Intelligence", desc: "39-source monitoring in 15-min cycles", icon: Globe2 },
   { name: "Readiness Protocol Engine", desc: "170 pre-built Readiness Protocols + custom builder", icon: BookOpen },
   { name: "Execution Orchestrator", desc: "Tasks, comms, docs deployed instantly", icon: Zap },
   { name: "Decision Console", desc: "One-click executive authorization with full context", icon: Target },

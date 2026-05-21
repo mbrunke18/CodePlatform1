@@ -19,7 +19,7 @@ const NODES = [
     details: [
       "RSS feeds, SEC EDGAR filings, market intelligence",
       "News & media intelligence, financial signal sources",
-      "8 real-time data sources · 248+ data points",
+      "39 real-time data sources · 248+ data points",
       "15-minute ingestion cycles · continuous",
     ],
   },

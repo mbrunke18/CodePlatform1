@@ -150,7 +150,7 @@ const competitiveAdvantages = [
 ];
 
 const milestones = [
-  { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 8 RSS sources, 221 triggers", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
+  { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 39 RSS sources, 221 triggers", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
   { phase: "Current — Founding Partner", items: ["Founding Partner Program now enrolling (90-day validation)", "Protocol Builder — custom protocol co-design with partners", "Signal detection refinement across 248+ data points", "Industry Protocol Packs — 6 verticals in development", "Enterprise partnership discussions underway"] },
   { phase: "Phase 2 — Authorized Automation", items: ["Authorized Automation layer within EXECUTE phase", "Dual-track execution: human workstreams + approved automations run in parallel", "Task execution modes: Human-only · Automation-only · Dual-track", "Policy gates per action — who authorizes, what systems, what limits", "Connectors: Jira, Asana, ServiceNow, Teams, Slack — automated ticket creation, war room setup, briefing distribution", "Full audit trail: every authorized automation logged, every override captured"] },
 ];

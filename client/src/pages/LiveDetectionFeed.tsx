@@ -457,7 +457,7 @@ export default function LiveDetectionFeed() {
                 <Shield size={40} style={{ color: TEAL, margin: '0 auto 16px', display: 'block' }} />
                 <div style={{ color: NAVY, fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Monitoring Active — No Triggers Detected</div>
                 <div style={{ color: '#666', fontSize: 14, marginBottom: 24 }}>
-                  The system is scanning 8 live sources every 15 minutes. Use "Fire Test Detection" to see the full flow end-to-end.
+                  The system is scanning 39 live sources every 15 minutes. Use "Fire Test Detection" to see the full flow end-to-end.
                 </div>
                 <Button
                   onClick={() => testMutation.mutate()}

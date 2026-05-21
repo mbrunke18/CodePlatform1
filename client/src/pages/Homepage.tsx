@@ -283,7 +283,7 @@ function LiveSignalFeedSection() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
               <div style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.68)', textAlign: 'right' as const }}>
-                248+ data points · 8 live sources · refreshed every 15 minutes
+                248+ data points · 39 live sources · refreshed every 15 minutes
               </div>
             </div>
           </div>

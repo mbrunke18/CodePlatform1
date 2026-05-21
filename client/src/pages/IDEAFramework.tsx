@@ -56,7 +56,7 @@ const phases = [
     description:
       "AI monitors signals in 15-minute cycles across financial markets, competitive moves, regulatory changes, social media, and operational systems. When a situation is detected, the system matches it to your Readiness Protocol library and queues the activation decision — in seconds.",
     aiActions: [
-      "Monitor 24+ enterprise data sources in real time",
+      "Monitor 39 enterprise data sources in real time",
       "Detect compound disruptions across multiple domains",
       "Match incoming signals to relevant Readiness Protocols",
       "Assess urgency and recommended response timeline",
