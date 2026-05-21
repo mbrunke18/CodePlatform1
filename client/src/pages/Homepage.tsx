@@ -743,32 +743,31 @@ function HeroSection() {
                 </Link>
               </div>
 
-              {/* Microsoft integration proof — answers "does this work with our stack?" */}
-              <div style={{ padding: "12px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+              {/* Integration proof strip — answers "does this work with our stack?" */}
+              <div style={{ padding: "14px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                   <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Works with your existing stack</span>
-                  <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.22)", fontStyle: "italic" }}>— No rip-and-replace</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 0, flexWrap: "wrap" as const }}>
-                  {[
-                    { name: "Microsoft Teams",   note: "Notifications & war room" },
-                    { name: "Microsoft Outlook",  note: "Executive briefings & auth" },
-                    { name: "Microsoft SharePoint", note: "Protocol storage & memory" },
-                    { name: "Microsoft Entra",    note: "SSO & role provisioning" },
-                    { name: "Azure OpenAI",       note: "Signal scoring & summaries" },
-                  ].map((tool, i) => (
-                    <div key={tool.name} style={{
-                      display: "flex", flexDirection: "column" as const, gap: 2,
-                      padding: "6px 14px",
-                      borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none",
-                    }}>
-                      <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.02em" }}>{tool.name}</span>
-                      <span style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.32)", letterSpacing: "0.04em" }}>{tool.note}</span>
-                    </div>
-                  ))}
-                  <Link href="/integrations" onClick={() => trackCTA("hero_integrations")} style={{ ...DM, fontSize: 10, fontWeight: 600, color: GOLD, textDecoration: "none", padding: "6px 14px", letterSpacing: "0.06em", alignSelf: "center" }}>
-                    See all →
+                  <Link href="/integrations" onClick={() => trackCTA("hero_integrations")} style={{ ...DM, fontSize: 10, fontWeight: 600, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
+                    See all integrations →
                   </Link>
+                </div>
+                {/* Row 1: Microsoft stack */}
+                <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 8, paddingBottom: 8, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.22)", letterSpacing: "0.14em", textTransform: "uppercase" as const, minWidth: 80 }}>Microsoft</span>
+                  {["Teams", "Outlook", "SharePoint", "Entra", "Azure OpenAI"].map((tool, i, arr) => (
+                    <span key={tool} style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.65)", padding: "0 10px", borderRight: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+                {/* Row 2: Enterprise systems */}
+                <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
+                  <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.22)", letterSpacing: "0.14em", textTransform: "uppercase" as const, minWidth: 80 }}>Enterprise</span>
+                  {["Salesforce", "ServiceNow", "Workday", "Slack", "Jira", "Okta"].map((tool, i, arr) => (
+                    <span key={tool} style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.65)", padding: "0 10px", borderRight: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+                      {tool}
+                    </span>
+                  ))}
                 </div>
               </div>
 
