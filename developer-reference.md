@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 18, 2026 (rev 39) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 21, 2026 (rev 40) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -54,7 +54,7 @@ The retired phrase "16 signal categories" was a previous UI label shown to users
 | Auth | Replit OIDC + Passport.js |
 | Real-time | Socket.IO WebSocket server |
 | Async Jobs | PostgreSQL-backed background job queue |
-| AI | OpenAI GPT-4o |
+| AI | Azure OpenAI (primary), OpenAI GPT-4o (fallback) |
 | Email | Resend (`RESEND_API_KEY`) — tries `pilot@vaughnmartin.com` first, falls back to `onboarding@resend.dev`; always logs admin URL to console |
 
 ---
@@ -2357,17 +2357,21 @@ Two animated text slideshow components with TTS narration (not real video files)
 
 ---
 
-## 52. Codebase Scale Reference — May 2026 (rev 29)
+## 52. Codebase Scale Reference — May 2026 (rev 40)
 
-Current production counts as of May 5, 2026 (unchanged from rev 28 — no new pages or routes added this session):
+Current production counts as of May 21, 2026:
 
 | Artifact | Count |
 |---|---|
 | Page components (`client/src/pages/`) | **208** |
 | Component files (`client/src/components/`) | **86** |
-| Registered client-side routes (App.tsx) | **215+** |
+| `App.tsx` size | **731 lines** |
+| Registered client-side routes (App.tsx) | **242** |
+| `server/routes.ts` size | **~10,700 lines** |
 | Server route modules (`server/routes/`) | **15** |
-| Playbooks in library | **170** (+ 4 compound = 174 total) |
+| `shared/schema.ts` size | **~6,900 lines** |
+| `server/storage.ts` size | **~3,566 lines** |
+| Readiness Protocols in library | **170 core** (+ 12 compound, IDs 181–192 = **182 total**) |
 | Strategic domains | **9** |
 | Canonical trigger count | **221** |
 | Signal data points | **248+** |
@@ -2375,7 +2379,7 @@ Current production counts as of May 5, 2026 (unchanged from rev 28 — no new pa
 | Ingestion interval | **15 minutes** |
 | Unit tests (vitest) | **189 passing** |
 
-**Note on route count:** `App.tsx` uses a `renderRoutes()` helper that registers multiple path aliases for a single component. The 215+ count includes all aliases. The distinct page components number 208.
+**Note on route count:** `App.tsx` uses a `renderRoutes()` and `renderRedirects()` helper that registers multiple path aliases for a single component. The 242 count includes all aliases and redirects. The distinct page components number 208.
 
 ---
 
@@ -2944,6 +2948,42 @@ The `ConsequencePreviewProps` interface and `onConfirm(choice, standDownReason?)
 - Customize: live editable fields, dynamic confirm label, always-available confirm
 - Stand Down: typed reason required, governance record framing
 - Run as Built: T+N timeline, stakeholder/task count summary, immediate confirm
+
+---
+
+## §64 Navigation Change — Investors Removed from Primary Nav (May 2026, rev 40)
+
+### What Changed
+
+**Files:** `client/src/pages/Homepage.tsx`, `client/src/components/layout/StandardNav.tsx`
+
+"Investors" was removed from both primary navigation bars. The change is presentation-only — all investor pages remain fully live at their direct URLs and are accessible via the footer and `/sitemap`.
+
+### Rationale
+
+The Investors link appearing in the top nav during customer prospect walkthroughs (COO/CISO/CSO audience) signals that the platform is still in fundraise mode. Removing it from primary nav keeps the prospect experience clean and product-focused.
+
+### What Was Changed
+
+| File | Change |
+|---|---|
+| `client/src/pages/Homepage.tsx` (desktop nav) | Removed "Investors" link from inline nav items array |
+| `client/src/pages/Homepage.tsx` (mobile nav) | Removed "Investors" entry from mobile menu overlay |
+| `client/src/components/layout/StandardNav.tsx` | Removed `renderInvestorsDropdown()` call from the desktop nav center block (function still exists but is no longer called) |
+
+### What Was NOT Changed
+
+- `renderInvestorsDropdown()` function in `StandardNav.tsx` — still present, just not called
+- `/investor-landing` — live at direct URL
+- `/investor-presentation` — live at direct URL (also target of `/pitch-deck` redirect)
+- `/investor-resources` — live at direct URL
+- `/roadshow-resources` — live at direct URL
+- Footer links to investor pages — unchanged
+- `/sitemap` (Platform Directory) — lists all investor pages
+
+### Re-enabling Investors in Nav (if needed)
+
+To restore the Investors link to `StandardNav`, re-add the `renderInvestorsDropdown()` call inside the desktop nav center block in `StandardNav.tsx`. To restore it on the Homepage, re-add the "Investors" entry to the inline nav items array and the mobile menu in `Homepage.tsx`.
 
 ---
 
