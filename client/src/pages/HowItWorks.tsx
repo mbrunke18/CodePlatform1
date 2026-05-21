@@ -72,10 +72,10 @@ export default function HowItWorks() {
         <div className="max-w-6xl mx-auto w-full" style={{ position: "relative", zIndex: 1 }}>
           <SectionLabel text="The Full Advantage System" color={GOLD_LIGHT} />
           <h1 style={{ ...CG, fontSize: "clamp(40px, 5vw, 68px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 24, maxWidth: 800 }}>
-            Map. Monitor. Decide. Execute. Learn.
+            Identify. Detect. Authorize. Execute. Advance.
           </h1>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.72)", maxWidth: 640, lineHeight: 1.7, marginBottom: 48, fontWeight: 500 }}>
-            Five stages of organizational advantage. Most teams don't fail because they can't act — they fail because they see the signal too late. This platform starts before the trigger fires: define your triggers on your terms, detect earlier, decide with authority, execute in minutes, improve every cycle.
+            Five stages of organizational advantage. Most teams don't fail because they can't act — they fail because they see the signal too late. This platform starts before the trigger fires: identify your triggers on your terms, detect earlier, authorize with full context, execute in minutes, advance every cycle.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Button asChild style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "none" }}>
@@ -91,11 +91,11 @@ export default function HowItWorks() {
       {/* ── LIFECYCLE STAGE NAV BAR ── */}
       <div style={{ background: NAVY, borderBottom: `1px solid rgba(255,255,255,0.08)`, display: "flex", overflowX: "auto" }}>
         {[
-          { label: "Map", num: "01", sub: "Situation Universe" },
-          { label: "Monitor", num: "02", sub: "Signal Detection" },
-          { label: "Decide", num: "03", sub: "Executive Authority" },
+          { label: "Identify", num: "01", sub: "Situation Universe" },
+          { label: "Detect", num: "02", sub: "Signal Detection" },
+          { label: "Authorize", num: "03", sub: "Executive Authority" },
           { label: "Execute", num: "04", sub: "12-Minute Deploy" },
-          { label: "Learn", num: "05", sub: "Institutional Memory" },
+          { label: "Advance", num: "05", sub: "Institutional Memory" },
         ].map((item, i) => (
           <div key={i} style={{ padding: "16px 32px", borderRight: "1px solid rgba(255,255,255,0.07)", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.15em" }}>{item.num}</span>
@@ -122,11 +122,11 @@ export default function HowItWorks() {
           </div>
           <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
             {[
-              { num: "01", stage: "MAP", label: "Situation Universe", body: "You define what you're watching for — 221 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
-              { num: "02", stage: "MONITOR", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, decide on your terms.", accent: TEAL },
-              { num: "03", stage: "DECIDE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives choose from pre-staged options — not figure out ownership under pressure.", accent: GOLD },
+              { num: "01", stage: "IDENTIFY", label: "Situation Universe", body: "You define what you're watching for — 221 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
+              { num: "02", stage: "DETECT", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, act on your terms.", accent: TEAL },
+              { num: "03", stage: "AUTHORIZE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives authorize from pre-staged options — not figure out ownership under pressure. Authority preserved at every gate.", accent: GOLD },
               { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "170 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },
-              { num: "05", stage: "LEARN", label: "Institutional Memory", body: "Every activation is scored and encoded. Each cycle makes the next response faster, sharper, more decisive.", accent: GOLD },
+              { num: "05", stage: "ADVANCE", label: "Institutional Memory", body: "Every activation is scored and encoded. Each cycle makes the next response faster, sharper, more decisive.", accent: GOLD },
             ].map((s, i) => (
               <div key={i} style={{ background: NAVY, padding: "28px 22px", borderTop: `3px solid ${s.accent}` }}>
                 <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", color: s.accent, textTransform: "uppercase" as const, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>{s.num} · {s.stage}</div>
@@ -322,7 +322,7 @@ export default function HowItWorks() {
           <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2 }}>
             {[
               {
-                phase: "PREPARE",
+                phase: "IDENTIFY",
                 icon: Users,
                 color: TEAL_LIGHT,
                 title: "Configure Your Team",
@@ -334,7 +334,7 @@ export default function HowItWorks() {
                 ]
               },
               {
-                phase: "MONITOR",
+                phase: "DETECT",
                 icon: Bell,
                 color: GOLD_LIGHT,
                 title: "Set Your Triggers",
@@ -358,7 +358,7 @@ export default function HowItWorks() {
                 ]
               },
               {
-                phase: "LEARN",
+                phase: "ADVANCE",
                 icon: BarChart3,
                 color: TEAL_LIGHT,
                 title: "Define Success",

@@ -149,11 +149,11 @@ export default function BuyerDecisionPacket() {
         <div style={{ background: "#132558", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "0 1.5rem" }}>
           <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", overflowX: "auto" }}>
             {[
-              { num: "01", stage: "MAP", sub: "Situation Universe", detail: "221 triggers catalogued" },
-              { num: "02", stage: "MONITOR", sub: "Signal Detection", detail: "248+ data points / 15 min" },
-              { num: "03", stage: "DECIDE", sub: "Executive Authority", detail: "Pre-assigned decision rights" },
+              { num: "01", stage: "IDENTIFY", sub: "Situation Universe", detail: "221 triggers catalogued" },
+              { num: "02", stage: "DETECT", sub: "Signal Detection", detail: "248+ data points / 15 min" },
+              { num: "03", stage: "AUTHORIZE", sub: "Executive Authority", detail: "Pre-assigned decision rights" },
               { num: "04", stage: "EXECUTE", sub: "12-Min Deploy", detail: "170 Protocols pre-staged" },
-              { num: "05", stage: "LEARN", sub: "Institutional Memory", detail: "Every activation encoded" },
+              { num: "05", stage: "ADVANCE", sub: "Institutional Memory", detail: "Every activation encoded" },
             ].map((s, i) => (
               <div key={i} style={{ flex: "1 0 0", padding: "16px 20px", borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none", minWidth: 120 }}>
                 <div style={{ ...BC, fontSize: "0.55rem", fontWeight: 800, letterSpacing: "0.2em", color: i % 2 === 0 ? GOLD : TEAL, textTransform: "uppercase" as const, marginBottom: 4 }}>{s.num} · {s.stage}</div>

@@ -2912,21 +2912,21 @@ function SimulatorCTASection() {
 function LifecycleAdvantageSection() {
   const stages = [
     {
-      num: "01", stage: "MAP",
+      num: "01", stage: "IDENTIFY",
       label: "Define every trigger — on your terms",
       body: "You decide what you're watching for. 221 trigger patterns across 9 strategic domains, catalogued on your thresholds, in your categories. Not someone else's alert. Yours — configured before the event, not discovered after it.",
       accent: GOLD,
     },
     {
-      num: "02", stage: "MONITOR",
+      num: "02", stage: "DETECT",
       label: "Alerted before it becomes public",
       body: "248+ data points scanned every 15 minutes. You're alerted at the earliest signal — before the announcement, before the filing goes public, before competitors know. Not from a news headline. From your own defined triggers, firing on your timeline.",
       accent: TEAL,
     },
     {
-      num: "03", stage: "DECIDE",
+      num: "03", stage: "AUTHORIZE",
       label: "Act with authority, not assembly",
-      body: "Decision rights pre-defined before pressure exists. When a trigger fires, executives choose from pre-staged options — not figure out who owns what. Authority preserved at every step.",
+      body: "Decision rights pre-defined before pressure exists. When a trigger fires, executives authorize from pre-staged options — not figure out who owns what. Authority preserved at every step.",
       accent: GOLD,
     },
     {
@@ -2936,7 +2936,7 @@ function LifecycleAdvantageSection() {
       accent: TEAL,
     },
     {
-      num: "05", stage: "LEARN",
+      num: "05", stage: "ADVANCE",
       label: "Improve after every event",
       body: "Every activation is scored, analyzed, and encoded into institutional memory. Each cycle makes the next response faster, sharper, and harder to catch your organization off-guard.",
       accent: GOLD,
@@ -2980,7 +2980,7 @@ function LifecycleAdvantageSection() {
         {/* Flow connector */}
         <Reveal delay={0.4}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginTop: 28, marginBottom: 20 }}>
-            {["MAP", "MONITOR", "DECIDE", "EXECUTE", "LEARN"].map((label, i) => (
+            {["IDENTIFY", "DETECT", "AUTHORIZE", "EXECUTE", "ADVANCE"].map((label, i) => (
               <div key={label} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.18em", color: i % 2 === 0 ? GOLD : TEAL }}>{label}</span>
                 {i < 4 && <span style={{ color: "rgba(255,255,255,0.18)", fontSize: 13 }}>→</span>}

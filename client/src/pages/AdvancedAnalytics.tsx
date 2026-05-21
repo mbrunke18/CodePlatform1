@@ -349,11 +349,11 @@ export default function AdvancedAnalytics() {
               {/* Stage banner */}
               <div style={{ background: '#0A0F2E', padding: '28px 32px', display: 'flex', gap: 1, overflow: 'hidden' }}>
                 {[
-                  { num: '01', stage: 'MAP', label: 'Situations Catalogued', value: '221', color: '#C9A84C' },
-                  { num: '02', stage: 'MONITOR', label: 'Signal Data Points', value: '248+', color: '#2B8A6E' },
-                  { num: '03', stage: 'DECIDE', label: 'Decision Lead-Time', value: '< 3 min', color: '#C9A84C' },
+                  { num: '01', stage: 'IDENTIFY', label: 'Situations Catalogued', value: '221', color: '#C9A84C' },
+                  { num: '02', stage: 'DETECT', label: 'Signal Data Points', value: '248+', color: '#2B8A6E' },
+                  { num: '03', stage: 'AUTHORIZE', label: 'Decision Lead-Time', value: '< 3 min', color: '#C9A84C' },
                   { num: '04', stage: 'EXECUTE', label: 'Full Deploy Window', value: '12 min', color: '#2B8A6E' },
-                  { num: '05', stage: 'LEARN', label: 'Improvement / Cycle', value: '+18%', color: '#C9A84C' },
+                  { num: '05', stage: 'ADVANCE', label: 'Improvement / Cycle', value: '+18%', color: '#C9A84C' },
                 ].map((s, i) => (
                   <div key={i} style={{ flex: 1, padding: '0 20px', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.07)' : 'none', textAlign: 'center' }}>
                     <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', color: s.color, textTransform: 'uppercase' as const, marginBottom: 6 }}>{s.num} · {s.stage}</div>
