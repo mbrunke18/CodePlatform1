@@ -500,6 +500,17 @@ export default function ExecutiveBrief() {
                     </Button>
                   </Link>
                 </div>
+                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.15em" }}>For technical due diligence</span>
+                  <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 11 }}>·</span>
+                  <Link href="/technical-architecture">
+                    <span style={{ fontSize: 11, color: GOLD, fontWeight: 600, cursor: "pointer" }}>Technical Architecture →</span>
+                  </Link>
+                  <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 11 }}>·</span>
+                  <Link href="/security-compliance">
+                    <span style={{ fontSize: 11, color: GOLD, fontWeight: 600, cursor: "pointer" }}>Security & Compliance →</span>
+                  </Link>
+                </div>
               </div>
               <div>
                 <div style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "28px", background: "rgba(255,255,255,0.04)" }}>
