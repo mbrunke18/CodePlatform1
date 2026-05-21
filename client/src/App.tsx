@@ -549,6 +549,9 @@ function Router() {
         <Route path="/audit-logging-center">{() => <AuditLoggingCenter />}</Route>
         <Route path="/roi-calculator" component={ROICalculator} />
         <Route path="/how-it-executes" component={HowItExecutes} />
+        <Route path="/execution-data-fabric" component={lazy(() => import("./pages/ExecutionDataFabric"))} />
+        <Route path="/institutional-memory-engine" component={lazy(() => import("./pages/InstitutionalMemoryEngine"))} />
+        <Route path="/platform-integrations" component={lazy(() => import("./pages/PlatformIntegrations"))} />
         <Route path="/proof-story" component={ProofStory} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
         <Route path="/future-readiness" component={FutureReadinessDashboard} />

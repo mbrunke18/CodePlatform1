@@ -375,6 +375,13 @@ export default function StandardNav() {
               { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
             ].map(l => megaItem(l))}
+            <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
+            {megaColHeading("Technical Architecture")}
+            {[
+              { path: '/execution-data-fabric', icon: Layers, label: 'Execution Data Fabric', sub: 'How signals become staged responses — the AI and data architecture', featured: true },
+              { path: '/institutional-memory-engine', icon: Brain, label: 'Institutional Memory Engine', sub: 'The compounding dataset that improves with every activation', featured: true },
+              { path: '/platform-integrations', icon: Globe, label: 'Platform Integrations', sub: 'Microsoft stack + Salesforce · ServiceNow · Jira · Slack · SAP', featured: true },
+            ].map(l => megaItem(l))}
           </div>
 
           {/* Right: Inside the Platform + Execute Tools */}
