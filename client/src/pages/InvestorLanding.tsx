@@ -161,6 +161,39 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── DR. HUANG NAMED ENDORSEMENT ──────────────────────────────────── */}
+        <section style={{ background: '#F0EDE4', borderTop: '4px solid #C9A84C', padding: '48px 32px' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', gap: 48, alignItems: 'flex-start' }}>
+            <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, minWidth: 120 }}>
+              <div style={{ width: 72, height: 72, borderRadius: '50%', background: '#2B8A6E', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: '#fff' }}>KH</span>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: '#0A0F2E' }}>Dr. Kerry Huang</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginTop: 3 }}>Fortune 50 AVP</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(10,15,46,0.45)', marginTop: 2 }}>ESI Top 1% Researcher</div>
+              </div>
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ height: 1, width: 20, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Independent Validation · LinkedIn · April 2026</span>
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2.2vw,26px)', fontWeight: 600, color: '#0A0F2E', lineHeight: 1.55, marginBottom: 16 }}>
+                "Martin Brunke and VaughnMartin are addressing the infrastructure gap that has defined — and limited — enterprise strategic response for four decades. My research across 408 firms confirms what this platform operationalizes: the coordination layer, not the AI model, is what determines whether an organization moves or stalls when a trigger fires."
+              </p>
+              <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' as const }}>
+                {['Forbes Business Council Member', '408-Firm Governance Study', 'Fortune 50 AVP — active role', 'ESI Highly Cited Researcher'].map(c => (
+                  <div key={c} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <div style={{ width: 4, height: 4, background: '#2B8A6E', flexShrink: 0 }} />
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 600, color: 'rgba(10,15,46,0.65)' }}>{c}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── CHALLENGE SECTION ────────────────────────────────────────────── */}
         <section className="px-6 py-16" style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
           <div className="max-w-4xl mx-auto">
@@ -241,6 +274,73 @@ export default function InvestorLanding() {
               </p>
             </div>
 
+          </div>
+        </section>
+
+        {/* ── WHY NOT INCUMBENTS ───────────────────────────────────────────── */}
+        <section style={{ background: '#F0EDE4', padding: '80px 32px' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 20 }}>
+                <div style={{ height: 1, width: 24, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Competitive Reality</span>
+                <div style={{ height: 1, width: 24, background: '#C9A84C' }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.15, marginBottom: 16 }}>
+                Why won't an incumbent just build this?
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(10,15,46,0.68)', maxWidth: 620, margin: '0 auto', lineHeight: 1.7 }}>
+                Every investor asks it. Here is the honest answer — four incumbents, four structural reasons the category stays open.
+              </p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 2, background: 'rgba(10,15,46,0.08)' }}>
+              {[
+                {
+                  co: 'Microsoft',
+                  role: 'Infrastructure layer',
+                  why: 'Microsoft builds and sells the AI, compute, and collaboration stack. Readiness OS orchestrates it. Their business model requires customers to buy Microsoft infrastructure — they have no incentive to tell enterprises the infrastructure is insufficient without an operating model above it. Copilot Studio lets enterprises automate tasks; it has no concept of a strategic trigger, a pre-staged response, or executive authorization gates. We are the layer that makes the Microsoft investment fully returnable.',
+                  verdict: 'Microsoft is the platform. We are the operating model. They benefit from our existence.',
+                  verdictColor: '#2B8A6E',
+                },
+                {
+                  co: 'ServiceNow',
+                  role: 'ITSM and workflow automation',
+                  why: 'ServiceNow manages IT service tickets and operational workflows. Its entire commercial model and product identity is built on reactive incident management — something happens, a ticket is created, it gets routed. Readiness OS is proactive by design: the response is staged before the trigger fires. Pre-staging is architecturally opposite to the ServiceNow model. Entering this space would require ServiceNow to compete with its own positioning as the reactive-to-proactive workflow company.',
+                  verdict: 'ServiceNow manages the ticket after the event. We stage the response before it.',
+                  verdictColor: '#C9A84C',
+                },
+                {
+                  co: 'Big 4 Consulting',
+                  role: 'Strategy and crisis response',
+                  why: 'McKinsey, Deloitte, PwC, and Accenture bill $50K–$200K to build the response in real time after the trigger fires. Readiness OS eliminates the primary revenue event for their strategic advisory practices. They have named the gap publicly — McKinsey\'s 2025 synthesis explicitly identifies the missing "orchestration layer." But productizing the solution destroys their margin structure. Their business model depends on the 30-day mobilization cycle we compress.',
+                  verdict: 'Consulting firms profit from the gap we close. They cannot be the ones who close it.',
+                  verdictColor: '#2B8A6E',
+                },
+                {
+                  co: 'Salesforce',
+                  role: 'CRM and customer data',
+                  why: 'Salesforce owns the customer relationship layer. Strategic readiness operates at the organizational governance layer — cross-functional, executive-authorized, cross-domain. Salesforce\'s entire data model, permission structure, and buyer (Chief Revenue Officer) is orthogonal to the COO, CISO, Chief Strategy Officer, and General Counsel who own the strategic readiness budget. The ICP, the workflow architecture, and the organizational entry point are structurally incompatible with Salesforce\'s existing motion.',
+                  verdict: 'Salesforce owns the customer layer. We own the strategic coordination layer.',
+                  verdictColor: '#C9A84C',
+                },
+              ].map(({ co, role, why, verdict, verdictColor }) => (
+                <div key={co} style={{ background: '#fff', padding: '36px 32px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 20 }}>
+                    <div style={{ width: 48, height: 48, background: '#0A0F2E', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.06em' }}>{co.substring(0,2).toUpperCase()}</span>
+                    </div>
+                    <div>
+                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#0A0F2E', lineHeight: 1 }}>{co}</div>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: 'rgba(10,15,46,0.45)', marginTop: 4 }}>{role}</div>
+                    </div>
+                  </div>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(10,15,46,0.72)', lineHeight: 1.78, marginBottom: 20 }}>{why}</p>
+                  <div style={{ borderTop: `2px solid ${verdictColor}30`, paddingTop: 16 }}>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: verdictColor, lineHeight: 1.5, margin: 0 }}>{verdict}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -699,43 +799,43 @@ export default function InvestorLanding() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br .section-background border-2" data-testid="card-why-now">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6 text-[#0A0F2E]" data-testid="heading-why-now">
-                  Why Now? Perfect Market Timing
-                </h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-start gap-3" data-testid="reason-1">
-                    <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-semibold text-[#0A0F2E] mb-1">AI Maturity Reached</div>
-                      <div className="text-[#0A0F2E]">LLMs enable real-time strategic intelligence at scale (GPT-4, Claude, Gemini)</div>
-                    </div>
+            <div style={{ background: '#0A0F2E', border: '1px solid rgba(201,168,76,0.25)', padding: '40px 40px 36px' }} data-testid="card-why-now">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                <div style={{ height: 1, width: 24, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Why Now — Three Structural Shifts</span>
+              </div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(22px,3vw,34px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 32 }} data-testid="heading-why-now">
+                The window to own this category is open now — and narrowing.
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 1, background: 'rgba(201,168,76,0.1)' }}>
+                {[
+                  {
+                    n: '01',
+                    label: 'Microsoft put AI in every enterprise — with no operating model above it',
+                    body: 'Every Fortune 500 now has Copilot, Azure OpenAI, and Teams Agents deployed at scale. None have the coordination layer to activate them when a strategic trigger fires. Readiness OS sits directly above the Microsoft stack — not competing with it, orchestrating it. The customer already paid for the infrastructure. We make it executable.',
+                    accent: '#C9A84C',
+                  },
+                  {
+                    n: '02',
+                    label: 'Post-COVID proved that 30-day mobilization is an existential liability',
+                    body: 'Supply chain shocks, regulatory velocity, activist investors, and cyber events compressed decision windows from weeks to hours. Organizations that survived had pre-staged responses. Those that didn\'t lost billions in containable costs. That institutional trauma is now boardroom-level budget authority for any solution that compresses the response cycle.',
+                    accent: '#2B8A6E',
+                  },
+                  {
+                    n: '03',
+                    label: 'Continuous pattern detection is now economically viable for the first time',
+                    body: 'Running 221 trigger patterns across real-time data streams — RSS, regulatory filings, market signals — requires inference at a cost point that didn\'t exist two years ago. The capability gap was never strategic vision; it was compute economics. That constraint lifted in 2024. We built the operating model layer on top of it immediately.',
+                    accent: '#C9A84C',
+                  },
+                ].map(({ n, label, body, accent }) => (
+                  <div key={n} style={{ background: '#060B1E', padding: '28px 26px' }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: accent, marginBottom: 14 }}>Shift {n}</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 700, color: '#fff', lineHeight: 1.25, marginBottom: 14 }}>{label}</div>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, margin: 0 }}>{body}</p>
                   </div>
-                  <div className="flex items-start gap-3" data-testid="reason-2">
-                    <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-semibold text-[#0A0F2E] mb-1">Execution Crisis</div>
-                      <div className="text-[#0A0F2E]">87% of strategic initiatives fail—executives desperate for execution velocity</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3" data-testid="reason-3">
-                    <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-semibold text-[#0A0F2E] mb-1">Remote Work Complexity</div>
-                      <div className="text-[#0A0F2E]">Distributed teams make coordination harder—need automated orchestration</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3" data-testid="reason-4">
-                    <CheckCircle2 className="h-6 w-6 text-[#2B8A6E] flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-semibold text-[#0A0F2E] mb-1">Competitive Velocity</div>
-                      <div className="text-[#0A0F2E]">Market windows shrinking from months to days—speed is survival</div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
