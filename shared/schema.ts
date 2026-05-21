@@ -6542,6 +6542,8 @@ export const triggerDetections = pgTable('trigger_detections', {
   signalSource: varchar('signal_source', { length: 255 }),
   signalSourceUrl: varchar('signal_source_url', { length: 2000 }),
   confidenceScore: integer('confidence_score').notNull(), // 0–100
+  signalCategory: varchar('signal_category', { length: 50 }),  // market | regulatory | cybersecurity | economic | health | geopolitical
+  jurisdiction: varchar('jurisdiction', { length: 50 }).default('US'), // US | UK | EU | global — inferred from source
   recommendedPlaybook: varchar('recommended_playbook', { length: 255 }), // primary recommendation
   alternatePlaybooks: text('alternate_playbooks').array().default([]), // secondary options for approver to choose from
   status: varchar('status', { length: 50 }).default('detected'), // detected | notified | acknowledged | dismissed
@@ -6605,6 +6607,7 @@ export const signalActivityLog = pgTable('signal_activity_log', {
   details: text('details'),
   confidence: integer('confidence'),
   keywordsMatched: text('keywords_matched').array().default([]),
+  sourceConfidenceTier: integer('source_confidence_tier'), // 1 = authoritative govt/regulatory, 2 = wire/central banks, 3 = news media
   createdAt: timestamp('created_at').defaultNow(),
 });
 

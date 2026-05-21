@@ -701,6 +701,8 @@ export async function evaluateAndPersistSignals(
         signalSource: signal.source,
         signalSourceUrl: signal.sourceUrl || null,
         confidenceScore: detection.confidenceScore,
+        signalCategory: (signal as any).category || null,
+        jurisdiction: (signal as any).jurisdiction || 'US',
         recommendedPlaybook: detection.recommendedPlaybook,
         alternatePlaybooks: detection.alternatePlaybooks,
         status: 'detected',
@@ -746,6 +748,7 @@ export async function evaluateAndPersistSignals(
           details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Prepared response recommended: ${detection.recommendedPlaybook}`,
           confidence: detection.confidenceScore,
           keywordsMatched: detection.matchedKeywords.slice(0, 5),
+          sourceConfidenceTier: (signal as any).confidenceTier || null,
         });
       } catch { /* non-critical */ }
 

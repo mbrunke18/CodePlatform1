@@ -21,6 +21,8 @@ interface AnalyzedSignal {
   source: string;
   sourceUrl: string;
   category: string;
+  jurisdiction: string;    // US | UK | EU | global — inferred from source
+  confidenceTier: number;  // 1 = authoritative govt, 2 = wire/central banks, 3 = news media
 }
 
 const RSS_FEEDS: { url: string; source: string; category: string }[] = [
@@ -165,6 +167,19 @@ function calculateConfidence(item: RSSItem): number {
   return Math.min(conf, 95);
 }
 
+function inferJurisdiction(source: string): string {
+  if (['UK FCA'].some(s => source.includes(s))) return 'UK';
+  if (['ECB'].some(s => source.includes(s))) return 'EU';
+  if (['WHO', 'State Dept', 'White House'].some(s => source.includes(s))) return 'global';
+  return 'US';
+}
+
+function getConfidenceTier(source: string): number {
+  if (['SEC EDGAR', 'CISA', 'DOJ', 'FTC', 'FDA', 'US Treasury', 'FDIC', 'OCC', 'EEOC', 'NLRB', 'FERC', 'White House', 'UK FCA', 'SANS Internet Storm Center'].some(s => source.includes(s))) return 1;
+  if (['Reuters', 'Federal Register', 'Federal Reserve', 'EIA', 'ECB', 'HHS', 'CBP'].some(s => source.includes(s))) return 2;
+  return 3;
+}
+
 function estimateTimeline(text: string): string {
   const lower = text.toLowerCase();
   if (lower.includes('immediate') || lower.includes('today') || lower.includes('breaking')) return 'Immediate';
@@ -248,6 +263,8 @@ class LiveSignalIngestionService {
       source: item.source,
       sourceUrl: item.link,
       category: item.category,
+      jurisdiction: inferJurisdiction(item.source),
+      confidenceTier: getConfidenceTier(item.source),
     }));
   }
 

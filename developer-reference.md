@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 21, 2026 (rev 40) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 21, 2026 (rev 41) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1281,22 +1281,119 @@ The live signal pipeline is one of the most operationally sensitive parts of the
 | `server/services/LiveSignalIngestionService.ts` | Fetches RSS feeds, classifies signals, calls evaluator |
 | `server/services/SignalEvaluationService.ts` | Scores signals against 16 trigger patterns, creates detections |
 
-### RSS Feed Sources (8 feeds, polled every 15 minutes)
+### RSS Feed Sources (39 feeds, polled every 15 minutes)
+
+Feeds are grouped by category. The `category` value is stored as `signalCategory` on every `trigger_detections` row.
+
+#### MARKET & BUSINESS (10 feeds)
 ```
-NY Times Business     → rss.nytimes.com/services/xml/rss/nyt/Business.xml
-BBC Business          → feeds.bbci.co.uk/news/business/rss.xml
-SEC EDGAR 8-K         → sec.gov/cgi-bin/browse-edgar?type=8-K&output=atom
-CNBC Business         → search.cnbc.com/rs/search/...
-MarketWatch           → feeds.marketwatch.com/marketwatch/topstories/
-NPR Business          → feeds.npr.org/1006/rss.xml
-Google News Finance   → news.google.com/rss/topics/...
-Entrepreneur          → feeds.feedburner.com/entrepreneur/latest
+NY Times Business         → rss.nytimes.com/services/xml/rss/nyt/Business.xml
+BBC Business              → feeds.bbci.co.uk/news/business/rss.xml
+CNBC Business             → search.cnbc.com/rs/search/...
+MarketWatch               → feeds.marketwatch.com/marketwatch/topstories/
+NPR Business              → feeds.npr.org/1006/rss.xml
+Google News Finance       → news.google.com/rss/topics/...
+Entrepreneur              → feeds.feedburner.com/entrepreneur/latest
+Reuters Business          → feeds.reuters.com/reuters/businessNews
+AP Business               → feeds.apnews.com/apf-business
+Business Wire             → businesswire.com/rss/home/?rss=G1
+PR Newswire               → prnewswire.com/rss/news-releases-list.rss
 ```
+
+#### REGULATORY & GOVERNMENT ENFORCEMENT (16 feeds)
+```
+Federal Register          → federalregister.gov/articles/search.rss (compliance terms)
+SEC EDGAR 8-K             → sec.gov/cgi-bin/browse-edgar?type=8-K&output=atom
+FTC                       → ftc.gov/rss.xml
+DOJ                       → justice.gov/rss/news.xml
+FDA (Food Safety)         → fda.gov/.../food-safety-recalls/rss.xml
+OSHA                      → osha.gov/news/newsreleases/feed
+EPA                       → epa.gov/newsreleases/search/rss
+FINRA                     → finra.org/newsroom/rss.xml
+CFPB                      → consumerfinance.gov/about-us/newsroom/feed/
+NTSB                      → ntsb.gov/news/press-releases/Pages/feed.aspx
+FDIC                      → fdic.gov/news/press-releases/feed.xml
+OCC                       → occ.gov/news-issuances/news-releases/feed.xml
+US Treasury               → home.treasury.gov/system/files/press-releases.rss
+FERC                      → ferc.gov/news-events/news/press-releases/feed
+EEOC                      → eeoc.gov/newsroom/rss.xml
+NLRB                      → nlrb.gov/news-publications/news-releases/rss.xml
+UK FCA                    → fca.org.uk/news/rss.xml                         ← jurisdiction: UK
+```
+
+#### CYBERSECURITY (2 feeds)
+```
+CISA                      → cisa.gov/cybersecurity-advisories/all.xml
+SANS Internet Storm Center → isc.sans.edu/rssfeed_full.xml
+```
+
+#### ECONOMIC INDICATORS (4 feeds)
+```
+Bureau of Labor Statistics → bls.gov/feed/bls_latest.rss
+Federal Reserve           → federalreserve.gov/feeds/press_all.xml
+EIA (Energy)              → eia.gov/rss/todayinenergy.xml
+ECB                       → ecb.europa.eu/rss/press.html                    ← jurisdiction: EU
+```
+
+#### HEALTH & SAFETY (2 feeds)
+```
+WHO                       → who.int/rss-feeds/news-english.xml              ← jurisdiction: global
+HHS                       → hhs.gov/news/press/press-releases/rss.xml
+```
+
+#### GEOPOLITICAL & TRADE (3 feeds)
+```
+State Dept                → state.gov/press-releases/feed/                  ← jurisdiction: global
+White House               → whitehouse.gov/briefing-room/statements-releases/feed/
+CBP                       → cbp.gov/newsroom/regional-media-release/feed
+```
+
+**Jurisdiction inference** (`inferJurisdiction()` in `LiveSignalIngestionService.ts`):
+- `UK` — UK FCA
+- `EU` — ECB
+- `global` — WHO, State Dept, White House
+- `US` — all other feeds (default)
+
+**Source confidence tier** (`getConfidenceTier()` in `LiveSignalIngestionService.ts`):
+| Tier | Sources | Meaning |
+|---|---|---|
+| 1 | SEC EDGAR, CISA, DOJ, FTC, FDA, US Treasury, FDIC, OCC, EEOC, NLRB, FERC, White House, UK FCA, SANS ISC | Authoritative govt/regulatory — highest signal credibility |
+| 2 | Reuters, Federal Register, Federal Reserve, EIA, ECB, HHS, CBP | Wire services and central banks — primary source |
+| 3 | All others (NYT, BBC, CNBC, MarketWatch, etc.) | News/media — secondary interpretation |
 
 Signal description passed to the evaluator:
 ```ts
-`${item.title}${item.description ? ` — ${item.description.substring(0, 200)}` : ''}`
+`${item.title}${item.description ? ` — ${item.description.substring(0, 450)}` : ''}`
 ```
+
+### New Data Fields (added May 2026)
+
+Three additive columns added to support the expanded 39-feed coverage:
+
+**`trigger_detections` table (2 new columns):**
+| Column | Type | Values | Purpose |
+|---|---|---|---|
+| `signal_category` | varchar(50) | `market \| regulatory \| cybersecurity \| economic \| health \| geopolitical` | Feed category at detection time — enables category-level analytics and feed manager filtering to propagate to detection records |
+| `jurisdiction` | varchar(50) | `US \| UK \| EU \| global` | Geographic scope — inferred from source. Enables protocol recommendations to be scoped by jurisdiction. All existing rows default to `US`. |
+
+**`signal_activity_log` table (1 new column):**
+| Column | Type | Values | Purpose |
+|---|---|---|---|
+| `source_confidence_tier` | integer | `1 \| 2 \| 3` | Tier persisted from `getConfidenceTier()` at scan time. Makes data provenance visible in Command Tower activity feed without joining back to the feed catalog. |
+
+**Future field opportunities** (not yet implemented — document before building):
+- `enforcement_action_type` (`fine | investigation | consent_order | advisory | recall | ruling`) — extract from EEOC, NLRB, FDIC, OCC, FTC, DOJ signals via keyword match
+- `economic_indicator_type` (`interest_rate | jobs_report | CPI | energy_price | monetary_policy`) — extract from BLS, Federal Reserve, EIA, ECB signals
+- `affected_industries` (text array) — which sectors a regulatory signal applies to
+
+### Signal Feed Manager (UI — May 2026)
+Per-org feed selection is managed in **`client/src/pages/SignalConfiguration.tsx`** — collapsible "Signal Feed Sources" panel.
+
+- Displays all 39 feeds grouped by category
+- Per-feed toggle (enable/disable) and per-category toggle (enable/disable all in category)
+- Persisted as `disabled_feeds text[]` on `signal_monitoring_config` (additive column — empty array = all 39 feeds active)
+- Feed catalog served by `GET /api/signal-feeds` (auth-required), backed by `getFeedCatalog()` export in `LiveSignalIngestionService.ts`
+- PATCH `/api/signal-monitoring-config` accepts `disabledFeeds` as an independent field
 
 ### Evaluation Rules (CRITICAL — do not change without founder sign-off)
 ```ts
