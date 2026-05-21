@@ -131,32 +131,34 @@ export default function InvestorLanding() {
               startup to Fortune 500 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS addresses a $5B+ addressable market, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, the Readiness OS response is already deep into coordinated execution — in 12 minutes.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col items-center gap-4">
               <Button
                 size="lg"
                 onClick={() => window.location.href = 'mailto:mbrunke@vaughnmartin.com'}
-                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
+                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold px-12"
                 data-testid="button-request-pilot"
               >
                 Talk to the Founder →
               </Button>
-              <Button
-                size="lg"
-                onClick={() => setLocation("/command-tower")}
-                className="bg-[#0A0F2E] text-white border border-white/20 hover:bg-[#141B45]"
-                data-testid="button-see-live"
-              >
-                See the System Live →
-              </Button>
-              <Button
-                size="lg"
-                onClick={() => setLocation("/12-minute-experience")}
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10"
-                data-testid="button-see-demo"
-              >
-                12-Minute Test Drive
-              </Button>
+              <div className="flex flex-wrap justify-center gap-6">
+                <button
+                  onClick={() => setLocation("/command-tower")}
+                  className="text-white/55 text-sm font-medium hover:text-white/80 transition-colors underline underline-offset-4 decoration-white/20"
+                  data-testid="button-see-live"
+                  style={{ fontFamily: "'Barlow', sans-serif", background: 'none', border: 'none', cursor: 'pointer' }}
+                >
+                  See the system live →
+                </button>
+                <span className="text-white/20 text-sm">or</span>
+                <button
+                  onClick={() => setLocation("/12-minute-experience")}
+                  className="text-white/55 text-sm font-medium hover:text-white/80 transition-colors underline underline-offset-4 decoration-white/20"
+                  data-testid="button-see-demo"
+                  style={{ fontFamily: "'Barlow', sans-serif", background: 'none', border: 'none', cursor: 'pointer' }}
+                >
+                  Take the 12-minute test drive →
+                </button>
+              </div>
             </div>
           </div>
         </section>

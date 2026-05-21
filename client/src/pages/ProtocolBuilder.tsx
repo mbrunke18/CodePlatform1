@@ -1090,7 +1090,7 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
               Build Another Protocol
             </button>
           </Link>
-          <Link href="/pilot-program">
+          <Link href="/founding-partner-program">
             <button style={{ padding: '12px 24px', borderRadius: '0.15rem', border: 'none', background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
               Apply for Founding Partner Access →
             </button>

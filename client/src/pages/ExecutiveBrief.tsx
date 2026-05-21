@@ -481,7 +481,7 @@ export default function ExecutiveBrief() {
                 <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <Mail style={{ width: 14, height: 14, color: GOLD }} />
-                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>pilot@vaughnmartin.com</span>
+                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>founding@vaughnmartin.com</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <Globe style={{ width: 14, height: 14, color: GOLD }} />

@@ -419,9 +419,9 @@ export default function OnboardingGuide() {
         {/* 08 — First 30 Days */}
         <Section id="first-month">
           <SectionHeader
-            label="08 — Pilot Roadmap"
+            label="08 — Readiness Roadmap"
             title="Recommended First 30 Days"
-            subtitle="A suggested schedule for getting maximum value from your Readiness OS pilot."
+            subtitle="A suggested schedule for getting maximum value from your Readiness OS engagement."
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
@@ -496,7 +496,7 @@ export default function OnboardingGuide() {
         <div style={{ borderTop: "1px solid #E5E7EB", paddingTop: 32, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
             <div style={{ fontSize: 13, fontWeight: 800, color: NAVY }}>VaughnMartin Readiness OS</div>
-            <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>Executive Onboarding Guide · pilot@vaughnmartin.com</div>
+            <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>Executive Onboarding Guide · founding@vaughnmartin.com</div>
           </div>
           <div style={{ fontSize: 11, color: "#9CA3AF", textAlign: "right" as const }}>
             <div>vaughnmartin.com/onboarding-guide</div>

@@ -220,7 +220,7 @@ export default function RequestAccess() {
 
                     {mutation.isError && (
                       <p style={{ ...BC, fontSize: 12, color: "#EF4444", marginBottom: 20 }}>
-                        Something went wrong. Email <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD }}>pilot@vaughnmartin.com</a>
+                        Something went wrong. Email <a href="mailto:founding@vaughnmartin.com" style={{ color: GOLD }}>founding@vaughnmartin.com</a>
                       </p>
                     )}
 
@@ -306,13 +306,13 @@ export default function RequestAccess() {
                   <p style={{ ...BC, fontSize: 11, fontWeight: 600, color: "rgba(240,237,228,0.5)", letterSpacing: "0.06em", marginBottom: 6 }}>
                     Ready for a formal engagement?
                   </p>
-                  <Link href="/pilot-program" style={{ ...BC, fontSize: 12, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
+                  <Link href="/founding-partner-program" style={{ ...BC, fontSize: 12, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
                     Learn About the Founding Partner Program →
                   </Link>
                 </div>
 
                 <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.55)", textAlign: "center", marginTop: 24 }}>
-                  Not in your inbox? Check spam or email <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD }}>pilot@vaughnmartin.com</a>
+                  Not in your inbox? Check spam or email <a href="mailto:founding@vaughnmartin.com" style={{ color: GOLD }}>founding@vaughnmartin.com</a>
                 </p>
               </div>
             )}

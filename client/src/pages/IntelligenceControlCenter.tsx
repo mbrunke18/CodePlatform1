@@ -161,7 +161,7 @@ export default function IntelligenceControlCenter() {
   ];
 
   const quickActions = [
-    { id: 'ai', label: 'Launch AI Co-Pilots', sub: 'Strategic decision support', path: '/ai', icon: Brain, accent: NAVY },
+    { id: 'ai', label: 'Launch Decision Support', sub: 'Strategic signal analysis', path: '/ai', icon: Brain, accent: NAVY },
     { id: 'signals', label: 'Configure Signals', sub: 'Manage data sources', path: '/signal-intelligence', icon: Radio, accent: TEAL },
     { id: 'triggers', label: 'Set Up Triggers', sub: 'Automate responses', path: '/triggers-management', icon: Bell, accent: GOLD },
   ];

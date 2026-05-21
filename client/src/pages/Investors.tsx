@@ -554,7 +554,7 @@ export default function Investors() {
               </div>
               <div className="grid grid-cols-3 divide-x divide-white/10">
                 {[
-                  { stat: "65%", label: "Still Piloting", sub: "Not yet scaling AI across the enterprise — Readiness OS closes this gap", color: "text-[#C9A84C]" },
+                  { stat: "65%", label: "Not Yet Scaling", sub: "Still coordinating manually — the operating model layer is missing. Readiness OS closes this gap", color: "text-[#C9A84C]" },
                   { stat: "1%", label: "Fully Mature", sub: "Leaders — not employees — are the bottleneck. 221 executive triggers solve this.", color: "text-[#2B8A6E]" },
                   { stat: "$4.4T", label: "AI Productivity Potential", sub: "Locked behind the missing coordination layer — the layer Readiness OS provides", color: "text-[#3BAF8A]" },
                 ].map((s) => (

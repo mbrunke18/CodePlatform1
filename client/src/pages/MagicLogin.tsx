@@ -150,7 +150,7 @@ export default function MagicLogin() {
     error: {
       icon: <XCircle className="h-10 w-10" style={{ color: "#EF4444" }} />,
       title: "Something went wrong.",
-      message: "We encountered an error verifying your link. Please try again or contact pilot@vaughnmartin.com.",
+      message: "We encountered an error verifying your link. Please try again or contact founding@vaughnmartin.com.",
       cta: { label: "Request a New Link", href: "/request-access" },
     },
   };
@@ -206,8 +206,8 @@ export default function MagicLogin() {
 
       <p className="mt-8 text-xs" style={{ color: "rgba(255,255,255,0.68)" }}>
         Need help?{" "}
-        <a href="mailto:pilot@vaughnmartin.com" style={{ color: "rgba(255,255,255,0.5)" }}>
-          pilot@vaughnmartin.com
+        <a href="mailto:founding@vaughnmartin.com" style={{ color: "rgba(255,255,255,0.5)" }}>
+          founding@vaughnmartin.com
         </a>
       </p>
     </div>

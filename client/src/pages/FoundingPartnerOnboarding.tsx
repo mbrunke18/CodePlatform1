@@ -429,11 +429,11 @@ export default function FoundingPartnerOnboarding() {
         <div style={{ background: NAVY, padding: '56px 40px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, opacity: 0.06, backgroundImage: 'linear-gradient(rgba(201,168,76,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.8) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
           <div style={{ position: 'relative', maxWidth: 600, margin: '0 auto' }}>
-            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase', marginBottom: 16 }}>Questions During Your Pilot</p>
-            <h2 style={{ fontSize: 28, fontWeight: 700, color: '#F0EDE4', margin: '0 0 14px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>Your VaughnMartin team is your co-pilot.</h2>
+            <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase', marginBottom: 16 }}>Questions During Your Engagement</p>
+            <h2 style={{ fontSize: 28, fontWeight: 700, color: '#F0EDE4', margin: '0 0 14px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>Your VaughnMartin team is with you every step.</h2>
             <p style={{ fontSize: 15, color: 'rgba(240,237,228,0.55)', margin: '0 0 32px', lineHeight: 1.65, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-              Every pilot has a dedicated success lead. Reach them directly at{' '}
-              <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD, textDecoration: 'none' }}>pilot@vaughnmartin.com</a>
+              Every Founding Partner has a dedicated success lead. Reach them directly at{' '}
+              <a href="mailto:founding@vaughnmartin.com" style={{ color: GOLD, textDecoration: 'none' }}>founding@vaughnmartin.com</a>
             </p>
             <button
               onClick={() => setLocation('/platform-overview')}
