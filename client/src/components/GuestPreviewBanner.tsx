@@ -247,7 +247,7 @@ export function GuestPreviewBanner() {
         )}
       </div>
 
-      {/* Right — CTAs */}
+      {/* Right — single action CTA + sign-in */}
       <div className="guest-banner-right" style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         <a href="/12-minute-experience" style={{
           fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
@@ -255,13 +255,6 @@ export function GuestPreviewBanner() {
           padding: '7px 18px', background: GOLD, color: NAVY,
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
         }}>See It Execute in 12 Minutes →</a>
-        <a href="/founding-partner-program" style={{
-          fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
-          letterSpacing: '0.1em', textTransform: 'uppercase' as const,
-          padding: '6px 16px', background: 'transparent',
-          border: '1px solid rgba(255,255,255,0.68)', color: 'rgba(255,255,255,0.7)',
-          textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
-        }}>Request Founding Partner Access</a>
         <a href="/api/login" style={{
           fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 600,
           padding: '5px 12px', background: 'transparent', border: 'none',

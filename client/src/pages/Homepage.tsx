@@ -733,7 +733,7 @@ function HeroSection() {
                   Explore 12-Minute Experience
                 </Link>
               </div>
-              <div style={{ marginBottom: 44 }}>
+              <div style={{ marginBottom: 28 }}>
                 <Link
                   href="/contact"
                   onClick={() => trackCTA("hero_schedule")}
@@ -741,6 +741,17 @@ function HeroSection() {
                 >
                   Or schedule a 30-minute conversation first →
                 </Link>
+              </div>
+
+              {/* Microsoft integration proof — answers "does this work with our stack?" */}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>Works with</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" as const }}>
+                  {["Microsoft Teams", "Azure OpenAI", "Microsoft Entra", "SharePoint"].map(tool => (
+                    <span key={tool} style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.58)", letterSpacing: "0.04em" }}>{tool}</span>
+                  ))}
+                </div>
+                <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.28)", marginLeft: "auto", flexShrink: 0, fontStyle: "italic" }}>No rip-and-replace</span>
               </div>
 
               {/* Inline metric row */}
@@ -3020,6 +3031,50 @@ export default function Homepage() {
 
       {/* 1. CLAIM */}
       <HeroSection />
+
+      {/* VALUE RAMP — answers "what do I get in 30/60/90 days?" */}
+      <div style={{ background: "#0D1435", borderTop: "1px solid rgba(201,168,76,0.18)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "0" }}>
+        <div style={{ ...CONTAINER, width: "100%" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+            {[
+              {
+                marker: "Week 1",
+                headline: "170 protocols staged to your triggers",
+                body: "Your strategic trigger map is configured. Every Readiness Protocol is armed to your industry, your org, and your priorities. No blank-slate setup.",
+                accent: TEAL,
+              },
+              {
+                marker: "Day 30",
+                headline: "First live activation complete",
+                body: "Your team runs a full signal-to-execution cycle — real stakeholders, real tasks, real authorization chain. The 12-minute execution is proven against your actual operations.",
+                accent: GOLD,
+              },
+              {
+                marker: "Day 90",
+                headline: "Documented ROI business case",
+                body: "Three activation cycles logged. Institutional memory built. A board-ready ROI report generated from real execution data — not a demo. Your baseline for expansion.",
+                accent: GOLD_LIGHT,
+              },
+            ].map((step, i) => (
+              <div key={i} style={{
+                padding: "36px 40px",
+                borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                display: "flex", flexDirection: "column" as const, gap: 10,
+              }}>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.accent }}>
+                  {step.marker}
+                </div>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>
+                  {step.headline}
+                </div>
+                <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.52)", lineHeight: 1.65 }}>
+                  {step.body}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* PRACTITIONER PULL QUOTE — William Milne */}
       <div style={{ background: "#0A0F2E", borderLeft: "3px solid #C9A84C", padding: "32px 48px" }}>
