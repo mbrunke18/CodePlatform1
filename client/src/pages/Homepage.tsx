@@ -744,14 +744,32 @@ function HeroSection() {
               </div>
 
               {/* Microsoft integration proof — answers "does this work with our stack?" */}
-              <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
-                <span style={{ ...DM, fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const, flexShrink: 0 }}>Works with</span>
-                <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" as const }}>
-                  {["Microsoft Teams", "Azure OpenAI", "Microsoft Entra", "SharePoint"].map(tool => (
-                    <span key={tool} style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.58)", letterSpacing: "0.04em" }}>{tool}</span>
-                  ))}
+              <div style={{ padding: "12px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Works with your existing stack</span>
+                  <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.22)", fontStyle: "italic" }}>— No rip-and-replace</span>
                 </div>
-                <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.28)", marginLeft: "auto", flexShrink: 0, fontStyle: "italic" }}>No rip-and-replace</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 0, flexWrap: "wrap" as const }}>
+                  {[
+                    { name: "Microsoft Teams",   note: "Notifications & war room" },
+                    { name: "Microsoft Outlook",  note: "Executive briefings & auth" },
+                    { name: "Microsoft SharePoint", note: "Protocol storage & memory" },
+                    { name: "Microsoft Entra",    note: "SSO & role provisioning" },
+                    { name: "Azure OpenAI",       note: "Signal scoring & summaries" },
+                  ].map((tool, i) => (
+                    <div key={tool.name} style={{
+                      display: "flex", flexDirection: "column" as const, gap: 2,
+                      padding: "6px 14px",
+                      borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none",
+                    }}>
+                      <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.02em" }}>{tool.name}</span>
+                      <span style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.32)", letterSpacing: "0.04em" }}>{tool.note}</span>
+                    </div>
+                  ))}
+                  <Link href="/integrations" onClick={() => trackCTA("hero_integrations")} style={{ ...DM, fontSize: 10, fontWeight: 600, color: GOLD, textDecoration: "none", padding: "6px 14px", letterSpacing: "0.06em", alignSelf: "center" }}>
+                    See all →
+                  </Link>
+                </div>
               </div>
 
               {/* Inline metric row */}
