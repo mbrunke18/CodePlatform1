@@ -1695,6 +1695,65 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Category Window Urgency */}
+        <section style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)', padding: '72px 32px' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.5)' }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.8)' }}>Category Window</span>
+              <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.5)' }} />
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 20 }}>
+              The category is open.<br />
+              <em style={{ color: '#C9A84C' }}>It will not stay open.</em>
+            </h2>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(240,237,228,0.65)', lineHeight: 1.75, maxWidth: 700, marginBottom: 48 }}>
+              ServiceNow, Microsoft, and Salesforce are each one product decision away from naming this layer. The enterprise coordination gap is real, board-visible, and expensive — every platform vendor knows it. What they don't have yet is an operating model purpose-built for it. That is the window. The organization that names "readiness infrastructure" first — and proves it at scale — captures category economics that compound for a decade.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+              {[
+                {
+                  label: 'What incumbents have',
+                  items: ['Detection tools (SIEM, monitoring)', 'Task routing (ServiceNow, Jira)', 'AI intelligence (Copilot, Claude)', 'Dashboards and reporting'],
+                  verdict: 'They detect. They route. They summarize.',
+                  verdictColor: 'rgba(192,57,43,0.8)',
+                },
+                {
+                  label: 'What incumbents are missing',
+                  items: ['Pre-staged ownership by trigger', 'Authority chains pre-approved', 'Budget pre-authorized by scenario', 'Institutional memory across activations'],
+                  verdict: 'No one owns the mobilization layer.',
+                  verdictColor: '#C9A84C',
+                },
+                {
+                  label: 'What moves first mover wins',
+                  items: ['Category name recognition', 'Institutional memory moat', 'Executive-level brand trust', 'Protocol library network effects'],
+                  verdict: 'Category creators capture 76% of market value.',
+                  verdictColor: '#2B8A6E',
+                },
+              ].map((col, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '28px 24px', borderTop: `2px solid ${i === 1 ? '#C9A84C' : 'rgba(255,255,255,0.1)'}` }}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)', marginBottom: 18 }}>{col.label}</div>
+                  <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 10, marginBottom: 20 }}>
+                    {col.items.map(item => (
+                      <div key={item} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                        <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 11, flexShrink: 0, marginTop: 1 }}>→</span>
+                        <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.07)', fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, color: col.verdictColor, lineHeight: 1.4 }}>
+                    {col.verdict}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 32, padding: '20px 28px', background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.25)', display: 'flex', alignItems: 'center', gap: 20 }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#C9A84C', flexShrink: 0 }}>The thesis:</span>
+              <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(240,237,228,0.8)', lineHeight: 1.6 }}>Every enterprise already bought the detection stack. Every enterprise already bought the AI stack. None have the operating model that acts on them. Readiness OS is that layer — and the first organization to own "readiness infrastructure" as a category will hold it the way Salesforce held CRM.</span>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-6 bg-[#0A0F2E] text-white">
           <div className="max-w-4xl mx-auto text-center">

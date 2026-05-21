@@ -128,6 +128,112 @@ export default function PlatformIntegrations() {
         </div>
       </div>
 
+      {/* What the handoff looks like */}
+      <div style={{ background: IVORY, padding: '72px 32px' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ ...BAR, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, marginBottom: 8, textAlign: 'center' }}>
+            What It Actually Looks Like
+          </p>
+          <h2 style={{ ...GEO, fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 600, color: NAVY, textAlign: 'center', marginBottom: 12 }}>
+            When a Readiness Protocol fires
+          </h2>
+          <p style={{ ...BAR, fontSize: 14, color: 'rgba(10,15,46,0.5)', textAlign: 'center', marginBottom: 48, maxWidth: 560, margin: '0 auto 48px' }}>
+            Three simultaneous handoffs happen in the first 90 seconds. No manual routing. No coordination calls. Each surface receives exactly the information its audience needs to act.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+
+            {/* Teams notification */}
+            <div style={{ background: '#fff', border: '1px solid rgba(10,15,46,0.09)', borderTop: `3px solid #6264A7` }}>
+              <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(10,15,46,0.07)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 28, height: 28, background: '#6264A7', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ color: '#fff', fontSize: 13, fontWeight: 700 }}>T</span>
+                </div>
+                <div>
+                  <div style={{ ...BAR, fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: '0.04em' }}>Microsoft Teams</div>
+                  <div style={{ ...BAR, fontSize: 10, color: 'rgba(10,15,46,0.4)' }}>Stakeholder channel · 12 seconds after trigger</div>
+                </div>
+              </div>
+              <div style={{ padding: '16px 18px' }}>
+                <div style={{ background: 'rgba(98,100,167,0.06)', border: '1px solid rgba(98,100,167,0.15)', padding: '12px 14px', marginBottom: 10 }}>
+                  <div style={{ ...BAR, fontSize: 10, fontWeight: 700, color: '#6264A7', letterSpacing: '0.1em', marginBottom: 6 }}>READINESS OS · PROTOCOL ACTIVATED</div>
+                  <div style={{ ...BAR, fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Ransomware Response #31 — AUTHORIZED</div>
+                  <div style={{ ...BAR, fontSize: 11, color: 'rgba(10,15,46,0.6)', lineHeight: 1.5 }}>Risk score: 94 · Budget unlocked: $2.4M · Your role: CISO → Network Isolation lead</div>
+                </div>
+                <div style={{ ...BAR, fontSize: 11, color: 'rgba(10,15,46,0.45)', lineHeight: 1.55 }}>
+                  → 3 tasks assigned to your queue<br />
+                  → Full brief in SharePoint<br />
+                  → War room: #ransomware-response
+                </div>
+              </div>
+            </div>
+
+            {/* Outlook email */}
+            <div style={{ background: '#fff', border: '1px solid rgba(10,15,46,0.09)', borderTop: `3px solid ${GOLD}` }}>
+              <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(10,15,46,0.07)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 28, height: 28, background: GOLD, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ color: NAVY, fontSize: 13, fontWeight: 700 }}>✉</span>
+                </div>
+                <div>
+                  <div style={{ ...BAR, fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: '0.04em' }}>Outlook — CEO Inbox</div>
+                  <div style={{ ...BAR, fontSize: 10, color: 'rgba(10,15,46,0.4)' }}>Executive authorization request · 14 seconds after trigger</div>
+                </div>
+              </div>
+              <div style={{ padding: '16px 18px' }}>
+                <div style={{ marginBottom: 8 }}>
+                  <div style={{ ...BAR, fontSize: 10, color: 'rgba(10,15,46,0.4)', marginBottom: 2 }}>From: Readiness OS · Priority: URGENT</div>
+                  <div style={{ ...BAR, fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Authorization Required: Ransomware Response Protocol #31</div>
+                  <div style={{ ...BAR, fontSize: 11, color: 'rgba(10,15,46,0.6)', lineHeight: 1.6, marginBottom: 10 }}>
+                    23 servers encrypted · 3:12 AM detection · Protocol pre-staged · $2.4M budget awaiting sign-off. Full brief attached. Your decision unlocks 6 parallel response tracks.
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <div style={{ ...BAR, fontSize: 10, fontWeight: 700, padding: '6px 12px', background: NAVY, color: '#fff', letterSpacing: '0.06em' }}>AUTHORIZE</div>
+                  <div style={{ ...BAR, fontSize: 10, fontWeight: 700, padding: '6px 12px', background: 'transparent', color: NAVY, border: `1px solid rgba(10,15,46,0.2)`, letterSpacing: '0.06em' }}>VIEW BRIEF</div>
+                </div>
+              </div>
+            </div>
+
+            {/* War room activation */}
+            <div style={{ background: NAVY, border: '1px solid rgba(255,255,255,0.08)', borderTop: `3px solid ${TEAL}` }}>
+              <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 28, height: 28, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ color: '#fff', fontSize: 11, fontWeight: 700 }}>⚡</span>
+                </div>
+                <div>
+                  <div style={{ ...BAR, fontSize: 11, fontWeight: 700, color: '#fff', letterSpacing: '0.04em' }}>War Room Activated</div>
+                  <div style={{ ...BAR, fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Readiness OS platform · 3:21 AM · T+9 min</div>
+                </div>
+              </div>
+              <div style={{ padding: '16px 18px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 7, marginBottom: 12 }}>
+                  {[
+                    { label: 'Network isolation', status: '✓ COMPLETE', color: TEAL },
+                    { label: 'FBI Cyber Division', status: '✓ NOTIFIED', color: TEAL },
+                    { label: 'Forensic image', status: '✓ CAPTURED', color: TEAL },
+                    { label: 'Board briefing', status: '→ QUEUED', color: GOLD },
+                    { label: 'Customer comms', status: '→ STAGED', color: GOLD },
+                  ].map(item => (
+                    <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ ...BAR, fontSize: 11, color: 'rgba(255,255,255,0.65)' }}>{item.label}</span>
+                      <span style={{ ...BAR, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', color: item.color }}>{item.status}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ ...BAR, fontSize: 10, color: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 10 }}>
+                  Institutional memory recording · All decisions logged
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style={{ marginTop: 20, textAlign: 'center' }}>
+            <span style={{ ...BAR, fontSize: 11, color: 'rgba(10,15,46,0.4)' }}>All three surfaces receive their notification simultaneously — no sequential routing, no manual handoff</span>
+          </div>
+        </div>
+      </div>
+
       {/* Adapter framework */}
       <div style={{ background: NAVY_BG, padding: '64px 32px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>

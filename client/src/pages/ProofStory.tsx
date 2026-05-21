@@ -217,10 +217,13 @@ export default function ProofStory() {
               <div style={{ width: 28, height: 1, background: GOLD }} />
             </div>
             <h1 style={{ ...GEO, fontSize: "clamp(36px,5vw,58px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 18 }}>
-              Same trigger. Same company.<br /><em style={{ color: GOLD }}>Entirely different outcome.</em>
+              The trigger fires.<br /><em style={{ color: GOLD }}>The response was ready. Or it wasn't.</em>
             </h1>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>
-              Four activation scenarios — risk, opportunity, and growth. Two versions of what happens. The only variable: whether the response was pre-staged before the trigger fired.
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 620, margin: "0 auto 16px", lineHeight: 1.7 }}>
+              Three documented activation narratives across financial services, industrials, and manufacturing. Two versions of what happened. The only variable: whether the response was pre-staged before the trigger fired.
+            </p>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.32)", maxWidth: 540, margin: "0 auto", lineHeight: 1.6, fontStyle: "italic" }}>
+              Company names and identifying details have been anonymized. Financial figures, timelines, and outcomes reflect documented enterprise trigger events.
             </p>
           </div>
         </div>
