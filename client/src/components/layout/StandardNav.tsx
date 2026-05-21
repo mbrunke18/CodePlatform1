@@ -859,7 +859,6 @@ export default function StandardNav() {
                 {renderPlatformDropdown()}
                 {renderExperienceDropdown()}
                 {renderEvidenceDropdown()}
-                {renderInvestorsDropdown()}
                 <button
                   onClick={() => navigateTo('/onboarding-guide')}
                   className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
