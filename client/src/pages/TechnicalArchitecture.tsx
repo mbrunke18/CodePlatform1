@@ -19,9 +19,10 @@ const LAYERS = [
     label: "Signal Detection",
     title: "Continuous Signal Ingestion",
     color: GOLD,
-    desc: "8 live RSS and data feeds polled every 15 minutes. Each incoming signal is scored against 221 trigger pattern templates using weighted keyword matching and domain classification.",
+    desc: "8 pre-configured signal sources active from day one — zero setup required. Each incoming signal is scored against 221 trigger pattern templates using weighted keyword matching and domain classification. The evaluation engine accepts any additional source an enterprise wants to connect.",
     details: [
-      { label: "Sources", value: "SEC filings, Bloomberg headlines, Reuters, FDA alerts, CISA advisories, regulatory calendars, earnings transcripts, geopolitical wires" },
+      { label: "Pre-configured sources", value: "SEC filings, Bloomberg headlines, Reuters, FDA alerts, CISA advisories, regulatory calendars, earnings transcripts, geopolitical wires — active immediately, no configuration required." },
+      { label: "Custom sources", value: "Additional enterprise feeds, internal systems (ERP alerts, incident logs, Salesforce signals), and industry-specific data sources connect to the same 221-pattern evaluation engine." },
       { label: "Cadence", value: "Every 15 minutes — continuous during market hours, hourly overnight" },
       { label: "Risk classification", value: "Each signal scored and classified as LOW, MEDIUM, or HIGH risk. Classification drives protocol prioritization and executive notification thresholds." },
       { label: "Domain tagging", value: "Each signal classified to GROWTH & POSITIONING, RISK & RESILIENCE, or TRANSFORMATION" },

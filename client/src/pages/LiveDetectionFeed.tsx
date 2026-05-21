@@ -215,11 +215,11 @@ export default function LiveDetectionFeed() {
               Signal Detection Feed
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 16, margin: '0 0 40px', lineHeight: 1.6, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
-              Real signals from 8 live sources, scored against 16 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
+              Real signals from 8 pre-configured sources — plus any enterprise feeds you connect. Scored against 16 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 48 }}>
               {[
-                { icon: Radio, label: '8 Live Sources', sub: 'NYT, BBC, SEC, CNBC & more' },
+                { icon: Radio, label: '8 Pre-configured Sources', sub: 'Add your own enterprise feeds' },
                 { icon: Zap, label: '16 Trigger Patterns', sub: 'Evaluated every 15 minutes' },
                 { icon: Bell, label: 'Instant Alerts', sub: 'Email + Slack on threshold breach' },
               ].map(({ icon: Icon, label, sub }) => (
@@ -400,7 +400,7 @@ export default function LiveDetectionFeed() {
             Signal Detection Feed
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: 0, maxWidth: 560 }}>
-            Real signals from 8 live sources, evaluated against 16 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
+              Real signals from 8 pre-configured sources — plus any enterprise feeds you connect. Evaluated against 16 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
             <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '12px 20px', textAlign: 'center' }}>
