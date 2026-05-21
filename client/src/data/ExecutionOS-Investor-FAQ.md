@@ -10,21 +10,21 @@
 
 ### 1. What exactly does Readiness OS do?
 
-Readiness OS is a Strategic Execution Operating System that cuts enterprise response time from 30 days to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—Readiness OS automatically activates pre-staged playbooks and coordinates response across all stakeholders simultaneously.
+Readiness OS is a Strategic Execution Operating System that cuts enterprise response time from 30 days to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—Readiness OS automatically activates pre-staged Readiness Protocols and coordinates response across all stakeholders simultaneously.
 
-**The elevator pitch:** "15 major firms say execution infrastructure is the enterprise bottleneck. We built it—170 playbooks with pre-defined governance, clear decision rights, and 12-minute coordination. The execution infrastructure enterprises are missing."
+**The elevator pitch:** "15 major firms say execution infrastructure is the enterprise bottleneck. We built it—170 Readiness Protocols with pre-defined governance, clear decision rights, and 12-minute coordination. The execution infrastructure enterprises are missing."
 
 ---
 
 ### 2. How is this different from project management tools like Asana or Monday?
 
-Project management tools track work after someone decides what to do. Readiness OS handles the coordination work *before* tasks exist—the signal detection, playbook selection, stakeholder notification, and coordinated launch.
+Project management tools track work after someone decides what to do. Readiness OS handles the coordination work *before* tasks exist—the signal detection, Readiness Protocol matching, stakeholder notification, and coordinated launch.
 
 | Asana/Monday | Readiness OS |
 |--------------|---|
 | Tracks tasks after creation | Creates tasks automatically when triggers fire |
-| Reactive | Proactive (pre-staged playbooks) |
-| Generic workflows | 170 strategic playbooks across 9 domains |
+| Reactive | Proactive (pre-staged Readiness Protocols) |
+| Generic workflows | 170 Readiness Protocols across 9 domains |
 | Individual productivity | Enterprise-wide coordination |
 | $10-30/user/month | $250K-$1.5M enterprise contracts |
 
@@ -38,17 +38,17 @@ ServiceNow automates IT workflows. Salesforce manages customer relationships. Re
 
 **ServiceNow:** "Your laptop is broken → ticket created → IT fixes it"  
 **Salesforce:** "Lead comes in → sales process → deal closes"  
-**Readiness OS:** "Competitor launches product → playbook activates → CFO, CMO, CPO, Legal all receive coordinated tasks → response launches in 12 minutes"
+**Readiness OS:** "Competitor launches product → Readiness Protocol activates → CFO, CMO, CPO, Legal all receive coordinated tasks → response launches in 12 minutes"
 
 These tools might be *downstream* of M—Readiness OS can push tasks into ServiceNow or Salesforce—but they can't replace the strategic coordination layer.
 
 ---
 
-### 4. What are the 170 playbooks?
+### 4. What are the 170 Readiness Protocols?
 
-Pre-built response templates across 9 strategic domains:
+Pre-staged response frameworks across 9 strategic domains:
 
-| Domain | Example Playbooks |
+| Domain | Example Readiness Protocols |
 |--------|-------------------|
 | **Crisis Management** | Ransomware response, product recall, executive misconduct |
 | **Competitive Response** | Competitor product launch, pricing war, market entry defense |
@@ -60,7 +60,7 @@ Pre-built response templates across 9 strategic domains:
 | **Talent & Organization** | Executive transition, RIF coordination, restructuring |
 | **AI Governance** | AI ethics compliance, model governance, algorithmic risk management |
 
-Each playbook includes: trigger conditions, stakeholder assignments, decision trees, communication templates, escalation paths, and success metrics.
+Each Readiness Protocol includes: trigger conditions, stakeholder assignments, decision trees, communication templates, escalation paths, and success metrics.
 
 ---
 
@@ -72,12 +72,12 @@ The 12 minutes is time-to-first-coordinated-action, not time-to-resolution. Here
 |-------|-----------|--------|
 | Signal detection | 4-24 hours | Real-time (continuous monitoring) |
 | Leadership notification | 2-8 hours | Instant (automated alerts) |
-| Stakeholder assembly | 4-24 hours | Pre-assigned in playbook |
-| Response planning | 8-24 hours | Pre-staged (playbook activation) |
+| Stakeholder assembly | 4-24 hours | Pre-assigned in Readiness Protocol |
+| Response planning | 8-24 hours | Pre-staged before trigger fires |
 | Task assignment | 2-4 hours | Automatic (one-click deployment) |
 | **Total to first action** | **Days to weeks** | **~12 minutes** |
 
-We're not claiming the *crisis is resolved* in 12 minutes—we're claiming the *coordinated response is launched* in 12 minutes. The rest of the execution follows the playbook.
+We're not claiming the *crisis is resolved* in 12 minutes—we're claiming the *coordinated response is launched* in 12 minutes. The rest of the execution follows the pre-staged Readiness Protocol.
 
 ---
 
@@ -141,7 +141,7 @@ Readiness OS is sold top-down as a strategic capability, not bottom-up as a prod
 
 **Phase 1 (Now):** Direct enterprise sales to Fortune 500. 3-5 design partners at discounted pilot rates to validate and generate case studies.
 
-**Phase 2 (Year 2):** Expand to Fortune 1000. Add industry-specific playbook packs. Build partner channel with Big 4 consultancies.
+**Phase 2 (Year 2):** Expand to Fortune 1000. Add industry-specific Readiness Protocol packs. Build partner channel with Big 4 consultancies.
 
 **Phase 3 (Year 3+):** Mid-market offering. Self-service onboarding. International expansion.
 
@@ -159,7 +159,7 @@ We're not trying to boil the ocean—we're starting with the largest, most sophi
 | **Enterprise Plus** | $450K | Fortune 500, multi-domain |
 | **Global** | $750K-$1.5M | Global 500, full platform |
 
-Pricing is based on: number of playbook domains, number of active users, integration complexity, and support level.
+Pricing is based on: number of protocol domains, number of active users, integration complexity, and support level.
 
 **Unit economics target:** 80%+ gross margin (SaaS delivery), $250K+ ACV, 18-month payback.
 
@@ -219,7 +219,7 @@ We believe 3-5 design partners converting to full contracts plus 3-5 net-new cus
 |---------|--------------|-------------------|
 | **Fusion Risk Management** | Business continuity planning | Compliance-focused, not execution speed |
 | **Everbridge** | Mass notification | Single channel (alerts), not coordination |
-| **OnSolve** | Crisis communication | Communication only, no playbook orchestration |
+| **OnSolve** | Crisis communication | Communication only, no protocol orchestration |
 | **Asana/Monday** | Project management | Task tracking, not strategic coordination |
 | **ServiceNow** | IT workflow automation | IT-centric, not C-suite strategic |
 
@@ -231,7 +231,7 @@ We believe 3-5 design partners converting to full contracts plus 3-5 net-new cus
 
 They could build *features*—but they can't build the *system*.
 
-1. **Domain expertise:** Our 170 playbooks represent 20+ years of Fortune 500 strategic execution experience. A feature team at Salesforce doesn't have this knowledge.
+1. **Domain expertise:** Our 170 Readiness Protocols represent 20+ years of Fortune 500 strategic execution experience. A feature team at Salesforce doesn't have this knowledge.
 
 2. **Buyer mismatch:** Salesforce sells to CROs. ServiceNow sells to CIOs. Readiness OS sells to CSOs and COOs. Different buyer, different requirements, different sales motion.
 
@@ -245,11 +245,11 @@ They could build *features*—but they can't build the *system*.
 
 | Moat | Durability |
 |------|------------|
-| **170 pre-built playbooks** | 2+ years of domain expertise encoded. Competitors start from zero. |
-| **Founder credibility** | Unique combination of Fortune 500 execution + coaching methodology. Authentic story. |
-| **First-mover in category** | SEOS doesn't exist. We define it. |
-| **Enterprise relationships** | Design partners become references. Network effects in enterprise sales. |
-| **Data advantage** | Every execution improves playbooks. More customers = smarter platform. |
+| **170 pre-staged Readiness Protocols** | 20+ years of domain expertise encoded. Competitors start from zero. |
+| **Founder credibility** | Unique combination of Fortune 500 execution + preparation-under-pressure methodology. Authentic story. |
+| **First-mover in category** | Strategic Readiness Platform category doesn't exist. We define it. |
+| **Enterprise relationships** | Founding Partners become references. Network effects in enterprise sales. |
+| **Institutional memory** | Every activation encodes org-specific response logic. More activations = deeper moat. |
 
 ---
 
@@ -261,7 +261,7 @@ I've spent 20+ years watching Fortune 500 companies take 72 hours to make decisi
 
 - **Enterprise experience:** Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab
 - **Coaching methodology:** 5 years of collegiate football coaching, including bowl championship
-- **Pattern recognition:** I've seen the same coordination failures across every industry. The playbook approach works—I've proven it on the field and in the boardroom.
+- **Pattern recognition:** I've seen the same coordination failures across every industry. The Readiness Protocol approach works — I've proven it on the practice field and in the boardroom.
 
 This isn't a technical founder looking for a problem. This is a domain expert who's lived the problem and finally has the technology to solve it.
 
@@ -286,9 +286,11 @@ This isn't a technical founder looking for a problem. This is a domain expert wh
 
 The coaching methodology is the unfair advantage.
 
-Every enterprise software company talks about "playbooks"—but they mean templates. We mean *actual plays*: pre-practiced, trigger-activated, role-assigned responses that execute automatically when the situation demands.
+The unfair advantage is the audible — one concept that contains everything investors care about: pre-staged preparation, recognized authority, and real-time execution under time pressure.
 
-I've run this system on a football field with 80,000 fans watching. I've implemented it in Fortune 500 boardrooms. I know it works because I've *lived* it—on both sides.
+At Stanford, we prepared every response before we lined up. When the situation presented itself, the quarterback read what was in front of him and called an audible — one authority, one call, execution immediate. No committee. No alignment meeting. No one asking who owns this. The play was already built. The authority was already established. The preparation was already done. The moment just activated it.
+
+That is the Readiness OS operating model. Every enterprise can be prepared for every situation it will face. The preparation is the advantage. The 12-minute execution is the proof. The fearlessness is the outcome.
 
 That's not something a product manager at Salesforce can replicate in a sprint.
 
@@ -300,15 +302,15 @@ For rapid-fire Q&A, memorize these:
 
 | Question | One-Liner |
 |----------|-----------|
-| What do you do? | "We cut enterprise response time from 30 days to 12 minutes." |
-| How? | "Pre-staged playbooks that activate automatically when triggers fire." |
-| Why now? | "AI can finally do real-time signal analysis, and post-COVID executives know disruption isn't rare." |
-| Why you? | "20 years of Fortune 500 execution plus championship coaching methodology—I've run this system on both fields." |
-| Competitors? | "The real competitor is the status quo—days-long response cycles and coordination by email." |
-| Market size? | "$2.5B addressable, creating a new category called Strategic Execution Operating Systems." |
-| Business model? | "$250K-$1.5M enterprise contracts, 80%+ gross margin." |
-| Traction? | "MVP complete, targeting 3-5 design partners in Q1." |
-| Ask? | "$2.5M seed to hire sales team and close first enterprise customers." |
+| What do you do? | "We compress the 30-day mobilization cycle to 12 minutes — 3,600× Execution Head Start." |
+| How? | "Pre-staged Readiness Protocols that activate at trigger point. The response is ready before the trigger fires." |
+| Why now? | "Every enterprise has the AI stack. None have the operating model to act on it at trigger speed." |
+| Why you? | "20 years Fortune 500 execution. 5 years coaching at Stanford. I've run this preparation model on both sides." |
+| Competitors? | "The real competitor is the status quo — 30-day mobilization cycles, email chains, retainer consultants after the fact." |
+| Market size? | "$5B+ addressable. Strategic Readiness Platform is a category that doesn't yet exist — we're defining it." |
+| Business model? | "$120K–$1.5M+ enterprise contracts, 80%+ gross margin." |
+| Traction? | "Platform live. 170 Readiness Protocols. 221 triggers. Founding Partner program open." |
+| How do prospects evaluate? | "48-hour guided evaluation workspace — pre-seeded with realistic data. Full Activist Investor or Ransomware scenario, signal to war room, in 12 minutes." |
 
 ---
 

@@ -11,6 +11,8 @@ export interface AuthUser {
   initials: string;
   needsOnboarding: boolean;
   organizationId?: string;
+  accessTier?: 'full' | 'eval48';
+  tierExpiresAt?: string;
 }
 
 export function useAuth() {

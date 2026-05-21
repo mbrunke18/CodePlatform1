@@ -86,6 +86,7 @@ import {
   executiveTriggers,
   testDriveLeads,
   foundingPartnerApplications,
+  evalAccessRequests,
 } from "@shared/schema";
 import { eq, desc, sql, like, and, asc, count, gte, ne, inArray, or } from 'drizzle-orm';
 import { db } from './db';
@@ -2054,6 +2055,34 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
+
+  // POST /api/eval/request — public form submission for 48-hour eval access
+  app.post('/api/eval/request', async (req: any, res) => {
+    try {
+      const { firstName, lastName, email, company, role, useCase } = req.body;
+      if (!firstName || !lastName || !email || !company || !role) {
+        return res.status(400).json({ error: 'firstName, lastName, email, company, and role are required' });
+      }
+      await db.insert(evalAccessRequests).values({ firstName, lastName, email, company, role, useCase: useCase || null });
+      res.json({ success: true });
+    } catch (error: any) {
+      console.error('Error saving eval request:', error);
+      res.status(500).json({ error: 'Failed to save request' });
+    }
+  });
+
+  // GET /api/admin/eval-requests — platform admin: view all eval requests
+  app.get('/api/admin/eval-requests', async (req: any, res) => {
+    try {
+      const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+      const userEmail = req.user?.claims?.email || req.user?.email;
+      if (!adminEmail || userEmail !== adminEmail) return res.status(403).json({ error: 'Forbidden' });
+      const requests = await db.select().from(evalAccessRequests).orderBy(evalAccessRequests.createdAt);
+      res.json(requests);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 
   // PATCH /api/user/profile — save executive role + industry vertical
   app.patch('/api/user/profile', async (req: any, res) => {

@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Loader2, RefreshCw, Home } from "lucide-react";
 import RoleIndustryCaptureModal from "@/components/RoleIndustryCaptureModal";
 import QuickActions from "@/components/QuickActions";
+import EvalBanner from "@/components/EvalBanner";
 
 interface ErrorBoundaryState { hasError: boolean; error: Error | null; }
 class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryState> {
@@ -164,8 +165,6 @@ const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
 const PlatformCapabilities = lazy(() => import("./pages/PlatformCapabilities"));
 const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
-const A16ZPitch = lazy(() => import("./pages/A16ZPitch"));
-const A16ZPrint = lazy(() => import("./pages/A16ZPitch").then(m => ({ default: m.A16ZPrint })));
 const PodcastPrep = lazy(() => import("./pages/PodcastPrep"));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
 const CommandTower = lazy(() => import("./pages/CommandTower"));
@@ -625,9 +624,7 @@ function Router() {
         <Route path="/platform-overview" component={PlatformOverview} />
         <Route path="/capabilities" component={PlatformCapabilities} />
         {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
-        {renderRoutes(["/investor-presentation", "/pitch-deck"], InvestorPresentation)}
-        {renderRoutes(["/a16z", "/speedrun-pitch"], A16ZPitch)}
-        <Route path="/a16z-print" component={A16ZPrint} />
+        <Route path="/investor-presentation" component={InvestorPresentation} />
         <Route path="/podcast-prep" component={PodcastPrep} />
         {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/industry-demos")}
         <Route path="/investor-resources" component={InvestorResources} />
@@ -691,6 +688,7 @@ function Router() {
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>
         {renderRedirects(["/crisis", "/crisis-response-center"], "/strategic-monitoring")}
+        <Route path="/request-evaluation" component={lazy(() => import('./pages/RequestEvaluation'))} />
 
         <Route component={NotFound} />
         </Switch>
@@ -711,6 +709,7 @@ function App() {
               <ThemeProvider>
                 <TooltipProvider>
                   <Toaster />
+                  <EvalBanner />
                   <OnboardingOverlay />
                   <RoleIndustryCaptureModal />
                   <QuickActions />

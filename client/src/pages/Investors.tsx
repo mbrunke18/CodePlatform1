@@ -618,6 +618,65 @@ export default function Investors() {
             </div>
           </motion.div>
 
+          {/* Practitioner Validation */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.19 }} className="mb-20">
+            <div className="text-center mb-8">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Practitioner Validation</p>
+              <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">The People Who Work Inside These Problems Agree.</h2>
+              <p className="text-[#6B7280] text-sm max-w-2xl mx-auto">Research organizations named the gap. Practitioners who operate at the intersection of governance and execution independently validated the architecture.</p>
+            </div>
+
+            {/* Dr. Kerry Huang — primary validation */}
+            <div className="bg-[#0A0F2E] mb-4" style={{ borderLeft: '4px solid #C9A84C' }}>
+              <div className="px-10 py-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div style={{ width: 20, height: 1, background: 'rgba(201,168,76,0.5)' }} />
+                  <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: 10, fontWeight: 800, letterSpacing: '0.26em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.8)' }}>
+                    Posted to his full professional network · LinkedIn · April 20, 2026
+                  </span>
+                  <div style={{ width: 20, height: 1, background: 'rgba(201,168,76,0.5)' }} />
+                </div>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px, 2vw, 24px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.92)', lineHeight: 1.75, marginBottom: 20 }}>
+                  "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions. That is governance as pre-commitment, not governance as review."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.4)' }} />
+                  <div>
+                    <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: 12, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 3 }}>
+                      Dr. Kerry Huang
+                    </p>
+                    <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>
+                      Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study
+                    </p>
+                  </div>
+                </div>
+                <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 14, fontStyle: 'italic' }}>
+                  Produced independently — without product exposure — through intellectual exchange, April 2026
+                </p>
+              </div>
+            </div>
+
+            {/* William Milne */}
+            <div className="grid grid-cols-1 gap-px bg-[#E8E4DC]">
+              <div className="bg-white px-10 py-8" style={{ borderLeft: '4px solid #2B8A6E' }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px, 2vw, 24px)', fontStyle: 'italic', color: '#0A0F2E', lineHeight: 1.7, marginBottom: 20 }}>
+                  "The twelve minutes happens because the other 29 days and 23 hours of work were done before the trigger ever fired."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div style={{ width: 24, height: 1, background: '#2B8A6E' }} />
+                  <div>
+                    <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: 12, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 3 }}>
+                      William Milne
+                    </p>
+                    <p style={{ fontFamily: 'Barlow Condensed, sans-serif', fontSize: 11, color: '#6B7280', letterSpacing: '0.04em' }}>
+                      Managing Director, Racanaa Energy
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* The Problem */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-3 uppercase tracking-widest">The Problem We Solve</h2>
@@ -906,6 +965,47 @@ export default function Investors() {
                   <li>• Competitors moving faster than ever</li>
                 </ul>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Technical Architecture Deep Dive */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }} className="mb-20">
+            <div className="text-center mb-8">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Technical Architecture</p>
+              <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">How It Works Under the Hood</h2>
+              <p className="text-[#6B7280] text-sm max-w-2xl mx-auto">Three investor-facing architecture pages address the most common diligence questions: data pipeline, defensibility moat, and integration realism.</p>
+            </div>
+            <div className="grid grid-cols-3 gap-px bg-[#E8E4DC]">
+              {[
+                {
+                  label: 'Execution Data Fabric',
+                  sub: 'How signals become staged responses in under 12 minutes',
+                  detail: '5-stage pipeline · 8 ingestion sources · 248+ data points · 221 trigger patterns · 15-minute detection cycles',
+                  color: GOLD,
+                  href: '/execution-data-fabric',
+                },
+                {
+                  label: 'Institutional Memory Engine',
+                  sub: 'The compounding dataset moat competitors cannot copy',
+                  detail: '4-layer architecture · decision records · pattern retrieval · outcome scoring · full governance audit trail',
+                  color: TEAL,
+                  href: '/institutional-memory-engine',
+                },
+                {
+                  label: 'Platform Integrations',
+                  sub: 'The operating model layer above the Microsoft investment',
+                  detail: 'Microsoft Graph · Teams · SharePoint · Entra · Copilot Studio · Salesforce · ServiceNow · Jira · Slack · SAP',
+                  color: NAVY,
+                  href: '/platform-integrations',
+                },
+              ].map((card) => (
+                <a key={card.label} href={card.href} className="bg-white p-8 block group hover:bg-[#F8F7F4] transition-colors no-underline" style={{ borderTop: `3px solid ${card.color}`, textDecoration: 'none' }}>
+                  <p className="font-black text-sm uppercase tracking-widest mb-2" style={{ color: card.color }}>{card.label}</p>
+                  <p className="font-bold text-base text-[#0A0F2E] mb-3 leading-snug">{card.sub}</p>
+                  <p className="text-[#6B7280] text-xs leading-relaxed mb-4">{card.detail}</p>
+                  <p className="text-xs font-bold uppercase tracking-wider group-hover:underline" style={{ color: card.color }}>View Architecture →</p>
+                </a>
+              ))}
             </div>
           </motion.div>
 

@@ -1614,44 +1614,44 @@ export default function InvestorLanding() {
             <div style={{ display: 'grid', gap: 2 }}>
               {[
                 {
-                  q: "What problem are you actually solving?",
-                  a: "Most enterprises do not fail to detect risk or opportunity. They fail in the mobilization gap between detection and coordinated action. Readiness OS closes that gap by pre-staging ownership, tasking, communications, and budget authority before the trigger fires.",
+                  q: "What problem are you solving?",
+                  a: "Organizations can detect a strategic situation in seconds. They still take 30 days to mobilize a coordinated response. Not because they lack intelligence or talent. Because the mobilization architecture doesn't exist. Who owns the response. Who authorizes the first action. What the sequence is. What gets communicated and when. That gap destroys value every time a situation demands speed.",
                   proof: "30-day mobilization cycle compressed to 12 minutes.",
                 },
                 {
-                  q: "Why does this matter right now?",
-                  a: "Every enterprise has invested in AI capability. Very few have redesigned how decisions turn into coordinated execution. The bottleneck is no longer intelligence — it is organizational mobilization under pressure.",
-                  proof: "Enterprises already own the AI stack. None have the operating model to use it at trigger speed.",
+                  q: "Why is it a must-solve?",
+                  a: "Every day of mobilization delay has a cost. Regulatory exposure compounds. The narrative moves to someone else. The competitive window closes. The activist controls the story before the board has a briefing. This is not a nice-to-have. Every organization in the Fortune 500 has experienced this loss. Most have accepted it as unavoidable. It isn't.",
+                  proof: "The cost compounds daily. The window that closes rarely reopens.",
                 },
                 {
-                  q: "How is this different from Copilot, workflow tools, or consulting?",
-                  a: "Copilot helps with intelligence and drafting. Workflow tools track work after people align. Consulting advises between events. Readiness OS orchestrates the cross-functional response in the moment it matters — before the stakeholder chaos starts.",
+                  q: "Why your product?",
+                  a: "Because Readiness OS is built specifically for the mobilization gap — not retrofitted onto it. The system monitors continuously. It matches situations to pre-staged Readiness Protocols. It stages the stakeholder chain, the authority path, the communications. The executive authorizes in one decision. Execution is live in 12 minutes. The response was built before the moment arrived. No other platform is designed around that sequence.",
                   proof: "Not competing with Copilot. Competing with the 40-year-old meeting-heavy operating model itself.",
+                },
+                {
+                  q: "How does it solve it?",
+                  a: "The system ingests signals across eight sources, 221 patterns, every 15 minutes. When a situation crosses threshold it matches to a pre-staged Readiness Protocol — stakeholders assigned, budget pre-approved, communications ready. The executive sees the brief and authorizes. War room is live. Twelve minutes. Every activation encodes what held and what didn't into institutional memory, so the next response is faster and more precise.",
+                  proof: "3,600× Execution Head Start. The gap before any competitor has aligned stakeholders.",
+                },
+                {
+                  q: "What about competitors?",
+                  a: "We sit above the existing stack, not inside it. ServiceNow routes tasks after people agree on what to do. We stage the alignment before the situation arrives. Microsoft Copilot produces intelligence. We produce the operating model that acts on it. Incident management consultants arrive after the call. We were ready before the first email was sent. The real competitor isn't a software vendor. It's the status quo — email threads, war room meetings, and retainer consultants who arrive after the fact.",
+                  proof: "Every enterprise has Microsoft's AI stack. None have the operating model to use it.",
                 },
                 {
                   q: "Is this replacing our current stack?",
                   a: "No. Readiness OS is the operating model layer above your existing systems — Microsoft, Jira, ServiceNow, collaboration tools. No rip-and-replace required. Value is demonstrable before deep integration begins.",
-                  proof: "Deployment risk is low-to-moderate. Overlay architecture, not replacement architecture.",
+                  proof: "Overlay architecture, not replacement architecture. Deployment risk is low.",
                 },
                 {
-                  q: "Is AI making decisions for us?",
-                  a: "No. AI monitors signals and prepares context. Executives authorize activation. Authority stays human at every step — governance and decision authority are explicit, auditable, and pre-staged.",
-                  proof: "AI monitors. Executives authorize. No protocol activates without executive sign-off.",
+                  q: "Is the system making decisions for us?",
+                  a: "No. The system monitors signals and prepares context. Executives authorize activation. Authority stays human at every step — governance and decision authority are explicit, auditable, and pre-staged. No Readiness Protocol activates without executive sign-off.",
+                  proof: "AI monitors. Executives authorize. Executive authority preserved at every step.",
                 },
                 {
-                  q: "What does \"30 days compressed to 12 minutes\" mean?",
-                  a: "It does not mean execution is done in 12 minutes. It means the mobilization cycle — who owns what, who decides, what gets staged, what sequence activates — is compressed from weeks to minutes. Execution quality improves because the sequence is already built.",
-                  proof: "3,600× Execution Head Start. The gap before any competitor has aligned stakeholders.",
-                },
-                {
-                  q: "How do we know this is real and not a demo narrative?",
-                  a: "You can run the full sequence in a live test environment and inspect exactly what is staged, activated, and acknowledged. The product is built to make readiness visible and auditable, not abstract.",
-                  proof: "170 pre-staged Readiness Protocols. Activation, acknowledgment, and debrief loops are all measurable.",
-                },
-                {
-                  q: "What outcome should we expect if this works?",
-                  a: "When the trigger fires, your organization starts coordinated execution while others are still aligning stakeholders. That creates measurable advantage in risk containment, response quality, and decision velocity — with every activation debrief captured as institutional memory.",
-                  proof: "Defensibility compounds through organization-specific response logic embedded in operational muscle memory.",
+                  q: "How do we evaluate this before committing?",
+                  a: "Qualified prospects receive a 48-hour guided evaluation workspace — pre-seeded with realistic data, core workflow enabled, executive authorization simulation live. You run a full Activist Investor or Ransomware response from signal to war room in 12 minutes inside the evaluation environment. By the time you apply for a Founding Partner seat, you've already experienced the product.",
+                  proof: "170 pre-staged Readiness Protocols. Activation, acknowledgment, and debrief loops — all measurable inside the evaluation.",
                 },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', borderTop: i === 0 ? '1px solid #E8E4DC' : 'none', borderBottom: '1px solid #E8E4DC', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC' }}>
@@ -1665,9 +1665,9 @@ export default function InvestorLanding() {
                       <div style={{ width: 16, height: 1.5, background: '#C9A84C', marginTop: 8, flexShrink: 0 }} />
                       <p style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>{item.proof}</p>
                     </div>
-                    {(i === 2 || i === 5) && (
+                    {(i === 2 || i === 7) && (
                       <div style={{ marginTop: 20 }}>
-                        <a href="/founding-partner-program" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#2B8A6E', textDecoration: 'none', borderBottom: '1px solid rgba(43,138,110,0.3)', paddingBottom: 2 }}>
+                        <a href="/request-access" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#2B8A6E', textDecoration: 'none', borderBottom: '1px solid rgba(43,138,110,0.3)', paddingBottom: 2 }}>
                           Apply for Founding Partner Access →
                         </a>
                       </div>
