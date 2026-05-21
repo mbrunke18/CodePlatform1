@@ -21,24 +21,35 @@ interface AnalyzedSignal {
   source: string;
   sourceUrl: string;
   category: string;
-  jurisdiction: string;             // US | UK | EU | global
-  confidenceTier: number;           // 1 | 2 | 3
+  jurisdiction: string;
+  confidenceTier: number;
   // P2: Regulatory enforcement
   enforcementActionType: string | null;
   regulatorAgency: string | null;
+  penaltyAmountRange: string | null;
+  namedSector: string | null;
   // P3: Cyber threat intelligence
   threatSeverity: string | null;
   exploitStatus: string | null;
   affectedVendor: string | null;
+  cveId: string | null;
+  affectedSector: string | null;
   // P4: Economic indicator
   economicIndicatorType: string | null;
   indicatorDirection: string | null;
+  indicatorMagnitude: string | null;
+  centralBank: string | null;
   // P5: Trade & geopolitical
   tradeActionType: string | null;
   effectiveTimeline: string | null;
+  tradePartner: string | null;
+  affectedHsCodes: string | null;
   // P6: Health & safety recall
   recallClass: string | null;
   affectedProductType: string | null;
+  recallScope: string | null;
+  // Market signal
+  signalEventType: string | null;
 }
 
 const RSS_FEEDS: { url: string; source: string; category: string }[] = [
@@ -296,6 +307,111 @@ function extractAffectedProductType(text: string, source: string): string | null
   return null;
 }
 
+// ── Enhanced P2: Penalty amount & named sector ────────────────────────────────
+function extractPenaltyAmountRange(text: string): string | null {
+  const billions = text.match(/\$[\d,.]+\s*billion/i);
+  const millions = text.match(/\$[\d,.]+\s*million/i);
+  if (billions) return '100M+';
+  if (millions) {
+    const val = parseFloat(millions[0].replace(/[$,million\s]/gi, ''));
+    if (val >= 100) return '100M+';
+    if (val >= 10) return '10M-100M';
+    if (val >= 1) return '1M-10M';
+    return '<1M';
+  }
+  return null;
+}
+
+function extractNamedSector(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('banking') || t.includes('bank ') || t.includes('financial institution') || t.includes('credit union')) return 'banking';
+  if (t.includes('healthcare') || t.includes('health care') || t.includes('hospital') || t.includes('medical') || t.includes('pharma')) return 'healthcare';
+  if (t.includes('energy') || t.includes('oil') || t.includes('gas ') || t.includes('electric utility') || t.includes('power company')) return 'energy';
+  if (t.includes('labor') || t.includes('workers') || t.includes('employees') || t.includes('workforce') || t.includes('union')) return 'labor';
+  if (t.includes('technology') || t.includes('tech company') || t.includes('software') || t.includes('internet company')) return 'tech';
+  if (t.includes('retail') || t.includes('consumer goods') || t.includes('ecommerce')) return 'retail';
+  return null;
+}
+
+// ── Enhanced P3: CVE ID & affected sector ─────────────────────────────────────
+function extractCveId(text: string): string | null {
+  const match = text.match(/CVE-\d{4}-\d{4,7}/i);
+  return match ? match[0].toUpperCase() : null;
+}
+
+function extractAffectedSector(text: string, source: string): string | null {
+  if (['FDIC', 'OCC', 'FINRA', 'CFPB'].some(s => source.includes(s))) return 'finance';
+  if (source.includes('FERC') || source.includes('EIA')) return 'energy';
+  if (['FDA', 'HHS', 'WHO'].some(s => source.includes(s))) return 'healthcare';
+  if (source.includes('EEOC') || source.includes('NLRB') || source.includes('Bureau of Labor')) return 'labor';
+  const t = text.toLowerCase();
+  if (t.includes('hospital') || t.includes('healthcare') || t.includes('pharmaceutical') || t.includes('medical')) return 'healthcare';
+  if (t.includes('bank') || t.includes('financial institution') || t.includes('securities') || t.includes('investment firm')) return 'finance';
+  if (t.includes('energy') || t.includes('oil') || t.includes('gas ') || t.includes('power grid') || t.includes('utility')) return 'energy';
+  if (t.includes('defense') || t.includes('military') || t.includes('government contractor')) return 'government';
+  if (t.includes('semiconductor') || t.includes('software') || t.includes('data center') || t.includes('tech ')) return 'tech';
+  if (t.includes('manufacturing') || t.includes('factory') || t.includes('industrial')) return 'manufacturing';
+  return null;
+}
+
+// ── Enhanced P4: Magnitude & central bank ─────────────────────────────────────
+function extractIndicatorMagnitude(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('shock') || t.includes('crisis') || t.includes('collapse') || t.includes('historic') || t.includes('unprecedented') || t.includes('crash')) return 'shock';
+  if (t.includes('significant') || t.includes('major') || t.includes('substantial') || t.includes('surge') || t.includes('plunge') || t.includes('dramatic')) return 'significant';
+  if (t.includes('moderate') || t.includes('notable') || t.includes('considerable') || t.includes('marked')) return 'moderate';
+  if (t.includes('slight') || t.includes('minor') || t.includes('small') || t.includes('incremental') || t.includes('marginal') || t.includes('modest')) return 'minor';
+  return null;
+}
+
+function extractCentralBank(source: string): string | null {
+  if (source.includes('Federal Reserve')) return 'Federal Reserve';
+  if (source.includes('ECB')) return 'ECB';
+  return null;
+}
+
+// ── Enhanced P5: Trade partner & HS codes ─────────────────────────────────────
+function extractTradePartner(text: string): string | null {
+  const partners = ['China', 'Russia', 'Iran', 'North Korea', 'Venezuela', 'Cuba', 'Mexico', 'Canada', 'India', 'Saudi Arabia', 'European Union'];
+  for (const p of partners) {
+    if (text.includes(p)) return p;
+  }
+  return null;
+}
+
+function extractAffectedHsCodes(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('semiconductor') || t.includes('chip ') || t.includes('microchip') || t.includes('integrated circuit')) return 'semiconductors';
+  if (t.includes('agriculture') || t.includes('grain') || t.includes('soy') || t.includes('wheat') || t.includes('corn') || t.includes('food export')) return 'agriculture';
+  if (t.includes('defense') || t.includes('weapons') || t.includes('military equipment') || t.includes('arms export')) return 'defense';
+  if (t.includes('steel') || t.includes('aluminum') || t.includes('metals') || t.includes('iron')) return 'metals';
+  if (t.includes('vehicle') || t.includes('automobile') || t.includes('auto part') || t.includes('car import')) return 'automotive';
+  if (t.includes('pharmaceutical import') || t.includes('drug import') || t.includes('medicine import')) return 'pharma';
+  return null;
+}
+
+// ── Enhanced P6: Recall scope ─────────────────────────────────────────────────
+function extractRecallScope(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('worldwide') || t.includes('global recall') || t.includes('international recall') || t.includes('multi-country')) return 'international';
+  if (t.includes('nationwide') || t.includes('national recall') || t.includes('across the united states') || t.includes('across the us')) return 'national';
+  if (t.includes('regional') || t.includes('local recall') || t.includes('state-wide') || t.includes('multi-state')) return 'regional';
+  return null;
+}
+
+// ── Market signal event type ───────────────────────────────────────────────────
+function extractSignalEventType(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('material weakness') || t.includes('internal control')) return 'material_weakness';
+  if (t.includes('restatement') || t.includes('restated earnings') || t.includes('financial restatement')) return 'restatement';
+  if (t.includes('bankruptcy') || t.includes('chapter 11') || t.includes('chapter 7') || t.includes('insolvency')) return 'bankruptcy';
+  if (t.includes('acqui') || t.includes('buyout') || t.includes('takeover') || t.includes('purchased by')) return 'acquisition';
+  if (t.includes('merger') || t.includes('merges with') || t.includes('combined with') || t.includes('consolidation')) return 'merger';
+  if (t.includes('earnings miss') || t.includes('missed estimates') || t.includes('below expectations') || t.includes('fell short')) return 'earnings_miss';
+  if ((t.includes('ceo') || t.includes('cfo') || t.includes('cto') || t.includes('chief executive')) && (t.includes('resign') || t.includes('depart') || t.includes('step') || t.includes('named') || t.includes('appoint'))) return 'leadership_change';
+  return null;
+}
+
 function inferJurisdiction(source: string): string {
   if (['UK FCA'].some(s => source.includes(s))) return 'UK';
   if (['ECB'].some(s => source.includes(s))) return 'EU';
@@ -399,19 +515,30 @@ class LiveSignalIngestionService {
         // P2: Regulatory enforcement
         enforcementActionType: extractEnforcementActionType(fullText),
         regulatorAgency: extractRegulatoryAgency(item.source),
+        penaltyAmountRange: extractPenaltyAmountRange(fullText),
+        namedSector: extractNamedSector(fullText),
         // P3: Cyber threat intelligence
         threatSeverity: extractThreatSeverity(fullText),
         exploitStatus: extractExploitStatus(fullText),
         affectedVendor: extractAffectedVendor(fullText),
+        cveId: extractCveId(fullText),
+        affectedSector: extractAffectedSector(fullText, item.source),
         // P4: Economic indicator
         economicIndicatorType: extractEconomicIndicatorType(fullText, item.source),
         indicatorDirection: extractIndicatorDirection(fullText),
+        indicatorMagnitude: extractIndicatorMagnitude(fullText),
+        centralBank: extractCentralBank(item.source),
         // P5: Trade & geopolitical
         tradeActionType: extractTradeActionType(fullText),
         effectiveTimeline: extractEffectiveTimeline(fullText),
+        tradePartner: extractTradePartner(fullText),
+        affectedHsCodes: extractAffectedHsCodes(fullText),
         // P6: Health & safety recall
         recallClass: extractRecallClass(fullText),
         affectedProductType: extractAffectedProductType(fullText, item.source),
+        recallScope: extractRecallScope(fullText),
+        // Market signal
+        signalEventType: extractSignalEventType(fullText),
       };
     });
   }

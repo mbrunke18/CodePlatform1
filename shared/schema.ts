@@ -6576,6 +6576,35 @@ export const triggerDetections = pgTable('trigger_detections', {
   // Class_I | Class_II | Class_III — FDA classification (Class I = highest risk)
   affectedProductType: varchar('affected_product_type', { length: 50 }),
   // food | pharma | medical_device | vehicle | consumer
+  recallScope: varchar('recall_scope', { length: 20 }),
+  // regional | national | international
+  // ── Market Signal Detail ──────────────────────────────────────────────────────
+  signalEventType: varchar('signal_event_type', { length: 50 }),
+  // acquisition | merger | bankruptcy | earnings_miss | leadership_change | material_weakness | restatement
+  // ── Sector Intelligence ───────────────────────────────────────────────────────
+  affectedSector: varchar('affected_sector', { length: 100 }),
+  // healthcare | energy | finance | government | tech | manufacturing | labor | retail
+  namedSector: varchar('named_sector', { length: 100 }),
+  // sector named in regulatory enforcement action
+  // ── Enhanced Enforcement ─────────────────────────────────────────────────────
+  penaltyAmountRange: varchar('penalty_amount_range', { length: 20 }),
+  // <1M | 1M-10M | 10M-100M | 100M+ — parsed from article text
+  // ── Enhanced Cyber ───────────────────────────────────────────────────────────
+  cveId: varchar('cve_id', { length: 30 }),
+  // CVE-YYYY-NNNNN — extracted via regex from CISA/SANS feeds
+  // ── Enhanced Economic ────────────────────────────────────────────────────────
+  indicatorMagnitude: varchar('indicator_magnitude', { length: 20 }),
+  // minor | moderate | significant | shock — routing key for recession-level protocols
+  centralBank: varchar('central_bank', { length: 50 }),
+  // Federal Reserve | ECB — jurisdiction of monetary policy signal
+  // ── Enhanced Trade ───────────────────────────────────────────────────────────
+  tradePartner: varchar('trade_partner', { length: 200 }),
+  // China | Russia | Iran | EU | Mexico | etc. — triggers completely different supply chain protocols
+  affectedHsCodes: varchar('affected_hs_codes', { length: 200 }),
+  // semiconductors | agriculture | defense | metals | automotive | pharma
+  // ── Trigger Graph Linkage ─────────────────────────────────────────────────────
+  triggerIdsMatched: text('trigger_ids_matched').array().default([]),
+  // names of all trigger patterns that matched this signal — starts as [triggerName], expandable for compound triggers
   status: varchar('status', { length: 50 }).default('detected'), // detected | notified | acknowledged | dismissed
   notificationSent: boolean('notification_sent').default(false),
   detectedAt: timestamp('detected_at').defaultNow(),

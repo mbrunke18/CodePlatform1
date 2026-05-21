@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 21, 2026 (rev 42) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 21, 2026 (rev 43) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1428,33 +1428,104 @@ FDA, HHS, and WHO feeds carry classification data for recalls and health advisor
 |---|---|---|---|
 | `recall_class` | varchar(20) | `extractRecallClass(text)` | `Class_I \| Class_II \| Class_III` — FDA classification (Class I = risk of serious injury/death) |
 | `affected_product_type` | varchar(50) | `extractAffectedProductType(text, source)` | `food \| pharma \| medical_device \| vehicle \| consumer` |
+| `recall_scope` | varchar(20) | `extractRecallScope(text)` | `regional \| national \| international` — geographic extent of the recall |
 
-**Routing impact:** `recall_class: Class_I` + `affected_product_type: pharma` routes to Protocol #41 (Product Recall Emergency). `Class_III` routes to Protocol #42 (Voluntary Recall Management). Without `recall_class`, all recalls hit the same protocol.
+**Routing impact:** `recall_class: Class_I` + `affected_product_type: pharma` routes to Protocol #41 (Product Recall Emergency). `Class_III` routes to Protocol #42 (Voluntary Recall Management). `recall_scope: international` escalates to the multi-jurisdiction variant. Without `recall_class`, all recalls hit the same protocol.
+
+#### Batch 8 — Market Signal Events (added May 2026, rev 43)
+SEC EDGAR, Reuters, and financial news feeds carry structured event signals (8-K filings, earnings releases, M&A announcements).
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `signal_event_type` | varchar(50) | `extractSignalEventType(text)` | `acquisition \| merger \| bankruptcy \| earnings_miss \| leadership_change \| material_weakness \| restatement` |
+
+**Routing impact:** `signal_event_type: material_weakness` routes to Protocol #67 (Financial Controls Emergency). `bankruptcy` routes to Protocol #72 (Distressed Asset Response). `leadership_change` + `earnings_miss` fires Activist Investor Readiness compound protocol.
+
+#### Batch 9 — Sector Intelligence (added May 2026, rev 43)
+Cross-domain sector classification, sourced from both CISA advisories (sector labels embedded in feeds) and text inference.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `affected_sector` | varchar(100) | `extractAffectedSector(text, source)` | `healthcare \| energy \| finance \| government \| tech \| manufacturing \| labor \| retail` — source-first, text-fallback |
+| `named_sector` | varchar(100) | `extractNamedSector(text)` | sector explicitly named in enforcement/regulatory action |
+
+**Routing impact:** `affected_sector` enables sector-scoped protocol filtering. CISA advisories that name `healthcare` route to the FDA/HIPAA protocol cluster vs. the generic cyber protocol.
+
+#### Batch 10 — Enhanced Enforcement (added May 2026, rev 43)
+Penalty magnitude is the most predictive routing signal for regulatory articles — a $200M DOJ settlement triggers different board-level protocols than a $500K SEC fine.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `penalty_amount_range` | varchar(20) | `extractPenaltyAmountRange(text)` | `<1M \| 1M-10M \| 10M-100M \| 100M+` — parsed from dollar amount in article text |
+
+**Routing impact:** `100M+` activates Protocol #14 (Board Crisis Communication) in addition to the base regulatory protocol. `<1M` routes to routine compliance management.
+
+#### Batch 11 — Enhanced Cyber Intelligence (added May 2026, rev 43)
+CISA Known Exploited Vulnerabilities (KEV) catalog carries CVE IDs in advisory titles and body text.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `cve_id` | varchar(30) | `extractCveId(text)` | `CVE-YYYY-NNNNN` — extracted via regex; standardized to uppercase |
+
+**Routing impact:** `cve_id` enables cross-detection correlation (same CVE appearing in multiple feeds = compound threat signal). Post-activation debriefs reference CVE IDs for technical writeups.
+
+#### Batch 12 — Enhanced Economic Intelligence (added May 2026, rev 43)
+The key insight: most economic signals are expected and non-routing. The `shock` magnitude value is the routing trigger for recession-level protocols.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `indicator_magnitude` | varchar(20) | `extractIndicatorMagnitude(text)` | `minor \| moderate \| significant \| shock` — linguistic severity extraction |
+| `central_bank` | varchar(50) | `extractCentralBank(source)` | `Federal Reserve \| ECB` — source-level inference (100% reliable) |
+
+**Routing impact:** `indicator_magnitude: shock` activates Protocol #88 (Economic Disruption Response). `central_bank: ECB` routes to the EU-jurisdiction economic protocol variants. `shock` + `ECB` = compound European financial crisis protocol.
+
+#### Batch 13 — Enhanced Trade Intelligence (added May 2026, rev 43)
+Trade partner identity is a first-order routing signal — China tariffs, Russia sanctions, and Iran export controls are entirely different protocol chains.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `trade_partner` | varchar(200) | `extractTradePartner(text)` | `China \| Russia \| Iran \| North Korea \| Mexico \| Canada \| India \| EU \| Saudi Arabia \| Venezuela \| Cuba` |
+| `affected_hs_codes` | varchar(200) | `extractAffectedHsCodes(text)` | `semiconductors \| agriculture \| defense \| metals \| automotive \| pharma` — HS code category |
+
+**Routing impact:** `trade_partner: China` + `affected_hs_codes: semiconductors` = Protocol #103 (Semiconductor Supply Chain Disruption). `trade_partner: Russia` = sanctions/energy variant. Without partner identity, all trade signals hit the generic Protocol #98 (Trade Policy Response).
+
+#### Batch 14 — Trigger Graph Linkage (complete, rev 43)
+Closes the loop between the 221 trigger patterns and every detected signal.
+| Column | Type | Source | Values |
+|---|---|---|---|
+| `trigger_ids_matched` | text[] | `SignalEvaluationService` post-insert | `[triggerName]` — starts as single-element array of the firing trigger name; array type supports compound triggers (2+ simultaneous) in future releases |
+
+**Routing impact:** Enables activation frequency analytics per trigger — "which of the 221 triggers fires most often for your org?" `trigger_ids_matched` joins against the trigger pattern catalog without requiring a lookup back through evaluation logs.
 
 #### `signal_activity_log` table — 1 new column (rev 41)
 | Column | Type | Source | Purpose |
 |---|---|---|---|
 | `source_confidence_tier` | integer | `getConfidenceTier(source)` | `1 \| 2 \| 3` — tier at scan time. Makes data provenance visible in Command Tower without a join. |
 
-#### Full column summary for `trigger_detections`
+#### Full column summary for `trigger_detections` (rev 43 — complete)
 
-All columns added across both batches (all nullable, all additive):
+All 26 intelligence columns added since rev 41 (all nullable/array, all additive — zero impact to existing rows):
 ```
 signal_category          varchar(50)   — feed category
 jurisdiction             varchar(50)   — US | UK | EU | global
-protocol_id_matched      uuid          — playbook_library.id
-protocol_number_matched  integer       — playbook_library.playbook_number
-enforcement_action_type  varchar(50)   — fine | investigation | consent_order | ...
-regulator_agency         varchar(100)  — SEC | FTC | DOJ | EEOC | ...
+protocol_id_matched      uuid          — playbook_library.id (P1 graph linkage)
+protocol_number_matched  integer       — playbook_library.playbook_number (1–184)
+enforcement_action_type  varchar(50)   — fine | investigation | consent_order | injunction | criminal_indictment | settlement | advisory
+regulator_agency         varchar(100)  — SEC | FTC | DOJ | FDA | EEOC | NLRB | FDIC | OCC | FERC | OSHA | EPA | FINRA | CFPB | Treasury | UK FCA
+penalty_amount_range     varchar(20)   — <1M | 1M-10M | 10M-100M | 100M+
+named_sector             varchar(100)  — sector named in enforcement action
 threat_severity          varchar(20)   — critical | high | medium | low
 exploit_status           varchar(50)   — known_exploited | proof_of_concept | theoretical
-affected_vendor          varchar(200)  — Microsoft | Cisco | Fortinet | ...
-economic_indicator_type  varchar(50)   — interest_rate | jobs_report | CPI | ...
+affected_vendor          varchar(200)  — Microsoft | Cisco | Fortinet | VMware | Palo Alto | etc.
+cve_id                   varchar(30)   — CVE-YYYY-NNNNN (CISA/SANS feeds)
+affected_sector          varchar(100)  — healthcare | energy | finance | government | tech | manufacturing | labor | retail
+economic_indicator_type  varchar(50)   — interest_rate | jobs_report | CPI | GDP | energy_price | monetary_policy
 indicator_direction      varchar(20)   — rising | falling | stable | unexpected
-trade_action_type        varchar(50)   — tariff | sanction | export_control | ...
+indicator_magnitude      varchar(20)   — minor | moderate | significant | shock
+central_bank             varchar(50)   — Federal Reserve | ECB
+trade_action_type        varchar(50)   — tariff | sanction | export_control | embargo | executive_order
 effective_timeline       varchar(20)   — immediate | 30_days | 90_days | proposed
+trade_partner            varchar(200)  — China | Russia | Iran | North Korea | Mexico | EU | etc.
+affected_hs_codes        varchar(200)  — semiconductors | agriculture | defense | metals | automotive | pharma
 recall_class             varchar(20)   — Class_I | Class_II | Class_III
 affected_product_type    varchar(50)   — food | pharma | medical_device | vehicle | consumer
+recall_scope             varchar(20)   — regional | national | international
+signal_event_type        varchar(50)   — acquisition | merger | bankruptcy | earnings_miss | leadership_change | material_weakness | restatement
+trigger_ids_matched      text[]        — [triggerName, ...] — all trigger patterns that matched
 ```
 
 ### Signal Feed Manager (UI — May 2026)

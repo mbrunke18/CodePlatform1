@@ -722,6 +722,24 @@ export async function evaluateAndPersistSignals(
         // P6: Health & safety recall
         recallClass: sig.recallClass || null,
         affectedProductType: sig.affectedProductType || null,
+        recallScope: sig.recallScope || null,
+        // Market signal
+        signalEventType: sig.signalEventType || null,
+        // Sector intelligence
+        affectedSector: sig.affectedSector || null,
+        namedSector: sig.namedSector || null,
+        // Enhanced enforcement
+        penaltyAmountRange: sig.penaltyAmountRange || null,
+        // Enhanced cyber
+        cveId: sig.cveId || null,
+        // Enhanced economic
+        indicatorMagnitude: sig.indicatorMagnitude || null,
+        centralBank: sig.centralBank || null,
+        // Enhanced trade
+        tradePartner: sig.tradePartner || null,
+        affectedHsCodes: sig.affectedHsCodes || null,
+        // Trigger graph linkage — populated here, then protocol ID lookup runs post-insert
+        triggerIdsMatched: [detection.triggerName],
         status: 'detected',
         notificationSent: false,
         urgencyLevel,
