@@ -88,10 +88,23 @@ export default function RequestEvaluation() {
             <h1 style={{ ...GEO, fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 20 }}>
               Hands-On Workspace.<br />Realistic Data. 48 Hours.
             </h1>
-            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 32, maxWidth: 560, margin: '0 auto 32px' }}>
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 560, margin: '0 auto 20px' }}>
               Your evaluation workspace is pre-seeded with realistic synthetic data across a full strategic scenario.
-              Walk the complete IDEA chain — from signal ingestion to authorized execution — with a structured success path.
+              Walk the complete chain — from signal ingestion to authorized execution.
             </p>
+            <div style={{ display: 'inline-block', padding: '14px 24px', background: 'rgba(43,138,110,0.15)', border: '1px solid rgba(43,138,110,0.35)', maxWidth: 520, textAlign: 'left' }}>
+              <div style={{ ...BAR, fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>What you receive in 48 hours</div>
+              {[
+                'Complete 3 guided workflows end-to-end (signal → protocol → authorization)',
+                'Receive a readiness summary with your protocol gap analysis',
+                'Get a response time benchmark vs. the 12-minute standard',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', marginBottom: 5 }}>
+                  <span style={{ color: TEAL, fontSize: 11, flexShrink: 0, marginTop: 2 }}>✓</span>
+                  <span style={{ ...BAR, fontSize: 12, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{item}</span>
+                </div>
+              ))}
+            </div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: 'rgba(201,168,76,0.12)', border: `1px solid rgba(201,168,76,0.3)`, ...BORDER_R }}>
               <Clock size={14} color={GOLD} />
               <span style={{ ...BAR, fontSize: 13, color: GOLD, fontWeight: 700, letterSpacing: '0.06em' }}>Access activates within 24 hours of approval</span>

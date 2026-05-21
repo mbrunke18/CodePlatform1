@@ -1,0 +1,53 @@
+What do you see as the pure optimization changes?
+
+Great question. At this point, optimization = higher conversion and clearer buyer progression (not bug fixing).
+Pure optimization changes (highest ROI)
+1) Simplify CTA hierarchy (sitewide)
+One primary CTA per page above the fold.
+Recommended primary CTA by stage:
+Awareness pages: Start 48-Hour Guided Evaluation
+Commercial pages: Apply for Founding Partner Access
+Keep secondary CTAs as text links, not equal-weight buttons.
+2) Add a persistent “Decision Path” strip
+Across key pages:
+Just exploring? → Light Experience
+Evaluating? → 48-Hour Guided Evaluation
+Ready to deploy? → Full Access / Founding Partner
+This removes decision friction.
+3) Shorten hero sections by ~25%
+First screen should answer:
+What problem
+What outcome
+What action
+Move deeper narrative below fold.
+4) Turn proof into “outcome proof,” not just feature proof
+Keep metrics (170/221/248), but add 2–3 business outcomes near them:
+Mobilization cycle compressed
+Executive decision latency reduced
+Readiness score improved via drills
+5) Strengthen the “How it works” block into 3-step visual
+Detect signal
+Executive authorization
+Coordinated execution
+Use this same visual language everywhere for consistency.
+6) Add trust band near every conversion form
+Small bullets:
+Human authorization required
+Audit trail + governance controls
+Enterprise integration ready (Microsoft + others)
+7) Reduce form friction on access/contact
+Initial form = minimal:
+Name, work email, company, role, intent
+Push deeper qualification to step 2.
+8) Improve evaluation offer clarity
+On evaluation entry page, state explicit deliverables:
+“In 48 hours you’ll complete 3 guided workflows and receive a readiness summary.” Clarity boosts signup quality.
+9) Add contextual CTA at end of every long page
+End each major page with only one conversion action matched to that page intent.
+10) Instrument funnel rigorously
+Track and optimize:
+Visit → CTA click
+CTA click → evaluation start
+Evaluation start → milestone completion
+Milestone completion → full access request
+Full access request → conversion

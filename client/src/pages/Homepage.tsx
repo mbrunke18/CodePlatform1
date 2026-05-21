@@ -772,6 +772,22 @@ function HeroSection() {
                   </div>
                 ))}
               </div>
+
+              {/* Outcome proof — what actually moves */}
+              <div style={{ marginTop: 20, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.07)", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+                {[
+                  { label: "Mobilization cycle", before: "30 days", after: "12 minutes" },
+                  { label: "Decision latency", before: "Committee alignment", after: "Executive authorizes in real time" },
+                  { label: "Readiness score", before: "Static", after: "Compounds with every drill and activation" },
+                ].map(o => (
+                  <div key={o.label} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <span style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", minWidth: 120 }}>{o.label}</span>
+                    <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.3)", textDecoration: "line-through" }}>{o.before}</span>
+                    <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.22)" }}>→</span>
+                    <span style={{ ...DM, fontSize: 10, color: GOLD, fontWeight: 600 }}>{o.after}</span>
+                  </div>
+                ))}
+              </div>
             </Reveal>
           </div>
 
@@ -898,6 +914,41 @@ function ScenarioCardsRow() {
               <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>Activate protocol →</span>
             </Link>
           ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── 3-STEP HOW IT EXECUTES ───────────────────────────────────────────────────
+function ThreeStepSection() {
+  return (
+    <div style={{ background: "#F8F7F4", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC" }}>
+      <div style={{ ...CONTAINER, paddingTop: 48, paddingBottom: 48 }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>How It Executes</div>
+          <div style={{ ...GEO, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 600, color: NAVY }}>Three steps. 12 minutes. No coordination meeting.</div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 40px 1fr 40px 1fr", alignItems: "center", gap: 0 }}>
+          {[
+            { n: "01", title: "Signal detected", desc: "Continuous monitoring scores 221 trigger patterns. Risk score exceeds threshold — Protocol selected in under 2 seconds.", color: GOLD },
+            { n: "02", title: "Executive authorizes", desc: "Authorization request delivered to inbox. CEO, COO, or designated executive signs off — budget unlocks, response stages.", color: TEAL },
+            { n: "03", title: "Coordinated execution", desc: "Tasks seeded, roles assigned, Teams channel live, war room active. Every stakeholder knows their role before they ask.", color: NAVY },
+          ].map((step, i) => (
+            <>
+              <div key={step.n} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderTop: `3px solid ${step.color}`, padding: "28px 28px" }}>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 800, color: step.color, letterSpacing: "0.12em", marginBottom: 10 }}>STEP {step.n}</div>
+                <div style={{ ...GEO, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 10, lineHeight: 1.25 }}>{step.title}</div>
+                <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65 }}>{step.desc}</div>
+              </div>
+              {i < 2 && <div key={`arrow-${i}`} style={{ textAlign: "center", fontSize: 18, color: "rgba(10,15,46,0.2)", fontWeight: 300 }}>→</div>}
+            </>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 28 }}>
+          <a href="/how-it-executes" style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: NAVY, textDecoration: "none", borderBottom: `1px solid rgba(10,15,46,0.25)`, paddingBottom: 2 }}>
+            See the full animated execution chain →
+          </a>
         </div>
       </div>
     </div>
@@ -3073,6 +3124,7 @@ export default function Homepage() {
 
       {/* 3. EXAMPLES — Breadth before explanation */}
       <ScenarioCardsRow />
+      <ThreeStepSection />
 
       {/* 3. PAIN — Cost of the old way */}
       <ProblemSection />
