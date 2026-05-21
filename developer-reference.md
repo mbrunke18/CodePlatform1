@@ -14,6 +14,9 @@
 - **170 active playbooks** across 9 domains
 - **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
+
+> **Narrative Bridge — IDEA vs. Pitch Deck Phases (read before any external presentation):**
+> External pitch materials (deck, carousel, investor slides) describe five organizational outcomes: **PREPARE → DETECT → DECIDE → EXECUTE → LEARN**. The platform's internal execution model uses four named phases: **IDENTIFY → DETECT → EXECUTE → ADVANCE**. These are not contradictory — they operate at different levels of abstraction. The five-phase narrative describes what enterprises gain organizationally (preparation capability, signal detection, decision confidence, execution speed, institutional learning). The four IDEA phases describe how the platform delivers each cycle mechanically. When presenting externally: describe the five phases as organizational advantages, not platform labels. Every enterprise outcome in the five-phase model is fully delivered by the four IDEA phases — PREPARE maps to IDENTIFY (pre-staged protocols), DECIDE is compressed into authorized EXECUTE, and LEARN maps to ADVANCE (debrief + institutional memory). **Do not attempt to reconcile the numbering in any UI copy.** The platform surfaces IDENTIFY / DETECT / EXECUTE / ADVANCE consistently throughout the product. The five-phase framing lives only in pitch and marketing materials.
 - **Enterprise B2B only** — public Founding Partner conversion CTA routes to `/founding-partner-program` (inline application form, no redirect). **Four access paths exist:** (1) Founding Partner Program `/founding-partner-program` — public pitch + inline application form, submissions saved to `founding_partner_applications` DB table; (2) Request Access `/request-access` — magic link intake form (Resend), no password, for platform login; (3) Trial Access `/trial-access` — 48-hour full platform; (4) Demo Access `/demo-access` — token-based controlled access. There is no public "Start Free Trial" button on marketing pages — access is gated. **Do NOT route public "Founding Partner" CTAs to `/request-access`** — that route is for platform authentication only.
 - **Executive authority preserved** — No playbook activates without executive authorization. AI monitors, scores signals, and recommends the right playbook. Executives decide. The decision is the same; the mobilization cycle surrounding it is compressed from 30 days to 12 minutes. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
 
@@ -2614,7 +2617,7 @@ Current production counts as of May 21, 2026:
 | Strategic domains | **9** |
 | Canonical trigger count | **221** |
 | Signal data points | **248+** |
-| RSS feed sources (live signal pipeline) | **8** |
+| RSS feed sources (live signal pipeline) | **39** |
 | Ingestion interval | **15 minutes** |
 | Unit tests (vitest) | **189 passing** |
 
