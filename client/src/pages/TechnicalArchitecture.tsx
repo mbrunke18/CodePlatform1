@@ -23,7 +23,7 @@ const LAYERS = [
     details: [
       { label: "Sources", value: "SEC filings, Bloomberg headlines, Reuters, FDA alerts, CISA advisories, regulatory calendars, earnings transcripts, geopolitical wires" },
       { label: "Cadence", value: "Every 15 minutes — continuous during market hours, hourly overnight" },
-      { label: "Risk formula", value: "√(signals in window) × 8 — capped at 100. LOW <35 · MEDIUM 35–74 · HIGH 75+" },
+      { label: "Risk classification", value: "Each signal scored and classified as LOW, MEDIUM, or HIGH risk. Classification drives protocol prioritization and executive notification thresholds." },
       { label: "Domain tagging", value: "Each signal classified to GROWTH & POSITIONING, RISK & RESILIENCE, or TRANSFORMATION" },
     ],
   },
@@ -44,7 +44,7 @@ const LAYERS = [
     num: "03",
     label: "Execution Engine",
     title: "Pre-Staged Task Seeding",
-    color: "#7B68EE",
+    color: TEAL,
     desc: "At activation, the system seeds a structured task graph from the protocol template — ownership, sequencing, budget authorization, and stakeholder notifications — all pre-staged before the trigger fires.",
     details: [
       { label: "Task structure", value: "Priority, owner role, business value, dependencies, and estimated duration pre-defined per protocol. No coordination meeting required." },
@@ -80,11 +80,11 @@ const INTEGRATIONS = [
 ];
 
 const DATA_MODEL = [
-  { entity: "Organization", fields: ["id", "name", "type", "subscriptionTier", "employeeSize"], note: "Multi-tenant root. All data scoped to org." },
-  { entity: "Trigger Event", fields: ["id", "orgId", "triggerType", "riskScore", "signalCount", "detectedAt", "domain"], note: "Recorded at detection. Feeds protocol resolution." },
-  { entity: "Protocol Activation", fields: ["id", "orgId", "triggerId", "protocolId", "status", "authorizedBy", "authorizedAt", "budgetUnlocked"], note: "Executive authorization gate. Immutable once authorized." },
-  { entity: "Task Record", fields: ["id", "activationId", "ownerId", "priority", "status", "businessValue", "completedAt"], note: "Full audit trail per task. Supports ROI calculation." },
-  { entity: "Activation Debrief", fields: ["id", "activationId", "classification", "elapsedMinutes", "actualCost", "outcomeNotes", "createdAt"], note: "Feeds institutional memory. Debrief classification auto-tagged." },
+  { entity: "Organization", summary: "Multi-tenant root. Every record — signals, protocols, activations, debriefs — is fully scoped to the organization. Cross-tenant reads are prevented at the query layer.", icon: "🏢" },
+  { entity: "Trigger Event", summary: "Every detected signal is recorded with its risk classification, domain, signal count, and timestamp. Immutable record — feeds protocol resolution and historical trend analysis.", icon: "⚡" },
+  { entity: "Protocol Activation", summary: "Each activation captures the executive authorization event — who authorized, when, and what budget was unlocked. Once authorized, the activation record is immutable.", icon: "🔐" },
+  { entity: "Task Record", summary: "Full audit trail per task: owner, priority, business value, and completion timestamp. Used for ROI calculation and debrief classification.", icon: "✅" },
+  { entity: "Activation Debrief", summary: "Post-activation classification (Optimization, Mixed-Signal, or Recovery), elapsed time, actual cost, and outcome notes. Feeds the institutional memory layer — organizations improve with every activation.", icon: "📊" },
 ];
 
 export default function TechnicalArchitecture() {
@@ -227,16 +227,12 @@ export default function TechnicalArchitecture() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {DATA_MODEL.map((entity, i) => (
-              <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "18px 22px", display: "grid", gridTemplateColumns: "160px 1fr auto", gap: 24, alignItems: "start" }}>
-                <div>
+              <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "20px 24px", display: "grid", gridTemplateColumns: "180px 1fr", gap: 28, alignItems: "start" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ fontSize: 18 }}>{entity.icon}</span>
                   <div style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: TEAL }}>{entity.entity}</div>
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {entity.fields.map(f => (
-                    <span key={f} style={{ ...BAR, fontSize: 10, color: NAVY, background: "#F3F0E8", padding: "2px 8px", fontFamily: "monospace" }}>{f}</span>
-                  ))}
-                </div>
-                <div style={{ ...BAR, fontSize: 11, color: "rgba(10,15,46,0.45)", lineHeight: 1.5, maxWidth: 240, textAlign: "right" as const }}>{entity.note}</div>
+                <div style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.65)", lineHeight: 1.7 }}>{entity.summary}</div>
               </div>
             ))}
           </div>
