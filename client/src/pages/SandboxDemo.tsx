@@ -2212,7 +2212,7 @@ export default function SandboxDemo() {
                   onClick={() => setLocation('/contact')}
                   data-testid="button-get-started"
                 >
-                  Start Your Pilot
+                  Apply for Founding Partner Access
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>

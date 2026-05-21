@@ -1690,7 +1690,7 @@ export default function TryDemo() {
                                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                               }}
                             >
-                              Start Your Pilot
+                              Apply for Founding Partner Access
                             </Button>
                             <Button 
                               variant="outline"

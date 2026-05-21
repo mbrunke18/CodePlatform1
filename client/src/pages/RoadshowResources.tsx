@@ -40,7 +40,7 @@ const KEY_STATS = [
   { label: "Response Time", value: "12 min", color: "text-[#2B8A6E]" },
   { label: "Readiness Protocols", value: "170", color: "text-[#0A0F2E]" },
   { label: "Domains", value: "9", color: "text-[#C9A84C]" },
-  { label: "Pilot Price", value: "$75K", color: "text-[#C9A84C]" },
+  { label: "Founding Partner Price", value: "$75K", color: "text-[#C9A84C]" },
   { label: "Seed Target", value: "$2.5M", color: "text-[#0A0F2E]" },
 ];
 

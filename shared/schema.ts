@@ -6612,6 +6612,8 @@ export const triggerDetections = pgTable('trigger_detections', {
   // Phase 1 — Organizational Context Scoring
   urgencyLevel: varchar('urgency_level', { length: 20 }).default('STANDARD'), // CRITICAL | HIGH | STANDARD | READY
   orgReadiness: integer('org_readiness'),  // preparedness score at time of detection (0-100)
+  // Layer 3 — Semantic Intelligence: cosine similarity score from embedding-based pattern match (0.000–1.000)
+  semanticSimilarityScore: real('semantic_similarity_score'),
 });
 
 // Phase 1 — Organizational Context Scoring (added columns)

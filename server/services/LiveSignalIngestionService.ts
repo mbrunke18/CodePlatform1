@@ -606,30 +606,36 @@ class LiveSignalIngestionService {
     const alertCount = signals.filter(s => s.impact === 'critical' || s.impact === 'high').length;
 
     // ── Tier 5: evaluate signals against trigger patterns ──────────────────
+    // Must complete first — Tiers 6/7/8 are independent of its return value.
     const detections = await evaluateAndPersistSignals(signals, organizationId);
 
-    // ── Tier 6: leading indicator convergence scoring ──────────────────────
-    const leadingHits = await evaluateLeadingIndicators(signals, organizationId);
-    if (leadingHits > 0) {
-      console.log(`   🔮 ${leadingHits} developing situation(s) detected via leading indicators`);
+    // ── Tiers 6 / 7 / 8: run in parallel — none depends on the others ─────
+    const [t6Result, , t8Result] = await Promise.allSettled([
+
+      // Tier 6: leading indicator convergence scoring
+      evaluateLeadingIndicators(signals, organizationId),
+
+      // Tier 7: compound sub-threshold pattern detection
+      evaluateCompoundPatterns(signals, organizationId),
+
+      // Tier 8: preparation signal monitoring
+      // Treats declining organizational preparedness as a trigger in its own right.
+      (async () => {
+        const { checkPreparationSignals } = await import('./PreparationSignalService.js');
+        return checkPreparationSignals(organizationId);
+      })(),
+    ]);
+
+    if (t6Result.status === 'fulfilled' && t6Result.value > 0) {
+      console.log(`   🔮 ${t6Result.value} developing situation(s) detected via leading indicators`);
     }
-
-    // ── Tier 7: compound sub-threshold pattern detection ──────────────────
-    await evaluateCompoundPatterns(signals, organizationId);
-
-    // ── Tier 8: preparation signal monitoring ─────────────────────────────
-    // Treats declining organizational preparedness as a trigger in its own right.
-    // Runs after every external signal evaluation cycle (per spec Section 6).
-    try {
-      const { checkPreparationSignals } = await import('./PreparationSignalService.js');
-      const prepResults = await checkPreparationSignals(organizationId);
-      const prepFired = prepResults.filter(r => r.triggered).length;
+    if (t8Result.status === 'fulfilled') {
+      const prepFired = (t8Result.value as any[]).filter((r: any) => r.triggered).length;
       if (prepFired > 0) {
         console.log(`   🔴 ${prepFired} preparation gap trigger(s) fired — readiness recovery protocols queued`);
       }
-    } catch (err) {
-      // Non-critical — preparation monitoring failures must not interrupt the main pipeline
-      console.error('   [Tier 8] Preparation signal check failed:', err);
+    } else if (t8Result.status === 'rejected') {
+      console.error('   [Tier 8] Preparation signal check failed:', t8Result.reason);
     }
 
     console.log(`   ✅ Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);

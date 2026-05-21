@@ -219,7 +219,7 @@ export default function ExplorePage() {
                   className="w-full border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0F2E] rounded-none font-bold uppercase tracking-widest text-[10px] h-12"
                   onClick={() => setLocation('/contact')}
                 >
-                  Apply for Pilot
+                  Apply for Founding Partner Access
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </div>

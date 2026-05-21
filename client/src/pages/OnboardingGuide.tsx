@@ -467,9 +467,9 @@ export default function OnboardingGuide() {
             </div>
             <div>
               <div style={{ background: NAVY, borderRadius: 0, padding: 24, marginBottom: 16 }}>
-                <h3 style={{ fontSize: 12, fontWeight: 800, color: GOLD, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 16px" }}>Pilot Contact</h3>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4 }}>VaughnMartin Pilot Team</div>
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>pilot@vaughnmartin.com</div>
+                <h3 style={{ fontSize: 12, fontWeight: 800, color: GOLD, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 16px" }}>Founding Partner Contact</h3>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4 }}>VaughnMartin Founding Partner Team</div>
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>partner@vaughnmartin.com</div>
                 <p style={{ margin: 0, fontSize: 12, color: "rgba(255,255,255,0.68)", lineHeight: 1.6 }}>For platform questions, configuration support, or to schedule your executive walkthrough session.</p>
               </div>
               <div style={{ background: `${GOLD}10`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: 24 }}>

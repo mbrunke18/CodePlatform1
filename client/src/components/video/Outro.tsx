@@ -118,7 +118,7 @@ export function Outro({ progress }: SceneProps) {
               className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium px-8 py-4 flex items-center gap-3 border border-gray-200"
             >
               <Calendar className="w-5 h-5" />
-              Start Pilot
+              Apply for Founding Partner Access
             </motion.button>
           </Link>
         </motion.div>

@@ -1538,7 +1538,7 @@ export default function IndustryExperience() {
                 </Link>
                 <Link href="/onboarding">
                   <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-8">
-                    Start Your Pilot <ArrowRight className="h-4 w-4 ml-2" />
+                    Apply for Founding Partner Access <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
               </div>

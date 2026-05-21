@@ -884,7 +884,7 @@ export default function QuickDemoPage() {
                           }}
                         >
                           <Rocket className="mr-2 h-5 w-5" />
-                          Start Your Pilot
+                          Apply for Founding Partner Access
                         </Button>
                         <Button variant="outline" className="w-full" onClick={resetDemo}>
                           <RefreshCw className="mr-2 h-4 w-4" />
@@ -945,7 +945,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">The full IDEA Framework loop is complete. This same process works across all 9 strategic domains.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Ready for Your Organization</p>
-                            <p className="text-xs text-muted-foreground">Start a pilot to see Readiness OS with your real Readiness Protocols and integrations.</p>
+                            <p className="text-xs text-muted-foreground">Apply for Founding Partner access to see Readiness OS with your real Readiness Protocols and integrations.</p>
                           </div>
                         </>
                       )}

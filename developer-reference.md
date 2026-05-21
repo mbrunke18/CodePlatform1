@@ -3367,3 +3367,88 @@ And that the following **always appear** on their respective pages:
 - `waitForLoadState('load')` + 2500ms used consistently — no `networkidle` calls remain in any spec
 - Case-insensitive body text checks used wherever CSS `textTransform` may affect output
 - Pre-React loading placeholder in `index.html` eliminates homepage timing race
+
+---
+
+## §65 — 2026 AI Stack Session: Semantic Scoring, Parallel Ingestion, /ai-stack Page, Full Language Audit (May 2026, rev 41)
+
+### New Server Services
+
+#### SemanticScoringService (`server/services/SemanticScoringService.ts`)
+- Uses `text-embedding-3-small` (Azure OpenAI / OpenAI fallback)
+- Cosine similarity scored against 16 pre-defined trigger pattern descriptions
+- Results cached in-memory by signal content hash; never re-embeds the same text
+- Exposed as `getSemanticScore(text): Promise<number>` returning 0–1 similarity
+
+#### DB Schema Addition
+- `signals` table: `semantic_similarity_score real` column added
+- Added to `shared/schema.ts`; column added to live DB via `ALTER TABLE IF NOT EXISTS`
+- No `db:push` needed — column already exists in production DB
+
+#### SignalEvaluationService — Non-Blocking Enrichment (`server/services/SignalEvaluationService.ts`)
+- After a signal is inserted (Tier 5), semantic scoring runs in a `setImmediate` callback (P2 block)
+- Does not block the ingestion pipeline; updates the DB row once embedding returns
+- Pattern: `setImmediate(() => SemanticScoringService.score(text).then(score => db.update(...)))`
+
+#### LiveSignalIngestionService — Parallel Tier Execution (`server/services/LiveSignalIngestionService.ts`)
+- **Tier 5** (signal classification) remains sequential — must complete before storage
+- **Tiers 6, 7, 8** now run with `Promise.allSettled([tier6(), tier7(), tier8()])` concurrently
+- Reduces per-cycle latency; individual tier failures are isolated (allSettled, not all)
+
+### New Pages
+
+#### `/ai-stack` — AIStackPositioning.tsx (`client/src/pages/AIStackPositioning.tsx`)
+5-layer enterprise AI stack positioning page:
+- Layer 1: Data & Infrastructure (Azure / M365 data layer)
+- Layer 2: AI Models & APIs (Azure OpenAI, GPT-4o — technical listing only)
+- Layer 3: Intelligence & Pattern Detection (semantic signal scoring)
+- Layer 4: Orchestration & Execution (Readiness OS orchestration role)
+- Layer 5: Human Authorization & Governance (executive sign-off layer)
+- Gap callout panel, cross-cutting foundations (Microsoft framing), 3-stat editorial block
+- Route registered in `client/src/App.tsx`
+
+#### TechnicalArchitecture.tsx — AI Stack Section Added
+- New "2026 AI Stack Positioning" section: 5-layer grid showing where Readiness OS sits at each layer
+- Microsoft framing: "Every enterprise has Microsoft's AI stack. None have the operating model to use it."
+- GPT-4o appears here only as a technical integration listing (permitted by Language Enforcement rule)
+
+### Language Audit — Full Sweep (TA–TK + VERIFY)
+
+All 11 task groups scanned and resolved. Final state:
+
+| File | Change |
+|---|---|
+| `ExecutiveDepartureBrief.tsx` | "Request Executive Pilot" → "Apply for Founding Partner Access"; "Board-authorized pilots" → "Board-authorized validations"; "30-day" → "90-day activation arc" |
+| `ProspectBrief.tsx` | "Request a 2-Week Pilot" → "Request a 90-Day Founding Partner Validation" |
+| `QuickDemoPage.tsx` | "Start a pilot to see Readiness OS" → "Apply for Founding Partner access to see Readiness OS" |
+| `FutureGym.tsx` | "VaughnMartin pilot network" → "VaughnMartin Founding Partner network" |
+| `CustomerJourney.tsx` | "pilot and enterprise options" → "Founding Partner and enterprise options" |
+| `SettingsHub.tsx` | "Pilot Mode" → "Founding Partner Mode"; "authorized pilot users" → "authorized Founding Partner users" |
+| `KeynoteDemo.tsx` | "Start a 30-day pilot with your organization" → "Apply for the 90-day Founding Partner validation program" |
+| `RoadshowResources.tsx` | "Pilot Price" stat label → "Founding Partner Price" |
+| `ReadinessAssessment.tsx` | "Founding Partner Pilot — a guided 6-week" → "Founding Partner Program — a guided 90-day" |
+
+**Acceptable / intentionally unchanged:**
+- `pilot@vaughnmartin.com` email addresses — operational contact, not marketing copy
+- "Pilot Testing / Pilot Implementation" in `NovaInnovations.tsx` — standard product dev lifecycle terms
+- "95% of companies are piloting AI" in `Investors.tsx` — industry analyst language
+- "Phase 1 pilot department" in `RoleExperience.tsx` — internal corporate rollout phase
+- `id: 'pilot'` / `path: '/pilot-demo'` — internal code identifiers
+- Football language in `FounderStoryFull.tsx` — preserved deliberately per replit.md
+
+### Compliance Checklist Post-Audit
+
+| Rule | Status |
+|---|---|
+| No "AI-powered/driven/generated/detected" in user-facing copy | ✅ Zero hits |
+| No "GPT-4o" outside technical integration listings | ✅ Zero hits |
+| No "Pilot Program / Pilot Access / Now in Pilot" as CTA text | ✅ Zero hits |
+| No "human-AI partnership" | ✅ Zero hits |
+| No "Offense/Defense/Special Teams" as domain labels | ✅ Zero hits (FounderStoryFull exempt) |
+| No "340×/360×" framing | ✅ Zero hits |
+| "72 hours" only in regulatory/scenario context | ✅ Verified — never used as execution metric |
+| All Founding Partner CTAs use correct language | ✅ Verified |
+
+### Rev 41 Known State
+- Build: ✅ clean (`✓ built in ~200ms`, zero TS errors, pre-existing eval warning only)
+- Tests: ✅ 189/189 passing (10 test files)

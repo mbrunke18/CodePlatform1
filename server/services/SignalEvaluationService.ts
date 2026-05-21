@@ -774,6 +774,25 @@ export async function evaluateAndPersistSignals(
         }
       } catch { /* non-critical — detection already saved */ }
 
+      // ── P2: Semantic Intelligence Scoring (Layer 3) ───────────────────────────
+      // Non-blocking embedding-based cosine similarity enrichment.
+      // Runs after insert so it never gates the main detection path.
+      if (savedDetection?.id) {
+        const detectionId = savedDetection.id;
+        const signalText = `${signal.description} ${signal.signalType ?? ''} ${signal.source ?? ''}`;
+        setImmediate(async () => {
+          try {
+            const { scoreSignalSemantically } = await import('./SemanticScoringService.js');
+            const result = await scoreSignalSemantically(signalText);
+            if (result) {
+              await db.update(triggerDetections)
+                .set({ semanticSimilarityScore: result.score })
+                .where(eq(triggerDetections.id, detectionId));
+            }
+          } catch { /* non-critical — semantic enrichment is additive */ }
+        });
+      }
+
       console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === 'configured' ? 'customer-configured' : 'default-pattern'}]`);
 
       // ── Start the Execution Clock ──────────────────────────────────────────

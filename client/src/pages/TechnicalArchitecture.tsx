@@ -392,6 +392,103 @@ export default function TechnicalArchitecture() {
         </div>
       </div>
 
+      {/* 2026 AI Stack Positioning */}
+      <div style={{ background: NAVY, padding: "80px 32px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(201,168,76,0.75)", marginBottom: 10 }}>Enterprise AI Stack</div>
+            <h2 style={{ ...GEO, fontSize: "clamp(24px,3vw,38px)", fontWeight: 600, color: "#fff", marginBottom: 12 }}>
+              Where Readiness OS sits in the 2026 stack
+            </h2>
+            <p style={{ ...BAR, fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.75, maxWidth: 640 }}>
+              Every enterprise is building Layers 1–4. The gap is always the same: who authorized this, what was the pre-staged plan, and what did we learn? Readiness OS is the operating model that connects the Agent Layer to measurable Business Impact.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            {[
+              {
+                num: "5",
+                label: "Business Impact Layer",
+                desc: "Strategy & Decision Making · Operations",
+                role: "Readiness OS primary layer — 170 pre-staged Readiness Protocols across 221 trigger scenarios. 12-minute response replaces 30-day mobilization cycle.",
+                highlight: true,
+                color: GOLD,
+              },
+              {
+                num: "4",
+                label: "Agent Layer",
+                desc: "Multi-Agent Systems · Autonomous Workflows",
+                role: "Readiness OS orchestration layer — 8-tier signal evaluation pipeline, IDEA Framework agents (IDENTIFY → DETECT → AUTHORIZE → EXECUTE → ADVANCE), parallel tier execution.",
+                highlight: false,
+                color: TEAL,
+              },
+              {
+                num: "3",
+                label: "Intelligence Layer",
+                desc: "RAG · Memory · Context Orchestration",
+                role: "Readiness OS intelligence layer — 39-feed live signal ingestion, 221-pattern trigger evaluation, semantic embedding scoring, institutional activation memory.",
+                highlight: false,
+                color: TEAL,
+              },
+              {
+                num: "2",
+                label: "Model Layer",
+                desc: "Proprietary Models · Fine-Tuned Models",
+                role: "Azure OpenAI primary with OpenAI fallback — executive summaries, signal classification, risk narrative generation, protocol recommendations.",
+                highlight: false,
+                color: "rgba(255,255,255,0.3)",
+              },
+              {
+                num: "1",
+                label: "Infrastructure Layer",
+                desc: "Cloud · Data Centers · Security",
+                role: "Azure cloud infrastructure (aligns with Microsoft enterprise investment), Neon serverless PostgreSQL, TLS 1.2+ transport, OIDC authentication.",
+                highlight: false,
+                color: "rgba(255,255,255,0.3)",
+              },
+            ].map((layer, i) => (
+              <div key={i} style={{
+                display: "grid",
+                gridTemplateColumns: "60px 220px 1fr",
+                gap: 0,
+                background: layer.highlight ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.03)",
+                border: `1px solid ${layer.highlight ? "rgba(201,168,76,0.3)" : "rgba(255,255,255,0.07)"}`,
+                borderLeft: `3px solid ${layer.color}`,
+                overflow: "hidden",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.15)", padding: "20px 0" }}>
+                  <span style={{ ...GEO, fontSize: 22, fontWeight: 700, color: layer.color }}>{layer.num}</span>
+                </div>
+                <div style={{ padding: "18px 20px", borderRight: "1px solid rgba(255,255,255,0.06)" }}>
+                  <div style={{ ...BAR, fontSize: 12, fontWeight: 700, color: layer.highlight ? GOLD : "#fff", marginBottom: 4 }}>{layer.label}</div>
+                  <div style={{ ...BRC, fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)", lineHeight: 1.5 }}>{layer.desc}</div>
+                </div>
+                <div style={{ padding: "18px 24px", display: "flex", alignItems: "center" }}>
+                  <span style={{ ...BAR, fontSize: 12, color: layer.highlight ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>
+                    {layer.highlight && <span style={{ color: GOLD, fontWeight: 700 }}>Readiness OS → </span>}
+                    {layer.role}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 28, padding: "16px 24px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", display: "flex", gap: 16, alignItems: "flex-start" }}>
+            <span style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, flexShrink: 0, paddingTop: 2 }}>The gap</span>
+            <span style={{ ...BAR, fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
+              Layers 1–4 are commoditizing. Every enterprise will have cloud, models, RAG, and agents. The enduring gap is the operating model between Layer 4 and Layer 5 — pre-staged responses, executive authorization chains, and institutional memory that compounds. That is what Readiness OS provides.
+            </span>
+          </div>
+
+          <div style={{ marginTop: 12, textAlign: "right" }}>
+            <a href="/ai-stack" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, textDecoration: "none" }}>
+              Full Stack Positioning Overview →
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Security summary */}
       <div style={{ background: "#fff", padding: "56px 32px", borderTop: `1px solid ${BORDER}` }}>
         <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>

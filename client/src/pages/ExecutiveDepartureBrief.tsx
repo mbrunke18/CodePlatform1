@@ -530,11 +530,11 @@ export default function ExecutiveDepartureBrief() {
               onMouseOver={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; }}
               onMouseOut={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
             >
-              Request Executive Pilot
+              Apply for Founding Partner Access
               <ArrowRight size={16} />
             </button>
             <span style={{ fontSize: 12, color: T4, fontWeight: 600 }}>
-              startup to Fortune 500 · Board-authorized pilots · 30-day activation arc
+              startup to Fortune 500 · Board-authorized validations · 90-day activation arc
             </span>
           </div>
 

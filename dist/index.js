@@ -6011,6 +6011,7 @@ var init_schema = __esm({
       id: uuid("id").primaryKey().defaultRandom(),
       organizationId: uuid("organization_id").notNull().references(() => organizations.id),
       disabledDataPoints: text2("disabled_data_points").array().default([]),
+      disabledFeeds: text2("disabled_feeds").array().default([]),
       // Controls which evaluation engine fires triggers:
       //   'configured' — use the org's configured trigger thresholds only (new engine)
       //   'default'    — use the original 16-pattern keyword scoring only (legacy engine)
@@ -6227,10 +6228,75 @@ var init_schema = __esm({
       signalSourceUrl: varchar("signal_source_url", { length: 2e3 }),
       confidenceScore: integer2("confidence_score").notNull(),
       // 0–100
+      signalCategory: varchar("signal_category", { length: 50 }),
+      // market | regulatory | cybersecurity | economic | health | geopolitical
+      jurisdiction: varchar("jurisdiction", { length: 50 }).default("US"),
+      // US | UK | EU | global — inferred from source
       recommendedPlaybook: varchar("recommended_playbook", { length: 255 }),
       // primary recommendation
       alternatePlaybooks: text2("alternate_playbooks").array().default([]),
       // secondary options for approver to choose from
+      // ── P1: Protocol Graph Linkage ───────────────────────────────────────────────
+      protocolIdMatched: uuid("protocol_id_matched"),
+      // playbook_library.id — direct FK to matched protocol
+      protocolNumberMatched: integer2("protocol_number_matched"),
+      // playbook_library.playbook_number (1-184) — human-readable ref
+      // ── P2: Regulatory Enforcement Detail ────────────────────────────────────────
+      enforcementActionType: varchar("enforcement_action_type", { length: 50 }),
+      // fine | investigation | consent_order | injunction | criminal_indictment | settlement | advisory
+      regulatorAgency: varchar("regulator_agency", { length: 100 }),
+      // SEC | FTC | DOJ | EEOC | NLRB | FDIC | OCC | FERC | OSHA | EPA | FINRA | CFPB | Treasury | UK FCA
+      // ── P3: Cyber Threat Intelligence ────────────────────────────────────────────
+      threatSeverity: varchar("threat_severity", { length: 20 }),
+      // critical | high | medium | low — CVSS-aligned, extracted from CISA/SANS content
+      exploitStatus: varchar("exploit_status", { length: 50 }),
+      // known_exploited | proof_of_concept | theoretical
+      affectedVendor: varchar("affected_vendor", { length: 200 }),
+      // Microsoft | Cisco | Fortinet | etc. — named in advisory
+      // ── P4: Economic Indicator Detail ────────────────────────────────────────────
+      economicIndicatorType: varchar("economic_indicator_type", { length: 50 }),
+      // interest_rate | jobs_report | CPI | GDP | energy_price | monetary_policy
+      indicatorDirection: varchar("indicator_direction", { length: 20 }),
+      // rising | falling | stable | unexpected — routes to correct protocol severity
+      // ── P5: Trade & Geopolitical Action ──────────────────────────────────────────
+      tradeActionType: varchar("trade_action_type", { length: 50 }),
+      // tariff | sanction | export_control | embargo | executive_order
+      effectiveTimeline: varchar("effective_timeline", { length: 20 }),
+      // immediate | 30_days | 90_days | proposed — determines protocol urgency
+      // ── P6: Health & Safety Recall ───────────────────────────────────────────────
+      recallClass: varchar("recall_class", { length: 20 }),
+      // Class_I | Class_II | Class_III — FDA classification (Class I = highest risk)
+      affectedProductType: varchar("affected_product_type", { length: 50 }),
+      // food | pharma | medical_device | vehicle | consumer
+      recallScope: varchar("recall_scope", { length: 20 }),
+      // regional | national | international
+      // ── Market Signal Detail ──────────────────────────────────────────────────────
+      signalEventType: varchar("signal_event_type", { length: 50 }),
+      // acquisition | merger | bankruptcy | earnings_miss | leadership_change | material_weakness | restatement
+      // ── Sector Intelligence ───────────────────────────────────────────────────────
+      affectedSector: varchar("affected_sector", { length: 100 }),
+      // healthcare | energy | finance | government | tech | manufacturing | labor | retail
+      namedSector: varchar("named_sector", { length: 100 }),
+      // sector named in regulatory enforcement action
+      // ── Enhanced Enforcement ─────────────────────────────────────────────────────
+      penaltyAmountRange: varchar("penalty_amount_range", { length: 20 }),
+      // <1M | 1M-10M | 10M-100M | 100M+ — parsed from article text
+      // ── Enhanced Cyber ───────────────────────────────────────────────────────────
+      cveId: varchar("cve_id", { length: 30 }),
+      // CVE-YYYY-NNNNN — extracted via regex from CISA/SANS feeds
+      // ── Enhanced Economic ────────────────────────────────────────────────────────
+      indicatorMagnitude: varchar("indicator_magnitude", { length: 20 }),
+      // minor | moderate | significant | shock — routing key for recession-level protocols
+      centralBank: varchar("central_bank", { length: 50 }),
+      // Federal Reserve | ECB — jurisdiction of monetary policy signal
+      // ── Enhanced Trade ───────────────────────────────────────────────────────────
+      tradePartner: varchar("trade_partner", { length: 200 }),
+      // China | Russia | Iran | EU | Mexico | etc. — triggers completely different supply chain protocols
+      affectedHsCodes: varchar("affected_hs_codes", { length: 200 }),
+      // semiconductors | agriculture | defense | metals | automotive | pharma
+      // ── Trigger Graph Linkage ─────────────────────────────────────────────────────
+      triggerIdsMatched: text2("trigger_ids_matched").array().default([]),
+      // names of all trigger patterns that matched this signal — starts as [triggerName], expandable for compound triggers
       status: varchar("status", { length: 50 }).default("detected"),
       // detected | notified | acknowledged | dismissed
       notificationSent: boolean("notification_sent").default(false),
@@ -6240,8 +6306,10 @@ var init_schema = __esm({
       // Phase 1 — Organizational Context Scoring
       urgencyLevel: varchar("urgency_level", { length: 20 }).default("STANDARD"),
       // CRITICAL | HIGH | STANDARD | READY
-      orgReadiness: integer2("org_readiness")
+      orgReadiness: integer2("org_readiness"),
       // preparedness score at time of detection (0-100)
+      // Layer 3 — Semantic Intelligence: cosine similarity score from embedding-based pattern match (0.000–1.000)
+      semanticSimilarityScore: real("semantic_similarity_score")
     });
     insertTriggerDetectionSchema = createInsertSchema2(triggerDetections).omit({ id: true, detectedAt: true });
     executionTimelines = pgTable2("execution_timelines", {
@@ -6283,6 +6351,8 @@ var init_schema = __esm({
       details: text2("details"),
       confidence: integer2("confidence"),
       keywordsMatched: text2("keywords_matched").array().default([]),
+      sourceConfidenceTier: integer2("source_confidence_tier"),
+      // 1 = authoritative govt/regulatory, 2 = wire/central banks, 3 = news media
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertSignalActivityLogSchema = createInsertSchema2(signalActivityLog).omit({ id: true, createdAt: true });
@@ -11708,15 +11778,16 @@ var init_storage = __esm({
         const [config] = await db.select().from(signalMonitoringConfig).where(eq(signalMonitoringConfig.organizationId, organizationId)).limit(1);
         return config || null;
       }
-      async upsertSignalMonitoringConfig(organizationId, disabledDataPoints, evaluationMode) {
+      async upsertSignalMonitoringConfig(organizationId, disabledDataPoints, evaluationMode, disabledFeeds) {
         const existing = await this.getSignalMonitoringConfig(organizationId);
         const updateFields = { disabledDataPoints, updatedAt: /* @__PURE__ */ new Date() };
         if (evaluationMode !== void 0) updateFields.evaluationMode = evaluationMode;
+        if (disabledFeeds !== void 0) updateFields.disabledFeeds = disabledFeeds;
         if (existing) {
           const [updated] = await db.update(signalMonitoringConfig).set(updateFields).where(eq(signalMonitoringConfig.organizationId, organizationId)).returning();
           return updated;
         }
-        const [created] = await db.insert(signalMonitoringConfig).values({ organizationId, disabledDataPoints, evaluationMode: evaluationMode || "both" }).returning();
+        const [created] = await db.insert(signalMonitoringConfig).values({ organizationId, disabledDataPoints, disabledFeeds: disabledFeeds || [], evaluationMode: evaluationMode || "both" }).returning();
         return created;
       }
       // ─── Role Availability Flags ────────────────────────────────────────────────
@@ -19878,6 +19949,89 @@ var init_TriggerEvaluationEngine = __esm({
   }
 });
 
+// server/services/SemanticScoringService.ts
+var SemanticScoringService_exports = {};
+__export(SemanticScoringService_exports, {
+  clearEmbeddingCache: () => clearEmbeddingCache,
+  scoreSignalSemantically: () => scoreSignalSemantically
+});
+import OpenAI5 from "openai";
+function cosineSimilarity(a, b) {
+  let dot = 0, magA = 0, magB = 0;
+  for (let i = 0; i < a.length; i++) {
+    dot += a[i] * b[i];
+    magA += a[i] * a[i];
+    magB += b[i] * b[i];
+  }
+  return magA && magB ? dot / (Math.sqrt(magA) * Math.sqrt(magB)) : 0;
+}
+async function getPatternEmbeddings() {
+  if (patternEmbeddingsCache) return patternEmbeddingsCache;
+  if (!cachePopulatingPromise) {
+    cachePopulatingPromise = (async () => {
+      const response = await openai3.embeddings.create({
+        model: "text-embedding-3-small",
+        input: PATTERN_DESCRIPTIONS.map((p) => p.desc)
+      });
+      patternEmbeddingsCache = PATTERN_DESCRIPTIONS.map((p, i) => ({
+        name: p.name,
+        embedding: response.data[i].embedding
+      }));
+    })();
+  }
+  await cachePopulatingPromise;
+  return patternEmbeddingsCache;
+}
+async function scoreSignalSemantically(signalText) {
+  try {
+    const input = signalText.slice(0, 2e3);
+    const [signalResponse, patterns] = await Promise.all([
+      openai3.embeddings.create({ model: "text-embedding-3-small", input }),
+      getPatternEmbeddings()
+    ]);
+    const sig = signalResponse.data[0].embedding;
+    const scored = patterns.map((p) => ({ name: p.name, score: cosineSimilarity(sig, p.embedding) })).sort((a, b) => b.score - a.score);
+    return {
+      topPattern: scored[0].name,
+      score: Math.round(scored[0].score * 1e3) / 1e3,
+      topMatches: scored.slice(0, 3).map((m) => ({ name: m.name, score: Math.round(m.score * 1e3) / 1e3 }))
+    };
+  } catch {
+    return null;
+  }
+}
+function clearEmbeddingCache() {
+  patternEmbeddingsCache = null;
+  cachePopulatingPromise = null;
+}
+var openai3, PATTERN_DESCRIPTIONS, patternEmbeddingsCache, cachePopulatingPromise;
+var init_SemanticScoringService = __esm({
+  "server/services/SemanticScoringService.ts"() {
+    "use strict";
+    openai3 = new OpenAI5({ apiKey: process.env.OPENAI_API_KEY });
+    PATTERN_DESCRIPTIONS = [
+      { name: "M&A Activity Detected", desc: "Merger acquisition takeover buyout consolidation deal announcement hostile bid leveraged buyout corporate combination strategic partnership" },
+      { name: "Supply Chain Disruption", desc: "Supply chain disruption shortage logistics failure inventory gap supplier bankruptcy port closure shipping delay procurement risk raw material scarcity" },
+      { name: "Geopolitical Risk Signal", desc: "Geopolitical conflict war sanctions trade restrictions export controls tariff political instability regime change diplomatic crisis international tension" },
+      { name: "Regulatory Enforcement Action", desc: "SEC enforcement FTC investigation DOJ prosecution regulatory fine penalty consent order compliance violation enforcement action lawsuit investigation subpoena" },
+      { name: "Cybersecurity Incident", desc: "Ransomware cyberattack data breach cybersecurity incident malware vulnerability exploit CISA advisory CVE critical infrastructure attack intrusion compromised" },
+      { name: "Economic Disruption Signal", desc: "Recession interest rate inflation Federal Reserve monetary policy GDP unemployment economic downturn financial crisis market crash stagflation economic contraction" },
+      { name: "Workforce Crisis Signal", desc: "Mass layoffs workforce reduction labor dispute strike union contract workers compensation employment discrimination NLRB wrongful termination class action employees" },
+      { name: "Executive Leadership Change", desc: "CEO resignation CFO departure board director removal executive transition leadership change management shakeup sudden departure unexpected announcement" },
+      { name: "Product Recall or Safety Crisis", desc: "Product recall FDA recall safety warning consumer product hazard CPSC recall Class I Class II medical device pharmaceutical contamination injury death" },
+      { name: "Financial Crisis or Bankruptcy", desc: "Bankruptcy Chapter 11 insolvency financial distress debt restructuring liquidity crisis credit downgrade material weakness earnings miss going concern" },
+      { name: "Activist Investor Signal", desc: "Activist investor shareholder engagement proxy fight board seat demand public letter campaign hedge fund stake acquisition 13D filing Schedule 13" },
+      { name: "Climate and ESG Regulatory Signal", desc: "Climate regulation ESG disclosure carbon emissions environmental compliance OSHA EPA sustainability reporting greenhouse gas net zero mandate penalty" },
+      { name: "Healthcare Regulatory Signal", desc: "FDA approval rejection clinical trial drug safety pharmaceutical regulation healthcare compliance CMS Medicare Medicaid HHS enforcement warning letter" },
+      { name: "Trade Policy and Tariff Signal", desc: "Tariff trade policy trade war import export restriction customs CBP executive order trade agreement WTO dispute countervailing duties Section 232 301" },
+      { name: "AI Disruption Signal", desc: "Artificial intelligence AI disruption technology displacement automation competitive threat generative AI large language model workforce transformation productivity" },
+      { name: "Energy and Infrastructure Signal", desc: "Energy grid power outage infrastructure failure blackout natural disaster hurricane earthquake flood critical infrastructure disruption utility" }
+    ];
+    patternEmbeddingsCache = null;
+    cachePopulatingPromise = null;
+  }
+});
+
 // server/services/SignalEvaluationService.ts
 var SignalEvaluationService_exports = {};
 __export(SignalEvaluationService_exports, {
@@ -20258,6 +20412,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         }
       } catch {
       }
+      const sig = signal;
       const [savedDetection] = await db.insert(triggerDetections).values({
         organizationId,
         triggerName: detection.triggerName,
@@ -20266,8 +20421,44 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         signalSource: signal.source,
         signalSourceUrl: signal.sourceUrl || null,
         confidenceScore: detection.confidenceScore,
+        signalCategory: sig.category || null,
+        jurisdiction: sig.jurisdiction || "US",
         recommendedPlaybook: detection.recommendedPlaybook,
         alternatePlaybooks: detection.alternatePlaybooks,
+        // P2: Regulatory enforcement
+        enforcementActionType: sig.enforcementActionType || null,
+        regulatorAgency: sig.regulatorAgency || null,
+        // P3: Cyber threat intelligence
+        threatSeverity: sig.threatSeverity || null,
+        exploitStatus: sig.exploitStatus || null,
+        affectedVendor: sig.affectedVendor || null,
+        // P4: Economic indicator
+        economicIndicatorType: sig.economicIndicatorType || null,
+        indicatorDirection: sig.indicatorDirection || null,
+        // P5: Trade & geopolitical
+        tradeActionType: sig.tradeActionType || null,
+        effectiveTimeline: sig.effectiveTimeline || null,
+        // P6: Health & safety recall
+        recallClass: sig.recallClass || null,
+        affectedProductType: sig.affectedProductType || null,
+        recallScope: sig.recallScope || null,
+        // Market signal
+        signalEventType: sig.signalEventType || null,
+        // Sector intelligence
+        affectedSector: sig.affectedSector || null,
+        namedSector: sig.namedSector || null,
+        // Enhanced enforcement
+        penaltyAmountRange: sig.penaltyAmountRange || null,
+        // Enhanced cyber
+        cveId: sig.cveId || null,
+        // Enhanced economic
+        indicatorMagnitude: sig.indicatorMagnitude || null,
+        centralBank: sig.centralBank || null,
+        // Enhanced trade
+        tradePartner: sig.tradePartner || null,
+        affectedHsCodes: sig.affectedHsCodes || null,
+        // Trigger graph linkage — populated here, then protocol ID lookup runs post-insert
+        triggerIdsMatched: [detection.triggerName],
         status: "detected",
         notificationSent: false,
         urgencyLevel,
@@ -20280,6 +20471,33 @@ async function evaluateAndPersistSignals(signals, organizationId) {
           matchedKeywords: detection.matchedKeywords
         }
       }).returning();
+      try {
+        const { playbookLibrary: playbookLibrary2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { ilike } = await import("drizzle-orm");
+        const playbookName = detection.recommendedPlaybook?.trim();
+        if (playbookName && savedDetection?.id) {
+          const [matched] = await db.select({ id: playbookLibrary2.id, num: playbookLibrary2.playbookNumber }).from(playbookLibrary2).where(ilike(playbookLibrary2.name, `%${playbookName}%`)).limit(1);
+          if (matched) {
+            await db.update(triggerDetections).set({ protocolIdMatched: matched.id, protocolNumberMatched: matched.num }).where(eq23(triggerDetections.id, savedDetection.id));
+            console.log(`\u{1F517} Linked detection to Protocol #${matched.num} (${playbookName})`);
+          }
+        }
+      } catch {
+      }
+      if (savedDetection?.id) {
+        const detectionId = savedDetection.id;
+        const signalText = `${signal.description} ${signal.signalType ?? ""} ${signal.source ?? ""}`;
+        setImmediate(async () => {
+          try {
+            const { scoreSignalSemantically: scoreSignalSemantically2 } = await Promise.resolve().then(() => (init_SemanticScoringService(), SemanticScoringService_exports));
+            const result = await scoreSignalSemantically2(signalText);
+            if (result) {
+              await db.update(triggerDetections).set({ semanticSimilarityScore: result.score }).where(eq23(triggerDetections.id, detectionId));
+            }
+          } catch {
+          }
+        });
+      }
       console.log(`\u{1F3AF} TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === "configured" ? "customer-configured" : "default-pattern"}]`);
       const now = /* @__PURE__ */ new Date();
       let executionTimelineId = null;
@@ -20304,7 +20522,8 @@ async function evaluateAndPersistSignals(signals, organizationId) {
           signalTitle: signal.description.substring(0, 200),
           details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Prepared response recommended: ${detection.recommendedPlaybook}`,
           confidence: detection.confidenceScore,
-          keywordsMatched: detection.matchedKeywords.slice(0, 5)
+          keywordsMatched: detection.matchedKeywords.slice(0, 5),
+          sourceConfidenceTier: signal.confidenceTier || null
         });
       } catch {
       }
@@ -20749,6 +20968,7 @@ var init_PreparationSignalService = __esm({
 // server/services/LiveSignalIngestionService.ts
 var LiveSignalIngestionService_exports = {};
 __export(LiveSignalIngestionService_exports, {
+  getFeedCatalog: () => getFeedCatalog,
   liveSignalIngestionService: () => liveSignalIngestionService
 });
 function parseXML(xmlText) {
@@ -20797,14 +21017,224 @@ function classifyImpact(text3) {
 function calculateConfidence(item) {
   let conf = 50;
   if (item.description.length > 100) conf += 10;
-  if (item.source.includes("Reuters") || item.source.includes("SEC")) conf += 15;
-  if (item.source.includes("BBC") || item.source.includes("NY Times")) conf += 10;
+  if (["SEC EDGAR", "CISA", "DOJ", "FTC", "FDA", "US Treasury", "FDIC", "OCC", "EEOC", "NLRB", "FERC", "White House", "UK FCA", "SANS Internet Storm Center"].some((s) => item.source.includes(s))) conf += 20;
+  else if (["Reuters", "Federal Register", "Federal Reserve", "EIA", "ECB", "HHS", "CBP"].some((s) => item.source.includes(s))) conf += 15;
+  else if (["BBC", "NY Times", "CNBC", "MarketWatch", "PR Newswire", "Business Wire", "AP Business"].some((s) => item.source.includes(s))) conf += 10;
   const date = new Date(item.pubDate);
   const hoursAgo = (Date.now() - date.getTime()) / (1e3 * 60 * 60);
   if (hoursAgo < 6) conf += 15;
   else if (hoursAgo < 24) conf += 10;
   else if (hoursAgo < 72) conf += 5;
   return Math.min(conf, 95);
+}
+function extractEnforcementActionType(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("criminal") || t.includes("indicted") || t.includes("indictment")) return "criminal_indictment";
+  if (t.includes("consent order") || t.includes("consent decree")) return "consent_order";
+  if (t.includes("settlement") || t.includes("settled")) return "settlement";
+  if (t.includes("injunction")) return "injunction";
+  if (t.includes("investigation") || t.includes("investigated") || t.includes("probe")) return "investigation";
+  if (t.includes("fine") || t.includes("penalty") || t.includes("civil penalty")) return "fine";
+  if (t.includes("advisory") || t.includes("guidance") || t.includes("notice")) return "advisory";
+  return null;
+}
+function extractRegulatoryAgency(source) {
+  const map = {
+    "SEC EDGAR": "SEC",
+    "FTC": "FTC",
+    "DOJ": "DOJ",
+    "FDA": "FDA",
+    "EEOC": "EEOC",
+    "NLRB": "NLRB",
+    "FDIC": "FDIC",
+    "OCC": "OCC",
+    "FERC": "FERC",
+    "OSHA": "OSHA",
+    "EPA": "EPA",
+    "FINRA": "FINRA",
+    "CFPB": "CFPB",
+    "NTSB": "NTSB",
+    "US Treasury": "Treasury",
+    "UK FCA": "UK FCA",
+    "Federal Register": "Federal Register"
+  };
+  for (const [k, v] of Object.entries(map)) {
+    if (source.includes(k)) return v;
+  }
+  return null;
+}
+function extractThreatSeverity(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("critical severity") || t.includes("cvss 9") || t.includes("cvss 10") || t.includes("actively exploited") || t.includes("critical vulnerability")) return "critical";
+  if (t.includes("high severity") || t.includes("cvss 7") || t.includes("cvss 8") || t.includes("high vulnerability")) return "high";
+  if (t.includes("medium severity") || t.includes("cvss 4") || t.includes("cvss 5") || t.includes("cvss 6")) return "medium";
+  if (t.includes("low severity") || t.includes("cvss 1") || t.includes("cvss 2") || t.includes("cvss 3")) return "low";
+  return null;
+}
+function extractExploitStatus(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("actively exploited") || t.includes("known exploited") || t.includes("exploited in the wild") || t.includes(" kev ")) return "known_exploited";
+  if (t.includes("proof of concept") || t.includes("poc exploit") || t.includes("exploit code")) return "proof_of_concept";
+  if (t.includes("vulnerability") || t.includes("advisory") || t.includes("patch")) return "theoretical";
+  return null;
+}
+function extractAffectedVendor(text3) {
+  const vendors = ["Microsoft", "Cisco", "Fortinet", "VMware", "Palo Alto", "Juniper", "F5", "Citrix", "SolarWinds", "Ivanti", "MOVEit", "Atlassian", "Apache", "OpenSSL"];
+  for (const v of vendors) {
+    if (text3.includes(v)) return v;
+  }
+  return null;
+}
+function extractEconomicIndicatorType(text3, source) {
+  const t = text3.toLowerCase();
+  if (t.includes("interest rate") || t.includes("fed rate") || t.includes("rate decision") || t.includes("basis points") || t.includes("rate hike") || t.includes("rate cut")) return "interest_rate";
+  if (t.includes("jobs") || t.includes("employment") || t.includes("unemployment") || t.includes("payroll") || t.includes("nonfarm")) return "jobs_report";
+  if (t.includes("inflation") || t.includes("consumer price") || t.includes("cpi") || t.includes("price index")) return "CPI";
+  if (t.includes("gdp") || t.includes("gross domestic")) return "GDP";
+  if (t.includes("oil") || t.includes("gas price") || t.includes("energy price") || t.includes("crude") || source.includes("EIA")) return "energy_price";
+  if (t.includes("monetary policy") || t.includes("quantitative") || t.includes("balance sheet") || t.includes("fed chair")) return "monetary_policy";
+  return null;
+}
+function extractIndicatorDirection(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("surprise") || t.includes("unexpected") || t.includes("shock") || t.includes("unexpectedly")) return "unexpected";
+  if (t.includes("rises") || t.includes("rose") || t.includes("increases") || t.includes("increased") || t.includes("higher") || t.includes("hikes") || t.includes("hiking")) return "rising";
+  if (t.includes("falls") || t.includes("fell") || t.includes("decreases") || t.includes("decreased") || t.includes("lower") || t.includes("cuts") || t.includes("cut rate")) return "falling";
+  if (t.includes("holds") || t.includes("unchanged") || t.includes("steady") || t.includes("stable") || t.includes("flat")) return "stable";
+  return null;
+}
+function extractTradeActionType(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("executive order") || t.includes("executive action") || t.includes("presidential order")) return "executive_order";
+  if (t.includes("sanction") || t.includes("sanctioned") || t.includes("blacklist") || t.includes("blacklisted")) return "sanction";
+  if (t.includes("tariff") || t.includes("import duty") || t.includes("import tax")) return "tariff";
+  if (t.includes("export control") || t.includes("export restriction") || t.includes("export license")) return "export_control";
+  if (t.includes("embargo") || t.includes("trade ban") || t.includes("import ban")) return "embargo";
+  return null;
+}
+function extractEffectiveTimeline(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("proposed") || t.includes("proposed rule") || t.includes("comment period")) return "proposed";
+  if (t.includes("immediate") || t.includes("effective today") || t.includes("effective immediately") || t.includes("takes effect today")) return "immediate";
+  if (t.includes("90-day") || t.includes("90 day") || t.includes("90 days") || t.includes("three months")) return "90_days";
+  if (t.includes("30-day") || t.includes("30 day") || t.includes("30 days") || t.includes("one month")) return "30_days";
+  return null;
+}
+function extractRecallClass(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("class i ") || t.includes("class 1 ") || t.includes("class i recall") || t.includes("most serious recall")) return "Class_I";
+  if (t.includes("class ii ") || t.includes("class 2 ") || t.includes("class ii recall")) return "Class_II";
+  if (t.includes("class iii ") || t.includes("class 3 ") || t.includes("class iii recall")) return "Class_III";
+  return null;
+}
+function extractAffectedProductType(text3, source) {
+  const t = text3.toLowerCase();
+  if (t.includes("pharmaceutical") || t.includes("drug") || t.includes("medication") || t.includes("medicine") || t.includes("tablet") || t.includes("capsule")) return "pharma";
+  if (t.includes("medical device") || t.includes("implant") || t.includes("surgical") || t.includes("diagnostic device")) return "medical_device";
+  if (t.includes("food") || t.includes("beverage") || t.includes("contamination") || t.includes("listeria") || t.includes("salmonella") || t.includes("e. coli")) return "food";
+  if (t.includes("vehicle") || t.includes("automobile") || t.includes("car recall") || t.includes("nhtsa") || t.includes("airbag")) return "vehicle";
+  if (t.includes("consumer product") || t.includes("cpsc") || t.includes("household")) return "consumer";
+  return null;
+}
+function extractPenaltyAmountRange(text3) {
+  const billions = text3.match(/\$[\d,.]+\s*billion/i);
+  const millions = text3.match(/\$[\d,.]+\s*million/i);
+  if (billions) return "100M+";
+  if (millions) {
+    const val = parseFloat(millions[0].replace(/[$,million\s]/gi, ""));
+    if (val >= 100) return "100M+";
+    if (val >= 10) return "10M-100M";
+    if (val >= 1) return "1M-10M";
+    return "<1M";
+  }
+  return null;
+}
+function extractNamedSector(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("banking") || t.includes("bank ") || t.includes("financial institution") || t.includes("credit union")) return "banking";
+  if (t.includes("healthcare") || t.includes("health care") || t.includes("hospital") || t.includes("medical") || t.includes("pharma")) return "healthcare";
+  if (t.includes("energy") || t.includes("oil") || t.includes("gas ") || t.includes("electric utility") || t.includes("power company")) return "energy";
+  if (t.includes("labor") || t.includes("workers") || t.includes("employees") || t.includes("workforce") || t.includes("union")) return "labor";
+  if (t.includes("technology") || t.includes("tech company") || t.includes("software") || t.includes("internet company")) return "tech";
+  if (t.includes("retail") || t.includes("consumer goods") || t.includes("ecommerce")) return "retail";
+  return null;
+}
+function extractCveId(text3) {
+  const match = text3.match(/CVE-\d{4}-\d{4,7}/i);
+  return match ? match[0].toUpperCase() : null;
+}
+function extractAffectedSector(text3, source) {
+  if (["FDIC", "OCC", "FINRA", "CFPB"].some((s) => source.includes(s))) return "finance";
+  if (source.includes("FERC") || source.includes("EIA")) return "energy";
+  if (["FDA", "HHS", "WHO"].some((s) => source.includes(s))) return "healthcare";
+  if (source.includes("EEOC") || source.includes("NLRB") || source.includes("Bureau of Labor")) return "labor";
+  const t = text3.toLowerCase();
+  if (t.includes("hospital") || t.includes("healthcare") || t.includes("pharmaceutical") || t.includes("medical")) return "healthcare";
+  if (t.includes("bank") || t.includes("financial institution") || t.includes("securities") || t.includes("investment firm")) return "finance";
+  if (t.includes("energy") || t.includes("oil") || t.includes("gas ") || t.includes("power grid") || t.includes("utility")) return "energy";
+  if (t.includes("defense") || t.includes("military") || t.includes("government contractor")) return "government";
+  if (t.includes("semiconductor") || t.includes("software") || t.includes("data center") || t.includes("tech ")) return "tech";
+  if (t.includes("manufacturing") || t.includes("factory") || t.includes("industrial")) return "manufacturing";
+  return null;
+}
+function extractIndicatorMagnitude(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("shock") || t.includes("crisis") || t.includes("collapse") || t.includes("historic") || t.includes("unprecedented") || t.includes("crash")) return "shock";
+  if (t.includes("significant") || t.includes("major") || t.includes("substantial") || t.includes("surge") || t.includes("plunge") || t.includes("dramatic")) return "significant";
+  if (t.includes("moderate") || t.includes("notable") || t.includes("considerable") || t.includes("marked")) return "moderate";
+  if (t.includes("slight") || t.includes("minor") || t.includes("small") || t.includes("incremental") || t.includes("marginal") || t.includes("modest")) return "minor";
+  return null;
+}
+function extractCentralBank(source) {
+  if (source.includes("Federal Reserve")) return "Federal Reserve";
+  if (source.includes("ECB")) return "ECB";
+  return null;
+}
+function extractTradePartner(text3) {
+  const partners = ["China", "Russia", "Iran", "North Korea", "Venezuela", "Cuba", "Mexico", "Canada", "India", "Saudi Arabia", "European Union"];
+  for (const p of partners) {
+    if (text3.includes(p)) return p;
+  }
+  return null;
+}
+function extractAffectedHsCodes(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("semiconductor") || t.includes("chip ") || t.includes("microchip") || t.includes("integrated circuit")) return "semiconductors";
+  if (t.includes("agriculture") || t.includes("grain") || t.includes("soy") || t.includes("wheat") || t.includes("corn") || t.includes("food export")) return "agriculture";
+  if (t.includes("defense") || t.includes("weapons") || t.includes("military equipment") || t.includes("arms export")) return "defense";
+  if (t.includes("steel") || t.includes("aluminum") || t.includes("metals") || t.includes("iron")) return "metals";
+  if (t.includes("vehicle") || t.includes("automobile") || t.includes("auto part") || t.includes("car import")) return "automotive";
+  if (t.includes("pharmaceutical import") || t.includes("drug import") || t.includes("medicine import")) return "pharma";
+  return null;
+}
+function extractRecallScope(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("worldwide") || t.includes("global recall") || t.includes("international recall") || t.includes("multi-country")) return "international";
+  if (t.includes("nationwide") || t.includes("national recall") || t.includes("across the united states") || t.includes("across the us")) return "national";
+  if (t.includes("regional") || t.includes("local recall") || t.includes("state-wide") || t.includes("multi-state")) return "regional";
+  return null;
+}
+function extractSignalEventType(text3) {
+  const t = text3.toLowerCase();
+  if (t.includes("material weakness") || t.includes("internal control")) return "material_weakness";
+  if (t.includes("restatement") || t.includes("restated earnings") || t.includes("financial restatement")) return "restatement";
+  if (t.includes("bankruptcy") || t.includes("chapter 11") || t.includes("chapter 7") || t.includes("insolvency")) return "bankruptcy";
+  if (t.includes("acqui") || t.includes("buyout") || t.includes("takeover") || t.includes("purchased by")) return "acquisition";
+  if (t.includes("merger") || t.includes("merges with") || t.includes("combined with") || t.includes("consolidation")) return "merger";
+  if (t.includes("earnings miss") || t.includes("missed estimates") || t.includes("below expectations") || t.includes("fell short")) return "earnings_miss";
+  if ((t.includes("ceo") || t.includes("cfo") || t.includes("cto") || t.includes("chief executive")) && (t.includes("resign") || t.includes("depart") || t.includes("step") || t.includes("named") || t.includes("appoint"))) return "leadership_change";
+  return null;
+}
+function inferJurisdiction(source) {
+  if (["UK FCA"].some((s) => source.includes(s))) return "UK";
+  if (["ECB"].some((s) => source.includes(s))) return "EU";
+  if (["WHO", "State Dept", "White House"].some((s) => source.includes(s))) return "global";
+  return "US";
+}
+function getConfidenceTier(source) {
+  if (["SEC EDGAR", "CISA", "DOJ", "FTC", "FDA", "US Treasury", "FDIC", "OCC", "EEOC", "NLRB", "FERC", "White House", "UK FCA", "SANS Internet Storm Center"].some((s) => source.includes(s))) return 1;
+  if (["Reuters", "Federal Register", "Federal Reserve", "EIA", "ECB", "HHS", "CBP"].some((s) => source.includes(s))) return 2;
+  return 3;
 }
 function estimateTimeline(text3) {
   const lower = text3.toLowerCase();
@@ -20814,6 +21244,9 @@ function estimateTimeline(text3) {
   if (lower.includes("this year") || lower.includes("annual")) return "3-6 months";
   return "1-3 months";
 }
+function getFeedCatalog() {
+  return RSS_FEEDS.map((f) => ({ source: f.source, category: f.category, url: f.url }));
+}
 var RSS_FEEDS, SIGNAL_TYPE_MAP, IMPACT_KEYWORDS, LiveSignalIngestionService, liveSignalIngestionService;
 var init_LiveSignalIngestionService = __esm({
   "server/services/LiveSignalIngestionService.ts"() {
@@ -20822,21 +21255,74 @@ var init_LiveSignalIngestionService = __esm({
     init_schema();
     init_SignalEvaluationService();
     RSS_FEEDS = [
+      // Market & business news (baseline)
       { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", source: "NY Times Business", category: "market" },
       { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business", category: "market" },
-      { url: "https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=corporate+regulatory+compliance", source: "Federal Register", category: "regulatory" },
       { url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114", source: "CNBC Business", category: "market" },
       { url: "https://feeds.marketwatch.com/marketwatch/topstories/", source: "MarketWatch", category: "market" },
       { url: "https://feeds.npr.org/1006/rss.xml", source: "NPR Business", category: "market" },
       { url: "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen", source: "Google News Finance", category: "market" },
-      { url: "https://feeds.feedburner.com/entrepreneur/latest", source: "Entrepreneur", category: "market" }
+      { url: "https://feeds.feedburner.com/entrepreneur/latest", source: "Entrepreneur", category: "market" },
+      { url: "https://feeds.reuters.com/reuters/businessNews", source: "Reuters Business", category: "market" },
+      // Regulatory & government enforcement
+      { url: "https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=corporate+regulatory+compliance", source: "Federal Register", category: "regulatory" },
+      { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=40&search_text=&output=atom", source: "SEC EDGAR", category: "regulatory" },
+      { url: "https://www.ftc.gov/rss.xml", source: "FTC", category: "regulatory" },
+      { url: "https://www.justice.gov/rss/news.xml", source: "DOJ", category: "regulatory" },
+      { url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-safety-recalls/rss.xml", source: "FDA", category: "regulatory" },
+      // Cybersecurity & threat intelligence
+      { url: "https://www.cisa.gov/cybersecurity-advisories/all.xml", source: "CISA", category: "cybersecurity" },
+      // Corporate announcements
+      { url: "https://www.prnewswire.com/rss/news-releases-list.rss", source: "PR Newswire", category: "market" },
+      // Labor & economic indicators
+      { url: "https://www.bls.gov/feed/bls_latest.rss", source: "Bureau of Labor Statistics", category: "economic" },
+      { url: "https://www.federalreserve.gov/feeds/press_all.xml", source: "Federal Reserve", category: "economic" },
+      // Workplace & environmental enforcement
+      { url: "https://www.osha.gov/news/newsreleases/feed", source: "OSHA", category: "regulatory" },
+      { url: "https://www.epa.gov/newsreleases/search/rss", source: "EPA", category: "regulatory" },
+      // Financial industry regulatory
+      { url: "https://www.finra.org/newsroom/rss.xml", source: "FINRA", category: "regulatory" },
+      { url: "https://www.consumerfinance.gov/about-us/newsroom/feed/", source: "CFPB", category: "regulatory" },
+      // Global health & safety
+      { url: "https://www.who.int/rss-feeds/news-english.xml", source: "WHO", category: "health" },
+      // Transportation safety
+      { url: "https://www.ntsb.gov/news/press-releases/Pages/feed.aspx", source: "NTSB", category: "regulatory" },
+      // Geopolitical
+      { url: "https://www.state.gov/press-releases/feed/", source: "State Dept", category: "geopolitical" },
+      { url: "https://www.whitehouse.gov/briefing-room/statements-releases/feed/", source: "White House", category: "geopolitical" },
+      // Additional business news
+      { url: "https://feeds.apnews.com/apf-business", source: "AP Business", category: "market" },
+      { url: "https://www.businesswire.com/rss/home/?rss=G1", source: "Business Wire", category: "market" },
+      // Financial system & banking regulatory
+      { url: "https://www.fdic.gov/news/press-releases/feed.xml", source: "FDIC", category: "regulatory" },
+      { url: "https://www.occ.gov/news-issuances/news-releases/feed.xml", source: "OCC", category: "regulatory" },
+      { url: "https://home.treasury.gov/system/files/press-releases.rss", source: "US Treasury", category: "regulatory" },
+      // Health & safety
+      { url: "https://www.hhs.gov/news/press/press-releases/rss.xml", source: "HHS", category: "health" },
+      // Energy
+      { url: "https://www.eia.gov/rss/todayinenergy.xml", source: "EIA", category: "economic" },
+      { url: "https://www.ferc.gov/news-events/news/press-releases/feed", source: "FERC", category: "regulatory" },
+      // Employment & labor
+      { url: "https://www.eeoc.gov/newsroom/rss.xml", source: "EEOC", category: "regulatory" },
+      { url: "https://www.nlrb.gov/news-publications/news-releases/rss.xml", source: "NLRB", category: "regulatory" },
+      // Trade & customs
+      { url: "https://www.cbp.gov/newsroom/regional-media-release/feed", source: "CBP", category: "geopolitical" },
+      // International financial regulatory
+      { url: "https://www.fca.org.uk/news/rss.xml", source: "UK FCA", category: "regulatory" },
+      { url: "https://www.ecb.europa.eu/rss/press.html", source: "ECB", category: "economic" },
+      // Cybersecurity threat intelligence
+      { url: "https://isc.sans.edu/rssfeed_full.xml", source: "SANS Internet Storm Center", category: "cybersecurity" }
     ];
     SIGNAL_TYPE_MAP = {
       market: ["acquisition", "merger", "market share", "revenue", "earnings", "IPO", "stock", "valuation", "growth", "decline"],
-      regulatory: ["regulation", "compliance", "SEC", "FTC", "antitrust", "sanctions", "policy", "legislation", "enforcement", "fine"],
-      technology: ["AI", "artificial intelligence", "cybersecurity", "breach", "cloud", "digital transformation", "automation", "quantum"],
+      regulatory: ["regulation", "compliance", "SEC", "FTC", "antitrust", "sanctions", "policy", "legislation", "enforcement", "fine", "DOJ", "FDA", "recall", "violation", "investigation", "settlement"],
+      technology: ["AI", "artificial intelligence", "cloud", "digital transformation", "automation", "quantum", "software", "platform"],
+      cybersecurity: ["ransomware", "breach", "vulnerability", "exploit", "malware", "phishing", "incident", "cyberattack", "zero-day", "advisory", "patch", "CVE", "CISA", "threat actor"],
       competitor: ["competitor", "rival", "market leader", "disruption", "partnership", "alliance", "launch", "expansion"],
-      supply_chain: ["supply chain", "logistics", "shipping", "tariff", "trade war", "shortage", "inventory", "procurement"]
+      supply_chain: ["supply chain", "logistics", "shipping", "tariff", "trade war", "shortage", "inventory", "procurement"],
+      geopolitical: ["sanctions", "trade war", "tariff", "geopolitical", "conflict", "export control", "diplomatic", "embargo"],
+      economic: ["inflation", "unemployment", "interest rate", "GDP", "recession", "jobs report", "CPI", "labor market", "monetary policy", "federal reserve", "Fed rate"],
+      health: ["outbreak", "pandemic", "recall", "safety alert", "public health", "WHO", "FDA warning", "contamination", "epidemic", "health emergency"]
     };
     IMPACT_KEYWORDS = {
       critical: ["crisis", "breach", "collapse", "bankruptcy", "shutdown", "emergency", "catastrophic"],
@@ -20898,16 +21384,48 @@ var init_LiveSignalIngestionService = __esm({
           );
         });
         const topItems = strategicItems.slice(0, 10);
-        return topItems.map((item) => ({
-          signalType: classifySignalType(`${item.title} ${item.description}`),
-          description: `${item.title}${item.description ? ` \u2014 ${item.description.substring(0, 450)}` : ""}`,
-          confidence: calculateConfidence(item),
-          impact: classifyImpact(`${item.title} ${item.description}`),
-          timeline: estimateTimeline(`${item.title} ${item.description}`),
-          source: item.source,
-          sourceUrl: item.link,
-          category: item.category
-        }));
+        return topItems.map((item) => {
+          const fullText = `${item.title} ${item.description}`;
+          return {
+            signalType: classifySignalType(fullText),
+            description: `${item.title}${item.description ? ` \u2014 ${item.description.substring(0, 450)}` : ""}`,
+            confidence: calculateConfidence(item),
+            impact: classifyImpact(fullText),
+            timeline: estimateTimeline(fullText),
+            source: item.source,
+            sourceUrl: item.link,
+            category: item.category,
+            jurisdiction: inferJurisdiction(item.source),
+            confidenceTier: getConfidenceTier(item.source),
+            // P2: Regulatory enforcement
+            enforcementActionType: extractEnforcementActionType(fullText),
+            regulatorAgency: extractRegulatoryAgency(item.source),
+            penaltyAmountRange: extractPenaltyAmountRange(fullText),
+            namedSector: extractNamedSector(fullText),
+            // P3: Cyber threat intelligence
+            threatSeverity: extractThreatSeverity(fullText),
+            exploitStatus: extractExploitStatus(fullText),
+            affectedVendor: extractAffectedVendor(fullText),
+            cveId: extractCveId(fullText),
+            affectedSector: extractAffectedSector(fullText, item.source),
+            // P4: Economic indicator
+            economicIndicatorType: extractEconomicIndicatorType(fullText, item.source),
+            indicatorDirection: extractIndicatorDirection(fullText),
+            indicatorMagnitude: extractIndicatorMagnitude(fullText),
+            centralBank: extractCentralBank(item.source),
+            // P5: Trade & geopolitical
+            tradeActionType: extractTradeActionType(fullText),
+            effectiveTimeline: extractEffectiveTimeline(fullText),
+            tradePartner: extractTradePartner(fullText),
+            affectedHsCodes: extractAffectedHsCodes(fullText),
+            // P6: Health & safety recall
+            recallClass: extractRecallClass(fullText),
+            affectedProductType: extractAffectedProductType(fullText, item.source),
+            recallScope: extractRecallScope(fullText),
+            // Market signal
+            signalEventType: extractSignalEventType(fullText)
+          };
+        });
       }
       async persistSignals(signals, organizationId) {
         let inserted = 0;
@@ -20964,20 +21482,28 @@ var init_LiveSignalIngestionService = __esm({
         await this.generateAlerts(signals, organizationId);
         const alertCount = signals.filter((s) => s.impact === "critical" || s.impact === "high").length;
         const detections = await evaluateAndPersistSignals(signals, organizationId);
-        const leadingHits = await evaluateLeadingIndicators(signals, organizationId);
-        if (leadingHits > 0) {
-          console.log(`   \u{1F52E} ${leadingHits} developing situation(s) detected via leading indicators`);
+        const [t6Result, , t8Result] = await Promise.allSettled([
+          // Tier 6: leading indicator convergence scoring
+          evaluateLeadingIndicators(signals, organizationId),
+          // Tier 7: compound sub-threshold pattern detection
+          evaluateCompoundPatterns(signals, organizationId),
+          // Tier 8: preparation signal monitoring
+          // Treats declining organizational preparedness as a trigger in its own right.
+          (async () => {
+            const { checkPreparationSignals: checkPreparationSignals2 } = await Promise.resolve().then(() => (init_PreparationSignalService(), PreparationSignalService_exports));
+            return checkPreparationSignals2(organizationId);
+          })()
+        ]);
+        if (t6Result.status === "fulfilled" && t6Result.value > 0) {
+          console.log(`   \u{1F52E} ${t6Result.value} developing situation(s) detected via leading indicators`);
         }
-        await evaluateCompoundPatterns(signals, organizationId);
-        try {
-          const { checkPreparationSignals: checkPreparationSignals2 } = await Promise.resolve().then(() => (init_PreparationSignalService(), PreparationSignalService_exports));
-          const prepResults = await checkPreparationSignals2(organizationId);
-          const prepFired = prepResults.filter((r) => r.triggered).length;
+        if (t8Result.status === "fulfilled") {
+          const prepFired = t8Result.value.filter((r) => r.triggered).length;
           if (prepFired > 0) {
             console.log(`   \u{1F534} ${prepFired} preparation gap trigger(s) fired \u2014 readiness recovery protocols queued`);
           }
-        } catch (err) {
-          console.error("   [Tier 8] Preparation signal check failed:", err);
+        } else if (t8Result.status === "rejected") {
+          console.error("   [Tier 8] Preparation signal check failed:", t8Result.reason);
         }
         console.log(`   \u2705 Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
         return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
@@ -24435,15 +24961,15 @@ __export(TriggerIntelligenceService_exports, {
   TriggerIntelligenceService: () => TriggerIntelligenceService,
   triggerIntelligence: () => triggerIntelligence
 });
-import OpenAI5 from "openai";
+import OpenAI6 from "openai";
 import { eq as eq29, and as and20, gte as gte8, desc as desc17 } from "drizzle-orm";
-var openai3, TriggerIntelligenceService, triggerIntelligence;
+var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    openai3 = new OpenAI5({
+    openai4 = new OpenAI6({
       apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
       baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
     });
@@ -24470,7 +24996,7 @@ Provide analysis in JSON format with:
 7. recommendations: array of 2-3 specific actionable recommendations
 
 Be specific and strategic. Focus on business impact.`;
-          const response = await openai3.chat.completions.create({
+          const response = await openai4.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -24661,16 +25187,16 @@ __export(ExecutiveBriefingService_exports, {
   ExecutiveBriefingService: () => ExecutiveBriefingService,
   executiveBriefing: () => executiveBriefing
 });
-import OpenAI6 from "openai";
+import OpenAI7 from "openai";
 import { eq as eq30, and as and21, gte as gte9, desc as desc18 } from "drizzle-orm";
-var openai4, ExecutiveBriefingService, executiveBriefing;
+var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
     "use strict";
     init_db();
     init_schema();
     init_PreparednessEngine();
-    openai4 = new OpenAI6({
+    openai5 = new OpenAI7({
       apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
       baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
     });
@@ -24748,7 +25274,7 @@ Generate a comprehensive situation report with:
 6. DECISION POINTS (requires executive attention)
 
 Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
-          const response = await openai4.chat.completions.create({
+          const response = await openai5.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -24867,7 +25393,7 @@ Generate a concise executive briefing with these sections:
 [Strategic opportunities identified]
 
 Keep it concise, strategic, and actionable. Use bullet points where appropriate.`;
-        const response = await openai4.chat.completions.create({
+        const response = await openai5.chat.completions.create({
           model: "gpt-4o",
           messages: [
             {
@@ -54759,11 +55285,12 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.user?.organizationId;
       if (!orgId) {
-        return res.json({ disabledDataPoints: [], evaluationMode: "both" });
+        return res.json({ disabledDataPoints: [], disabledFeeds: [], evaluationMode: "both" });
       }
       const config = await storage.getSignalMonitoringConfig(orgId);
       res.json({
         disabledDataPoints: config?.disabledDataPoints || [],
+        disabledFeeds: config?.disabledFeeds || [],
         evaluationMode: config?.evaluationMode || "both"
       });
     } catch (err) {
@@ -54773,19 +55300,33 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app2.patch("/api/signal-monitoring-config", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.user.organizationId;
-      const { disabledDataPoints, evaluationMode } = req.body;
-      if (!Array.isArray(disabledDataPoints)) {
+      const { disabledDataPoints, evaluationMode, disabledFeeds } = req.body;
+      if (disabledDataPoints !== void 0 && !Array.isArray(disabledDataPoints)) {
         return res.status(400).json({ error: "disabledDataPoints must be an array" });
+      }
+      if (disabledFeeds !== void 0 && !Array.isArray(disabledFeeds)) {
+        return res.status(400).json({ error: "disabledFeeds must be an array" });
       }
       const validModes = ["configured", "default", "both"];
       if (evaluationMode !== void 0 && !validModes.includes(evaluationMode)) {
         return res.status(400).json({ error: `evaluationMode must be one of: ${validModes.join(", ")}` });
       }
-      const config = await storage.upsertSignalMonitoringConfig(orgId, disabledDataPoints, evaluationMode);
+      const existing = await storage.getSignalMonitoringConfig(orgId);
+      const resolvedDps = disabledDataPoints ?? existing?.disabledDataPoints ?? [];
+      const config = await storage.upsertSignalMonitoringConfig(orgId, resolvedDps, evaluationMode, disabledFeeds);
       res.json({
         disabledDataPoints: config.disabledDataPoints || [],
+        disabledFeeds: config.disabledFeeds || [],
         evaluationMode: config.evaluationMode || "both"
       });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/signal-feeds", async (_req, res) => {
+    try {
+      const { getFeedCatalog: getFeedCatalog2 } = await Promise.resolve().then(() => (init_LiveSignalIngestionService(), LiveSignalIngestionService_exports));
+      res.json(getFeedCatalog2());
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

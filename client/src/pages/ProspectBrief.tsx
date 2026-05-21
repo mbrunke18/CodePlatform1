@@ -414,7 +414,7 @@ export default function ProspectBrief() {
           <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 10 }}>Next Step for {form.company}</div>
             <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: "0 0 12px", fontFamily: "'Cormorant Garamond', serif" }}>
-              Request a 2-Week Pilot — $75,000 Flat Fee, Zero Integration Risk
+              Request a 90-Day Founding Partner Validation — $75,000 Flat Fee, Zero Integration Risk
             </h3>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", margin: "0 0 20px", lineHeight: 1.6 }}>
               Deployable in 2 weeks. {playbookCount} Readiness Protocols pre-built for {form.industry}. Your triggers armed from day one. No rip-and-replace — sits above your existing Microsoft infrastructure.

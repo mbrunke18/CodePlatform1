@@ -954,7 +954,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-2xl text-white/70 max-w-3xl mb-12 leading-relaxed relative z-10"
         >
-          Start a 30-day pilot with your organization. See the full signal-to-action pipeline
+          Apply for the 90-day Founding Partner validation program. See the full signal-to-action pipeline
           running on your strategic priorities within the first week.
         </motion.p>
 

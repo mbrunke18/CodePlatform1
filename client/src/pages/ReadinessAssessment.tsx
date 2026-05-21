@@ -778,7 +778,7 @@ export default function ReadinessAssessment() {
                 <p className="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
                   Based on your score of <span className={`font-bold ${domainConfig.textLight}`}>{result.score}/100</span>,{" "}
                   {result.score < 60
-                    ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
+                    ? `we recommend starting with our Founding Partner Program — a guided 90-day engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
                     : `we recommend starting with our Readiness Protocol library — activate ${domainConfig.playbooks} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
                 </p>
               </CardContent>

@@ -202,7 +202,7 @@ export default function SettingsHub() {
                       ].map(f => (
                         <div key={f.label}><Label className="text-xs font-bold uppercase tracking-wider text-[#6B7280]">{f.label}</Label><Input className="mt-1.5 border-[#E8E4DC]" defaultValue={f.value} readOnly /></div>
                       ))}
-                      <div className="flex items-center justify-between pt-2"><div><p className="font-medium text-[#0A0F2E] text-sm">Pilot Mode</p><p className="text-xs text-[#6B7280] mt-0.5">Restrict activation to authorized pilot users only</p></div><Switch defaultChecked /></div>
+                      <div className="flex items-center justify-between pt-2"><div><p className="font-medium text-[#0A0F2E] text-sm">Founding Partner Mode</p><p className="text-xs text-[#6B7280] mt-0.5">Restrict activation to authorized Founding Partner users only</p></div><Switch defaultChecked /></div>
                       <Link href="/organization-setup"><Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]">Edit Organization Settings <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
                     </CardContent>
                   </Card>
