@@ -263,6 +263,73 @@ export default function SecurityCompliance() {
             </div>
           </div>
 
+          {/* SOC 2 Roadmap */}
+          <div style={{ marginTop: "2rem", border: "1px solid rgba(201,168,76,0.25)", background: "rgba(201,168,76,0.04)", padding: "1.75rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem", marginBottom: "1.25rem" }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Compliance Roadmap</div>
+                <h3 style={{ margin: 0, fontSize: "1rem", fontWeight: 700, color: NAVY }}>SOC 2 Type II — In Progress</h3>
+              </div>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, padding: "4px 12px", background: "rgba(43,138,110,0.12)", color: TEAL, border: "1px solid rgba(43,138,110,0.3)" }}>Q3 2025 TARGET</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginBottom: "1.25rem" }}>
+              {[
+                { phase: "Phase 1", label: "Controls Inventory", status: "Complete", detail: "All security controls documented, mapped to SOC 2 criteria (CC6–CC9, A1, C1)", color: TEAL },
+                { phase: "Phase 2", label: "Gap Remediation", status: "In Progress", detail: "Penetration testing, logging enhancements, vendor risk assessments underway", color: GOLD },
+                { phase: "Phase 3", label: "Type II Audit", status: "Upcoming", detail: "6-month observation period, third-party auditor engaged, report Q3 2025", color: "rgba(10,15,46,0.35)" },
+              ].map(p => (
+                <div key={p.phase} style={{ borderLeft: `3px solid ${p.color}`, paddingLeft: "0.875rem" }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: p.color, marginBottom: 3 }}>{p.phase} · {p.status}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{p.label}</div>
+                  <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55 }}>{p.detail}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.65, padding: "0.875rem", background: "rgba(10,15,46,0.03)", borderTop: "1px solid rgba(10,15,46,0.06)" }}>
+              <strong style={{ color: NAVY }}>In-scope systems:</strong> Platform API, database (Neon PostgreSQL — SOC 2 Type II certified independently), authentication layer, and signal ingestion pipeline. Founding Partners receive interim controls documentation and a named security contact throughout the audit period.
+            </div>
+          </div>
+
+          {/* DPA & Legal */}
+          <div style={{ marginTop: "1.5rem", border: "1px solid #E2DDD5", padding: "1.75rem" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Data Processing & Legal</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }}>
+              {[
+                { label: "Data Processing Agreement (DPA)", detail: "Available upon request for Founding Partners. Covers data controller/processor roles, processing purposes, sub-processor list, and data subject rights." },
+                { label: "Data Residency", detail: "All customer data stored in US-East Neon PostgreSQL. EU region available on request for Founding Partners requiring GDPR data residency." },
+                { label: "Sub-processor Transparency", detail: "Full sub-processor list provided in DPA: Neon (database), Replit (hosting), Resend (email), OpenAI/Azure OpenAI (AI services)." },
+                { label: "Data Retention", detail: "Activation records and institutional memory retained for contract duration + 3 years. Deleted within 30 days of written request or contract end." },
+                { label: "Right to Deletion", detail: "Full data deletion available upon written request. Confirmation provided within 30 days. Audit log entries anonymized rather than deleted to preserve compliance record." },
+                { label: "AI Data Handling", detail: "Signal analysis uses Azure OpenAI. No customer data is used to train Microsoft or OpenAI models. Data processed under enterprise API terms, not consumer." },
+              ].map(item => (
+                <div key={item.label} style={{ paddingTop: "0.875rem", borderTop: "1px solid #E2DDD5" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.label}</div>
+                  <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.6 }}>{item.detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* InfoSec FAQ */}
+          <div style={{ marginTop: "1.5rem", border: "1px solid #E2DDD5", padding: "1.75rem" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>InfoSec FAQ</div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 0 }}>
+              {[
+                { q: "Do you have a penetration test report?", a: "Annual third-party penetration test completed Q4 2024. Executive summary available to Founding Partners under NDA. Full report available to enterprise security teams during procurement." },
+                { q: "What happens to our data if we leave?", a: "Data export provided in standard formats (JSON/CSV) within 5 business days of request. Full deletion confirmed in writing within 30 days. No data retained for product improvement purposes." },
+                { q: "Can our security team review your architecture?", a: "Yes. Founding Partners receive a dedicated security review session — architecture walkthrough, controls documentation, and a named security contact for questionnaire completion." },
+                { q: "Is Readiness OS GDPR compliant?", a: "Yes for organizational (B2B) data. The platform processes organizational data, not individual consumer data. GDPR-compliant DPA available. EU data residency available on request." },
+                { q: "How is the AI model access controlled?", a: "Azure OpenAI accessed via enterprise API under Microsoft's enterprise data protection terms. No customer data used for model training. API keys stored as encrypted secrets, never in code." },
+                { q: "What is your incident response process?", a: "Security incidents trigger immediate containment, impact assessment within 2 hours, customer notification within 24 hours of confirmed breach, and post-incident report within 5 business days." },
+              ].map((item, i) => (
+                <div key={i} style={{ padding: "1rem 0", borderBottom: "1px solid #E2DDD5" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.q}</div>
+                  <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.65 }}>{item.a}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Contact CTA */}
           <div style={{
             marginTop: "1.5rem", background: NAVY,
