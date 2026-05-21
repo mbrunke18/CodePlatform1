@@ -3049,9 +3049,10 @@ export default function Homepage() {
       {/* 1. CLAIM */}
       <HeroSection />
 
-      {/* VALUE RAMP — answers "what do I get in 30/60/90 days?" */}
-      <div style={{ background: "#0D1435", borderTop: "1px solid rgba(201,168,76,0.18)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "0" }}>
+      {/* VALUE RAMP — what you get and when, plus the compounding permanent value */}
+      <div style={{ background: "#0D1435", borderTop: "1px solid rgba(201,168,76,0.18)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ ...CONTAINER, width: "100%" }}>
+          {/* Three time-bound milestones */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
             {[
               {
@@ -3068,8 +3069,8 @@ export default function Homepage() {
               },
               {
                 marker: "Day 90",
-                headline: "Documented ROI business case",
-                body: "Three activation cycles logged. Institutional memory built. A board-ready ROI report generated from real execution data — not a demo. Your baseline for expansion.",
+                headline: "Documented ROI business case — your baseline, not your ceiling",
+                body: "Three activation cycles logged. Institutional memory built. A board-ready ROI report generated from real execution data — not a demo. The setup work is now done permanently.",
                 accent: GOLD_LIGHT,
               },
             ].map((step, i) => (
@@ -3089,6 +3090,49 @@ export default function Homepage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Compounding value strip — the permanent ROI argument */}
+          <div style={{
+            borderTop: `2px solid ${TEAL}`,
+            background: "rgba(43,138,110,0.06)",
+            padding: "24px 40px",
+            display: "flex", alignItems: "flex-start", gap: 48,
+          }}>
+            <div style={{ flexShrink: 0 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>
+                After Day 90 — Ongoing
+              </div>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: "#fff", lineHeight: 1.2, maxWidth: 320 }}>
+                The setup work is done. Permanently.
+              </div>
+            </div>
+            <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.60)", lineHeight: 1.7, maxWidth: 680 }}>
+              Every trigger after Day 90 fires against a protocol you've already refined — not one rebuilt from scratch. New situations get staged as new protocols; existing ones sharpen with each activation. The Week 1 investment pays forward indefinitely. No organization that has built its readiness infrastructure ever rebuilds it — they only improve it. <span style={{ color: TEAL, fontWeight: 600 }}>That is the ROI that compounds across every customer, every year.</span>
+            </div>
+          </div>
+
+          {/* One-situation ROI callout */}
+          <div style={{
+            borderTop: `1px solid rgba(201,168,76,0.22)`,
+            background: "rgba(201,168,76,0.04)",
+            padding: "22px 40px",
+            display: "flex", alignItems: "center", gap: 40,
+          }}>
+            <div style={{ flexShrink: 0, borderRight: `1px solid rgba(201,168,76,0.2)`, paddingRight: 40 }}>
+              <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 4 }}>
+                ROI threshold
+              </div>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1.1 }}>
+                One situation.
+              </div>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 26, fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>
+                Full-year ROI.
+              </div>
+            </div>
+            <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 720 }}>
+              The annual platform cost is recovered the moment a single crisis is handled in 12 minutes rather than 30 days of emergency mobilization. Ransomware. Activist pressure. Supply chain collapse. Regulatory action. Any one of those — handled right, once — justifies the entire year. <span style={{ color: "rgba(201,168,76,0.85)", fontWeight: 600 }}>Most organizations face several each year. The ROI case writes itself.</span>
+            </div>
           </div>
         </div>
       </div>
