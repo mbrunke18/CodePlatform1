@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 21, 2026 (rev 41) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 21, 2026 (rev 42) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1366,25 +1366,96 @@ Signal description passed to the evaluator:
 `${item.title}${item.description ? ` — ${item.description.substring(0, 450)}` : ''}`
 ```
 
-### New Data Fields (added May 2026)
+### Signal Intelligence Data Model (all fields on `trigger_detections`)
 
-Three additive columns added to support the expanded 39-feed coverage:
+Every field is additive and nullable — all existing rows remain valid. All extraction runs in `LiveSignalIngestionService.ts`; all persistence in `SignalEvaluationService.ts`.
 
-**`trigger_detections` table (2 new columns):**
-| Column | Type | Values | Purpose |
+#### Batch 1 — Feed Context (added May 2026, rev 41)
+| Column | Type | Source | Values |
 |---|---|---|---|
-| `signal_category` | varchar(50) | `market \| regulatory \| cybersecurity \| economic \| health \| geopolitical` | Feed category at detection time — enables category-level analytics and feed manager filtering to propagate to detection records |
-| `jurisdiction` | varchar(50) | `US \| UK \| EU \| global` | Geographic scope — inferred from source. Enables protocol recommendations to be scoped by jurisdiction. All existing rows default to `US`. |
+| `signal_category` | varchar(50) | Feed `category` property | `market \| regulatory \| cybersecurity \| economic \| health \| geopolitical` |
+| `jurisdiction` | varchar(50) | `inferJurisdiction(source)` | `US \| UK \| EU \| global` — UK FCA→UK, ECB→EU, WHO/State Dept/White House→global, all others→US |
 
-**`signal_activity_log` table (1 new column):**
-| Column | Type | Values | Purpose |
+#### Batch 2 — Protocol Graph Linkage (added May 2026, rev 42)
+Links every live detection to the actual protocol record it recommended. **This is the field that wires the signal pipeline into the 170-protocol graph.**
+| Column | Type | Source | Purpose |
 |---|---|---|---|
-| `source_confidence_tier` | integer | `1 \| 2 \| 3` | Tier persisted from `getConfidenceTier()` at scan time. Makes data provenance visible in Command Tower activity feed without joining back to the feed catalog. |
+| `protocol_id_matched` | uuid | Post-insert lookup in `playbook_library` via `ILIKE` on `recommendedPlaybook` name | Direct FK to `playbook_library.id` — enables joins, frequency analytics, protocol coverage maps |
+| `protocol_number_matched` | integer | Same lookup | `playbook_library.playbook_number` (1–184) — human-readable reference for reporting |
 
-**Future field opportunities** (not yet implemented — document before building):
-- `enforcement_action_type` (`fine | investigation | consent_order | advisory | recall | ruling`) — extract from EEOC, NLRB, FDIC, OCC, FTC, DOJ signals via keyword match
-- `economic_indicator_type` (`interest_rate | jobs_report | CPI | energy_price | monetary_policy`) — extract from BLS, Federal Reserve, EIA, ECB signals
-- `affected_industries` (text array) — which sectors a regulatory signal applies to
+Lookup runs post-insert (non-blocking). Console: `🔗 Linked detection to Protocol #73 (Ransomware Immediate Response)`.
+
+#### Batch 3 — Regulatory Enforcement Detail (added May 2026, rev 42)
+Powers precise routing across **~40–50 of the 221 triggers** sourced from the 17 regulatory feeds.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `enforcement_action_type` | varchar(50) | `extractEnforcementActionType(text)` | `fine \| investigation \| consent_order \| injunction \| criminal_indictment \| settlement \| advisory` |
+| `regulator_agency` | varchar(100) | `extractRegulatoryAgency(source)` | `SEC \| FTC \| DOJ \| FDA \| EEOC \| NLRB \| FDIC \| OCC \| FERC \| OSHA \| EPA \| FINRA \| CFPB \| Treasury \| UK FCA \| Federal Register` — mapped directly from feed source name |
+
+**Routing impact:** `enforcement_action_type: criminal_indictment` routes to Protocol #DOJ-Criminal; `fine` routes to Protocol #Regulatory-Penalty Response. Without this field both hit the same generic "Regulatory Enforcement Action" trigger.
+
+#### Batch 4 — Cyber Threat Intelligence (added May 2026, rev 42)
+CISA and SANS ISC already label severity and exploit status in their feeds. These fields capture that structure.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `threat_severity` | varchar(20) | `extractThreatSeverity(text)` | `critical \| high \| medium \| low` — CVSS-aligned keyword match |
+| `exploit_status` | varchar(50) | `extractExploitStatus(text)` | `known_exploited \| proof_of_concept \| theoretical` — CISA KEV language |
+| `affected_vendor` | varchar(200) | `extractAffectedVendor(text)` | Named vendor scan: Microsoft, Cisco, Fortinet, VMware, Palo Alto, Juniper, F5, Citrix, SolarWinds, Ivanti, MOVEit, Atlassian, Apache, OpenSSL |
+
+**Routing impact:** `threat_severity: critical` + `exploit_status: known_exploited` activates Protocol #73 (Ransomware Immediate Response). `theoretical` activates Protocol #74 (Patch Compliance Sprint). Without these fields, both hit the same `Cybersecurity Breach Signal` trigger.
+
+#### Batch 5 — Economic Indicator Detail (added May 2026, rev 42)
+BLS, Federal Reserve, EIA, and ECB signals carry structured economic data in headlines. These fields make that structure queryable.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `economic_indicator_type` | varchar(50) | `extractEconomicIndicatorType(text, source)` | `interest_rate \| jobs_report \| CPI \| GDP \| energy_price \| monetary_policy` |
+| `indicator_direction` | varchar(20) | `extractIndicatorDirection(text)` | `rising \| falling \| stable \| unexpected` — `unexpected` is the routing key for shock-level protocols |
+
+**Routing impact:** `economic_indicator_type: interest_rate` + `indicator_direction: unexpected` triggers Protocol #88 (Recession Readiness Sprint). `stable` produces no alert. Without `indicator_direction`, both fire the same trigger.
+
+#### Batch 6 — Trade & Geopolitical Action (added May 2026, rev 42)
+State Dept, White House, and CBP signals carry action type and timeline signals in headlines.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `trade_action_type` | varchar(50) | `extractTradeActionType(text)` | `tariff \| sanction \| export_control \| embargo \| executive_order` |
+| `effective_timeline` | varchar(20) | `extractEffectiveTimeline(text)` | `immediate \| 30_days \| 90_days \| proposed` — determines protocol urgency level |
+
+**Routing impact:** `trade_action_type: sanction` + `effective_timeline: immediate` = emergency supply chain protocol. `proposed` = 90-day readiness sprint. Without `effective_timeline`, both activate the same protocol at the same urgency.
+
+#### Batch 7 — Health & Safety Recall (added May 2026, rev 42)
+FDA, HHS, and WHO feeds carry classification data for recalls and health advisories.
+| Column | Type | Extraction function | Values |
+|---|---|---|---|
+| `recall_class` | varchar(20) | `extractRecallClass(text)` | `Class_I \| Class_II \| Class_III` — FDA classification (Class I = risk of serious injury/death) |
+| `affected_product_type` | varchar(50) | `extractAffectedProductType(text, source)` | `food \| pharma \| medical_device \| vehicle \| consumer` |
+
+**Routing impact:** `recall_class: Class_I` + `affected_product_type: pharma` routes to Protocol #41 (Product Recall Emergency). `Class_III` routes to Protocol #42 (Voluntary Recall Management). Without `recall_class`, all recalls hit the same protocol.
+
+#### `signal_activity_log` table — 1 new column (rev 41)
+| Column | Type | Source | Purpose |
+|---|---|---|---|
+| `source_confidence_tier` | integer | `getConfidenceTier(source)` | `1 \| 2 \| 3` — tier at scan time. Makes data provenance visible in Command Tower without a join. |
+
+#### Full column summary for `trigger_detections`
+
+All columns added across both batches (all nullable, all additive):
+```
+signal_category          varchar(50)   — feed category
+jurisdiction             varchar(50)   — US | UK | EU | global
+protocol_id_matched      uuid          — playbook_library.id
+protocol_number_matched  integer       — playbook_library.playbook_number
+enforcement_action_type  varchar(50)   — fine | investigation | consent_order | ...
+regulator_agency         varchar(100)  — SEC | FTC | DOJ | EEOC | ...
+threat_severity          varchar(20)   — critical | high | medium | low
+exploit_status           varchar(50)   — known_exploited | proof_of_concept | theoretical
+affected_vendor          varchar(200)  — Microsoft | Cisco | Fortinet | ...
+economic_indicator_type  varchar(50)   — interest_rate | jobs_report | CPI | ...
+indicator_direction      varchar(20)   — rising | falling | stable | unexpected
+trade_action_type        varchar(50)   — tariff | sanction | export_control | ...
+effective_timeline       varchar(20)   — immediate | 30_days | 90_days | proposed
+recall_class             varchar(20)   — Class_I | Class_II | Class_III
+affected_product_type    varchar(50)   — food | pharma | medical_device | vehicle | consumer
+```
 
 ### Signal Feed Manager (UI — May 2026)
 Per-org feed selection is managed in **`client/src/pages/SignalConfiguration.tsx`** — collapsible "Signal Feed Sources" panel.

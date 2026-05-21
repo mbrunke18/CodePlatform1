@@ -6546,6 +6546,36 @@ export const triggerDetections = pgTable('trigger_detections', {
   jurisdiction: varchar('jurisdiction', { length: 50 }).default('US'), // US | UK | EU | global — inferred from source
   recommendedPlaybook: varchar('recommended_playbook', { length: 255 }), // primary recommendation
   alternatePlaybooks: text('alternate_playbooks').array().default([]), // secondary options for approver to choose from
+  // ── P1: Protocol Graph Linkage ───────────────────────────────────────────────
+  protocolIdMatched: uuid('protocol_id_matched'),         // playbook_library.id — direct FK to matched protocol
+  protocolNumberMatched: integer('protocol_number_matched'), // playbook_library.playbook_number (1-184) — human-readable ref
+  // ── P2: Regulatory Enforcement Detail ────────────────────────────────────────
+  enforcementActionType: varchar('enforcement_action_type', { length: 50 }),
+  // fine | investigation | consent_order | injunction | criminal_indictment | settlement | advisory
+  regulatorAgency: varchar('regulator_agency', { length: 100 }),
+  // SEC | FTC | DOJ | EEOC | NLRB | FDIC | OCC | FERC | OSHA | EPA | FINRA | CFPB | Treasury | UK FCA
+  // ── P3: Cyber Threat Intelligence ────────────────────────────────────────────
+  threatSeverity: varchar('threat_severity', { length: 20 }),
+  // critical | high | medium | low — CVSS-aligned, extracted from CISA/SANS content
+  exploitStatus: varchar('exploit_status', { length: 50 }),
+  // known_exploited | proof_of_concept | theoretical
+  affectedVendor: varchar('affected_vendor', { length: 200 }),
+  // Microsoft | Cisco | Fortinet | etc. — named in advisory
+  // ── P4: Economic Indicator Detail ────────────────────────────────────────────
+  economicIndicatorType: varchar('economic_indicator_type', { length: 50 }),
+  // interest_rate | jobs_report | CPI | GDP | energy_price | monetary_policy
+  indicatorDirection: varchar('indicator_direction', { length: 20 }),
+  // rising | falling | stable | unexpected — routes to correct protocol severity
+  // ── P5: Trade & Geopolitical Action ──────────────────────────────────────────
+  tradeActionType: varchar('trade_action_type', { length: 50 }),
+  // tariff | sanction | export_control | embargo | executive_order
+  effectiveTimeline: varchar('effective_timeline', { length: 20 }),
+  // immediate | 30_days | 90_days | proposed — determines protocol urgency
+  // ── P6: Health & Safety Recall ───────────────────────────────────────────────
+  recallClass: varchar('recall_class', { length: 20 }),
+  // Class_I | Class_II | Class_III — FDA classification (Class I = highest risk)
+  affectedProductType: varchar('affected_product_type', { length: 50 }),
+  // food | pharma | medical_device | vehicle | consumer
   status: varchar('status', { length: 50 }).default('detected'), // detected | notified | acknowledged | dismissed
   notificationSent: boolean('notification_sent').default(false),
   detectedAt: timestamp('detected_at').defaultNow(),

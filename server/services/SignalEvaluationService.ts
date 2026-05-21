@@ -693,6 +693,7 @@ export async function evaluateAndPersistSignals(
       } catch { /* non-critical — default urgency stands */ }
 
       // Persist the detection with full evidence trail
+      const sig = signal as any;
       const [savedDetection] = await db.insert(triggerDetections).values({
         organizationId: organizationId,
         triggerName: detection.triggerName,
@@ -701,10 +702,26 @@ export async function evaluateAndPersistSignals(
         signalSource: signal.source,
         signalSourceUrl: signal.sourceUrl || null,
         confidenceScore: detection.confidenceScore,
-        signalCategory: (signal as any).category || null,
-        jurisdiction: (signal as any).jurisdiction || 'US',
+        signalCategory: sig.category || null,
+        jurisdiction: sig.jurisdiction || 'US',
         recommendedPlaybook: detection.recommendedPlaybook,
         alternatePlaybooks: detection.alternatePlaybooks,
+        // P2: Regulatory enforcement
+        enforcementActionType: sig.enforcementActionType || null,
+        regulatorAgency: sig.regulatorAgency || null,
+        // P3: Cyber threat intelligence
+        threatSeverity: sig.threatSeverity || null,
+        exploitStatus: sig.exploitStatus || null,
+        affectedVendor: sig.affectedVendor || null,
+        // P4: Economic indicator
+        economicIndicatorType: sig.economicIndicatorType || null,
+        indicatorDirection: sig.indicatorDirection || null,
+        // P5: Trade & geopolitical
+        tradeActionType: sig.tradeActionType || null,
+        effectiveTimeline: sig.effectiveTimeline || null,
+        // P6: Health & safety recall
+        recallClass: sig.recallClass || null,
+        affectedProductType: sig.affectedProductType || null,
         status: 'detected',
         notificationSent: false,
         urgencyLevel,
@@ -717,6 +734,27 @@ export async function evaluateAndPersistSignals(
           matchedKeywords: detection.matchedKeywords,
         },
       } as any).returning();
+
+      // ── P1: Protocol Graph Linkage — look up playbook_library ID by name ──────
+      // Runs post-insert so it never blocks the main detection path.
+      try {
+        const { playbookLibrary } = await import('@shared/schema');
+        const { ilike } = await import('drizzle-orm');
+        const playbookName = detection.recommendedPlaybook?.trim();
+        if (playbookName && savedDetection?.id) {
+          const [matched] = await db
+            .select({ id: playbookLibrary.id, num: playbookLibrary.playbookNumber })
+            .from(playbookLibrary)
+            .where(ilike(playbookLibrary.name, `%${playbookName}%`))
+            .limit(1);
+          if (matched) {
+            await db.update(triggerDetections)
+              .set({ protocolIdMatched: matched.id, protocolNumberMatched: matched.num })
+              .where(eq(triggerDetections.id, savedDetection.id));
+            console.log(`🔗 Linked detection to Protocol #${matched.num} (${playbookName})`);
+          }
+        }
+      } catch { /* non-critical — detection already saved */ }
 
       console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === 'configured' ? 'customer-configured' : 'default-pattern'}]`);
 

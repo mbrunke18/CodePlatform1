@@ -21,8 +21,24 @@ interface AnalyzedSignal {
   source: string;
   sourceUrl: string;
   category: string;
-  jurisdiction: string;    // US | UK | EU | global — inferred from source
-  confidenceTier: number;  // 1 = authoritative govt, 2 = wire/central banks, 3 = news media
+  jurisdiction: string;             // US | UK | EU | global
+  confidenceTier: number;           // 1 | 2 | 3
+  // P2: Regulatory enforcement
+  enforcementActionType: string | null;
+  regulatorAgency: string | null;
+  // P3: Cyber threat intelligence
+  threatSeverity: string | null;
+  exploitStatus: string | null;
+  affectedVendor: string | null;
+  // P4: Economic indicator
+  economicIndicatorType: string | null;
+  indicatorDirection: string | null;
+  // P5: Trade & geopolitical
+  tradeActionType: string | null;
+  effectiveTimeline: string | null;
+  // P6: Health & safety recall
+  recallClass: string | null;
+  affectedProductType: string | null;
 }
 
 const RSS_FEEDS: { url: string; source: string; category: string }[] = [
@@ -167,6 +183,119 @@ function calculateConfidence(item: RSSItem): number {
   return Math.min(conf, 95);
 }
 
+// ── P2: Regulatory enforcement extraction ──────────────────────────────────────
+function extractEnforcementActionType(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('criminal') || t.includes('indicted') || t.includes('indictment')) return 'criminal_indictment';
+  if (t.includes('consent order') || t.includes('consent decree')) return 'consent_order';
+  if (t.includes('settlement') || t.includes('settled')) return 'settlement';
+  if (t.includes('injunction')) return 'injunction';
+  if (t.includes('investigation') || t.includes('investigated') || t.includes('probe')) return 'investigation';
+  if (t.includes('fine') || t.includes('penalty') || t.includes('civil penalty')) return 'fine';
+  if (t.includes('advisory') || t.includes('guidance') || t.includes('notice')) return 'advisory';
+  return null;
+}
+
+function extractRegulatoryAgency(source: string): string | null {
+  const map: Record<string, string> = {
+    'SEC EDGAR': 'SEC', 'FTC': 'FTC', 'DOJ': 'DOJ', 'FDA': 'FDA',
+    'EEOC': 'EEOC', 'NLRB': 'NLRB', 'FDIC': 'FDIC', 'OCC': 'OCC',
+    'FERC': 'FERC', 'OSHA': 'OSHA', 'EPA': 'EPA', 'FINRA': 'FINRA',
+    'CFPB': 'CFPB', 'NTSB': 'NTSB', 'US Treasury': 'Treasury',
+    'UK FCA': 'UK FCA', 'Federal Register': 'Federal Register',
+  };
+  for (const [k, v] of Object.entries(map)) {
+    if (source.includes(k)) return v;
+  }
+  return null;
+}
+
+// ── P3: Cyber threat intelligence extraction ───────────────────────────────────
+function extractThreatSeverity(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('critical severity') || t.includes('cvss 9') || t.includes('cvss 10') || t.includes('actively exploited') || t.includes('critical vulnerability')) return 'critical';
+  if (t.includes('high severity') || t.includes('cvss 7') || t.includes('cvss 8') || t.includes('high vulnerability')) return 'high';
+  if (t.includes('medium severity') || t.includes('cvss 4') || t.includes('cvss 5') || t.includes('cvss 6')) return 'medium';
+  if (t.includes('low severity') || t.includes('cvss 1') || t.includes('cvss 2') || t.includes('cvss 3')) return 'low';
+  return null;
+}
+
+function extractExploitStatus(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('actively exploited') || t.includes('known exploited') || t.includes('exploited in the wild') || t.includes(' kev ')) return 'known_exploited';
+  if (t.includes('proof of concept') || t.includes('poc exploit') || t.includes('exploit code')) return 'proof_of_concept';
+  if (t.includes('vulnerability') || t.includes('advisory') || t.includes('patch')) return 'theoretical';
+  return null;
+}
+
+function extractAffectedVendor(text: string): string | null {
+  const vendors = ['Microsoft', 'Cisco', 'Fortinet', 'VMware', 'Palo Alto', 'Juniper', 'F5', 'Citrix', 'SolarWinds', 'Ivanti', 'MOVEit', 'Atlassian', 'Apache', 'OpenSSL'];
+  for (const v of vendors) {
+    if (text.includes(v)) return v;
+  }
+  return null;
+}
+
+// ── P4: Economic indicator extraction ─────────────────────────────────────────
+function extractEconomicIndicatorType(text: string, source: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('interest rate') || t.includes('fed rate') || t.includes('rate decision') || t.includes('basis points') || t.includes('rate hike') || t.includes('rate cut')) return 'interest_rate';
+  if (t.includes('jobs') || t.includes('employment') || t.includes('unemployment') || t.includes('payroll') || t.includes('nonfarm')) return 'jobs_report';
+  if (t.includes('inflation') || t.includes('consumer price') || t.includes('cpi') || t.includes('price index')) return 'CPI';
+  if (t.includes('gdp') || t.includes('gross domestic')) return 'GDP';
+  if (t.includes('oil') || t.includes('gas price') || t.includes('energy price') || t.includes('crude') || source.includes('EIA')) return 'energy_price';
+  if (t.includes('monetary policy') || t.includes('quantitative') || t.includes('balance sheet') || t.includes('fed chair')) return 'monetary_policy';
+  return null;
+}
+
+function extractIndicatorDirection(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('surprise') || t.includes('unexpected') || t.includes('shock') || t.includes('unexpectedly')) return 'unexpected';
+  if (t.includes('rises') || t.includes('rose') || t.includes('increases') || t.includes('increased') || t.includes('higher') || t.includes('hikes') || t.includes('hiking')) return 'rising';
+  if (t.includes('falls') || t.includes('fell') || t.includes('decreases') || t.includes('decreased') || t.includes('lower') || t.includes('cuts') || t.includes('cut rate')) return 'falling';
+  if (t.includes('holds') || t.includes('unchanged') || t.includes('steady') || t.includes('stable') || t.includes('flat')) return 'stable';
+  return null;
+}
+
+// ── P5: Trade & geopolitical extraction ───────────────────────────────────────
+function extractTradeActionType(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('executive order') || t.includes('executive action') || t.includes('presidential order')) return 'executive_order';
+  if (t.includes('sanction') || t.includes('sanctioned') || t.includes('blacklist') || t.includes('blacklisted')) return 'sanction';
+  if (t.includes('tariff') || t.includes('import duty') || t.includes('import tax')) return 'tariff';
+  if (t.includes('export control') || t.includes('export restriction') || t.includes('export license')) return 'export_control';
+  if (t.includes('embargo') || t.includes('trade ban') || t.includes('import ban')) return 'embargo';
+  return null;
+}
+
+function extractEffectiveTimeline(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('proposed') || t.includes('proposed rule') || t.includes('comment period')) return 'proposed';
+  if (t.includes('immediate') || t.includes('effective today') || t.includes('effective immediately') || t.includes('takes effect today')) return 'immediate';
+  if (t.includes('90-day') || t.includes('90 day') || t.includes('90 days') || t.includes('three months')) return '90_days';
+  if (t.includes('30-day') || t.includes('30 day') || t.includes('30 days') || t.includes('one month')) return '30_days';
+  return null;
+}
+
+// ── P6: Health & safety recall extraction ─────────────────────────────────────
+function extractRecallClass(text: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('class i ') || t.includes('class 1 ') || t.includes('class i recall') || t.includes('most serious recall')) return 'Class_I';
+  if (t.includes('class ii ') || t.includes('class 2 ') || t.includes('class ii recall')) return 'Class_II';
+  if (t.includes('class iii ') || t.includes('class 3 ') || t.includes('class iii recall')) return 'Class_III';
+  return null;
+}
+
+function extractAffectedProductType(text: string, source: string): string | null {
+  const t = text.toLowerCase();
+  if (t.includes('pharmaceutical') || t.includes('drug') || t.includes('medication') || t.includes('medicine') || t.includes('tablet') || t.includes('capsule')) return 'pharma';
+  if (t.includes('medical device') || t.includes('implant') || t.includes('surgical') || t.includes('diagnostic device')) return 'medical_device';
+  if (t.includes('food') || t.includes('beverage') || t.includes('contamination') || t.includes('listeria') || t.includes('salmonella') || t.includes('e. coli')) return 'food';
+  if (t.includes('vehicle') || t.includes('automobile') || t.includes('car recall') || t.includes('nhtsa') || t.includes('airbag')) return 'vehicle';
+  if (t.includes('consumer product') || t.includes('cpsc') || t.includes('household')) return 'consumer';
+  return null;
+}
+
 function inferJurisdiction(source: string): string {
   if (['UK FCA'].some(s => source.includes(s))) return 'UK';
   if (['ECB'].some(s => source.includes(s))) return 'EU';
@@ -254,18 +383,37 @@ class LiveSignalIngestionService {
 
     const topItems = strategicItems.slice(0, 10);
 
-    return topItems.map(item => ({
-      signalType: classifySignalType(`${item.title} ${item.description}`),
-      description: `${item.title}${item.description ? ` — ${item.description.substring(0, 450)}` : ''}`,
-      confidence: calculateConfidence(item),
-      impact: classifyImpact(`${item.title} ${item.description}`),
-      timeline: estimateTimeline(`${item.title} ${item.description}`),
-      source: item.source,
-      sourceUrl: item.link,
-      category: item.category,
-      jurisdiction: inferJurisdiction(item.source),
-      confidenceTier: getConfidenceTier(item.source),
-    }));
+    return topItems.map(item => {
+      const fullText = `${item.title} ${item.description}`;
+      return {
+        signalType: classifySignalType(fullText),
+        description: `${item.title}${item.description ? ` — ${item.description.substring(0, 450)}` : ''}`,
+        confidence: calculateConfidence(item),
+        impact: classifyImpact(fullText),
+        timeline: estimateTimeline(fullText),
+        source: item.source,
+        sourceUrl: item.link,
+        category: item.category,
+        jurisdiction: inferJurisdiction(item.source),
+        confidenceTier: getConfidenceTier(item.source),
+        // P2: Regulatory enforcement
+        enforcementActionType: extractEnforcementActionType(fullText),
+        regulatorAgency: extractRegulatoryAgency(item.source),
+        // P3: Cyber threat intelligence
+        threatSeverity: extractThreatSeverity(fullText),
+        exploitStatus: extractExploitStatus(fullText),
+        affectedVendor: extractAffectedVendor(fullText),
+        // P4: Economic indicator
+        economicIndicatorType: extractEconomicIndicatorType(fullText, item.source),
+        indicatorDirection: extractIndicatorDirection(fullText),
+        // P5: Trade & geopolitical
+        tradeActionType: extractTradeActionType(fullText),
+        effectiveTimeline: extractEffectiveTimeline(fullText),
+        // P6: Health & safety recall
+        recallClass: extractRecallClass(fullText),
+        affectedProductType: extractAffectedProductType(fullText, item.source),
+      };
+    });
   }
 
   async persistSignals(signals: AnalyzedSignal[], organizationId: string): Promise<number> {
