@@ -391,6 +391,86 @@ export default function ProofStory() {
           </div>
         </div>
 
+        {/* Why 12 Minutes Is Possible */}
+        <div style={{ background: IVORY, borderTop: "1px solid #E8E4DC", padding: "72px 48px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
+                <div style={{ width: 28, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Why This Is Possible</span>
+                <div style={{ width: 28, height: 1, background: GOLD }} />
+              </div>
+              <h2 style={{ ...GEO, fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: NAVY, marginBottom: 16, lineHeight: 1.1 }}>
+                The 12 minutes aren't execution speed.<br /><em style={{ color: GOLD }}>They're the absence of mobilization.</em>
+              </h2>
+              <p style={{ fontSize: 16, color: MUTED, maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
+                Every tool in the stories above — the FBI contact, outside counsel, the proxy solicitor, the forensic team, the alternate suppliers — was pre-identified, pre-briefed, and pre-authorized before the trigger fired. Readiness OS doesn't accelerate the response. It eliminates the mobilization cycle that makes the response slow.
+              </p>
+            </div>
+
+            {/* Three structural differentiators */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 56 }}>
+              {[
+                {
+                  number: "01",
+                  heading: "Pre-staged, not real-time",
+                  body: "Traditional response spends weeks figuring out who owns what, who needs to be in the room, and what the plan is. Readiness OS resolves all of that before the trigger. The 12 minutes is authorization and execution — not mobilization."
+                },
+                {
+                  number: "02",
+                  heading: "Every specialist already on the brief",
+                  body: "The FBI Cyber Division contact, outside M&A counsel, the proxy solicitor, the forensic team, the alternate supplier roster — all pre-identified in the Readiness Protocol. When the trigger fires, the brief is already in their hands."
+                },
+                {
+                  number: "03",
+                  heading: "Every tool you use, orchestrated above",
+                  body: "Jira tasks created. Slack channels opened. ServiceNow workflows triggered. Microsoft Teams briefings staged. Readiness OS is the operating model layer above your existing stack — not a replacement for any of it."
+                }
+              ].map(item => (
+                <div key={item.number} style={{ background: "#fff", border: "1px solid #E8E4DC", padding: "32px 28px" }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: "0.2em", marginBottom: 14 }}>{item.number}</div>
+                  <h3 style={{ ...GEO, fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 12, lineHeight: 1.2 }}>{item.heading}</h3>
+                  <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* What Readiness OS orchestrates vs. what it replaces */}
+            <div style={{ border: "1px solid #E8E4DC", background: "#fff" }}>
+              <div style={{ padding: "18px 28px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Readiness OS vs. What You're Using Today</span>
+                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>Same capabilities. Different operating model.</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", borderBottom: "none" }}>
+                {/* Header row */}
+                <div style={{ padding: "14px 20px", background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: MUTED }}>Tool / Vendor Category</div>
+                <div style={{ padding: "14px 20px", background: "#FFF5F5", borderBottom: "1px solid #FECACA", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#EF4444", borderLeft: "1px solid #FECACA" }}>What They Do</div>
+                <div style={{ padding: "14px 20px", background: "#F0FAF6", borderBottom: `1px solid ${TEAL}30`, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, borderLeft: `1px solid ${TEAL}30` }}>What Readiness OS Does</div>
+                {/* Rows */}
+                {[
+                  { tool: "Crisis Communication Platforms\n(Everbridge, OnSolve, Rave)", they: "Send mass notifications when you tell them to", us: "Notify, brief, authorize, and stage execution — simultaneously, before you ask" },
+                  { tool: "Project Management\n(Jira, Monday.com, Asana)", they: "Track tasks after someone creates them", us: "Pre-stage all tasks, owners, and dependencies before the trigger fires" },
+                  { tool: "Strategy Consultants\n(McKinsey, Bain, BCG)", they: "Mobilize in 2–4 weeks. Build the plan in real time.", us: "Plan pre-built. Mobilization: 12 minutes. Execution already authorized." },
+                  { tool: "Microsoft Copilot / AI Tools", they: "Faster summaries and notes inside your existing meetings", us: "Eliminate the meeting. Response is pre-staged. No alignment cycle required." },
+                  { tool: "GRC / Risk Platforms\n(Riskonnect, ServiceNow GRC)", they: "Log risk events and track compliance status", us: "Activate a Readiness Protocol the moment the risk materializes — response, not logging" },
+                  { tool: "War Room Convening\n(Executive calls, bridge lines)", they: "Assemble leaders in real time, then decide together", us: "Leaders receive role-specific briefs simultaneously. One executive authorizes. No call required." },
+                ].map((row, i) => (
+                  <div key={i} style={{ display: "contents" }}>
+                    <div style={{ padding: "16px 20px", background: i % 2 === 0 ? "#fff" : "#F8F7F4", borderBottom: "1px solid #F3F4F6", fontSize: 12, color: NAVY, fontWeight: 600, lineHeight: 1.5, whiteSpace: "pre-line" as const }}>{row.tool}</div>
+                    <div style={{ padding: "16px 20px", background: i % 2 === 0 ? "#FFF5F5" : "#FFF8F8", borderBottom: "1px solid #FEE2E2", fontSize: 12, color: "#DC2626", borderLeft: "1px solid #FEE2E2", lineHeight: 1.6 }}>{row.they}</div>
+                    <div style={{ padding: "16px 20px", background: i % 2 === 0 ? "#F0FAF6" : "#F5FCF9", borderBottom: `1px solid ${TEAL}20`, fontSize: 12, color: "#065F46", fontWeight: 600, borderLeft: `1px solid ${TEAL}20`, lineHeight: 1.6 }}>{row.us}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ padding: "18px 28px", background: "#F8F7F4", borderTop: "1px solid #E8E4DC" }}>
+                <p style={{ fontSize: 13, color: MUTED, margin: 0, lineHeight: 1.6 }}>
+                  <strong style={{ color: NAVY }}>The point is not that Readiness OS replaces these tools.</strong> In the ransomware scenario above, Jira tasks were created, Slack was notified, and Microsoft Teams was used for the executive authorization. Readiness OS orchestrated all of it — from a single trigger detection — in 12 minutes. The tools did their job. The operating model made sure they were ready before anyone had to ask.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* CTA */}
         <div style={{ background: NAVY, padding: "64px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
