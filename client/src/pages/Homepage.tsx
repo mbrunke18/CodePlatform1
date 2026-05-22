@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
@@ -962,14 +962,14 @@ function ThreeStepSection() {
             { n: "02", title: "Executive authorizes", desc: "Authorization request delivered to inbox. CEO, COO, or designated executive signs off — budget unlocks, response stages.", color: TEAL },
             { n: "03", title: "Coordinated execution", desc: "Tasks seeded, roles assigned, Teams channel live, war room active. Every stakeholder knows their role before they ask.", color: NAVY },
           ].map((step, i) => (
-            <>
-              <div key={step.n} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderTop: `3px solid ${step.color}`, padding: "28px 28px" }}>
+            <Fragment key={step.n}>
+              <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderTop: `3px solid ${step.color}`, padding: "28px 28px" }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 800, color: step.color, letterSpacing: "0.12em", marginBottom: 10 }}>STEP {step.n}</div>
                 <div style={{ ...GEO, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 10, lineHeight: 1.25 }}>{step.title}</div>
                 <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65 }}>{step.desc}</div>
               </div>
-              {i < 2 && <div key={`arrow-${i}`} style={{ textAlign: "center", fontSize: 18, color: "rgba(10,15,46,0.2)", fontWeight: 300 }}>→</div>}
-            </>
+              {i < 2 && <div style={{ textAlign: "center", fontSize: 18, color: "rgba(10,15,46,0.2)", fontWeight: 300 }}>→</div>}
+            </Fragment>
           ))}
         </div>
         <div style={{ textAlign: "center", marginTop: 28 }}>
