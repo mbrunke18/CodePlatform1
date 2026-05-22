@@ -435,36 +435,72 @@ export default function ProofStory() {
               ))}
             </div>
 
-            {/* What Readiness OS orchestrates vs. what it replaces */}
+            {/* Full capability comparison — we do it all and more */}
             <div style={{ border: "1px solid #E8E4DC", background: "#fff" }}>
-              <div style={{ padding: "18px 28px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Readiness OS vs. What You're Using Today</span>
-                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>Same capabilities. Different operating model.</span>
+              <div style={{ padding: "22px 28px", background: NAVY }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>One Platform. Every Capability. One Layer They Don't Have.</div>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", margin: 0, lineHeight: 1.6, maxWidth: 740 }}>
+                  Every vendor in this table sells one piece of the response. Readiness OS does everything each of them does — and adds the pre-staged operating model layer that none of them can match.
+                </p>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", borderBottom: "none" }}>
-                {/* Header row */}
-                <div style={{ padding: "14px 20px", background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: MUTED }}>Tool / Vendor Category</div>
-                <div style={{ padding: "14px 20px", background: "#FFF5F5", borderBottom: "1px solid #FECACA", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#EF4444", borderLeft: "1px solid #FECACA" }}>What They Do</div>
-                <div style={{ padding: "14px 20px", background: "#F0FAF6", borderBottom: `1px solid ${TEAL}30`, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, borderLeft: `1px solid ${TEAL}30` }}>What Readiness OS Does</div>
-                {/* Rows */}
+
+              {/* Column headers */}
+              <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr 1fr 1.2fr" }}>
+                <div style={{ padding: "13px 20px", background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: MUTED }}>Vendor / Category</div>
+                <div style={{ padding: "13px 20px", background: "#FFF5F5", borderBottom: "1px solid #FECACA", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#EF4444", borderLeft: "1px solid #FECACA" }}>What They Sell</div>
+                <div style={{ padding: "13px 20px", background: "#F0FAF6", borderBottom: `1px solid ${TEAL}30`, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, borderLeft: `1px solid ${TEAL}30` }}>Readiness OS Does This Too ✓</div>
+                <div style={{ padding: "13px 20px", background: `${NAVY}08`, borderBottom: `1px solid ${GOLD}40`, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, borderLeft: `1px solid ${GOLD}30` }}>And Goes Further</div>
+
                 {[
-                  { tool: "Crisis Communication Platforms\n(Everbridge, OnSolve, Rave)", they: "Send mass notifications when you tell them to", us: "Notify, brief, authorize, and stage execution — simultaneously, before you ask" },
-                  { tool: "Project Management\n(Jira, Monday.com, Asana)", they: "Track tasks after someone creates them", us: "Pre-stage all tasks, owners, and dependencies before the trigger fires" },
-                  { tool: "Strategy Consultants\n(McKinsey, Bain, BCG)", they: "Mobilize in 2–4 weeks. Build the plan in real time.", us: "Plan pre-built. Mobilization: 12 minutes. Execution already authorized." },
-                  { tool: "Microsoft Copilot / AI Tools", they: "Faster summaries and notes inside your existing meetings", us: "Eliminate the meeting. Response is pre-staged. No alignment cycle required." },
-                  { tool: "GRC / Risk Platforms\n(Riskonnect, ServiceNow GRC)", they: "Log risk events and track compliance status", us: "Activate a Readiness Protocol the moment the risk materializes — response, not logging" },
-                  { tool: "War Room Convening\n(Executive calls, bridge lines)", they: "Assemble leaders in real time, then decide together", us: "Leaders receive role-specific briefs simultaneously. One executive authorizes. No call required." },
+                  {
+                    tool: "Crisis Communications\n(Everbridge, OnSolve, Rave)",
+                    they: "Notify stakeholders when you tell them an incident has occurred",
+                    also: "Notifies every stakeholder simultaneously with role-specific briefs the moment a trigger is detected",
+                    beyond: "Detects the trigger itself — no human required to initiate. Continuous monitoring across 221 signal patterns fires the notification before anyone reports it."
+                  },
+                  {
+                    tool: "GRC / Risk Platforms\n(Riskonnect, ServiceNow GRC)",
+                    they: "Log risk events, score exposure, and track compliance status",
+                    also: "Continuously monitors signals, scores risk in real time, and classifies threats across all three strategic domains",
+                    beyond: "Doesn't just log the risk — activates a pre-staged Readiness Protocol the moment it materializes. Response begins in seconds, not after a risk committee reviews the log."
+                  },
+                  {
+                    tool: "Project & Workflow Management\n(Jira, Monday.com, ServiceNow)",
+                    they: "Create and track tasks after someone decides what needs to be done",
+                    also: "Creates tasks, assigns owners, sets priorities, and tracks completion across every activation",
+                    beyond: "Every task, owner, and dependency is pre-built into 170 Readiness Protocols before the trigger fires. No one has to create a ticket. The work is already scoped and assigned."
+                  },
+                  {
+                    tool: "Strategy Consultants\n(McKinsey, Bain, BCG, Big 4)",
+                    they: "Mobilize a team, conduct analysis, and build the response plan over 2–6 weeks",
+                    also: "Delivers a complete situation analysis, stakeholder map, authority chain, and execution plan — at trigger detection",
+                    beyond: "The plan was built before the trigger. The consultant's 6-week engagement is replaced by a pre-staged protocol activated in 12 minutes. Execution is already authorized before the first invoice arrives."
+                  },
+                  {
+                    tool: "Microsoft Copilot / AI Assistants",
+                    they: "Summarize documents, draft communications, and surface insights inside existing workflows",
+                    also: "Drafts stakeholder communications, summarizes trigger context, and surfaces protocol recommendations at the moment of detection",
+                    beyond: "Doesn't assist with a meeting — eliminates the need for one. The operating model is rebuilt so that AI-prepared briefs replace real-time alignment. The decision is human. The preparation is complete."
+                  },
+                  {
+                    tool: "Executive War Room Coordination\n(Bridge lines, ERM platforms)",
+                    they: "Assemble the right leaders in real time, then facilitate the decision-making process",
+                    also: "Coordinates every executive stakeholder simultaneously with a pre-staged situation brief and clear decision framing",
+                    beyond: "The war room is replaced by a single executive authorization. Role-specific briefs arrive before the first call is scheduled. One decision unlocks full execution — no alignment cycle required."
+                  },
                 ].map((row, i) => (
                   <div key={i} style={{ display: "contents" }}>
-                    <div style={{ padding: "16px 20px", background: i % 2 === 0 ? "#fff" : "#F8F7F4", borderBottom: "1px solid #F3F4F6", fontSize: 12, color: NAVY, fontWeight: 600, lineHeight: 1.5, whiteSpace: "pre-line" as const }}>{row.tool}</div>
-                    <div style={{ padding: "16px 20px", background: i % 2 === 0 ? "#FFF5F5" : "#FFF8F8", borderBottom: "1px solid #FEE2E2", fontSize: 12, color: "#DC2626", borderLeft: "1px solid #FEE2E2", lineHeight: 1.6 }}>{row.they}</div>
-                    <div style={{ padding: "16px 20px", background: i % 2 === 0 ? "#F0FAF6" : "#F5FCF9", borderBottom: `1px solid ${TEAL}20`, fontSize: 12, color: "#065F46", fontWeight: 600, borderLeft: `1px solid ${TEAL}20`, lineHeight: 1.6 }}>{row.us}</div>
+                    <div style={{ padding: "18px 20px", background: i % 2 === 0 ? "#fff" : "#F8F7F4", borderBottom: "1px solid #F3F4F6", fontSize: 12, color: NAVY, fontWeight: 700, lineHeight: 1.5, whiteSpace: "pre-line" as const }}>{row.tool}</div>
+                    <div style={{ padding: "18px 20px", background: i % 2 === 0 ? "#FFF5F5" : "#FFF8F8", borderBottom: "1px solid #FEE2E2", fontSize: 12, color: "#991B1B", borderLeft: "1px solid #FEE2E2", lineHeight: 1.6 }}>{row.they}</div>
+                    <div style={{ padding: "18px 20px", background: i % 2 === 0 ? "#F0FAF6" : "#F5FCF9", borderBottom: `1px solid ${TEAL}20`, fontSize: 12, color: "#065F46", fontWeight: 600, borderLeft: `1px solid ${TEAL}20`, lineHeight: 1.6 }}>{row.also}</div>
+                    <div style={{ padding: "18px 20px", background: i % 2 === 0 ? `${NAVY}05` : `${NAVY}08`, borderBottom: `1px solid ${GOLD}15`, fontSize: 12, color: NAVY, borderLeft: `1px solid ${GOLD}25`, lineHeight: 1.6, fontStyle: "italic" as const }}>{row.beyond}</div>
                   </div>
                 ))}
               </div>
-              <div style={{ padding: "18px 28px", background: "#F8F7F4", borderTop: "1px solid #E8E4DC" }}>
-                <p style={{ fontSize: 13, color: MUTED, margin: 0, lineHeight: 1.6 }}>
-                  <strong style={{ color: NAVY }}>The point is not that Readiness OS replaces these tools.</strong> In the ransomware scenario above, Jira tasks were created, Slack was notified, and Microsoft Teams was used for the executive authorization. Readiness OS orchestrated all of it — from a single trigger detection — in 12 minutes. The tools did their job. The operating model made sure they were ready before anyone had to ask.
+
+              <div style={{ padding: "20px 28px", background: NAVY, borderTop: `2px solid ${GOLD}` }}>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", margin: 0, lineHeight: 1.7, fontWeight: 500 }}>
+                  <span style={{ color: GOLD, fontWeight: 700 }}>The competitive question isn't "Readiness OS or Everbridge."</span> It's whether your organization wants six separate vendors each handling one slice of the response — or one platform that does all of it, pre-staged, before the trigger fires.
                 </p>
               </div>
             </div>
