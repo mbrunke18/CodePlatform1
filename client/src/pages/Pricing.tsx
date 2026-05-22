@@ -56,7 +56,7 @@ export default function Pricing() {
               Join Our Founding Partners
             </h2>
             <p className="text-xl text-[#6B7280] max-w-3xl mx-auto">
-              We're selecting 10 organizations for our 90-day validation partnership. Full platform access, dedicated implementation support, and 100% of the program fee credited to Year 1.
+              We're selecting 10 organizations for our 90-day validation partnership. Full platform access, dedicated implementation support, and 100% of the program fee credited to your Year 1 annual subscription — sized to your organization.
             </p>
           </div>
 

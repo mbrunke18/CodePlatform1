@@ -691,13 +691,13 @@ export default function StandardNav() {
               {/* Bottom CTA */}
               <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
                 <div
-                  onClick={() => navigateTo('/request-access')}
+                  onClick={() => navigateTo('/founding-partner-program')}
                   style={{ background: NAVY, borderRadius: 0, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
                 >
                   <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 3px' }}>Ready to Run It Inside Your Org?</p>
-                  <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Deploy Readiness OS for your team in 30 days →</p>
+                  <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Apply for Founding Partner Access →</p>
                 </div>
               </div>
             </div>
@@ -1100,7 +1100,7 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     variant="ghost"
-                    onClick={() => navigateTo('/founding-partner-program')}
+                    onClick={() => login()}
                     className="w-full justify-center h-9 text-sm"
                     style={{ color: NAVY }}
                     data-testid="nav-mobile-login"
