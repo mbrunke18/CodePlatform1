@@ -510,19 +510,30 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  {/* Consulting comparison */}
+                  {/* Vendor stack displacement */}
                   <div className="mb-5" style={{ background: "rgba(239,68,68,0.07)", border: "1px solid rgba(239,68,68,0.2)", padding: "14px 16px" }}>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#F87171", marginBottom: 8 }}>vs. Consulting Alternative</div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)" }}>Retainer + per-event fees</span>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: "#F87171", fontFamily: "monospace" }}>{formatCurrency(calculations.consultingAnnual)}/yr</span>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#F87171", marginBottom: 10 }}>What Readiness OS Replaces</div>
+                    {[
+                      { label: "Crisis comms platform (Everbridge, OnSolve)", cost: 60000 },
+                      { label: "GRC / Risk platform (ServiceNow, Riskonnect)", cost: 180000 },
+                      { label: "Consulting retainer + per-event fees", cost: calculations.consultingAnnual },
+                      { label: "Incident project mgmt overhead (Jira, etc.)", cost: 40000 },
+                    ].map(item => (
+                      <div key={item.label} style={{ display: "flex", justifyContent: "space-between", marginBottom: 6, alignItems: "flex-start", gap: 8 }}>
+                        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.4, flex: 1 }}>{item.label}</span>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: "#F87171", fontFamily: "monospace", flexShrink: 0 }}>{formatCurrency(item.cost)}</span>
+                      </div>
+                    ))}
+                    <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid rgba(239,68,68,0.3)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontWeight: 700 }}>Typical combined stack</span>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: "#F87171", fontFamily: "monospace" }}>{formatCurrency(60000 + 180000 + calculations.consultingAnnual + 40000)}/yr</span>
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)" }}>Readiness OS</span>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 6 }}>
+                      <span style={{ fontSize: 11, color: "#2B8A6E", fontWeight: 700 }}>Readiness OS — all of it</span>
                       <span style={{ fontSize: 13, fontWeight: 700, color: "#2B8A6E", fontFamily: "monospace" }}>{formatCurrency(platformCost)}/yr</span>
                     </div>
-                    <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid rgba(239,68,68,0.2)", fontSize: 11, color: "#F87171", fontWeight: 600 }}>
-                      Consulting costs {formatCurrency(calculations.consultingAnnual - platformCost)} more — and doesn't give you pre-staged execution.
+                    <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid rgba(201,168,76,0.25)", fontSize: 11, color: "#C9A84C", fontWeight: 700, textAlign: "center" as const }}>
+                      Stack saves {formatCurrency(60000 + 180000 + calculations.consultingAnnual + 40000 - platformCost)}/yr — before any event value is counted
                     </div>
                   </div>
 

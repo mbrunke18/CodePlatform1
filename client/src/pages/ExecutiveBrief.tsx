@@ -15,7 +15,12 @@ const comparisonRows = [
   {
     category: "Trigger Detection",
     traditional: "Manual monitoring — someone notices, escalates by email",
-    executionOS: "Automatic — continuous signal monitoring across 248+ data points",
+    executionOS: "Continuous signal monitoring across 248+ data points — fires before anyone reports it",
+  },
+  {
+    category: "Stakeholder Notification",
+    traditional: "Crisis comms platform (Everbridge, OnSolve) sends alerts when you tell it to",
+    executionOS: "Simultaneous role-specific briefs delivered at trigger detection — no human initiation required",
   },
   {
     category: "Time to Mobilization",
@@ -23,24 +28,29 @@ const comparisonRows = [
     executionOS: "12 minutes after trigger detection — full coordination live",
   },
   {
-    category: "Readiness Protocol Readiness",
-    traditional: "Built in real time during the crisis under pressure",
-    executionOS: "Pre-staged — 170 Readiness Protocols ready before the trigger fires",
+    category: "Response Plan",
+    traditional: "Built in real time — or commissioning consultants at $60K+ per event",
+    executionOS: "Pre-staged — 170 Readiness Protocols ready before the trigger fires. No consultant needed.",
   },
   {
-    category: "Stakeholder Coordination",
-    traditional: "Email chains, emergency calls, duplicate status meetings",
-    executionOS: "Automated at trigger point — every role assigned simultaneously",
+    category: "Risk Tracking",
+    traditional: "GRC platform (ServiceNow, Riskonnect) logs the risk. Committee reviews on Tuesday.",
+    executionOS: "Risk detected → protocol matched → response activated. Seconds, not days.",
+  },
+  {
+    category: "Task & Workflow Management",
+    traditional: "Someone creates a Jira ticket after the meeting to decide what needs to be done",
+    executionOS: "Every task, owner, and dependency pre-built into each Readiness Protocol",
   },
   {
     category: "Decision Authority",
-    traditional: "Consensus-driven — committees slow every decision",
-    executionOS: "Human executives retain all authority — AI handles orchestration",
+    traditional: "Consensus-driven committees slow every decision — no single authorization point",
+    executionOS: "One executive authorization unlocks full execution. No alignment cycle.",
   },
   {
-    category: "Learning & Improvement",
-    traditional: "Post-mortems that rarely change behavior",
-    executionOS: "Automated debrief after every activation — Readiness Protocols improve continuously",
+    category: "Vendor Stack Required",
+    traditional: "Crisis comms + GRC platform + project management + consulting retainer = $500K–$1M+/yr",
+    executionOS: "One platform. Every capability. One annual subscription.",
   },
 ];
 
@@ -65,10 +75,10 @@ const pilotIncludes = [
 ];
 
 const roiCase = [
-  { metric: "Executive time saved per event", value: "$10K–$25K", basis: "20–50 hrs × $500/hr executive rate" },
-  { metric: "Revenue protected per major event", value: "$500K–$2M", basis: "Faster response reduces revenue loss window" },
-  { metric: "C-suite recovery per event", value: "$45K+", basis: "45 hrs × $1,000/hr executive time" },
-  { metric: "Annual tool consolidation", value: "$50K–$100K", basis: "Reduced point solution licensing" },
+  { metric: "Revenue protected per major event", value: "$500K–$2M", basis: "Faster response compresses the revenue loss window" },
+  { metric: "Regulatory penalty avoided", value: "$5M–$50M", basis: "Documented in ransomware + supply chain activations" },
+  { metric: "Executive time reclaimed per event", value: "$45K–$100K", basis: "45–100 hrs × $1,000/hr C-suite rate — eliminated" },
+  { metric: "Vendor stack displaced annually", value: "$300K–$900K", basis: "Crisis comms + GRC + consulting retainer + project mgmt tools" },
 ];
 
 export default function ExecutiveBrief() {
