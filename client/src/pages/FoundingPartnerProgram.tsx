@@ -116,7 +116,7 @@ const pilotInclusions = [
 const idealCandidates = [
   {
     criteria: 'Organization Size',
-    description: 'startup to Fortune 500 or equivalent ($1B+ revenue)',
+    description: 'Startup through enterprise — any organization facing strategic triggers',
     importance: 'Required'
   },
   {

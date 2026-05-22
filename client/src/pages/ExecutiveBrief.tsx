@@ -516,7 +516,7 @@ export default function ExecutiveBrief() {
                 <div style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "28px", background: "rgba(255,255,255,0.04)" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Ideal Founding Partner Candidates</div>
                   {[
-                    "startup to Fortune 500 or equivalent ($1B+ revenue)",
+                    "Startup through enterprise — any organization facing strategic triggers",
                     "C-level or SVP executive sponsor with budget authority",
                     "Active Jira, Asana, or Monday.com deployment",
                     "Strategic events requiring 4+ departments to coordinate",
