@@ -260,6 +260,61 @@ export default function AIStackPositioning() {
         </div>
       </div>
 
+      {/* AI Agent Controls — Customer Questions */}
+      <div style={{ background: "#fff", padding: "80px 32px", borderTop: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Enterprise AI Agent Controls</div>
+            <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 600, color: NAVY, marginBottom: 12 }}>Questions every enterprise buyer is asking</h2>
+            <p style={{ ...BAR, fontSize: 14, color: "rgba(10,15,46,0.5)", lineHeight: 1.75, maxWidth: 620 }}>
+              As AI agents scale across organizations, three questions have become standard in every procurement conversation. Here is exactly how Readiness OS answers them.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 3 }}>
+            {[
+              {
+                q: "What is your human-in-the-loop model?",
+                color: GOLD,
+                badge: "HUMAN-IN-THE-LOOP",
+                badgeBg: "rgba(201,168,76,0.1)",
+                badgeBorder: "rgba(201,168,76,0.3)",
+                answer: "Every Readiness Protocol requires explicit executive sign-off before execution begins. The system detects the trigger, selects the protocol, stages the response, and delivers an authorization request — but nothing executes until a designated executive approves. Budget does not unlock. Tasks do not seed. Stakeholders are not notified. The human decision is not optional and cannot be bypassed.",
+                highlight: true,
+              },
+              {
+                q: "What guardrails are in place?",
+                color: TEAL,
+                badge: "GUARDRAILS",
+                badgeBg: "rgba(43,138,110,0.1)",
+                badgeBorder: "rgba(43,138,110,0.3)",
+                answer: "Three layers. First, ConsequencePreview — before any executive authorizes, the platform displays a full impact summary: tasks that will be seeded, budget that will be released, stakeholders who will be notified. Second, Stand Down authority — any executive can halt execution at any point before or during a response. Third, fail-closed authorization — any error in role validation or permissions defaults to deny, never permit.",
+                highlight: false,
+              },
+              {
+                q: "How does orchestration work?",
+                color: TEAL,
+                badge: "ORCHESTRATION",
+                badgeBg: "rgba(43,138,110,0.1)",
+                badgeBorder: "rgba(43,138,110,0.3)",
+                answer: "The IDEA Framework routes every signal through five stages: IDENTIFY the threat category, DETECT the matching trigger pattern, present for executive AUTHORIZATION, EXECUTE the pre-staged protocol, and ADVANCE with a structured debrief. Each stage is pre-built — the orchestration runs in the background continuously, so when a trigger fires, the routing is already complete. Execution takes 12 minutes because the coordination happened before the crisis.",
+                highlight: false,
+              },
+            ].map((item, i) => (
+              <div key={i} style={{
+                background: item.highlight ? "rgba(201,168,76,0.03)" : "#fff",
+                border: `1px solid ${item.highlight ? "rgba(201,168,76,0.3)" : BORDER}`,
+                borderTop: `3px solid ${item.color}`,
+                padding: "28px 26px",
+              }}>
+                <span style={{ ...BRC, display: "inline-block", fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, padding: "3px 8px", background: item.badgeBg, border: `1px solid ${item.badgeBorder}`, color: item.color, marginBottom: 14 }}>{item.badge}</span>
+                <div style={{ ...GEO, fontSize: 16, fontWeight: 600, color: NAVY, marginBottom: 14, lineHeight: 1.35 }}>{item.q}</div>
+                <div style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.6)", lineHeight: 1.75 }}>{item.answer}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* The Microsoft framing */}
       <div style={{ background: NAVY, padding: "72px 32px" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
