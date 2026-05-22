@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 21, 2026 (rev 43) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 22, 2026 (rev 44) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3455,3 +3455,96 @@ All 11 task groups scanned and resolved. Final state:
 ### Rev 41 Known State
 - Build: ✅ clean (`✓ built in ~200ms`, zero TS errors, pre-existing eval warning only)
 - Tests: ✅ 189/189 passing (10 test files)
+
+---
+
+## 60. Competitive Differentiation — Proof Story + Executive Brief + ROI Calculator — May 22, 2026 (rev 44)
+
+Three pages were updated together as a coordinated competitive positioning package. The goal: every sales-facing page names specific vendors, shows what they cost, and explains exactly why Readiness OS is not an alternative to any one of them — it replaces the entire stack.
+
+### Proof Story (`/proof-story`) — `client/src/pages/ProofStory.tsx`
+
+**New section added:** "Why 12 Minutes Is Possible" — appears before the three activation narratives.
+
+Three structural pillars explain the mechanism:
+1. **Pre-staged, not reactive** — Protocols built before triggers fire, so there is nothing to assemble when the moment arrives.
+2. **Pattern detection, not committee deliberation** — 221 trigger patterns scored continuously; no human has to decide when to escalate.
+3. **Executive authorization, not consensus** — One sign-off unlocks budget, tasks, and stakeholders simultaneously.
+
+**Full competitive comparison table added** (4 columns: Capability / Readiness OS / Closest Competitor / Gap):
+
+| Vendor category | What they do | What Readiness OS adds |
+|---|---|---|
+| Everbridge | Mass notification + incident comms | Pre-staged response — not just notification |
+| ServiceNow GRC | Workflow automation post-trigger | Protocol staging before the trigger |
+| Jira / Monday.com | Project tracking | Full pre-built task trees, roles, budgets |
+| McKinsey / Big 4 | Strategic response consulting | Same depth, automated, 3,600× faster |
+| Microsoft Copilot | AI summaries and drafts | Execution orchestration, not content generation |
+| Internal War Room | Ad-hoc crisis coordination | Structured, pre-authorized mobilization |
+
+**Closing line (locked):** "The competitive question isn't 'Readiness OS or Everbridge.' It's whether your org wants six separate vendors or one platform."
+
+Do not remove this table or the closing line without founder approval. It is the primary objection-handler for multi-vendor procurement conversations.
+
+---
+
+### Executive Brief (`/executive-brief`) — `client/src/pages/ExecutiveBrief.tsx`
+
+**Comparison table updated:** Rows now name specific vendors instead of generic categories.
+
+- Legacy column entries replaced: "Incident Management Platform" → **Everbridge**, "GRC Platform" → **ServiceNow / Riskonnect**, "Project Management" → **Jira / Asana**
+- **New row added:** "Vendor Stack Required" — shows "$500K–$1M+ annual stack" (legacy column) vs. "One subscription" (Readiness OS column)
+
+**ROI case updated:**
+- Regulatory penalty avoided: **$5M–$50M** (previously generic "millions")
+- Vendor stack displaced: **$300K–$900K** annual (Everbridge + ServiceNow + consulting + PM tools)
+
+**Rule:** Vendor names in the comparison table must remain accurate to current market pricing. If a named vendor significantly changes its pricing model, update the row — do not revert to generic category labels.
+
+---
+
+### ROI Calculator (`/roi-calculator`) — `client/src/pages/ROICalculator.tsx`
+
+**"vs. Consulting Alternative" sidebar panel replaced** with **"What Readiness OS Replaces"** — a 4-line itemized displacement calculation:
+
+| Line item | Annual cost shown |
+|---|---|
+| Everbridge (incident comms) | $60,000 |
+| ServiceNow GRC (workflow automation) | $180,000 |
+| Consulting retainer (strategic response) | Dynamic — pulled from the consulting retainer slider value |
+| Project management tooling (Jira/Monday) | $40,000 |
+| **Total stack** | Live-calculated sum |
+| **Net savings** | Total stack − Readiness OS subscription cost |
+
+The consulting retainer line is the only dynamic value — it reads from the existing platform cost slider so the savings calculation updates in real time as the user adjusts inputs.
+
+**Design rule:** This panel uses the same navy/gold card styling as the rest of the sidebar. Do not introduce a new color or layout pattern here.
+
+---
+
+## 61. Homepage ThreeStepSection — Fragment Key Fix — May 22, 2026 (rev 44)
+
+**File:** `client/src/pages/Homepage.tsx`
+
+**Problem:** The `ThreeStepSection` component mapped an array of step objects and wrapped each iteration in a bare React fragment (`<>`). The `key` prop was placed on the inner `<div>` instead of the outermost element. This caused two React warnings visible in the browser console:
+1. `Warning: Each child in a list should have a unique "key" prop — Check the render method of ThreeStepSection`
+2. `Warning: Invalid hook call` (cascaded from the key reconciliation failure)
+
+These were console errors, not visible rendering bugs — but they appear in production DevTools and indicate a real reconciliation issue.
+
+**Fix:**
+- Added `Fragment` to the React import at line 1: `import { Fragment, useEffect, useRef, useState } from "react"`
+- Replaced `<>` with `<Fragment key={step.n}>` so the key is on the outermost tracked element
+- Removed the now-redundant `key` from the inner `<div>` and the arrow `<div>`
+
+**Visual result:** Zero change. The three cards (Signal detected → Executive authorizes → Coordinated execution) render identically. No layout, color, or content was altered.
+
+**Rule:** Any future `.map()` in Homepage.tsx that returns multiple sibling elements must use `<Fragment key={...}>` — never bare `<>` — so keys are always on the outermost element React tracks.
+
+---
+
+### Rev 44 Known State
+- Build: ✅ clean, zero TS errors
+- Tests: ✅ 189/189 passing (10 test files)
+- Browser console: ✅ zero React warnings on homepage
+- Commits: Proof Story/Executive Brief/ROI Calculator changes at `184daee`; ThreeStepSection fix at `d157057`
