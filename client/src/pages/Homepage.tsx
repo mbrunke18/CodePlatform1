@@ -1073,11 +1073,12 @@ function HeroSection() {
                 ))}
               </div>
 
-              {/* Growth / Risk balance — both domains covered */}
-              <div className="hp-domain-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, marginTop: 28 }}>
+              {/* All three strategic domains */}
+              <div className="hp-domain-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 1, marginTop: 28 }}>
                 {[
                   { domain: "RISK & RESILIENCE", examples: "Ransomware · Activist investor · Regulatory inquiry · Supply chain collapse · Data breach", color: "#C0392B22", border: "#C0392B55", label: "rgba(192,57,43,0.8)" },
                   { domain: "GROWTH & POSITIONING", examples: "Market entry · Competitor displacement · M&A timing · Go-to-market sprint · Product launch", color: "rgba(201,168,76,0.08)", border: "rgba(201,168,76,0.35)", label: GOLD },
+                  { domain: "TRANSFORMATION", examples: "Digital transformation · AI governance · Workforce restructuring · Regulatory overhaul · Platform migration", color: "rgba(43,138,110,0.08)", border: "rgba(43,138,110,0.35)", label: TEAL },
                 ].map(d => (
                   <div key={d.domain} style={{ background: d.color, border: `1px solid ${d.border}`, padding: "12px 16px" }}>
                     <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: d.label, marginBottom: 5 }}>{d.domain}</div>
