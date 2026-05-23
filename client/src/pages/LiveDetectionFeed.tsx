@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { updatePageMetadata } from '@/lib/seo';
 import { apiRequest } from '@/lib/queryClient';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -82,6 +83,15 @@ function timeAgo(dateStr: string) {
 export default function LiveDetectionFeed() {
   const { toast } = useToast();
   const qc = useQueryClient();
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Live Signal Detection — Readiness OS | VaughnMartin',
+      description: 'Real-time strategic trigger detections across 9 domains. System-detected signals scored and matched to pre-staged Readiness Protocols within 12 minutes.',
+      ogTitle: 'Live Signal Detection — VaughnMartin Readiness OS',
+      ogDescription: 'Continuous monitoring across 221 trigger patterns. Every signal matched to a pre-staged Readiness Protocol.',
+    });
+  }, []);
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const ORG_ID = user?.organizationId || 'system';
   const [showAddContact, setShowAddContact] = useState(false);

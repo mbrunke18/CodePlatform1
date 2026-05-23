@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { updatePageMetadata } from "@/lib/seo";
 import deskImg from "@/assets/images/executive-desk-minimal.png";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -55,6 +56,15 @@ function MinimalInput({ field, placeholder }: { field: any; placeholder: string 
 export default function RequestAccess() {
   const [submitted, setSubmitted] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Request Platform Access — Readiness OS | VaughnMartin',
+      description: 'Request access to VaughnMartin Readiness OS. Enterprise-only platform for pre-staged strategic execution. 12-minute response to any trigger.',
+      ogTitle: 'Request Access — VaughnMartin Readiness OS',
+      ogDescription: 'Enterprise access to Readiness OS. 170 pre-staged protocols. 12-minute execution from trigger to authorization.',
+    });
+  }, []);
 
   const form = useForm<FormData>({
     resolver: zodResolver(schema),

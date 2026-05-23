@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { BrandStamp } from "@/components/BrandStamp";
+import { updatePageMetadata } from "@/lib/seo";
 import {
   Building2, Cpu, Factory, Zap, ShoppingCart, Heart,
   ArrowRight, Shield, CheckCircle2, Layers, Globe,
@@ -161,6 +163,15 @@ const CORE_CAPABILITIES = [
 export default function IndustryPacksHub() {
   const coreProtocols = 170;
   const totalIndustryProtocols = INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0);
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Industry Protocol Packs — Readiness OS | VaughnMartin',
+      description: 'Six industry-specific Protocol Packs built on top of 170 core Readiness Protocols. Pre-staged responses for Financial Services, Healthcare, Manufacturing, Energy, Retail, and Technology.',
+      ogTitle: 'Industry Protocol Packs — VaughnMartin Readiness OS',
+      ogDescription: '170 cross-industry protocols + 6 sector packs. Pre-staged execution for every strategic trigger your industry faces.',
+    });
+  }, []);
 
   return (
     <PageLayout>
