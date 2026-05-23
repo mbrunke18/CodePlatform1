@@ -82,6 +82,7 @@ const SEARCH_ITEMS = [
   { label: '12-Minute Test Drive', path: '/12-minute-experience', category: 'Demo', icon: Play },
   { label: 'Protocol Builder', path: '/protocol-builder', category: 'Demo', icon: ClipboardList },
   { label: 'Industry Scenarios', path: '/industry-demos', category: 'Demo', icon: Globe },
+  { label: 'Industry Demo Library — 19 Blueprints', path: '/industry-demo-library', category: 'Demo', icon: Globe },
   { label: 'Founding Partner Program', path: '/founding-partner-program', category: 'Action', icon: Target },
   { label: 'Founding Partner Brief — What You Get in 90 Days', path: '/founding-partner-brief', category: 'Action', icon: FileText },
   { label: 'Readiness Operating Rhythm — Monthly Cadence', path: '/readiness-rhythm', category: 'Learn', icon: Activity },
@@ -147,6 +148,7 @@ export default function StandardNav() {
       heading: "Core Capabilities",
       links: [
         { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged Readiness Protocols across 9 strategic domains" },
+        { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Target, description: "See the exact 12-minute execution for your industry — signals, authorization chain, and full task sequence.", featured: true },
         { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built vertical stacks", featured: true },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
@@ -186,6 +188,7 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
+        { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Globe, description: "19 industries. One response time: 12 minutes. See the exact execution sequence for your sector — signals, authorization, tasks.", featured: true },
         { label: "Full Scenario Experience Center", path: "/demo-hub", icon: LayoutGrid, description: "12 complete simulations across all 3 strategic domains — Growth · Resilience · Transformation. Pick your situation.", featured: true },
         { label: "Master Demo — Activist Investor", path: "/master-demo", icon: Play, description: "Elliott Management files 13D at 2:47 AM. The definitive 7-phase walkthrough. Every platform capability in one scenario.", featured: true },
         { label: "The 12-Minute Experience", path: "/12-minute-experience", icon: Rocket, description: "Watch a full Readiness Protocol activate from trigger detection to task assignment — in 12 minutes. No login required.", featured: true },
