@@ -665,6 +665,281 @@ function ExecutionChainDiagram() {
 }
 
 // ─── SECTION 2: Hero ─────────────────────────────────────────────────────────
+// ─── HERO LIVE SIMULATION PANEL ──────────────────────────────────────────────
+function HeroSimPanel() {
+  const SCENARIOS = [
+    {
+      domain: "RISK & RESILIENCE" as const,
+      industry: "Healthcare",
+      trigger: "Hospital Ransomware — EHR Systems Locked",
+      protocol: "Protocol #044: Ransomware Containment",
+      tasks: 8,
+      executive: "Chief Security Officer",
+      steps: [
+        { t: "0:08", action: "Ransomware signature detected across 3 EHR nodes", owner: "System" },
+        { t: "1:20", action: "CSO authorizes — isolation sequence begins", owner: "CSO" },
+        { t: "2:45", action: "Network segmentation deployed, clean backups staged", owner: "IT Security" },
+        { t: "5:30", action: "Clinical operations shifted to downtime procedures", owner: "Operations" },
+        { t: "8:00", action: "FBI notification filed, legal hold activated", owner: "Legal / GC" },
+        { t: "12:00", action: "Patient care continuity confirmed — 0 procedures affected", owner: "All Leads" },
+      ],
+      outcome: "Patient care continuity maintained",
+      stat: "$18M exposure contained",
+    },
+    {
+      domain: "GROWTH & POSITIONING" as const,
+      industry: "Technology",
+      trigger: "Activist Investor Files 13D — 9.2% Stake",
+      protocol: "Protocol #031: Activist Investor Response",
+      tasks: 11,
+      executive: "Chief Executive Officer",
+      steps: [
+        { t: "0:06", action: "SEC 13D filing detected — Elliott Management, 9.2% stake", owner: "System" },
+        { t: "1:10", action: "CEO authorizes — board brief and defense protocol staged", owner: "CEO" },
+        { t: "2:30", action: "Investment banker engaged, defensive brief to board", owner: "Finance / Legal" },
+        { t: "4:00", action: "Shareholder communication drafted and staged", owner: "Comms / IR" },
+        { t: "7:45", action: "Proxy advisor outreach staged, poison pill review initiated", owner: "Legal" },
+        { t: "12:00", action: "Board briefed — defense posture activated", owner: "All Leads" },
+      ],
+      outcome: "Board briefed, defense posture activated",
+      stat: "3,600× execution head start",
+    },
+    {
+      domain: "RISK & RESILIENCE" as const,
+      industry: "Pharmaceutical",
+      trigger: "FDA Class I Recall — Contamination Signal",
+      protocol: "Protocol #058: FDA Class I Recall Response",
+      tasks: 9,
+      executive: "Chief Risk Officer",
+      steps: [
+        { t: "0:12", action: "Contamination signal — 3 production lot IDs flagged", owner: "System" },
+        { t: "1:30", action: "CRO authorizes — recall sequence staged and unlocked", owner: "CRO" },
+        { t: "3:00", action: "FDA voluntary recall notification filed electronically", owner: "Regulatory" },
+        { t: "5:15", action: "Distribution hold — 847 retail partners notified", owner: "Supply Chain" },
+        { t: "8:30", action: "Consumer safety advisory staged for release", owner: "Comms" },
+        { t: "12:00", action: "Recall contained — full chain of custody documented", owner: "All Leads" },
+      ],
+      outcome: "Recall contained before public exposure",
+      stat: "$340M liability avoided",
+    },
+    {
+      domain: "RISK & RESILIENCE" as const,
+      industry: "Financial Services",
+      trigger: "SWIFT Outage — $4.7B Settlements at Risk",
+      protocol: "Protocol #007: Payment Infrastructure Failure",
+      tasks: 7,
+      executive: "Chief Risk Officer",
+      steps: [
+        { t: "0:08", action: "SWIFT outage detected — $4.7B settlements at risk", owner: "System" },
+        { t: "1:20", action: "CRO authorizes — emergency liquidity protocol activated", owner: "CRO" },
+        { t: "2:30", action: "Fedwire backup rails live, settlement continuity confirmed", owner: "Treasury" },
+        { t: "4:00", action: "Correspondent banks notified via pre-staged comms", owner: "Comms" },
+        { t: "7:15", action: "Federal Reserve liaison briefed, regulatory filing staged", owner: "Legal" },
+        { t: "12:00", action: "Market open — zero settlement failures reported", owner: "All Leads" },
+      ],
+      outcome: "Zero settlement failures at market open",
+      stat: "$4.7B protected",
+    },
+  ];
+
+  const [scenarioIdx, setScenarioIdx] = useState(0);
+  const [phase, setPhase] = useState<"detect" | "stage" | "authorize" | "execute" | "complete">("detect");
+  const [riskScore, setRiskScore] = useState(0);
+  const [activeStep, setActiveStep] = useState(-1);
+
+  const scenario = SCENARIOS[scenarioIdx];
+  const domainColor = scenario.domain === "GROWTH & POSITIONING" ? GOLD : TEAL;
+  const PHASE_LABELS = ["DETECT", "STAGE", "AUTH", "EXECUTE", "COMPLETE"];
+  const phaseIdx = ["detect", "stage", "authorize", "execute", "complete"].indexOf(phase);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    let scoreInterval: ReturnType<typeof setInterval>;
+
+    setPhase("detect");
+    setRiskScore(0);
+    setActiveStep(-1);
+
+    let score = 0;
+    scoreInterval = setInterval(() => {
+      score = Math.min(94, score + Math.floor(Math.random() * 8) + 5);
+      setRiskScore(score);
+      if (score >= 94) clearInterval(scoreInterval);
+    }, 110);
+
+    timers.push(setTimeout(() => setPhase("stage"), 4500));
+    timers.push(setTimeout(() => setPhase("authorize"), 8500));
+    timers.push(setTimeout(() => { setPhase("execute"); setActiveStep(0); }, 12500));
+    timers.push(setTimeout(() => setActiveStep(1), 15000));
+    timers.push(setTimeout(() => setActiveStep(2), 17500));
+    timers.push(setTimeout(() => setActiveStep(3), 20000));
+    timers.push(setTimeout(() => setActiveStep(4), 22500));
+    timers.push(setTimeout(() => setActiveStep(5), 25000));
+    timers.push(setTimeout(() => setPhase("complete"), 27500));
+    timers.push(setTimeout(() => setScenarioIdx(prev => (prev + 1) % SCENARIOS.length), 32000));
+
+    return () => { clearInterval(scoreInterval); timers.forEach(clearTimeout); };
+  }, [scenarioIdx]);
+
+  const BRC2: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
+  const BAR2: React.CSSProperties = { fontFamily: "'Barlow', sans-serif" };
+  const GEO2: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+
+  return (
+    <div style={{
+      background: "rgba(4,7,22,0.97)",
+      border: "1px solid rgba(255,255,255,0.1)",
+      borderLeft: `3px solid ${domainColor}`,
+      display: "flex",
+      flexDirection: "column" as const,
+      height: "100%",
+      overflow: "hidden",
+    }}>
+      {/* Top bar */}
+      <div style={{ padding: "10px 14px", borderBottom: "1px solid rgba(255,255,255,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+          <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 8px #22C55E88" }} />
+          <span style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const }}>LIVE EXECUTION SIMULATION</span>
+        </div>
+        <span style={{ ...BRC2, fontSize: 8, fontWeight: 700, color: domainColor, letterSpacing: "0.14em", textTransform: "uppercase" as const, padding: "2px 7px", border: `1px solid ${domainColor}44` }}>
+          {scenario.domain}
+        </span>
+      </div>
+
+      {/* Scenario label */}
+      <div style={{ padding: "12px 14px", borderBottom: "1px solid rgba(255,255,255,0.05)", flexShrink: 0 }}>
+        <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", color: "rgba(255,255,255,0.28)", textTransform: "uppercase" as const, marginBottom: 4 }}>{scenario.industry}</div>
+        <div style={{ ...GEO2, fontSize: 15, fontWeight: 700, color: "#fff", lineHeight: 1.25 }}>{scenario.trigger}</div>
+      </div>
+
+      {/* Phase progress bar */}
+      <div style={{ padding: "8px 14px", borderBottom: "1px solid rgba(255,255,255,0.05)", display: "flex", gap: 2, flexShrink: 0 }}>
+        {PHASE_LABELS.map((p, i) => (
+          <div key={p} style={{ flex: 1, textAlign: "center" as const }}>
+            <div style={{ height: 2, background: i <= phaseIdx ? (i === 4 ? TEAL : domainColor) : "rgba(255,255,255,0.08)", marginBottom: 3, transition: "background 0.5s" }} />
+            <span style={{ ...BRC2, fontSize: 6.5, fontWeight: 700, letterSpacing: "0.1em", color: i <= phaseIdx ? (i === 4 ? TEAL : "rgba(255,255,255,0.6)") : "rgba(255,255,255,0.18)", textTransform: "uppercase" as const }}>{p}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Phase content */}
+      <div style={{ flex: 1, padding: "14px", overflow: "hidden", minHeight: 0 }}>
+
+        {phase === "detect" && (
+          <div>
+            <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", color: domainColor, textTransform: "uppercase" as const, marginBottom: 10 }}>Signal Detected — Protocol Matching</div>
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 5 }}>
+                <span style={{ ...BRC2, fontSize: 9, letterSpacing: "0.12em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase" as const }}>Risk Score</span>
+                <span style={{ ...GEO2, fontSize: 36, fontWeight: 700, color: riskScore > 74 ? "#EF4444" : riskScore > 34 ? GOLD : TEAL, lineHeight: 1 }}>{riskScore}</span>
+              </div>
+              <div style={{ height: 3, background: "rgba(255,255,255,0.07)" }}>
+                <div style={{ height: "100%", width: `${riskScore}%`, background: riskScore > 74 ? "#EF4444" : GOLD, transition: "width 0.1s, background 0.4s" }} />
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 2 }}>
+                <span style={{ ...BRC2, fontSize: 6.5, color: "rgba(255,255,255,0.18)" }}>LOW</span>
+                <span style={{ ...BRC2, fontSize: 6.5, color: "rgba(255,255,255,0.18)" }}>CRITICAL</span>
+              </div>
+            </div>
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", padding: "10px 12px" }}>
+              <div style={{ ...BRC2, fontSize: 8, color: "rgba(255,255,255,0.3)", letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 5 }}>Protocol Matched</div>
+              <div style={{ ...BAR2, fontSize: 12, color: "#fff", fontWeight: 600, marginBottom: 3 }}>{scenario.protocol}</div>
+              <div style={{ ...BRC2, fontSize: 8.5, color: "rgba(255,255,255,0.35)" }}>{scenario.tasks} tasks pre-staged · Authorization required</div>
+            </div>
+          </div>
+        )}
+
+        {phase === "stage" && (
+          <div>
+            <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", color: domainColor, textTransform: "uppercase" as const, marginBottom: 10 }}>Response Pre-Staged</div>
+            <div style={{ ...GEO2, fontSize: 20, fontWeight: 700, color: "#fff", lineHeight: 1.25, marginBottom: 14 }}>
+              {scenario.tasks} tasks ready.<br />
+              <em style={{ color: GOLD }}>Awaiting executive sign-off.</em>
+            </div>
+            {["Full impact brief prepared", "Budget authority pre-approved", "All task owners assigned", "Communication templates staged"].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
+                <div style={{ width: 5, height: 5, background: TEAL, flexShrink: 0 }} />
+                <span style={{ ...BAR2, fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {phase === "authorize" && (
+          <div style={{ textAlign: "center" as const, paddingTop: 4 }}>
+            <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", color: GOLD, textTransform: "uppercase" as const, marginBottom: 10 }}>Authorization Requested</div>
+            <div style={{ ...GEO2, fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 4 }}>{scenario.executive}</div>
+            <div style={{ ...BAR2, fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>Reviewing impact brief · Budget ready</div>
+            <div style={{ display: "flex", gap: 6, justifyContent: "center", marginBottom: 18 }}>
+              {[0, 1, 2].map(i => (
+                <div key={i} style={{ width: 7, height: 7, borderRadius: "50%", background: GOLD, opacity: 0.3 + i * 0.35 }} />
+              ))}
+            </div>
+            <div style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", padding: "10px 14px" }}>
+              <div style={{ ...BAR2, fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
+                No committee. No alignment meeting.<br />Executive signs off — execution begins.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {phase === "execute" && (
+          <div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+              <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: TEAL, textTransform: "uppercase" as const }}>Executing Now</div>
+              <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, color: GOLD, letterSpacing: "0.08em" }}>AUTHORIZATION GRANTED ✓</div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 2 }}>
+              {scenario.steps.map((step, i) => {
+                const done = i <= activeStep;
+                const current = i === activeStep;
+                const isExec = step.owner !== "System" && !step.owner.includes("All");
+                return (
+                  <div key={i} style={{ display: "flex", gap: 7, padding: "5px 7px", background: current ? "rgba(201,168,76,0.08)" : done ? "rgba(255,255,255,0.02)" : "transparent", border: `1px solid ${current ? "rgba(201,168,76,0.22)" : "transparent"}`, transition: "all 0.4s", opacity: done || current ? 1 : 0.2 }}>
+                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: done ? (isExec ? GOLD : TEAL) : "rgba(255,255,255,0.1)", marginTop: 4, flexShrink: 0, transition: "background 0.3s" }} />
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ ...BRC2, fontSize: 6.5, fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>{step.t} · {step.owner}</div>
+                      <div style={{ ...BAR2, fontSize: 9.5, color: done ? "rgba(255,255,255,0.72)" : "rgba(255,255,255,0.2)", lineHeight: 1.35 }}>{step.action}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {phase === "complete" && (
+          <div style={{ textAlign: "center" as const, paddingTop: 6 }}>
+            <div style={{ ...BRC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", color: TEAL, textTransform: "uppercase" as const, marginBottom: 10 }}>Execution Complete · 12:00</div>
+            <div style={{ ...GEO2, fontSize: 52, fontWeight: 700, color: TEAL, lineHeight: 1, marginBottom: 8 }}>✓</div>
+            <div style={{ ...GEO2, fontSize: 16, fontWeight: 600, color: "#fff", lineHeight: 1.35, marginBottom: 14 }}>{scenario.outcome}</div>
+            <div style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.28)", padding: "12px 16px", marginBottom: 12 }}>
+              <div style={{ ...GEO2, fontSize: 24, fontWeight: 700, color: GOLD }}>{scenario.stat}</div>
+            </div>
+            <div style={{ ...BRC2, fontSize: 7.5, color: "rgba(255,255,255,0.25)", letterSpacing: "0.14em", textTransform: "uppercase" as const }}>Next scenario loading…</div>
+          </div>
+        )}
+      </div>
+
+      {/* Bottom bar */}
+      <div style={{ padding: "9px 14px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center", flexShrink: 0 }}>
+        <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
+          {SCENARIOS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setScenarioIdx(i)}
+              style={{ width: i === scenarioIdx ? 16 : 6, height: 6, borderRadius: 3, background: i === scenarioIdx ? GOLD : "rgba(255,255,255,0.18)", border: "none", cursor: "pointer", padding: 0, transition: "all 0.3s" }}
+            />
+          ))}
+        </div>
+        <a href="/industry-demo-library" style={{ ...BRC2, fontSize: 8, fontWeight: 700, color: TEAL, textDecoration: "none", letterSpacing: "0.14em", textTransform: "uppercase" as const }}>
+          See all 19 industries →
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   const liveCtx = useLiveContext();
   const hasReal = (liveCtx?.recentDetections?.length ?? 0) > 0;
@@ -691,7 +966,7 @@ function HeroSection() {
       <div style={{ position: "absolute", right: 0, top: 160, width: "58%", height: 1, background: `linear-gradient(to left, transparent 0%, ${GOLD}44 50%, transparent 100%)`, pointerEvents: "none", zIndex: 1 }} />
 
       <div style={{ ...CONTAINER, width: "100%" }}>
-        <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 36%", minHeight: 580 }}>
+        <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 42%", minHeight: 600, alignItems: "stretch" }}>
 
           {/* LEFT — Headline + CTAs + Stats */}
           <div className="hp-hero-left" style={{ padding: "100px 56px 88px 0", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
@@ -818,50 +1093,10 @@ function HeroSection() {
             </Reveal>
           </div>
 
-          {/* RIGHT — Intelligence Seal */}
-          <Reveal delay={0.18}>
-            <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", padding: "60px 0 60px 44px", display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center" }}>
-              <VaughnMartinLogo variant="icon-only" height={300} color="light" animated={true} noLink={true} />
-
-              {/* Motto + founding phrase — previously inside TechCrest SVG */}
-              <div style={{ marginTop: 24, display: "flex", flexDirection: "column" as const, alignItems: "center", gap: 10 }}>
-                <div style={{ background: `linear-gradient(90deg, #8B6212, ${GOLD}, #8B6212)`, padding: "7px 28px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontFamily: "Georgia, serif", fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: "0.32em", textTransform: "uppercase" as const }}>
-                    ANTE IGNEM PARATUS
-                  </span>
-                </div>
-                <div style={{ ...DM, fontSize: 7.5, fontWeight: 600, color: "rgba(0,229,196,0.55)", letterSpacing: "0.16em", textTransform: "uppercase" as const, textAlign: "center" as const }}>
-                  PREPARE · PRACTICE · PERFORM FEARLESS · NEVER GIVE UP
-                </div>
-              </div>
-
-              {/* suppressed live signal feed — kept below for reference */}
-              {false && signals.map((sig, i) => (
-                <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "16px 0" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <span style={{ ...DM, color: TEAL, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em" }}>
-                      {DOMAIN_LABELS[(sig as any).triggerDomain ?? ''] ?? ((sig as any).triggerDomain ?? 'SIGNAL').toUpperCase()}
-                    </span>
-                    <span style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 10, fontWeight: 500 }}>
-                      {(sig as any).detectedAt ? signalTimeAgo((sig as any).detectedAt) : "continuous"}
-                    </span>
-                  </div>
-                  <div style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: 12.5, fontWeight: 600, lineHeight: 1.45, marginBottom: 6 }}>
-                    {(() => {
-                      const raw = (sig as any).signalDescription || (sig as any).triggerName || '';
-                      const dashIdx = raw.indexOf(' — ');
-                      const headline = dashIdx > 0 ? raw.slice(0, dashIdx) : raw.slice(0, 90);
-                      return headline.length > 88 ? headline.slice(0, 87) + '…' : headline;
-                    })()}
-                  </div>
-                  <Link href="/12-minute-experience" style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>
-                    Readiness Protocol ready →
-                  </Link>
-                </div>
-              ))}
-
-            </div>
-          </Reveal>
+          {/* RIGHT — Live Simulation Panel */}
+          <div style={{ padding: "32px 0 32px 32px", display: "flex", alignItems: "stretch" }}>
+            <HeroSimPanel />
+          </div>
         </div>
       </div>
     </section>
