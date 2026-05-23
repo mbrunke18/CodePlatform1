@@ -338,11 +338,23 @@ function renderRedirects(paths: string[], to: string) {
   ));
 }
 
+function CanonicalUpdater() {
+  const [location] = useLocation();
+  useEffect(() => {
+    const base = "https://vaughnmartin.com";
+    const canonical = location === "/" || location === "" ? base + "/" : base + location.split("?")[0];
+    const link = document.getElementById("canonical-url") as HTMLLinkElement | null;
+    if (link) link.href = canonical;
+  }, [location]);
+  return null;
+}
+
 function Router() {
   return (
     <DemoTimelineProvider defaultDuration={720000} defaultSpeedMultiplier={20}>
       <DemoControllerProvider>
         <ScrollToTop />
+        <CanonicalUpdater />
         <OnboardingGuard>
           <Suspense fallback={<PageLoader />}>
             <Switch>

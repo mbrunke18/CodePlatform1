@@ -86,7 +86,7 @@ export function getTimeSensitivity(playbookNumber: number, severityScore: number
 export function getActivationTier(playbookNumber: number, domainId: number): string {
   // Playbooks are ordered by frequency within each domain
   // First playbooks in domain (1-5 per domain) are most frequent
-  const playbooksPerDomain = 170 / 9; // ~19 per domain
+  const playbooksPerDomain = 180 / 9; // 20 per domain
   const positionInDomain = playbookNumber % Math.ceil(playbooksPerDomain);
   
   if (positionInDomain <= 3) return 'TIER_1_FREQUENT';

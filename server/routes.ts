@@ -10134,8 +10134,8 @@ Respond ONLY as JSON with this exact structure:
       // Trigger Coverage (0–25): active triggers vs 221 canonical triggers
       const triggerScore = Math.min(25, Math.round((Math.min(triggerCount, 221) / 221) * 25));
 
-      // Playbook Readiness (0–25): 170 playbooks seeded = full score; partial credit otherwise
-      const playbookScore = 24; // 170 playbooks always seeded
+      // Playbook Readiness (0–25): 180 playbooks seeded = full score; partial credit otherwise
+      const playbookScore = 24; // 180 playbooks always seeded
 
       // Activation Velocity (0–25): bonus for having completed activations within target
       const velocityScore = activationCount > 0
