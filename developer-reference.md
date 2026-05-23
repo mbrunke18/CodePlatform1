@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 23, 2026 (rev 45) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 23, 2026 (rev 46) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -11,7 +11,7 @@
 **Canonical tagline:** "The response is ready before the trigger fires."
 **Product thesis arc (LOCKED):** Preparation → Readiness → Fearless.
 
-- **170 active playbooks** across 9 domains
+- **180 Readiness Protocols** across 9 domains (core single-domain library) + **30 compound protocols** (IDs 181–210, dual-track cross-domain) = **210 total**
 - **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 
@@ -384,7 +384,12 @@ GET    /api/dynamic-strategy/status        ← Signal system status (requires au
 GET    /api/dynamic-strategy/readiness     ← Future Readiness Index (requires auth+org)
 GET    /api/dynamic-strategy/weak-signals  ← Active weak signals (requires auth+org)
 GET    /api/dynamic-strategy/oracle-patterns ← AI patterns (requires auth+org)
-GET    /api/playbook-library               ← 170 playbook taxonomy
+GET    /api/playbook-library               ← 180-protocol library
+GET    /api/advance/learning-velocity      ← Learning Velocity Index (auth + org required)
+GET    /api/advance/pending-queue          ← Auto-apply + exec-authorize update queues (auth + org)
+GET    /api/advance/protocol-timeline/:id  ← Full version delta history for a protocol (auth + org)
+PATCH  /api/preparation-updates/:id/apply-v2 ← Apply update with causal delta + hypothesis (auth + org)
+POST   /api/advance/measure/:outcomeId     ← Trigger hypothesis measurement on close-out (auth + org)
 GET    /api/playbook-library/:id           ← Single playbook detail (returns { playbook: {...} })
 GET    /api/playbook-library/by-number/:n  ← Playbook by stable number (cross-env safe)
 GET    /api/playbook-library/domains       ← 9 domain list
@@ -548,11 +553,11 @@ toast({ title: 'Error', description: 'Something went wrong.', variant: 'destruct
 
 ## 12. Playbook Library
 
-- **170 active playbooks** in 9 domains (seeded to DB on startup)
-- **4 compound playbooks** (IDs 181–184): cross-domain crisis scenarios
+- **180 Readiness Protocols** in 9 domains (seeded to DB on startup) — canonical marketing claim
+- **30 compound protocols** (IDs 181–210): dual-track cross-domain crisis scenarios — **210 total**
 - **23 enriched playbooks** with full `enrichedPhases` content (4 phases each, role-specific tasks, decision gates, restrictions). 14 original flagship set + 9 added April 2026 via migration script `server/scripts/fill-empty-playbooks.ts`: AI Competitive Disruption, Data Breach, CEO Sudden Departure, Financial Services Compliance Breach, SLA Mass Breach, Competitive Acquisition, AI Data Privacy Breach, Third-Party Data Breach, Compound Cyber+Regulatory.
-- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full card content with an upsell CTA ("View Sample" button → `/playbook-library/:id`). All 167 others render as locked cards showing only domain name + "Founding Partner access required" label + "Request Access" button → `/founding-partner-program`. Authenticated users see all 170 with "Deploy" button → `/playbook-customize/:id`. The public/locked logic lives in `ProtocolDetail.tsx` (`isSampleView` flag) and `ProtocolLibrary.tsx` (`isLocked` flag) — never change the free sample set without founder approval. The `SAMPLE_PLAYBOOK_NAMES` Set must be identical in both files. **Note:** The page file was renamed from `PlaybookLibraryV2.tsx` → `ProtocolLibrary.tsx` and `PlaybookDetail.tsx` → `ProtocolDetail.tsx`.
-- **Public-facing copy (locked):** Bottom CTA on sample playbooks reads: "You just read one of 3 public playbooks. 167 exclusive ones are already protecting your competitors." The 167 refers to locked pilot-only playbooks specifically — not 170 minus 1.
+- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full card content with an upsell CTA ("View Sample" button → `/playbook-library/:id`). All 177 others render as locked cards showing only domain name + "Founding Partner access required" label + "Request Access" button → `/founding-partner-program`. Authenticated users see all 180 with "Deploy" button → `/playbook-customize/:id`. The public/locked logic lives in `ProtocolDetail.tsx` (`isSampleView` flag) and `ProtocolLibrary.tsx` (`isLocked` flag) — never change the free sample set without founder approval. The `SAMPLE_PLAYBOOK_NAMES` Set must be identical in both files. **Note:** The page file was renamed from `PlaybookLibraryV2.tsx` → `ProtocolLibrary.tsx` and `PlaybookDetail.tsx` → `ProtocolDetail.tsx`.
+- **Public-facing copy (locked):** Bottom CTA on sample playbooks reads: "You just read one of 3 public playbooks. 177 exclusive ones are already protecting your competitors." The 177 refers to locked Founding Partner–only protocols specifically — not 180 minus 1.
 
 ### Domain Names (exact DB strings — use these for filtering)
 ```
@@ -673,7 +678,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 - Location: `client/src/components/ExecutionGapDiagram.tsx`
 - SVG comparison: left panel = "72 HOURS LATER — STILL FIGURING IT OUT" (navy/red); right panel = "EXECUTION IS LIVE" (navy/teal). **Note:** The "72 HOURS LATER" label is intentional "before-state" visual copy — it depicts the *problem* state, not a baseline metric claim. This is NOT a violation of the retired 72-hour mobilization baseline rule (see Section 32). The comparison baseline metrics (3,600×, 30 days → 12 min) appear in the proof-numbers strip at the bottom. Do not change the left-panel label without founder approval.
 - viewBox: `0 0 1320 762`
-- Bottom bar: proof-numbers strip — 170 playbooks · 221 executive triggers · 248+ data points · 12 min to live execution. **NOT a football analogy** — do not revert.
+- Bottom bar: proof-numbers strip — 180 Readiness Protocols · 221 executive triggers · 248+ data points · 12 min to live execution. **NOT a football analogy** — do not revert.
 - Used on: `Homepage.tsx`, `Investors.tsx`
 
 ### `ExecutionProcessDiagram`
@@ -690,7 +695,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 |---|---|---|
 | `Dashboard.tsx` | `/dashboard` | Main logged-in home. Has AI Copilot panel. |
 | `MissionControl.tsx` | `/mission-control` | Executive war room. Trigger activation → ProtocolActivationConsole. |
-| `ProtocolLibrary.tsx` | `/playbook-library` | 170 playbooks with domain filter + free samples (renamed from `PlaybookLibraryV2.tsx`) |
+| `ProtocolLibrary.tsx` | `/playbook-library` | 180 Readiness Protocols with domain filter + free samples (renamed from `PlaybookLibraryV2.tsx`) |
 | `ProtocolActivationConsole.tsx` | `/playbook-activation/:triggerId/:playbookId` | Live execution flow. `triggerId='manual'` skips trigger fetch. |
 | `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. **Auth gating:** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggles) are hidden from unauthenticated users — non-auth users see a "Sign In to Activate" button. Trigger data is visible to all. `SOURCE_LABELS` map (top of file) converts raw source IDs to readable labels shown as teal tags. `[location, setLocation] = useLocation()` — must destructure both. |
 | `SignalConfiguration.tsx` | `/signal-configuration` | **Signal Intelligence Configuration.** All 17 signal categories from `shared/intelligence-signals.ts`. Each category expands to show all data points with individual on/off toggles. Category-level enable/disable all. Shows recommended playbooks per category and linked trigger count. Persist state via `signal_monitoring_config` DB table (per org, stores `disabledDataPoints[]`). API: `GET/PATCH /api/signal-monitoring-config`. Framework chain banner shows: Data Points → Triggers Fire → Playbook Executes. Linked from StandardNav "Capabilities" section. |
@@ -714,14 +719,14 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 | `EcosystemDiagramPage.tsx` | `/ecosystem` | Public standalone page: "The Strategic Command Layer Above Microsoft's Agentic Stack." Embeds `ExecutionOSMicrosoftDiagram.tsx` (3-layer SVG — Execution OS → Integration touchpoints → Microsoft Full Stack). 3-step explanation strip, 5 integration callouts (Azure AI, Teams, Copilot Studio, Entra, Power Platform), pilot CTA. **Do NOT embed the main dev-server URL** — diagram is self-contained SVG. Linked from: StandardNav Platform→Capabilities (featured/gold-highlighted), Footer Company section, Investors page GTM card, and Homepage `MicrosoftEcosystemBanner`. |
 | `EcosystemsHub.tsx` | `/ecosystems` | All-7-ecosystem hub page. Linked from Homepage Microsoft section "View All 7 Enterprise Ecosystems →" button and StandardNav. Child ecosystem pages: `/ecosystem` (Microsoft), `/ecosystem/google`, `/ecosystem/salesforce`, `/ecosystem/aws`, `/ecosystem/sap`, `/ecosystem/servicenow`, `/ecosystem/workday`. |
 | `WhyExecutionOS.tsx` | `/why-execution-os` | Competitive analysis page. Full breakdown: Copilot vs ServiceNow vs Palantir vs Everbridge vs GRC — positioned on a 2×2 grid (Speed vs Depth, Predict vs React). Closes with Microsoft positioning ("every enterprise already owns the engine — Execution OS is the transmission"). **Route conflict fix (March 2026):** A shadow route at this path previously served the old `WhyExecuteIQ` component — that shadow route was removed from App.tsx. The legacy page lives at `/why-execution-os-legacy`. Linked from: StandardNav Evidence dropdown (featured), HomepageNav. |
-| `ExecutiveBrief.tsx` | `/executive-brief` | Shareable one-pager for board and C-suite prospects. Concise value prop, key metrics (3,600×, 12 min, 170 playbooks), IDEA Framework summary, and Microsoft positioning. Linked from: StandardNav Experience dropdown and Evidence dropdown. |
+| `ExecutiveBrief.tsx` | `/executive-brief` | Shareable one-pager for board and C-suite prospects. Concise value prop, key metrics (3,600×, 12 min, 180 Readiness Protocols), IDEA Framework summary, and Microsoft positioning. Linked from: StandardNav Experience dropdown and Evidence dropdown. |
 | `RequestAccess.tsx` | `/request-access` | Magic link intake form. Fields: name, email, company, title. On submit: (1) enrolls prospect in `stakeholder_contacts` for system + all existing orgs via `enrollProspectForAlerts()` — fires at form SUBMIT time, not link click; (2) saves token to `magic_link_tokens` DB table; (3) sends branded magic link email (`pilot@vaughnmartin.com` → fallback `onboarding@resend.dev`). Always returns `{ ok: true, emailSent: bool }` — never fails on the user side. Paired with `/api/auth/magic-link/verify?token=<token>` which: validates token (marks used, single-use only), creates user + session, fires `sendWelcomeTriggerDemo(email, firstName)` fire-and-forget (guaranteed "AI Competitive Disruption" trigger alert email, 94% confidence, bypasses RSS pipeline), then redirects to `/mission-control`. |
 | `IndustryDemosHub.tsx` | `/industry-demos` | Hub page for all 4 industry scenario demos. Linked from: HomepageNav Experience, StandardNav Experience dropdown. |
 | `FinancialRansomwareDemo.tsx` | `/industry-demo/financial-ransomware` | Financial services ransomware response scenario (600+ lines). Real-time incident timeline, 7 IDEA-phase tasks, CFO/CTO/CISO stakeholder map, $47M exposure model. |
 | `PharmaceuticalRecallDemo.tsx` | `/industry-demo/pharmaceutical-recall` | Pharma recall scenario. FDA timeline, 170K-unit scope, cross-functional war room, regulatory communication tracks. |
 | `ManufacturingSupplierDemo.tsx` | `/industry-demo/manufacturing-supplier` | Manufacturing supply disruption scenario. 14 downstream facilities, $2.3M/day exposure, alternate supplier routing. |
 | `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
-| `TechnicalArchitecture.tsx` | `/technical-architecture` | Technical credibility asset for investor and enterprise procurement audiences. Four-layer architecture walkthrough: Signal Detection (39 feeds, 15-min cadence, √signals×8 risk formula), Protocol Mapping (221 triggers → 170 protocols, compound logic), Execution Engine (task seeding, authority chains, budget authorization, 90-sec handoff), Institutional Memory (activation records, debrief classification, ROI tracking). Microsoft integration map — 4 live (Teams, Outlook, SharePoint, Entra) vs. 4 roadmap (Copilot Studio, Power Automate, Sentinel, Fabric). Core data model (5 entities). Security summary with links to `/security-compliance`. No auth required. |
+| `TechnicalArchitecture.tsx` | `/technical-architecture` | Technical credibility asset for investor and enterprise procurement audiences. Four-layer architecture walkthrough: Signal Detection (39 feeds, 15-min cadence, √signals×8 risk formula), Protocol Mapping (221 triggers → 180 protocols, compound logic), Execution Engine (task seeding, authority chains, budget authorization, 90-sec handoff), Institutional Memory (activation records, debrief classification, ROI tracking). Microsoft integration map — 4 live (Teams, Outlook, SharePoint, Entra) vs. 4 roadmap (Copilot Studio, Power Automate, Sentinel, Fabric). Core data model (5 entities). Security summary with links to `/security-compliance`. No auth required. |
 | `SecurityCompliance.tsx` | `/security-compliance` | Procurement-ready security one-pager. 6 sections (Auth, Infrastructure, Monitoring, AI Safety, Trust, Access). **Session additions:** SOC 2 Type II roadmap (3-phase tracker — Controls Inventory ✓, Gap Remediation in progress, Type II Audit Q3 2025 target), DPA & Legal section (data residency, retention schedule, right to deletion, AI data handling, sub-processor list), InfoSec FAQ (6 Q&A pre-answering pen test, data exit, GDPR, AI model access, incident response). Founding Partner CTA at bottom. |
 | `FoundingPartnerProgram.tsx` | `/founding-partner-program` (also `/pilot-program` alias) | Public Founding Partner conversion page. Problem-first hero, "2026 Founding Partner Cohort · 12 Seats" scarcity badge, differentiation strip, inline `ApplicationForm` component (no redirect). Form fields: name, email, company, title, companySize, primaryChallenge, timelineUrgency. On submit: POST `/api/founding-partner/apply` → saves to `founding_partner_applications` table → success state "We'll be in touch within 48 hours." Error fallback shows `founding@vaughnmartin.com`. Questions CTA also shows `founding@vaughnmartin.com`. All public "Founding Partner Access" CTAs across the product route here — never to `/request-access`. |
 | `ProtocolDetail.tsx` | `/playbook/:id` | Full playbook view (renamed from `PlaybookDetail.tsx`). Three tabs: Overview, Performance (auth-gated), Edit Tasks (auth-gated, only shown when `enrichedPhases` exist). Edit Tasks tab: phase accordion editor for name/objective, role task groups (add/remove/rename/edit items), decision gate (title/criteria/escalation), and restrictions. Saves via `PATCH /api/playbook-library/:id/customize` with `{ customizations: { enrichedPhases } }`. Amber dot on tab label = unsaved changes. `useEffect` syncs `editedPhases` from `playbook.enrichedPhases` on load. Helper callbacks: `updatePhase`, `updateTask`, `updateTaskItem`, `addTaskItem`, `removeTaskItem`, `addTaskGroup`, `removeTaskGroup`, `updateCriteria`, `addCriteria`, `removeCriteria`, `updateRestriction`, `addRestriction`, `removeRestriction`. |
@@ -949,9 +954,91 @@ await deployConfig({
 ## 22. Playbook Seeding (Production)
 
 Seeding logic is in `server/index.ts` as an additive migration:
-- If playbook count < 170, only inserts missing compound playbooks by name lookup
+- If playbook count < 180, only inserts missing compound playbooks by name lookup
 - No destructive wipe — safe to run repeatedly
 - `playbookLibrarySeed.ts` and `playbookLibrarySeed_PARTIAL.ts` in `server/seeds/` are NOT the active source of truth — the DB was seeded once from a complete run and is maintained additively
+
+---
+
+## 22a. ADVANCE 2.0 — Closed-Loop Causal Learning Engine
+
+**Added:** May 2026 (rev 46) | **Service:** `server/services/AdvanceLoopService.ts`
+
+Every activation close-out now triggers a causal learning cycle — not just a flag update. This is the architectural moat: the platform gets measurably smarter with each execution, and the improvement is proven, not assumed.
+
+### How the Loop Works
+
+```
+Activation Complete
+       ↓
+Close-Out Gate (ownership verdict)
+       ↓
+measureHypothesesForActivation()   ← auto-triggered on every close-out
+       ↓
+Pending updates → applyUpdateWithDelta()
+  • Mutates playbook record
+  • Stores immutable version delta (protocol_version_deltas)
+  • Creates causal hypothesis with expected impact (update_hypotheses)
+       ↓
+Next activation on same protocol
+       ↓
+measureHypothesesForActivation() classifies hypothesis:
+  • proven     (actual improvement ≥ 80% of expected, ≥3 activations)
+  • disproven  (no improvement or regression, ≥3 activations)
+  • measuring  (fewer than 3 post-update activations)
+```
+
+### New DB Tables
+
+| Table | Purpose |
+|---|---|
+| `protocol_version_deltas` | Immutable audit log of every protocol mutation — what changed, why, what was expected |
+| `update_hypotheses` | Causal chain: hypothesis → measuring → proven/disproven. Links delta to outcome measurement |
+
+> **Schema note:** These tables were created via direct SQL (not `npm run db:push`) because the interactive migration prompt blocked the normal flow. Run `npm run db:push` if re-creating the DB from scratch — the schema definitions are in `shared/schema.ts`.
+
+### Key Methods
+
+| Method | What It Does |
+|---|---|
+| `applyUpdateWithDelta(updateId, appliedBy)` | Mutates playbook record, stores immutable version delta, creates causal hypothesis with `expectedImpactMinutes` |
+| `measureHypothesesForActivation(outcomeId)` | Auto-fires on every close-out. Compares expected vs actual response time across ≥3 post-update activations. Classifies as proven/disproven. |
+| `getLearningVelocityIndex(orgId)` | Aggregates executive metrics: updates applied, proven improvements, total minutes saved, % of 180-protocol library with evidence-backed changes, top 10 by proven impact, 6-month velocity trend, moat in months |
+| `getPendingUpdateQueue(orgId)` | Returns two queues: `autoApply` (signal calibrations, low-risk) and `requiresAuthorization` (ownership/protocol changes, exec sign-off required) |
+
+### Update Queue Classification
+
+| Queue | Update Types | Who Acts |
+|---|---|---|
+| `autoApply` (teal) | `signal_calibration` | System applies automatically |
+| `requiresAuthorization` (amber) | `ownership_assignment`, `protocol_suggestion` | Executive must authorize — no protocol changes without human sign-off |
+
+### API Routes (all require `requireOrgAccess`)
+
+```
+GET   /api/advance/learning-velocity       ← Learning Velocity Index dashboard data
+GET   /api/advance/pending-queue           ← Auto-apply + exec-authorize queues
+GET   /api/advance/protocol-timeline/:id   ← Full version delta history for a protocol
+PATCH /api/preparation-updates/:id/apply-v2 ← Apply with causal delta + hypothesis creation
+POST  /api/advance/measure/:outcomeId      ← Trigger hypothesis measurement (auto-called on close-out)
+```
+
+**Important:** `apply-v2` replaces the old `/apply` endpoint. `OrganizationalIntelligence.tsx` was updated to use `apply-v2`. Do NOT revert to the old endpoint — it only flipped a status flag and created no causal record.
+
+### Dashboard Page
+
+`client/src/pages/AdvanceIntelligence.tsx` at `/advance-intelligence` — authenticated, org-gated.
+
+| Section | What It Shows |
+|---|---|
+| Learning Velocity Index | Updates applied, proven improvements, minutes saved, protocol library % with evidence, moat in months |
+| Closed Loop Visualization | 5-stage cycle: Activation → Close-Out → Update Applied → Hypothesis Created → Proven/Disproven |
+| Pending Action Queue | Auto-apply (teal) + Executive Authorization (amber) cards |
+| 6-Month Velocity Trend | Bar chart of updates proven per month |
+| Top Proven Improvements | Ranked by response time reduction, expandable |
+| Competitive Moat Summary | Navy panel — months to rebuild this intelligence on any competitor platform |
+
+Linked from: `WorkspaceAdvance` (featured first card), `OrganizationalIntelligence` (teal link panel at bottom).
 
 ---
 
@@ -1380,7 +1467,7 @@ Every field is additive and nullable — all existing rows remain valid. All ext
 | `jurisdiction` | varchar(50) | `inferJurisdiction(source)` | `US \| UK \| EU \| global` — UK FCA→UK, ECB→EU, WHO/State Dept/White House→global, all others→US |
 
 #### Batch 2 — Protocol Graph Linkage (added May 2026, rev 42)
-Links every live detection to the actual protocol record it recommended. **This is the field that wires the signal pipeline into the 170-protocol graph.**
+Links every live detection to the actual protocol record it recommended. **This is the field that wires the signal pipeline into the 180-protocol graph.**
 | Column | Type | Source | Purpose |
 |---|---|---|---|
 | `protocol_id_matched` | uuid | Post-insert lookup in `playbook_library` via `ILIKE` on `recommendedPlaybook` name | Direct FK to `playbook_library.id` — enables joins, frequency analytics, protocol coverage maps |
@@ -1609,7 +1696,7 @@ The following copy conventions are founder-locked. Any agent or developer who to
 ### Product Thesis Arc (LOCKED — must appear on all primary pages)
 **Preparation → Readiness → Fearless**
 - Preparation: Decision rights mapped, ownership defined, response architecture built during low pressure — before any trigger fires.
-- Readiness: 170 playbooks pre-staged. 221 triggers monitored. 12-minute deployment ready.
+- Readiness: 180 Readiness Protocols pre-staged. 221 triggers monitored. 12-minute deployment ready.
 - Fearless: Every enterprise that prepares for every situation it'll face is no longer afraid of strategic triggers.
 - Canonical tagline: "The response is ready before the trigger fires."
 - Emotional endpoint: Fearlessness — not speed. Speed is the evidence; readiness is the promise; fearless is the outcome.
@@ -1691,7 +1778,7 @@ All pages were audited and the following corrections were made globally. Do not 
 
 **Product descriptor updates (7 locations fixed):**
 - `WelcomeBrief.tsx` — "Your Readiness Infrastructure — Live Now"
-- `OnboardingGuide.tsx` — logo subtitle "Readiness OS"; section "170 Pre-Built Readiness Playbooks"
+- `OnboardingGuide.tsx` — logo subtitle "Readiness OS"; section "180 Pre-Built Readiness Protocols"
 - `CommandLanding.tsx` — "readiness playbooks across 9 strategic domains"
 - `InvestorLanding.tsx` — hero "The Operating Model Layer"; Problem 1 "The Readiness Gap"
 - `InvestorPresentation.tsx` — Platform Vision slide "The Operating Model Layer"
@@ -2613,7 +2700,7 @@ Current production counts as of May 21, 2026:
 | Server route modules (`server/routes/`) | **15** |
 | `shared/schema.ts` size | **~6,900 lines** |
 | `server/storage.ts` size | **~3,566 lines** |
-| Readiness Protocols in library | **170 core** (+ 12 compound, IDs 181–192 = **182 total**) |
+| Readiness Protocols in library | **180 core** (+ 30 compound, IDs 181–210 = **210 total**) |
 | Strategic domains | **9** |
 | Canonical trigger count | **221** |
 | Signal data points | **248+** |
@@ -2977,7 +3064,7 @@ The "Sign In" button was also incorrectly pointing to `/request-access` instead 
 The fallback OG tags (used by social crawlers that do not execute JavaScript) were updated:
 - `og:title` / `twitter:title`: now use the canonical framing "30 Days Compressed to 12 Minutes"
 - `og:description` / `twitter:description`: now use canonical tagline + "3,600× Execution Head Start"
-- `meta name="description"`: fixed "170 playbooks" → "170 Readiness Protocols"
+- `meta name="description"`: uses "180 Readiness Protocols" (updated May 2026 from 170)
 
 These are the tags social platforms (LinkedIn, Slack unfurls) will read when the page is shared. The JS `updatePageMetadata` calls override them in-browser but static tags are the safe fallback for crawlers.
 
@@ -3053,7 +3140,7 @@ Added missing Open Graph image and Twitter card image, plus full JSON-LD `@graph
 
 **JSON-LD `@graph` (3 schemas):**
 - `Organization` — VaughnMartin entity, founded 2023, Fortune 1000 audience
-- `SoftwareApplication` — Readiness OS, `BusinessApplication` category, `featureList` with 170 protocols / 221 triggers / 12 minutes / 3,600× canonical numbers
+- `SoftwareApplication` — Readiness OS, `BusinessApplication` category, `featureList` with 180 protocols / 221 triggers / 12 minutes / 3,600× canonical numbers
 - `WebSite` — with `SearchAction` pointing to `/playbook-library?search=`
 
 **SPA ceiling note:** Per-page titles/descriptions are still JS-rendered (SPA constraint). Score ceiling is ~80–85 without SSR. Social preview (og:image) and structured data (JSON-LD) are the highest-ROI fixes for the podcast/VC audience.
