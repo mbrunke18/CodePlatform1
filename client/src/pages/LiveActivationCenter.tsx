@@ -351,34 +351,25 @@ function getPlaybookIcon(icon: string) {
   }
 }
 
-// Normalise DB lowercase values (offense/defense/special_teams) to the uppercase
-// internal labels used by getCategoryColor and getCategoryDisplayName.
-function normaliseCat(category: string | undefined): string {
-  if (!category) return '';
-  const map: Record<string, string> = {
-    offense: 'OFFENSE',
-    defense: 'DEFENSE',
-    special_teams: 'SPECIAL TEAMS',
-  };
-  return map[category.toLowerCase()] ?? category.toUpperCase().replace('_', ' ');
-}
+const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string; ring: string; solid: string }> = {
+  offense:       { bg: 'bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' },
+  defense:       { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' },
+  special_teams: { bg: 'bg-[#C9A84C]/10', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' },
+};
+const CATEGORY_FALLBACK_COLOR = { bg: 'bg-[#F8F7F4]', text: 'text-[#0A0F2E]', border: 'border-[#E8E4DC]', ring: 'ring-[#E8E4DC]', solid: 'bg-[#0A0F2E]' };
+
+const CATEGORY_DISPLAY_NAMES: Record<string, string> = {
+  offense:       'GROWTH & POSITIONING',
+  defense:       'RISK & RESILIENCE',
+  special_teams: 'TRANSFORMATION',
+};
 
 function getCategoryColor(category: string) {
-  switch (normaliseCat(category)) {
-    case 'OFFENSE': return { bg: 'bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' };
-    case 'DEFENSE': return { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' };
-    case 'SPECIAL TEAMS': return { bg: 'bg-[#C9A84C]/10', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' };
-    default: return { bg: 'bg-[#F8F7F4]', text: 'text-[#0A0F2E]', border: 'border-[#E8E4DC]', ring: 'ring-[#E8E4DC]', solid: 'bg-[#0A0F2E]' };
-  }
+  return CATEGORY_COLORS[(category ?? '').toLowerCase()] ?? CATEGORY_FALLBACK_COLOR;
 }
 
 function getCategoryDisplayName(category: string | undefined): string {
-  switch (normaliseCat(category)) {
-    case 'OFFENSE': return 'GROWTH & POSITIONING';
-    case 'DEFENSE': return 'RISK & RESILIENCE';
-    case 'SPECIAL TEAMS': return 'TRANSFORMATION';
-    default: return 'READINESS';
-  }
+  return CATEGORY_DISPLAY_NAMES[(category ?? '').toLowerCase()] ?? 'READINESS';
 }
 
 // Maps a DB protocol's strategicCategory + domainName to the closest simulation
@@ -579,7 +570,7 @@ export default function LiveActivationCenter() {
     return {
       key: `email:${simKey}`,
       name: p.name,
-      category: normaliseCat(p.strategicCategory) as any,
+      category: (p.strategicCategory ?? '').toLowerCase() as any,
       description: p.description || `${p.name} — readiness protocol staged for immediate execution.`,
       icon: 'shield',
       stakeholderCount: ((p.tier1Count || 0) + (p.tier2Count || 0)) || 10,
@@ -1174,9 +1165,9 @@ export default function LiveActivationCenter() {
     );
   }
 
-  const _cat = normaliseCat(activePlaybook?.category);
-  const warRoomAccent = _cat === 'OFFENSE' ? { bg: 'bg-[#2B8A6E]/15', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/40' }
-    : _cat === 'SPECIAL TEAMS' ? { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' }
+  const _cat = (activePlaybook?.category ?? '').toLowerCase();
+  const warRoomAccent = _cat === 'offense' ? { bg: 'bg-[#2B8A6E]/15', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/40' }
+    : _cat === 'special_teams' ? { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' }
     : { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' };
 
   return (
