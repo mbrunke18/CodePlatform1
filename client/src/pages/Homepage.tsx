@@ -549,6 +549,17 @@ function HomepageNav() {
           #contrast-moment   { height: 80vh !important; min-height: 480px !important; }
           .hp-ba-grid        { grid-template-columns: 1fr !important; }
           .hp-console-body   { grid-template-columns: 1fr !important; }
+          /* Hero content cleanup — hide dense secondary blocks, fix grids */
+          .hp-integration-strip { display: none !important; }
+          .hp-outcome-table  { display: none !important; }
+          .hp-domain-grid    { grid-template-columns: 1fr !important; gap: 8px !important; }
+          .hp-metric-row     { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px 0 !important; }
+          .hp-metric-row > div { border-right: none !important; padding-right: 0 !important; margin-right: 0 !important; }
+          /* Three-step section: stack vertically, hide arrows */
+          .hp-three-step-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .hp-step-arrow     { display: none !important; }
+          /* Section padding reduction for non-hp-sec sections */
+          .hp-section-reduce { padding-top: 56px !important; padding-bottom: 48px !important; }
         }
         @media (max-width: 375px) {
           .hp-hero-h1 { font-size: 28px !important; }
@@ -1020,7 +1031,7 @@ function HeroSection() {
               </div>
 
               {/* Integration proof strip — answers "does this work with our stack?" */}
-              <div style={{ padding: "14px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
+              <div className="hp-integration-strip" style={{ padding: "14px 16px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", marginBottom: 28 }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                   <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Works with your existing stack</span>
                   <Link href="/integrations" onClick={() => trackCTA("hero_integrations")} style={{ ...DM, fontSize: 10, fontWeight: 600, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
@@ -1048,7 +1059,7 @@ function HeroSection() {
               </div>
 
               {/* Inline metric row */}
-              <div style={{ display: "flex", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}>
+              <div className="hp-metric-row" style={{ display: "flex", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}>
                 {[
                   { n: "12 min",  l: "Trigger to execution" },
                   { n: "3,600×", l: "Execution head start" },
@@ -1063,7 +1074,7 @@ function HeroSection() {
               </div>
 
               {/* Growth / Risk balance — both domains covered */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, marginTop: 28 }}>
+              <div className="hp-domain-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, marginTop: 28 }}>
                 {[
                   { domain: "RISK & RESILIENCE", examples: "Ransomware · Activist investor · Regulatory inquiry · Supply chain collapse · Data breach", color: "#C0392B22", border: "#C0392B55", label: "rgba(192,57,43,0.8)" },
                   { domain: "GROWTH & POSITIONING", examples: "Market entry · Competitor displacement · M&A timing · Go-to-market sprint · Product launch", color: "rgba(201,168,76,0.08)", border: "rgba(201,168,76,0.35)", label: GOLD },
@@ -1076,7 +1087,7 @@ function HeroSection() {
               </div>
 
               {/* Outcome proof — what actually moves */}
-              <div style={{ marginTop: 20, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.07)", display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              <div className="hp-outcome-table" style={{ marginTop: 20, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.07)", display: "flex", flexDirection: "column" as const, gap: 8 }}>
                 {[
                   { label: "Mobilization cycle", before: "30 days", after: "12 minutes" },
                   { label: "Decision latency", before: "Committee alignment", after: "Executive authorizes in real time" },
@@ -1106,7 +1117,7 @@ function HeroSection() {
 // ─── SCENARIO HOOK ────────────────────────────────────────────────────────────
 function ScenarioHookSection() {
   return (
-    <section style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.06)", padding: "72px 0 56px" }}>
+    <section className="hp-section-reduce" style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.06)", padding: "72px 0 56px" }}>
       <div style={{ ...CONTAINER }}>
         <div style={{ maxWidth: 760 }}>
 
@@ -1251,7 +1262,7 @@ function ThreeStepSection() {
           <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>How It Executes</div>
           <div style={{ ...GEO, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 600, color: NAVY }}>Three steps. 12 minutes. No coordination meeting.</div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 40px 1fr 40px 1fr", alignItems: "center", gap: 0 }}>
+        <div className="hp-three-step-grid" style={{ display: "grid", gridTemplateColumns: "1fr 40px 1fr 40px 1fr", alignItems: "center", gap: 0 }}>
           {[
             { n: "01", title: "Signal detected", desc: "Continuous monitoring scores 221 trigger patterns. Risk score exceeds threshold — Protocol selected in under 2 seconds.", color: GOLD },
             { n: "02", title: "Executive authorizes", desc: "Authorization request delivered to inbox. CEO, COO, or designated executive signs off — budget unlocks, response stages.", color: TEAL },
@@ -1263,7 +1274,7 @@ function ThreeStepSection() {
                 <div style={{ ...GEO, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 10, lineHeight: 1.25 }}>{step.title}</div>
                 <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65 }}>{step.desc}</div>
               </div>
-              {i < 2 && <div style={{ textAlign: "center", fontSize: 18, color: "rgba(10,15,46,0.2)", fontWeight: 300 }}>→</div>}
+              {i < 2 && <div className="hp-step-arrow" style={{ textAlign: "center", fontSize: 18, color: "rgba(10,15,46,0.2)", fontWeight: 300 }}>→</div>}
             </Fragment>
           ))}
         </div>
@@ -1280,7 +1291,7 @@ function ThreeStepSection() {
 // ─── ANATOMY OF A READINESS PROTOCOL ─────────────────────────────────────────
 function AnatomySection() {
   return (
-    <section id="hp-anatomy" style={{ background: "#0d1a3e", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "88px 0" }}>
+    <section id="hp-anatomy" className="hp-section-reduce" style={{ background: "#0d1a3e", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "88px 0" }}>
       <div style={{ ...CONTAINER }}>
 
         {/* Header row */}
@@ -1345,7 +1356,7 @@ function AnatomySection() {
 // ─── SECTION 6b: Platform Architecture ──────────────────────────────────────
 function PlatformArchitectureSection() {
   return (
-    <section id="hp-platform" style={{ background: "#F8F7F4", padding: "96px 0", position: "relative", borderTop: "1px solid #E8E4DC" }}>
+    <section id="hp-platform" className="hp-section-reduce" style={{ background: "#F8F7F4", padding: "96px 0", position: "relative", borderTop: "1px solid #E8E4DC" }}>
       <div style={{ ...CONTAINER }}>
 
         <Reveal>
@@ -1808,7 +1819,7 @@ function AthletePreparationSection() {
   ];
 
   return (
-    <section style={{ background: IVORY, padding: "100px 0", position: "relative", overflow: "hidden" }}>
+    <section className="hp-section-reduce" style={{ background: IVORY, padding: "100px 0", position: "relative", overflow: "hidden" }}>
       {/* Subtle grid */}
       <div style={{ position: "absolute", inset: 0, ...GOLD_GRID_BG, opacity: 0.5, pointerEvents: "none" }} />
 
@@ -2062,7 +2073,7 @@ function PlatformPreviewSection() {
   const acknowledgedCount = roles.filter(r => getState(r) === "acknowledged").length;
 
   return (
-    <section style={{ background: "#F0EEE9", padding: "100px 0", position: "relative" }}>
+    <section className="hp-section-reduce" style={{ background: "#F0EEE9", padding: "100px 0", position: "relative" }}>
       <SectionMarker n="06" />
       <div style={{ ...CONTAINER }}>
         <Reveal>
@@ -2449,7 +2460,7 @@ function CredibilitySection() {
     { stat: "94%",    label: "Readiness Protocol phases completed within target window" },
   ];
   return (
-    <section id="hp-proof" style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
+    <section id="hp-proof" className="hp-section-reduce" style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
       <SectionMarker n="07" />
       {/* Subtle grid overlay */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
@@ -2653,7 +2664,7 @@ function ExecutiveQASection() {
 // ─── FEARLESS FINALE ──────────────────────────────────────────────────────────
 function FearlessFinaleSection() {
   return (
-    <section style={{ background: NAVY, padding: "96px 0 88px", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
+    <section className="hp-section-reduce" style={{ background: NAVY, padding: "96px 0 88px", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
       <div style={{ ...CONTAINER, maxWidth: 900, textAlign: "center" }}>
         <Reveal>
           <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 36 }}>
@@ -3052,7 +3063,7 @@ function HowTriggersWorkSection() {
     { label: "Industry Signal Sources", detail: "Sector-specific feeds across finance, pharma, manufacturing, energy, and retail" },
   ];
   return (
-    <section style={{ background: "#F8F7F4", padding: "80px 0", borderTop: "1px solid #E8E4DC" }}>
+    <section className="hp-section-reduce" style={{ background: "#F8F7F4", padding: "80px 0", borderTop: "1px solid #E8E4DC" }}>
       <div style={{ ...CONTAINER, maxWidth: 1100 }}>
         <Reveal>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 64, flexWrap: "wrap" as const }}>
@@ -3174,7 +3185,7 @@ function HowPlaybooksWorkSection() {
     },
   ];
   return (
-    <section style={{ background: "#fff", padding: "88px 0", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC" }}>
+    <section className="hp-section-reduce" style={{ background: "#fff", padding: "88px 0", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC" }}>
       <div style={{ ...CONTAINER, maxWidth: 1100 }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
@@ -3321,7 +3332,7 @@ function LifecycleAdvantageSection() {
   ];
 
   return (
-    <section style={{ background: NAVY, padding: "96px 0", position: "relative", overflow: "hidden" }}>
+    <section className="hp-section-reduce" style={{ background: NAVY, padding: "96px 0", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
       <div style={{ ...CONTAINER, position: "relative", zIndex: 1 }}>
         <Reveal>

@@ -21017,9 +21017,9 @@ function classifyImpact(text3) {
 function calculateConfidence(item) {
   let conf = 50;
   if (item.description.length > 100) conf += 10;
-  if (["SEC EDGAR", "CISA", "DOJ", "FTC", "FDA", "US Treasury", "FDIC", "OCC", "EEOC", "NLRB", "FERC", "White House", "UK FCA", "SANS Internet Storm Center"].some((s) => item.source.includes(s))) conf += 20;
-  else if (["Reuters", "Federal Register", "Federal Reserve", "EIA", "ECB", "HHS", "CBP"].some((s) => item.source.includes(s))) conf += 15;
-  else if (["BBC", "NY Times", "CNBC", "MarketWatch", "PR Newswire", "Business Wire", "AP Business"].some((s) => item.source.includes(s))) conf += 10;
+  if (["SEC EDGAR", "CISA", "DOJ", "FTC", "FDA", "OCC", "White House", "UK FCA", "SANS Internet Storm Center", "Bloomberg Law", "Federal Register"].some((s) => item.source.includes(s))) conf += 20;
+  else if (["Federal Reserve", "EIA", "ECB", "CDC", "WHO", "State Dept", "Bureau of Labor Statistics", "CFPB", "Courthouse News"].some((s) => item.source.includes(s))) conf += 15;
+  else if (["BBC", "NY Times", "CNBC", "MarketWatch", "PR Newswire", "GlobeNewsWire", "AP Business", "Yahoo Finance", "Forbes Business", "Seeking Alpha"].some((s) => item.source.includes(s))) conf += 10;
   const date = new Date(item.pubDate);
   const hoursAgo = (Date.now() - date.getTime()) / (1e3 * 60 * 60);
   if (hoursAgo < 6) conf += 15;
@@ -21263,55 +21263,52 @@ var init_LiveSignalIngestionService = __esm({
       { url: "https://feeds.npr.org/1006/rss.xml", source: "NPR Business", category: "market" },
       { url: "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen", source: "Google News Finance", category: "market" },
       { url: "https://feeds.feedburner.com/entrepreneur/latest", source: "Entrepreneur", category: "market" },
-      { url: "https://feeds.reuters.com/reuters/businessNews", source: "Reuters Business", category: "market" },
+      // Reuters RSS shut down — replaced with Yahoo Finance (verified working)
+      { url: "https://finance.yahoo.com/news/rssindex", source: "Yahoo Finance", category: "market" },
+      // AP Business — updated URL (old feeds.apnews.com path is dead)
+      { url: "https://apnews.com/hub/business?format=rss", source: "AP Business", category: "market" },
+      // Corporate announcements — Business Wire blocked; replaced with GlobeNewsWire
+      { url: "https://www.globenewswire.com/RssFeed/country/United+States", source: "GlobeNewsWire", category: "market" },
+      // Financial markets & investment intelligence
+      { url: "https://www.forbes.com/business/feed/", source: "Forbes Business", category: "market" },
+      { url: "https://seekingalpha.com/market_currents.xml", source: "Seeking Alpha", category: "market" },
       // Regulatory & government enforcement
       { url: "https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=corporate+regulatory+compliance", source: "Federal Register", category: "regulatory" },
+      { url: "https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=financial+regulatory+enforcement", source: "Federal Register Enforcement", category: "regulatory" },
       { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=40&search_text=&output=atom", source: "SEC EDGAR", category: "regulatory" },
-      { url: "https://www.ftc.gov/rss.xml", source: "FTC", category: "regulatory" },
+      // FTC — updated URL (old /rss.xml path returns 403)
+      { url: "https://www.ftc.gov/news-events/news/press-releases/rss", source: "FTC", category: "regulatory" },
       { url: "https://www.justice.gov/rss/news.xml", source: "DOJ", category: "regulatory" },
       { url: "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/food-safety-recalls/rss.xml", source: "FDA", category: "regulatory" },
       // Cybersecurity & threat intelligence
       { url: "https://www.cisa.gov/cybersecurity-advisories/all.xml", source: "CISA", category: "cybersecurity" },
-      // Corporate announcements
+      { url: "https://isc.sans.edu/rssfeed_full.xml", source: "SANS Internet Storm Center", category: "cybersecurity" },
+      // Legal enforcement coverage — Bloomberg Law and Courthouse News replace OSHA/EEOC/NLRB (all dead)
+      { url: "https://news.bloomberglaw.com/feeds/news", source: "Bloomberg Law", category: "regulatory" },
+      { url: "https://www.courthousenews.com/feed/", source: "Courthouse News", category: "regulatory" },
+      // PR Newswire
       { url: "https://www.prnewswire.com/rss/news-releases-list.rss", source: "PR Newswire", category: "market" },
       // Labor & economic indicators
       { url: "https://www.bls.gov/feed/bls_latest.rss", source: "Bureau of Labor Statistics", category: "economic" },
       { url: "https://www.federalreserve.gov/feeds/press_all.xml", source: "Federal Reserve", category: "economic" },
-      // Workplace & environmental enforcement
-      { url: "https://www.osha.gov/news/newsreleases/feed", source: "OSHA", category: "regulatory" },
+      // Environmental enforcement
       { url: "https://www.epa.gov/newsreleases/search/rss", source: "EPA", category: "regulatory" },
-      // Financial industry regulatory
-      { url: "https://www.finra.org/newsroom/rss.xml", source: "FINRA", category: "regulatory" },
+      // Financial system regulatory
       { url: "https://www.consumerfinance.gov/about-us/newsroom/feed/", source: "CFPB", category: "regulatory" },
-      // Global health & safety
+      { url: "https://www.occ.gov/news-issuances/news-releases/feed.xml", source: "OCC", category: "regulatory" },
+      // Global health & safety — HHS blocked; CDC verified working
+      { url: "https://tools.cdc.gov/api/v2/resources/media/132608.rss", source: "CDC", category: "health" },
       { url: "https://www.who.int/rss-feeds/news-english.xml", source: "WHO", category: "health" },
       // Transportation safety
       { url: "https://www.ntsb.gov/news/press-releases/Pages/feed.aspx", source: "NTSB", category: "regulatory" },
-      // Geopolitical
+      // Geopolitical — White House URL updated (old path 404)
       { url: "https://www.state.gov/press-releases/feed/", source: "State Dept", category: "geopolitical" },
-      { url: "https://www.whitehouse.gov/briefing-room/statements-releases/feed/", source: "White House", category: "geopolitical" },
-      // Additional business news
-      { url: "https://feeds.apnews.com/apf-business", source: "AP Business", category: "market" },
-      { url: "https://www.businesswire.com/rss/home/?rss=G1", source: "Business Wire", category: "market" },
-      // Financial system & banking regulatory
-      { url: "https://www.fdic.gov/news/press-releases/feed.xml", source: "FDIC", category: "regulatory" },
-      { url: "https://www.occ.gov/news-issuances/news-releases/feed.xml", source: "OCC", category: "regulatory" },
-      { url: "https://home.treasury.gov/system/files/press-releases.rss", source: "US Treasury", category: "regulatory" },
-      // Health & safety
-      { url: "https://www.hhs.gov/news/press/press-releases/rss.xml", source: "HHS", category: "health" },
-      // Energy
+      { url: "https://www.whitehouse.gov/news/feed/", source: "White House", category: "geopolitical" },
+      // Energy — FERC blocked (403); EIA still covers energy data
       { url: "https://www.eia.gov/rss/todayinenergy.xml", source: "EIA", category: "economic" },
-      { url: "https://www.ferc.gov/news-events/news/press-releases/feed", source: "FERC", category: "regulatory" },
-      // Employment & labor
-      { url: "https://www.eeoc.gov/newsroom/rss.xml", source: "EEOC", category: "regulatory" },
-      { url: "https://www.nlrb.gov/news-publications/news-releases/rss.xml", source: "NLRB", category: "regulatory" },
-      // Trade & customs
-      { url: "https://www.cbp.gov/newsroom/regional-media-release/feed", source: "CBP", category: "geopolitical" },
       // International financial regulatory
       { url: "https://www.fca.org.uk/news/rss.xml", source: "UK FCA", category: "regulatory" },
-      { url: "https://www.ecb.europa.eu/rss/press.html", source: "ECB", category: "economic" },
-      // Cybersecurity threat intelligence
-      { url: "https://isc.sans.edu/rssfeed_full.xml", source: "SANS Internet Storm Center", category: "cybersecurity" }
+      { url: "https://www.ecb.europa.eu/rss/press.html", source: "ECB", category: "economic" }
     ];
     SIGNAL_TYPE_MAP = {
       market: ["acquisition", "merger", "market share", "revenue", "earnings", "IPO", "stock", "valuation", "growth", "decline"],
