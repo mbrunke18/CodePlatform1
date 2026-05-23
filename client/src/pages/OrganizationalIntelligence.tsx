@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useLocation } from "wouter";
-import { Shield, TrendingUp, Clock, Users, AlertTriangle, CheckCircle, Lock, ChevronRight, Zap, BarChart3, Database, Award } from "lucide-react";
+import { useLocation, Link } from "wouter";
+import { Shield, TrendingUp, Clock, Users, AlertTriangle, CheckCircle, Lock, ChevronRight, Zap, BarChart3, Database, Award, ArrowRight } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
 import { apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/useAuth";
@@ -155,7 +155,7 @@ export default function OrganizationalIntelligence() {
 
   const applyUpdate = useMutation({
     mutationFn: (updateId: string) =>
-      apiRequest("PATCH", `/api/preparation-updates/${updateId}/apply`, {}),
+      apiRequest("PATCH", `/api/preparation-updates/${updateId}/apply-v2`, {}),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["/api/organizations", orgId, "preparation-updates"] });
       qc.invalidateQueries({ queryKey: ["/api/organizations", orgId, "compound-score"] });
@@ -402,6 +402,27 @@ export default function OrganizationalIntelligence() {
               </div>
             </div>
           </section>
+
+          {/* ADVANCE 2.0 Link Panel */}
+          <Link href="/advance-intelligence">
+            <section className="rounded-sm border p-6 cursor-pointer group transition-all hover:border-teal-600" style={{ borderColor: `${TEAL}40`, backgroundColor: "#071020" }}>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <Zap className="w-6 h-6 shrink-0" style={{ color: TEAL }} />
+                  <div>
+                    <div className="text-xs font-mono tracking-widest mb-1" style={{ color: TEAL }}>ADVANCE 2.0</div>
+                    <h3 className="text-base font-bold" style={{ color: "white", fontFamily: "Georgia, serif" }}>
+                      Closed-Loop Causal Learning
+                    </h3>
+                    <p className="text-sm mt-0.5" style={{ color: IVORY, opacity: 0.6 }}>
+                      View proven protocol improvements, the Learning Velocity Index, and your competitive moat in months.
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-1" style={{ color: TEAL }} />
+              </div>
+            </section>
+          </Link>
 
         </div>
       </div>
