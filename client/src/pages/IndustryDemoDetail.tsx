@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "wouter";
+import { Link, useParams, useSearch } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { updatePageMetadata } from "@/lib/seo";
 import { getBlueprintBySlug } from "@/data/industryDemoBlueprints";
@@ -57,7 +57,7 @@ function parseTargetRisk(steps: { action: string }[]): number {
   return 88;
 }
 
-function SimulationEngine({ blueprint }: { blueprint: ReturnType<typeof getBlueprintBySlug> }) {
+function SimulationEngine({ blueprint, autostart = false }: { blueprint: ReturnType<typeof getBlueprintBySlug>; autostart?: boolean }) {
   if (!blueprint) return null;
   const [phase, setPhase] = useState<SimPhase>("idle");
   const [visSignals, setVisSignals] = useState(0);
@@ -109,6 +109,7 @@ function SimulationEngine({ blueprint }: { blueprint: ReturnType<typeof getBluep
   };
 
   const reset = () => { clearAll(); setPhase("idle"); setVisSignals(0); setRiskScore(0); setActiveStep(-1); setSimTime("0:00"); setShowAuthFlash(false); };
+  useEffect(() => { if (autostart) { const t = setTimeout(start, 1200); return () => clearTimeout(t); } }, [autostart]);
   useEffect(() => () => clearAll(), []);
 
   const pi = phaseIndex(phase);
@@ -472,6 +473,8 @@ function SimulationEngine({ blueprint }: { blueprint: ReturnType<typeof getBluep
 
 export default function IndustryDemoDetail() {
   const params = useParams<{ industrySlug: string }>();
+  const search = useSearch();
+  const autostart = new URLSearchParams(search).get("autostart") === "1";
   const blueprint = params.industrySlug ? getBlueprintBySlug(params.industrySlug) : undefined;
 
   useEffect(() => {
@@ -557,7 +560,7 @@ export default function IndustryDemoDetail() {
       {/* Simulation engine */}
       <div style={{ background: "#0D1235", padding: "0 32px 0" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-          <SimulationEngine blueprint={blueprint} />
+          <SimulationEngine blueprint={blueprint} autostart={autostart} />
         </div>
       </div>
 
