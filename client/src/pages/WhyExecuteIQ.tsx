@@ -190,12 +190,12 @@ export default function WhyExecutionOS() {
 
           <div className="border border-[#E8E4DC] bg-[#F8F7F4] p-12 mb-12">
             <p className="text-xl text-[#0A0F2E] leading-relaxed mb-12">
-              Readiness OS is the execution infrastructure layer: 170 Readiness Protocols with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
+              Readiness OS is the execution infrastructure layer: 180 Readiness Protocols with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
             </p>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { icon: BookOpen, val: "170", label: "Pre-built Readiness Protocols", color: "#0A0F2E" },
+                { icon: BookOpen, val: "180", label: "Pre-built Readiness Protocols", color: "#0A0F2E" },
                 { icon: Shield, val: "Built-in", label: "Governance", color: "#2B8A6E" },
                 { icon: Target, val: "Custom", label: "Build your own", color: "#C9A84C" },
                 { icon: Timer, val: "12 min", label: "Trigger-to-Execution", color: "#0A0F2E" }

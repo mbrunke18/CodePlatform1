@@ -152,7 +152,7 @@ export default function TriggerConfigurationWizard({
     }
   }, [editTrigger, isOpen]);
   
-  // Fetch available Readiness Protocols (all 170 templates)
+  // Fetch available Readiness Protocols (all 180 templates)
   const { data: playbooks } = useQuery({
     queryKey: ['/api/playbooks/templates'],
   });

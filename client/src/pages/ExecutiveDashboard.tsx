@@ -431,7 +431,7 @@ export default function ExecutiveDashboard() {
                           { label: 'Agility', score: agilityScore, desc: 'Adaptive response capability' },
                           { label: 'Learning', score: learningScore, desc: 'Post-activation intelligence' },
                           { label: 'Adaptability', score: adaptabilityScore, desc: 'Scenario customization depth' },
-                          { label: 'Readiness Protocol Coverage', score: playbookMaturity, desc: `${readiness?.playbooksReady ?? '—'} of ${readiness?.playbooksTotal ?? '170'} ready` },
+                          { label: 'Readiness Protocol Coverage', score: playbookMaturity, desc: `${readiness?.playbooksReady ?? '—'} of ${readiness?.playbooksTotal ?? '180'} ready` },
                         ].map((dim, i) => (
                           <div key={i} className="space-y-2">
                             <div className="flex justify-between items-center">

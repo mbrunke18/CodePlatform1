@@ -232,7 +232,7 @@ export default function Dashboard() {
                 Strategic <em style={{ fontStyle: "italic", color: GOLD }}>Intelligence</em>
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-                The response is ready before the trigger fires. 248+ signals. 170 Readiness Protocols. 12 minutes from detection to full organizational execution.
+                The response is ready before the trigger fires. 248+ signals. 180 Readiness Protocols. 12 minutes from detection to full organizational execution.
               </p>
               <div className="mt-5 flex justify-center md:justify-start">
                 <PerspectiveSwitcher currentRole={execRole} currentIndustry={industry} />
@@ -309,7 +309,7 @@ export default function Dashboard() {
                 {/* Secondary steps */}
                 <div className="flex flex-wrap gap-2">
                   {[
-                    { icon: Target, label: "Explore 170 Readiness Protocols", href: "/playbook-library" },
+                    { icon: Target, label: "Explore 180 Readiness Protocols", href: "/playbook-library" },
                     { icon: Radio, label: "Live Signal Tower", href: "/command-tower" },
                     { icon: Brain, label: "Practice Drills", href: "/practice-drills" },
                   ].map(({ icon: Icon, label, href }) => (
@@ -378,12 +378,12 @@ export default function Dashboard() {
                 <PhaseCard
                   phase="IDENTIFY"
                   title="Depth Chart"
-                  description="170 templates across 9 strategic domains"
+                  description="180 templates across 9 strategic domains"
                   icon={Target}
                   color="teal"
                   link="/playbook-library"
                   metrics={[
-                    { label: 'Readiness Protocol Templates', value: '170' },
+                    { label: 'Readiness Protocol Templates', value: '180' },
                     { label: 'Coverage', value: '94%', highlight: true }
                   ]}
                 />

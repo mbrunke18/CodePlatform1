@@ -104,7 +104,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Pre-Built Strategic Readiness Protocols"
-        description="170 battle-tested Readiness Protocols eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
+        description="180 battle-tested Readiness Protocols eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
         delay={0.5}
       />
     </div>

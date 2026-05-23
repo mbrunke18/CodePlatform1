@@ -100,7 +100,7 @@ const CONNECTOR_CATALOG = [
   {
     id: 'signal-ontology',
     name: 'Signal Ontology Engine',
-    description: 'Rule-based relationship map derived from 170 Readiness Protocols. Maps which signals co-occur, which sequences precede activations. Enriches automatically with activation data.',
+    description: 'Rule-based relationship map derived from 180 Readiness Protocols. Maps which signals co-occur, which sequences precede activations. Enriches automatically with activation data.',
     category: 'Platform',
     status: 'active',
     signalType: 'Platform Intelligence',

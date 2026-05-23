@@ -384,7 +384,7 @@ export default function BrandKit() {
                   { size: 72, label: "Display · 72px",  text: "Fearless."                                                                        },
                   { size: 48, label: "Hero · 48px",     text: "The response is ready."                                                           },
                   { size: 32, label: "H1 · 32px",       text: "Before the trigger fires."                                                        },
-                  { size: 24, label: "H2 · 24px",       text: "170 Readiness Protocols. 9 Strategic Domains."                                    },
+                  { size: 24, label: "H2 · 24px",       text: "180 Readiness Protocols. 9 Strategic Domains."                                    },
                   { size: 18, label: "Body · 18px",     text: "Signal monitoring. Executive authorization. Coordinated response in 12 minutes."  },
                 ].map((t, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 24, padding: "14px 0", borderBottom: `1px solid ${B.border}` }}>
@@ -696,13 +696,13 @@ export default function BrandKit() {
                   </h1>
                   <div style={{ width: 60, height: 2, background: `linear-gradient(to right, ${B.gold}, ${B.teal})`, marginBottom: 32 }}/>
                   <p style={{ fontFamily: EDITORIAL, fontSize: 20, color: "rgba(248,247,244,0.75)", lineHeight: 1.65, fontStyle: "italic", maxWidth: 560, marginBottom: 40 }}>
-                    170 Readiness Protocols. 221 triggers monitored. Signal monitoring. Executive authorization. Coordinated response in 12 minutes — whether the trigger is a threat or a market window.
+                    180 Readiness Protocols. 221 triggers monitored. Signal monitoring. Executive authorization. Coordinated response in 12 minutes — whether the trigger is a threat or a market window.
                   </p>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginBottom: 48 }}>
                     {[
                       { n: "12 min", l: "Mobilization",        sub: "vs 30 days"           },
                       { n: "3,600×", l: "Execution Head Start", sub: "Structural advantage" },
-                      { n: "170",    l: "Readiness Protocols",  sub: "Across 9 domains"     },
+                      { n: "180",    l: "Readiness Protocols",  sub: "Across 9 domains"     },
                     ].map((s, i) => (
                       <div key={i} style={{ borderTop: `2px solid ${B.gold}`, paddingTop: 16 }}>
                         <div style={{ fontFamily: EDITORIAL, fontSize: 36, fontWeight: 600, color: B.tealLt, lineHeight: 1, marginBottom: 6 }}>{s.n}</div>

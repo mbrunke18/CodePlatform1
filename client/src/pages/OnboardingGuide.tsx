@@ -158,7 +158,7 @@ export default function OnboardingGuide() {
               Everything you need to understand, activate, and operate your Readiness OS from day one.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
-              {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["170", "Pre-Built Readiness Protocols"], ["221", "Live Triggers"]].map(([v, l]) => (
+              {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["180", "Pre-Built Readiness Protocols"], ["221", "Live Triggers"]].map(([v, l]) => (
                 <div key={l} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "16px 12px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 22, fontWeight: 900, color: GOLD, letterSpacing: "-0.5px" }}>{v}</div>
                   <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>{l}</div>
@@ -229,7 +229,7 @@ export default function OnboardingGuide() {
             <StepCard number={2} icon={Radio} title="Command Tower" path="/command-tower"
               description="Full-screen executive display. Shows live trigger detections as they fire, system pulse stats, your 12-minute execution clock, and a signal ticker in real time. Designed for war room situations and leadership reviews." />
             <StepCard number={3} icon={BookOpen} title="Readiness Protocol Library" path="/playbooks"
-              description="Browse all 170 pre-built strategic Readiness Protocols across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
+              description="Browse all 180 pre-built strategic Readiness Protocols across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
             <StepCard number={4} icon={Activity} title="Simulation Studio" path="/simulation-studio"
               description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a coverage readiness map with recommended Readiness Protocols pre-staged for activation. Use this in board preparation and executive planning sessions." />
             <StepCard number={5} icon={FileText} title="Board Readiness Snapshot" path="/board-readiness"
@@ -257,7 +257,7 @@ export default function OnboardingGuide() {
 
           <ScreenPreview title="vaughnmartin.com/mission-control" accent={NAVY}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 16 }}>
-              {[["221", "Triggers Armed"], ["170", "Readiness Protocols Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
+              {[["221", "Triggers Armed"], ["180", "Readiness Protocols Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
                 <div key={l} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "12px 8px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 18, fontWeight: 900, color: NAVY }}>{v}</div>
                   <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "0.5px", marginTop: 3 }}>{l}</div>
@@ -371,7 +371,7 @@ export default function OnboardingGuide() {
             <FeatureRow icon={Radio} color={TEAL} title="Command Tower" path="/command-tower"
               description="Full-screen executive display with live WebSocket updates. Real-time trigger alerts, signal ticker, system pulse, and execution log. Ideal for war rooms and leadership reviews." />
             <FeatureRow icon={BookOpen} color={GOLD} title="Readiness Protocol Library" path="/playbooks"
-              description="All 170 Readiness Protocols with search and domain filters. Authenticated users can deploy Readiness Protocols and use the Task Editor to customize phases and assignments." />
+              description="All 180 Readiness Protocols with search and domain filters. Authenticated users can deploy Readiness Protocols and use the Task Editor to customize phases and assignments." />
             <FeatureRow icon={Activity} color={TEAL} title="Simulation Studio" path="/simulation-studio"
               description="Strategic scenario modeling. Input any threat, select industry, and receive a coverage readiness brief with pre-staged Readiness Protocol recommendations and recommended actions." />
             <FeatureRow icon={FileText} color={RED} title="Board Readiness Snapshot" path="/board-readiness"

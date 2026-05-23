@@ -211,7 +211,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
               {result && (
                 <div style={{ marginTop: 20, padding: '16px 20px', background: NAVY, borderTop: `3px solid ${GOLD}` }}>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 6 }}>
-                    Want these 170 Readiness Protocols armed and ready before the trigger fires?
+                    Want these 180 Readiness Protocols armed and ready before the trigger fires?
                   </p>
                   <a
                     href="/founding-partner-program"

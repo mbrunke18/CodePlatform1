@@ -133,7 +133,7 @@ export function Outro({ progress }: SceneProps) {
           <div className="flex items-center justify-center gap-6 text-sm">
             <span className="text-[#D4AF37]">18-month head start</span>
             <span className="text-gray-600">•</span>
-            <span className="text-[#00A8A8]">170 Readiness Protocols</span>
+            <span className="text-[#00A8A8]">180 Readiness Protocols</span>
             <span className="text-gray-600">•</span>
             <span className="text-gray-900">17 reports validate the gap</span>
           </div>
@@ -145,7 +145,7 @@ export function Outro({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="The Infrastructure Enterprises Are Missing"
-        description="Trigger-to-Execution Orchestration for startup to Fortune 500. 170 Readiness Protocols, Signal-based monitoring, executive intelligence, and compound disruption response—all in 12 minutes."
+        description="Trigger-to-Execution Orchestration for startup to Fortune 500. 180 Readiness Protocols, Signal-based monitoring, executive intelligence, and compound disruption response—all in 12 minutes."
         delay={0.5}
       />
     </div>

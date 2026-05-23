@@ -696,7 +696,7 @@ export default function IndustryDemoDetail() {
             </div>
             <div style={{ border: `1px solid ${BORDER}`, padding: "22px 20px", marginBottom: 3 }}>
               <div style={{ ...GEO, fontSize: 17, fontWeight: 600, color: NAVY, lineHeight: 1.35, marginBottom: 8 }}>Ready to stage this response for your {blueprint.industry} organization?</div>
-              <p style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.55)", lineHeight: 1.75, marginBottom: 18 }}>Founding Partners receive all 170 Readiness Protocols pre-configured for their industry, risk calendar, and executive authorization structure. Go live in 4 weeks.</p>
+              <p style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.55)", lineHeight: 1.75, marginBottom: 18 }}>Founding Partners receive all 180 Readiness Protocols pre-configured for their industry, risk calendar, and executive authorization structure. Go live in 4 weeks.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 <a href="/founding-partner-program" style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", background: NAVY, color: "#fff", padding: "13px 16px", textDecoration: "none", display: "block", textAlign: "center" }}>
                   Apply for Founding Partner Access
@@ -720,7 +720,7 @@ export default function IndustryDemoDetail() {
       <div style={{ background: IVORY, borderTop: `1px solid ${BORDER}`, padding: "28px 32px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto", display: "flex", gap: 40, alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
           {[
-            { label: "Readiness Protocols", value: "170" },
+            { label: "Readiness Protocols", value: "180" },
             { label: "Strategic Triggers", value: "221" },
             { label: "Industries Covered",  value: "19"  },
             { label: "Execution Head Start", value: "3,600×" },

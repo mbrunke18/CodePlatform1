@@ -150,7 +150,7 @@ const competitiveAdvantages = [
 ];
 
 const milestones = [
-  { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 39 RSS sources, 221 triggers", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
+  { phase: "Completed", items: ["180 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 39 RSS sources, 221 triggers", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
   { phase: "Current — Founding Partner", items: ["Founding Partner Program now enrolling (90-day validation)", "Protocol Builder — custom protocol co-design with partners", "Signal detection refinement across 248+ data points", "Industry Protocol Packs — 6 verticals in development", "Enterprise partnership discussions underway"] },
   { phase: "Phase 2 — Authorized Automation", items: ["Authorized Automation layer within EXECUTE phase", "Dual-track execution: human workstreams + approved automations run in parallel", "Task execution modes: Human-only · Automation-only · Dual-track", "Policy gates per action — who authorizes, what systems, what limits", "Connectors: Jira, Asana, ServiceNow, Teams, Slack — automated ticket creation, war room setup, briefing distribution", "Full audit trail: every authorized automation logged, every override captured"] },
 ];
@@ -190,7 +190,7 @@ function PlatformArchitectureDiagram() {
     },
     {
       phase: "EXECUTE",
-      label: "170 Readiness Protocols",
+      label: "180 Readiness Protocols",
       sub: "9 strategic domains",
       items: ["Pre-staged tasks", "Role assignments", "Communication templates", "Decision trees"],
       color: GOLD,
@@ -250,7 +250,7 @@ function PlatformArchitectureDiagram() {
           {[
             { label: "Signal Categories", value: "20" },
             { label: "Data Points", value: "248+" },
-            { label: "Readiness Protocols", value: "170" },
+            { label: "Readiness Protocols", value: "180" },
             { label: "Strategic Domains", value: "9" },
             { label: "Executive Triggers", value: "221" },
           ].map((stat, i) => (
@@ -326,7 +326,7 @@ function FuturePositioningDiagram() {
         <p className="text-center text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-4">Competitive Moat Grows Over Time</p>
         <div className="flex items-center gap-0">
           {[
-            { label: "Platform Built", sub: "170 Readiness Protocols, IDEA Framework", color: NAVY },
+            { label: "Platform Built", sub: "180 Readiness Protocols, IDEA Framework", color: NAVY },
             { label: "Founding Partner Contracts", sub: "Design partners, real activation history", color: NAVY },
             { label: "Institutional Memory Layer", sub: "Every activation deepens protocol precision", color: TEAL },
             { label: "Category Leader", sub: "Strategic Readiness Platform standard", color: GOLD },
@@ -361,7 +361,7 @@ export default function Investors() {
       title: "Investor Overview — VaughnMartin Readiness OS",
       description: "The Strategic Readiness Platform for startup to Fortune 500. 3,600× Execution Head Start. 30 days compressed to 12 minutes. Category-defining opportunity in enterprise operating infrastructure.",
       ogTitle: "Investor Overview — VaughnMartin Readiness OS",
-      ogDescription: "The operating model layer startup to Fortune 500s are missing. Pre-staged execution replaces 30-day mobilization cycles. 170 Readiness Protocols. 12-minute response.",
+      ogDescription: "The operating model layer startup to Fortune 500s are missing. Pre-staged execution replaces 30-day mobilization cycles. 180 Readiness Protocols. 12-minute response.",
     });
   }, []);
 

@@ -283,7 +283,7 @@ export default function OurStory() {
 
             <ul className="space-y-4 my-12">
               {[
-                "170 battle-tested Readiness Protocols across 9 strategic domains",
+                "180 battle-tested Readiness Protocols across 9 strategic domains",
                 "Continuous monitoring across 248+ intelligence signals",
                 "12-minute coordinated response when triggers fire",
                 "Institutional memory that makes every response smarter"

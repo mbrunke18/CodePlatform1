@@ -385,7 +385,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-8"
                 >
                   <span className="text-lg text-gray-800">
-                    170 Readiness Protocols across growth, risk resilience, and transformation.
+                    180 Readiness Protocols across growth, risk resilience, and transformation.
                   </span>
                 </motion.div>
                 

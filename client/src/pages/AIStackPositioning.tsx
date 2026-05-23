@@ -138,7 +138,7 @@ export default function AIStackPositioning() {
             The 2026 Enterprise AI Stack describes the infrastructure every organization is building. Readiness OS is not another layer in that stack — it is the operating model that makes Layer 5 executable.
           </p>
           <div style={{ display: "inline-flex", flexWrap: "wrap", gap: 3, justifyContent: "center" }}>
-            {["Layer 5 operating model", "170 Readiness Protocols", "12-minute execution", "Human-authorized"].map(tag => (
+            {["Layer 5 operating model", "180 Readiness Protocols", "12-minute execution", "Human-authorized"].map(tag => (
               <span key={tag} style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(201,168,76,0.7)", padding: "6px 16px", border: "1px solid rgba(201,168,76,0.18)", background: "rgba(201,168,76,0.04)" }}>
                 {tag}
               </span>

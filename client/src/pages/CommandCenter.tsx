@@ -787,7 +787,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         </Link>
                         <Link href="/playbook-library">
                           <Button variant="outline" className="w-full border-white/20 text-white/60 hover:text-white hover:border-white/40 text-xs uppercase tracking-wider bg-transparent">
-                            Browse All 170 Readiness Protocols
+                            Browse All 180 Readiness Protocols
                           </Button>
                         </Link>
                       </div>

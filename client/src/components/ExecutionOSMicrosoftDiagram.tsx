@@ -325,7 +325,7 @@ export default function ExecutionOSMicrosoftDiagram() {
       {/* EOS key metrics strip */}
       {[
         { v: "12 min", l: "to execution" },
-        { v: "170", l: "Readiness Protocols" },
+        { v: "180", l: "Readiness Protocols" },
         { v: "221", l: "triggers" },
         { v: "3,600×", l: "head start" },
       ].map((m, i) => (

@@ -704,7 +704,7 @@ export default function NewUserJourney() {
                     <div className="flex items-start gap-3">
                       <div style={{ width: 3, height: 40, background: '#C9A84C', flexShrink: 0, marginTop: 4 }} />
                       <p className="text-sm text-gray-800">
-                        You'll have access to all <span className="text-gray-900 font-semibold">170 Readiness Protocols</span> after setup.
+                        You'll have access to all <span className="text-gray-900 font-semibold">180 Readiness Protocols</span> after setup.
                         These are just recommended starting points.
                       </p>
                     </div>

@@ -637,7 +637,7 @@ export default function CommandTower() {
           {[
             { label: 'TRIGGERS ARMED', value: triggersArmed.toLocaleString(), sub: '221 signals', icon: Target, color: GOLD, bg: 'rgba(201,168,76,0.08)', border: 'rgba(201,168,76,0.2)' },
             { label: 'ACTIVE DETECTIONS', value: detections.length.toString(), sub: detections.length > 0 ? 'Live ingested · past 30 days' : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
-            { label: 'Readiness Protocols READY', value: '170', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
+            { label: 'Readiness Protocols READY', value: '180', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
             { label: 'NEXT SCAN', value: nextScanLabel, sub: `Engine: ${modeLabel}`, icon: Clock, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
           ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
             <div key={label} style={{
@@ -783,7 +783,7 @@ export default function CommandTower() {
                   <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
                   <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
                   <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, lineHeight: 1.5 }}>
-                    170 Readiness Protocols pre-staged. 12-minute deployment on trigger.
+                    180 Readiness Protocols pre-staged. 12-minute deployment on trigger.
                   </div>
                 </div>
               ) : (
@@ -861,7 +861,7 @@ export default function CommandTower() {
                 </div>
                 <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
                 <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>
-                  30 days → 12 minutes. 170 Readiness Protocols pre-staged.
+                  30 days → 12 minutes. 180 Readiness Protocols pre-staged.
                 </div>
               </div>
             </div>
@@ -1058,14 +1058,14 @@ export default function CommandTower() {
                 `Evaluation engine: ${modeLabel}`,
                 'Signal scan interval: every 15 minutes',
                 'Sources: Reuters, Bloomberg, SEC EDGAR, AP News + 4 more',
-                '170 Readiness Protocols pre-staged and ready to deploy',
+                '180 Readiness Protocols pre-staged and ready to deploy',
                 'Response time: 30 days → 12 minutes  ·  3,600× Execution Head Start',
                 'Monitoring 248+ data points across 9 strategic domains',
                 `${triggersArmed} triggers armed and evaluating`,
                 `Evaluation engine: ${modeLabel}`,
                 'Signal scan interval: every 15 minutes',
                 'Sources: Reuters, Bloomberg, SEC EDGAR, AP News + 4 more',
-                '170 Readiness Protocols pre-staged and ready to deploy',
+                '180 Readiness Protocols pre-staged and ready to deploy',
                 'Response time: 30 days → 12 minutes  ·  3,600× Execution Head Start',
               ].map((item, i) => (
                 <span key={i} style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>

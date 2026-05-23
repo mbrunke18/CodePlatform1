@@ -427,7 +427,7 @@ export default function HowItExecutes() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: "rgba(255,255,255,0.06)" }}>
               {[
-                { step: "Before the Trigger", icon: "◎", color: GOLD, items: ["170 Readiness Protocols pre-built", "221 trigger patterns continuously monitored", "Every stakeholder role pre-assigned", "Budget authority pre-approved", "Communication templates pre-cleared"] },
+                { step: "Before the Trigger", icon: "◎", color: GOLD, items: ["180 Readiness Protocols pre-built", "221 trigger patterns continuously monitored", "Every stakeholder role pre-assigned", "Budget authority pre-approved", "Communication templates pre-cleared"] },
                 { step: "At the Trigger", icon: "⚡", color: TEAL, items: ["Signal detected and scored in seconds", "Protocol matched automatically", "Execution brief staged instantly", "All stakeholders notified simultaneously", "CEO authorizes with full context"] },
                 { step: "12 Minutes Later", icon: "★", color: GOLD, items: ["All tasks deployed and executing", "Board briefed with full documentation", "Regulators notified on schedule", "Customers informed proactively", "Debrief staged for institutional learning"] },
               ].map(col => (

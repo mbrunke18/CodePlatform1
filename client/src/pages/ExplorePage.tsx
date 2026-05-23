@@ -77,7 +77,7 @@ export default function ExplorePage() {
   useEffect(() => {
     updatePageMetadata({
       title: 'Explore Readiness OS — Experience the Full Platform',
-      description: 'Sign in and experience VaughnMartin Readiness OS as a real customer. Browse 170 Readiness Protocols, activate a scenario, and see a coordinated response unfold.',
+      description: 'Sign in and experience VaughnMartin Readiness OS as a real customer. Browse 180 Readiness Protocols, activate a scenario, and see a coordinated response unfold.',
     });
   }, []);
 

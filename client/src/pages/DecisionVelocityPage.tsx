@@ -75,7 +75,7 @@ export default function DecisionVelocityPage() {
               <div className="bg-white/5 border border-white/10 p-8 rounded-none">
                 <div className="text-[10px] font-bold text-[#C9A84C] tracking-[0.2em] uppercase mb-4">Pre-Defined Governance</div>
                 <div className="space-y-3 text-sm text-white/60">
-                  <div className="flex justify-between border-b border-white/5 pb-2"><strong>170 Readiness Protocols</strong> <span>9 Domains</span></div>
+                  <div className="flex justify-between border-b border-white/5 pb-2"><strong>180 Readiness Protocols</strong> <span>9 Domains</span></div>
                   <div className="flex justify-between border-b border-white/5 pb-2"><strong>Roles Mapped</strong> <span>Pre-Incident</span></div>
                   <div className="flex justify-between border-b border-white/5 pb-2"><strong>Accountability</strong> <span>Clear Chain</span></div>
                   <div className="text-[#2B8A6E] font-bold mt-4 pt-2">✓ "Embedded Governance"</div>
@@ -107,7 +107,7 @@ export default function DecisionVelocityPage() {
                 <div className="text-[10px] font-bold text-[#0A0F2E] tracking-[0.2em] uppercase mb-2">The Strategic MOAT</div>
                 <p className="text-[#6B7280] leading-relaxed">
                   Companies like Microsoft and Amazon built execution infrastructure over 5+ years. 
-                  Readiness OS gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—170 Readiness Protocols, pre-defined governance, and a compressed 12-minute execution cycle.
+                  Readiness OS gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—180 Readiness Protocols, pre-defined governance, and a compressed 12-minute execution cycle.
                 </p>
               </div>
             </CardContent>

@@ -85,7 +85,7 @@ export default function PlatformVisual() {
       color: "from-[#0A0F2E] to-[#3BAF8A]",
       borderColor: "border-[#2B8A6E]",
       bgColor: "bg-[#0A0F2E]",
-      items: ["170 Readiness Protocols scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
+      items: ["180 Readiness Protocols scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
     },
     {
       letter: "E",
@@ -129,7 +129,7 @@ export default function PlatformVisual() {
 
   const valueMetrics = [
     { value: "72→12", label: "min response", suffix: "" },
-    { value: "170", label: "Readiness Protocols ready", suffix: "" },
+    { value: "180", label: "Readiness Protocols ready", suffix: "" },
     { value: "100%", label: "role clarity", suffix: "" },
     { value: "Real-time", label: "AI visibility", suffix: "" },
   ];
@@ -252,7 +252,7 @@ export default function PlatformVisual() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-poise-gold/10 border border-poise-gold/30">
                 <BookOpen className="h-4 w-4 text-poise-gold" />
-                <span className="text-sm font-bold text-poise-gold">170 Readiness Protocols</span>
+                <span className="text-sm font-bold text-poise-gold">180 Readiness Protocols</span>
                 <span className="text-xs text-gray-800 dark:text-slate-300">•</span>
                 <span className="text-sm font-bold text-poise-gold">9 DOMAINS</span>
               </span>
@@ -376,7 +376,7 @@ export default function PlatformVisual() {
             custom={14}
           >
             <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wide">
-              170 Readiness Protocols • 9 Domains
+              180 Readiness Protocols • 9 Domains
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {domains.map((domain) => (

@@ -129,7 +129,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-5">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 text-center">
             {[
-              { value: '170', label: 'Readiness Protocols', color: '#C9A84C' },
+              { value: '180', label: 'Readiness Protocols', color: '#C9A84C' },
               { value: '9', label: 'Executive Domains', color: '#C9A84C' },
               { value: '12 min', label: 'To Live Execution', color: '#2B8A6E' },
               { value: '3,600×', label: 'Execution Head Start', color: '#2B8A6E' },
@@ -155,7 +155,7 @@ export default function Footer() {
             "Stop improvising. Start executing."
           </p>
           <p className="text-sm text-poise-teal">
-            170 Readiness Protocols. Pre-staged coordination. Clear decision rights. 12 minutes to execution.
+            180 Readiness Protocols. Pre-staged coordination. Clear decision rights. 12 minutes to execution.
           </p>
         </div>
       </div>

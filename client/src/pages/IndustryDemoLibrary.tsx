@@ -241,7 +241,7 @@ export default function IndustryDemoLibrary() {
             The response is ready<br />before the trigger fires.
           </h2>
           <p style={{ ...BAR, fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginBottom: 36 }}>
-            Every blueprint above can be deployed in your organization within 4 weeks. Founding Partners receive all 170 Readiness Protocols pre-configured for their industry, risk calendar, and executive authorization structure.
+            Every blueprint above can be deployed in your organization within 4 weeks. Founding Partners receive all 180 Readiness Protocols pre-configured for their industry, risk calendar, and executive authorization structure.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const }}>
             <a href="/founding-partner-program" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none" }}>

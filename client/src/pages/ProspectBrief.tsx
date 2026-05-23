@@ -57,7 +57,7 @@ const DOMAIN_TRIGGERS: Record<string, string[]> = {
 };
 
 const IDEA_PHASES = [
-  { letter: "I", name: "IDENTIFY", desc: "170 Readiness Protocols pre-built and staged across 9 domains. Nothing improvised. Everything ready before the trigger fires." },
+  { letter: "I", name: "IDENTIFY", desc: "180 Readiness Protocols pre-built and staged across 9 domains. Nothing improvised. Everything ready before the trigger fires." },
   { letter: "D", name: "DETECT", desc: "248+ data points monitored every 15 minutes across 39 pre-configured signal sources — news, regulatory, SEC, cybersecurity, energy, economic indicators, and government enforcement. 221 trigger patterns armed and ready." },
   { letter: "E", name: "EXECUTE", desc: "12-minute response from trigger detection to full execution in flight. No alignment call. No mobilization delay." },
   { letter: "A", name: "ADVANCE", desc: "Every execution improves the next. Institutional memory compounds. Response time and accuracy improve continuously." },

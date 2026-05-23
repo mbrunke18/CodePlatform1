@@ -30,7 +30,7 @@ const comparisonRows = [
   {
     category: "Response Plan",
     traditional: "Built in real time — or commissioning consultants at $60K+ per event",
-    executionOS: "Pre-staged — 170 Readiness Protocols ready before the trigger fires. No consultant needed.",
+    executionOS: "Pre-staged — 180 Readiness Protocols ready before the trigger fires. No consultant needed.",
   },
   {
     category: "Risk Tracking",
@@ -55,7 +55,7 @@ const comparisonRows = [
 ];
 
 const proofNumbers = [
-  { value: "170", label: "Pre-staged Readiness Protocols across 9 strategic domains" },
+  { value: "180", label: "Pre-staged Readiness Protocols across 9 strategic domains" },
   { value: "221", label: "Trigger configurations monitoring for strategic events" },
   { value: "248+", label: "Enterprise data points monitored continuously" },
   { value: "12 min", label: "Trigger to full organizational coordination" },

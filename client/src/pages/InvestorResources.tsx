@@ -137,7 +137,7 @@ function McKinseyResearchSection() {
                 </p>
                 <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", marginBottom: 10 }}>McKinsey Global Institute — November 2025</p>
                 <p style={{ ...IR_DM, fontSize: 12, color: IR_TEAL, lineHeight: 1.55 }}>
-                  Readiness OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 Readiness Protocols deploy the response. The CEO doesn't become an operator. They become the signal.
+                  Readiness OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 180 Readiness Protocols deploy the response. The CEO doesn't become an operator. They become the signal.
                 </p>
               </blockquote>
             </div>
@@ -373,7 +373,7 @@ export default function InvestorResources() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
-              { val: "170", label: "Strategic Readiness Protocols", sub: "Across 9 domains" },
+              { val: "180", label: "Strategic Readiness Protocols", sub: "Across 9 domains" },
               { val: "248+", label: "Data Points Monitored", sub: "Real-time signals" },
               { val: "12 min", label: "Response Time", sub: "vs 30-day industry avg" },
               { val: "24/7", label: "Intelligence", sub: "Continuous monitoring" },

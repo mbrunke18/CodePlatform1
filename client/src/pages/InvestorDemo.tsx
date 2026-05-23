@@ -67,7 +67,7 @@ const IDEA_STORY = [
   {
     id: 2,
     beat: "IDENTIFY",
-    title: "170 Readiness Protocols. Zero Blank Pages.",
+    title: "180 Readiness Protocols. Zero Blank Pages.",
     subtitle: "Build your depth chart before the game starts",
     phase: "IDENTIFY",
     phaseColor: "bg-[#2B8A6E]",
@@ -75,10 +75,10 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
     time: 30,
-    description: "Unlike crisis tools or PM platforms, Readiness OS comes with 170 battle-tested Readiness Protocols across 9 domains. GROWTH & POSITIONING (M&A, Market Entry, Product Launch), RISK & RESILIENCE (Crisis, Cyber, Regulatory), TRANSFORMATION (Digital Transformation, Competitive Response, AI Governance).",
-    investorHighlight: "This is our moat. 170 Readiness Protocols = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
+    description: "Unlike crisis tools or PM platforms, Readiness OS comes with 180 battle-tested Readiness Protocols across 9 domains. GROWTH & POSITIONING (M&A, Market Entry, Product Launch), RISK & RESILIENCE (Crisis, Cyber, Regulatory), TRANSFORMATION (Digital Transformation, Competitive Response, AI Governance).",
+    investorHighlight: "This is our moat. 180 Readiness Protocols = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
     metrics: [
-      { label: "Readiness Protocols", value: "170" },
+      { label: "Readiness Protocols", value: "180" },
       { label: "Domains", value: "9" },
       { label: "Categories", value: "3" }
     ],
@@ -214,7 +214,7 @@ const STAKEHOLDER_ACKNOWLEDGMENTS = [
 ];
 
 const MOAT_COMPONENTS = [
-  { icon: BookOpen, title: "170 Readiness Protocols", description: "20+ years encoded" },
+  { icon: BookOpen, title: "180 Readiness Protocols", description: "20+ years encoded" },
   { icon: LineChart, title: "Predictive AI", description: "90-day forecasting" },
   { icon: GitBranch, title: "Integration Layer", description: "Bi-directional PM sync" },
   { icon: Brain, title: "Institutional Data", description: "Execution history" },
@@ -323,7 +323,7 @@ export default function InvestorDemo() {
               Readiness OS: The Strategic Readiness Platform
             </h1>
             <p className="text-lg text-[#0A0F2E]">
-              First mover in $15B+ SEOS category. 170 Readiness Protocols. 12-minute execution.
+              First mover in $15B+ SEOS category. 180 Readiness Protocols. 12-minute execution.
             </p>
           </div>
 

@@ -709,7 +709,7 @@ export default function CommandLanding() {
           {[
             { dot: TEAL, label: `${signalCount} signals monitored` },
             { dot: GOLD, label: '221 executive triggers configured' },
-            { dot: 'rgba(240,237,228,0.3)', label: '170 Readiness Protocols ready' },
+            { dot: 'rgba(240,237,228,0.3)', label: '180 Readiness Protocols ready' },
             { dot: providerData?.multiAgentParallel ? TEAL : 'rgba(240,237,228,0.3)', label: providerData?.multiAgentParallel ? '4-agent IDEA framework active' : 'AI agents ready' },
             { dot: providerData?.teamsConfigured ? TEAL : GOLD, label: providerData?.teamsConfigured ? 'Teams notifications active' : 'Teams webhook: configure in integrations' },
           ].map(({ dot, label }) => (

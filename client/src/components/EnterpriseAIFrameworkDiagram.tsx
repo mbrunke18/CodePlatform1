@@ -178,7 +178,7 @@ export default function EnterpriseAIFrameworkDiagram() {
             The coordination infrastructure the operating model assumes but doesn't draw
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
-            {["170 Readiness Protocols", "IDEA Framework", "9 Strategic Domains", "12-Minute Execution Cycles", "Large Enterprise"].map((c) => (
+            {["180 Readiness Protocols", "IDEA Framework", "9 Strategic Domains", "12-Minute Execution Cycles", "Large Enterprise"].map((c) => (
               <span key={c} style={{
                 background: "rgba(201,168,76,0.14)", border: `0.5px solid rgba(201,168,76,0.38)`,
                 borderRadius: 0, padding: "3px 10px",

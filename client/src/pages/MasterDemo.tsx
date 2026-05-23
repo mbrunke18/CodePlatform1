@@ -294,10 +294,10 @@ function PhaseProtocol({ sc, phase, total, onNext, onBack }: { sc: DemoScenario;
     <div style={{ maxWidth: 840, margin: "0 auto", padding: "52px 28px 40px" }}>
       <SLabel color={GOLD}>Step 2 — Protocol Match · T+0:45</SLabel>
       <h1 style={{ ...CG, fontSize: 46, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
-        {locked ? <>Protocol #{sc.protocolNumber} confirmed.<br/><em style={{ color: GOLD }}>Already staged. Already ready.</em></> : <>Scanning 170 Readiness Protocols…</>}
+        {locked ? <>Protocol #{sc.protocolNumber} confirmed.<br/><em style={{ color: GOLD }}>Already staged. Already ready.</em></> : <>Scanning 180 Readiness Protocols…</>}
       </h1>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 28 }}>
-        {locked ? `Readiness OS matched the signal composite to Protocol #${sc.protocolNumber}. This protocol was not written in response to the trigger — it was written months ago, tested in Q3 drills, and waiting for this exact moment.` : "Readiness OS is correlating the signal composite against all 170 Readiness Protocols to find the strongest match."}
+        {locked ? `Readiness OS matched the signal composite to Protocol #${sc.protocolNumber}. This protocol was not written in response to the trigger — it was written months ago, tested in Q3 drills, and waiting for this exact moment.` : "Readiness OS is correlating the signal composite against all 180 Readiness Protocols to find the strongest match."}
       </p>
 
       {/* Scan animation */}
@@ -305,7 +305,7 @@ function PhaseProtocol({ sc, phase, total, onNext, onBack }: { sc: DemoScenario;
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
           <LiveDot color={locked ? TEAL : GOLD}/>
           <span style={{ ...MONO, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: locked ? TEAL : GOLD, textTransform: "uppercase" }}>
-            {locked ? `MATCH CONFIRMED — Protocol #${sc.protocolNumber}` : "SCANNING READINESS LIBRARY · 170 PROTOCOLS"}
+            {locked ? `MATCH CONFIRMED — Protocol #${sc.protocolNumber}` : "SCANNING READINESS LIBRARY · 180 PROTOCOLS"}
           </span>
         </div>
 

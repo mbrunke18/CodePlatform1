@@ -441,11 +441,11 @@ export default function OnboardingWizard() {
           <div>
             <SectionLabel num="03" text="Priority Readiness Protocols" />
             <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Select your highest-priority scenarios</h2>
-            <p style={{ fontSize: 14, color: MUTED, marginBottom: 12 }}>Choose the strategic domains most relevant to your organization. You have access to all 170 Readiness Protocols — this selection pins your priorities to the top of your execution console.</p>
+            <p style={{ fontSize: 14, color: MUTED, marginBottom: 12 }}>Choose the strategic domains most relevant to your organization. You have access to all 180 Readiness Protocols — this selection pins your priorities to the top of your execution console.</p>
 
             <div style={{ padding: "14px 18px", background: `rgba(43,138,110,0.07)`, border: `1px solid rgba(43,138,110,0.2)`, marginBottom: 32, display: "flex", gap: 10, alignItems: "center" }}>
               <CheckCircle size={15} color={TEAL} style={{ flexShrink: 0 }} />
-              <p style={{ fontSize: 13, color: NAVY }}>Select <strong>3 to 5 domains</strong> to prioritize. Your full library of 170 Readiness Protocols remains available at any time.</p>
+              <p style={{ fontSize: 13, color: NAVY }}>Select <strong>3 to 5 domains</strong> to prioritize. Your full library of 180 Readiness Protocols remains available at any time.</p>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 32 }}>
@@ -515,7 +515,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
       items: [
         "Organization profile & key contacts",
         "IDEA Framework — decision rights mapping",
-        "Priority Readiness Protocol selection (from 170)",
+        "Priority Readiness Protocol selection (from 180)",
       ],
       outcome: "Your workspace is configured and your implementation team is briefed.",
     },
@@ -601,7 +601,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
 
         <div style={{ marginTop: 48, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: 48 }}>
           {[
-            { num: "170", label: "Readiness Protocols ready at go-live" },
+            { num: "180", label: "Readiness Protocols ready at go-live" },
             { num: "12min", label: "Execution once live" },
             { num: "2–4wk", label: "Full implementation" },
           ].map((s, i) => (

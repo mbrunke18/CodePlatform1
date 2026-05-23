@@ -15,7 +15,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Build an agile response capability.",
     source: "Every enterprise transformation keynote, 2019–2026",
-    reality: "170 Readiness Readiness Protocols pre-staged across 9 domains. Activated in 12 minutes. No meeting required."
+    reality: "180 Readiness Protocols pre-staged across 9 domains. Activated in 12 minutes. No meeting required."
   },
   {
     claim: "Align stakeholders before executing.",
@@ -45,7 +45,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Develop scenario-based planning capabilities.",
     source: "War room methodology, BCG, strategic planning consultants",
-    reality: "221 triggers pre-mapped across 9 domains. 170 Readiness Protocols pre-built. The scenario is already planned. The response is already ready."
+    reality: "221 triggers pre-mapped across 9 domains. 180 Readiness Protocols pre-built. The scenario is already planned. The response is already ready."
   },
   {
     claim: "Build organizational resilience.",
@@ -165,7 +165,7 @@ export default function PlatformReality() {
               </h2>
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 1 }}>
                 {[
-                  { step: "01", label: "The Problem is Pre-Staged", body: "170 Readiness Readiness Protocols built for every situation the organization is likely to face. Not described — deployed. Not in a deck — in the platform." },
+                  { step: "01", label: "The Problem is Pre-Staged", body: "180 Readiness Protocols built for every situation the organization is likely to face. Not described — deployed. Not in a deck — in the platform." },
                   { step: "02", label: "The Intelligence is Live", body: "248+ data points monitored continuously across 221 triggers. AI detects the pattern before the leadership team reads the news." },
                   { step: "03", label: "No Committee Required", body: "When a trigger fires, the platform surfaces the matched Readiness Protocol, assigns roles, and notifies stakeholders. Zero coordination overhead. No steering committee. No workshop." },
                   { step: "04", label: "12 Minutes to Live Execution", body: "While the thought leader's framework is still in Week 3 of stakeholder alignment, Readiness OS users are already 12 minutes into coordinated, executive-authorized execution." },
@@ -361,7 +361,7 @@ export default function PlatformReality() {
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Readiness OS</div>
               <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#F0EDE4", lineHeight: 1.1 }}>Shipped It.</div>
               <p style={{ fontSize: 14, color: "rgba(240,237,228,0.55)", maxWidth: 540, marginTop: 8, lineHeight: 1.6 }}>
-                170 live playbooks. 221 pre-mapped triggers. 248+ data points monitored. Executive-authorized execution in 12 minutes. The response is ready before the trigger fires.
+                180 live playbooks. 221 pre-mapped triggers. 248+ data points monitored. Executive-authorized execution in 12 minutes. The response is ready before the trigger fires.
               </p>
             </div>
             <button
@@ -409,7 +409,7 @@ export default function PlatformReality() {
                 We're the only ones who built the solution.
               </p>
               <p style={{ fontSize: 14, color: "rgba(240,237,228,0.5)", maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.65 }}>
-                12 minutes from trigger to live execution. 170 Readiness Protocols pre-staged and ready. The response is ready before the trigger fires.
+                12 minutes from trigger to live execution. 180 Readiness Protocols pre-staged and ready. The response is ready before the trigger fires.
               </p>
               <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
                 <button

@@ -108,8 +108,8 @@ const fiveReasons = [
   {
     icon: BookOpen,
     title: "Pre-staged beats reactive — every time",
-    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 170 Readiness Protocols across 9 domains. 221 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
-    metric: "170 Readiness Protocols pre-staged",
+    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 180 Readiness Protocols across 9 domains. 221 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
+    metric: "180 Readiness Protocols pre-staged",
   },
   {
     icon: Clock,
@@ -359,7 +359,7 @@ export default function WhyExecutionOS() {
             {/* Proof bar */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               {[
-                { v: "170", l: "Pre-staged Readiness Protocols" },
+                { v: "180", l: "Pre-staged Readiness Protocols" },
                 { v: "221", l: "Trigger signatures" },
                 { v: "12 min", l: "Trigger to coordination" },
                 { v: "3,600×", l: "Execution head start" },

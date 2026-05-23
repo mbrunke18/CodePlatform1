@@ -14,7 +14,7 @@ const COMPARISON_ROWS = [
   { dimension: "Primary Goal", them: "Administrative governance", us: "Strategic velocity & fearless execution" },
   { dimension: "Microsoft Relation", them: "A replacement for MS Project data storage", us: "The operating model layer above the entire MS stack" },
   { dimension: "Response Time", them: "Days to weeks of planning after a trigger", us: "12 minutes — response is ready before the trigger fires" },
-  { dimension: "Mobilization Lag", them: "30-day cycle (same as MS Project — tool changed, model didn't)", us: "Eliminated — 170 Readiness Protocols pre-staged and ready" },
+  { dimension: "Mobilization Lag", them: "30-day cycle (same as MS Project — tool changed, model didn't)", us: "Eliminated — 180 Readiness Protocols pre-staged and ready" },
   { dimension: "Core Value Metric", them: "End-to-end visibility", us: "3,600× Execution Head Start" },
   { dimension: "Budget Source", them: "IT Operations (cost center)", us: "CEO / Board Strategic Fund (growth center)" },
   { dimension: "AI Integration", them: "Reports and dashboards on top of data", us: "AI monitors, executives authorize, execution coordinated in 12 min" },

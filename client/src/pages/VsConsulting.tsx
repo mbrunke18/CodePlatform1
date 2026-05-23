@@ -30,7 +30,7 @@ export default function VsConsulting() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS vs. Management Consulting | VaughnMartin",
-      description: "McKinsey charges $300K–$500K for Readiness Protocols that sit on a shelf. Readiness OS delivers 170 live, executable Readiness Protocols at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
+      description: "McKinsey charges $300K–$500K for Readiness Protocols that sit on a shelf. Readiness OS delivers 180 live, executable Readiness Protocols at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
       ogTitle: "Why Not Consulting? Readiness OS vs. McKinsey, BCG, Bain",
       ogDescription: "Consultants deliver documents. Readiness OS delivers coordination. See the comparison.",
     });

@@ -809,7 +809,7 @@ export default function ReadinessAssessment() {
                   variant="outline"
                   className="text-lg px-10 py-7 border-[#0A0F2E] dark:border-white text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
                 >
-                  See Our 170 Readiness Protocols
+                  See Our 180 Readiness Protocols
                 </Button>
               </Link>
               <Button

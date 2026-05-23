@@ -31179,2386 +31179,2376 @@ var init_playbooksData = __esm({
       "playbooks": [
         {
           "number": 1,
+          "protocol_code": "MD-001",
           "name": "New Market Entrant (Funded Startup)",
           "trigger": "VC-backed competitor enters your core market segment",
-          "stakeholders": [
-            "CEO",
-            "CMO",
-            "CPO",
-            "Strategy"
-          ],
-          "response": "Competitive positioning, pricing strategy, product acceleration",
+          "stakeholders": ["CEO", "CMO", "CPO", "Chief Strategy Officer"],
+          "response": "CEO activates competitive war room \u2014 CMO deploys targeted counter-messaging to at-risk accounts, CPO fast-tracks differentiation features, and sales secures in-flight contracts with extended terms within 48 hours of entrant announcement. Without pre-staged execution, the 90-day window where a well-funded new entrant can capture early adopters closes before your defense is coordinated, costing 15\u201325% of the contested segment.",
+          "response_window": "48 hours",
+          "financial_exposure": "$15M\u2013$50M in contested ARR at risk within 90 days of entrant launch",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 75e4
         },
         {
           "number": 2,
+          "protocol_code": "MD-002",
           "name": "New Market Entrant (Established Player)",
           "trigger": "Fortune 500 company announces entry into your market",
-          "stakeholders": [
-            "CEO",
-            "Board",
-            "CFO",
-            "Strategy"
-          ],
-          "response": "Partnership exploration, differentiation strategy, market defense",
+          "stakeholders": ["CEO", "Board", "CFO", "Chief Strategy Officer"],
+          "response": "CEO and Board convene emergency strategic review \u2014 legal assesses partnership-vs-competition positioning, CFO models competitive pricing scenarios, and strategy pre-empts the established player's channel outreach before they convert your distributor relationships. Without pre-staged execution, the established player's distribution advantage compounds weekly \u2014 converting your installed base at a pace no reactive campaign can match.",
+          "response_window": "48 hours",
+          "financial_exposure": "$25M\u2013$150M in market position erosion if response delayed 30+ days",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 15e5
         },
         {
           "number": 3,
+          "protocol_code": "MD-003",
           "name": "Competitor Product Launch (Feature Parity)",
           "trigger": "Competitor releases product matching your core capabilities",
-          "stakeholders": [
-            "CPO",
-            "CTO",
-            "CMO",
-            "Sales"
-          ],
-          "response": "Feature acceleration, messaging pivot, customer retention",
+          "stakeholders": ["CPO", "CTO", "CMO", "Chief Revenue Officer"],
+          "response": "CPO activates feature differentiation sprint and CMO deploys 'depth-over-parity' messaging to all existing customers \u2014 every active deal flagged for sales intervention and at-risk accounts receive dedicated CSM escalation within 24 hours. Without immediate response, customers in active evaluation cycles silently shift their RFP criteria to the competitor's feature set, making parity the new table stakes before your counter-narrative reaches them.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$30M in pipeline at risk across active evaluation cycles",
           "domain": 1,
           "frequency": "medium",
           "budget": 5e5
         },
         {
           "number": 4,
+          "protocol_code": "MD-004",
           "name": "Competitor Product Launch (Breakthrough Innovation)",
           "trigger": "Competitor announces technology that leapfrogs your offerings",
-          "stakeholders": [
-            "CEO",
-            "CTO",
-            "CPO",
-            "Board"
-          ],
-          "response": "Technology assessment, R&D pivot, market repositioning",
+          "stakeholders": ["CEO", "CTO", "CPO", "Board"],
+          "response": "CEO calls emergency board briefing as CTO conducts rapid technology capability assessment \u2014 R&D budget unlocked for a parallel innovation track and customer advisory board engaged to anchor loyalty before the competitor narrative reaches your installed base. Without a pre-staged response, the 30-day window where the market is still undecided closes and the competitor's positioning becomes the industry frame of reference.",
+          "response_window": "24 hours",
+          "financial_exposure": "$30M\u2013$200M in market cap erosion if technology-shift narrative sets without a credible counter",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 2e6
         },
         {
           "number": 5,
+          "protocol_code": "MD-005",
           "name": "Aggressive Pricing Disruption",
           "trigger": "Competitor cuts prices 30%+ or introduces disruptive pricing model",
-          "stakeholders": [
-            "CFO",
-            "CMO",
-            "Sales",
-            "Pricing"
-          ],
-          "response": "Value proposition reinforcement, pricing analysis, margin defense",
+          "stakeholders": ["CFO", "CMO", "Chief Revenue Officer", "VP Pricing"],
+          "response": "CFO and CMO activate joint pricing defense \u2014 value-based counter-messaging deployed to all active accounts, margin protection options modeled across three scenarios, and sales equipped with competitive ROI tools within 4 hours of the competitor announcement. Without pre-staged execution, enterprise deals in final stages reprice their expectations before your counter-narrative can be deployed \u2014 destroying margin on deals you would have won at full price.",
+          "response_window": "4 hours",
+          "financial_exposure": "$8M\u2013$40M in contracted revenue at risk if pricing narrative shifts before counter-response deploys",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 75e4
         },
         {
           "number": 6,
-          "name": "Patent Infringement Claim (Incoming)",
-          "trigger": "Competitor alleges your product infringes their patents",
-          "stakeholders": [
-            "CEO",
-            "CLO",
-            "CTO",
-            "Board"
-          ],
-          "response": "Legal defense, product review, prior art search",
+          "protocol_code": "MD-006",
+          "name": "Competitor Freemium Entry",
+          "trigger": "Competitor launches free tier targeting your paid customer base",
+          "stakeholders": ["CFO", "CPO", "CMO", "Chief Revenue Officer"],
+          "response": "CPO and CMO activate free-tier competitive response \u2014 usage-based pricing options modeled, retention offers staged for at-risk customers identified by churn prediction, and messaging repositioned to premium value before migration conversations accelerate. Without pre-staged execution, freemium migrations quietly compound over 60\u201390 days before they appear in churn data \u2014 by which point recovering the customers costs 3\xD7 what retaining them would have.",
+          "response_window": "48 hours",
+          "financial_exposure": "$3M\u2013$20M in ARR erosion over 90 days if freemium migration is not actively defended",
           "domain": 1,
           "frequency": "medium",
           "budget": 5e5
         },
         {
           "number": 7,
-          "name": "Patent Infringement Claim (Outgoing)",
-          "trigger": "Discovery that competitor may be infringing your patents",
-          "stakeholders": [
-            "CLO",
-            "CEO",
-            "CPO",
-            "Board"
-          ],
-          "response": "Legal assessment, enforcement strategy, licensing negotiation",
+          "protocol_code": "MD-007",
+          "name": "Competitor Acquires Key Customer",
+          "trigger": "Rival acquires one of your top 10 customers",
+          "stakeholders": ["CEO", "Chief Revenue Officer", "CPO", "Chief Strategy Officer"],
+          "response": "Chief Revenue Officer activates key account defense sweep \u2014 all top-20 accounts receive executive outreach within 24 hours, competitive displacement risk assessed per account, and product roadmap accelerated on features the acquired customer championed. Without a pre-staged response, competitor sales teams use the acquired customer's insider knowledge to displace you from adjacent accounts before your own account team learns of the risk.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$75M in top-20 account revenue at risk from competitive intelligence exploitation",
           "domain": 1,
-          "frequency": "medium",
-          "budget": 5e5
+          "frequency": "low",
+          "budget": 1e6
         },
         {
           "number": 8,
-          "name": "Key Talent Poaching Campaign",
-          "trigger": "Competitor systematically recruiting your top talent (5+ departures)",
-          "stakeholders": [
-            "CHRO",
-            "CEO",
-            "Business Unit Leads"
-          ],
-          "response": "Retention offers, culture reinforcement, talent pipeline acceleration",
+          "protocol_code": "MD-008",
+          "name": "Competitor Poaching Key Sales Talent",
+          "trigger": "Competitor systematically recruits your top sales and customer-facing staff",
+          "stakeholders": ["CHRO", "Chief Revenue Officer", "CEO", "CFO"],
+          "response": "CHRO and CRO activate talent defense protocol \u2014 retention packages staged for top performers and account transition procedures activated before departing reps begin re-routing relationships. Without pre-staged execution, the real damage is not the departures themselves but the customer relationships that walk with them \u2014 costing $2M\u2013$5M per senior strategic seller who switches sides with their book.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$5M in ARR risk per senior strategic seller departure with active customer relationships",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 1e6
         },
         {
           "number": 9,
-          "name": "Competitor M&A (Consolidation)",
-          "trigger": "Two competitors merge, creating larger rival",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board"
-          ],
-          "response": "Competitive reassessment, partnership exploration, market positioning",
+          "protocol_code": "MD-009",
+          "name": "Competitor Wins Landmark Deal",
+          "trigger": "Major competitor wins flagship deal that signals market credibility shift",
+          "stakeholders": ["CEO", "Chief Revenue Officer", "CMO", "CPO"],
+          "response": "CEO and CRO activate market narrative response \u2014 deal analysis completed within 24 hours, counter-reference customers mobilized, and all active deals with similar buyer profiles receive executive-sponsored intervention before the press release circulates. Without pre-staged response, a single landmark win creates a reference story that cascades through 10\u201320 similar enterprise evaluations over the following 90 days.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$60M in pipeline impact as competitive reference story circulates through similar evaluations",
           "domain": 1,
           "frequency": "medium",
           "budget": 5e5
         },
         {
           "number": 10,
-          "name": "Competitor Acquires Strategic Asset",
-          "trigger": "Competitor buys key supplier, distributor, or technology company",
-          "stakeholders": [
-            "CEO",
-            "COO",
-            "Strategy"
-          ],
-          "response": "Supply chain security, alternative partnerships, M&A response",
+          "protocol_code": "MD-010",
+          "name": "Channel Partner Defection",
+          "trigger": "Major distribution partner signs exclusive with competitor",
+          "stakeholders": ["CEO", "VP Channel Sales", "Chief Revenue Officer", "CFO"],
+          "response": "CEO and VP Channel activate channel defense and replacement protocol \u2014 remaining partners contacted within 12 hours with enhanced incentive structures, direct sales capacity stood up for at-risk territories, and alternative partner pipeline activated from pre-qualified list. Without a pre-staged response, channel partner defections create 3\u20136 month coverage gaps that competitors exploit to establish beachheads in your distribution white space.",
+          "response_window": "12 hours",
+          "financial_exposure": "$5M\u2013$30M in annual channel revenue at risk per major distribution partner defection",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 75e4
         },
         {
           "number": 11,
-          "name": "Channel Conflict (Direct vs. Partner)",
-          "trigger": "Channel partners threaten to drop your product",
-          "stakeholders": [
-            "COO",
-            "Sales",
-            "Channel Management"
-          ],
-          "response": "Partner negotiation, channel strategy revision, conflict resolution",
+          "protocol_code": "MD-011",
+          "name": "Competitive Intelligence Leak",
+          "trigger": "Confidential roadmap, pricing, or strategy found in competitor's possession",
+          "stakeholders": ["CEO", "General Counsel", "CISO", "CHRO"],
+          "response": "General Counsel and CISO activate trade secret response \u2014 forensic investigation of information pathways initiated, legal preservation notices issued, and roadmap pivot assessment completed to mitigate the exposed strategy's value to competitors. Without immediate response, the window to invalidate the stolen intelligence through product acceleration or strategic pivots closes within 30\u201360 days \u2014 after which the competitor is executing against your unpublished roadmap.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in competitive advantage erosion depending on sensitivity of exposed roadmap or pricing",
           "domain": 1,
-          "frequency": "medium",
-          "budget": 5e5
+          "frequency": "low",
+          "budget": 75e4
         },
         {
           "number": 12,
-          "name": "Customer Consolidation to Competitor",
-          "trigger": "Major customer announces switch to competitor (>$5M ARR)",
-          "stakeholders": [
-            "CEO",
-            "Sales",
-            "Customer Success"
-          ],
-          "response": "Save campaign, relationship repair, product gap analysis",
+          "protocol_code": "MD-012",
+          "name": "Market Share Loss (Significant)",
+          "trigger": "Internal data shows 5%+ market share decline in core segment",
+          "stakeholders": ["CEO", "CMO", "CPO", "CFO", "Chief Revenue Officer"],
+          "response": "CEO activates market defense war room \u2014 root cause analysis completed across product, pricing, and sales coverage gaps, and a 90-day market recovery plan presented to the Board within 2 weeks of detection. Without a structured response, market share declines compound \u2014 each point lost makes the recovery more expensive as customers migrate and competitive references accumulate.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$200M in revenue impact compounding per quarter if root cause not addressed",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 2e6
         },
         {
           "number": 13,
-          "name": "Sales Team Defection",
-          "trigger": "Competitor hires your top sales reps (3+ in quarter)",
-          "stakeholders": [
-            "CRO",
-            "CHRO",
-            "CEO"
-          ],
-          "response": "Client relationship protection, pipeline recovery, compensation review",
+          "protocol_code": "MD-013",
+          "name": "Competitor Brand Attack",
+          "trigger": "Competitor launches direct comparative advertising or FUD campaign against you",
+          "stakeholders": ["CMO", "General Counsel", "CEO", "Chief Revenue Officer"],
+          "response": "CMO activates brand defense protocol \u2014 false claims documented for legal action, comparative counter-messaging deployed within 24 hours, and all accounts receiving competitor FUD contacted with direct rebuttals before the campaign narrative sets. Without pre-staged execution, uncontested FUD campaigns shift buyer perception over 4\u20136 weeks in ways that are expensive to reverse.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$25M in pipeline impact as FUD narrative circulates unchallenged through prospect accounts",
           "domain": 1,
           "frequency": "medium",
           "budget": 5e5
         },
         {
           "number": 14,
-          "name": "Geographic Market Entry by Competitor",
-          "trigger": "Competitor enters your stronghold geography",
-          "stakeholders": [
-            "CEO",
-            "GM (Region)",
-            "Sales"
-          ],
-          "response": "Regional defense, local partnerships, market protection",
+          "protocol_code": "MD-014",
+          "name": "Disruptive New Technology (External)",
+          "trigger": "External technology breakthrough threatens core product's value proposition",
+          "stakeholders": ["CEO", "CTO", "CPO", "Board", "Chief Strategy Officer"],
+          "response": "CEO and CTO activate technology disruption assessment \u2014 90-day window analysis completed, partnership or acquisition of the disruptive technology assessed, and customer communication strategy prepared to anchor loyalty before the market narrative shifts. Without pre-staged execution, the first-mover advantage in adapting to a technology shift goes to whoever acts fastest \u2014 and enterprises that wait for certainty wait too long.",
+          "response_window": "72 hours",
+          "financial_exposure": "$30M\u2013$500M in long-term market position at risk if technology shift is not adopted or countered within 12 months",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 2e6
         },
         {
           "number": 15,
-          "name": "Negative Comparison Campaign",
-          "trigger": "Competitor launches marketing attacking your product",
-          "stakeholders": [
-            "CMO",
-            "CLO",
-            "CEO"
-          ],
-          "response": "Counter-messaging, factual correction, legal assessment",
+          "protocol_code": "MD-015",
+          "name": "Customer Concentration Risk Trigger",
+          "trigger": "Largest customer signals contract non-renewal or significantly reduces scope",
+          "stakeholders": ["CEO", "Chief Revenue Officer", "CFO", "Board"],
+          "response": "CRO activates executive-led retention campaign \u2014 CEO-to-CEO relationship engagement initiated within 48 hours, root cause of dissatisfaction diagnosed, and financial model updated to reflect downside scenarios before Board visibility is required. Without pre-staged execution, high-concentration customer exits create investor relations crises in addition to revenue loss \u2014 particularly when the departure signals product-market fit concerns to the broader market.",
+          "response_window": "48 hours",
+          "financial_exposure": "$10M\u2013$100M+ in ARR at risk; potential 20\u201340% market cap impact for public companies if disclosed",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 1e6
         },
         {
           "number": 16,
-          "name": "Customer Advisory Board Defection",
-          "trigger": "Strategic advisory board members join competitor board",
-          "stakeholders": [
-            "CEO",
-            "Strategy",
-            "Customer Success"
-          ],
-          "response": "Relationship repair, board reconstitution, loyalty reinforcement",
+          "protocol_code": "MD-016",
+          "name": "Category Commoditization",
+          "trigger": "Market perception shifts \u2014 your category is becoming a commodity feature",
+          "stakeholders": ["CEO", "CMO", "CPO", "Chief Strategy Officer", "Board"],
+          "response": "CEO and CPO activate product repositioning protocol \u2014 differentiation thesis rebuilt around outcomes rather than features, pricing architecture redesigned to reflect value delivered, and analyst and press briefing campaign launched to reframe the category narrative before commoditization is the consensus view. Without pre-staged execution, commoditization narratives self-fulfill \u2014 once enterprise procurement treats you as a commodity, reversing that perception requires years of proof.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$150M in pricing power and gross margin erosion as category commoditizes",
           "domain": 1,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 15e5
         },
         {
           "number": 17,
-          "name": "Competitor Launches Free/Freemium Tier",
-          "trigger": "Competitor introduces free version of paid product",
-          "stakeholders": [
-            "CPO",
-            "CMO",
-            "CFO",
-            "Pricing"
-          ],
-          "response": "Business model assessment, value differentiation, customer communication",
+          "protocol_code": "MD-017",
+          "name": "Partner Ecosystem Competitive Threat",
+          "trigger": "Major platform partner (AWS, Microsoft, Salesforce) builds competing functionality",
+          "stakeholders": ["CEO", "CPO", "Chief Revenue Officer", "Board", "Chief Strategy Officer"],
+          "response": "CEO activates platform threat response \u2014 partnership agreement reviewed for competitive protection clauses, differentiation narrative repositioned to complementary-vs-replacement, and enterprise customer communication deployed before the platform vendor's sales team reaches shared accounts. Without pre-staged execution, platform vendor sales teams use existing relationships to displace you at renewal \u2014 your existing access is also theirs.",
+          "response_window": "48 hours",
+          "financial_exposure": "$15M\u2013$200M in ARR at risk from platform displacement across shared customer base",
           "domain": 1,
-          "frequency": "medium",
-          "budget": 5e5
+          "frequency": "low",
+          "budget": 15e5
         },
         {
           "number": 18,
-          "name": "Industry Standards Battle",
-          "trigger": "Competitor attempts to establish incompatible industry standard",
-          "stakeholders": [
-            "CTO",
-            "Strategy",
-            "Standards Team"
-          ],
-          "response": "Coalition building, standards participation, interoperability strategy",
+          "protocol_code": "MD-018",
+          "name": "Acquisition Integration Failure (Competitive Impact)",
+          "trigger": "Your M&A integration goes wrong \u2014 customers defecting, culture clash, product fragmentation",
+          "stakeholders": ["CEO", "CFO", "CHRO", "Head of Integration", "Board"],
+          "response": "CEO activates integration crisis protocol \u2014 customer retention task force deployed within 48 hours, integration timeline reset with a credible delivery plan, and Board briefed on revised synergy estimates before analyst community receives signals of integration failure. Without a pre-staged response, M&A integration failures send customers to competitors who position against your distraction \u2014 and market perception of your execution capability takes years to recover.",
+          "response_window": "48 hours",
+          "financial_exposure": "$15M\u2013$200M in deal synergies at risk plus revenue attrition from customer defection during integration confusion",
           "domain": 1,
-          "frequency": "medium",
-          "budget": 5e5
+          "frequency": "rare",
+          "budget": 15e6
         },
         {
           "number": 19,
+          "protocol_code": "OE-019",
           "name": "Primary Supplier Failure",
           "trigger": "Main supplier experiences bankruptcy, fire, or production halt",
-          "stakeholders": [
-            "COO",
-            "Procurement",
-            "Manufacturing"
-          ],
-          "response": "Alternative supplier activation, inventory management, production continuity",
+          "stakeholders": ["COO", "Chief Procurement Officer", "VP Manufacturing"],
+          "response": "COO activates alternative supplier protocol \u2014 pre-qualified backup suppliers contacted within 4 hours, inventory buffers assessed against production timeline, and customer allocation model activated to protect highest-value accounts during the shortage period. Without pre-staged supplier alternatives, each day of primary supplier failure represents $500K\u2013$5M in halted production \u2014 and emergency sourcing at premium costs destroys margin even after supply resumes.",
+          "response_window": "4 hours",
+          "financial_exposure": "$500K\u2013$5M per day in halted production; additional 15\u201325% premium cost for emergency sourcing",
           "domain": 2,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 2e6
         },
         {
           "number": 20,
+          "protocol_code": "OE-020",
           "name": "Critical Component Shortage",
           "trigger": "Industry-wide shortage of essential component (chips, raw materials)",
-          "stakeholders": [
-            "COO",
-            "CFO",
-            "Manufacturing",
-            "Procurement"
-          ],
-          "response": "Substitute sourcing, production prioritization, customer allocation",
+          "stakeholders": ["COO", "CFO", "VP Manufacturing", "Chief Procurement Officer"],
+          "response": "COO and Procurement activate component triage protocol \u2014 production prioritized to highest-margin and most strategic customer commitments, substitute component qualification fast-tracked, and customer allocation decisions made with CFO visibility on revenue impact. Without a pre-staged response, uncoordinated internal allocation creates customer fairness disputes and sales team pressure that results in the wrong orders being fulfilled first.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$20M in revenue impact per quarter; customer relationship damage that outlasts the shortage",
           "domain": 2,
           "frequency": "medium",
-          "budget": 5e5
+          "budget": 15e5
         },
         {
           "number": 21,
-          "name": "Transportation/Logistics Disruption",
-          "trigger": "Strike, natural disaster, or infrastructure failure blocks distribution",
-          "stakeholders": [
-            "COO",
-            "Logistics",
-            "Customer Service"
-          ],
-          "response": "Alternative routing, customer communication, fulfillment workarounds",
+          "protocol_code": "OE-021",
+          "name": "Transportation / Logistics Disruption",
+          "trigger": "Strike, natural disaster, or infrastructure failure blocks primary distribution route",
+          "stakeholders": ["COO", "VP Logistics", "VP Customer Success"],
+          "response": "COO activates logistics rerouting protocol \u2014 alternative carriers and routes activated within 12 hours, affected customers personally notified before shipment tracking reveals delays, and real-time fulfillment dashboard activated for executive visibility. Without pre-staged routing alternatives, logistics disruptions cascade from a 24-hour inconvenience to a 5\u201310 day backlog as every competitor also scrambles for the same alternative capacity.",
+          "response_window": "4 hours",
+          "financial_exposure": "$1M\u2013$10M in SLA penalties and customer attrition; $500K\u2013$3M in emergency freight premium",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 22,
+          "protocol_code": "OE-022",
           "name": "Quality Defect Discovery (Pre-Ship)",
-          "trigger": "Critical quality issue found before product ships",
-          "stakeholders": [
-            "COO",
-            "Quality",
-            "Manufacturing",
-            "Sales"
-          ],
-          "response": "Production halt, root cause analysis, customer communication",
+          "trigger": "Critical quality issue found before product ships to customer",
+          "stakeholders": ["COO", "Chief Quality Officer", "VP Manufacturing", "Chief Revenue Officer"],
+          "response": "Chief Quality Officer activates pre-shipment hold protocol \u2014 root cause investigation initiated immediately, affected production lots quarantined, and customer delivery schedule revised with an honest timeline before the sales team makes promises the operation cannot keep. Without a pre-staged response, discovery-to-decision delays cause well-intentioned teams to ship defective product rather than face an uncomfortable conversation.",
+          "response_window": "4 hours",
+          "financial_exposure": "$1M\u2013$15M in recall and warranty costs if defective product ships; far lower if caught pre-shipment",
           "domain": 2,
           "frequency": "medium",
           "budget": 75e4
         },
         {
           "number": 23,
+          "protocol_code": "OE-023",
           "name": "Quality Defect Discovery (Post-Ship)",
-          "trigger": "Critical quality issue discovered in field/customer site",
-          "stakeholders": [
-            "COO",
-            "Quality",
-            "Customer Success",
-            "CLO"
-          ],
-          "response": "Field remediation, customer notification, regulatory reporting",
+          "trigger": "Critical quality issue discovered in customer field after shipment",
+          "stakeholders": ["COO", "Chief Quality Officer", "VP Customer Success", "General Counsel"],
+          "response": "COO activates field quality response \u2014 all affected customers personally notified within 24 hours, field remediation teams deployed, regulatory reporting timeline assessed, and legal hold placed on quality records before class action risk crystallizes. Without pre-staged execution, post-shipment quality events compound when customers discover the issue independently \u2014 converting a manageable field action into a public recall with reputational cascade.",
+          "response_window": "12 hours",
+          "financial_exposure": "$3M\u2013$50M in recall, warranty, regulatory fines, and customer attrition costs",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 2e6
         },
         {
           "number": 24,
+          "protocol_code": "OE-024",
           "name": "Supplier Price Shock",
-          "trigger": "Supplier increases prices 20%+ due to force majeure",
-          "stakeholders": [
-            "CFO",
-            "COO",
-            "Procurement"
-          ],
-          "response": "Cost absorption analysis, pricing adjustment, alternative sourcing",
+          "trigger": "Key supplier increases prices 20%+ due to force majeure or market shock",
+          "stakeholders": ["CFO", "COO", "Chief Procurement Officer"],
+          "response": "CFO and Procurement activate supplier leverage protocol \u2014 alternative supplier bids obtained within 48 hours, multi-year contract offer used as negotiating lever, and customer pricing adjustment modeled to protect gross margin. Without pre-staged negotiation alternatives, force majeure price increases are accepted at full cost \u2014 the enterprise that has a credible alternative offer in hand always negotiates from strength.",
+          "response_window": "48 hours",
+          "financial_exposure": "$2M\u2013$15M in annual cost impact depending on supplier concentration and volume",
           "domain": 2,
           "frequency": "medium",
           "budget": 75e4
         },
         {
           "number": 25,
+          "protocol_code": "OE-025",
           "name": "Manufacturing Facility Disruption",
-          "trigger": "Fire, flood, equipment failure halts production facility",
-          "stakeholders": [
-            "COO",
-            "Manufacturing",
-            "Safety",
-            "Insurance"
-          ],
-          "response": "Production rerouting, capacity reallocation, recovery planning",
+          "trigger": "Fire, flood, or equipment failure halts primary production facility",
+          "stakeholders": ["COO", "VP Manufacturing", "VP Safety", "CFO", "Insurance Risk Manager"],
+          "response": "COO activates facility continuity protocol \u2014 production rerouted to secondary facilities or contract manufacturers within 24 hours, insurance claim documentation initiated, and customer impact communications deployed before shipment delays are visible in tracking systems. Without pre-staged capacity reallocation, facility disruptions create a cascading backlog that takes 2\u20133\xD7 the downtime period to clear \u2014 customer attrition accelerates as lead times extend.",
+          "response_window": "4 hours",
+          "financial_exposure": "$500K\u2013$5M per day in lost production; $10M\u2013$100M+ in insurable losses",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 3e6
         },
         {
           "number": 26,
-          "name": "Warehouse/Distribution Center Failure",
+          "protocol_code": "OE-026",
+          "name": "Warehouse / Distribution Center Failure",
           "trigger": "Primary distribution center becomes inoperable",
-          "stakeholders": [
-            "COO",
-            "Logistics",
-            "Customer Service"
-          ],
-          "response": "Inventory redistribution, alternative fulfillment, delivery recovery",
+          "stakeholders": ["COO", "VP Logistics", "VP Customer Success"],
+          "response": "COO activates inventory redistribution protocol \u2014 stock reallocated to regional DCs or 3PL partners within 8 hours, priority orders rerouted, and customer SLA impact assessed before logistics tracking exposes delays to customers. Without pre-staged redistribution triggers, warehouse failures compound into a 5\u201314 day fulfillment backlog that customer service alone cannot manage.",
+          "response_window": "4 hours",
+          "financial_exposure": "$500K\u2013$5M in SLA penalties, emergency logistics costs, and customer attrition",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 27,
+          "protocol_code": "OE-027",
           "name": "Data Center Outage",
-          "trigger": "Primary data center experiences extended outage",
-          "stakeholders": [
-            "CTO",
-            "COO",
-            "Customer Success"
-          ],
-          "response": "Failover execution, customer communication, service restoration",
+          "trigger": "Primary data center experiences extended outage affecting customer operations",
+          "stakeholders": ["CTO", "COO", "VP Customer Success", "CEO"],
+          "response": "CTO activates data center failover protocol \u2014 secondary data center or cloud failover executed within 15 minutes, customer-facing status page updated before social media reports the issue, and SLA credit calculations initiated proactively. Without pre-staged failover execution, each hour of data center downtime costs $100K\u2013$500K in direct SLA obligations and accelerates churn conversations already in progress.",
+          "response_window": "15 minutes",
+          "financial_exposure": "$100K\u2013$500K per hour in SLA obligations; customer attrition risk multiplied by duration",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 15e5
         },
         {
           "number": 28,
+          "protocol_code": "OE-028",
           "name": "Office Evacuation (Safety Threat)",
-          "trigger": "Bomb threat, gas leak, or safety issue requires building evacuation",
-          "stakeholders": [
-            "Facilities",
-            "Safety",
-            "CHRO",
-            "Crisis Management"
-          ],
-          "response": "Employee safety, remote work activation, facility security",
+          "trigger": "Bomb threat, gas leak, or safety incident requires immediate building evacuation",
+          "stakeholders": ["VP Facilities", "VP Safety", "CHRO", "Crisis Management Lead"],
+          "response": "Facilities and Safety activate emergency evacuation protocol \u2014 all personnel cleared and accounted for via roll-call system within 30 minutes, remote work capability activated for critical functions, and law enforcement/emergency services coordinated with full cooperation. Without pre-staged evacuation procedures and remote work fallback, a routine safety incident becomes a 24\u201348 hour operational disruption.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$100K\u2013$2M in operational disruption; liability exposure if employee safety procedures are inadequate",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 5e5
         },
         {
           "number": 29,
+          "protocol_code": "OE-029",
           "name": "Natural Disaster (Facility Impact)",
-          "trigger": "Hurricane, earthquake, flood impacts primary operations",
-          "stakeholders": [
-            "COO",
-            "Facilities",
-            "Safety",
-            "Insurance"
-          ],
-          "response": "Employee safety, operations continuity, recovery coordination",
+          "trigger": "Hurricane, earthquake, or flood impacts primary operational facility",
+          "stakeholders": ["COO", "VP Facilities", "VP Safety", "CFO", "Insurance Risk Manager"],
+          "response": "COO activates natural disaster continuity protocol \u2014 employee safety and accountability confirmed first, then critical operations rerouted to unaffected facilities, and insurance documentation process begun within 24 hours of initial impact. Without pre-staged continuity plans, natural disaster recovery takes 3\u20135\xD7 longer because coordination begins after the event rather than before it.",
+          "response_window": "1 hour",
+          "financial_exposure": "$5M\u2013$100M+ in insurable property and business interruption losses; $1M\u2013$10M in uninsured operational disruption",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 5e6
         },
         {
           "number": 30,
-          "name": "Pandemic/Health Crisis",
-          "trigger": "Infectious disease outbreak impacts workforce/operations",
-          "stakeholders": [
-            "CEO",
-            "CHRO",
-            "Facilities",
-            "Safety"
-          ],
-          "response": "Remote work activation, safety protocols, business continuity",
+          "protocol_code": "OE-030",
+          "name": "Pandemic / Health Crisis",
+          "trigger": "Infectious disease outbreak impacts workforce, customers, or supply chain",
+          "stakeholders": ["CEO", "CHRO", "VP Facilities", "VP Safety", "COO"],
+          "response": "CEO activates business continuity protocol \u2014 remote work capability deployed enterprise-wide within 24 hours, safety protocols published for essential on-site functions, and supply chain impact assessment completed to identify 60\u201390 day risk exposure. Without pre-staged remote infrastructure, health crises create operational disruption that compounds the human crisis \u2014 each day of coordination delay costs more than a week of preparation would have.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in operational disruption; $2M\u2013$20M in accelerated IT infrastructure costs without pre-staging",
           "domain": 2,
           "frequency": "medium",
-          "budget": 75e4
+          "budget": 5e6
         },
         {
           "number": 31,
+          "protocol_code": "OE-031",
           "name": "Critical Vendor Service Interruption",
-          "trigger": "Essential SaaS provider, cloud host, or service experiences outage",
-          "stakeholders": [
-            "CTO",
-            "Vendor Management",
-            "Operations"
-          ],
-          "response": "Backup activation, vendor escalation, customer notification",
+          "trigger": "Essential SaaS provider, cloud host, or managed service experiences outage",
+          "stakeholders": ["CTO", "VP Vendor Management", "COO"],
+          "response": "CTO activates vendor continuity protocol \u2014 backup service activated within 1 hour, vendor escalation SLA invoked with executive-to-executive contact, and customer impact communication deployed before users report the issue through support channels. Without pre-staged backup activation, SaaS vendor outages create cascading internal failures as dependent workflows break \u2014 the cost is 3\u20135\xD7 the direct outage duration.",
+          "response_window": "1 hour",
+          "financial_exposure": "$50K\u2013$2M per hour in operational disruption depending on criticality of the interrupted service",
           "domain": 2,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e5
         },
         {
           "number": 32,
+          "protocol_code": "OE-032",
           "name": "Technology Partner Bankruptcy",
-          "trigger": "Critical technology partner files bankruptcy/ceases operations",
-          "stakeholders": [
-            "CTO",
-            "CLO",
-            "Procurement"
-          ],
-          "response": "Technology migration, intellectual property protection, alternative sourcing",
+          "trigger": "Critical technology partner files bankruptcy or ceases operations",
+          "stakeholders": ["CTO", "General Counsel", "Chief Procurement Officer"],
+          "response": "CTO and General Counsel activate technology continuity protocol \u2014 IP licensing rights and source code escrow access verified within 24 hours, alternative vendor evaluation initiated from pre-qualified list, and migration timeline modeled before the partner formally ceases support. Without pre-staged IP protection and migration readiness, technology partner bankruptcies leave you dependent on a dying platform with no leverage to accelerate access to your own data and integrations.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$20M in emergency migration costs; operational risk from technology dependency on insolvent vendor",
           "domain": 2,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 2e6
         },
         {
           "number": 33,
+          "protocol_code": "OE-033",
           "name": "Payment Processor Disruption",
-          "trigger": "Payment gateway, merchant services, or banking disruption",
-          "stakeholders": [
-            "CFO",
-            "Finance",
-            "Customer Service"
-          ],
-          "response": "Alternative payment activation, customer communication, transaction recovery",
+          "trigger": "Payment gateway, merchant services, or banking disruption blocks revenue collection",
+          "stakeholders": ["CFO", "VP Finance", "VP Customer Success"],
+          "response": "CFO activates payment continuity protocol \u2014 secondary payment processor activated within 1 hour, affected customers notified of payment timing impact, and revenue impact tracked against daily close model. Without a pre-staged backup processor, payment disruptions silently halt revenue collection \u2014 with the cash flow impact only visible days later when reconciliation reveals the shortfall.",
+          "response_window": "1 hour",
+          "financial_exposure": "$500K\u2013$10M per day in delayed or lost revenue collection during extended payment disruption",
           "domain": 2,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e5
         },
         {
           "number": 34,
-          "name": "Critical API/Integration Failure",
-          "trigger": "Essential third-party API service fails or changes unexpectedly",
-          "stakeholders": [
-            "CTO",
-            "Engineering",
-            "Product"
-          ],
-          "response": "Integration repair, fallback mode, customer impact mitigation",
+          "protocol_code": "OE-034",
+          "name": "Critical API / Integration Failure",
+          "trigger": "Essential third-party API service fails or makes a breaking change without warning",
+          "stakeholders": ["CTO", "VP Engineering", "CPO"],
+          "response": "CTO activates integration resilience protocol \u2014 fallback mode activated for affected workflows within 30 minutes, vendor escalation initiated with SLA documentation, and customer-facing impact assessed and communicated before support ticket volume reveals the scope. Without pre-staged fallback modes, API failures cascade silently through dependent workflows \u2014 the support cost of discovering failures reactively exceeds the cost of building resilience proactively.",
+          "response_window": "30 minutes",
+          "financial_exposure": "$100K\u2013$3M in operational disruption; customer trust damage that persists beyond restoration",
           "domain": 2,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e5
         },
         {
           "number": 35,
+          "protocol_code": "FS-035",
           "name": "Cash Flow Crisis",
-          "trigger": "Cash runway drops below 6 months, unexpected burn spike",
-          "stakeholders": [
-            "CFO",
-            "CEO",
-            "Board"
-          ],
-          "response": "Cost reduction, fundraising acceleration, bridge financing",
+          "trigger": "Cash runway drops below 6 months with no near-term financing catalyst",
+          "stakeholders": ["CFO", "CEO", "Board"],
+          "response": "CFO activates cash preservation protocol \u2014 cost reduction levers identified and sized within 72 hours, bridge financing conversations initiated with existing investors and lenders, and Board briefed with clear options and timelines before the runway hits 3 months. Without pre-staged financing relationships and cost reduction playbooks, cash crises compound as uncertainty delays decisions and talent begins to exit before the crisis is resolved.",
+          "response_window": "72 hours",
+          "financial_exposure": "Existential: company insolvency risk within 3\u20136 months without bridge capital or cost restructuring",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 2e6
         },
         {
           "number": 36,
+          "protocol_code": "FS-036",
           "name": "Failed Fundraising Round",
-          "trigger": "Expected investment round falls through or significantly delayed",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Board"
-          ],
-          "response": "Alternative financing, burn reduction, strategic options",
+          "trigger": "Expected investment round falls through or is significantly delayed",
+          "stakeholders": ["CEO", "CFO", "Board"],
+          "response": "CEO and CFO activate capital alternatives protocol \u2014 alternative financing sources (revenue-based, debt, strategic) evaluated within 48 hours, burn rate reduction plan modeled, and Board briefed with a 90-day runway preservation plan before the team learns of the setback through attrition signals. Without pre-staged capital alternatives, failed fundraising rounds trigger a talent exodus that makes the next round impossible to close.",
+          "response_window": "48 hours",
+          "financial_exposure": "Existential for early-stage companies; $10M\u2013$50M in valuation destruction for growth-stage if bridge not secured",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 37,
+          "protocol_code": "FS-037",
           "name": "Bank Credit Line Revocation",
-          "trigger": "Bank reduces or eliminates line of credit",
-          "stakeholders": [
-            "CFO",
-            "CEO",
-            "Treasury"
-          ],
-          "response": "Alternative lender sourcing, liquidity preservation, covenant negotiation",
+          "trigger": "Bank reduces or eliminates company line of credit without warning",
+          "stakeholders": ["CFO", "CEO", "VP Treasury"],
+          "response": "CFO activates liquidity protection protocol \u2014 alternative lender conversations initiated within 24 hours, short-term liquidity sources assessed against 90-day cash needs, and covenant violations reviewed with external counsel before bank counsel sends formal default notices. Without pre-staged lender relationships, credit line revocations create a 30\u201360 day window of dangerous illiquidity while alternative financing is established from scratch.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$100M in immediate liquidity gap depending on credit facility size and working capital dependency",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 38,
+          "protocol_code": "FS-038",
           "name": "Major Customer Payment Default",
-          "trigger": "Large customer fails to pay invoice (>$1M outstanding)",
-          "stakeholders": [
-            "CFO",
-            "Sales",
-            "Collections",
-            "CLO"
-          ],
-          "response": "Payment recovery, credit policy revision, cash flow management",
+          "trigger": "Strategic customer fails to pay invoices totaling more than $1M outstanding",
+          "stakeholders": ["CFO", "Chief Revenue Officer", "VP Collections", "General Counsel"],
+          "response": "CFO and General Counsel activate collections defense protocol \u2014 service suspension triggers evaluated against contract terms, security interests and mechanics liens filed to preserve priority position, and settlement negotiation initiated before the customer enters a formal restructuring that reduces your recovery. Without pre-staged collection triggers, payment defaults compound \u2014 each week of delay reduces recovery probability by 10\u201320%.",
+          "response_window": "24 hours",
+          "financial_exposure": "$1M\u2013$25M in receivables at risk; full write-off likely after formal customer insolvency proceedings begin",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e5
         },
         {
           "number": 39,
+          "protocol_code": "FS-039",
           "name": "Currency Crisis (FX Exposure)",
-          "trigger": "Significant currency devaluation impacts international revenue/costs",
-          "stakeholders": [
-            "CFO",
-            "Treasury",
-            "International Operations"
-          ],
-          "response": "Hedging strategy, pricing adjustment, expense management",
+          "trigger": "Significant currency devaluation impacts international revenue or cost structure",
+          "stakeholders": ["CFO", "VP Treasury", "VP International Operations"],
+          "response": "CFO and Treasury activate FX risk mitigation protocol \u2014 hedging positions deployed within 24 hours of currency event, international pricing structures adjusted to protect margin, and Board briefed on earnings impact before quarterly close creates reporting surprise. Without pre-staged hedging triggers, currency crises appear in financial statements as unavoidable losses \u2014 when they were avoidable with 24-hour execution.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$30M in currency loss depending on international revenue exposure and hedge ratio",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 40,
+          "protocol_code": "FS-040",
           "name": "Stock Price Crash (Public Company)",
-          "trigger": "Stock price drops 30%+ in single session or week",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "IR",
-            "Board"
-          ],
-          "response": "Investor communication, analyst briefing, stability messaging",
+          "trigger": "Stock price drops 30%+ in a single session or trading week",
+          "stakeholders": ["CEO", "CFO", "VP Investor Relations", "Board"],
+          "response": "CEO and IR activate investor stabilization protocol \u2014 institutional shareholders personally contacted within 4 hours of market open, earnings guidance reaffirmed or revised with supporting data, and short interest analysis completed to detect coordinated attack requiring legal response. Without pre-staged investor communication, stock crashes are amplified by information vacuum \u2014 institutions that can't reach management assume the worst.",
+          "response_window": "4 hours",
+          "financial_exposure": "$50M\u2013$5B+ in market cap impact; secondary effects on credit ratings, acquisition currency, and employee morale",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 41,
+          "protocol_code": "FS-041",
           "name": "Activist Investor Campaign",
-          "trigger": "Activist shareholder takes significant position, demands changes",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Board",
-            "CLO"
-          ],
-          "response": "Investor engagement, defense strategy, board communication",
+          "trigger": "Activist shareholder discloses significant position with demands for strategic change",
+          "stakeholders": ["CEO", "CFO", "Board", "General Counsel", "Chief IR Officer"],
+          "response": "CEO and Board activate activist defense protocol \u2014 outside M&A counsel retained immediately, shareholder outreach initiated with top-20 institutional holders, and comprehensive value creation plan prepared to show independent value before the activist's public campaign reaches the proxy advisory firms. Without pre-staged defense, activists exploit the 30\u201360 day window between disclosure and proxy filing to establish the narrative that management is the problem.",
+          "response_window": "48 hours",
+          "financial_exposure": "$10M\u2013$100M in defense costs; existential risk to strategy and board composition if proxy contest is lost",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 3e6
         },
         {
           "number": 42,
+          "protocol_code": "FS-042",
           "name": "Hostile Takeover Attempt",
-          "trigger": "Unsolicited acquisition offer or proxy fight initiated",
-          "stakeholders": [
-            "CEO",
-            "Board",
-            "CLO",
-            "Investment Bankers"
-          ],
-          "response": "Defense activation, shareholder communication, strategic alternatives",
+          "trigger": "Unsolicited acquisition offer or proxy fight initiated by a third party",
+          "stakeholders": ["CEO", "Board", "General Counsel", "Investment Bankers"],
+          "response": "Board activates hostile defense protocol \u2014 poison pill evaluated and prepared, competing strategic alternatives canvassed with investment bankers within 48 hours, and shareholder communication deployed before the offeror's press release reaches institutional holders. Without pre-staged defense mechanisms, the 10-day window after hostile announcement is decisive \u2014 bidders who move faster than a target's defense establish irreversible momentum.",
+          "response_window": "48 hours",
+          "financial_exposure": "$50M\u2013$5B+ in transaction value; loss of independence if defense is inadequate",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e6
         },
         {
           "number": 43,
+          "protocol_code": "FS-043",
           "name": "Credit Rating Downgrade",
-          "trigger": "Rating agency lowers credit rating, impacts borrowing costs",
-          "stakeholders": [
-            "CFO",
-            "Treasury",
-            "CEO",
-            "IR"
-          ],
-          "response": "Investor communication, capital structure optimization, rating agency engagement",
+          "trigger": "Rating agency lowers credit rating, impacting borrowing costs and investor covenants",
+          "stakeholders": ["CFO", "VP Treasury", "CEO", "VP Investor Relations"],
+          "response": "CFO activates credit recovery protocol \u2014 rating agency met within 48 hours of downgrade notice with comprehensive remediation plan, debt covenant compliance verified across all facilities, and investor communication deployed before bond market opens to prevent spread widening. Without pre-staged remediation, credit downgrades become self-reinforcing \u2014 higher borrowing costs further strain the metrics that drove the downgrade.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$50M in incremental annual debt service costs; covenant breach risk on existing facilities",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 44,
+          "protocol_code": "FS-044",
           "name": "Revenue Shortfall (Miss Guidance)",
-          "trigger": "Quarter tracking significantly below public guidance",
-          "stakeholders": [
-            "CFO",
-            "CEO",
-            "IR",
-            "Board"
-          ],
-          "response": "Guidance revision, investor communication, recovery plan",
+          "trigger": "Quarter tracking significantly below publicly issued financial guidance",
+          "stakeholders": ["CFO", "CEO", "VP Investor Relations", "Board"],
+          "response": "CFO and CEO activate earnings guidance revision protocol \u2014 analyst consensus model revised with conservative and base scenarios, pre-earnings call investor outreach initiated for largest holders, and internal performance recovery plan activated 60 days before quarter-end. Without pre-staged guidance revision communication, earnings misses are amplified by surprise \u2014 the same miss communicated proactively versus reactively produces meaningfully different market reactions.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$1B+ in market cap impact from guidance miss; secondary M&A premium and cost of capital effects",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e5
         },
         {
           "number": 45,
+          "protocol_code": "FS-045",
           "name": "Accounting Irregularity Discovery",
           "trigger": "Internal audit discovers material accounting error or policy violation",
-          "stakeholders": [
-            "CFO",
-            "CEO",
-            "Audit Committee",
-            "CLO"
-          ],
-          "response": "Investigation, restatement assessment, disclosure planning",
+          "stakeholders": ["CFO", "CEO", "Audit Committee Chair", "General Counsel"],
+          "response": "CFO and Audit Committee activate restatement assessment protocol \u2014 external forensic accountants retained immediately, document preservation notice issued to all relevant personnel, and SEC disclosure counsel engaged to manage disclosure timing before the issue becomes public through a whistleblower or auditor withdrawal. Without pre-staged response, accounting discoveries become crises when the auditors learn of them before management has a remediation plan \u2014 control of the narrative is permanently lost.",
+          "response_window": "24 hours",
+          "financial_exposure": "$20M\u2013$200M in restatement costs, legal fees, and market cap destruction; SEC enforcement risk",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 3e6
         },
         {
           "number": 46,
+          "protocol_code": "FS-046",
           "name": "Auditor Disagreement",
-          "trigger": "External auditor challenges accounting treatment or control",
-          "stakeholders": [
-            "CFO",
-            "Audit Committee",
-            "CLO"
-          ],
-          "response": "Resolution negotiation, documentation, potential restatement",
+          "trigger": "External auditor challenges accounting treatment or raises internal control concerns",
+          "stakeholders": ["CFO", "Audit Committee Chair", "General Counsel"],
+          "response": "CFO and Audit Committee activate auditor negotiation protocol \u2014 independent technical accounting review obtained within 72 hours to support the company's position, Audit Committee briefed before auditor escalation, and resolution timeline managed to preserve earnings release schedule. Without pre-staged technical support, auditor disagreements become forced restatements \u2014 because management cannot assemble its position fast enough to influence the outcome.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$50M in restatement costs; delayed filings trigger SEC investigation risk and exchange delisting notices",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 47,
+          "protocol_code": "FS-047",
           "name": "Financial Control Failure",
-          "trigger": "Material weakness in internal controls discovered",
-          "stakeholders": [
-            "CFO",
-            "Audit Committee",
-            "Controller"
-          ],
-          "response": "Remediation plan, disclosure, control enhancement",
+          "trigger": "Material weakness in internal controls discovered \u2014 SOX, ICFR, or audit finding",
+          "stakeholders": ["CFO", "Audit Committee Chair", "VP Controller"],
+          "response": "CFO activates internal control remediation protocol \u2014 material weakness documented with root cause analysis, remediation plan presented to Audit Committee within 30 days, and investor disclosure language prepared that frames the issue as identified-and-resolved rather than discovered-by-auditors. Without pre-staged remediation, material weakness disclosures compound \u2014 each quarter without remediation amplifies investor concern and attracts regulatory scrutiny.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$30M in remediation costs; market cap discount for material weakness companies averages 5\u201315%",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e6
         },
         {
           "number": 48,
+          "protocol_code": "FS-048",
           "name": "Unexpected Tax Liability",
-          "trigger": "Tax authority assessment or audit findings create material liability",
-          "stakeholders": [
-            "CFO",
-            "Tax",
-            "CLO"
-          ],
-          "response": "Assessment challenge, settlement negotiation, reserve establishment",
+          "trigger": "Tax authority assessment or audit findings create material unexpected liability",
+          "stakeholders": ["CFO", "VP Tax", "General Counsel"],
+          "response": "CFO and Tax activate tax defense protocol \u2014 positions assessed for settlement vs. litigation, transfer pricing documentation reviewed against assessment theory, and reserve establishment timeline managed to minimize earnings impact while preserving litigation credibility. Without pre-staged tax defense documentation, assessments are accepted at face value \u2014 companies with organized technical positions consistently negotiate 30\u201360% reductions from initial assessments.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$200M in tax liability depending on issue type; interest and penalties compound at 5\u20138% annually",
           "domain": 3,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 2e6
         },
         {
           "number": 49,
+          "protocol_code": "RC-049",
           "name": "SEC Investigation Notice",
-          "trigger": "Securities and Exchange Commission opens investigation",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "CLO",
-            "Board"
-          ],
-          "response": "External counsel engagement, document preservation, cooperation strategy",
+          "trigger": "Securities and Exchange Commission opens formal investigation or issues subpoena",
+          "stakeholders": ["CEO", "CFO", "General Counsel", "Board Audit Committee"],
+          "response": "General Counsel activates SEC defense protocol \u2014 securities litigation counsel retained within 24 hours, document preservation notice issued enterprise-wide, and voluntary cooperation posture established before the investigation broadens from the initial focus area. Without pre-staged response, SEC investigations expand in scope when companies appear disorganized \u2014 proactive cooperation with a clear preservation record consistently narrows investigative scope.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$500M in SEC enforcement penalties; officer disqualification and consent decree risk",
           "domain": 4,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 5e6
         },
         {
           "number": 50,
-          "name": "DOJ/Criminal Investigation",
-          "trigger": "Department of Justice initiates criminal investigation",
-          "stakeholders": [
-            "CEO",
-            "CLO",
-            "Board"
-          ],
-          "response": "Criminal defense counsel, privilege protection, crisis management",
+          "protocol_code": "RC-050",
+          "name": "DOJ / Criminal Investigation",
+          "trigger": "Department of Justice initiates criminal investigation into company or its officers",
+          "stakeholders": ["CEO", "General Counsel", "Board"],
+          "response": "Board and General Counsel activate criminal defense protocol \u2014 criminal defense counsel retained immediately with a separate privilege chain from civil counsel, D&O insurance notice issued, and cooperation posture established before grand jury subpoenas define the scope. Without pre-staged criminal defense, the distinction between company and officer liability is blurred \u2014 creating indemnification and director conflicts that compound the legal exposure.",
+          "response_window": "24 hours",
+          "financial_exposure": "$50M\u2013$5B+ in criminal fines and penalties; potential officer imprisonment; debarment from federal contracting",
           "domain": 4,
           "frequency": "low",
-          "budget": 75e4
+          "budget": 1e7
         },
         {
           "number": 51,
+          "protocol_code": "RC-051",
           "name": "FTC Antitrust Investigation",
-          "trigger": "Federal Trade Commission investigates competitive practices",
-          "stakeholders": [
-            "CEO",
-            "CLO",
-            "Strategy"
-          ],
-          "response": "Antitrust defense, practice review, regulator cooperation",
+          "trigger": "Federal Trade Commission investigates competitive practices or merger activity",
+          "stakeholders": ["CEO", "General Counsel", "Chief Strategy Officer"],
+          "response": "General Counsel activates antitrust defense protocol \u2014 antitrust counsel retained, all pricing and competitive communications placed under legal hold, and cooperation strategy established that limits scope while preserving the company's factual narrative before the FTC staff's theory of harm is set. Without pre-staged antitrust defense, communications that are benign in context appear damaging in isolation \u2014 because no one reviewed them through a competition law lens when they were created.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$10B+ in antitrust fines; injunctive remedies can require divestitures destroying $100M\u2013$10B in value",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 52,
+          "protocol_code": "RC-052",
           "name": "State Attorney General Investigation",
           "trigger": "State AG launches consumer protection or business practice investigation",
-          "stakeholders": [
-            "CLO",
-            "CEO",
-            "State Operations"
-          ],
-          "response": "Legal response, practice assessment, settlement exploration",
+          "stakeholders": ["General Counsel", "CEO", "VP State Government Affairs"],
+          "response": "General Counsel activates multi-state defense protocol \u2014 state regulatory counsel retained in affected jurisdictions, document review scoped to the AG's specific theory, and settlement parameters assessed to determine whether early resolution is less costly than extended litigation. Without pre-staged state response capability, AG investigations from multiple states run concurrently \u2014 creating conflicting document requests that become their own compliance crisis.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$100M in multi-state enforcement penalties; reputational damage from coordinated AG press releases",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 53,
-          "name": "Congressional Investigation/Hearing",
-          "trigger": "Congressional committee requests testimony or documents",
-          "stakeholders": [
-            "CEO",
-            "CLO",
-            "Government Affairs",
-            "Board"
-          ],
-          "response": "Testimony preparation, document production, public affairs strategy",
+          "protocol_code": "RC-053",
+          "name": "Congressional Investigation / Hearing",
+          "trigger": "Congressional committee requests testimony, documents, or issues investigative subpoena",
+          "stakeholders": ["CEO", "General Counsel", "VP Government Affairs", "Board"],
+          "response": "General Counsel and Government Affairs activate Congressional response protocol \u2014 Congressional counsel retained with deep committee relationships, document production managed to answer the committee's legitimate concerns without expanding scope, and CEO testimony preparation initiated 30 days before the hearing date. Without pre-staged Congressional relationships and response capability, company executives testify without adequate preparation \u2014 creating media events that define the brand for years.",
+          "response_window": "48 hours",
+          "financial_exposure": "$3M\u2013$30M in legal and communications costs; permanent regulatory scrutiny elevation",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 54,
-          "name": "Data Privacy Violation (GDPR/CCPA)",
-          "trigger": "Discovery of data protection law violation or regulatory complaint",
-          "stakeholders": [
-            "CLO",
-            "CTO",
-            "Privacy Officer",
-            "Board"
-          ],
-          "response": "Regulatory notification, remediation, affected party communication",
+          "protocol_code": "RC-054",
+          "name": "Data Privacy Violation (GDPR / CCPA)",
+          "trigger": "Discovery of data protection law violation, regulatory complaint, or DPA inquiry",
+          "stakeholders": ["General Counsel", "CTO", "Data Protection Officer", "Board"],
+          "response": "DPO and General Counsel activate data privacy response protocol \u2014 affected data mapped and regulatory notification timelines assessed (GDPR: 72-hour DPA notification), customer notification drafted for regulatory approval, and remediation technical plan initiated to demonstrate good-faith compliance. Without pre-staged notification workflows, GDPR regulators use delayed notification as evidence of systematic non-compliance \u2014 converting a technical violation into a conduct violation.",
+          "response_window": "4 hours",
+          "financial_exposure": "GDPR: up to \u20AC20M or 4% global revenue; CCPA: $100\u2013$750 per consumer affected; class action compounding risk",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 55,
+          "protocol_code": "RC-055",
           "name": "Export Control Violation",
-          "trigger": "Discovery of unauthorized export of controlled technology",
-          "stakeholders": [
-            "CLO",
-            "Trade Compliance",
-            "CEO"
-          ],
-          "response": "Voluntary disclosure, shipment investigation, license application",
+          "trigger": "Discovery of unauthorized export of controlled technology, software, or data",
+          "stakeholders": ["General Counsel", "VP Trade Compliance", "CEO"],
+          "response": "General Counsel and Trade Compliance activate voluntary disclosure protocol \u2014 BIS/OFAC counsel retained immediately, export audit of all potentially affected transactions initiated, and voluntary self-disclosure prepared to establish cooperation credit before any external discovery triggers enforcement. Without pre-staged voluntary disclosure capability, export control violations discovered by regulators rather than self-reported receive penalties 2\u20135\xD7 larger.",
+          "response_window": "24 hours",
+          "financial_exposure": "$1M\u2013$250M in export control penalties; denial of export privileges that eliminates international business",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 56,
+          "protocol_code": "RC-056",
           "name": "Environmental Compliance Violation",
-          "trigger": "EPA or state environmental agency violation notice",
-          "stakeholders": [
-            "CLO",
-            "Operations",
-            "Environmental Health & Safety"
-          ],
-          "response": "Compliance restoration, agency negotiation, remediation plan",
+          "trigger": "EPA or state environmental agency issues violation notice or begins formal investigation",
+          "stakeholders": ["General Counsel", "VP Operations", "VP Environmental Health & Safety"],
+          "response": "Environmental Counsel and EHS activate compliance response protocol \u2014 violation remediated or contained within regulatory cure period, consent order drafted proactively to demonstrate good faith, and facility audit completed to identify all related violations before the regulator expands the investigation. Without pre-staged compliance response, single violations expand into facility-wide enforcement actions \u2014 because regulators draw from one violation the inference of systemic non-compliance.",
+          "response_window": "24 hours",
+          "financial_exposure": "$500K\u2013$100M+ in EPA civil penalties; criminal prosecution risk for knowing violations; remediation costs",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 2e6
         },
         {
           "number": 57,
+          "protocol_code": "RC-057",
           "name": "Workplace Safety Violation (OSHA)",
-          "trigger": "OSHA citation or serious workplace injury investigation",
-          "stakeholders": [
-            "CLO",
-            "CHRO",
-            "Safety",
-            "Operations"
-          ],
-          "response": "Safety remediation, worker protection, OSHA negotiation",
+          "trigger": "OSHA citation issued or serious workplace injury triggers federal investigation",
+          "stakeholders": ["General Counsel", "CHRO", "VP Safety", "VP Operations"],
+          "response": "General Counsel and Safety activate OSHA response protocol \u2014 employee safety remediated immediately with documented corrective action, contest period preserved while settlement is evaluated, and abatement plan submitted proactively to demonstrate commitment. Without pre-staged OSHA response, violation contest windows are missed \u2014 converting proposed penalties into final orders that establish enforceable precedent across all company facilities.",
+          "response_window": "24 hours",
+          "financial_exposure": "OSHA willful violations: $15,625\u2013$156,259 per violation per day; repeat violations multiply; criminal risk for fatalities",
           "domain": 4,
           "frequency": "low",
           "budget": 1e6
         },
         {
           "number": 58,
+          "protocol_code": "RC-058",
           "name": "Financial Services Compliance Breach",
-          "trigger": "Banking, securities, or financial regulation violation",
-          "stakeholders": [
-            "CLO",
-            "CFO",
-            "Compliance Officer"
-          ],
-          "response": "Regulatory notification, remediation, penalty negotiation",
+          "trigger": "Banking, securities, or financial regulation violation discovered or reported",
+          "stakeholders": ["General Counsel", "CFO", "Chief Compliance Officer"],
+          "response": "Chief Compliance Officer activates financial services response protocol \u2014 regulatory counsel retained with the specific agency relationship required, self-reporting timeline evaluated against enforcement credit available, and remediation plan documented to establish the narrative of discovery-to-correction. Without pre-staged compliance response, financial services violations discovered by examiners rather than self-reported receive enforcement treatment reserved for repeat or intentional offenders.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$1B+ in regulatory penalties depending on jurisdiction and severity; potential operating license risk",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 59,
+          "protocol_code": "RC-059",
           "name": "Class Action Lawsuit Filed",
-          "trigger": "Class action complaint filed (securities, consumer, employment)",
-          "stakeholders": [
-            "CLO",
-            "CEO",
-            "Board",
-            "Insurance"
-          ],
-          "response": "Defense counsel engagement, motion to dismiss, settlement assessment",
+          "trigger": "Class action complaint filed \u2014 securities, consumer protection, or employment claims",
+          "stakeholders": ["General Counsel", "CEO", "Board", "D&O Insurance Carrier"],
+          "response": "General Counsel activates class action defense protocol \u2014 class action defense counsel retained within 24 hours, D&O and E&O insurance carriers placed on notice, and motion to dismiss briefing strategy developed before class certification becomes the operative litigation risk. Without pre-staged defense, early class certification creates settlement leverage that forces unfavorable resolution before the merits of individual claims are tested.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$500M+ in class settlement exposure; defense costs of $2M\u2013$20M regardless of outcome",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 60,
+          "protocol_code": "RC-060",
           "name": "Intellectual Property Litigation",
-          "trigger": "Patent, trademark, or copyright lawsuit filed",
-          "stakeholders": [
-            "CLO",
-            "CTO",
-            "CFO"
-          ],
-          "response": "IP counsel engagement, validity assessment, defense or settlement",
+          "trigger": "Patent, trademark, or trade secret lawsuit filed by a competitor or NPE",
+          "stakeholders": ["General Counsel", "CTO", "CFO"],
+          "response": "General Counsel activates IP defense protocol \u2014 IP litigation counsel retained with specific patent or trade secret expertise, invalidity and non-infringement analysis initiated, and product design-around options assessed in parallel to preserve business continuity regardless of outcome. Without pre-staged IP defense capability, patent assertion entities exploit the gap between complaint filing and counsel retention to drive settlements before the company can assess the merits.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$500M+ in patent damages; injunctive relief can halt product distribution; design-around cost $1M\u2013$10M",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 61,
+          "protocol_code": "RC-061",
           "name": "Major Contract Dispute",
-          "trigger": "Customer or partner files breach of contract lawsuit",
-          "stakeholders": [
-            "CLO",
-            "Business Unit Lead",
-            "CFO"
-          ],
-          "response": "Legal defense, commercial negotiation, relationship management",
+          "trigger": "Strategic customer or partner files breach of contract lawsuit seeking material damages",
+          "stakeholders": ["General Counsel", "Business Unit Lead", "CFO"],
+          "response": "General Counsel activates contract dispute protocol \u2014 outside litigation counsel retained with the specific commercial expertise required, contract performance documentation assembled to support the factual record, and mediation or commercial negotiation offered in parallel to litigation to preserve the relationship and reduce legal cost. Without pre-staged contract record management, breach of contract litigation is won or lost on documentation quality \u2014 not legal arguments.",
+          "response_window": "48 hours",
+          "financial_exposure": "$2M\u2013$100M+ in contract damages claimed; relationship termination destroying $5M\u2013$50M in future contract value",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 62,
+          "protocol_code": "RC-062",
           "name": "Employment Discrimination Lawsuit",
-          "trigger": "Employee or EEOC files discrimination claim",
-          "stakeholders": [
-            "CLO",
-            "CHRO",
-            "CEO"
-          ],
-          "response": "Legal defense, investigation, policy review",
+          "trigger": "Employee or EEOC files discrimination, harassment, or wrongful termination claim",
+          "stakeholders": ["General Counsel", "CHRO", "CEO"],
+          "response": "General Counsel and CHRO activate employment defense protocol \u2014 employment defense counsel retained immediately, HR investigation records reviewed for privilege and completeness, and EEOC mediation offered proactively to resolve meritorious claims before class or pattern-or-practice theories are added. Without pre-staged employment defense, individual discrimination claims become class actions when defense counsel is retained too late to contain the scope.",
+          "response_window": "48 hours",
+          "financial_exposure": "$500K\u2013$50M+ per individual to class action; EEOC pattern-or-practice findings triggering enterprise-wide remediation",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 2e6
         },
         {
           "number": 63,
+          "protocol_code": "RC-063",
           "name": "Product Liability Lawsuit",
-          "trigger": "Customer injury or property damage attributed to product",
-          "stakeholders": [
-            "CLO",
-            "COO",
-            "Quality",
-            "Insurance"
-          ],
-          "response": "Legal defense, investigation, recall assessment",
+          "trigger": "Customer injury or property damage attributed to product triggers litigation",
+          "stakeholders": ["General Counsel", "COO", "Chief Quality Officer", "Insurance Risk Manager"],
+          "response": "General Counsel activates product liability defense protocol \u2014 product liability counsel retained, incident investigation preserving all physical evidence, and insurance tender made within 48 hours to protect coverage while independent risk analysis determines whether the product defect theory is valid. Without pre-staged evidence preservation, product liability defendants are forced to litigate with destroyed or missing evidence \u2014 converting a defensible case into an unfavorable settlement.",
+          "response_window": "48 hours",
+          "financial_exposure": "$1M\u2013$500M+ in product liability judgments; recall costs $5M\u2013$100M if systemic defect confirmed",
           "domain": 4,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 64,
+          "protocol_code": "TI-064",
           "name": "Data Breach (Customer Data)",
-          "trigger": "Unauthorized access to customer PII, payment, or sensitive data",
-          "stakeholders": [
-            "CISO",
-            "CTO",
-            "CLO",
-            "CEO",
-            "Board"
-          ],
-          "response": "Containment, forensics, customer notification, regulatory reporting",
+          "trigger": "Unauthorized access to customer PII, payment, or sensitive data confirmed",
+          "stakeholders": ["CISO", "CTO", "General Counsel", "CEO", "Board"],
+          "response": "CISO activates breach containment protocol \u2014 affected systems isolated within 12 minutes of confirmation, forensic investigation initiated, and regulatory notification timelines assessed across all applicable jurisdictions before external communications are issued. Without pre-staged containment and notification workflows, each hour of uncontrolled breach exposure multiplies regulatory liability \u2014 GDPR notification requirements trigger within 72 hours and penalties for delayed notification compound the original violation.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Average breach cost $4.5M (IBM); regulatory fines $5M\u2013$500M; class action compounding; customer attrition",
           "domain": 5,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 65,
+          "protocol_code": "TI-065",
           "name": "Ransomware Attack",
-          "trigger": "Ransomware encrypts critical systems, ransom demanded",
-          "stakeholders": [
-            "CISO",
-            "CTO",
-            "CEO",
-            "CLO"
-          ],
-          "response": "Isolation, recovery from backup, law enforcement notification, ransom evaluation",
+          "trigger": "Ransomware encrypts critical systems and a ransom demand is received",
+          "stakeholders": ["CISO", "CTO", "CEO", "General Counsel"],
+          "response": "CISO activates ransomware isolation protocol \u2014 all affected systems isolated from network within 12 minutes, backup integrity verified before any restore decisions, and FBI and cyber insurance carrier notified within 1 hour as prerequisites to any ransom negotiation. Without pre-staged isolation procedures, ransomware operators exploit the 15\u201330 minute window of disorganized response to encrypt additional systems \u2014 turning a contained incident into an enterprise-wide shutdown.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$1.85M average downtime cost per day; ransom demands $500K\u2013$50M; regulatory fines if data exfiltrated",
           "domain": 5,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 5e6
         },
         {
           "number": 66,
+          "protocol_code": "TI-066",
           "name": "DDoS Attack",
-          "trigger": "Distributed denial of service attack disrupts services",
-          "stakeholders": [
-            "CISO",
-            "CTO",
-            "Operations"
-          ],
-          "response": "Traffic mitigation, ISP coordination, customer communication",
+          "trigger": "Distributed denial of service attack disrupts customer-facing services",
+          "stakeholders": ["CISO", "CTO", "VP Operations"],
+          "response": "CISO and CTO activate DDoS mitigation protocol \u2014 CDN/scrubbing service activated within 15 minutes, ISP upstream mitigation engaged, and customer communication deployed before social media reports the outage. Without pre-staged DDoS mitigation services, attacks that take seconds to launch take hours to defend against \u2014 and the customer trust damage from extended unavailability outlasts the technical resolution.",
+          "response_window": "15 minutes",
+          "financial_exposure": "$100K\u2013$2M per hour in SLA obligations and revenue loss during outage; brand damage multiplied by duration",
           "domain": 5,
           "frequency": "low",
           "budget": 1e6
         },
         {
           "number": 67,
+          "protocol_code": "TI-067",
           "name": "Insider Threat (Malicious Employee)",
-          "trigger": "Employee discovered stealing data, sabotaging systems, or fraud",
-          "stakeholders": [
-            "CISO",
-            "CHRO",
-            "CLO",
-            "CEO"
-          ],
-          "response": "Access termination, forensic investigation, legal action, damage assessment",
+          "trigger": "Employee discovered stealing data, sabotaging systems, or committing fraud",
+          "stakeholders": ["CISO", "CHRO", "General Counsel", "CEO"],
+          "response": "CISO and General Counsel activate insider threat response \u2014 access terminated across all systems simultaneously, forensic imaging of relevant devices completed before the employee can contest or destroy evidence, and law enforcement notification made within 24 hours for criminal prosecution credibility. Without simultaneous access termination, malicious insiders use the gap between discovery and action to exfiltrate additional data or destroy evidence of prior exfiltration.",
+          "response_window": "1 hour",
+          "financial_exposure": "$500K\u2013$50M in stolen IP, operational damage, regulatory liability, and investigation costs",
           "domain": 5,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 2e6
         },
         {
           "number": 68,
+          "protocol_code": "TI-068",
           "name": "Third-Party Data Breach (Vendor)",
-          "trigger": "Vendor breach exposes your company or customer data",
-          "stakeholders": [
-            "CISO",
-            "CLO",
-            "Vendor Management"
-          ],
-          "response": "Impact assessment, vendor accountability, customer notification",
+          "trigger": "Vendor or partner breach exposes your customer or employee data",
+          "stakeholders": ["CISO", "General Counsel", "VP Vendor Management"],
+          "response": "CISO and General Counsel activate third-party breach response \u2014 vendor contract and data processing agreements reviewed for notification obligations, independent forensic scope assessment commissioned to establish what data was actually exposed, and regulatory notification posture determined before relying on the vendor's own incident reports. Without independent scope assessment, companies unknowingly accept the vendor's minimized breach narrative and fail to meet their own independent regulatory notification obligations.",
+          "response_window": "4 hours",
+          "financial_exposure": "$2M\u2013$50M in regulatory liability from failure to independently assess and notify on vendor-caused breach",
           "domain": 5,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 2e6
         },
         {
           "number": 69,
+          "protocol_code": "TI-069",
           "name": "Vulnerability Disclosure (Zero-Day)",
-          "trigger": "Critical security vulnerability discovered in your product",
-          "stakeholders": [
-            "CISO",
-            "CTO",
-            "CPO",
-            "Customer Success"
-          ],
-          "response": "Patch development, customer notification, coordinated disclosure",
+          "trigger": "Critical security vulnerability discovered in your product by researcher or internal team",
+          "stakeholders": ["CISO", "CTO", "CPO", "VP Customer Success"],
+          "response": "CISO and CTO activate coordinated vulnerability disclosure protocol \u2014 patch development initiated immediately on a dedicated isolated environment, severity assessed across customer deployment configurations, and coordinated disclosure timeline set with the discovering researcher before public announcement. Without pre-staged patch processes, zero-day disclosures are exploited in the gap between publication and customer patching \u2014 creating liability for post-disclosure incidents.",
+          "response_window": "4 hours",
+          "financial_exposure": "$2M\u2013$30M in customer breach liability and remediation if zero-day is weaponized before patching is complete",
           "domain": 5,
           "frequency": "low",
-          "budget": 1e6
+          "budget": 15e5
         },
         {
           "number": 70,
+          "protocol_code": "TI-070",
           "name": "Critical System Outage (SaaS)",
-          "trigger": "Primary application experiences extended downtime",
-          "stakeholders": [
-            "CTO",
-            "COO",
-            "Customer Success",
-            "CEO"
-          ],
-          "response": "Incident response, customer communication, root cause analysis, SLA credits",
+          "trigger": "Primary application experiences extended downtime affecting customer operations",
+          "stakeholders": ["CTO", "COO", "VP Customer Success", "CEO"],
+          "response": "CTO activates SaaS incident response protocol \u2014 status page updated within 5 minutes, incident commander designated, and SLA credit calculations automated to deploy proactively before customers file tickets. Without pre-staged status communication and SLA credit automation, outages generate customer service surges that compound the operational impact \u2014 each hour of communication delay multiplies support volume by 3\u20135\xD7.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$100K\u2013$1M per hour in SLA obligations; customer attrition accelerating with each hour beyond SLA breach",
           "domain": 5,
           "frequency": "low",
           "budget": 1e6
         },
         {
           "number": 71,
-          "name": "Database Corruption/Loss",
-          "trigger": "Database corruption or data loss affects operations or customer data",
-          "stakeholders": [
-            "CTO",
-            "CIO",
-            "Engineering"
-          ],
-          "response": "Data recovery, integrity verification, backup restoration, customer notification",
+          "protocol_code": "TI-071",
+          "name": "Database Corruption / Data Loss",
+          "trigger": "Database corruption or data loss affecting operations or customer data integrity",
+          "stakeholders": ["CTO", "VP Engineering", "VP Customer Success"],
+          "response": "CTO activates data recovery protocol \u2014 backup restoration initiated from the most recent clean backup, data integrity verification completed before customer systems are reconnected, and impact assessment delivered to customers with transparent communication about recovery timeline. Without pre-staged backup verification and restore procedures, database recovery attempts compound the corruption \u2014 destroying backup integrity along with the primary.",
+          "response_window": "1 hour",
+          "financial_exposure": "$1M\u2013$20M in data recovery costs; irreversible customer trust damage if recovery is incomplete",
           "domain": 5,
           "frequency": "rare",
-          "budget": 1e6
+          "budget": 2e6
         },
         {
           "number": 72,
+          "protocol_code": "TI-072",
           "name": "Cloud Provider Outage",
-          "trigger": "AWS, Azure, or GCP region failure impacts services",
-          "stakeholders": [
-            "CTO",
-            "Engineering",
-            "Customer Success"
-          ],
-          "response": "Failover execution, provider escalation, customer communication",
+          "trigger": "AWS, Azure, or GCP region failure impacts dependent services",
+          "stakeholders": ["CTO", "VP Engineering", "VP Customer Success"],
+          "response": "CTO activates cloud resilience protocol \u2014 multi-region failover executed within 15 minutes, provider escalation initiated through enterprise support SLA, and customer communication deployed before the provider's own status page reflects the outage scope. Without pre-staged multi-region failover, cloud provider outages become single points of failure \u2014 turning a provider problem into your customer's SLA breach.",
+          "response_window": "15 minutes",
+          "financial_exposure": "$100K\u2013$2M per hour in SLA obligations during cloud provider regional outage",
           "domain": 5,
           "frequency": "rare",
           "budget": 1e6
         },
         {
           "number": 73,
-          "name": "Software Update/Release Failure",
-          "trigger": "New software release causes critical bugs or system instability",
-          "stakeholders": [
-            "CTO",
-            "CPO",
-            "Engineering"
-          ],
-          "response": "Rollback, hotfix, customer communication, quality process review",
+          "protocol_code": "TI-073",
+          "name": "Software Update / Release Failure",
+          "trigger": "New software release causes critical bugs, data corruption, or system instability",
+          "stakeholders": ["CTO", "CPO", "VP Engineering"],
+          "response": "CTO activates release rollback protocol \u2014 prior stable version deployed within 30 minutes of critical failure detection, root cause analysis initiated on the failed release, and customer communication issued before support ticket volume defines the narrative. Without pre-staged rollback procedures, release failures are slow to acknowledge \u2014 each hour of the engineering team 'trying to fix it forward' extends customer exposure unnecessarily.",
+          "response_window": "30 minutes",
+          "financial_exposure": "$500K\u2013$5M in SLA credits, emergency support costs, and customer attrition from failed release",
           "domain": 5,
           "frequency": "rare",
-          "budget": 1e6
+          "budget": 5e5
         },
         {
           "number": 74,
-          "name": "Integration/API Breaking Change",
-          "trigger": "System integration or API change breaks customer workflows",
-          "stakeholders": [
-            "CTO",
-            "CPO",
-            "Customer Success"
-          ],
-          "response": "Fix deployment, customer support, migration assistance",
+          "protocol_code": "TI-074",
+          "name": "Integration / API Breaking Change",
+          "trigger": "Unannounced system integration or API change breaks customer workflows and integrations",
+          "stakeholders": ["CTO", "CPO", "VP Customer Success"],
+          "response": "CTO activates API incident protocol \u2014 rollback of the breaking change deployed within 1 hour, affected customer integrations catalogued and engineering support assigned by account priority, and communication issued with a 30-day migration timeline rather than an immediate cut-over. Without pre-staged rollback and migration support, API breaking changes create simultaneous customer crises that overwhelm support capacity and accelerate churn.",
+          "response_window": "1 hour",
+          "financial_exposure": "$1M\u2013$10M in emergency engineering costs, SLA credits, and customer attrition from disrupted integrations",
           "domain": 5,
           "frequency": "rare",
           "budget": 1e6
         },
         {
           "number": 75,
+          "protocol_code": "TI-075",
           "name": "End-of-Life Technology Dependency",
-          "trigger": "Critical technology stack component reaches EOL, vendor discontinues support",
-          "stakeholders": [
-            "CTO",
-            "Engineering",
-            "Architecture"
-          ],
-          "response": "Migration planning, alternative evaluation, timeline communication",
+          "trigger": "Critical technology stack component reaches EOL \u2014 vendor discontinues security support",
+          "stakeholders": ["CTO", "VP Engineering", "VP Architecture"],
+          "response": "CTO activates technology modernization protocol \u2014 EOL components catalogued with security exposure assessment, migration roadmap presented to Board with cost and risk tradeoffs, and customer communication deployed to establish confidence in the modernization timeline. Without pre-staged modernization readiness, EOL technology becomes a liability on enterprise security questionnaires \u2014 disqualifying the company from deals where procurement requires supported software stacks.",
+          "response_window": "72 hours",
+          "financial_exposure": "$2M\u2013$20M in forced emergency migration costs; enterprise deal disqualification risk from security non-compliance",
           "domain": 5,
           "frequency": "rare",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 76,
+          "protocol_code": "TI-076",
           "name": "Technology Standards Shift",
-          "trigger": "Industry adopts new standard making your technology approach obsolete",
-          "stakeholders": [
-            "CTO",
-            "CPO",
-            "Strategy"
-          ],
-          "response": "Roadmap pivot, standards adoption, customer migration support",
+          "trigger": "Industry rapidly adopts new standard that makes your current technology approach obsolete",
+          "stakeholders": ["CTO", "CPO", "Chief Strategy Officer"],
+          "response": "CTO and CPO activate standards adoption protocol \u2014 technical assessment of new standard completed within 30 days, migration roadmap developed with customer impact analysis, and standards body participation initiated to influence the adoption curve. Without pre-staged standards monitoring, organizations discover standards shifts 12\u201318 months after competitors have already begun adapting \u2014 entering the transition from behind.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$50M in forced migration costs; customer attrition risk as competitors achieve compliance ahead of you",
           "domain": 5,
           "frequency": "rare",
-          "budget": 1e6
+          "budget": 3e6
         },
         {
           "number": 77,
+          "protocol_code": "TL-077",
           "name": "CEO Sudden Departure",
-          "trigger": "CEO resignation, termination, illness, or death",
-          "stakeholders": [
-            "Board",
-            "Executive Team",
-            "CHRO"
-          ],
-          "response": "Succession activation, stakeholder communication, interim leadership",
+          "trigger": "CEO resignation, termination, illness, or unexpected incapacitation",
+          "stakeholders": ["Board Chair", "Executive Team", "CHRO"],
+          "response": "Board activates CEO succession protocol \u2014 interim CEO designated within 24 hours, investor and employee communication deployed before markets open with a credible continuity message, and permanent search process initiated through pre-identified succession candidates. Without a pre-staged succession plan, CEO departures create a leadership vacuum that activists, short sellers, and competing bidders exploit \u2014 the narrative is set by whoever acts first.",
+          "response_window": "24 hours",
+          "financial_exposure": "$50M\u2013$2B+ in market cap impact; existential risk if succession plan is absent during active crises",
           "domain": 6,
           "frequency": "rare",
-          "budget": 1e6
+          "budget": 2e6
         },
         {
           "number": 78,
-          "name": "Executive Team Member Departure (Unexpected)",
-          "trigger": "C-level executive sudden resignation or termination",
-          "stakeholders": [
-            "CEO",
-            "CHRO",
-            "Board"
-          ],
-          "response": "Interim coverage, transition plan, external/internal search",
-          "domain": 6,
-          "frequency": "rare",
-          "budget": 1e6
-        },
-        {
-          "number": 79,
-          "name": "Board Member Resignation",
-          "trigger": "Board member resigns unexpectedly or amid controversy",
-          "stakeholders": [
-            "Board Chair",
-            "CEO",
-            "Nominating Committee"
-          ],
-          "response": "Board composition assessment, replacement search, governance continuity",
-          "domain": 6,
-          "frequency": "rare",
-          "budget": 1e6
-        },
-        {
-          "number": 80,
-          "name": "Mass Layoff/RIF Execution",
-          "trigger": "Company announces significant workforce reduction",
-          "stakeholders": [
-            "CEO",
-            "CHRO",
-            "CFO",
-            "Communications"
-          ],
-          "response": "Legal compliance, employee communication, morale management, media handling",
-          "domain": 6,
-          "frequency": "rare",
-          "budget": 1e6
-        },
-        {
-          "number": 81,
-          "name": "Key Talent Attrition Spike",
-          "trigger": "Abnormal increase in voluntary departures (>20% above baseline)",
-          "stakeholders": [
-            "CHRO",
-            "CEO",
-            "Business Unit Leads"
-          ],
-          "response": "Stay interviews, compensation review, culture assessment, retention plan",
+          "protocol_code": "TL-078",
+          "name": "C-Suite Executive Departure (Unexpected)",
+          "trigger": "C-level executive sudden resignation or forced termination",
+          "stakeholders": ["CEO", "CHRO", "Board"],
+          "response": "CEO and CHRO activate executive continuity protocol \u2014 interim coverage designated and accountability assigned within 24 hours, investor communication prepared for CFO or COO departures, and external search initiated from a pre-vetted candidate list to compress time-to-fill. Without pre-staged coverage, C-suite departures create functional leadership gaps that persist for 6\u201312 months \u2014 compounding through organizational indecision during the transition.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$10M in search costs, productivity loss, and strategic delay; investor confidence impact for CFO/COO departures",
           "domain": 6,
           "frequency": "rare",
           "budget": 15e5
         },
         {
+          "number": 79,
+          "protocol_code": "TL-079",
+          "name": "Board Member Resignation",
+          "trigger": "Board member resigns unexpectedly or amid controversy",
+          "stakeholders": ["Board Chair", "CEO", "Nominating & Governance Committee"],
+          "response": "Board Chair activates governance continuity protocol \u2014 committee recomposition assessed for independence requirements and skill gap, SEC Form 8-K disclosure reviewed for materiality, and replacement director search initiated to close the governance gap before the next proxy season. Without pre-staged board succession, resignations trigger proxy advisor scrutiny that compounds into 'against' votes on other directors at the next annual meeting.",
+          "response_window": "48 hours",
+          "financial_exposure": "$1M\u2013$5M in governance advisory costs; proxy advisor negative recommendations affecting director elections",
+          "domain": 6,
+          "frequency": "rare",
+          "budget": 5e5
+        },
+        {
+          "number": 80,
+          "protocol_code": "TL-080",
+          "name": "Mass Layoff / RIF Execution",
+          "trigger": "Board authorizes significant workforce reduction requiring coordinated execution",
+          "stakeholders": ["CEO", "CHRO", "CFO", "VP Communications"],
+          "response": "CHRO activates workforce reduction protocol \u2014 WARN Act and multi-jurisdiction legal requirements verified, manager training deployed 48 hours before notification day, and survivor retention actions staged to activate simultaneously with the reduction notification. Without pre-staged survivor retention, layoffs trigger a secondary voluntary attrition wave in the weeks following \u2014 losing the highest-demand talent that the reduction was designed to protect.",
+          "response_window": "72 hours",
+          "financial_exposure": "$2M\u2013$20M in severance, legal compliance, and WARN Act liability; secondary attrition loss of $5M\u2013$25M",
+          "domain": 6,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 81,
+          "protocol_code": "TL-081",
+          "name": "Key Talent Attrition Spike",
+          "trigger": "Abnormal increase in voluntary departures (>20% above baseline in 60 days)",
+          "stakeholders": ["CHRO", "CEO", "Business Unit Leads"],
+          "response": "CHRO activates retention protocol \u2014 stay interviews with all at-risk personnel completed within 2 weeks, root cause analysis across compensation, culture, and career path dimensions, and targeted retention investments approved at the department level before the signal becomes a pattern. Without pre-staged stay interview capability, talent attrition signals are only visible in hindsight \u2014 when the high performers are already at competitors.",
+          "response_window": "72 hours",
+          "financial_exposure": "$3M\u2013$15M in replacement costs; $10M\u2013$50M in productivity loss and competitive intelligence risk",
+          "domain": 6,
+          "frequency": "rare",
+          "budget": 2e6
+        },
+        {
           "number": 82,
-          "name": "Critical Role Vacancy (Unfillable)",
-          "trigger": "Unable to fill essential technical or leadership role for 6+ months",
-          "stakeholders": [
-            "CHRO",
-            "Hiring Manager",
-            "CEO"
-          ],
-          "response": "Recruiting strategy pivot, compensation adjustment, contractor/interim solution",
+          "protocol_code": "TL-082",
+          "name": "Critical Role Vacancy (Extended)",
+          "trigger": "Unable to fill essential technical or leadership role for 6+ months despite active search",
+          "stakeholders": ["CHRO", "Hiring Manager", "CEO"],
+          "response": "CHRO activates critical role recovery protocol \u2014 compensation benchmarking updated against current market, executive search firm replaced or supplemented, and interim/contractor solution deployed to restore capability while the permanent search continues. Without pre-staged interim resourcing, extended leadership vacancies cascade \u2014 teams make suboptimal decisions without clear authority, and the strategic work that requires the role simply does not get done.",
+          "response_window": "72 hours",
+          "financial_exposure": "$1M\u2013$5M per month in lost strategic productivity; additional $500K\u2013$2M in extended search costs",
           "domain": 6,
           "frequency": "rare",
           "budget": 15e5
         },
         {
           "number": 83,
+          "protocol_code": "TL-083",
           "name": "Unionization Campaign",
-          "trigger": "Union begins organizing campaign at non-union facility",
-          "stakeholders": [
-            "CHRO",
-            "CLO",
-            "CEO",
-            "Operations"
-          ],
-          "response": "Labor counsel engagement, supervisor training, employee communication",
+          "trigger": "Union begins organizing campaign at a previously non-union facility",
+          "stakeholders": ["CHRO", "General Counsel", "CEO", "VP Operations"],
+          "response": "CHRO and General Counsel activate labor relations protocol \u2014 labor counsel engaged immediately, manager briefings on legal speech rights completed before the organizing petition is filed, and underlying employee concerns addressed through legitimate HR action to demonstrate responsiveness without constituting interference. Without pre-staged labor relations preparation, companies react to organizing campaigns with legally risky communications that become unfair labor practice charges.",
+          "response_window": "48 hours",
+          "financial_exposure": "$2M\u2013$20M in labor negotiations, organizing costs, and productivity impact from contested unionization",
           "domain": 6,
           "frequency": "rare",
           "budget": 15e5
         },
         {
           "number": 84,
+          "protocol_code": "TL-084",
           "name": "Workplace Violence Threat",
-          "trigger": "Credible threat of violence from employee or external party",
-          "stakeholders": [
-            "CHRO",
-            "Security",
-            "Facilities",
-            "CLO"
-          ],
-          "response": "Threat assessment, law enforcement notification, protective measures",
+          "trigger": "Credible threat of violence from current or former employee or third party",
+          "stakeholders": ["CHRO", "VP Corporate Security", "VP Facilities", "General Counsel"],
+          "response": "CHRO and Security activate threat assessment protocol \u2014 threat assessment team convened within 2 hours, law enforcement notified where threshold for imminent threat is met, and affected facility access controls tightened before employee communications are issued. Without pre-staged threat assessment capability, organizations either under-respond to credible threats or over-respond to non-credible ones \u2014 both carry severe consequences.",
+          "response_window": "1 hour",
+          "financial_exposure": "Human safety cost cannot be quantified; negligent security liability $5M\u2013$100M+ per incident",
           "domain": 6,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 5e5
         },
         {
           "number": 85,
-          "name": "Employee Misconduct (Senior Leader)",
+          "protocol_code": "TL-085",
+          "name": "Executive Misconduct Allegation",
           "trigger": "Allegations of harassment, discrimination, or ethical violation by senior leader",
-          "stakeholders": [
-            "CHRO",
-            "CLO",
-            "CEO",
-            "Board"
-          ],
-          "response": "Investigation, suspension, legal counsel, stakeholder communication",
+          "stakeholders": ["CHRO", "General Counsel", "CEO", "Board Audit Committee"],
+          "response": "General Counsel and Audit Committee activate independent investigation protocol \u2014 outside employment counsel retained with a separate engagement from company counsel, the accused executive placed on administrative leave during investigation, and Board briefed on preliminary findings before media inquiry is received. Without pre-staged independent investigation, executive misconduct investigations are perceived as biased \u2014 destroying the credibility needed to retain customers and talent during the crisis.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$50M in investigation, separation, litigation, and reputational costs; leadership continuity risk",
           "domain": 6,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 2e6
         },
         {
           "number": 86,
-          "name": "Glassdoor/Public Review Crisis",
-          "trigger": "Wave of negative employee reviews damages employer brand",
-          "stakeholders": [
-            "CHRO",
-            "CEO",
-            "Communications"
-          ],
-          "response": "Internal listening, issue remediation, employer brand recovery",
+          "protocol_code": "TL-086",
+          "name": "Employer Brand Crisis (Review Surge)",
+          "trigger": "Wave of negative employee reviews on Glassdoor or LinkedIn damages employer brand",
+          "stakeholders": ["CHRO", "CEO", "VP Communications"],
+          "response": "CHRO activates employer brand response protocol \u2014 employee listening sessions initiated within 1 week to surface legitimate grievances, public response strategy deployed on review platforms, and systemic HR issues triaged for visible remediation within 30 days. Without pre-staged employer brand response, negative review waves compound \u2014 each week of silence is read as confirmation of the criticisms, and recruiting pipelines dry up before the impact is visible in offer acceptance rates.",
+          "response_window": "48 hours",
+          "financial_exposure": "$2M\u2013$10M in elevated recruiting costs and time-to-fill extension as top candidates screen out the company",
           "domain": 6,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 1e6
         },
         {
           "number": 87,
+          "protocol_code": "TL-087",
           "name": "Strike or Work Stoppage",
-          "trigger": "Union authorizes strike or employees stage walkout",
-          "stakeholders": [
-            "CHRO",
-            "CLO",
-            "COO",
-            "CEO"
-          ],
-          "response": "Operations continuity, negotiation, employee communication",
+          "trigger": "Union authorizes strike or employees stage unannounced work stoppage",
+          "stakeholders": ["CHRO", "General Counsel", "COO", "CEO"],
+          "response": "CHRO and Operations activate strike continuity protocol \u2014 operations continuity plan activated with pre-identified replacement labor, negotiation posture reassessed in light of strike authorization, and customer communication deployed proactively before delivery disruptions are detected. Without pre-staged continuity, strikes create 2\u20133 week operational shutdowns before the organization finds its footing \u2014 costing $1M\u2013$5M per day in lost production and customer attrition.",
+          "response_window": "24 hours",
+          "financial_exposure": "$1M\u2013$5M per day in lost production; customer attrition accelerating with each week of disruption",
           "domain": 6,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 5e6
         },
         {
           "number": 88,
+          "protocol_code": "TL-088",
           "name": "Diversity & Inclusion Crisis",
-          "trigger": "Public allegations of systemic discrimination or hostile culture",
-          "stakeholders": [
-            "CEO",
-            "CHRO",
-            "D&I Leadership",
-            "Board"
-          ],
-          "response": "Investigation, remediation plan, transparency, stakeholder communication",
+          "trigger": "Public allegations of systemic discrimination, hostile culture, or inclusion failures",
+          "stakeholders": ["CEO", "CHRO", "Chief Diversity Officer", "Board"],
+          "response": "CEO activates D&I response protocol \u2014 independent external audit commissioned within 30 days, specific and measurable commitments issued publicly within 2 weeks, and accountability structure established with Board-level oversight to prevent perception of performative response. Without pre-staged D&I accountability structures, crisis-driven DEI commitments are viewed as performative \u2014 accelerating the talent and customer attrition they are meant to address.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in talent attrition, customer relationships, and ESG investor confidence; EEOC investigation risk",
           "domain": 6,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 3e6
         },
         {
           "number": 89,
+          "protocol_code": "BR-089",
           "name": "Negative Investigative Journalism",
-          "trigger": "Major media outlet publishes damaging investigative piece",
-          "stakeholders": [
-            "CEO",
-            "Communications",
-            "CLO"
-          ],
-          "response": "Fact correction, media statement, stakeholder briefing",
+          "trigger": "Major media outlet publishes or is preparing to publish a damaging investigative piece",
+          "stakeholders": ["CEO", "VP Communications", "General Counsel"],
+          "response": "CEO and Communications activate media response protocol \u2014 factual corrections documented with supporting evidence, statement issued within 4 hours of publication, and all key stakeholders (Board, investors, enterprise customers) personally briefed before the article reaches them through their own news feeds. Without pre-staged media response, the first 4 hours after publication define the narrative \u2014 organizations that respond within that window consistently achieve better coverage-to-correction ratios.",
+          "response_window": "4 hours",
+          "financial_exposure": "$5M\u2013$100M in market cap impact; enterprise deal losses as procurement teams cite negative coverage",
           "domain": 7,
           "frequency": "rare",
           "budget": 15e5
         },
         {
           "number": 90,
+          "protocol_code": "BR-090",
           "name": "Social Media Firestorm",
-          "trigger": "Viral negative social media campaign against company",
-          "stakeholders": [
-            "CMO",
-            "Communications",
-            "CEO"
-          ],
-          "response": "Social monitoring, response strategy, influencer engagement",
+          "trigger": "Viral negative social media campaign against company or its leadership",
+          "stakeholders": ["CMO", "VP Communications", "CEO"],
+          "response": "CMO activates social crisis protocol \u2014 monitoring escalated to real-time with dedicated response team, authentic CEO response drafted and reviewed within 2 hours, and decision tree activated to determine when escalation to earned media response is warranted. Without pre-staged social crisis response, organizations lose the first 4\u20136 hour window where engagement can still shape the narrative \u2014 after which the story has set and retraction rarely follows amplification.",
+          "response_window": "1 hour",
+          "financial_exposure": "$2M\u2013$50M in brand value erosion; enterprise procurement deferrals during active social crisis",
           "domain": 7,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 1e6
         },
         {
           "number": 91,
+          "protocol_code": "BR-091",
           "name": "Boycott Campaign",
-          "trigger": "Organized consumer boycott of products/services",
-          "stakeholders": [
-            "CEO",
-            "CMO",
-            "Communications",
-            "Sales"
-          ],
-          "response": "Issue assessment, dialogue, stakeholder engagement, positioning",
+          "trigger": "Organized consumer or stakeholder boycott of company products or services",
+          "stakeholders": ["CEO", "CMO", "VP Communications", "Chief Revenue Officer"],
+          "response": "CEO and CMO activate boycott response protocol \u2014 underlying issue assessed for legitimacy, dialogue with boycott organizers offered through credible third-party intermediaries, and enterprise customer accounts briefed individually before media reaches them. Without pre-staged dialogue protocols, boycott responses appear defensive \u2014 organizations that engage constructively consistently resolve boycotts faster than those that issue legal threats or 'wait it out.'",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$200M in revenue impact depending on consumer brand exposure and boycott campaign reach",
           "domain": 7,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 2e6
         },
         {
           "number": 92,
+          "protocol_code": "BR-092",
           "name": "Executive Personal Scandal",
-          "trigger": "CEO or senior executive personal conduct becomes public scandal",
-          "stakeholders": [
-            "Board",
-            "Communications",
-            "CLO"
-          ],
-          "response": "Executive status assessment, crisis communication, separation if necessary",
+          "trigger": "CEO or senior executive personal conduct becomes public scandal with media coverage",
+          "stakeholders": ["Board Chair", "VP Communications", "General Counsel"],
+          "response": "Board activates executive conduct response protocol \u2014 independent assessment of business impact completed within 24 hours, leadership continuity plan activated, and separation or retention decision made before the media cycle makes it for them. Without pre-staged Board response protocols, executive personal scandals paralyze the organization \u2014 neither confirming nor addressing the situation while reputational damage compounds daily.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$500M in market cap and enterprise relationship impact; leadership continuity risk",
           "domain": 7,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 2e6
         },
         {
           "number": 93,
-          "name": "Misinformation/Fake News Attack",
-          "trigger": "False information about company spreads virally",
-          "stakeholders": [
-            "Communications",
-            "CMO",
-            "CLO"
-          ],
-          "response": "Fact verification, correction campaign, platform notification",
+          "protocol_code": "BR-093",
+          "name": "Misinformation / Disinformation Attack",
+          "trigger": "False or manipulated information about company spreads virally through digital channels",
+          "stakeholders": ["VP Communications", "CMO", "General Counsel"],
+          "response": "Communications activates disinformation response protocol \u2014 verified factual record assembled within 2 hours, platform takedown requests submitted simultaneously with public correction campaign, and key enterprise stakeholders briefed with the factual record before the disinformation reaches their own monitoring. Without pre-staged platform escalation relationships, takedown requests take 5\u201310 days \u2014 far too late to prevent the initial narrative from spreading.",
+          "response_window": "2 hours",
+          "financial_exposure": "$3M\u2013$30M in brand erosion and enterprise deal impact; stock price impact if publicly traded",
           "domain": 7,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 1e6
         },
         {
           "number": 94,
+          "protocol_code": "BR-094",
           "name": "Viral Customer Complaint",
-          "trigger": "Customer service failure becomes viral sensation",
-          "stakeholders": [
-            "Customer Success",
-            "Communications",
-            "CEO"
-          ],
-          "response": "Individual resolution, systemic fix, public apology, policy change",
+          "trigger": "Customer service failure becomes viral sensation across social and news media",
+          "stakeholders": ["VP Customer Success", "VP Communications", "CEO"],
+          "response": "Customer Success and Communications activate viral complaint response protocol \u2014 the affected customer personally contacted by a senior executive within 1 hour, resolution announced publicly before media coverage escalates to broadcast, and systemic root cause addressed with a published improvement timeline. Without pre-staged senior response authority, viral complaints are handled by first-line support \u2014 creating new viral moments as customers document inadequate responses.",
+          "response_window": "1 hour",
+          "financial_exposure": "$1M\u2013$20M in customer attrition and brand impact; multiplied by each new viral moment the complaint generates",
           "domain": 7,
           "frequency": "rare",
-          "budget": 15e5
+          "budget": 1e6
         },
         {
           "number": 95,
+          "protocol_code": "BR-095",
           "name": "Product Recall (Safety)",
-          "trigger": "Product safety issue requires voluntary or mandated recall",
-          "stakeholders": [
-            "COO",
-            "Quality",
-            "CLO",
-            "Communications",
-            "CEO"
-          ],
-          "response": "Recall execution, customer notification, regulatory compliance, replacement program",
+          "trigger": "Product safety issue identified requiring voluntary or mandated consumer recall",
+          "stakeholders": ["COO", "Chief Quality Officer", "General Counsel", "VP Communications", "CEO"],
+          "response": "CEO activates product safety recall protocol \u2014 affected customers personally notified before any regulatory or media communication, CPSC/FDA recall notification filed within mandatory window, and replacement or refund program launched with a dedicated consumer response center. Without pre-staged recall logistics and customer communication, product safety recalls are managed reactively \u2014 compounding regulatory and reputational exposure while waiting to be fully informed.",
+          "response_window": "4 hours",
+          "financial_exposure": "$5M\u2013$500M in recall costs, regulatory fines, product liability, and brand damage depending on category and scale",
           "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 96,
-          "name": "Service Level Agreement Mass Breach",
-          "trigger": "Widespread SLA violations trigger contractual penalties",
-          "stakeholders": [
-            "COO",
-            "CFO",
-            "Customer Success",
-            "CLO"
-          ],
-          "response": "Customer communication, credit processing, service restoration, root cause",
-          "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 97,
-          "name": "Major Customer Public Criticism",
-          "trigger": "Prominent customer publicly criticizes company/product",
-          "stakeholders": [
-            "CEO",
-            "Sales",
-            "Customer Success",
-            "Communications"
-          ],
-          "response": "Relationship repair, issue resolution, narrative management",
-          "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 98,
-          "name": "ESG Rating Downgrade",
-          "trigger": "Environmental, social, governance rating significantly drops",
-          "stakeholders": [
-            "CEO",
-            "Sustainability",
-            "IR",
-            "Board"
-          ],
-          "response": "Issue remediation, investor communication, ESG improvement plan",
-          "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 99,
-          "name": "Short Seller Report",
-          "trigger": "Short seller publishes research alleging fraud or business problems",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "IR",
-            "CLO",
-            "Board"
-          ],
-          "response": "Fact rebuttal, investor communication, legal assessment",
-          "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 100,
-          "name": "Partner Relationship Termination",
-          "trigger": "Strategic partner publicly ends relationship amid controversy",
-          "stakeholders": [
-            "CEO",
-            "Business Development",
-            "Communications"
-          ],
-          "response": "Relationship salvage attempt, alternative partnerships, market communication",
-          "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 101,
-          "name": "Industry Award/Certification Revocation",
-          "trigger": "Industry body revokes certification, ranking, or award",
-          "stakeholders": [
-            "CEO",
-            "Communications",
-            "Quality/Compliance"
-          ],
-          "response": "Remediation, reinstatement effort, alternative recognition",
-          "domain": 7,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 102,
-          "name": "Recession/Economic Downturn",
-          "trigger": "Economic indicators signal recession, demand collapse anticipated",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Board",
-            "Business Unit Leads"
-          ],
-          "response": "Cost structure optimization, scenario planning, customer retention focus",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 103,
-          "name": "Interest Rate Shock",
-          "trigger": "Rapid interest rate increases impact capital costs, customer buying",
-          "stakeholders": [
-            "CFO",
-            "Treasury",
-            "Strategy",
-            "Board"
-          ],
-          "response": "Capital structure adjustment, pricing strategy, demand management",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 104,
-          "name": "Trade War/Tariff Imposition",
-          "trigger": "New tariffs or trade restrictions impact supply chain or markets",
-          "stakeholders": [
-            "CFO",
-            "COO",
-            "Trade Compliance",
-            "Strategy"
-          ],
-          "response": "Supply chain adjustment, pricing strategy, geographic diversification",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 105,
-          "name": "AI/Automation Disrupts Business Model",
-          "trigger": "AI technology enables competitors to deliver service at fraction of cost",
-          "stakeholders": [
-            "CEO",
-            "CTO",
-            "Strategy",
-            "Board"
-          ],
-          "response": "Technology adoption, business model evolution, workforce transition",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 106,
-          "name": "Platform Shift (Cloud, Mobile, etc.)",
-          "trigger": "Market rapidly adopts new platform, rendering current approach obsolete",
-          "stakeholders": [
-            "CTO",
-            "CPO",
-            "Strategy"
-          ],
-          "response": "Platform migration, product roadmap pivot, go-to-market adjustment",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 107,
-          "name": "Disintermediation Threat",
-          "trigger": "Technology enables customers to bypass your value chain position",
-          "stakeholders": [
-            "CEO",
-            "Strategy",
-            "Product"
-          ],
-          "response": "Value proposition evolution, direct channel, business model innovation",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 108,
-          "name": "New Regulation Impacts Business Model",
-          "trigger": "New law or regulation makes current business model illegal or uneconomical",
-          "stakeholders": [
-            "CEO",
-            "CLO",
-            "Strategy",
-            "Board"
-          ],
-          "response": "Compliance strategy, business model adaptation, advocacy/lobbying",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 109,
-          "name": "Geographic Market Regulatory Change",
-          "trigger": "Key market implements regulations restricting operations",
-          "stakeholders": [
-            "CEO",
-            "CLO",
-            "Geographic GM",
-            "Strategy"
-          ],
-          "response": "Compliance assessment, market exit/adaptation, geographic diversification",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 110,
-          "name": "Industry Consolidation Wave",
-          "trigger": "Multiple competitors merge, fundamentally changing industry structure",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board"
-          ],
-          "response": "Strategic positioning, M&A consideration, partnership strategy",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 15e5
-        },
-        {
-          "number": 145,
-          "name": "Strategic Market Entry - Multi-Brand Launch",
-          "trigger": "Major market rebound creates strategic window for simultaneous multi-brand expansion",
-          "stakeholders": [
-            "CEO",
-            "CMO",
-            "CFO",
-            "Geographic GM",
-            "Strategy"
-          ],
-          "response": "Coordinate 10+ brand launches across multiple cities, retail real estate activation, capital deployment, Golden Week timing",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 5e7
-        },
-        {
-          "number": 146,
-          "name": "Trend Capitalization - Viral Fashion Response",
-          "trigger": "Viral social media trend (47M+ views) with 21-day lifecycle and $180M+ revenue potential detected",
-          "stakeholders": [
-            "CEO",
-            "CMO",
-            "CPO",
-            "Supply Chain",
-            "Strategy"
-          ],
-          "response": "Coordinate 5000+ suppliers, design 200 SKUs, launch in 7 days to capture 65% market share before competitors",
-          "domain": 8,
-          "frequency": "medium",
-          "budget": 15e6
-        },
-        {
-          "number": 155,
-          "name": "Launch Schedule Acceleration",
-          "trigger": "Favorable orbital window opens 3 days early with vacant slot from competitor delay",
-          "stakeholders": [
-            "CEO",
-            "CTO",
-            "COO",
-            "Government Relations",
-            "Mission Control"
-          ],
-          "response": "Accelerate launch by 72 hours, coordinate FAA/Space Force approvals, payload preparation, ground operations",
-          "domain": 8,
-          "frequency": "rare",
-          "budget": 5e6
-        },
-        {
-          "number": 115,
-          "name": "SWIFT/Payment System Disruption",
-          "trigger": "International payment rails fail or experience cyberattack",
-          "stakeholders": [
-            "CFO",
-            "Treasury",
-            "Fed Relations",
-            "Corporate Clients"
-          ],
-          "response": "Alternative payment routing, Fed coordination, customer notification, transaction recovery",
-          "domain": 3,
           "frequency": "rare",
           "budget": 1e7
         },
         {
-          "number": 116,
-          "name": "Algorithmic Trading Malfunction",
-          "trigger": "Trading algorithm goes rogue or executes unauthorized trades",
-          "stakeholders": [
-            "CTO",
-            "CFO",
-            "Trading Desk",
-            "Compliance",
-            "SEC"
-          ],
-          "response": "Circuit breaker activation, market maker notifications, regulatory filing, client protection",
+          "number": 96,
+          "protocol_code": "BR-096",
+          "name": "Service Level Agreement Mass Breach",
+          "trigger": "Widespread technical failure triggers contractual SLA penalty obligations",
+          "stakeholders": ["COO", "CFO", "VP Customer Success", "General Counsel"],
+          "response": "COO and Customer Success activate SLA breach response protocol \u2014 affected accounts catalogued and SLA credit calculations issued proactively before customer invoices are disputed, root cause published with remediation commitment, and strategic account relationships defended with executive outreach. Without proactive SLA credit deployment, customers discover the breach through their own monitoring and interpret the silence as indifference \u2014 converting a technical breach into a churn event.",
+          "response_window": "4 hours",
+          "financial_exposure": "$1M\u2013$20M in contractual SLA credits; customer attrition risk from strategic accounts evaluating alternatives",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 2e6
+        },
+        {
+          "number": 97,
+          "protocol_code": "BR-097",
+          "name": "Major Customer Public Criticism",
+          "trigger": "Prominent customer publicly criticizes company product or service in media",
+          "stakeholders": ["CEO", "Chief Revenue Officer", "VP Customer Success", "VP Communications"],
+          "response": "CEO and CRO activate customer recovery protocol \u2014 senior executive relationship restored with personal CEO contact within 24 hours, underlying product or service issue documented and remediated with a published timeline, and narrative managed to demonstrate responsiveness before other customers interpret the public criticism as a broader pattern. Without a pre-staged senior response, major customer criticisms create a reference story that competitors use in every subsequent evaluation involving the same buyer profile.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in potential customer contract loss plus $10M\u2013$100M in pipeline impact from reference story",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 5e5
+        },
+        {
+          "number": 98,
+          "protocol_code": "BR-098",
+          "name": "ESG Rating Downgrade",
+          "trigger": "Environmental, social, or governance rating significantly declines from major rating agency",
+          "stakeholders": ["CEO", "Chief Sustainability Officer", "VP Investor Relations", "Board"],
+          "response": "Chief Sustainability Officer and IR activate ESG recovery protocol \u2014 rating agency engagement initiated within 48 hours to dispute data errors and present improvement evidence, institutional investor proactive communication deployed before proxy advisory firms incorporate the downgrade, and 12-month ESG improvement plan presented to Board. Without pre-staged ESG documentation, rating agencies publish downgrades based on incomplete data \u2014 and the window to correct errors closes before the update cycle.",
+          "response_window": "48 hours",
+          "financial_exposure": "$10M\u2013$200M in market cap impact from ESG exclusion by mandated ESG-screened funds",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 1e6
+        },
+        {
+          "number": 99,
+          "protocol_code": "BR-099",
+          "name": "Short Seller Report",
+          "trigger": "Short seller publishes research alleging fraud, inflated metrics, or business problems",
+          "stakeholders": ["CEO", "CFO", "VP Investor Relations", "General Counsel", "Board"],
+          "response": "CEO and General Counsel activate short seller response protocol \u2014 factual rebuttal prepared and published within 24 hours of the report, largest institutional shareholders personally briefed, and securities litigation counsel retained to assess legal action against false factual claims. Without a pre-staged rebuttal process, short seller reports enjoy a 24\u201348 hour unopposed narrative \u2014 establishing the story in analyst models before management's response reaches the market.",
+          "response_window": "4 hours",
+          "financial_exposure": "$50M\u2013$5B+ in market cap erosion; secondary class action and regulatory investigation triggers",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 2e6
+        },
+        {
+          "number": 100,
+          "protocol_code": "BR-100",
+          "name": "Partner Relationship Termination",
+          "trigger": "Strategic partner publicly terminates relationship amid controversy or ESG concerns",
+          "stakeholders": ["CEO", "VP Business Development", "VP Communications"],
+          "response": "CEO and Communications activate partner relationship response protocol \u2014 salvage dialogue attempted before any public acknowledgment of the termination, alternative partner pipeline activated from pre-qualified list, and market communication framed around strategic evolution rather than forced separation. Without a pre-staged partner recovery protocol, public relationship terminations cascade \u2014 each one making the next partnership harder to form.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$30M in lost partnership revenue and ecosystem access; compounding reputational impact from visible separation",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 1e6
+        },
+        {
+          "number": 101,
+          "protocol_code": "BR-101",
+          "name": "Industry Certification / Award Revocation",
+          "trigger": "Industry body revokes certification, ranking, or award used in marketing and sales",
+          "stakeholders": ["CEO", "VP Communications", "VP Quality/Compliance"],
+          "response": "CEO activates certification recovery protocol \u2014 remediation plan submitted to the industry body within 30 days, marketing materials updated to remove the revoked certification, and customer communication issued proactively before procurement teams discover the revocation through their own supplier audits. Without pre-staged response, certifications revoked without customer communication become discovered by customers during audits \u2014 converting a compliance lapse into a trust breach.",
+          "response_window": "72 hours",
+          "financial_exposure": "$1M\u2013$10M in deal disqualifications; $2M\u2013$20M in emergency re-certification program costs",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 1e6
+        },
+        {
+          "number": 102,
+          "protocol_code": "MO-102",
+          "name": "Recession / Economic Downturn",
+          "trigger": "Economic indicators signal imminent recession with demand collapse anticipated",
+          "stakeholders": ["CEO", "CFO", "Board", "Business Unit Leads"],
+          "response": "CEO and CFO activate recession readiness protocol \u2014 cost structure optimization scenarios modeled before demand actually contracts, strategic customer retention investments activated to protect highest-value accounts, and Board briefed with a clear decision framework for acceleration vs. preservation. Without pre-staged recession responses, organizations make reactive cost cuts that damage future capacity \u2014 destroying the recovery potential while trying to survive the contraction.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$500M in revenue and margin impact; competitive position erosion if cost cuts destroy growth capability",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 103,
+          "protocol_code": "MO-103",
+          "name": "Interest Rate Shock",
+          "trigger": "Rapid interest rate increases impact capital costs, customer buying ability, and deal economics",
+          "stakeholders": ["CFO", "VP Treasury", "Chief Strategy Officer", "Board"],
+          "response": "CFO activates rate shock response protocol \u2014 fixed-to-floating rate exposure refinanced within available windows, customer financing alternatives prepared to sustain deal volume as buyer cost of capital rises, and pricing strategy adjusted to reflect the changed economic environment. Without pre-staged rate hedging, interest rate shocks appear as margin collapses in financial results \u2014 when they were foreseeable and manageable with 30-day preparation.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$50M in increased debt service costs; pipeline contraction as buyer economics deteriorate",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 2e6
+        },
+        {
+          "number": 104,
+          "protocol_code": "MO-104",
+          "name": "Trade War / Tariff Imposition",
+          "trigger": "New tariffs or trade restrictions materially impact supply chain costs or market access",
+          "stakeholders": ["CFO", "COO", "VP Trade Compliance", "Chief Strategy Officer"],
+          "response": "CFO and COO activate trade response protocol \u2014 tariff impact quantified by product line within 48 hours, supply chain sourcing alternatives assessed for duty-favorable origins, and customer pricing adjustment implemented to protect margin before the cost increase flows through inventory. Without pre-staged tariff analysis, organizations absorb tariff costs for 2\u20133 quarters before implementing pricing \u2014 because no one had pre-modeled the pass-through math.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$100M in annual margin impact depending on tariff rate and supply chain concentration",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 3e6
+        },
+        {
+          "number": 105,
+          "protocol_code": "MO-105",
+          "name": "AI / Automation Disrupts Business Model",
+          "trigger": "AI technology enables competitors to deliver your service at a fraction of current cost",
+          "stakeholders": ["CEO", "CTO", "Chief Strategy Officer", "Board"],
+          "response": "CEO activates business model transformation protocol \u2014 AI capability assessment completed within 60 days, transformation roadmap presented to Board with clear unit economics, and customer communication designed to reframe the company as leading the transformation rather than being displaced by it. Without pre-staged transformation readiness, AI disruption becomes existential \u2014 the organizations that act first are the ones that define what the new model looks like.",
+          "response_window": "72 hours",
+          "financial_exposure": "$50M\u2013$5B+ in market cap erosion for companies positioned as disrupted rather than disruptive",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 1e7
+        },
+        {
+          "number": 106,
+          "protocol_code": "MO-106",
+          "name": "Platform Shift",
+          "trigger": "Market rapidly adopts new computing or delivery platform, rendering current approach obsolete",
+          "stakeholders": ["CTO", "CPO", "Chief Strategy Officer"],
+          "response": "CTO and CPO activate platform migration protocol \u2014 new platform adoption roadmap built with a 12-month customer transition plan, first-mover positioning established on the new platform before competitors, and existing customer communication framed around upgrade benefits rather than forced migration. Without pre-staged platform migration capability, organizations arrive on the new platform 12\u201318 months after competitors \u2014 entering with a competitively disadvantaged starting position.",
+          "response_window": "72 hours",
+          "financial_exposure": "$10M\u2013$100M in emergency migration costs; competitive position loss worth $50M\u2013$500M in market opportunity",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 107,
+          "protocol_code": "MO-107",
+          "name": "Disintermediation Threat",
+          "trigger": "Technology or regulation enables customers to bypass your position in the value chain",
+          "stakeholders": ["CEO", "Chief Strategy Officer", "CPO"],
+          "response": "CEO activates value chain defense protocol \u2014 direct-to-customer channel built in parallel with existing distribution, value-add services layered above the core offering to create dependencies that direct alternatives cannot replicate, and go-to-market strategy redesigned around the post-disintermediation landscape. Without pre-staged disintermediation response, organizations cling to intermediary revenue until the customer relationship has permanently migrated \u2014 at which point rebuilding direct access costs 5\xD7 what building it proactively would have.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$200M in revenue at risk as customers migrate to disintermediated alternatives",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 108,
+          "protocol_code": "MO-108",
+          "name": "New Regulation Impacts Business Model",
+          "trigger": "New law or regulation makes current business model illegal, uneconomical, or structurally impaired",
+          "stakeholders": ["CEO", "General Counsel", "Chief Strategy Officer", "Board"],
+          "response": "CEO and General Counsel activate regulatory business model response \u2014 compliance timeline assessed, business model adaptation options modeled before the regulation's effective date, and advocacy and comment period strategy deployed to shape the implementation guidance that determines the actual compliance burden. Without pre-staged regulatory adaptation, organizations discover that compliance is structurally more expensive than anticipated \u2014 because they waited for final rules rather than shaping them.",
+          "response_window": "72 hours",
+          "financial_exposure": "$10M\u2013$500M in business model transformation costs; market share loss if competitors adapt faster",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 109,
+          "protocol_code": "MO-109",
+          "name": "Geographic Market Regulatory Change",
+          "trigger": "Key international market implements regulations significantly restricting operations",
+          "stakeholders": ["CEO", "General Counsel", "Geographic GM", "Chief Strategy Officer"],
+          "response": "CEO activates market adaptation protocol \u2014 in-country legal counsel retained within 48 hours, compliance roadmap built against the regulatory timeline, and alternative market entry model assessed if the current structure becomes untenable. Without pre-staged in-country compliance counsel, geographic regulatory changes are managed from headquarters with insufficient local regulatory context \u2014 creating compliance risk while the local operation waits for direction.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$100M in compliance costs and revenue impact; market exit costs $10M\u2013$200M for established operations",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 110,
+          "protocol_code": "MO-110",
+          "name": "Industry Consolidation Wave",
+          "trigger": "Multiple competitors merge, fundamentally restructuring industry competitive dynamics",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "Board"],
+          "response": "CEO activates consolidation response protocol \u2014 strategic positioning assessment completed within 30 days evaluating acquire, merge, or differentiate options, Board briefed on defensive and offensive scenarios, and investor communication designed to position the company as a consolidation beneficiary rather than a consolidation casualty. Without pre-staged consolidation response, organizations watch the industry structure change around them \u2014 then face stronger consolidated competitors with 12\u201318 months of momentum.",
+          "response_window": "72 hours",
+          "financial_exposure": "$50M\u2013$500M in competitive position erosion; existential risk if consolidation bypasses company entirely",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 111,
+          "protocol_code": "RC-111",
+          "name": "EU AI Act Non-Compliance Discovery",
+          "trigger": "Internal audit or regulatory inquiry reveals AI system violating EU AI Act requirements \u2014 prohibited practices, unregistered high-risk systems, or transparency obligation failures",
+          "stakeholders": ["General Counsel", "CTO", "Chief AI Officer", "Data Protection Officer", "CEO", "Board"],
+          "response": "General Counsel and DPO activate EU AI Act compliance protocol \u2014 high-risk AI systems suspended pending conformity assessment, market surveillance authority notified within the mandatory window, and EU regulatory counsel retained for remediation roadmap within 48 hours of discovery. Without pre-staged compliance readiness, EU AI Act violations carry fines up to \u20AC35M or 7% of global annual revenue \u2014 and the systemic nature of AI deployment means a single non-compliant system often indicates enterprise-wide governance gaps.",
+          "response_window": "48 hours",
+          "financial_exposure": "\u20AC35M or 7% global revenue for prohibited AI; \u20AC15M or 3% for high-risk system violations; operational suspension risk",
+          "domain": 4,
+          "frequency": "medium",
+          "budget": 5e6
+        },
+        {
+          "number": 112,
+          "protocol_code": "RC-112",
+          "name": "CFIUS National Security Review",
+          "trigger": "CFIUS opens national security review of foreign investment in your company or M&A transaction involving a non-US acquirer",
+          "stakeholders": ["CEO", "General Counsel", "CFO", "VP Government Affairs", "Board", "M&A Advisors"],
+          "response": "CEO and General Counsel activate CFIUS defense protocol \u2014 national security counsel retained immediately, mitigation agreement framework drafted proactively to demonstrate good faith, and business unit national security risk assessment completed before CFIUS staff's own analysis defines the remediation scope. Without pre-staged CFIUS response, reviews extend from 45 to 90+ days as the committee requests repeated clarifications \u2014 and uncertainty causes the acquiring party to exercise termination rights.",
+          "response_window": "24 hours",
+          "financial_exposure": "$50M\u2013$2B+ in deal value at risk from CFIUS-ordered mitigation, deal block, or acquirer walkaway on uncertainty",
+          "domain": 4,
+          "frequency": "low",
+          "budget": 5e6
+        },
+        {
+          "number": 113,
+          "protocol_code": "RC-113",
+          "name": "DORA Digital Operational Resilience Audit",
+          "trigger": "EU Digital Operational Resilience Act audit reveals ICT risk management gaps \u2014 threat-led penetration testing failures, third-party ICT reporting deficiencies, or incident reporting non-compliance",
+          "stakeholders": ["General Counsel", "CISO", "CTO", "Chief Compliance Officer", "CFO"],
+          "response": "CISO and Chief Compliance Officer activate DORA remediation protocol \u2014 ICT risk register updated, critical third-party ICT providers formally notified and assessed, and incident reporting workflows pre-staged for the 4-hour initial notification and 72-hour intermediate report requirements. Without pre-staged DORA workflows, EU financial sector entities face daily fines of up to 1% of average daily worldwide turnover per day of non-compliance \u2014 and first-offender treatment is only available to organizations that self-identify gaps before examiners do.",
+          "response_window": "72 hours",
+          "financial_exposure": "1% of average daily worldwide turnover per day of non-compliance; operational license risk for regulated financial entities",
+          "domain": 4,
+          "frequency": "medium",
+          "budget": 3e6,
+          "industryVertical": "financial_services"
+        },
+        {
+          "number": 114,
+          "protocol_code": "FS-114",
+          "name": "Global Minimum Tax / Pillar Two Exposure",
+          "trigger": "Tax advisory reveals significant exposure under OECD Pillar Two global minimum tax (15%) in low-tax jurisdictions generating material income",
+          "stakeholders": ["CFO", "VP Tax", "General Counsel", "VP Treasury", "CEO", "Board"],
+          "response": "CFO and Tax activate global minimum tax assessment protocol \u2014 subsidiary-level effective tax rate analysis completed by jurisdiction, qualified domestic minimum top-up tax positions evaluated, and Board briefed on potential top-up liability before fiscal year-end creates an unavoidable disclosure event. Without pre-staged Pillar Two modeling, multinationals with historically low-tax structures discover unexpected annual tax obligations of $10M\u2013$500M+ when they first file under the new regime.",
+          "response_window": "72 hours",
+          "financial_exposure": "$10M\u2013$500M+ in additional annual tax liability; earnings restatement risk if prior-period provisions are insufficient",
           "domain": 3,
           "frequency": "medium",
           "budget": 5e6
         },
         {
-          "number": 117,
-          "name": "Liquidity Crisis / Bank Run",
-          "trigger": "Bank run begins (digital or physical) threatening solvency",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Fed",
-            "FDIC",
-            "Board"
-          ],
-          "response": "Fed liquidity line activation, customer reassurance, regulatory coordination, media management",
+          "number": 145,
+          "protocol_code": "MO-145",
+          "name": "Strategic Market Entry \u2014 Multi-Brand Launch",
+          "trigger": "Major market rebound creates a strategic window for simultaneous multi-brand expansion",
+          "stakeholders": ["CEO", "CMO", "CFO", "Geographic GM", "Chief Strategy Officer"],
+          "response": "CEO activates multi-market entry protocol \u2014 brand launch sequencing coordinated across all target cities, real estate and retail activation teams deployed simultaneously, and capital allocation model locked within 72 hours to prevent sequential delays that let competitors fill the window. Without pre-staged launch infrastructure, market rebound windows close before sequential brand rollouts are complete \u2014 competitors capture the timing premium that pre-staged organizations planned for.",
+          "response_window": "72 hours",
+          "financial_exposure": "$50M\u2013$200M in market entry investment; $100M\u2013$500M in foregone revenue from missed market window",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e7,
+          "industryVertical": "retail"
+        },
+        {
+          "number": 146,
+          "protocol_code": "MO-146",
+          "name": "Trend Capitalization \u2014 Viral Fashion Response",
+          "trigger": "Viral social media trend with 47M+ views and a 21-day lifecycle creates a $180M+ revenue capture window",
+          "stakeholders": ["CEO", "CMO", "CPO", "VP Supply Chain", "Chief Strategy Officer"],
+          "response": "CMO and Supply Chain activate trend capitalization protocol \u2014 design-to-production cycle compressed from 90 days to 7 days, supplier surge capacity pre-authorized for activation, and marketing deployment coordinated to capture the trend at peak rather than post-peak. Without pre-staged supplier surge agreements and compressed design cycles, trend opportunities are identified but not captured \u2014 the window closes before traditional procurement timelines allow market entry.",
+          "response_window": "24 hours",
+          "financial_exposure": "$50M\u2013$180M+ in trend revenue foregone if production mobilization isn't initiated within 48 hours of trend detection",
+          "domain": 8,
+          "frequency": "medium",
+          "budget": 15e6,
+          "industryVertical": "retail"
+        },
+        {
+          "number": 155,
+          "protocol_code": "MO-155",
+          "name": "Launch Schedule Acceleration",
+          "trigger": "Favorable orbital window opens 72 hours early with a competitor delay creating an unoccupied slot",
+          "stakeholders": ["CEO", "CTO", "COO", "VP Government Relations", "Mission Control Director"],
+          "response": "CEO and Mission Control activate launch acceleration protocol \u2014 FAA/Space Force approval applications filed immediately for the accelerated window, payload readiness and ground operations verified against compressed timeline, and customer payloads confirmed for readiness with the 72-hour compression. Without pre-staged regulatory relationship and rapid payload confirmation procedures, favorable launch windows are missed \u2014 competitors or secondary operators capture the slot instead.",
+          "response_window": "4 hours",
+          "financial_exposure": "$5M\u2013$50M in revenue per launch window; strategic first-mover positioning in high-demand orbital slots",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 5e6,
+          "industryVertical": "technology"
+        },
+        {
+          "number": 115,
+          "protocol_code": "FS-115",
+          "name": "SWIFT / Payment System Disruption",
+          "trigger": "International payment rails experience failure or cyberattack disrupting cross-border transactions",
+          "stakeholders": ["CFO", "VP Treasury", "VP Federal Relations", "VP Corporate Banking"],
+          "response": "CFO and Treasury activate payment system continuity protocol \u2014 alternative payment routing through CHIPS, Fedwire, or correspondent bank relationships activated within 1 hour, Federal Reserve relationship engaged for systemic coordination, and high-value corporate client notification deployed before media reports the disruption. Without pre-staged alternative payment rails, payment system failures create a 4\u20138 hour liquidity crisis as trillions in daily transaction volume has nowhere to route.",
+          "response_window": "1 hour",
+          "financial_exposure": "$10M\u2013$1B+ in delayed transaction settlements; reputational damage with corporate banking clients",
           "domain": 3,
           "frequency": "rare",
-          "budget": 5e7
+          "budget": 1e7,
+          "industryVertical": "financial_services"
+        },
+        {
+          "number": 116,
+          "protocol_code": "FS-116",
+          "name": "Algorithmic Trading Malfunction",
+          "trigger": "Trading algorithm executes unauthorized trades, exceeds position limits, or causes market disruption",
+          "stakeholders": ["CTO", "CFO", "VP Trading Desk", "Chief Compliance Officer", "SEC/CFTC Liaison"],
+          "response": "CTO and Compliance activate trading circuit breaker protocol \u2014 algorithm terminated and all unauthorized positions flagged for immediate review, market maker notifications issued to minimize market impact of unwinding, and SEC/CFTC self-reporting initiated within 30 minutes to establish the cooperation record. Without pre-staged circuit breakers and regulatory self-reporting, algorithmic malfunctions become market manipulation investigations \u2014 the difference is the speed and transparency of the response.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$50M\u2013$5B+ in trading losses and regulatory fines; market participant liability for disruption caused",
+          "domain": 3,
+          "frequency": "medium",
+          "budget": 5e6,
+          "industryVertical": "financial_services"
+        },
+        {
+          "number": 117,
+          "protocol_code": "FS-117",
+          "name": "Liquidity Crisis / Bank Run",
+          "trigger": "Digital or physical bank run begins, threatening depositor confidence and solvency",
+          "stakeholders": ["CEO", "CFO", "Federal Reserve Liaison", "FDIC Relationship", "Board"],
+          "response": "CEO and CFO activate liquidity defense protocol \u2014 Federal Reserve emergency liquidity facilities accessed within hours, depositor reassurance communication deployed through CEO-led media appearances, and FDIC coordination initiated to establish the systemic stability narrative before social media amplifies withdrawal intent. Without pre-staged regulator relationships and communication protocols, bank runs become self-fulfilling \u2014 each withdrawal tweet triggers 10 more before the institutional response can be deployed.",
+          "response_window": "1 hour",
+          "financial_exposure": "$1B\u2013$100B+ in depositor outflows; existential solvency risk without Federal Reserve intervention",
+          "domain": 3,
+          "frequency": "rare",
+          "budget": 5e7,
+          "industryVertical": "financial_services"
         },
         {
           "number": 118,
+          "protocol_code": "FS-118",
           "name": "Correspondent Bank Failure",
-          "trigger": "Key banking partner collapses or ceases operations",
-          "stakeholders": [
-            "CFO",
-            "Treasury",
-            "Operations",
-            "Corporate Clients"
-          ],
-          "response": "Payment rerouting, alternative correspondent activation, client notification, transaction continuity",
+          "trigger": "Key banking partner collapses or ceases operations, disrupting clearing and custody relationships",
+          "stakeholders": ["CFO", "VP Treasury", "VP Operations", "VP Corporate Clients"],
+          "response": "CFO and Treasury activate correspondent continuity protocol \u2014 alternative correspondent bank relationships activated from pre-qualified list within 24 hours, affected client transactions rerouted, and regulatory notification completed for clearing membership obligations. Without pre-staged alternative correspondents, bank failures create 3\u20135 day gaps in clearing capability \u2014 during which time corporate clients are unable to settle transactions and relationships are permanently damaged.",
+          "response_window": "4 hours",
+          "financial_exposure": "$5M\u2013$50M in direct settlement disruption; client attrition from trust damage when continuity fails",
           "domain": 3,
           "frequency": "rare",
-          "budget": 3e6
+          "budget": 3e6,
+          "industryVertical": "financial_services"
         },
         {
           "number": 119,
-          "name": "Crypto/Digital Asset Incident",
-          "trigger": "Digital custody breach or crypto platform failure",
-          "stakeholders": [
-            "CTO",
-            "CFO",
-            "Compliance",
-            "SEC",
-            "Crypto Forensics"
-          ],
-          "response": "Blockchain forensics, regulatory notification, customer protection, insurance claim",
+          "protocol_code": "TI-119",
+          "name": "Crypto / Digital Asset Incident",
+          "trigger": "Digital custody breach, smart contract exploit, or crypto platform failure causing customer asset loss",
+          "stakeholders": ["CTO", "CFO", "Chief Compliance Officer", "SEC/FinCEN Liaison", "Blockchain Forensics"],
+          "response": "CTO and Compliance activate crypto incident response \u2014 blockchain forensics initiated within 1 hour to trace asset movements, regulatory notification timelines assessed across SEC, FinCEN, and state money transmitter requirements, and customer notification drafted with transparent loss accounting and recovery plan. Without pre-staged blockchain forensics capability, crypto incidents take 48\u201372 hours to scope \u2014 allowing stolen assets to be moved through mixers and bridges beyond recovery.",
+          "response_window": "1 hour",
+          "financial_exposure": "$5M\u2013$500M+ in digital asset loss; regulatory penalties $5M\u2013$100M; criminal referral risk for officers",
           "domain": 5,
+          "frequency": "medium",
+          "budget": 8e6,
+          "industryVertical": "financial_services"
+        },
+        {
+          "number": 120,
+          "protocol_code": "OE-120",
+          "name": "ERP Implementation Failure",
+          "trigger": "SAP, Oracle, or Workday go-live triggers critical system failures \u2014 financial reporting disruption, supply chain blocks, payroll failure, or customer order management collapse",
+          "stakeholders": ["CTO", "COO", "CFO", "Implementation Partner Lead", "CEO", "VP Customer Success"],
+          "response": "CTO activates ERP crisis protocol \u2014 rollback-vs-forward decision made within 4 hours before additional transactions corrupt the new system, manual workarounds deployed for critical business processes (payroll, customer orders, financial close), and implementation partner placed on formal remediation SLA with executive accountability. Without a pre-staged rollback decision framework, organizations spend the first 24\u201348 hours 'trying to fix it forward' \u2014 allowing data corruption to proliferate and manual backlog to build to unrecoverable levels.",
+          "response_window": "4 hours",
+          "financial_exposure": "$1M\u2013$10M per day in operational disruption; financial close deadline risk and SEC reporting obligation impact",
+          "domain": 2,
           "frequency": "medium",
           "budget": 8e6
         },
         {
-          "number": 125,
-          "name": "Tier 2 Supplier Cascade Failure",
-          "trigger": "Supplier's supplier fails, invisible to OEM until production halt",
-          "stakeholders": [
-            "COO",
-            "Procurement",
-            "Engineering",
-            "Manufacturing"
-          ],
-          "response": "Supply chain mapping, alternative sourcing, production prioritization, customer allocation",
+          "number": 121,
+          "protocol_code": "OE-121",
+          "name": "Critical SaaS Vendor Price Shock",
+          "trigger": "Mission-critical SaaS vendor announces 150\u2013400% price increase at contract renewal requiring immediate decision",
+          "stakeholders": ["CFO", "CTO", "Chief Procurement Officer", "COO", "General Counsel"],
+          "response": "CFO and CTO activate vendor leverage protocol \u2014 renewal freeze issued while competitive alternatives are evaluated within 48 hours, migration cost model completed to define the credible walkaway price, and multi-vendor negotiation playbook deployed using the migration threat as leverage. Without pre-staged migration readiness, mission-critical vendor price shocks are absorbed at full cost \u2014 because no credible alternative is ready to deploy and vendors know it.",
+          "response_window": "48 hours",
+          "financial_exposure": "$3M\u2013$15M+ in avoidable excess annual SaaS spend if vendor leverage not exercised at first renewal",
           "domain": 2,
-          "frequency": "medium",
-          "budget": 5e6
-        },
-        {
-          "number": 126,
-          "name": "Critical Tooling Failure",
-          "trigger": "Specialized manufacturing equipment breaks with long lead time for replacement",
-          "stakeholders": [
-            "COO",
-            "Manufacturing",
-            "Engineering",
-            "Finance"
-          ],
-          "response": "Production rerouting, emergency tooling procurement, capacity reallocation, delivery delays",
-          "domain": 2,
-          "frequency": "medium",
-          "budget": 3e6
-        },
-        {
-          "number": 127,
-          "name": "Labor Strike/Walkout",
-          "trigger": "UAW or key facility workers strike, halting production",
-          "stakeholders": [
-            "CEO",
-            "CHRO",
-            "COO",
-            "Legal",
-            "PR"
-          ],
-          "response": "Negotiation strategy, production continuity, alternative facilities, customer communication",
-          "domain": 6,
-          "frequency": "medium",
-          "budget": 1e7
-        },
-        {
-          "number": 128,
-          "name": "Commodity Price Spike",
-          "trigger": "Steel, aluminum, or critical commodity prices surge 40%+ overnight",
-          "stakeholders": [
-            "CFO",
-            "COO",
-            "Procurement",
-            "Pricing"
-          ],
-          "response": "Hedging strategy, pricing adjustment, supplier renegotiation, margin protection",
-          "domain": 3,
           "frequency": "medium",
           "budget": 2e6
         },
         {
-          "number": 129,
-          "name": "Sustainability/ESG Crisis",
-          "trigger": "Environmental audit finds violations or sustainability commitments at risk",
-          "stakeholders": [
-            "CEO",
-            "Sustainability",
-            "Legal",
-            "PR",
-            "Board"
-          ],
-          "response": "Compliance remediation, stakeholder communication, sustainability program overhaul, reporting",
-          "domain": 7,
-          "frequency": "medium",
-          "budget": 4e6
-        },
-        {
-          "number": 135,
-          "name": "Pipeline Rupture/Environmental Release",
-          "trigger": "Oil spill, gas leak, or major environmental contamination event",
-          "stakeholders": [
-            "CEO",
-            "Safety",
-            "EPA",
-            "State Regulators",
-            "Emergency Response"
-          ],
-          "response": "Emergency containment, evacuation coordination, regulatory notification, cleanup mobilization",
-          "domain": 2,
-          "frequency": "rare",
-          "budget": 5e7
-        },
-        {
-          "number": 136,
-          "name": "Renewable Integration Failure",
-          "trigger": "Wind/solar integration causes grid instability or cascading failures",
-          "stakeholders": [
-            "CTO",
-            "Grid Operations",
-            "NERC",
-            "State Regulators"
-          ],
-          "response": "Load balancing, backup generation activation, grid stabilization, regulatory coordination",
-          "domain": 5,
-          "frequency": "medium",
-          "budget": 5e6
-        },
-        {
-          "number": 137,
-          "name": "Commodity Trading Desk Rogue Trader",
-          "trigger": "Trader exceeds limits causing massive losses or market manipulation",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Legal",
-            "CFTC",
-            "Board"
-          ],
-          "response": "Position liquidation, regulatory self-reporting, internal investigation, market stabilization",
-          "domain": 3,
-          "frequency": "rare",
-          "budget": 25e6
-        },
-        {
-          "number": 138,
-          "name": "Major Customer Bankruptcy",
-          "trigger": "Largest industrial customer files Chapter 11, threatening revenue",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Sales",
-            "Legal",
-            "Credit"
-          ],
-          "response": "Credit protection, alternative customer development, capacity reallocation, financial hedging",
-          "domain": 3,
-          "frequency": "medium",
-          "budget": 3e6
-        },
-        {
-          "number": 139,
-          "name": "Climate Protest/Facility Occupation",
-          "trigger": "Activists block operations or occupy facilities",
-          "stakeholders": [
-            "CEO",
-            "Security",
-            "Legal",
-            "PR",
-            "Local Authorities"
-          ],
-          "response": "Safety protocols, legal action, stakeholder communication, operational continuity",
-          "domain": 7,
-          "frequency": "medium",
-          "budget": 2e6
-        },
-        {
-          "number": 140,
-          "name": "API Deprecation Crisis",
-          "trigger": "Breaking API change affects major customers, causing integration failures",
-          "stakeholders": [
-            "CTO",
-            "Product",
-            "Customer Success",
-            "Engineering"
-          ],
-          "response": "Rollback decision, migration support, customer communication, compatibility fixes",
-          "domain": 5,
-          "frequency": "medium",
-          "budget": 2e6
-        },
-        {
-          "number": 141,
-          "name": "Viral Bug/Feature Backfire",
-          "trigger": "New feature causes user outrage or viral negative reaction",
-          "stakeholders": [
-            "CEO",
-            "CPO",
-            "Engineering",
-            "PR",
-            "Customer Success"
-          ],
-          "response": "Feature rollback, user communication, damage control, product adjustment",
-          "domain": 7,
+          "number": 122,
+          "protocol_code": "MD-122",
+          "name": "Channel Partner Conflict Escalation",
+          "trigger": "Top distribution partner publicly disputes exclusivity, margin terms, or competitive handling \u2014 threatening to defect or publicly damage the partnership",
+          "stakeholders": ["CEO", "VP Channel Sales", "General Counsel", "CFO", "Chief Revenue Officer"],
+          "response": "CEO and Channel leadership activate partner conflict resolution protocol \u2014 executive-to-executive dialogue opened within 24 hours, contractual positions assessed with legal counsel before any public response, and alternative channel coverage pre-staged in the partner's territory before the relationship formally breaks. Without pre-staged channel resolution protocols, partner conflicts become public partner terminations \u2014 used by competitors as evidence of your channel management dysfunction.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$30M in annual channel revenue at risk; competitive intelligence shared by departing partner with competitors",
+          "domain": 1,
           "frequency": "medium",
           "budget": 1e6
         },
         {
+          "number": 123,
+          "protocol_code": "RC-123",
+          "name": "Critical Infrastructure Designation",
+          "trigger": "DHS/CISA designates organization as critical infrastructure, triggering mandatory incident reporting, new security requirements, and federal coordination obligations",
+          "stakeholders": ["CEO", "General Counsel", "CISO", "VP Government Affairs", "COO", "Board"],
+          "response": "General Counsel and CISO activate critical infrastructure compliance protocol \u2014 mandatory 72-hour incident reporting procedures established, CISA coordination relationship formalized at the executive level, and security architecture review initiated to meet sector-specific NIST framework requirements before the first mandatory self-assessment is due. Without pre-staged compliance infrastructure, organizations fail mandatory reporting timelines \u2014 losing the 'proactive cooperation' positioning that favorably shapes the regulatory relationship for years.",
+          "response_window": "72 hours",
+          "financial_exposure": "Civil penalties; operational disruption risk from forced federal oversight; federal contracting exclusion risk",
+          "domain": 4,
+          "frequency": "low",
+          "budget": 4e6
+        },
+        {
+          "number": 124,
+          "protocol_code": "MD-124",
+          "name": "App Store / Platform Distribution Removal",
+          "trigger": "Apple App Store or Google Play suspends or removes your application affecting millions of users",
+          "stakeholders": ["CEO", "CPO", "General Counsel", "CTO", "VP Communications"],
+          "response": "CEO and CPO activate platform continuity protocol \u2014 legal challenge to removal filed within 24 hours, direct-download or progressive web app alternative deployed as a 30-day bridge, and user communications launched before press picks up the story and customer support is overwhelmed. Without pre-staged platform independence options, app store removals cost $50K\u2013$2M per day in lost revenue while the removal narrative destroys customer trust faster than any reinstatement timeline can repair it.",
+          "response_window": "24 hours",
+          "financial_exposure": "$50K\u2013$2M per day in lost app revenue; customer trust erosion and competitor switching compounding daily",
+          "domain": 1,
+          "frequency": "low",
+          "budget": 2e6
+        },
+        {
+          "number": 125,
+          "protocol_code": "OE-125",
+          "name": "Tier-2 Supplier Cascade Failure",
+          "trigger": "Supplier's supplier fails, invisible to OEM until production halt surfaces the upstream gap",
+          "stakeholders": ["COO", "Chief Procurement Officer", "VP Engineering", "VP Manufacturing"],
+          "response": "COO and Procurement activate supply chain mapping protocol \u2014 n-tier supplier network traced to identify all affected production paths, alternative sourcing for the failed tier-2 component qualified on emergency basis, and production prioritized to highest-margin customer commitments during the shortage. Without n-tier supply visibility, tier-2 failures produce unexplained production halts \u2014 and emergency sourcing at 200\u2013400% premium is the only option once the root cause is finally identified.",
+          "response_window": "4 hours",
+          "financial_exposure": "$2M\u2013$20M per week in production disruption; emergency sourcing premium destroying 15\u201325% gross margin during shortage",
+          "domain": 2,
+          "frequency": "medium",
+          "budget": 5e6,
+          "industryVertical": "manufacturing"
+        },
+        {
+          "number": 126,
+          "protocol_code": "OE-126",
+          "name": "Critical Tooling Failure",
+          "trigger": "Specialized manufacturing equipment failure with 6\u201318 month lead time for replacement",
+          "stakeholders": ["COO", "VP Manufacturing", "VP Engineering", "CFO"],
+          "response": "COO activates tooling continuity protocol \u2014 contract manufacturing partners contacted immediately for capacity reallocation, emergency tooling fabrication commissioned in parallel, and customer delivery schedule revised with transparent communication before build completion dates are missed. Without pre-staged contract manufacturing relationships, critical tooling failures create 6\u201318 month production capacity holes \u2014 because there is no qualified alternative that can begin immediately.",
+          "response_window": "24 hours",
+          "financial_exposure": "$500K\u2013$5M per month in lost production capacity; customer SLA penalties accumulating during rebuild",
+          "domain": 2,
+          "frequency": "medium",
+          "budget": 3e6,
+          "industryVertical": "manufacturing"
+        },
+        {
+          "number": 127,
+          "protocol_code": "TL-127",
+          "name": "Labor Strike \u2014 Production Facility",
+          "trigger": "UAW or key facility workers authorize and commence a strike halting production",
+          "stakeholders": ["CEO", "CHRO", "COO", "General Counsel", "VP Communications"],
+          "response": "CEO and CHRO activate strike continuity protocol \u2014 production shifted to non-striking facilities and qualified temporary production established within 72 hours, negotiation posture reassessed with federal mediator engaged, and customer communication deployed proactively before shipment delays are detected. Without pre-staged production continuity, strikes create 2\u20133 week operational shutdowns \u2014 the labor dispute is compounded by a customer crisis as delivery commitments are missed.",
+          "response_window": "24 hours",
+          "financial_exposure": "$1M\u2013$5M per day in lost production; customer attrition and SLA penalties compounding with each week",
+          "domain": 6,
+          "frequency": "medium",
+          "budget": 1e7,
+          "industryVertical": "manufacturing"
+        },
+        {
+          "number": 128,
+          "protocol_code": "FS-128",
+          "name": "Commodity Price Spike",
+          "trigger": "Steel, aluminum, lithium, or critical commodity prices surge 40%+ creating immediate margin crisis",
+          "stakeholders": ["CFO", "COO", "Chief Procurement Officer", "VP Pricing"],
+          "response": "CFO and Procurement activate commodity response protocol \u2014 hedging positions deployed for available forward contracts, customer pricing adjustment model completed within 48 hours, and supplier renegotiation initiated using volume commitments as leverage against forced spot pricing. Without pre-staged commodity hedging and pricing pass-through agreements, commodity spikes flow directly into gross margin \u2014 often destroying the quarter before the pricing correction can be implemented.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in annual gross margin impact per 10% commodity price increase against unhedged exposure",
+          "domain": 3,
+          "frequency": "medium",
+          "budget": 2e6,
+          "industryVertical": "manufacturing"
+        },
+        {
+          "number": 129,
+          "protocol_code": "BR-129",
+          "name": "ESG / Sustainability Crisis",
+          "trigger": "Environmental audit reveals violations or sustainability commitments are materially at risk",
+          "stakeholders": ["CEO", "Chief Sustainability Officer", "General Counsel", "VP Communications", "Board"],
+          "response": "CEO activates ESG crisis response protocol \u2014 independent third-party assessment commissioned within 30 days, emissions and compliance data audited against public commitments, and a credible remediation plan with verifiable milestones issued publicly before the ESG shortfall appears in rating agency updates. Without pre-staged remediation, ESG violations discovered by third parties rather than self-reported create a double exposure \u2014 the original violation plus the perception of concealment.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$100M in regulatory fines; institutional investor ESG exclusion impacts; customer sustainability requirements trigger",
+          "domain": 7,
+          "frequency": "medium",
+          "budget": 4e6,
+          "industryVertical": "energy"
+        },
+        {
+          "number": 130,
+          "protocol_code": "BR-130",
+          "name": "Greenwashing Allegation / FTC Green Claims Enforcement",
+          "trigger": "FTC, EU Green Claims Directive, or NGO investigation into unsubstantiated sustainability claims \u2014 'net zero,' 'carbon neutral,' or 'sustainable' marketing found misleading",
+          "stakeholders": ["CEO", "General Counsel", "Chief Sustainability Officer", "CMO", "Board"],
+          "response": "General Counsel and Sustainability Officer activate greenwashing defense protocol \u2014 all environmental marketing claims audited against FTC Green Guides and EU Green Claims substantiation requirements within 48 hours, unsubstantiated claims suspended, and third-party verification obtained proactively before the regulatory enforcement timeline forces a public correction. Without pre-staged claim substantiation, FTC greenwashing enforcement actions carry civil penalties of $50K per violation per day and trigger class action consumer protection claims that dwarf the regulatory fines.",
+          "response_window": "24 hours",
+          "financial_exposure": "FTC: $50K/day per unsubstantiated claim; EU Green Claims Directive: 4% global revenue; class action exposure $10M\u2013$100M+",
+          "domain": 7,
+          "frequency": "medium",
+          "budget": 3e6
+        },
+        {
+          "number": 131,
+          "protocol_code": "MD-131",
+          "name": "Analyst Downgrade \u2014 Gartner / Forrester / IDC",
+          "trigger": "Gartner Magic Quadrant demotion, Forrester Wave negative positioning, or IDC report directing buyers to competitors \u2014 cited in active procurement evaluations",
+          "stakeholders": ["CEO", "CMO", "CPO", "Chief Revenue Officer", "VP Analyst Relations"],
+          "response": "CMO and Analyst Relations activate analyst repositioning protocol \u2014 immediate engagement with the evaluating analyst to understand specific scoring criteria failures, a product roadmap evidence package assembled to rebut positioning within 72 hours, and a deal defense brief issued to sales for every in-flight opportunity where the negative report is being cited. Without pre-staged analyst defense, the 30\u201390 day window after a negative positioning locks the evaluation criteria for every active enterprise procurement using that analyst firm as a reference.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in pipeline impact within 90-day window as negative analyst positioning circulates through enterprise procurement teams",
+          "domain": 1,
+          "frequency": "medium",
+          "budget": 1e6
+        },
+        {
+          "number": 132,
+          "protocol_code": "MO-132",
+          "name": "Government Contract / Federal RFP Window",
+          "trigger": "Federal, state, or defense agency RFP released with 72-hour intent-to-bid requirement or accelerated acquisition timeline",
+          "stakeholders": ["CEO", "VP Business Development", "VP Contracts", "General Counsel", "CFO", "Technical Lead"],
+          "response": "Business Development activates federal opportunity protocol \u2014 teaming partner decisions made within 24 hours from pre-qualified partner list, all compliance certifications and clearance documentation verified against requirements, and proposal team mobilized with pre-drafted sections from the readiness library. Without pre-staged federal opportunity infrastructure, contract opportunities worth $10M\u2013$500M go to organizations that had teaming agreements and compliance documentation ready before the intent-to-bid window closed.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$500M in contract value foregone if mobilization isn't pre-staged \u2014 opportunity lost with no recovery path",
+          "domain": 8,
+          "frequency": "medium",
+          "budget": 2e6
+        },
+        {
+          "number": 133,
+          "protocol_code": "TL-133",
+          "name": "Critical Team Burnout / Attrition Cascade",
+          "trigger": "Extended high-load period, layoff survivor syndrome, or policy change triggers burnout and departure cascade in a critical technical or revenue-producing team",
+          "stakeholders": ["CHRO", "CEO", "Business Unit Lead", "CFO"],
+          "response": "CHRO activates team resilience protocol \u2014 load assessment and immediate relief interventions deployed within 72 hours, retention packages staged for individuals identified as flight risks, and root cause addressed with visible management action before the attrition cascade reaches the next wave of departures. Without pre-staged burnout detection and response, critical team attrition cascades \u2014 each departure increases the load on survivors, accelerating the next departure until the team is functionally destroyed.",
+          "response_window": "48 hours",
+          "financial_exposure": "$3M\u2013$15M in replacement costs; $5M\u2013$25M in productivity loss, delayed roadmap, and competitive intelligence risk",
+          "domain": 6,
+          "frequency": "medium",
+          "budget": 2e6
+        },
+        {
+          "number": 134,
+          "protocol_code": "AG-134",
+          "name": "Agentic AI Policy Breach",
+          "trigger": "Autonomous AI agent takes unexpected actions outside authorized scope \u2014 executing transactions, accessing unauthorized data, or triggering downstream systems without human authorization",
+          "stakeholders": ["CTO", "COO", "CEO", "General Counsel", "Chief AI Officer"],
+          "response": "CTO and Chief AI Officer activate agentic containment protocol \u2014 the unauthorized agent suspended within 12 minutes, all actions taken during the breach window catalogued for damage assessment, and governance controls tightened before any agentic AI system is restarted. Without pre-staged agentic AI controls and kill switches, unauthorized agent actions cannot be stopped faster than the agent can execute \u2014 and each second of continued operation compounds the financial and legal exposure.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$1M\u2013$50M in unauthorized transaction costs, data exposure liability, and remediation; regulatory AI governance fine risk",
+          "domain": 9,
+          "frequency": "medium",
+          "budget": 3e6
+        },
+        {
+          "number": 135,
+          "protocol_code": "OE-135",
+          "name": "Pipeline Rupture / Environmental Release",
+          "trigger": "Oil spill, gas leak, or major environmental contamination event from company infrastructure",
+          "stakeholders": ["CEO", "VP Safety", "EPA National Response Center", "State Emergency Management", "VP Emergency Response"],
+          "response": "CEO activates environmental emergency response protocol \u2014 National Response Center notified within the mandatory 1-hour window, emergency containment crews deployed from pre-positioned response inventory, and unified command structure established with EPA and state regulators before media coverage shapes the government relationship. Without pre-staged emergency response capability and mandatory notification compliance, pipeline incidents become Deepwater Horizon-scale catastrophes \u2014 where the response failure is worse than the event.",
+          "response_window": "1 hour",
+          "financial_exposure": "$50M\u2013$5B+ in cleanup, regulatory penalties, and liability; criminal prosecution risk for knowing violations",
+          "domain": 2,
+          "frequency": "rare",
+          "budget": 5e7,
+          "industryVertical": "energy"
+        },
+        {
+          "number": 136,
+          "protocol_code": "TI-136",
+          "name": "Renewable Integration Failure",
+          "trigger": "Wind or solar integration causes grid instability, frequency deviation, or cascading reliability failures",
+          "stakeholders": ["CTO", "VP Grid Operations", "NERC Compliance Officer", "State Regulatory Liaison"],
+          "response": "Grid Operations activates renewable integration response protocol \u2014 NERC mandatory reliability reporting initiated within the required window, backup generation dispatched to restore frequency stability, and regulator notification completed with a transparent technical account before the stability event appears in independent monitoring systems. Without pre-staged NERC reporting workflows, grid stability events become regulatory violations \u2014 because the notification window is measured in hours, not days.",
+          "response_window": "1 hour",
+          "financial_exposure": "NERC reliability violation fines: $1M\u2013$25M per day per violation; grid operator liability for connected customer disruption",
+          "domain": 5,
+          "frequency": "medium",
+          "budget": 5e6,
+          "industryVertical": "energy"
+        },
+        {
+          "number": 137,
+          "protocol_code": "FS-137",
+          "name": "Commodity Trading Desk Rogue Trader",
+          "trigger": "Trader exceeds authorized position limits causing massive losses or market manipulation allegations",
+          "stakeholders": ["CEO", "CFO", "General Counsel", "CFTC Liaison", "Board Audit Committee"],
+          "response": "CEO and General Counsel activate rogue trader response protocol \u2014 all unauthorized positions immediately flagged and sequestered, CFTC self-reporting initiated within 24 hours before external market surveillance triggers a forced disclosure, and internal investigation launched with separate outside counsel. Without immediate position sequestration and regulatory self-reporting, rogue trading events compound \u2014 each hour of continued position management erases the voluntary disclosure credit that reduces penalties by 30\u201350%.",
+          "response_window": "1 hour",
+          "financial_exposure": "$25M\u2013$10B+ in trading losses and regulatory fines; criminal prosecution for officers in fraud cases",
+          "domain": 3,
+          "frequency": "rare",
+          "budget": 25e6,
+          "industryVertical": "energy"
+        },
+        {
+          "number": 138,
+          "protocol_code": "FS-138",
+          "name": "Major Industrial Customer Bankruptcy",
+          "trigger": "Largest industrial customer files Chapter 11, threatening $20M+ in accounts receivable",
+          "stakeholders": ["CEO", "CFO", "Chief Revenue Officer", "General Counsel", "VP Credit"],
+          "response": "CFO and Legal activate customer bankruptcy response protocol \u2014 security interest and preference payment defenses filed immediately, critical vendor designation pursued to protect ongoing supply relationships during restructuring, and alternative customer development accelerated using the freed production capacity. Without immediate legal filings in the first 48 hours, preference payment defenses and critical vendor protections expire \u2014 reducing recovery from 60\u201380 cents to 10\u201320 cents on the dollar.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$100M in receivables at risk; critical vendor status recovery of 60\u201380 cents vs. 10\u201320 cents without filing",
+          "domain": 3,
+          "frequency": "medium",
+          "budget": 3e6,
+          "industryVertical": "manufacturing"
+        },
+        {
+          "number": 139,
+          "protocol_code": "BR-139",
+          "name": "Climate Protest / Facility Occupation",
+          "trigger": "Climate activists blockade, occupy, or disrupt operations at company facility",
+          "stakeholders": ["CEO", "VP Corporate Security", "General Counsel", "VP Communications", "VP Local Government Affairs"],
+          "response": "CEO and Security activate protest response protocol \u2014 facility safety secured through lawful means with law enforcement coordination, legal injunctive relief obtained to protect ongoing operations, and media narrative managed to address the underlying environmental concerns constructively. Without pre-staged protest response, organizations escalate protests unnecessarily \u2014 using heavy-handed security responses that create viral media moments that amplify the activists' message.",
+          "response_window": "2 hours",
+          "financial_exposure": "$500K\u2013$5M per day in production disruption; $2M\u2013$20M in sustained reputational damage from media coverage",
+          "domain": 7,
+          "frequency": "medium",
+          "budget": 2e6,
+          "industryVertical": "energy"
+        },
+        {
+          "number": 140,
+          "protocol_code": "TI-140",
+          "name": "API Deprecation Crisis",
+          "trigger": "Breaking API change affects major enterprise customers, causing widespread integration failures",
+          "stakeholders": ["CTO", "CPO", "VP Customer Success", "VP Engineering"],
+          "response": "CTO activates API continuity protocol \u2014 rollback decision made within 4 hours, affected customer integrations catalogued and engineering support assigned by strategic account priority, and 90-day migration window offered rather than immediate cut-over. Without pre-staged rollback and structured migration support, API breaking changes create simultaneous crises across all dependent enterprise customers \u2014 overwhelming support capacity and converting a product release into a churn trigger.",
+          "response_window": "4 hours",
+          "financial_exposure": "$2M\u2013$15M in emergency engineering costs, SLA credits, and customer attrition from disrupted enterprise integrations",
+          "domain": 5,
+          "frequency": "medium",
+          "budget": 2e6,
+          "industryVertical": "technology"
+        },
+        {
+          "number": 141,
+          "protocol_code": "BR-141",
+          "name": "Viral Feature Backfire",
+          "trigger": "New product feature causes widespread user outrage or unintended viral negative reaction",
+          "stakeholders": ["CEO", "CPO", "VP Engineering", "VP Communications", "VP Customer Success"],
+          "response": "CPO and Communications activate feature backfire protocol \u2014 rollback decision made within 4 hours before media amplification peaks, user communication issued acknowledging the problem without legal equivocation, and product adjustment roadmap published within 48 hours to demonstrate responsiveness. Without pre-staged rollback authority and user communication, feature backfire events extend for days as product teams debate fixes \u2014 each day of user frustration generating new viral content.",
+          "response_window": "4 hours",
+          "financial_exposure": "$1M\u2013$10M in customer attrition and brand damage; developer ecosystem trust damage worth $5M\u2013$50M in future adoption",
+          "domain": 7,
+          "frequency": "medium",
+          "budget": 1e6,
+          "industryVertical": "technology"
+        },
+        {
           "number": 142,
+          "protocol_code": "MD-142",
           "name": "Acquisition Integration Failure",
-          "trigger": "M&A integration goes wrong, customers fleeing, culture clash",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "CHRO",
-            "Integration Lead",
-            "Board"
-          ],
-          "response": "Customer retention, culture intervention, integration reset, stakeholder management",
+          "trigger": "M&A integration fails \u2014 customers defecting, culture clash visible externally, synergy targets missed",
+          "stakeholders": ["CEO", "CFO", "CHRO", "Head of Integration", "Board"],
+          "response": "CEO activates integration reset protocol \u2014 customer retention task force deployed within 48 hours, integration timeline and synergy estimates reset with credible new milestones, and Board briefed on revised financial model before analyst community receives signals through customer attrition data. Without a pre-staged integration reset capability, M&A failures send customers to competitors who position against the acquirer's distraction \u2014 and market perception of execution capability takes years to rebuild.",
+          "response_window": "48 hours",
+          "financial_exposure": "$15M\u2013$200M in deal synergy at risk; customer attrition destroying $10M\u2013$100M in acquired revenue",
           "domain": 1,
           "frequency": "rare",
           "budget": 15e6
         },
         {
           "number": 143,
+          "protocol_code": "TL-143",
           "name": "Developer Exodus",
-          "trigger": "Key engineers quit en masse, threatening product roadmap",
-          "stakeholders": [
-            "CEO",
-            "CTO",
-            "CHRO",
-            "Engineering Leads"
-          ],
-          "response": "Retention campaign, hiring acceleration, roadmap adjustment, knowledge transfer",
+          "trigger": "Key engineers depart en masse, threatening product roadmap and competitive capability",
+          "stakeholders": ["CEO", "CTO", "CHRO", "VP Engineering"],
+          "response": "CTO and CHRO activate developer retention protocol \u2014 root cause diagnosis completed within 72 hours (compensation, management, technical debt, culture), targeted retention packages deployed for the next wave of at-risk engineers, and hiring acceleration initiated to restore team capacity. Without pre-staged developer retention diagnostics, exodus events are interpreted as inevitable \u2014 when they are almost always predictable signals that were visible months before the departures peaked.",
+          "response_window": "72 hours",
+          "financial_exposure": "$2M\u2013$10M in emergency recruiting costs; $5M\u2013$30M in delayed product roadmap competitive impact",
           "domain": 6,
           "frequency": "medium",
-          "budget": 5e6
+          "budget": 5e6,
+          "industryVertical": "technology"
         },
         {
           "number": 144,
-          "name": "Open Source Controversy",
-          "trigger": "OSS community revolts against licensing change or corporate action",
-          "stakeholders": [
-            "CEO",
-            "CTO",
-            "Legal",
-            "PR",
-            "Community Relations"
-          ],
-          "response": "Community engagement, licensing clarification, relationship repair, fork management",
+          "protocol_code": "BR-144",
+          "name": "Open Source Licensing Controversy",
+          "trigger": "Developer community revolts against licensing change or corporate action affecting OSS project",
+          "stakeholders": ["CEO", "CTO", "General Counsel", "VP Communications", "VP Community Relations"],
+          "response": "CEO and CTO activate open source response protocol \u2014 community leadership engaged directly within 24 hours before the fork is organized, licensing rationale explained transparently with dialogue on acceptable alternatives, and relationship repair plan deployed before the forked project gains enterprise adoption momentum. Without pre-staged community dialogue, licensing controversies produce organized forks within 48\u201372 hours \u2014 once the alternative has enterprise contributors, the original community relationship is permanently split.",
+          "response_window": "24 hours",
+          "financial_exposure": "$2M\u2013$20M in ecosystem partner attrition; developer hiring impact; enterprise product adoption decline",
           "domain": 7,
           "frequency": "rare",
-          "budget": 2e6
+          "budget": 2e6,
+          "industryVertical": "technology"
         },
         {
           "number": 147,
+          "protocol_code": "MO-147",
           "name": "Strategic Partnership Formation",
-          "trigger": "Major partnership opportunity requires rapid joint venture or alliance formation",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Legal",
-            "Board"
-          ],
-          "response": "Deal structuring, due diligence, legal documentation, integration planning, announcement coordination",
+          "trigger": "Major partnership opportunity requires rapid joint venture, alliance, or licensing agreement formation",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "General Counsel", "Board"],
+          "response": "CEO activates partnership capture protocol \u2014 deal structure and term sheet ready within 72 hours of opportunity identification, due diligence workstreams launched in parallel rather than sequentially, and exclusivity secured before the partner evaluates competing offers. Without pre-staged deal documentation templates and diligence playbooks, partnership opportunities close to competitors who move faster \u2014 the average enterprise partnership process takes 90 days where speed-advantaged organizations close in 30.",
+          "response_window": "72 hours",
+          "financial_exposure": "$10M\u2013$200M in partnership value; competitive access and market positioning advantage foregone if timing is missed",
           "domain": 1,
           "frequency": "medium",
           "budget": 5e6
         },
         {
           "number": 148,
-          "name": "Competitive Acquisition",
-          "trigger": "Opportunity to acquire competitor and consolidate market position",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board",
-            "M&A Advisors"
-          ],
-          "response": "Acquisition strategy, valuation, financing, regulatory approval, integration planning",
+          "protocol_code": "MO-148",
+          "name": "Competitive Acquisition Opportunity",
+          "trigger": "Opportunity to acquire a competitor emerges with a narrow exclusivity or process window",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "Board", "M&A Advisors"],
+          "response": "CEO activates competitive acquisition protocol \u2014 rapid financial and strategic diligence initiated within 48 hours, acquisition financing pre-arranged with banking relationships, and offer submitted before the competitive auction process formally opens to maximize exclusivity leverage. Without pre-staged M&A diligence teams and financing relationships, competitive acquisitions are lost to buyers who had their processes ready \u2014 the window from target identification to exclusive offer is often 5\u201310 days.",
+          "response_window": "48 hours",
+          "financial_exposure": "$50M\u2013$2B+ in market consolidation advantage foregone; competitive target lands with rival, improving their position",
           "domain": 1,
           "frequency": "rare",
           "budget": 1e8
         },
         {
           "number": 149,
-          "name": "Aggressive Price Disruption (Offensive)",
-          "trigger": "Strategic decision to undercut market and gain share through pricing",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "CMO",
-            "Sales",
-            "Strategy"
-          ],
-          "response": "Pricing strategy rollout, competitive messaging, sales enablement, margin management",
+          "protocol_code": "MD-149",
+          "name": "Offensive Pricing Disruption",
+          "trigger": "Strategic window opens for market share capture through disruptive pricing \u2014 competitor weakness, new segment entry, or freemium land-and-expand",
+          "stakeholders": ["CEO", "CFO", "CMO", "Chief Revenue Officer", "Chief Strategy Officer"],
+          "response": "CEO and CFO activate offensive pricing protocol \u2014 12-month margin impact model completed to confirm the investment thesis, pricing change deployed simultaneously across all channels to prevent competitor counter-response, and sales force equipped with new value messaging before market announcement. Without simultaneous cross-channel deployment, offensive pricing changes give competitors 24\u201348 hours to counter before your sales team can leverage the news in active deals.",
+          "response_window": "48 hours",
+          "financial_exposure": "$5M\u2013$50M in short-term margin investment; $50M\u2013$500M in market share gain if execution is pre-staged and simultaneous",
           "domain": 1,
           "frequency": "medium",
           "budget": 3e6
         },
         {
           "number": 150,
-          "name": "Strategic Fundraising (IPO/Series)",
-          "trigger": "Market window opens for major fundraising round or IPO",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Board",
-            "Investment Banks",
-            "Legal"
-          ],
-          "response": "Roadshow coordination, financial preparation, regulatory filing, investor relations, media strategy",
+          "protocol_code": "FS-150",
+          "name": "Strategic Fundraising (IPO / Growth Round)",
+          "trigger": "Market window opens for major fundraising round, IPO, or secondary offering",
+          "stakeholders": ["CEO", "CFO", "Board", "Lead Investment Bankers", "General Counsel"],
+          "response": "CEO and CFO activate fundraising readiness protocol \u2014 roadshow materials updated within 2 weeks of window identification, investment bank bake-off completed, and financial reporting cleaned to meet public market standards before the window competes with other issuers. Without pre-staged financial reporting and investor narrative, fundraising windows close before companies complete their preparation \u2014 the capital markets do not wait.",
+          "response_window": "72 hours",
+          "financial_exposure": "$50M\u2013$5B+ in fundraising proceeds foregone if window missed; valuation discount from underprepared roadshow",
           "domain": 3,
           "frequency": "rare",
           "budget": 1e7
         },
         {
           "number": 151,
-          "name": "M&A Target Acquisition (Offensive)",
-          "trigger": "Perfect acquisition target becomes available, need to move in 48 hours",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board",
-            "M&A Team"
-          ],
-          "response": "Rapid due diligence, offer preparation, financing activation, exclusivity negotiation",
+          "protocol_code": "FS-151",
+          "name": "M&A Target \u2014 Rapid Acquisition (48-Hour Window)",
+          "trigger": "Ideal acquisition target becomes available with a 48-hour exclusive window before competitive auction opens",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "Board", "M&A Integration Team"],
+          "response": "CEO activates rapid acquisition protocol \u2014 preliminary financial due diligence completed within 24 hours, financing commitment obtained from pre-arranged banking relationship, and exclusivity offer submitted before the competitive process opens. Without pre-staged diligence teams and committed financing, 48-hour acquisition windows are consistently lost to buyers whose processes are ready \u2014 pre-staging the M&A capability is the only way to compete on speed.",
+          "response_window": "4 hours",
+          "financial_exposure": "$50M\u2013$5B+ in strategic acquisition value; target captured by competitor, improving their competitive position by equivalent amount",
           "domain": 3,
           "frequency": "rare",
           "budget": 5e7
         },
         {
           "number": 152,
-          "name": "Market Timing Play",
-          "trigger": "Market conditions perfect for bold strategic move (expansion, pivot, launch)",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board",
-            "Operations"
-          ],
-          "response": "Strategic execution, capital deployment, operational scaling, market positioning",
+          "protocol_code": "MO-152",
+          "name": "Market Timing \u2014 Bold Strategic Move",
+          "trigger": "Market conditions align for a bold strategic move \u2014 geographic expansion, product launch, or business model pivot",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "Board", "COO"],
+          "response": "CEO activates strategic opportunity protocol \u2014 capital deployment authorized within the confirmed window, operational scaling plan executed with pre-staged hiring and infrastructure, and market positioning launched before the timing advantage is visible to competitors. Without pre-staged execution capability, organizations identify the strategic window correctly but execute 3\u20136 months late \u2014 arriving after the first-mover has established the reference story.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$500M in first-mover market position advantage foregone by delayed execution",
           "domain": 8,
           "frequency": "rare",
           "budget": 2e7
         },
         {
           "number": 153,
-          "name": "Portfolio Rebalancing",
-          "trigger": "Strategic decision to divest underperformers and double down on winners",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board",
-            "Business Unit Leads"
-          ],
-          "response": "Divestiture execution, capital reallocation, organizational restructuring, stakeholder communication",
+          "protocol_code": "FS-153",
+          "name": "Portfolio Rebalancing \u2014 Divest and Double Down",
+          "trigger": "Strategic decision to divest underperforming business units and concentrate capital in highest-growth assets",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "Board", "Business Unit Leads"],
+          "response": "CEO and CFO activate portfolio rebalancing protocol \u2014 divestiture process initiated simultaneously with the capital reallocation decision, organizational restructuring designed to prevent retention of talent by the divested units, and investor communication positioned around strategic focus rather than financial distress. Without pre-staged divestiture execution, portfolio rebalancing decisions take 12\u201318 months to implement \u2014 during which the divested assets deteriorate and the capital remains deployed sub-optimally.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$200M in capital reallocation value; sub-optimal deployment costing $5M\u2013$50M per year of delay",
           "domain": 3,
           "frequency": "medium",
           "budget": 15e6
         },
         {
           "number": 154,
-          "name": "Platform Migration (Offensive)",
-          "trigger": "Strategic decision to migrate to new tech stack with coordinated cutover",
-          "stakeholders": [
-            "CTO",
-            "Engineering",
-            "Product",
-            "Customer Success",
-            "Operations"
-          ],
-          "response": "Migration planning, customer communication, parallel operations, cutover execution, rollback readiness",
+          "protocol_code": "TI-154",
+          "name": "Platform Migration (Strategic)",
+          "trigger": "Strategic decision to migrate to a new technology stack with coordinated customer cutover",
+          "stakeholders": ["CTO", "VP Engineering", "CPO", "VP Customer Success", "COO"],
+          "response": "CTO activates platform migration protocol \u2014 phased customer migration plan deployed with white-glove enterprise account support, parallel environment maintained through the transition period, and rollback capability preserved until 90% migration completion confirms stability. Without pre-staged migration infrastructure and customer support, platform migrations become crises \u2014 the technical complexity of migrating production environments is dwarfed by the customer relationship complexity of migrating enterprise accounts.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$30M in emergency migration costs and SLA penalties if migration fails without rollback readiness",
           "domain": 5,
           "frequency": "medium",
           "budget": 8e6
         },
         {
           "number": 156,
+          "protocol_code": "TI-156",
           "name": "API Ecosystem Expansion",
-          "trigger": "Strategic decision to open platform to developers and partners",
-          "stakeholders": [
-            "CTO",
-            "Product",
-            "Business Development",
-            "Legal",
-            "Developer Relations"
-          ],
-          "response": "API launch, developer documentation, partnership onboarding, ecosystem management",
+          "trigger": "Strategic decision to open platform to external developers and build an API-first ecosystem",
+          "stakeholders": ["CTO", "CPO", "VP Business Development", "General Counsel", "VP Developer Relations"],
+          "response": "CTO and Business Development activate ecosystem launch protocol \u2014 API documentation and developer portal deployed within 60 days, strategic ISV partners onboarded with dedicated integration support, and rate limiting and abuse protection deployed before public launch to protect platform economics. Without pre-staged developer security and abuse protection, open API launches attract automated exploitation within hours \u2014 creating operational and reputational damage that closes ecosystems before they establish momentum.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$50M in ecosystem value; platform security failures cost $2M\u2013$20M in remediation and damage developer trust permanently",
           "domain": 5,
           "frequency": "medium",
           "budget": 5e6
         },
         {
           "number": 157,
+          "protocol_code": "TI-157",
           "name": "Technical Standard Setting",
-          "trigger": "Opportunity to establish industry standard or protocol adoption",
-          "stakeholders": [
-            "CTO",
-            "Strategy",
-            "Standards Team",
-            "Legal",
-            "Industry Relations"
-          ],
-          "response": "Coalition building, standards participation, interoperability strategy, adoption campaign",
+          "trigger": "Industry standards body opens working group on a standard where your technology can become the reference implementation",
+          "stakeholders": ["CTO", "Chief Strategy Officer", "VP Standards", "General Counsel", "VP Industry Relations"],
+          "response": "CTO activates standards leadership protocol \u2014 working group membership secured within the nomination window, reference implementation contributed to establish technical credibility, and coalition of supporting vendors assembled before the competing proposal achieves voting majority. Without pre-staged standards body participation, standard setting processes are won by whoever shows up first with a working implementation \u2014 the technical quality of the winning standard is determined by process, not merit alone.",
+          "response_window": "72 hours",
+          "financial_exposure": "$10M\u2013$200M in market advantage; losing the standard means building compatibility to a competitor's architecture permanently",
           "domain": 5,
           "frequency": "rare",
           "budget": 3e6
         },
         {
           "number": 158,
+          "protocol_code": "MO-158",
           "name": "Acquisition Target Emerges",
-          "trigger": "Perfect company suddenly available for acquisition",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Board",
-            "M&A Advisors"
-          ],
-          "response": "Rapid assessment, offer preparation, financing, due diligence, negotiation",
+          "trigger": "Ideal strategic acquisition target becomes available \u2014 founder exit, competitive distress, or PE process opens",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "Board", "M&A Advisors"],
+          "response": "CEO activates acquisition target protocol \u2014 rapid diligence team deployed within 24 hours, valuation model built against pre-staged comparable analysis, and offer submitted before the broader market learns the target is available. Without pre-staged diligence playbooks and comparable models, acquisition opportunities are evaluated at the speed of internal approvals \u2014 while strategic buyers with pre-staged processes move at the speed of conviction.",
+          "response_window": "48 hours",
+          "financial_exposure": "$50M\u2013$2B+ in strategic value; target acquired by competitor delivers equivalent competitive disadvantage",
           "domain": 8,
           "frequency": "rare",
           "budget": 75e6
         },
         {
           "number": 159,
+          "protocol_code": "MO-159",
           "name": "Regulatory Change Opens Market",
-          "trigger": "New law or regulation creates market opportunity",
-          "stakeholders": [
-            "CEO",
-            "Strategy",
-            "Legal",
-            "Business Development",
-            "Operations"
-          ],
-          "response": "Market entry strategy, regulatory compliance, competitive positioning, go-to-market execution",
+          "trigger": "New law or regulation creates an immediate addressable market in a previously restricted or non-existent category",
+          "stakeholders": ["CEO", "Chief Strategy Officer", "General Counsel", "VP Business Development", "COO"],
+          "response": "CEO activates new market entry protocol \u2014 compliance infrastructure for the newly-opened market deployed within the regulatory effective date window, go-to-market team hired and trained before the market develops established competitive dynamics, and first customer contracts closed to establish reference story. Without pre-staged regulatory monitoring and market entry readiness, organizations discover new markets after competitors have already established first-mover positions \u2014 entering a market that appears open but has a de facto closed competitive dynamic.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$500M in new market revenue foregone by delayed entry; first-mover advantage worth $50M\u2013$2B in durable market share",
           "domain": 8,
           "frequency": "medium",
           "budget": 1e7
         },
         {
           "number": 160,
+          "protocol_code": "MO-160",
           "name": "Competitor Weakness Exploitation",
-          "trigger": "Rival stumbles, opportunity to steal market share",
-          "stakeholders": [
-            "CEO",
-            "CMO",
-            "Sales",
-            "Product",
-            "Strategy"
-          ],
-          "response": "Competitive campaign, customer acquisition, messaging offensive, market capture",
+          "trigger": "Competitor stumbles \u2014 earnings miss, security breach, executive scandal, or product failure \u2014 creating a market share capture window",
+          "stakeholders": ["CEO", "CMO", "Chief Revenue Officer", "CPO", "Chief Strategy Officer"],
+          "response": "CEO and CRO activate competitive capture protocol \u2014 all sales resources redirected to the competitor's named accounts within 24 hours of the vulnerability becoming public, targeted migration offer deployed before the competitor's PR response restores customer confidence, and competitive displacement campaign launched across all active evaluation cycles. Without pre-staged competitive capture capability, competitor vulnerability windows close within 2\u20134 weeks \u2014 reactive organizations watch the opportunity pass while preparing their campaign.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$100M in market share capture opportunity; competitive intelligence compounded by displaced accounts joining your reference list",
           "domain": 8,
           "frequency": "medium",
           "budget": 5e6
         },
         {
           "number": 161,
+          "protocol_code": "MO-161",
           "name": "Technology Breakthrough Deployment",
-          "trigger": "Internal innovation ready to deploy, first-mover advantage available",
-          "stakeholders": [
-            "CEO",
-            "CTO",
-            "Product",
-            "Marketing",
-            "Engineering"
-          ],
-          "response": "Launch coordination, IP protection, market positioning, customer onboarding, competitive defense",
+          "trigger": "Internal innovation achieves production readiness \u2014 first-mover advantage available but window is 60\u201390 days before competitors achieve parity",
+          "stakeholders": ["CEO", "CTO", "CPO", "CMO", "VP Engineering"],
+          "response": "CEO activates first-mover launch protocol \u2014 IP protection (patents, trade secrets) filed simultaneously with launch, go-to-market deployed within the competitive window, and analyst and press briefing campaign executed to establish the company as the originator of the innovation. Without pre-staged IP protection and go-to-market execution, technology breakthroughs are reverse-engineered and launched by competitors within 90 days \u2014 the first-mover advantage lasts only as long as the exclusive execution period.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$1B+ in market leadership value at stake; IP unprotected during delay creates permanent competitive access",
           "domain": 8,
           "frequency": "rare",
           "budget": 12e6
         },
         {
           "number": 162,
+          "protocol_code": "MO-162",
           "name": "Strategic Alliance Opportunity",
-          "trigger": "Partnership offer from major player requiring rapid decision",
-          "stakeholders": [
-            "CEO",
-            "CFO",
-            "Strategy",
-            "Legal",
-            "Board"
-          ],
-          "response": "Partnership evaluation, deal structuring, integration planning, announcement coordination",
+          "trigger": "Partnership offer from a market-leading platform or enterprise requiring a rapid board-level decision",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "General Counsel", "Board"],
+          "response": "CEO activates alliance capture protocol \u2014 deal structure assessed within 48 hours, strategic value and exclusivity implications evaluated at Board level, and term sheet submitted before the partner's internal timeline creates pressure to select a competing offer. Without pre-staged partnership evaluation frameworks, strategic alliance decisions are delayed by internal alignment processes \u2014 and partners read the delay as lack of strategic conviction.",
+          "response_window": "48 hours",
+          "financial_exposure": "$10M\u2013$200M in partnership value and market access; competitor that captures the alliance gains distribution or technology moat",
           "domain": 8,
           "frequency": "medium",
           "budget": 8e6
         },
         {
           "number": 163,
+          "protocol_code": "AG-163",
           "name": "AI Model Failure Response",
-          "trigger": "Production AI model produces incorrect, biased, or harmful outputs at scale",
-          "stakeholders": ["CTO", "CEO", "CLO", "CPO", "Communications"],
-          "response": "Model quarantine, fallback activation, impact assessment, stakeholder communication, root cause analysis",
+          "trigger": "Production AI model produces incorrect, biased, or harmful outputs at scale affecting customers",
+          "stakeholders": ["CTO", "CEO", "General Counsel", "CPO", "VP Communications"],
+          "response": "CTO activates AI model quarantine protocol \u2014 affected model suspended from production within 12 minutes, fallback logic activated, and impact assessment across all customer interactions during the failure window completed before external communication. Without pre-staged model quarantine procedures, AI failures compound \u2014 each additional model inference during the failure window creates additional liability, and the delay between detection and action defines the legal exposure window.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$2M\u2013$50M in customer harm liability; regulatory investigation trigger for high-risk AI applications in regulated sectors",
           "domain": 9,
           "frequency": "medium",
           "budget": 2e6
         },
         {
           "number": 164,
+          "protocol_code": "AG-164",
           "name": "AI Data Privacy Breach",
-          "trigger": "AI system exposes, misuses, or leaks sensitive customer or employee data",
-          "stakeholders": ["CLO", "CISO", "DPO", "CEO", "Communications"],
-          "response": "Data containment, regulatory notification, customer notification, forensic investigation, remediation",
+          "trigger": "AI system exposes, misuses, or leaks sensitive customer or employee data through model outputs or training",
+          "stakeholders": ["General Counsel", "CISO", "Data Protection Officer", "CEO", "VP Communications"],
+          "response": "CISO and DPO activate AI data breach protocol \u2014 affected model immediately suspended, data exposure scope quantified through output log analysis, and regulatory notification timelines assessed across GDPR (72 hours), CCPA, and sector-specific requirements simultaneously. Without pre-staged AI output auditing, the scope of an AI data breach takes days to determine \u2014 and GDPR notification windows run from discovery, not from scope determination.",
+          "response_window": "4 hours",
+          "financial_exposure": "GDPR: \u20AC20M or 4% global revenue; CCPA: $100\u2013$750 per affected consumer; class action compounding risk",
           "domain": 9,
           "frequency": "medium",
           "budget": 5e6
         },
         {
           "number": 165,
+          "protocol_code": "AG-165",
           "name": "AI Bias Detection Crisis",
-          "trigger": "AI system found to discriminate against protected groups in decisions",
-          "stakeholders": ["CEO", "CLO", "CHRO", "CPO", "DEI Officer"],
-          "response": "System suspension, bias audit, affected party outreach, remediation plan, regulatory engagement",
+          "trigger": "AI system found to discriminate against protected groups in consequential decisions (lending, hiring, housing, healthcare)",
+          "stakeholders": ["CEO", "General Counsel", "CHRO", "CPO", "Chief Diversity Officer"],
+          "response": "CEO and General Counsel activate AI bias response protocol \u2014 discriminatory system suspended immediately, independent bias audit commissioned from external AI auditor, and affected parties notified with remediation and redress options within the timeline required by applicable AI bias regulations. Without pre-staged bias monitoring and audit capability, AI discrimination is discovered through litigation or regulatory investigation \u2014 by which point the pattern of harm is extensive enough to support systemic finding.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$200M in regulatory fines and class action liability; consent decree risk requiring supervised AI operations",
           "domain": 9,
           "frequency": "medium",
           "budget": 3e6
         },
         {
           "number": 166,
+          "protocol_code": "AG-166",
           "name": "AI Hallucination Incident",
-          "trigger": "AI generates false information that causes business or reputational harm",
-          "stakeholders": ["CTO", "CLO", "Communications", "Customer Success", "CEO"],
-          "response": "Content retraction, customer notification, guardrail implementation, model retraining, trust recovery",
+          "trigger": "AI system generates false information causing documented customer, patient, or investor harm",
+          "stakeholders": ["CTO", "General Counsel", "VP Communications", "VP Customer Success", "CEO"],
+          "response": "CTO activates AI hallucination response protocol \u2014 affected model pulled from the specific use case within 1 hour, output guardrails strengthened, and customer notification issued with factual correction and remediation within 24 hours of harm confirmation. Without pre-staged guardrail deployment and customer remediation procedures, AI hallucination incidents compound as the false outputs continue to circulate \u2014 referenced by users who received them before the correction reached them.",
+          "response_window": "1 hour",
+          "financial_exposure": "$500K\u2013$20M in direct harm liability; professional liability exposure in legal, medical, or financial AI applications",
           "domain": 9,
           "frequency": "high",
           "budget": 15e5
         },
         {
           "number": 167,
+          "protocol_code": "AG-167",
           "name": "AI Regulatory Investigation",
-          "trigger": "Government agency launches investigation into AI practices or compliance",
-          "stakeholders": ["CLO", "CEO", "CTO", "Board", "External Counsel"],
-          "response": "Legal defense preparation, documentation review, regulatory cooperation, compliance enhancement",
+          "trigger": "Government agency launches formal investigation into AI practices, safety, or compliance obligations",
+          "stakeholders": ["General Counsel", "CEO", "CTO", "Board", "External AI Regulatory Counsel"],
+          "response": "General Counsel activates AI regulatory defense protocol \u2014 AI regulatory counsel retained with specific agency expertise, model documentation and testing records assembled for a proactive cooperation package, and compliance enhancement roadmap prepared to demonstrate good-faith improvement. Without pre-staged AI documentation and regulatory cooperation frameworks, AI investigations expand from narrow technical questions to broad governance audits \u2014 because documentation gaps are interpreted as governance failures.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$500M in AI enforcement penalties; consent decree requiring supervised AI operations across entire product line",
           "domain": 9,
           "frequency": "medium",
           "budget": 8e6
         },
         {
           "number": 168,
+          "protocol_code": "AG-168",
           "name": "AI Vendor Dependency Failure",
-          "trigger": "Critical AI vendor (OpenAI, Google, Anthropic) experiences major outage or policy change",
-          "stakeholders": ["CTO", "CPO", "COO", "Procurement", "Engineering"],
-          "response": "Fallback activation, vendor communication, alternative sourcing, customer impact mitigation",
+          "trigger": "Critical AI model provider (OpenAI, Anthropic, Google) experiences major outage or policy change affecting product functionality",
+          "stakeholders": ["CTO", "CPO", "COO", "Chief Procurement Officer", "VP Engineering"],
+          "response": "CTO activates AI vendor continuity protocol \u2014 secondary model provider activated from pre-configured fallback, product functionality degraded gracefully rather than failing hard, and customer communication deployed before support tickets reveal the scope of the impact. Without pre-staged multi-vendor AI architecture, primary AI vendor outages become product outages \u2014 the entire AI-dependent feature set goes offline for hours while emergency vendor substitution is attempted.",
+          "response_window": "1 hour",
+          "financial_exposure": "$500K\u2013$5M in SLA obligations and customer attrition per day of AI capability unavailability",
           "domain": 9,
           "frequency": "medium",
           "budget": 25e5
         },
         {
           "number": 169,
+          "protocol_code": "AG-169",
           "name": "AI Security Vulnerability",
-          "trigger": "Discovery of prompt injection, jailbreak, or other AI-specific security vulnerability",
-          "stakeholders": ["CISO", "CTO", "CLO", "Engineering", "Security Team"],
-          "response": "Vulnerability containment, patch development, penetration testing, security hardening",
+          "trigger": "Discovery of prompt injection, jailbreak, or model inversion vulnerability exploitable to extract data or bypass controls",
+          "stakeholders": ["CISO", "CTO", "General Counsel", "VP Engineering", "VP Security"],
+          "response": "CISO activates AI security response protocol \u2014 vulnerability contained through input sanitization or model suspension within 4 hours of confirmation, scope of potential exploitation assessed across all customer interactions, and coordinated disclosure managed with a 30-day patch window before public publication. Without pre-staged AI security controls, prompt injection vulnerabilities are exploited by attackers who find them before defenders confirm the severity \u2014 creating liability during the assessment period.",
+          "response_window": "4 hours",
+          "financial_exposure": "$1M\u2013$20M in data breach and regulatory liability if vulnerability is exploited before patching is complete",
           "domain": 9,
           "frequency": "high",
           "budget": 15e5
         },
         {
           "number": 170,
+          "protocol_code": "AG-170",
           "name": "AI Ethics Controversy",
-          "trigger": "Public outcry over AI use case, data sourcing, or decision-making practices",
-          "stakeholders": ["CEO", "Communications", "CLO", "CPO", "Ethics Board"],
-          "response": "Public response, ethics review, stakeholder engagement, policy revision, transparency measures",
+          "trigger": "Public outcry over AI use case, training data sourcing, or automated decision-making practices",
+          "stakeholders": ["CEO", "VP Communications", "General Counsel", "CPO", "AI Ethics Board"],
+          "response": "CEO activates AI ethics response protocol \u2014 independent ethics review initiated with a credible external panel, affected AI use case suspended pending review, and public statement issued within 24 hours that leads with accountability rather than defensiveness. Without pre-staged AI ethics governance, controversies grow \u2014 organizations that engage constructively and show genuine accountability consistently contain AI ethics controversies faster than those that defend the status quo.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$100M in brand erosion, enterprise deal deferrals, and regulatory scrutiny elevation",
           "domain": 9,
           "frequency": "medium",
           "budget": 2e6
         },
         {
           "number": 171,
+          "protocol_code": "AG-171",
           "name": "AI Intellectual Property Dispute",
-          "trigger": "AI-generated content or training data triggers IP infringement claims",
-          "stakeholders": ["CLO", "CTO", "CPO", "CEO", "External Counsel"],
-          "response": "Legal assessment, content audit, licensing review, settlement negotiation, policy update",
+          "trigger": "AI-generated content or training data sourcing triggers copyright, IP infringement, or misappropriation claim",
+          "stakeholders": ["General Counsel", "CTO", "CPO", "CEO", "External IP Counsel"],
+          "response": "General Counsel activates AI IP defense protocol \u2014 content provenance and training data licensing reviewed immediately, affected AI outputs suspended pending legal assessment, and settlement vs. litigation analysis completed within 72 hours based on the strength of the fair use and transformative use arguments. Without pre-staged training data licensing records, AI IP disputes proceed without the documentation needed to mount a credible fair use defense \u2014 converting a defensible case into a forced settlement.",
+          "response_window": "48 hours",
+          "financial_exposure": "$2M\u2013$500M+ in copyright infringement damages; consent order requiring training data deletion and model retraining",
           "domain": 9,
           "frequency": "medium",
           "budget": 5e6
         },
         {
           "number": 172,
+          "protocol_code": "AG-172",
           "name": "AI Model Performance Degradation",
-          "trigger": "AI model accuracy drops significantly due to data drift or model decay",
-          "stakeholders": ["CTO", "Data Science", "CPO", "Operations", "Customer Success"],
-          "response": "Model monitoring, retraining pipeline, data quality review, customer communication",
+          "trigger": "Production AI model accuracy drops significantly due to data drift, model decay, or distribution shift",
+          "stakeholders": ["CTO", "Data Science Lead", "CPO", "VP Operations", "VP Customer Success"],
+          "response": "CTO activates model performance response protocol \u2014 model performance root cause diagnosed within 24 hours through drift analysis, emergency retraining pipeline initiated with refreshed data, and customer communication issued for any applications where degraded accuracy created material business impact. Without pre-staged model monitoring and retraining pipelines, performance degradation is discovered through customer complaints rather than automated detection \u2014 by which point significant harm may have accumulated.",
+          "response_window": "24 hours",
+          "financial_exposure": "$500K\u2013$10M in customer harm and attrition from degraded AI-dependent workflows",
           "domain": 9,
           "frequency": "high",
           "budget": 1e6
         },
         {
           "number": 173,
+          "protocol_code": "AG-173",
           "name": "AI Cost Overrun Crisis",
-          "trigger": "AI infrastructure costs exceed budget by 50%+ threatening project viability",
-          "stakeholders": ["CFO", "CTO", "COO", "Procurement", "Engineering"],
-          "response": "Cost optimization, usage audit, vendor renegotiation, architecture review, budget reallocation",
+          "trigger": "AI inference or training infrastructure costs exceed approved budget by 50%+ threatening project viability",
+          "stakeholders": ["CFO", "CTO", "COO", "Chief Procurement Officer", "VP Engineering"],
+          "response": "CFO and CTO activate AI cost governance protocol \u2014 usage audit identifies cost concentration within 24 hours, model architecture optimization and caching strategy deployed to reduce inference costs, and vendor negotiation initiated with volume commitment for rate improvements. Without pre-staged cost monitoring and optimization playbooks, AI inference costs scale with product usage in ways that destroy unit economics \u2014 only becoming visible when the billing invoice arrives.",
+          "response_window": "24 hours",
+          "financial_exposure": "$500K\u2013$10M+ in excess annual AI infrastructure costs; unit economics destruction if uncontrolled scale compounds",
           "domain": 9,
           "frequency": "medium",
           "budget": 5e5
         },
         {
           "number": 174,
-          "name": "AI Deepfake Attack Response",
-          "trigger": "Deepfake content impersonating executives or company used for fraud or reputation attack",
-          "stakeholders": ["CEO", "CISO", "CLO", "Communications", "External Counsel"],
-          "response": "Content takedown, authentication protocols, public statement, fraud prevention, legal action",
+          "protocol_code": "AG-174",
+          "name": "AI Deepfake Attack",
+          "trigger": "Deepfake video, audio, or image impersonating executives used for wire fraud, reputation attack, or market manipulation",
+          "stakeholders": ["CEO", "CISO", "General Counsel", "VP Communications", "External Counsel"],
+          "response": "CISO and Communications activate deepfake response protocol \u2014 content takedown requests submitted to hosting platforms within 1 hour, FBI financial fraud unit notified, and proactive media statement published with authentic executive verification before the deepfake reaches mass circulation. Without pre-staged platform takedown relationships and executive authentication protocols, deepfake attacks achieve their intended purpose \u2014 wire transfers are initiated, markets move, and employee confusion spreads before the fabrication is confirmed.",
+          "response_window": "1 hour",
+          "financial_exposure": "$500K\u2013$50M in wire fraud losses; $5M\u2013$100M in market cap and reputational impact from uncontested deepfake circulation",
           "domain": 9,
           "frequency": "medium",
           "budget": 3e6
         },
         {
           "number": 175,
+          "protocol_code": "AG-175",
           "name": "AI Workforce Transition",
-          "trigger": "AI implementation displaces significant workforce requiring rapid transition planning",
-          "stakeholders": ["CHRO", "CEO", "CFO", "Operations", "Communications"],
-          "response": "Reskilling programs, severance planning, union engagement, public positioning, retention strategy",
+          "trigger": "AI implementation displaces significant workforce requiring coordinated and legally compliant transition planning",
+          "stakeholders": ["CHRO", "CEO", "CFO", "COO", "VP Communications"],
+          "response": "CHRO activates AI workforce transition protocol \u2014 retraining and reskilling programs deployed before displacement announcements, union engagement initiated where applicable, and public positioning framed around human-AI collaboration and new role creation rather than displacement. Without pre-staged reskilling infrastructure and communication plans, AI workforce transitions create labor relations, regulatory, and reputational crises that cost more to manage than the automation savings justify.",
+          "response_window": "72 hours",
+          "financial_exposure": "$5M\u2013$50M in labor relations, regulatory compliance, and reputational costs; WARN Act liability risk",
           "domain": 9,
           "frequency": "medium",
           "budget": 15e6
         },
         {
           "number": 176,
+          "protocol_code": "AG-176",
           "name": "AI Governance Framework Violation",
-          "trigger": "Internal audit reveals AI deployments violating established governance policies",
-          "stakeholders": ["CTO", "CLO", "Internal Audit", "CEO", "Risk Management"],
-          "response": "System audit, policy enforcement, remediation plan, governance strengthening, training rollout",
+          "trigger": "Internal audit reveals AI deployments operating outside established governance policies and risk thresholds",
+          "stakeholders": ["CTO", "General Counsel", "VP Internal Audit", "CEO", "Chief Risk Officer"],
+          "response": "CTO and General Counsel activate AI governance enforcement protocol \u2014 non-compliant systems suspended pending conformity review, root cause analysis identifying where governance approval processes were bypassed, and remediation plan with Board-level accountability established. Without pre-staged AI governance enforcement capability, governance framework violations compound \u2014 shadow AI deployments proliferate when the framework exists on paper but enforcement is absent.",
+          "response_window": "24 hours",
+          "financial_exposure": "$1M\u2013$10M in governance remediation costs; regulatory fine risk where AI governance failures constitute regulatory violations",
           "domain": 9,
           "frequency": "medium",
           "budget": 15e5
         },
         {
           "number": 177,
+          "protocol_code": "AG-177",
           "name": "Agentic AI Runaway Response",
-          "trigger": "Autonomous AI agent takes unexpected actions causing operational or financial harm",
-          "stakeholders": ["CTO", "COO", "CEO", "CLO", "Engineering"],
-          "response": "Agent termination, action reversal, damage assessment, guardrail implementation, oversight enhancement",
+          "trigger": "Autonomous AI agent takes unexpected consequential actions beyond authorized scope causing operational or financial harm",
+          "stakeholders": ["CTO", "COO", "CEO", "General Counsel", "VP Engineering"],
+          "response": "CTO activates agentic containment protocol \u2014 all active agent processes terminated within 12 minutes, all actions taken during the runaway window catalogued and reversed where possible, and hard authorization controls deployed before any agentic AI system is restarted. Without pre-staged agent kill switches and action cataloguing, agentic AI runaways are impossible to contain in real time \u2014 because the agent executes faster than human review can keep pace.",
+          "response_window": "12 minutes",
+          "financial_exposure": "$500K\u2013$50M in unauthorized transaction costs, data exposure, and remediation from unconstrained agent execution",
           "domain": 9,
           "frequency": "medium",
           "budget": 5e6
         },
         {
           "number": 178,
+          "protocol_code": "AG-178",
           "name": "AI Explainability Challenge",
-          "trigger": "Regulatory or legal requirement to explain AI decision-making in high-stakes context",
-          "stakeholders": ["CLO", "CTO", "Data Science", "Compliance", "External Counsel"],
-          "response": "Model documentation, explainability tools, regulatory submission, expert testimony preparation",
+          "trigger": "Regulatory or legal requirement to explain AI decision-making in a consequential high-stakes context (lending, hiring, healthcare, criminal justice)",
+          "stakeholders": ["General Counsel", "CTO", "Data Science Lead", "Chief Compliance Officer", "External Regulatory Counsel"],
+          "response": "General Counsel and Data Science activate AI explainability protocol \u2014 model documentation and SHAP/LIME explanation tools deployed against the challenged decision, adverse action notices prepared under ECOA/FCRA requirements, and expert testimony preparation initiated for any proceeding requiring technical evidence. Without pre-staged explainability tooling and documentation, regulated AI decisions cannot be defended in regulatory or legal proceedings \u2014 resulting in consent orders and model suspensions.",
+          "response_window": "48 hours",
+          "financial_exposure": "$2M\u2013$50M in regulatory penalties for unexplainable adverse AI decisions in regulated contexts; consent decree risk",
           "domain": 9,
           "frequency": "medium",
           "budget": 2e6
         },
         {
           "number": 179,
+          "protocol_code": "AG-179",
           "name": "AI Sustainability Compliance",
-          "trigger": "ESG requirements or regulations mandate AI environmental impact reporting",
-          "stakeholders": ["CFO", "CTO", "Sustainability", "Legal", "Operations"],
-          "response": "Carbon footprint assessment, efficiency optimization, reporting compliance, green AI transition",
+          "trigger": "ESG requirements or regulations mandate AI environmental impact reporting \u2014 energy consumption, carbon footprint, or water usage disclosure",
+          "stakeholders": ["CFO", "CTO", "Chief Sustainability Officer", "General Counsel", "VP Operations"],
+          "response": "CTO and Sustainability activate AI energy impact protocol \u2014 data center energy consumption and carbon attribution quantified by AI workload within 60 days, efficiency optimization deployed, and regulatory disclosure prepared with third-party verification for credibility. Without pre-staged energy metering by workload type, AI sustainability disclosures are estimates that cannot withstand regulatory or investor scrutiny \u2014 and retroactive measurement is technically difficult.",
+          "response_window": "72 hours",
+          "financial_exposure": "$500K\u2013$10M in regulatory reporting penalties; $2M\u2013$20M in mandatory infrastructure investment if compliance requires architectural changes",
           "domain": 9,
           "frequency": "low",
           "budget": 1e6
         },
         {
           "number": 180,
+          "protocol_code": "AG-180",
           "name": "AI Competitive Disruption",
-          "trigger": "Competitor deploys AI capability that fundamentally changes market dynamics",
-          "stakeholders": ["CEO", "CTO", "Strategy", "CPO", "Board"],
-          "response": "Competitive assessment, AI acceleration strategy, talent acquisition, partnership exploration",
+          "trigger": "Competitor deploys an AI capability that fundamentally changes market dynamics and customer expectations",
+          "stakeholders": ["CEO", "CTO", "Chief Strategy Officer", "CPO", "Board"],
+          "response": "CEO activates AI competitive response protocol \u2014 capability gap assessment completed within 72 hours, AI acceleration strategy developed with resourcing and timeline, and customer communication deployed to anchor loyalty before competitor narrative reaches your installed base. Without pre-staged AI competitive monitoring and rapid deployment capability, AI competitive disruptions create 12\u201318 month capability gaps \u2014 because AI product development cannot be compressed below a threshold minimum even with unlimited resources.",
+          "response_window": "72 hours",
+          "financial_exposure": "$20M\u2013$500M in market cap and revenue impact from sustained competitive capability disadvantage",
           "domain": 9,
           "frequency": "medium",
           "budget": 2e7
         },
         {
           "number": 181,
+          "protocol_code": "CP-181",
           "name": "Compound: Cyber + Regulatory Cascade",
-          "trigger": "Data breach detected with regulatory reporting obligations across multiple jurisdictions (GDPR, SEC, state notification laws)",
-          "stakeholders": ["CISO", "General Counsel", "DPO", "CFO", "VP Communications", "CTO"],
-          "response": "Parallel activation of cyber containment, regulatory notification, legal response, and stakeholder communication workstreams with unified command structure",
+          "trigger": "Data breach detected with regulatory reporting obligations across multiple jurisdictions \u2014 GDPR, SEC 8-K, and state notification laws triggering simultaneously with conflicting timelines",
+          "stakeholders": ["CISO", "General Counsel", "Data Protection Officer", "CFO", "VP Communications", "CTO"],
+          "response": "Parallel activation of cyber containment, regulatory notification, legal response, and stakeholder communication workstreams with unified executive command \u2014 GDPR 72-hour DPA notification, SEC 4-business-day 8-K disclosure, and state notification windows all managed concurrently without each workstream compromising the others. Without pre-staged multi-jurisdiction notification workflows, the fastest-running clock (GDPR 72 hours) is missed while the team focuses on the most visible crisis (SEC disclosure) \u2014 resulting in regulatory penalties from both.",
+          "response_window": "4 hours",
+          "financial_exposure": "GDPR: \u20AC20M + SEC enforcement: $50M+ + class action: $10M\u2013$500M \u2014 combined exposure $80M\u2013$600M+ across three simultaneous tracks",
           "domain": 5,
           "frequency": "high",
           "budget": 25e5,
@@ -33566,10 +33556,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 182,
+          "protocol_code": "CP-182",
           "name": "Compound: Geopolitical + Supply Chain Disruption",
-          "trigger": "Geopolitical event (tariff, sanctions, conflict) impacts critical supplier or trade route affecting multiple business units",
-          "stakeholders": ["COO", "CPO", "CFO", "VP Supply Chain", "General Counsel", "VP Sales", "Board Secretary"],
-          "response": "Simultaneous supplier diversification, cost structure realignment, customer communication, and board briefing with cross-functional war room coordination",
+          "trigger": "Geopolitical event \u2014 tariff, sanctions, or conflict \u2014 impacts critical supplier or trade route affecting multiple business units simultaneously",
+          "stakeholders": ["COO", "Chief Procurement Officer", "CFO", "VP Supply Chain", "General Counsel", "Chief Revenue Officer", "Board Secretary"],
+          "response": "Simultaneous supplier diversification, cost structure realignment, customer communication, and board briefing with cross-functional war room coordination \u2014 preventing the regulatory compliance track from being overwhelmed by the operational crisis track, while the sales team has accurate information to manage enterprise customer expectations. Without pre-staged dual-track execution, geopolitical disruptions are managed sequentially \u2014 the supply chain team solves the sourcing problem while customers defect for predictability.",
+          "response_window": "4 hours",
+          "financial_exposure": "$10M\u2013$200M in operational disruption; $20M\u2013$500M in customer attrition if communication lags behind the supply chain recovery",
           "domain": 2,
           "frequency": "high",
           "budget": 5e6,
@@ -33577,10 +33570,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 183,
+          "protocol_code": "CP-183",
           "name": "Compound: Climate + Operations Cascade",
-          "trigger": "Severe weather event or climate disruption threatens or impacts primary operational facility with customer-facing service dependencies",
+          "trigger": "Severe weather event or climate disruption threatens primary operational facility with cascading impact on customer-facing service commitments",
           "stakeholders": ["COO", "VP Facilities", "CHRO", "VP Customer Success", "Chief Risk Officer", "VP Logistics"],
-          "response": "Parallel workstreams for employee safety, facility protection, customer service continuity, logistics rerouting, and insurance/recovery planning with 72-hour recovery timeline",
+          "response": "Parallel workstreams for employee safety, facility protection, customer service continuity, logistics rerouting, and insurance/recovery planning with a 72-hour recovery timeline \u2014 the employee safety track and customer communication track running simultaneously rather than sequentially. Without pre-staged continuity plans, climate events force a triage decision between employee safety and customer service continuity \u2014 when they should be parallel protocols that don't compete.",
+          "response_window": "1 hour",
+          "financial_exposure": "$5M\u2013$100M in insurable losses; $2M\u2013$20M in customer SLA penalties and attrition if service continuity is not maintained",
           "domain": 2,
           "frequency": "medium",
           "budget": 3e6,
@@ -33588,10 +33584,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 184,
+          "protocol_code": "CP-184",
           "name": "Compound: AI + Workforce Transformation Crisis",
-          "trigger": "AI automation initiative leaked or announced prematurely triggering workforce concern, union response, media attention, or regulatory inquiry",
+          "trigger": "AI automation initiative leaked or announced prematurely \u2014 triggering workforce concern, union response, media attention, and regulatory inquiry simultaneously",
           "stakeholders": ["CHRO", "CTO", "General Counsel", "VP Communications", "Chief AI Officer", "CEO"],
-          "response": "Coordinated stakeholder management across HR, legal, communications, and technology with unified messaging, employee reskilling initiatives, and regulatory compliance for AI workforce transformation",
+          "response": "Coordinated stakeholder management across HR, legal, communications, and technology with unified messaging and employee reskilling initiatives \u2014 the workforce narrative, the regulatory compliance narrative, and the innovation narrative aligned to prevent each from contradicting the others. Without pre-staged unified messaging, AI workforce announcements generate three separate crises simultaneously \u2014 the HR crisis, the media crisis, and the regulatory crisis \u2014 each managed by a different team with conflicting instincts.",
+          "response_window": "24 hours",
+          "financial_exposure": "$5M\u2013$50M in combined labor relations, regulatory, and brand damage; talent attrition risk amplified by media coverage",
           "domain": 9,
           "frequency": "medium",
           "budget": 15e5,
@@ -33599,10 +33598,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 185,
+          "protocol_code": "CP-185",
           "name": "Compound: Activist Investor + Regulatory Inquiry",
-          "trigger": "Activist investor discloses a significant stake while a concurrent federal regulatory inquiry opens simultaneously, creating parallel governance defense and compliance obligations that each amplify the other",
+          "trigger": "Activist investor discloses a significant stake while a concurrent federal regulatory inquiry opens simultaneously \u2014 each amplifying the other's pressure on management and the Board",
           "stakeholders": ["CEO", "General Counsel", "CFO", "Chief Compliance Officer", "Chief IR Officer", "Board Chair", "Chief Strategy Officer"],
-          "response": "Dual-track activation of investor defense and regulatory response protocols with unified executive command \u2014 preventing the regulatory inquiry from becoming activist ammunition while separately managing each track with dedicated outside counsel",
+          "response": "Dual-track activation of investor defense and regulatory response protocols with unified executive command \u2014 preventing the regulatory inquiry from becoming activist ammunition while separately managing each track with dedicated outside counsel and clear privilege separation. Without pre-staged dual-track execution, the activist uses the regulatory inquiry as evidence of governance failure, and the regulator uses the activist pressure as evidence of underlying business conduct problems \u2014 each amplifying the other until management is fighting on both fronts simultaneously.",
+          "response_window": "24 hours",
+          "financial_exposure": "$20M\u2013$200M in activist defense and regulatory exposure; board composition and strategic control at risk",
           "domain": 2,
           "frequency": "high",
           "budget": 35e5,
@@ -33610,10 +33612,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 186,
+          "protocol_code": "CP-186",
           "name": "Compound: Ransomware + Brand Crisis",
-          "trigger": "Ransomware attack becomes publicly known before full containment, triggering simultaneous cyber incident response and brand reputation crisis with media inquiry, customer concern, and social media pressure",
-          "stakeholders": ["CISO", "CEO", "CMO", "General Counsel", "CTO", "Head of PR", "CFO", "COO"],
-          "response": "Parallel cyber containment and public communications protocol with unified executive messaging \u2014 preserving customer trust and media narrative while technical recovery is underway, preventing brand collapse from compounding the operational crisis",
+          "trigger": "Ransomware attack becomes publicly known before containment is complete \u2014 triggering simultaneous cyber incident response and brand reputation crisis with media inquiry, customer concern, and social media pressure",
+          "stakeholders": ["CISO", "CEO", "CMO", "General Counsel", "CTO", "VP Communications", "CFO", "COO"],
+          "response": "Parallel cyber containment and public communications protocol with unified executive messaging \u2014 preserving customer trust and media narrative while technical recovery is underway, preventing brand collapse from compounding the operational crisis through information vacuum. Without unified command for both tracks, the cyber team suppresses information to protect the investigation while the communications team needs information to manage the brand crisis \u2014 the silence is interpreted as concealment.",
+          "response_window": "1 hour",
+          "financial_exposure": "$5M\u2013$50M in cyber remediation plus $10M\u2013$200M in brand damage and customer attrition \u2014 brand track often exceeds cyber track in total cost",
           "domain": 5,
           "frequency": "high",
           "budget": 4e6,
@@ -33621,10 +33626,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 187,
+          "protocol_code": "CP-187",
           "name": "Compound: CEO Departure + Activist Campaign",
-          "trigger": "CEO departure announced or discovered concurrently with an activist investor campaign that views leadership transition as a vulnerability to exploit for board seats or strategic demands",
+          "trigger": "CEO departure announced or discovered concurrently with an activist investor campaign that views the leadership transition as a vulnerability to exploit for board seats or strategic demands",
           "stakeholders": ["Board Chair", "Lead Independent Director", "CFO", "CHRO", "General Counsel", "Chief IR Officer", "Chief Strategy Officer"],
-          "response": "Simultaneous leadership succession, investor communication, and activist defense protocols with board-led unified narrative \u2014 establishing succession credibility before activist frames the leadership vacuum as evidence of governance failure",
+          "response": "Simultaneous leadership succession, investor communication, and activist defense protocols with board-led unified narrative \u2014 establishing succession credibility before the activist frames the leadership vacuum as evidence of governance failure. Without pre-staged succession and activist defense running simultaneously, the Board is forced to choose between managing the succession announcement and managing the activist response \u2014 doing both reactively creates the governance failure narrative the activist is seeking.",
+          "response_window": "24 hours",
+          "financial_exposure": "$20M\u2013$500M in market cap impact; board control and strategic direction at risk if activist captures proxy narrative during leadership transition",
           "domain": 9,
           "frequency": "medium",
           "budget": 28e5,
@@ -33632,10 +33640,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 188,
+          "protocol_code": "CP-188",
           "name": "Compound: M&A Announcement + Talent Exodus",
           "trigger": "Merger or acquisition announcement triggers immediate top talent flight risk as employees assess role uncertainty and competitors begin targeted recruiting of key personnel",
           "stakeholders": ["CEO", "CHRO", "CFO", "Chief Strategy Officer", "Head of M&A Integration", "General Counsel", "CMO"],
-          "response": "Parallel retention offensive and deal communication protocol with aligned employee and investor narrative \u2014 capturing key talent before competitor recruiters reach them while maintaining deal momentum and stakeholder confidence",
+          "response": "Parallel retention offensive and deal communication protocol with aligned employee and investor narrative \u2014 capturing key talent before competitor recruiters reach them while maintaining deal momentum and stakeholder confidence in integration execution. Without simultaneous retention activation during deal announcement, acquirers lose 15\u201325% of the acquired company's most valuable talent in the first 90 days \u2014 destroying the human capital that justified the acquisition premium.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$100M in acquisition value destruction from talent loss in the first 90 days post-announcement",
           "domain": 2,
           "frequency": "high",
           "budget": 22e5,
@@ -33643,10 +33654,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 189,
+          "protocol_code": "CP-189",
           "name": "Compound: Product Recall + Regulatory + Brand",
           "trigger": "Product safety issue triggers simultaneous voluntary or mandatory recall obligation, consumer protection enforcement inquiry, and brand reputation crisis across media and social channels",
-          "stakeholders": ["CEO", "Chief Quality Officer", "General Counsel", "Chief Compliance Officer", "CMO", "COO", "CFO", "Head of Customer Success"],
-          "response": "Tri-track activation of regulatory compliance, product recall logistics, and public communications with a unified consumer safety narrative \u2014 coordinating all three workstreams under single executive command to prevent each from contradicting the others",
+          "stakeholders": ["CEO", "Chief Quality Officer", "General Counsel", "Chief Compliance Officer", "CMO", "COO", "CFO", "VP Customer Success"],
+          "response": "Tri-track activation of regulatory compliance, product recall logistics, and public communications with a unified consumer safety narrative \u2014 coordinating all three workstreams under single executive command to prevent each from contradicting the others across regulatory, operational, and brand dimensions. Without tri-track unified command, product recall communications contradict regulatory filings, and media statements undermine legal positions \u2014 each track managed correctly in isolation creates contradictions that amplify the crisis.",
+          "response_window": "4 hours",
+          "financial_exposure": "$10M\u2013$500M in recall costs, regulatory fines, and brand damage \u2014 compounded when tracks are uncoordinated",
           "domain": 3,
           "frequency": "medium",
           "budget": 55e5,
@@ -33654,10 +33668,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 190,
+          "protocol_code": "CP-190",
           "name": "Compound: Data Breach + SEC Disclosure + Class Action",
-          "trigger": "Data breach involving material nonpublic information triggers simultaneous SEC 8-K disclosure obligation, shareholder class action lawsuit risk, and multi-state customer notification requirements under conflicting timelines",
+          "trigger": "Data breach involving material nonpublic information triggers simultaneous SEC 8-K disclosure obligation, shareholder class action risk, and multi-state customer notification under conflicting timelines",
           "stakeholders": ["CISO", "General Counsel", "CFO", "CEO", "Chief Compliance Officer", "Board Chair", "VP Investor Relations"],
-          "response": "Coordinated cyber response, securities disclosure, and litigation hold protocol \u2014 SEC 8-K filed within required window while preserving privilege and ensuring regulatory compliance across all three tracks without one track compromising another",
+          "response": "Coordinated cyber response, securities disclosure, and litigation hold protocol \u2014 SEC 8-K filed within the required 4-business-day window while preserving privilege for class action defense and ensuring regulatory compliance across all three tracks without one track compromising another. Without pre-staged three-track coordination, the SEC disclosure timeline competes with the litigation hold strategy and the customer notification timeline \u2014 and each decision made to optimize one track creates exposure on another.",
+          "response_window": "4 hours",
+          "financial_exposure": "SEC enforcement $10M\u2013$500M + class action $5M\u2013$500M + state notification penalties \u2014 combined exposure $20M\u2013$1B+",
           "domain": 5,
           "frequency": "high",
           "budget": 6e6,
@@ -33665,10 +33682,13 @@ var init_playbooksData = __esm({
         },
         {
           "number": 191,
-          "name": "Compound: ESG Controversy + Investor Pressure",
+          "protocol_code": "CP-191",
+          "name": "Compound: ESG Controversy + Activist Investor Pressure",
           "trigger": "ESG controversy \u2014 environmental incident, governance failure, or social impact event \u2014 triggers an activist investor campaign using the ESG failures as public campaign ammunition with institutional shareholder pressure",
           "stakeholders": ["CEO", "Chief Sustainability Officer", "General Counsel", "CFO", "Board Chair", "Chief IR Officer", "CMO"],
-          "response": "Simultaneous ESG response and investor defense protocol with unified stakeholder narrative \u2014 converting ESG accountability into competitive repositioning before the activist frames the failure as evidence of systemic governance breakdown",
+          "response": "Simultaneous ESG response and investor defense protocol with unified stakeholder narrative \u2014 converting ESG accountability into competitive repositioning before the activist frames the failure as evidence of systemic governance breakdown. Without simultaneous ESG remediation and investor defense, the company is seen as managing the optics rather than the substance \u2014 the institutional shareholders who could have been allies instead defer to the activist's governance narrative.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$200M in activist defense costs; board control at risk; institutional ESG exclusion compounding the activist pressure",
           "domain": 7,
           "frequency": "medium",
           "budget": 2e6,
@@ -33676,17 +33696,62 @@ var init_playbooksData = __esm({
         },
         {
           "number": 192,
-          "name": "Compound: Supply Chain Collapse + Customer Crisis",
-          "trigger": "Critical supplier failure directly impacts fulfillment commitments to enterprise customers, triggering simultaneous procurement emergency and customer retention crisis as enterprise buyers escalate and evaluate alternatives",
-          "stakeholders": ["COO", "Chief Procurement Officer", "Chief Revenue Officer", "CFO", "CMO", "Head of Customer Success", "CEO"],
-          "response": "Parallel supplier continuity and enterprise customer retention protocols with proactive customer communication \u2014 issuing alternate supplier POs and personally contacting at-risk enterprise accounts before they discover the disruption through their own supply chain monitoring",
+          "protocol_code": "CP-192",
+          "name": "Compound: Supply Chain Collapse + Enterprise Customer Crisis",
+          "trigger": "Critical supplier failure directly impacts fulfillment commitments to enterprise customers \u2014 triggering simultaneous procurement emergency and customer retention crisis as enterprise buyers escalate and evaluate alternatives",
+          "stakeholders": ["COO", "Chief Procurement Officer", "Chief Revenue Officer", "CFO", "CMO", "VP Customer Success", "CEO"],
+          "response": "Parallel supplier continuity and enterprise customer retention protocols with proactive customer communication \u2014 issuing alternate supplier purchase orders and personally contacting at-risk enterprise accounts before they discover the disruption through their own supply chain monitoring. Without simultaneous supplier sourcing and customer communication, enterprises discover the disruption through their own monitoring and begin qualification of alternative suppliers \u2014 by the time your account team calls, the replacement evaluation is already in progress.",
+          "response_window": "4 hours",
+          "financial_exposure": "$10M\u2013$200M in combined SLA penalties, emergency sourcing premiums, and enterprise customer attrition",
           "domain": 3,
           "frequency": "high",
           "budget": 45e5,
           "compound": true
+        },
+        {
+          "number": 193,
+          "protocol_code": "CP-193",
+          "name": "Compound: EU AI Act + Data Breach Cascade",
+          "trigger": "AI system data breach triggers simultaneous EU AI Act non-compliance (high-risk system exposure), GDPR notification obligations, and AI liability claims \u2014 three parallel regulatory tracks with conflicting timelines and legal strategies",
+          "stakeholders": ["General Counsel", "CISO", "Chief AI Officer", "Data Protection Officer", "CEO", "Board Chair", "External EU Regulatory Counsel"],
+          "response": "Tri-track activation of EU AI Act compliance, GDPR breach notification, and AI liability defense \u2014 EU AI Act counsel and data protection counsel engaged in parallel, not sequentially, with unified messaging that prevents the breach from triggering AI system suspension orders while the GDPR notification establishes the regulatory cooperation record. Without tri-track pre-staging, the three regulatory tracks operate on different timelines \u2014 GDPR requires 72-hour notification, EU AI Act requires immediate market withdrawal assessment, and AI liability defense requires privilege preservation across both \u2014 creating contradictions if managed as sequential rather than parallel workstreams.",
+          "response_window": "4 hours",
+          "financial_exposure": "EU AI Act: \u20AC35M (7% revenue) + GDPR: \u20AC20M (4% revenue) + AI liability class action: \u20AC10M\u2013\u20AC100M \u2014 combined \u20AC65M\u2013\u20AC200M+ across three simultaneous regulatory tracks",
+          "domain": 9,
+          "frequency": "medium",
+          "budget": 8e6,
+          "compound": true
+        },
+        {
+          "number": 194,
+          "protocol_code": "CP-194",
+          "name": "Compound: ERP Failure + Enterprise Customer SLA Crisis",
+          "trigger": "ERP go-live failure (SAP/Oracle/Workday) simultaneously disrupts order management, invoicing, and logistics \u2014 triggering contractual SLA breach notifications from enterprise customers before system restoration",
+          "stakeholders": ["COO", "CTO", "CFO", "VP Customer Success", "VP Strategic Accounts", "Implementation Partner Lead", "CEO"],
+          "response": "Dual-track activation of ERP crisis containment and enterprise customer retention \u2014 technical team executes rollback-or-forward decision while senior account executives personally contact every enterprise account with active SLA obligations to negotiate cure periods before breach penalties are automatically triggered. Without simultaneous execution, enterprise customers activate their own contingency sourcing and alternative supplier qualifications within 48 hours of discovering the disruption \u2014 converting a technology crisis into permanent strategic account attrition.",
+          "response_window": "4 hours",
+          "financial_exposure": "$5M\u2013$50M in ERP remediation costs plus $10M\u2013$100M in SLA penalties and strategic account attrition if customer track lags technical track",
+          "domain": 2,
+          "frequency": "medium",
+          "budget": 1e7,
+          "compound": true
+        },
+        {
+          "number": 195,
+          "protocol_code": "CP-195",
+          "name": "Compound: Dual-Jurisdiction Regulatory Inquiry",
+          "trigger": "Simultaneous regulatory inquiries from two or more jurisdictions \u2014 SEC + FCA, DOJ + EU DG COMP, or CFPB + State AG \u2014 each with different document requests, privilege rules, and cooperation standards that conflict with each other",
+          "stakeholders": ["CEO", "General Counsel", "CFO", "Chief Compliance Officer", "Board Chair", "US Outside Counsel", "International Outside Counsel"],
+          "response": "Dual-jurisdiction defense protocol activated with separate outside counsel in each jurisdiction \u2014 document production, cooperation posture, and privilege claims coordinated across jurisdictions to prevent each jurisdiction's response from creating exposure in the other, with a unified Board-level oversight structure. Without pre-staged multi-jurisdiction coordination, responses to one regulator inadvertently waive privilege or create inconsistencies that the other regulator exploits \u2014 the intersection of two investigations is not additive but multiplicative in exposure.",
+          "response_window": "24 hours",
+          "financial_exposure": "$20M\u2013$1B+ across jurisdictions; inconsistent regulatory posture can double fines and trigger criminal referrals in either jurisdiction",
+          "domain": 4,
+          "frequency": "medium",
+          "budget": 15e6,
+          "compound": true
         }
       ],
-      "total": 170
+      "total": 180
     };
   }
 });
@@ -33745,11 +33810,14 @@ function getFallbackLibraryData() {
       tier2Stakeholders: p.stakeholders.slice(2, 4),
       tier3Stakeholders: [],
       primaryResponseStrategy: p.response,
+      protocolCode: p.protocol_code ?? null,
+      responseWindow: p.response_window ?? null,
+      financialExposure: p.financial_exposure ?? null,
       preApprovedBudget: String(p.budget),
       activationFrequencyTier: p.frequency,
       severityScore: 7,
       timeSensitivity: "hours",
-      targetResponseSpeed: "4 hours",
+      targetResponseSpeed: p.response_window ?? "4 hours",
       outcomeMetrics: ["Response time", "Stakeholder satisfaction"],
       createdAt: /* @__PURE__ */ new Date(),
       updatedAt: /* @__PURE__ */ new Date(),

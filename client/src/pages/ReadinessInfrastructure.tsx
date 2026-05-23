@@ -141,7 +141,7 @@ export default function ReadinessInfrastructure() {
                 {
                   phase: "02",
                   label: "Decision Architecture",
-                  desc: "170 Readiness Protocols pre-built across three domains. Every trigger is matched to a response before the trigger fires. No scenario without a protocol.",
+                  desc: "180 Readiness Protocols pre-built across three domains. Every trigger is matched to a response before the trigger fires. No scenario without a protocol.",
                 },
                 {
                   phase: "03",
@@ -348,7 +348,7 @@ export default function ReadinessInfrastructure() {
             {/* Platform metrics strip */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 2, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}>
               {[
-                { n: "170", label: "Readiness Protocols" },
+                { n: "180", label: "Readiness Protocols" },
                 { n: "221", label: "Monitored Triggers" },
                 { n: "12 min", label: "Execution Time" },
                 { n: "3,600×", label: "Execution Head Start" },

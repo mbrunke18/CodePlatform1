@@ -285,7 +285,7 @@ export default function GuidedStart() {
             <div style={{ display: 'flex', justifyContent: 'center', gap: 32, marginTop: 20 }}>
               {[
                 { val: '248+', label: 'Live signals monitored' },
-                { val: '170',  label: 'Readiness Protocols ready' },
+                { val: '180',  label: 'Readiness Protocols ready' },
                 { val: '12m',  label: 'Target response time' },
               ].map(s => (
                 <div key={s.label} style={{ textAlign: 'center' }}>

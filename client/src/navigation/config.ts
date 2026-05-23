@@ -14,7 +14,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Strategic Playbooks Library',
           path: '/identify/playbooks',
           icon: '📚',
-          description: 'Browse all 170 pre-built playbooks across 9 domains'
+          description: 'Browse all 180 pre-built playbooks across 9 domains'
         },
         {
           id: 'my-playbooks',
@@ -70,7 +70,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Readiness Audit',
           path: '/playbook-readiness',
           icon: '🔍',
-          description: 'Evaluate protocol coverage gaps and pre-staging completeness across all 170 Readiness Protocols'
+          description: 'Evaluate protocol coverage gaps and pre-staging completeness across all 180 Readiness Protocols'
         }
       ]
     },

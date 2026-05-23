@@ -940,7 +940,7 @@ export default function TryDemo() {
                     ))}
                   </div>
                   <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', gap: 20 }}>
-                    {[['170', 'Readiness Protocols ready'], ['248+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
+                    {[['180', 'Readiness Protocols ready'], ['248+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
                       <div key={label}>
                         <p style={{ fontSize: 17, fontWeight: 700, color: GOLD, margin: 0, lineHeight: 1 }}>{val}</p>
                         <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', margin: '2px 0 0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</p>
@@ -1881,7 +1881,7 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  {/* 170 Readiness Protocols */}
+                  {/* 180 Readiness Protocols */}
                   <Card className="bg-white border-[#C9A84C]">
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-[#C9A84C] mb-1">170</p>
@@ -2073,7 +2073,7 @@ export default function TryDemo() {
               style={{ padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 0, fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
             >
               <BookOpen style={{ width: 14, height: 14 }} />
-              Browse All 170 Readiness Protocols
+              Browse All 180 Readiness Protocols
             </button>
           </div>
         </div>

@@ -26,7 +26,7 @@ const INCLUDED = [
     category: "Protocol Library",
     items: [
       "5 fully staged Readiness Protocols — built to your scenarios",
-      "Access to all 170 core protocols as reference and templates",
+      "Access to all 180 core protocols as reference and templates",
       "Protocol Builder for custom protocol creation",
       "Governance & versioning controls with full audit trail",
     ],

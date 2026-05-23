@@ -325,7 +325,7 @@ export default function KeynoteDemo() {
           className="flex gap-8 relative z-10"
         >
           {[
-            { value: '170', label: 'Strategic Readiness Protocols', icon: BookOpen },
+            { value: '180', label: 'Strategic Readiness Protocols', icon: BookOpen },
             { value: '9', label: 'Strategic Domains', icon: Globe },
             { value: '<12min', label: 'Signal to Action', icon: Timer },
             { value: '30+', label: 'Enterprise Integrations', icon: Workflow },

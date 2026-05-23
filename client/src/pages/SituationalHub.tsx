@@ -176,7 +176,7 @@ export default function SituationalHub() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
                   { title: 'Readiness Exposure', desc: 'Understand where your response readiness is strongest and where gaps exist', tab: 'exposure', icon: Eye, color: GOLD },
-                  { title: 'Practice Drills',     desc: 'Run live simulations against any of the 170 Readiness Protocols before an event occurs', tab: 'drills', icon: Zap, color: TEAL },
+                  { title: 'Practice Drills',     desc: 'Run live simulations against any of the 180 Readiness Protocols before an event occurs', tab: 'drills', icon: Zap, color: TEAL },
                   { title: 'Coordinate Response', desc: 'Pre-define escalation paths, stakeholder roles, and decision gates', tab: 'coordination', icon: Users, color: NAVY },
                 ].map(item => (
                   <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
@@ -350,7 +350,7 @@ export default function SituationalHub() {
                       <div className="p-3 bg-white/10"><Zap className="h-6 w-6 text-[#C9A84C]" /></div>
                       <div>
                         <h3 className="font-semibold text-white">The best time to practice is before an event</h3>
-                        <p className="text-sm text-white/60">All 170 Readiness Protocols are available as full simulation drills</p>
+                        <p className="text-sm text-white/60">All 180 Readiness Protocols are available as full simulation drills</p>
                       </div>
                     </div>
                     <Link href="/practice-drills"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] whitespace-nowrap">Browse All Drills <ArrowRight className="h-4 w-4 ml-2" /></Button></Link>

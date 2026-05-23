@@ -125,7 +125,7 @@ export default function HowItWorks() {
               { num: "01", stage: "IDENTIFY", label: "Situation Universe", body: "You define what you're watching for — 221 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
               { num: "02", stage: "DETECT", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, act on your terms.", accent: TEAL },
               { num: "03", stage: "AUTHORIZE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives authorize from pre-staged options — not figure out ownership under pressure. Authority preserved at every gate.", accent: GOLD },
-              { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "170 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },
+              { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "180 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },
               { num: "05", stage: "ADVANCE", label: "Institutional Memory", body: "Every activation is scored and encoded. Each cycle makes the next response faster, sharper, more decisive.", accent: GOLD },
             ].map((s, i) => (
               <div key={i} style={{ background: NAVY, padding: "28px 22px", borderTop: `3px solid ${s.accent}` }}>
@@ -250,7 +250,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* ── 02: THE 170 Readiness Protocols ── */}
+      {/* ── 02: THE 180 Readiness Protocols ── */}
       <section style={{ background: OFF, padding: "100px clamp(16px, 4vw, 56px)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="02 — Your Readiness Protocol Foundation" color={GOLD} />
@@ -260,7 +260,7 @@ export default function HowItWorks() {
                 170 Battle-Tested Readiness Protocols — Ready on Day One
               </h2>
               <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
-                The platform comes pre-loaded with 170 Readiness Protocols across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
+                The platform comes pre-loaded with 180 Readiness Protocols across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
               </p>
               <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
                 These are not generic templates. Each Readiness Protocol contains a defined task sequence, role assignments, escalation logic, communication assets, and success metrics — built specifically for startup to Fortune 500-scale responses.
@@ -275,7 +275,7 @@ export default function HowItWorks() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                { num: "170", label: "Pre-Built Readiness Protocols", sub: "Across 9 strategic domains", color: GOLD },
+                { num: "180", label: "Pre-Built Readiness Protocols", sub: "Across 9 strategic domains", color: GOLD },
                 { num: "9", label: "Strategic Domains", sub: "Full enterprise coverage", color: TEAL },
                 { num: "248+", label: "Signal Data Points", sub: "Monitoring your environment", color: NAVY },
                 { num: "12 min", label: "Execution Window", sub: "From trigger to coordination", color: GOLD },
@@ -305,7 +305,7 @@ export default function HowItWorks() {
                 Start with the 170. Make It Yours.
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, fontWeight: 500 }}>
-                Every one of the 170 Readiness Protocols is a starting point, not a ceiling. Your team can take any library Readiness Protocol and configure it to match your exact org structure, approval thresholds, stakeholder names, task sequences, and success criteria — without touching the underlying template.
+                Every one of the 180 Readiness Protocols is a starting point, not a ceiling. Your team can take any library Readiness Protocol and configure it to match your exact org structure, approval thresholds, stakeholder names, task sequences, and success criteria — without touching the underlying template.
               </p>
             </div>
             <div>
@@ -599,7 +599,7 @@ export default function HowItWorks() {
                 icon: BookOpen,
                 color: TEAL,
                 title: "Smart Readiness Protocol Finder",
-                body: "Searching 170 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
+                body: "Searching 180 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
                 items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 170"]
               },
               {
@@ -660,7 +660,7 @@ export default function HowItWorks() {
                 num: "01",
                 color: TEAL,
                 title: "Readiness Protocol Layer",
-                what: "The 170 library Readiness Protocols are starting points. Customize any of them — or build new ones from scratch.",
+                what: "The 180 Readiness Protocols are starting points. Customize any of them — or build new ones from scratch.",
                 controls: [
                   "Stakeholder names and notification SLAs",
                   "Task sequences and time windows",

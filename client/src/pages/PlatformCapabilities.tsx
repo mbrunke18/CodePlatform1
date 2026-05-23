@@ -216,7 +216,7 @@ export default function PlatformCapabilities() {
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {[
-              { label: '170 Readiness Protocols', sub: 'Pre-staged' },
+              { label: '180 Readiness Protocols', sub: 'Pre-staged' },
               { label: '221 Triggers', sub: 'Armed & monitoring' },
               { label: '248+ Data Points', sub: 'Every 15 minutes' },
               { label: '12 Minutes', sub: '30 days → 12 min' },

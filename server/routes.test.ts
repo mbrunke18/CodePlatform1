@@ -216,9 +216,9 @@ describe('Platform Constants', () => {
     expect(ratio).toBe(3600);
   });
 
-  it('170 Readiness Protocols constant is correct', () => {
-    const TOTAL_PROTOCOLS = 170;
-    expect(TOTAL_PROTOCOLS).toBe(170);
+  it('180 Readiness Protocols constant is correct', () => {
+    const TOTAL_PROTOCOLS = 180;
+    expect(TOTAL_PROTOCOLS).toBe(180);
     expect(TOTAL_PROTOCOLS).toBeGreaterThan(0);
   });
 });

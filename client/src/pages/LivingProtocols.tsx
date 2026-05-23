@@ -145,7 +145,7 @@ export default function LivingProtocols() {
           {/* System Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { value: '170', label: 'Living Readiness Protocols', color: NAVY },
+              { value: '180', label: 'Living Readiness Protocols', color: NAVY },
               { value: isLoading ? '—' : `${(topPlaybooks.reduce((s, p, i) => s + deriveActivationCount(p.severityScore || 70, i), 0) + 14789).toLocaleString()}`, label: 'Total Activations', color: GOLD },
               { value: '91%', label: 'Avg Success Rate', color: TEAL },
               { value: '42%', label: 'Speed Improvement', color: GOLD },
@@ -331,7 +331,7 @@ export default function LivingProtocols() {
               <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
                 <p className="text-white/50 text-sm">Organizations using Living Readiness Protocols report <strong className="text-white">42% faster</strong> execution by their 10th activation.</p>
                 <Button size="sm" className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold rounded-none border-none" onClick={() => setLocation('/playbook-library')}>
-                  View All 170 Readiness Protocols
+                  View All 180 Readiness Protocols
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>

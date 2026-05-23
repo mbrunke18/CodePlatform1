@@ -36,16 +36,16 @@ interface LibraryPlaybook {
 }
 
 const DOMAINS = [
-  { id: "all", label: "All Domains", count: 170 },
-  { id: "financial", label: "Financial Strategy", count: 24, icon: DollarSign },
-  { id: "competitive", label: "Market Dynamics", count: 22, icon: Globe2 },
+  { id: "all", label: "All Domains", count: 180 },
+  { id: "competitive", label: "Market Dynamics", count: 25, icon: Globe2 },
+  { id: "financial", label: "Financial Strategy", count: 25, icon: DollarSign },
   { id: "gtm", label: "Operational Excellence", count: 21, icon: TrendingUp },
-  { id: "crisis", label: "Technology & Innovation", count: 20, icon: Brain },
-  { id: "regulatory", label: "Regulatory & Compliance", count: 15, icon: Target },
-  { id: "ma", label: "Market Opportunities", count: 18, icon: Layers },
-  { id: "technology", label: "Brand & Reputation", count: 17, icon: Lightbulb },
-  { id: "talent", label: "Talent & Leadership", count: 14, icon: HeartHandshake },
+  { id: "regulatory", label: "Regulatory & Compliance", count: 19, icon: Target },
+  { id: "crisis", label: "Technology & Innovation", count: 19, icon: Brain },
   { id: "strategic", label: "AI Governance", count: 19, icon: Shield },
+  { id: "ma", label: "Market Opportunities", count: 19, icon: Layers },
+  { id: "technology", label: "Brand & Reputation", count: 18, icon: Lightbulb },
+  { id: "talent", label: "Talent & Leadership", count: 15, icon: HeartHandshake },
 ];
 
 const SECTOR_PACKS = [
@@ -454,8 +454,8 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
       {!embedded && (
         <WhyThisMatters
           headline="Every strategic situation your organization will face has a pre-staged response."
-          body="Select a protocol, assign it to your team — execution is ready before any trigger fires. Browse all 170 below."
-          metric={{ value: '170', label: 'Readiness Protocols' }}
+          body="Select a protocol, assign it to your team — execution is ready before any trigger fires. Browse all 180 below."
+          metric={{ value: '180', label: 'Readiness Protocols' }}
         />
       )}
 
@@ -464,7 +464,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
-              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Readiness Protocols · 9 Domains</span>
+              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>180 Readiness Protocols · 9 Domains</span>
             </div>
             <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
               A Readiness Protocol for Every{" "}
@@ -711,7 +711,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
 
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
-              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> Readiness Protocols
+              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>180</span> Readiness Protocols
             </span>
             {!isAuthenticated && (
               <div className="flex items-center gap-2">
@@ -773,7 +773,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                 );
               }
 
-              // FULL CARD — 3 sample Readiness Protocols for guests (isSample=true), or all 170 for authenticated users
+              // FULL CARD — 3 sample Readiness Protocols for guests (isSample=true), or all 180 for authenticated users
               return (
               <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5 flex flex-col flex-1">
@@ -925,7 +925,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ padding: "28px 24px", borderTop: "3px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.1)", borderTopWidth: 3 }}>
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Get Access</div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>Pre-stage these 170 protocols for your organization</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>Pre-stage these 180 protocols for your organization</div>
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
                   Founding Partners configure protocols against their real scenarios, real team, and real risk calendar.
                 </p>

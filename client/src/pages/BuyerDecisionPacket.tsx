@@ -436,7 +436,7 @@ export default function BuyerDecisionPacket() {
               {[
                 { label: "Clearer authority", detail: "Every response starts with a defined decision-rights structure, not a scramble to find the right person." },
                 { label: "Faster mobilization", detail: "From trigger detection to coordinated team activation in 12 minutes, not 30 days." },
-                { label: "Repeatable execution", detail: "170 Readiness Protocols — pre-staged, versioned, and validated before any trigger fires." },
+                { label: "Repeatable execution", detail: "180 Readiness Protocols — pre-staged, versioned, and validated before any trigger fires." },
                 { label: "Auditable governance", detail: "Every activation logged, every decision tracked, board-ready reporting available at any point." },
               ].map(item => (
                 <div key={item.label} style={{ padding: "1.5rem", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: "0.15rem" }}>

@@ -550,7 +550,7 @@ export default function MissionControl() {
             {[
               { label: 'Triggers Armed',    value: triggersArmed.toLocaleString(), sub: '221 signals active',  color: GOLD },
               { label: 'Live Detections',   value: detections.length.toString(),   sub: detections.length > 0 ? `${criticalCount} critical` : 'All clear', color: detections.length > 0 ? RED_ALT : TEAL },
-              { label: 'Readiness Protocols Ready',   value: '170',                          sub: 'Pre-staged, 9 domains', color: TEAL },
+              { label: 'Readiness Protocols Ready',   value: '180', sub: 'Pre-staged, 9 domains', color: TEAL },
               { label: 'Executions Logged', value: activations.length.toString(),  sub: activations.length > 0 ? timeAgo(activations[0]?.activatedAt || '') : 'None yet', color: 'rgba(255,255,255,0.65)' },
               { label: 'Next Scan',         value: nextScanLabel,                  sub: modeLabel,              color: 'rgba(255,255,255,0.65)' },
             ].map(({ label, value, sub, color }, i) => (
@@ -765,7 +765,7 @@ export default function MissionControl() {
                   <div style={{ textAlign: 'center', padding: '18px 12px' }}>
                     <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
                     <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
-                    <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, lineHeight: 1.5 }}>170 Readiness Protocols pre-staged. 12-minute deployment on trigger.</div>
+                    <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, lineHeight: 1.5 }}>180 Readiness Protocols pre-staged. 12-minute deployment on trigger.</div>
                   </div>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -822,7 +822,7 @@ export default function MissionControl() {
                     <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
                   </div>
                   <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
-                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>30 days → 12 minutes. 170 Readiness Protocols pre-staged.</div>
+                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>30 days → 12 minutes. 180 Readiness Protocols pre-staged.</div>
                 </div>
               </div>
 

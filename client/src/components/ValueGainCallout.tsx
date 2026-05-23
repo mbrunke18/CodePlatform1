@@ -176,7 +176,7 @@ export function ThreePositionStrip({ style }: PositionStripProps) {
       mode: "defense",
       insight:
         "Resilience isn't protection from loss — it's the freedom to act decisively when others freeze. Every scenario prepared here is one less crisis improvised under pressure.",
-      gain: { label: "Scenarios pre-staged", value: "170 Readiness Protocols" },
+      gain: { label: "Scenarios pre-staged", value: "180 Readiness Protocols" },
     },
     {
       mode: "special-teams",

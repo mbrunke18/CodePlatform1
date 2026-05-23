@@ -271,7 +271,7 @@ export default function ProtocolReadinessAudit() {
               Overall Readiness Score
             </CardTitle>
             <CardDescription>
-              Average preparedness across all 170 Readiness Protocols
+              Average preparedness across all 180 Readiness Protocols
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -55,7 +55,7 @@ const comparisonRows = [
 const differentiators = [
   {
     icon: BookOpen,
-    stat: "170",
+    stat: "180",
     unit: "Readiness Protocols",
     label: "Ready to Activate",
     description: "The largest library of proven strategic response Readiness Protocols across 9 domains — Competitive, Crisis, M&A, Talent, Supply Chain, Regulatory, Financial, Operational, and Reputational.",
@@ -516,7 +516,7 @@ export default function CompetitivePositioning() {
           </div>
         </section>
 
-        {/* The 170 Readiness Protocols Section */}
+        {/* The 180 Readiness Protocols Section */}
         <section style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
           <div className="max-w-6xl mx-auto relative z-10">
@@ -527,7 +527,7 @@ export default function CompetitivePositioning() {
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Readiness Protocol Library</span>
                 </div>
                 <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,44px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
-                  170 Readiness Protocols No One Else Has
+                  180 Readiness Protocols No One Else Has
                 </h2>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 32 }}>
                   Every Readiness Protocol in Readiness OS took years to develop — built from real startup to Fortune 500 strategic events, refined by operating executives, and continuously improved through outcome data.

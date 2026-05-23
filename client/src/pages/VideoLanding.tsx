@@ -28,7 +28,7 @@ export default function VideoLanding() {
       title: "Readiness OS - Strategic Readiness Platform | 30 Days → 12 Minutes",
       description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged Readiness Protocols, coordinated stakeholders, instant activation for enterprise organizations.",
       ogTitle: "Readiness OS - The Speed to Execute",
-      ogDescription: "170 Readiness Protocols. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Strategic Readiness Platform.",
+      ogDescription: "180 Readiness Protocols. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Strategic Readiness Platform.",
     });
   }, []);
 

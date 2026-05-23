@@ -63,7 +63,7 @@ const phaseDetails = [
     duration: 'Days 30-45',
     objective: 'Build your strategic Readiness Protocol portfolio',
     activities: [
-      { name: 'Browse Readiness Protocol Library', path: '/identify/Readiness Protocols', description: 'Explore 170 Readiness Protocols across 9 strategic domains' },
+      { name: 'Browse Readiness Protocol Library', path: '/identify/Readiness Protocols', description: 'Explore 180 Readiness Protocols across 9 strategic domains' },
       { name: 'Select Priority Readiness Protocols', path: '/workspaces/identify', description: 'Choose Readiness Protocols aligned to your strategic priorities' },
       { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each Readiness Protocol' },
       { name: 'Customize Readiness Protocols', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
@@ -163,7 +163,7 @@ export default function CustomerJourney() {
               {[
                 { value: "12", unit: "min", label: "Strategic Response" },
                 { value: "3,600×", unit: "", label: "Execution Head Start" },
-                { value: "170", unit: "", label: "Readiness Protocols Ready" },
+                { value: "180", unit: "", label: "Readiness Protocols Ready" },
                 { value: "90", unit: "days", label: "To Full Mastery" },
               ].map(s => (
                 <div key={s.label} style={{ padding: "20px 16px", textAlign: "center" }}>

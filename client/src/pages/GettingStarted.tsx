@@ -367,7 +367,7 @@ export default function GettingStarted() {
             <div style={{ background: '#fff', border: `1px solid ${BORDER}`, padding: '20px 20px', marginBottom: 16 }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Already Working</div>
               {[
-                { label: '170 Readiness Protocols', sub: 'Pre-staged, ready to activate', icon: ClipboardList },
+                { label: '180 Readiness Protocols', sub: 'Pre-staged, ready to activate', icon: ClipboardList },
                 { label: '221 triggers monitored', sub: 'Scanning every 15 minutes', icon: Radio },
                 { label: 'Signal scoring active', sub: 'LOW / MEDIUM / HIGH risk levels', icon: Zap },
                 { label: 'Executive approval flow', sub: 'No protocol activates without sign-off', icon: Shield },

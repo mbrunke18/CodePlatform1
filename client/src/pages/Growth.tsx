@@ -99,7 +99,7 @@ const TIERS = [
       { label: "Support", value: "Dedicated success manager + white-glove onboarding" },
     ],
     bestFor: "Companies managing multi-front risk across every domain. M&A disruptions, regulatory shifts, talent crises, competitive entries — happening simultaneously.",
-    roiNote: "Organizations managing multi-front threats protect $10M+ per coordinated response. At $250K/year, you are running the full operating model — 170 Readiness Protocols, 248+ data points, and full AI coordination. One activation at this level pays for the year.",
+    roiNote: "Organizations managing multi-front threats protect $10M+ per coordinated response. At $250K/year, you are running the full operating model — 180 Readiness Protocols, 248+ data points, and full AI coordination. One activation at this level pays for the year.",
   },
   {
     id: "enterprise",
@@ -137,7 +137,7 @@ const FAQS = [
   },
   {
     q: "What exactly changes between tiers?",
-    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 Readiness Protocols across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 Readiness Protocols across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 170 Readiness Protocols, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
+    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 Readiness Protocols across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 Readiness Protocols across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 180 Readiness Protocols, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
   },
   {
     q: "How does the ROI math work at these price points?",
@@ -421,7 +421,7 @@ export default function Growth() {
               {
                 from: "Responsive", to: "Orchestrated", arrow: "→", color: NAVY,
                 gain: "Coordination becomes invisible infrastructure",
-                detail: "Every domain. All 170 Readiness Protocols. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are neutralized before stakeholders even convene. This is where execution velocity becomes a durable competitive advantage.",
+                detail: "Every domain. All 180 Readiness Protocols. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are neutralized before stakeholders even convene. This is where execution velocity becomes a durable competitive advantage.",
                 jump: "$150K → $250K/yr",
               },
               {
@@ -749,7 +749,7 @@ export default function Growth() {
             {[
               { stat: "12 min", label: "Trigger to execution" },
               { stat: "3,600×", label: "Execution head start" },
-              { stat: "170", label: "Pre-staged Readiness Protocols" },
+              { stat: "180", label: "Pre-staged Readiness Protocols" },
               { stat: "∞", label: "Users at every tier" },
             ].map((s) => (
               <div key={s.label} style={{ textAlign: "center", padding: "20px 12px", border: "1px solid rgba(240,237,228,0.1)", borderRadius: 0 }}>

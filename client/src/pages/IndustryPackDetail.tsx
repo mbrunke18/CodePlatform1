@@ -50,7 +50,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     regulatoryContext: "Basel III · DORA · SEC Enforcement · FINRA · Fed Supervision · SWIFT · OFAC · CCAR/DFAST",
     keyStats: [
       { label: "Industry Protocols", value: "15" },
-      { label: "Core Protocols Included", value: "170" },
+      { label: "Core Protocols Included", value: "180" },
       { label: "Total Readiness Coverage", value: "185" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
@@ -214,7 +214,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     regulatoryContext: "SOC 2 · ISO 27001 · Open Source Licensing (MIT/GPL/AGPL) · GDPR · CCPA · FTC Enforcement · EU AI Act",
     keyStats: [
       { label: "Industry Protocols", value: "13" },
-      { label: "Core Protocols Included", value: "170" },
+      { label: "Core Protocols Included", value: "180" },
       { label: "Total Readiness Coverage", value: "183" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
@@ -360,7 +360,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     regulatoryContext: "OSHA · EPA · NLRB · ISO 9001 · ITAR / EAR Export Controls · CPSC · REACH / RoHS",
     keyStats: [
       { label: "Industry Protocols", value: "12" },
-      { label: "Core Protocols Included", value: "170" },
+      { label: "Core Protocols Included", value: "180" },
       { label: "Total Readiness Coverage", value: "182" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
@@ -497,7 +497,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     regulatoryContext: "EPA · FERC · PHMSA · NRC · NERC CIP · BSEE (Offshore) · DOE · State PUC Frameworks",
     keyStats: [
       { label: "Industry Protocols", value: "12" },
-      { label: "Core Protocols Included", value: "170" },
+      { label: "Core Protocols Included", value: "180" },
       { label: "Total Readiness Coverage", value: "182" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
@@ -634,7 +634,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     regulatoryContext: "FDA (Food Safety) · FTC · CPSC · NLRB · FCPA · California Transparency Act · PCI-DSS",
     keyStats: [
       { label: "Industry Protocols", value: "12" },
-      { label: "Core Protocols Included", value: "170" },
+      { label: "Core Protocols Included", value: "180" },
       { label: "Total Readiness Coverage", value: "182" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
@@ -771,7 +771,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     regulatoryContext: "FDA · CMS / Medicare · OIG · HIPAA · 21 CFR Part 11 · ICH Q10 · Joint Commission · DEA",
     keyStats: [
       { label: "Industry Protocols", value: "12" },
-      { label: "Core Protocols Included", value: "170" },
+      { label: "Core Protocols Included", value: "180" },
       { label: "Total Readiness Coverage", value: "182" },
       { label: "Execution Head Start", value: "3,600×" },
     ],

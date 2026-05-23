@@ -237,7 +237,7 @@ export default function InvestorLanding() {
                   n: '01',
                   label: 'Accumulated Decision Logic',
                   accent: '#C9A84C',
-                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of startup to Fortune 500 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 170 Readiness Protocols from two decades of real crisis response.',
+                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of startup to Fortune 500 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 180 Readiness Protocols from two decades of real crisis response.',
                   proof: '20 years of operational experience → not replicable with funding',
                 },
                 {
@@ -419,7 +419,7 @@ export default function InvestorLanding() {
                   {[
                     "Pre-staged for every situation the enterprise will face",
                     "Executive authority preserved — no protocol activates without sign-off",
-                    "170 Readiness Protocols across 9 strategic domains",
+                    "180 Readiness Protocols across 9 strategic domains",
                     "Risk and opportunity triggers covered — not just crisis response",
                   ].map(pt => (
                     <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 10 }}>
@@ -590,7 +590,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"CIOs evolving from cost managers to strategy architects"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Our 170 Readiness Protocols give them the execution infrastructure</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Our 180 Readiness Protocols give them the execution infrastructure</p>
                 </CardContent>
               </Card>
 
@@ -706,7 +706,7 @@ export default function InvestorLanding() {
             <div className="overflow-hidden border border-[#E8E4DC]">
               <img
                 src={productArchitectureImg}
-                alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Readiness Protocols, Execution Outputs, Command Center, and Integration Layer"
+                alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 180 Readiness Protocols, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />
@@ -978,7 +978,7 @@ export default function InvestorLanding() {
 
             <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 text-center">
               <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Readiness OS built the product.</p>
-              <p className="text-[#0A0F2E] text-sm">170 Readiness Protocols, 9 strategic domains, pre-defined governance — ready today.</p>
+              <p className="text-[#0A0F2E] text-sm">180 Readiness Protocols, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
         </section>
@@ -1071,7 +1071,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#0A0F2E] mb-4">
-                    The entire platform IS the Readiness Protocol system — and it grows through team engagement. The 170 Readiness Protocols are the starting point, not the ceiling. Each activation, ownership acknowledgment, and challenge-rights exchange deepens the record. After 18 months, the organization's preparation intelligence is irreplicable — built from real trigger events, under real pressure, by their actual people.
+                    The entire platform IS the Readiness Protocol system — and it grows through team engagement. The 180 Readiness Protocols are the starting point, not the ceiling. Each activation, ownership acknowledgment, and challenge-rights exchange deepens the record. After 18 months, the organization's preparation intelligence is irreplicable — built from real trigger events, under real pressure, by their actual people.
                   </p>
                   <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-living-system-advantage">
                     Advantage: Preparation history compounds — no competitor can buy it retroactively
@@ -1625,7 +1625,7 @@ export default function InvestorLanding() {
                 <div className="grid grid-cols-3 gap-3 mb-8">
                   {[
                     { n: '221', l: 'Trigger types monitored' },
-                    { n: '170', l: 'Pre-staged Readiness Protocols' },
+                    { n: '180', l: 'Pre-staged Readiness Protocols' },
                     { n: '12 min', l: 'Signal to execution' },
                   ].map(s => (
                     <div key={s.n} style={{ textAlign: 'center' as const, padding: '14px 8px', background: '#F8F7F4', border: '1px solid #E8E4DC' }}>

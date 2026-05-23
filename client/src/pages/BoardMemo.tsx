@@ -155,7 +155,7 @@ function MemoDocument({ form }: { form: FormState }) {
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginTop: 14 }}>
           {[
-            '170 Readiness Protocols — pre-staged across 9 strategic domains',
+            '180 Readiness Protocols — pre-staged across 9 strategic domains',
             '221 trigger configurations monitoring for strategic events',
             'Pre-authorized budget envelopes — no finance approval delay under pressure',
             'Executive authorization preserved — no autonomous AI action',

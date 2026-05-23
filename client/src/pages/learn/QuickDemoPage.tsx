@@ -909,7 +909,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">Pre-configured Readiness Protocols mean zero setup time when a crisis hits. Tasks, stakeholders, documents, and budgets are already defined.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Key Differentiator</p>
-                            <p className="text-xs text-muted-foreground">170 Readiness Protocols across 9 strategic domains. Customize any or build your own.</p>
+                            <p className="text-xs text-muted-foreground">180 Readiness Protocols across 9 strategic domains. Customize any or build your own.</p>
                           </div>
                         </>
                       )}

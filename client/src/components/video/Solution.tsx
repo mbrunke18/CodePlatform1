@@ -85,7 +85,7 @@ export function Solution({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 text-gray-700 text-sm max-w-lg mx-auto"
         >
-          Governance pre-defined. Decision rights clear. 50-200+ stakeholders coordinated instantly. 170 Readiness Protocols ready—including compound disruption scenarios.
+          Governance pre-defined. Decision rights clear. 50-200+ stakeholders coordinated instantly. 180 Readiness Protocols ready—including compound disruption scenarios.
         </motion.div>
 
         <motion.div
@@ -124,7 +124,7 @@ export function Solution({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Trigger-to-Execution Orchestration"
-        description="Readiness OS provides the coordination infrastructure enterprises are missing—governance, decision rights, and stakeholder orchestration built by design, not by default. 170 Readiness Protocols across 9 domains, including compound disruption scenarios."
+        description="Readiness OS provides the coordination infrastructure enterprises are missing—governance, decision rights, and stakeholder orchestration built by design, not by default. 180 Readiness Protocols across 9 domains, including compound disruption scenarios."
         delay={0.5}
       />
     </div>

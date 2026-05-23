@@ -44,7 +44,7 @@ const workspaceTools = [
     icon: BookOpen,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
-    stats: "170 Readiness Protocols",
+    stats: "180 Readiness Protocols",
     featured: true
   },
   {

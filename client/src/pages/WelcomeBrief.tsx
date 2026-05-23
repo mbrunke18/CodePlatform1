@@ -305,7 +305,7 @@ export default function WelcomeBrief() {
             {[
               { label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
               { label: 'Real-Time Alerts', desc: 'Email notifications to enrolled stakeholders within minutes of a trigger firing at ≥72% confidence.', color: TEAL },
-              { label: '12-Minute Activation', desc: '170 Readiness Protocols are pre-staged. Response begins before competitors know the trigger fired.', color: GOLD },
+              { label: '12-Minute Activation', desc: '180 Readiness Protocols are pre-staged. Response begins before competitors know the trigger fired.', color: GOLD },
               { label: 'Readiness Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: TEAL },
             ].map(({ label, desc, color }, i) => (
               <div key={i} style={{ padding: '16px 20px 16px 16px', borderLeft: `2px solid ${color}30`, marginLeft: i === 0 ? 0 : 0 }}>

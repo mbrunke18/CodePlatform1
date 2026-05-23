@@ -65,7 +65,7 @@ const ROLES: Role[] = [
     outcome: 'Functional ownership and execution role clarity before a live event.',
     firstHref: '/playbook-library',
     steps: [
-      { label: 'Protocol Library', href: '/playbook-library', icon: BookOpen, why: 'Browse 170 Readiness Protocols — find the ones that cover your domain.' },
+      { label: 'Protocol Library', href: '/playbook-library', icon: BookOpen, why: 'Browse 180 Readiness Protocols — find the ones that cover your domain.' },
       { label: 'Playbook Readiness', href: '/playbook-readiness', icon: Shield, why: 'Assess protocol quality across trigger coverage, stakeholder readiness, and confidence.' },
       { label: 'Practice Drills', href: '/practice-drills', icon: Zap, why: "Run a timed simulation to validate your team's execution before a real trigger fires." },
     ],

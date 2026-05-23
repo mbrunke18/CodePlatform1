@@ -297,7 +297,7 @@ export default function Research() {
               <div style={{ background: "#FEF2F2", border: "1px solid #fecaca", padding: "14px 18px", marginBottom: 12 }}>
                 <p className="text-sm font-semibold" style={{ color: "#dc2626" }}>The HBR Prescription — and what Readiness OS delivers:</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged Readiness Protocols, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 Readiness Protocols pre-staged, 221 triggers monitored, and no action taken without executive authorization.
+                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged Readiness Protocols, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 180 Readiness Protocols pre-staged, 221 triggers monitored, and no action taken without executive authorization.
                 </p>
               </div>
 
@@ -562,7 +562,7 @@ export default function Research() {
                       IBM found 35% cost reduction with pre-assigned teams. Readiness OS' Readiness Protocols 
                       include pre-assigned stakeholders for every scenario.
                     </p>
-                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>170 Readiness Protocols Ready</div>
+                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>180 Readiness Protocols Ready</div>
                   </div>
                 </div>
               </div>

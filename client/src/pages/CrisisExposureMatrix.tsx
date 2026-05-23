@@ -143,7 +143,7 @@ export default function CrisisExposureMatrix() {
             <CardHeader className="p-10 pb-4 relative z-10">
               <CardTitle style={CG} className="text-3xl text-white mb-2">90-Day Onboarding Strategy</CardTitle>
               <CardDescription className="text-[#DFC178] text-lg font-medium italic">
-                Don't try to prepare for all 170 Readiness Protocols at once. Start with your Top 10 Critical threats.
+                Don't try to prepare for all 180 Readiness Protocols at once. Start with your Top 10 Critical threats.
               </CardDescription>
             </CardHeader>
             <CardContent className="p-10 pt-4 relative z-10">
@@ -238,7 +238,7 @@ export default function CrisisExposureMatrix() {
                 },
                 { 
                   title: 'Review full Readiness Protocol library', 
-                  desc: 'Explore all 170 strategic Readiness Protocols', 
+                  desc: 'Explore all 180 strategic Readiness Protocols', 
                   link: '/playbook-library', 
                   btn: 'View Library',
                   variant: 'outline',

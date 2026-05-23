@@ -179,7 +179,7 @@ export default function DemoRouter() {
               className="text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#141B45] hover:text-white"
               data-testid="button-explore-Readiness Protocols"
             >
-              Browse 170 Readiness Protocols →
+              Browse 180 Readiness Protocols →
             </Button>
           </div>
 

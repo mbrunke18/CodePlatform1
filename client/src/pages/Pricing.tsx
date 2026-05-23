@@ -39,7 +39,7 @@ export default function Pricing() {
             Transparent, value-based pricing for enterprise strategic readiness
           </p>
           <p className="text-lg text-[#6B7280] max-w-3xl mx-auto">
-            Every tier includes the full Readiness OS platform — 170 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. The difference between tiers is relationship depth: custom protocol development, advisory sessions, and dedicated team access.
+            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. The difference between tiers is relationship depth: custom protocol development, advisory sessions, and dedicated team access.
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function Pricing() {
                 <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: NAVY, marginBottom: 16 }}>What's Included</h4>
                 <ul className="space-y-3">
                   {[
-                    "Full platform access — 170 Readiness Protocols",
+                    "Full platform access — 180 Readiness Protocols",
                     "Dedicated implementation team",
                     "3 custom Readiness Protocol builds",
                     "Weekly strategy sessions",
@@ -154,7 +154,7 @@ export default function Pricing() {
               </div>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Full platform — 170 Readiness Protocols",
+                  "Full platform — 180 Readiness Protocols",
                   "Continuous signal monitoring (221 triggers)",
                   "12-minute response orchestration",
                   "Standard integrations (Slack, Jira, Email)",

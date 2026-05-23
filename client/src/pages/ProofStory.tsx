@@ -468,7 +468,7 @@ export default function ProofStory() {
                     tool: "Project & Workflow Management\n(Jira, Monday.com, ServiceNow)",
                     they: "Create and track tasks after someone decides what needs to be done",
                     also: "Creates tasks, assigns owners, sets priorities, and tracks completion across every activation",
-                    beyond: "Every task, owner, and dependency is pre-built into 170 Readiness Protocols before the trigger fires. No one has to create a ticket. The work is already scoped and assigned."
+                    beyond: "Every task, owner, and dependency is pre-built into 180 Readiness Protocols before the trigger fires. No one has to create a ticket. The work is already scoped and assigned."
                   },
                   {
                     tool: "Strategy Consultants\n(McKinsey, Bain, BCG, Big 4)",

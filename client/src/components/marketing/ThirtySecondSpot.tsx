@@ -133,7 +133,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3 }}
               className="text-lg text-gray-800 mb-6"
             >
-              Readiness OS: 170 Readiness Protocols across growth, risk resilience, and transformation.
+              Readiness OS: 180 Readiness Protocols across growth, risk resilience, and transformation.
             </motion.p>
             
             <motion.div
@@ -428,7 +428,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.6 }}
               className="text-lg text-gray-800"
             >
-              170 Readiness Protocols. Pre-staged coordination.
+              180 Readiness Protocols. Pre-staged coordination.
               <br />Growth, resilience, or transformation — the response is ready.
             </motion.p>
           </div>

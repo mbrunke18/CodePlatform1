@@ -42,7 +42,7 @@ const phases = [
       "Define success metrics and risk tolerance",
       "Customize governance rules for your organization",
     ],
-    metric: { value: "170", label: "pre-built Readiness Protocols" },
+    metric: { value: "180", label: "pre-built Readiness Protocols" },
     icon: Eye,
   },
   {
@@ -182,7 +182,7 @@ export default function IDEAFramework() {
         <section style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC" }}>
           <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
             {[
-              { value: "170", label: "Strategic Readiness Protocols", sublabel: "Across 9 Domains", color: NAVY },
+              { value: "180", label: "Strategic Readiness Protocols", sublabel: "Across 9 Domains", color: NAVY },
               { value: "221", label: "Executive Triggers", sublabel: "Pre-Configured", color: TEAL },
               { value: "248+", label: "Live Data Points", sublabel: "Continuously Monitored", color: GOLD },
               { value: "12m", label: "Response Window", sublabel: "Signal → Execution", color: NAVY },
@@ -232,7 +232,7 @@ export default function IDEAFramework() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "#E8E4DC", border: "1px solid #E8E4DC" }}>
               {[
-                { phase: "IDENTIFY", sport: "Pre-Staged Architecture", num: "I", sportLine: "Every strategic situation catalogued before any trigger fires. The response is ready before the pressure arrives.", execLine: "170 Readiness Protocols across 9 domains — pre-built before the trigger fires.", color: TEAL },
+                { phase: "IDENTIFY", sport: "Pre-Staged Architecture", num: "I", sportLine: "Every strategic situation catalogued before any trigger fires. The response is ready before the pressure arrives.", execLine: "180 Readiness Protocols across 9 domains — pre-built before the trigger fires.", color: TEAL },
                 { phase: "DETECT", sport: "Continuous Signal Intelligence", num: "II", sportLine: "Signals aligned. Trigger detected. Situation confirmed in seconds — before mobilization begins.", execLine: "248+ signals monitored continuously. Trigger surfaces in seconds.", color: GOLD },
                 { phase: "EXECUTE", sport: "Executive Authorization", num: "III", sportLine: "One decision. Every role pre-defined. No committee. The preparation did the work.", execLine: "Executive authorizes. 12 minutes to full organizational execution.", color: NAVY },
                 { phase: "ADVANCE", sport: "Institutional Memory", num: "IV", sportLine: "Every activation feeds the intelligence loop. Debrief, refine, and sharpen the next response.", execLine: "Post-Activation Debrief. Every execution sharpens the next.", color: TEAL_LT },
@@ -393,7 +393,7 @@ export default function IDEAFramework() {
                   phase: "IDENTIFY",
                   sport: "Pre-Staged Architecture",
                   sportDesc: "Organizations map every strategic situation they may face. Readiness Protocols are built before any trigger is studied.",
-                  execDesc: "Executives define every strategic trigger across 9 domains. All 170 Readiness Protocols are pre-built before any trigger fires.",
+                  execDesc: "Executives define every strategic trigger across 9 domains. All 180 Readiness Protocols are pre-built before any trigger fires.",
                   color: TEAL,
                 },
                 {
@@ -495,7 +495,7 @@ export default function IDEAFramework() {
             {/* Live IDEA Phase Confidence Scores */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               {[
-                { phase: "IDENTIFY", score: 98, status: "170 Readiness Protocols staged", icon: Eye },
+                { phase: "IDENTIFY", score: 98, status: "180 Readiness Protocols staged", icon: Eye },
                 { phase: "DETECT", score: 94, status: "221 triggers live", icon: Activity },
                 { phase: "EXECUTE", score: 99, status: "12-min deployment ready", icon: Zap },
                 { phase: "ADVANCE", score: 91, status: "Learning loop active", icon: TrendingUp },
@@ -562,7 +562,7 @@ export default function IDEAFramework() {
                   variant="outline"
                   className="font-semibold px-8 border-white/20 text-white hover:bg-white/10 hover:text-white rounded-none"
                 >
-                  Browse 170 Readiness Protocols
+                  Browse 180 Readiness Protocols
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>

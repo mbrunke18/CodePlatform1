@@ -17,7 +17,7 @@ const phases = [
     icon: ClipboardList, 
     color: "#3B82F6",
     description: "Build your Readiness Protocol library",
-    outcome: "170 Readiness Protocols ready"
+    outcome: "180 Readiness Protocols ready"
   },
   { 
     id: "detect", 

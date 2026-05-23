@@ -420,7 +420,7 @@ export default function UnifiedEnterprisePlatform() {
                       </Badge>
                     </CardTitle>
                     <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/50">
-                      170 Readiness Protocols READY
+                      180 Readiness Protocols READY
                     </Badge>
                   </div>
                   <p className="text-sm text-[#6B7280] mt-2">

@@ -332,7 +332,7 @@ function InvestorPresentation() {
           ))}
         </div>
         <p className="text-[#0A0F2E] text-center">
-          <span className="text-[#2B8A6E] font-semibold">170 Readiness Protocols</span> ready to deploy across <span className="text-[#2B8A6E] font-semibold">9 strategic domains</span>.
+          <span className="text-[#2B8A6E] font-semibold">180 Readiness Protocols</span> ready to deploy across <span className="text-[#2B8A6E] font-semibold">9 strategic domains</span>.
         </p>
       </div>
     ),
@@ -384,7 +384,7 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">The Platform</p>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-12 text-center">
-          170 Readiness Protocols across three domains
+          180 Readiness Protocols across three domains
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
           <div className="bg-white border border-[#E8E4DC] p-8">
@@ -611,7 +611,7 @@ function InvestorPresentation() {
           <div>
             <h3 className="text-lg font-bold text-[#0A0F2E] mb-4 flex items-center gap-2"><Rocket className="w-5 h-5 text-[#2B8A6E]" /> Product Built</h3>
             <div className="space-y-3">
-              {['170 Readiness Protocols developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
+              {['180 Readiness Protocols developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-[#0A0F2E]">
                   <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] shrink-0" />
                   <span>{item}</span>
@@ -894,7 +894,7 @@ function InvestorPresentation() {
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
           {[
             { value: '3,600×', label: 'Head Start' },
-            { value: '170', label: 'Readiness Protocols' },
+            { value: '180', label: 'Readiness Protocols' },
             { value: '10.3%', label: 'Revenue Impact' },
             { value: '$20B', label: 'TAM' },
           ].map((s, i) => (

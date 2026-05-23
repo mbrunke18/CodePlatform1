@@ -44,7 +44,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
     },
     { 
       icon: Zap, 
-      value: "170", 
+      value: "180", 
       label: "Readiness Protocol Templates",
       comparison: "Strategic response frameworks",
       color: "text-orange-400"

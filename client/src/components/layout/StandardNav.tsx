@@ -348,7 +348,7 @@ export default function StandardNav() {
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.68)', padding: '0 4px' }}>→</div>
             <div>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 2px' }}>Readiness OS</p>
-              <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Readiness Protocols. 12 minutes.</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>180 Readiness Protocols. 12 minutes.</p>
             </div>
           </div>
           <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>

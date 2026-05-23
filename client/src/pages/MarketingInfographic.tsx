@@ -185,7 +185,7 @@ export default function MarketingInfographic() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", borderTop: border, borderBottom: border }}>
           {[
             { num: "3,600×", title: "Execution Head Start", sub: "30 days → 12 minutes" },
-            { num: "170",    title: "Readiness Protocols",  sub: "Pre-staged, not assembled" },
+            { num: "180",    title: "Readiness Protocols",  sub: "Pre-staged, not assembled" },
             { num: "221",    title: "Strategic Triggers",   sub: "Continuously monitored" },
           ].map(({ num, title, sub }, i) => (
             <div key={i} style={{ padding: "22px 18px", borderRight: i < 2 ? border : "none" }}>
@@ -236,7 +236,7 @@ export default function MarketingInfographic() {
             </div>
             <ul style={{ listStyle: "none", marginTop: 4 }}>
               {[
-                "170 Readiness Protocols pre-staged",
+                "180 Readiness Protocols pre-staged",
                 "221 strategic triggers monitored",
                 "12-minute execution design target",
                 "Executive authority at every stage",

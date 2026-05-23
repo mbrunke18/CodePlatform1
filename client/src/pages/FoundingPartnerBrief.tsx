@@ -59,7 +59,7 @@ const milestones = [
 ];
 
 const included = [
-  { label: "Platform Access", body: "Full Readiness OS for up to 25 users — all 170 Readiness Protocols, signal monitoring, war room, activation console, and debrief engine." },
+  { label: "Platform Access", body: "Full Readiness OS for up to 25 users — all 180 Readiness Protocols, signal monitoring, war room, activation console, and debrief engine." },
   { label: "Protocol Configuration", body: "5 Readiness Protocols built and configured to your specific organizational scenarios, stakeholders, and decision authorities." },
   { label: "Signal Intelligence", body: "Live monitoring across 3 intelligence categories — 248+ data points refreshed every 15 minutes against your priority situations." },
   { label: "Microsoft Integration", body: "Teams notifications, M365 document staging, and Azure AI signal enrichment — all within your existing enterprise stack." },
@@ -130,7 +130,7 @@ export default function FoundingPartnerBrief() {
                 {[
                   { value: "90", label: "Days to documented proof" },
                   { value: "12 min", label: "Trigger to full coordination" },
-                  { value: "170", label: "Readiness Protocols available" },
+                  { value: "180", label: "Readiness Protocols available" },
                   { value: "100%", label: "Investment credited to contract" },
                 ].map((s, i) => (
                   <div key={i} style={{ background: "#fff", border: `1px solid rgba(10,15,46,0.1)`, padding: "24px 20px" }}>

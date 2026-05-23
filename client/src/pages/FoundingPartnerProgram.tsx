@@ -79,7 +79,7 @@ const pilotInclusions = [
     category: 'Platform Access',
     items: [
       'Full Readiness OS platform access for Founding Partner team (up to 25 users)',
-      '5 customizable Readiness Protocols from 170 library',
+      '5 customizable Readiness Protocols from 180 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
     ]
@@ -364,7 +364,7 @@ export default function FoundingPartnerProgram() {
 
             <div style={{ maxWidth: 640, marginBottom: 52 }}>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(240,237,228,0.78)', lineHeight: 1.85, marginBottom: 20, fontWeight: 400 }}>
-                170 Readiness Protocols pre-staged. 221 trigger patterns monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
+                180 Readiness Protocols pre-staged. 221 trigger patterns monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65 }}>
                 12 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
@@ -411,7 +411,7 @@ export default function FoundingPartnerProgram() {
         <section className="py-8 px-6 bg-[#0A0F2E] border-t border-white/5">
           <div className="max-w-5xl mx-auto grid grid-cols-3 gap-px bg-white/5" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
             {[
-              { label: "Pre-staged, not assembled", body: "170 Readiness Protocols exist before any trigger fires. When the moment hits, execution begins in minutes — not after the first alignment meeting." },
+              { label: "Pre-staged, not assembled", body: "180 Readiness Protocols exist before any trigger fires. When the moment hits, execution begins in minutes — not after the first alignment meeting." },
               { label: "Coordination, not capability", body: "Every startup to Fortune 500 already has the AI capability. What's missing is the coordination layer that makes the whole stack act — not just recommend." },
               { label: "The response before the trigger", body: "The canonical test: how long does mobilization take after a strategic trigger fires? Founding Partners answer that question with live data. The target is 12 minutes." },
             ].map((item) => (
@@ -519,7 +519,7 @@ export default function FoundingPartnerProgram() {
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
                   170 pre-staged protocols, 221 trigger monitors, 12-minute execution engine. The full platform — available from day one.
                 </p>
-                {['170 Readiness Protocols ready to deploy', '221 strategic triggers monitored continuously', '12-minute trigger-to-coordination engine', 'Executive authorization at every activation'].map((item, i) => (
+                {['180 Readiness Protocols ready to deploy', '221 strategic triggers monitored continuously', '12-minute trigger-to-coordination engine', 'Executive authorization at every activation'].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
                     <div style={{ width: 3, height: 3, background: '#0A0F2E', flexShrink: 0, marginTop: 6 }} />
                     <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.55 }}>{item}</span>

@@ -15,7 +15,7 @@ const DM: React.CSSProperties = { fontFamily: "'Barlow', sans-serif" };
 const stats = [
   { value: "12 min", label: "Situation to full coordination" },
   { value: "3,600×", label: "Execution head start vs. traditional" },
-  { value: "170", label: "Pre-staged Readiness Protocols" },
+  { value: "180", label: "Pre-staged Readiness Protocols" },
   { value: "221", label: "Strategic situations mapped" },
 ];
 
@@ -30,7 +30,7 @@ const tracks = [
     secondaryPath: "/12-minute-experience",
     accent: GOLD,
     proof: [
-      "170 Readiness Protocols — pre-staged and ready",
+      "180 Readiness Protocols — pre-staged and ready",
       "12-minute coordination from signal to war room open",
       "Executive authority preserved at every decision point",
       "100% Founding Partner investment credited to contract",
@@ -223,7 +223,7 @@ export default function StartHere() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {[
-                { label: "Preparation", body: "170 Readiness Protocols built before the situation arrives. Roles assigned. Tasks sequenced. Budget authorized.", color: GOLD },
+                { label: "Preparation", body: "180 Readiness Protocols built before the situation arrives. Roles assigned. Tasks sequenced. Budget authorized.", color: GOLD },
                 { label: "Readiness", body: "Continuous signal monitoring across 248+ data points. The system classifies the situation before the first call is made.", color: TEAL },
                 { label: "Fearless", body: "Every organization that prepares for every situation it will face is no longer afraid of any situation they will face.", color: "#fff" },
               ].map((item, i) => (

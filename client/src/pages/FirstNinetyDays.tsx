@@ -22,7 +22,7 @@ const PHASES = [
     color: GOLD,
     milestone: "Day 7 Milestone",
     milestoneItems: [
-      "5 priority protocols selected from 170 library",
+      "5 priority protocols selected from 180 library",
       "Executive authorization chain documented",
       "Trigger conditions configured for your top scenarios",
       "Signal monitoring categories activated",

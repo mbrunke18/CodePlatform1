@@ -20,7 +20,7 @@ const SCENE_NARRATIONS = [
   "Before all that? Football coach. 5 years. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
   "But in business? We wing it. Every single time. It's insane when you think about it. And now that AI has removed the processing constraint — there is no excuse left for the old model.",
   "So I built Readiness OS. Not another AI tool. The new operating model. Redesigned from first principles for the AI era.",
-  "170 Readiness Protocols across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
+  "180 Readiness Protocols across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built Readiness Protocols ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a Readiness Protocol. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
   "From signal detection to coordinated execution. 12 minutes. That's 30 days of mobilization compressed to 12 minutes. While competitors are still scheduling their first alignment call — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
@@ -28,7 +28,7 @@ const SCENE_NARRATIONS = [
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model startup to Fortune 500s have been running for 40 years.",
   "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
-  "Readiness OS has an 18-month head start. 170 Readiness Protocols built. Platform validated with enterprise customers. The moat widens every day.",
+  "Readiness OS has an 18-month head start. 180 Readiness Protocols built. Platform validated with enterprise customers. The moat widens every day.",
   "The companies that figure this out first don't just survive. They dominate. Welcome to Readiness OS. The new operating model for AI-native enterprises.",
 ];
 
@@ -292,7 +292,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
     { duration: 11000 },  // 7: Football coaching
     { duration: 9000 },   // 8: Business winging it
     { duration: 9000 },   // 9: So I built Readiness OS
-    { duration: 12000 },  // 10: 170 Readiness Protocols / 9 domains
+    { duration: 12000 },  // 10: 180 Readiness Protocols / 9 domains
     { duration: 11000 },  // 11: IDEA framework
     { duration: 9000 },   // 12: One click activation
     { duration: 9000 },   // 13: 12 minutes / 3,600×
@@ -711,7 +711,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
             </Scene>
           )}
 
-          {/* Scene 10: 170 Readiness Protocols */}
+          {/* Scene 10: 180 Readiness Protocols */}
           {currentScene === 10 && (
             <Scene key="scene-10">
               <div className="text-center max-w-5xl">

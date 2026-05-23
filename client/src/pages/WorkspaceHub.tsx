@@ -266,7 +266,7 @@ const IDEA_PHASE_TILES = [
     label: 'IDENTIFY',
     name: 'Readiness Protocol Factory',
     desc: 'Build, customize, and manage strategic Readiness Protocols for every scenario your organization will face.',
-    stat: '170 Readiness Protocols',
+    stat: '180 Readiness Protocols',
     statSub: 'across 9 domains',
     accentColor: TEAL,
     borderHover: TEAL,

@@ -72,21 +72,21 @@ const IDEA_STORY = [
     id: 2,
     beat: "IDENTIFY",
     title: "Your Readiness Protocols Are Ready Before You Need Them",
-    subtitle: "170 templates customized for your organization",
+    subtitle: "180 templates customized for your organization",
     phase: "IDENTIFY",
     phaseColor: "bg-[#2B8A6E]",
     icon: BookOpen,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/20",
     time: 30,
-    description: "Readiness OS comes with 170 Readiness Protocols across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
+    description: "Readiness OS comes with 180 Readiness Protocols across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
     roleWins: [
       { role: "CISO", benefit: "Cyber Readiness Protocols with ISO 27001, SOC2, NIST pre-loaded" },
       { role: "CFO", benefit: "Pre-approved budgets already staged for each scenario" },
       { role: "General Counsel", benefit: "Legal holds, regulatory notifications pre-staged" }
     ],
     metrics: [
-      { label: "Ready Readiness Protocols", value: "170" },
+      { label: "Ready Readiness Protocols", value: "180" },
       { label: "Domains Covered", value: "9" },
       { label: "Setup Time", value: "2 hours" }
     ],

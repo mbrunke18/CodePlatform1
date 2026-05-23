@@ -35,7 +35,7 @@ export default function MarketingLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS - Strategic Readiness Platform | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 Readiness Protocols, 5 intelligence modules, 24/7 monitoring, institutional memory—built for startup to Fortune 500 strategic dominance.",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 180 Readiness Protocols, 5 intelligence modules, 24/7 monitoring, institutional memory—built for startup to Fortune 500 strategic dominance.",
       ogTitle: "Readiness OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Readiness Platform. Founding Partner Program now open. Identify → Detect → Execute → Advance.",
     });

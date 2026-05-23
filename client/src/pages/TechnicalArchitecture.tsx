@@ -221,7 +221,7 @@ export default function TechnicalArchitecture() {
             Four architectural layers — signal detection, protocol resolution, execution engine, and institutional memory — operating on a Microsoft-native integration stack.
           </p>
           <div style={{ display: "inline-flex", gap: 2 }}>
-            {["221 trigger patterns", "170 Readiness Protocols", "12-minute execution", "Microsoft-native"].map(tag => (
+            {["221 trigger patterns", "180 Readiness Protocols", "12-minute execution", "Microsoft-native"].map(tag => (
               <span key={tag} style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(201,168,76,0.75)", padding: "6px 14px", border: "1px solid rgba(201,168,76,0.2)", background: "rgba(201,168,76,0.05)" }}>
                 {tag}
               </span>

@@ -50,7 +50,7 @@ const configInfo = {
   playbooks: {
     icon: Layers,
     title: 'No Readiness Protocols Customized',
-    description: 'Customize Readiness Protocols from our library of 170 templates to match your organization\'s processes.',
+    description: 'Customize Readiness Protocols from our library of 180 templates to match your organization\'s processes.',
     actionPath: '/playbook-customization',
     actionLabel: 'Customize Readiness Protocols',
     color: 'text-green-500',

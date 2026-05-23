@@ -320,7 +320,7 @@ export default function Sitemap() {
           <div style={{ marginTop: 40, background: NAVY, padding: '28px 40px', display: 'flex', gap: 40, flexWrap: 'wrap', justifyContent: 'center' }}>
             {[
               { n: totalPages.toString(), label: 'Total Pages & Features' },
-              { n: '170', label: 'Readiness Protocols' },
+              { n: '180', label: 'Readiness Protocols' },
               { n: '12', label: 'Scenario Simulations' },
               { n: '221', label: 'Monitored Triggers' },
               { n: '12 min', label: 'Execution Head Start' },

@@ -1063,7 +1063,7 @@ function HeroSection() {
                 {[
                   { n: "12 min",  l: "Trigger to execution" },
                   { n: "3,600×", l: "Execution head start" },
-                  { n: "170",    l: "Readiness Protocols" },
+                  { n: "180",    l: "Readiness Protocols" },
                   { n: "221",    l: "Trigger patterns" },
                 ].map((s, i) => (
                   <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
@@ -1309,7 +1309,7 @@ function AnatomySection() {
           </Reveal>
           <Reveal delay={0.1}>
             <p style={{ ...DM, color: "rgba(255,255,255,0.78)", fontSize: 14, lineHeight: 1.75, margin: 0, maxWidth: 340, textAlign: "right" as const }}>
-              Each of the 170 Readiness Protocols contains all six components — pre-built, pre-approved, and pre-staged before the trigger fires.
+              Each of the 180 Readiness Protocols contains all six components — pre-built, pre-approved, and pre-staged before the trigger fires.
             </p>
           </Reveal>
         </div>
@@ -1389,7 +1389,7 @@ function PlatformArchitectureSection() {
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
-                  "170 Readiness Protocols — ready before any trigger fires",
+                  "180 Readiness Protocols — ready before any trigger fires",
                   "221 strategic triggers continuously monitored",
                   "12-minute trigger-to-coordination execution",
                   "Executive authority preserved at every step",
@@ -1808,7 +1808,7 @@ function AthletePreparationSection() {
     },
     {
       athlete: "Athletes rehearse every situation they expect to face — with their specific team, for their specific conditions.",
-      platform: "170 Readiness Protocols, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
+      platform: "180 Readiness Protocols, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
       icon: "◈",
     },
     {
@@ -3168,7 +3168,7 @@ function HowPlaybooksWorkSection() {
     {
       num: "01",
       label: "Pre-Built Architecture",
-      body: "170 Readiness Protocols ship as proven decision frameworks — built from 20+ years of startup to Fortune 500 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
+      body: "180 Readiness Protocols ship as proven decision frameworks — built from 20+ years of startup to Fortune 500 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
       accent: GOLD,
     },
     {
@@ -3320,7 +3320,7 @@ function LifecycleAdvantageSection() {
     {
       num: "04", stage: "EXECUTE",
       label: "Deploy the full coordinated response",
-      body: "170 Readiness Protocols deploy simultaneously — tasks, budgets, communications, and stakeholder notifications in minutes. Not assembled under pressure. Already built.",
+      body: "180 Readiness Protocols deploy simultaneously — tasks, budgets, communications, and stakeholder notifications in minutes. Not assembled under pressure. Already built.",
       accent: TEAL,
     },
     {
@@ -3395,7 +3395,7 @@ export default function Homepage() {
   useEffect(() => {
     updatePageMetadata({
       title: "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure",
-      description: "Readiness OS gives startup to Fortune 500 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 170 Readiness Protocols, 248+ data points, zero improvisation.",
+      description: "Readiness OS gives startup to Fortune 500 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 180 Readiness Protocols, 248+ data points, zero improvisation.",
       ogTitle: "VaughnMartin Readiness OS — End-to-End Organizational Advantage",
       ogDescription: "The response is ready before the trigger fires. Map · Monitor · Decide · Execute · Learn — the complete operating architecture for startup to Fortune 500 execution. 3,600× Execution Head Start.",
     });
@@ -3528,7 +3528,7 @@ export default function Homepage() {
                 audience: "Enterprise Executive",
                 headline: "You need your organization ready before the situation arrives.",
                 body: "Readiness OS compresses your mobilization cycle from 30 days to 12 minutes — pre-staged before the situation presents itself, not assembled after.",
-                proof: ["90-day Founding Partner program", "170 Readiness Protocols — pre-staged", "100% investment credited to contract", "12-minute coordination from signal to war room"],
+                proof: ["90-day Founding Partner program", "180 Readiness Protocols — pre-staged", "100% investment credited to contract", "12-minute coordination from signal to war room"],
                 cta: "See What You Get in 90 Days",
                 ctaPath: "/founding-partner-brief",
                 accent: GOLD,
