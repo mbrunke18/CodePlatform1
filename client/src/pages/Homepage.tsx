@@ -999,7 +999,7 @@ function HeroSection() {
               </h1>
 
               <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
-                Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. Readiness OS compresses that cycle to 12 minutes. Pre-staged before the trigger. Authorized in real time. Executed with precision.
+                Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. Readiness OS compresses that cycle to 12 minutes. Pre-staged before the trigger. Authorized in real time. Executed with precision. And every activation makes the next response faster.
               </p>
 
               {/* CTAs — clear primary dominance, secondary recedes */}
@@ -1018,7 +1018,7 @@ function HeroSection() {
                   onClick={() => trackCTA("hero_testdrive")}
                   style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
-                  See it execute in 12 minutes →
+                  Run a live scenario in 12 minutes →
                 </Link>
                 <span style={{ color: "rgba(255,255,255,0.14)", fontSize: 10 }}>or</span>
                 <Link
@@ -1146,7 +1146,7 @@ function ScenarioHookSection() {
 
           {/* Context */}
           <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.78)", lineHeight: 1.7, maxWidth: 660, marginBottom: 32 }}>
-            Most startup to Fortune 500s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
+            Most organizations — startup to Fortune 500 — spend 30 days figuring that out. While the window closes, the regulator moves, the competitor acts. Below is what having the response pre-staged looks like instead.
           </p>
 
           {/* Bridge line */}
@@ -1900,7 +1900,7 @@ function AthletePreparationSection() {
 function IDEASection() {
   const cards = [
     { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Readiness Protocols",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
-    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which Readiness Protocol matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "Continuous monitoring scans 248+ signals around the clock and knows exactly which Readiness Protocol matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
     { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing. The executive at the decision moment has four real choices: run the staged response as built, audible to a different staged response, customize the response on the fly, or choose to do nothing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];
@@ -1943,7 +1943,7 @@ function IDEASection() {
                   "Trigger detected — Readiness Protocol activated automatically",
                   "Roles, tasks, and budget pre-assigned and deployed",
                   "Full org executing in under 12 minutes",
-                  "Every activation feeds institutional memory forward",
+                  "Every activation builds institutional memory — next response is faster",
                 ].map(item => (
                   <div key={item} style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "flex-start" }}>
                     <span style={{ color: TEAL, fontSize: 14, marginTop: 2, flexShrink: 0 }}>✓</span>
