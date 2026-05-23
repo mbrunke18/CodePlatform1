@@ -13,6 +13,7 @@ export default function EcosystemDiagramPage() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Platform Ecosystem Architecture — Readiness OS</h1>
       <PageHero
         eyebrow="Architecture Overview"
         title="Readiness OS in the Microsoft Ecosystem"

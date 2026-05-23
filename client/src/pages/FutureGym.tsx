@@ -215,6 +215,7 @@ export default function FutureGym() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Future Readiness Gymnasium — Readiness OS</h1>
       <div className="bg-[#F8F7F4] min-h-screen">
 
         {/* ─── Dark Hero ─── */}

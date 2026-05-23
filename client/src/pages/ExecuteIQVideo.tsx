@@ -87,6 +87,7 @@ export default function ExecutionOSVideo() {
 
   return (
     <PageLayout>
+    <h1 className="sr-only">Readiness OS Platform Overview — VaughnMartin</h1>
     <div className="min-h-screen bg-[#0a0a0f] text-gray-900 overflow-hidden">
       <div className="relative w-full h-screen">
         <AnimatePresence mode="wait">

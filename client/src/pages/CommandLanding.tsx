@@ -283,6 +283,7 @@ export default function CommandLanding() {
 
   return (
     <>
+      <h1 className="sr-only">Command Center — Readiness OS</h1>
       <style>{`
         @keyframes cl-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
         @keyframes cl-live { 0%,100%{box-shadow:0 0 0 0 rgba(43,138,110,0.4)} 50%{box-shadow:0 0 0 6px rgba(43,138,110,0)} }

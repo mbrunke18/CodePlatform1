@@ -138,6 +138,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
 
   return (
     <PageLayout embedded={embedded}>
+      <h1 className="sr-only">Strategic Recorder — Readiness OS</h1>
       <div className="min-h-screen bg-white">
         {/* Header */}
         <div style={{ background: NAVY, padding: '28px 32px', position: 'relative', overflow: 'hidden' }}>

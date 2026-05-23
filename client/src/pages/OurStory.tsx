@@ -103,6 +103,7 @@ export default function OurStory() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Our Story — VaughnMartin Readiness OS</h1>
       <PageHero
         eyebrow="The Origin Story"
         title="40-Second Decisions. Years of Preparation."

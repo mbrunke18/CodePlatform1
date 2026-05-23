@@ -212,6 +212,7 @@ export default function Sitemap() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Platform Sitemap — Readiness OS</h1>
       <div style={{ background: NAVY, padding: '60px 0 36px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>

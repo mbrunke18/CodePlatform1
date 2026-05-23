@@ -107,6 +107,7 @@ export default function FinancialExposureEstimator() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Financial Exposure Estimator — Readiness OS</h1>
       <div style={{ background: OFF, minHeight: '100vh' }}>
 
         {/* ─── Dark Hero ─── */}

@@ -131,6 +131,7 @@ export default function NFLLearningDashboard() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Execution Learning Dashboard — Readiness OS</h1>
       <div className="bg-[#F8F7F4] min-h-screen" data-testid="execution-learning-dashboard-page">
         {/* ─── Dark Hero ─────────────────────────────────────────────── */}
         <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>

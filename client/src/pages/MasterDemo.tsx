@@ -293,9 +293,9 @@ function PhaseProtocol({ sc, phase, total, onNext, onBack }: { sc: DemoScenario;
   return (
     <div style={{ maxWidth: 840, margin: "0 auto", padding: "52px 28px 40px" }}>
       <SLabel color={GOLD}>Step 2 — Protocol Match · T+0:45</SLabel>
-      <h1 style={{ ...CG, fontSize: 46, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+      <h2 style={{ ...CG, fontSize: 46, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
         {locked ? <>Protocol #{sc.protocolNumber} confirmed.<br/><em style={{ color: GOLD }}>Already staged. Already ready.</em></> : <>Scanning 180 Readiness Protocols…</>}
-      </h1>
+      </h2>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 28 }}>
         {locked ? `Readiness OS matched the signal composite to Protocol #${sc.protocolNumber}. This protocol was not written in response to the trigger — it was written months ago, tested in Q3 drills, and waiting for this exact moment.` : "Readiness OS is correlating the signal composite against all 180 Readiness Protocols to find the strongest match."}
       </p>
@@ -386,10 +386,10 @@ function PhaseWarRoom({ sc, phase, total, onNext, onBack }: { sc: DemoScenario; 
         <LiveDot color={TEAL}/>
         <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL, textTransform: "uppercase" }}>War Room Active · T+0:45 → T+1:30</span>
       </div>
-      <h1 style={{ ...CG, fontSize: 44, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+      <h2 style={{ ...CG, fontSize: 44, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
         {sc.tasks.length} tasks staging. {sc.stakeholders.length} stakeholders activating.<br/>
         <em style={{ color: TEAL_LT }}>45 seconds from trigger detection.</em>
-      </h1>
+      </h2>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 640, marginBottom: 28 }}>
         The war room doesn't assemble — it activates. Every task has a pre-assigned owner. Every stakeholder receives a precise brief. No one wonders what they should be doing.
       </p>
@@ -501,9 +501,9 @@ function PhaseAuthorize({ sc, phase, total, onAuthorize, onBack }: { sc: DemoSce
   return (
     <div style={{ maxWidth: 840, margin: "0 auto", padding: "52px 28px 40px" }}>
       <SLabel color={GOLD}>Step 4 — Executive Authorization · T+3:22</SLabel>
-      <h1 style={{ ...CG, fontSize: 44, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+      <h2 style={{ ...CG, fontSize: 44, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
         {ceo.name} receives the brief.<br/><em style={{ color: GOLD }}>One decision. Full authority.</em>
-      </h1>
+      </h2>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 24 }}>
         No committee. No alignment cycle. The executive brief summarizes every element already staged. Every resource pre-authorized. Every question already answered. The only decision remaining: authorize or hold.
       </p>

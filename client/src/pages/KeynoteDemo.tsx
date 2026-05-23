@@ -988,6 +988,7 @@ export default function KeynoteDemo() {
       className="min-h-screen bg-white text-[#0A0F2E] overflow-hidden"
       onMouseMove={handleMouseMove}
     >
+      <h1 className="sr-only">Keynote Demo — Readiness OS</h1>
       <AnimatePresence mode="wait">
         <motion.div
           key={STAGES[stage].id}

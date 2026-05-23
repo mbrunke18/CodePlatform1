@@ -325,6 +325,7 @@ export default function IndustryDemosHub() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Industry Demo Hub — Readiness OS</h1>
       <div className="min-h-screen bg-white text-[#0A0F2E]">
 
         {/* ─── Dark Category Tile Header ─────────────────────────────────── */}

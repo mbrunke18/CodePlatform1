@@ -100,6 +100,7 @@ export default function AdminPanel() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8F7F4", fontFamily: "system-ui, sans-serif" }}>
+      <h1 className="sr-only">User Administration — Readiness OS</h1>
       {/* Header */}
       <div style={{ background: NAVY, padding: "1.25rem 2rem", display: "flex", alignItems: "center", gap: 12 }}>
         <Shield size={20} color={GOLD} />

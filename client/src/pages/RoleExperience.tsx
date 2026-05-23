@@ -1805,6 +1805,7 @@ export default function RoleExperience() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Role-Based Experience — Readiness OS</h1>
       <div className="min-h-screen bg-[#F8F7F4] pt-8 pb-20">
         <div className="fixed top-0 left-0 right-0 z-50 bg-[#F8F7F4]/80 backdrop-blur-md border-b border-[#E8E4DC] px-4 py-3">
           <div className="max-w-5xl mx-auto flex items-center gap-4">

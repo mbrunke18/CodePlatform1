@@ -2268,7 +2268,7 @@ export default function SandboxDemo() {
 
   return (
     <PageLayout>
-
+      <h1 className="sr-only">Sandbox Demo — Readiness OS</h1>
       <div className="py-12 px-6">
         <ExecutionStageGuide variant="compact" />
         <div className="max-w-6xl mx-auto">

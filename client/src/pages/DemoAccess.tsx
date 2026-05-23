@@ -84,13 +84,13 @@ export default function DemoAccess() {
           }} />
         </div>
 
-        <h1 style={{
+        <h2 style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 600,
           color: "#fff", lineHeight: 1.2, marginBottom: 12,
         }}>
           Preparing your executive access
-        </h1>
+        </h2>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
           Signing you in to the Readiness OS platform…
         </p>

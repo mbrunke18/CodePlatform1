@@ -804,9 +804,9 @@ export default function ProtocolActivationConsole() {
             </div>
 
             {/* Main heading */}
-            <h1 style={{ ...CG, fontSize: "clamp(38px,6vw,64px)", fontWeight: 600, color: "#fff", lineHeight: 1.0, marginBottom: 12, letterSpacing: "-0.01em" }}>
+            <h2 style={{ ...CG, fontSize: "clamp(38px,6vw,64px)", fontWeight: 600, color: "#fff", lineHeight: 1.0, marginBottom: 12, letterSpacing: "-0.01em" }}>
               Response <em style={{ color: GOLD, fontStyle: "italic" }}>Initiated</em>
-            </h1>
+            </h2>
 
             {/* Readiness Protocol name */}
             <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em", marginBottom: 48, fontWeight: 500 }}>
@@ -856,9 +856,9 @@ export default function ProtocolActivationConsole() {
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Pre-Activation Review</span>
                 </div>
-                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
+                <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
                   Review <em style={{ fontStyle: "italic", color: GOLD }}>Projected Impact</em>
-                </h1>
+                </h2>
                 <p style={{ color: MUTED, marginTop: 4 }}>
                   Verify mission parameters before initiating coordination sequence
                 </p>
@@ -1058,9 +1058,9 @@ export default function ProtocolActivationConsole() {
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Live Execution Console</span>
               </div>
-              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
+              <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
                 Execute Your <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Readiness Protocol</em>
-              </h1>
+              </h2>
               <p style={{ color: MUTED, marginTop: 4 }}>
                 Make the call. Rally your team. Win the moment.
               </p>

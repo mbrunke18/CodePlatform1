@@ -1188,7 +1188,7 @@ export default function LiveActivationCenter() {
                       {getCategoryDisplayName(activePlaybook?.category)} ACTIVE
                     </Badge>
                   </div>
-                  <h1 style={CG} className="text-4xl font-bold text-white leading-none">{activePlaybook?.name}</h1>
+                  <h2 style={CG} className="text-4xl font-bold text-white leading-none">{activePlaybook?.name}</h2>
                 </div>
               </div>
               <div className="flex flex-col items-end gap-2">

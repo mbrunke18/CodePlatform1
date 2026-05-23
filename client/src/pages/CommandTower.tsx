@@ -480,6 +480,7 @@ export default function CommandTower() {
       position: 'relative',
       overflow: 'hidden',
     }}>
+      <h1 className="sr-only">Command Tower — Readiness OS</h1>
       {/* Ambient grid overlay */}
       <div style={{
         position: 'fixed', inset: 0, pointerEvents: 'none',

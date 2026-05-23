@@ -6,6 +6,7 @@ export default function PodcastPrep() {
 
   return (
     <>
+      <h1 className="sr-only">Podcast Preparation Brief — Readiness OS</h1>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap');
         @media print {

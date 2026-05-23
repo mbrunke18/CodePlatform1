@@ -89,6 +89,7 @@ export default function AIIntelligenceHub() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Intelligence Hub — Readiness OS</h1>
       <div className="page-background min-h-screen bg-[#F8F7F4]">
 
         {/* ─── Dark Tile Module Hub ─────────────────────────────────────── */}

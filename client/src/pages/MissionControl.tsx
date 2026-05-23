@@ -471,6 +471,7 @@ export default function MissionControl() {
   if (!isReady) return null;
   return (
     <PageLayout>
+      <h1 className="sr-only">Mission Control — Readiness OS</h1>
       <WhyThisMatters
         headline="Map. Monitor. Decide. Execute. Learn — your full advantage cycle, live."
         body="Every signal detected here fires against triggers you defined — your thresholds, your categories, your escalation paths. Emerging situations surface before they escalate so leadership decides in time, not after the fact. Your role: authorize, not assemble."

@@ -108,7 +108,7 @@ function MarkdownRenderer({ content }: { content: string }) {
     <div className="prose prose-sm max-w-none">
       {lines.map((line, idx) => {
         if (line.startsWith('# ')) {
-          return <h1 key={idx} className="text-3xl font-light text-[#0A0F2E] mt-8 mb-6" style={CG}>{line.slice(2)}</h1>;
+          return <h2 key={idx} className="text-3xl font-light text-[#0A0F2E] mt-8 mb-6" style={CG}>{line.slice(2)}</h2>;
         }
         if (line.startsWith('## ')) {
           return <h2 key={idx} className="text-2xl font-light text-[#0A0F2E] mt-8 mb-4 border-b border-[#E8E4DC] pb-2" style={CG}>{line.slice(3)}</h2>;

@@ -161,6 +161,7 @@ export default function ConcurrentSituationBoard() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Concurrent Situation Board — Readiness OS</h1>
       <div style={{ background: OFF, minHeight: '100vh' }}>
 
         {/* ─── Dark Hero ─── */}

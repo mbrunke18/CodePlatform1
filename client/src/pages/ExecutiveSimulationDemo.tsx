@@ -346,6 +346,7 @@ export default function ExecutiveSimulationDemo() {
   if (phase === 'intro') {
     return (
       <PageLayout>
+        <h1 className="sr-only">Executive Simulation — Readiness OS</h1>
         <div className="min-h-screen flex items-center justify-center p-6">
           <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5" data-testid="card-simulation-intro">
             <CardHeader className="text-center pb-2">

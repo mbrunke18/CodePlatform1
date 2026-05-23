@@ -357,9 +357,9 @@ export default function FoundingPartnerProgram() {
               <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,5.5vw,64px)', fontWeight: 700, color: '#fff', lineHeight: 1.06, marginBottom: 4 }} data-testid="heading-pilot-program">
                 The response was ready
               </h1>
-              <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,5.5vw,64px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1.06, marginBottom: 32, fontStyle: 'italic' }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,5.5vw,64px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1.06, marginBottom: 32, fontStyle: 'italic' }}>
                 before you knew you needed it.
-              </h1>
+              </h2>
             </div>
 
             <div style={{ maxWidth: 640, marginBottom: 52 }}>

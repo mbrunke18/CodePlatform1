@@ -406,9 +406,9 @@ export default function LiveDetectionFeed() {
             <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22C55E', boxShadow: '0 0 8px #22C55E', animation: 'pulse 2s infinite' }} />
             <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Live — Monitoring Active</span>
           </div>
-          <h1 style={{ color: '#fff', fontSize: 32, fontWeight: 700, margin: '0 0 8px' }}>
+          <h2 style={{ color: '#fff', fontSize: 32, fontWeight: 700, margin: '0 0 8px' }}>
             Signal Detection Feed
-          </h1>
+          </h2>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: 0, maxWidth: 560 }}>
               Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Evaluated against 221 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
           </p>

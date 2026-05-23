@@ -691,9 +691,9 @@ export default function BrandKit() {
                 </div>
                 <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px 0" }}>
                   <div style={{ fontFamily: LABEL, fontSize: 12, color: B.gold, letterSpacing: "0.4em", textTransform: "uppercase" as const, marginBottom: 32, fontWeight: 700 }}>Readiness Infrastructure</div>
-                  <h1 style={{ fontFamily: EDITORIAL, fontSize: "clamp(40px,4vw,72px)", fontWeight: 400, color: B.ivory, lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 32 }}>
+                  <h2 style={{ fontFamily: EDITORIAL, fontSize: "clamp(40px,4vw,72px)", fontWeight: 400, color: B.ivory, lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 32 }}>
                     The response is ready<br/>before the trigger fires.
-                  </h1>
+                  </h2>
                   <div style={{ width: 60, height: 2, background: `linear-gradient(to right, ${B.gold}, ${B.teal})`, marginBottom: 32 }}/>
                   <p style={{ fontFamily: EDITORIAL, fontSize: 20, color: "rgba(248,247,244,0.75)", lineHeight: 1.65, fontStyle: "italic", maxWidth: 560, marginBottom: 40 }}>
                     180 Readiness Protocols. 221 triggers monitored. Signal monitoring. Executive authorization. Coordinated response in 12 minutes — whether the trigger is a threat or a market window.
@@ -742,9 +742,9 @@ export default function BrandKit() {
                   <div style={{ fontFamily: LABEL, fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: B.gold, marginBottom: 20, fontWeight: 700 }}>
                     Confidential · Founding Partner Program
                   </div>
-                  <h1 style={{ fontFamily: EDITORIAL, fontSize: 52, fontWeight: 400, color: B.navy, lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 24 }}>
+                  <h2 style={{ fontFamily: EDITORIAL, fontSize: 52, fontWeight: 400, color: B.navy, lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 24 }}>
                     The 90-Day<br/>Validation<br/>Partnership.
-                  </h1>
+                  </h2>
                   <p style={{ fontFamily: EDITORIAL, fontSize: 18, color: B.muted, lineHeight: 1.7, fontStyle: "italic", maxWidth: 480 }}>
                     Not a trial. Not a beta. A co-development partnership that turns your organization's specific trigger library into a fully staged readiness infrastructure — in 90 days.
                   </p>

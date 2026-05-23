@@ -34,7 +34,7 @@ export default function VideoLanding() {
 
   return (
     <PageLayout>
-      
+      <h1 className="sr-only">Platform Overview Video — Readiness OS</h1>
       <div className="pt-20">
         {/* ─── Dark Hero ─────────────────────────────────────────────── */}
         <div style={{ background: '#0A0F2E', padding: '40px 0 36px', position: 'relative', overflow: 'hidden' }}>

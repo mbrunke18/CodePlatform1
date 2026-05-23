@@ -49,6 +49,7 @@ export default function ApprovalError() {
 
   return (
     <div className="page-background min-h-screen bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+      <h1 className="sr-only">Access Approval Error — Readiness OS</h1>
       <Card className="max-w-md w-full">
         <CardHeader className="text-center">
           <div className="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900 flex items-center justify-center mb-4">

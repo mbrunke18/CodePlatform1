@@ -56,6 +56,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
 
   return (
     <PageLayout embedded={embedded}>
+      <h1 className="sr-only">Simulation Studio — Readiness OS</h1>
       <div className="min-h-screen bg-[#F8F7F4]">
         {/* ─── Dark Hero ─────────────────────────────────────────────── */}
         <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>

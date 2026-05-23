@@ -121,6 +121,7 @@ export default function LivingProtocols() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Living Protocols — Readiness OS</h1>
       <div className="bg-[#F8F7F4] min-h-screen">
         {/* ─── Dark Hero ─────────────────────────────────────────────── */}
         <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>

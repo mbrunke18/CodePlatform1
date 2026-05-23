@@ -651,9 +651,9 @@ export default function IncidentAnalyzer() {
                 <Brain className="w-4 h-4 mr-2" />
                 Strategic Analyzer
               </Badge>
-              <h1 className="text-4xl font-bold text-[#0A0F2E] mb-3">
+              <h2 className="text-4xl font-bold text-[#0A0F2E] mb-3">
                 See How Readiness OS Transforms Execution
-              </h1>
+              </h2>
               <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
                 Describe any strategic situation. A crisis you faced. An opportunity you missed. A transformation that stalled.
               </p>

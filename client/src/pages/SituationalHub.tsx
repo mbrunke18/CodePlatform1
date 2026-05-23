@@ -198,7 +198,7 @@ export default function SituationalHub() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Readiness Exposure Matrix</h1>
+                    <h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Readiness Exposure Matrix</h2>
                     <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold uppercase tracking-wider">9 Domains</Badge>
                   </div>
                   <p className="text-[#6B7280] mt-1">Understand your organization's readiness across all strategic scenario types</p>
@@ -275,7 +275,7 @@ export default function SituationalHub() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Practice Drills</h1>
+                    <h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Practice Drills</h2>
                     <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold uppercase tracking-wider">{activeDrills} Active</Badge>
                   </div>
                   <p className="text-[#6B7280] mt-1">Rehearse your response to any strategic scenario before it happens</p>
@@ -366,7 +366,7 @@ export default function SituationalHub() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Response Coordination</h1>
+                    <h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Response Coordination</h2>
                     <Badge className="bg-[#0A0F2E] text-white border-none font-bold uppercase tracking-wider">Pre-Staged</Badge>
                   </div>
                   <p className="text-[#6B7280] mt-1">Pre-defined escalation paths, stakeholder roles, and decision gates — configured before the situation arises</p>

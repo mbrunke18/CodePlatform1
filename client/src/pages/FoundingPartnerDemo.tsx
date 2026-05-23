@@ -290,7 +290,7 @@ export default function FoundingPartnerDemo() {
 
   return (
     <PageLayout>
-      
+      <h1 className="sr-only">Founding Partner Demo — Readiness OS</h1>
       <PageHero
         eyebrow="Founding Partner Demo"
         title="Prove It Works"

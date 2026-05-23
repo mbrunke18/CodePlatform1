@@ -245,9 +245,9 @@ export default function ProspectBrief() {
         {/* Opening thesis */}
         <div style={{ marginBottom: 36 }}>
           <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 12 }}>The Question for {form.company}</div>
-          <h1 style={{ fontSize: 28, fontWeight: 700, color: NAVY, lineHeight: 1.3, margin: "0 0 16px", fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 style={{ fontSize: 28, fontWeight: 700, color: NAVY, lineHeight: 1.3, margin: "0 0 16px", fontFamily: "'Cormorant Garamond', serif" }}>
             When the next high-stakes situation presents itself — how many days will it take your organization to mobilize?
-          </h1>
+          </h2>
           {form.concern && (
             <div style={{ padding: "14px 18px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em" }}>Stated concern: </span>

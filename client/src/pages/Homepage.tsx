@@ -994,9 +994,9 @@ function HeroSection() {
               <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 6px", color: "#fff", letterSpacing: "-0.01em" }}>
                 The Response Is Ready
               </h1>
-              <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 32px", color: GOLD, letterSpacing: "-0.01em" }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 32px", color: GOLD, letterSpacing: "-0.01em" }}>
                 Before the Trigger Fires.
-              </h1>
+              </h2>
 
               <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
                 Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. Readiness OS compresses that cycle to 12 minutes. Pre-staged before the trigger. Authorized in real time. Executed with precision. And every activation makes the next response faster.

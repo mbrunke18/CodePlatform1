@@ -873,6 +873,7 @@ export default function TryDemo() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Interactive Demo — Readiness OS</h1>
       <PageHero
         eyebrow="Interactive Demo"
         title="Experience Readiness OS"

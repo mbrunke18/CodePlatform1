@@ -123,6 +123,7 @@ export default function CrisisCommunicationsGenerator() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Crisis Communications Generator — Readiness OS</h1>
       <div style={{ background: OFF, minHeight: '100vh' }}>
 
         {/* ─── Dark Hero ─── */}

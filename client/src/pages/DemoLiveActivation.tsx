@@ -709,9 +709,9 @@ function DemoLiveActivation() {
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <Award className="h-24 w-24 text-[#2B8A6E] animate-pulse" />
                   <div>
-                    <h1 className="text-7xl font-bold text-[#2B8A6E] mb-2" data-testid="text-completion-title">
+                    <h2 className="text-7xl font-bold text-[#2B8A6E] mb-2" data-testid="text-completion-title">
                       🎉 All Stakeholders Coordinated!
-                    </h1>
+                    </h2>
                     <p className="text-3xl text-[#2B8A6E]/80">
                       Strategic Response Complete
                     </p>

@@ -195,7 +195,7 @@ export default function IntelligenceHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
-                  <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Signal Intelligence Dashboard</h1><Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge></div>
+                  <div className="flex items-center gap-3"><h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Signal Intelligence Dashboard</h2><Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge></div>
                   <p className="text-[#6B7280] mt-1">248+ data points monitored across 9 strategic domains</p>
                 </div>
                 <div className="flex gap-3">
@@ -241,7 +241,7 @@ export default function IntelligenceHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
-                  <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Compound Threat Intelligence</h1><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">System-Analyzed</Badge></div>
+                  <div className="flex items-center gap-3"><h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Compound Threat Intelligence</h2><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">System-Analyzed</Badge></div>
                   <p className="text-[#6B7280] mt-1">Cross-domain disruption synthesis — when multiple weak signals converge into an acute threat</p>
                 </div>
                 <Link href="/intelligence-control-center"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Intelligence Center</Button></Link>
@@ -303,7 +303,7 @@ export default function IntelligenceHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
-                  <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Audit & Compliance Log</h1><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">SOC 2</Badge></div>
+                  <div className="flex items-center gap-3"><h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Audit & Compliance Log</h2><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">SOC 2</Badge></div>
                   <p className="text-[#6B7280] mt-1">Complete record of all platform actions, decisions, and system recommendations</p>
                 </div>
                 <Link href="/audit-logging-center"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Full Audit Log</Button></Link>

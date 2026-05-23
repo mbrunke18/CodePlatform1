@@ -274,7 +274,7 @@ export default function PeerReviewReport() {
     <PageLayout>
       <div style={{ maxWidth: 640, margin: "80px auto", textAlign: "center", padding: 40 }}>
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Peer Review Report</div>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, color: NAVY, marginBottom: 16 }}>No Submissions Yet</h1>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, color: NAVY, marginBottom: 16 }}>No Submissions Yet</h2>
         <p style={{ color: MUTED, fontSize: 15 }}>Share the questionnaire link to begin collecting feedback. Results will appear here automatically.</p>
         <div style={{ marginTop: 32, padding: 20, background: OFF, border: `1px solid ${BORDER}`, borderRadius: 0, textAlign: "left" }}>
           <p style={{ fontSize: 12, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Questionnaire Link</p>

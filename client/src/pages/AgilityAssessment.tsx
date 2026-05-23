@@ -280,9 +280,9 @@ export default function AgilityAssessment() {
               <BarChart3 className="h-4 w-4 mr-2" />
               Agility Assessment
             </Badge>
-            <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Where Does Your Organization Stand?
-            </h1>
+            </h2>
             <p className="text-[#6B7280] dark:text-white/60">
               Answer 5 questions to benchmark against 244 organizations from the 2025 Business Agility Report
             </p>

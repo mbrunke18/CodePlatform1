@@ -174,6 +174,7 @@ export default function PrismInsights() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">PRISM Insights — Readiness OS</h1>
       <div className="bg-[#F8F7F4] min-h-screen">
 
         {/* ─── Dark Hero ─── */}

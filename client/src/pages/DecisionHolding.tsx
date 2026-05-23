@@ -56,6 +56,7 @@ export default function DecisionHolding() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Decision Holding Room — Readiness OS</h1>
       <div className="bg-white min-h-screen">
 
         {/* Navy hero */}

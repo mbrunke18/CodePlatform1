@@ -145,7 +145,7 @@ export default function TrialAccess() {
           <div className="mb-8 lg:hidden">
             <VaughnMartinLogo color="dark" height={40} variant="full" />
           </div>
-          <h1 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>Get 48-Hour Full Access</h1>
+          <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>Get 48-Hour Full Access</h2>
           <p className="text-sm mb-8" style={{ color: "#6B7280" }}>
             Fill in your details and we'll send your activation link immediately.
           </p>

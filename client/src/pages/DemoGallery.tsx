@@ -160,6 +160,7 @@ export default function DemoGallery() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Demo Gallery — Readiness OS</h1>
       <div className="min-h-screen bg-white">
 
         {/* ─── Dark Command Deck ─────────────────────────────────────────── */}

@@ -48,6 +48,7 @@ export default function WhyExecutionOS() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Why Readiness OS — VaughnMartin</h1>
       <PageHero
         eyebrow="2026 Research Consensus"
         title="The Infrastructure 15 Firms Say Is Missing"

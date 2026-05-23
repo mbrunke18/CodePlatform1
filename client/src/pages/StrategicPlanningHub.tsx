@@ -227,7 +227,7 @@ export default function StrategicPlanningHub() {
 
   return (
     <PageLayout>
-
+      <h1 className="sr-only">Strategic Planning Hub — Readiness OS</h1>
       {/* ─── Dark Hub Header Strip ──────────────────────────────────────── */}
       <div style={{ background: NAVY, padding: '36px 0 32px' }}>
         <style>{`

@@ -399,9 +399,9 @@ export default function ReadinessAssessment() {
                   {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
                   {domainConfig.label} Assessment
                 </Badge>
-                <h1 className="text-2xl md:text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness
-                </h1>
+                </h2>
               </div>
 
               <div className="mb-8">
@@ -597,9 +597,9 @@ export default function ReadinessAssessment() {
                 {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
                 {domainConfig.label} Assessment Complete
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness Score
-              </h1>
+              </h2>
             </div>
 
             <div className="flex flex-col items-center mb-12">

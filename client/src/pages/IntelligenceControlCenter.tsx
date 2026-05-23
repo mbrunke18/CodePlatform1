@@ -170,6 +170,7 @@ export default function IntelligenceControlCenter() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Intelligence Control Center — Readiness OS</h1>
 
       {/* ─── Dark Hub Header ──────────────────────────────────────── */}
       <div style={{ background: NAVY, padding: '36px 0 0' }}>

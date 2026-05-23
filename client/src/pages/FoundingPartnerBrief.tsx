@@ -86,6 +86,7 @@ export default function FoundingPartnerBrief() {
 
   return (
     <PageLayout>
+      <h1 className="sr-only">Founding Partner Program Brief — VaughnMartin Readiness OS</h1>
       <div style={{ background: "#fff", minHeight: "100vh" }}>
 
         {/* ── HEADER ─────────────────────────────────────────────────────── */}

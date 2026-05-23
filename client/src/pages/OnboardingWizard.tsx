@@ -551,10 +551,10 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
           <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)" }}>Welcome to Readiness OS</span>
         </div>
 
-        <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,62px)", color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
+        <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,62px)", color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
           Operational in<br />
           <em style={{ fontStyle: "italic", color: GOLD_LT }}>2–4 weeks.</em>
-        </h1>
+        </h2>
         <p style={{ fontSize: 16, fontWeight: 400, color: "rgba(255,255,255,0.55)", maxWidth: 580, marginBottom: 64, lineHeight: 1.8 }}>
           Readiness OS requires real configuration — your org structure, decision rights, and enterprise integrations. That's why it works in 12 minutes when it matters. Here's your path to live.
         </p>
@@ -633,9 +633,9 @@ function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) 
           <div style={{ width: 56, height: 56, background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
             <CheckCircle size={28} color="#fff" />
           </div>
-          <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", color: "#fff", marginBottom: 12, lineHeight: 1.1 }}>
+          <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", color: "#fff", marginBottom: 12, lineHeight: 1.1 }}>
             Phase 1 Complete{orgName ? ` — ${orgName}` : ''}.
-          </h1>
+          </h2>
           <p style={{ fontSize: 15, fontWeight: 400, color: "rgba(255,255,255,0.55)", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
             Your foundation is configured. Your implementation team will reach out within 24 hours to begin Phase 2 — integration and signal configuration.
           </p>
