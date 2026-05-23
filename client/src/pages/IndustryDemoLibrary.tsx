@@ -141,6 +141,23 @@ export default function IndustryDemoLibrary() {
         </div>
       </div>
 
+      {/* Results count */}
+      <div style={{ background: "#fff", borderBottom: `1px solid ${BORDER}`, padding: "12px 32px" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "rgba(10,15,46,0.4)" }}>
+            Showing <span style={{ color: NAVY }}>{filtered.length}</span> of {INDUSTRY_DEMO_BLUEPRINTS.length} industries
+          </span>
+          {activeDomain !== "all" && (
+            <button
+              onClick={() => { setActiveDomain("all"); setSearch(""); }}
+              style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, background: "transparent", border: `1px solid ${BORDER}`, color: "rgba(10,15,46,0.5)", padding: "5px 12px", cursor: "pointer" }}
+            >
+              Clear filter ×
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* Cards Grid */}
       <div style={{ background: "#fff", padding: "56px 32px" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>

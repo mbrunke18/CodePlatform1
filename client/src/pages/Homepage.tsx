@@ -981,6 +981,32 @@ function ScenarioCardsRow() {
   );
 }
 
+// ─── MICROSOFT HOOK STRIP (early objection handler) ───────────────────────────
+function MicrosoftHookStrip() {
+  return (
+    <div style={{ background: "#060B1E", borderTop: "1px solid rgba(201,168,76,0.12)", borderBottom: "1px solid rgba(201,168,76,0.12)", padding: "28px 0" }}>
+      <div style={{ ...CONTAINER, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" as const }}>
+        <div style={{ flex: 1, minWidth: 280 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>The Operating Model Gap</div>
+          <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,2vw,24px)", fontWeight: 600, color: "#F0EDE4", lineHeight: 1.3 }}>
+            Every enterprise has Microsoft's AI stack.{" "}
+            <em style={{ color: GOLD }}>None have the operating model to use it.</em>
+          </div>
+        </div>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, alignItems: "center" }}>
+          {["Azure AI", "Copilot", "Teams", "M365", "Entra"].map(name => (
+            <span key={name} style={{ ...DM, fontSize: 10, fontWeight: 600, color: "rgba(240,237,228,0.4)", padding: "5px 12px", border: "1px solid rgba(255,255,255,0.1)", letterSpacing: "0.06em" }}>{name}</span>
+          ))}
+          <span style={{ ...DM, fontSize: 11, color: GOLD, fontWeight: 700, padding: "5px 14px", marginLeft: 6 }}>+ Readiness OS →</span>
+        </div>
+        <a href="/ai-stack" style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, textDecoration: "none", borderBottom: "1px solid rgba(43,138,110,0.4)", paddingBottom: 2, whiteSpace: "nowrap" as const }}>
+          See the full stack →
+        </a>
+      </div>
+    </div>
+  );
+}
+
 // ─── 3-STEP HOW IT EXECUTES ───────────────────────────────────────────────────
 function ThreeStepSection() {
   return (
@@ -2389,6 +2415,59 @@ function ExecutiveQASection() {
 }
 
 // ─── SECTION 8: Primary CTA ───────────────────────────────────────────────────
+// ─── FEARLESS FINALE ──────────────────────────────────────────────────────────
+function FearlessFinaleSection() {
+  return (
+    <section style={{ background: NAVY, padding: "96px 0 88px", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
+      <div style={{ ...CONTAINER, maxWidth: 900, textAlign: "center" }}>
+        <Reveal>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 36 }}>
+            The Endpoint
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", marginBottom: 56 }}>
+            {[
+              { word: "Preparation", sub: "170 protocols pre-staged" },
+              { word: "Readiness", sub: "12-minute response" },
+              { word: "Fearless", sub: "The outcome", highlight: true },
+            ].map((item, i) => (
+              <Fragment key={item.word}>
+                <div style={{ textAlign: "center", padding: "0 28px" }}>
+                  <div style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: item.highlight ? "clamp(38px,5vw,60px)" : "clamp(22px,3vw,34px)",
+                    fontWeight: 700,
+                    color: item.highlight ? GOLD : "rgba(255,255,255,0.35)",
+                    lineHeight: 1.05,
+                    marginBottom: 10,
+                  }}>
+                    {item.word}
+                  </div>
+                  <div style={{ ...DM, fontSize: 9, color: item.highlight ? "rgba(201,168,76,0.55)" : "rgba(255,255,255,0.2)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                    {item.sub}
+                  </div>
+                </div>
+                {i < 2 && (
+                  <div style={{ color: "rgba(201,168,76,0.25)", fontSize: 22, fontWeight: 200, paddingTop: 10, flexShrink: 0 }}>→</div>
+                )}
+              </Fragment>
+            ))}
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 24, maxWidth: 760, margin: "0 auto 24px" }}>
+            Any organization that prepares for every situation it expects to face<br />
+            is no longer afraid of them.
+          </h2>
+          <p style={{ ...DM, fontSize: 15, color: "rgba(240,237,228,0.45)", lineHeight: 1.85, maxWidth: 560, margin: "0 auto 20px" }}>
+            Speed is the evidence. Readiness is the promise. Fearless is the outcome.
+          </p>
+          <p style={{ ...DM, fontSize: 12, color: "rgba(201,168,76,0.55)", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+            The response is ready before the trigger fires.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function CTASection() {
   return (
     <section id="hp-cta" className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
@@ -3274,6 +3353,7 @@ export default function Homepage() {
       {/* 3. EXAMPLES — Breadth before explanation */}
       <ScenarioCardsRow />
       <ThreeStepSection />
+      <MicrosoftHookStrip />
 
       {/* 3. PAIN — Cost of the old way */}
       <ProblemSection />
@@ -3302,6 +3382,9 @@ export default function Homepage() {
 
       {/* 7b. Executive Q&A */}
       <ExecutiveQASection />
+
+      {/* 8b. FEARLESS — Emotional finale */}
+      <FearlessFinaleSection />
 
       {/* 8. CTA */}
       <CTASection />

@@ -385,6 +385,21 @@ function SimulationEngine({ blueprint, autostart = false }: { blueprint: ReturnT
               >
                 <RotateCcw size={11} /> Replay Simulation
               </button>
+
+              {/* ROI Bridge */}
+              <div style={{ marginTop: 20, padding: "16px 18px", background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.22)", borderLeft: `3px solid ${TEAL}` }}>
+                <div style={{ ...BRC, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 7 }}>What is this head start worth to your organization?</div>
+                <div style={{ ...GEO, fontSize: 16, fontWeight: 600, color: "#fff", lineHeight: 1.35, marginBottom: 10 }}>
+                  <span style={{ color: GOLD }}>{blueprint.penaltyAvoided}</span> in avoided exposure —{" "}
+                  <em>staged before the trigger fired.</em>
+                </div>
+                <a
+                  href="/roi-calculator"
+                  style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: TEAL, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 5, borderBottom: "1px solid rgba(43,138,110,0.35)", paddingBottom: 1 }}
+                >
+                  Calculate your ROI →
+                </a>
+              </div>
             </div>
           )}
         </div>
@@ -680,8 +695,8 @@ export default function IndustryDemoDetail() {
               </div>
             </div>
             <div style={{ border: `1px solid ${BORDER}`, padding: "22px 20px", marginBottom: 3 }}>
-              <div style={{ ...GEO, fontSize: 17, fontWeight: 600, color: NAVY, lineHeight: 1.35, marginBottom: 8 }}>Deploy this blueprint in your organization.</div>
-              <p style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.55)", lineHeight: 1.75, marginBottom: 18 }}>Founding Partners receive all 170 Readiness Protocols pre-configured for their industry and executive structure. Go live in 4 weeks.</p>
+              <div style={{ ...GEO, fontSize: 17, fontWeight: 600, color: NAVY, lineHeight: 1.35, marginBottom: 8 }}>Ready to stage this response for your {blueprint.industry} organization?</div>
+              <p style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.55)", lineHeight: 1.75, marginBottom: 18 }}>Founding Partners receive all 170 Readiness Protocols pre-configured for their industry, risk calendar, and executive authorization structure. Go live in 4 weeks.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 <a href="/founding-partner-program" style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", background: NAVY, color: "#fff", padding: "13px 16px", textDecoration: "none", display: "block", textAlign: "center" }}>
                   Apply for Founding Partner Access
