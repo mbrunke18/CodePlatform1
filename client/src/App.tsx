@@ -270,6 +270,7 @@ const ExecuteTrackingPage = lazy(() => import("./pages/execute/TrackingPage"));
 const ExecuteUpdatesPage = lazy(() => import("./pages/execute/UpdatesPage"));
 const ExecuteDecisionsPage = lazy(() => import("./pages/execute/DecisionsPage"));
 
+const AdvanceIntelligence = lazy(() => import("./pages/AdvanceIntelligence"));
 const AdvanceMetricsPage = lazy(() => import("./pages/advance/MetricsPage"));
 const AdvanceOutcomesPage = lazy(() => import("./pages/advance/OutcomesPage"));
 const AdvanceEffectivenessPage = lazy(() => import("./pages/advance/EffectivenessPage"));
@@ -389,6 +390,7 @@ function Router() {
         <Route path="/execute/decisions" component={ExecuteDecisionsPage} />
 
         {/* ADVANCE Phase */}
+        <Route path="/advance-intelligence" component={AdvanceIntelligence} />
         <Route path="/advance/metrics" component={AdvanceMetricsPage} />
         <Route path="/advance/outcomes" component={AdvanceOutcomesPage} />
         <Route path="/advance/effectiveness" component={AdvanceEffectivenessPage} />

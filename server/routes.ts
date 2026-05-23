@@ -8607,6 +8607,11 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         const { processCloseOutGate } = await import('./services/PreparationUpdateEngine.js');
         setImmediate(() => processCloseOutGate(req.params.id));
       } catch { /* non-critical */ }
+      // ── ADVANCE 2.0: Trigger causal hypothesis measurement ────────────────
+      try {
+        const { measureHypothesesForActivation } = await import('./services/AdvanceLoopService.js');
+        setImmediate(() => measureHypothesesForActivation(req.params.id, req.orgId));
+      } catch { /* non-critical */ }
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: 'Failed to save close-out data' });
@@ -10782,6 +10787,53 @@ Respond ONLY as JSON with this exact structure:
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
+  });
+
+  // ── ADVANCE 2.0: Closed-Loop Causal Learning ─────────────────────────────────
+
+  // GET /api/advance/learning-velocity — Learning Velocity Index for executive dashboard
+  app.get('/api/advance/learning-velocity', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { getLearningVelocityIndex } = await import('./services/AdvanceLoopService.js');
+      const data = await getLearningVelocityIndex(req.orgId);
+      res.json(data);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/advance/pending-queue — updates awaiting auto-apply or exec approval
+  app.get('/api/advance/pending-queue', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { getPendingUpdateQueue } = await import('./services/AdvanceLoopService.js');
+      const data = await getPendingUpdateQueue(req.orgId);
+      res.json(data);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/advance/protocol-timeline/:playbookId — version history with impact for one protocol
+  app.get('/api/advance/protocol-timeline/:playbookId', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { getProtocolVersionTimeline } = await import('./services/AdvanceLoopService.js');
+      const data = await getProtocolVersionTimeline(req.params.playbookId, req.orgId);
+      res.json(data);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // PATCH /api/preparation-updates/:id/apply-v2 — closed-loop apply with delta + hypothesis
+  app.patch('/api/preparation-updates/:id/apply-v2', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { applyUpdateWithDelta } = await import('./services/AdvanceLoopService.js');
+      const result = await applyUpdateWithDelta(req.params.id, req.orgId, req.user?.id);
+      res.json(result);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // POST /api/advance/measure/:outcomeId — trigger hypothesis measurement after activation
+  app.post('/api/advance/measure/:outcomeId', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { measureHypothesesForActivation } = await import('./services/AdvanceLoopService.js');
+      await measureHypothesesForActivation(req.params.outcomeId, req.orgId);
+      res.json({ ok: true });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
 
   return httpServer;

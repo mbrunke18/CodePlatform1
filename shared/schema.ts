@@ -6969,3 +6969,71 @@ export const preparationCompoundScores = pgTable('preparation_compound_scores', 
 export const insertPreparationCompoundScoreSchema = createInsertSchema(preparationCompoundScores).omit({ id: true, createdAt: true });
 export type InsertPreparationCompoundScore = z.infer<typeof insertPreparationCompoundScoreSchema>;
 export type PreparationCompoundScore = typeof preparationCompoundScores.$inferSelect;
+
+// ─── ADVANCE 2.0: Closed-Loop Causal Learning ────────────────────────────────
+
+// Protocol Version Deltas — immutable audit log of every change made to a
+// protocol when a preparation update is applied. Enables the per-protocol
+// improvement timeline and "what changed and why" evidence chain.
+export const protocolVersionDeltas = pgTable('protocol_version_deltas', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  playbookId: uuid('playbook_id'),           // which protocol was mutated (null = org-level)
+  preparationUpdateId: uuid('preparation_update_id').notNull(),
+  activationOutcomeId: uuid('activation_outcome_id'),
+
+  // What changed
+  deltaType: varchar('delta_type', { length: 60 }).notNull(),
+  // 'signal_keyword_added' | 'owner_assigned' | 'task_added' | 'timing_adjusted' | 'note_encoded'
+  deltaDescription: text('delta_description').notNull(),
+  previousValue: jsonb('previous_value'),
+  newValue: jsonb('new_value'),
+
+  // Version bookkeeping
+  versionBefore: varchar('version_before', { length: 20 }),
+  versionAfter: varchar('version_after', { length: 20 }),
+
+  appliedAt: timestamp('applied_at').defaultNow(),
+  appliedByUserId: uuid('applied_by_user_id'),
+});
+export const insertProtocolVersionDeltaSchema = createInsertSchema(protocolVersionDeltas).omit({ id: true, appliedAt: true });
+export type InsertProtocolVersionDelta = z.infer<typeof insertProtocolVersionDeltaSchema>;
+export type ProtocolVersionDelta = typeof protocolVersionDeltas.$inferSelect;
+
+// Update Hypotheses — causal learning chain.
+// Every applied update generates a hypothesis: "This change should reduce
+// response time by X minutes." After the next activation the hypothesis is
+// measured against real outcome data and classified as proven / disproven.
+export const updateHypotheses = pgTable('update_hypotheses', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  preparationUpdateId: uuid('preparation_update_id').notNull(),
+  protocolVersionDeltaId: uuid('protocol_version_delta_id'),
+  playbookId: uuid('playbook_id'),
+
+  // The hypothesis
+  hypothesis: text('hypothesis').notNull(),
+  expectedImpactMinutes: integer('expected_impact_minutes'),      // ± minutes on response time
+  expectedImpactType: varchar('expected_impact_type', { length: 50 }).default('response_time'),
+  // 'response_time' | 'task_completion' | 'stakeholder_lag' | 'detection_accuracy'
+
+  // Measurement window
+  measurementWindowDays: integer('measurement_window_days').default(90),
+  measurementWindowActivations: integer('measurement_window_activations').default(3),
+  measureByDate: timestamp('measure_by_date'),
+  activationsObserved: integer('activations_observed').default(0),
+
+  // Results (filled after measurement)
+  status: varchar('status', { length: 30 }).default('pending'),
+  // pending | measuring | proven | disproven | expired
+  actualImpactMinutes: integer('actual_impact_minutes'),
+  provenAtActivationId: uuid('proven_at_activation_id'),
+  provenAt: timestamp('proven_at'),
+  confidenceScore: integer('confidence_score'), // 0–100
+  evidenceSummary: text('evidence_summary'),
+
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertUpdateHypothesisSchema = createInsertSchema(updateHypotheses).omit({ id: true, createdAt: true });
+export type InsertUpdateHypothesis = z.infer<typeof insertUpdateHypothesisSchema>;
+export type UpdateHypothesis = typeof updateHypotheses.$inferSelect;

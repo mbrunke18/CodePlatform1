@@ -47,14 +47,23 @@ const TEAL = "#2B8A6E";
 
 const workspaceTools = [
   {
+    title: "ADVANCE Intelligence",
+    description: "Closed-loop causal learning. Every applied update generates a measurable hypothesis. Every proven improvement compounds into a moat no competitor can replicate.",
+    path: "/advance-intelligence",
+    icon: GitCommit,
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/10",
+    stats: "Learning Velocity Index",
+    featured: true
+  },
+  {
     title: "Strategic Learning Center",
     description: "Pattern-based performance intelligence — review what worked, refine what didn't, and close the improvement loop",
     path: "/execution-learning",
     icon: Brain,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
-    stats: "AI optimization",
-    featured: true
+    stats: "Continuous refinement"
   },
   {
     title: "Institutional Memory",
