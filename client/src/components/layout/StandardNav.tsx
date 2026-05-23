@@ -82,6 +82,7 @@ const SEARCH_ITEMS = [
   { label: '12-Minute Test Drive', path: '/12-minute-experience', category: 'Demo', icon: Play },
   { label: 'Protocol Builder', path: '/protocol-builder', category: 'Demo', icon: ClipboardList },
   { label: 'Industry Scenarios', path: '/industry-demos', category: 'Demo', icon: Globe },
+  { label: 'All-Industry Demo Blueprint Library', path: '/industry-demo-library', category: 'Demo', icon: Globe },
   { label: 'Founding Partner Program', path: '/founding-partner-program', category: 'Action', icon: Target },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
@@ -183,6 +184,7 @@ export default function StandardNav() {
       heading: "Try It Now",
       links: [
         { label: "Full Scenario Experience Center", path: "/demo-hub", icon: LayoutGrid, description: "12 complete simulations across all 3 strategic domains — Growth · Resilience · Transformation. Pick your situation.", featured: true },
+        { label: "All-Industry Demo Blueprint Library", path: "/industry-demo-library", icon: Globe, description: "18 website-ready industry demos showing trigger detection, executive authorization, 12-minute execution, and measurable outcomes.", featured: true },
         { label: "Master Demo — Activist Investor", path: "/master-demo", icon: Play, description: "Elliott Management files 13D at 2:47 AM. The definitive 7-phase walkthrough. Every platform capability in one scenario.", featured: true },
         { label: "The 12-Minute Experience", path: "/12-minute-experience", icon: Rocket, description: "Watch a full Readiness Protocol activate from trigger detection to task assignment — in 12 minutes. No login required.", featured: true },
       ],

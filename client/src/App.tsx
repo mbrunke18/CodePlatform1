@@ -227,6 +227,8 @@ const RoleExperience = lazy(() => import("./pages/RoleExperience"));
 const IndustryExperience = lazy(() => import("./pages/IndustryExperience"));
 const IndustryPacksHub = lazy(() => import("./pages/IndustryPacksHub"));
 const IndustryPackDetail = lazy(() => import("./pages/IndustryPackDetail"));
+const IndustryDemoLibrary = lazy(() => import("./pages/IndustryDemoLibrary"));
+const IndustryDemoDetail = lazy(() => import("./pages/IndustryDemoDetail"));
 const ROIDashboard = lazy(() => import("./pages/ROIDashboard"));
 const SimulationStudioPage = lazy(() => import("./pages/SimulationStudio"));
 const StrategicRecorder = lazy(() => import("./pages/StrategicRecorder"));
@@ -630,6 +632,8 @@ function Router() {
         {renderRoutes(["/north-star", "/customer-journey"], CustomerJourney)}
         <Route path="/experience/:roleId" component={RoleExperience} />
         <Route path="/industry-experience/:industryId" component={IndustryExperience} />
+        {renderRoutes(["/industry-demo-library", "/industry-scenarios"], IndustryDemoLibrary)}
+        <Route path="/industry-demo/:industrySlug" component={IndustryDemoDetail} />
         <Route path="/industry" component={IndustryPacksHub} />
         <Route path="/industry/:verticalKey" component={IndustryPackDetail} />
 

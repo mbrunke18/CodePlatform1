@@ -1,6 +1,7 @@
 import { Link, useParams } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { BrandStamp } from "@/components/BrandStamp";
+import { industryDemoBlueprints, type IndustryDemoBlueprint } from "@/data/industryDemoBlueprints";
 import {
   Building2, Cpu, Factory, Zap, ShoppingCart, Heart,
   ArrowRight, Shield, CheckCircle2, AlertTriangle,
@@ -898,6 +899,15 @@ const PACK_DATA: Record<string, IndustryPackData> = {
 
 const CORE_PROTOCOL_COUNT = 170;
 
+const RELATED_DEMO_SLUGS: Record<string, string[]> = {
+  financial_services: ["financial-services", "insurance", "government-public-sector"],
+  technology: ["technology", "telecommunications", "media-entertainment"],
+  manufacturing: ["manufacturing", "construction", "aerospace-defense"],
+  energy: ["energy-utilities", "transportation-logistics", "food-agriculture"],
+  retail: ["retail-consumer", "hospitality-travel", "real-estate"],
+  healthcare: ["healthcare-pharma", "education", "professional-services"],
+};
+
 const URGENCY_COLORS: Record<string, { bg: string; text: string }> = {
   CRITICAL: { bg: "#FEF2F2", text: "#B91C1C" },
   HIGH: { bg: "#FFF7ED", text: "#C2410C" },
@@ -926,6 +936,9 @@ export default function IndustryPackDetail() {
 
   const Icon = pack.icon;
   const totalCoverage = CORE_PROTOCOL_COUNT + pack.protocols.length;
+  const relatedDemos = (RELATED_DEMO_SLUGS[pack.key] || [])
+    .map((slug) => industryDemoBlueprints.find((item) => item.slug === slug))
+    .filter((item): item is IndustryDemoBlueprint => Boolean(item));
 
   return (
     <PageLayout>
@@ -1063,6 +1076,58 @@ export default function IndustryPackDetail() {
         </div>
       </section>
 
+
+      {/* ── RELATED INDUSTRY DEMOS ── */}
+      <section className="py-16" style={{ background: "#F8F7F4" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-px w-8" style={{ background: GOLD }} />
+              <span className="text-xs tracking-[0.2em] font-semibold uppercase" style={{ color: GOLD }}>
+                Industry Demo Blueprints
+              </span>
+            </div>
+            <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY, fontFamily: "Cormorant Garamond, serif" }}>
+              Show Prospects How This Industry Executes in 12 Minutes
+            </h2>
+            <p className="text-sm max-w-2xl" style={{ color: "#4A5568" }}>
+              Pair your protocol pack with scenario-level demos so buyers can see trigger detection, executive authorization,
+              and measurable outcomes in context.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            {relatedDemos.map((demo) => (
+              <Link key={demo.slug} href={`/industry-demo/${demo.slug}`}>
+                <div className="border rounded-sm p-5 bg-white h-full cursor-pointer transition-all hover:shadow-md" style={{ borderColor: "#E5E7EB" }}>
+                  <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#6B7280" }}>
+                    {demo.industry}
+                  </div>
+                  <div className="text-sm font-bold mb-2" style={{ color: NAVY }}>{demo.scenarioTitle}</div>
+                  <p className="text-xs leading-relaxed mb-3" style={{ color: "#4B5563" }}>{demo.triggerEvent}</p>
+                  <div className="pt-3 border-t flex items-center justify-between" style={{ borderColor: "#F3F4F6" }}>
+                    <span className="text-xs font-semibold" style={{ color: "#2B8A6E" }}>{demo.mobilizationWindow}</span>
+                    <ArrowRight size={14} style={{ color: GOLD }} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <Link href="/industry-demo-library">
+              <button className="px-6 py-2.5 text-sm font-semibold" style={{ background: NAVY, color: IVORY, borderRadius: "0.15rem" }}>
+                Browse All Industry Demo Blueprints →
+              </button>
+            </Link>
+            <Link href="/industry-demos">
+              <button className="px-6 py-2.5 text-sm font-semibold border" style={{ borderColor: "#D1D5DB", color: NAVY, borderRadius: "0.15rem" }}>
+                Open Interactive Scenario Demos
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── CORE PLATFORM ── */}
       <section className="py-16" style={{ background: "#fff" }}>

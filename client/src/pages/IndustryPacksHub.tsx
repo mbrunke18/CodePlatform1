@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { BrandStamp } from "@/components/BrandStamp";
+import { industryDemoBlueprints } from "@/data/industryDemoBlueprints";
 import {
   Building2, Cpu, Factory, Zap, ShoppingCart, Heart,
   ArrowRight, Shield, CheckCircle2, Layers, Globe,
@@ -161,6 +162,7 @@ const CORE_CAPABILITIES = [
 export default function IndustryPacksHub() {
   const coreProtocols = 170;
   const totalIndustryProtocols = INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0);
+  const demoPreview = industryDemoBlueprints.slice(0, 6);
 
   return (
     <PageLayout>
@@ -445,6 +447,73 @@ export default function IndustryPacksHub() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ALL-INDUSTRY DEMO LIBRARY ── */}
+      <section className="py-20" style={{ background: "#F8F7F4" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-px w-8" style={{ background: GOLD }} />
+              <span className="text-xs tracking-[0.2em] font-semibold uppercase" style={{ color: GOLD }}>
+                Website-Ready Demo Blueprints
+              </span>
+            </div>
+            <h2 className="text-3xl font-bold" style={{ color: NAVY, fontFamily: "Cormorant Garamond, serif", fontSize: "2.1rem" }}>
+              Show Full-Spectrum Value Across Industries
+            </h2>
+            <p className="mt-3 text-base max-w-3xl" style={{ color: "#4A5568" }}>
+              Every blueprint is built around your core promise: AI monitors critical signals, executives authorize
+              decisions, and teams execute in 12 minutes. Use these on industry pages to help buyers immediately see
+              relevance in their own environment.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+            {demoPreview.map((demo) => (
+              <Link key={demo.slug} href={`/industry-demo/${demo.slug}`}>
+                <div className="border rounded-sm p-5 bg-white h-full cursor-pointer group transition-all hover:shadow-md" style={{ borderColor: "#E5E7EB" }}>
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                      <div className="text-sm font-bold" style={{ color: NAVY }}>{demo.industry}</div>
+                      <div className="text-xs" style={{ color: "#6B7280" }}>{demo.industryGroup}</div>
+                    </div>
+                    <span className="text-[10px] px-2 py-1 font-semibold rounded-sm" style={{ background: "#EEF2FF", color: "#4338CA" }}>
+                      {demo.domain}
+                    </span>
+                  </div>
+                  <div className="text-sm font-semibold mb-2" style={{ color: "#111827" }}>{demo.scenarioTitle}</div>
+                  <p className="text-xs leading-relaxed mb-4" style={{ color: "#4B5563" }}>
+                    {demo.triggerEvent}
+                  </p>
+                  <div className="pt-3 border-t flex items-center justify-between" style={{ borderColor: "#F3F4F6" }}>
+                    <span className="text-xs font-semibold" style={{ color: "#2B8A6E" }}>{demo.mobilizationWindow}</span>
+                    <ArrowRight size={14} style={{ color: GOLD }} className="group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <Link href="/industry-demo-library">
+              <button
+                className="px-7 py-3 text-sm font-semibold tracking-wide transition-all"
+                style={{ background: NAVY, color: IVORY, borderRadius: "0.15rem" }}
+              >
+                Explore All Industry Demo Blueprints →
+              </button>
+            </Link>
+            <Link href="/industry-demos">
+              <button
+                className="px-7 py-3 text-sm font-semibold tracking-wide border transition-all"
+                style={{ borderColor: "#D1D5DB", color: NAVY, background: "transparent", borderRadius: "0.15rem" }}
+              >
+                Open Interactive Scenario Demos
+              </button>
+            </Link>
           </div>
         </div>
       </section>

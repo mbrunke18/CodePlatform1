@@ -655,6 +655,11 @@ export default function IndustryDemosHub() {
                     Explore 170 Readiness Protocols
                   </Button>
                 </Link>
+                <Link href="/industry-demo-library">
+                  <Button size="lg" variant="outline" className="border-[#C9A84C] text-[#0A0F2E] hover:bg-[#C9A84C] hover:text-[#0A0F2E] px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none transition-colors">
+                    View All Industry Demo Blueprints
+                  </Button>
+                </Link>
               </div>
             </div>
           </Card>
