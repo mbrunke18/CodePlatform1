@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 22, 2026 (rev 44) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 23, 2026 (rev 45) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3548,3 +3548,73 @@ These were console errors, not visible rendering bugs — but they appear in pro
 - Tests: ✅ 189/189 passing (10 test files)
 - Browser console: ✅ zero React warnings on homepage
 - Commits: Proof Story/Executive Brief/ROI Calculator changes at `184daee`; ThreeStepSection fix at `d157057`
+
+---
+
+## 62. Homepage Hero — Live Simulation Panel + 5 Conversion Improvements — May 23, 2026 (rev 45)
+
+### 62a. HeroSimPanel — Live Auto-Cycling Execution Simulation
+
+**File:** `client/src/pages/Homepage.tsx` — `HeroSimPanel` function (defined before `HeroSection`)
+
+**What it does:** Replaces the static `VaughnMartinLogo` + motto in the hero right column with a continuously-running, auto-cycling execution simulation. The panel starts immediately on page load — no user interaction required.
+
+**4 scenarios (rotate every ~32 seconds):**
+| Scenario | Domain | Protocol |
+|---|---|---|
+| Hospital Ransomware — EHR Systems Locked | RISK & RESILIENCE | Protocol #044 |
+| Activist Investor Files 13D — 9.2% Stake | GROWTH & POSITIONING | Protocol #031 |
+| FDA Class I Recall — Contamination Signal | RISK & RESILIENCE | Protocol #058 |
+| SWIFT Outage — $4.7B Settlements at Risk | RISK & RESILIENCE | Protocol #007 |
+
+**5 phases per cycle (timed with `useEffect` + `setTimeout`):**
+1. **DETECT** (0–4.5s) — Risk score animates from 0 → 94 using `setInterval` at 110ms intervals; matched protocol displayed below
+2. **STAGE** (4.5–8.5s) — Task count shown as pre-staged; 4 readiness items listed
+3. **AUTHORIZE** (8.5–12.5s) — Executive role displayed; pulsing dots; "No committee. No meeting." copy
+4. **EXECUTE** (12.5–27.5s) — 6 task rows tick through every ~2.5s; gold dot for exec-owned steps, teal for system/functional steps
+5. **COMPLETE** (27.5–32s) — Checkmark (✓), outcome statement, financial stat in gold
+
+**State managed:**
+- `scenarioIdx` — which of the 4 scenarios is active (dot-nav at bottom lets visitors jump directly)
+- `phase` — current phase string: `"detect" | "stage" | "authorize" | "execute" | "complete"`
+- `riskScore` — animates 0→94 during DETECT phase
+- `activeStep` — which execute-phase task row is highlighted
+
+**Cleanup:** All `setTimeout` handles collected in `timers[]` array; `scoreInterval` stored separately. Both cleared in `useEffect` cleanup to prevent leaks on scenario change.
+
+**Layout change:** Hero grid column ratio changed from `"1fr 36%"` to `"1fr 42%"` to give the panel adequate width. `alignItems: "stretch"` added so the panel fills the full hero height.
+
+**Bottom bar:** 4 dot-nav buttons (active = gold, elongated pill; inactive = gray circle). "See all 19 industries →" links to `/industry-demo-library`.
+
+**Domain color logic:** `GROWTH & POSITIONING` → `GOLD`; everything else → `TEAL`. Left border on the panel reflects the active scenario's domain color.
+
+**Do NOT:**
+- Remove the `useEffect` cleanup — without it, scenario transitions will fire stale timers
+- Use `SCENARIOS.length` as a dependency in the `useEffect` dep array (it's a stable literal 4 — not needed)
+- Re-add the static logo to this column; the logo appears in `HomepageNav` already
+
+---
+
+### 62b. 5 Homepage/Demo Conversion Improvements (built prior to rev 45)
+
+**File:** `client/src/pages/Homepage.tsx`, `client/src/pages/IndustryDemoDetail.tsx`, `client/src/pages/IndustryDemoLibrary.tsx`
+
+These five improvements were shipped together in the prior session:
+
+**1. Microsoft Hook Strip** — Early in the homepage (above the fold), a single-line gold banner: "Every enterprise has Microsoft's AI stack. None have the operating model to use it." Links to `/ecosystem`. Reinforces the locked Microsoft framing before the user reaches the product explanation.
+
+**2. Fearless Finale Section** — Full-width section placed before the final CTA block. Delivers the emotional arc endpoint: "Fearless." Completes the **Preparation → Readiness → Fearless** thesis arc on the homepage.
+
+**3. ROI Bridge after Simulation Completion** — In `IndustryDemoDetail.tsx`, after the 12-minute simulation completes, a bridge panel appears showing the ROI link ("See the full ROI breakdown →") and the Executive Brief CTA. Prevents drop-off at the end of the demo.
+
+**4. Contextual Sidebar CTA** — In `IndustryDemoDetail.tsx`, the sidebar CTA copy dynamically adapts based on `blueprint.industry` — healthcare scenarios show healthcare-specific framing, financial scenarios show financial framing, etc. Uses a lookup map of `{ industry: copy }` pairs.
+
+**5. Demo Library Results Counter + Clear Filter** — In `IndustryDemoLibrary.tsx`, the active domain filter now shows a results count ("Showing 4 of 19 scenarios") and a "Clear filter" button appears when a domain filter is active. Reduces abandonment when a filter returns a short list.
+
+---
+
+### Rev 45 Known State
+- Build: ✅ clean, zero TS errors
+- Tests: ✅ 189/189 passing (10 test files)
+- Browser console: ✅ zero errors
+- Key commits: `58baf1c` (HeroSimPanel), `b3f216d` (5 conversion improvements)
