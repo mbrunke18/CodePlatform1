@@ -504,9 +504,9 @@ export default function HowItExecutes() {
                   Explore 12-Minute Experience →
                 </button>
               </Link>
-              <Link href="/request-evaluation">
+              <Link href="/request-access">
                 <button style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 32px", background: "transparent", color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.2)", cursor: "pointer" }}>
-                  Start 48-Hour Evaluation
+                  Request Founding Partner Access
                 </button>
               </Link>
             </div>
@@ -525,7 +525,7 @@ export default function HowItExecutes() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: "rgba(255,255,255,0.05)", margin: "0 48px 0" }}>
           {[
             { q: "Not ready to commit?", cta: "Explore 12-Minute Experience", href: "/12-minute-experience", highlight: false },
-            { q: "Ready to evaluate?", cta: "Start 48-Hour Evaluation", href: "/request-evaluation", highlight: true },
+            { q: "Ready to evaluate?", cta: "Request Founding Partner Access", href: "/request-access", highlight: true },
             { q: "Ready to deploy?", cta: "Apply for Full Access", href: "/request-access", highlight: false },
           ].map((p, i) => (
             <Link key={i} href={p.href} style={{ display: "block", background: NAVY, padding: "20px 24px", textDecoration: "none", borderTop: `2px solid ${p.highlight ? GOLD : "rgba(255,255,255,0.08)"}` }}>

@@ -135,7 +135,7 @@ export default function BuyerDecisionPacket() {
               Readiness OS gives enterprises end-to-end advantage — starting with detection. Define the triggers, thresholds, and escalation paths for every scenario so you detect earlier and decide on your terms. Then execute in minutes with 170 pre-staged Readiness Protocols and full executive authority intact. This packet covers everything procurement, legal, and the board need to make the decision.
             </p>
             <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
+              <Link href="/request-access" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
                 Apply for Founding Partner Access <ArrowRight size={15} />
               </Link>
               <Link href="/12-minute-experience" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "transparent", color: "#fff", padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", border: "1px solid rgba(255,255,255,0.25)", ...BC, letterSpacing: "0.05em" }}>
@@ -388,7 +388,7 @@ export default function BuyerDecisionPacket() {
               ))}
             </div>
             <div style={{ textAlign: "center", padding: "1.5rem", background: NAVY, borderRadius: "0.15rem" }}>
-              <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 2rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
+              <Link href="/request-access" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 2rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
                 Apply for Founding Partner Access <ArrowRight size={15} />
               </Link>
               <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", marginTop: "0.75rem" }}>
@@ -461,7 +461,7 @@ export default function BuyerDecisionPacket() {
                 Apply now and your organization can begin its 90-day Founding Partner engagement this quarter.
               </p>
               <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
-                <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
+                <Link href="/request-access" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
                   Apply for Founding Partner Access <ArrowRight size={15} />
                 </Link>
                 <Link href="/first-90-days" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "transparent", color: "#fff", padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 600, fontSize: "0.875rem", textDecoration: "none", border: "1px solid rgba(255,255,255,0.25)", ...BC, letterSpacing: "0.05em" }}>

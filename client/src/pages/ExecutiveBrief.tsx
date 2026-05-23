@@ -452,9 +452,9 @@ export default function ExecutiveBrief() {
                     </div>
                   ))}
                 </div>
-                <Link href="/founding-partner-program">
+                <Link href="/request-access">
                   <Button style={{ background: NAVY, color: "#fff", fontWeight: 700 }}>
-                    View Founding Partner Details <ArrowRight className="w-4 h-4 ml-2" />
+                    Apply for Founding Partner Access <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
               </div>

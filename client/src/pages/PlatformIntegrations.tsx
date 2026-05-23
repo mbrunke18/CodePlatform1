@@ -311,7 +311,7 @@ export default function PlatformIntegrations() {
             <a href="/technical-architecture" style={{ ...BAR, display: 'inline-block', background: 'transparent', color: GOLD, border: `1px solid rgba(201,168,76,0.5)`, fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '12px 28px', textDecoration: 'none' }}>
               Full Technical Architecture →
             </a>
-            <a href="/request-evaluation" style={{ ...BAR, display: 'inline-block', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '12px 28px', textDecoration: 'none' }}>
+            <a href="/request-access" style={{ ...BAR, display: 'inline-block', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '12px 28px', textDecoration: 'none' }}>
               Start 48-Hour Evaluation →
             </a>
             <a href="/request-access" style={{ ...BAR, display: 'inline-block', background: GOLD, color: NAVY, fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '12px 28px', textDecoration: 'none' }}>
