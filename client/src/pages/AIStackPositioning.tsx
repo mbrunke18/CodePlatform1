@@ -20,7 +20,7 @@ const STACK_LAYERS = [
     sub: "Where AI creates measurable value",
     items: ["Operations", "Customer Experience", "Employees & Productivity", "Strategy & Decision Making", "New Business Models"],
     readinessRole: "Primary deployment layer. Readiness OS delivers measurable Business Impact specifically in Strategy & Decision Making and Operations — the two domains where 30-day alignment cycles cause the most financial damage.",
-    readinessItems: ["170 cross-industry Readiness Protocols", "221 pre-mapped trigger scenarios", "12-minute mobilization vs. 30-day baseline", "3,600× execution head start"],
+    readinessItems: ["180 cross-industry Readiness Protocols", "221 pre-mapped trigger scenarios", "12-minute mobilization vs. 30-day baseline", "3,600× execution head start"],
     highlight: true,
     color: GOLD,
     badge: "PRIMARY LAYER",
@@ -323,7 +323,7 @@ export default function AIStackPositioning() {
             "Every enterprise has Microsoft's AI stack.<br />None have the operating model to use it."
           </blockquote>
           <p style={{ ...BAR, fontSize: 14, color: "rgba(255,255,255,0.5)", lineHeight: 1.8, maxWidth: 640, margin: "0 auto 48px" }}>
-            Copilot surfaces insights. Azure OpenAI processes language. Microsoft Fabric moves data. None of these tools tell the organization what to do when the trigger fires, who must authorize it, or which of 170 pre-staged responses is the right one. Readiness OS is the decision layer that sits above the Microsoft investment and makes it executable in 12 minutes.
+            Copilot surfaces insights. Azure OpenAI processes language. Microsoft Fabric moves data. None of these tools tell the organization what to do when the trigger fires, who must authorize it, or which of 180 pre-staged responses is the right one. Readiness OS is the decision layer that sits above the Microsoft investment and makes it executable in 12 minutes.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 3, maxWidth: 720, margin: "0 auto 48px" }}>
             {[

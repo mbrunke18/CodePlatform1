@@ -5,7 +5,7 @@
  * trigger categories, organizational contexts, and historical activation patterns.
  * 
  * Phase 5a (this implementation): manually codified signal relationships
- * visible in the 170 Readiness Protocol library. Rule-based relationship
+ * visible in the 180 Readiness Protocol library. Rule-based relationship
  * map derived from existing playbook knowledge.
  * 
  * Phase 5b: Activation-enriched (after 3+ Founding Partner pilots).

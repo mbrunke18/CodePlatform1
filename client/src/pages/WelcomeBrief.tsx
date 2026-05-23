@@ -117,7 +117,7 @@ export default function WelcomeBrief() {
   }
 
   const d = data || {
-    triggersArmed: 221, domainsMonitored: 9, signalsTracked: 248, playbooksReady: 170,
+    triggersArmed: 221, domainsMonitored: 9, signalsTracked: 248, playbooksReady: 180,
     signalsScanned72h: 0, recentDetections: [], stakeholdersEnrolled: 0, isNewOrg: true,
   };
   const detections: any[] = d.recentDetections || [];

@@ -92,7 +92,7 @@ function InvestorPresentation() {
           We redesign how work flows<br />in the age of AI
         </h1>
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 'clamp(15px,1.5vw,20px)', color: '#0A0F2E', maxWidth: 680, marginBottom: 16, lineHeight: 1.65, fontWeight: 400 }}>
-          The new operating model for startup to Fortune 500 enterprises — 170 pre-staged Readiness Protocols that compress 30 days of mobilization into 12 minutes of live execution
+          The new operating model for startup to Fortune 500 enterprises — 180 pre-staged Readiness Protocols that compress 30 days of mobilization into 12 minutes of live execution
         </p>
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#6B7280', maxWidth: 560, marginBottom: 48, lineHeight: 1.65 }}>
           Not another AI tool bolted onto the old workflow. A fundamental redesign of how strategic work flows from first principles for the AI era.
@@ -568,7 +568,7 @@ function InvestorPresentation() {
           {[
             { tier: 'Starter', price: '$250K', desc: 'Single domain — Risk & Resilience', features: ['25 Readiness Protocols', '100 signals monitored', 'Standard integrations', 'Email support'] },
             { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 Readiness Protocols', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
-            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ Readiness Protocols', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
+            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['180 Readiness Protocols', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
           ].map((t, i) => (
             <div key={i} className={`rounded-none p-6 ${t.highlight ? 'bg-[#0A0F2E] border-2 border-[#C9A84C] text-white' : 'bg-white border border-[#E8E4DC]'}`}>
               {t.highlight && <div className="text-[#C9A84C] text-xs font-bold uppercase mb-2">TARGET</div>}

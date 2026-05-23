@@ -584,7 +584,7 @@ export default function CommandLanding() {
                     </div>
 
                     <div style={{ fontFamily: "'Crimson Pro', serif", fontSize: 22, fontWeight: 600, color: '#fff', lineHeight: 1.2, marginBottom: 8 }}>
-                      170 Response<br />Architectures
+                      180 Response<br />Architectures
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 300, color: 'rgba(240,237,228,0.45)', lineHeight: 1.5, marginBottom: 20 }}>
                       Pre-built, AI-informed readiness Readiness Protocols across 9 strategic domains.

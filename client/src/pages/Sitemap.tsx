@@ -78,7 +78,7 @@ const SECTIONS: Section[] = [
     color: GOLD,
     icon: BookOpen,
     entries: [
-      { name: 'Readiness Protocol Library', path: '/playbooks', desc: '170 pre-staged protocols across 9 strategic domains', icon: BookOpen },
+      { name: 'Readiness Protocol Library', path: '/playbooks', desc: '180 pre-staged protocols across 9 strategic domains', icon: BookOpen },
       { name: 'Situation Intents', path: '/identify/situation-intents', desc: 'Define what your org is monitoring — IDEA configuration start', icon: Target },
       { name: 'Triggers Management', path: '/triggers-management', desc: '221 triggers — configure detection thresholds', icon: Zap },
       { name: 'Signal Configuration', path: '/signal-configuration', desc: 'Configure your 39 pre-configured signal sources and trigger detection thresholds', icon: Radio },

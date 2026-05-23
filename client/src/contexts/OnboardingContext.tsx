@@ -111,7 +111,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'wia-welcome',
         title: 'What-If Analyzer',
-        description: 'Model any business scenario beyond the 170 playbook templates. Test market conditions, assess impact, and get system recommendations.',
+        description: 'Model any business scenario beyond the 180 playbook templates. Test market conditions, assess impact, and get system recommendations.',
         phase: 'IDENTIFY'
       },
       {
@@ -136,8 +136,8 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
     steps: [
       {
         id: 'sg-welcome',
-        title: '170 Strategic Playbooks',
-        description: 'Browse 170 battle-tested playbooks across 9 strategic domains. Each playbook includes pre-mapped stakeholders, decision trees, and communication templates.',
+        title: '180 Strategic Playbooks',
+        description: 'Browse 180 battle-tested playbooks across 9 strategic domains. Each playbook includes pre-mapped stakeholders, decision trees, and communication templates.',
         phase: 'IDENTIFY'
       },
       {
@@ -149,7 +149,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'sg-unlimited',
         title: 'Unlimited Custom Scenarios',
-        description: 'Use the What-If Analyzer to create unlimited custom scenarios beyond the 170 templates. Every scenario becomes a living playbook that improves over time.',
+        description: 'Use the What-If Analyzer to create unlimited custom scenarios beyond the 180 templates. Every scenario becomes a living playbook that improves over time.',
         phase: 'IDENTIFY'
       }
     ]
@@ -161,7 +161,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'pr-welcome',
         title: 'Playbook Readiness Audit',
-        description: 'Assess the preparedness of your 170 playbooks across 4 key dimensions: Trigger Coverage, Stakeholder Readiness, Practice Frequency, and Outcome Confidence.',
+        description: 'Assess the preparedness of your 180 playbooks across 4 key dimensions: Trigger Coverage, Stakeholder Readiness, Practice Frequency, and Outcome Confidence.',
         phase: 'IDENTIFY'
       },
       {
@@ -388,7 +388,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
     steps: [
       {
         id: 'pl-welcome',
-        title: 'Protocol Library — 170 Pre-Staged Responses',
+        title: 'Protocol Library — 180 Pre-Staged Responses',
         description: 'Every protocol here is a complete execution architecture: trigger logic, ownership map, task sequence, communications, and governance — staged before the event occurs.',
         phase: 'IDENTIFY'
       },
@@ -419,7 +419,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'pb-welcome',
         title: 'Protocol Builder — Build Custom Readiness',
-        description: 'Use this 6-step wizard to create a net-new Readiness Protocol for any scenario not covered by the 170 core protocols. Your custom protocols follow the same execution architecture as the core library.',
+        description: 'Use this 6-step wizard to create a net-new Readiness Protocol for any scenario not covered by the 180 core protocols. Your custom protocols follow the same execution architecture as the core library.',
         phase: 'IDENTIFY'
       },
       {

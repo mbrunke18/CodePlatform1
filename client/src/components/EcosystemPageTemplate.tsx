@@ -105,7 +105,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               {
                 phase: "02",
                 title: "Readiness OS provides the strategic layer",
-                body: "Sitting above the stack, Readiness OS monitors 221 executive triggers, maps them to 170 pre-staged Readiness Protocols, and fires coordinated responses in 12 minutes — without waiting for committees, emails, or alignment cycles.",
+                body: "Sitting above the stack, Readiness OS monitors 221 executive triggers, maps them to 180 pre-staged Readiness Protocols, and fires coordinated responses in 12 minutes — without waiting for committees, emails, or alignment cycles.",
                 color: TEAL,
               },
               {

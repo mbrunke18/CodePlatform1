@@ -29,7 +29,7 @@ const phases = [
     aiColor: "#2B8A6E",
     humanColor: "#C9A84C",
     description:
-      "170 pre-built strategic Readiness Protocols covering 9 domains. Your team configures which triggers matter, which stakeholders own each response, and what outcomes define success. AI maps dependencies and surfaces gaps in coverage.",
+      "180 pre-built strategic Readiness Protocols covering 9 domains. Your team configures which triggers matter, which stakeholders own each response, and what outcomes define success. AI maps dependencies and surfaces gaps in coverage.",
     aiActions: [
       "Pattern-match trigger signals across all 9 domains",
       "Score Readiness Protocol relevance for incoming scenarios",

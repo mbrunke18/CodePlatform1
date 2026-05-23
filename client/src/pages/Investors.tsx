@@ -129,7 +129,7 @@ const industryProblems = [
 const competitiveAdvantages = [
   {
     title: "18-Month Head Start",
-    description: "170 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already pre-staged for startup to Fortune 500 enterprises.",
+    description: "180 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already pre-staged for startup to Fortune 500 enterprises.",
     icon: Zap,
   },
   {
@@ -283,7 +283,7 @@ function FuturePositioningDiagram() {
           <p className="text-sm text-[#6B7280] font-medium mb-4">Immediate ROI: enterprises stop losing $36M+ on slow strategic response. The platform pays for itself on the first activation.</p>
           <ul className="space-y-2">
             {[
-              "170 pre-built Readiness Protocols ready to deploy",
+              "180 pre-built Readiness Protocols ready to deploy",
               "12 min to full execution — others spend weeks just to mobilize",
               "3,600× Execution Head Start while competitors still plan",
               "Human executives retain full decision authority",

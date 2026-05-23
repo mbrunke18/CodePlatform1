@@ -233,7 +233,7 @@ export default function BoardReadiness() {
             <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 6 }}>Executive Attestation</div>
             <div style={{ fontSize: 12, color: '#555', lineHeight: 1.7 }}>
               This organization's strategic execution infrastructure is actively monitoring {d.triggersArmed || 221} trigger patterns across {d.totalDomains} domains.
-              Stakeholder teams are enrolled to receive real-time alerts within minutes of a trigger detection. 170 pre-staged Readiness Protocols are available for immediate deployment.
+              Stakeholder teams are enrolled to receive real-time alerts within minutes of a trigger detection. 180 pre-staged Readiness Protocols are available for immediate deployment.
               This report was generated automatically by Readiness OS and reflects live system state as of {generatedDate}.
             </div>
           </div>

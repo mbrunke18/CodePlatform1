@@ -306,7 +306,7 @@ export default function ExecutiveDashboard() {
                       </div>
                       <h2 style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>Your organization is in a <em style={{ fontStyle: "italic", color: "#2B8A6E" }}>high-gravity</em> preparedness state.</h2>
                       <p className="text-[#6B7280] text-sm max-w-xl">
-                        Based on real-time telemetry across 170 strategic Readiness Protocols and active signal detection modules. Decision velocity is currently outperforming industry benchmarks by 84%.
+                        Based on real-time telemetry across 180 strategic Readiness Protocols and active signal detection modules. Decision velocity is currently outperforming industry benchmarks by 84%.
                       </p>
                     </div>
                   </div>
@@ -453,7 +453,7 @@ export default function ExecutiveDashboard() {
                 {[
                   { label: 'Avg Response Time', value: readiness?.averageResponseTime ? `${readiness.averageResponseTime}m` : '11.4m', desc: 'Trigger-to-activation', icon: Clock, status: 'good' as const },
                   { label: 'Weak Signals Detected', value: readiness?.weakSignalsDetected ?? weakSignals.length, desc: 'Active monitoring alerts', icon: AlertTriangle, status: weakSignals.length > 0 ? 'warning' as const : 'good' as const },
-                  { label: 'Readiness Protocols Active', value: `${readiness?.playbooksReady ?? 170} / 170`, desc: 'Ready for deployment', icon: Layers, status: 'good' as const },
+                  { label: 'Readiness Protocols Active', value: `${readiness?.playbooksReady ?? 180} / 180`, desc: 'Ready for deployment', icon: Layers, status: 'good' as const },
                 ].map((m, i) => (
                   <Card key={i} className={`border-l-4 ${m.status === 'good' ? 'border-l-[#2B8A6E]' : 'border-l-[#C9A84C]'} border-[#E8E4DC] bg-white`}>
                     <CardContent className="p-6 space-y-3">
@@ -547,7 +547,7 @@ export default function ExecutiveDashboard() {
                   },
                   {
                     label: 'Readiness Protocols on Standby',
-                    value: readiness?.playbooksReady ?? 170,
+                    value: readiness?.playbooksReady ?? 180,
                     icon: Layers,
                     status: 'good' as const,
                     desc: 'Pre-authorized for activation',

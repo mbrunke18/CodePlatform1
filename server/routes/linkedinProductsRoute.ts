@@ -71,7 +71,7 @@ export const LINKEDIN_PRODUCTS: LinkedInProduct[] = [
   {
     id: 4,
     name: "Protocol Library",
-    tagline: "170 pre-staged Readiness Protocols across 3 strategic domains",
+    tagline: "180 pre-staged Readiness Protocols across 3 strategic domains",
     accentColor: "#C9A84C",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <rect x="10" y="14" width="60" height="10" rx="2" fill="rgba(201,168,76,0.12)" stroke="#C9A84C" stroke-width="1.5"/>
@@ -316,7 +316,7 @@ function buildProductIconHtml(product: LinkedInProduct): string {
         <div class="brief-stats">
           <div class="bs-row"><span class="bs-key">Mobilization compression</span><span class="bs-val">3,600×</span></div>
           <div class="bs-row"><span class="bs-key">Pre-authorized budget</span><span class="bs-val">$2.4M avg</span></div>
-          <div class="bs-row"><span class="bs-key">Readiness Protocols</span><span class="bs-val">170 ready</span></div>
+          <div class="bs-row"><span class="bs-key">Readiness Protocols</span><span class="bs-val">180 ready</span></div>
           <div class="bs-row"><span class="bs-key">Founding Partner ROI</span><span class="bs-val">847% Yr 1</span></div>
         </div>
         <div class="brief-cta">vaughnmartin.com/executive-brief</div>
@@ -586,7 +586,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
     id: 1,
     name: "Readiness OS Platform",
     tagline: "The operating model layer above the startup to Fortune 500's AI stack",
-    description: "Readiness OS is the coordination infrastructure startup to Fortune 500 enterprises use to replace 30-day mobilization cycles with 12-minute execution. 170 pre-staged Readiness Protocols activate the moment a strategic trigger fires — with executive authority preserved at every step. The response is ready before the trigger fires.",
+    description: "Readiness OS is the coordination infrastructure startup to Fortune 500 enterprises use to replace 30-day mobilization cycles with 12-minute execution. 180 pre-staged Readiness Protocols activate the moment a strategic trigger fires — with executive authority preserved at every step. The response is ready before the trigger fires.",
     highlights: [
       {
         title: "3,600× Execution Head Start",
@@ -648,8 +648,8 @@ export const LINKEDIN_PRODUCTS_COPY = [
   {
     id: 4,
     name: "Protocol Library",
-    tagline: "170 pre-staged Readiness Protocols across 3 strategic domains",
-    description: "170 cross-industry Readiness Protocols organized across Growth & Positioning, Risk & Resilience, and Transformation. Each protocol includes pre-staged tasks, stakeholder assignments, budget allocations, and document staging — fully ready to activate the moment a trigger fires. Plus 12 compound protocols for multi-domain threats.",
+    tagline: "180 pre-staged Readiness Protocols across 3 strategic domains",
+    description: "180 cross-industry Readiness Protocols organized across Growth & Positioning, Risk & Resilience, and Transformation. Each protocol includes pre-staged tasks, stakeholder assignments, budget allocations, and document staging — fully ready to activate the moment a trigger fires. Plus 12 compound protocols for multi-domain threats.",
     highlights: [
       {
         title: "Three Strategic Domains",
@@ -661,7 +661,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
       },
       {
         title: "6 Industry Protocol Packs",
-        description: "Sector-specific packs layered on top of the 170 core protocols for Healthcare, Financial Services, Manufacturing, Retail, Energy, and Technology.",
+        description: "Sector-specific packs layered on top of the 180 core protocols for Healthcare, Financial Services, Manufacturing, Retail, Energy, and Technology.",
       },
     ],
     cta: { label: "Explore the Protocol Library", url: "https://vaughnmartin.com/playbook-library" },

@@ -96,7 +96,7 @@ function McKinseyResearchSection() {
               "Orchestration layer · coordination fabric · shared source of truth"
             </div>
             <div style={{ ...IR_DM, fontSize: 13, color: IR_MUTED, lineHeight: 1.6 }}>
-              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Readiness OS is the product that sits there: 170 pre-staged Readiness Protocols reading across all five organizational pillars simultaneously.
+              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Readiness OS is the product that sits there: 180 pre-staged Readiness Protocols reading across all five organizational pillars simultaneously.
             </div>
           </div>
         </div>

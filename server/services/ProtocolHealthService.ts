@@ -1,7 +1,7 @@
 /**
  * ProtocolHealthService
  *
- * Every one of the 170 Readiness Protocols gets a live health score across four dimensions:
+ * Every one of the 180 Readiness Protocols gets a live health score across four dimensions:
  *  - Freshness:          Days since last drill or activation
  *  - Signal Alignment:   How well the protocol's triggers match live signal detections
  *  - Stakeholder Familiarity: How recently stakeholders have engaged with this protocol
@@ -325,7 +325,7 @@ export async function scoreAllProtocols(
 export async function getProtocolHealthSummary(
   organizationId: string
 ): Promise<ProtocolHealthSummary> {
-  const scores = await scoreAllProtocols(organizationId, 170);
+  const scores = await scoreAllProtocols(organizationId, 180);
 
   const counts = { HEALTHY: 0, AGING: 0, STALE: 0, CRITICAL: 0 };
   for (const s of scores) counts[s.healthState]++;

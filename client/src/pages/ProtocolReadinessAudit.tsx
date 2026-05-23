@@ -74,7 +74,7 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
     'Joint Venture Formation', 'Licensing Agreement Negotiation', 'Technology Transfer'
   ];
 
-  for (let i = 1; i <= 170; i++) {
+  for (let i = 1; i <= 180; i++) {
     const nameIndex = (i - 1) % playbookNames.length;
     const domainIndex = Math.floor((i - 1) / 20) % domains.length;
     
@@ -215,7 +215,7 @@ export default function ProtocolReadinessAudit() {
                 </h1>
               </div>
               <p className="text-[#6B7280] text-lg max-w-2xl">
-                Assess preparedness across your 170 strategic playbooks. Identify gaps, 
+                Assess preparedness across your 180 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>
             </div>

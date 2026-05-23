@@ -62,7 +62,7 @@ export default function RequestAccess() {
       title: 'Request Platform Access — Readiness OS | VaughnMartin',
       description: 'Request access to VaughnMartin Readiness OS. Enterprise-only platform for pre-staged strategic execution. 12-minute response to any trigger.',
       ogTitle: 'Request Access — VaughnMartin Readiness OS',
-      ogDescription: 'Enterprise access to Readiness OS. 170 pre-staged protocols. 12-minute execution from trigger to authorization.',
+      ogDescription: 'Enterprise access to Readiness OS. 180 pre-staged protocols. 12-minute execution from trigger to authorization.',
     });
   }, []);
 

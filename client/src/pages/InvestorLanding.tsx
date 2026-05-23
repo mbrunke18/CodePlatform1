@@ -78,7 +78,7 @@ export default function InvestorLanding() {
       title: "Investor Overview | Readiness OS — Strategic Readiness Platform",
       description: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the operating model layer. First-mover in a new enterprise software category.",
       ogTitle: "Invest in Readiness OS — The Operating Model Layer for startup to Fortune 500",
-      ogDescription: "Enterprises spend 30 days mobilizing for events they could have pre-staged. Readiness OS changes the model. 170 protocols. 12-minute execution. First-mover opportunity.",
+      ogDescription: "Enterprises spend 30 days mobilizing for events they could have pre-staged. Readiness OS changes the model. 180 protocols. 12-minute execution. First-mover opportunity.",
     });
   }, []);
 
@@ -962,7 +962,7 @@ export default function InvestorLanding() {
                   <div>
                     <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>What this means for the product</div>
                     <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
-                      Readiness OS eliminates the rediscovery tax entirely. 170 pre-staged Readiness Protocols mean the context, ownership, and decision logic exist <em>before</em> the trigger fires — not reconstructed after. The platform is the continuity layer Bain describes as missing.
+                      Readiness OS eliminates the rediscovery tax entirely. 180 pre-staged Readiness Protocols mean the context, ownership, and decision logic exist <em>before</em> the trigger fires — not reconstructed after. The platform is the continuity layer Bain describes as missing.
                     </p>
                   </div>
                   <div style={{ width: "100%", height: 1, background: "#E8E4DC" }} />
@@ -1618,7 +1618,7 @@ export default function InvestorLanding() {
                 <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #F0EDE4' }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: '#2B8A6E', marginBottom: 8 }}>The fix:</div>
                   <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
-                    Pre-stage 170 responses before the trigger fires. When the signal crosses the confidence threshold, the Readiness Protocol is already built, stakeholders pre-assigned, and executive authorization takes 8 minutes — not 30 days.
+                    Pre-stage 180 responses before the trigger fires. When the signal crosses the confidence threshold, the Readiness Protocol is already built, stakeholders pre-assigned, and executive authorization takes 8 minutes — not 30 days.
                   </p>
                 </div>
 
@@ -1753,7 +1753,7 @@ export default function InvestorLanding() {
                 {
                   q: "How do we evaluate this before committing?",
                   a: "Qualified prospects receive a 48-hour guided evaluation workspace — pre-seeded with realistic data, core workflow enabled, executive authorization simulation live. You run a full Activist Investor or Ransomware response from signal to war room in 12 minutes inside the evaluation environment. By the time you apply for a Founding Partner seat, you've already experienced the product.",
-                  proof: "170 pre-staged Readiness Protocols. Activation, acknowledgment, and debrief loops — all measurable inside the evaluation.",
+                  proof: "180 pre-staged Readiness Protocols. Activation, acknowledgment, and debrief loops — all measurable inside the evaluation.",
                 },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', borderTop: i === 0 ? '1px solid #E8E4DC' : 'none', borderBottom: '1px solid #E8E4DC', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC' }}>

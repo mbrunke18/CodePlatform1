@@ -318,7 +318,7 @@ export default function OnboardingGuide() {
         <Section id="Readiness Protocols">
           <SectionHeader
             label="05 — Readiness Protocol Library"
-            title="170 Pre-Built Readiness Readiness Protocols"
+            title="180 Pre-Built Readiness Readiness Protocols"
             subtitle="Every Readiness Protocol contains 4 structured phases, role-specific task assignments, decision gates, escalation protocols, and expert content — pre-built before the trigger fires."
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>

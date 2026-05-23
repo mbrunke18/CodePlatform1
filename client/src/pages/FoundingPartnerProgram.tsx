@@ -517,7 +517,7 @@ export default function FoundingPartnerProgram() {
                 <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#0A0F2E', opacity: 0.45, marginBottom: 6 }}>Tier 1 · Included</div>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.2 }}>Readiness OS Core</div>
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
-                  170 pre-staged protocols, 221 trigger monitors, 12-minute execution engine. The full platform — available from day one.
+                  180 pre-staged protocols, 221 trigger monitors, 12-minute execution engine. The full platform — available from day one.
                 </p>
                 {['180 Readiness Protocols ready to deploy', '221 strategic triggers monitored continuously', '12-minute trigger-to-coordination engine', 'Executive authorization at every activation'].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
@@ -990,7 +990,7 @@ export default function FoundingPartnerProgram() {
                 <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-4">Readiness OS Adds</div>
                 <div className="space-y-3">
                   {[
-                    "Pre-staged Readiness Protocols — 170 across 9 domains, ready before any trigger fires",
+                    "Pre-staged Readiness Protocols — 180 across 9 domains, ready before any trigger fires",
                     "Automated stakeholder cascade — every role notified and assigned in 12 minutes",
                     "Trigger-to-coordination engine — detection becomes execution, not a meeting",
                     "Decision authority preserved — AI orchestrates, your executives decide",

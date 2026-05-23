@@ -35,7 +35,7 @@ const LAYERS = [
     color: TEAL,
     desc: "When a trigger pattern fires, the system resolves the appropriate Readiness Protocol from a library of 180 single-domain and 30 compound protocols. Compound protocols coordinate simultaneous multi-domain response.",
     details: [
-      { label: "Protocol library", value: "170 cross-industry protocols · IDs 1–180. 30 compound protocols · IDs 181–210 (multi-domain, simultaneous activation)" },
+      { label: "Protocol library", value: "180 cross-industry protocols · IDs 1–180. 30 compound protocols · IDs 181–210 (multi-domain, simultaneous activation)" },
       { label: "Trigger patterns", value: "221 named trigger templates. Each template maps to 1–4 primary protocols and includes escalation logic" },
       { label: "Compound logic", value: "Activist + Regulatory compound triggers both GROWTH & POSITIONING and RISK & RESILIENCE protocols simultaneously. Full 10-task dual-track war room." },
       { label: "Resolution speed", value: "Protocol selected in <2 seconds after trigger detection. No human routing required." },
@@ -411,7 +411,7 @@ export default function TechnicalArchitecture() {
                 num: "5",
                 label: "Business Impact Layer",
                 desc: "Strategy & Decision Making · Operations",
-                role: "Readiness OS primary layer — 170 pre-staged Readiness Protocols across 221 trigger scenarios. 12-minute response replaces 30-day mobilization cycle.",
+                role: "Readiness OS primary layer — 180 pre-staged Readiness Protocols across 221 trigger scenarios. 12-minute response replaces 30-day mobilization cycle.",
                 highlight: true,
                 color: GOLD,
               },

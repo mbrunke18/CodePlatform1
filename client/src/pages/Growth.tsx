@@ -85,7 +85,7 @@ const TIERS = [
     cta: "Get Started",
     ctaAction: "/contact",
     capabilities: [
-      { label: "Readiness Protocols", value: "Full library — all 170" },
+      { label: "Readiness Protocols", value: "Full library — all 180" },
       { label: "Strategic domains", value: "All 9" },
       { label: "Users", value: "Unlimited" },
       { label: "Activation", value: "One-click + auto-trigger" },
@@ -157,7 +157,7 @@ const FAQS = [
   },
   {
     q: "Is this genuinely the same platform enterprise organizations use?",
-    a: "Yes. Same IDEA Framework. Same execution engine. Same 170-Readiness Protocol library. Same 12-minute activation infrastructure. The tier determines how much of the platform you deploy across your organization — not a reduced or restricted version of the product.",
+    a: "Yes. Same IDEA Framework. Same execution engine. Same 180-Readiness Protocol library. Same 12-minute activation infrastructure. The tier determines how much of the platform you deploy across your organization — not a reduced or restricted version of the product.",
   },
 ];
 

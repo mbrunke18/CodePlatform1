@@ -590,7 +590,7 @@ function ExecutionChainDiagram() {
   const steps = [
     { label: "TRIGGER FIRES", time: "T+0", desc: "Strategic moment detected — no improvisation", color: GOLD },
     { label: "SIGNAL MAPPED", time: "T+0:12", desc: "248+ sources evaluated across 9 domains", color: GOLD },
-    { label: "Readiness Protocol STAGED", time: "Pre-built", desc: "170 responses ready before trigger fired", color: TEAL },
+    { label: "Readiness Protocol STAGED", time: "Pre-built", desc: "180 responses ready before trigger fired", color: TEAL },
     { label: "EXECUTIVE AUTHORIZES", time: "T+0:08", desc: "Human decision preserved — not bypassed", color: TEAL },
     { label: "FULL DEPLOYMENT", time: "12 MIN", desc: "Teams coordinated, brief delivered, executing", color: GOLD },
   ];
@@ -1367,7 +1367,7 @@ function PlatformArchitectureSection() {
               <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
             </div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
-              Start with 170 protocols.<br />
+              Start with 180 protocols.<br />
               <em style={{ color: GOLD, fontStyle: "italic" }}>Build the rest from scratch.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
@@ -1385,7 +1385,7 @@ function PlatformArchitectureSection() {
               <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: NAVY, opacity: 0.55, marginBottom: 6 }}>Tier 1</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Readiness OS Core</h3>
               <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
-                170 pre-staged Readiness Protocols, continuous signal monitoring across 221 strategic triggers, and the 12-minute execution engine. Available on day one — for every organization in every industry.
+                180 pre-staged Readiness Protocols, continuous signal monitoring across 221 strategic triggers, and the 12-minute execution engine. Available on day one — for every organization in every industry.
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
@@ -1439,7 +1439,7 @@ function PlatformArchitectureSection() {
               <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Tier 3</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Protocol Builder</h3>
               <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
-                Build custom Readiness Protocols from scratch for scenarios unique to your organization, your structure, and your decision authority. The 170 core protocols and industry packs cover the patterns we anticipated. The Protocol Builder covers everything else.
+                Build custom Readiness Protocols from scratch for scenarios unique to your organization, your structure, and your decision authority. The 180 core protocols and industry packs cover the patterns we anticipated. The Protocol Builder covers everything else.
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
@@ -1899,7 +1899,7 @@ function AthletePreparationSection() {
 // ─── SECTION 5: IDEA Framework ───────────────────────────────────────────────
 function IDEASection() {
   const cards = [
-    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Readiness Protocols",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "I", title: "Identify", subtitle: "180 Pre-Staged Readiness Protocols",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "Continuous monitoring scans 248+ signals around the clock and knows exactly which Readiness Protocol matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
     { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing. The executive at the decision moment has four real choices: run the staged response as built, audible to a different staged response, customize the response on the fly, or choose to do nothing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
@@ -2672,7 +2672,7 @@ function FearlessFinaleSection() {
           </div>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", marginBottom: 56 }}>
             {[
-              { word: "Preparation", sub: "170 protocols pre-staged" },
+              { word: "Preparation", sub: "180 protocols pre-staged" },
               { word: "Readiness", sub: "12-minute response" },
               { word: "Fearless", sub: "The outcome", highlight: true },
             ].map((item, i) => (
@@ -2826,6 +2826,7 @@ function HomepageFooter() {
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>PRODUCT</div>
             {[
               { label: "How It Works",   href: "/how-it-works" },
+              { label: "Protocol Coverage Browser", href: "/protocol-browser" },
               { label: "Readiness Protocols", href: "/playbook-library" },
               { label: "Pricing & Plans", href: "/growth" },
               { label: "Request Founding Partner Access", href: "/founding-partner-program" },
@@ -3417,7 +3418,7 @@ export default function Homepage() {
             {[
               {
                 marker: "Week 1",
-                headline: "170 protocols staged to your triggers",
+                headline: "180 protocols staged to your triggers",
                 body: "Your strategic trigger map is configured. Every Readiness Protocol is armed to your industry, your org, and your priorities. No blank-slate setup.",
                 accent: TEAL,
               },

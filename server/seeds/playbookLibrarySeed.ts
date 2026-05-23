@@ -1,6 +1,6 @@
 /**
  * Enhanced Playbook Data
- * Helper functions and constants for 170-playbook library seeding
+ * Helper functions and constants for 180-playbook library seeding
  * Provides severity scores, time sensitivity, activation tiers, and success metrics
  */
 
@@ -142,7 +142,7 @@ export function getSuccessMetrics(domainId: number): {
 }
 
 export async function seedPlaybookLibrary() {
-  console.log('🏈 Seeding Complete 170-Playbook Library...');
+  console.log('🏈 Seeding Complete 180-Playbook Library...');
   return true;
 }
 

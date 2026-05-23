@@ -44,7 +44,7 @@ function buildTrialEmailHtml(data: {
             <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${data.firstName},</p>
             <p style="margin:0 0 24px;color:#374151;font-size:15px;line-height:1.6;">
               You now have full access to the Readiness OS platform for the next <strong>48 hours</strong>. 
-              Explore the complete platform — live trigger detection, 170 pre-staged playbooks, 
+              Explore the complete platform — live trigger detection, 180 pre-staged playbooks, 
               Mission Control, and the full IDEA Framework in action.
             </p>
             <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">

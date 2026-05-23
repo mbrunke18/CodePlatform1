@@ -514,7 +514,7 @@ export default function ProofStory() {
               Your organization will face these triggers.<br /><em style={{ color: GOLD }}>The question is whether the response is ready.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 36, lineHeight: 1.7 }}>
-              Founding Partners receive the full 170-protocol library, live signal monitoring, and 90 days of validation support. The response is built before the trigger fires.
+              Founding Partners receive the full 180-protocol library, live signal monitoring, and 90 days of validation support. The response is built before the trigger fires.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/founding-partner-program">

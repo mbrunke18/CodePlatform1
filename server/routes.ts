@@ -1408,7 +1408,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         .orderBy(desc(triggerDetections.detectedAt)).limit(20);
       const totalActivations = activationsData.length;
       const avgResponseTime = 12;
-      const playbooksReady = 170;
+      const playbooksReady = 180;
       res.json({
         activations: activationsData,
         detections: detectionsData,
@@ -6245,7 +6245,7 @@ SUCCESS METRICS:
       'strategic-overview': `## Strategic Overview — ${tf}
 
 ### Executive Summary
-${org} maintains a strong strategic position within the ${industry} sector, with 170 active playbooks deployed across 9 strategic domains. Current quarter execution velocity stands at 87% against targets, with 3 critical transformation initiatives on track. The IDEA Framework deployment is 94% complete, enabling 12-minute trigger-to-execution coordination across the enterprise.
+${org} maintains a strong strategic position within the ${industry} sector, with 180 active playbooks deployed across 9 strategic domains. Current quarter execution velocity stands at 87% against targets, with 3 critical transformation initiatives on track. The IDEA Framework deployment is 94% complete, enabling 12-minute trigger-to-execution coordination across the enterprise.
 
 ### Strategic Position Assessment
 - **Market Position**: Strong competitive standing with differentiated execution infrastructure providing first-mover advantage in strategic coordination
@@ -6255,7 +6255,7 @@ ${org} maintains a strong strategic position within the ${industry} sector, with
 ### IDEA Framework Status
 | Phase | Status | Key Metric |
 |-------|--------|-----------|
-| IDENTIFY | Fully Active | 170 playbooks deployed across 9 domains |
+| IDENTIFY | Fully Active | 180 playbooks deployed across 9 domains |
 | DETECT | Operational | 23 signal sources actively monitored |
 | EXECUTE | Ready | 11.3-minute average coordination time |
 | ADVANCE | Learning | 89% institutional knowledge capture rate |
@@ -6276,16 +6276,16 @@ ${org} maintains a strong strategic position within the ${industry} sector, with
 - **Stakeholder Alignment**: 92% (target: 85%) — exceeding benchmark by 7 points
 - **Response Readiness**: 94% (target: 90%) — top quartile for ${industry} sector
 - **Time-to-Coordination**: 11.3 minutes (target: 12 minutes) — 85% faster than industry average of 72 hours
-- **Playbook Utilization**: 78% of 170 playbooks activated at least once — institutional knowledge deepening`,
+- **Playbook Utilization**: 78% of 180 playbooks activated at least once — institutional knowledge deepening`,
 
       'crisis-readiness': `## Crisis Readiness Report — ${tf}
 
 ### Executive Summary
-${org} demonstrates strong crisis preparedness with an overall readiness score of 91/100. The organization has 170 playbooks deployed across 9 strategic domains, with Defense playbooks (Crisis, Cyber, Regulatory) showing the highest drill frequency. Average response time benchmark stands at 10.8 minutes against the 12-minute target.
+${org} demonstrates strong crisis preparedness with an overall readiness score of 91/100. The organization has 180 playbooks deployed across 9 strategic domains, with Defense playbooks (Crisis, Cyber, Regulatory) showing the highest drill frequency. Average response time benchmark stands at 10.8 minutes against the 12-minute target.
 
 ### Readiness Score Breakdown
 - **Overall Preparedness**: 91/100
-- **Playbook Coverage**: 156/170 playbooks fully activated and tested
+- **Playbook Coverage**: 156/180 playbooks fully activated and tested
 - **Response Time Benchmark**: 10.8 minutes vs 12-minute target
 - **Stakeholder Coordination**: 94% — all critical stakeholders mapped and communication protocols verified
 - **Communication Protocol Status**: Active — tested within last 14 days
@@ -6365,7 +6365,7 @@ ${org}'s strategic transformation program is 73% complete across 4 major initiat
 ### Key Milestones Achieved
 - **Digital Operations**: Automated 47 manual workflows, reducing processing time by 73% ($2.1M annual savings)
 - **Decision Engine**: Successfully piloted system-driven scenario analysis with 89% accuracy, deployed to 3 business units
-- **Coordination Platform**: IDEA Framework fully deployed, 170 playbooks operational, 12-minute coordination benchmark achieved
+- **Coordination Platform**: IDEA Framework fully deployed, 180 playbooks operational, 12-minute coordination benchmark achieved
 - **Workforce**: 340 employees completed strategic execution training (68% of target population)
 
 ### Blockers & Dependencies
@@ -6442,7 +6442,7 @@ Generate a realistic, data-driven executive summary. Use specific percentages, t
 
 ### Readiness Score Breakdown
 - Overall Preparedness: [score]/100
-- Playbook Coverage: [X]/170 playbooks activated
+- Playbook Coverage: [X]/180 playbooks activated
 - Response Time Benchmark: [time] vs 12-minute target
 - Stakeholder Coordination: [score]%
 - Communication Protocol Status: [status]
@@ -6532,7 +6532,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
 
       const prompt = reportTypePrompts[reportType] || reportTypePrompts['strategic-overview'];
 
-      let summary = await openAIService.analyzeText(prompt, `Enterprise strategic execution report for ${industry} sector. Use the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE). Reference 170 strategic playbooks across 9 domains.`);
+      let summary = await openAIService.analyzeText(prompt, `Enterprise strategic execution report for ${industry} sector. Use the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE). Reference 180 strategic playbooks across 9 domains.`);
 
       const isFallback = summary.length < 100 || summary.includes('temporarily');
       if (isFallback) {
@@ -7460,7 +7460,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         },
         expected: {
           executiveTriggers: 178,
-          playbookLibrary: 170,
+          playbookLibrary: 180,
           playbookDomains: 9
         }
       });
@@ -7570,6 +7570,38 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     } catch (err) {
       console.error('Detections fetch error:', err);
       res.status(500).json({ success: false, detections: [] });
+    }
+  });
+
+  // GET /api/public/protocol-browser — full protocol library for public coverage browser (no auth)
+  app.get('/api/public/protocol-browser', async (_req, res) => {
+    try {
+      const { playbooksData } = await import('./seeds/data/playbooksData');
+      const domainNames: Record<number, string> = {
+        1: 'Market Dynamics', 2: 'Operational Excellence', 3: 'Financial Strategy',
+        4: 'Regulatory & Compliance', 5: 'Technology & Innovation', 6: 'Talent & Leadership',
+        7: 'Brand & Reputation', 8: 'Market Opportunities', 9: 'AI Governance',
+      };
+      const domainCodes: Record<number, string> = {
+        1: 'MD', 2: 'OE', 3: 'FS', 4: 'RC', 5: 'TI', 6: 'TL', 7: 'BR', 8: 'MO', 9: 'AG',
+      };
+      const protocols = playbooksData.playbooks.map(p => ({
+        number: p.number,
+        protocol_code: p.protocol_code,
+        name: p.name,
+        trigger: p.trigger,
+        response: p.response,
+        response_window: p.response_window,
+        financial_exposure: p.financial_exposure,
+        domain: p.domain,
+        domain_name: domainNames[p.domain] ?? 'Unknown',
+        domain_code: domainCodes[p.domain] ?? '??',
+        compound: p.compound ?? false,
+        stakeholder_count: p.stakeholders?.length ?? 0,
+      }));
+      res.json({ protocols, total: playbooksData.total, compound_total: protocols.filter(p => p.compound).length });
+    } catch (err) {
+      res.status(500).json({ error: 'Protocol library unavailable' });
     }
   });
 
@@ -9503,7 +9535,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
 
 SCENARIO: "${scenarioText}"
 
-Available playbooks from the Readiness OS library (170 total across 9 domains):
+Available playbooks from the Readiness OS library (180 total across 9 domains):
 ${playbooks.map((p: any) => `- ${p.name} (${p.domain})`).slice(0, 40).join('\n')}
 
 Score TWO distinct conditions on a 0-100 scale:
@@ -9527,7 +9559,7 @@ Respond ONLY as JSON with this structure:
         surviveScore: 28,
         thriveScore: 89,
         activatedPlaybooks: ['Strategic Response Protocol', 'Crisis Communications Playbook', 'Executive Coordination Framework'],
-        aiAnalysis: 'This scenario creates a mobilization crisis for organizations relying on ad-hoc coordination — weeks of committee alignment before execution even begins. With Readiness OS, the response is pre-staged across all 170 playbooks and activates in 12 minutes from trigger detection. The gap between these two outcomes is 3,600× — and it is determined before the trigger fires, not after.',
+        aiAnalysis: 'This scenario creates a mobilization crisis for organizations relying on ad-hoc coordination — weeks of committee alignment before execution even begins. With Readiness OS, the response is pre-staged across all 180 playbooks and activates in 12 minutes from trigger detection. The gap between these two outcomes is 3,600× — and it is determined before the trigger fires, not after.',
         urgencyLevel: 'high',
         timeToRespond: '12 minutes with Readiness OS vs 30 days without'
       };
@@ -9850,7 +9882,7 @@ Respond ONLY as JSON with this exact structure:
         triggersArmed: 221,
         domainsMonitored: 9,
         signalsTracked: 248,
-        playbooksReady: 170,
+        playbooksReady: 180,
         signalsScanned72h,
         recentDetections: detections,
         stakeholdersEnrolled: contacts.filter(c => c.isActive).length,
@@ -10127,7 +10159,7 @@ Respond ONLY as JSON with this exact structure:
         dimensions: [
           { label: 'Signal Coverage',    score: signalScore,  max: 25, detail: `${Math.min(signalCount, 248)} of 248+ data points active` },
           { label: 'Trigger Coverage',   score: triggerScore, max: 25, detail: `${Math.min(triggerCount, 221)} of 221 triggers monitored` },
-          { label: 'Playbook Readiness', score: playbookScore, max: 25, detail: '170 playbooks pre-staged across 9 domains' },
+          { label: 'Playbook Readiness', score: playbookScore, max: 25, detail: '180 playbooks pre-staged across 9 domains' },
           { label: 'Execution Velocity', score: velocityScore, max: 25, detail: activationCount > 0 ? `${activationCount} activations on record` : 'Activate a playbook to score' },
         ],
         recommendation: recommendations[tier],

@@ -23,7 +23,7 @@ const features = [
   {
     icon: Shield,
     title: 'IDENTIFY — Readiness Protocol Depth Chart',
-    description: 'Build your strategic arsenal. Browse 170 pre-built Readiness Protocols across 9 domains — ready to deploy instantly.',
+    description: 'Build your strategic arsenal. Browse 180 pre-built Readiness Protocols across 9 domains — ready to deploy instantly.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',
   },

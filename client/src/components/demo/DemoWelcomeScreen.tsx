@@ -56,7 +56,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
     "Strategic Work Breakdown Structure with phases & dependencies",
     "All 5 Intelligence Modules in action",
     "Trigger-activated coordinated execution",
-    "170 strategic Readiness Protocol templates across 9 operational domains",
+    "180 strategic Readiness Protocol templates across 9 operational domains",
     "Interactive ROI calculations showing 3,600× Execution Head Start",
     "Practice drills and strategic rehearsals"
   ];

@@ -90,7 +90,7 @@ const timelineSteps = [
 
 const components = [
   { name: "Signal Intelligence", desc: "39-source monitoring in 15-min cycles", icon: Globe2 },
-  { name: "Readiness Protocol Engine", desc: "170 pre-built Readiness Protocols + custom builder", icon: BookOpen },
+  { name: "Readiness Protocol Engine", desc: "180 pre-built Readiness Protocols + custom builder", icon: BookOpen },
   { name: "Execution Orchestrator", desc: "Tasks, comms, docs deployed instantly", icon: Zap },
   { name: "Decision Console", desc: "One-click executive authorization with full context", icon: Target },
   { name: "Stakeholder Hub", desc: "Role-based notifications and briefs", icon: Users },

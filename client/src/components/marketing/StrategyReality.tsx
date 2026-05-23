@@ -204,7 +204,7 @@ export function StrategyReality() {
             <ul className="space-y-3 text-gray-800">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
-                <span>170 pre-built Readiness Protocols across 9 domains</span>
+                <span>180 pre-built Readiness Protocols across 9 domains</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />

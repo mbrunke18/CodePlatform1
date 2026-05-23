@@ -132,7 +132,7 @@ export default function MarketingLanding() {
             <div className="flex flex-wrap items-center justify-center gap-10 text-[10px] uppercase tracking-widest font-bold text-[#C9A84C]">
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
-                <span>170 Strategic Readiness Protocols</span>
+                <span>180 Strategic Readiness Protocols</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
@@ -161,7 +161,7 @@ export default function MarketingLanding() {
                   <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Identify</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Readiness Protocol™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
-                    170 pre-built Readiness Protocols across 9 strategic domains. Build your depth chart before events hit.
+                    180 pre-built Readiness Protocols across 9 strategic domains. Build your depth chart before events hit.
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#2B8A6E] transition-colors">
@@ -277,7 +277,7 @@ export default function MarketingLanding() {
               <CardContent className="p-8">
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Readiness Protocol Library</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
-                  170 strategic Readiness Protocols across 9 operational domains covering Growth & Positioning, Risk & Resilience, Transformation, and AI governance.
+                  180 strategic Readiness Protocols across 9 operational domains covering Growth & Positioning, Risk & Resilience, Transformation, and AI governance.
                 </p>
                 <Button onClick={() => setLocation('/playbook-library')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-scenarios">
                   Browse Readiness Protocols <ChevronRight className="ml-2 h-4 w-4" />

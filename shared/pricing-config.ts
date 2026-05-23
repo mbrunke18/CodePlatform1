@@ -26,7 +26,7 @@ export const PRICING_TIERS: PricingTier[] = [
     employeeRange: '1,000–5,000 employees',
     description: 'Full strategic readiness platform for growing enterprises',
     features: [
-      'Full platform — 170 Readiness Protocols',
+      'Full platform — 180 Readiness Protocols',
       'Continuous signal monitoring (221 triggers)',
       '12-Minute Response Orchestration',
       'Standard Integrations (Slack, Jira, Email)',

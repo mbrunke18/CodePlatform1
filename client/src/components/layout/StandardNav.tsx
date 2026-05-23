@@ -147,7 +147,7 @@ export default function StandardNav() {
     {
       heading: "Core Capabilities",
       links: [
-        { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged Readiness Protocols across 9 strategic domains" },
+        { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "180 pre-staged Readiness Protocols across 9 strategic domains" },
         { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Target, description: "See the exact 12-minute execution for your industry — signals, authorization chain, and full task sequence.", featured: true },
         { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built vertical stacks", featured: true },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
@@ -188,6 +188,7 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
+        { label: "Protocol Coverage Browser — 210 Situations", path: "/protocol-browser", icon: BookOpen, description: "Search 210 pre-staged protocols. Type any situation — ransomware, activist investor, supply chain collapse. It's already in here.", featured: true },
         { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Globe, description: "19 industries. One response time: 12 minutes. See the exact execution sequence for your sector — signals, authorization, tasks.", featured: true },
         { label: "Full Scenario Experience Center", path: "/demo-hub", icon: LayoutGrid, description: "12 complete simulations across all 3 strategic domains — Growth · Resilience · Transformation. Pick your situation.", featured: true },
         { label: "Master Demo — Activist Investor", path: "/master-demo", icon: Play, description: "Elliott Management files 13D at 2:47 AM. The definitive 7-phase walkthrough. Every platform capability in one scenario.", featured: true },
@@ -373,7 +374,7 @@ export default function StandardNav() {
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
             {megaColHeading("Core Capabilities")}
             {[
-              { path: '/playbooks', icon: ClipboardList, label: 'Readiness Protocol Library', sub: '170 pre-staged Readiness Protocols across 9 strategic domains', featured: true },
+              { path: '/playbooks', icon: ClipboardList, label: 'Readiness Protocol Library', sub: '180 pre-staged Readiness Protocols across 9 strategic domains', featured: true },
               { path: '/triggers-management', icon: Zap, label: 'Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
               { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },

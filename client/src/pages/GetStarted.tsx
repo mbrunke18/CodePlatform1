@@ -20,7 +20,7 @@ const BORDER = "#E8E4DC";
 const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const WHAT_YOU_GET = [
-  { icon: BookOpen, label: "170 Strategic Readiness Protocols", desc: "Full library across 9 domains — ready to activate" },
+  { icon: BookOpen, label: "180 Strategic Readiness Protocols", desc: "Full library across 9 domains — ready to activate" },
   { icon: Radar, label: "Signal Intelligence Dashboard", desc: "Real-time monitoring across 12 enterprise systems" },
   { icon: Zap, label: "Trigger Detection", desc: "Pattern matching surfaces the right Readiness Protocol in seconds" },
   { icon: BarChart3, label: "Executive Analytics", desc: "Live performance metrics, ROI tracking, risk scoring" },
@@ -83,7 +83,7 @@ export default function GetStarted() {
           </h1>
 
           <p style={{ fontSize: 17, fontWeight: 400, lineHeight: 1.8, color: "rgba(255,255,255,0.6)", maxWidth: 560, margin: "0 auto 40px" }}>
-            This is not a simulation. Sign in to access the full live platform — 170 playbooks, AI signal monitoring, real-time execution coordination.
+            This is not a simulation. Sign in to access the full live platform — 180 playbooks, AI signal monitoring, real-time execution coordination.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>

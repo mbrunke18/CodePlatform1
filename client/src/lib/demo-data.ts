@@ -347,8 +347,8 @@ export const demoPreparednessMetrics = {
     defensive: 84,
     specialTeams: 86
   },
-  playbooksReady: 170,
-  playbooksTotal: 170,
+  playbooksReady: 180,
+  playbooksTotal: 180,
   drillsCompleted: 24,
   drillsScheduled: 8,
   playbooksActive: 18,

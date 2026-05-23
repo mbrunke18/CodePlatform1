@@ -49,7 +49,7 @@ const VALIDATION_METHODOLOGY = [
   {
     step: "01",
     title: "Protocol Stress Testing",
-    description: "Each of the 170 core Readiness Protocols is tested against historical trigger events from public record — SEC filings, press archives, earnings calls — to validate that the protocol would have reduced mobilization time to under 12 minutes.",
+    description: "Each of the 180 core Readiness Protocols is tested against historical trigger events from public record — SEC filings, press archives, earnings calls — to validate that the protocol would have reduced mobilization time to under 12 minutes.",
   },
   {
     step: "02",
@@ -79,7 +79,7 @@ const INVESTOR_LANGUAGE = [
   },
   {
     competitor: "Palantir",
-    response: "Palantir builds custom intelligence infrastructure for large government and defense contracts. We deliver a configurable, 170-protocol readiness operating model that a startup to Fortune 500 enterprise deploys in 90 days without a custom build.",
+    response: "Palantir builds custom intelligence infrastructure for large government and defense contracts. We deliver a configurable, 180-protocol readiness operating model that a startup to Fortune 500 enterprise deploys in 90 days without a custom build.",
   },
   {
     competitor: "McKinsey",

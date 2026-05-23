@@ -445,7 +445,7 @@ export default function ReadinessInfrastructure() {
                 The Category
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>
-                Readiness Infrastructure · VaughnMartin Readiness OS · 170 Protocols · 221 Triggers · 3 Domains · 12 Minutes
+                Readiness Infrastructure · VaughnMartin Readiness OS · 180 Protocols · 221 Triggers · 3 Domains · 12 Minutes
               </p>
             </div>
           </div>

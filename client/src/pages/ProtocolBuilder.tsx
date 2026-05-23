@@ -208,43 +208,43 @@ const STEPS = [
     num: 1, id: 'identity', Icon: Shield,
     title: 'Protocol Identity',
     subtitle: 'Name the trigger. Define the context.',
-    guidance: 'Every protocol in the 170 begins with a precisely-defined trigger. Vague triggers create hesitation; clear triggers create 12-minute execution.',
-    example: { label: 'From the 170', name: 'Ransomware Response — Enterprise Systems', meta: 'Tech & AI Governance · CRITICAL', detail: 'SIEM detects unauthorized file-system encryption across production servers.' },
+    guidance: 'Every protocol in the 180 begins with a precisely-defined trigger. Vague triggers create hesitation; clear triggers create 12-minute execution.',
+    example: { label: 'From the 180', name: 'Ransomware Response — Enterprise Systems', meta: 'Tech & AI Governance · CRITICAL', detail: 'SIEM detects unauthorized file-system encryption across production servers.' },
   },
   {
     num: 2, id: 'owners', Icon: Users,
     title: 'Executive Owners',
     subtitle: 'Pre-assign ownership before the trigger fires.',
-    guidance: 'In the 170 protocols, ownership is decided before pressure — not during it. Each phase has a named owner attached before any trigger fires.',
-    example: { label: 'From the 170', name: 'Ransomware Response', meta: 'IMMEDIATE: CISO (primary), General Counsel (secondary)', detail: 'SECONDARY: CFO · FOLLOW-UP: Board Chair' },
+    guidance: 'In the 180 protocols, ownership is decided before pressure — not during it. Each phase has a named owner attached before any trigger fires.',
+    example: { label: 'From the 180', name: 'Ransomware Response', meta: 'IMMEDIATE: CISO (primary), General Counsel (secondary)', detail: 'SECONDARY: CFO · FOLLOW-UP: Board Chair' },
   },
   {
     num: 3, id: 'tasks', Icon: ListChecks,
     title: 'Task Sequence',
     subtitle: 'Pre-stage execution across three phases.',
     guidance: 'IMMEDIATE (0–12 min), SECONDARY (1–4 hrs), FOLLOW-UP (1–5 days). Tasks are pre-written and pre-assigned. Activation means execution — not planning.',
-    example: { label: 'From the 170', name: 'IMMEDIATE: Isolate affected systems — CISO', meta: 'SECONDARY: Engage incident response firm — General Counsel', detail: 'FOLLOW-UP: Regulatory disclosure and board brief — CFO' },
+    example: { label: 'From the 180', name: 'IMMEDIATE: Isolate affected systems — CISO', meta: 'SECONDARY: Engage incident response firm — General Counsel', detail: 'FOLLOW-UP: Regulatory disclosure and board brief — CFO' },
   },
   {
     num: 4, id: 'comms', Icon: MessageSquare,
     title: 'Communication Chain',
     subtitle: 'Pre-draft every message before the pressure hits.',
-    guidance: 'In a real trigger event, drafting communications under pressure introduces errors and delays. The 170 protocols pre-stage every message — the only variable is the date.',
-    example: { label: 'From the 170', name: 'Board brief pre-drafted and updated quarterly', meta: 'Stakeholder alert fires at trigger detection — no drafting under pressure', detail: 'Public statement template reviewed by Legal & PR annually' },
+    guidance: 'In a real trigger event, drafting communications under pressure introduces errors and delays. The 180 protocols pre-stage every message — the only variable is the date.',
+    example: { label: 'From the 180', name: 'Board brief pre-drafted and updated quarterly', meta: 'Stakeholder alert fires at trigger detection — no drafting under pressure', detail: 'Public statement template reviewed by Legal & PR annually' },
   },
   {
     num: 5, id: 'budget', Icon: Wallet,
     title: 'Budget Envelope',
     subtitle: 'Pre-authorize spending before the trigger fires.',
-    guidance: 'Budget approval under pressure adds hours. The 170 protocols pre-approve spending thresholds by severity — so execution starts immediately with full financial authority.',
-    example: { label: 'From the 170', name: 'LOW: $250K pre-authorized', meta: 'MEDIUM: $1M pre-authorized  ·  HIGH: $5M + CFO co-sign', detail: 'CRITICAL: $15M emergency provision + Board authorization' },
+    guidance: 'Budget approval under pressure adds hours. The 180 protocols pre-approve spending thresholds by severity — so execution starts immediately with full financial authority.',
+    example: { label: 'From the 180', name: 'LOW: $250K pre-authorized', meta: 'MEDIUM: $1M pre-authorized  ·  HIGH: $5M + CFO co-sign', detail: 'CRITICAL: $15M emergency provision + Board authorization' },
   },
   {
     num: 6, id: 'authority', Icon: Key,
     title: 'Decision Authority',
     subtitle: 'Map who authorizes, executes, and observes.',
-    guidance: 'In the 170 protocols, authority is never ambiguous. The authorization chain is set before the trigger — so no one asks "who needs to approve this?" during execution.',
-    example: { label: 'From the 170', name: 'Authorizes: CISO', meta: 'Executes: Security Operations Team', detail: 'Observes: CFO, General Counsel, Board Chair · Override: CEO' },
+    guidance: 'In the 180 protocols, authority is never ambiguous. The authorization chain is set before the trigger — so no one asks "who needs to approve this?" during execution.',
+    example: { label: 'From the 180', name: 'Authorizes: CISO', meta: 'Executes: Security Operations Team', detail: 'Observes: CFO, General Counsel, Board Chair · Override: CEO' },
   },
 ];
 
@@ -965,7 +965,7 @@ function ReadinessScorecard({ data }: { data: Data }) {
           ? 'This protocol meets enterprise readiness standards. It is ready to be submitted for approval and promoted to production.'
           : overall >= 55
           ? 'Good progress. Strengthen the lower-scoring dimensions before submitting for production approval.'
-          : 'Continue building out each dimension. Use the quick-start templates or review the From the 170 examples in the sidebar for guidance.'}
+          : 'Continue building out each dimension. Use the quick-start templates or review the From the 180 examples in the sidebar for guidance.'}
       </div>
     </div>
   );

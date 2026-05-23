@@ -1038,7 +1038,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-lg text-gray-800"
                 >
-                  170 playbooks, AI signal detection, the IDEA methodology—
+                  180 playbooks, AI signal detection, the IDEA methodology—
                   <br />that can't be copied overnight.
                 </motion.p>
               </div>

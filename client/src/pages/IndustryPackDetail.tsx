@@ -896,7 +896,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
   },
 };
 
-const CORE_PROTOCOL_COUNT = 170;
+const CORE_PROTOCOL_COUNT = 180;
 
 const URGENCY_COLORS: Record<string, { bg: string; text: string }> = {
   CRITICAL: { bg: "#FEF2F2", text: "#B91C1C" },

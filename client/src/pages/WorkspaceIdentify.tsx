@@ -39,7 +39,7 @@ const TEAL = "#2B8A6E";
 const workspaceTools = [
   {
     title: "Readiness Protocol Library",
-    description: "Browse and select from 170 pre-built strategic Readiness Protocols across 9 domains",
+    description: "Browse and select from 180 pre-built strategic Readiness Protocols across 9 domains",
     path: "/playbooks",
     icon: BookOpen,
     color: "text-[#C9A84C]",

@@ -159,7 +159,7 @@ export default function ProtocolHealthDashboard() {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList style={{ background: "transparent", borderBottom: "1px solid #E8E4DC", width: "100%", justifyContent: "flex-start", borderRadius: 0, height: "auto", padding: 0, marginBottom: 48 }}>
             {[
-              { id: "health",    label: "Protocol Health Scores",   sub: "All 170 protocols scored" },
+              { id: "health",    label: "Protocol Health Scores",   sub: "All 180 protocols scored" },
               { id: "critical",  label: "Critical Protocols",        sub: "Act before the trigger" },
               { id: "feedback",  label: "Debrief Feedback Loop",     sub: "Protocol improvement proposals" },
             ].map(t => (

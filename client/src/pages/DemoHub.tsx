@@ -286,7 +286,7 @@ export default function DemoHub() {
               {[
                 { step: "01", title: "The Situation Arrives", body: "Real scenario, real company, real time of day. Growth opportunity or disruption — the situation unfolds with full context and stakes." },
                 { step: "02", title: "Signal Detection", body: "4 corroborating signals detected and scored live. Composite urgency score computed in seconds. Domain context applied." },
-                { step: "03", title: "Protocol Matched", body: "The right Readiness Protocol pulled from 170 pre-staged options. Already written. Already waiting. Growth, resilience, or transformation." },
+                { step: "03", title: "Protocol Matched", body: "The right Readiness Protocol pulled from 180 pre-staged options. Already written. Already waiting. Growth, resilience, or transformation." },
                 { step: "04", title: "War Room Activated", body: "14 tasks pre-assigned. 6 stakeholders notified. Real-time status: STANDBY → ACKNOWLEDGED → EXECUTING." },
                 { step: "05", title: "CEO Authorizes", body: "Executive brief delivered. One decision. Full authority. No committee required. The window stays open." },
                 { step: "06", title: "12 Minutes Complete", body: "Live animated timeline. Full comparison with the 30-day old model. The 3,600× execution head start." },

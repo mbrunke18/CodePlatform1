@@ -9,7 +9,7 @@ interface SceneProps {
 }
 
 const capabilities = [
-  { icon: ClipboardList, label: "Identify", desc: "170 ready Readiness Protocols" },
+  { icon: ClipboardList, label: "Identify", desc: "180 ready Readiness Protocols" },
   { icon: Radar, label: "Detect", desc: "AI signal detection" },
   { icon: Play, label: "Execute", desc: "12 min to live execution" },
   { icon: TrendingUp, label: "Advance", desc: "Continuous improvement" },

@@ -35,7 +35,7 @@ const PHASES = [
         detail: 'Across 9 strategic domains including competitive intelligence, regulatory conditions, financial signals, operational risk, and market opportunity — creating a continuously updated picture of the environment your decisions will land in.',
       },
       {
-        title: '170 Pre-Staged Readiness Protocols',
+        title: '180 Pre-Staged Readiness Protocols',
         detail: 'Each Readiness Protocol represents a strategic decision already made by the best minds in the organization under no pressure, with full information and complete clarity. Not a template — a commitment. The organization has already decided what it will do when this trigger fires.',
       },
       {

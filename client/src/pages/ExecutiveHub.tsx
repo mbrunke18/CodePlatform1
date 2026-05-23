@@ -254,7 +254,7 @@ export default function ExecutiveHub() {
               <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Strategic Readiness Signals</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 {[
-                  { title: "Readiness Protocols Ready", value: `${readiness?.playbooksReady || 134} / 170`, status: "good", icon: CheckCircle, desc: "Pre-staged for activation" },
+                  { title: "Readiness Protocols Ready", value: `${readiness?.playbooksReady || 134} / 180`, status: "good", icon: CheckCircle, desc: "Pre-staged for activation" },
                   { title: "Weak Signals Detected", value: String(readiness?.weakSignalsDetected || 23), status: "warning", icon: Eye, desc: "Early warning indicators" },
                   { title: "Avg Response Time", value: "12 min", status: "good", icon: Clock, desc: "Trigger to activation" },
                 ].map(item => (

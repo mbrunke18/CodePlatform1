@@ -658,6 +658,7 @@ function Router() {
         <Route path="/marketing-infographic" component={lazy(() => import("./pages/MarketingInfographic"))} />
         <Route path="/master-demo" component={lazy(() => import("./pages/MasterDemo"))} />
         <Route path="/demo/:scenarioId" component={lazy(() => import("./pages/MasterDemo"))} />
+        <Route path="/protocol-browser" component={lazy(() => import("./pages/ProtocolCoverageBrowser"))} />
         <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
         {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo", "/demo-experience"], "/master-demo")}
         {renderRedirects(["/demos", "/scenario-hub", "/demo-center", "/experience-center"], "/demo-hub")}

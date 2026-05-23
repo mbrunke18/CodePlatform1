@@ -130,7 +130,7 @@ export const playbookLibraryRouter = Router();
  * GET /api/playbook-library/search?name=X
  * Returns the single protocol whose name best matches the query string.
  * Used by the activation center to resolve email click-throughs to the
- * exact protocol from the full 170-protocol library.
+ * exact protocol from the full 180-protocol library.
  */
 playbookLibraryRouter.get('/search', async (req, res) => {
   try {

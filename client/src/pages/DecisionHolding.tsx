@@ -17,7 +17,7 @@ const LAYERS = [
     icon: Shield,
     herName: "Decision clarity and closure",
     whereItBreaks: "Decisions reopened after closure",
-    readinessAnswer: "170 pre-staged response architectures. The logic is built before the trigger fires. Every protocol defines the decision structure, the escalation path, and the closure criteria in advance — so the decision does not have to be reconstructed under pressure.",
+    readinessAnswer: "180 pre-staged response architectures. The logic is built before the trigger fires. Every protocol defines the decision structure, the escalation path, and the closure criteria in advance — so the decision does not have to be reconstructed under pressure.",
     color: GOLD,
   },
   {

@@ -18,7 +18,7 @@ const COMPARISON_ROWS = [
   { dimension: "Core Value Metric", them: "End-to-end visibility", us: "3,600× Execution Head Start" },
   { dimension: "Budget Source", them: "IT Operations (cost center)", us: "CEO / Board Strategic Fund (growth center)" },
   { dimension: "AI Integration", them: "Reports and dashboards on top of data", us: "AI monitors, executives authorize, execution coordinated in 12 min" },
-  { dimension: "Readiness Protocols", them: "Custom templates — weeks to configure", us: "170 pre-built, battle-tested readiness Readiness Protocols" },
+  { dimension: "Readiness Protocols", them: "Custom templates — weeks to configure", us: "180 pre-built, battle-tested readiness Readiness Protocols" },
   { dimension: "Signal Detection", them: "Not included", us: "248+ data points continuously monitored across 9 domains" },
   { dimension: "ROI Metric", them: "System consolidation", us: "$3,472 per minute of strategic advantage preserved" },
   { dimension: "Core Message", them: "Better governance", us: "Enterprises become fearless" },
@@ -30,7 +30,7 @@ export default function MsProjectTransition() {
   useEffect(() => {
     updatePageMetadata({
       title: "MS Project End of Life — Don't Just Migrate. Evolve. | VaughnMartin Readiness OS",
-      description: "Microsoft Project is retiring. ServiceNow wants to migrate your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle entirely — 170 pre-staged Readiness Protocols, 12-minute execution, and the operating model startup to Fortune 500 boards actually need.",
+      description: "Microsoft Project is retiring. ServiceNow wants to migrate your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle entirely — 180 pre-staged Readiness Protocols, 12-minute execution, and the operating model startup to Fortune 500 boards actually need.",
       ogTitle: "Microsoft Project EOL: Migration vs. Evolution",
       ogDescription: "While others migrate their static plans to ServiceNow, Readiness OS users are already executing. 30 days compressed to 12 minutes.",
     });
@@ -286,7 +286,7 @@ export default function MsProjectTransition() {
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>The Evolution Path</div>
               <div style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY, marginBottom: 12, lineHeight: 1.1 }}>Upgrade to Readiness OS</div>
               <p style={{ fontSize: 14, color: "#4B5563", marginBottom: 24, lineHeight: 1.6 }}>
-                Use the Microsoft transition as the catalyst to eliminate the mobilization cycle entirely. Deploy 170 pre-staged Readiness Protocols. 248+ signal monitors. Executive-authorized execution in 12 minutes. CEO/Board budget — not IT.
+                Use the Microsoft transition as the catalyst to eliminate the mobilization cycle entirely. Deploy 180 pre-staged Readiness Protocols. 248+ signal monitors. Executive-authorized execution in 12 minutes. CEO/Board budget — not IT.
               </p>
               <div style={{ padding: "16px 20px", background: "rgba(43,138,110,0.06)", border: "1px solid rgba(43,138,110,0.15)" }}>
                 <p style={{ fontSize: 13, color: "#374151", margin: 0, fontWeight: 600 }}>

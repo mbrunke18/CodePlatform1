@@ -132,7 +132,7 @@ export default function BuyerDecisionPacket() {
               <span style={{ color: GOLD }}>With Executive Control Intact.</span>
             </h1>
             <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.75)", maxWidth: 640, margin: "0 auto 2rem", lineHeight: 1.7 }}>
-              Readiness OS gives enterprises end-to-end advantage — starting with detection. Define the triggers, thresholds, and escalation paths for every scenario so you detect earlier and decide on your terms. Then execute in minutes with 170 pre-staged Readiness Protocols and full executive authority intact. This packet covers everything procurement, legal, and the board need to make the decision.
+              Readiness OS gives enterprises end-to-end advantage — starting with detection. Define the triggers, thresholds, and escalation paths for every scenario so you detect earlier and decide on your terms. Then execute in minutes with 180 pre-staged Readiness Protocols and full executive authority intact. This packet covers everything procurement, legal, and the board need to make the decision.
             </p>
             <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/request-access" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
@@ -152,7 +152,7 @@ export default function BuyerDecisionPacket() {
               { num: "01", stage: "IDENTIFY", sub: "Situation Universe", detail: "221 triggers catalogued" },
               { num: "02", stage: "DETECT", sub: "Signal Detection", detail: "248+ data points / 15 min" },
               { num: "03", stage: "AUTHORIZE", sub: "Executive Authority", detail: "Pre-assigned decision rights" },
-              { num: "04", stage: "EXECUTE", sub: "12-Min Deploy", detail: "170 Protocols pre-staged" },
+              { num: "04", stage: "EXECUTE", sub: "12-Min Deploy", detail: "180 Protocols pre-staged" },
               { num: "05", stage: "ADVANCE", sub: "Institutional Memory", detail: "Every activation encoded" },
             ].map((s, i) => (
               <div key={i} style={{ flex: "1 0 0", padding: "16px 20px", borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none", minWidth: 120 }}>
@@ -203,7 +203,7 @@ export default function BuyerDecisionPacket() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
               <div style={{ padding: "1.5rem", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: "0.15rem" }}>
                 <div style={{ ...BC, fontSize: "0.65rem", fontWeight: 700, color: TEAL, letterSpacing: "0.15em", marginBottom: "1rem", textTransform: "uppercase" }}>What It Is</div>
-                {["Pre-staged execution infrastructure", "170 cross-industry Readiness Protocols", "Executive authorization at every stage", "Auditable governance with rollback", "12-minute mobilization from trigger detection"].map(item => (
+                {["Pre-staged execution infrastructure", "180 cross-industry Readiness Protocols", "Executive authorization at every stage", "Auditable governance with rollback", "12-minute mobilization from trigger detection"].map(item => (
                   <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", marginBottom: "0.6rem" }}>
                     <CheckCircle2 size={14} color={TEAL} style={{ marginTop: 3, flexShrink: 0 }} />
                     <span style={{ fontSize: "0.875rem", color: "#374151" }}>{item}</span>

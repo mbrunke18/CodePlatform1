@@ -257,7 +257,7 @@ export default function HowItWorks() {
           <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24 }}>
-                170 Battle-Tested Readiness Protocols — Ready on Day One
+                180 Battle-Tested Readiness Protocols — Ready on Day One
               </h2>
               <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
                 The platform comes pre-loaded with 180 Readiness Protocols across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
@@ -302,7 +302,7 @@ export default function HowItWorks() {
           <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 64 }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: "#fff", marginBottom: 24 }}>
-                Start with the 170. Make It Yours.
+                Start with the 180. Make It Yours.
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, fontWeight: 500 }}>
                 Every one of the 180 Readiness Protocols is a starting point, not a ceiling. Your team can take any library Readiness Protocol and configure it to match your exact org structure, approval thresholds, stakeholder names, task sequences, and success criteria — without touching the underlying template.
@@ -600,7 +600,7 @@ export default function HowItWorks() {
                 color: TEAL,
                 title: "Smart Readiness Protocol Finder",
                 body: "Searching 180 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
-                items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 170"]
+                items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 180"]
               },
               {
                 label: "EXECUTE WORKSPACE",
@@ -739,7 +739,7 @@ export default function HowItWorks() {
             We Make Enterprises Fearless.
           </h2>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.7)", marginBottom: 48, fontWeight: 500, maxWidth: 520, margin: "0 auto 48px" }}>
-            Stop improvising. Start executing. The infrastructure is ready — with 170 playbooks, AI signal monitoring, and execution already staged before the moment arrives.
+            Stop improvising. Start executing. The infrastructure is ready — with 180 playbooks, AI signal monitoring, and execution already staged before the moment arrives.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Button asChild style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "none" }}>

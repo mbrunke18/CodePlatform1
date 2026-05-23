@@ -308,7 +308,7 @@ export default function RegulatoryCalendar() {
         </div>
 
         <div style={{ marginTop: 24, padding: "16px 20px", background: "rgba(10,15,46,0.02)", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 11, color: "#9CA3AF" }}>Regulatory windows are auto-calculated from today's date. Readiness Protocol mappings reflect your active 170-Readiness Protocol library.</div>
+          <div style={{ fontSize: 11, color: "#9CA3AF" }}>Regulatory windows are auto-calculated from today's date. Readiness Protocol mappings reflect your active 180-Readiness Protocol library.</div>
           <button
             onClick={() => setLocation("/playbooks")}
             style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: NAVY, color: "#fff", border: "none", cursor: "pointer", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}

@@ -50,7 +50,7 @@ const NODES = [
     label: "Protocol Matching",
     color: TEAL,
     details: [
-      "Matched against 170 pre-staged Readiness Protocols",
+      "Matched against 180 pre-staged Readiness Protocols",
       "Tasks, stakeholders, budget, documents already staged",
       "Compound protocol matching for multi-domain threats",
       "Recommendation surfaced with confidence score",
@@ -75,7 +75,7 @@ const TECH_SPECS = [
   { label: "Trigger Patterns", value: "221" },
   { label: "Ingestion Cycle", value: "Every 15 minutes" },
   { label: "Risk Classification", value: "LOW · MEDIUM · HIGH" },
-  { label: "Protocol Library", value: "170 pre-staged" },
+  { label: "Protocol Library", value: "180 pre-staged" },
   { label: "Compound Protocols", value: "12 cross-domain" },
   { label: "Execution Window", value: "12 minutes" },
 ];

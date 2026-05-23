@@ -80,7 +80,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'IDENTIFY',
     subtitle: 'Build Your Depth Chart',
-    narration: 'Build your strategic arsenal. 170 pre-built Readiness Protocols across 9 domains — ready to deploy instantly when needed.',
+    narration: 'Build your strategic arsenal. 180 pre-built Readiness Protocols across 9 domains — ready to deploy instantly when needed.',
     visual: 'identify'
   },
   {
@@ -344,7 +344,7 @@ export default function ProductTour() {
       identify: {
         icon: BookOpen,
         hex: '#2B8A6E',
-        items: ['170 Strategic Readiness Protocols', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
+        items: ['180 Strategic Readiness Protocols', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
       },
       detect: {
         icon: Radio,
@@ -525,7 +525,7 @@ export default function ProductTour() {
           
           {[
             { label: 'Signal Detection', scores: ['Custom Build', 'No', '✓ 16 Categories'] },
-            { label: 'Pre-built Readiness Protocols', scores: ['No', 'No', '✓ 170 Ready'] },
+            { label: 'Pre-built Readiness Protocols', scores: ['No', 'No', '✓ 180 Ready'] },
             { label: 'Execution Engine', scores: ['No', 'No', '✓ 12-Minute'] },
             { label: 'Closed-Loop Learning', scores: ['Manual', 'Manual', '✓ Continuous'] }
           ].map((row, i) => (

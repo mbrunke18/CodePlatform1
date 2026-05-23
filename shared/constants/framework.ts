@@ -99,7 +99,7 @@ export const IDEA_PHASES = {
     lightBg: 'bg-[#F8F7F4]',
     capabilities: [
       'Operating Model Alignment diagnostic',
-      '170 pre-built playbooks ready to deploy',
+      '180 pre-built playbooks ready to deploy',
       'Stakeholder accountability mapping',
       'Readiness scoring and gap analysis'
     ],

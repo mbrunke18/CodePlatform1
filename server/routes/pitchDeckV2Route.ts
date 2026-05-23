@@ -70,7 +70,7 @@ const SLIDES: SlideData[] = [
     label: "THE PRODUCT",
     title: "Readiness OS: The response is ready before the trigger fires.",
     bullets: [
-      "170 Readiness Protocols pre-staged",
+      "180 Readiness Protocols pre-staged",
       "221 trigger patterns mapped",
       "248+ data points monitored every 15 minutes",
       "AI monitors. Executives authorize.",

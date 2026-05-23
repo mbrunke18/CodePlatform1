@@ -250,7 +250,7 @@ function buildHtml(cardWidth: number): string {
       </svg>
     </div>
     <ul class="sol-checks">
-      <li>170 Readiness Protocols pre-staged</li>
+      <li>180 Readiness Protocols pre-staged</li>
       <li>221 strategic triggers monitored</li>
       <li>12-minute execution design target</li>
       <li>Executive authority at every stage</li>
@@ -272,7 +272,7 @@ function buildHtml(cardWidth: number): string {
       <svg class="icard-icon" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#C9A84C" stroke-width="1.5"/></svg>
       <div>
         <div class="icard-title">Platform Economics</div>
-        <div class="icard-desc">170 core protocols + 6 industry packs + 12 compound protocols. Compounding value with every activation.</div>
+        <div class="icard-desc">180 core protocols + 6 industry packs + 30 compound protocols. Compounding value with every activation.</div>
       </div>
     </div>
     <div class="icard">
@@ -545,7 +545,7 @@ function buildLinkedInBannerHtml(): string {
       <div class="rp-copy">
         <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; startup to Fortune 500</div>
         <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
-        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 170 Protocols, 221 strategic triggers, 12-minute response.</div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 180 Protocols, 221 strategic triggers, 12-minute response.</div>
       </div>
 
       <!-- Proof stats -->

@@ -103,7 +103,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
             </CardHeader>
             <CardContent>
               <p className="text-sm text-[#6B7280]">
-                Across 170 strategic Readiness Protocols
+                Across 180 strategic Readiness Protocols
               </p>
             </CardContent>
           </Card>

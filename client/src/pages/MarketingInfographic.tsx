@@ -118,7 +118,7 @@ const INVESTOR_CARDS = [
   {
     icon: <svg viewBox="0 0 22 22" fill="none" width={22} height={22}><circle cx="11" cy="11" r="9" stroke={GOLD} strokeWidth="1.5"/></svg>,
     title: "Platform Economics",
-    body: "170 core protocols + 6 industry packs + 30 compound protocols. Compounding value with every activation.",
+    body: "180 core protocols + 6 industry packs + 30 compound protocols. Compounding value with every activation.",
   },
   {
     icon: <svg viewBox="0 0 22 22" fill="none" width={22} height={22}><rect x="2" y="2" width="18" height="18" stroke={GOLD} strokeWidth="1.5"/></svg>,

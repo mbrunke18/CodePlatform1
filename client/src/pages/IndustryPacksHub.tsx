@@ -161,15 +161,15 @@ const CORE_CAPABILITIES = [
 ];
 
 export default function IndustryPacksHub() {
-  const coreProtocols = 170;
+  const coreProtocols = 180;
   const totalIndustryProtocols = INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0);
 
   useEffect(() => {
     updatePageMetadata({
       title: 'Industry Protocol Packs — Readiness OS | VaughnMartin',
-      description: 'Six industry-specific Protocol Packs built on top of 170 core Readiness Protocols. Pre-staged responses for Financial Services, Healthcare, Manufacturing, Energy, Retail, and Technology.',
+      description: 'Six industry-specific Protocol Packs built on top of 180 core Readiness Protocols. Pre-staged responses for Financial Services, Healthcare, Manufacturing, Energy, Retail, and Technology.',
       ogTitle: 'Industry Protocol Packs — VaughnMartin Readiness OS',
-      ogDescription: '170 cross-industry protocols + 6 sector packs. Pre-staged execution for every strategic trigger your industry faces.',
+      ogDescription: '180 cross-industry protocols + 6 sector packs. Pre-staged execution for every strategic trigger your industry faces.',
     });
   }, []);
 
@@ -218,7 +218,7 @@ export default function IndustryPacksHub() {
                 className="px-7 py-3 text-sm font-semibold tracking-wide border transition-all"
                 style={{ borderColor: "#3A4A6A", color: IVORY, background: "transparent", borderRadius: "0.15rem" }}
               >
-                Browse All 170 Protocols
+                Browse All 180 Protocols
               </button>
             </Link>
           </div>
@@ -532,7 +532,7 @@ export default function IndustryPacksHub() {
                 className="px-8 py-3 text-sm font-semibold tracking-wide border transition-all"
                 style={{ borderColor: "#3A4A6A", color: IVORY, background: "transparent", borderRadius: "0.15rem" }}
               >
-                Browse All 170 Protocols
+                Browse All 180 Protocols
               </button>
             </Link>
           </div>

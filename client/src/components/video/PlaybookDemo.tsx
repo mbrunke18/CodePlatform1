@@ -32,7 +32,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           >
             <BookOpen className="w-6 h-6 text-[#D4AF37]" />
           </motion.div>
-          <TextPunch text="170 Pre-Built Readiness Protocols" size="lg" className="text-gray-900" />
+          <TextPunch text="180 Pre-Built Readiness Protocols" size="lg" className="text-gray-900" />
         </div>
 
         <motion.p
@@ -79,7 +79,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
         >
           <div className="inline-flex items-center gap-6 bg-gray-50 px-6 py-3">
             <div className="text-center">
-              <p className="text-2xl font-bold text-[#D4AF37]">170</p>
+              <p className="text-2xl font-bold text-[#D4AF37]">180</p>
               <p className="text-xs text-gray-700">Readiness Protocols</p>
             </div>
             <div className="w-px h-8 bg-gray-100" />

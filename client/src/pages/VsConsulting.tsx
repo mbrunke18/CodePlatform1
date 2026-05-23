@@ -12,7 +12,7 @@ const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const COMPARISON_ROWS = [
   { dimension: "Cost", consulting: "$300K–$500K one-time", executionOs: "$75K–$250K/year" },
-  { dimension: "Readiness Protocols", consulting: "5–10 custom PDFs", executionOs: "170 pre-built + unlimited custom" },
+  { dimension: "Readiness Protocols", consulting: "5–10 custom PDFs", executionOs: "180 pre-built + unlimited custom" },
   { dimension: "Format", consulting: "Static documents", executionOs: "Live, executable platform" },
   { dimension: "Activation", consulting: "Manual — find the PDF, read it, interpret it, convene", executionOs: "One-click. 12 minutes." },
   { dimension: "Decision rights", consulting: "Described in prose", executionOs: "Mapped and enforced" },
@@ -266,7 +266,7 @@ export default function VsConsulting() {
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$75K–$250K/year</div>
               <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes</div>
               <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 0, border: `1px solid rgba(43,138,110,0.15)` }}>
-                <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>170 live Readiness Protocols. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
+                <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>180 live Readiness Protocols. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
               </div>
             </div>
           </div>

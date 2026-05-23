@@ -253,7 +253,7 @@ export default function FounderStory() {
               {[
                 { letter: "I", word: "IDENTIFY", desc: "248+ signals across 9 strategic domains. Every 15 minutes. Before you ask." },
                 { letter: "D", word: "DETECT", desc: "Pattern recognition fires before the crisis peaks. Not after." },
-                { letter: "E", word: "EXECUTE", desc: "170 pre-built prepared responses deploy simultaneously. Twelve minutes." },
+                { letter: "E", word: "EXECUTE", desc: "180 pre-built prepared responses deploy simultaneously. Twelve minutes." },
                 { letter: "A", word: "ADVANCE", desc: "Every activation makes the next one smarter. The library compounds." },
               ].map(({ letter, word, desc }) => (
                 <div key={letter} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>

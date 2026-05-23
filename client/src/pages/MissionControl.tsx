@@ -574,7 +574,7 @@ export default function MissionControl() {
                 { label: 'Situation Intents', desc: 'Define what you\'re watching for', href: '/identify/situation-intents', primary: true },
                 { label: 'Trigger Configuration', desc: 'Signal thresholds & monitoring rules', href: '/triggers-management', primary: false },
                 { label: 'Stakeholder Registry', desc: 'Notification routing at trigger point', href: '/stakeholders', primary: false },
-                { label: 'Readiness Protocol Library', desc: '170 pre-staged Readiness Protocols ready to deploy', href: '/playbooks', primary: false },
+                { label: 'Readiness Protocol Library', desc: '180 pre-staged Readiness Protocols ready to deploy', href: '/playbooks', primary: false },
               ].map(({ label, desc, href, primary }) => (
                 <a key={href} href={href} style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -681,7 +681,7 @@ export default function MissionControl() {
             </div>
             <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
               <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2, letterSpacing: '0.06em' }}>12-min activation</div>
-              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>170 pre-staged Readiness Protocols</div>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>180 pre-staged Readiness Protocols</div>
             </div>
           </div>
 

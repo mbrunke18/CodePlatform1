@@ -45,7 +45,7 @@ const PHASES: Phase[] = [
     timing: "WEEKS 2–4",
     timingColor: GOLD,
     label: "STAGE",
-    headlineA: "170 responses configured",
+    headlineA: "180 responses configured",
     headlineB: "to your org and domains.",
     body: [
       "Readiness Protocols are tailored to your industry,",
