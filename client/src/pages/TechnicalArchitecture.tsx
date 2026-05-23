@@ -33,9 +33,9 @@ const LAYERS = [
     label: "Protocol Mapping",
     title: "Trigger → Protocol Resolution",
     color: TEAL,
-    desc: "When a trigger pattern fires, the system resolves the appropriate Readiness Protocol from a library of 170 single-domain and 12 compound protocols. Compound protocols coordinate simultaneous multi-domain response.",
+    desc: "When a trigger pattern fires, the system resolves the appropriate Readiness Protocol from a library of 180 single-domain and 30 compound protocols. Compound protocols coordinate simultaneous multi-domain response.",
     details: [
-      { label: "Protocol library", value: "170 cross-industry protocols · IDs 1–180. 12 compound protocols · IDs 181–192 (multi-domain, simultaneous activation)" },
+      { label: "Protocol library", value: "170 cross-industry protocols · IDs 1–180. 30 compound protocols · IDs 181–210 (multi-domain, simultaneous activation)" },
       { label: "Trigger patterns", value: "221 named trigger templates. Each template maps to 1–4 primary protocols and includes escalation logic" },
       { label: "Compound logic", value: "Activist + Regulatory compound triggers both GROWTH & POSITIONING and RISK & RESILIENCE protocols simultaneously. Full 10-task dual-track war room." },
       { label: "Resolution speed", value: "Protocol selected in <2 seconds after trigger detection. No human routing required." },
