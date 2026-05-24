@@ -5,9 +5,9 @@
 
 ## 1. What This Product Is
 
-**Readiness OS** by VaughnMartin is the coordination infrastructure for Fortune 1000 companies. It pre-stages project creation, task assignment, document staging, and budget allocation so the organization responds within 12 minutes of a strategic trigger firing — before the trigger fires.
+**Readiness OS** by VaughnMartin is the coordination infrastructure for high-growth startups, mid-market companies, and global enterprises — from startup to Fortune 500. It pre-stages project creation, task assignment, document staging, and budget allocation so the organization responds within 12 minutes of a strategic trigger firing — before the trigger fires.
 
-**Canonical product descriptor:** "VaughnMartin builds Readiness OS — coordination infrastructure for the Fortune 1000."
+**Canonical product descriptor:** "VaughnMartin builds Readiness OS — coordination infrastructure for any organization, startup to Fortune 500."
 **Canonical tagline:** "The response is ready before the trigger fires."
 **Product thesis arc (LOCKED):** Preparation → Readiness → Fearless.
 
@@ -32,11 +32,11 @@
 
 The retired phrase "16 signal categories" was a previous UI label shown to users. It has been replaced everywhere with "9 strategic domains, 221 triggers." Never write "16 signal categories" in any user-facing copy. The internal counts (20 categories, 16 patterns) are technical implementation details that belong only in code comments and this document.
 
-- **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×", "360×", and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time most Fortune 1000 organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Readiness OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster," never "360x." "360×" was derived from the retired 72-hour baseline and is therefore also retired. The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
+- **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×", "360×", and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time any organization — startup to Fortune 500 — spends just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Readiness OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster," never "360x." "360×" was derived from the retired 72-hour baseline and is therefore also retired. The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
 - **Microsoft Ecosystem positioning — LOCKED:** "Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the operating model layer above the Microsoft investment — not a replacement, an orchestrator. This framing lives in InvestorLanding ("The Operating Model Layer" section), InvestorPresentation (Platform Vision slide), and IDEAFramework. Do not revert to "Agentic Execution Layer" as product positioning — that phrase is retired.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
-- **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
-- **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Founding Partner Program.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. The Fortune 1000 enterprise conversion page is `/founding-partner-program` — completely separate audience, separate page, separate CTA. `/pilot-program` is an alias that resolves to `/founding-partner-program` (see Section 55).
+- **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any organization — startup to Fortune 500 — facing strategic velocity challenges.
+- **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Founding Partner Program.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. The enterprise conversion page is `/founding-partner-program` — completely separate audience, separate page, separate CTA. `/pilot-program` is an alias that resolves to `/founding-partner-program` (see Section 55).
 - **Email Routing (canonical):** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `founding@vaughnmartin.com` → Founding Partner Program page (error fallback + questions CTA) | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
 
 ---
@@ -2787,7 +2787,7 @@ Build status: `npm run build` — clean pass (no errors). Unit tests: 189/189 pa
 
 ### Purpose
 
-The primary public conversion page for Fortune 1000 prospects. Replaces the previous pattern of redirecting Founding Partner CTAs to `/request-access`. All "Apply for Founding Partner Access" / "Request Founding Partner Access" buttons across the product now route here — `/request-access` is reserved strictly for authenticated platform access (magic link flow).
+The primary public conversion page for enterprise prospects — startup to Fortune 500. Replaces the previous pattern of redirecting Founding Partner CTAs to `/request-access`. All "Apply for Founding Partner Access" / "Request Founding Partner Access" buttons across the product now route here — `/request-access` is reserved strictly for authenticated platform access (magic link flow).
 
 ### Page Structure
 
@@ -3139,7 +3139,7 @@ Added missing Open Graph image and Twitter card image, plus full JSON-LD `@graph
 **Image:** `client/public/command-tower.jpg` — 1280×720 JPEG already present. Dimensions declared accurately.
 
 **JSON-LD `@graph` (3 schemas):**
-- `Organization` — VaughnMartin entity, founded 2023, Fortune 1000 audience
+- `Organization` — VaughnMartin entity, founded 2023, startup to Fortune 500 audience
 - `SoftwareApplication` — Readiness OS, `BusinessApplication` category, `featureList` with 180 protocols / 221 triggers / 12 minutes / 3,600× canonical numbers
 - `WebSite` — with `SearchAction` pointing to `/playbook-library?search=`
 
