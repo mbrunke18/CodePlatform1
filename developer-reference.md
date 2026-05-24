@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 23, 2026 (rev 46) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 24, 2026 (rev 47) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3705,3 +3705,52 @@ These five improvements were shipped together in the prior session:
 - Tests: ✅ 189/189 passing (10 test files)
 - Browser console: ✅ zero errors
 - Key commits: `58baf1c` (HeroSimPanel), `b3f216d` (5 conversion improvements)
+
+---
+
+## 66. Production Audit Fixes + Terminology Corrections — May 24, 2026 (rev 47)
+
+Four auditor-flagged issues resolved and published; two developer-reference corrections applied.
+
+### 66a. API Protocol Count — 210 (was returning 170)
+
+**File:** `server/routes.ts` — `/api/playbook-library` handler
+
+The route was filtering protocols against a `categoryMap` that had incomplete coverage, causing 40 records to be silently dropped. Removed the hard filter; all 210 protocols now returned. Live verification: `offense 63 + defense 85 + special_teams 62 = 210`.
+
+**Dev-ref fix:** §7 route table line updated from "180-protocol library" → "210-protocol library (180 core + 30 compound, IDs 181–210)."
+
+### 66b. Canonical URL — Dynamic Per Route (was static)
+
+**File:** `client/src/App.tsx`
+
+Added `CanonicalUpdater` component (mounted once inside `<Router>`) that calls `useLocation()` and updates `<link rel="canonical">` on every route change. Eliminates the SEO issue of all pages sharing the same static canonical URL set in `index.html`.
+
+### 66c. Semantic Heading Structure — Full Audit
+
+All 208 page components audited. Result: **0 missing H1s, 0 multi-H1 pages**. Pattern used throughout: `<h1 className="sr-only">Page Title — Readiness OS</h1>` as first child after the page wrapper. Screen-reader accessible; zero visual impact.
+
+### 66d. Replit Dev Banner Removed
+
+**File:** `client/index.html`
+
+Removed the Replit development environment banner injection that was appearing in the published app's HTML. No functional impact; cleaner production output.
+
+### 66e. FounderStoryIntro.tsx — "72 Hours" Retired
+
+**File:** `client/src/components/marketing/FounderStoryIntro.tsx`
+
+Cold-open Scene 0 display stat: `72 HOURS` → `30 DAYS`. Quote: "That's how long it takes." → "That's how long mobilization takes." Scene 1 body: updated to reference the mobilization cycle, not generic crisis response. Closes the last known instance of the retired 72-hour framing across all component files.
+
+**Dev-ref fix:** §51 outstanding-issue note cleared and replaced with resolution summary.
+
+### 66f. Audience Framing — "Fortune 1000" → "startup to Fortune 500"
+
+Seven instances in developer-reference.md where VaughnMartin's audience was described as "Fortune 1000" were corrected to "startup to Fortune 500" or "high-growth startups, mid-market companies, and global enterprises — from startup to Fortune 500," matching the locked founder vision in replit.md. Benchmark rate figures (`$3,472/min Fortune 1000 rate`) and external market stats ("65% of Fortune 1000 companies still piloting") were left untouched — those are legitimate third-party references, not audience self-descriptions.
+
+### Rev 47 Known State
+- Build: ✅ clean
+- All 4 auditor issues: ✅ resolved and published
+- FounderStoryIntro "72 hours": ✅ resolved
+- Audience framing "Fortune 1000": ✅ corrected throughout dev-ref
+- Key commits: `9c7f34aa` (protocol count + FounderStoryIntro fix), `aec267f4` (Fortune 1000 → startup to Fortune 500)
