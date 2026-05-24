@@ -406,6 +406,86 @@ export default function UniversalConnector() {
         </div>
       </div>
 
+      {/* Microsoft Stack — featured section */}
+      <div style={{ background: `${NAVY}F5`, borderBottom: `1px solid ${NAVY}` }}>
+        <div style={{ maxWidth: 960, margin: "0 auto", padding: "40px 32px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 24, marginBottom: 28 }}>
+            <div>
+              <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 10, ...BC }}>
+                Microsoft Ecosystem — First-Class Stack
+              </p>
+              <h3 style={{ fontSize: 26, fontWeight: 700, color: "#fff", margin: "0 0 10px", ...CG }}>
+                Every enterprise has Microsoft's AI stack.<br />None have the operating model to use it.
+              </h3>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>
+                Readiness OS is the operating model layer above your existing Microsoft investment —
+                not a replacement, an orchestrator. If your organization runs on Microsoft,
+                every component of the stack plugs in directly.
+              </p>
+            </div>
+            <Link href="/ecosystem" style={{
+              display: "inline-flex", alignItems: "center", gap: 7,
+              fontSize: 12, fontWeight: 700, color: GOLD,
+              border: `1px solid ${GOLD}50`, padding: "9px 16px",
+              borderRadius: "0.15rem", textDecoration: "none", whiteSpace: "nowrap",
+              alignSelf: "flex-start",
+            }}>
+              <Globe size={13} />
+              View Ecosystem Diagram
+              <ArrowRight size={12} />
+            </Link>
+          </div>
+
+          {/* Live now */}
+          <p style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 10, ...BC }}>Live Now</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 24 }}>
+            {[
+              { name: "Microsoft Teams", desc: "Executive alerts, authorization requests, stakeholder notifications via Incoming Webhook or Graph API.", time: "30 min" },
+              { name: "Outlook / Exchange", desc: "Magic link delivery, stakeholder email cascades, activation summaries. Works with any Exchange or M365 tenant.", time: "15 min" },
+              { name: "SharePoint", desc: "Signal document monitoring. Strategy docs and board materials scanned for trigger-correlated patterns.", time: "1 hr" },
+              { name: "Microsoft Entra", desc: "SSO via SAML 2.0 or OIDC. Users authenticate with existing Microsoft credentials — no separate login.", time: "1 hr" },
+            ].map(item => (
+              <div key={item.name} style={{
+                background: "rgba(255,255,255,0.06)", border: `1px solid rgba(255,255,255,0.12)`,
+                borderRadius: "0.15rem", padding: "16px 16px",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                  <span style={{ width: 7, height: 7, borderRadius: "50%", background: TEAL, flexShrink: 0, display: "inline-block" }} />
+                  <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{item.name}</span>
+                </div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: "0 0 10px" }}>{item.desc}</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <Zap size={10} color={TEAL} />
+                  <span style={{ fontSize: 10, color: TEAL, fontWeight: 700 }}>Setup: {item.time}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Roadmap */}
+          <p style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 10, ...BC }}>Founding Partner — Month 1 Delivery</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
+            {[
+              { name: "Copilot Studio", desc: "Query protocol status and authorize activations via natural language inside Teams or Outlook." },
+              { name: "Power Automate", desc: "Trigger protocol activations from Power Platform events. Map Power BI data alerts to financial triggers." },
+              { name: "Microsoft Sentinel", desc: "Ransomware, breach, and unauthorized access incidents auto-stage the relevant Readiness Protocol." },
+              { name: "Microsoft Fabric", desc: "Revenue variance and supply chain disruption signals from Fabric data flows map directly to protocols." },
+            ].map(item => (
+              <div key={item.name} style={{
+                background: "rgba(201,168,76,0.06)", border: `1px solid rgba(201,168,76,0.2)`,
+                borderRadius: "0.15rem", padding: "16px 16px",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                  <span style={{ width: 7, height: 7, borderRadius: "50%", background: GOLD, flexShrink: 0, display: "inline-block" }} />
+                  <span style={{ fontSize: 13, fontWeight: 700, color: GOLD }}>{item.name}</span>
+                </div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "40px 32px" }}>
 
         {/* Quickstart */}
