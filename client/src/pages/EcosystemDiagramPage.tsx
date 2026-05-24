@@ -28,6 +28,132 @@ export default function EcosystemDiagramPage() {
         </div>
       </section>
 
+      {/* Two-Layer Architecture Clarity */}
+      <section style={{ background: "#F8F7F4", padding: "72px 24px", borderTop: `1px solid rgba(201,168,76,0.15)` }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 18, padding: "5px 16px", border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.07)" }}>
+              <div style={{ width: 5, height: 5, background: GOLD }} />
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, fontWeight: 700 }}>
+                Two layers. One enterprise.
+              </span>
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 600, color: NAVY, marginBottom: 16, lineHeight: 1.2 }}>
+              Microsoft governs the AI tools layer.<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>Readiness OS governs the response layer.</em>
+            </h2>
+            <p style={{ fontFamily: "'Barlow',sans-serif", fontSize: 15, color: "#4B5563", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
+              Microsoft is building the enterprise control plane for AI-assisted developer work — who can use Copilot, what policies apply, how much it costs. That layer and Readiness OS sit on completely different floors of the same building.
+            </p>
+          </div>
+
+          {/* Layer stack diagram */}
+          <div style={{ maxWidth: 720, margin: "0 auto 48px", display: "flex", flexDirection: "column" as const, gap: 3 }}>
+            {/* Top: Readiness OS */}
+            <div style={{ background: NAVY, border: `2px solid ${GOLD}`, padding: "28px 36px", position: "relative" as const }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap" as const, gap: 16 }}>
+                <div>
+                  <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD, fontWeight: 700, marginBottom: 8 }}>
+                    LAYER 2 — STRATEGIC RESPONSE
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 22, fontWeight: 700, color: "#F0EDE4", marginBottom: 6 }}>
+                    Readiness OS
+                  </div>
+                  <div style={{ fontFamily: "'Barlow',sans-serif", fontSize: 13, color: "rgba(240,237,228,0.65)", lineHeight: 1.5 }}>
+                    When a trigger fires — who does what, authorized by whom, executed in 12 minutes. 180 Readiness Protocols pre-staged before the signal appears.
+                  </div>
+                </div>
+                <div style={{ textAlign: "right" as const, flexShrink: 0 }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 28, fontWeight: 700, color: GOLD }}>12</div>
+                  <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.2em", color: "rgba(240,237,228,0.45)", textTransform: "uppercase" as const }}>minutes</div>
+                </div>
+              </div>
+              <div style={{ marginTop: 16, display: "flex", gap: 8, flexWrap: "wrap" as const }}>
+                {["Trigger Detection", "Protocol Matching", "Executive Authorization", "12-Min Execution", "Institutional Memory"].map(tag => (
+                  <span key={tag} style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "3px 10px", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Connector arrow */}
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, padding: "8px 0" }}>
+              <div style={{ height: 1, flex: 1, background: "rgba(10,15,46,0.12)" }} />
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.2em", color: "#9CA3AF", textTransform: "uppercase" as const }}>Orchestrates ↕ Sits above</span>
+              <div style={{ height: 1, flex: 1, background: "rgba(10,15,46,0.12)" }} />
+            </div>
+
+            {/* Middle: Microsoft AI Execution Layer */}
+            <div style={{ background: "#132558", padding: "24px 36px", border: "1px solid rgba(0,120,212,0.35)" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap" as const, gap: 16 }}>
+                <div>
+                  <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#5BA3E8", fontWeight: 700, marginBottom: 8 }}>
+                    LAYER 1 — AI EXECUTION CONTROL (MICROSOFT)
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 700, color: "#F0EDE4", marginBottom: 6 }}>
+                    GitHub Copilot CLI · Copilot Studio · Entra · Policy Engine
+                  </div>
+                  <div style={{ fontFamily: "'Barlow',sans-serif", fontSize: 13, color: "rgba(240,237,228,0.55)", lineHeight: 1.5 }}>
+                    Governs AI-assisted developer work — who can use Copilot, what policies apply, cost control, auditability. The control plane for AI tools usage.
+                  </div>
+                </div>
+                <div style={{ flexShrink: 0 }}>
+                  <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.15em", color: "#5BA3E8", padding: "4px 10px", border: "1px solid rgba(91,163,232,0.3)" }}>
+                    Complementary
+                  </div>
+                </div>
+              </div>
+              <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" as const }}>
+                {["Policy Check", "Approval Gates", "Cost Control", "Auditability", "Identity Governance"].map(tag => (
+                  <span key={tag} style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "3px 10px", border: "1px solid rgba(91,163,232,0.2)", color: "rgba(91,163,232,0.8)" }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Connector */}
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, padding: "8px 0" }}>
+              <div style={{ height: 1, flex: 1, background: "rgba(10,15,46,0.12)" }} />
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.2em", color: "#9CA3AF", textTransform: "uppercase" as const }}>Built on top of</span>
+              <div style={{ height: 1, flex: 1, background: "rgba(10,15,46,0.12)" }} />
+            </div>
+
+            {/* Bottom: Microsoft Full Stack */}
+            <div style={{ background: "#0F1C3F", padding: "20px 36px", border: "1px solid rgba(0,120,212,0.2)", opacity: 0.9 }}>
+              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(91,163,232,0.6)", fontWeight: 700, marginBottom: 8 }}>
+                LAYER 0 — MICROSOFT FULL STACK
+              </div>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
+                {["Azure OpenAI", "Microsoft Teams", "SharePoint", "Microsoft Entra", "Power Platform", "Microsoft 365"].map(t => (
+                  <span key={t} style={{ fontFamily: "'Barlow',sans-serif", fontSize: 12, color: "rgba(240,237,228,0.4)", fontWeight: 500 }}>{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Key distinction callout */}
+          <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+            <div style={{ padding: "24px 28px", background: "#132558", border: "1px solid rgba(0,120,212,0.2)" }}>
+              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#5BA3E8", marginBottom: 10, fontWeight: 700 }}>Microsoft's Layer Governs</div>
+              <p style={{ fontFamily: "'Barlow',sans-serif", fontSize: 13, color: "rgba(240,237,228,0.65)", lineHeight: 1.6, margin: 0 }}>
+                <em>"Can the AI tool run this task?"</em> — policy, approval, cost, audit for developer AI workflows.
+              </p>
+            </div>
+            <div style={{ padding: "24px 28px", background: NAVY, border: `1px solid rgba(201,168,76,0.25)` }}>
+              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10, fontWeight: 700 }}>Readiness OS Governs</div>
+              <p style={{ fontFamily: "'Barlow',sans-serif", fontSize: 13, color: "rgba(240,237,228,0.65)", lineHeight: 1.6, margin: 0 }}>
+                <em>"When the trigger fires — who does what, in what order, authorized by whom, executed in 12 minutes?"</em>
+              </p>
+            </div>
+          </div>
+          <p style={{ fontFamily: "'Barlow',sans-serif", fontSize: 13, color: "#6B7280", textAlign: "center" as const, marginTop: 20, fontStyle: "italic" }}>
+            Different layer. Different stakes. Same enterprise. No procurement conflict.
+          </p>
+        </div>
+      </section>
+
       {/* Three-point explanation */}
       <section style={{ background: "#fff", padding: "64px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>

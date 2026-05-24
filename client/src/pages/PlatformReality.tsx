@@ -299,8 +299,8 @@ export default function PlatformReality() {
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,38px)", color: NAVY, marginBottom: 12 }}>
               Every alternative category. One answer.
             </h2>
-            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 520, margin: "0 auto" }}>
-              Three distinct competitor categories. Three distinct failures. One platform that solves all three.
+            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 560, margin: "0 auto" }}>
+              Three competitor categories — all leaving the 30-day mobilization cycle intact. One complementary category proving the market is real. One platform that closes the gap.
             </p>
           </div>
 
@@ -353,6 +353,29 @@ export default function PlatformReality() {
                 </button>
               </div>
             ))}
+          </div>
+
+          {/* Microsoft — Complementary, Validates the Category */}
+          <div style={{ marginTop: 2, background: "#060B1E", border: "1px solid rgba(0,120,212,0.3)", padding: "28px 32px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "center", flexWrap: "wrap" as const }}>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  <div style={{ width: 6, height: 6, background: "#5BA3E8" }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "#5BA3E8" }}>Microsoft's AI Execution Layer — Complementary, Not Competitive</span>
+                </div>
+                <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#F0EDE4", marginBottom: 8, lineHeight: 1.2 }}>
+                  Validates It. <span style={{ color: "#5BA3E8", fontStyle: "italic" }}>Then leaves the strategic layer empty.</span>
+                </div>
+                <p style={{ fontSize: 13, color: "rgba(240,237,228,0.6)", lineHeight: 1.65, marginBottom: 0, maxWidth: 700 }}>
+                  Microsoft is building the enterprise control plane for AI-assisted developer work — GitHub Copilot CLI, policy gates, cost controls, auditability. It governs <em style={{ color: "rgba(240,237,228,0.8)" }}>"Can the AI tool run this task?"</em> Readiness OS governs <em style={{ color: GOLD }}>"When the trigger fires — who does what, in what order, authorized by whom, executed in 12 minutes?"</em> These are orthogonal layers. Microsoft's $13B investment proves enterprises need execution governance infrastructure. The strategic response layer remains unclaimed.
+                </p>
+              </div>
+              <div style={{ flexShrink: 0, textAlign: "center" as const, padding: "16px 24px", border: "1px solid rgba(91,163,232,0.2)", background: "rgba(91,163,232,0.05)" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(91,163,232,0.7)", marginBottom: 8 }}>Result</div>
+                <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#5BA3E8", lineHeight: 1.1 }}>Category<br />Validated</div>
+                <div style={{ fontSize: 11, color: "rgba(240,237,228,0.4)", marginTop: 8, fontStyle: "italic" }}>Strategic layer still open</div>
+              </div>
+            </div>
           </div>
 
           {/* Readiness OS answer */}

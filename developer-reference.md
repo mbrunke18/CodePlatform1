@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 24, 2026 (rev 48) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 24, 2026 (rev 49) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3816,3 +3816,63 @@ Full scan of all pages and components against all locked retirement rules:
 - `/universal-connector` and `/technical-onboarding`: ✅ surfaced in StandardNav + Homepage
 - Terminology audit (TA–TK): ✅ zero violations across pages and components
 - Key commit: `d5793bd0` (nav + homepage CTA wiring)
+
+---
+
+## 68. Competitive Positioning — Microsoft AI Execution Layer — May 24, 2026 (rev 49)
+
+Three surgical inserts responding to Microsoft's move toward an enterprise AI execution control plane (GitHub Copilot CLI governance, policy gates, approval workflows). The framing across all three: **Microsoft governs "Can the AI tool run this task?" — Readiness OS governs "When the trigger fires — who does what, in 12 minutes?"** Different floors. No procurement conflict. Microsoft validates the category; the strategic response layer remains unclaimed.
+
+### 68a. EcosystemDiagramPage — Two-Layer Architecture Clarity Section
+
+**File:** `client/src/pages/EcosystemDiagramPage.tsx`
+
+Inserted between the main `ExecutionOSMicrosoftDiagram` component and the three-point explanation section.
+
+**Visual structure (top to bottom):**
+- **Section header** — gold pill badge "Two layers. One enterprise." + headline "Microsoft governs the AI tools layer. *Readiness OS governs the response layer.*"
+- **Layer stack diagram** (max-width 720px, centered):
+  - **LAYER 2 — STRATEGIC RESPONSE** — navy bg, gold 2px border. Readiness OS name, description, "12 minutes" stat, five capability tags (Trigger Detection, Protocol Matching, Executive Authorization, 12-Min Execution, Institutional Memory)
+  - Connector label: "Orchestrates ↕ Sits above"
+  - **LAYER 1 — AI EXECUTION CONTROL (MICROSOFT)** — `#132558` bg, blue border (`rgba(0,120,212,0.35)`). GitHub Copilot CLI · Copilot Studio · Entra · Policy Engine, blue capability tags
+  - Connector label: "Built on top of"
+  - **LAYER 0 — MICROSOFT FULL STACK** — `#0F1C3F` bg. Azure OpenAI / Teams / SharePoint / Entra / Power Platform / Microsoft 365
+- **Two-column distinction callout** (gold vs blue accent): "Microsoft's Layer Governs" / "Readiness OS Governs"
+- Footer: *"Different layer. Different stakes. Same enterprise. No procurement conflict."*
+
+### 68b. PlatformReality — Microsoft Complementary Card
+
+**File:** `client/src/pages/PlatformReality.tsx`
+
+Inserted between the three competitor-category cards and the "Readiness OS — Shipped It" navy bar.
+
+**Visual treatment:** `#060B1E` background, `rgba(0,120,212,0.3)` border — visually distinct from the three ivory competitor cards. Two-column layout (text left, verdict right).
+
+- **Label:** blue small-caps "Microsoft's AI Execution Layer — Complementary, Not Competitive"
+- **Headline:** "Validates It. *Then leaves the strategic layer empty.*"
+- **Body:** Explains the orthogonal-layer argument — Microsoft's $13B investment proves enterprises need execution governance infrastructure; the strategic response layer remains unclaimed.
+- **Verdict box:** "Category Validated / Strategic layer still open" in blue
+- **Subtitle copy updated:** "Three competitor categories — all leaving the 30-day mobilization cycle intact. One complementary category proving the market is real. One platform that closes the gap."
+
+### 68c. InvestorLanding — Market Validation Section
+
+**File:** `client/src/pages/InvestorLanding.tsx`
+
+Inserted immediately after the "Why Now — Three Structural Shifts" section (`</section>` at line ~845) as a standalone full-width section.
+
+**Route:** `/investor-landing` and `/executive-access`
+
+**Visual structure:**
+- `#060B1E` background, blue top border / gold bottom border
+- **Blue pill badge:** "Market Signal · May 2026"
+- **Headline:** "Microsoft is proving the category exists. *The strategic response layer remains unclaimed.*"
+- **Two-column grid:**
+  - Left (`#0F1C3F`, blue border): "What Microsoft Is Building" — four bullet rows (GitHub Copilot CLI governance, Approval gate workflows, Cost management & auditability, Enterprise AI control plane). Bottom callout: *"Governs: 'Can the AI tool run this task?'"*
+  - Right (NAVY `#0A0F2E`, gold border): "What Remains Unclaimed — VaughnMartin's Layer" — four bullet rows (180 Readiness Protocols pre-staged, 221 trigger patterns monitored, Executive authorization gates, 12-minute coordinated response / 3,600× head start). Bottom callout: *"Governs: 'When the trigger fires — who does what, in 12 minutes?'"*
+- **Three-stat bar:** $13B+ / 0 / 1 — Microsoft's investment proves the need · No vendors in the strategic layer · VaughnMartin first mover
+
+### Rev 49 Known State
+- Build: ✅ clean (dev server)
+- Three competitive positioning inserts: ✅ live (`/ecosystem`, `/platform-reality`, `/investor-landing`)
+- Microsoft framing: consistent two-layer orthogonal positioning across all three surfaces
+- All locked messaging preserved: 3,600×, 12 minutes, 180 Readiness Protocols, "AI monitors, executives authorize"

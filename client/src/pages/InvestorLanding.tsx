@@ -841,6 +841,108 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── MARKET VALIDATION — MICROSOFT IS PROVING THE CATEGORY ────────── */}
+        <section style={{ background: '#060B1E', padding: '72px 32px', borderTop: '1px solid rgba(0,120,212,0.2)', borderBottom: '1px solid rgba(201,168,76,0.12)' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18, padding: '5px 18px', border: '1px solid rgba(91,163,232,0.3)', background: 'rgba(91,163,232,0.07)' }}>
+                <div style={{ width: 5, height: 5, background: '#5BA3E8' }} />
+                <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#5BA3E8', fontWeight: 700 }}>
+                  Market Signal · May 2026
+                </span>
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }}>
+                Microsoft is proving the category exists.<br />
+                <em style={{ color: '#C9A84C', fontStyle: 'italic' }}>The strategic response layer remains unclaimed.</em>
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.55)', maxWidth: 680, margin: '0 auto', lineHeight: 1.7 }}>
+                Microsoft's move to own the enterprise AI execution control plane — GitHub Copilot CLI, policy gates, approval workflows, cost governance — validates that enterprise execution governance is real budget. The investor thesis: Microsoft is building the floor. VaughnMartin builds the layer above it.
+              </p>
+            </div>
+
+            {/* Two-column: What Microsoft is building vs. what's left open */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, marginBottom: 40 }}>
+              <div style={{ background: '#0F1C3F', border: '1px solid rgba(0,120,212,0.3)', padding: '32px 28px' }}>
+                <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#5BA3E8', fontWeight: 700, marginBottom: 16 }}>
+                  What Microsoft Is Building
+                </div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 14, lineHeight: 1.2 }}>
+                  The AI execution control plane for developer work
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 10 }}>
+                  {[
+                    { label: 'GitHub Copilot CLI governance', sub: 'Who can use AI tools, under what policies' },
+                    { label: 'Approval gate workflows', sub: 'Request → Policy Check → Authorization → Complete' },
+                    { label: 'Cost management & auditability', sub: 'Per-request cost tracking, identity stamping' },
+                    { label: 'Enterprise AI control plane', sub: 'Security, compliance, usage oversight' },
+                  ].map(({ label, sub }) => (
+                    <div key={label} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <div style={{ width: 4, height: 4, background: '#5BA3E8', flexShrink: 0, marginTop: 5 }} />
+                      <div>
+                        <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.8)' }}>{label}</div>
+                        <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{sub}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 20, padding: '12px 16px', background: 'rgba(91,163,232,0.08)', border: '1px solid rgba(91,163,232,0.2)' }}>
+                  <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: '#5BA3E8' }}>
+                    Governs: "Can the AI tool run this task?"
+                  </span>
+                </div>
+              </div>
+
+              <div style={{ background: '#0A0F2E', border: '2px solid #C9A84C', padding: '32px 28px' }}>
+                <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#C9A84C', fontWeight: 700, marginBottom: 16 }}>
+                  What Remains Unclaimed — VaughnMartin's Layer
+                </div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 14, lineHeight: 1.2 }}>
+                  The strategic response layer above the stack
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 10 }}>
+                  {[
+                    { label: '180 Readiness Protocols pre-staged', sub: 'Before the trigger fires — not assembled after' },
+                    { label: '221 trigger patterns monitored continuously', sub: 'Signal detected → protocol matched → exec notified' },
+                    { label: 'Executive authorization gates', sub: 'AI monitors. Executives authorize. No autonomous action.' },
+                    { label: '12-minute coordinated response', sub: '3,600× head start over the 30-day mobilization model' },
+                  ].map(({ label, sub }) => (
+                    <div key={label} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <div style={{ width: 4, height: 4, background: '#C9A84C', flexShrink: 0, marginTop: 5 }} />
+                      <div>
+                        <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.85)' }}>{label}</div>
+                        <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>{sub}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 20, padding: '12px 16px', background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.3)' }}>
+                  <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: '#C9A84C' }}>
+                    Governs: "When the trigger fires — who does what, in 12 minutes?"
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* The investor-framing callout */}
+            <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', padding: '28px 36px', display: 'grid', gridTemplateColumns: '1fr 1px 1fr 1px 1fr', gap: 0 }}>
+              {[
+                { stat: '$13B+', label: "Microsoft's AI infrastructure investment", sub: 'Proving enterprises will spend on execution governance' },
+                { stat: '0', label: 'Vendors with a strategic response layer', sub: 'The floor is built. The layer above it is empty.' },
+                { stat: '1', label: 'First mover in the unclaimed layer', sub: 'VaughnMartin — the operating model above the stack' },
+              ].map(({ stat, label, sub }, i) => (
+                <div key={stat}>
+                  {i > 0 && <div style={{ width: 1, background: 'rgba(201,168,76,0.15)', height: '100%' }} />}
+                  <div style={{ padding: '0 32px', textAlign: 'center' as const }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: '#C9A84C', lineHeight: 1, marginBottom: 8 }}>{stat}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{label}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, fontStyle: 'italic' }}>{sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Agentic AI Convergence */}
         <section className="py-16 px-6 bg-white text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
