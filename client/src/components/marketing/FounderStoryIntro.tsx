@@ -5,8 +5,8 @@ import { Play, RotateCcw, Volume2, VolumeX, SkipForward, Pause, Building2, Troph
 import { Link } from "wouter";
 
 const SCENE_NARRATIONS = [
-  "Seventy-two hours. That's how long it takes.",
-  "That's how long it takes most Fortune 500 companies to respond to a crisis. Conference calls. Scrambling. Waiting on decisions. Meanwhile, the damage compounds. The window closes.",
+  "Thirty days. That's how long mobilization takes.",
+  "That's how long most Fortune 500 companies spend just mobilizing after a strategic trigger fires. Conference calls. Scrambling. Waiting on decisions. Meanwhile, the damage compounds. The window closes.",
   "I spent 20 years inside Fortune 500 companies watching this happen. Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "I kept thinking—in football, we'd never run a play without practicing it first. But in business? We wing it. Every time.",
   "That's why I built Readiness OS. 180 Readiness Protocols across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",

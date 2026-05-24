@@ -2680,7 +2680,12 @@ Two animated text slideshow components with TTS narration (not real video files)
 | Intro Narration | `client/src/components/marketing/FounderStoryIntro.tsx` | ✅ Fixed — "72 hours" → "30 days" (rev 46, May 23 2026) |
 | Full Story Narration | `client/src/components/marketing/FounderStoryFull.tsx` | Football language preserved (deliberate — origin narrative) |
 
-**`FounderStoryIntro.tsx` — resolved (rev 46):** The cold-open Scene 0 display stat was changed from `72 HOURS` → `30 DAYS`. The accompanying quote was updated from "That's how long it takes." → "That's how long mobilization takes." Scene 1 body copy updated from "That's how long it takes most Fortune 500 companies to respond to a crisis." → "That's how long most Fortune 500 companies spend just mobilizing after a strategic trigger fires." This closes the last known instance of the retired 72-hour framing in any component file.
+**`FounderStoryIntro.tsx` — resolved (rev 47):** Two layers were fixed:
+
+1. **Visual (JSX)** — Scene 0 display stat: `72 HOURS` → `30 DAYS`. Quote: "That's how long it takes." → "That's how long mobilization takes." Scene 1 body: updated to reference the mobilization cycle.
+2. **TTS audio narration (`SCENE_NARRATIONS` array)** — Scene 0 string: `"Seventy-two hours. That's how long it takes."` → `"Thirty days. That's how long mobilization takes."` Scene 1 string: `"That's how long it takes most Fortune 500 companies to respond to a crisis."` → `"That's how long most Fortune 500 companies spend just mobilizing after a strategic trigger fires."` These strings are sent to the text-to-speech API and spoken aloud when the user enables audio — they must match the visual copy.
+
+This closes every instance of the retired 72-hour framing in this component, both visual and audio.
 
 **Rule:** Any future metric sweep (`grep -ri "seventy.two\|seventy-two\|72.hour"`) must include `client/src/components/marketing/` — not just `client/src/pages/`.
 
@@ -3736,13 +3741,17 @@ All 208 page components audited. Result: **0 missing H1s, 0 multi-H1 pages**. Pa
 
 Removed the Replit development environment banner injection that was appearing in the published app's HTML. No functional impact; cleaner production output.
 
-### 66e. FounderStoryIntro.tsx — "72 Hours" Retired
+### 66e. FounderStoryIntro.tsx — "72 Hours" Fully Retired (Visual + Audio)
 
 **File:** `client/src/components/marketing/FounderStoryIntro.tsx`
 
-Cold-open Scene 0 display stat: `72 HOURS` → `30 DAYS`. Quote: "That's how long it takes." → "That's how long mobilization takes." Scene 1 body: updated to reference the mobilization cycle, not generic crisis response. Closes the last known instance of the retired 72-hour framing across all component files.
+Two layers fixed:
 
-**Dev-ref fix:** §51 outstanding-issue note cleared and replaced with resolution summary.
+**Visual (JSX):** Scene 0 display stat `72 HOURS` → `30 DAYS`. Quote: "That's how long it takes." → "That's how long mobilization takes." Scene 1 body updated to reference the mobilization cycle.
+
+**TTS audio narration (`SCENE_NARRATIONS` array):** Scene 0 string `"Seventy-two hours. That's how long it takes."` → `"Thirty days. That's how long mobilization takes."` Scene 1 string `"That's how long it takes most Fortune 500 companies to respond to a crisis."` → `"That's how long most Fortune 500 companies spend just mobilizing after a strategic trigger fires."` These strings feed the text-to-speech API and are spoken aloud when audio is enabled — they must match the visual copy exactly.
+
+**Dev-ref fix:** §51 updated to document both layers of the fix.
 
 ### 66f. Audience Framing — "Fortune 1000" → "startup to Fortune 500"
 
