@@ -153,6 +153,8 @@ export default function StandardNav() {
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
+        { label: "Universal Connector", path: "/universal-connector", icon: Globe, description: "Any stack. 55+ pre-built connectors. Live in 15 minutes.", featured: true },
+        { label: "Integration Setup Plan", path: "/technical-onboarding", icon: Rocket, description: "Phased technical guide for connecting Readiness OS into your tech environment", featured: true },
       ],
     },
     {
@@ -384,7 +386,8 @@ export default function StandardNav() {
             {[
               { path: '/execution-data-fabric', icon: Layers, label: 'Execution Data Fabric', sub: 'How signals become staged responses — the AI and data architecture', featured: true },
               { path: '/institutional-memory-engine', icon: Brain, label: 'Institutional Memory Engine', sub: 'The compounding dataset that improves with every activation', featured: true },
-              { path: '/platform-integrations', icon: Globe, label: 'Platform Integrations', sub: 'Microsoft stack + Salesforce · ServiceNow · Jira · Slack · SAP', featured: true },
+              { path: '/universal-connector', icon: Globe, label: 'Universal Connector', sub: 'Any stack. 55+ pre-built connectors. Live in 15 minutes.', featured: true },
+              { path: '/technical-onboarding', icon: Rocket, label: 'Integration Setup Plan', sub: 'Phased technical guide — identity, signals, execution, Microsoft stack', featured: true },
             ].map(l => megaItem(l))}
           </div>
 

@@ -2347,6 +2347,31 @@ function MicrosoftEcosystemBanner() {
             <div style={{ border: `1px solid rgba(201,168,76,0.12)`, overflow: 'hidden' }}>
               <EcosystemIntegrationDiagram />
             </div>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginTop: 28, flexWrap: 'wrap' }}>
+              <button
+                onClick={() => setLocation('/universal-connector')}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13,
+                  padding: '11px 22px', borderRadius: '0.15rem', border: 'none', cursor: 'pointer',
+                  fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em', textTransform: 'uppercase',
+                }}
+              >
+                View All 55+ Connectors →
+              </button>
+              <button
+                onClick={() => setLocation('/technical-onboarding')}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  background: 'transparent', color: 'rgba(240,237,228,0.75)', fontWeight: 600, fontSize: 13,
+                  padding: '11px 22px', borderRadius: '0.15rem',
+                  border: '1px solid rgba(240,237,228,0.2)', cursor: 'pointer',
+                  fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em', textTransform: 'uppercase',
+                }}
+              >
+                Integration Setup Plan
+              </button>
+            </div>
           </div>
         </Reveal>
       </div>
