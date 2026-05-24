@@ -384,7 +384,7 @@ GET    /api/dynamic-strategy/status        ← Signal system status (requires au
 GET    /api/dynamic-strategy/readiness     ← Future Readiness Index (requires auth+org)
 GET    /api/dynamic-strategy/weak-signals  ← Active weak signals (requires auth+org)
 GET    /api/dynamic-strategy/oracle-patterns ← AI patterns (requires auth+org)
-GET    /api/playbook-library               ← 180-protocol library
+GET    /api/playbook-library               ← 210-protocol library (180 core + 30 compound, IDs 181–210)
 GET    /api/advance/learning-velocity      ← Learning Velocity Index (auth + org required)
 GET    /api/advance/pending-queue          ← Auto-apply + exec-authorize update queues (auth + org)
 GET    /api/advance/protocol-timeline/:id  ← Full version delta history for a protocol (auth + org)
@@ -2677,10 +2677,10 @@ Two animated text slideshow components with TTS narration (not real video files)
 
 | Component | File | Status |
 |---|---|---|
-| Intro Narration | `client/src/components/marketing/FounderStoryIntro.tsx` | Contains retired "72 hours" framing |
+| Intro Narration | `client/src/components/marketing/FounderStoryIntro.tsx` | ✅ Fixed — "72 hours" → "30 days" (rev 46, May 23 2026) |
 | Full Story Narration | `client/src/components/marketing/FounderStoryFull.tsx` | Football language preserved (deliberate — origin narrative) |
 
-**`FounderStoryIntro.tsx` — outstanding issue:** The TTS narration script in this component contains the retired "72 hours" framing that was corrected in the written manifesto body during rev 23 (Section 38). The video-style narration text was not caught in that sweep because grep patterns targeted `FounderStory.tsx` (the page), not the component files. This is a known open item. The founder has not yet approved a remediation path (replace content vs. replace with placeholder shell). Do not touch this component without explicit founder instruction.
+**`FounderStoryIntro.tsx` — resolved (rev 46):** The cold-open Scene 0 display stat was changed from `72 HOURS` → `30 DAYS`. The accompanying quote was updated from "That's how long it takes." → "That's how long mobilization takes." Scene 1 body copy updated from "That's how long it takes most Fortune 500 companies to respond to a crisis." → "That's how long most Fortune 500 companies spend just mobilizing after a strategic trigger fires." This closes the last known instance of the retired 72-hour framing in any component file.
 
 **Rule:** Any future metric sweep (`grep -ri "seventy.two\|seventy-two\|72.hour"`) must include `client/src/components/marketing/` — not just `client/src/pages/`.
 
