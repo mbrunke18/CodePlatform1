@@ -3417,6 +3417,217 @@ function LifecycleAdvantageSection() {
   );
 }
 
+// ─── BINARY STAKES SECTION ────────────────────────────────────────────────────
+function BinaryStakesSection() {
+  return (
+    <section style={{ background: IVORY, padding: "80px 0", borderTop: "1px solid rgba(10,15,46,0.08)" }}>
+      <div style={{ ...CONTAINER }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 32, height: 1.5, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Proof</span>
+              <div style={{ width: 32, height: 1.5, background: GOLD }} />
+            </div>
+            <h2 style={{ ...GEO, fontSize: "clamp(30px,4vw,54px)", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: 4 }}>
+              The situation arrives.
+            </h2>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,3.5vw,48px)", fontWeight: 400, fontStyle: "italic", color: GOLD, lineHeight: 1.2, marginBottom: 24 }}>
+              The response was ready. Or it wasn't.
+            </h2>
+            <p style={{ ...DM, fontSize: 15, color: "#4B5563", maxWidth: 560, margin: "0 auto 48px", lineHeight: 1.7 }}>
+              Every organization faces the same trigger events. The only variable is whether the response was staged before the situation required it.
+            </p>
+          </div>
+        </Reveal>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 3px 1fr", gap: 0, maxWidth: 960, margin: "0 auto 44px" }}>
+          <Reveal>
+            <div style={{ padding: "40px 48px 40px 0" }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: RED_CRISIS, marginBottom: 20 }}>Without Readiness OS</div>
+              {[
+                { t: "Day 1–3",   b: "Leadership realizes something is happening. Emails start flying." },
+                { t: "Day 4–7",   b: "First cross-functional meeting scheduled. No brief exists. Who owns this?" },
+                { t: "Day 8–14",  b: "Stakeholder alignment underway. Someone drafts a plan. Revisions begin." },
+                { t: "Day 15–30", b: "Approval cycle. Leadership reviews. Execution finally authorized." },
+                { t: "Day 30+",   b: "You're executing. The window may have already closed." },
+              ].map(({ t, b }) => (
+                <div key={t} style={{ display: "flex", gap: 14, marginBottom: 18, alignItems: "flex-start" }}>
+                  <div style={{ width: 7, height: 7, background: RED_CRISIS, flexShrink: 0, marginTop: 5 }} />
+                  <div>
+                    <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{t}</div>
+                    <div style={{ ...DM, fontSize: 13, color: "#6B7280", lineHeight: 1.55 }}>{b}</div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ marginTop: 24, padding: "14px 20px", background: "rgba(192,57,43,0.06)", border: "1px solid rgba(192,57,43,0.15)" }}>
+                <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: RED_CRISIS }}>30 days of managed chaos — every delay a compounding liability</span>
+              </div>
+            </div>
+          </Reveal>
+
+          <div style={{ background: "rgba(10,15,46,0.1)", margin: "40px 0" }} />
+
+          <Reveal delay={0.1}>
+            <div style={{ padding: "40px 0 40px 48px" }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 20 }}>With Readiness OS</div>
+              {[
+                { t: "Minute 0",  b: "Signal detected across 248+ monitored data points. Protocol matched automatically." },
+                { t: "Minute 2",  b: "Readiness Protocol activated. All stakeholders notified with pre-staged briefs." },
+                { t: "Minute 6",  b: "Executive authorization requested. Tasks visible. Team coordinated." },
+                { t: "Minute 12", b: "Full response live. Every stakeholder executing their pre-assigned role." },
+                { t: "After",     b: "Every activation makes the next response faster. The system compounds." },
+              ].map(({ t, b }) => (
+                <div key={t} style={{ display: "flex", gap: 14, marginBottom: 18, alignItems: "flex-start" }}>
+                  <div style={{ width: 7, height: 7, background: TEAL, flexShrink: 0, marginTop: 5 }} />
+                  <div>
+                    <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{t}</div>
+                    <div style={{ ...DM, fontSize: 13, color: "#6B7280", lineHeight: 1.55 }}>{b}</div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ marginTop: 24, padding: "14px 20px", background: `rgba(43,138,110,0.07)`, border: `1px solid rgba(43,138,110,0.2)` }}>
+                <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: TEAL }}>12 minutes. Full response. The window stays open.</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        <Reveal>
+          <div style={{ textAlign: "center" }}>
+            <Link href="/proof-story" style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: NAVY, textDecoration: "none", borderBottom: `1px solid ${GOLD}`, paddingBottom: 3 }}>
+              See the full activation narratives — with financial outcomes →
+            </Link>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── POSITIONING SECTION (extracted) ──────────────────────────────────────────
+function PositioningSection() {
+  return (
+    <section style={{ background: NAVY, padding: "88px 0", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+      <div style={{ ...CONTAINER, maxWidth: 860, textAlign: "center" }}>
+        <Reveal>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 28 }}>
+            The Positioning
+          </div>
+          <blockquote style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 400, fontStyle: "italic", color: IVORY, lineHeight: 1.7, margin: "0 0 32px" }}>
+            "Most tools address one moment. Readiness OS addresses the entire decision lifecycle — from signal detection through decision preparation through activated execution through institutional learning — and every cycle through that lifecycle makes the organization more capable of handling the next one."
+          </blockquote>
+          <div style={{ width: 48, height: 1, background: GOLD, margin: "0 auto 28px" }} />
+          <p style={{ fontSize: 13, color: "rgba(240,237,228,0.5)", fontWeight: 600, lineHeight: 1.9, margin: "0 0 40px" }}>
+            That is not a coordination tool. That is not an execution tool.<br />
+            That is a strategic intelligence system that compounds organizational decision capability over time.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" as const }}>
+            <a href="/mission-control" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, padding: "14px 30px", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" as const, textDecoration: "none" }}>
+              Enter Mission Control →
+            </a>
+            <a href="/12-minute-experience" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.65)", padding: "14px 30px", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" as const, textDecoration: "none", border: "1px solid rgba(240,237,228,0.18)" }}>
+              See Your Scenario →
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── SALES DEPTH STRIP ─────────────────────────────────────────────────────────
+function SalesDepthStrip() {
+  const assets = [
+    { label: "Proof Story",           desc: "Side-by-side activation timelines — 4 full narratives with real financial outcomes.",              href: "/proof-story",           accent: GOLD,  tag: "Evidence"      },
+    { label: "Executive Brief",       desc: "Printable one-pager for every enterprise sales conversation and RFP response.",                    href: "/executive-brief",       accent: GOLD,  tag: "Sales Asset"   },
+    { label: "Board Briefings",       desc: "Board-ready activation reports. Gets Readiness OS into the boardroom conversation.",               href: "/board-briefings",       accent: TEAL,  tag: "Governance"    },
+    { label: "ADVANCE Intelligence",  desc: "The compound learning moat — every activation makes the next response faster and sharper.",        href: "/advance-intelligence",  accent: TEAL,  tag: "The Moat"      },
+    { label: "ROI Calculator",        desc: "Build the business case. Break-even, 3-year net value, retainer comparison.",                      href: "/roi-calculator",        accent: GOLD,  tag: "Business Case" },
+    { label: "Command Tower",         desc: "Live signal feed. Executive NOC. 248+ data points in real time — no login required.",              href: "/command-tower",         accent: TEAL,  tag: "Live System"   },
+  ];
+  return (
+    <section style={{ background: NAVY, padding: "72px 0", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+      <div style={{ ...CONTAINER }}>
+        <Reveal>
+          <div style={{ marginBottom: 40 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 1.5, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>For Due Diligence</span>
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 600, color: IVORY, lineHeight: 1.2, maxWidth: 600 }}>
+              Everything you need to evaluate, present, and close.
+            </h2>
+          </div>
+        </Reveal>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
+          {assets.map((a, i) => (
+            <Reveal key={a.label} delay={i * 0.06}>
+              <Link href={a.href} style={{ textDecoration: "none", display: "block", height: "100%" }}>
+                <div style={{ background: "#0D1435", border: "1px solid rgba(255,255,255,0.06)", padding: "28px 28px 24px", height: "100%", boxSizing: "border-box" as const }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+                    <span style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: a.accent, padding: "3px 8px", border: `1px solid ${a.accent}40` }}>{a.tag}</span>
+                    <span style={{ color: a.accent, fontSize: 16, fontWeight: 700 }}>→</span>
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: IVORY, marginBottom: 10, lineHeight: 1.2 }}>{a.label}</div>
+                  <p style={{ ...DM, fontSize: 13, color: "rgba(240,237,228,0.55)", lineHeight: 1.6, margin: 0 }}>{a.desc}</p>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── TIMESTAMP CLOSE SECTION ───────────────────────────────────────────────────
+function TimestampCloseSection() {
+  return (
+    <section style={{ background: "#fff", padding: "80px 0", borderTop: "1px solid #E8E4DC" }}>
+      <div style={{ ...CONTAINER, maxWidth: 960 }}>
+        <Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+                <div style={{ width: 28, height: 1.5, background: GOLD }} />
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "#6B7280" }}>The Competitive Test</span>
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(32px,4vw,52px)", fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 24 }}>
+                Show us your timestamp.
+              </h2>
+              <p style={{ ...DM, fontSize: 15, color: "#4B5563", lineHeight: 1.75, marginBottom: 20 }}>
+                Any framework, methodology, or approach that still produces a 30-day mobilization cycle loses the conversation in three numbers: <strong style={{ color: NAVY }}>30 days vs. 12 minutes</strong>. That's a 3,600× Execution Head Start.
+              </p>
+              <p style={{ ...DM, fontSize: 15, color: "#374151", fontWeight: 600, lineHeight: 1.65, marginBottom: 36 }}>
+                We're not competing on who has the better theory.<br />We're competing on who can show the timestamp.
+              </p>
+              <Link href="/platform-reality" style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: NAVY, textDecoration: "none", borderBottom: `1px solid ${GOLD}`, paddingBottom: 3 }}>
+                See every alternative — and why the gap stays →
+              </Link>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 2 }}>
+              <div style={{ background: NAVY, padding: "32px", textAlign: "center" as const }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 72, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 8 }}>30</div>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.4)", marginBottom: 6 }}>Days — the standard model</div>
+                <div style={{ ...DM, fontSize: 13, color: "rgba(240,237,228,0.4)", fontStyle: "italic" }}>Workshop. Alignment meeting. Steering committee. Unchanged.</div>
+              </div>
+              <div style={{ background: "#F3F4F6", padding: "14px", textAlign: "center" as const }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 700, color: "#9CA3AF" }}>÷ 3,600</div>
+              </div>
+              <div style={{ background: `rgba(201,168,76,0.07)`, border: `2px solid ${GOLD}`, padding: "32px", textAlign: "center" as const }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 72, fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: 8 }}>12</div>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 6 }}>Minutes — Readiness OS</div>
+                <div style={{ ...DM, fontSize: 13, color: "#374151", fontStyle: "italic" }}>Signal detected. Protocol matched. Executive authorized. Live.</div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useScrollDepth();
   useEffect(() => {
@@ -3623,90 +3834,56 @@ export default function Homepage() {
       {/* 2. HOOK — The readiness question */}
       <ScenarioHookSection />
 
-      {/* 3. EXAMPLES — Breadth before explanation */}
+      {/* 3. SCENARIOS — Breadth before explanation */}
       <ScenarioCardsRow />
+
+      {/* 3b. THE STAKES — Binary proof: before vs. after */}
+      <BinaryStakesSection />
+
       <ThreeStepSection />
       <MicrosoftHookStrip />
 
-      {/* 3. PAIN — Cost of the old way */}
+      {/* PAIN — Cost of the old model */}
       <ProblemSection />
 
-      {/* 4. CONTRAST — 30 days → 12 minutes */}
+      {/* CONTRAST — 30 days → 12 minutes */}
       <ContrastMomentSection />
 
-      {/* 5. THESIS — The missing operating model */}
+      {/* THE POSITIONING — The entire decision lifecycle (not just one moment) */}
+      <PositioningSection />
+
+      {/* THESIS — The missing operating model */}
       <WhyNowStrip />
       <MissingLayerSection />
 
-      {/* 5c. LIFECYCLE — The full advantage system */}
+      {/* LIFECYCLE — The full advantage system */}
       <LifecycleAdvantageSection />
 
-      {/* 5b. MICROSOFT — The stack you already own */}
+      {/* MICROSOFT — The stack you already own */}
       <MicrosoftEcosystemBanner />
 
-      {/* 6. SOLUTION DEPTH */}
+      {/* SOLUTION DEPTH */}
       <AnatomySection />
 
-      {/* 6b. PLATFORM ARCHITECTURE — Three-tier model */}
+      {/* PLATFORM ARCHITECTURE — Three-tier model */}
       <PlatformArchitectureSection />
 
-      {/* 7. RESEARCH — Credibility and moat */}
+      {/* DUE DILIGENCE — Surface the buried depth */}
+      <SalesDepthStrip />
+
+      {/* RESEARCH — Credibility and moat */}
       <CredibilitySection />
 
-      {/* 7b. Executive Q&A */}
+      {/* Q&A */}
       <ExecutiveQASection />
 
-      {/* 8a. THE POSITIONING — Decision lifecycle statement */}
-      <section style={{ background: NAVY, padding: "88px 0", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
-        <div style={{ ...CONTAINER, maxWidth: 860, textAlign: "center" }}>
-          <Reveal>
-            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 28 }}>
-              The Positioning
-            </div>
-            <blockquote style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: "clamp(22px,2.8vw,32px)",
-              fontWeight: 400,
-              fontStyle: "italic",
-              color: IVORY,
-              lineHeight: 1.7,
-              margin: "0 0 32px",
-            }}>
-              "Most tools address one moment. Readiness OS addresses the entire decision lifecycle — from signal detection through decision preparation through activated execution through institutional learning — and every cycle through that lifecycle makes the organization more capable of handling the next one."
-            </blockquote>
-            <div style={{ width: 48, height: 1, background: GOLD, margin: "0 auto 28px" }} />
-            <p style={{ fontSize: 13, color: "rgba(240,237,228,0.5)", fontWeight: 600, lineHeight: 1.9, margin: "0 0 40px" }}>
-              That is not a coordination tool. That is not an execution tool.<br />
-              That is a strategic intelligence system that compounds organizational decision capability over time.
-            </p>
-            <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" as const }}>
-              <a href="/mission-control" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: GOLD, color: NAVY,
-                padding: "14px 30px", fontSize: 11, fontWeight: 800,
-                letterSpacing: "0.06em", textTransform: "uppercase" as const,
-                textDecoration: "none",
-              }}>
-                Enter Mission Control →
-              </a>
-              <a href="/12-minute-experience" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: "transparent", color: "rgba(240,237,228,0.65)",
-                padding: "14px 30px", fontSize: 11, fontWeight: 700,
-                letterSpacing: "0.06em", textTransform: "uppercase" as const,
-                textDecoration: "none", border: "1px solid rgba(240,237,228,0.18)",
-              }}>
-                See Your Scenario →
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* THE COMPETITIVE CLOSE — Show us your timestamp */}
+      <TimestampCloseSection />
 
-      {/* 8b. FEARLESS — Emotional finale */}
+      {/* FEARLESS — Emotional finale */}
       <FearlessFinaleSection />
 
-      {/* 8. CTA */}
+      {/* CTA */}
       <CTASection />
       <HomepageFooter />
     </div>
