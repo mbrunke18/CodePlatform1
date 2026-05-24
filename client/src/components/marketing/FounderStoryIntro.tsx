@@ -326,10 +326,10 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.8, type: "spring" }}
                 >
                   <span className="text-8xl md:text-[10rem] font-bold text-red-500">
-                    72
+                    30
                   </span>
                   <span className="text-4xl md:text-6xl text-red-400 ml-4">
-                    HOURS
+                    DAYS
                   </span>
                 </motion.div>
                 <motion.div
@@ -339,7 +339,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   className="mt-4"
                 >
                   <span className="text-xl md:text-2xl text-gray-800 italic">
-                    "That's how long it takes."
+                    "That's how long mobilization takes."
                   </span>
                 </motion.div>
               </div>
@@ -356,7 +356,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.6 }}
                   className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-6"
                 >
-                  That's how long it takes most Fortune 500 companies to respond to a crisis.
+                  That's how long most Fortune 500 companies spend just mobilizing after a strategic trigger fires.
                 </motion.p>
                 <motion.div
                   initial={{ opacity: 0 }}
