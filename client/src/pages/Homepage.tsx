@@ -3656,6 +3656,53 @@ export default function Homepage() {
       {/* 7b. Executive Q&A */}
       <ExecutiveQASection />
 
+      {/* 8a. THE POSITIONING — Decision lifecycle statement */}
+      <section style={{ background: NAVY, padding: "88px 0", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+        <div style={{ ...CONTAINER, maxWidth: 860, textAlign: "center" }}>
+          <Reveal>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 28 }}>
+              The Positioning
+            </div>
+            <blockquote style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "clamp(22px,2.8vw,32px)",
+              fontWeight: 400,
+              fontStyle: "italic",
+              color: IVORY,
+              lineHeight: 1.7,
+              margin: "0 0 32px",
+            }}>
+              "Most tools address one moment. Readiness OS addresses the entire decision lifecycle — from signal detection through decision preparation through activated execution through institutional learning — and every cycle through that lifecycle makes the organization more capable of handling the next one."
+            </blockquote>
+            <div style={{ width: 48, height: 1, background: GOLD, margin: "0 auto 28px" }} />
+            <p style={{ fontSize: 13, color: "rgba(240,237,228,0.5)", fontWeight: 600, lineHeight: 1.9, margin: "0 0 40px" }}>
+              That is not a coordination tool. That is not an execution tool.<br />
+              That is a strategic intelligence system that compounds organizational decision capability over time.
+            </p>
+            <div style={{ display: "flex", justifyContent: "center", gap: 14, flexWrap: "wrap" as const }}>
+              <a href="/mission-control" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: GOLD, color: NAVY,
+                padding: "14px 30px", fontSize: 11, fontWeight: 800,
+                letterSpacing: "0.06em", textTransform: "uppercase" as const,
+                textDecoration: "none",
+              }}>
+                Enter Mission Control →
+              </a>
+              <a href="/12-minute-experience" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "transparent", color: "rgba(240,237,228,0.65)",
+                padding: "14px 30px", fontSize: 11, fontWeight: 700,
+                letterSpacing: "0.06em", textTransform: "uppercase" as const,
+                textDecoration: "none", border: "1px solid rgba(240,237,228,0.18)",
+              }}>
+                See Your Scenario →
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* 8b. FEARLESS — Emotional finale */}
       <FearlessFinaleSection />
 
