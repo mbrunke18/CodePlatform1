@@ -624,16 +624,26 @@ export default function TechnicalOnboarding() {
               <strong style={{ color: "#A07830" }}> Month 1</strong> items are delivered as part of the Founding Partner program.
             </p>
           </div>
-          <Link href="/security-compliance" style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            fontSize: 12, fontWeight: 700, color: NAVY,
-            border: `1px solid ${BORDER}`, padding: "8px 14px",
-            borderRadius: "0.15rem", textDecoration: "none", whiteSpace: "nowrap",
-          }}>
-            <Shield size={14} />
-            Security & Compliance
-            <ExternalLink size={12} color={MUTED} />
-          </Link>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Link href="/universal-connector" style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              fontSize: 12, fontWeight: 700, color: "#fff",
+              background: TEAL, border: `1px solid ${TEAL}`, padding: "8px 14px",
+              borderRadius: "0.15rem", textDecoration: "none", whiteSpace: "nowrap",
+            }}>
+              <Globe size={14} />
+              All Connectors
+            </Link>
+            <Link href="/security-compliance" style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              fontSize: 12, fontWeight: 700, color: NAVY,
+              border: `1px solid ${BORDER}`, padding: "8px 14px",
+              borderRadius: "0.15rem", textDecoration: "none", whiteSpace: "nowrap",
+            }}>
+              <Shield size={14} />
+              Security & Compliance
+            </Link>
+          </div>
         </div>
 
         {PHASES.map(phase => (
