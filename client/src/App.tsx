@@ -699,6 +699,7 @@ function Router() {
         <Route path="/entry" component={StartHere} />
         <Route path="/security-compliance" component={lazy(() => import("./pages/SecurityCompliance"))} />
         <Route path="/technical-architecture" component={lazy(() => import("./pages/TechnicalArchitecture"))} />
+        <Route path="/technical-onboarding" component={lazy(() => import("./pages/TechnicalOnboarding"))} />
         <Route path="/ai-stack" component={lazy(() => import("./pages/AIStackPositioning"))} />
         <Route path="/founding-partner" component={FoundingPartnerPage} />
         <Route path="/cost-of-inaction" component={CostOfInaction} />

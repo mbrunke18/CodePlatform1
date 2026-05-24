@@ -397,6 +397,7 @@ export default function GettingStarted() {
                 { label: 'Protocol Builder', href: '/protocol-builder', icon: BookOpen },
                 { label: '12-Minute Test Drive', href: '/12-minute-experience', icon: Rocket },
                 { label: 'Onboarding Guide', href: '/onboarding-guide', icon: BookOpen },
+                { label: 'Integration Setup Plan', href: '/technical-onboarding', icon: Globe },
               ].map((link, i) => {
                 const Icon = link.icon;
                 return (
