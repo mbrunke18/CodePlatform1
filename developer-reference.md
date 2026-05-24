@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 24, 2026 (rev 47) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 24, 2026 (rev 48) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -718,6 +718,8 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 | `HowItWorks.tsx` | `/how-it-works` | Public explainer page. Structure: hero → phase nav bar → **ExecutionProcessDiagram (first!)** → sections 01–05 (Onboarding, Playbooks, Customization, Live Loop, Ongoing Value) → Final CTA. Linked from StandardNav Product→Understand AND homepage sticky nav. **Do NOT move the diagram to the bottom.** |
 | `EcosystemDiagramPage.tsx` | `/ecosystem` | Public standalone page: "The Strategic Command Layer Above Microsoft's Agentic Stack." Embeds `ExecutionOSMicrosoftDiagram.tsx` (3-layer SVG — Execution OS → Integration touchpoints → Microsoft Full Stack). 3-step explanation strip, 5 integration callouts (Azure AI, Teams, Copilot Studio, Entra, Power Platform), pilot CTA. **Do NOT embed the main dev-server URL** — diagram is self-contained SVG. Linked from: StandardNav Platform→Capabilities (featured/gold-highlighted), Footer Company section, Investors page GTM card, and Homepage `MicrosoftEcosystemBanner`. |
 | `EcosystemsHub.tsx` | `/ecosystems` | All-7-ecosystem hub page. Linked from Homepage Microsoft section "View All 7 Enterprise Ecosystems →" button and StandardNav. Child ecosystem pages: `/ecosystem` (Microsoft), `/ecosystem/google`, `/ecosystem/salesforce`, `/ecosystem/aws`, `/ecosystem/sap`, `/ecosystem/servicenow`, `/ecosystem/workday`. |
+| `UniversalConnector.tsx` | `/universal-connector` | Integration catalog page. 55+ pre-built connectors organized across 8 categories: Identity/SSO, Communication, Project Management, ITSM, Security, ERP, CRM, and Cloud Infrastructure. Dedicated Microsoft Stack section with locked framing ("Every enterprise has Microsoft's AI stack. None have the operating model to use it.") — 4 live connectors (Teams, Outlook, SharePoint, Entra) + 4 roadmap (Copilot Studio, Power Automate, Sentinel, Fabric). Universal REST webhook approach with embedded code samples. Linked from: **StandardNav Technical Architecture section** (featured, replaces `/platform-integrations`), **Homepage `MicrosoftEcosystemBanner`** "View All 55+ Connectors →" gold CTA button. |
+| `TechnicalOnboarding.tsx` | `/technical-onboarding` | Phased integration setup guide for Founding Partner customers. 6 phases: Identity & SSO → Communication & Notifications → Execution & Task Management → Signal Detection → Microsoft Stack → Go-Live Validation. Each phase lists connector requirements, estimated time, and completion criteria. Linked from: **StandardNav Technical Architecture section** (featured), **Homepage `MicrosoftEcosystemBanner`** "Integration Setup Plan" ghost CTA button, **GettingStarted** quick actions panel. |
 | `WhyExecutionOS.tsx` | `/why-execution-os` | Competitive analysis page. Full breakdown: Copilot vs ServiceNow vs Palantir vs Everbridge vs GRC — positioned on a 2×2 grid (Speed vs Depth, Predict vs React). Closes with Microsoft positioning ("every enterprise already owns the engine — Execution OS is the transmission"). **Route conflict fix (March 2026):** A shadow route at this path previously served the old `WhyExecuteIQ` component — that shadow route was removed from App.tsx. The legacy page lives at `/why-execution-os-legacy`. Linked from: StandardNav Evidence dropdown (featured), HomepageNav. |
 | `ExecutiveBrief.tsx` | `/executive-brief` | Shareable one-pager for board and C-suite prospects. Concise value prop, key metrics (3,600×, 12 min, 180 Readiness Protocols), IDEA Framework summary, and Microsoft positioning. Linked from: StandardNav Experience dropdown and Evidence dropdown. |
 | `RequestAccess.tsx` | `/request-access` | Magic link intake form. Fields: name, email, company, title. On submit: (1) enrolls prospect in `stakeholder_contacts` for system + all existing orgs via `enrollProspectForAlerts()` — fires at form SUBMIT time, not link click; (2) saves token to `magic_link_tokens` DB table; (3) sends branded magic link email (`pilot@vaughnmartin.com` → fallback `onboarding@resend.dev`). Always returns `{ ok: true, emailSent: bool }` — never fails on the user side. Paired with `/api/auth/magic-link/verify?token=<token>` which: validates token (marks used, single-use only), creates user + session, fires `sendWelcomeTriggerDemo(email, firstName)` fire-and-forget (guaranteed "AI Competitive Disruption" trigger alert email, 94% confidence, bypasses RSS pipeline), then redirects to `/mission-control`. |
@@ -3763,3 +3765,54 @@ Seven instances in developer-reference.md where VaughnMartin's audience was desc
 - FounderStoryIntro "72 hours": ✅ resolved
 - Audience framing "Fortune 1000": ✅ corrected throughout dev-ref
 - Key commits: `9c7f34aa` (protocol count + FounderStoryIntro fix), `aec267f4` (Fortune 1000 → startup to Fortune 500)
+
+---
+
+## 67. Nav + Homepage — /universal-connector and /technical-onboarding surfaced — May 24, 2026 (rev 48)
+
+Two new pages built in the prior session were not yet reachable from the main navigation or the homepage. This entry documents where they were wired in.
+
+### 67a. StandardNav — Technical Architecture Section
+
+**File:** `client/src/components/layout/StandardNav.tsx`
+
+`/platform-integrations` (generic label, incomplete scope) was replaced in the megamenu Technical Architecture section with two focused entries:
+
+- **Universal Connector** (`/universal-connector`) — "Any stack. 55+ pre-built connectors. Live in 15 minutes."
+- **Integration Setup Plan** (`/technical-onboarding`) — "Phased technical guide — identity, signals, execution, Microsoft stack"
+
+Both entries are `featured: true` so they render with the gold-highlighted style in the megamenu.
+
+The same two entries were also added to the `navSections` data array (lines ~158–161) which drives the mobile/hamburger fallback nav under Core Capabilities.
+
+### 67b. Homepage — MicrosoftEcosystemBanner CTAs
+
+**File:** `client/src/pages/Homepage.tsx` — `MicrosoftEcosystemBanner()` function
+
+Two CTA buttons were added immediately after the `EcosystemIntegrationDiagram` embed, before the closing `</section>`:
+
+- Gold primary button: **"View All 55+ Connectors →"** → `setLocation('/universal-connector')`
+- Ghost secondary button: **"Integration Setup Plan"** → `setLocation('/technical-onboarding')`
+
+This gives visitors a direct path from the Microsoft ecosystem section to the detailed integration pages without requiring them to navigate the megamenu.
+
+### 67c. Terminology Sweep — All Page Groups (TA–TK)
+
+Full scan of all pages and components against all locked retirement rules:
+
+| Rule | Result |
+|---|---|
+| AI-powered / AI-driven / AI-generated / AI-detected | ✅ Zero violations |
+| Fortune 1000 in pages | ✅ Zero violations |
+| GPT-4o in UI copy | ✅ Zero violations |
+| human-AI partnership | ✅ Zero violations |
+| Pilot Program / Pilot Access (user-facing) | ✅ Only a code comment (`{/* Pilot Program */}`) in `ExecutiveBrief.tsx` — not rendered text |
+| Football category labels (Offense / Defense / Special Teams) | ✅ All occurrences are protocol names, industry sectors, legal terms, or the protected founder origin narrative |
+| Retired 340× / 360× metric | ✅ `ThirtySecondSpot` `render360xSpot()` renders "3,600× Execution Head Start" correctly; `"360x-faster"` is an internal code key (exempt) |
+| "72 hours" retirement | ✅ All remaining occurrences are factual regulatory contexts (GDPR Art. 33 72-hr window, ransomware deadlines) — not the retired speed benchmark |
+
+### Rev 48 Known State
+- Build: ✅ clean (dev server, 189/189 unit tests passing)
+- `/universal-connector` and `/technical-onboarding`: ✅ surfaced in StandardNav + Homepage
+- Terminology audit (TA–TK): ✅ zero violations across pages and components
+- Key commit: `d5793bd0` (nav + homepage CTA wiring)
