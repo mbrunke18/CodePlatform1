@@ -3876,3 +3876,66 @@ Inserted immediately after the "Why Now — Three Structural Shifts" section (`<
 - Three competitive positioning inserts: ✅ live (`/ecosystem`, `/platform-reality`, `/investor-landing`)
 - Microsoft framing: consistent two-layer orthogonal positioning across all three surfaces
 - All locked messaging preserved: 3,600×, 12 minutes, 180 Readiness Protocols, "AI monitors, executives authorize"
+
+---
+
+## 69. Full-Site QA Sweep — Count Accuracy, API Limits, Nav Links — May 25, 2026 (rev 50)
+
+Systematic QA audit across all public-facing pages and the server API layer. Three classes of issues found and resolved.
+
+### 69a. Stale "170" Protocol Count — 7 UI Files
+
+Seven pages were displaying `170` as the Readiness Protocol count — a value left over from before the library reached its current 180-protocol size. All corrected to `180`.
+
+**Files updated:**
+- `client/src/pages/ProductTour.tsx` — animated stat block
+- `client/src/pages/NewUserJourney.tsx` — three-stat grid
+- `client/src/pages/IndustryExperience.tsx` — scenario stat panel
+- `client/src/pages/IntegrationHub.tsx` — integration stats row
+- `client/src/pages/TryDemo.tsx` — two instances (stat tile + protocol card)
+- `client/src/pages/WhyExecuteIQ.tsx` — three-column stat block
+- `client/src/components/marketing/FounderStoryFull.tsx` — animated large-number display
+
+**Rule for future development:** Never hardcode a protocol count without checking the current library size. The canonical number is **180 core** + **30 compound** = **210 total**. If the library grows, search for hardcoded instances of the count and update them all.
+
+### 69b. Second API Truncation Bug — Slug-Lookup Endpoint
+
+The `/api/playbooks/:id` route contains a non-UUID (slug/key) lookup path that loads all library records into memory to fuzzy-match by name. This path had `.limit(200)` with no `ORDER BY`, identical to the truncation bug fixed in the main `/api/playbooks/templates` endpoint (documented in §66a). With 210 total records and no ordering, protocols 201–210 (and an unpredictable subset of earlier ones) could be silently missed.
+
+**File:** `server/routes.ts` — `/api/playbooks/:id` handler, slug-lookup branch
+
+**Fix:** Added `.orderBy(playbookLibrary.playbookNumber).limit(300)` — same pattern as the main templates endpoint.
+
+**Rule for future development:** Any `SELECT` against `playbook_library` that loads multiple records must either (a) filter by a specific ID/condition, or (b) use `.orderBy(playbookLibrary.playbookNumber).limit(300)`. Never use `.limit(200)` or lower on this table — the library has 210 records and may grow.
+
+### 69c. Broken Navigation Links — `/command-center` Route
+
+Three navigation entry points were routing to `/command-center`, a path that has no direct `<Route>` — App.tsx only defines it as a redirect to `/mission-control` (lines ~457, ~686). The mobile nav buttons were therefore making a round-trip through the redirect rather than navigating directly.
+
+**Files updated:**
+- `client/src/components/layout/StandardNav.tsx` — two instances: mobile icon button and mobile hamburger "Open Platform" button (authenticated users only). Both now navigate directly to `/mission-control`.
+- `client/src/components/GlobalPhaseIndicator.tsx` — EXECUTE phase link. Now navigates to `/execute/war-room`, which is the operational hub for that phase.
+
+**Note:** Internal page links (WorkspaceExecute, WorkspaceHub, Dashboard, etc.) that reference `/command-center` are unaffected — App.tsx redirects that path cleanly. Only nav entry points that are user-facing and should avoid the redirect were updated.
+
+### 69d. QA Audit — Clean Results
+
+Full sweep of all page and component files against the locked terminology and metric rules:
+
+| Check | Result |
+|---|---|
+| AI-powered / AI-driven / AI-generated / AI-detected | ✅ Zero violations |
+| Pilot Program / Pilot Access (user-facing) | ✅ Only a code comment in `ExecutiveBrief.tsx` — not rendered |
+| Football labels (Offense / Defense / Special Teams) | ✅ Zero violations outside the protected founder narrative |
+| Retired metrics (340×, 360×) | ✅ Zero violations |
+| "72 hours" as speed benchmark | ✅ All remaining occurrences are factual regulatory contexts (GDPR Art. 33, breach notification windows) — not the retired benchmark |
+| "of 200" or similar count mismatch patterns | ✅ Zero found |
+| API `.limit()` risks on `playbook_library` | ✅ Both queries now use `.orderBy(playbookNumber).limit(300)` |
+
+### Rev 50 Known State
+- Build: ✅ clean (dev server)
+- Tests: ✅ 189/189 passing (10 test files)
+- Protocol count "170" stale values: ✅ corrected in all 7 affected files
+- API slug-lookup truncation: ✅ fixed — `.orderBy(playbookNumber).limit(300)`
+- Nav broken links (`/command-center`): ✅ fixed in StandardNav (×2) and GlobalPhaseIndicator
+- Full terminology audit: ✅ zero violations across all locked rule sets
