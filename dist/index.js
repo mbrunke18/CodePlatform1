@@ -51213,7 +51213,7 @@ async function registerRoutes(app2, existingServer) {
         preApprovedBudget: playbookLibrary.preApprovedBudget,
         primaryResponseStrategy: playbookLibrary.primaryResponseStrategy,
         industryVertical: playbookLibrary.industryVertical
-      }).from(playbookLibrary).leftJoin(playbookDomains, eq58(playbookLibrary.domainId, playbookDomains.id)).where(eq58(playbookLibrary.isActive, true)).limit(200);
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq58(playbookLibrary.domainId, playbookDomains.id)).where(eq58(playbookLibrary.isActive, true)).orderBy(playbookLibrary.playbookNumber).limit(300);
       res.json(templates.map((t) => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? t.tier1Stakeholders.length : 8);
         const execMins = t.targetExecutionTime || 240;
@@ -51263,7 +51263,7 @@ async function registerRoutes(app2, existingServer) {
       if (!isUUID) {
         const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
         const idNorm = normalize(id);
-        const allTemplates = await db.select().from(playbookLibrary).limit(200);
+        const allTemplates = await db.select().from(playbookLibrary).orderBy(playbookLibrary.playbookNumber).limit(300);
         const match = allTemplates.find((t) => {
           const nameNorm = normalize(t.name ?? "");
           return nameNorm.includes(idNorm.slice(0, 10)) || idNorm.includes(nameNorm.slice(0, 10));

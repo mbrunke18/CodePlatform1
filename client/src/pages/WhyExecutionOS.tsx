@@ -350,14 +350,25 @@ export default function WhyExecutionOS() {
           <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>The competitive position in one sentence</p>
             <blockquote style={{ ...CG, fontSize: "clamp(22px,3vw,34px)", fontWeight: 700, color: NAVY, lineHeight: 1.3, fontStyle: "italic", marginBottom: 24, borderLeft: `4px solid ${GOLD}`, paddingLeft: 24, textAlign: "left" }}>
-              "Every enterprise has tools that tell them what's happening. None have the infrastructure that deploys their people when it does. That is Readiness OS."
+              "Every enterprise has tools that tell them what's happening. None have the organizational readiness infrastructure that deploys their people when it does. That is Readiness OS."
             </blockquote>
+
+            {/* Board accountability hook */}
+            <div style={{ maxWidth: 640, margin: "0 auto 32px", padding: "24px 28px", background: "#F8F7F4", border: "1px solid #E8E4DC", borderLeft: `4px solid ${NAVY}`, textAlign: "left" }}>
+              <p style={{ ...CG, fontSize: "clamp(16px,2vw,20px)", fontWeight: 700, color: NAVY, lineHeight: 1.5, fontStyle: "italic", marginBottom: 10 }}>
+                "No executive wants to be explaining to the board why they were still aligning stakeholders while the crisis escalated — or the opportunity closed."
+              </p>
+              <p style={{ fontSize: 13, color: "#6B7280", margin: 0, lineHeight: 1.65 }}>
+                Readiness OS exists precisely for that moment. When the trigger fires, the answer is never "we were figuring out who needed to be in the room." The response was already staged. The team already knows their role. The executive authorizes — not assembles.
+              </p>
+            </div>
+
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, maxWidth: 640, margin: "0 auto 40px" }}>
-              In the next 12 months, your organization will face at least 3–5 strategic triggers requiring cross-domain coordination. For each one, you currently spend weeks mobilizing before execution begins. Readiness OS pre-stages the response to each one before it fires. The question is not whether you can afford Readiness OS. The question is how many of those events you can afford to handle the old way.
+              In the next 12 months, your organization will face at least 3–5 strategic triggers requiring cross-domain coordination. For each one, you currently spend weeks mobilizing before execution begins. Readiness OS pre-stages the response to each one before it fires. The question is not whether you can afford this infrastructure. The question is how many of those events you can afford to handle the old way.
             </p>
 
             {/* Proof bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {[
                 { v: "180", l: "Pre-staged Readiness Protocols" },
                 { v: "221", l: "Trigger signatures" },
@@ -369,6 +380,18 @@ export default function WhyExecutionOS() {
                   <div style={{ fontSize: 11, color: "#6B7280" }}>{l}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Must-have sector validation */}
+            <div style={{ maxWidth: 640, margin: "0 auto 40px", padding: "18px 22px", background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 12 }}>Organizational readiness infrastructure — must-have for:</div>
+              <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 8 }}>
+                {["Financial Services", "Healthcare & Life Sciences", "Energy & Utilities", "Manufacturing", "Technology", "Government & Defense"].map(sector => (
+                  <span key={sector} style={{ display: "inline-block", padding: "6px 14px", border: "1px solid #E8E4DC", background: "#fff", fontSize: 11, fontWeight: 600, color: NAVY }}>
+                    {sector}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <div className="flex justify-center gap-4 flex-wrap">
