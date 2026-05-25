@@ -1024,7 +1024,7 @@ export default function StandardNav() {
           <div className="flex lg:hidden items-center gap-2">
             {isAuthenticated && user && (
               <Button
-                onClick={() => navigateTo("/command-center")}
+                onClick={() => navigateTo("/mission-control")}
                 size="sm"
                 className="text-white"
                 style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)`, border: 'none' }}
@@ -1056,7 +1056,7 @@ export default function StandardNav() {
               {isAuthenticated && user ? (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
-                    onClick={() => navigateTo("/command-center")}
+                    onClick={() => navigateTo("/mission-control")}
                     className="w-full justify-center h-12 text-base font-bold text-white"
                     style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)` }}
                     data-testid="nav-mobile-open-platform"

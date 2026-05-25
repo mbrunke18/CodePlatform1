@@ -331,7 +331,7 @@ export default function ProductTour() {
             transition={{ delay: 0.9 }}
             className="text-center"
           >
-            <p className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>170</p>
+            <p className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>180</p>
             <p className="text-[#6B7280] uppercase tracking-widest text-[10px] font-bold">Readiness Protocols</p>
           </motion.div>
         </div>

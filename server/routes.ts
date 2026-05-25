@@ -2823,7 +2823,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         // Key/slug lookup — normalize both to alphanumeric only and compare
         const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
         const idNorm = normalize(id);
-        const allTemplates = await db.select().from(playbookLibrary).limit(200);
+        const allTemplates = await db.select().from(playbookLibrary).orderBy(playbookLibrary.playbookNumber).limit(300);
         const match = allTemplates.find(t => {
           const nameNorm = normalize(t.name ?? '');
           return nameNorm.includes(idNorm.slice(0, 10)) || idNorm.includes(nameNorm.slice(0, 10));

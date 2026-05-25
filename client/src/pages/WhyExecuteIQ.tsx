@@ -77,7 +77,7 @@ export default function WhyExecutionOS() {
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Major Firms Agree</div>
         </div>
         <div style={{ padding: 32, borderRight: "1px solid #E8E4DC", textAlign: "center" }}>
-          <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>170</div>
+          <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>180</div>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Pre-Built Readiness Protocols</div>
         </div>
         <div style={{ padding: 32, textAlign: "center" }}>

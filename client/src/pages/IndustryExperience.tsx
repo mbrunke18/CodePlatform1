@@ -1510,7 +1510,7 @@ export default function IndustryExperience() {
             >
               <div className="bg-white border border-[#0A0F2E]/20 p-4 text-center">
                 <BarChart3 className="h-6 w-6 text-[#0A0F2E] mx-auto mb-2" />
-                <div className="text-2xl font-bold text-[#0A0F2E]">170</div>
+                <div className="text-2xl font-bold text-[#0A0F2E]">180</div>
                 <div className="text-xs text-[#6B7280]">Total Readiness Protocols</div>
               </div>
               <div className="bg-white border border-[#C9A84C]/20 p-4 text-center">

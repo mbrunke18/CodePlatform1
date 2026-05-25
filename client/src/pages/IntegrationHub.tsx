@@ -970,7 +970,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#6B7280", marginTop: 4 }}>of Top 15 Apps</div>
                 </div>
                 <div style={{ textAlign: "center" }}>
-                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, lineHeight: 1 }}>170</div>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, lineHeight: 1 }}>180</div>
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#6B7280", marginTop: 4 }}>Readiness Protocols</div>
                 </div>
                 <div style={{ textAlign: "center" }}>

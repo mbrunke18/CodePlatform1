@@ -721,7 +721,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.6 }}
                   className="mb-8"
                 >
-                  <span className="text-6xl md:text-8xl font-bold text-[#2B8A6E]">170</span>
+                  <span className="text-6xl md:text-8xl font-bold text-[#2B8A6E]">180</span>
                   <span className="text-2xl md:text-4xl text-gray-800 ml-4">Readiness Protocols</span>
                 </motion.div>
                 <motion.p

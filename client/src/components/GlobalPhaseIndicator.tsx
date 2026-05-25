@@ -43,7 +43,7 @@ export default function GlobalPhaseIndicator({
       color: 'text-[#2B8A6E]', 
       bgColor: 'bg-[#2B8A6E]',
       score: scores.execute,
-      path: '/command-center'
+      path: '/execute/war-room'
     },
     { 
       id: 'advance', 

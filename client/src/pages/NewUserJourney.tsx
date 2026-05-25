@@ -445,7 +445,7 @@ export default function NewUserJourney() {
                       <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Time to Build</div>
                     </div>
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
-                      <div className="text-3xl font-serif text-[#0A0F2E] mb-2">170</div>
+                      <div className="text-3xl font-serif text-[#0A0F2E] mb-2">180</div>
                       <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Readiness Protocols</div>
                     </div>
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">

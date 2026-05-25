@@ -1678,7 +1678,7 @@ export default function TryDemo() {
                               <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Execution Head Start</p>
                             </div>
                             <div style={{ padding: '14px 12px', background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 0, textAlign: 'center' }}>
-                              <p className="text-2xl font-bold" style={{ color: '#0A0F2E' }}>170</p>
+                              <p className="text-2xl font-bold" style={{ color: '#0A0F2E' }}>180</p>
                               <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Readiness Protocols Ready</p>
                             </div>
                           </div>
@@ -1885,7 +1885,7 @@ export default function TryDemo() {
                   {/* 180 Readiness Protocols */}
                   <Card className="bg-white border-[#C9A84C]">
                     <CardContent className="p-4 text-center">
-                      <p className="text-4xl font-bold text-[#C9A84C] mb-1">170</p>
+                      <p className="text-4xl font-bold text-[#C9A84C] mb-1">180</p>
                       <p className="text-sm font-bold text-[#0A0F2E]" style={CG}>Pre-Built Readiness Protocols</p>
                       <p className="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Across 9 Strategic Domains</p>
                       <button
