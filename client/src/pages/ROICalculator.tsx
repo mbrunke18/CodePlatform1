@@ -225,6 +225,133 @@ function ExecutionROISection() {
   );
 }
 
+// ── First-Use Payback Calculator ─────────────────────────────────────────────
+const FP_REV = [
+  { label: "$1B – $5B",    rev: 2e9,   execRate: 650  },
+  { label: "$5B – $25B",   rev: 12e9,  execRate: 900  },
+  { label: "$25B – $100B", rev: 50e9,  execRate: 1200 },
+  { label: "$100B+",       rev: 200e9, execRate: 1800 },
+];
+const FP_DELAYS = [
+  { label: "3 days",  days: 3  },
+  { label: "7 days",  days: 7  },
+  { label: "14 days", days: 14 },
+  { label: "30 days", days: 30 },
+];
+const FP_EXECS = [
+  { label: "3–5 executives",  count: 4  },
+  { label: "6–10 executives", count: 8  },
+  { label: "10–20 executives",count: 15 },
+  { label: "20+ executives",  count: 28 },
+];
+const FP_TIERS = [
+  { label: "Founding Partner", cost: 75000  },
+  { label: "Enterprise",       cost: 250000 },
+  { label: "Enterprise Plus",  cost: 450000 },
+];
+
+function FirstUsePaybackCalculator() {
+  const [revIdx,   setRevIdx]   = useState(1);
+  const [delayIdx, setDelayIdx] = useState(1);
+  const [execIdx,  setExecIdx]  = useState(1);
+  const [tierIdx,  setTierIdx]  = useState(1);
+
+  const rb    = FP_REV[revIdx];
+  const delay = FP_DELAYS[delayIdx];
+  const execs = FP_EXECS[execIdx];
+  const tier  = FP_TIERS[tierIdx];
+
+  // 4 active crisis hours per exec per day of mobilization delay
+  const execTimeCost   = execs.count * delay.days * 4 * rb.execRate;
+  // 0.018% of annual revenue exposed per day of slow response (conservative)
+  const revAtRisk      = rb.rev * 0.00018 * delay.days;
+  const totalEventCost = execTimeCost + revAtRisk;
+  const coveragePct    = Math.round((totalEventCost / tier.cost) * 100);
+
+  const fmtC = (n: number) => n >= 1e9 ? `$${(n/1e9).toFixed(1)}B` : n >= 1e6 ? `$${Math.round(n/1e6)}M` : `$${Math.round(n/1000)}K`;
+
+  const btn = (active: boolean): React.CSSProperties => ({
+    fontSize: 12, fontWeight: active ? 700 : 500, padding: "8px 16px", cursor: "pointer",
+    background: active ? "#0A0F2E" : "#fff",
+    color:      active ? "#C9A84C" : "#6B7280",
+    border:     `1px solid ${active ? "#0A0F2E" : "#E8E4DC"}`,
+    transition: "all 0.15s ease",
+  });
+
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+      {/* Inputs */}
+      <div style={{ display: "flex", flexDirection: "column" as const, gap: 24 }}>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 10 }}>Annual Revenue</div>
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+            {FP_REV.map((r, i) => <button key={r.label} onClick={() => setRevIdx(i)} style={btn(revIdx === i)}>{r.label}</button>)}
+          </div>
+        </div>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 10 }}>Last Mobilization Delay</div>
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+            {FP_DELAYS.map((d, i) => <button key={d.label} onClick={() => setDelayIdx(i)} style={btn(delayIdx === i)}>{d.label}</button>)}
+          </div>
+          <p style={{ fontSize: 11, color: "#9CA3AF", marginTop: 6, lineHeight: 1.5 }}>From trigger detection to full team mobilization — how long did your last one actually take?</p>
+        </div>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 10 }}>Executives Involved</div>
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+            {FP_EXECS.map((e, i) => <button key={e.label} onClick={() => setExecIdx(i)} style={btn(execIdx === i)}>{e.label}</button>)}
+          </div>
+        </div>
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 10 }}>Platform Tier</div>
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+            {FP_TIERS.map((t, i) => <button key={t.label} onClick={() => setTierIdx(i)} style={btn(tierIdx === i)}>{t.label} — {fmtC(t.cost)}/yr</button>)}
+          </div>
+        </div>
+      </div>
+
+      {/* Output */}
+      <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+        {/* Primary verdict */}
+        <div style={{ background: "#0A0F2E", padding: "28px 28px 24px", borderTop: "3px solid #C9A84C" }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 8 }}>Cost of That Delay — Single Event</div>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{fmtC(totalEventCost)}</div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 6 }}>
+            {fmtC(execTimeCost)} executive time · {fmtC(revAtRisk)} revenue exposure
+          </div>
+        </div>
+
+        {/* Payback verdict */}
+        <div style={{ padding: "20px 22px", background: coveragePct >= 100 ? "rgba(43,138,110,0.07)" : "rgba(201,168,76,0.06)", border: `1px solid ${coveragePct >= 100 ? "rgba(43,138,110,0.3)" : "rgba(201,168,76,0.3)"}` }}>
+          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: coveragePct >= 100 ? "#2B8A6E" : "#C9A84C", marginBottom: 10 }}>
+            {coveragePct >= 100 ? "✓ First Activation Pays for the Full Year" : "Payback Analysis"}
+          </div>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: "#0A0F2E", lineHeight: 1, marginBottom: 8 }}>
+            {coveragePct >= 100 ? `${coveragePct.toLocaleString()}% covered` : `${coveragePct}% of annual cost`}
+          </div>
+          <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>
+            {coveragePct >= 100
+              ? `One ${delay.days}-day mobilization event costs ${fmtC(totalEventCost)} — ${Math.round(totalEventCost / tier.cost)}× your entire annual subscription. Your investment is recovered the first time a trigger fires.`
+              : `A ${delay.days}-day mobilization event costs ${fmtC(totalEventCost)} — covering ${coveragePct}% of your annual subscription in one activation.`}
+          </p>
+        </div>
+
+        {/* The story */}
+        <div style={{ padding: "18px 20px", background: "#F8F7F4", borderLeft: "3px solid #C9A84C" }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 8 }}>The Real Question</div>
+          <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, margin: 0 }}>
+            When the next trigger fires — and it will — you'll be either executing in 12 minutes or spending {delay.days} days on mobilization. At your revenue scale, that difference is worth {fmtC(totalEventCost)}. Your subscription costs {fmtC(tier.cost)}.{" "}
+            <strong style={{ color: "#0A0F2E" }}>The math only works one way.</strong>
+          </p>
+        </div>
+
+        <div style={{ fontSize: 10, color: "#D1D5DB", lineHeight: 1.5, textAlign: "center" as const }}>
+          Estimates based on executive productivity benchmarks and industry revenue-at-risk data. Conservative methodology — actual event costs are typically higher.
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ROICalculator() {
   const [, setLocation] = useLocation();
   const [platformCost, setPlatformCost] = useState(120000);
@@ -602,6 +729,27 @@ export default function ROICalculator() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── First-Use Payback Test ──────────────────────────────── */}
+        <section style={{ background: "#fff", padding: "80px 48px", borderTop: "1px solid #E8E4DC" }}>
+          <div className="max-w-5xl mx-auto">
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The First-Use Payback Test</span>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(26px,3.5vw,40px)", color: "#0A0F2E", lineHeight: 1.2, marginBottom: 12 }}>
+                Does one activation pay for the<br /><em style={{ fontStyle: "italic", color: "#C9A84C" }}>entire annual subscription?</em>
+              </h2>
+              <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
+                Think about the last time a strategic trigger fired at your organization. How long did full mobilization actually take — and what did that delay cost? Configure your profile to find out.
+              </p>
+            </div>
+
+            <FirstUsePaybackCalculator />
           </div>
         </section>
 
