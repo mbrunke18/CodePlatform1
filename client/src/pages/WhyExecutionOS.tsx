@@ -88,8 +88,8 @@ const competitors: Competitor[] = [
     category: "Work Management & Project Tracking",
     claim: "Plan, track, and deliver work across your organization. Manage projects, tasks, and team collaboration at scale.",
     whatTheyDo: "These are where work gets recorded after someone has decided what work to do. They are task and project tracking systems — genuinely excellent at their core function, and used by 94% of Fortune 500 companies in some capacity.",
-    whereTheyStop: "These tools do not detect triggers. They do not activate playbooks. They do not coordinate stakeholders. They are execution recording systems, not execution coordination systems. When a supply chain collapses, your Jira board has no response — because no one has created the tickets yet.",
-    theGap: "Readiness OS integrates with all of them. When Readiness OS activates a playbook, it pushes tasks directly into your existing Jira or Asana. These tools are the destination for the work Readiness OS initiates — not a competitor.",
+    whereTheyStop: "These tools do not detect triggers. They do not activate Readiness Protocols. They do not coordinate stakeholders. They are execution recording systems, not execution coordination systems. When a supply chain collapses, your Jira board has no response — because no one has created the tickets yet.",
+    theGap: "Readiness OS integrates with all of them. When Readiness OS activates a Readiness Protocol, it pushes tasks directly into your existing Jira or Asana. These tools are the destination for the work Readiness OS initiates — not a competitor.",
     oneLiner: "Jira tracks tasks after someone creates them. Readiness OS creates the right tasks and fires them in 12 minutes — before anyone has had a meeting.",
     isComplementary: true,
   },
@@ -374,7 +374,7 @@ export default function WhyExecutionOS() {
             <div className="flex justify-center gap-4 flex-wrap">
               <Link href="/request-access">
                 <Button size="lg" style={{ background: NAVY, color: "#fff", fontWeight: 700, padding: "0 36px" }}>
-                  Schedule a Pilot Conversation <ArrowRight className="w-4 h-4 ml-2" />
+                  Request Founding Partner Access <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
               <Link href="/try-demo">
