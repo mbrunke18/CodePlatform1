@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -36,16 +36,16 @@ interface LibraryPlaybook {
 }
 
 const DOMAINS = [
-  { id: "all", label: "All Domains", count: 180 },
-  { id: "competitive", label: "Market Dynamics", count: 25, icon: Globe2 },
-  { id: "financial", label: "Financial Strategy", count: 25, icon: DollarSign },
-  { id: "gtm", label: "Operational Excellence", count: 21, icon: TrendingUp },
-  { id: "regulatory", label: "Regulatory & Compliance", count: 19, icon: Target },
-  { id: "crisis", label: "Technology & Innovation", count: 19, icon: Brain },
-  { id: "strategic", label: "AI Governance", count: 19, icon: Shield },
-  { id: "ma", label: "Market Opportunities", count: 19, icon: Layers },
-  { id: "technology", label: "Brand & Reputation", count: 18, icon: Lightbulb },
-  { id: "talent", label: "Talent & Leadership", count: 15, icon: HeartHandshake },
+  { id: "all",         label: "All Domains",               icon: null },
+  { id: "competitive", label: "Market Dynamics",            icon: Globe2 },
+  { id: "financial",   label: "Financial Strategy",         icon: DollarSign },
+  { id: "gtm",         label: "Operational Excellence",     icon: TrendingUp },
+  { id: "regulatory",  label: "Regulatory & Compliance",    icon: Target },
+  { id: "crisis",      label: "Technology & Innovation",    icon: Brain },
+  { id: "strategic",   label: "AI Governance",              icon: Shield },
+  { id: "ma",          label: "Market Opportunities",       icon: Layers },
+  { id: "technology",  label: "Brand & Reputation",         icon: Lightbulb },
+  { id: "talent",      label: "Talent & Leadership",        icon: HeartHandshake },
 ];
 
 const SECTOR_PACKS = [
@@ -68,11 +68,33 @@ const PILLARS = [
   { id: "technology", label: "Tech & Data", color: "#0A0F2E", domains: ["technology", "crisis"] },
 ];
 
+const STRATEGIC_GROUPS = [
+  {
+    id: "growth",
+    label: "Growth & Positioning",
+    color: "#C9A84C",
+    domains: ["competitive", "gtm", "ma", "technology"],
+  },
+  {
+    id: "risk",
+    label: "Risk & Resilience",
+    color: "#C0392B",
+    domains: ["financial", "crisis", "regulatory"],
+  },
+  {
+    id: "transformation",
+    label: "Transformation",
+    color: "#2B8A6E",
+    domains: ["strategic", "talent"],
+  },
+];
+
 const URGENCY_FILTERS = [
-  { id: "all", label: "All Urgency" },
-  { id: "critical", label: "Critical", count: 48 },
-  { id: "high", label: "High", count: 76 },
-  { id: "standard", label: "Standard", count: 46 },
+  { id: "all",      label: "All"      },
+  { id: "critical", label: "Critical" },
+  { id: "high",     label: "High"     },
+  { id: "standard", label: "Standard" },
+  { id: "compound", label: "Compound" },
 ];
 
 const SAMPLE_PLAYBOOK_NAMES = new Set([
@@ -100,6 +122,8 @@ const DOMAIN_NAME_TO_KEY: Record<string, string> = Object.entries(DOMAIN_DB_MAP)
     names.forEach(n => { acc[n] = key; });
     return acc;
   }, {} as Record<string, string>);
+
+const isCompound = (name?: string | null) => !!name?.startsWith("Compound:");
 
 const compoundScenarios = [
   {
@@ -405,6 +429,29 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
     queryKey: ["/api/playbooks/templates"],
   });
 
+  const liveDomainCounts = useMemo(() => {
+    if (!templates) return {} as Record<string, number>;
+    const counts: Record<string, number> = { all: templates.length };
+    DOMAINS.forEach(d => {
+      if (d.id === "all") return;
+      const mapped = DOMAIN_DB_MAP[d.id] || [];
+      counts[d.id] = templates.filter(t => mapped.some(dm => t.domain === dm)).length;
+    });
+    return counts;
+  }, [templates]);
+
+  const liveUrgencyCounts = useMemo(() => {
+    if (!templates) return { all: 0, critical: 0, high: 0, standard: 0, compound: 0 };
+    const nonComp = templates.filter(t => !isCompound(t.name));
+    return {
+      all:      templates.length,
+      critical: nonComp.filter(t => t.priority === "critical").length,
+      high:     nonComp.filter(t => t.priority === "high").length,
+      standard: nonComp.filter(t => (t.priority || "standard") === "standard").length,
+      compound: templates.filter(t => isCompound(t.name)).length,
+    };
+  }, [templates]);
+
   const pillarDomains = activePillar === "all" ? null : (PILLARS.find(p => p.id === activePillar) as any)?.domains as string[] | undefined;
 
   const domainFilteredTemplates = (templates || []).filter((t) => {
@@ -430,6 +477,8 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
 
   const urgencyFiltered = domainFilteredTemplates.filter((t) => {
     if (activeUrgency === "all") return true;
+    if (activeUrgency === "compound") return isCompound(t.name);
+    if (isCompound(t.name)) return false;
     return (t.priority || "standard") === activeUrgency;
   });
 
@@ -447,6 +496,9 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
         ...searchFiltered.filter((t) => !SAMPLE_PLAYBOOK_NAMES.has(t.name)),
       ]
     : searchFiltered;
+
+  const coreProtos = sortedFiltered.filter(t => !isCompound(t.name));
+  const compoundProtos = sortedFiltered.filter(t => isCompound(t.name));
 
   return (
     <PageLayout embedded={embedded}>
@@ -471,7 +523,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               <em className="italic" style={{ color: "#C9A84C" }}>Strategic Scenario</em>
             </h1>
             <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-2">
-              Built from 20+ years of Fortune 500 transformation. Use the filters on the left to narrow by domain, pillar, or urgency.
+              Built from 20+ years of Fortune 500 transformation. 180 core protocols across Growth & Positioning, Risk & Resilience, and Transformation — every situation your organization will face, pre-staged before the trigger fires.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <span style={{ width: 4, height: 4, borderRadius: 0, background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
@@ -566,34 +618,70 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                 );
               })}
             </div>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4 }}>Domains</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>Strategic Domain</div>
             <nav>
-              {DOMAINS.map((domain) => {
-                const isActive = activeDomain === domain.id;
-                return (
-                  <button
-                    key={domain.id}
-                    onClick={() => setActiveDomain(domain.id)}
-                    className="w-full transition-all"
-                    style={{
-                      display: "flex", alignItems: "center", justifyContent: "space-between",
-                      padding: "9px 0 9px 10px",
-                      background: "transparent",
-                      borderTop: "none", borderRight: "none", borderBottom: "none",
-                      borderLeft: isActive ? `2px solid ${GOLD}` : "2px solid transparent",
-                      color: isActive ? NAVY : MUTED,
-                      fontSize: 10, fontWeight: isActive ? 700 : 500, textAlign: "left",
-                      textTransform: "uppercase", letterSpacing: "0.1em",
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      cursor: "pointer",
-                      width: "100%",
-                    }}
-                  >
-                    <span style={{ flex: 1 }}>{domain.label}</span>
-                    {domain.count && <span style={{ fontSize: 11, color: isActive ? GOLD : "rgba(107,114,128,0.5)", fontWeight: 700 }}>{domain.count}</span>}
-                  </button>
-                );
-              })}
+              <button
+                onClick={() => setActiveDomain("all")}
+                className="w-full transition-all"
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "9px 0 9px 10px", background: "transparent",
+                  borderTop: "none", borderRight: "none", borderBottom: "none",
+                  borderLeft: activeDomain === "all" ? `2px solid ${GOLD}` : "2px solid transparent",
+                  color: activeDomain === "all" ? NAVY : MUTED,
+                  fontSize: 10, fontWeight: activeDomain === "all" ? 700 : 500, textAlign: "left",
+                  textTransform: "uppercase", letterSpacing: "0.1em",
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  cursor: "pointer", width: "100%", marginBottom: 10,
+                }}
+              >
+                <span style={{ flex: 1 }}>All Domains</span>
+                {liveDomainCounts["all"] != null && (
+                  <span style={{ fontSize: 11, color: activeDomain === "all" ? GOLD : "rgba(107,114,128,0.5)", fontWeight: 700 }}>
+                    {liveDomainCounts["all"]}
+                  </span>
+                )}
+              </button>
+              {STRATEGIC_GROUPS.map((group) => (
+                <div key={group.id} style={{ marginBottom: 14 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, paddingLeft: 10, marginBottom: 3, paddingTop: 2 }}>
+                    <div style={{ width: 14, height: 1.5, background: group.color, flexShrink: 0 }} />
+                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: group.color, fontFamily: "'Barlow Condensed', sans-serif" }}>
+                      {group.label}
+                    </span>
+                  </div>
+                  {group.domains.map((domId) => {
+                    const domain = DOMAINS.find(d => d.id === domId);
+                    if (!domain) return null;
+                    const isActive = activeDomain === domId;
+                    return (
+                      <button
+                        key={domId}
+                        onClick={() => setActiveDomain(domId)}
+                        className="w-full transition-all"
+                        style={{
+                          display: "flex", alignItems: "center", justifyContent: "space-between",
+                          padding: "7px 0 7px 18px", background: "transparent",
+                          borderTop: "none", borderRight: "none", borderBottom: "none",
+                          borderLeft: isActive ? `2px solid ${GOLD}` : "2px solid transparent",
+                          color: isActive ? NAVY : MUTED,
+                          fontSize: 10, fontWeight: isActive ? 700 : 500, textAlign: "left",
+                          textTransform: "uppercase", letterSpacing: "0.1em",
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                          cursor: "pointer", width: "100%",
+                        }}
+                      >
+                        <span style={{ flex: 1 }}>{domain.label}</span>
+                        {liveDomainCounts[domId] != null && (
+                          <span style={{ fontSize: 11, color: isActive ? GOLD : "rgba(107,114,128,0.5)", fontWeight: 700 }}>
+                            {liveDomainCounts[domId]}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              ))}
             </nav>
           </div>
         </aside>
@@ -620,6 +708,11 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                   }}
                 >
                   {f.label}
+                  {f.id !== "all" && liveUrgencyCounts[f.id as keyof typeof liveUrgencyCounts] != null && (
+                    <span style={{ marginLeft: 5, opacity: activeUrgency === f.id ? 1 : 0.5, fontWeight: 600 }}>
+                      ({liveUrgencyCounts[f.id as keyof typeof liveUrgencyCounts]})
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
@@ -711,10 +804,13 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
 
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
-              {(activeDomain !== "all" || activeUrgency !== "all" || activeSector !== "all" || activePillar !== "all" || !!search)
-                ? <><span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>{templates?.length ?? 180}</span> Readiness Protocols</>
-                : <><span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> Readiness Protocols</>
+              {(activeDomain !== "all" || (activeUrgency !== "all" && activeUrgency !== "compound") || activeSector !== "all" || activePillar !== "all" || !!search)
+                ? <><span style={{ color: NAVY, fontWeight: 700 }}>{coreProtos.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>{(templates || []).filter(t => !isCompound(t.name)).length}</span> Core Readiness Protocols</>
+                : <><span style={{ color: NAVY, fontWeight: 700 }}>{coreProtos.length}</span> Core Readiness Protocols</>
               }
+              {compoundProtos.length > 0 && activeUrgency !== "compound" && activeUrgency !== "critical" && activeUrgency !== "high" && activeUrgency !== "standard" && (
+                <span style={{ marginLeft: 12, color: "#2B8A6E", fontWeight: 700 }}>+ {compoundProtos.length} Compound</span>
+              )}
             </span>
             {!isAuthenticated && (
               <div className="flex items-center gap-2">
@@ -738,7 +834,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
           )}
 
           <div className="grid md:grid-cols-3 gap-4">
-            {sortedFiltered.map((playbook) => {
+            {coreProtos.map((playbook) => {
               const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
               const isLocked = !isAuthenticated && !SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
 
@@ -900,6 +996,112 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               );
             })}
           </div>
+
+          {/* ── Compound Readiness Protocols Section ── */}
+          {compoundProtos.length > 0 && (
+            <div style={{ marginTop: 56 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                <div style={{ flex: 1, height: 1, background: "#2B8A6E30" }} />
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 7, height: 7, background: "#2B8A6E", transform: "rotate(45deg)", flexShrink: 0 }} />
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                    Compound Readiness Protocols · {compoundProtos.length}
+                  </span>
+                  <div style={{ width: 7, height: 7, background: "#2B8A6E", transform: "rotate(45deg)", flexShrink: 0 }} />
+                </div>
+                <div style={{ flex: 1, height: 1, background: "#2B8A6E30" }} />
+              </div>
+              <p style={{ color: "#6B7280", fontSize: 12, marginBottom: 24, maxWidth: 620 }}>
+                Activated when two strategic situations converge simultaneously. Growth & Positioning, Risk & Resilience, and Transformation situations often amplify each other — these protocols coordinate two Readiness Protocols in parallel execution.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                {compoundProtos.map((playbook) => {
+                  const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
+                  const isLocked = !isAuthenticated && !SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
+                  if (isLocked) {
+                    return (
+                      <div key={playbook.id} style={{ background: "#F8F7F4", border: "1px solid #2B8A6E30", borderTop: "2px solid #2B8A6E", padding: "20px", display: "flex", flexDirection: "column", gap: 12 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <div style={{ width: 20, height: 1, background: "#2B8A6E" }} />
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif" }}>Compound Protocol</span>
+                        </div>
+                        <div>
+                          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#0A0F2E", marginBottom: 4, lineHeight: 1.25 }}>{playbook.name}</div>
+                          <span style={{ fontSize: 10, fontWeight: 600, color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>Multi-Domain · 2 Protocols Simultaneous</span>
+                        </div>
+                        <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <span style={{ fontSize: 10, color: "#9CA3AF" }}>Founding Partner access required</span>
+                          <button
+                            style={{ fontSize: 10, fontWeight: 700, background: "#2B8A6E", color: "#fff", border: "none", padding: "5px 14px", cursor: "pointer", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
+                            onClick={() => setLocation("/founding-partner-program")}
+                          >Request Access</button>
+                        </div>
+                      </div>
+                    );
+                  }
+                  return (
+                    <Card key={playbook.id} className="group transition-all duration-300 bg-white flex flex-col" style={{ border: "1px solid #2B8A6E30", boxShadow: "0 0 0 1px #2B8A6E12" }}>
+                      <div className="p-5 flex flex-col flex-1">
+                        <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#0A0F2E", fontSize: 18, fontWeight: 700, lineHeight: 1.25, marginBottom: 6 }} className="group-hover:text-[#2B8A6E] transition-colors">{playbook.name}</h3>
+                        <div className="flex items-center justify-between mb-3">
+                          <span style={{ color: "#2B8A6E", fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                            {isSample ? "Preview Available" : "Compound Protocol"}
+                          </span>
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#2B8A6E", border: "1px solid #2B8A6E60", padding: "1px 6px", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                            2 Protocols · Simultaneous
+                          </span>
+                        </div>
+                        <p style={{ color: "#6B7280" }} className="text-xs line-clamp-2 mb-3 leading-relaxed">{playbook.description}</p>
+                        {playbook.whyItMatters && (
+                          <div className="mb-3 pl-3" style={{ borderLeft: "2px solid #2B8A6E", background: "#2B8A6E08", padding: "8px 10px 8px 12px" }}>
+                            <p style={{ color: "#374151", fontSize: 11, lineHeight: 1.55, fontStyle: "italic" }} className="line-clamp-2">
+                              {playbook.whyItMatters.slice(0, 130)}{playbook.whyItMatters.length > 130 ? "…" : ""}
+                            </p>
+                          </div>
+                        )}
+                        <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 8, borderTop: "1px solid #F0EDE4", paddingTop: "7px" }}>
+                          {[
+                            `${playbook.phaseCount || 4} Phases`,
+                            playbook.signalSourceCount > 0 ? `${playbook.signalSourceCount} Live Sources` : null,
+                            playbook.stakeholderCount > 0 ? `${playbook.stakeholderCount} Stakeholders` : null,
+                          ].filter(Boolean).map((stat, i) => (
+                            <span key={i} style={{ display: "flex", alignItems: "center", gap: 0 }}>
+                              {i > 0 && <span style={{ color: "#D1D5DB", margin: "0 8px", fontSize: 10 }}>·</span>}
+                              <span style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>{stat}</span>
+                            </span>
+                          ))}
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12, paddingBottom: "7px", borderBottom: "1px solid #F0EDE4" }}>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: "#2B8A6E", background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.2)", padding: "1px 6px", borderRadius: 0, letterSpacing: "0.06em" }}>COMPOUND</span>
+                          <span style={{ color: "#D1D5DB", fontSize: 10 }}>·</span>
+                          <span style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                            Last refined: {Math.max(3, ((playbook.severityScore || 50) % 28) + 2)}d ago
+                          </span>
+                          <span style={{ color: "#D1D5DB", fontSize: 10 }}>·</span>
+                          <span style={{ fontSize: 10, color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600 }}>ADVANCE ready</span>
+                        </div>
+                        <div className="flex items-center justify-between pt-3 mt-auto border-t" style={{ borderColor: "#F8F7F4" }}>
+                          <div className="flex flex-col gap-0.5">
+                            <span className="text-[9px] font-bold text-[#6B7280] uppercase">Type</span>
+                            <span className="text-[10px] font-semibold text-[#2B8A6E]">Multi-Domain</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            {isAuthenticated && (
+                              <button onClick={() => setLocation(`/playbooks/${playbook.id}/preview`)} style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textDecoration: "underline", background: "none", border: "none", cursor: "pointer" }}>Preview</button>
+                            )}
+                            <Button size="sm" style={{ background: "#2B8A6E", color: "white", fontSize: 10, padding: "4px 12px", height: "auto" }} className="font-bold uppercase tracking-wider"
+                              onClick={() => setLocation(isAuthenticated ? `/playbooks/${playbook.id}/customize` : `/playbooks/${playbook.id}/preview`)}>
+                              {isAuthenticated ? <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></> : <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>}
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           <CompoundDisruptionSection />
 
