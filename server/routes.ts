@@ -2761,7 +2761,8 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         .from(playbookLibrary)
         .leftJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
         .where(eq(playbookLibrary.isActive, true))
-        .limit(200);
+        .orderBy(playbookLibrary.playbookNumber)
+        .limit(300);
 
       res.json(templates.map(t => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? (t.tier1Stakeholders as string[]).length : 8);
