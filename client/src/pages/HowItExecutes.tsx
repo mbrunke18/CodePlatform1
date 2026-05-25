@@ -483,6 +483,10 @@ export default function HowItExecutes() {
                   q: "How is this different from Copilot or workflow tools?",
                   a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Readiness OS orchestrates the cross-functional response the moment a situation presents itself — before the stakeholder chaos starts.",
                 },
+                {
+                  q: "What does 12 minutes look like in a real, messy enterprise environment — not the best case?",
+                  a: "Honest answer: in highly prepared environments with pre-assigned authority, executions have run in 8 minutes. In typical large enterprises, the range is 12–18 minutes. In complex multi-geography organizations with multiple approval layers, 18–25 minutes. In every environment with Readiness OS: never 30 days. The 12-minute target is the design benchmark — the preparation cycle is what eliminates the 30-day mobilization lag, regardless of where in that range a specific activation lands.",
+                },
               ].map((item, i) => (
                 <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.7fr", border: "1px solid rgba(255,255,255,0.08)", borderTopWidth: i === 0 ? 1 : 0 }}>
                   <div style={{ padding: "22px 28px", borderRight: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}>

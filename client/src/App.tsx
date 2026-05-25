@@ -159,6 +159,7 @@ const ExecutionHistory = lazy(() => import("./pages/ExecutionHistory"));
 const FutureGym = lazy(() => import("./pages/FutureGym"));
 const ForesightRadar = lazy(() => import("./pages/ForesightRadar"));
 const ReadinessOracle = lazy(() => import("./pages/ReadinessOracle"));
+const ReadinessBenchmark = lazy(() => import("./pages/ReadinessBenchmark"));
 const LivingProtocols = lazy(() => import("./pages/LivingProtocols"));
 const ContinuousModePage = lazy(() => import("./pages/ContinuousModePage"));
 const ProtocolReadinessAudit = lazy(() => import("./pages/ProtocolReadinessAudit"));
@@ -555,6 +556,7 @@ function Router() {
         <Route path="/future-gym" component={FutureGym} />
         <Route path="/foresight-radar">{() => <ForesightRadar />}</Route>
         <Route path="/readiness-oracle" component={ReadinessOracle} />
+        <Route path="/readiness-benchmark" component={ReadinessBenchmark} />
         <Route path="/living-playbooks" component={LivingProtocols} />
         <Route path="/continuous-mode" component={ContinuousModePage} />
 
