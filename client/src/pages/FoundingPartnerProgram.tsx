@@ -387,6 +387,17 @@ export default function FoundingPartnerProgram() {
               ))}
             </div>
 
+            {/* Readiness Guarantee */}
+            <div style={{ marginBottom: 36, padding: '20px 24px', border: '1px solid rgba(43,138,110,0.35)', background: 'rgba(43,138,110,0.06)', display: 'flex', alignItems: 'flex-start', gap: 16, maxWidth: 640 }}>
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#2B8A6E', flexShrink: 0, marginTop: 5 }} />
+              <div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>The Readiness Guarantee</div>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(240,237,228,0.75)', lineHeight: 1.65, margin: 0 }}>
+                  Your first live activation will be measured. If your first Readiness Protocol execution exceeds 20 minutes, we extend the engagement at no additional charge until the 12-minute target is achieved — or we refund the program fee. The guarantee is simple: <em style={{ color: '#C9A84C' }}>if we can't prove the claim in your environment, you don't pay for it.</em>
+                </p>
+              </div>
+            </div>
+
             {/* CTAs */}
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' as const }}>
               <button

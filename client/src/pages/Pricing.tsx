@@ -126,6 +126,101 @@ export default function Pricing() {
         </div>
       </section>
 
+      {/* Tier Comparison Table */}
+      <section style={{ background: OFF, padding: "64px 48px 0", borderTop: "1px solid #E8E4DC" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 12 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>What Changes Across Tiers</span>
+            </div>
+            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 560, margin: "0 auto" }}>Every tier is the same platform. You're choosing how deep the partnership goes — not which features you get.</p>
+          </div>
+          <div style={{ border: "1px solid #E8E4DC", background: "#fff", overflow: "hidden" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr" }}>
+              {/* Header row */}
+              <div style={{ padding: "14px 20px", background: NAVY, borderRight: "1px solid rgba(255,255,255,0.08)" }} />
+              {[
+                { tier: "Enterprise", price: "$250K", size: "1K–5K employees" },
+                { tier: "Enterprise Plus", price: "$450K", size: "5K–15K employees" },
+                { tier: "Global", price: "$750K+", size: "15K+ employees" },
+              ].map((t, i) => (
+                <div key={t.tier} style={{ padding: "14px 16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: i === 1 ? GOLD : "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>{t.tier}</div>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: i === 1 ? GOLD : "#fff", fontFamily: "'Cormorant Garamond', serif" }}>{t.price}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{t.size}</div>
+                </div>
+              ))}
+              {/* Rows */}
+              {[
+                { feature: "Full 180-Protocol Library", e: "✓", ep: "✓", g: "✓" },
+                { feature: "221 trigger patterns monitored", e: "✓", ep: "✓", g: "✓" },
+                { feature: "12-minute response orchestration", e: "✓", ep: "✓", g: "✓" },
+                { feature: "Standard integrations (Slack, Jira, Email)", e: "✓", ep: "✓", g: "✓" },
+                { feature: "Advanced integrations (Salesforce, ServiceNow, SAP)", e: "—", ep: "✓", g: "✓" },
+                { feature: "Custom protocol builds per year", e: "—", ep: "3", g: "Unlimited" },
+                { feature: "Strategy sessions", e: "Quarterly", ep: "Monthly", g: "Dedicated team" },
+                { feature: "Support SLA", e: "24-hour", ep: "2-hour", g: "Custom" },
+                { feature: "Multi-division coordination", e: "—", ep: "✓", g: "✓" },
+                { feature: "On-site executive advisory visits", e: "—", ep: "—", g: "✓" },
+                { feature: "Multi-region / on-premise deployment", e: "—", ep: "—", g: "✓" },
+                { feature: "Founding Partner credit eligible", e: "✓", ep: "✓", g: "✓" },
+              ].map((row, i) => (
+                <div key={row.feature} style={{ display: "contents" }}>
+                  <div style={{ padding: "12px 20px", background: i % 2 === 0 ? "#fff" : "#F8F7F4", borderBottom: "1px solid #F3F4F6", borderRight: "1px solid #E8E4DC", fontSize: 13, color: NAVY, fontWeight: 500 }}>{row.feature}</div>
+                  {[row.e, row.ep, row.g].map((val, j) => (
+                    <div key={j} style={{ padding: "12px 16px", background: i % 2 === 0 ? (j === 1 ? `${NAVY}06` : "#fff") : (j === 1 ? `${NAVY}09` : "#F8F7F4"), borderBottom: "1px solid #F3F4F6", borderRight: j < 2 ? "1px solid #E8E4DC" : "none", textAlign: "center", fontSize: 12, fontWeight: val === "✓" ? 700 : 500, color: val === "✓" ? TEAL : val === "—" ? "#D1D5DB" : NAVY }}>
+                      {val}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Protocol Packs */}
+      <section style={{ background: OFF, padding: "64px 48px" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 12 }}>
+              <div style={{ width: 28, height: 2, background: TEAL, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Industry Protocol Packs</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(24px,3vw,34px)", color: NAVY, marginBottom: 10 }}>Platform Core + Industry Depth</h2>
+            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 580, margin: "0 auto" }}>
+              The 180-Protocol Core Library covers every strategic domain. Industry Packs add 30 pre-built protocols specific to your sector's triggers, regulators, and stakeholders.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+            {[
+              { sector: "Financial Services", protocols: "30 protocols", triggers: "SEC enforcement, liquidity events, regulatory examinations, activist investors, M&A windows", price: "+$40K/yr" },
+              { sector: "Healthcare & Life Sciences", protocols: "30 protocols", triggers: "FDA recalls, CMS audits, clinical trial events, formulary changes, patient safety triggers", price: "+$40K/yr" },
+              { sector: "Energy & Utilities", protocols: "30 protocols", triggers: "Grid disruptions, FERC filings, environmental incidents, pipeline events, rate cases", price: "+$40K/yr" },
+              { sector: "Manufacturing & Supply Chain", protocols: "30 protocols", triggers: "Supplier failures, production disruptions, product recalls, tariff shifts, labor actions", price: "+$40K/yr" },
+              { sector: "Consumer & Retail", protocols: "30 protocols", triggers: "Product safety events, social media crises, competitor launches, seasonal demand surges", price: "+$40K/yr" },
+              { sector: "Technology & SaaS", protocols: "30 protocols", triggers: "Data breaches, outages, competitive threats, M&A defense, regulatory inquiry", price: "+$40K/yr" },
+            ].map((pack) => (
+              <div key={pack.sector} style={{ background: "#fff", border: "1px solid #E8E4DC", padding: "24px 22px" }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>{pack.protocols}</div>
+                <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY, marginBottom: 8 }}>{pack.sector}</h3>
+                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, marginBottom: 14 }}>{pack.triggers}</p>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <span style={{ fontSize: 16, fontWeight: 700, color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{pack.price}</span>
+                  <span style={{ fontSize: 10, color: "#9CA3AF" }}>added to any tier</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 24, padding: "16px 24px", background: NAVY, textAlign: "center" }}>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", margin: 0 }}>
+              <span style={{ color: GOLD, fontWeight: 700 }}>Founding Partners receive one Industry Pack included</span> — selected during onboarding based on your primary sector.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Annual Subscription Tiers */}
       <section style={{ background: OFF, padding: "80px 48px" }}>
         <div className="max-w-7xl mx-auto">

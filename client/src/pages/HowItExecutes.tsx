@@ -202,17 +202,26 @@ export default function HowItExecutes() {
                 Try the interactive 12-Minute Test Drive →
               </a>
             </p>
-            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              {[
-                { v: "0:00", l: "Signal to protocol match" },
-                { v: "0:03", l: "Full team notified" },
-                { v: "0:12", l: "Execution complete" },
-              ].map(s => (
-                <div key={s.l} style={{ textAlign: "center", padding: "12px 20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)" }}>
-                  <div style={{ ...GEO, fontSize: 22, fontWeight: 700, color: GOLD }}>{s.v}</div>
-                  <div style={{ fontSize: 10, color: MUTED, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 2 }}>{s.l}</div>
-                </div>
-              ))}
+            {/* 4-phase timing breakdown */}
+            <div style={{ maxWidth: 780, margin: "0 auto", border: "1px solid rgba(201,168,76,0.18)", background: "rgba(255,255,255,0.03)" }}>
+              <div style={{ padding: "12px 20px", borderBottom: "1px solid rgba(201,168,76,0.12)", textAlign: "center" }}>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>How 12 Minutes Actually Breaks Down</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+                {[
+                  { window: "< 60 sec", phase: "01", label: "Signal detected & protocol matched", detail: "Continuous monitoring fires. 221 patterns checked. Readiness Protocol identified. Risk score assigned.", color: GOLD },
+                  { window: "< 3 min",  phase: "02", label: "All stakeholders notified", detail: "Every executive receives a role-specific brief simultaneously — not a generic alert. No one has to find the contact list.", color: TEAL },
+                  { window: "< 5 min",  phase: "03", label: "Executive reviews & authorizes", detail: "Pre-staged brief reviewed. One authorization. Budget unlocked. Authority chain confirmed. No committee.", color: GOLD },
+                  { window: "< 12 min", phase: "04", label: "Full team executing", detail: "Tasks deployed. Integrations triggered. Jira updated. Teams notified. Audit trail open. Response underway.", color: TEAL },
+                ].map((item, i) => (
+                  <div key={item.phase} style={{ padding: "18px 16px", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none", textAlign: "center" }}>
+                    <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: item.color, marginBottom: 4 }}>{item.window}</div>
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: 6 }}>Phase {item.phase}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.75)", marginBottom: 6, lineHeight: 1.4 }}>{item.label}</div>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", lineHeight: 1.5 }}>{item.detail}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
