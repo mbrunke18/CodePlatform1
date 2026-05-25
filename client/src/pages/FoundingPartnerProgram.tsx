@@ -1047,6 +1047,31 @@ export default function FoundingPartnerProgram() {
         {/* Application Section */}
         <section id="fp-application" style={{ background: '#0A0F2E', padding: '96px 32px 80px', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
+          {/* Strategic Foresight Engine callout */}
+          <div style={{ background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.22)', borderLeft: '4px solid #2B8A6E', padding: '32px 36px', marginBottom: 48 }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, flexWrap: 'wrap' as const }}>
+              <div style={{ flex: 1, minWidth: 280 }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 8 }}>Being co-developed with this cohort</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#fff', lineHeight: 1.25, marginBottom: 10 }}>
+                  Readiness Oracle — Strategic Foresight Engine
+                </h3>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(240,237,228,0.65)', lineHeight: 1.7, margin: '0 0 16px' }}>
+                  The next layer beyond 12-minute response — a living organizational digital twin, autonomous war gaming against emerging patterns, and collective readiness intelligence across the entire customer base. The response ready before the trigger is even a pattern.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8, marginBottom: 4 }}>
+                  {['Living Digital Twin', 'Autonomous War Gaming', 'Collective Intelligence', 'Executive Time Machine'].map(cap => (
+                    <span key={cap} style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(43,138,110,0.9)', background: 'rgba(43,138,110,0.10)', border: '1px solid rgba(43,138,110,0.22)', padding: '4px 10px' }}>{cap}</span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                <a href="/readiness-oracle" style={{ fontFamily: "'Barlow Condensed', sans-serif", display: 'inline-flex', alignItems: 'center', gap: 8, background: 'transparent', color: '#2B8A6E', fontWeight: 800, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '12px 20px', border: '1px solid rgba(43,138,110,0.4)', textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
+                  See Full Vision →
+                </a>
+              </div>
+            </div>
+          </div>
+
           <div style={{ maxWidth: 720, margin: '0 auto', position: 'relative' }}>
 
             {/* Section header */}
