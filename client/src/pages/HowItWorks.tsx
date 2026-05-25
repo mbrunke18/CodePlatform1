@@ -599,7 +599,7 @@ export default function HowItWorks() {
                 icon: BookOpen,
                 color: TEAL,
                 title: "Smart Readiness Protocol Finder",
-                body: "Searching 180 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
+                body: "Searching 180 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: protocol names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific protocol. Faster selection, less cognitive load on the team receiving the activation.",
                 items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 180"]
               },
               {

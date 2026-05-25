@@ -72,7 +72,7 @@ const COMPOUNDING = [
   { cycle: "First activation", outcome: "Response executed. Record created. Baseline established." },
   { cycle: "Drill cycles 1–3", outcome: "Pattern data accumulates. Coverage gaps identified. Score improves." },
   { cycle: "Second live activation", outcome: "Prior context retrieved. Faster recommendation. Better stakeholder targeting." },
-  { cycle: "12 months of operation", outcome: "Institutional memory rivals a decade of manual playbook development." },
+  { cycle: "12 months of operation", outcome: "Institutional memory rivals a decade of manual Readiness Protocol development." },
 ];
 
 export default function InstitutionalMemoryEngine() {

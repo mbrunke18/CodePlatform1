@@ -1709,7 +1709,7 @@ export default function ProtocolActivationConsole() {
               instruction: 'Some ownership transferred; some tasks remained silent at acknowledgment. This debrief encodes both optimization and recovery. The window partially held — but the silent tasks represent preparation that did not confirm ownership. Investigate each silent task before the next situation presents itself.',
               focusAreas: [
                 'For each silent task: was this assignment or ownership? Rebuild as ownership.',
-                'Did the owner participate in preparation, or receive the playbook after it was built?',
+                'Did the owner participate in preparation, or receive the Readiness Protocol after it was built?',
                 'Which phase of preparation failed to transfer? Encode the answer before next cycle.',
               ],
             },
@@ -1882,7 +1882,7 @@ export default function ProtocolActivationConsole() {
                                 </div>
                               )}
                               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", marginTop: 10, lineHeight: 1.6, marginBottom: 0, fontStyle: "italic" }}>
-                                "The earliest signal that preparation didn't transfer is not that the playbook failed — it is silence at acknowledgment."
+                                "The earliest signal that preparation didn't transfer is not that the Readiness Protocol failed — it is silence at acknowledgment."
                               </p>
                             </div>
                           )}
@@ -1961,7 +1961,7 @@ export default function ProtocolActivationConsole() {
                             {
                               n: "02",
                               title: "Owner exercised challenge rights before the trigger",
-                              sub: "The preparation gave the owner the right to challenge the playbook before pressure existed.",
+                              sub: "The preparation gave the owner the right to challenge the Readiness Protocol before pressure existed.",
                               pass: ownershipRate >= 50,
                             },
                             {
