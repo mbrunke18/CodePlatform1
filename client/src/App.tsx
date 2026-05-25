@@ -526,7 +526,7 @@ function Router() {
         <Route path="/onboard" component={InteractiveOnboarding} />
         <Route path="/preparedness-report">{() => <PreparednessReport />}</Route>
         <Route path="/drill-tracking" component={DrillTrackingSystem} />
-        {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], ProtocolLibrary)}
+        {renderRoutes(["/protocols", "/playbook-library", "/playbooks", "/business-scenarios"], ProtocolLibrary)}
         <Route path="/playbooks/:id/customize" component={ProtocolCustomize} />
         <Route path="/playbooks/:id/preview" component={ProtocolDetail} />
         <Route path="/playbooks/:id/edit" component={ProtocolCustomize} />

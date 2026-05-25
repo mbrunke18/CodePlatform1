@@ -42,7 +42,7 @@ const SEARCH_ITEMS = [
   { label: 'Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
   { label: 'Settings Hub', path: '/settings-hub', category: 'Platform', icon: Settings },
   { label: 'Organization Setup', path: '/organization-setup', category: 'Platform', icon: Building },
-  { label: 'Readiness Protocol Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
+  { label: 'Readiness Protocol Library', path: '/protocols', category: 'Identify', icon: BookOpen },
   { label: 'Strategic Planning Hub', path: '/strategic', category: 'Identify', icon: Target },
   { label: 'What-If Analyzer', path: '/what-if-analyzer', category: 'Identify', icon: Lightbulb },
   { label: 'Response Customization', path: '/playbook-customization', category: 'Identify', icon: ClipboardCheck },

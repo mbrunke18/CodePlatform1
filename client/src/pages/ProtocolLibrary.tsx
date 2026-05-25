@@ -711,7 +711,10 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
 
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
-              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>180</span> Readiness Protocols
+              {(activeDomain !== "all" || activeUrgency !== "all" || activeSector !== "all" || activePillar !== "all" || !!search)
+                ? <><span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>{templates?.length ?? 180}</span> Readiness Protocols</>
+                : <><span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> Readiness Protocols</>
+              }
             </span>
             {!isAuthenticated && (
               <div className="flex items-center gap-2">
