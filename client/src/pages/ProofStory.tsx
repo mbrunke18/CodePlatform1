@@ -125,7 +125,7 @@ const STORIES = [
         { time: "Day 30",   event: "$47M in lost production. $12M in customer penalties. Key account in jeopardy." },
       ],
       cost: "$47M in production losses + $12M in customer penalties + key account relationship damaged.",
-      headline: "7 weeks to partial recovery — with no playbook, every day was improvisation.",
+      headline: "7 weeks to partial recovery — with no Readiness Protocol staged, every day was improvisation.",
     },
     with: {
       heading: "With Readiness OS — 12 Minutes",
@@ -408,8 +408,8 @@ export default function ProofStory() {
               </p>
             </div>
 
-            {/* Three structural differentiators */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 56 }}>
+            {/* Four structural differentiators */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 56 }}>
               {[
                 {
                   number: "01",
@@ -419,12 +419,17 @@ export default function ProofStory() {
                 {
                   number: "02",
                   heading: "Every specialist already on the brief",
-                  body: "The FBI Cyber Division contact, outside M&A counsel, the proxy solicitor, the forensic team, the alternate supplier roster — all pre-identified in the Readiness Protocol. When the trigger fires, the brief is already in their hands."
+                  body: "The FBI Cyber Division contact, outside M&A counsel, the proxy solicitor, the forensic team, the alternate supplier roster — all pre-identified in the Readiness Protocol. Budget pre-authorized. Authority chains documented. When the trigger fires, the brief is already in their hands."
                 },
                 {
                   number: "03",
                   heading: "Every tool you use, orchestrated above",
                   body: "Jira tasks created. Slack channels opened. ServiceNow workflows triggered. Microsoft Teams briefings staged. Readiness OS is the operating model layer above your existing stack — not a replacement for any of it."
+                },
+                {
+                  number: "04",
+                  heading: "Every activation makes the next one better",
+                  body: "After each execution, the platform auto-generates a structured debrief, captures what was learned, and updates the Readiness Protocol for next time. Institutional memory accumulates. Causal hypotheses are tested. The protocol library becomes more precise with every activation — compounding your organizational readiness over time."
                 }
               ].map(item => (
                 <div key={item.number} style={{ background: "#fff", border: "1px solid #E8E4DC", padding: "32px 28px" }}>
@@ -513,9 +518,22 @@ export default function ProofStory() {
             <h2 style={{ ...GEO, fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
               Your organization will face these triggers.<br /><em style={{ color: GOLD }}>The question is whether the response is ready.</em>
             </h2>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 36, lineHeight: 1.7 }}>
-              Founding Partners receive the full 180-protocol library, live signal monitoring, and 90 days of validation support. The response is built before the trigger fires.
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 28, lineHeight: 1.7 }}>
+              Founding Partners receive the full platform — 180 Readiness Protocols across 9 strategic domains, continuous signal monitoring across 221 trigger patterns, executive authorization workflows, pre-staged budget authority, compound threat detection, and institutional memory that compounds with every activation. 90 days of hands-on validation support included.
             </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, maxWidth: 640, margin: "0 auto 32px", textAlign: "center" }}>
+              {[
+                { n: "180", l: "Readiness Protocols" },
+                { n: "221", l: "Trigger Patterns" },
+                { n: "12 min", l: "To Full Execution" },
+                { n: "3,600×", l: "Execution Head Start" },
+              ].map(s => (
+                <div key={s.n} style={{ padding: "14px 10px", border: "1px solid rgba(201,168,76,0.2)", background: "rgba(201,168,76,0.04)" }}>
+                  <div style={{ fontSize: 20, fontWeight: 700, color: GOLD, ...GEO }}>{s.n}</div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{s.l}</div>
+                </div>
+              ))}
+            </div>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/founding-partner-program">
                 <button style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 32px", background: GOLD, color: NAVY, border: "none", cursor: "pointer" }}>
