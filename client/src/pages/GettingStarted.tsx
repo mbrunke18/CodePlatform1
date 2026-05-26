@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'wouter';
+import { useRef, useEffect, useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import OnboardingRail from '@/components/onboarding/OnboardingRail';
 import {
   CheckCircle2, Circle, ArrowRight, ChevronRight, AlertTriangle,
   Building2, Users, Shield, Rocket, Globe, Phone, Mail, Clock,
   DollarSign, Target, Zap, Radio, BookOpen, ClipboardList, Lock,
+  RotateCcw, Save,
 } from 'lucide-react';
 
 const NAVY = "#0A0F2E";
@@ -50,15 +52,16 @@ function Item({ done, label, sub, href, partial }: { done: boolean; label: strin
 }
 
 function PhaseCard({
-  num, title, timing, doing, score, children, cta, ctaHref, locked,
+  num, title, timing, doing, score, children, cta, ctaHref, locked, phaseRef,
 }: {
   num: string; title: string; timing: string; doing: string; score: number;
   children: React.ReactNode; cta?: string; ctaHref?: string; locked?: boolean;
+  phaseRef?: React.RefObject<HTMLDivElement>;
 }) {
   const [, nav] = useLocation();
   const isComplete = score === 100;
   return (
-    <div style={{
+    <div ref={phaseRef} style={{
       background: '#fff', border: `1px solid ${BORDER}`, borderLeft: `4px solid ${isComplete ? TEAL : score > 0 ? GOLD : '#E5E7EB'}`,
       marginBottom: 16, opacity: locked ? 0.55 : 1,
     }}>
@@ -110,6 +113,10 @@ function PhaseCard({
 
 export default function GettingStarted() {
   const [, nav] = useLocation();
+  const phaseRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
+  const [showResumeBanner, setShowResumeBanner] = useState(false);
+  const [resumePhase, setResumePhase] = useState(1);
+  const [lastSavedLabel, setLastSavedLabel] = useState<string | null>(null);
 
   const { data: orgs } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
   const { data: user } = useQuery<any>({ queryKey: ['/api/auth/user'] });
@@ -190,8 +197,56 @@ export default function GettingStarted() {
 
   const orgName = org?.name || user?.firstName ? `${user?.firstName}'s Org` : 'Your Organization';
 
+  const activePhase = p1 < 100 ? 1 : p2 < 100 ? 2 : p3 < 100 ? 3 : 4;
+
+  useEffect(() => {
+    const LS_KEY = 'vm_getting_started_last_visit';
+    const prev = localStorage.getItem(LS_KEY);
+    if (prev) {
+      const ms = Date.now() - parseInt(prev, 10);
+      const mins = Math.floor(ms / 60000);
+      const hrs = Math.floor(mins / 60);
+      const days = Math.floor(hrs / 24);
+      let label = 'just now';
+      if (days > 0) label = `${days} day${days > 1 ? 's' : ''} ago`;
+      else if (hrs > 0) label = `${hrs} hour${hrs > 1 ? 's' : ''} ago`;
+      else if (mins >= 5) label = `${mins} minutes ago`;
+      if (mins >= 5) {
+        setResumePhase(activePhase);
+        setShowResumeBanner(true);
+      }
+      setLastSavedLabel(label);
+    }
+    localStorage.setItem(LS_KEY, String(Date.now()));
+  }, []);
+
+  const scrollToPhase = (phase: number) => {
+    const ref = phaseRefs[phase - 1];
+    if (ref?.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setShowResumeBanner(false);
+  };
+
   return (
     <PageLayout>
+      {/* Resume banner */}
+      {showResumeBanner && (
+        <div style={{ background: GOLD, padding: '12px 48px', display: 'flex', alignItems: 'center', gap: 16 }}>
+          <RotateCcw size={14} color={NAVY} />
+          <span style={{ fontSize: 13, fontWeight: 600, color: NAVY, flex: 1 }}>
+            Welcome back — your setup progress was saved automatically. You were working on Phase {resumePhase}.
+          </span>
+          <button
+            onClick={() => scrollToPhase(resumePhase)}
+            style={{ padding: '6px 18px', background: NAVY, color: '#fff', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 6, borderRadius: '0.15rem' }}
+          >
+            Resume Phase {resumePhase} <ChevronRight size={12} />
+          </button>
+          <button onClick={() => setShowResumeBanner(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: NAVY, opacity: 0.6, fontSize: 18, lineHeight: 1, padding: 0 }}>×</button>
+        </div>
+      )}
+
       {/* Header */}
       <div style={{ background: NAVY, padding: '48px 48px 40px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)`, backgroundSize: '44px 44px' }} />
@@ -202,6 +257,12 @@ export default function GettingStarted() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
                 <div style={{ width: 24, height: 2, background: 'rgba(255,255,255,0.2)' }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Readiness OS — Setup</span>
+                {lastSavedLabel && (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 5, marginLeft: 12, fontSize: 10, color: 'rgba(255,255,255,0.35)', fontWeight: 500 }}>
+                    <Save size={10} />
+                    Progress saved {lastSavedLabel}
+                  </span>
+                )}
               </div>
               <h1 style={{ ...CG, fontSize: 'clamp(32px,4vw,52px)', fontWeight: 600, color: '#fff', lineHeight: 1.05, marginBottom: 10 }}>
                 {isLive ? <>You're <em style={{ color: TEAL }}>Live.</em></> : <>Your Path to <em style={{ color: GOLD }}>Live Execution.</em></>}
@@ -260,7 +321,7 @@ export default function GettingStarted() {
           <div>
 
             {/* PHASE 1 */}
-            <PhaseCard num="01" title="Foundation" timing="~20 minutes" doing="You complete this" score={p1} cta="Open Setup Wizard" ctaHref="/onboarding-wizard">
+            <PhaseCard num="01" title="Foundation" timing="~20 minutes" doing="You complete this" score={p1} cta="Open Setup Wizard" ctaHref="/onboarding-wizard" phaseRef={phaseRefs[0]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Organization Profile</div>
               <Item done={c.companyName} label="Company name" sub={org?.name || undefined} href="/onboarding-wizard" />
               <Item done={c.industry} label="Industry vertical" sub={org?.industry || undefined} href="/onboarding-wizard" />
@@ -284,7 +345,7 @@ export default function GettingStarted() {
             </PhaseCard>
 
             {/* PHASE 2 */}
-            <PhaseCard num="02" title="Organization Structure" timing="30–60 minutes" doing="You + your team" score={p2} cta="Open Organization Setup" ctaHref="/organization-setup">
+            <PhaseCard num="02" title="Organization Structure" timing="30–60 minutes" doing="You + your team" score={p2} cta="Open Organization Setup" ctaHref="/organization-setup" phaseRef={phaseRefs[1]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Team Structure</div>
               <Item done={c.departments3} label={`Departments configured — ${deptCount} added`} sub="Minimum 3 departments for routing and task assignment" href="/organization-setup" partial={deptCount > 0 && deptCount < 3} />
               <Item done={c.stakeholders} label="Executives added with full contact details" sub={`Name, email, mobile, role — ${stakeholderCount > 0 ? stakeholderCount + ' added' : (ownersWithEmail.length + ' domain owners with email')}`} href="/organization-setup" partial={!c.stakeholders && (stakeholderCount > 0 || ownersWithEmail.length > 0)} />
@@ -296,7 +357,7 @@ export default function GettingStarted() {
             </PhaseCard>
 
             {/* PHASE 3 */}
-            <PhaseCard num="03" title="Protocol Readiness" timing="Ongoing" doing="System + your team" score={p3}>
+            <PhaseCard num="03" title="Protocol Readiness" timing="Ongoing" doing="System + your team" score={p3} phaseRef={phaseRefs[2]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Signal Monitoring</div>
               <Item done={c.signalMonitoring} label="Signal monitoring active" sub="221 triggers scanned across 8 sources every 15 minutes — always on" />
 
@@ -306,7 +367,7 @@ export default function GettingStarted() {
             </PhaseCard>
 
             {/* PHASE 4 */}
-            <PhaseCard num="04" title="Validation" timing="Week 3–4" doing="Your executive team" score={p4} locked={p1 < 50 || p2 < 67}>
+            <PhaseCard num="04" title="Validation" timing="Week 3–4" doing="Your executive team" score={p4} locked={p1 < 50 || p2 < 67} phaseRef={phaseRefs[3]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Proof of Readiness</div>
               <Item done={c.testDrive} label="12-Minute Test Drive completed" sub="Runs a live scenario end-to-end — verifies timing, routing, and task assignment" href="/12-minute-experience" />
               <Item done={c.drill} label="Practice drill completed" sub="Full team activation simulation — reveals gaps before a real trigger fires" href="/practice-drills" />
