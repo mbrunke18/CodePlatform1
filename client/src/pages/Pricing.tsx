@@ -141,14 +141,13 @@ export default function Pricing() {
               {/* Header row */}
               <div style={{ padding: "14px 20px", background: NAVY, borderRight: "1px solid rgba(255,255,255,0.08)" }} />
               {[
-                { tier: "Core", price: "$250K", size: "1K–5K employees" },
-                { tier: "Foresight", price: "$450K", size: "5K–15K employees" },
-                { tier: "Enterprise", price: "$750K+", size: "15K+ employees" },
+                { tier: "Core", price: "$250K" },
+                { tier: "Foresight", price: "$450K" },
+                { tier: "Enterprise", price: "$750K+" },
               ].map((t, i) => (
                 <div key={t.tier} style={{ padding: "14px 16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: i === 1 ? GOLD : "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>{t.tier}</div>
                   <div style={{ fontSize: 18, fontWeight: 700, color: i === 1 ? GOLD : "#fff", fontFamily: "'Cormorant Garamond', serif" }}>{t.price}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{t.size}</div>
                 </div>
               ))}
               {/* Rows */}
@@ -243,7 +242,6 @@ export default function Pricing() {
             <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-core">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>Tier 1</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Core</h3>
-              <p className="text-sm text-[#6B7280] mb-6">1,000–5,000 employees</p>
               <div className="flex items-baseline gap-2 mb-8">
                 <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: NAVY }}>$250K</span>
                 <span className="text-sm text-[#6B7280]">/ year</span>
@@ -278,7 +276,6 @@ export default function Pricing() {
             <div style={{ background: NAVY, border: `2px solid ${NAVY}`, padding: "40px 32px", position: "relative" }} data-testid="card-tier-foresight">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>Tier 2</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Foresight</h3>
-              <p className="text-sm text-white/60 mb-6">5,000–15,000 employees</p>
               <div className="flex items-baseline gap-2 mb-8">
                 <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD }}>$450K</span>
                 <span className="text-sm text-white/60">/ year</span>
@@ -312,7 +309,6 @@ export default function Pricing() {
             <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-enterprise">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>Tier 3</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Enterprise</h3>
-              <p className="text-sm text-[#6B7280] mb-6">15,000+ employees</p>
               <div className="flex flex-col gap-1 mb-8">
                 <span style={{ ...CG, fontSize: 40, fontWeight: 600, color: NAVY }}>Custom</span>
                 <span className="text-xs text-[#6B7280]">$750K – $1.5M+ / year</span>
