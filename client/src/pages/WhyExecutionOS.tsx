@@ -400,6 +400,11 @@ export default function WhyExecutionOS() {
                   Request Founding Partner Access <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
+              <Link href="/readiness-benchmark">
+                <Button size="lg" variant="outline" style={{ borderColor: GOLD, color: NAVY, fontWeight: 700 }}>
+                  Score Your Readiness — Free
+                </Button>
+              </Link>
               <Link href="/try-demo">
                 <Button size="lg" variant="outline" style={{ borderColor: "#E8E4DC", color: NAVY }}>
                   Watch the 12-Minute Demo

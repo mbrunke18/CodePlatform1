@@ -39,7 +39,7 @@ export default function Pricing() {
             Transparent, value-based pricing for enterprise strategic readiness
           </p>
           <p className="text-lg text-[#6B7280] max-w-3xl mx-auto">
-            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. The difference between tiers is relationship depth: custom protocol development, advisory sessions, and dedicated team access.
+            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. Core delivers the complete operating model. Oracle Pro adds Digital Twin simulation and predictive foresight — war-gaming responses to triggers that haven't fired yet. Enterprise activates the autonomous evolution network: protocols that improve across every client activation.
           </p>
         </div>
       </section>

@@ -868,14 +868,14 @@ export default function StandardNav() {
                 {renderExperienceDropdown()}
                 {renderEvidenceDropdown()}
                 <button
-                  onClick={() => navigateTo('/onboarding-guide')}
+                  onClick={() => navigateTo('/readiness-benchmark')}
                   className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
                   style={{ color: GOLD, background: 'transparent', whiteSpace: 'nowrap' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 >
-                  <BookOpen className="h-3.5 w-3.5" />
-                  Guide
+                  <ClipboardCheck className="h-3.5 w-3.5" />
+                  Benchmark
                 </button>
                 <button
                   onClick={() => navigateTo('/sitemap')}
