@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import PageLayout from '@/components/layout/PageLayout';
+import { useLocation } from 'wouter';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -25,6 +26,7 @@ const TEAL = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function BusinessIntelligence() {
+  const [, setLocation] = useLocation();
   const executiveMetrics = [
     { title: "Revenue Growth", value: "$127.5M", change: "+23.5%", trend: "up", color: "text-[#2B8A6E]" },
     { title: "Market Share", value: "34.2%", change: "+5.7%", trend: "up", color: "text-[#0A0F2E]" },
@@ -166,7 +168,7 @@ export default function BusinessIntelligence() {
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-8" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-detailed-analytics">
+                <Button className="w-full mt-8" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-detailed-analytics" onClick={() => setLocation('/advanced-analytics')}>
                   View Detailed Analytics Dashboard
                 </Button>
               </CardContent>
@@ -183,19 +185,19 @@ export default function BusinessIntelligence() {
             </CardHeader>
             <CardContent className="px-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-market-analysis">
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-market-analysis" onClick={() => setLocation('/intelligence-control-center')}>
                   <Globe className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Market Analysis
                 </Button>
-                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-financial-modeling">
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-financial-modeling" onClick={() => setLocation('/roi-calculator')}>
                   <DollarSign className="w-5 h-5 mr-2 text-[#2B8A6E]" />
                   Financial Modeling
                 </Button>
-                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-competitive-intel">
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-competitive-intel" onClick={() => setLocation('/competitive-positioning')}>
                   <Target className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Competitive Intel
                 </Button>
-                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-executive-report">
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-executive-report" onClick={() => setLocation('/executive-brief')}>
                   <FileText className="w-5 h-5 mr-2 text-[#DFC178]" />
                   Executive Report
                 </Button>

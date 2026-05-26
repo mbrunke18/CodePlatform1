@@ -83,14 +83,14 @@ const SEARCH_ITEMS = [
   { label: 'Protocol Builder', path: '/protocol-builder', category: 'Demo', icon: ClipboardList },
   { label: 'Industry Scenarios', path: '/industry-demos', category: 'Demo', icon: Globe },
   { label: 'Industry Demo Library — 19 Blueprints', path: '/industry-demo-library', category: 'Demo', icon: Globe },
-  { label: 'Founding Partner Program', path: '/founding-partner-program', category: 'Action', icon: Target },
+  { label: 'Founding Partner Program', path: '/founding-partner', category: 'Action', icon: Target },
   { label: 'Founding Partner Brief — What You Get in 90 Days', path: '/founding-partner-brief', category: 'Action', icon: FileText },
   { label: 'Readiness Operating Rhythm — Monthly Cadence', path: '/readiness-rhythm', category: 'Learn', icon: Activity },
   { label: 'New Here? Start Here — First-Time Visitor Entry', path: '/entry', category: 'Learn', icon: Rocket },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
-  { label: 'Request Founding Partner Access', path: '/founding-partner-program', category: 'Action', icon: Target },
+  { label: 'Request Founding Partner Access', path: '/founding-partner', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'Why Readiness OS?', path: '/the-proof', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
@@ -519,7 +519,7 @@ export default function StandardNav() {
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
-                onClick={() => navigateTo('/founding-partner-program')}
+                onClick={() => navigateTo('/founding-partner')}
                 style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'all 0.12s' }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement;
@@ -701,7 +701,7 @@ export default function StandardNav() {
               {/* Bottom CTA */}
               <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
                 <div
-                  onClick={() => navigateTo('/founding-partner-program')}
+                  onClick={() => navigateTo('/founding-partner')}
                   style={{ background: NAVY, borderRadius: 0, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
@@ -999,7 +999,7 @@ export default function StandardNav() {
             ) : (
               <>
                 <Button
-                  onClick={() => navigateTo("/founding-partner-program")}
+                  onClick={() => navigateTo("/founding-partner")}
                   className="h-9 px-4 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: "none" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
@@ -1069,7 +1069,7 @@ export default function StandardNav() {
                   </Button>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => navigateTo("/founding-partner-program")}
+                      onClick={() => navigateTo("/founding-partner")}
                       variant="outline"
                       className="flex-1 justify-center h-10 text-sm font-semibold"
                       style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
@@ -1078,7 +1078,7 @@ export default function StandardNav() {
                       Request Access
                     </Button>
                     <Button
-                      onClick={() => navigateTo("/founding-partner-program")}
+                      onClick={() => navigateTo("/founding-partner")}
                       className="flex-1 justify-center h-10 text-sm font-bold"
                       style={{ background: GOLD, color: NAVY }}
                       data-testid="nav-mobile-request-pilot"
@@ -1090,7 +1090,7 @@ export default function StandardNav() {
               ) : (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
-                    onClick={() => navigateTo("/founding-partner-program")}
+                    onClick={() => navigateTo("/founding-partner")}
                     variant="outline"
                     className="w-full justify-center h-11 text-sm font-semibold"
                     style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
@@ -1100,7 +1100,7 @@ export default function StandardNav() {
                     Request Access
                   </Button>
                   <Button
-                    onClick={() => navigateTo("/founding-partner-program")}
+                    onClick={() => navigateTo("/founding-partner")}
                     className="w-full justify-center h-11 text-sm font-bold"
                     style={{ background: GOLD, color: NAVY }}
                     data-testid="nav-mobile-request-pilot"

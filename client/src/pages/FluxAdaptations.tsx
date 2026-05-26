@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import OnboardingTrigger from '@/components/onboarding/OnboardingTrigger';
 import { 
   TrendingUp, 
@@ -25,6 +25,7 @@ import {
 import PageLayout from '@/components/layout/PageLayout';
 
 export default function FluxAdaptations() {
+  const [, setLocation] = useLocation();
   const [selectedStrategy, setSelectedStrategy] = useState('active');
 
   const adaptationStrategies = [
@@ -149,7 +150,7 @@ export default function FluxAdaptations() {
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-4">
-                <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }} data-testid="generate-strategy-button">
+                <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }} data-testid="generate-strategy-button" onClick={() => setSelectedStrategy('analytics')}>
                   <Lightbulb className="h-4 w-4 mr-2" />
                   Generate Strategy
                 </Button>

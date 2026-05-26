@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'wouter';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
@@ -47,6 +48,7 @@ const EXEC_STAKEHOLDERS = [
 ];
 
 export default function McKinseyIntelligenceCenter() {
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('assessment');
 
   const avgMaturity = (MCK_ELEMENTS.reduce((sum, el) => sum + el.current, 0) / MCK_ELEMENTS.length).toFixed(1);
@@ -415,11 +417,11 @@ export default function McKinseyIntelligenceCenter() {
         </CardHeader>
         <CardContent>
           <div className="flex gap-3">
-            <Button data-testid="button-start-assessment">
+            <Button data-testid="button-start-assessment" onClick={() => setLocation('/agility-assessment')}>
               <BarChart3 className="h-4 w-4 mr-2" />
               Start Assessment
             </Button>
-            <Button variant="outline" data-testid="button-export-report">
+            <Button variant="outline" data-testid="button-export-report" onClick={() => setLocation('/board-export')}>
               Export Full Report
             </Button>
           </div>

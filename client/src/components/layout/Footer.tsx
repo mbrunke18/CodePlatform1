@@ -66,8 +66,8 @@ export default function Footer() {
         { label: "Founder's Story", path: "/founder-story" },
         { label: "Microsoft Ecosystem", path: "/ecosystems" },
         { label: "Request Access", path: "/request-access" },
-        { label: "Investors", path: "/investors" },
-        { label: "Contact", path: "/contact" },
+        { label: "Investors", path: "/investor-landing" },
+        { label: "Contact", path: "/request-access" },
         { label: "Terms of Service", path: "/terms" },
       ]
     },
@@ -192,13 +192,13 @@ export default function Footer() {
                 See Demo →
               </button>
               <button 
-                onClick={() => navigateTo("/investors")}
+                onClick={() => navigateTo("/investor-landing")}
                 className="text-sm text-[#C9A84C] hover:text-[#C9A84C] transition-colors font-medium"
               >
                 Investors →
               </button>
               <button 
-                onClick={() => navigateTo("/contact")}
+                onClick={() => navigateTo("/request-access")}
                 className="text-sm text-slate-300 hover:text-white transition-colors"
               >
                 Contact
