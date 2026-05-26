@@ -258,7 +258,7 @@ export default function TwelveMinuteTestDrive() {
   const tasks          = selectedId ? (SCENARIO_TASKS[selectedId] || []) : [];
   const TOTAL          = 12 * 60;
   const TICK_MS        = 120; // time-lapse: 12 min of simulation runs in ~90 real seconds
-  const completedTasks = tasks.filter((_, i) => getTaskStatus(i, elapsed, tasks) === 'done').length;
+  const completedTasks = elapsed >= TOTAL ? tasks.length : tasks.filter((_, i) => getTaskStatus(i, elapsed, tasks) === 'done').length;
   const pct            = Math.round((elapsed / TOTAL) * 100);
   const phases         = Array.from(new Set(tasks.map(t => t.phase)));
 
@@ -733,7 +733,7 @@ export default function TwelveMinuteTestDrive() {
                     </div>
                     {tasks.filter(t => t.phase === phase).map((t, gi) => {
                       const globalIdx = tasks.indexOf(t);
-                      const st        = getTaskStatus(globalIdx, elapsed, tasks);
+                      const st        = elapsed >= TOTAL ? 'done' : getTaskStatus(globalIdx, elapsed, tasks);
                       const isDone    = st === 'done';
                       const isActive  = st === 'active';
                       const isPending = st === 'pending';
