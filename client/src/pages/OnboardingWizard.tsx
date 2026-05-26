@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -54,14 +54,24 @@ const DOMAIN_OWNERS = [
   { domain: 'Talent & Organization', placeholder: 'e.g. CHRO, VP People' },
 ];
 
+const DRAFT_KEY = 'vm_onboarding_draft';
+
+function loadDraft() {
+  try { const raw = localStorage.getItem(DRAFT_KEY); return raw ? JSON.parse(raw) : null; }
+  catch { return null; }
+}
+
 type Phase = 'journey' | 'step' | 'complete';
 
 export default function OnboardingWizard() {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
+
+  const draft = loadDraft();
+  const [hasDraft, setHasDraft] = useState(!!draft && draft.view === 'step');
   const [view, setView] = useState<Phase>('journey');
-  const [currentStep, setCurrentStep] = useState(0);
-  const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
+  const [currentStep, setCurrentStep] = useState(draft?.currentStep || 0);
+  const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set(draft?.completedSteps || []));
 
   const [orgData, setOrgData] = useState({
     companyName: '',
@@ -73,6 +83,7 @@ export default function OnboardingWizard() {
     primaryEmail: '',
     primaryRole: '',
     departments: ['Executive', 'Operations', 'Finance', 'Legal', 'Communications'],
+    ...(draft?.orgData || {}),
   });
 
   const [ideaData, setIdeaData] = useState({
@@ -82,13 +93,30 @@ export default function OnboardingWizard() {
     domainOwners: DOMAIN_OWNERS.map(d => ({ domain: d.domain, owner: '', email: '', mobile: '', backup: '' })),
     approvalRequired: true,
     budgetThreshold: '100000',
+    ...(draft?.ideaData || {}),
   });
 
   const [playbookData, setPlaybookData] = useState({
     selected: ['Financial Crisis Response', 'Competitive Intelligence', 'Crisis & Reputation'],
     triggerAlerts: true,
     autoEscalation: true,
+    ...(draft?.playbookData || {}),
   });
+
+  useEffect(() => {
+    if (view === 'step') {
+      try {
+        localStorage.setItem(DRAFT_KEY, JSON.stringify({
+          view, currentStep,
+          completedSteps: Array.from(completedSteps),
+          orgData, ideaData, playbookData,
+          savedAt: Date.now(),
+        }));
+      } catch {}
+    }
+  }, [view, currentStep, orgData, ideaData, playbookData, completedSteps]);
+
+  const clearDraft = () => { try { localStorage.removeItem(DRAFT_KEY); } catch {} };
 
   const completeOnboardingMutation = useMutation({
     mutationFn: async () => {
@@ -125,10 +153,12 @@ export default function OnboardingWizard() {
       return { success: true };
     },
     onSuccess: () => {
+      clearDraft();
       queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
       setView('complete');
     },
     onError: () => {
+      clearDraft();
       queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
       setView('complete');
     },
@@ -156,8 +186,10 @@ export default function OnboardingWizard() {
       <CompleteView orgName={orgData.companyName} onGo={() => setLocation('/dashboard')} />
     ) : view === 'journey' ? (
       <JourneyView
-        onBegin={() => setView('step')}
+        onBegin={() => { setHasDraft(false); setView('step'); }}
         onSkip={() => completeOnboardingMutation.mutate()}
+        hasDraft={hasDraft}
+        onResume={() => { setHasDraft(false); setView('step'); }}
       />
     ) : (
     <div style={{ background: OFF, fontFamily: "'Barlow', sans-serif", fontWeight: 500 }}>
@@ -508,7 +540,7 @@ export default function OnboardingWizard() {
   );
 }
 
-function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => void }) {
+function JourneyView({ onBegin, onSkip, hasDraft, onResume }: { onBegin: () => void; onSkip: () => void; hasDraft?: boolean; onResume?: () => void; }) {
   const PHASES = [
     {
       num: "01", label: "Foundation", timing: "Today · ~20 minutes", color: GOLD, doing: "You complete this",
@@ -584,14 +616,28 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
           ))}
         </div>
 
+        {hasDraft && (
+          <div style={{ marginBottom: 24, padding: "16px 24px", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.35)", display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: GOLD, marginBottom: 2 }}>You have an unfinished setup</div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)" }}>Your progress was saved automatically — pick up right where you left off.</div>
+            </div>
+            <button
+              onClick={onResume}
+              style={{ padding: "10px 24px", background: GOLD, color: NAVY, border: "none", cursor: "pointer", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 8, whiteSpace: "nowrap" }}>
+              Resume Setup <ChevronRight size={14} />
+            </button>
+          </div>
+        )}
+
         <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
           <button
             onClick={onBegin}
-            style={{ display: "flex", alignItems: "center", gap: 12, padding: "18px 40px", background: GOLD, color: NAVY, border: "none", cursor: "pointer", fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
-            Begin Phase 1 — Foundation
+            style={{ display: "flex", alignItems: "center", gap: 12, padding: "18px 40px", background: hasDraft ? "rgba(255,255,255,0.08)" : GOLD, color: hasDraft ? "rgba(255,255,255,0.6)" : NAVY, border: hasDraft ? "1px solid rgba(255,255,255,0.15)" : "none", cursor: "pointer", fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+            {hasDraft ? "Start Over" : "Begin Phase 1 — Foundation"}
             <ArrowRight size={18} />
           </button>
-          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)" }}>About 20 minutes</div>
+          {!hasDraft && <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)" }}>About 20 minutes</div>}
           <button
             onClick={onSkip}
             style={{ background: "transparent", border: "none", color: "rgba(255,255,255,0.35)", fontSize: 12, fontWeight: 500, cursor: "pointer", textDecoration: "underline", padding: 0 }}>
