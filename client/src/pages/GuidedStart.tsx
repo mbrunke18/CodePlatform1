@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import {
   TrendingDown, Shield, Users, Zap, ChevronRight,
-  Radio, Activity, AlertTriangle, CheckCircle2, ArrowRight, Lock
+  Radio, Activity, AlertTriangle, CheckCircle2, ArrowRight, Lock, Package
 } from 'lucide-react';
 
 const NAVY_BG  = "#132558";
@@ -32,6 +32,7 @@ interface Scenario {
   windowLabel: string;
   stakeMetrics: { label: string; value: string; color: string }[];
   whatHappensNext: string[];
+  redirectTo?: string;
 }
 
 const SCENARIOS: Scenario[] = [
@@ -130,12 +131,47 @@ const SCENARIOS: Scenario[] = [
       { label: 'Succession Readiness',   value: 'Low',     color: RED  },
     ],
     whatHappensNext: [
-      'AI Commander Brief identifies succession options and pipeline stabilization',
+      'Commander Brief identifies succession options and pipeline stabilization',
       'CHRO, board, and executive search activated simultaneously',
       'Top 23 at-risk client accounts flagged for executive relationship coverage',
       '12-minute response establishes board briefing posture before the meeting',
       'Debrief scores your succession velocity against industry standard',
     ],
+  },
+  {
+    id: 'supply-chain',
+    icon: Package,
+    urgency: 'SUPPLIER FORCE MAJEURE — CRITICAL',
+    urgencyColor: TEAL,
+    headline: 'Primary compressor supplier declares force majeure — 14 distribution facilities exposed.',
+    subline: 'Peak season underway. CFO + COO authorization required. Alternate sourcing window: 72 hours.',
+    domain: 'Supply Chain & Operations',
+    detectSignals: ['Supply Chain Disruption', 'Force Majeure Signal', 'Procurement Risk', 'Seasonal Exposure'],
+    allSignals: [
+      'Supplier Force Majeure Detection', 'Facility Exposure Mapping', 'Seasonal Revenue Risk',
+      'Alternate Supplier Activation', 'CFO + COO Authorization Protocol', 'Customer SLA Exposure',
+      'Business Interruption Insurance Triggers', 'Competitive Account Risk',
+    ],
+    triggerName: 'Supplier Force Majeure — Critical Supply Continuity Protocol',
+    playbookKeyword: 'supplier',
+    stakes: '$84M',
+    stakesLabel: 'Seasonal Revenue at Risk',
+    window: '72h',
+    windowLabel: 'Alternate Sourcing Window',
+    stakeMetrics: [
+      { label: 'Facilities Exposed',     value: '14',      color: RED  },
+      { label: 'Seasonal Revenue',       value: '$84M',    color: GOLD },
+      { label: 'Sourcing Window',        value: '72 hrs',  color: GOLD },
+      { label: 'Alt Suppliers Ready',    value: '3',       color: TEAL },
+    ],
+    whatHappensNext: [
+      'Facility exposure mapped across all 14 distribution locations',
+      'CFO + COO simultaneous authorization deployed — no approval cycle delay',
+      'Emergency POs issued to 3 pre-vetted alternate compressor suppliers',
+      'Commercial and industrial accounts notified with executive-signed recovery commitments',
+      'Debrief shows peak season revenue protected vs. 30-day mobilization baseline',
+    ],
+    redirectTo: '/manufacturing-supplier-demo',
   },
 ];
 
@@ -246,6 +282,7 @@ export default function GuidedStart() {
 
   function handleActivate() {
     if (!selected) return;
+    if (selected.redirectTo) { setLocation(selected.redirectTo); return; }
     let pid = playbookId || findPlaybook(selected) || (playbookList[0]?.id ?? null);
     if (pid) setLocation(`/playbook-activation/manual/${pid}`);
   }
@@ -561,20 +598,20 @@ export default function GuidedStart() {
           <div style={{ textAlign: 'center' }}>
             <button
               onClick={handleActivate}
-              disabled={playbookList.length === 0}
+              disabled={!selected.redirectTo && playbookList.length === 0}
               style={{
-                background: playbookList.length === 0 ? 'rgba(201,168,76,0.35)' : GOLD,
+                background: (!selected.redirectTo && playbookList.length === 0) ? 'rgba(201,168,76,0.35)' : GOLD,
                 color: NAVY_INK, border: 'none', padding: '18px 56px',
                 fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                cursor: playbookList.length === 0 ? 'not-allowed' : 'pointer',
+                cursor: (!selected.redirectTo && playbookList.length === 0) ? 'not-allowed' : 'pointer',
                 display: 'inline-flex', alignItems: 'center', gap: 12, transition: 'all 0.2s',
               }}
-              onMouseEnter={e => { if (playbookList.length > 0) { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; } }}
+              onMouseEnter={e => { if (selected.redirectTo || playbookList.length > 0) { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)'; } }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <Zap style={{ width: 18, height: 18 }} />
-              {playbookList.length === 0 ? 'Staging Protocol...' : 'Activate Execution Protocol'}
-              <ArrowRight style={{ width: 18, height: 18 }} />
+              {selected.redirectTo ? 'See the Protocol Run →' : playbookList.length === 0 ? 'Staging Protocol...' : 'Activate Execution Protocol'}
+              {!selected.redirectTo && <ArrowRight style={{ width: 18, height: 18 }} />}
             </button>
 
             <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 16 }}>

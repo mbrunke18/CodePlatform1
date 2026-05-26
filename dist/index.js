@@ -48435,9 +48435,13 @@ var PUBLIC_ROUTES = [
   "/api/pilot-monitoring/pilot-metrics",
   "/api/pilot-monitoring/recent-activity",
   // Pilot Demo - public demo execution for prospects
+  "/api/pilot/apply",
+  // Contact / Founding Partner application form — no auth required
   "/api/pilot/execute",
   "/api/pilot/scenarios",
   "/api/pilot/playbooks",
+  // Founding Partner application — public form submission (lead capture, no auth required)
+  "/api/founding-partner/apply",
   // Incident Analysis & Readiness Assessment - public demo for prospects
   "/api/incidents/analyze",
   "/api/incidents/generate-playbook",

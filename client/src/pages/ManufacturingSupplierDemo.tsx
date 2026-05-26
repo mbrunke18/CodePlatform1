@@ -12,33 +12,33 @@ const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, s
 const DM: React.CSSProperties  = { fontFamily: "'Barlow', sans-serif" };
 
 const SCENARIO = {
-  title: "Critical Supplier Failure",
-  subtitle: "Primary semiconductor supplier files bankruptcy — 14-day production halt risk",
-  domain: "Supply Chain & Operations",
-  company: "Fortune 500 Technology Hardware Manufacturer — $42B revenue · 340 enterprise customers · 18 production facilities",
-  trigger: "Your primary semiconductor supplier for three critical server SKUs has filed Chapter 11. You have 14 days of buffer stock. After that, production halts on $2.1B of committed customer orders. Your top 10 enterprise customers — including federal government contracts — have contractual delivery clauses with financial penalties. Competitors are already calling your accounts.",
+  title: "Supplier Force Majeure — HVACR",
+  subtitle: "Primary compressor component supplier declares force majeure — 14 distribution facilities exposed at peak season",
+  domain: "Supply Chain & Operations — Industrial HVACR",
+  company: "Mid-Market HVACR Distributor & Service Organization — 14 regional distribution facilities · 2,400 commercial and industrial customers · Peak cooling season in progress",
+  trigger: "Your primary compressor component supplier has declared force majeure, citing a facility fire that eliminates 100% of your contracted volume for the next 90 days. You have 14 downstream distribution facilities exposed. Peak commercial cooling season is underway — your largest revenue window of the year. Emergency alternate sourcing requires simultaneous CFO and COO authorization. Your top commercial and industrial accounts have service-level commitments with financial consequences. Competitors are actively contacting your customer base.",
   stats: [
-    { value: "14 days", label: "Buffer stock before production halt", sub: "$2.1B of committed orders at risk" },
-    { value: "68%", label: "Single-source dependency on failed supplier", sub: "No pre-qualified alternate in place" },
-    { value: "$180M", label: "Contractual penalty exposure", sub: "If delivery SLAs missed beyond 30 days" },
+    { value: "14", label: "Distribution facilities with immediate exposure", sub: "$84M seasonal revenue window at risk" },
+    { value: "90 days", label: "Force majeure window — peak season overlap", sub: "Critical compressor components unavailable from primary supplier" },
+    { value: "72 hrs", label: "Decision window for alternate sourcing", sub: "CFO + COO simultaneous authorization required" },
   ],
-  surviveScore: 38,
-  thriveScore: 89,
-  analysis: "Single-source supplier failure is the highest-probability, highest-impact supply chain risk for technology manufacturers — and the least prepared for. Without pre-staged alternate supplier relationships and pre-authorized emergency procurement limits, companies spend 3–4 weeks in approval cycles before the first alternate PO ships. With Readiness OS, emergency procurement, customer communication, and production resequencing deploy within 12 minutes of confirmation.",
-  playbooks: ["Critical Supplier Failure Response", "Emergency Procurement Protocol", "Customer Impact Communication", "Production Continuity Planning", "Business Interruption Insurance Filing"],
-  insight: "The organizations that recover fastest from supplier failure are not the ones with the best procurement teams — they are the ones whose procurement decisions were already made before the crisis. Pre-staged alternate supplier relationships, pre-authorized emergency PO limits, and pre-built customer communication templates are the difference between 12-minute response and a 30-day scramble.",
+  surviveScore: 34,
+  thriveScore: 91,
+  analysis: "Supplier force majeure during peak demand season is the highest-impact supply chain scenario in industrial HVACR — and the least prepared for. Without pre-staged alternate supplier relationships, pre-authorized emergency procurement limits, and pre-built customer communication protocols, organizations spend 3–4 weeks in CFO and COO alignment cycles before the first alternate PO ships. By then, the peak season window has closed and the revenue is unrecoverable. With Readiness OS, emergency procurement authorization, alternate supplier activation, and customer communication deploy within 12 minutes of confirmed force majeure.",
+  playbooks: ["Supplier Force Majeure Response", "Emergency Procurement Authorization", "Alternate Supplier Activation Protocol", "Commercial Customer Impact Communication", "Service-Level Continuity Planning", "Business Interruption Insurance Filing"],
+  insight: "In HVACR distribution, the companies that recover fastest from supplier disruptions are not the ones with the best procurement relationships — they are the ones whose procurement decisions were already made before the disruption. Pre-staged alternate supplier agreements, pre-authorized emergency PO limits, and pre-built customer communication templates are the difference between a 12-minute coordinated response and spending the peak season scrambling while competitors absorb your accounts.",
 };
 
 const TASKS = [
-  { phase: "EXPOSURE MAPPING", role: "COO", action: "Pull full supplier exposure: affected SKUs by part number, % of production at risk, buffer stock days remaining by product line, customer commitments at risk by revenue", time: "1:30", priority: "critical" },
-  { phase: "EXPOSURE MAPPING", role: "CFO", action: "Run revenue-at-risk model: production days affected × daily revenue by SKU × margin. Calculate exact date of first customer impact if no alternate supply is secured", time: "2:00", priority: "critical" },
-  { phase: "ALTERNATE SUPPLY", role: "Chief Procurement Officer", action: "Issue emergency POs to 3 pre-vetted alternate suppliers simultaneously — pre-negotiated emergency rates and lead times activate immediately without standard approval cycle", time: "3:00", priority: "critical" },
-  { phase: "ALTERNATE SUPPLY", role: "Head of Logistics", action: "Reroute all inbound freight immediately. Authorize air freight for critical components where margin supports cost delta — document all premium freight costs for insurance claim", time: "4:30", priority: "high" },
-  { phase: "CUSTOMER COMMUNICATION", role: "CEO / Chief Revenue Officer", action: "Personal outreach to top 10 enterprise customers — specific recovery date, named executive contact, written commitment letter. No generic notifications for accounts with penalty clauses.", time: "6:00", priority: "critical" },
-  { phase: "CUSTOMER COMMUNICATION", role: "Chief Revenue Officer", action: "Prepare full customer impact brief: which orders affected, revised commit dates, recovery plan, executive contact assigned. Legal review required before distribution.", time: "7:30", priority: "high" },
-  { phase: "PRODUCTION CONTINUITY", role: "COO", action: "Shift production mix to maximize output from available components — prioritize highest-margin and contractually-penalized orders first, document resequencing rationale", time: "9:00", priority: "high" },
-  { phase: "LEGAL + INSURANCE", role: "General Counsel", action: "File business interruption insurance claim immediately. Document all incremental costs: expediting fees, premium freight, overtime, and accruing customer penalties", time: "10:30", priority: "high" },
-  { phase: "STRATEGIC RESILIENCE", role: "Chief Procurement Officer", action: "Initiate dual-source qualification for all single-source critical components. Present board-level supply chain resilience roadmap with investment requirement and timeline", time: "12:00", priority: "high" },
+  { phase: "EXPOSURE MAPPING", role: "COO", action: "Map full facility exposure: identify which of the 14 distribution facilities are critically affected by compressor component shortage, buffer inventory by location, and service commitments at risk by account", time: "1:30", priority: "critical" },
+  { phase: "EXPOSURE MAPPING", role: "CFO", action: "Run seasonal revenue-at-risk model: facilities affected × daily revenue × remaining peak season weeks. Quantify exact revenue at risk if alternate sourcing does not activate within 72 hours", time: "2:00", priority: "critical" },
+  { phase: "PROCUREMENT AUTHORIZATION", role: "CFO + COO", action: "Joint authorization of emergency procurement budget — pre-staged for simultaneous sign-off. Activates pre-negotiated emergency pricing with 3 alternate compressor component suppliers without standard approval cycle delay", time: "3:00", priority: "critical" },
+  { phase: "PROCUREMENT AUTHORIZATION", role: "Chief Procurement Officer", action: "Issue emergency POs to 3 pre-vetted alternate suppliers simultaneously. Pre-negotiated emergency lead times and pricing activate immediately. Prioritize facilities with highest seasonal volume and shortest buffer stock", time: "4:30", priority: "critical" },
+  { phase: "CUSTOMER COMMUNICATION", role: "President / GM", action: "Direct outreach to top-tier commercial and industrial accounts — specific recovery timeline, named executive contact, written service continuity commitment. No generic notifications for accounts with SLA penalty clauses.", time: "6:00", priority: "critical" },
+  { phase: "CUSTOMER COMMUNICATION", role: "VP Sales & Distribution", action: "Prepare full customer impact brief with legal review: which accounts are affected, revised delivery windows, alternate sourcing recovery plan, and executive contact assigned per account tier. Distribute after legal sign-off.", time: "7:30", priority: "high" },
+  { phase: "DISTRIBUTION CONTINUITY", role: "COO", action: "Resequence inbound component allocation across 14 facilities — prioritize highest-revenue facilities and accounts with contractual SLA exposure. Document resequencing rationale for insurance and board reporting", time: "9:00", priority: "high" },
+  { phase: "LEGAL + INSURANCE", role: "General Counsel", action: "File business interruption insurance claim immediately. Document all incremental costs: emergency sourcing premiums, expedited freight, and any accruing customer SLA penalties. Prepare force majeure legal notices for applicable contracts.", time: "10:30", priority: "high" },
+  { phase: "STRATEGIC RESILIENCE", role: "Chief Procurement Officer", action: "Initiate dual-source qualification for all single-source critical HVACR components. Present board-level supply chain resilience roadmap with pre-staged alternate supplier program — investment requirement, lead time reduction, and risk reduction metrics", time: "12:00", priority: "high" },
 ];
 
 function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
@@ -310,15 +310,15 @@ export default function ManufacturingSupplierDemo() {
               <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
               <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
-                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Supply Continuity Secured in {fmtSecs(elapsed)}</em>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Distribution Continuity Secured in {fmtSecs(elapsed)}</em>
               </h2>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Emergency procurement deployed, enterprise customers notified with specific commit dates, and production resequenced — all within 12 minutes of trigger confirmation.</p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Emergency procurement authorized, alternate suppliers activated, commercial customers notified with specific recovery commitments — all 14 facilities coordinated within 12 minutes of confirmed force majeure.</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
               {[
-                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. weeks of procurement cycles', color: TEAL },
-                { label: 'Orders Protected', value: '$2.1B', sub: 'in committed customer revenue', color: GOLD },
-                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'across procurement, ops, legal', color: GOLD },
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. 30 days of procurement cycles', color: TEAL },
+                { label: 'Facilities Coordinated', value: '14', sub: 'distribution facilities — simultaneous response', color: GOLD },
+                { label: 'Tasks Deployed', value: `${completedTasks}/${TASKS.length}`, sub: 'across procurement, ops, sales, legal', color: GOLD },
                 { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
               ].map(m => (
                 <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
@@ -337,7 +337,7 @@ export default function ManufacturingSupplierDemo() {
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
             </div>
             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
-              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your supply chain — with your real suppliers, your real customer commitments, and your real procurement protocols?</p>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your distribution network — with your real suppliers, your real customer commitments, and your real procurement authorization protocols?</p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request Founding Partner Access →</a>
                 <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
