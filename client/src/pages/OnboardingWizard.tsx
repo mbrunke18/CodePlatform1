@@ -70,6 +70,7 @@ export default function OnboardingWizard() {
   const draft = loadDraft();
   const [hasDraft, setHasDraft] = useState(!!draft && draft.view === 'step');
   const [view, setView] = useState<Phase>('journey');
+  const [draftSaved, setDraftSaved] = useState(false);
   const [currentStep, setCurrentStep] = useState(draft?.currentStep || 0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set(draft?.completedSteps || []));
 
@@ -112,6 +113,9 @@ export default function OnboardingWizard() {
           orgData, ideaData, playbookData,
           savedAt: Date.now(),
         }));
+        setDraftSaved(true);
+        const t = setTimeout(() => setDraftSaved(false), 2000);
+        return () => clearTimeout(t);
       } catch {}
     }
   }, [view, currentStep, orgData, ideaData, playbookData, completedSteps]);
@@ -203,12 +207,22 @@ export default function OnboardingWizard() {
               <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)" }}>Phase 1 of 3 — Foundation</span>
             </div>
-            <button
-              onClick={() => completeOnboardingMutation.mutate()}
-              disabled={completeOnboardingMutation.isPending}
-              style={{ background: "transparent", border: "1px solid rgba(201,168,76,0.4)", color: "rgba(201,168,76,0.85)", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "8px 18px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
-              {completeOnboardingMutation.isPending ? "Saving..." : "Skip to Platform →"}
-            </button>
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <span style={{
+                fontSize: 11, fontWeight: 600, color: draftSaved ? "rgba(43,138,110,0.9)" : "rgba(255,255,255,0.3)",
+                display: "flex", alignItems: "center", gap: 5,
+                transition: "color 0.4s ease",
+              }}>
+                <Check size={12} />
+                {draftSaved ? "Draft saved" : "Auto-saving"}
+              </span>
+              <button
+                onClick={() => completeOnboardingMutation.mutate()}
+                disabled={completeOnboardingMutation.isPending}
+                style={{ background: "transparent", border: "1px solid rgba(201,168,76,0.4)", color: "rgba(201,168,76,0.85)", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "8px 18px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
+                {completeOnboardingMutation.isPending ? "Saving..." : "Skip to Platform →"}
+              </button>
+            </div>
           </div>
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,3.5vw,42px)", color: "#fff", marginBottom: 8, lineHeight: 1.1 }}>
             Building Your <em style={{ fontStyle: "italic", color: GOLD_LT }}>Execution Foundation</em>
