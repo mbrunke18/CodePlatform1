@@ -57,6 +57,7 @@ const SCENARIOS = [
   { id: 'talent', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'Talent', urgency: 'high' },
   { id: 'competitor', title: 'Competitor Launch', subtitle: 'Competitor announces flagship product — sales calls inbound now', domain: 'Growth & Positioning', urgency: 'high' },
   { id: 'market-entry', title: 'Market Entry Window', subtitle: 'Regulatory change opens new segment — 90-day window closing', domain: 'Growth & Positioning', urgency: 'high' },
+  { id: 'hvacr-supplier', title: 'Supplier Force Majeure — HVACR', subtitle: 'Primary compressor supplier declares force majeure — 14 facilities exposed at peak season', domain: 'Supply Chain & Operations', urgency: 'high', href: '/manufacturing-supplier-demo' },
   { id: 'compound', title: 'Compound Crisis', subtitle: 'Activist stake + DOJ inquiry — simultaneous triggers', domain: 'MULTI-DOMAIN', urgency: 'critical', compound: true },
 ];
 
@@ -396,22 +397,22 @@ export default function TwelveMinuteTestDrive() {
               {SCENARIOS.map(s => {
                 const domain = SCENARIO_DOMAIN_MAP[s.id];
                 const hasLiveSignal = liveCtx && liveCtx.domainsActive.includes(domain);
-                return (
-                  <button
-                    key={s.id}
-                    onClick={() => setSelectedId(s.id)}
-                    style={{
-                      textAlign: 'left', padding: '20px 24px', cursor: 'pointer',
-                      background: selectedId === s.id ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.03)',
-                      borderTop: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
-                      borderRight: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
-                      borderBottom: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
-                      borderLeft: `3px solid ${(s as any).compound ? TEAL : s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
-                    gridColumn: (s as any).compound ? 'span 2' : undefined,
-                      transition: 'all 0.2s ease',
-                      position: 'relative',
-                    }}
-                  >
+                const isExternal = !!(s as any).href;
+                const cardStyle: React.CSSProperties = {
+                  textAlign: 'left', padding: '20px 24px', cursor: 'pointer',
+                  background: selectedId === s.id ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.03)',
+                  borderTop: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderRight: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderBottom: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderLeft: `3px solid ${(s as any).compound ? TEAL : isExternal ? TEAL : s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
+                  gridColumn: (s as any).compound ? 'span 2' : undefined,
+                  transition: 'all 0.2s ease',
+                  position: 'relative',
+                  display: 'block',
+                  textDecoration: 'none',
+                };
+                const cardInner = (
+                  <>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
@@ -424,7 +425,13 @@ export default function TwelveMinuteTestDrive() {
                           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>2 Protocols · Simultaneous</span>
                         </div>
                       )}
-                      {!(s as any).compound && hasLiveSignal && (
+                      {isExternal && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
+                          <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: TEAL_LT }} />
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>Full Simulation</span>
+                        </div>
+                      )}
+                      {!isExternal && !(s as any).compound && hasLiveSignal && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
                           <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: TEAL_LT, animation: 'vm-pulse 2s ease-in-out infinite' }} />
                           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>Live signal</span>
@@ -433,7 +440,12 @@ export default function TwelveMinuteTestDrive() {
                     </div>
                     <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 4, lineHeight: 1.2 }}>{s.title}</div>
                     <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', lineHeight: 1.5 }}>{s.subtitle}</div>
-                  </button>
+                  </>
+                );
+                return isExternal ? (
+                  <Link key={s.id} href={(s as any).href} style={cardStyle}>{cardInner}</Link>
+                ) : (
+                  <button key={s.id} onClick={() => setSelectedId(s.id)} style={{ ...cardStyle, width: '100%' }}>{cardInner}</button>
                 );
               })}
             </div>
