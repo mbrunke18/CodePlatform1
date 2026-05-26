@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { ArrowUp, ArrowDown, TrendingUp, Zap, Target, Clock, Award } from 'lucide-react';
+import { useLocation } from 'wouter';
 
 interface DecisionVelocityData {
   velocityScore: number; // 0-100
@@ -20,6 +21,7 @@ interface DecisionVelocityData {
 }
 
 export default function DecisionVelocityDashboard({ organizationId }: { organizationId: string }) {
+  const [, setLocation] = useLocation();
   // Demo data showing Decision Velocity metrics
   const velocityData: DecisionVelocityData = {
     velocityScore: 92,
@@ -203,7 +205,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
           </div>
 
           {/* Action Button */}
-          <Button className="w-full" variant="default" data-testid="button-view-detailed-velocity">
+          <Button className="w-full" variant="default" data-testid="button-view-detailed-velocity" onClick={() => setLocation('/decision-velocity')}>
             <Target className="h-4 w-4 mr-2" />
             View Detailed Velocity Analysis
           </Button>
