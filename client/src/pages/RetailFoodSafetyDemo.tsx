@@ -104,7 +104,7 @@ export default function RetailFoodSafetyDemo() {
   const loggedA = useRef<Set<number>>(new Set());
   const elapsedRef = useRef(0);
   const TOTAL = 12 * 60;
-  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const completedTasks = elapsed >= TOTAL ? TASKS.length : TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
   const pct = Math.round((elapsed / TOTAL) * 100);
 
   const tick = useCallback(() => {
