@@ -46,7 +46,7 @@ function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = 
 function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
   const t = TASKS[idx]; if (!t) return 'pending';
   const d = parseTime(t.time);
-  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+  const confirmAt = Math.min(d + 30, 720); if (elapsed >= confirmAt) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
 }
 function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
   return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
@@ -103,7 +103,7 @@ export default function EnergyGridFailureDemo() {
   const loggedA = useRef<Set<number>>(new Set());
   const elapsedRef = useRef(0);
   const TOTAL = 12 * 60;
-  const completedTasks = elapsed >= TOTAL ? TASKS.length : TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
   const pct = Math.round((elapsed / TOTAL) * 100);
 
   const tick = useCallback(() => {
