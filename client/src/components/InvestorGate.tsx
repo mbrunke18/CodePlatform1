@@ -7,6 +7,7 @@ import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { apiRequest } from "@/lib/queryClient";
 import { Lock, ArrowRight, Shield, ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
+import { useAuth } from "@/hooks/useAuth";
 
 const STORAGE_KEY = "vm_investor_access";
 const NAVY = "#0A0F2E";
@@ -22,6 +23,7 @@ interface InvestorGateProps {
 }
 
 export default function InvestorGate({ children, pageName = "/investor-resources" }: InvestorGateProps) {
+  const { user } = useAuth();
   const [granted, setGranted] = useState(false);
   const [checking, setChecking] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -77,6 +79,7 @@ export default function InvestorGate({ children, pageName = "/investor-resources
   };
 
   if (checking) return null;
+  if (user) return <>{children}</>;
   if (granted) return <>{children}</>;
 
   const handleBack = () => {
@@ -126,8 +129,8 @@ export default function InvestorGate({ children, pageName = "/investor-resources
       <div style={{ position: "absolute", bottom: -100, left: -80, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(201,168,76,0.12) 0%,transparent 60%)", pointerEvents: "none" }} />
 
       <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 480 }}>
-        <div style={{ marginBottom: 40, textAlign: "center" }}>
-          <ExecuteIQLogo variant="full" height={80} color="white" />
+        <div style={{ marginBottom: 40, display: "flex", justifyContent: "center" }}>
+          <ExecuteIQLogo variant="full" height={56} color="white" />
         </div>
 
         <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)", padding: "44px 40px" }}>
