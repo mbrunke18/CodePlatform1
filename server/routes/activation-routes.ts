@@ -102,7 +102,7 @@ export function registerActivationRoutes(app: Express): void {
 
       notifyPlaybookActivation(playbookName, stakeholderCount, deadline).catch(() => {});
 
-      // Send activation email to all stakeholder contacts for the org
+      // Notify all active stakeholder contacts via their preferred channel
       (async () => {
         try {
           const orgId = (req as any).orgId || 'system';
@@ -110,63 +110,132 @@ export function registerActivationRoutes(app: Express): void {
             .select()
             .from(stakeholderContacts)
             .where(eq(stakeholderContacts.organizationId, orgId as any));
-          const emails = contacts.filter((c: any) => c.isActive && c.email).map((c: any) => c.email!).filter(Boolean);
-          if (emails.length === 0) return;
+          const active = contacts.filter((c: any) => c.isActive);
+          if (active.length === 0) return;
 
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-          if (!apiKey) return;
-          const resend = new Resend(apiKey);
+          const resend = apiKey ? new Resend(apiKey) : null;
 
-          const html = `
+          const emailHtml = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
-              <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
-                <div style="background:#132558;padding:32px 36px;">
-                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Playbook Activated</div>
-                  <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Response Initiated</div>
+              <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:2px;overflow:hidden;border:1px solid #e8e4dc;">
+                <div style="background:#0A0F2E;padding:32px 36px;border-bottom:3px solid #C9A84C;">
+                  <div style="color:#C9A84C;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">Readiness OS · Protocol Activated</div>
+                  <div style="color:#ffffff;font-size:20px;font-weight:700;line-height:1.3;">${playbookName}</div>
+                  <div style="display:inline-block;margin-top:10px;background:#C9A84C;color:#0A0F2E;font-size:10px;font-weight:800;letter-spacing:2px;padding:4px 10px;border-radius:2px;">ACTIVE</div>
                 </div>
                 <div style="padding:32px 36px;">
                   <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
                     <tr>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Playbook Activated</td>
+                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:12px;width:40%;text-transform:uppercase;letter-spacing:0.5px;">Protocol</td>
                       <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${playbookName}</td>
                     </tr>
                     <tr>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Stakeholders Coordinated</td>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${stakeholderCount}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Execution Window</td>
+                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Execution Window</td>
                       <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">12 minutes</td>
                     </tr>
                     <tr>
-                      <td style="padding:10px 0;color:#666;font-size:13px;">Status</td>
-                      <td style="padding:10px 0;color:#C9A84C;font-size:13px;font-weight:700;">ACTIVE — Pre-staged response underway</td>
+                      <td style="padding:10px 0;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Status</td>
+                      <td style="padding:10px 0;color:#C9A84C;font-size:13px;font-weight:700;">Pre-staged response underway</td>
                     </tr>
                   </table>
-                  <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
-                    <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Your pre-staged playbook is now executing. Tasks are being assigned automatically. The 12-minute execution clock is running.</div>
+                  <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;margin-bottom:28px;">
+                    <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Your pre-staged Readiness Protocol is now executing. Tasks are assigned. The 12-minute execution clock is running.</div>
                   </div>
                   <div style="text-align:center;">
-                    <a href="${appUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">View Live Execution →</a>
+                    <a href="${appUrl}/command-center" style="display:inline-block;background:#0A0F2E;color:#ffffff;text-decoration:none;padding:14px 36px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">View Live Execution →</a>
                   </div>
                 </div>
-                <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                  <div style="color:#999;font-size:11px;text-align:center;">This notification was generated automatically by Readiness OS when a playbook was activated. No human reviewed it before it reached you.</div>
+                <div style="background:#f8f7f4;padding:18px 36px;border-top:1px solid #e8e4dc;text-align:center;">
+                  <div style="color:#999;font-size:11px;">Generated automatically by Readiness OS. AI monitors. Executives authorize.</div>
                 </div>
               </div>
             </div>
           `;
 
-          await resend.emails.send({
-            from: 'Readiness OS <pilot@vaughnmartin.com>',
-            replyTo: 'pilot@vaughnmartin.com',
-            to: emails,
-            subject: `🚀 Playbook Activated: ${playbookName} — 12-Minute Execution Clock Running`,
-            html,
-          });
-          console.log(`📧 Activation email sent to ${emails.length} stakeholder(s)`);
+          // Collect email recipients (email-preferred, voice-preferred with email, and push fallback)
+          const emailContacts = active.filter((c: any) =>
+            c.email && (!c.preferredChannel || c.preferredChannel === 'email' || c.preferredChannel === 'voice' || (c.preferredChannel === 'push'))
+          );
+
+          // Send batch email for all email-routed contacts
+          if (resend && emailContacts.length > 0) {
+            const emails = emailContacts.map((c: any) => c.email!).filter(Boolean);
+            await resend.emails.send({
+              from: 'Readiness OS <pilot@vaughnmartin.com>',
+              replyTo: 'pilot@vaughnmartin.com',
+              to: emails,
+              subject: `Readiness Protocol Activated: ${playbookName} — 12-Minute Execution Clock`,
+              html: emailHtml,
+            });
+            console.log(`📧 Activation email sent to ${emails.length} stakeholder(s)`);
+          }
+
+          // SMS via Twilio for SMS-preferred contacts with a phone number
+          const smsContacts = active.filter((c: any) => c.preferredChannel === 'sms' && c.phone);
+          if (smsContacts.length > 0) {
+            const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER } = process.env;
+            if (TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN && TWILIO_PHONE_NUMBER) {
+              const twilio = (await import('twilio')).default;
+              const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+              await Promise.all(
+                smsContacts.map(async (c: any) => {
+                  try {
+                    const body = `Readiness OS: ${playbookName} activated. Your role: ${c.role} — 12-minute execution window. View: ${appUrl}/command-center`;
+                    await twilioClient.messages.create({ from: TWILIO_PHONE_NUMBER, to: c.phone, body });
+                    console.log(`📱 SMS sent to ${c.name || c.role} (${c.phone})`);
+                  } catch (smsErr) {
+                    console.error(`❌ SMS failed for ${c.name || c.role}, falling back to email`);
+                    if (resend && c.email) {
+                      await resend.emails.send({
+                        from: 'Readiness OS <pilot@vaughnmartin.com>',
+                        replyTo: 'pilot@vaughnmartin.com',
+                        to: [c.email],
+                        subject: `Readiness Protocol Activated: ${playbookName} — 12-Minute Execution Clock`,
+                        html: emailHtml,
+                      }).catch(() => {});
+                    }
+                  }
+                })
+              );
+            } else {
+              // Twilio not configured — fall back to email for SMS-preferred contacts
+              if (resend) {
+                const fallbackEmails = smsContacts.filter((c: any) => c.email).map((c: any) => c.email!);
+                if (fallbackEmails.length > 0) {
+                  await resend.emails.send({
+                    from: 'Readiness OS <pilot@vaughnmartin.com>',
+                    replyTo: 'pilot@vaughnmartin.com',
+                    to: fallbackEmails,
+                    subject: `Readiness Protocol Activated: ${playbookName} — 12-Minute Execution Clock`,
+                    html: emailHtml,
+                  }).catch(() => {});
+                  console.log(`📧 SMS fallback email sent to ${fallbackEmails.length} stakeholder(s) (Twilio not configured)`);
+                }
+              }
+            }
+          }
+
+          // Push via Socket.IO for push-preferred contacts (already included in email batch above too)
+          const pushContacts = active.filter((c: any) => c.preferredChannel === 'push');
+          if (pushContacts.length > 0) {
+            pushContacts.forEach((c: any) => {
+              wsService.sendToUser(String(c.id), 'readiness-alert', {
+                type: 'executive-alert',
+                severity: 'high',
+                title: `${playbookName} Activated`,
+                body: 'Your pre-staged Readiness Protocol is executing. 12-minute window is active.',
+                role: c.role,
+                executionWindow: '12 minutes',
+                link: '/command-center',
+                timestamp: new Date().toISOString(),
+              });
+            });
+            console.log(`🔔 Push notification emitted to ${pushContacts.length} stakeholder(s)`);
+          }
+
         } catch (err) {
-          console.error('Activation notification email failed (non-blocking):', err);
+          console.error('Activation notification failed (non-blocking):', err);
         }
       })();
 

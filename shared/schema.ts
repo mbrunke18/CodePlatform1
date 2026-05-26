@@ -6518,6 +6518,8 @@ export const stakeholderContacts = pgTable('stakeholder_contacts', {
   role: varchar('role', { length: 100 }).notNull(), // 'CEO', 'CFO', 'CISO', 'COO', etc.
   name: varchar('name', { length: 255 }),
   email: varchar('email', { length: 255 }),
+  phone: varchar('phone', { length: 50 }),                // E.164 format e.g. +12125551234
+  preferredChannel: varchar('preferred_channel', { length: 20 }).default('email'), // email | sms | push | voice
   slackUserId: varchar('slack_user_id', { length: 100 }),
   slackChannel: varchar('slack_channel', { length: 100 }),
   isActive: boolean('is_active').default(true),
