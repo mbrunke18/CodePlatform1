@@ -233,7 +233,7 @@ export default function StandardNav() {
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open", featured: true },
     { label: "Proof Story", path: "/proof-story", icon: Scale, description: "Same trigger — entirely different outcome. The numbers side by side." },
-    { label: "Pricing & Plans", path: "/pricing", icon: TrendingUp, description: "Core · Oracle Pro · Enterprise — three layers of readiness, transparent value-based pricing", featured: true },
+    { label: "Pricing & Plans", path: "/pricing", icon: TrendingUp, description: "Core · Foresight · Enterprise — three layers of readiness, transparent value-based pricing", featured: true },
     { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how enterprise teams onboard & scale" },
     { label: "Why Not Consulting?", path: "/vs-consulting", icon: Scale, description: "McKinsey charges $300K–$500K for PDFs. We deliver infrastructure that executes." },
     { label: "MS Project EOL → Don't Just Migrate", path: "/ms-project", icon: Scale, description: "ServiceNow moves your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle.", featured: true },

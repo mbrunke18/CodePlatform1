@@ -403,7 +403,7 @@ export default function OnboardingGuide() {
               { title: "Role Experience", path: "/role-selector", desc: "CEO, CFO, CMO, CISO, COO and 7 other role-specific 13-stage simulations showing the exact experience for each executive." },
               { title: "Simulation Studio", path: "/simulation-studio", desc: "Open-ended scenario modeling. Any strategic threat, any industry. Coverage readiness mapped with pre-staged Readiness Protocol recommendations." },
               { title: "IDEA Framework", path: "/idea-framework", desc: "Full walkthrough of the Identify → Detect → Execute → Advance framework with the NFL coaching analogy." },
-              { title: "Investor Presentation", path: "/investor", desc: "Investor-grade deck with market thesis, McKinsey validation, competitive comparison, and ROI model." },
+              { title: "Investor Presentation", path: "/investor-landing", desc: "Investor-grade deck with market thesis, McKinsey validation, competitive comparison, and ROI model." },
             ].map(({ title, path, desc }) => (
               <div key={title} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 20 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, flexWrap: "wrap" as const }}>

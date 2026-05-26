@@ -1,0 +1,2 @@
+- [Broken investor route](investor-route.md) — /investor is a 404; correct routes are /investors and /investor-landing
+- [StandardNav Oracle Pro fix](standardnav-oracle-pro.md) — StandardNav mega-menu descriptions can drift from tier renames; must audit component nav descriptions, not just page content

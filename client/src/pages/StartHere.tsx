@@ -41,7 +41,7 @@ const tracks = [
     headline: "First-mover in a new enterprise software category.",
     body: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the orchestration layer that makes the $300B Microsoft investment execute in 12 minutes.",
     cta: "View the Investor Overview",
-    ctaPath: "/investor",
+    ctaPath: "/investor-landing",
     secondary: "Read the Executive Brief",
     secondaryPath: "/executive-brief",
     accent: TEAL,

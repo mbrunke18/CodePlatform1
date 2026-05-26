@@ -3780,7 +3780,7 @@ export default function Homepage() {
                 body: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the orchestration layer above the $300B Microsoft investment.",
                 proof: ["$42B TAM — no incumbent owns this layer", "3,600× execution head start", "$750K raise · 18 months · 3 milestones", "Live product — no login required"],
                 cta: "View the Investor Overview",
-                ctaPath: "/investor",
+                ctaPath: "/investor-landing",
                 accent: TEAL,
               },
             ].map((track, i) => (
