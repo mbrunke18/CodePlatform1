@@ -17,9 +17,9 @@ export default function Pricing() {
   useEffect(() => {
     updatePageMetadata({
       title: "Enterprise Pricing - Readiness OS | Strategic Readiness Platform",
-      description: "Value-based pricing for enterprise organizations. Core ($250K), Oracle Pro ($450K), Enterprise ($750K–$1.5M). Founding Partner Program ($75K, 100% credited to Year 1).",
+      description: "Value-based pricing for enterprise organizations. Core ($250K), Foresight ($450K), Enterprise ($750K–$1.5M). Founding Partner Program ($75K, 100% credited to Year 1).",
       ogTitle: "Readiness OS Enterprise Pricing — Built for startup to Fortune 500",
-      ogDescription: "Three product tiers from $250K–$1.5M annually. Core platform, Oracle Pro (Digital Twin + predictive foresight), and full Enterprise evolution with network learning.",
+      ogDescription: "Three product tiers from $250K–$1.5M annually. Core platform, Foresight (Digital Twin + predictive foresight), and full Enterprise evolution with network learning.",
     });
   }, []);
 
@@ -39,7 +39,7 @@ export default function Pricing() {
             Transparent, value-based pricing for enterprise strategic readiness
           </p>
           <p className="text-lg text-[#6B7280] max-w-3xl mx-auto">
-            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. Core delivers the complete operating model. Oracle Pro adds Digital Twin simulation and predictive foresight — war-gaming responses to triggers that haven't fired yet. Enterprise activates the autonomous evolution network: protocols that improve across every client activation.
+            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. Core delivers the complete operating model. Foresight adds Digital Twin simulation and predictive foresight — war-gaming responses to triggers that haven't fired yet. Enterprise activates the autonomous evolution network: protocols that improve across every client activation.
           </p>
         </div>
       </section>
@@ -134,7 +134,7 @@ export default function Pricing() {
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>What Changes Across Tiers</span>
             </div>
-            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 600, margin: "0 auto" }}>Core delivers the full readiness platform. Oracle Pro adds the Digital Twin and predictive foresight layer. Enterprise adds full network learning and unlimited protocol evolution.</p>
+            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 600, margin: "0 auto" }}>Core delivers the full readiness platform. Foresight adds the Digital Twin and predictive foresight layer. Enterprise adds full network learning and unlimited protocol evolution.</p>
           </div>
           <div style={{ border: "1px solid #E8E4DC", background: "#fff", overflow: "hidden" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr" }}>
@@ -142,7 +142,7 @@ export default function Pricing() {
               <div style={{ padding: "14px 20px", background: NAVY, borderRight: "1px solid rgba(255,255,255,0.08)" }} />
               {[
                 { tier: "Core", price: "$250K", size: "1K–5K employees" },
-                { tier: "Oracle Pro", price: "$450K", size: "5K–15K employees" },
+                { tier: "Foresight", price: "$450K", size: "5K–15K employees" },
                 { tier: "Enterprise", price: "$750K+", size: "15K+ employees" },
               ].map((t, i) => (
                 <div key={t.tier} style={{ padding: "14px 16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
@@ -234,7 +234,7 @@ export default function Pricing() {
               Three Layers of Readiness.
             </h2>
             <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
-              Core delivers the full readiness platform. Oracle Pro adds predictive foresight and Digital Twin simulation. Enterprise adds network-wide autonomous evolution and the full Microsoft ecosystem depth.
+              Core delivers the full readiness platform. Foresight adds predictive foresight and Digital Twin simulation. Enterprise adds network-wide autonomous evolution and the full Microsoft ecosystem depth.
             </p>
           </div>
 
@@ -274,10 +274,10 @@ export default function Pricing() {
               </Button>
             </div>
 
-            {/* Oracle Pro Tier */}
-            <div style={{ background: NAVY, border: `2px solid ${NAVY}`, padding: "40px 32px", position: "relative" }} data-testid="card-tier-oracle-pro">
+            {/* Foresight Tier */}
+            <div style={{ background: NAVY, border: `2px solid ${NAVY}`, padding: "40px 32px", position: "relative" }} data-testid="card-tier-foresight">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>Tier 2</div>
-              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Oracle Pro</h3>
+              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Foresight</h3>
               <p className="text-sm text-white/60 mb-6">5,000–15,000 employees</p>
               <div className="flex items-baseline gap-2 mb-8">
                 <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD }}>$450K</span>
@@ -319,7 +319,7 @@ export default function Pricing() {
               </div>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Everything in Oracle Pro",
+                  "Everything in Foresight",
                   "Autonomous protocol evolution network",
                   "Unlimited custom protocol development",
                   "Dedicated account team",

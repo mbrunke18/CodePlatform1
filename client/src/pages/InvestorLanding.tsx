@@ -1355,7 +1355,7 @@ export default function InvestorLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Users className="h-6 w-6 text-[#0A0F2E]" />
-                    Oracle Pro
+                    Foresight
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

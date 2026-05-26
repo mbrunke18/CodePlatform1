@@ -247,7 +247,7 @@ const FP_EXECS = [
 const FP_TIERS = [
   { label: "Founding Partner", cost: 75000  },
   { label: "Enterprise",       cost: 250000 },
-  { label: "Oracle Pro",       cost: 450000 },
+  { label: "Foresight",        cost: 450000 },
 ];
 
 function FirstUsePaybackCalculator() {
