@@ -17,9 +17,9 @@ export default function Pricing() {
   useEffect(() => {
     updatePageMetadata({
       title: "Enterprise Pricing - Readiness OS | Strategic Readiness Platform",
-      description: "Value-based pricing for enterprise organizations. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K–$1.5M). Founding Partner Program ($75K, 100% credited to Year 1).",
+      description: "Value-based pricing for enterprise organizations. Core ($250K), Oracle Pro ($450K), Enterprise ($750K–$1.5M). Founding Partner Program ($75K, 100% credited to Year 1).",
       ogTitle: "Readiness OS Enterprise Pricing — Built for startup to Fortune 500",
-      ogDescription: "Three service tiers from $250K–$1.5M annually. Same platform across every tier — the difference is relationship depth, custom protocol development, and advisory access.",
+      ogDescription: "Three product tiers from $250K–$1.5M annually. Core platform, Oracle Pro (Digital Twin + predictive foresight), and full Enterprise evolution with network learning.",
     });
   }, []);
 
@@ -134,16 +134,16 @@ export default function Pricing() {
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>What Changes Across Tiers</span>
             </div>
-            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 560, margin: "0 auto" }}>Every tier is the same platform. You're choosing how deep the partnership goes — not which features you get.</p>
+            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 600, margin: "0 auto" }}>Core delivers the full readiness platform. Oracle Pro adds the Digital Twin and predictive foresight layer. Enterprise adds full network learning and unlimited protocol evolution.</p>
           </div>
           <div style={{ border: "1px solid #E8E4DC", background: "#fff", overflow: "hidden" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr" }}>
               {/* Header row */}
               <div style={{ padding: "14px 20px", background: NAVY, borderRight: "1px solid rgba(255,255,255,0.08)" }} />
               {[
-                { tier: "Enterprise", price: "$250K", size: "1K–5K employees" },
-                { tier: "Enterprise Plus", price: "$450K", size: "5K–15K employees" },
-                { tier: "Global", price: "$750K+", size: "15K+ employees" },
+                { tier: "Core", price: "$250K", size: "1K–5K employees" },
+                { tier: "Oracle Pro", price: "$450K", size: "5K–15K employees" },
+                { tier: "Enterprise", price: "$750K+", size: "15K+ employees" },
               ].map((t, i) => (
                 <div key={t.tier} style={{ padding: "14px 16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: i === 1 ? GOLD : "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>{t.tier}</div>
@@ -158,11 +158,12 @@ export default function Pricing() {
                 { feature: "12-minute response orchestration", e: "✓", ep: "✓", g: "✓" },
                 { feature: "Standard integrations (Slack, Jira, Email)", e: "✓", ep: "✓", g: "✓" },
                 { feature: "Advanced integrations (Salesforce, ServiceNow, SAP)", e: "—", ep: "✓", g: "✓" },
+                { feature: "Digital Twin activation simulation", e: "—", ep: "✓", g: "✓" },
+                { feature: "Predictive foresight alerts (advance warning)", e: "—", ep: "✓", g: "✓" },
                 { feature: "Custom protocol builds per year", e: "—", ep: "3", g: "Unlimited" },
                 { feature: "Strategy sessions", e: "Quarterly", ep: "Monthly", g: "Dedicated team" },
                 { feature: "Support SLA", e: "24-hour", ep: "2-hour", g: "Custom" },
-                { feature: "Multi-division coordination", e: "—", ep: "✓", g: "✓" },
-                { feature: "On-site executive advisory visits", e: "—", ep: "—", g: "✓" },
+                { feature: "Autonomous protocol evolution network", e: "—", ep: "—", g: "✓" },
                 { feature: "Multi-region / on-premise deployment", e: "—", ep: "—", g: "✓" },
                 { feature: "Founding Partner credit eligible", e: "✓", ep: "✓", g: "✓" },
               ].map((row, i) => (
@@ -230,18 +231,18 @@ export default function Pricing() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Annual Subscription</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              Same Platform. Deeper Partnership.
+              Three Layers of Readiness.
             </h2>
             <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
-              Every tier includes the full Readiness OS platform. You're choosing the level of strategic support your organization needs.
+              Core delivers the full readiness platform. Oracle Pro adds predictive foresight and Digital Twin simulation. Enterprise adds network-wide autonomous evolution and the full Microsoft ecosystem depth.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Enterprise Tier */}
-            <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-enterprise">
+            {/* Core Tier */}
+            <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-core">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>Tier 1</div>
-              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Enterprise</h3>
+              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Core</h3>
               <p className="text-sm text-[#6B7280] mb-6">1,000–5,000 employees</p>
               <div className="flex items-baseline gap-2 mb-8">
                 <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: NAVY }}>$250K</span>
@@ -273,10 +274,10 @@ export default function Pricing() {
               </Button>
             </div>
 
-            {/* Enterprise Plus Tier */}
-            <div style={{ background: NAVY, border: `2px solid ${NAVY}`, padding: "40px 32px", position: "relative" }} data-testid="card-tier-enterprise-plus">
+            {/* Oracle Pro Tier */}
+            <div style={{ background: NAVY, border: `2px solid ${NAVY}`, padding: "40px 32px", position: "relative" }} data-testid="card-tier-oracle-pro">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>Tier 2</div>
-              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Enterprise Plus</h3>
+              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Oracle Pro</h3>
               <p className="text-sm text-white/60 mb-6">5,000–15,000 employees</p>
               <div className="flex items-baseline gap-2 mb-8">
                 <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD }}>$450K</span>
@@ -284,13 +285,13 @@ export default function Pricing() {
               </div>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Everything in Enterprise",
+                  "Everything in Core",
+                  "Digital Twin activation simulation",
+                  "Predictive foresight alerts — advance warning",
                   "3 custom Readiness Protocol builds per year",
                   "Monthly strategy sessions",
                   "Advanced integrations (Salesforce, ServiceNow, SAP)",
-                  "Priority support — 2-hour SLA",
-                  "Executive briefing service",
-                  "Multi-division coordination"
+                  "Priority support — 2-hour SLA"
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-white/80">
                     <Check className="w-4 h-4 text-[#C9A84C]" />
@@ -307,10 +308,10 @@ export default function Pricing() {
               </Button>
             </div>
 
-            {/* Global Tier */}
-            <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-global">
+            {/* Enterprise Tier */}
+            <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-enterprise">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>Tier 3</div>
-              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Global</h3>
+              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Enterprise</h3>
               <p className="text-sm text-[#6B7280] mb-6">15,000+ employees</p>
               <div className="flex flex-col gap-1 mb-8">
                 <span style={{ ...CG, fontSize: 40, fontWeight: 600, color: NAVY }}>Custom</span>
@@ -318,12 +319,12 @@ export default function Pricing() {
               </div>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Everything in Enterprise Plus",
+                  "Everything in Oracle Pro",
+                  "Autonomous protocol evolution network",
                   "Unlimited custom protocol development",
                   "Dedicated account team",
                   "On-site executive advisory visits",
-                  "Multi-region deployment",
-                  "On-premise deployment option",
+                  "Multi-region / on-premise deployment",
                   "Executive Advisory Board access",
                   "Custom SLA agreements"
                 ].map((item) => (

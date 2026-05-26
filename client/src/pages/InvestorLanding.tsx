@@ -1328,7 +1328,7 @@ export default function InvestorLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <DollarSign className="h-6 w-6 text-[#2B8A6E]" />
-                    Enterprise
+                    Core
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1337,7 +1337,7 @@ export default function InvestorLanding() {
                   <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
-                      Single domain
+                      Full 180-Protocol Library
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
@@ -1355,7 +1355,7 @@ export default function InvestorLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <Users className="h-6 w-6 text-[#0A0F2E]" />
-                    Enterprise Plus
+                    Oracle Pro
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1364,11 +1364,11 @@ export default function InvestorLanding() {
                   <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#0A0F2E]" />
-                      Multi-domain
+                      Digital Twin simulation
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#0A0F2E]" />
-                      Full integration suite
+                      Predictive foresight alerts
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#0A0F2E]" />
@@ -1382,7 +1382,7 @@ export default function InvestorLanding() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                     <TrendingUp className="h-6 w-6 text-[#C9A84C]" />
-                    Global
+                    Enterprise
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

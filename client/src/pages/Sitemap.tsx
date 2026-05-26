@@ -123,6 +123,8 @@ const SECTIONS: Section[] = [
     icon: Scale,
     entries: [
       { name: 'Why Readiness OS', path: '/the-proof', desc: 'The 30-day mobilization gap — and how we close it', icon: Shield },
+      { name: 'Readiness Benchmark', path: '/readiness-benchmark', desc: 'Free 3-min score — where does your org stand? (22 typical vs. 87 Founding Partners)', tag: 'FREE', icon: Target },
+      { name: 'Strategic Foresight Engine', path: '/readiness-oracle', desc: 'Digital Twin simulation, predictive war gaming, and the Executive Time Machine', tag: 'NEW', icon: Brain },
       { name: 'Executive Brief', path: '/executive-brief', desc: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', icon: FileText },
       { name: 'Proof Story', path: '/proof-story', desc: 'Same trigger, entirely different outcome — numbers side by side', icon: Scale },
       { name: 'ROI Calculator', path: '/roi-calculator', desc: 'See the competitive window your org is leaving open', icon: Calculator },

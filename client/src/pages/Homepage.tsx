@@ -1239,6 +1239,9 @@ function MicrosoftHookStrip() {
             Every enterprise has Microsoft's AI stack.{" "}
             <em style={{ color: GOLD }}>None have the operating model to use it.</em>
           </div>
+          <div style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.45)", marginTop: 8, lineHeight: 1.5 }}>
+            The orchestration layer that finally makes your $300B+ Microsoft AI investment deliver strategic speed.
+          </div>
         </div>
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, alignItems: "center" }}>
           {["Azure AI", "Copilot", "Teams", "M365", "Entra"].map(name => (
@@ -2279,7 +2282,7 @@ function MicrosoftEcosystemBanner() {
               <em style={{ color: GOLD, fontStyle: 'italic' }}>None have the operating model to use it.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: 'rgba(240,237,228,0.55)', maxWidth: 620, margin: '0 auto 8px' }}>
-              Readiness OS is the operating model layer above your Microsoft investment. When a high-stakes situation presents itself, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
+              Readiness OS is the orchestration layer above your $300B+ Microsoft AI investment. When a high-stakes situation presents itself, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
             </p>
             <p style={{ ...DM, fontSize: 13, color: TEAL, fontWeight: 600 }}>
               For investors: every Microsoft enterprise customer is an immediately addressable prospect.
@@ -3841,6 +3844,28 @@ export default function Homepage() {
       <BinaryStakesSection />
 
       <ThreeStepSection />
+
+      {/* BENCHMARK — Lead magnet strip */}
+      <div style={{ background: "#F0EDE4", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "20px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" as const }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ width: 3, height: 32, background: GOLD, flexShrink: 0 }} />
+            <div>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>Free · 3 Minutes</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(15px,1.6vw,19px)", fontWeight: 600, color: NAVY, lineHeight: 1.3 }}>
+                Where does your organization stand? Take the Readiness Benchmark.
+              </div>
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, color: "#6B7280", letterSpacing: "0.04em" }}>Typical enterprise scores 22 · Founding Partners score 87</span>
+            <a href="/readiness-benchmark" style={{ fontFamily: "'Barlow Condensed', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: GOLD, fontWeight: 800, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "10px 20px", textDecoration: "none", whiteSpace: "nowrap" as const }}>
+              See Your Score →
+            </a>
+          </div>
+        </div>
+      </div>
+
       <MicrosoftHookStrip />
 
       {/* PAIN — Cost of the old model */}
