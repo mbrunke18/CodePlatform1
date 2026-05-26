@@ -51,13 +51,13 @@ function useLiveCtxTD() {
 const SCENARIOS = [
   { id: 'activist', title: 'Activist Investor', subtitle: '9.8% stake acquired — board seat demanded', domain: 'Competitive', urgency: 'critical' },
   { id: 'cyber', title: 'Ransomware Attack', subtitle: 'Critical systems encrypted — systems locked', domain: 'Cybersecurity', urgency: 'critical' },
+  { id: 'hvacr-supplier', title: 'Supplier Force Majeure — HVACR', subtitle: 'Primary compressor supplier declares force majeure — 14 facilities exposed at peak cooling season', domain: 'Supply Chain & Operations', urgency: 'critical' },
   { id: 'supply', title: 'Supply Chain Collapse', subtitle: 'Primary supplier bankrupt — 14-day production risk', domain: 'Supply Chain', urgency: 'high' },
   { id: 'brand', title: 'Brand Crisis', subtitle: 'Viral social media incident — sentiment collapsing', domain: 'Brand', urgency: 'high' },
   { id: 'regulatory', title: 'Regulatory Inquiry', subtitle: 'DOJ investigation opened — disclosure required', domain: 'Regulatory', urgency: 'high' },
   { id: 'talent', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'Talent', urgency: 'high' },
   { id: 'competitor', title: 'Competitor Launch', subtitle: 'Competitor announces flagship product — sales calls inbound now', domain: 'Growth & Positioning', urgency: 'high' },
   { id: 'market-entry', title: 'Market Entry Window', subtitle: 'Regulatory change opens new segment — 90-day window closing', domain: 'Growth & Positioning', urgency: 'high' },
-  { id: 'hvacr-supplier', title: 'Supplier Force Majeure — HVACR', subtitle: 'Primary compressor supplier declares force majeure — 14 facilities exposed at peak season', domain: 'Supply Chain & Operations', urgency: 'high', href: '/manufacturing-supplier-demo' },
   { id: 'compound', title: 'Compound Crisis', subtitle: 'Activist stake + DOJ inquiry — simultaneous triggers', domain: 'MULTI-DOMAIN', urgency: 'critical', compound: true },
 ];
 
@@ -118,6 +118,16 @@ const SCENARIO_TASKS: Record<string, Array<{ phase: string; role: string; action
     { phase: 'PAYMENT DECISION', role: 'CEO + CFO + Legal', action: 'Payment decision with all required parties: backup status, OFAC sanctions check, insurance guidance', time: '6:00', priority: 'critical' },
     { phase: 'RECOVERY', role: 'CTO + CISO', action: 'Begin clean restoration from verified backups — rebuild from clean images, never restore from encrypted states', time: '10:00', priority: 'high' },
     { phase: 'RECOVERY', role: 'CISO', action: 'Mandatory security hardening before reconnection: patch exploited vulnerabilities, MFA all accounts, EDR all endpoints', time: '12:00', priority: 'high' },
+  ],
+  'hvacr-supplier': [
+    { phase: 'EXPOSURE ASSESSMENT', role: 'COO', action: 'Confirm force majeure scope: which component lines, declared duration, contractual force majeure clause validity. Pull 14-facility exposure map', time: '1:00', priority: 'critical' },
+    { phase: 'EXPOSURE ASSESSMENT', role: 'CFO', action: 'Run revenue-at-risk model: production days at risk × daily output value per facility. Quantify 90-day window exposure', time: '2:00', priority: 'critical' },
+    { phase: 'SUPPLY CONTINUITY', role: 'Chief Procurement Officer', action: 'Issue emergency RFQs to 4 pre-qualified alternate compressor suppliers simultaneously — activate pre-negotiated emergency pricing', time: '3:00', priority: 'critical' },
+    { phase: 'SUPPLY CONTINUITY', role: 'Head of Logistics', action: 'Reroute inbound compressor freight. Expedite air freight for highest-margin HVACR product lines to protect peak season fulfillment', time: '5:00', priority: 'high' },
+    { phase: 'CUSTOMER PROTECTION', role: 'CEO + Chief Revenue Officer', action: 'Personally contact top 15 distribution partners and strategic accounts before they hear from competitors — offer committed delivery windows', time: '7:00', priority: 'high' },
+    { phase: 'CUSTOMER PROTECTION', role: 'CMO + Legal', action: 'Draft customer communication with specific recovery timeline, substitution options, and executive contact. Release same-day', time: '8:00', priority: 'high' },
+    { phase: 'FINANCIAL CLOSE-OUT', role: 'General Counsel', action: 'Issue formal force majeure notice to supplier. Engage commercial insurance for business interruption claim. Document all incremental costs', time: '10:00', priority: 'high' },
+    { phase: 'FINANCIAL CLOSE-OUT', role: 'CFO + COO', action: 'Present board with 90-day contingency plan: alternate supplier ramp, inventory bridge, customer retention investment, and recovery timeline', time: '12:00', priority: 'high' },
   ],
   supply: [
     { phase: 'ASSESSMENT', role: 'COO', action: 'Pull disruption data: affected supplier tier, % supply at risk, lead time impact, geographic scope of disruption', time: '1:30', priority: 'critical' },
