@@ -566,9 +566,9 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { tier: 'Starter', price: '$250K', desc: 'Single domain — Risk & Resilience', features: ['25 Readiness Protocols', '100 signals monitored', 'Standard integrations', 'Email support'] },
-            { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 Readiness Protocols', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
-            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['180 Readiness Protocols', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
+            { tier: 'Core', price: '$250K', desc: 'Complete operating model — all 9 domains', features: ['Full 180 Readiness Protocols', '221 triggers monitored', 'Standard integrations', 'Dedicated CSM'] },
+            { tier: 'Foresight', price: '$450K', desc: 'Digital Twin + predictive foresight', features: ['Everything in Core', 'Digital Twin simulation', 'Predictive foresight alerts', 'Priority 2-hour SLA'], highlight: true },
+            { tier: 'Enterprise', price: '$750K–$1.5M+', desc: 'Autonomous evolution network', features: ['Everything in Foresight', 'Autonomous protocol evolution', 'Unlimited custom protocols', 'White-glove onboarding'] },
           ].map((t, i) => (
             <div key={i} className={`rounded-none p-6 ${t.highlight ? 'bg-[#0A0F2E] border-2 border-[#C9A84C] text-white' : 'bg-white border border-[#E8E4DC]'}`}>
               {t.highlight && <div className="text-[#C9A84C] text-xs font-bold uppercase mb-2">TARGET</div>}

@@ -11,7 +11,7 @@ const OFF = "#F8F7F4";
 const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const COMPARISON_ROWS = [
-  { dimension: "Cost", consulting: "$300K–$500K one-time", executionOs: "$75K–$250K/year" },
+  { dimension: "Cost", consulting: "$300K–$500K one-time", executionOs: "$250K–$750K+/year · $75K Founding Partner entry" },
   { dimension: "Readiness Protocols", consulting: "5–10 custom PDFs", executionOs: "180 pre-built + unlimited custom" },
   { dimension: "Format", consulting: "Static documents", executionOs: "Live, executable platform" },
   { dimension: "Activation", consulting: "Manual — find the PDF, read it, interpret it, convene", executionOs: "One-click. 12 minutes." },
@@ -30,7 +30,7 @@ export default function VsConsulting() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS vs. Management Consulting | VaughnMartin",
-      description: "McKinsey charges $300K–$500K for Readiness Protocols that sit on a shelf. Readiness OS delivers 180 live, executable Readiness Protocols at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
+      description: "McKinsey charges $300K–$500K for Readiness Protocols that sit on a shelf. Readiness OS delivers 180 live, executable Readiness Protocols starting at $250K/year — with 12-minute activation, continuous signal monitoring, and a $75K Founding Partner entry credited 100% to Year 1.",
       ogTitle: "Why Not Consulting? Readiness OS vs. McKinsey, BCG, Bain",
       ogDescription: "Consultants deliver documents. Readiness OS delivers coordination. See the comparison.",
     });
@@ -263,8 +263,8 @@ export default function VsConsulting() {
             {/* Readiness OS card */}
             <div style={{ border: `2px solid ${GOLD}`, borderRadius: 0, padding: "36px 32px", background: `rgba(201,168,76,0.03)`, textAlign: "center" as const }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Readiness OS</div>
-              <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$75K–$250K/year</div>
-              <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes</div>
+              <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$250K–$750K+/year</div>
+              <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes · $75K Founding Partner entry, 100% credited</div>
               <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 0, border: `1px solid rgba(43,138,110,0.15)` }}>
                 <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>180 live Readiness Protocols. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
               </div>

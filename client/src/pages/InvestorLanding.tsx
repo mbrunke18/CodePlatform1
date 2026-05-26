@@ -382,7 +382,7 @@ export default function InvestorLanding() {
 
             <div className="bg-[#F8F7F4] border border-[#E8E4DC] px-6 py-4 text-center">
               <p className="text-[#0A0F2E]">
-                <span className="text-[#0A0F2E] font-semibold">Readiness OS at $250K-$750K/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
+                <span className="text-[#0A0F2E] font-semibold">Readiness OS at $250K–$1.5M/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
               </p>
             </div>
           </div>
