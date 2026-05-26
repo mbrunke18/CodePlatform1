@@ -633,7 +633,7 @@ function Router() {
         {renderRoutes(["/luxury-demo", "/luxury-crisis-demo"], LuxuryCrisisDemo)}
         {renderRoutes(["/financial-demo", "/financial-ransomware-demo", "/financial-crisis-demo"], FinancialRansomwareDemo)}
         {renderRoutes(["/pharma-demo", "/pharmaceutical-recall-demo", "/pharma-recall-demo"], PharmaceuticalRecallDemo)}
-        {renderRoutes(["/manufacturing-demo", "/manufacturing-supplier-demo"], ManufacturingSupplierDemo)}
+        {renderRoutes(["/manufacturing-demo", "/manufacturing-supplier-demo", "/demo/hvacr-supplier"], ManufacturingSupplierDemo)}
         {renderRoutes(["/retail-demo", "/retail-food-demo", "/retail-food-safety-demo"], RetailFoodSafetyDemo)}
         {renderRoutes(["/energy-demo", "/energy-grid-demo", "/energy-grid-failure-demo"], EnergyGridFailureDemo)}
         <Route path="/lvmh-demo" component={LVMHMarketEntryDemo} />
