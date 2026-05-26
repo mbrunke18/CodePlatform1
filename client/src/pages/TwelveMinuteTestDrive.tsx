@@ -443,7 +443,7 @@ export default function TwelveMinuteTestDrive() {
                   </>
                 );
                 return isExternal ? (
-                  <Link key={s.id} href={(s as any).href} style={cardStyle}>{cardInner}</Link>
+                  <button key={s.id} onClick={() => { window.location.href = (s as any).href; }} style={{ ...cardStyle, width: '100%' }}>{cardInner}</button>
                 ) : (
                   <button key={s.id} onClick={() => setSelectedId(s.id)} style={{ ...cardStyle, width: '100%' }}>{cardInner}</button>
                 );
