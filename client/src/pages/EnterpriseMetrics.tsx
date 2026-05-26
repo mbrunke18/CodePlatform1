@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import PageLayout from '@/components/layout/PageLayout';
+import { useLocation } from 'wouter';
 import { 
   Building, 
   Users, 
@@ -24,6 +25,7 @@ import {
 import { BrandStamp } from "@/components/BrandStamp";
 
 export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) {
+  const [, setLocation] = useLocation();
   const enterpriseKPIs = [
     { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-[#2B8A6E]" },
     { title: "Response Time", value: "12 min", target: "8 min", progress: 85, color: "text-[#0A0F2E]" },
@@ -190,19 +192,19 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-system-health">
+                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-system-health" onClick={() => setLocation('/audit-logging')}>
                   <Activity className="w-5 h-5 mr-2" />
                   System Health Check
                 </Button>
-                <Button className="h-16 bg-[#2B8A6E] hover:bg-[#237059] text-white" data-testid="button-scale-resources">
+                <Button className="h-16 bg-[#2B8A6E] hover:bg-[#237059] text-white" data-testid="button-scale-resources" onClick={() => setLocation('/getting-started')}>
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Scale Resources
                 </Button>
-                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-security-audit">
+                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-security-audit" onClick={() => setLocation('/audit-logging')}>
                   <Shield className="w-5 h-5 mr-2" />
                   Security Audit
                 </Button>
-                <Button className="h-16 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold" data-testid="button-performance-optimization">
+                <Button className="h-16 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold" data-testid="button-performance-optimization" onClick={() => setLocation('/advance-intelligence')}>
                   <Zap className="w-5 h-5 mr-2" />
                   Optimize Performance
                 </Button>

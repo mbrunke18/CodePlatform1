@@ -16,7 +16,7 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 export default function PreparednessReport({ embedded }: { embedded?: boolean }) {
   const { data: organizationsRaw } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
   const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
-  const organizationId = organizations[0]?.id || '95b97862-8e9d-4c4c-8609-7d8f37b68d36';
+  const organizationId = organizations[0]?.id;
 
   const { data: scoreData, isLoading } = useQuery<any>({
     queryKey: [`/api/preparedness/score?organizationId=${organizationId}`],
@@ -29,11 +29,48 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
   });
   const scoreHistory = Array.isArray(scoreHistoryRaw) ? scoreHistoryRaw : [];
 
-  if (isLoading || !scoreData) {
+  if (!organizationId || (isLoading && !scoreData)) {
     return (
       <PageLayout embedded={embedded}>
-        <div className="p-6">
-          <div className="animate-pulse">Loading preparedness report...</div>
+        <div className="p-8 space-y-6 bg-[#F8F7F4] min-h-screen">
+          <div className="flex items-center gap-4">
+            <Link href="/getting-started">
+              <Button variant="outline" size="sm" className="rounded-none border-[#E8E4DC]">
+                <ArrowLeft className="w-4 h-4 mr-2" />Back
+              </Button>
+            </Link>
+            <h1 className="text-3xl font-bold text-[#0A0F2E]">Preparedness Report</h1>
+          </div>
+          <div className="animate-pulse space-y-4">
+            {[1,2,3].map(i => <div key={i} className="h-32 bg-[#E8E4DC] rounded-none" />)}
+          </div>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  if (!scoreData) {
+    return (
+      <PageLayout embedded={embedded}>
+        <div className="p-8 space-y-6 bg-[#F8F7F4] min-h-screen">
+          <div className="flex items-center gap-4">
+            <Link href="/getting-started">
+              <Button variant="outline" size="sm" className="rounded-none border-[#E8E4DC]">
+                <ArrowLeft className="w-4 h-4 mr-2" />Back
+              </Button>
+            </Link>
+            <h1 className="text-3xl font-bold text-[#0A0F2E]">Preparedness Report</h1>
+          </div>
+          <div className="bg-white border border-[#E8E4DC] p-8 text-center space-y-4">
+            <Shield className="w-12 h-12 text-[#C9A84C] mx-auto" />
+            <p className="text-lg font-semibold text-[#0A0F2E]">No Preparedness Data Yet</p>
+            <p className="text-sm text-[#6B7280]">Your preparedness score will appear here once your organization completes setup and activates your first Readiness Protocol.</p>
+            <Link href="/getting-started">
+              <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none">
+                Complete Setup
+              </Button>
+            </Link>
+          </div>
         </div>
       </PageLayout>
     );

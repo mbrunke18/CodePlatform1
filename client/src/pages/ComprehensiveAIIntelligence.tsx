@@ -95,6 +95,26 @@ const formatReportType = (reportType: string) => {
   return reportType.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 };
 
+function exportReportAsText(report: DatabaseIntelligenceReport) {
+  const lines = [
+    `VaughnMartin Readiness OS — Intelligence Report`,
+    `Title: ${report.title}`,
+    `Type: ${report.reportType}`,
+    `Confidence: ${report.confidence}%`,
+    ``,
+    `Executive Summary:`,
+    report.executiveSummary,
+    ``,
+    `Findings:`,
+    ...(report.findings || []).map((f: any, i: number) => `${i+1}. ${typeof f === 'string' ? f : JSON.stringify(f)}`),
+  ];
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `intelligence-report-${report.id?.slice(0,8) || 'export'}.txt`;
+  a.click(); URL.revokeObjectURL(url);
+}
+
 export default function ComprehensiveAIIntelligence() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [aiModules, setAIModules] = useState<AIModule[]>([]);
@@ -382,7 +402,7 @@ export default function ComprehensiveAIIntelligence() {
                 )}
                 Generate Intelligence
               </Button>
-              <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
+              <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10" onClick={() => window.print()}>
                 <Download className="w-4 h-4 mr-2" />
                 Export Reports
               </Button>
@@ -635,7 +655,7 @@ export default function ComprehensiveAIIntelligence() {
                             </div>
                             <h3 className="text-xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{report.title}</h3>
                           </div>
-                          <Button variant="outline" size="sm" className="border-[#E8E4DC] text-[#0A0F2E]">
+                          <Button variant="outline" size="sm" className="border-[#E8E4DC] text-[#0A0F2E]" onClick={() => exportReportAsText(report)}>
                             <Download className="h-4 w-4 mr-2" />
                             PDF
                           </Button>

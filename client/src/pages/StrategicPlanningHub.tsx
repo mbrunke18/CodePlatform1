@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import PageLayout from '@/components/layout/PageLayout';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { 
   Target, 
   BarChart3, 
@@ -80,6 +80,7 @@ interface PortfolioMetrics {
 }
 
 export default function StrategicPlanningHub() {
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [scenarios, setScenarios] = useState<StrategicScenario[]>([]);
   const [portfolioMetrics] = useState<PortfolioMetrics>({
@@ -262,7 +263,7 @@ export default function StrategicPlanningHub() {
                 Portfolio Active
               </div>
               <button
-                onClick={() => {}}
+                onClick={() => setLocation('/scenarios')}
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', padding: '8px 18px', border: 'none', cursor: 'pointer' }}
               >
                 <Plus style={{ width: 14, height: 14 }} />

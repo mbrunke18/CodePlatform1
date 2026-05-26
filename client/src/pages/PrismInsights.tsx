@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import {
   Layers, Brain, Target, TrendingUp, Users, DollarSign, Globe,
   Lightbulb, Eye, BarChart3, ArrowRight, CheckCircle, AlertTriangle,
@@ -166,6 +166,7 @@ const urgencyColor = (u: string) => {
 };
 
 export default function PrismInsights() {
+  const [, setLocation] = useLocation();
   const [selectedDimension, setSelectedDimension] = useState('all');
 
   const filteredInsights = strategicInsights.filter(i =>
@@ -325,7 +326,7 @@ export default function PrismInsights() {
                         <Progress value={insight.confidence} className="h-1.5" />
                       </div>
                       <div style={{ display: 'flex', gap: 8 }}>
-                        <Button size="sm" style={{ background: 'transparent', color: NAVY, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                        <Button size="sm" style={{ background: 'transparent', color: NAVY, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }} onClick={() => setLocation('/intelligence-control')}>
                           Deep Dive
                         </Button>
                         <Link href="/playbook-library">

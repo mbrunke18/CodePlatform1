@@ -15,6 +15,7 @@ import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
+import { useCustomer } from '@/contexts/CustomerContext';
 import { Link } from 'wouter';
 import { 
   Building2,
@@ -96,6 +97,8 @@ interface CommunicationChannel {
 export default function OrganizationSetup({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const { organization } = useCustomer();
+  const orgId = (organization as any)?.id;
   const [activeTab, setActiveTab] = useState('departments');
   const [availabilityNote, setAvailabilityNote] = useState<Record<string, string>>({});
 
@@ -214,8 +217,35 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
     },
   });
   
-  // Stakeholders - empty by default, prompting user to add their own
-  const stakeholders: Stakeholder[] = [];
+  // Stakeholders — loaded from DB
+  const { data: stakeholderContacts = [] } = useQuery<any[]>({
+    queryKey: ['/api/stakeholder-contacts', orgId],
+    queryFn: async () => {
+      if (!orgId) return [];
+      const res = await fetch(`/api/stakeholder-contacts?organizationId=${orgId}`);
+      const json = await res.json();
+      return json.contacts || [];
+    },
+    enabled: !!orgId,
+  });
+  const stakeholders: Stakeholder[] = stakeholderContacts.map((c: any) => ({
+    id: c.id?.toString(),
+    name: c.name || '',
+    email: c.email || '',
+    mobile: c.phone || '',
+    role: c.role || '',
+    department: c.metadata?.department || '',
+    canApproveActivations: c.metadata?.canApproveActivations || false,
+    isBackup: c.metadata?.isBackup || false,
+    notificationPreferences: c.metadata?.notificationPreferences || { email: true, slack: false, inApp: true, sms: false },
+  }));
+
+  const createStakeholderMutation = useMutation({
+    mutationFn: (payload: any) => apiRequest('POST', '/api/stakeholder-contacts', payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/stakeholder-contacts', orgId] });
+    },
+  });
   
   // Fetch escalation policies from API
   const { data: apiEscalationPolicies } = useQuery<any[]>({
@@ -389,15 +419,39 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
   };
   const progressPercent = (Object.values(setupProgress).filter(Boolean).length / 4) * 100;
   
-  // Handler for adding stakeholder (local state for now)
-  const handleAddStakeholder = () => {
+  // Handler for adding stakeholder — saves to DB
+  const handleAddStakeholder = async () => {
     if (!newStakeholder.name || !newStakeholder.email) {
       toast({ title: 'Error', description: 'Name and email are required', variant: 'destructive' });
       return;
     }
-    toast({ title: 'Success', description: 'Stakeholder added successfully' });
-    setNewStakeholder({ name: '', email: '', role: '', department: '', canApproveActivations: false, notificationPreferences: { email: true, slack: false, inApp: true, sms: false } });
-    setIsStakeholderDialogOpen(false);
+    if (!orgId) {
+      toast({ title: 'Error', description: 'Organization not found. Complete onboarding first.', variant: 'destructive' });
+      return;
+    }
+    try {
+      await createStakeholderMutation.mutateAsync({
+        organizationId: orgId,
+        role: newStakeholder.role || 'Team Member',
+        name: newStakeholder.name,
+        email: newStakeholder.email,
+        phone: newStakeholder.mobile || null,
+        preferredChannel: newStakeholder.notificationPreferences?.slack ? 'slack' :
+                          newStakeholder.notificationPreferences?.sms ? 'sms' : 'email',
+        isActive: true,
+        metadata: {
+          department: newStakeholder.department,
+          canApproveActivations: newStakeholder.canApproveActivations,
+          isBackup: newStakeholder.isBackup,
+          notificationPreferences: newStakeholder.notificationPreferences,
+        },
+      });
+      toast({ title: 'Success', description: 'Stakeholder added successfully' });
+      setNewStakeholder({ name: '', email: '', role: '', department: '', canApproveActivations: false, notificationPreferences: { email: true, slack: false, inApp: true, sms: false } });
+      setIsStakeholderDialogOpen(false);
+    } catch {
+      toast({ title: 'Error', description: 'Failed to save stakeholder. Please try again.', variant: 'destructive' });
+    }
   };
   
   const getChannelIcon = (type: string) => {

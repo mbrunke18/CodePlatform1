@@ -93,6 +93,19 @@ interface ComplianceReport {
 import PageLayout from '@/components/layout/PageLayout';
 import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 
+function downloadCSV(rows: AuditLog[]) {
+  const headers = ['Timestamp', 'User', 'Action', 'Resource', 'Category', 'Severity', 'Outcome', 'IP Address', 'Details'];
+  const lines = [headers.join(','), ...rows.map(r => [
+    r.timestamp, r.user, r.action, r.resource, r.category, r.severity, r.outcome, r.ipAddress,
+    `"${(r.details || '').replace(/"/g, '""')}"`
+  ].join(','))];
+  const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `audit-logs-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+}
+
 export default function AuditLoggingCenter({ embedded }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
@@ -195,7 +208,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <Shield className="w-4 h-4 mr-2" />
                 Compliance: {metrics.complianceScore}%
               </Badge>
-              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" onClick={() => downloadCSV(auditLogs)}>
                 <Download className="w-4 h-4 mr-2" />
                 Export Logs
               </Button>
@@ -569,7 +582,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     </div>
                     
                     <div className="flex gap-3">
-                      <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white" onClick={() => downloadCSV(auditLogs)}>
                         <Download className="w-4 h-4 mr-2" />
                         Download Report
                       </Button>

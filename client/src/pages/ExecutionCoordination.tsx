@@ -167,9 +167,24 @@ export default function ExecutionCoordination() {
   const [, setLocation] = useLocation();
   const [selectedTask, setSelectedTask] = useState<ExecutionTask | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('offense');
-  
+  const [taskStatuses, setTaskStatuses] = useState<Record<string, ExecutionTask['status']>>({});
+
   const sampleExecution = sampleExecutions[activeCategory];
-  const completionPercent = Math.round((sampleExecution.completedTasks / sampleExecution.totalTasks) * 100);
+
+  const getTaskStatus = (task: ExecutionTask): ExecutionTask['status'] =>
+    taskStatuses[task.id] ?? task.status;
+
+  const handleStartTask = (taskId: string) => {
+    setTaskStatuses(prev => ({ ...prev, [taskId]: 'in_progress' }));
+  };
+
+  const handleCompleteTask = (taskId: string) => {
+    setTaskStatuses(prev => ({ ...prev, [taskId]: 'completed' }));
+  };
+
+  const resolvedTasks = sampleExecution.phases.flatMap(p => p.tasks.map(t => ({ ...t, status: getTaskStatus(t) })));
+  const completedCount = resolvedTasks.filter(t => t.status === 'completed').length;
+  const completionPercent = Math.round((completedCount / sampleExecution.totalTasks) * 100);
   const elapsedMinutes = Math.round((Date.now() - new Date(sampleExecution.triggeredAt).getTime()) / 60000);
   
   const categoryStyles = {
@@ -321,8 +336,8 @@ export default function ExecutionCoordination() {
         {/* Metrics Row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Completed', value: sampleExecution.completedTasks, color: '#2B8A6E', icon: CheckCircle, tid: 'metric-completed' },
-            { label: 'In Progress', value: sampleExecution.phases.flatMap(p => p.tasks).filter(t => t.status === 'in_progress').length, color: '#C9A84C', icon: Play },
+            { label: 'Completed', value: completedCount, color: '#2B8A6E', icon: CheckCircle, tid: 'metric-completed' },
+            { label: 'In Progress', value: sampleExecution.phases.flatMap(p => p.tasks).filter(t => getTaskStatus(t) === 'in_progress').length, color: '#C9A84C', icon: Play },
             { label: 'Stakeholders', value: 12, color: '#0A0F2E', icon: Users },
             { label: 'Target Time', value: '45m', color: '#0A0F2E', icon: Target }
           ].map((m, i) => (
@@ -358,9 +373,9 @@ export default function ExecutionCoordination() {
           <TabsContent value="timeline">
             <div className="space-y-6">
               {sampleExecution.phases.map((phase, phaseIndex) => {
-                const phaseTasks = phase.tasks;
-                const completedCount = phaseTasks.filter(t => t.status === 'completed').length;
-                const phaseComplete = completedCount === phaseTasks.length;
+                const phaseTasks = phase.tasks.map(t => ({ ...t, status: getTaskStatus(t) }));
+                const phaseCompletedCount = phaseTasks.filter(t => t.status === 'completed').length;
+                const phaseComplete = phaseCompletedCount === phaseTasks.length;
                 
                 return (
                   <Card 
@@ -381,7 +396,7 @@ export default function ExecutionCoordination() {
                           <div>
                             <CardTitle style={CG} className="text-xl font-bold text-[#0A0F2E]">{phase.name}</CardTitle>
                             <CardDescription className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">
-                              {completedCount}/{phaseTasks.length} tasks complete
+                              {phaseCompletedCount}/{phaseTasks.length} tasks complete
                             </CardDescription>
                           </div>
                         </div>
@@ -393,7 +408,7 @@ export default function ExecutionCoordination() {
                     <CardContent className="pt-6">
                       <div className="space-y-3">
                         {phaseTasks.map((task) => {
-                          const config = statusConfig[task.status];
+                          const config = statusConfig[task.status] || statusConfig['pending'];
                           const StatusIcon = config.icon;
                           
                           return (
@@ -431,12 +446,21 @@ export default function ExecutionCoordination() {
                                   )}
                                 </div>
                                 {task.status === 'ready' && (
-                                  <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-6 font-bold text-[10px] tracking-widest uppercase" data-testid={`button-start-${task.id}`}>
+                                  <Button
+                                    className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-6 font-bold text-[10px] tracking-widest uppercase"
+                                    data-testid={`button-start-${task.id}`}
+                                    onClick={() => handleStartTask(task.id)}
+                                  >
                                     Start
                                   </Button>
                                 )}
                                 {task.status === 'in_progress' && (
-                                  <Button size="sm" variant="outline" data-testid={`button-complete-${task.id}`}>
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    data-testid={`button-complete-${task.id}`}
+                                    onClick={() => handleCompleteTask(task.id)}
+                                  >
                                     Complete
                                   </Button>
                                 )}

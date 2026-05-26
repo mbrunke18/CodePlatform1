@@ -6213,6 +6213,10 @@ var init_schema = __esm({
       // 'CEO', 'CFO', 'CISO', 'COO', etc.
       name: varchar("name", { length: 255 }),
       email: varchar("email", { length: 255 }),
+      phone: varchar("phone", { length: 50 }),
+      // E.164 format e.g. +12125551234
+      preferredChannel: varchar("preferred_channel", { length: 20 }).default("email"),
+      // email | sms | push | voice
       slackUserId: varchar("slack_user_id", { length: 100 }),
       slackChannel: varchar("slack_channel", { length: 100 }),
       isActive: boolean("is_active").default(true),
@@ -23107,10 +23111,75 @@ var init_scenarios = __esm({
 });
 
 // server/integrations/NotificationManager.ts
-var NotificationManager, notificationManager;
+import { Resend as Resend6 } from "resend";
+function buildEmailHtml2(stakeholder, message, severity, metadata) {
+  const severityColors = {
+    low: "#2B8A6E",
+    medium: "#C9A84C",
+    high: "#E07B39",
+    critical: "#C0392B"
+  };
+  const severityLabels = {
+    low: "LOW",
+    medium: "MEDIUM",
+    high: "HIGH",
+    critical: "CRITICAL"
+  };
+  const accentColor = severityColors[severity] || "#C9A84C";
+  const severityLabel = severityLabels[severity] || severity.toUpperCase();
+  const playbookName = metadata?.playbookName || metadata?.scenarioType || "Strategic Protocol";
+  const appUrl = process.env.APP_URL || "https://vaughnmartin.com";
+  return `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:2px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#0A0F2E;padding:32px 36px;border-bottom:3px solid ${accentColor};">
+          <div style="color:${accentColor};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">Readiness OS \xB7 Executive Alert</div>
+          <div style="color:#ffffff;font-size:20px;font-weight:700;line-height:1.3;">${playbookName}</div>
+          <div style="display:inline-block;margin-top:10px;background:${accentColor};color:#0A0F2E;font-size:10px;font-weight:800;letter-spacing:2px;padding:4px 10px;border-radius:2px;">${severityLabel} SEVERITY</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <p style="color:#0A0F2E;font-size:15px;line-height:1.6;margin:0 0 24px;">
+            <strong>${stakeholder.name}</strong> \u2014 you have been notified as part of a pre-staged Readiness Protocol activation.
+          </p>
+          <div style="background:#f0ede4;border-left:3px solid ${accentColor};padding:16px 20px;border-radius:0 2px 2px 0;margin-bottom:28px;">
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.6;">${message}</div>
+          </div>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:12px;width:40%;text-transform:uppercase;letter-spacing:0.5px;">Your Role</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${stakeholder.role}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Execution Window</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">12 minutes</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Status</td>
+              <td style="padding:10px 0;color:${accentColor};font-size:13px;font-weight:700;">ACTIVE \u2014 Pre-staged response underway</td>
+            </tr>
+          </table>
+          <div style="text-align:center;">
+            <a href="${appUrl}/command-center" style="display:inline-block;background:#0A0F2E;color:#ffffff;text-decoration:none;padding:14px 36px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">View Live Execution \u2192</a>
+          </div>
+        </div>
+        <div style="background:#f8f7f4;padding:18px 36px;border-top:1px solid #e8e4dc;text-align:center;">
+          <div style="color:#999;font-size:11px;">Generated automatically by Readiness OS when a Readiness Protocol was activated. AI monitors. Executives authorize.</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function buildSmsText(stakeholder, message, severity, metadata) {
+  const playbookName = metadata?.playbookName || metadata?.scenarioType || "Strategic Protocol";
+  const appUrl = process.env.APP_URL || "https://vaughnmartin.com";
+  return `Readiness OS [${severity.toUpperCase()}] ${stakeholder.name} \u2014 ${playbookName} activated. Your role: ${stakeholder.role}. Execution window: 12 minutes. View: ${appUrl}/command-center`;
+}
+var RESEND_FROM, NotificationManager, notificationManager;
 var init_NotificationManager = __esm({
   "server/integrations/NotificationManager.ts"() {
     "use strict";
+    init_WebSocketService();
+    RESEND_FROM = "Readiness OS <pilot@vaughnmartin.com>";
     NotificationManager = class {
       stakeholders = /* @__PURE__ */ new Map();
       channels = /* @__PURE__ */ new Map();
@@ -23119,48 +23188,32 @@ var init_NotificationManager = __esm({
         this.initializeDefaultChannels();
         this.loadExecutiveContacts();
       }
-      /**
-       * Initialize default notification channels
-       */
       initializeDefaultChannels() {
         this.channels.set("email", {
           type: "email",
-          enabled: true,
-          config: {
-            smtp: {
-              host: process.env.SMTP_HOST || "smtp.gmail.com",
-              port: parseInt(process.env.SMTP_PORT || "587"),
-              secure: false,
-              auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD
-              }
-            }
-          }
+          enabled: !!process.env.RESEND_API_KEY,
+          config: { apiKey: process.env.RESEND_API_KEY }
         });
         this.channels.set("sms", {
           type: "sms",
-          enabled: !!process.env.TWILIO_ACCOUNT_SID,
+          enabled: !!(process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN && process.env.TWILIO_PHONE_NUMBER),
           config: {
-            twilio: {
-              accountSid: process.env.TWILIO_ACCOUNT_SID,
-              authToken: process.env.TWILIO_AUTH_TOKEN,
-              fromNumber: process.env.TWILIO_PHONE_NUMBER
-            }
+            accountSid: process.env.TWILIO_ACCOUNT_SID,
+            authToken: process.env.TWILIO_AUTH_TOKEN,
+            fromNumber: process.env.TWILIO_PHONE_NUMBER
           }
+        });
+        this.channels.set("push", {
+          type: "push",
+          enabled: true,
+          config: {}
         });
         this.channels.set("slack", {
           type: "slack",
           enabled: !!process.env.SLACK_WEBHOOK_URL,
-          config: {
-            webhookUrl: process.env.SLACK_WEBHOOK_URL,
-            channel: "#executive-alerts"
-          }
+          config: { webhookUrl: process.env.SLACK_WEBHOOK_URL, channel: "#executive-alerts" }
         });
       }
-      /**
-       * Load executive stakeholder contacts
-       */
       loadExecutiveContacts() {
         const executives = [
           {
@@ -23171,11 +23224,7 @@ var init_NotificationManager = __esm({
             phone: process.env.CEO_PHONE,
             preferredChannel: "sms",
             emergencyContact: true,
-            availability: {
-              timezone: "America/New_York",
-              businessHours: { start: "06:00", end: "22:00" },
-              weekends: true
-            }
+            availability: { timezone: "America/New_York", businessHours: { start: "06:00", end: "22:00" }, weekends: true }
           },
           {
             id: "coo",
@@ -23185,11 +23234,7 @@ var init_NotificationManager = __esm({
             phone: process.env.COO_PHONE,
             preferredChannel: "email",
             emergencyContact: true,
-            availability: {
-              timezone: "America/New_York",
-              businessHours: { start: "07:00", end: "20:00" },
-              weekends: false
-            }
+            availability: { timezone: "America/New_York", businessHours: { start: "07:00", end: "20:00" }, weekends: false }
           },
           {
             id: "cfo",
@@ -23199,28 +23244,16 @@ var init_NotificationManager = __esm({
             phone: process.env.CFO_PHONE,
             preferredChannel: "email",
             emergencyContact: true,
-            availability: {
-              timezone: "America/New_York",
-              businessHours: { start: "08:00", end: "19:00" },
-              weekends: false
-            }
+            availability: { timezone: "America/New_York", businessHours: { start: "08:00", end: "19:00" }, weekends: false }
           }
         ];
-        executives.forEach((exec) => {
-          this.stakeholders.set(exec.id, exec);
-        });
+        executives.forEach((exec) => this.stakeholders.set(exec.id, exec));
       }
-      /**
-       * Register notification rule for scenario type
-       */
       registerNotificationRule(rule) {
         const key = `${rule.scenarioType}-${rule.severity}`;
         this.notificationRules.set(key, rule);
         console.log(`\u{1F4CB} Notification rule registered: ${key}`);
       }
-      /**
-       * Send immediate notification for scenario trigger
-       */
       async sendScenarioAlert(scenarioType, severity, message, metadata = {}) {
         const ruleKey = `${scenarioType}-${severity}`;
         const rule = this.notificationRules.get(ruleKey);
@@ -23229,132 +23262,140 @@ var init_NotificationManager = __esm({
           return;
         }
         await this.sendToContacts(rule.immediateContacts, message, severity, metadata);
-        rule.escalationLevels.forEach((level, index2) => {
+        rule.escalationLevels.forEach((level) => {
           setTimeout(async () => {
             await this.sendEscalationAlert(level, message, severity, metadata);
           }, level.delayMinutes * 60 * 1e3);
         });
       }
-      /**
-       * Send notifications to specific contacts
-       */
       async sendToContacts(contactIds, message, severity, metadata) {
-        const promises = contactIds.map(async (contactId) => {
-          const stakeholder = this.stakeholders.get(contactId);
-          if (!stakeholder) {
-            console.warn(`\u26A0\uFE0F Stakeholder not found: ${contactId}`);
-            return;
-          }
-          if (!this.isAvailable(stakeholder)) {
-            console.log(`\u23F0 ${stakeholder.name} not available, using emergency channel`);
-          }
-          await this.sendNotification(stakeholder, message, severity, metadata);
-        });
-        await Promise.all(promises);
-      }
-      /**
-       * Send escalation alert
-       */
-      async sendEscalationAlert(level, message, severity, metadata) {
-        console.log(`\u{1F4C8} Escalation alert - Level ${level.delayMinutes}min`);
-        await this.sendToContacts(
-          level.contacts,
-          `ESCALATION: ${message}`,
-          severity,
-          metadata
+        await Promise.all(
+          contactIds.map(async (contactId) => {
+            const stakeholder = this.stakeholders.get(contactId);
+            if (!stakeholder) {
+              console.warn(`\u26A0\uFE0F Stakeholder not found: ${contactId}`);
+              return;
+            }
+            await this.sendNotification(stakeholder, message, severity, metadata);
+          })
         );
       }
-      /**
-       * Send notification via preferred channel
-       */
+      async sendEscalationAlert(level, message, severity, metadata) {
+        console.log(`\u{1F4C8} Escalation alert \u2014 ${level.delayMinutes}min threshold`);
+        await this.sendToContacts(level.contacts, `ESCALATION: ${message}`, severity, metadata);
+      }
       async sendNotification(stakeholder, message, severity, metadata) {
         const channel = stakeholder.preferredChannel;
-        const severityIcon = this.getSeverityIcon(severity);
-        const formattedMessage = `${severityIcon} Readiness OS Alert
-
-${message}
-
-Contact: ${stakeholder.name}`;
         try {
           switch (channel) {
             case "email":
-              await this.sendEmail(stakeholder.email, formattedMessage, severity, metadata);
+              await this.sendEmail(stakeholder, message, severity, metadata);
               break;
             case "sms":
-              if (stakeholder.phone) {
-                await this.sendSMS(stakeholder.phone, formattedMessage);
-              }
+              await this.sendSMS(stakeholder, message, severity, metadata);
               break;
             case "push":
-              await this.sendPushNotification(stakeholder.id, formattedMessage);
+              await this.sendPush(stakeholder, message, severity, metadata);
+              break;
+            case "voice":
+              console.log(`\u{1F50A} Voice not yet configured for ${stakeholder.name} \u2014 routing to email`);
+              await this.sendEmail(stakeholder, message, severity, metadata);
               break;
             default:
-              console.warn(`\u26A0\uFE0F Unsupported channel: ${channel}`);
+              console.warn(`\u26A0\uFE0F Unknown channel "${channel}" for ${stakeholder.name} \u2014 routing to email`);
+              await this.sendEmail(stakeholder, message, severity, metadata);
           }
-          console.log(`\u2705 Notification sent to ${stakeholder.name} via ${channel}`);
+          console.log(`\u2705 Notification delivered to ${stakeholder.name} via ${channel}`);
         } catch (error) {
-          console.error(`\u274C Failed to send notification to ${stakeholder.name}:`, error);
+          console.error(`\u274C Notification failed for ${stakeholder.name} via ${channel}:`, error);
+          if (channel !== "email") {
+            console.log(`\u21A9\uFE0F  Falling back to email for ${stakeholder.name}`);
+            await this.sendEmail(stakeholder, message, severity, metadata).catch(
+              (e) => console.error(`\u274C Email fallback also failed for ${stakeholder.name}:`, e)
+            );
+          }
         }
       }
-      /**
-       * Send email notification
-       */
-      async sendEmail(email, message, severity, metadata) {
-        console.log(`\u{1F4E7} Email sent to ${email}`);
-      }
-      /**
-       * Send SMS notification
-       */
-      async sendSMS(phone, message) {
-        console.log(`\u{1F4F1} SMS sent to ${phone}`);
-      }
-      /**
-       * Send push notification
-       */
-      async sendPushNotification(userId, message) {
-        console.log(`\u{1F514} Push notification sent to ${userId}`);
-      }
-      /**
-       * Check if stakeholder is available
-       */
-      isAvailable(stakeholder) {
-        const now = /* @__PURE__ */ new Date();
-        const currentHour = now.getHours();
-        const isWeekend = [0, 6].includes(now.getDay());
-        if (stakeholder.emergencyContact) {
-          return true;
+      // ─── EMAIL via Resend ─────────────────────────────────────────────────────
+      async sendEmail(stakeholder, message, severity, metadata) {
+        const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+        if (!apiKey) {
+          console.warn(`\u26A0\uFE0F RESEND_API_KEY not set \u2014 email not sent to ${stakeholder.email}`);
+          return;
         }
-        const startHour = parseInt(stakeholder.availability.businessHours.start.split(":")[0]);
-        const endHour = parseInt(stakeholder.availability.businessHours.end.split(":")[0]);
-        if (isWeekend && !stakeholder.availability.weekends) {
-          return false;
-        }
-        return currentHour >= startHour && currentHour <= endHour;
+        const resend2 = new Resend6(apiKey);
+        const playbookName = metadata?.playbookName || metadata?.scenarioType || "Strategic Protocol";
+        const { error } = await resend2.emails.send({
+          from: RESEND_FROM,
+          replyTo: "pilot@vaughnmartin.com",
+          to: [stakeholder.email],
+          subject: `Readiness OS [${severity.toUpperCase()}] \u2014 ${playbookName} Activated`,
+          html: buildEmailHtml2(stakeholder, message, severity, metadata)
+        });
+        if (error) throw new Error(`Resend error: ${JSON.stringify(error)}`);
+        console.log(`\u{1F4E7} Email sent to ${stakeholder.name} <${stakeholder.email}>`);
       }
-      /**
-       * Get severity icon for display
-       */
-      getSeverityIcon(severity) {
-        const icons = {
-          low: "\u{1F7E2}",
-          medium: "\u{1F7E1}",
-          high: "\u{1F7E0}",
-          critical: "\u{1F534}"
+      // ─── SMS via Twilio ───────────────────────────────────────────────────────
+      async sendSMS(stakeholder, message, severity, metadata) {
+        const { accountSid, authToken, fromNumber } = {
+          accountSid: process.env.TWILIO_ACCOUNT_SID,
+          authToken: process.env.TWILIO_AUTH_TOKEN,
+          fromNumber: process.env.TWILIO_PHONE_NUMBER
         };
-        return icons[severity] || "\u26AA";
+        if (!accountSid || !authToken || !fromNumber) {
+          console.warn(`\u26A0\uFE0F Twilio not configured \u2014 falling back to email for ${stakeholder.name}`);
+          await this.sendEmail(stakeholder, message, severity, metadata);
+          return;
+        }
+        if (!stakeholder.phone) {
+          console.warn(`\u26A0\uFE0F No phone number for ${stakeholder.name} \u2014 falling back to email`);
+          await this.sendEmail(stakeholder, message, severity, metadata);
+          return;
+        }
+        const twilio = (await import("twilio")).default;
+        const client2 = twilio(accountSid, authToken);
+        const body = buildSmsText(stakeholder, message, severity, metadata);
+        await client2.messages.create({
+          from: fromNumber,
+          to: stakeholder.phone,
+          body
+        });
+        console.log(`\u{1F4F1} SMS sent to ${stakeholder.name} (${stakeholder.phone})`);
       }
-      /**
-       * Add or update stakeholder contact
-       */
+      // ─── PUSH via Socket.IO ───────────────────────────────────────────────────
+      async sendPush(stakeholder, message, severity, metadata) {
+        const playbookName = metadata?.playbookName || metadata?.scenarioType || "Strategic Protocol";
+        const payload = {
+          type: "executive-alert",
+          severity,
+          title: `${playbookName} Activated`,
+          body: message,
+          role: stakeholder.role,
+          stakeholderName: stakeholder.name,
+          executionWindow: "12 minutes",
+          link: "/command-center",
+          timestamp: (/* @__PURE__ */ new Date()).toISOString()
+        };
+        wsService.sendToUser(stakeholder.id, "readiness-alert", payload);
+        console.log(`\u{1F514} Push notification emitted to ${stakeholder.name} (user-${stakeholder.id})`);
+        await this.sendEmail(stakeholder, message, severity, metadata).catch(() => {
+        });
+      }
+      // ─── Public helpers ───────────────────────────────────────────────────────
       addStakeholder(stakeholder) {
         this.stakeholders.set(stakeholder.id, stakeholder);
-        console.log(`\u{1F464} Stakeholder added: ${stakeholder.name} (${stakeholder.role})`);
+        console.log(`\u{1F464} Stakeholder registered: ${stakeholder.name} (${stakeholder.role}) \u2014 channel: ${stakeholder.preferredChannel}`);
       }
-      /**
-       * Get all stakeholders
-       */
       getStakeholders() {
         return Array.from(this.stakeholders.values());
+      }
+      getChannelStatus() {
+        return {
+          email: !!process.env.RESEND_API_KEY,
+          sms: !!(process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN && process.env.TWILIO_PHONE_NUMBER),
+          push: true,
+          slack: !!process.env.SLACK_WEBHOOK_URL
+        };
       }
     };
     notificationManager = new NotificationManager();
@@ -25616,7 +25657,7 @@ var NotificationService_exports = {};
 __export(NotificationService_exports, {
   notificationService: () => notificationService
 });
-import { Resend as Resend6 } from "resend";
+import { Resend as Resend7 } from "resend";
 import { eq as eq32 } from "drizzle-orm";
 var NotificationService, notificationService;
 var init_NotificationService = __esm({
@@ -25633,7 +25674,7 @@ var init_NotificationService = __esm({
         const apiKey = process.env.RESEND_API_KEY;
         if (apiKey) {
           try {
-            this.resend = new Resend6(apiKey);
+            this.resend = new Resend7(apiKey);
             console.log("\u2713 Resend initialized");
           } catch (error) {
             console.warn("Failed to initialize Resend:", error);
@@ -43030,60 +43071,122 @@ function registerActivationRoutes(app2) {
         try {
           const orgId = req.orgId || "system";
           const contacts = await db.select().from(stakeholderContacts).where(eq8(stakeholderContacts.organizationId, orgId));
-          const emails = contacts.filter((c) => c.isActive && c.email).map((c) => c.email).filter(Boolean);
-          if (emails.length === 0) return;
+          const active = contacts.filter((c) => c.isActive);
+          if (active.length === 0) return;
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-          if (!apiKey) return;
-          const resend2 = new Resend2(apiKey);
-          const html = `
+          const resend2 = apiKey ? new Resend2(apiKey) : null;
+          const emailHtml = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
-              <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
-                <div style="background:#132558;padding:32px 36px;">
-                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Playbook Activated</div>
-                  <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Response Initiated</div>
+              <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:2px;overflow:hidden;border:1px solid #e8e4dc;">
+                <div style="background:#0A0F2E;padding:32px 36px;border-bottom:3px solid #C9A84C;">
+                  <div style="color:#C9A84C;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">Readiness OS \xB7 Protocol Activated</div>
+                  <div style="color:#ffffff;font-size:20px;font-weight:700;line-height:1.3;">${playbookName}</div>
+                  <div style="display:inline-block;margin-top:10px;background:#C9A84C;color:#0A0F2E;font-size:10px;font-weight:800;letter-spacing:2px;padding:4px 10px;border-radius:2px;">ACTIVE</div>
                 </div>
                 <div style="padding:32px 36px;">
                   <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
                     <tr>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Playbook Activated</td>
+                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:12px;width:40%;text-transform:uppercase;letter-spacing:0.5px;">Protocol</td>
                       <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${playbookName}</td>
                     </tr>
                     <tr>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Stakeholders Coordinated</td>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${stakeholderCount}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Execution Window</td>
+                      <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Execution Window</td>
                       <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">12 minutes</td>
                     </tr>
                     <tr>
-                      <td style="padding:10px 0;color:#666;font-size:13px;">Status</td>
-                      <td style="padding:10px 0;color:#C9A84C;font-size:13px;font-weight:700;">ACTIVE \u2014 Pre-staged response underway</td>
+                      <td style="padding:10px 0;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Status</td>
+                      <td style="padding:10px 0;color:#C9A84C;font-size:13px;font-weight:700;">Pre-staged response underway</td>
                     </tr>
                   </table>
-                  <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
-                    <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Your pre-staged playbook is now executing. Tasks are being assigned automatically. The 12-minute execution clock is running.</div>
+                  <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;margin-bottom:28px;">
+                    <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Your pre-staged Readiness Protocol is now executing. Tasks are assigned. The 12-minute execution clock is running.</div>
                   </div>
                   <div style="text-align:center;">
-                    <a href="${appUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">View Live Execution \u2192</a>
+                    <a href="${appUrl}/command-center" style="display:inline-block;background:#0A0F2E;color:#ffffff;text-decoration:none;padding:14px 36px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">View Live Execution \u2192</a>
                   </div>
                 </div>
-                <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                  <div style="color:#999;font-size:11px;text-align:center;">This notification was generated automatically by Readiness OS when a playbook was activated. No human reviewed it before it reached you.</div>
+                <div style="background:#f8f7f4;padding:18px 36px;border-top:1px solid #e8e4dc;text-align:center;">
+                  <div style="color:#999;font-size:11px;">Generated automatically by Readiness OS. AI monitors. Executives authorize.</div>
                 </div>
               </div>
             </div>
           `;
-          await resend2.emails.send({
-            from: "Readiness OS <pilot@vaughnmartin.com>",
-            replyTo: "pilot@vaughnmartin.com",
-            to: emails,
-            subject: `\u{1F680} Playbook Activated: ${playbookName} \u2014 12-Minute Execution Clock Running`,
-            html
-          });
-          console.log(`\u{1F4E7} Activation email sent to ${emails.length} stakeholder(s)`);
+          const emailContacts = active.filter(
+            (c) => c.email && (!c.preferredChannel || c.preferredChannel === "email" || c.preferredChannel === "voice" || c.preferredChannel === "push")
+          );
+          if (resend2 && emailContacts.length > 0) {
+            const emails = emailContacts.map((c) => c.email).filter(Boolean);
+            await resend2.emails.send({
+              from: "Readiness OS <pilot@vaughnmartin.com>",
+              replyTo: "pilot@vaughnmartin.com",
+              to: emails,
+              subject: `Readiness Protocol Activated: ${playbookName} \u2014 12-Minute Execution Clock`,
+              html: emailHtml
+            });
+            console.log(`\u{1F4E7} Activation email sent to ${emails.length} stakeholder(s)`);
+          }
+          const smsContacts = active.filter((c) => c.preferredChannel === "sms" && c.phone);
+          if (smsContacts.length > 0) {
+            const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER } = process.env;
+            if (TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN && TWILIO_PHONE_NUMBER) {
+              const twilio = (await import("twilio")).default;
+              const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+              await Promise.all(
+                smsContacts.map(async (c) => {
+                  try {
+                    const body = `Readiness OS: ${playbookName} activated. Your role: ${c.role} \u2014 12-minute execution window. View: ${appUrl}/command-center`;
+                    await twilioClient.messages.create({ from: TWILIO_PHONE_NUMBER, to: c.phone, body });
+                    console.log(`\u{1F4F1} SMS sent to ${c.name || c.role} (${c.phone})`);
+                  } catch (smsErr) {
+                    console.error(`\u274C SMS failed for ${c.name || c.role}, falling back to email`);
+                    if (resend2 && c.email) {
+                      await resend2.emails.send({
+                        from: "Readiness OS <pilot@vaughnmartin.com>",
+                        replyTo: "pilot@vaughnmartin.com",
+                        to: [c.email],
+                        subject: `Readiness Protocol Activated: ${playbookName} \u2014 12-Minute Execution Clock`,
+                        html: emailHtml
+                      }).catch(() => {
+                      });
+                    }
+                  }
+                })
+              );
+            } else {
+              if (resend2) {
+                const fallbackEmails = smsContacts.filter((c) => c.email).map((c) => c.email);
+                if (fallbackEmails.length > 0) {
+                  await resend2.emails.send({
+                    from: "Readiness OS <pilot@vaughnmartin.com>",
+                    replyTo: "pilot@vaughnmartin.com",
+                    to: fallbackEmails,
+                    subject: `Readiness Protocol Activated: ${playbookName} \u2014 12-Minute Execution Clock`,
+                    html: emailHtml
+                  }).catch(() => {
+                  });
+                  console.log(`\u{1F4E7} SMS fallback email sent to ${fallbackEmails.length} stakeholder(s) (Twilio not configured)`);
+                }
+              }
+            }
+          }
+          const pushContacts = active.filter((c) => c.preferredChannel === "push");
+          if (pushContacts.length > 0) {
+            pushContacts.forEach((c) => {
+              wsService.sendToUser(String(c.id), "readiness-alert", {
+                type: "executive-alert",
+                severity: "high",
+                title: `${playbookName} Activated`,
+                body: "Your pre-staged Readiness Protocol is executing. 12-minute window is active.",
+                role: c.role,
+                executionWindow: "12 minutes",
+                link: "/command-center",
+                timestamp: (/* @__PURE__ */ new Date()).toISOString()
+              });
+            });
+            console.log(`\u{1F514} Push notification emitted to ${pushContacts.length} stakeholder(s)`);
+          }
         } catch (err) {
-          console.error("Activation notification email failed (non-blocking):", err);
+          console.error("Activation notification failed (non-blocking):", err);
         }
       })();
       res.status(201).json({
@@ -55107,8 +55210,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       if (!email) return res.status(400).json({ error: "email is required" });
       const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
       if (!apiKey) return res.status(503).json({ error: "Email service not configured" });
-      const { Resend: Resend7 } = await import("resend");
-      const resend2 = new Resend7(apiKey);
+      const { Resend: Resend8 } = await import("resend");
+      const resend2 = new Resend8(apiKey);
       const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
       const token = Buffer.from(email).toString("base64url");
       const unsubUrl = `${platformUrl}/api/unsubscribe?t=${token}`;
@@ -55492,8 +55595,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
           const displayStakeholders = stakeholderCount || 5;
           const platformUrl = process.env.APP_URL || "https://vaughnmartin.replit.app";
           const activationTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
-          const { Resend: Resend7 } = await import("resend");
-          const resend2 = new Resend7(apiKey);
+          const { Resend: Resend8 } = await import("resend");
+          const resend2 = new Resend8(apiKey);
           const html = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#0A0F2E;padding:40px 0;margin:0;">
               <div style="max-width:580px;margin:0 auto;">
@@ -56240,8 +56343,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             const contacts = await db.select().from(scTable).where(and39(eq58(scTable.organizationId, orgId), eq58(scTable.isActive, true)));
             const emails = contacts.map((c) => c.email).filter(Boolean);
             if (emails.length > 0) {
-              const { Resend: Resend7 } = await import("resend");
-              const resend2 = new Resend7(apiKey);
+              const { Resend: Resend8 } = await import("resend");
+              const resend2 = new Resend8(apiKey);
               const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
               const threatRows = highConf.map((t) => `
                 <tr>
@@ -56794,8 +56897,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
               const contacts = await db.select().from(scTable).where(and39(eq58(scTable.organizationId, org.id), eq58(scTable.isActive, true)));
               const emails = contacts.map((c) => c.email).filter(Boolean);
               if (emails.length > 0) {
-                const { Resend: Resend7 } = await import("resend");
-                const resend2 = new Resend7(apiKey);
+                const { Resend: Resend8 } = await import("resend");
+                const resend2 = new Resend8(apiKey);
                 const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
                 const threatRows = highConf.map((t) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(", ")}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis || "").substring(0, 240)}${(t.aiHypothesis || "").length > 240 ? "\u2026" : ""}</td></tr>`).join("");
                 const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center \u2192</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div></div></div></div>`;
@@ -57072,8 +57175,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 </div>
               </div>
             </div>`;
-          const { Resend: Resend7 } = await import("resend");
-          const resend2 = new Resend7(apiKey);
+          const { Resend: Resend8 } = await import("resend");
+          const resend2 = new Resend8(apiKey);
           const subject = triggerCount > 0 ? `\u{1F4CA} Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? "s" : ""} Detected \u2014 ${org.name}` : `\u{1F4CA} Weekly Digest: Monitoring Active, Market Quiet \u2014 ${org.name}`;
           for (const contact of contacts) {
             if (!contact.email) continue;
@@ -57275,8 +57378,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         console.log(`[TestDrive] No Resend key \u2014 lead stored without email for ${email}`);
         return res.json({ success: true, emailSent: false });
       }
-      const { Resend: Resend7 } = await import("resend");
-      const resend2 = new Resend7(apiKey);
+      const { Resend: Resend8 } = await import("resend");
+      const resend2 = new Resend8(apiKey);
       const company = companyName ? ` for ${companyName}` : "";
       const completionPct = totalTasks > 0 ? Math.round(completedTasks / totalTasks * 100) : 100;
       const NAVY4 = "#0A0F2E";

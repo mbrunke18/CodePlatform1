@@ -293,19 +293,11 @@ export default function SettingsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
-                        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E" }}>1,247</div>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Users</div>
-                      </div>
-                      <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
-                        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E" }}>94%</div>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Platform Adoption</div>
-                      </div>
-                      <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
-                        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C" }}>47</div>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Admin Users</div>
-                      </div>
+                    <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none flex items-center justify-between">
+                      <div className="text-sm text-[#6B7280]">View active users, roles, and access controls in the Admin Panel.</div>
+                      <Button variant="outline" size="sm" className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F0EDE4]" onClick={() => setLocation('/admin/users')}>
+                        Open Admin Panel
+                      </Button>
                     </div>
 
                     <div className="flex space-x-3">

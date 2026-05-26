@@ -160,7 +160,37 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [search, setSearch] = useState("");
+  const { data: savedTemplates, isLoading: templatesLoading } = useQuery<Task[]>({
+    queryKey: ['/api/task-templates'],
+  });
   const [tasks, setTasks] = useState<Task[]>(DEFAULT_TASKS);
+
+  // Hydrate from DB once loaded — if org has saved templates, use those; otherwise keep defaults
+  const [hydrated, setHydrated] = useState(false);
+  if (!templatesLoading && !hydrated && savedTemplates !== undefined) {
+    if (savedTemplates.length > 0) {
+      setTasks(savedTemplates);
+    }
+    setHydrated(true);
+  }
+
+  const createTemplateMutation = useMutation({
+    mutationFn: (data: Partial<Task>) => apiRequest('/api/task-templates', { method: 'POST', body: JSON.stringify(data) }),
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['/api/task-templates'] }); },
+    onError: () => { toast({ title: "Save Failed", description: "Could not save task to server.", variant: "destructive" }); },
+  });
+
+  const updateTemplateMutation = useMutation({
+    mutationFn: ({ id, data }: { id: string; data: Partial<Task> }) => apiRequest(`/api/task-templates/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['/api/task-templates'] }); },
+    onError: () => { toast({ title: "Update Failed", description: "Could not update task on server.", variant: "destructive" }); },
+  });
+
+  const deleteTemplateMutation = useMutation({
+    mutationFn: (id: string) => apiRequest(`/api/task-templates/${id}`, { method: 'DELETE' }),
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['/api/task-templates'] }); },
+    onError: () => { toast({ title: "Delete Failed", description: "Could not delete task from server.", variant: "destructive" }); },
+  });
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -320,15 +350,16 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     }
 
     if (editingTask) {
-      setTasks(tasks.map(t => 
-        t.id === editingTask.id 
-          ? { ...t, ...formData } as Task
-          : t
-      ));
+      // Optimistic update
+      setTasks(tasks.map(t => t.id === editingTask.id ? { ...t, ...formData } as Task : t));
+      // Persist to DB if it has a UUID (server-saved); otherwise just update local
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      if (uuidRegex.test(editingTask.id)) {
+        updateTemplateMutation.mutate({ id: editingTask.id, data: formData });
+      }
       toast({ title: "Task Updated", description: "The task has been updated." });
     } else {
-      const newTask: Task = {
-        id: generateId(),
+      const taskPayload: Partial<Task> = {
         title: formData.title || '',
         description: formData.description || '',
         assignedRole: formData.assignedRole || '',
@@ -339,9 +370,13 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
         approvalRequired: formData.approvalRequired || 'none',
         deliverables: formData.deliverables || '',
       };
-      setTasks([...tasks, newTask]);
-      enqueueInsight(INSIGHTS.taskAssigned(newTask.assignedRole || undefined));
-      toast({ title: "Task Created", description: "New task has been added." });
+      // Optimistic add with temp id
+      const tempTask: Task = { ...taskPayload, id: generateId() } as Task;
+      setTasks(prev => [...prev, tempTask]);
+      enqueueInsight(INSIGHTS.taskAssigned(taskPayload.assignedRole || undefined));
+      // Persist to DB
+      createTemplateMutation.mutate(taskPayload);
+      toast({ title: "Task Created", description: "New task has been saved." });
     }
     setIsDialogOpen(false);
   };
@@ -349,6 +384,10 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   const handleDelete = () => {
     if (deleteId) {
       setTasks(tasks.filter(t => t.id !== deleteId));
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      if (uuidRegex.test(deleteId)) {
+        deleteTemplateMutation.mutate(deleteId);
+      }
       setDeleteId(null);
       toast({ title: "Task Deleted", description: "The task has been removed." });
     }

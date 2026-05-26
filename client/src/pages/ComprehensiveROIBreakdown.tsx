@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import PageLayout from '@/components/layout/PageLayout';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useLocation } from 'wouter';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useQuery } from "@tanstack/react-query";
 import { 
@@ -46,6 +47,7 @@ function parseSpeedAdvantage(speedString: string): number {
 }
 
 export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boolean }) {
+  const [, setLocation] = useLocation();
   // Calculate totals
   const scenarioData = scenarios.map(scenario => ({
     ...scenario,
@@ -85,7 +87,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 </p>
               </div>
             </div>
-            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] gap-2" data-testid="button-export-report">
+            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] gap-2" data-testid="button-export-report" onClick={() => window.print()}>
               <Download className="h-4 w-4" />
               Export Report
             </Button>

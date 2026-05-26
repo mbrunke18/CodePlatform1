@@ -6526,6 +6526,7 @@ export const stakeholderContacts = pgTable('stakeholder_contacts', {
   // Domains this contact is the designated approver for (e.g. ['Financial', 'Market Dynamics'])
   // Empty array = receives all alerts (org-wide fallback)
   triggerDomains: text('trigger_domains').array().default([]),
+  metadata: jsonb('metadata').default({}),
   createdAt: timestamp('created_at').defaultNow(),
 });
 

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
 import { AIChat } from '@/components/AIChat';
 import { 
@@ -91,6 +91,7 @@ interface IndustryBenchmark {
 }
 
 export default function AdvancedAnalytics() {
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('lifecycle');
   const [predictiveModels, setPredictiveModels] = useState<PredictiveModel[]>([]);
   const [businessIntelligence, setBusinessIntelligence] = useState<BusinessIntelligence[]>([]);
@@ -320,7 +321,7 @@ export default function AdvancedAnalytics() {
                 <Brain className="w-3 h-3" />
                 12 Models Active
               </div>
-              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none text-xs tracking-wider uppercase">
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none text-xs tracking-wider uppercase" onClick={() => setLocation('/roi-calculator')}>
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Generate Report
               </Button>

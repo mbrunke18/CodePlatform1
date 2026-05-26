@@ -29,7 +29,7 @@ import {
   Calendar,
   Play
 } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import OnboardingTrigger from '@/components/onboarding/OnboardingTrigger';
 
 interface PlaybookReadiness {
@@ -158,6 +158,7 @@ const tierConfig = {
 };
 
 export default function ProtocolReadinessAudit() {
+  const [, setLocation] = useLocation();
   const [playbooks] = useState<PlaybookReadiness[]>(generateMockPlaybooks);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDomain, setSelectedDomain] = useState<string>('all');
@@ -458,6 +459,7 @@ export default function ProtocolReadinessAudit() {
                           size="sm"
                           className="border-[#E8E4DC] text-[#0A0F2E] font-bold hover:bg-[#F8F7F4]"
                           data-testid={`button-drill-${playbook.playbookNumber}`}
+                          onClick={() => setLocation('/practice-drills')}
                         >
                           <Play className="h-4 w-4 mr-1 text-[#C9A84C]" />
                           Drill
@@ -467,6 +469,7 @@ export default function ProtocolReadinessAudit() {
                           size="sm"
                           className="text-[#6B7280] hover:text-[#0A0F2E]"
                           data-testid={`button-view-${playbook.playbookNumber}`}
+                          onClick={() => setLocation(`/playbook-library`)}
                         >
                           <ChevronRight className="h-4 w-4" />
                         </Button>
@@ -519,7 +522,7 @@ export default function ProtocolReadinessAudit() {
                     Browse Readiness Protocols
                   </Button>
                 </Link>
-                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-schedule-drill">
+                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-schedule-drill" onClick={() => setLocation('/practice-drills')}>
                   <Calendar className="h-4 w-4 mr-2" />
                   Schedule Drill
                 </Button>

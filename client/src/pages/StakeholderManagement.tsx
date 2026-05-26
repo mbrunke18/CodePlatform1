@@ -125,16 +125,24 @@ const LEVEL_CONFIG: Record<number, { label: string; color: string }> = {
   5: { label: "Manager", color: "bg-[#F8F7F4] text-[#6B7280] border border-[#E8E4DC] rounded-none" },
 };
 
-const generateId = () => Date.now().toString(36);
-
-const DEFAULT_STAKEHOLDERS: Stakeholder[] = [
-  { id: '1', name: 'Sarah Chen', email: 'sarah.chen@company.com', phone: '+1 (555) 100-0001', role: 'CEO', department: 'Executive', level: 1, responsibility: 'Final decision authority, external communications approval', notificationChannels: ['email', 'phone', 'sms'], isBackup: false, isActive: true },
-  { id: '2', name: 'Michael Torres', email: 'michael.torres@company.com', phone: '+1 (555) 100-0002', role: 'COO', department: 'Operations', level: 1, responsibility: 'Operations oversight, resource allocation', notificationChannels: ['email', 'slack', 'phone'], isBackup: false, isActive: true },
-  { id: '3', name: 'Jennifer Wright', email: 'jennifer.wright@company.com', phone: '+1 (555) 100-0003', role: 'CFO', department: 'Finance', level: 1, responsibility: 'Financial impact assessment, budget approvals', notificationChannels: ['email', 'phone'], isBackup: false, isActive: true },
-  { id: '4', name: 'David Park', email: 'david.park@company.com', phone: '+1 (555) 100-0004', role: 'General Counsel', department: 'Legal', level: 2, responsibility: 'Legal review, regulatory compliance', notificationChannels: ['email', 'phone', 'slack'], isBackup: false, isActive: true },
-  { id: '5', name: 'Lisa Anderson', email: 'lisa.anderson@company.com', phone: '+1 (555) 100-0005', role: 'VP Communications', department: 'Communications', level: 3, responsibility: 'External messaging, media relations', notificationChannels: ['email', 'sms', 'slack'], isBackup: false, isActive: true },
-  { id: '6', name: 'Robert Kim', email: 'robert.kim@company.com', phone: '+1 (555) 100-0006', role: 'CISO', department: 'Security', level: 2, responsibility: 'Security assessment, incident response', notificationChannels: ['email', 'phone', 'sms', 'slack'], isBackup: false, isActive: true },
-];
+function mapDbToStakeholder(c: any): Stakeholder {
+  const meta = (c.metadata as any) || {};
+  const roleInfo = STAKEHOLDER_ROLES.find(r => r.value === c.role);
+  return {
+    id: String(c.id),
+    name: c.name || '',
+    email: c.email || '',
+    phone: c.phone || '',
+    role: c.role || '',
+    department: meta.department || '',
+    level: meta.level ?? (roleInfo?.level ?? 3),
+    responsibility: meta.responsibility || '',
+    notificationChannels: meta.notificationChannels || [c.preferredChannel || 'email'],
+    isBackup: meta.isBackup || false,
+    backupFor: meta.backupFor,
+    isActive: c.isActive ?? true,
+  };
+}
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
@@ -143,12 +151,13 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
   const { toast } = useToast();
   const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [search, setSearch] = useState("");
-  const [stakeholders, setStakeholders] = useState<Stakeholder[]>(DEFAULT_STAKEHOLDERS);
   const [editingStakeholder, setEditingStakeholder] = useState<Stakeholder | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [levelFilter, setLevelFilter] = useState<string>("all");
   const [departmentFilter, setDepartmentFilter] = useState<string>("all");
+
+  const orgId = (organization as any)?.id;
 
   const [formData, setFormData] = useState<Partial<Stakeholder>>({
     name: '',
@@ -163,8 +172,39 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
     isActive: true,
   });
 
+  // ── DB-backed data ─────────────────────────────────────────────────────────
+  const { data: dbContacts = [], isLoading } = useQuery<any[]>({
+    queryKey: ['/api/stakeholder-contacts', orgId],
+    queryFn: async () => {
+      if (!orgId) return [];
+      const res = await fetch(`/api/stakeholder-contacts?organizationId=${orgId}`);
+      const json = await res.json();
+      return json.contacts || [];
+    },
+    enabled: !!orgId,
+  });
+
+  const stakeholders: Stakeholder[] = dbContacts.map(mapDbToStakeholder);
+
+  const createMutation = useMutation({
+    mutationFn: (payload: any) => apiRequest('POST', '/api/stakeholder-contacts', payload),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['/api/stakeholder-contacts', orgId] }),
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: ({ id, payload }: { id: string; payload: any }) =>
+      apiRequest('PUT', `/api/stakeholder-contacts/${id}`, payload),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['/api/stakeholder-contacts', orgId] }),
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => apiRequest('DELETE', `/api/stakeholder-contacts/${id}`),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['/api/stakeholder-contacts', orgId] }),
+  });
+
+  // ── Derived state ──────────────────────────────────────────────────────────
   const filteredStakeholders = stakeholders.filter(s => {
-    const matchesSearch = !search || 
+    const matchesSearch = !search ||
       s.name.toLowerCase().includes(search.toLowerCase()) ||
       s.role.toLowerCase().includes(search.toLowerCase()) ||
       s.email.toLowerCase().includes(search.toLowerCase());
@@ -180,6 +220,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
     active: stakeholders.filter(s => s.isActive).length,
   };
 
+  // ── Handlers ───────────────────────────────────────────────────────────────
   const handleOpenCreate = () => {
     setFormData({
       name: '',
@@ -203,50 +244,60 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
     setIsDialogOpen(true);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!formData.name || !formData.email || !formData.role) {
-      toast({
-        title: "Missing Fields",
-        description: "Please fill in name, email, and role.",
-        variant: "destructive",
-      });
+      toast({ title: "Missing Fields", description: "Please fill in name, email, and role.", variant: "destructive" });
+      return;
+    }
+    if (!orgId) {
+      toast({ title: "No Organization", description: "Please complete organization setup first.", variant: "destructive" });
       return;
     }
 
-    if (editingStakeholder) {
-      setStakeholders(stakeholders.map(s => 
-        s.id === editingStakeholder.id 
-          ? { ...s, ...formData } as Stakeholder
-          : s
-      ));
-      toast({ title: "Stakeholder Updated", description: "The stakeholder has been updated." });
-    } else {
-      const roleInfo = STAKEHOLDER_ROLES.find(r => r.value === formData.role);
-      const newStakeholder: Stakeholder = {
-        id: generateId(),
-        name: formData.name || '',
-        email: formData.email || '',
-        phone: formData.phone || '',
-        role: formData.role || '',
-        department: formData.department || '',
-        level: roleInfo?.level || formData.level || 3,
-        responsibility: formData.responsibility || '',
+    const roleInfo = STAKEHOLDER_ROLES.find(r => r.value === formData.role);
+    const level = roleInfo?.level ?? formData.level ?? 3;
+    const dbPayload = {
+      organizationId: orgId,
+      role: formData.role,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || null,
+      preferredChannel: formData.notificationChannels?.[0] || 'email',
+      isActive: formData.isActive ?? true,
+      metadata: {
+        department: formData.department,
+        level,
+        responsibility: formData.responsibility,
         notificationChannels: formData.notificationChannels || ['email'],
         isBackup: formData.isBackup || false,
-        isActive: formData.isActive ?? true,
-      };
-      setStakeholders([...stakeholders, newStakeholder]);
-      enqueueInsight(INSIGHTS.decisionOwnerConfirmed());
-      toast({ title: "Stakeholder Added", description: "New stakeholder has been added to the directory." });
+        backupFor: formData.backupFor,
+      },
+    };
+
+    try {
+      if (editingStakeholder) {
+        await updateMutation.mutateAsync({ id: editingStakeholder.id, payload: dbPayload });
+        toast({ title: "Stakeholder Updated", description: "Contact information saved." });
+      } else {
+        await createMutation.mutateAsync(dbPayload);
+        enqueueInsight(INSIGHTS.decisionOwnerConfirmed());
+        toast({ title: "Stakeholder Added", description: "New stakeholder saved to your directory." });
+      }
+      setIsDialogOpen(false);
+    } catch {
+      toast({ title: "Save Failed", description: "Could not save stakeholder. Please try again.", variant: "destructive" });
     }
-    setIsDialogOpen(false);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (deleteId) {
-      setStakeholders(stakeholders.filter(s => s.id !== deleteId));
-      setDeleteId(null);
-      toast({ title: "Stakeholder Removed", description: "The stakeholder has been removed." });
+      try {
+        await deleteMutation.mutateAsync(deleteId);
+        setDeleteId(null);
+        toast({ title: "Stakeholder Removed", description: "The stakeholder has been removed from your directory." });
+      } catch {
+        toast({ title: "Delete Failed", description: "Could not remove stakeholder. Please try again.", variant: "destructive" });
+      }
     }
   };
 
@@ -261,11 +312,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
 
   const handleRoleChange = (role: string) => {
     const roleInfo = STAKEHOLDER_ROLES.find(r => r.value === role);
-    setFormData({ 
-      ...formData, 
-      role, 
-      level: roleInfo?.level || formData.level 
-    });
+    setFormData({ ...formData, role, level: roleInfo?.level || formData.level });
   };
 
   const getInitials = (name: string) => {
@@ -415,7 +462,15 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           </CardContent>
         </Card>
 
-        {filteredStakeholders.length === 0 ? (
+        {isLoading ? (
+          <Card>
+            <CardContent className="py-16 text-center">
+              <div className="h-12 w-12 mx-auto mb-4 rounded-full bg-[#E8E4DC] animate-pulse" />
+              <div className="h-4 w-48 mx-auto mb-2 bg-[#E8E4DC] rounded animate-pulse" />
+              <div className="h-3 w-64 mx-auto bg-[#E8E4DC] rounded animate-pulse" />
+            </CardContent>
+          </Card>
+        ) : filteredStakeholders.length === 0 ? (
           <Card>
             <CardContent className="py-16 text-center">
               <Users className="h-12 w-12 mx-auto mb-4 text-[#0A0F2E]" />

@@ -78,6 +78,7 @@ import {
   activationOutcomes,
   activationTasks,
   taskAcknowledgments,
+  actionItems,
   intelligenceReports,
   compoundThreatAlerts,
   roiSnapshots,
@@ -3572,6 +3573,105 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     } catch (error) {
       console.error("Error updating task:", error);
       res.status(500).json({ message: "Failed to update task" });
+    }
+  });
+
+  // Task Templates — org-scoped task definitions persisted as action items
+  const toTaskTemplate = (r: any) => ({
+    id: r.id,
+    title: r.title,
+    description: r.description,
+    assignedRole: r.assignedTo,
+    priority: r.priority,
+    status: (r.tags as any)?.status || 'pending',
+    estimatedMinutes: (r.tags as any)?.estimatedMinutes || 15,
+    approvalRequired: (r.tags as any)?.approvalRequired || 'none',
+    deliverables: r.outcome || '',
+    dependsOn: (r.dependencies as any) || [],
+    templateId: (r.tags as any)?.templateId || null,
+  });
+
+  app.get('/api/task-templates', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ message: 'Unauthorized' });
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.json([]);
+      const rows = await db
+        .select()
+        .from(actionItems)
+        .where(and(eq(actionItems.organizationId, orgId), sql`${actionItems.tags}->>'isTaskTemplate' = 'true'`))
+        .orderBy(actionItems.createdAt);
+      res.json(rows.map(toTaskTemplate));
+    } catch (error) {
+      console.error('Error fetching task templates:', error);
+      res.status(500).json({ message: 'Failed to fetch task templates' });
+    }
+  });
+
+  app.post('/api/task-templates', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ message: 'Unauthorized' });
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(403).json({ message: 'No organization found' });
+      const { title, description, assignedRole, priority, status, estimatedMinutes, approvalRequired, deliverables, dependsOn, templateId } = req.body;
+      if (!title || !assignedRole) return res.status(400).json({ message: 'title and assignedRole are required' });
+      const [row] = await db.insert(actionItems).values({
+        organizationId: orgId,
+        title,
+        description: description || '',
+        assignedTo: assignedRole,
+        priority: priority || 'medium',
+        outcome: deliverables || '',
+        dependencies: dependsOn || [],
+        tags: { isTaskTemplate: true, status: status || 'pending', estimatedMinutes: estimatedMinutes || 15, approvalRequired: approvalRequired || 'none', templateId: templateId || null },
+      }).returning();
+      res.json(toTaskTemplate(row));
+    } catch (error) {
+      console.error('Error creating task template:', error);
+      res.status(500).json({ message: 'Failed to create task template' });
+    }
+  });
+
+  app.put('/api/task-templates/:id', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ message: 'Unauthorized' });
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(403).json({ message: 'No organization found' });
+      const { id } = req.params;
+      const { title, description, assignedRole, priority, status, estimatedMinutes, approvalRequired, deliverables, dependsOn, templateId } = req.body;
+      const [row] = await db.update(actionItems).set({
+        title,
+        description: description || '',
+        assignedTo: assignedRole,
+        priority: priority || 'medium',
+        outcome: deliverables || '',
+        dependencies: dependsOn || [],
+        tags: { isTaskTemplate: true, status: status || 'pending', estimatedMinutes: estimatedMinutes || 15, approvalRequired: approvalRequired || 'none', templateId: templateId || null },
+        updatedAt: new Date(),
+      }).where(and(eq(actionItems.id, id), eq(actionItems.organizationId, orgId))).returning();
+      if (!row) return res.status(404).json({ message: 'Task template not found' });
+      res.json(toTaskTemplate(row));
+    } catch (error) {
+      console.error('Error updating task template:', error);
+      res.status(500).json({ message: 'Failed to update task template' });
+    }
+  });
+
+  app.delete('/api/task-templates/:id', async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ message: 'Unauthorized' });
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(403).json({ message: 'No organization found' });
+      const { id } = req.params;
+      await db.delete(actionItems).where(and(eq(actionItems.id, id), eq(actionItems.organizationId, orgId)));
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error deleting task template:', error);
+      res.status(500).json({ message: 'Failed to delete task template' });
     }
   });
 
@@ -7762,11 +7862,42 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   // POST /api/stakeholder-contacts — add a contact
   app.post('/api/stakeholder-contacts', async (req: any, res) => {
     try {
-      const { organizationId, role, name, email, slackUserId, slackChannel } = req.body;
+      const { organizationId, role, name, email, phone, preferredChannel, slackUserId, slackChannel, isActive, metadata } = req.body;
       if (!organizationId || !role) return res.status(400).json({ error: 'organizationId and role required' });
       const [contact] = await db.insert(stakeholderContactsTable).values({
-        organizationId, role, name, email, slackUserId, slackChannel, isActive: true,
+        organizationId, role, name, email,
+        phone: phone || null,
+        preferredChannel: preferredChannel || 'email',
+        slackUserId, slackChannel,
+        isActive: isActive ?? true,
+        metadata: metadata || {},
       }).returning();
+      res.json({ success: true, contact });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // PUT /api/stakeholder-contacts/:id — update a contact
+  app.put('/api/stakeholder-contacts/:id', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { eq } = await import('drizzle-orm');
+      const { role, name, email, phone, preferredChannel, slackUserId, slackChannel, isActive, metadata } = req.body;
+      const [contact] = await db.update(stakeholderContactsTable)
+        .set({
+          ...(role !== undefined && { role }),
+          ...(name !== undefined && { name }),
+          ...(email !== undefined && { email }),
+          ...(phone !== undefined && { phone }),
+          ...(preferredChannel !== undefined && { preferredChannel }),
+          ...(slackUserId !== undefined && { slackUserId }),
+          ...(slackChannel !== undefined && { slackChannel }),
+          ...(isActive !== undefined && { isActive }),
+          ...(metadata !== undefined && { metadata }),
+        })
+        .where(eq(stakeholderContactsTable.id, parseInt(id)))
+        .returning();
       res.json({ success: true, contact });
     } catch (err) {
       res.status(500).json({ success: false });

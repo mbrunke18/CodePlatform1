@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import PageLayout from '@/components/layout/PageLayout';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { useDemoController } from '@/contexts/DemoController';
 import { DemoStrategicAlert, DemoActiveStrategicCard } from '@/components/demo/DemoStrategicSimulation';
 import { 
@@ -72,6 +72,7 @@ interface ActiveCrisis {
 
 export default function CrisisResponseCenter() {
   const demoController = useDemoController();
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [crisisTemplates, setCrisisTemplates] = useState<CrisisTemplate[]>([]);
   const [activeCrises, setActiveCrises] = useState<ActiveCrisis[]>([]);
@@ -250,7 +251,11 @@ export default function CrisisResponseCenter() {
                   <Shield className="w-4 h-4" />
                   All Systems Ready
                 </div>
-                <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-14 rounded-none text-sm tracking-widest" size="lg">
+                <Button
+                  className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-14 rounded-none text-sm tracking-widest"
+                  size="lg"
+                  onClick={() => setLocation('/live-activation-center')}
+                >
                   <AlertTriangle className="w-5 h-5 mr-3" />
                   EMERGENCY ACTIVATION
                 </Button>
