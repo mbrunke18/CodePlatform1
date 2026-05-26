@@ -16,10 +16,10 @@ export default function Pricing() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Enterprise Pricing - Readiness OS | Strategic Readiness Platform",
-      description: "Value-based pricing for enterprise organizations. Core ($250K), Foresight ($450K), Enterprise ($750K–$1.5M). Founding Partner Program ($75K, 100% credited to Year 1).",
-      ogTitle: "Readiness OS Enterprise Pricing — Built for startup to Fortune 500",
-      ogDescription: "Three product tiers from $250K–$1.5M annually. Core platform, Foresight (Digital Twin + predictive foresight), and full Enterprise evolution with network learning.",
+      title: "Platform Tiers — Readiness OS | Strategic Readiness Platform",
+      description: "Three tiers of enterprise strategic readiness: Core, Foresight, and Enterprise. Full platform access — 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration. Contact us for pricing.",
+      ogTitle: "Readiness OS — Core · Foresight · Enterprise",
+      ogDescription: "Three product tiers built for startup to Fortune 500. Full 180-Protocol platform, Digital Twin simulation, and autonomous protocol evolution. Contact us for value-based pricing.",
     });
   }, []);
 
@@ -30,17 +30,25 @@ export default function Pricing() {
         <div className="max-w-5xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Enterprise Pricing</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Platform Tiers</span>
           </div>
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
             Built for <em style={{ fontStyle: "italic", color: GOLD }}>startup to Fortune 500</em> Scale
           </h1>
           <p className="text-xl text-[#0A0F2E] mb-4 max-w-2xl mx-auto">
-            Transparent, value-based pricing for enterprise strategic readiness
+            Value-based pricing for enterprise strategic readiness
           </p>
           <p className="text-lg text-[#6B7280] max-w-3xl mx-auto">
-            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. Core delivers the complete operating model. Foresight adds Digital Twin simulation and predictive foresight — war-gaming responses to triggers that haven't fired yet. Enterprise activates the autonomous evolution network: protocols that improve across every client activation.
+            Every tier includes the full Readiness OS platform — 180 Readiness Protocols, continuous signal monitoring, and 12-minute response orchestration. Core delivers the complete operating model. Foresight adds Digital Twin simulation and predictive foresight. Enterprise activates the autonomous evolution network: protocols that improve across every client activation.
           </p>
+          <div style={{ marginTop: 32 }}>
+            <Button
+              onClick={() => setLocation("/contact")}
+              style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
+            >
+              Contact Us for Pricing <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -71,8 +79,9 @@ export default function Pricing() {
                 </p>
               </div>
               <div className="text-left md:text-right">
-                <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: TEAL, lineHeight: 1 }}>$75K</div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginTop: 8 }}>100% credited to Year 1</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: TEAL, marginBottom: 6 }}>Program Fee</div>
+                <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: TEAL, lineHeight: 1.3 }}>100% credited to Year 1 subscription</div>
+                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>Contact us to discuss program sizing</div>
               </div>
             </div>
 
@@ -141,13 +150,12 @@ export default function Pricing() {
               {/* Header row */}
               <div style={{ padding: "14px 20px", background: NAVY, borderRight: "1px solid rgba(255,255,255,0.08)" }} />
               {[
-                { tier: "Core", price: "$250K" },
-                { tier: "Foresight", price: "$450K" },
-                { tier: "Enterprise", price: "$750K+" },
+                { tier: "Core" },
+                { tier: "Foresight" },
+                { tier: "Enterprise" },
               ].map((t, i) => (
-                <div key={t.tier} style={{ padding: "14px 16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: i === 1 ? GOLD : "rgba(255,255,255,0.6)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>{t.tier}</div>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: i === 1 ? GOLD : "#fff", fontFamily: "'Cormorant Garamond', serif" }}>{t.price}</div>
+                <div key={t.tier} style={{ padding: "18px 16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: i === 1 ? GOLD : "rgba(255,255,255,0.85)", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{t.tier}</div>
                 </div>
               ))}
               {/* Rows */}
@@ -195,21 +203,18 @@ export default function Pricing() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
             {[
-              { sector: "Financial Services", protocols: "30 protocols", triggers: "SEC enforcement, liquidity events, regulatory examinations, activist investors, M&A windows", price: "+$40K/yr" },
-              { sector: "Healthcare & Life Sciences", protocols: "30 protocols", triggers: "FDA recalls, CMS audits, clinical trial events, formulary changes, patient safety triggers", price: "+$40K/yr" },
-              { sector: "Energy & Utilities", protocols: "30 protocols", triggers: "Grid disruptions, FERC filings, environmental incidents, pipeline events, rate cases", price: "+$40K/yr" },
-              { sector: "Manufacturing & Supply Chain", protocols: "30 protocols", triggers: "Supplier failures, production disruptions, product recalls, tariff shifts, labor actions", price: "+$40K/yr" },
-              { sector: "Consumer & Retail", protocols: "30 protocols", triggers: "Product safety events, social media crises, competitor launches, seasonal demand surges", price: "+$40K/yr" },
-              { sector: "Technology & SaaS", protocols: "30 protocols", triggers: "Data breaches, outages, competitive threats, M&A defense, regulatory inquiry", price: "+$40K/yr" },
+              { sector: "Financial Services", protocols: "30 protocols", triggers: "SEC enforcement, liquidity events, regulatory examinations, activist investors, M&A windows" },
+              { sector: "Healthcare & Life Sciences", protocols: "30 protocols", triggers: "FDA recalls, CMS audits, clinical trial events, formulary changes, patient safety triggers" },
+              { sector: "Energy & Utilities", protocols: "30 protocols", triggers: "Grid disruptions, FERC filings, environmental incidents, pipeline events, rate cases" },
+              { sector: "Manufacturing & Supply Chain", protocols: "30 protocols", triggers: "Supplier failures, production disruptions, product recalls, tariff shifts, labor actions" },
+              { sector: "Consumer & Retail", protocols: "30 protocols", triggers: "Product safety events, social media crises, competitor launches, seasonal demand surges" },
+              { sector: "Technology & SaaS", protocols: "30 protocols", triggers: "Data breaches, outages, competitive threats, M&A defense, regulatory inquiry" },
             ].map((pack) => (
               <div key={pack.sector} style={{ background: "#fff", border: "1px solid #E8E4DC", padding: "24px 22px" }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>{pack.protocols}</div>
                 <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY, marginBottom: 8 }}>{pack.sector}</h3>
                 <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, marginBottom: 14 }}>{pack.triggers}</p>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: 16, fontWeight: 700, color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{pack.price}</span>
-                  <span style={{ fontSize: 10, color: "#9CA3AF" }}>added to any tier</span>
-                </div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>Add-on to any tier — contact for pricing</div>
               </div>
             ))}
           </div>
@@ -242,9 +247,9 @@ export default function Pricing() {
             <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-core">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>Tier 1</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Core</h3>
-              <div className="flex items-baseline gap-2 mb-8">
-                <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: NAVY }}>$250K</span>
-                <span className="text-sm text-[#6B7280]">/ year</span>
+              <div className="mb-8">
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B7280", marginBottom: 4 }}>Annual Subscription</div>
+                <div style={{ fontSize: 13, color: "#9CA3AF" }}>Contact us for value-based pricing</div>
               </div>
               <ul className="space-y-4 mb-8">
                 {[
@@ -276,9 +281,9 @@ export default function Pricing() {
             <div style={{ background: NAVY, border: `2px solid ${NAVY}`, padding: "40px 32px", position: "relative" }} data-testid="card-tier-foresight">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>Tier 2</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Foresight</h3>
-              <div className="flex items-baseline gap-2 mb-8">
-                <span style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD }}>$450K</span>
-                <span className="text-sm text-white/60">/ year</span>
+              <div className="mb-8">
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 4 }}>Annual Subscription</div>
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>Contact us for value-based pricing</div>
               </div>
               <ul className="space-y-4 mb-8">
                 {[
@@ -309,9 +314,9 @@ export default function Pricing() {
             <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors" data-testid="card-tier-enterprise">
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>Tier 3</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Enterprise</h3>
-              <div className="flex flex-col gap-1 mb-8">
-                <span style={{ ...CG, fontSize: 40, fontWeight: 600, color: NAVY }}>Custom</span>
-                <span className="text-xs text-[#6B7280]">$750K – $1.5M+ / year</span>
+              <div className="mb-8">
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B7280", marginBottom: 4 }}>Custom Engagement</div>
+                <div style={{ fontSize: 13, color: "#9CA3AF" }}>Contact us to scope your program</div>
               </div>
               <ul className="space-y-4 mb-8">
                 {[

@@ -123,7 +123,7 @@ const TIERS = [
       { label: "Custom SLA", value: true },
       { label: "Executive briefings", value: "Quarterly" },
       { label: "On-site implementation", value: "Optional" },
-      { label: "Pricing", value: "$150K–$500K+/year" },
+      { label: "Pricing", value: "Contact for pricing" },
     ],
     bestFor: "startup to Fortune 500, PE portfolios, and multi-subsidiary organizations that require full security, multi-org support, and executive-level implementation.",
     roiNote: "At this scale, every day of coordination delay has a measurable dollar cost. The platform pays for itself across a single strategic initiative.",
@@ -141,15 +141,15 @@ const FAQS = [
   },
   {
     q: "How does the ROI math work at these price points?",
-    a: "The math is consistent across all tiers: the value of a single situation handled correctly in 12 minutes — versus weeks of alignment, delay, and reactive cost — far exceeds the annual investment. A vendor dispute mishandled costs $500K–$2M. A supply chain disruption caught late costs $2M–$10M. A regulatory response delayed by 30 days costs multiples of that. The Ready tier at $75K pays for itself on the first activation. Every tier above that protects proportionally more.",
+    a: "The math is consistent across all tiers: the value of a single situation handled correctly in 12 minutes — versus weeks of alignment, delay, and reactive cost — far exceeds the annual investment. A vendor dispute mishandled costs $500K–$2M. A supply chain disruption caught late costs $2M–$10M. A regulatory response delayed by 30 days costs multiples of that. Every tier pays for itself on the first activation. Every tier above that protects proportionally more.",
   },
   {
     q: "What's the 30-day guarantee on Ready?",
     a: "For companies starting at the Ready tier, if you activate a Readiness Protocol in a real situation within 30 days and don't see measurable value, we refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
   },
   {
-    q: "How does this relate to the Founding Partner Program ($75K)?",
-    a: "The Founding Partner Program is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for startup to Fortune 500 organizations at enterprise scale. The $75K program fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
+    q: "How does this relate to the Founding Partner Program?",
+    a: "The Founding Partner Program is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for startup to Fortune 500 organizations at enterprise scale. The program fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
   },
   {
     q: "Can I move up tiers as we grow?",
@@ -163,30 +163,16 @@ const FAQS = [
 
 export default function Growth() {
   const [, setLocation] = useLocation();
-  const [annual, setAnnual] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     updatePageMetadata({
       title: "Pricing & Plans — Readiness OS | VaughnMartin",
-      description: "Capability-based pricing for Readiness OS. Ready ($75K/yr), Responsive ($150K/yr), Orchestrated ($250K/yr), Enterprise (custom). Unlimited users at every tier. One activation pays for the year.",
+      description: "Capability-based tiers for Readiness OS: Ready, Responsive, Orchestrated, and Enterprise. Unlimited users at every tier. Contact us for value-based pricing. One activation pays for the year.",
       ogTitle: "Readiness OS Pricing — Built on Deployment Scope, Not Headcount",
       ogDescription: "Four tiers of coordination infrastructure. Unlimited users at every tier. The same platform enterprise organizations use — with a structured entry path. One situation handled pays for the year.",
     });
   }, []);
-
-  const getPrice = (tier: typeof TIERS[0]) => {
-    if (!tier.annual) return null;
-    return annual ? tier.annual : tier.monthly;
-  };
-
-  const getPriceLabel = (tier: typeof TIERS[0]) => {
-    if (!tier.annual) return null;
-    const price = getPrice(tier)!;
-    return annual
-      ? `$${price.toLocaleString()}/year`
-      : `$${price.toLocaleString()}/month`;
-  };
 
   return (
     <PageLayout className="vm-page-growth">
@@ -238,31 +224,6 @@ export default function Growth() {
         </div>
       </section>
 
-      {/* ── BILLING TOGGLE ── */}
-      <section style={{ background: OFF, borderBottom: `1px solid #E8E4DC`, padding: "24px 48px", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "6px 6px 6px 20px" }}>
-          <span style={{ fontSize: 13, fontWeight: 600, color: annual ? "#9CA3AF" : NAVY }}>Monthly</span>
-          <button
-            onClick={() => setAnnual(!annual)}
-            style={{
-              width: 48, height: 26, borderRadius: 0,
-              background: annual ? NAVY : "#E5E7EB",
-              border: "none", cursor: "pointer", position: "relative", transition: "background 0.2s"
-            }}
-          >
-            <div style={{
-              width: 20, height: 20, borderRadius: 0, background: "#fff",
-              position: "absolute", top: 3, left: annual ? 25 : 3, transition: "left 0.2s"
-            }} />
-          </button>
-          <span style={{ fontSize: 13, fontWeight: 600, color: annual ? NAVY : "#9CA3AF" }}>Annual</span>
-          {annual && (
-            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, background: `rgba(43,138,110,0.1)`, borderRadius: 0, padding: "4px 12px" }}>
-              Best Value
-            </span>
-          )}
-        </div>
-      </section>
 
       {/* ── UNLIMITED USERS BANNER ── */}
       <div style={{ background: NAVY, padding: "14px 48px", textAlign: "center" }}>
@@ -313,40 +274,19 @@ export default function Growth() {
                     <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.4 }}>{tier.headline}</p>
                   </div>
 
-                  {/* Price */}
-                  {isEnterprise ? (
-                    <div style={{ marginBottom: 24 }}>
-                      <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 4 }}>Custom</div>
-                      <p style={{ fontSize: 12, color: "#9CA3AF" }}>$150K – $500K+/year</p>
+                  {/* Pricing CTA */}
+                  <div style={{ marginBottom: 24 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 4 }}>
+                      {isEnterprise ? "Custom Engagement" : "Annual Subscription"}
                     </div>
-                  ) : (
-                    <div style={{ marginBottom: 24 }}>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 2 }}>
-                        <span style={{ ...CG, fontSize: 44, fontWeight: 600, color: NAVY, lineHeight: 1 }}>
-                          ${(annual ? tier.annual! : tier.monthly!).toLocaleString()}
-                        </span>
-                        <span style={{ fontSize: 13, color: "#9CA3AF" }}>/{annual ? "year" : "month"}</span>
+                    <div style={{ fontSize: 13, color: "#6B7280", marginBottom: tier.guarantee ? 12 : 0 }}>Contact us for value-based pricing</div>
+                    {tier.guarantee && (
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: `rgba(43,138,110,0.08)`, border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 0, padding: "3px 10px" }}>
+                        <div style={{ width: 5, height: 5, borderRadius: 0, background: TEAL }} />
+                        <span style={{ fontSize: 10, color: TEAL, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>30-day guarantee</span>
                       </div>
-                      {annual ? (
-                        <p style={{ fontSize: 12, color: "#6B7280" }}>
-                          ≈ ${Math.round(tier.annual! / 12).toLocaleString()}/month &middot;{" "}
-                          <span style={{ color: TEAL, fontWeight: 600 }}>
-                            Save ${(tier.monthly! * 12 - tier.annual!).toLocaleString()}/yr vs. monthly
-                          </span>
-                        </p>
-                      ) : (
-                        <p style={{ fontSize: 12, color: TEAL, fontWeight: 600 }}>
-                          Annual saves you ${(tier.monthly! * 12 - tier.annual!).toLocaleString()}/yr — 2 months free
-                        </p>
-                      )}
-                      {tier.guarantee && (
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, background: `rgba(43,138,110,0.08)`, border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 0, padding: "3px 10px" }}>
-                          <div style={{ width: 5, height: 5, borderRadius: 0, background: TEAL }} />
-                          <span style={{ fontSize: 10, color: TEAL, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>30-day guarantee</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   {/* ROI note — right below price where eyes land */}
                   <div style={{ background: tier.highlight ? `rgba(201,168,76,0.07)` : `rgba(10,15,46,0.04)`, borderLeft: `3px solid ${tier.color}`, padding: "10px 14px", marginBottom: 20, borderRadius: "0 4px 4px 0" }}>
@@ -436,7 +376,6 @@ export default function Growth() {
                   <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{gate.from}</span>
                   <span style={{ color: gate.color, fontWeight: 700 }}>{gate.arrow}</span>
                   <span style={{ fontSize: 11, fontWeight: 700, color: gate.color, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{gate.to}</span>
-                  <span style={{ marginLeft: "auto", fontSize: 10, color: "#9CA3AF", fontWeight: 600 }}>{gate.jump}</span>
                 </div>
                 <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 10, lineHeight: 1.3 }}>{gate.gain}</p>
                 <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{gate.detail}</p>
@@ -459,7 +398,7 @@ export default function Growth() {
               <em style={{ fontStyle: "italic", color: GOLD }}>The Ready tier is your proof point.</em>
             </h3>
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.65, marginBottom: 0 }}>
-              Start with Ready at $7,500/month (or $75,000/year — 2 months free on annual). You get the full platform —
+              Start with Ready and get the full platform —
               real signal detection, live activations, unlimited users — deployed across your two most critical domains.
               Run it for 30 days in your actual environment. If it doesn't deliver, we refund the first month.
               No 90-day structured validation cycle required for Growth tiers. Start immediately and see results in your first activation.
@@ -573,7 +512,6 @@ export default function Growth() {
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <div style={{ width: 8, height: 8, borderRadius: 0, background: tier.color, flexShrink: 0 }} />
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: tier.color }}>{tier.name}</span>
-                  {tier.annual && <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>${(tier.annual / 1000).toFixed(0)}K/yr</span>}
                 </div>
                 <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>{tier.roiNote}</p>
               </div>
@@ -582,7 +520,6 @@ export default function Growth() {
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                 <div style={{ width: 8, height: 8, borderRadius: 0, background: NAVY, flexShrink: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: NAVY }}>Enterprise</span>
-                <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>$250K+/yr</span>
               </div>
               <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>
                 At startup to Fortune 500 scale, a single mishandled strategic trigger can cost $10M–$100M in lost value, market position, or regulatory exposure. The platform pays for itself within the first coordinated response.
@@ -646,17 +583,16 @@ export default function Growth() {
           {/* Bridge to Readiness OS */}
           <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
             {[
-              { tier: "Ready", price: "$75K/yr", replace: "One consulting engagement", roi: "7–70×" },
-              { tier: "Responsive", price: "$150K/yr", replace: "Intelligence subscription + Readiness Protocol development", roi: "10–100×" },
-              { tier: "Orchestrated", price: "$250K/yr", replace: "Fractional strategy ops team", roi: "2–8× (cost replacement alone)" },
-              { tier: "Enterprise", price: "$250K+/yr", replace: "Full strategy ops function", roi: "40–400×" },
+              { tier: "Ready", replace: "One consulting engagement", roi: "7–70×" },
+              { tier: "Responsive", replace: "Intelligence subscription + Readiness Protocol development", roi: "10–100×" },
+              { tier: "Orchestrated", replace: "Fractional strategy ops team", roi: "2–8× (cost replacement alone)" },
+              { tier: "Enterprise", replace: "Full strategy ops function", roi: "40–400×" },
             ].map((row) => (
               <div key={row.tier} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "20px 20px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: NAVY }}>{row.tier}</span>
                   <span style={{ fontSize: 13, fontWeight: 700, color: TEAL }}>{row.roi} ROI</span>
                 </div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: GOLD }}>{row.price}</div>
                 <div style={{ fontSize: 12, color: "#6B7280" }}>Replaces: {row.replace}</div>
               </div>
             ))}
@@ -778,11 +714,11 @@ export default function Growth() {
             <div style={{ width: 24, height: 2, background: NAVY }} />
           </div>
           <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,3.5vw,36px)", color: NAVY, marginBottom: 12 }}>
-            Founding Partner Program — $75K
+            Founding Partner Program
           </h2>
           <p style={{ fontSize: 16, color: "#4B5563", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.6 }}>
             For enterprise organizations that want a structured 90-day validation with dedicated implementation.
-            The $75K program fee is <strong>100% credited toward Year 1</strong> — so you're not paying for a proof of concept,
+            The program fee is <strong>100% credited toward Year 1</strong> — so you're not paying for a proof of concept,
             you're prepaying for the deployment.
           </p>
           <p style={{ fontSize: 14, color: "#9CA3AF", marginBottom: 28 }}>

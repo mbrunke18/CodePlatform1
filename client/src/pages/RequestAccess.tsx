@@ -261,7 +261,7 @@ export default function RequestAccess() {
                     {/* Note */}
                     <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.55)", textAlign: "center", marginTop: 18, letterSpacing: "0.02em", lineHeight: 1.6 }}>
                       Link expires in 24 hours · single sign-in · no password required.<br />
-                      <span style={{ color: "rgba(240,237,228,0.5)" }}>This is Executive Access — not the <a href="/founding-partner-program" style={{ color: GOLD, textDecoration: "none" }}>Founding Partner Program</a> ($75K).</span>
+                      <span style={{ color: "rgba(240,237,228,0.5)" }}>This is Executive Access — not the <a href="/founding-partner-program" style={{ color: GOLD, textDecoration: "none" }}>Founding Partner Program</a>.</span>
                     </p>
                   </form>
                 </Form>
