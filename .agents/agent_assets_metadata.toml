@@ -36,6 +36,18 @@ uri = "file://client/src/assets/images/executive-desk-minimal.png"
 type = "image"
 title = "executive desk minimal dark"
 
+[[generated]]
+id = "qYJ3PqmaBxq0MnBCGB3bq"
+uri = "file://attached_assets/linkedin_banner_command.png"
+type = "image"
+title = "linkedin banner command center"
+
+[[generated]]
+id = "S6HQpuu1p3DuIKY4OesRY"
+uri = "file://attached_assets/linkedin_banner_signal.png"
+type = "image"
+title = "linkedin banner signal abstract"
+
 [[outputs]]
 id = "YKDXL8v_fNIqx4S2b26bE"
 uri = "file://VaughnMartin_Execution_OS_Users_Guide.md"
@@ -527,3 +539,15 @@ id = "twjPjgvP8rsfn0CpHi-sv"
 uri = "file://developer-reference.md"
 type = "text"
 title = "developer-reference.md"
+
+[[outputs]]
+id = "BUNUDKsn_rUd0i2zQuPmg"
+uri = "file://attached_assets/linkedin_banner_command.png"
+type = "image"
+title = "Option A — Command Center (Cinematic)"
+
+[[outputs]]
+id = "NJkHo6JtLVBW4hZPfZ3pi"
+uri = "file://attached_assets/linkedin_banner_signal.png"
+type = "image"
+title = "Option B — Signal & Pulse (Bold/Graphic)"
