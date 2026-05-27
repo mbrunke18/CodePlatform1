@@ -239,12 +239,15 @@ export default function CostOfInaction() {
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '60px 32px 80px' }}>
 
         <div style={{ marginBottom: 48, textAlign: 'center' }}>
-          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Financial Risk Modeling</div>
-          <h1 style={{ ...CG, fontSize: 52, fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: 20 }}>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>The Mobilization Tax</div>
+          <h1 style={{ ...CG, fontSize: 52, fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: 16 }}>
             The Cost of a<br />30-Day Mobilization Cycle
           </h1>
+          <p style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY, lineHeight: 1.3, maxWidth: 560, margin: '0 auto 20px', fontStyle: 'italic' }}>
+            The Mobilization Tax doesn't get reduced.<br />It gets eliminated.
+          </p>
           <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.7, maxWidth: 600, margin: '0 auto 24px' }}>
-            Every startup to Fortune 500 enterprise faces strategic triggers. The question is not whether — it's how fast you can act. Quantify what the delay costs your organization.
+            Every startup to Fortune 500 enterprise faces strategic triggers. The question is not whether — it's whether the response was staged before the trigger fired. Quantify what the delay costs your organization.
           </p>
           <div style={{ display: 'inline-block', padding: '8px 18px', background: 'rgba(201,168,76,0.1)', border: `1px solid rgba(201,168,76,0.3)`, borderRadius: '0.15rem', fontSize: 13, color: '#92400E', fontStyle: 'italic' }}>
             Conservative estimates · Public benchmarks · Transparent assumptions

@@ -374,20 +374,31 @@ export default function Investors() {
           
           {/* Hero */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-            <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="flex items-center justify-center gap-2 mb-4">
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
               <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">Investor Overview</span>
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
             </div>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Coordination Infrastructure</span>
+              <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              The Strategic Readiness Platform for
-              <span className="text-[#C9A84C]"> startup to Fortune 500</span>
+              The Operating Model Layer<br />
+              <span className="text-[#C9A84C]">startup to Fortune 500 Are Missing</span>
             </h1>
-            <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">
+            <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-4 font-medium">
               Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays that exist because humans couldn't process information fast enough to act decisively. Every vendor bolted AI onto that old model. We rebuilt from first principles. The category didn't exist. We built it.
             </p>
-            <p className="text-base text-[#0A0F2E]/55 max-w-2xl mx-auto mb-8">
-              When a high-stakes situation presents itself, competitors spend 30 days just mobilizing. Readiness OS compresses that to 12 minutes — because the response was staged before the trigger fired.
+            <p className="text-base font-bold max-w-2xl mx-auto mb-4" style={{ color: NAVY }}>
+              That delay — between "we know" and "we are executing" — is the Mobilization Tax.
+            </p>
+            <p className="text-base font-bold max-w-xl mx-auto mb-8" style={{ color: GOLD }}>
+              The Mobilization Tax doesn't get reduced. It gets eliminated.
+            </p>
+            <p className="text-sm text-[#0A0F2E]/50 max-w-2xl mx-auto mb-8">
+              ServiceNow reacts. Everbridge notifies. McKinsey documents. Every alternative responds after the trigger fires. Readiness OS is the first platform built to make the response ready before the trigger fires.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">

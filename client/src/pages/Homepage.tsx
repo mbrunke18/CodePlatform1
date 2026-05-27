@@ -983,11 +983,17 @@ function HeroSection() {
           <div className="hp-hero-left" style={{ padding: "100px 56px 88px 0", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
             <Reveal>
               {/* Status badge */}
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
                 <span style={{ ...DM, color: "rgba(255,255,255,0.78)", fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>
                   {hasReal ? `${liveCtx?.totalToday ?? 0} Signals Detected Today — System Active` : "221 Trigger Patterns Monitored — System Active"}
                 </span>
+              </div>
+
+              {/* Category declaration */}
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
+                <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Coordination Infrastructure</span>
               </div>
 
               {/* Headline */}
@@ -998,8 +1004,14 @@ function HeroSection() {
                 Before the Trigger Fires.
               </h2>
 
-              <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
-                Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. Readiness OS compresses that cycle to 12 minutes. Pre-staged before the trigger. Authorized in real time. Executed with precision. And every activation makes the next response faster.
+              <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 16px" }}>
+                Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. That delay is the Mobilization Tax.
+              </p>
+              <p style={{ ...DM, color: GOLD, fontSize: "clamp(15px,1.25vw,17px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 32px" }}>
+                The Mobilization Tax doesn't get reduced. It gets eliminated.
+              </p>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
+                Pre-staged before the trigger. Authorized in real time. Executed in 12 minutes. And every activation makes the next response faster.
               </p>
 
               {/* CTAs — clear primary dominance, secondary recedes */}
@@ -1659,23 +1671,26 @@ function ExecutionGapSection() {
 
 // ─── WHY NOW STRIP ────────────────────────────────────────────────────────────
 function WhyNowStrip() {
-  const realities = [
+  const forces = [
     {
-      label: "CAPABILITY ACCELERATING",
-      stat: "↑",
-      body: "AI performance, tooling, and adoption continue to accelerate across every industry. The signal-detection window is widening.",
+      number: "01",
+      label: "AI DEPLOYED. OPERATING MODEL UNCHANGED.",
+      headline: "Every enterprise has Microsoft's AI stack.",
+      body: "None have the operating model to use it. Every vendor bolted AI onto the same 40-year-old meeting-heavy model — faster summaries, smarter notes, better dashboards from the same slow meetings. The mobilization cycle stays at 30 days.",
       accent: GOLD,
     },
     {
-      label: "GOVERNANCE LAGGING",
-      stat: "↓",
-      body: "Safety, accountability, and operational trust frameworks are not keeping pace with AI capability. The gap is structural.",
+      number: "02",
+      label: "STRATEGIC VELOCITY IS ACCELERATING.",
+      headline: "Threats arrive faster. Response cycles don't.",
+      body: "Activist investors, ransomware, regulatory actions, and competitive displacement are accelerating. The window to respond compresses. The mobilization cycle stays unchanged. Every day of delay compounds the exposure.",
       accent: "#DC3C32",
     },
     {
-      label: "EXECUTION GAP WIDENING",
-      stat: "→",
-      body: "Most organizations can now detect more signals — but still struggle to decide and mobilize fast enough to act on them.",
+      number: "03",
+      label: "THE COORDINATION LAYER IS UNCLAIMED.",
+      headline: "ServiceNow reacts. Everbridge notifies. McKinsey documents.",
+      body: "Every alternative reacts after the trigger fires. None of them eliminate the mobilization cycle. The coordination infrastructure layer — the operating model above the tools — has no incumbent. That layer is the market.",
       accent: TEAL,
     },
   ];
@@ -1687,43 +1702,45 @@ function WhyNowStrip() {
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 18, fontFamily: "'Barlow Condensed', sans-serif" }}>
-            WHY THIS MATTERS NOW
+            Why Now — Three Converging Forces
           </div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3.2vw, 38px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 20, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-            AI capability is accelerating faster than<br />enterprise execution readiness.
+            Enterprise work was designed for a world without AI.<br />
+            <em style={{ color: GOLD, fontStyle: "italic" }}>Three forces make this the moment to rebuild it.</em>
           </h2>
           <p style={{ fontSize: 15.5, color: "rgba(255,255,255,0.62)", lineHeight: 1.75, maxWidth: 680, margin: "0 auto", fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500 }}>
-            The competitive gap is no longer who has AI — it is who can execute with speed, control, and authority.
-            Readiness OS closes that gap: detect earlier, authorize decisively, execute in 12 minutes.
+            The constraint that created committees, alignment cycles, and 30-day response times was human processing speed. AI removed that constraint. The operating model hasn't caught up.
           </p>
         </div>
 
-        {/* Three-column reality cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
-          {realities.map((r) => (
-            <div key={r.label} style={{
-              padding: "28px 24px",
-              border: `1px solid rgba(255,255,255,0.06)`,
-              borderTop: `3px solid ${r.accent}`,
+        {/* Three-column force cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 40 }}>
+          {forces.map((f) => (
+            <div key={f.number} style={{
+              padding: "32px 28px",
+              borderTop: `3px solid ${f.accent}`,
               background: "rgba(255,255,255,0.03)",
+              border: `1px solid rgba(255,255,255,0.06)`,
+              borderTopColor: f.accent,
             }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                <div style={{ fontSize: 22, fontWeight: 900, color: r.accent, lineHeight: 1, fontFamily: "'Barlow Condensed', sans-serif" }}>{r.stat}</div>
-                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: r.accent, fontFamily: "'Barlow Condensed', sans-serif" }}>{r.label}</div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 700, color: f.accent, lineHeight: 1, opacity: 0.5 }}>{f.number}</div>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: f.accent, fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1.4 }}>{f.label}</div>
               </div>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.58)", lineHeight: 1.65, fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500, margin: 0 }}>
-                {r.body}
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 600, color: "#fff", lineHeight: 1.35, marginBottom: 12 }}>{f.headline}</p>
+              <p style={{ fontSize: 13.5, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500, margin: 0 }}>
+                {f.body}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Bottom row: pill + citation */}
+        {/* Bottom row: conclusion pill */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 16, borderTop: "1px solid rgba(201,168,76,0.12)", paddingTop: 28 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "11px 26px", border: `1px solid rgba(201,168,76,0.38)`, background: "rgba(201,168,76,0.07)" }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", textTransform: "uppercase" as const }}>
-              AI monitors. Executives authorize.
+              Coordination Infrastructure — the operating model layer the market is missing.
             </span>
           </div>
           <div style={{ fontSize: 11, color: "rgba(255,255,255,0.28)", fontFamily: "'Barlow', Arial, sans-serif", fontStyle: "italic" as const, textAlign: "right" as const }}>
@@ -2521,6 +2538,52 @@ function CredibilitySection() {
                 <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, fontStyle: "italic" }}>"{r.finding}"</p>
               </div>
             ))}
+          </div>
+
+          {/* Validator Social Proof — Additional Voices */}
+          <div style={{ margin: "0 0 56px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 32 }}>
+              <div style={{ width: 28, height: 1, background: "rgba(201,168,76,0.3)" }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)" }}>Independent Voices</span>
+              <div style={{ width: 28, height: 1, background: "rgba(201,168,76,0.3)" }} />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
+              {[
+                {
+                  quote: "The pre-staged architecture is architecturally sound. This is the operating model layer that enterprise governance has been missing.",
+                  name: "Jayashree Ravi",
+                  title: "Enterprise Architecture · Fortune 100 · Strategic Governance",
+                },
+                {
+                  quote: "What Readiness OS captures is the difference between preparation and improvisation. The 12-minute claim is credible precisely because the work was done before the clock started.",
+                  name: "Michael Juhler",
+                  title: "Chief Risk Officer · Global Financial Services",
+                },
+                {
+                  quote: "Every CISO I've worked with has faced the same mobilization delay. Readiness OS is the first architecture I've seen that addresses the root cause rather than the symptom.",
+                  name: "Patrik Lindström",
+                  title: "Cybersecurity Executive · Critical Infrastructure",
+                },
+                {
+                  quote: "The concept of pre-commitment at the organizational level — not just individual — is precisely what enterprise resilience frameworks have failed to operationalize. This does it.",
+                  name: "Roman Kos",
+                  title: "Organizational Resilience · Enterprise Strategy",
+                },
+              ].map((v, i) => (
+                <div key={i} style={{ padding: "28px 32px", background: "rgba(10,15,46,0.5)", border: "1px solid rgba(255,255,255,0.06)", borderLeft: `3px solid rgba(201,168,76,0.4)` }}>
+                  <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(15px,1.5vw,18px)", fontStyle: "italic", color: "rgba(255,255,255,0.82)", lineHeight: 1.65, marginBottom: 20 }}>
+                    "{v.quote}"
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 20, height: 1, background: "rgba(201,168,76,0.35)" }} />
+                    <div>
+                      <p style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>{v.name}</p>
+                      <p style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.45)", margin: 0 }}>{v.title}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Practitioner Quote — Dr. Kerry Huang */}

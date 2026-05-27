@@ -99,6 +99,11 @@ export default function InvestorLanding() {
               <div className="w-8 h-px" style={{ background: '#C9A84C' }} />
             </div>
             
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24, padding: '5px 14px', border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.07)' }}>
+              <div style={{ width: 5, height: 5, background: '#C9A84C', flexShrink: 0 }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Coordination Infrastructure</span>
+            </div>
+
             <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(40px,6vw,72px)', fontWeight: 700, marginBottom: 16, lineHeight: 1.1, maxWidth: 900, margin: '0 auto 16px', color: '#fff' }} data-testid="heading-hero">
               The Salesforce Moment for Strategic Readiness
             </h1>
@@ -108,7 +113,7 @@ export default function InvestorLanding() {
             </p>
             
             <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: 16, maxWidth: 760, margin: '0 auto 16px', lineHeight: 1.55 }}>
-              The problem isn't strategy, talent, or AI tools. It's that no enterprise has the infrastructure to make the response ready before the trigger fires. We built it.
+              The problem isn't strategy, talent, or AI tools. It's that no enterprise has the coordination infrastructure to make the response ready before the trigger fires. We built it.
             </p>
             {/* VaughnMartin Thesis Block — leads with WHY before the market numbers */}
             <div className="max-w-3xl mx-auto mb-10 border border-[#C9A84C]/30 bg-white/5 backdrop-blur-sm p-8 text-left">

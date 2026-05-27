@@ -63,11 +63,18 @@ export default function VsConsulting() {
             <em style={{ fontStyle: "italic", color: GOLD }}>Readiness OS makes sure it happens.</em>
           </h1>
 
-          <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
+          <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 640, margin: "0 auto 20px", lineHeight: 1.65 }}>
             A startup to Fortune 500 company hires McKinsey to develop crisis response Readiness Protocols. Six months later, a crisis hits.
             Nobody can find the Readiness Protocols. The organization still takes 30 days to coordinate.
             The $500K investment sits on a shelf while the company scrambles.
           </p>
+
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 40, padding: "12px 24px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.06)" }}>
+            <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
+            <span style={{ fontSize: 13, fontWeight: 700, color: GOLD, letterSpacing: "0.06em" }}>
+              McKinsey reacts after the trigger fires. Readiness OS eliminates the mobilization cycle before it begins.
+            </span>
+          </div>
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <button
@@ -279,8 +286,11 @@ export default function VsConsulting() {
             <p style={{ ...CG, fontSize: "clamp(22px,3vw,30px)", fontWeight: 600, color: GOLD, lineHeight: 1.3, margin: "0 0 28px" }}>
               Readiness OS makes sure it happens.
             </p>
-            <p style={{ fontSize: 14, color: "rgba(240,237,228,0.5)", maxWidth: 480, margin: "0 auto 32px", lineHeight: 1.6 }}>
+            <p style={{ fontSize: 14, color: "rgba(240,237,228,0.5)", maxWidth: 520, margin: "0 auto 16px", lineHeight: 1.6 }}>
               Readiness OS is the coordination infrastructure your consultants assume you already have — but have never built.
+            </p>
+            <p style={{ fontSize: 14, fontWeight: 700, color: GOLD, maxWidth: 480, margin: "0 auto 32px", lineHeight: 1.6 }}>
+              Consultants react after the trigger fires. Readiness OS eliminates the Mobilization Tax before the trigger arrives.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <button

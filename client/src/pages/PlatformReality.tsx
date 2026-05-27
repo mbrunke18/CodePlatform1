@@ -96,6 +96,13 @@ export default function PlatformReality() {
             Every conference keynote, McKinsey deck, LinkedIn post, and framework whitepaper proves the mobilization problem is real. The audience nods. The room agrees. The organization goes home — and still takes 30 days to respond when a high-stakes situation presents itself.
           </p>
 
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginBottom: 24, padding: "10px 22px", border: "1px solid rgba(201,168,76,0.35)", background: "rgba(201,168,76,0.07)" }}>
+            <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
+            <span style={{ fontSize: 13, fontWeight: 700, color: GOLD, letterSpacing: "0.05em" }}>
+              Disruption is not improvement of the old model. It's elimination of the constraint.
+            </span>
+          </div>
+
           <p style={{ fontSize: 15, color: GOLD, fontWeight: 600, maxWidth: 520, margin: "0 auto 40px", lineHeight: 1.5, fontStyle: "italic" }}>
             The thought leaders were right about the problem. We're the only ones who built the solution.
           </p>

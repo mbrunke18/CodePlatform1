@@ -91,16 +91,16 @@ const categoryComparison = [
   {
     category: "Crisis Notification",
     vendors: "Everbridge, OnSolve, Noggin",
-    does: "Sends mass alerts to employees, coordinates emergency communications, tracks incident status",
-    doesNot: "Does not create projects, assign strategic tasks, allocate budget, or execute a coordinated organizational response",
+    does: "Sends mass alerts to employees, coordinates emergency communications, tracks incident status after the trigger fires",
+    doesNot: "Reacts after the trigger fires. Does not pre-stage responses, does not create projects, assign strategic tasks, allocate budget, or eliminate the Mobilization Tax",
     color: "#E5E7EB",
     textColor: MUTED,
   },
   {
-    category: "Strategic Readiness Platform",
+    category: "Coordination Infrastructure",
     vendors: "Readiness OS (Category of One)",
-    does: "Detects strategic triggers, fires the right Readiness Protocol, creates projects, assigns tasks by role, allocates budget, mobilizes stakeholders — all within 12 minutes",
-    doesNot: "The only platform that bridges signal detection to coordinated organizational execution",
+    does: "Detects strategic triggers, fires the right Readiness Protocol, creates projects, assigns tasks by role, allocates budget, mobilizes stakeholders — all within 12 minutes. The response is ready before the trigger fires.",
+    doesNot: "The only platform that eliminates the Mobilization Tax entirely — coordination infrastructure that operates before, at, and after the trigger",
     color: NAVY,
     textColor: "#fff",
     featured: true,
@@ -108,8 +108,8 @@ const categoryComparison = [
   {
     category: "Project Management",
     vendors: "Jira, Asana, ServiceNow",
-    does: "Tracks tasks, manages sprints, provides workflow automation for pre-defined processes",
-    doesNot: "Does not detect strategic triggers, does not know what Readiness Protocol to run, requires manual setup for every response",
+    does: "Tracks tasks, manages sprints, provides workflow automation for pre-defined processes after the trigger fires",
+    doesNot: "Reacts after the trigger fires. Does not detect strategic triggers, does not know what Readiness Protocol to run, migrates the Mobilization Tax to a new database rather than eliminating it",
     color: "#E5E7EB",
     textColor: MUTED,
   },
@@ -168,16 +168,18 @@ export default function CompetitivePositioning() {
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
             </div>
             <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,60px)", lineHeight: 1.05, color: "#fff", marginBottom: 20 }}>
-              The Strategic Readiness Layer<br />
+              Coordination Infrastructure<br />
               <em style={{ fontStyle: "italic", color: "#DFC178" }}>Category of One</em>
             </h1>
             <p style={{ fontSize: 20, color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto 12px" }}>
-              Crisis tools notify. PM tools track. Readiness OS executes.
+              ServiceNow reacts. Everbridge notifies. McKinsey documents. Readiness OS eliminates.
             </p>
-            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 40px" }}>
-              We're not competing with Everbridge or Jira — we own the{" "}
-              <span style={{ color: "#DFC178", fontWeight: 600 }}>20–50 hours of coordination</span>{" "}
-              that happens between alert and action.
+            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 640, margin: "0 auto 16px" }}>
+              Every alternative reacts after the trigger fires. None of them eliminate the Mobilization Tax.
+              Readiness OS is the first platform built to make the response ready <em style={{ color: "#DFC178" }}>before</em> the trigger fires.
+            </p>
+            <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, maxWidth: 560, margin: "0 auto 40px" }}>
+              We don't compete with Everbridge or Jira — we own the coordination infrastructure layer they assume already exists.
             </p>
 
             {/* Three Category Visual */}
