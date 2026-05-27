@@ -137,11 +137,24 @@ export default function BrunkeSistersCaseStudy() {
             Rochester PM
           </h1>
           <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 24 }} />
-          <p style={{ color: IVORY, fontSize: 18, lineHeight: 1.6, maxWidth: 680, opacity: 0.9, marginBottom: 0 }}>
+          <p style={{ color: IVORY, fontSize: 18, lineHeight: 1.6, maxWidth: 680, opacity: 0.9, marginBottom: 32 }}>
             500-person project management firm. Founding Partner on Readiness OS since March 2026.
             Four strategic triggers fired in 60 days. Four Readiness Protocols executed.
             Average time from trigger detection to full response: <strong style={{ color: GOLD }}>10.8 minutes.</strong>
           </p>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(201,168,76,0.3)", borderRadius: "0.15rem", padding: "14px 20px" }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <span style={{ color: NAVY, fontSize: 14, fontWeight: 800, ...BC }}>MB</span>
+            </div>
+            <div>
+              <div style={{ color: "#fff", fontSize: 14, fontWeight: 600 }}>Marty Brunke</div>
+              <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, ...BC, letterSpacing: "0.08em" }}>Managing Partner · Rochester PM</div>
+            </div>
+            <div style={{ width: 1, background: "rgba(255,255,255,0.15)", alignSelf: "stretch" }} />
+            <a href="mailto:martybrunke@gmail.com" style={{ color: GOLD, fontSize: 13, textDecoration: "none", ...BC, letterSpacing: "0.04em" }}>
+              martybrunke@gmail.com
+            </a>
+          </div>
         </div>
       </div>
 
