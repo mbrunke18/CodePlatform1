@@ -19,7 +19,7 @@ const activations = [
     name: "State AG / DOJ Investigation",
     domain: "RISK & RESILIENCE",
     domainColor: TEAL,
-    trigger: "DOJ Civil Division issued subpoenas referencing Brunke Sisters billing methodology on federal advisory contracts. Pattern consistent with industry-wide enforcement sweep.",
+    trigger: "DOJ Civil Division issued subpoenas referencing Rochester PM billing methodology on federal advisory contracts. Pattern consistent with industry-wide enforcement sweep.",
     detectedAt: "Signal detected — 8:47 AM",
     activatedAt: "Protocol activated — 8:55 AM",
     minutes: 11,
@@ -53,7 +53,7 @@ const activations = [
     name: "Competitor Talent Raid",
     domain: "GROWTH & POSITIONING",
     domainColor: GOLD,
-    trigger: "AI-native boutique backed by $80M Series B making targeted outreach to Brunke Sisters senior managers in overlapping markets. Two senior managers reported unsolicited offers on the same day.",
+    trigger: "AI-native boutique backed by $80M Series B making targeted outreach to Rochester PM senior managers in overlapping markets. Two senior managers reported unsolicited offers on the same day.",
     detectedAt: "Signal detected — 9:03 AM",
     activatedAt: "Protocol activated — 9:11 AM",
     minutes: 12,
@@ -101,7 +101,7 @@ const stats = [
 export default function BrunkeSistersCaseStudy() {
   useEffect(() => {
     updatePageMetadata(
-      "Brunke Sisters — Readiness OS Founding Partner Case Study",
+      "Rochester PM — Readiness OS Founding Partner Case Study",
       "60-day activation record: 4 completed Readiness Protocols averaging 10.8 minutes. DOJ investigation, ransomware containment, talent raid, employment litigation — all contained."
     );
   }, []);
@@ -134,11 +134,11 @@ export default function BrunkeSistersCaseStudy() {
           </div>
 
           <h1 style={{ ...GEO, fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 12 }}>
-            Brunke Sisters
+            Rochester PM
           </h1>
           <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 24 }} />
           <p style={{ color: IVORY, fontSize: 18, lineHeight: 1.6, maxWidth: 680, opacity: 0.9, marginBottom: 0 }}>
-            500-person professional services firm. Founding Partner on Readiness OS since March 2026.
+            500-person project management firm. Founding Partner on Readiness OS since March 2026.
             Four strategic triggers fired in 60 days. Four Readiness Protocols executed.
             Average time from trigger detection to full response: <strong style={{ color: GOLD }}>10.8 minutes.</strong>
           </p>
@@ -167,7 +167,7 @@ export default function BrunkeSistersCaseStudy() {
               Professional services is among the highest-exposure sectors for strategic triggers: regulatory sweeps,
               cybersecurity incidents, talent raids, and employment litigation all fire without warning and demand
               immediate, coordinated response. For most firms, mobilization alone — reaching counsel, aligning leadership,
-              executing holds — takes days. Brunke Sisters compressed that mobilization to minutes by staging
+              executing holds — takes days. Rochester PM compressed that mobilization to minutes by staging
               180 Readiness Protocols before any trigger fired.
             </p>
           </div>
@@ -318,7 +318,7 @@ export default function BrunkeSistersCaseStudy() {
           </div>
           <div style={{ marginTop: 32, padding: "20px 24px", background: "rgba(201,168,76,0.1)", border: `1px solid rgba(201,168,76,0.3)`, borderRadius: "0.15rem" }}>
             <p style={{ color: IVORY, fontSize: 14, lineHeight: 1.7, margin: 0 }}>
-              <strong style={{ color: GOLD }}>The moat:</strong> Brunke Sisters' protocol library now reflects 4 live activations that no competitor can replicate
+              <strong style={{ color: GOLD }}>The moat:</strong> Rochester PM's protocol library now reflects 4 live activations that no competitor can replicate
               from a standing start. Each future activation will be faster than the last. The preparation advantage compounds.
             </p>
           </div>
