@@ -308,6 +308,24 @@ export default function GettingStarted() {
         </div>
       </div>
 
+      {/* User Guide callout */}
+      <div style={{ background: '#fff', borderBottom: `1px solid ${BORDER}`, padding: '14px 48px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'space-between', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <BookOpen size={15} color={TEAL} />
+            <span style={{ fontSize: 13, color: MUTED }}>
+              <strong style={{ color: NAVY }}>New to Readiness OS?</strong> The complete User Guide covers every feature, concept, and workflow — from first login to super user.
+            </span>
+          </div>
+          <button
+            onClick={() => nav('/user-guide')}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 16px', background: 'transparent', border: `1px solid ${TEAL}`, color: TEAL, borderRadius: '0.15rem', cursor: 'pointer', fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', flexShrink: 0 }}
+          >
+            Read the User Guide <ChevronRight size={12} />
+          </button>
+        </div>
+      </div>
+
       <OnboardingRail
         currentStage={overallScore < 34 ? 1 : overallScore < 67 ? 2 : overallScore < 100 ? 3 : 4}
         showMissionCard={!isLive}

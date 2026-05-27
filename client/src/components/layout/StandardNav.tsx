@@ -953,9 +953,9 @@ export default function StandardNav() {
                       <Rocket className="h-4 w-4 mr-2" style={{ color: GOLD }} />
                       Get Started
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigateTo("/onboarding-guide")} className="cursor-pointer" style={{ color: NAVY }}>
+                    <DropdownMenuItem onClick={() => navigateTo("/user-guide")} className="cursor-pointer" style={{ color: NAVY }}>
                       <BookOpen className="h-4 w-4 mr-2 opacity-50" />
-                      Onboarding Guide
+                      User Guide
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => navigateTo("/settings-hub")} className="cursor-pointer" style={{ color: NAVY }}>

@@ -62,6 +62,7 @@ export default function Footer() {
         { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Readiness OS", path: "/the-proof" },
         { label: "Why Not Consulting?", path: "/vs-consulting" },
+        { label: "User Guide", path: "/user-guide" },
         { label: "About the Founder", path: "/about" },
         { label: "Founder's Story", path: "/founder-story" },
         { label: "Microsoft Ecosystem", path: "/ecosystems" },
