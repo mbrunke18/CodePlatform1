@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
-import { Printer, ChevronRight, BookOpen } from 'lucide-react';
+import { Printer, ChevronRight, BookOpen, Download, Loader2 } from 'lucide-react';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -169,7 +169,64 @@ function ScreenshotFigure({ src, caption }: { src: string; caption: string }) {
 
 export default function UserGuide() {
   const [activeId, setActiveId] = useState("s1");
+  const [isPdfLoading, setIsPdfLoading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const generatePDF = async () => {
+    setIsPdfLoading(true);
+    try {
+      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf'),
+      ]);
+
+      const content = document.getElementById('guide-pdf-root');
+      if (!content) { window.print(); return; }
+
+      const canvas = await html2canvas(content, {
+        scale: 1.5,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        windowWidth: 960,
+      });
+
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter' });
+
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const margin = 36;
+      const usableW = pageW - margin * 2;
+      const imgH = (canvas.height * usableW) / canvas.width;
+
+      let remaining = imgH;
+      let srcY = 0;
+
+      while (remaining > 0) {
+        const sliceH = Math.min(pageH - margin * 2, remaining);
+        const sliceCanvas = document.createElement('canvas');
+        sliceCanvas.width = canvas.width;
+        sliceCanvas.height = (sliceH * canvas.width) / usableW;
+        const ctx = sliceCanvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(canvas, 0, srcY * (canvas.width / usableW), canvas.width, sliceCanvas.height, 0, 0, sliceCanvas.width, sliceCanvas.height);
+        }
+        if (srcY > 0) pdf.addPage();
+        pdf.addImage(sliceCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, usableW, sliceH);
+        srcY += sliceH;
+        remaining -= sliceH;
+      }
+
+      pdf.save('VaughnMartin-Readiness-OS-User-Guide.pdf');
+    } catch (err) {
+      console.error('PDF generation failed, falling back to print dialog:', err);
+      window.print();
+    } finally {
+      setIsPdfLoading(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -210,6 +267,7 @@ export default function UserGuide() {
           figcaption { display: block !important; font-size: 10pt !important; color: #555 !important; font-style: italic; margin-top: 4px; }
         }
         .toc-link:hover { color: ${GOLD} !important; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       `}</style>
 
       {/* Print-only header */}
@@ -229,9 +287,16 @@ export default function UserGuide() {
             <div style={{ ...BC, fontSize: 12, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.15em' }}>VaughnMartin · Readiness OS · Founding Partner Edition</div>
             <button
               onClick={() => window.print()}
-              style={{ ...BC, display: 'flex', alignItems: 'center', gap: 6, background: 'transparent', border: `1px solid ${GOLD}`, color: GOLD, padding: '8px 18px', borderRadius: 2, cursor: 'pointer', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+              style={{ ...BC, display: 'flex', alignItems: 'center', gap: 6, background: 'transparent', border: `1px solid rgba(255,255,255,0.25)`, color: 'rgba(255,255,255,0.65)', padding: '8px 18px', borderRadius: 2, cursor: 'pointer', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
             >
-              <Printer size={14} /> Print / Save as PDF
+              <Printer size={14} /> Print
+            </button>
+            <button
+              onClick={generatePDF}
+              disabled={isPdfLoading}
+              style={{ ...BC, display: 'flex', alignItems: 'center', gap: 6, background: GOLD, border: `1px solid ${GOLD}`, color: NAVY, padding: '8px 18px', borderRadius: 2, cursor: isPdfLoading ? 'wait' : 'pointer', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', opacity: isPdfLoading ? 0.75 : 1 }}
+            >
+              {isPdfLoading ? <><Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> Generating…</> : <><Download size={14} /> Download PDF</>}
             </button>
           </div>
         </div>
@@ -256,7 +321,7 @@ export default function UserGuide() {
         </div>
 
         {/* Main Content */}
-        <div className="guide-content" ref={contentRef} style={{ flex: 1, minWidth: 0, padding: '32px 0 80px 48px', maxWidth: 820 }}>
+        <div id="guide-pdf-root" className="guide-content" ref={contentRef} style={{ flex: 1, minWidth: 0, padding: '32px 0 80px 48px', maxWidth: 820 }}>
 
           {/* ── SECTION 1 ── */}
           <H1 id="s1">1. Platform Vision</H1>
