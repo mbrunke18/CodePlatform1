@@ -1,0 +1,99 @@
+AI Just Got a Seat at the Strategy Execution Table
+Patrick Thean
+Patrick Thean
+Guiding CEOs to Achieve Their Dreams
+
+
+May 10, 2026
+Why Rhythm Systems' new AI Connector - built on MCP - is the next chapter of strategy execution. Beta opened in May 2026.
+My Take On AI
+I have spent the last two years in rooms with CEOs and leadership teams talking about AI, and I will tell you something that might surprise you. Most of those conversations go in circles. 
+
+Not because the leaders aren’t smart, they are some of the sharpest people I know. They go in circles because the questions they keep asking are the wrong ones. They ask, “What AI tool should we be using?” That’s not the right question. 
+
+The real question is: Where should AI live inside how we run our company? 
+
+Those two questions may sound similar, but they are not. One leads to a pile of disconnected tools, an “innovation tax,” and a team that’s confused about which AI tool to use this week. The other leads to a company that runs better. That distinction is at the heart of why we just launched the Rhythm Systems AI Connector into Beta, and why I want to share my broader perspective on where AI is taking strategy execution. 
+
+Every category of software now has an "AI feature." Most of them are general-purpose assistants on general-purpose data, fast, but blind to where execution actually breaks down inside your company.
+
+That's the part I want to talk about today, because it is the part that matters.
+
+AI without a proven execution framework is just a faster way to ask the wrong questions.
+
+Introducing the Rhythm Systems AI Connector
+We just launched the Rhythm Systems AI Connector - the first AI integration in the strategy execution industry for mid-market CEOs, built on the Model Context Protocol (MCP), the open standard co-created by @Anthropic and now backed by OpenAI, Microsoft, and Google.
+
+In plain English: the AI tools your team already uses every day, Claude, ChatGPT, Microsoft Copilot, Google Gemini - are now connected directly to your live Rhythm data.
+
+Priorities
+KPIs
+Winning Moves
+Week-in-Sync notes
+Pre-meeting health checks
+End-of-quarter summaries
+
+All of it in one conversation. Inside the AI assistant your leaders are already using.
+
+No new platform to learn. No additional login. No manual exports. No copy-paste between tools.
+
+This is not our first move in AI. We have been building AI into Rhythm since the early 2020s, starting with Rhythm Intelligence™, because we believed then, as we believe now, that AI was going to reshape how strategy gets executed. The AI Connector is the next milestone in a long-term commitment to lead the charge on AI integration in our space, not chase it. Being a leader in strategy execution means being a leader in how AI shows up inside it. We are not catching up. We are setting the pace.
+
+Why This Is Different
+The AI race is on. Every leader I talk to is feeling the pressure to "do something with AI." And every week, another tool shows up promising to be the answer.
+
+Most AI tools are powerful, but they don't know your business. They don't know your priorities, your KPIs, or your Winning Moves. They don't know what red-yellow-green status means in your execution rhythm. They have no point of view on what should be raising an alarm and what shouldn't.
+
+That's the gap the Rhythm AI Connector closes.
+
+What's behind it is what makes it different: 20 years of battle-tested execution methodology embedded into every interaction. When your AI flags a stalled Winning Move, surfaces a KPI that's been red for three weeks, drafts your Week-in-Sync notes, or generates a pre-meeting health check, it isn't just retrieving data; it’s applying Rhythm's proven framework to connect the dots your team might have missed.
+
+This is AI doing what AI does best, removing friction, connecting information, catching gaps, powered by the execution system that has helped mid-market companies achieve predictable results for two decades. 
+
+
+AI isn't just a tool anymore — it's a strategy execution partner. Introducing the Rhythm AI Connector, built on MCP. 
+What You Can Actually Do With It
+Rhythm AI Connector is built for plain-English use. From inside Claude, ChatGPT, Copilot, or Google Gemini, you can ask things like:
+
+“What are my top priorities this quarter and how are they tracking?"
+“Which KPIs have been red for more than three weeks?"
+“Are there any Winning Moves without supporting priorities?"
+“Draft my Week-in-Sync notes based on this week's status updates."
+“Give me a pre-meeting Rhythm health check before my leadership review."
+“Summarize end-of-quarter execution health, with red priorities highlighted."
+
+It doesn't stop at reading. Your AI can act. It can update goal statuses, log feedback, create action items, schedule meetings, all directly inside the Rhythm software from just one conversation.
+
+One conversation, live data, rhythm's methodology is working behind every answer.
+
+Built on an Open Standard. Built to Lead.
+The Rhythm AI Connector is AI-agnostic by design. Customers are never locked into a single AI provider as the landscape evolves. Every request is authenticated per user, and the AI only ever sees what that individual is authorized to see. No over-exposure. No data leakage across teams. Same permission model as the core Rhythm platform.
+
+We chose MCP because it is the future of how AI tools and software systems will talk to each other. By being first in our industry to ship on this standard, we are giving our customers a platform that compounds in value as the AI ecosystem grows around it, not one that has to be rebuilt every time a new model arrives.
+
+The 7% Number Every CEO Should Know
+Only 7% of CEOs have a companywide AI strategy.
+
+Read that again.
+
+That doesn't mean your team isn't using AI. It means they are using it without you. Without a strategy. Without governance. Without a plan that ties their AI use back to your execution priorities. The gap is widening every week, and the leaders who close it will define the next decade.
+
+
+93% of CEOs don't have a plan. Be the exception.
+Most CEOs I talk to right now are wrestling with exactly this: how to bring AI into the company without creating chaos. Next week, Amy Ankrum our CEO at @Rhythm Systems is leading a masterclass on it. Amy is one of the sharpest leaders I know on what AI in execution actually looks like in practice, not in theory. Take the hour, and bring your team. Click the link below to register ⬇️ 
+
+
+The AI strategy gap is widening. Learn how to close it in 60 minutes.
+Where AI Should Live Inside Your Company
+I have spent 20+ years believing one thing above almost anything else in business: strategy without execution is just wishful thinking.
+
+AI does not change that truth; it amplifies it. AI in the hands of a company with a real execution rhythm becomes a force multiplier. AI in the hands of a company without one becomes a faster way to drift.
+
+The CEOs I am most excited to work with right now, whether they are deep into the Rhythm System or just hearing about us for the first time, are not asking whether to use AI. They are asking where it should live inside, and how they run the company. That is the right question. And it is the question we just gave a real answer to.
+
+If you are a Rhythm customer, the beta is open to you now. Reach out at info@rhythmsystems.com, and we'll get you set up.
+
+If Rhythm is new to you, the door is wide open. Come see what AI looks like inside a real strategy execution system. Visit rhythmsystems.com to spend 30 minutes with our team. We'd love to walk through it with you.
+
+Listen: most CEOs I talk to right now are wrestling with exactly this, how to bring AI into the company without creating chaos. This is the next chapter. I am genuinely excited for you to be part of it. 
+
