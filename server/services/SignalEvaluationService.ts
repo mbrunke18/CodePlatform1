@@ -254,12 +254,12 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   //     still applies). This prevents a signal that coincidentally includes 2 of
   //     30 monitoring terms from generating an executive alert.
   //
-  // Combined effect: a 30-keyword pattern requires ≥4 matches, a 25-keyword
-  // pattern requires ≥3 matches, and the composite score must still clear 78.
+  // Combined effect at medium sensitivity: a 30-keyword pattern requires ≥2 matches
+  // and the composite score must clear 62.
   // ────────────────────────────────────────────────────────────────────────────
-  const CONFIDENCE_THRESHOLD = 78;
-  const MIN_KEYWORD_MATCHES  = 3;
-  const MIN_KEYWORD_DENSITY  = 0.12; // 12% of the pattern's keyword list must match
+  const CONFIDENCE_THRESHOLD = 62;   // medium: was 78 (strict)
+  const MIN_KEYWORD_MATCHES  = 2;    // medium: was 3 (strict)
+  const MIN_KEYWORD_DENSITY  = 0.07; // medium: was 0.12 (strict) — 7% of keyword list
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();

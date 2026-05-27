@@ -1,2 +1,3 @@
 - [Broken investor route](investor-route.md) — /investor is a 404; correct routes are /investors and /investor-landing
 - [StandardNav Oracle Pro fix](standardnav-oracle-pro.md) — StandardNav mega-menu descriptions can drift from tier renames; must audit component nav descriptions, not just page content
+- [Brunke Sisters seed schema quirks](brunke-sisters-seed.md) — DB type gotchas when seeding history: ai_confidence decimal, uuid FK for applied_by, ADVANCE 2.0 FK chain order

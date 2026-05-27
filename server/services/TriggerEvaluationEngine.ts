@@ -130,6 +130,28 @@ const FIELD_KEYWORDS: Record<string, string[]> = {
 
   // ESG
   esg_controversy:        ['ESG', 'greenwashing', 'environmental violation', 'emissions', 'climate', 'sustainability', 'carbon', 'DEI', 'social responsibility'],
+
+  // Professional Services — fields used by Founding Partner trigger configs
+  client_revenue_at_risk:      ['client loss', 'account loss', 'client termination', 'client departure', 'major client', 'account at risk', 'contract terminated', 'client churned'],
+  security_incident_severity:  ['ransomware', 'cyberattack', 'cyber attack', 'data breach', 'security incident', 'malware', 'compromised systems', 'incident response'],
+  data_exposure_records:       ['data breach', 'data leak', 'exposed records', 'client data', 'PII exposed', 'unauthorized access', 'data theft', 'stolen data'],
+  executive_departure_announced: ['partner departure', 'executive departure', 'key leader', 'managing partner', 'CEO resigned', 'partner resigned', 'leadership exit'],
+  regulatory_inquiry_opened:   ['investigation', 'SEC inquiry', 'DOJ investigation', 'regulatory probe', 'enforcement action', 'subpoena', 'formal inquiry', 'consent decree'],
+  litigation_filed:            ['lawsuit', 'class action', 'litigation', 'legal action', 'complaint filed', 'sued', 'employment lawsuit', 'EEOC complaint'],
+  acquisition_opportunity_score: ['acquisition', 'merger', 'M&A', 'buyout', 'takeover', 'strategic acquisition', 'deal announced', 'due diligence'],
+  concurrent_departure_notices: ['mass departure', 'wave of resignations', 'talent exodus', 'poaching', 'talent raid', 'multiple executives', 'recruitment campaign'],
+  media_sentiment_score:       ['reputational damage', 'PR crisis', 'media backlash', 'negative press', 'scandal', 'controversy', 'brand damage', 'viral criticism'],
+  fee_reduction_requests_pct:  ['fee pressure', 'rate reduction', 'pricing pressure', 'fee compression', 'billing rate', 'discount demand', 'price war', 'lower rates'],
+  ip_claim_filed:              ['IP dispute', 'intellectual property claim', 'patent infringement', 'trade secret', 'methodology stolen', 'IP litigation', 'copyright claim'],
+  partnership_termination_notice: ['partnership dissolved', 'alliance ended', 'joint venture terminated', 'referral partner', 'strategic partner departure', 'collaboration ended'],
+  revenue_decline_pct:         ['revenue decline', 'revenue shortfall', 'billing decline', 'revenue miss', 'pipeline shrink', 'revenue contraction', 'project cancellations'],
+  ai_displacement_signals:     ['AI replacing', 'automated by AI', 'AI-driven services', 'AI adoption', 'generative AI disruption', 'AI taking over', 'displaced by AI'],
+  client_dispute_escalated:    ['client dispute', 'project failure', 'deliverable rejected', 'client complaint', 'contract breach', 'payment withheld', 'client escalation'],
+  expansion_opportunity_score: ['market expansion', 'new market entry', 'geographic expansion', 'office opening', 'new region', 'international expansion', 'market opportunity'],
+  annual_attrition_rate:       ['attrition', 'turnover rate', 'employee departures', 'retention problem', 'staff exodus', 'resignation wave', 'voluntary turnover'],
+  critical_vendor_outage:      ['vendor outage', 'platform outage', 'system failure', 'cloud outage', 'software failure', 'service disruption', 'critical system down'],
+  compliance_audit_initiated:  ['compliance audit', 'ethics review', 'ESG audit', 'regulatory audit', 'governance review', 'compliance investigation', 'audit initiated'],
+  pipeline_contraction_pct:    ['pipeline shrink', 'deal flow slowdown', 'new business decline', 'proposal activity down', 'client budget freeze', 'economic slowdown', 'recession'],
 };
 
 // Category → broad keyword fallback when no field-level match found
