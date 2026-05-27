@@ -8661,7 +8661,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
 
   app.get('/api/role-availability', requireOrgAccess, async (req: any, res) => {
     try {
-      const flags = await storage.getRoleAvailabilityFlags(req.user.organizationId);
+      const flags = await storage.getRoleAvailabilityFlags(req.orgId);
       res.json(flags);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch role availability flags' });
@@ -8673,7 +8673,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       const { roleName, isLimited, note } = req.body;
       if (!roleName) return res.status(400).json({ error: 'roleName is required' });
       const flag = await storage.upsertRoleAvailabilityFlag(
-        req.user.organizationId, roleName, !!isLimited, note || null, req.user.id
+        req.orgId, roleName, !!isLimited, note || null, req.userId
       );
       res.json(flag);
     } catch (error) {
