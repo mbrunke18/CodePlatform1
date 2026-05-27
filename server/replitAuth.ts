@@ -9,7 +9,7 @@ import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
-import { allowedEmails } from "@shared/schema";
+import { allowedEmails, users } from "@shared/schema";
 
 const getOidcConfig = memoize(
   async () => {
@@ -89,6 +89,16 @@ async function upsertUser(claims: any) {
       ownerId: user.id,
       onboardingCompleted: false,
     });
+  }
+
+  // Ensure users.organizationId is set — backfill if missing (covers users whose
+  // org was created via ownerId but the FK on the user row was never written)
+  const [currentUser] = await db.select({ organizationId: users.organizationId }).from(users).where(eq(users.id, user.id)).limit(1);
+  if (!currentUser?.organizationId) {
+    const allOrgs = await storage.getUserOrganizations(user.id);
+    if (allOrgs.length > 0) {
+      await db.update(users).set({ organizationId: allOrgs[0].id }).where(eq(users.id, user.id));
+    }
   }
 }
 
