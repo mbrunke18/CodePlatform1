@@ -6766,11 +6766,24 @@ export const allowedEmails = pgTable('allowed_emails', {
   id: uuid('id').primaryKey().defaultRandom(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   note: text('note'),
+  organizationId: uuid('organization_id'),
   addedAt: timestamp('added_at').defaultNow().notNull(),
 });
 export const insertAllowedEmailSchema = createInsertSchema(allowedEmails).omit({ id: true, addedAt: true });
 export type InsertAllowedEmail = z.infer<typeof insertAllowedEmailSchema>;
 export type AllowedEmail = typeof allowedEmails.$inferSelect;
+
+export const orgMemberships = pgTable('org_memberships', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: varchar('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id, { onDelete: 'cascade' }),
+  role: varchar('role', { length: 50 }).default('member'),
+  joinedAt: timestamp('joined_at').defaultNow().notNull(),
+}, (table) => [
+  index('org_memberships_user_idx').on(table.userId),
+  index('org_memberships_org_idx').on(table.organizationId),
+]);
+export type OrgMembership = typeof orgMemberships.$inferSelect;
 
 // ─── Phase 1: Preparation-Calibrated Thresholds ──────────────────────────────
 // Per-organization signal threshold calibration derived from Close-Out Gate answers.

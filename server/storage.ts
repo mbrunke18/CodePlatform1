@@ -134,6 +134,8 @@ import {
   customProtocols,
   type CustomProtocol,
   type InsertCustomProtocol,
+  orgMemberships,
+  allowedEmails,
 } from "@shared/schema";
 
 // Infer types from table schemas where needed
@@ -492,7 +494,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUserOrganizations(userId: string): Promise<Organization[]> {
-    return await db.select({
+    const cols = {
       id: organizations.id,
       name: organizations.name,
       description: organizations.description,
@@ -511,7 +513,23 @@ export class DatabaseStorage implements IStorage {
       dataRetentionPolicy: organizations.dataRetentionPolicy,
       createdAt: organizations.createdAt,
       updatedAt: organizations.updatedAt,
-    }).from(organizations).where(eq(organizations.ownerId, userId));
+    };
+    const owned = await db.select(cols).from(organizations).where(eq(organizations.ownerId, userId));
+    const membered = await db.select(cols).from(organizations)
+      .innerJoin(orgMemberships, eq(orgMemberships.organizationId, organizations.id))
+      .where(eq(orgMemberships.userId, userId));
+    const seen = new Set(owned.map(o => o.id));
+    const combined = [...owned];
+    for (const org of membered) {
+      if (!seen.has(org.id)) combined.push(org);
+    }
+    return combined;
+  }
+
+  async addOrgMembership(userId: string, organizationId: string, role = 'member'): Promise<void> {
+    await db.insert(orgMemberships)
+      .values({ userId, organizationId, role })
+      .onConflictDoNothing();
   }
 
   async createScenario(scenario: InsertStrategicScenario): Promise<StrategicScenario> {

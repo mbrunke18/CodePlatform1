@@ -59,10 +59,30 @@ async function upsertUser(claims: any) {
     profileImageUrl: claims["profile_image_url"],
   });
 
-  // Auto-create organization if user has none
+  const email = (claims["email"] ?? "").toLowerCase().trim();
+
+  // Check if this email is mapped to a pre-configured organization
+  let assignedOrgId: string | null = null;
+  try {
+    const rows = await db
+      .select({ organizationId: allowedEmails.organizationId })
+      .from(allowedEmails)
+      .where(eq(allowedEmails.email, email))
+      .limit(1);
+    assignedOrgId = rows[0]?.organizationId ?? null;
+  } catch {
+    // allowed_emails may not have organizationId column yet — ignore
+  }
+
+  if (assignedOrgId) {
+    // Add user as a member of the pre-configured org
+    await storage.addOrgMembership(user.id, assignedOrgId, 'member');
+  }
+
+  // Auto-create personal organization only if user has no orgs at all
   const userOrgs = await storage.getUserOrganizations(user.id);
   if (userOrgs.length === 0) {
-    const orgName = claims["name"] || (claims["email"] ? claims["email"].split('@')[0] : 'My Organization');
+    const orgName = claims["name"] || (email ? email.split('@')[0] : 'My Organization');
     await storage.createOrganization({
       name: orgName,
       description: "My Organization",
