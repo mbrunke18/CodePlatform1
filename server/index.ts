@@ -303,6 +303,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve screenshots directory for User Guide and marketing pages (both dev + prod)
+app.use('/screenshots', express.static(path.join(process.cwd(), 'screenshots'), {
+  maxAge: '7d',
+  setHeaders: (res) => { res.setHeader('Cache-Control', 'public, max-age=604800'); }
+}));
+
 // PRODUCTION: Serve static files BEFORE server.listen() so GET / returns 200
 // from the very first healthcheck. API routes registered later take precedence
 // for /api/* paths because express.static only matches real files.

@@ -144,6 +144,29 @@ function PageBreak() {
   return <div className="page-break" style={{ marginTop: 32 }} />;
 }
 
+function ScreenshotFigure({ src, caption }: { src: string; caption: string }) {
+  return (
+    <figure style={{ margin: '28px 0', padding: 0 }}>
+      <div style={{ border: `1px solid ${BORDER}`, borderRadius: 3, overflow: 'hidden', boxShadow: '0 2px 12px rgba(10,15,46,0.10)' }}>
+        <div style={{ background: NAVY, padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD, opacity: 0.7 }} />
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)' }}>Platform Screenshot</div>
+        </div>
+        <img
+          src={src}
+          alt={caption}
+          style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top center', maxHeight: 420, background: '#F0EDE4' }}
+          loading="lazy"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+        />
+      </div>
+      <figcaption style={{ fontSize: 12, color: MUTED, marginTop: 8, paddingLeft: 2, lineHeight: 1.6, fontStyle: 'italic' }}>
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function UserGuide() {
   const [activeId, setActiveId] = useState("s1");
   const contentRef = useRef<HTMLDivElement>(null);
@@ -328,6 +351,11 @@ export default function UserGuide() {
             ]}
           />
 
+          <ScreenshotFigure
+            src="/screenshots/deck_how_it_executes.jpg"
+            caption="The IDEA Framework in action — signal detection to 12-minute execution. Each phase maps directly to platform features: Identify (protocol staging), Detect (signal monitoring), Execute (war room launch), Advance (learning loop closure)."
+          />
+
           <H2>Readiness Protocols</H2>
           <P>
             A <strong>Readiness Protocol</strong> is a pre-staged, fully configured response plan for a specific strategic situation. It is the fundamental unit of the platform. Each protocol contains:
@@ -412,6 +440,11 @@ export default function UserGuide() {
             { n: "4", title: "Validation", body: "Run a Practice Drill — a simulated activation of a low-complexity protocol. Review the post-drill debrief score. Confirm signal monitoring is active. Get executive sign-off on the readiness posture." },
           ]} />
 
+          <ScreenshotFigure
+            src="/screenshots/slide_onboarding.jpg"
+            caption="Getting Started Hub — the four-phase go-live tracker with live completion score. Each phase unlocks the next, guiding administrators from Foundation setup through Validation in 90 days."
+          />
+
           <H2>Onboarding Wizard</H2>
           <P>
             First-time users are guided through a step-by-step <strong>Onboarding Wizard</strong> at <code>/onboarding</code>. The wizard collects organization profile data, imports or maps existing stakeholders, and recommends an initial set of Readiness Protocols based on your industry and size.
@@ -493,6 +526,11 @@ export default function UserGuide() {
             "Escalation recommendation (Monitor / Stage / Activate)",
           ]} />
 
+          <ScreenshotFigure
+            src="/screenshots/deck_signals.jpg"
+            caption="Intelligence Hub — live signal detections scored against 221 trigger patterns across 8 data sources. Each signal shows domain classification, urgency level, matched protocol, and escalation recommendation."
+          />
+
           <H2>Foresight Radar (/foresight-radar)</H2>
           <P>
             A forward-looking dashboard that aggregates weak signals into emerging patterns. Uses a radar visualization to show signal velocity across all three strategic domains. The Foresight Radar is the early-warning system — it surfaces situations that are building before they become trigger-level events.
@@ -556,6 +594,11 @@ export default function UserGuide() {
             ]}
           />
 
+          <ScreenshotFigure
+            src="/screenshots/slide_protocol_library.jpg"
+            caption="Readiness Protocol Library — 180 core protocols and 30 compound protocols in a searchable, filterable grid. Each card shows domain, readiness status, activation history, and last-modified date."
+          />
+
           <H2>Protocol Readiness Audit (/playbook-readiness-audit)</H2>
           <P>
             A systematic review tool that scores every protocol in your library against a readiness rubric. Each protocol receives a score from 0–100 across five dimensions: Owner Coverage (all tasks assigned), Budget Authorization (envelope set), Stakeholder Completeness (Tier 1–3 populated), Communication Templates (ready), and Signal Calibration (triggers mapped). The audit generates a prioritized remediation list so administrators know exactly what to fix and in what order.
@@ -602,6 +645,11 @@ export default function UserGuide() {
             { n: "8", title: "Close-Out Gate", body: "When the situation is contained, the lead executive completes the Ownership Close-Out Gate — a formal 4-field structured debrief that records what held, what failed, timeline, and recommended protocol updates. This is required to close the activation and unlock the ADVANCE learning loop." },
           ]} />
 
+          <ScreenshotFigure
+            src="/screenshots/deck_activation.jpg"
+            caption="Live Activation Console — the 8-step activation flow from trigger detection through executive authorization to war room launch. The elapsed clock tracks against the 12-minute benchmark in real time."
+          />
+
           <H2>Key Activation Metrics</H2>
           <Table
             headers={["Metric", "Definition", "Target"]}
@@ -645,6 +693,11 @@ export default function UserGuide() {
             "Live signal feed — any new signals detected during the activation",
             "Financial Exposure Estimator — real-time dollar-at-risk calculation based on elapsed time and situation type",
           ]} />
+
+          <ScreenshotFigure
+            src="/screenshots/slide_execution.jpg"
+            caption="War Room — the real-time coordination environment. Task board, stakeholder acknowledgment matrix, elapsed clock against the 12-minute benchmark, and live signal feed all visible in a single command view."
+          />
 
           <H2>Crisis Communications Generator</H2>
           <P>
@@ -719,6 +772,11 @@ export default function UserGuide() {
             ]}
           />
 
+          <ScreenshotFigure
+            src="/screenshots/deck_learning.jpg"
+            caption="ADVANCE 2.0 Learning Velocity Index — every activation generates measurable improvements. The dashboard shows proven updates, total minutes saved, protocol coverage %, and the moat metric (months to rebuild on any competitor)."
+          />
+
           <H2>Protocol Version History</H2>
           <P>
             Every protocol maintains a complete, immutable version history. Each delta record contains: version numbers (before/after), change type, applied date, applied by (user), expected impact, and the hypothesis classification result. This history is accessible in the ADVANCE tab of each Protocol's detail view.
@@ -745,6 +803,11 @@ export default function UserGuide() {
               ["Foresight Radar", "/foresight-radar", "Strategy Lead", "Weak signal patterns, emerging situation forecasts, domain risk velocity"],
               ["Future Readiness", "/future-readiness", "Strategy Lead", "Forward-looking readiness score, scenario probability modeling"],
             ]}
+          />
+
+          <ScreenshotFigure
+            src="/screenshots/deck_mission_control.jpg"
+            caption="Mission Control — the operational command surface. Live alert feed, domain status board, active execution clock, and Executive Readiness Score updated in real time across all three strategic domains."
           />
 
           <H2>ROI Dashboard</H2>
@@ -899,6 +962,11 @@ export default function UserGuide() {
             ]}
           />
 
+          <ScreenshotFigure
+            src="/screenshots/deck_command_tower.jpg"
+            caption="Command Tower — full-screen executive wall display. Live trigger detections, active war rooms, domain risk status, and system readiness score — designed for high-visibility screens in executive floors and operations centers."
+          />
+
           <H2>Setup for Executive Display</H2>
           <P>
             Navigate to <code>/command-tower</code> on a dedicated display device (large screen TV, digital signage display). The page auto-refreshes every 60 seconds. For always-on display, configure the device to load the URL on startup and disable screen sleep. No login interaction is required once authenticated.
@@ -975,6 +1043,11 @@ export default function UserGuide() {
             "Workforce Transformation (TRANSFORMATION)",
             "Activist Investor + Regulatory Investigation (Compound — dual-track war room)",
           ]} />
+
+          <ScreenshotFigure
+            src="/screenshots/deck_12min_experience.jpg"
+            caption="12-Minute Test Drive — public 4-step simulation showing the full trigger-to-execution chain. Seven scenario options across all three strategic domains, including a compound dual-track war room scenario."
+          />
 
           <H2>Demo Hub (/demo-hub)</H2>
           <P>
