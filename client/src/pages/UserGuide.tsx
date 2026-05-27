@@ -156,7 +156,7 @@ function ScreenshotFigure({ src, caption }: { src: string; caption: string }) {
           src={src}
           alt={caption}
           style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top center', maxHeight: 420, background: '#F0EDE4' }}
-          loading="lazy"
+          loading="eager"
           onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
       </div>
@@ -204,6 +204,10 @@ export default function UserGuide() {
           @page { margin: 1.2in 1in; size: letter; }
           h2 { page-break-after: avoid; }
           table { page-break-inside: avoid; }
+          figure { display: block !important; page-break-inside: avoid; break-inside: avoid; margin: 16px 0 !important; }
+          figure img { display: block !important; width: 100% !important; max-height: 320px !important; object-fit: cover !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+          figure > div { border: 1px solid #ccc !important; break-inside: avoid; }
+          figcaption { display: block !important; font-size: 10pt !important; color: #555 !important; font-style: italic; margin-top: 4px; }
         }
         .toc-link:hover { color: ${GOLD} !important; }
       `}</style>
