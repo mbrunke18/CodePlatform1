@@ -60,6 +60,18 @@ uri = "file://attached_assets/linkedin_banner_v2_signal.png"
 type = "image"
 title = "linkedin banner v2 signal"
 
+[[generated]]
+id = "9U8etTu8PYLZavR19HyFa"
+uri = "file://attached_assets/linkedin_banner_final_a.png"
+type = "image"
+title = "linkedin native banner A"
+
+[[generated]]
+id = "5JIjRjrip-NvSMWC2beVc"
+uri = "file://attached_assets/linkedin_banner_final_b.png"
+type = "image"
+title = "linkedin native banner B"
+
 [[outputs]]
 id = "YKDXL8v_fNIqx4S2b26bE"
 uri = "file://VaughnMartin_Execution_OS_Users_Guide.md"
@@ -575,3 +587,9 @@ id = "p51xK2lRGtfu1sJrZO8sR"
 uri = "file://attached_assets/linkedin_banner_v2_signal_final.png"
 type = "image"
 title = "Final B — Signal & Pulse (real logo composited)"
+
+[[outputs]]
+id = "JhRt-p2Yp7Af6BDGPLyNI"
+uri = "file://attached_assets/linkedin_banner_native.png"
+type = "image"
+title = "LinkedIn Banner — Native 1584×396px (upload ready)"

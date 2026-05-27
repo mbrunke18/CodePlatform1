@@ -5,6 +5,7 @@ description = "Add your description here"
 requires-python = ">=3.11"
 dependencies = [
     "img2pdf>=0.6.3",
+    "numpy>=2.4.6",
     "pillow>=12.2.0",
     "python-pptx>=1.0.2",
     "reportlab>=4.5.1",
