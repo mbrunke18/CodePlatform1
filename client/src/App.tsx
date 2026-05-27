@@ -573,7 +573,7 @@ function Router() {
         <Route path="/institutional-memory-engine" component={lazy(() => import("./pages/InstitutionalMemoryEngine"))} />
         <Route path="/platform-integrations" component={lazy(() => import("./pages/PlatformIntegrations"))} />
         <Route path="/proof-story" component={ProofStory} />
-        <Route path="/case-study/brunke-sisters" component={BrunkeSistersCaseStudy} />
+        <Route path="/case-study/rochester-pm" component={BrunkeSistersCaseStudy} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
         <Route path="/future-readiness" component={FutureReadinessDashboard} />
         <Route path="/readiness" component={FutureReadinessDashboard} />
