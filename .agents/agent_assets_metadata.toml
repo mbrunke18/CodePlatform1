@@ -72,6 +72,12 @@ uri = "file://attached_assets/linkedin_banner_final_b.png"
 type = "image"
 title = "linkedin native banner B"
 
+[[generated]]
+id = "xA5LclOhu2hFIaLuC2oVp"
+uri = "file://attached_assets/linkedin_banner_cmd_clean.png"
+type = "image"
+title = "command center banner with empty left zone"
+
 [[outputs]]
 id = "YKDXL8v_fNIqx4S2b26bE"
 uri = "file://VaughnMartin_Execution_OS_Users_Guide.md"
@@ -593,3 +599,9 @@ id = "JhRt-p2Yp7Af6BDGPLyNI"
 uri = "file://attached_assets/linkedin_banner_native.png"
 type = "image"
 title = "LinkedIn Banner — Native 1584×396px (upload ready)"
+
+[[outputs]]
+id = "jjvjBANgRaYeL9vd5ZDn7"
+uri = "file://attached_assets/linkedin_banner_v1_fixed.png"
+type = "image"
+title = "Command Center Banner — Real Logo + Tagline Added"
