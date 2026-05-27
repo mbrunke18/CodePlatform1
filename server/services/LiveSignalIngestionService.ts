@@ -636,6 +636,32 @@ class LiveSignalIngestionService {
     }
 
     console.log(`   ✅ Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
+
+    // ── Multi-org evaluation: run trigger detection for every org that has
+    //    a signal_monitoring_config entry (Founding Partners + configured orgs).
+    //    Signal fetch is shared — only evaluation runs per-org.
+    try {
+      const { signalMonitoringConfig } = await import('@shared/schema');
+      const { ne } = await import('drizzle-orm');
+      const configuredOrgs = await db
+        .select({ orgId: signalMonitoringConfig.organizationId })
+        .from(signalMonitoringConfig)
+        .where(ne(signalMonitoringConfig.organizationId, organizationId));
+
+      for (const { orgId } of configuredOrgs) {
+        try {
+          const extraDetections = await evaluateAndPersistSignals(signals, orgId);
+          if (extraDetections > 0) {
+            console.log(`   🎯 ${extraDetections} trigger detection(s) for org ${orgId}`);
+          }
+        } catch {
+          // Never let one org's evaluation block others
+        }
+      }
+    } catch {
+      // Schema import failure is non-fatal
+    }
+
     return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
   }
 
