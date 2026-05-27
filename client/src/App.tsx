@@ -223,6 +223,7 @@ const HowItExecutes = lazy(() => import("./pages/HowItExecutes"));
 const ProofStory = lazy(() => import("./pages/ProofStory"));
 const BrunkeSistersCaseStudy = lazy(() => import("./pages/BrunkeSistersCaseStudy"));
 const UserGuide = lazy(() => import("./pages/UserGuide"));
+const MobilizationTax = lazy(() => import("./pages/MobilizationTax"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
 const FutureReadinessDashboard = lazy(() => import("./pages/FutureReadinessDashboard"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
@@ -525,6 +526,7 @@ function Router() {
         {renderRoutes(["/onboarding", "/setup", "/onboarding-wizard"], OnboardingWizard)}
         <Route path="/getting-started" component={GettingStarted} />
         <Route path="/user-guide" component={UserGuide} />
+        <Route path="/mobilization-tax" component={MobilizationTax} />
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/begin" component={GuidedStart} />
         <Route path="/start" component={GuidedStart} />
