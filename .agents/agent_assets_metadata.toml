@@ -48,6 +48,18 @@ uri = "file://attached_assets/linkedin_banner_signal.png"
 type = "image"
 title = "linkedin banner signal abstract"
 
+[[generated]]
+id = "gRVGMBolOfHatcG64osUX"
+uri = "file://attached_assets/linkedin_banner_v2_command.png"
+type = "image"
+title = "linkedin banner v2 command"
+
+[[generated]]
+id = "kWjsekt3RdTpUlnH9iHUy"
+uri = "file://attached_assets/linkedin_banner_v2_signal.png"
+type = "image"
+title = "linkedin banner v2 signal"
+
 [[outputs]]
 id = "YKDXL8v_fNIqx4S2b26bE"
 uri = "file://VaughnMartin_Execution_OS_Users_Guide.md"
@@ -551,3 +563,15 @@ id = "NJkHo6JtLVBW4hZPfZ3pi"
 uri = "file://attached_assets/linkedin_banner_signal.png"
 type = "image"
 title = "Option B — Signal & Pulse (Bold/Graphic)"
+
+[[outputs]]
+id = "7aPYHybj8Sbhquge15Xzx"
+uri = "file://attached_assets/linkedin_banner_v2_command_final.png"
+type = "image"
+title = "Final A — Command Center (real logo composited)"
+
+[[outputs]]
+id = "p51xK2lRGtfu1sJrZO8sR"
+uri = "file://attached_assets/linkedin_banner_v2_signal_final.png"
+type = "image"
+title = "Final B — Signal & Pulse (real logo composited)"
