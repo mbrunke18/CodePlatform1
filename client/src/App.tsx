@@ -221,6 +221,7 @@ const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
 const HowItExecutes = lazy(() => import("./pages/HowItExecutes"));
 const ProofStory = lazy(() => import("./pages/ProofStory"));
+const BrunkeSistersCaseStudy = lazy(() => import("./pages/BrunkeSistersCaseStudy"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
 const FutureReadinessDashboard = lazy(() => import("./pages/FutureReadinessDashboard"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
@@ -572,6 +573,7 @@ function Router() {
         <Route path="/institutional-memory-engine" component={lazy(() => import("./pages/InstitutionalMemoryEngine"))} />
         <Route path="/platform-integrations" component={lazy(() => import("./pages/PlatformIntegrations"))} />
         <Route path="/proof-story" component={ProofStory} />
+        <Route path="/case-study/brunke-sisters" component={BrunkeSistersCaseStudy} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
         <Route path="/future-readiness" component={FutureReadinessDashboard} />
         <Route path="/readiness" component={FutureReadinessDashboard} />
