@@ -448,14 +448,14 @@ export default function UserGuide() {
             Readiness OS ships with <strong>180 core cross-industry Readiness Protocols</strong> (IDs 1–180) covering the most common strategic situations any organization will face. An additional <strong>30 Compound Protocols</strong> (IDs 181–210) address complex, multi-domain situations where two or more triggers fire simultaneously.
           </P>
           <P>
-            Protocols are organized across <strong>three strategic domains</strong> and <strong>nine sub-domains</strong>:
+            Protocols are organized across <strong>nine strategic domains</strong>:
           </P>
           <Table
-            headers={["Strategic Domain", "Sub-Domains Covered", "Example Protocols"]}
+            headers={["Strategic Category", "Strategic Domains", "Example Protocols"]}
             rows={[
-              ["GROWTH & POSITIONING", "M&A, Market Entry, Competitor Response, Brand & Communications", "Competitor Displacement Sprint (#31), M&A Rapid Response (#58), LBO Defense (#45)"],
-              ["RISK & RESILIENCE", "Cybersecurity, Regulatory & Legal, Supply Chain, Financial Distress, Operational Continuity", "Ransomware Response (#12), FDA Recall (#67), Supply Chain Collapse (#88), DOJ Investigation (#103)"],
-              ["TRANSFORMATION", "Workforce, Technology, Go-to-Market, Organizational Restructuring", "Go-to-Market Acceleration Sprint (#89), Workforce Transformation (#112), Digital Infrastructure Migration (#134)"],
+              ["GROWTH & POSITIONING", "Competitive, M&A, Market Operations, Brand & Communications", "Competitor Displacement Sprint (#31), M&A Rapid Response (#58), LBO Defense (#45)"],
+              ["RISK & RESILIENCE", "Regulatory, Financial, Supply Chain, Stakeholder", "Ransomware Response (#12), FDA Recall (#67), Supply Chain Collapse (#88), DOJ Investigation (#103)"],
+              ["TRANSFORMATION", "Talent, Technology", "Go-to-Market Acceleration Sprint (#89), Workforce Transformation (#112), Digital Infrastructure Migration (#134)"],
             ]}
           />
 
@@ -471,7 +471,7 @@ export default function UserGuide() {
 
           <H2>Triggers</H2>
           <P>
-            A <strong>Trigger</strong> is a specific, detectable event or signal pattern that indicates a Readiness Protocol should be staged or activated. Readiness OS monitors <strong>221 active triggers</strong> across 16 signal categories.
+            A <strong>Trigger</strong> is a specific, detectable event or signal pattern that indicates a Readiness Protocol should be staged or activated. Readiness OS monitors <strong>221 active triggers</strong> across 9 strategic domains.
           </P>
           <Table
             headers={["Trigger Category", "Examples"]}
@@ -575,11 +575,11 @@ export default function UserGuide() {
 
           <H2>Live Signal Ingestion</H2>
           <P>
-            The platform ingests live signals from <strong>8 primary RSS and API sources</strong> every 15 minutes. Each ingestion cycle:
+            The platform ingests live signals from <strong>8 primary RSS and API sources</strong> every 15 minutes — these are the external data feeds (regulatory wires, financial services, news aggregators, industry-specific monitors). Each ingestion cycle scores incoming content against the 221 trigger patterns to determine whether a Readiness Protocol should be staged. Source count and trigger count are separate concepts: 8 is how many feeds are monitored; 221 is how many distinct trigger patterns are evaluated against each feed.
           </P>
           <BulletList items={[
             "Fetches new content from configured signal sources (regulatory feeds, financial wire services, news aggregators, industry-specific monitors)",
-            "Scores each signal against 16 trigger pattern categories",
+            "Scores each signal against all 221 trigger patterns across 9 strategic domains",
             "Persists matched signals and associated trigger detections",
             "Updates the organization's Risk Score and Readiness Score in real time",
           ]} />
@@ -602,7 +602,7 @@ export default function UserGuide() {
 
           <H2>Foresight Radar (/foresight-radar)</H2>
           <P>
-            A forward-looking dashboard that aggregates weak signals into emerging patterns. Uses a radar visualization to show signal velocity across all three strategic domains. The Foresight Radar is the early-warning system — it surfaces situations that are building before they become trigger-level events.
+            A forward-looking dashboard that aggregates weak signals into emerging patterns. Uses a radar visualization to show signal velocity across all nine strategic domains. The Foresight Radar is the early-warning system — it surfaces situations that are building before they become trigger-level events.
           </P>
 
           <H2>Signal Radar Dashboard (/ai-radar)</H2>
@@ -639,8 +639,8 @@ export default function UserGuide() {
             Protocols are displayed in a searchable, filterable grid. Filtering options:
           </P>
           <BulletList items={[
-            "Strategic Domain — GROWTH & POSITIONING, RISK & RESILIENCE, TRANSFORMATION",
-            "Sub-domain — M&A, Cyber, Regulatory, Supply Chain, Workforce, etc.",
+            "Strategic Category — GROWTH & POSITIONING, RISK & RESILIENCE, TRANSFORMATION",
+            "Strategic Domain — Competitive, M&A, Regulatory, Financial, Supply Chain, Talent, Technology, Market Operations, Stakeholder",
             "Readiness Status — Fully Staged, Partially Configured, Needs Attention",
             "Activation History — Never Activated, Activated 1–3×, Activated 4+× (battle-tested)",
             "Protocol Type — Core (1–180), Compound (181–210), Custom (user-created)",
@@ -876,7 +876,7 @@ export default function UserGuide() {
 
           <ScreenshotFigure
             src="/screenshots/deck_mission_control.jpg"
-            caption="Mission Control — the operational command surface. Live alert feed, domain status board, active execution clock, and Executive Readiness Score updated in real time across all three strategic domains."
+            caption="Mission Control — the operational command surface. Live alert feed, domain status board, active execution clock, and Executive Readiness Score updated in real time across all nine strategic domains."
           />
 
           <H2>ROI Dashboard</H2>
@@ -906,7 +906,7 @@ export default function UserGuide() {
 
           <H2>Enterprise Metrics (/enterprise-metrics)</H2>
           <P>
-            Board-level aggregate KPIs across all 9 sub-domains. Designed for quarterly board reporting and executive performance reviews. Exportable as a Board-Ready Activation Report.
+            Board-level aggregate KPIs across all 9 strategic domains. Designed for quarterly board reporting and executive performance reviews. Exportable as a Board-Ready Activation Report.
           </P>
 
           <H2>Decision Velocity Dashboard</H2>
@@ -1115,12 +1115,12 @@ export default function UserGuide() {
 
           <ScreenshotFigure
             src="/screenshots/deck_12min_experience.jpg"
-            caption="12-Minute Test Drive — public 4-step simulation showing the full trigger-to-execution chain. Seven scenario options across all three strategic domains, including a compound dual-track war room scenario."
+            caption="12-Minute Test Drive — public 4-step simulation showing the full trigger-to-execution chain. Seven scenario options across all three strategic categories, including a compound dual-track war room scenario."
           />
 
           <H2>Demo Hub (/demo-hub)</H2>
           <P>
-            A curated library of 12 full scenario simulations across all three strategic domains. Each scenario runs the complete 4-phase IDEA chain with real protocol content, realistic task sequences, and live Commander Brief generation. Designed for 30-minute executive demonstrations.
+            A curated library of 12 full scenario simulations across all three strategic categories. Each scenario runs the complete 4-phase IDEA chain with real protocol content, realistic task sequences, and live Commander Brief generation. Designed for 30-minute executive demonstrations.
           </P>
 
           <H2>Master Demo (/master-demo)</H2>
@@ -1276,7 +1276,7 @@ export default function UserGuide() {
               ["Readiness Protocol", "The fundamental unit of the platform. A pre-staged, fully configured response plan for a specific strategic situation. Contains task sequence, stakeholder tree, budget authorization, Commander Brief template, and decision gates."],
               ["Risk Score", "Derived from the formula √(signal count) × 8. Classified as LOW (<35), MEDIUM (35–74), or HIGH (75+). Drives escalation recommendations."],
               ["Signal", "A single detectable event from an external source (news feed, regulatory API, CRM data, infrastructure monitor) that matches one of the 221 trigger patterns."],
-              ["Trigger", "A specific, classifiable pattern of signals that indicates a Readiness Protocol should be staged or activated. 221 active triggers across 16 categories are monitored continuously."],
+              ["Trigger", "A specific, classifiable pattern of signals that indicates a Readiness Protocol should be staged or activated. 221 active triggers across 9 strategic domains are monitored continuously."],
               ["War Room", "The real-time coordination environment launched automatically on protocol activation. Centralizes task tracking, stakeholder coordination, decision logging, and crisis communications generation."],
               ["Weak Signal", "An early-stage signal that does not individually constitute a trigger but in combination with others suggests an emerging situation. Visible on the Foresight Radar and Signal Radar Dashboard."],
             ]}
