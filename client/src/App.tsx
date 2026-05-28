@@ -65,6 +65,7 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Investors = lazy(() => import("./pages/Investors"));
 const InvestorLanding = lazy(() => import("./pages/InvestorLanding"));
 const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
+const MobilizationBrief = lazy(() => import("./pages/MobilizationBrief"));
 const ExecutiveScenarioSuite = lazy(() => import("./pages/ExecutiveScenarioSuite"));
 const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
 const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
@@ -704,6 +705,7 @@ function Router() {
         {renderRoutes(["/investor-landing", "/executive-access"], InvestorLanding)}
         <Route path="/readiness-infrastructure" component={lazy(() => import("./pages/ReadinessInfrastructure"))} />
         <Route path="/executive-brief" component={ExecutiveBrief} />
+        <Route path="/mobilization-brief" component={MobilizationBrief} />
         <Route path="/founding-partner-brief" component={FoundingPartnerBrief} />
         <Route path="/readiness-rhythm" component={ReadinessRhythm} />
         <Route path="/entry" component={StartHere} />
