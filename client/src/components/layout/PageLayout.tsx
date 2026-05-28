@@ -115,13 +115,26 @@ export default function PageLayout({
     } catch (_) {}
   }, [location]);
 
-  // Scroll to top on mount — this fires after the page component has rendered,
-  // catching cases where the global ScrollToTop timer fires before lazy-load completes
+  // Scroll to top on mount AND on every location change — catches both initial
+  // render (after lazy-load) and cases where the component stays mounted but
+  // the route changes (wouter re-use, redirects, etc.)
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }, []);
+    const reset = () => {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      } catch (_) {
+        window.scrollTo(0, 0);
+      }
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      const root = document.getElementById('root');
+      if (root) root.scrollTop = 0;
+    };
+    reset();
+    // Second pass after a tick — catches content that renders after mount
+    const t = setTimeout(reset, 60);
+    return () => clearTimeout(t);
+  }, [location]);
 
   if (embedded) {
     return <div className={className}>{children}</div>;

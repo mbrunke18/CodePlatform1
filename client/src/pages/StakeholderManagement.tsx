@@ -221,7 +221,8 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
   };
 
   // ── Handlers ───────────────────────────────────────────────────────────────
-  const handleOpenCreate = () => {
+  const resetDialog = () => {
+    setEditingStakeholder(null);
     setFormData({
       name: '',
       email: '',
@@ -234,14 +235,30 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
       isBackup: false,
       isActive: true,
     });
-    setEditingStakeholder(null);
+  };
+
+  const handleOpenCreate = () => {
+    resetDialog();
     setIsDialogOpen(true);
   };
 
   const handleOpenEdit = (stakeholder: Stakeholder) => {
-    setFormData({ ...stakeholder });
-    setEditingStakeholder(stakeholder);
-    setIsDialogOpen(true);
+    resetDialog();
+    // Defer so state is clean before populating
+    setTimeout(() => {
+      setFormData({ ...stakeholder });
+      setEditingStakeholder(stakeholder);
+      setIsDialogOpen(true);
+    }, 0);
+  };
+
+  const handleCloseDialog = (open: boolean) => {
+    if (!open) {
+      setIsDialogOpen(false);
+      resetDialog();
+    } else {
+      setIsDialogOpen(true);
+    }
   };
 
   const handleSave = async () => {
@@ -769,7 +786,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           </Card>
         </div>
 
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <Dialog open={isDialogOpen} onOpenChange={handleCloseDialog}>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingStakeholder ? 'Edit Stakeholder' : 'Add New Stakeholder'}</DialogTitle>
