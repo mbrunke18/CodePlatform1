@@ -392,6 +392,19 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* Mobilization Tax one-pager link */}
+        <section style={{ background: "#F8F7F4", padding: "20px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+            <div>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", letterSpacing: "0.12em", textTransform: "uppercase" as const }}>Supporting Brief</span>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: NAVY, margin: "4px 0 0" }}>The Mobilization Tax — What the 30-day gap actually costs</p>
+            </div>
+            <a href="/mobilization-tax" style={{ display: "inline-block", padding: "10px 22px", background: NAVY, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, textDecoration: "none" }}>
+              Read the Brief →
+            </a>
+          </div>
+        </section>
+
         {/* Microsoft Framing */}
         <section style={{ background: "#fff", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>

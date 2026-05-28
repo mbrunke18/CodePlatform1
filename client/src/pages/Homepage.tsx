@@ -1007,9 +1007,14 @@ function HeroSection() {
               <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 16px" }}>
                 Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. That delay is the Mobilization Tax.
               </p>
-              <p style={{ ...DM, color: GOLD, fontSize: "clamp(15px,1.25vw,17px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 32px" }}>
+              <p style={{ ...DM, color: GOLD, fontSize: "clamp(15px,1.25vw,17px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 16px" }}>
                 The Mobilization Tax doesn't get reduced. It gets eliminated.
               </p>
+              <div style={{ margin: "0 0 28px" }}>
+                <Link href="/mobilization-tax" style={{ ...DM, fontSize: 12, color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.25)", paddingBottom: 1, letterSpacing: "0.04em" }}>
+                  What the 30-day mobilization gap actually costs — read the brief →
+                </Link>
+              </div>
               <p style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
                 Pre-staged before the trigger. Authorized in real time. Executed in 12 minutes. And every activation makes the next response faster.
               </p>
