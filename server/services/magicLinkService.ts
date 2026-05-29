@@ -210,12 +210,10 @@ export async function createAndSendMagicLink(data: {
   const resend = new Resend(apiKey);
 
   // ── Send magic link to the prospect ──────────────────────────────────────
-  // Try onboarding@resend.dev FIRST — Resend's own verified domain, guaranteed
-  // to pass SPF/DKIM. Only use pilot@vaughnmartin.com once the domain is
-  // verified inside the Resend dashboard (SPF + DKIM DNS records added).
+  // vaughnmartin.com is verified in Resend — use pilot@ as primary sender.
   const fromAddresses = [
-    'Readiness OS <onboarding@resend.dev>',
     'Readiness OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
   ];
 
   let emailSent = false;
@@ -249,7 +247,7 @@ export async function createAndSendMagicLink(data: {
   // ── Send admin notification to pilot ─────────────────────────────────────
   try {
     const { data: adminData, error: adminError } = await resend.emails.send({
-      from: 'Readiness OS <onboarding@resend.dev>',
+      from: 'Readiness OS <pilot@vaughnmartin.com>',
       replyTo: data.email,
       to: ADMIN_EMAIL,
       subject: `New Access Request — ${data.firstName} ${data.lastName} · ${data.company}`,

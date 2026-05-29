@@ -132,7 +132,7 @@ export function registerQuickLinkRoute(app: Express) {
   </table>
 </body></html>`;
             const { error } = await resend.emails.send({
-              from: "Readiness OS <onboarding@resend.dev>",
+              from: "Readiness OS <pilot@vaughnmartin.com>",
               replyTo: "pilot@vaughnmartin.com",
               to: [email.trim()],
               subject: `Your ${durationHours}-Hour Readiness OS Access — ${name}`,

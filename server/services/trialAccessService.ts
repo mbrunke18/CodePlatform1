@@ -101,7 +101,7 @@ export async function createTrialSession(data: {
   let emailSent = false;
   try {
     const { error } = await resend.emails.send({
-      from: 'Readiness OS <onboarding@resend.dev>',
+      from: 'Readiness OS <pilot@vaughnmartin.com>',
       to: data.email,
       subject: `Your 48-Hour Trial Access to Readiness OS`,
       html: buildTrialEmailHtml({ firstName: data.firstName, company: data.company }, activationUrl),
@@ -145,7 +145,7 @@ export async function createTrialSession(data: {
   </table>
 </body></html>`;
       await resend.emails.send({
-        from: 'Readiness OS <onboarding@resend.dev>',
+        from: 'Readiness OS <pilot@vaughnmartin.com>',
         to: adminEmail,
         subject: `New Trial Request — ${data.firstName} ${data.lastName} (${data.company})`,
         html: adminHtml,
