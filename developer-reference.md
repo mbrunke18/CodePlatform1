@@ -64,7 +64,7 @@ The retired phrase "16 signal categories" was a previous UI label shown to users
 | Real-time | Socket.IO WebSocket server |
 | Async Jobs | PostgreSQL-backed background job queue |
 | AI | Azure OpenAI (primary), OpenAI GPT-4o (fallback) |
-| Email | Resend (`RESEND_API_KEY`) — tries `pilot@vaughnmartin.com` first, falls back to `onboarding@resend.dev`; always logs admin URL to console |
+| Email | Resend (`RESEND_API_KEY`) — `vaughnmartin.com` domain verified (May 2026). All sends use `pilot@vaughnmartin.com` as primary sender; `onboarding@resend.dev` kept as fallback in `magicLinkService` only. Admin quick-links sent from `pilot@vaughnmartin.com`. |
 
 ---
 
@@ -319,8 +319,11 @@ const { toast } = useToast();
 
 const createMutation = useMutation({
   mutationFn: (data: InsertScenario) =>
-    apiRequest('POST', '/api/scenarios', data),
-  onSuccess: () => {
+    // ⚠️ apiRequest returns a raw Response object — if you need the JSON body in
+    // onSuccess, chain .then(res => res.json()). Omitting this means data in
+    // onSuccess will be the Response object (data.url = the request URL, etc.).
+    apiRequest('POST', '/api/scenarios', data).then(res => res.json()),
+  onSuccess: (data: any) => {
     queryClient.invalidateQueries({ queryKey: ['/api/scenarios'] });
     toast({ title: 'Playbook created successfully' });
   },
