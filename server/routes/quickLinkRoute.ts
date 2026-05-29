@@ -73,9 +73,9 @@ export function registerQuickLinkRoute(app: Express) {
       const payload: QuickLinkPayload = { name, email, expiresAt, nonce };
       const token = sign(payload);
 
-      const baseUrl = process.env.REPLIT_DOMAINS
-        ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}`
-        : "https://vaughnmartin.com";
+      const domains = (process.env.REPLIT_DOMAINS || "").split(",").map(d => d.trim()).filter(Boolean);
+      const customDomain = domains.find(d => !d.includes("replit.app")) || domains[0];
+      const baseUrl = customDomain ? `https://${customDomain}` : "https://vaughnmartin.com";
       const url = `${baseUrl}/api/demo-access?token=${token}`;
 
       console.log(`[QuickLink] Generated link for ${name} <${email}> — expires in ${durationHours}h`);
