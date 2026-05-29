@@ -112,6 +112,49 @@ export async function createTrialSession(data: {
     console.warn(`⚠ Trial email threw: ${err.message}`);
   }
 
+  // ── Notify platform admin ──────────────────────────────────────────────
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+  if (adminEmail) {
+    try {
+      const adminHtml = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;">
+        <tr><td style="background:#0A0F2E;padding:24px 36px;">
+          <div style="color:#C9A84C;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">VAUGHNMARTIN · READINESS OS</div>
+          <div style="color:#ffffff;font-size:18px;font-weight:700;">New Trial Access Request</div>
+        </td></tr>
+        <tr><td style="height:3px;background:#C9A84C;"></td></tr>
+        <tr><td style="padding:32px 36px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+            <tr><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6B7280;width:110px;">Name</td><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;color:#111827;font-weight:600;">${data.firstName} ${data.lastName}</td></tr>
+            <tr><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6B7280;">Email</td><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;color:#111827;">${data.email}</td></tr>
+            <tr><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6B7280;">Company</td><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;color:#111827;">${data.company}</td></tr>
+            <tr><td style="padding:8px 0;font-size:13px;color:#6B7280;">Title</td><td style="padding:8px 0;font-size:14px;color:#111827;">${data.title}</td></tr>
+          </table>
+          <p style="font-size:13px;color:#374151;margin:0 0 20px;">Their 48-hour trial link has been sent automatically. To grant full 72-hour access, use the Link Generator in your Admin Panel.</p>
+          <a href="${getBaseUrl()}/admin/users" style="display:inline-block;background:#0A0F2E;color:#C9A84C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;text-decoration:none;">Open Admin Panel →</a>
+        </td></tr>
+        <tr><td style="background:#0A0F2E;padding:16px 36px;">
+          <p style="margin:0;color:rgba(255,255,255,0.35);font-size:11px;">VaughnMartin · Readiness OS — platform admin notification</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+      await resend.emails.send({
+        from: 'Readiness OS <onboarding@resend.dev>',
+        to: adminEmail,
+        subject: `New Trial Request — ${data.firstName} ${data.lastName} (${data.company})`,
+        html: adminHtml,
+      });
+    } catch (err: any) {
+      console.warn(`⚠ Admin notification email failed: ${err.message}`);
+    }
+  }
+
   console.log(`✓ Trial session created for ${data.email} | Activation: ${activationUrl}`);
   return { success: true, token, emailSent };
 }

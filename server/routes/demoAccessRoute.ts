@@ -163,8 +163,15 @@ export function registerDemoAccessRoute(app: Express) {
         });
       }
 
-      // ── Session: 4-hour window ────────────────────────────────────────────
-      const SESSION_SECONDS = 4 * 60 * 60;
+      // ── Session: honour QK- token duration, otherwise 4-hour window ─────
+      let SESSION_SECONDS = 4 * 60 * 60;
+      if (token.startsWith("QK-")) {
+        const result2 = parseQuickLinkToken(token);
+        if (result2.valid && result2.payload) {
+          const remainingMs = result2.payload.expiresAt - Date.now();
+          SESSION_SECONDS = Math.max(Math.floor(remainingMs / 1000), 60);
+        }
+      }
       const demoSessionUser = {
         claims: {
           sub: DEMO_USER_ID,

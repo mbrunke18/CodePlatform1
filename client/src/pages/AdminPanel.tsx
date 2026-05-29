@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/useAuth";
-import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check } from "lucide-react";
+import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -42,6 +42,13 @@ export default function AdminPanel() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [addSuccess, setAddSuccess] = useState(false);
 
+  // ── Link generator state ──────────────────────────────────────────────────
+  const [linkName, setLinkName] = useState("");
+  const [linkEmail, setLinkEmail] = useState("");
+  const [linkHours, setLinkHours] = useState(72);
+  const [generatedLink, setGeneratedLink] = useState<{ url: string; expiresAt: string; emailSent?: boolean } | null>(null);
+  const [linkCopied, setLinkCopied] = useState(false);
+
   const { data: rawUsers, isLoading: usersLoading, error: usersError } = useQuery<AdminUser[]>({
     queryKey: ["/api/admin/users"],
   });
@@ -74,6 +81,19 @@ export default function AdminPanel() {
   const removeEmail = useMutation({
     mutationFn: (id: string) => apiRequest("DELETE", `/api/admin/allowlist/${id}`),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/allowlist"] }),
+  });
+
+  const generateLink = useMutation({
+    mutationFn: ({ sendEmail }: { sendEmail: boolean }) =>
+      apiRequest("POST", "/api/admin/generate-demo-link", {
+        name: linkName.trim(),
+        email: linkEmail.trim(),
+        hours: linkHours,
+        sendEmail,
+      }),
+    onSuccess: (data: any) => {
+      setGeneratedLink({ url: data.url, expiresAt: data.expiresAt, emailSent: data.emailSent });
+    },
   });
 
   if (authLoading) {
@@ -215,6 +235,126 @@ export default function AdminPanel() {
                   ))}
                 </tbody>
               </table>
+            )}
+          </div>
+        </div>
+
+        {/* ── Access Link Generator ───────────────────────── */}
+        <div style={{ marginBottom: "2.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem" }}>
+            <Link2 size={18} color={NAVY} />
+            <h2 style={{ margin: 0, fontSize: "1.0625rem", fontWeight: 700, color: NAVY }}>
+              Generate Access Link
+            </h2>
+            <span style={{ marginLeft: 8, background: "#FEF3C7", color: "#92400E", fontSize: "0.7rem", fontWeight: 700, padding: "2px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+              72 HR
+            </span>
+          </div>
+          <p style={{ margin: "0 0 1rem", fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.6 }}>
+            Generate a signed access link for any prospect. The link grants full platform access for the chosen duration.
+            You can copy and share it yourself, or send it directly to their inbox.
+          </p>
+          <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: "1.5rem" }}>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
+              <input
+                type="text"
+                placeholder="Full name"
+                value={linkName}
+                onChange={e => { setLinkName(e.target.value); setGeneratedLink(null); }}
+                style={{ flex: "1 1 180px", padding: "0.5rem 0.75rem", border: "1px solid #D1D5DB", borderRadius: 4, fontSize: "0.875rem", outline: "none", color: NAVY }}
+              />
+              <input
+                type="email"
+                placeholder="email@company.com"
+                value={linkEmail}
+                onChange={e => { setLinkEmail(e.target.value); setGeneratedLink(null); }}
+                style={{ flex: "1 1 200px", padding: "0.5rem 0.75rem", border: "1px solid #D1D5DB", borderRadius: 4, fontSize: "0.875rem", outline: "none", color: NAVY }}
+              />
+              <select
+                value={linkHours}
+                onChange={e => { setLinkHours(Number(e.target.value)); setGeneratedLink(null); }}
+                style={{ padding: "0.5rem 0.75rem", border: "1px solid #D1D5DB", borderRadius: 4, fontSize: "0.875rem", color: NAVY, background: "#fff", cursor: "pointer" }}
+              >
+                <option value={24}>24 hours</option>
+                <option value={48}>48 hours</option>
+                <option value={72}>72 hours</option>
+                <option value={120}>5 days</option>
+                <option value={168}>7 days</option>
+              </select>
+            </div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <button
+                onClick={() => generateLink.mutate({ sendEmail: false })}
+                disabled={!linkName.trim() || !linkEmail.trim() || generateLink.isPending}
+                style={{
+                  padding: "0.5rem 1.25rem", background: NAVY, color: "#fff",
+                  border: "none", borderRadius: 4, fontSize: "0.875rem", fontWeight: 600,
+                  cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
+                  opacity: (!linkName.trim() || !linkEmail.trim()) ? 0.5 : 1,
+                }}
+              >
+                {generateLink.isPending ? <Loader2 size={14} style={{ animation: "spin 1s linear infinite" }} /> : <Link2 size={14} />}
+                Generate Link
+              </button>
+              <button
+                onClick={() => generateLink.mutate({ sendEmail: true })}
+                disabled={!linkName.trim() || !linkEmail.trim() || generateLink.isPending}
+                style={{
+                  padding: "0.5rem 1.25rem", background: "#2B8A6E", color: "#fff",
+                  border: "none", borderRadius: 4, fontSize: "0.875rem", fontWeight: 600,
+                  cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
+                  opacity: (!linkName.trim() || !linkEmail.trim()) ? 0.5 : 1,
+                }}
+              >
+                {generateLink.isPending ? <Loader2 size={14} style={{ animation: "spin 1s linear infinite" }} /> : <Send size={14} />}
+                Generate &amp; Email
+              </button>
+            </div>
+            {generateLink.isError && (
+              <p style={{ margin: "0.75rem 0 0", fontSize: "0.8125rem", color: "#DC2626" }}>
+                {(generateLink.error as any)?.message ?? "Failed to generate link"}
+              </p>
+            )}
+            {generatedLink && (
+              <div style={{ marginTop: "1.25rem", background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 4, padding: "1rem 1.25rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <Check size={15} color="#059669" />
+                  <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#065F46" }}>
+                    Link generated
+                    {generatedLink.emailSent ? " & emailed to " + linkEmail : " — copy and share below"}
+                  </span>
+                  <span style={{ marginLeft: "auto", fontSize: "0.75rem", color: "#6B7280" }}>
+                    Expires {new Date(generatedLink.expiresAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
+                  </span>
+                </div>
+                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                  <input
+                    readOnly
+                    value={generatedLink.url}
+                    style={{
+                      flex: 1, padding: "0.5rem 0.75rem", border: "1px solid #D1FAE5",
+                      borderRadius: 4, fontSize: "0.8rem", color: NAVY,
+                      background: "#fff", fontFamily: "monospace", outline: "none",
+                    }}
+                    onFocus={e => e.target.select()}
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedLink.url);
+                      setLinkCopied(true);
+                      setTimeout(() => setLinkCopied(false), 2000);
+                    }}
+                    style={{
+                      padding: "0.5rem 1rem", background: linkCopied ? "#059669" : NAVY,
+                      color: "#fff", border: "none", borderRadius: 4, fontSize: "0.8125rem",
+                      fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center",
+                      gap: 6, transition: "background 0.2s", whiteSpace: "nowrap",
+                    }}
+                  >
+                    {linkCopied ? <><Check size={13} /> Copied</> : <><Copy size={13} /> Copy</>}
+                  </button>
+                </div>
+              </div>
             )}
           </div>
         </div>

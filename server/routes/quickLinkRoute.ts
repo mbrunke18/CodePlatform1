@@ -6,6 +6,7 @@
 
 import type { Express } from "express";
 import crypto from "crypto";
+import { Resend } from "resend";
 
 const SECRET = process.env.QUICK_LINK_SECRET || "vm-quick-link-2026";
 
@@ -60,12 +61,12 @@ export function registerQuickLinkRoute(app: Express) {
         return res.status(403).json({ error: "Admin access required" });
       }
 
-      const { name, email, hours = 48 } = req.body;
+      const { name, email, hours = 72, sendEmail = false } = req.body;
       if (!name || !email) {
         return res.status(400).json({ error: "Name and email are required" });
       }
 
-      const durationHours = Math.min(Math.max(Number(hours) || 48, 1), 168); // 1h–7d cap
+      const durationHours = Math.min(Math.max(Number(hours) || 72, 1), 168); // 1h–7d cap
       const expiresAt = Date.now() + durationHours * 60 * 60 * 1000;
       const nonce = crypto.randomBytes(6).toString("hex");
 
@@ -79,6 +80,72 @@ export function registerQuickLinkRoute(app: Express) {
 
       console.log(`[QuickLink] Generated link for ${name} <${email}> — expires in ${durationHours}h`);
 
+      let emailSent = false;
+      if (sendEmail) {
+        const apiKey = process.env.RESEND_API_KEY;
+        if (apiKey) {
+          try {
+            const resend = new Resend(apiKey);
+            const firstName = name.split(" ")[0] || name;
+            const NAVY = "#0A0F2E";
+            const GOLD = "#C9A84C";
+            const html = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;">
+        <tr><td style="background:${NAVY};padding:28px 36px;">
+          <div style="color:${GOLD};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN · READINESS OS</div>
+          <div style="color:#ffffff;font-size:20px;font-weight:700;">Your ${durationHours}-Hour Full Access</div>
+        </td></tr>
+        <tr><td style="height:3px;background:${GOLD};"></td></tr>
+        <tr><td style="padding:36px;">
+          <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${firstName},</p>
+          <p style="margin:0 0 28px;color:#374151;font-size:15px;line-height:1.7;">
+            You have been granted full ${durationHours}-hour access to the Readiness OS platform. 
+            Explore live trigger detection, 180 pre-staged Readiness Protocols, Mission Control, 
+            and the complete IDEA Framework — with your own session, no restrictions.
+          </p>
+          <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
+            <tr>
+              <td style="background:${NAVY};padding:14px 32px;">
+                <a href="${url}" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${GOLD};text-decoration:none;">
+                  Access Readiness OS →
+                </a>
+              </td>
+            </tr>
+          </table>
+          <p style="margin:0 0 6px;color:#6B7280;font-size:13px;line-height:1.6;">
+            This link is personal to you and expires in <strong>${durationHours} hours</strong>.<br/>
+            If you have any questions, reply directly to this email.
+          </p>
+          <p style="margin:12px 0 0;font-size:11px;color:#9CA3AF;word-break:break-all;">${url}</p>
+        </td></tr>
+        <tr><td style="background:${NAVY};padding:20px 36px;">
+          <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">
+            VaughnMartin · Readiness OS<br/>pilot@vaughnmartin.com
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+            const { error } = await resend.emails.send({
+              from: "Readiness OS <onboarding@resend.dev>",
+              replyTo: "pilot@vaughnmartin.com",
+              to: [email.trim()],
+              subject: `Your ${durationHours}-Hour Readiness OS Access — ${name}`,
+              html,
+            });
+            if (!error) emailSent = true;
+            else console.warn(`[QuickLink] Email send failed: ${error.message}`);
+          } catch (err: any) {
+            console.warn(`[QuickLink] Email threw: ${err.message}`);
+          }
+        }
+      }
+
       return res.json({
         url,
         token,
@@ -86,6 +153,7 @@ export function registerQuickLinkRoute(app: Express) {
         email,
         expiresAt: new Date(expiresAt).toISOString(),
         durationHours,
+        emailSent,
       });
     } catch (err) {
       console.error("[QuickLink] Error:", err);
