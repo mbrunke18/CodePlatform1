@@ -90,7 +90,7 @@ export default function AdminPanel() {
         email: linkEmail.trim(),
         hours: linkHours,
         sendEmail,
-      }),
+      }).then(res => res.json()),
     onSuccess: (data: any) => {
       setGeneratedLink({ url: data.url, expiresAt: data.expiresAt, emailSent: data.emailSent });
     },
