@@ -44,6 +44,11 @@ export function parseQuickLinkToken(token: string): { valid: boolean; payload?: 
 }
 
 export function registerQuickLinkRoute(app: Express) {
+  // GET /api/admin/generate-demo-link → redirect to admin panel
+  app.get("/api/admin/generate-demo-link", (_req, res) => {
+    res.redirect(302, "/admin/users");
+  });
+
   // POST /api/admin/generate-demo-link
   // Admin-only: generate a personalized, time-limited demo access link
   app.post("/api/admin/generate-demo-link", async (req: any, res) => {
