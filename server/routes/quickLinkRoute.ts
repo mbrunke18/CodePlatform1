@@ -46,7 +46,7 @@ export function parseQuickLinkToken(token: string): { valid: boolean; payload?: 
 export function registerQuickLinkRoute(app: Express) {
   // POST /api/admin/generate-demo-link
   // Admin-only: generate a personalized, time-limited demo access link
-  app.post("/api/admin/generate-demo-link", (req: any, res) => {
+  app.post("/api/admin/generate-demo-link", async (req: any, res) => {
     try {
       if (!req.isAuthenticated()) {
         return res.status(401).json({ error: "Authentication required" });

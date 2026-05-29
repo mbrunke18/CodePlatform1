@@ -16311,7 +16311,7 @@ __export(magicLinkService_exports, {
   validateMagicLinkToken: () => validateMagicLinkToken,
   verifyMagicLinkToken: () => verifyMagicLinkToken
 });
-import { Resend as Resend3 } from "resend";
+import { Resend as Resend4 } from "resend";
 import crypto3 from "crypto";
 import { eq as eq9 } from "drizzle-orm";
 function generateToken() {
@@ -16491,7 +16491,7 @@ ${"\u2500".repeat(70)}`);
     console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
     return { success: true, emailSent: false };
   }
-  const resend2 = new Resend3(apiKey);
+  const resend2 = new Resend4(apiKey);
   const fromAddresses = [
     "Readiness OS <onboarding@resend.dev>",
     "Readiness OS <pilot@vaughnmartin.com>"
@@ -16617,7 +16617,7 @@ async function sendWelcomeTriggerDemo(email, firstName) {
       </div>
     </div>
   `;
-  const resend2 = new Resend3(apiKey);
+  const resend2 = new Resend4(apiKey);
   const fromAddresses = [
     "Readiness OS <pilot@vaughnmartin.com>",
     "Readiness OS <onboarding@resend.dev>"
@@ -20144,7 +20144,7 @@ __export(SignalEvaluationService_exports, {
   getRecentDetections: () => getRecentDetections
 });
 import { eq as eq23, desc as desc11, and as and14, gte as gte3 } from "drizzle-orm";
-import { Resend as Resend5 } from "resend";
+import { Resend as Resend6 } from "resend";
 async function getOrgEvaluationMode(organizationId) {
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
     return "default";
@@ -20201,7 +20201,7 @@ function evaluateSignal(signal) {
 async function sendDetectionEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
   if (!apiKey || emails.length === 0) return;
-  const resend2 = new Resend5(apiKey);
+  const resend2 = new Resend6(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
   const html = `
@@ -23171,7 +23171,7 @@ var init_scenarios = __esm({
 });
 
 // server/integrations/NotificationManager.ts
-import { Resend as Resend6 } from "resend";
+import { Resend as Resend7 } from "resend";
 function buildEmailHtml2(stakeholder, message, severity, metadata) {
   const severityColors = {
     low: "#2B8A6E",
@@ -23383,7 +23383,7 @@ var init_NotificationManager = __esm({
           console.warn(`\u26A0\uFE0F RESEND_API_KEY not set \u2014 email not sent to ${stakeholder.email}`);
           return;
         }
-        const resend2 = new Resend6(apiKey);
+        const resend2 = new Resend7(apiKey);
         const playbookName = metadata?.playbookName || metadata?.scenarioType || "Strategic Protocol";
         const { error } = await resend2.emails.send({
           from: RESEND_FROM,
@@ -25717,7 +25717,7 @@ var NotificationService_exports = {};
 __export(NotificationService_exports, {
   notificationService: () => notificationService
 });
-import { Resend as Resend7 } from "resend";
+import { Resend as Resend8 } from "resend";
 import { eq as eq32 } from "drizzle-orm";
 var NotificationService, notificationService;
 var init_NotificationService = __esm({
@@ -25734,7 +25734,7 @@ var init_NotificationService = __esm({
         const apiKey = process.env.RESEND_API_KEY;
         if (apiKey) {
           try {
-            this.resend = new Resend7(apiKey);
+            this.resend = new Resend8(apiKey);
             console.log("\u2713 Resend initialized");
           } catch (error) {
             console.warn("Failed to initialize Resend:", error);
@@ -43320,6 +43320,7 @@ init_storage();
 
 // server/routes/quickLinkRoute.ts
 import crypto2 from "crypto";
+import { Resend as Resend3 } from "resend";
 var SECRET = process.env.QUICK_LINK_SECRET || "vm-quick-link-2026";
 function sign(payload) {
   const data = JSON.stringify(payload);
@@ -43344,7 +43345,7 @@ function parseQuickLinkToken(token) {
   }
 }
 function registerQuickLinkRoute(app2) {
-  app2.post("/api/admin/generate-demo-link", (req, res) => {
+  app2.post("/api/admin/generate-demo-link", async (req, res) => {
     try {
       if (!req.isAuthenticated()) {
         return res.status(401).json({ error: "Authentication required" });
@@ -43357,11 +43358,11 @@ function registerQuickLinkRoute(app2) {
       if (!isDemoUser && !isAdmin && !isOwner) {
         return res.status(403).json({ error: "Admin access required" });
       }
-      const { name, email, hours = 48 } = req.body;
+      const { name, email, hours = 72, sendEmail = false } = req.body;
       if (!name || !email) {
         return res.status(400).json({ error: "Name and email are required" });
       }
-      const durationHours = Math.min(Math.max(Number(hours) || 48, 1), 168);
+      const durationHours = Math.min(Math.max(Number(hours) || 72, 1), 168);
       const expiresAt = Date.now() + durationHours * 60 * 60 * 1e3;
       const nonce = crypto2.randomBytes(6).toString("hex");
       const payload = { name, email, expiresAt, nonce };
@@ -43369,13 +43370,79 @@ function registerQuickLinkRoute(app2) {
       const baseUrl = process.env.REPLIT_DOMAINS ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}` : "https://vaughnmartin.com";
       const url = `${baseUrl}/api/demo-access?token=${token}`;
       console.log(`[QuickLink] Generated link for ${name} <${email}> \u2014 expires in ${durationHours}h`);
+      let emailSent = false;
+      if (sendEmail) {
+        const apiKey = process.env.RESEND_API_KEY;
+        if (apiKey) {
+          try {
+            const resend2 = new Resend3(apiKey);
+            const firstName = name.split(" ")[0] || name;
+            const NAVY4 = "#0A0F2E";
+            const GOLD4 = "#C9A84C";
+            const html = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;">
+        <tr><td style="background:${NAVY4};padding:28px 36px;">
+          <div style="color:${GOLD4};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 READINESS OS</div>
+          <div style="color:#ffffff;font-size:20px;font-weight:700;">Your ${durationHours}-Hour Full Access</div>
+        </td></tr>
+        <tr><td style="height:3px;background:${GOLD4};"></td></tr>
+        <tr><td style="padding:36px;">
+          <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${firstName},</p>
+          <p style="margin:0 0 28px;color:#374151;font-size:15px;line-height:1.7;">
+            You have been granted full ${durationHours}-hour access to the Readiness OS platform. 
+            Explore live trigger detection, 180 pre-staged Readiness Protocols, Mission Control, 
+            and the complete IDEA Framework \u2014 with your own session, no restrictions.
+          </p>
+          <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
+            <tr>
+              <td style="background:${NAVY4};padding:14px 32px;">
+                <a href="${url}" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${GOLD4};text-decoration:none;">
+                  Access Readiness OS \u2192
+                </a>
+              </td>
+            </tr>
+          </table>
+          <p style="margin:0 0 6px;color:#6B7280;font-size:13px;line-height:1.6;">
+            This link is personal to you and expires in <strong>${durationHours} hours</strong>.<br/>
+            If you have any questions, reply directly to this email.
+          </p>
+          <p style="margin:12px 0 0;font-size:11px;color:#9CA3AF;word-break:break-all;">${url}</p>
+        </td></tr>
+        <tr><td style="background:${NAVY4};padding:20px 36px;">
+          <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">
+            VaughnMartin \xB7 Readiness OS<br/>pilot@vaughnmartin.com
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+            const { error } = await resend2.emails.send({
+              from: "Readiness OS <onboarding@resend.dev>",
+              replyTo: "pilot@vaughnmartin.com",
+              to: [email.trim()],
+              subject: `Your ${durationHours}-Hour Readiness OS Access \u2014 ${name}`,
+              html
+            });
+            if (!error) emailSent = true;
+            else console.warn(`[QuickLink] Email send failed: ${error.message}`);
+          } catch (err) {
+            console.warn(`[QuickLink] Email threw: ${err.message}`);
+          }
+        }
+      }
       return res.json({
         url,
         token,
         name,
         email,
         expiresAt: new Date(expiresAt).toISOString(),
-        durationHours
+        durationHours,
+        emailSent
       });
     } catch (err) {
       console.error("[QuickLink] Error:", err);
@@ -43530,7 +43597,14 @@ function registerDemoAccessRoute(app2) {
           onboardingCompleted: true
         });
       }
-      const SESSION_SECONDS = 4 * 60 * 60;
+      let SESSION_SECONDS = 4 * 60 * 60;
+      if (token.startsWith("QK-")) {
+        const result2 = parseQuickLinkToken(token);
+        if (result2.valid && result2.payload) {
+          const remainingMs = result2.payload.expiresAt - Date.now();
+          SESSION_SECONDS = Math.max(Math.floor(remainingMs / 1e3), 60);
+        }
+      }
       const demoSessionUser = {
         claims: {
           sub: DEMO_USER_ID,
@@ -43567,13 +43641,13 @@ init_magicLinkService();
 // server/services/trialAccessService.ts
 init_db();
 init_schema();
-import { Resend as Resend4 } from "resend";
+import { Resend as Resend5 } from "resend";
 import crypto4 from "crypto";
 import { eq as eq10 } from "drizzle-orm";
 var NAVY2 = "#0A0F2E";
 var GOLD2 = "#C9A84C";
 var TRIAL_HOURS = 48;
-var resend = new Resend4(process.env.RESEND_API_KEY);
+var resend = new Resend5(process.env.RESEND_API_KEY);
 function generateToken2() {
   return crypto4.randomBytes(48).toString("hex");
 }
@@ -43660,6 +43734,47 @@ async function createTrialSession(data) {
     else console.warn(`\u26A0 Trial email failed: ${error.message}`);
   } catch (err) {
     console.warn(`\u26A0 Trial email threw: ${err.message}`);
+  }
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+  if (adminEmail) {
+    try {
+      const adminHtml = `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;">
+        <tr><td style="background:#0A0F2E;padding:24px 36px;">
+          <div style="color:#C9A84C;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">VAUGHNMARTIN \xB7 READINESS OS</div>
+          <div style="color:#ffffff;font-size:18px;font-weight:700;">New Trial Access Request</div>
+        </td></tr>
+        <tr><td style="height:3px;background:#C9A84C;"></td></tr>
+        <tr><td style="padding:32px 36px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+            <tr><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6B7280;width:110px;">Name</td><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;color:#111827;font-weight:600;">${data.firstName} ${data.lastName}</td></tr>
+            <tr><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6B7280;">Email</td><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;color:#111827;">${data.email}</td></tr>
+            <tr><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:13px;color:#6B7280;">Company</td><td style="padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;color:#111827;">${data.company}</td></tr>
+            <tr><td style="padding:8px 0;font-size:13px;color:#6B7280;">Title</td><td style="padding:8px 0;font-size:14px;color:#111827;">${data.title}</td></tr>
+          </table>
+          <p style="font-size:13px;color:#374151;margin:0 0 20px;">Their 48-hour trial link has been sent automatically. To grant full 72-hour access, use the Link Generator in your Admin Panel.</p>
+          <a href="${getBaseUrl2()}/admin/users" style="display:inline-block;background:#0A0F2E;color:#C9A84C;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;text-decoration:none;">Open Admin Panel \u2192</a>
+        </td></tr>
+        <tr><td style="background:#0A0F2E;padding:16px 36px;">
+          <p style="margin:0;color:rgba(255,255,255,0.35);font-size:11px;">VaughnMartin \xB7 Readiness OS \u2014 platform admin notification</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+      await resend.emails.send({
+        from: "Readiness OS <onboarding@resend.dev>",
+        to: adminEmail,
+        subject: `New Trial Request \u2014 ${data.firstName} ${data.lastName} (${data.company})`,
+        html: adminHtml
+      });
+    } catch (err) {
+      console.warn(`\u26A0 Admin notification email failed: ${err.message}`);
+    }
   }
   console.log(`\u2713 Trial session created for ${data.email} | Activation: ${activationUrl}`);
   return { success: true, token, emailSent };
@@ -55404,8 +55519,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       if (!email) return res.status(400).json({ error: "email is required" });
       const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
       if (!apiKey) return res.status(503).json({ error: "Email service not configured" });
-      const { Resend: Resend8 } = await import("resend");
-      const resend2 = new Resend8(apiKey);
+      const { Resend: Resend9 } = await import("resend");
+      const resend2 = new Resend9(apiKey);
       const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
       const token = Buffer.from(email).toString("base64url");
       const unsubUrl = `${platformUrl}/api/unsubscribe?t=${token}`;
@@ -55789,8 +55904,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
           const displayStakeholders = stakeholderCount || 5;
           const platformUrl = process.env.APP_URL || "https://vaughnmartin.replit.app";
           const activationTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
-          const { Resend: Resend8 } = await import("resend");
-          const resend2 = new Resend8(apiKey);
+          const { Resend: Resend9 } = await import("resend");
+          const resend2 = new Resend9(apiKey);
           const html = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#0A0F2E;padding:40px 0;margin:0;">
               <div style="max-width:580px;margin:0 auto;">
@@ -56537,8 +56652,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             const contacts = await db.select().from(scTable).where(and39(eq58(scTable.organizationId, orgId), eq58(scTable.isActive, true)));
             const emails = contacts.map((c) => c.email).filter(Boolean);
             if (emails.length > 0) {
-              const { Resend: Resend8 } = await import("resend");
-              const resend2 = new Resend8(apiKey);
+              const { Resend: Resend9 } = await import("resend");
+              const resend2 = new Resend9(apiKey);
               const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
               const threatRows = highConf.map((t) => `
                 <tr>
@@ -57091,8 +57206,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
               const contacts = await db.select().from(scTable).where(and39(eq58(scTable.organizationId, org.id), eq58(scTable.isActive, true)));
               const emails = contacts.map((c) => c.email).filter(Boolean);
               if (emails.length > 0) {
-                const { Resend: Resend8 } = await import("resend");
-                const resend2 = new Resend8(apiKey);
+                const { Resend: Resend9 } = await import("resend");
+                const resend2 = new Resend9(apiKey);
                 const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
                 const threatRows = highConf.map((t) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(", ")}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis || "").substring(0, 240)}${(t.aiHypothesis || "").length > 240 ? "\u2026" : ""}</td></tr>`).join("");
                 const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center \u2192</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div></div></div></div>`;
@@ -57369,8 +57484,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 </div>
               </div>
             </div>`;
-          const { Resend: Resend8 } = await import("resend");
-          const resend2 = new Resend8(apiKey);
+          const { Resend: Resend9 } = await import("resend");
+          const resend2 = new Resend9(apiKey);
           const subject = triggerCount > 0 ? `\u{1F4CA} Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? "s" : ""} Detected \u2014 ${org.name}` : `\u{1F4CA} Weekly Digest: Monitoring Active, Market Quiet \u2014 ${org.name}`;
           for (const contact of contacts) {
             if (!contact.email) continue;
@@ -57572,8 +57687,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         console.log(`[TestDrive] No Resend key \u2014 lead stored without email for ${email}`);
         return res.json({ success: true, emailSent: false });
       }
-      const { Resend: Resend8 } = await import("resend");
-      const resend2 = new Resend8(apiKey);
+      const { Resend: Resend9 } = await import("resend");
+      const resend2 = new Resend9(apiKey);
       const company = companyName ? ` for ${companyName}` : "";
       const completionPct = totalTasks > 0 ? Math.round(completedTasks / totalTasks * 100) : 100;
       const NAVY4 = "#0A0F2E";
