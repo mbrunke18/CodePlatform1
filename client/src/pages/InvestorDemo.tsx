@@ -323,7 +323,7 @@ export default function InvestorDemo() {
               Readiness OS: The Strategic Readiness Platform
             </h1>
             <p className="text-lg text-[#0A0F2E]">
-              First mover in $15B+ SEOS category. 180 Readiness Protocols. 12-minute execution.
+              First mover in $15B+ Coordination Infrastructure category. 180 Readiness Protocols. 12-minute execution.
             </p>
           </div>
 

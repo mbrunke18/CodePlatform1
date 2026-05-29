@@ -27,7 +27,7 @@ const SCENE_NARRATIONS = [
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model startup to Fortune 500s have been running for 40 years.",
-  "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
+  "We're creating a new category. Coordination Infrastructure — the operating model layer that sits above every AI tool, every dashboard, and every workflow platform in your stack. No one owns this layer. That's the market.",
   "Readiness OS has an 18-month head start. 180 Readiness Protocols built. Platform validated with enterprise customers. The moat widens every day.",
   "The companies that figure this out first don't just survive. They dominate. Welcome to Readiness OS. The new operating model for AI-native enterprises.",
 ];
@@ -1001,10 +1001,10 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 1.5 }}
                 >
-                  <span className="text-3xl md:text-5xl font-bold text-gray-900">THE STRATEGIC EXECUTION</span>
+                  <span className="text-3xl md:text-5xl font-bold text-gray-900">COORDINATION</span>
                   <br />
                   <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
-                    OPERATING SYSTEM
+                    INFRASTRUCTURE
                   </span>
                 </motion.div>
               </div>
@@ -1038,7 +1038,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-lg text-gray-800"
                 >
-                  180 playbooks, AI signal detection, the IDEA methodology—
+                  180 Readiness Protocols, continuous signal monitoring, the IDEA methodology—
                   <br />that can't be copied overnight.
                 </motion.p>
               </div>
