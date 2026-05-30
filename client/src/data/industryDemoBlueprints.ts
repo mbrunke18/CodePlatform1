@@ -952,7 +952,7 @@ export const INDUSTRY_DEMO_BLUEPRINTS: IndustryDemoBlueprint[] = [
     sector: "Transformation",
     domain: "TRANSFORMATION",
     triggerEvent: "AI Workforce Transformation — 6,720 Roles, 12 Countries, 90 Days",
-    triggerContext: "Board authorizes AI-driven workforce transformation: 6,720 roles redefined across 12 countries, 14 business units. Simultaneous requirements: union negotiations in 4 jurisdictions, Works Council approvals in 3 EU countries, SEC disclosure obligations, and a 90-day completion mandate to capture $340M in annual efficiency gains.",
+    triggerContext: "Board authorizes enterprise workforce transformation: 6,720 roles redefined across 12 countries, 14 business units. Simultaneous requirements: union negotiations in 4 jurisdictions, Works Council approvals in 3 EU countries, SEC disclosure obligations, and a 90-day completion mandate to capture $340M in annual efficiency gains.",
     executiveRole: "CEO / CHRO",
     signalsMonitored: [
       "Labor relations and union sentiment signals",
