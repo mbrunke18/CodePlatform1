@@ -2458,7 +2458,17 @@ var init_schema = __esm({
       triggerCount: integer2("trigger_count").default(0),
       createdBy: varchar("created_by").references(() => users.id).notNull(),
       createdAt: timestamp2("created_at").defaultNow(),
-      updatedAt: timestamp2("updated_at").defaultNow()
+      updatedAt: timestamp2("updated_at").defaultNow(),
+      // Per-trigger alert threshold overrides (null = use org-wide defaults)
+      watchThresholdPct: integer2("watch_threshold_pct"),
+      // null → org default (50%)
+      awareThresholdPct: integer2("aware_threshold_pct"),
+      // null → org default (70%)
+      actionThresholdPct: integer2("action_threshold_pct"),
+      // null → org default (80%)
+      // IDs/keys of data points within this trigger's conditions that are mandatory.
+      // If ALL listed data points fire, the trigger auto-escalates to Action regardless of % total.
+      mandatoryConditionIds: text2("mandatory_condition_ids").array().default([])
     });
     triggerMonitoringHistory = pgTable2("trigger_monitoring_history", {
       id: uuid("id").primaryKey().defaultRandom(),
@@ -6022,6 +6032,11 @@ var init_schema = __esm({
       //   'default'    — use the original 16-pattern keyword scoring only (legacy engine)
       //   'both'       — run both in parallel, merge and deduplicate detections
       evaluationMode: varchar("evaluation_mode", { length: 20 }).default("both"),
+      // Org-wide alert threshold percentages (% of total data points / keywords that must match)
+      // Individual triggers can override these. Defaults: watch=50, aware=70, action=80
+      watchThresholdPct: integer2("watch_threshold_pct").default(50),
+      awareThresholdPct: integer2("aware_threshold_pct").default(70),
+      actionThresholdPct: integer2("action_threshold_pct").default(80),
       updatedAt: timestamp2("updated_at").defaultNow()
     });
     insertSignalMonitoringConfigSchema = createInsertSchema2(signalMonitoringConfig).omit({ id: true, updatedAt: true });
@@ -6427,6 +6442,12 @@ var init_schema = __esm({
       customFields: jsonb("custom_fields").default({}),
       status: varchar("status", { length: 20 }).default("draft"),
       completedSteps: integer2("completed_steps").default(0),
+      // Signal Coverage & Readiness (Step 7)
+      linkedSignalIds: text2("linked_signal_ids").array().default([]),
+      mandatorySignalIds: text2("mandatory_signal_ids").array().default([]),
+      readinessMode: varchar("readiness_mode", { length: 20 }).default("both"),
+      readinessPct: integer2("readiness_pct").default(80),
+      customDataPointDefs: jsonb("custom_data_point_defs").default([]),
       createdAt: timestamp2("created_at").defaultNow(),
       updatedAt: timestamp2("updated_at").defaultNow()
     });
@@ -11859,16 +11880,27 @@ var init_storage = __esm({
         const [config] = await db.select().from(signalMonitoringConfig).where(eq(signalMonitoringConfig.organizationId, organizationId)).limit(1);
         return config || null;
       }
-      async upsertSignalMonitoringConfig(organizationId, disabledDataPoints, evaluationMode, disabledFeeds) {
+      async upsertSignalMonitoringConfig(organizationId, disabledDataPoints, evaluationMode, disabledFeeds, thresholds) {
         const existing = await this.getSignalMonitoringConfig(organizationId);
         const updateFields = { disabledDataPoints, updatedAt: /* @__PURE__ */ new Date() };
         if (evaluationMode !== void 0) updateFields.evaluationMode = evaluationMode;
         if (disabledFeeds !== void 0) updateFields.disabledFeeds = disabledFeeds;
+        if (thresholds?.watchPct !== void 0) updateFields.watchThresholdPct = thresholds.watchPct;
+        if (thresholds?.awarePct !== void 0) updateFields.awareThresholdPct = thresholds.awarePct;
+        if (thresholds?.actionPct !== void 0) updateFields.actionThresholdPct = thresholds.actionPct;
         if (existing) {
           const [updated] = await db.update(signalMonitoringConfig).set(updateFields).where(eq(signalMonitoringConfig.organizationId, organizationId)).returning();
           return updated;
         }
-        const [created] = await db.insert(signalMonitoringConfig).values({ organizationId, disabledDataPoints, disabledFeeds: disabledFeeds || [], evaluationMode: evaluationMode || "both" }).returning();
+        const [created] = await db.insert(signalMonitoringConfig).values({
+          organizationId,
+          disabledDataPoints,
+          disabledFeeds: disabledFeeds || [],
+          evaluationMode: evaluationMode || "both",
+          watchThresholdPct: thresholds?.watchPct ?? 50,
+          awareThresholdPct: thresholds?.awarePct ?? 70,
+          actionThresholdPct: thresholds?.actionPct ?? 80
+        }).returning();
         return created;
       }
       // ─── Role Availability Flags ────────────────────────────────────────────────
@@ -16493,8 +16525,8 @@ ${"\u2500".repeat(70)}`);
   }
   const resend2 = new Resend4(apiKey);
   const fromAddresses = [
-    "Readiness OS <onboarding@resend.dev>",
-    "Readiness OS <pilot@vaughnmartin.com>"
+    "Readiness OS <pilot@vaughnmartin.com>",
+    "Readiness OS <onboarding@resend.dev>"
   ];
   let emailSent = false;
   for (const from of fromAddresses) {
@@ -16522,7 +16554,7 @@ ${"\u2500".repeat(70)}`);
   }
   try {
     const { data: adminData, error: adminError } = await resend2.emails.send({
-      from: "Readiness OS <onboarding@resend.dev>",
+      from: "Readiness OS <pilot@vaughnmartin.com>",
       replyTo: data.email,
       to: ADMIN_EMAIL,
       subject: `New Access Request \u2014 ${data.firstName} ${data.lastName} \xB7 ${data.company}`,
@@ -19711,7 +19743,11 @@ async function loadConfiguredTriggers(organizationId) {
         severity: t.severity || "medium",
         recommendedPlaybooks: playbooks2,
         isActive: t.isActive ?? true,
-        source: "executive"
+        source: "executive",
+        watchThresholdPct: t.watchThresholdPct ?? null,
+        awareThresholdPct: t.awareThresholdPct ?? null,
+        actionThresholdPct: t.actionThresholdPct ?? null,
+        mandatoryConditionIds: t.mandatoryConditionIds ?? []
       });
     }
     const custom = await db.select().from(customTriggers).where(and13(
@@ -19795,15 +19831,20 @@ function scoreSignalAgainstConfiguredTrigger(signal, trigger) {
     allConditionsMet
   };
 }
-function scoreSignalAgainstTriggerGroup(signal, groupConditions) {
+function scoreSignalAgainstTriggerGroup(signal, groupConditions, thresholds) {
   const text3 = (signal.description + " " + signal.signalType + " " + signal.category).toLowerCase();
   const matchedTerms = [];
   const dataPointLabels = [];
   const { dataPoints } = groupConditions;
+  const watchPct = (thresholds?.watchPct ?? 50) / 100;
+  const awarePct = (thresholds?.awarePct ?? 70) / 100;
+  const actionPct = (thresholds?.actionPct ?? 80) / 100;
+  const n = dataPoints.length;
+  const watchMinimum = Math.ceil(n * watchPct);
+  const awareMinimum = Math.ceil(n * awarePct);
   const minimumRequired = Math.max(
     groupConditions.minimumRequired,
-    Math.ceil(dataPoints.length * 0.2),
-    3
+    Math.ceil(n * actionPct)
   );
   let validMandatory = 0;
   let validOptional = 0;
@@ -19827,19 +19868,38 @@ function scoreSignalAgainstTriggerGroup(signal, groupConditions) {
     }
   }
   const allMandatoryMet = validMandatory === mandatoryTotal;
+  const mandatoryAutoFire = mandatoryTotal > 0 && validMandatory === mandatoryTotal;
   const totalValid = validMandatory + validOptional;
-  const groupThresholdMet = totalValid >= minimumRequired;
-  const allConditionsMet = allMandatoryMet && groupThresholdMet;
+  const watchThresholdMet = allMandatoryMet && totalValid >= watchMinimum;
+  const awareThresholdMet = allMandatoryMet && totalValid >= awareMinimum;
+  const actionThresholdMet = mandatoryAutoFire || allMandatoryMet && totalValid >= minimumRequired;
+  const allConditionsMet = actionThresholdMet;
   let score = 0;
-  if (allConditionsMet) {
+  let alertTier;
+  if (actionThresholdMet) {
+    alertTier = "action";
     const matchRatio = totalValid / Math.max(dataPoints.length, 1);
-    score = 45 + Math.round(matchRatio * 35);
-    if (signal.impact === "critical") score += 12;
-    else if (signal.impact === "high") score += 7;
-    else if (signal.impact === "medium") score += 3;
-    score += Math.max(0, (signal.confidence - 50) * 0.25);
-    if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) score += 8;
+    score = mandatoryAutoFire && totalValid < minimumRequired ? 75 : 75 + Math.round(matchRatio * 20);
+    if (signal.impact === "critical") score += 10;
+    else if (signal.impact === "high") score += 6;
+    else if (signal.impact === "medium") score += 2;
+    score += Math.max(0, (signal.confidence - 50) * 0.2);
+    if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) score += 6;
     score = Math.min(Math.round(score), 95);
+  } else if (awareThresholdMet) {
+    alertTier = "aware";
+    const matchRatio = totalValid / Math.max(dataPoints.length, 1);
+    score = 60 + Math.round(matchRatio * 14);
+    if (signal.impact === "critical") score += 6;
+    else if (signal.impact === "high") score += 3;
+    score = Math.min(Math.round(score), 74);
+  } else if (watchThresholdMet) {
+    alertTier = "watch";
+    const matchRatio = totalValid / Math.max(dataPoints.length, 1);
+    score = 35 + Math.round(matchRatio * 24);
+    if (signal.impact === "critical") score += 5;
+    else if (signal.impact === "high") score += 2;
+    score = Math.min(Math.round(score), 59);
   }
   return {
     score,
@@ -19847,7 +19907,8 @@ function scoreSignalAgainstTriggerGroup(signal, groupConditions) {
     conditionsMet: totalValid,
     totalConditions: minimumRequired,
     dataPoints: dataPointLabels,
-    allConditionsMet
+    allConditionsMet,
+    alertTier
   };
 }
 function buildDetection(trigger, signal, result) {
@@ -19862,7 +19923,8 @@ function buildDetection(trigger, signal, result) {
     conditionsMet: result.conditionsMet,
     totalConditions: result.totalConditions,
     dataPoints: result.dataPoints,
-    engine: "configured"
+    engine: "configured",
+    alertTier: result.alertTier ?? "action"
   };
 }
 function categoryToDomain(category) {
@@ -19903,7 +19965,12 @@ async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
       const isCompositeGroup = rawConditions && typeof rawConditions === "object" && !Array.isArray(rawConditions) && rawConditions.type === "trigger_group" && Array.isArray(rawConditions.dataPoints) && rawConditions.dataPoints.length > 0;
       let result;
       if (isCompositeGroup) {
-        result = scoreSignalAgainstTriggerGroup(signal, rawConditions);
+        const triggerThresholds = {
+          watchPct: trigger.watchThresholdPct,
+          awarePct: trigger.awareThresholdPct,
+          actionPct: trigger.actionThresholdPct
+        };
+        result = scoreSignalAgainstTriggerGroup(signal, rawConditions, triggerThresholds);
         if (result.score === 0) {
           if (result.conditionsMet > 0) {
             console.log(
@@ -19912,12 +19979,17 @@ async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
           }
           continue;
         }
-        const requiredConfidence = 60;
-        if (result.score >= requiredConfidence) {
+        if (result.alertTier === "action") {
           const detection = buildDetection(trigger, signal, result);
           signalDetections.push(detection);
           console.log(
-            `[TriggerEvaluationEngine] \u2713 COMPOSITE "${trigger.name}" fired at ${result.score}% \u2014 ${result.conditionsMet}/${result.totalConditions} required data points valid \u2014 data points: [${result.dataPoints.join(" | ")}]`
+            `[TriggerEvaluationEngine] \u2713 COMPOSITE ACTION "${trigger.name}" fired at ${result.score}% \u2014 ${result.conditionsMet}/${result.totalConditions} required data points valid \u2014 data points: [${result.dataPoints.join(" | ")}]`
+          );
+        } else if (result.alertTier === "watch") {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
+          console.log(
+            `[TriggerEvaluationEngine] \u26A0 COMPOSITE WATCH "${trigger.name}" \u2014 ${result.conditionsMet} data points hit (below action threshold of ${result.totalConditions}) \u2014 awareness alert queued`
           );
         }
       } else {
@@ -20145,16 +20217,22 @@ __export(SignalEvaluationService_exports, {
 });
 import { eq as eq23, desc as desc11, and as and14, gte as gte3 } from "drizzle-orm";
 import { Resend as Resend6 } from "resend";
-async function getOrgEvaluationMode(organizationId) {
+async function getOrgConfig(organizationId) {
+  const defaults = { mode: "both", watchPct: 50, awarePct: 70, actionPct: 80 };
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
-    return "default";
+    return { ...defaults, mode: "default" };
   }
   try {
     const [config] = await db.select().from(signalMonitoringConfig).where(eq23(signalMonitoringConfig.organizationId, organizationId)).limit(1);
-    const mode = config?.evaluationMode || "both";
-    return ["configured", "default", "both"].includes(mode) ? mode : "both";
+    const rawMode = config?.evaluationMode || "both";
+    return {
+      mode: ["configured", "default", "both"].includes(rawMode) ? rawMode : "both",
+      watchPct: config?.watchThresholdPct ?? 50,
+      awarePct: config?.awareThresholdPct ?? 70,
+      actionPct: config?.actionThresholdPct ?? 80
+    };
   } catch {
-    return "both";
+    return defaults;
   }
 }
 function scoreSignalAgainstPattern(signal, pattern) {
@@ -20169,32 +20247,42 @@ function scoreSignalAgainstPattern(signal, pattern) {
   if (signal.source.includes("SEC") && pattern.domain === "Regulatory & Compliance") score += 10;
   return Math.min(Math.round(score), 97);
 }
-function evaluateSignal(signal) {
+function evaluateSignal(signal, thresholds) {
   const detections = [];
-  const CONFIDENCE_THRESHOLD = 62;
-  const MIN_KEYWORD_MATCHES = 2;
-  const MIN_KEYWORD_DENSITY = 0.07;
+  const WATCH_SCORE = 55;
+  const WATCH_DENSITY = (thresholds?.watchPct ?? 50) / 100;
+  const AWARE_SCORE = 70;
+  const AWARE_DENSITY = (thresholds?.awarePct ?? 70) / 100;
+  const ACTION_SCORE = 82;
+  const ACTION_DENSITY = (thresholds?.actionPct ?? 80) / 100;
   for (const pattern of TRIGGER_PATTERNS) {
     const text3 = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
-    if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
     const density = matchedKeywords.length / pattern.keywords.length;
-    if (density < MIN_KEYWORD_DENSITY) continue;
+    if (density < WATCH_DENSITY) continue;
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
-    if (confidenceScore >= CONFIDENCE_THRESHOLD) {
-      detections.push({
-        triggerName: pattern.name,
-        triggerDomain: pattern.domain,
-        confidenceScore,
-        recommendedPlaybook: pattern.playbookName,
-        alternatePlaybooks: pattern.alternatePlaybooks,
-        matchedKeywords,
-        conditionsMet: matchedKeywords.length,
-        totalConditions: pattern.keywords.length,
-        dataPoints: matchedKeywords.map((kw) => `Keyword signal: "${kw}"`),
-        engine: "default"
-      });
+    if (confidenceScore < WATCH_SCORE) continue;
+    let alertTier;
+    if (confidenceScore >= ACTION_SCORE && density >= ACTION_DENSITY) {
+      alertTier = "action";
+    } else if (confidenceScore >= AWARE_SCORE && density >= AWARE_DENSITY) {
+      alertTier = "aware";
+    } else {
+      alertTier = "watch";
     }
+    detections.push({
+      triggerName: pattern.name,
+      triggerDomain: pattern.domain,
+      confidenceScore,
+      recommendedPlaybook: pattern.playbookName,
+      alternatePlaybooks: pattern.alternatePlaybooks,
+      matchedKeywords,
+      conditionsMet: matchedKeywords.length,
+      totalConditions: pattern.keywords.length,
+      dataPoints: matchedKeywords.map((kw) => `Keyword signal: "${kw}"`),
+      engine: "default",
+      alertTier
+    });
   }
   return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 1);
 }
@@ -20312,6 +20400,210 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
   }
   console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
 }
+async function sendWatchEmail(detection, signal, emails, orgId) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey || emails.length === 0) return;
+  const resend2 = new Resend6(apiKey);
+  const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#7a5c1a;padding:32px 36px;">
+          <div style="color:#f5d98a;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Signal Watch Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Situation Developing \u2014 No Action Required Yet</div>
+          <div style="color:#f5d98a;font-size:13px;margin-top:8px;">Monitor this signal. If it strengthens, a protocol will be staged automatically.</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <div style="background:#fffbf0;border:1px solid #C9A84C40;border-left:3px solid #C9A84C;border-radius:4px;padding:14px 18px;margin-bottom:24px;">
+            <div style="color:#7a5c1a;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">\u26A0 Watch \u2014 Not Yet an Execution Trigger</div>
+            <div style="color:#5c4010;font-size:13px;line-height:1.5;">This signal matches a monitored pattern but has not crossed the threshold for confirmed execution. It may escalate \u2014 or resolve on its own. No protocol activation is required at this time.</div>
+          </div>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Pattern</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Strength</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#7a5c1a;font-size:13px;font-weight:700;">${detection.confidenceScore}% \u2014 below execution threshold</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signals Matched</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} monitored indicators</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;color:#666;font-size:13px;">Protocol Staged</td>
+              <td style="padding:10px 0;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:600;">${detection.recommendedPlaybook}</span>
+                <span style="display:inline-block;margin-left:6px;background:#C9A84C20;color:#7a5c1a;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">Ready if needed</span>
+              </td>
+            </tr>
+          </table>
+          ${detection.matchedKeywords && detection.matchedKeywords.length > 0 ? `
+          <div style="background:#fffbf0;border:1px solid #C9A84C30;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="color:#7a5c1a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Indicators detected in source signal</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${detection.matchedKeywords.map((kw) => `<span style="display:inline-block;background:#C9A84C15;border:1px solid #C9A84C50;color:#7a5c1a;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
+            </div>
+          </div>` : ""}
+          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#7a5c1a;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">View Signal in Platform \u2192</a>
+          </div>
+          <div style="text-align:center;color:#999;font-size:12px;margin-top:8px;">If this signal strengthens and crosses the execution threshold, you will receive a separate <strong>Trigger Confirmed</strong> alert.</div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. Watch alerts are informational \u2014 no protocol activation is required.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+  const fromAddresses = [
+    "Readiness OS <onboarding@resend.dev>",
+    "Readiness OS <pilot@vaughnmartin.com>"
+  ];
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString("base64url");
+    const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend2.emails.send({
+          from,
+          replyTo: "pilot@vaughnmartin.com",
+          to: [recipientEmail],
+          subject: `\u26A0\uFE0F Signal Watch: ${detection.triggerName} \u2014 Situation Developing`,
+          html: personalizedHtml
+        });
+        if (error) {
+          console.warn(`\u26A0 Watch email sender ${from} rejected (${error.message}) \u2014 trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err) {
+        console.warn(`\u26A0 Watch email sender ${from} threw: ${err.message} \u2014 trying next`);
+      }
+    }
+    if (!sent) console.error(`\u2717 All senders failed for watch alert to ${recipientEmail}`);
+  }
+  console.log(`\u{1F4E7} Watch alert sent to ${emails.join(", ")}`);
+}
+async function sendAwareEmail(detection, signal, emails, orgId) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey || emails.length === 0) return;
+  const resend2 = new Resend6(apiKey);
+  const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#7a3c0a;padding:32px 36px;">
+          <div style="color:#f5c08a;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Pattern Awareness Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Pattern Strengthening \u2014 Monitor Closely</div>
+          <div style="color:#f5c08a;font-size:13px;margin-top:8px;">This situation is gaining weight. Verify your protocol is staged and your key contacts are briefed.</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <div style="background:#fff7f0;border:1px solid #d4700040;border-left:3px solid #d47000;border-radius:4px;padding:14px 18px;margin-bottom:24px;">
+            <div style="color:#7a3c0a;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">\u{1F7E0} Be Aware \u2014 Not Yet a Confirmed Trigger</div>
+            <div style="color:#5c2d00;font-size:13px;line-height:1.5;">Signal strength has crossed 70% of monitored indicators. This is not yet a confirmed execution trigger, but the pattern is strengthening. No protocol activation is required \u2014 confirm your prepared response is staged and ready.</div>
+          </div>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Pattern</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Strength</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#7a3c0a;font-size:13px;font-weight:700;">${detection.confidenceScore}% \u2014 approaching execution threshold</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Indicators Matched</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} monitored indicators</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;color:#666;font-size:13px;">Protocol Staged</td>
+              <td style="padding:10px 0;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:600;">${detection.recommendedPlaybook}</span>
+                <span style="display:inline-block;margin-left:6px;background:#d4700020;color:#7a3c0a;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">Confirm ready</span>
+              </td>
+            </tr>
+          </table>
+          ${detection.matchedKeywords && detection.matchedKeywords.length > 0 ? `
+          <div style="background:#fff7f0;border:1px solid #d4700030;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="color:#7a3c0a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Indicators detected in source signal</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${detection.matchedKeywords.map((kw) => `<span style="display:inline-block;background:#d4700015;border:1px solid #d4700050;color:#7a3c0a;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
+            </div>
+          </div>` : ""}
+          <div style="background:#f0ede4;border-left:3px solid #d47000;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#7a3c0a;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">Review Signal in Platform \u2192</a>
+          </div>
+          <div style="text-align:center;color:#999;font-size:12px;margin-top:8px;">If this reaches 80% of monitored indicators, you will receive a <strong>Trigger Confirmed</strong> alert with full execution authority.</div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. Awareness alerts require no action \u2014 verify your protocol staging only.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+  const fromAddresses = [
+    "Readiness OS <onboarding@resend.dev>",
+    "Readiness OS <pilot@vaughnmartin.com>"
+  ];
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString("base64url");
+    const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend2.emails.send({
+          from,
+          replyTo: "pilot@vaughnmartin.com",
+          to: [recipientEmail],
+          subject: `\u{1F7E0} Pattern Awareness: ${detection.triggerName} \u2014 Monitor Closely`,
+          html: personalizedHtml
+        });
+        if (error) {
+          console.warn(`\u26A0 Aware email sender ${from} rejected (${error.message}) \u2014 trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err) {
+        console.warn(`\u26A0 Aware email sender ${from} threw: ${err.message} \u2014 trying next`);
+      }
+    }
+    if (!sent) console.error(`\u2717 All senders failed for awareness alert to ${recipientEmail}`);
+  }
+  console.log(`\u{1F4E7} Awareness alert sent to ${emails.join(", ")}`);
+}
 async function sendDetectionSlack(detection, signal) {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
   if (!webhookUrl) return;
@@ -20376,8 +20668,10 @@ async function evaluateAndPersistSignals(signals, organizationId) {
     allContacts = await db.select().from(stakeholderContacts).where(eq23(stakeholderContacts.organizationId, organizationId));
   } catch {
   }
-  const evaluationMode = await getOrgEvaluationMode(organizationId);
-  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
+  const orgConfig = await getOrgConfig(organizationId);
+  const evaluationMode = orgConfig.mode;
+  const orgThresholds = { watchPct: orgConfig.watchPct, awarePct: orgConfig.awarePct, actionPct: orgConfig.actionPct };
+  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}" | thresholds: watch=${orgThresholds.watchPct}% aware=${orgThresholds.awarePct}% action=${orgThresholds.actionPct}%`);
   try {
     const sources = Array.from(new Set(signals.map((s) => s.source).filter(Boolean)));
     await db.insert(signalActivityLog).values({
@@ -20437,7 +20731,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   if (evaluationMode === "default" || evaluationMode === "both") {
     let defaultCount = 0;
     for (const signal of signals) {
-      const detections = evaluateSignal(signal);
+      const detections = evaluateSignal(signal, orgThresholds);
       for (const detection of detections) {
         if (seenTriggerNames.has(detection.triggerName)) continue;
         seenTriggerNames.add(detection.triggerName);
@@ -20648,18 +20942,31 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         }
       } catch {
       }
+      const isActionTier = detection.alertTier === "action" || detection.alertTier === void 0;
+      const isAwareTier = detection.alertTier === "aware";
+      let emailFn = Promise.resolve();
+      if (contactEmails.length > 0) {
+        if (isActionTier) {
+          emailFn = sendDetectionEmail(detection, signal, contactEmails, organizationId);
+        } else if (isAwareTier) {
+          emailFn = sendAwareEmail(detection, signal, contactEmails, organizationId);
+        } else {
+          emailFn = sendWatchEmail(detection, signal, contactEmails, organizationId);
+        }
+      }
       await Promise.allSettled([
-        sendDetectionSlack(detection, signal),
-        contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve()
+        isActionTier ? sendDetectionSlack(detection, signal) : Promise.resolve(),
+        emailFn
       ]);
       const notifiedAt = /* @__PURE__ */ new Date();
+      const timelineStatus = isActionTier ? "notified" : isAwareTier ? "aware" : "watch";
       try {
         if (executionTimelineId) {
-          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: "notified" }).where(eq23(executionTimelines.id, executionTimelineId));
+          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: timelineStatus }).where(eq23(executionTimelines.id, executionTimelineId));
         }
       } catch {
       }
-      await db.update(triggerDetections).set({ notificationSent: true, status: "notified" }).where(eq23(triggerDetections.triggerName, detection.triggerName));
+      await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq23(triggerDetections.triggerName, detection.triggerName));
       detectionsCreated++;
     } catch (err) {
       console.error("Error persisting detection:", err);
@@ -43345,6 +43652,9 @@ function parseQuickLinkToken(token) {
   }
 }
 function registerQuickLinkRoute(app2) {
+  app2.get("/api/admin/generate-demo-link", (_req, res) => {
+    res.redirect(302, "/admin/users");
+  });
   app2.post("/api/admin/generate-demo-link", async (req, res) => {
     try {
       if (!req.isAuthenticated()) {
@@ -43367,7 +43677,9 @@ function registerQuickLinkRoute(app2) {
       const nonce = crypto2.randomBytes(6).toString("hex");
       const payload = { name, email, expiresAt, nonce };
       const token = sign(payload);
-      const baseUrl = process.env.REPLIT_DOMAINS ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}` : "https://vaughnmartin.com";
+      const domains = (process.env.REPLIT_DOMAINS || "").split(",").map((d) => d.trim()).filter(Boolean);
+      const customDomain = domains.find((d) => !d.includes("replit.app")) || domains[0];
+      const baseUrl = customDomain ? `https://${customDomain}` : "https://vaughnmartin.com";
       const url = `${baseUrl}/api/demo-access?token=${token}`;
       console.log(`[QuickLink] Generated link for ${name} <${email}> \u2014 expires in ${durationHours}h`);
       let emailSent = false;
@@ -43422,7 +43734,7 @@ function registerQuickLinkRoute(app2) {
   </table>
 </body></html>`;
             const { error } = await resend2.emails.send({
-              from: "Readiness OS <onboarding@resend.dev>",
+              from: "Readiness OS <pilot@vaughnmartin.com>",
               replyTo: "pilot@vaughnmartin.com",
               to: [email.trim()],
               subject: `Your ${durationHours}-Hour Readiness OS Access \u2014 ${name}`,
@@ -43725,7 +44037,7 @@ async function createTrialSession(data) {
   let emailSent = false;
   try {
     const { error } = await resend.emails.send({
-      from: "Readiness OS <onboarding@resend.dev>",
+      from: "Readiness OS <pilot@vaughnmartin.com>",
       to: data.email,
       subject: `Your 48-Hour Trial Access to Readiness OS`,
       html: buildTrialEmailHtml({ firstName: data.firstName, company: data.company }, activationUrl)
@@ -43767,7 +44079,7 @@ async function createTrialSession(data) {
   </table>
 </body></html>`;
       await resend.emails.send({
-        from: "Readiness OS <onboarding@resend.dev>",
+        from: "Readiness OS <pilot@vaughnmartin.com>",
         to: adminEmail,
         subject: `New Trial Request \u2014 ${data.firstName} ${data.lastName} (${data.company})`,
         html: adminHtml
@@ -56359,13 +56671,16 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.user?.organizationId;
       if (!orgId) {
-        return res.json({ disabledDataPoints: [], disabledFeeds: [], evaluationMode: "both" });
+        return res.json({ disabledDataPoints: [], disabledFeeds: [], evaluationMode: "both", watchThresholdPct: 50, awareThresholdPct: 70, actionThresholdPct: 80 });
       }
       const config = await storage.getSignalMonitoringConfig(orgId);
       res.json({
         disabledDataPoints: config?.disabledDataPoints || [],
         disabledFeeds: config?.disabledFeeds || [],
-        evaluationMode: config?.evaluationMode || "both"
+        evaluationMode: config?.evaluationMode || "both",
+        watchThresholdPct: config?.watchThresholdPct ?? 50,
+        awareThresholdPct: config?.awareThresholdPct ?? 70,
+        actionThresholdPct: config?.actionThresholdPct ?? 80
       });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -56374,7 +56689,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app2.patch("/api/signal-monitoring-config", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.user.organizationId;
-      const { disabledDataPoints, evaluationMode, disabledFeeds } = req.body;
+      const { disabledDataPoints, evaluationMode, disabledFeeds, watchThresholdPct, awareThresholdPct, actionThresholdPct } = req.body;
       if (disabledDataPoints !== void 0 && !Array.isArray(disabledDataPoints)) {
         return res.status(400).json({ error: "disabledDataPoints must be an array" });
       }
@@ -56385,13 +56700,31 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       if (evaluationMode !== void 0 && !validModes.includes(evaluationMode)) {
         return res.status(400).json({ error: `evaluationMode must be one of: ${validModes.join(", ")}` });
       }
+      const validatePct = (v, name) => {
+        if (v !== void 0 && (typeof v !== "number" || v < 1 || v > 100)) {
+          return `${name} must be a number between 1 and 100`;
+        }
+        return null;
+      };
+      for (const [v, n] of [[watchThresholdPct, "watchThresholdPct"], [awareThresholdPct, "awareThresholdPct"], [actionThresholdPct, "actionThresholdPct"]]) {
+        const err = validatePct(v, n);
+        if (err) return res.status(400).json({ error: err });
+      }
       const existing = await storage.getSignalMonitoringConfig(orgId);
       const resolvedDps = disabledDataPoints ?? existing?.disabledDataPoints ?? [];
-      const config = await storage.upsertSignalMonitoringConfig(orgId, resolvedDps, evaluationMode, disabledFeeds);
+      const thresholds = {
+        watchPct: watchThresholdPct,
+        awarePct: awareThresholdPct,
+        actionPct: actionThresholdPct
+      };
+      const config = await storage.upsertSignalMonitoringConfig(orgId, resolvedDps, evaluationMode, disabledFeeds, thresholds);
       res.json({
         disabledDataPoints: config.disabledDataPoints || [],
         disabledFeeds: config.disabledFeeds || [],
-        evaluationMode: config.evaluationMode || "both"
+        evaluationMode: config.evaluationMode || "both",
+        watchThresholdPct: config.watchThresholdPct ?? 50,
+        awareThresholdPct: config.awareThresholdPct ?? 70,
+        actionThresholdPct: config.actionThresholdPct ?? 80
       });
     } catch (err) {
       res.status(500).json({ error: err.message });
