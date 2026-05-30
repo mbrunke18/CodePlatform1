@@ -222,6 +222,7 @@ export default function StandardNav() {
         { label: "Go-to-Market Acceleration", path: "/demo/product-launch", icon: Rocket, description: "Competitor announces launch in 30 days. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.", featured: true },
         { label: "Workforce Transformation Protocol", path: "/demo/workforce", icon: Users, description: "Board approves system-staged realignment — 6,720 roles, 12 countries. WARN Act. 48 hours to execute." },
         { label: "Protocol Builder", path: "/protocol-builder", icon: ClipboardList, description: "Pre-stage your own Readiness Protocol for any situation in 6 guided steps." },
+        { label: "My Protocols", path: "/my-protocols", icon: Radio, description: "Live signal readiness status for every protocol you've built." },
       ],
     },
   ];
