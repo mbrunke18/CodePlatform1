@@ -200,6 +200,7 @@ export interface DetectedTrigger {
   totalConditions?: number;         // total configured conditions that were evaluated
   dataPoints?: string[];            // human-readable labels of the matched data points
   engine?: 'configured' | 'default';
+  alertTier?: 'watch' | 'action';  // watch = situation developing; action = trigger confirmed, execute
 }
 
 export interface AnalyzedSignal {
@@ -238,59 +239,64 @@ function scoreSignalAgainstPattern(signal: AnalyzedSignal, pattern: TriggerPatte
 export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const detections: DetectedTrigger[] = [];
 
-  // ── Quality gates ────────────────────────────────────────────────────────────
-  // A trigger fires only when ALL three conditions are met:
+  // ── Two-tier alert system ────────────────────────────────────────────────────
   //
-  //  1. CONFIDENCE_THRESHOLD (78): The composite score — base confidence + keyword
-  //     density bonus + signal quality boost — must clear 78. This is the primary
-  //     quality gate and prevents borderline matches from generating alerts.
+  // WATCH tier — "Situation developing, be aware"
+  //   Score ≥ 50, matches ≥ 3, density ≥ 8%
+  //   Sends an amber awareness email. No activation button.
   //
-  //  2. MIN_KEYWORD_MATCHES (3): An absolute floor. No trigger fires on fewer than
-  //     3 keyword matches regardless of the composite score.
+  // ACTION tier — "Trigger confirmed, protocol ready, act now"
+  //   Score ≥ 78, matches ≥ 6, density ≥ 15%
+  //   Sends the red/navy execution alert with activation CTA.
   //
-  //  3. MIN_KEYWORD_DENSITY (0.12): At least 12% of a pattern's full keyword list
-  //     must be present in the signal. For a 30-keyword pattern this means 4+
-  //     matches; for a 15-keyword pattern it means 2+ (but MIN_KEYWORD_MATCHES=3
-  //     still applies). This prevents a signal that coincidentally includes 2 of
-  //     30 monitoring terms from generating an executive alert.
-  //
-  // Combined effect at medium sensitivity: a 30-keyword pattern requires ≥2 matches
-  // and the composite score must clear 62.
+  // A signal that clears only WATCH thresholds gets a heads-up email.
+  // A signal that clears ACTION thresholds gets the full execution alert.
+  // A signal below WATCH is dismissed — no email sent.
   // ────────────────────────────────────────────────────────────────────────────
-  const CONFIDENCE_THRESHOLD = 62;   // medium: was 78 (strict)
-  const MIN_KEYWORD_MATCHES  = 2;    // medium: was 3 (strict)
-  const MIN_KEYWORD_DENSITY  = 0.07; // medium: was 0.12 (strict) — 7% of keyword list
+  const WATCH_SCORE   = 50;
+  const WATCH_MATCHES = 3;
+  const WATCH_DENSITY = 0.08;
+
+  const ACTION_SCORE   = 78;
+  const ACTION_MATCHES = 6;
+  const ACTION_DENSITY = 0.15;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter(kw => text.includes(kw.toLowerCase()));
 
-    // Gate 1 — absolute minimum keyword count
-    if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
+    // Below watch floor — dismiss entirely
+    if (matchedKeywords.length < WATCH_MATCHES) continue;
 
-    // Gate 2 — minimum keyword density (matched / total keywords in pattern)
     const density = matchedKeywords.length / pattern.keywords.length;
-    if (density < MIN_KEYWORD_DENSITY) continue;
+    if (density < WATCH_DENSITY) continue;
 
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
-    if (confidenceScore >= CONFIDENCE_THRESHOLD) {
-      detections.push({
-        triggerName: pattern.name,
-        triggerDomain: pattern.domain,
-        confidenceScore,
-        recommendedPlaybook: pattern.playbookName,
-        alternatePlaybooks: pattern.alternatePlaybooks,
-        matchedKeywords,
-        conditionsMet: matchedKeywords.length,
-        totalConditions: pattern.keywords.length,
-        dataPoints: matchedKeywords.map(kw => `Keyword signal: "${kw}"`),
-        engine: 'default',
-      });
-    }
+    if (confidenceScore < WATCH_SCORE) continue;
+
+    // Classify into tier
+    const alertTier: 'watch' | 'action' = (
+      confidenceScore >= ACTION_SCORE &&
+      matchedKeywords.length >= ACTION_MATCHES &&
+      density >= ACTION_DENSITY
+    ) ? 'action' : 'watch';
+
+    detections.push({
+      triggerName: pattern.name,
+      triggerDomain: pattern.domain,
+      confidenceScore,
+      recommendedPlaybook: pattern.playbookName,
+      alternatePlaybooks: pattern.alternatePlaybooks,
+      matchedKeywords,
+      conditionsMet: matchedKeywords.length,
+      totalConditions: pattern.keywords.length,
+      dataPoints: matchedKeywords.map(kw => `Keyword signal: "${kw}"`),
+      engine: 'default',
+      alertTier,
+    });
   }
 
-  // Return top 1 detection per signal — highest confidence only. Running both engines
-  // already covers more surface area; returning 2 per signal compounds email volume.
+  // Return top 1 detection per signal — highest confidence only.
   return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 1);
 }
 
@@ -419,6 +425,118 @@ async function sendDetectionEmail(
     if (!sent) console.error(`✗ All senders failed for detection alert to ${recipientEmail}`);
   }
   console.log(`📧 Detection alert sent to ${emails.join(', ')}`);
+}
+
+async function sendWatchEmail(
+  detection: DetectedTrigger,
+  signal: AnalyzedSignal,
+  emails: string[],
+  orgId: string
+): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey || emails.length === 0) return;
+
+  const resend = new Resend(apiKey);
+  const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
+
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#7a5c1a;padding:32px 36px;">
+          <div style="color:#f5d98a;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Signal Watch Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Situation Developing — No Action Required Yet</div>
+          <div style="color:#f5d98a;font-size:13px;margin-top:8px;">Monitor this signal. If it strengthens, a protocol will be staged automatically.</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <div style="background:#fffbf0;border:1px solid #C9A84C40;border-left:3px solid #C9A84C;border-radius:4px;padding:14px 18px;margin-bottom:24px;">
+            <div style="color:#7a5c1a;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">⚠ Watch — Not Yet an Execution Trigger</div>
+            <div style="color:#5c4010;font-size:13px;line-height:1.5;">This signal matches a monitored pattern but has not crossed the threshold for confirmed execution. It may escalate — or resolve on its own. No protocol activation is required at this time.</div>
+          </div>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Pattern</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Strength</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#7a5c1a;font-size:13px;font-weight:700;">${detection.confidenceScore}% — below execution threshold</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signals Matched</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} monitored indicators</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;color:#666;font-size:13px;">Protocol Staged</td>
+              <td style="padding:10px 0;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:600;">${detection.recommendedPlaybook}</span>
+                <span style="display:inline-block;margin-left:6px;background:#C9A84C20;color:#7a5c1a;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">Ready if needed</span>
+              </td>
+            </tr>
+          </table>
+          ${(detection.matchedKeywords && detection.matchedKeywords.length > 0) ? `
+          <div style="background:#fffbf0;border:1px solid #C9A84C30;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="color:#7a5c1a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Indicators detected in source signal</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${detection.matchedKeywords.map(kw => `<span style="display:inline-block;background:#C9A84C15;border:1px solid #C9A84C50;color:#7a5c1a;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join('')}
+            </div>
+          </div>` : ''}
+          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? '…' : ''}</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#7a5c1a;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">View Signal in Platform →</a>
+          </div>
+          <div style="text-align:center;color:#999;font-size:12px;margin-top:8px;">If this signal strengthens and crosses the execution threshold, you will receive a separate <strong>Trigger Confirmed</strong> alert.</div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. Watch alerts are informational — no protocol activation is required.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const fromAddresses = [
+    'Readiness OS <onboarding@resend.dev>',
+    'Readiness OS <pilot@vaughnmartin.com>',
+  ];
+
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString('base64url');
+    const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend.emails.send({
+          from,
+          replyTo: 'pilot@vaughnmartin.com',
+          to: [recipientEmail],
+          subject: `⚠️ Signal Watch: ${detection.triggerName} — Situation Developing`,
+          html: personalizedHtml,
+        });
+        if (error) {
+          console.warn(`⚠ Watch email sender ${from} rejected (${error.message}) — trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err: any) {
+        console.warn(`⚠ Watch email sender ${from} threw: ${err.message} — trying next`);
+      }
+    }
+    if (!sent) console.error(`✗ All senders failed for watch alert to ${recipientEmail}`);
+  }
+  console.log(`📧 Watch alert sent to ${emails.join(', ')}`);
 }
 
 async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSignal): Promise<void> {
@@ -847,18 +965,24 @@ export async function evaluateAndPersistSignals(
         }
       } catch { /* non-blocking */ }
 
-      // Fire notifications
+      // Fire notifications — route by alert tier
+      const isActionTier = detection.alertTier === 'action' || detection.alertTier === undefined;
       await Promise.allSettled([
-        sendDetectionSlack(detection, signal),
-        contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve(),
+        isActionTier ? sendDetectionSlack(detection, signal) : Promise.resolve(),
+        contactEmails.length > 0
+          ? (isActionTier
+              ? sendDetectionEmail(detection, signal, contactEmails, organizationId)
+              : sendWatchEmail(detection, signal, contactEmails, organizationId))
+          : Promise.resolve(),
       ]);
 
       // Stamp notification milestone on the Execution Clock
       const notifiedAt = new Date();
+      const timelineStatus = isActionTier ? 'notified' : 'watch';
       try {
         if (executionTimelineId) {
           await db.update(executionTimelines)
-            .set({ notificationSentAt: notifiedAt, status: 'notified' })
+            .set({ notificationSentAt: notifiedAt, status: timelineStatus })
             .where(eq(executionTimelines.id, executionTimelineId));
         }
       } catch { /* non-critical */ }
@@ -866,7 +990,7 @@ export async function evaluateAndPersistSignals(
       // Mark notification as sent
       await db
         .update(triggerDetections)
-        .set({ notificationSent: true, status: 'notified' })
+        .set({ notificationSent: true, status: timelineStatus })
         .where(eq(triggerDetections.triggerName, detection.triggerName));
 
       detectionsCreated++;

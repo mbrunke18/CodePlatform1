@@ -281,6 +281,7 @@ interface ScoringResult {
   totalConditions: number;
   dataPoints: string[];           // human-readable labels for each condition hit
   allConditionsMet: boolean;      // the AND gate — all conditions must pass
+  alertTier?: 'watch' | 'action';
 }
 
 function scoreSignalAgainstConfiguredTrigger(
@@ -385,12 +386,15 @@ function scoreSignalAgainstTriggerGroup(
   const dataPointLabels: string[] = [];
 
   const { dataPoints } = groupConditions;
-  // Floor: at least 3 data points, or 20% of the group — whichever is higher.
-  // Prevents hair-trigger detections on sparse or lightly-configured trigger groups.
+  // Two-tier thresholds for composite groups:
+  //   WATCH  — 15% of data points (minimum 2): situation developing, awareness email
+  //   ACTION — 35% of data points (minimum 4): trigger confirmed, execute now
+  // The user-configured minimumRequired acts as an additional floor on the ACTION bar.
+  const watchMinimum   = Math.max(Math.ceil(dataPoints.length * 0.15), 2);
   const minimumRequired = Math.max(
     groupConditions.minimumRequired,
-    Math.ceil(dataPoints.length * 0.20),
-    3
+    Math.ceil(dataPoints.length * 0.35),
+    4
   );
 
   let validMandatory = 0;
@@ -433,19 +437,21 @@ function scoreSignalAgainstTriggerGroup(
   }
 
   // ── Gate checks ───────────────────────────────────────────────────────────
-  const allMandatoryMet   = validMandatory === mandatoryTotal;
-  const totalValid        = validMandatory + validOptional;
-  const groupThresholdMet = totalValid >= minimumRequired;
-  const allConditionsMet  = allMandatoryMet && groupThresholdMet;
+  const allMandatoryMet    = validMandatory === mandatoryTotal;
+  const totalValid         = validMandatory + validOptional;
+  const watchThresholdMet  = allMandatoryMet && totalValid >= watchMinimum;
+  const actionThresholdMet = allMandatoryMet && totalValid >= minimumRequired;
+  const allConditionsMet   = actionThresholdMet; // keeps downstream logic unchanged
 
   // ── Confidence score ──────────────────────────────────────────────────────
   let score = 0;
-  if (allConditionsMet) {
-    // Ratio of matched data points drives the base score (45–80)
+  let alertTier: 'watch' | 'action' | undefined;
+
+  if (actionThresholdMet) {
+    alertTier = 'action';
     const matchRatio = totalValid / Math.max(dataPoints.length, 1);
     score = 45 + Math.round(matchRatio * 35);
 
-    // Signal quality boosts (same as standard path)
     if (signal.impact === 'critical')    score += 12;
     else if (signal.impact === 'high')   score += 7;
     else if (signal.impact === 'medium') score += 3;
@@ -459,6 +465,16 @@ function scoreSignalAgainstTriggerGroup(
     ) score += 8;
 
     score = Math.min(Math.round(score), 95);
+  } else if (watchThresholdMet) {
+    alertTier = 'watch';
+    // Lower base score range (35–55) for watch-tier — situation developing
+    const matchRatio = totalValid / Math.max(dataPoints.length, 1);
+    score = 35 + Math.round(matchRatio * 20);
+
+    if (signal.impact === 'critical') score += 8;
+    else if (signal.impact === 'high') score += 4;
+
+    score = Math.min(Math.round(score), 59); // capped below action floor
   }
 
   return {
@@ -468,6 +484,7 @@ function scoreSignalAgainstTriggerGroup(
     totalConditions:  minimumRequired,
     dataPoints:       dataPointLabels,
     allConditionsMet,
+    alertTier,
   };
 }
 
@@ -478,9 +495,6 @@ function buildDetection(
   signal: AnalyzedSignal,
   result: ScoringResult
 ): DetectedTrigger {
-  // Map the org's configured recommended playbooks to the detection
-  // First playbook = primary AI recommendation (what was staged for this exact situation)
-  // Remaining = alternates the approver can choose from
   const [primaryPlaybook, ...alternates] = trigger.recommendedPlaybooks;
 
   return {
@@ -494,6 +508,7 @@ function buildDetection(
     totalConditions: result.totalConditions,
     dataPoints: result.dataPoints,
     engine: 'configured',
+    alertTier: result.alertTier ?? 'action',
   };
 }
 
@@ -579,16 +594,22 @@ export async function evaluateSignalsWithOrgTriggers(
           continue;
         }
 
-        // Composite groups use a fixed 60% confidence floor (customer-designed triggers
-        // get more benefit of the doubt than the global keyword patterns)
-        const requiredConfidence = 60;
-        if (result.score >= requiredConfidence) {
+        if (result.alertTier === 'action') {
+          // ACTION tier — score ≥ 60% confidence floor, ≥35% data points hit
           const detection = buildDetection(trigger, signal, result);
           signalDetections.push(detection);
           console.log(
-            `[TriggerEvaluationEngine] ✓ COMPOSITE "${trigger.name}" fired at ${result.score}% — ` +
+            `[TriggerEvaluationEngine] ✓ COMPOSITE ACTION "${trigger.name}" fired at ${result.score}% — ` +
             `${result.conditionsMet}/${result.totalConditions} required data points valid — ` +
             `data points: [${result.dataPoints.join(' | ')}]`
+          );
+        } else if (result.alertTier === 'watch') {
+          // WATCH tier — situation developing, send awareness alert
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
+          console.log(
+            `[TriggerEvaluationEngine] ⚠ COMPOSITE WATCH "${trigger.name}" — ` +
+            `${result.conditionsMet} data points hit (below action threshold of ${result.totalConditions}) — awareness alert queued`
           );
         }
       } else {
