@@ -256,41 +256,34 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   // A signal that clears ACTION thresholds gets the full execution alert.
   // A signal below WATCH is dismissed — no email sent.
   // ────────────────────────────────────────────────────────────────────────────
-  // Three-tier alert system based on keyword density:
-  //   WATCH  ≥ 50% density — "Situation developing, heads up"
-  //   AWARE  ≥ 70% density — "Pattern strengthening, monitor closely"
-  //   ACTION ≥ 80% density — "Trigger confirmed, execute now"
-  // Signals below 50% density are dismissed — no alert sent.
-  const WATCH_SCORE   = 55;  const WATCH_MATCHES = 4;  const WATCH_DENSITY = 0.50;
-  const AWARE_SCORE   = 70;  const AWARE_MATCHES = 6;  const AWARE_DENSITY = 0.70;
-  const ACTION_SCORE  = 82;  const ACTION_MATCHES = 8; const ACTION_DENSITY = 0.80;
+  // Three-tier alert system — thresholds are % of each pattern's own keyword count.
+  // A 5-keyword pattern and a 50-keyword pattern use the same % bars, not fixed counts.
+  //   WATCH  ≥ 50% of that pattern's keywords — "Situation developing"
+  //   AWARE  ≥ 70% of that pattern's keywords — "Pattern strengthening"
+  //   ACTION ≥ 80% of that pattern's keywords — "Trigger confirmed, execute now"
+  // Signals below 50% of the pattern's own keywords are dismissed — no alert sent.
+  const WATCH_SCORE   = 55;  const WATCH_DENSITY  = 0.50;
+  const AWARE_SCORE   = 70;  const AWARE_DENSITY  = 0.70;
+  const ACTION_SCORE  = 82;  const ACTION_DENSITY = 0.80;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter(kw => text.includes(kw.toLowerCase()));
 
-    // Below watch floor — dismiss entirely
-    if (matchedKeywords.length < WATCH_MATCHES) continue;
-
+    // Density is always relative to this pattern's own keyword count — no fixed minimums.
     const density = matchedKeywords.length / pattern.keywords.length;
+
+    // Below 50% of this pattern's keywords — dismiss entirely, no alert
     if (density < WATCH_DENSITY) continue;
 
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
     if (confidenceScore < WATCH_SCORE) continue;
 
-    // Classify into tier
+    // Classify into tier purely by density % and score — same bar regardless of pattern size
     let alertTier: 'watch' | 'aware' | 'action';
-    if (
-      confidenceScore >= ACTION_SCORE &&
-      matchedKeywords.length >= ACTION_MATCHES &&
-      density >= ACTION_DENSITY
-    ) {
+    if (confidenceScore >= ACTION_SCORE && density >= ACTION_DENSITY) {
       alertTier = 'action';
-    } else if (
-      confidenceScore >= AWARE_SCORE &&
-      matchedKeywords.length >= AWARE_MATCHES &&
-      density >= AWARE_DENSITY
-    ) {
+    } else if (confidenceScore >= AWARE_SCORE && density >= AWARE_DENSITY) {
       alertTier = 'aware';
     } else {
       alertTier = 'watch';

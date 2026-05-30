@@ -386,23 +386,25 @@ function scoreSignalAgainstTriggerGroup(
   const dataPointLabels: string[] = [];
 
   const { dataPoints } = groupConditions;
-  // Three-tier alert thresholds for composite groups:
-  //   WATCH  — 50% of data points (minimum 5): situation developing, heads-up email
-  //   AWARE  — 70% of data points (minimum 8): pattern strengthening, monitor closely
-  //   ACTION — 80% of data points (minimum 10): trigger confirmed, execute now
+  // Three-tier alert thresholds — all percentages are relative to this trigger's
+  // own data point count. A 5-point trigger and a 50-point trigger use the same
+  // percentage bars. No absolute minimums that override the %.
+  //
+  //   WATCH  — 50% of this trigger's data points: situation developing
+  //   AWARE  — 70% of this trigger's data points: pattern strengthening
+  //   ACTION — 80% of this trigger's data points: trigger confirmed, execute now
   //
   // MANDATORY AUTO-TRIGGER: if every data point marked mandatory fires, the tier
   // is automatically ACTION — regardless of overall percentage.
-  // This handles the case where 4 critical indicators fire on a 28-point trigger
-  // and the evidence is already conclusive without needing 22 more data points.
+  // E.g. 4 mandatory indicators on a 28-point trigger → action at 14% overall.
   //
   // The user-configured minimumRequired acts as an additional floor on ACTION only.
-  const watchMinimum  = Math.max(Math.ceil(dataPoints.length * 0.50), 5);
-  const awareMinimum  = Math.max(Math.ceil(dataPoints.length * 0.70), 8);
+  const n = dataPoints.length;
+  const watchMinimum    = Math.ceil(n * 0.50);
+  const awareMinimum    = Math.ceil(n * 0.70);
   const minimumRequired = Math.max(
     groupConditions.minimumRequired,
-    Math.ceil(dataPoints.length * 0.80),
-    10
+    Math.ceil(n * 0.80)
   );
 
   let validMandatory = 0;
