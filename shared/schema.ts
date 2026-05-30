@@ -6764,6 +6764,12 @@ export const customProtocols = pgTable('custom_protocols', {
   customFields: jsonb('custom_fields').default({}),
   status: varchar('status', { length: 20 }).default('draft'),
   completedSteps: integer('completed_steps').default(0),
+  // Signal Coverage & Readiness (Step 7)
+  linkedSignalIds: text('linked_signal_ids').array().default([]),
+  mandatorySignalIds: text('mandatory_signal_ids').array().default([]),
+  readinessMode: varchar('readiness_mode', { length: 20 }).default('both'),
+  readinessPct: integer('readiness_pct').default(80),
+  customDataPointDefs: jsonb('custom_data_point_defs').default([]),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });

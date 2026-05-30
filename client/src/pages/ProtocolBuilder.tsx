@@ -246,11 +246,58 @@ const STEPS = [
     guidance: 'In the 180 protocols, authority is never ambiguous. The authorization chain is set before the trigger — so no one asks "who needs to approve this?" during execution.',
     example: { label: 'From the 180', name: 'Authorizes: CISO', meta: 'Executes: Security Operations Team', detail: 'Observes: CFO, General Counsel, Board Chair · Override: CEO' },
   },
+  {
+    num: 7, id: 'signals', Icon: Activity,
+    title: 'Signal Coverage & Readiness',
+    subtitle: 'Choose which signals feed this protocol and when it fires.',
+    guidance: 'Protocols that monitor specific signals are staged and ready before the trigger fires. Choose which of your live signal categories feed this protocol, mark the must-have ones, and define when it escalates.',
+    example: { label: 'From the 180', name: 'Ransomware: SIEM + Endpoint Detection (mandatory)', meta: 'Readiness fires when both mandatory signals hit — regardless of overall %', detail: 'Custom data point: "Threat intelligence feed confirms payload hash match"' },
+  },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const mkTasks = (n: number) => Array.from({ length: n }, () => ({ description: '', assignedTo: '' }));
+
+const SIGNAL_CATEGORIES = [
+  { id: 'competitive_movement',   label: 'Competitive Movement',       domain: 'GROWTH & POSITIONING' },
+  { id: 'market_dynamics',        label: 'Market Dynamics',            domain: 'GROWTH & POSITIONING' },
+  { id: 'mergers_acquisitions',   label: 'Mergers & Acquisitions',     domain: 'GROWTH & POSITIONING' },
+  { id: 'innovation_ip',          label: 'Innovation & IP',            domain: 'GROWTH & POSITIONING' },
+  { id: 'partnership_alliance',   label: 'Partnership & Alliance',     domain: 'GROWTH & POSITIONING' },
+  { id: 'financial_investment',   label: 'Financial & Investment',     domain: 'RISK & RESILIENCE' },
+  { id: 'regulatory_policy',      label: 'Regulatory & Policy',        domain: 'RISK & RESILIENCE' },
+  { id: 'supply_chain',           label: 'Supply Chain & Operational', domain: 'RISK & RESILIENCE' },
+  { id: 'cybersecurity_data',     label: 'Cybersecurity & Data',       domain: 'RISK & RESILIENCE' },
+  { id: 'legal_litigation',       label: 'Legal & Litigation',         domain: 'RISK & RESILIENCE' },
+  { id: 'brand_reputation',       label: 'Brand & Reputation',         domain: 'RISK & RESILIENCE' },
+  { id: 'crisis_emergency',       label: 'Crisis & Emergency',         domain: 'RISK & RESILIENCE' },
+  { id: 'economic_indicators',    label: 'Economic Indicators',        domain: 'RISK & RESILIENCE' },
+  { id: 'customer_sentiment',     label: 'Customer Sentiment',         domain: 'TRANSFORMATION' },
+  { id: 'talent_workforce',       label: 'Talent & Workforce',         domain: 'TRANSFORMATION' },
+  { id: 'technology_disruption',  label: 'Technology Disruption',      domain: 'TRANSFORMATION' },
+  { id: 'esg_sustainability',     label: 'ESG & Sustainability',       domain: 'TRANSFORMATION' },
+  { id: 'political_geopolitical', label: 'Political & Geopolitical',   domain: 'TRANSFORMATION' },
+  { id: 'industry_sector',        label: 'Industry & Sector Trends',   domain: 'TRANSFORMATION' },
+  { id: 'climate_environmental',  label: 'Climate & Environmental',    domain: 'TRANSFORMATION' },
+];
+
+const METRIC_TYPES = [
+  { value: 'percentage', label: 'Percentage (%)' },
+  { value: 'count',      label: 'Count / Volume' },
+  { value: 'currency',   label: 'Currency ($)' },
+  { value: 'score',      label: 'Score (0–100)' },
+  { value: 'boolean',    label: 'Yes / No' },
+  { value: 'trend',      label: 'Trend (rising / falling)' },
+];
+
+type CustomDataPointDef = {
+  id: string;
+  name: string;
+  description: string;
+  metricType: string;
+  condition: string;
+};
 
 const INIT = {
   name: '', triggerDomain: '', triggerCondition: '', industry: '', riskThreshold: 'HIGH',
@@ -282,6 +329,12 @@ const INIT = {
   reviewCadence: 'quarterly',
   changeSummary: '',
   rollbackPlan: '',
+  // Step 7: Signal Coverage & Readiness
+  linkedSignalIds:     [] as string[],
+  mandatorySignalIds:  [] as string[],
+  readinessMode:       'both' as 'percentage' | 'mandatory' | 'both',
+  readinessPct:        80,
+  customDataPointDefs: [] as CustomDataPointDef[],
   customFields: {
     identity:  [] as CustomField[],
     owners:    [] as CustomField[],
@@ -289,6 +342,7 @@ const INIT = {
     comms:     [] as CustomField[],
     budget:    [] as CustomField[],
     authority: [] as CustomField[],
+    signals:   [] as CustomField[],
   },
 };
 
@@ -323,6 +377,8 @@ function getStepErrors(step: number, data: Data): string[] {
       return [
         !data.authorizerTitle && 'Authorizer title is required',
       ].filter(Boolean) as string[];
+    case 6:
+      return [];
     default:
       return [];
   }
@@ -346,7 +402,10 @@ function computeScorecard(data: Data) {
   const extCount = data.externalSignals.length;
   const intCount = data.internalSystems.length;
   const cadenceBonus = data.monitoringCadence === '5' ? 15 : data.monitoringCadence === '15' ? 10 : 5;
-  const breadth = Math.min(100, Math.round(extCount * 10 + intCount * 10 + cadenceBonus + (data.triggerCondition.length > 50 ? 15 : 0)));
+  const linkedBonus = data.linkedSignalIds.length * 4;
+  const mandatoryBonus = data.mandatorySignalIds.length * 3;
+  const customDpBonus = data.customDataPointDefs.length * 5;
+  const breadth = Math.min(100, Math.round(extCount * 6 + intCount * 6 + cadenceBonus + linkedBonus + mandatoryBonus + customDpBonus + (data.triggerCondition.length > 50 ? 10 : 0)));
 
   const hasBoard = data.boardNotification.length > 50 ? 25 : 0;
   const hasAlert = data.stakeholderAlert.length > 50 ? 25 : 0;
@@ -580,7 +639,7 @@ function CustomFieldsSection({ fields, onAdd, onRemove }: { fields: CustomField[
 
 // ── Step components ───────────────────────────────────────────────────────────
 
-const STEP_KEYS = ['identity', 'owners', 'tasks', 'comms', 'budget', 'authority'] as const;
+const STEP_KEYS = ['identity', 'owners', 'tasks', 'comms', 'budget', 'authority', 'signals'] as const;
 type StepKey = typeof STEP_KEYS[number];
 
 function Step1({ data, update, onTemplate }: { data: Data; update: (f: string, v: any) => void; onTemplate: (t: typeof TEMPLATES[0]) => void }) {
@@ -913,6 +972,267 @@ function Step6({ data, update, updateNested }: { data: Data; update: (f: string,
       </div>
       <GovernanceSection data={data} update={update} />
     </>
+  );
+}
+
+// ── Step 7: Signal Coverage & Readiness ──────────────────────────────────────
+
+const DOMAIN_COLORS: Record<string, string> = {
+  'GROWTH & POSITIONING': '#2B8A6E',
+  'RISK & RESILIENCE':    '#D97706',
+  'TRANSFORMATION':       '#0A0F2E',
+};
+
+function Step7({ data, update }: { data: Data; update: (f: string, v: any) => void }) {
+  const [newDp, setNewDp] = useState<Omit<CustomDataPointDef, 'id'>>({ name: '', description: '', metricType: 'percentage', condition: '' });
+  const [showDpForm, setShowDpForm] = useState(false);
+
+  const toggleSignal = (id: string) => {
+    const linked = data.linkedSignalIds.includes(id)
+      ? data.linkedSignalIds.filter(s => s !== id)
+      : [...data.linkedSignalIds, id];
+    const mandatory = data.mandatorySignalIds.filter(s => linked.includes(s));
+    update('linkedSignalIds', linked);
+    update('mandatorySignalIds', mandatory);
+  };
+
+  const toggleMandatory = (id: string) => {
+    const mandatory = data.mandatorySignalIds.includes(id)
+      ? data.mandatorySignalIds.filter(s => s !== id)
+      : [...data.mandatorySignalIds, id];
+    update('mandatorySignalIds', mandatory);
+  };
+
+  const addCustomDp = () => {
+    if (!newDp.name) return;
+    update('customDataPointDefs', [...data.customDataPointDefs, { ...newDp, id: crypto.randomUUID() }]);
+    setNewDp({ name: '', description: '', metricType: 'percentage', condition: '' });
+    setShowDpForm(false);
+  };
+
+  const removeDp = (id: string) => update('customDataPointDefs', data.customDataPointDefs.filter(d => d.id !== id));
+
+  const domains = [...new Set(SIGNAL_CATEGORIES.map(c => c.domain))];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+
+      {/* ── 1. Signal category selection ────────────────────────────────── */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED }}>Signal Categories</div>
+            <div style={{ fontSize: 12, color: MUTED, marginTop: 3 }}>Choose which live signal categories feed this protocol's readiness determination.</div>
+          </div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: TEAL }}>{data.linkedSignalIds.length} selected</div>
+        </div>
+
+        {domains.map(domain => (
+          <div key={domain} style={{ marginBottom: 20 }}>
+            <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: DOMAIN_COLORS[domain] ?? MUTED, marginBottom: 8 }}>
+              {domain}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: 8 }}>
+              {SIGNAL_CATEGORIES.filter(c => c.domain === domain).map(cat => {
+                const isLinked    = data.linkedSignalIds.includes(cat.id);
+                const isMandatory = data.mandatorySignalIds.includes(cat.id);
+                return (
+                  <div
+                    key={cat.id}
+                    style={{
+                      border: `1.5px solid ${isLinked ? (isMandatory ? '#DC2626' : TEAL) : BORDER}`,
+                      borderRadius: '0.15rem',
+                      padding: '10px 12px',
+                      background: isLinked ? (isMandatory ? '#FFF5F5' : 'rgba(43,138,110,0.05)') : '#fff',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: isLinked ? 8 : 0 }}>
+                      <button
+                        onClick={() => toggleSignal(cat.id)}
+                        style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'none', border: 'none', cursor: 'pointer', padding: 0, flex: 1, textAlign: 'left' }}
+                      >
+                        <div style={{
+                          width: 16, height: 16, borderRadius: '0.15rem', flexShrink: 0,
+                          background: isLinked ? TEAL : '#fff',
+                          border: `1.5px solid ${isLinked ? TEAL : BORDER}`,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        }}>
+                          {isLinked && <CheckCircle2 size={10} color="#fff" />}
+                        </div>
+                        <span style={{ fontSize: 12, fontWeight: 600, color: NAVY }}>{cat.label}</span>
+                      </button>
+                    </div>
+                    {isLinked && (
+                      <button
+                        onClick={() => toggleMandatory(cat.id)}
+                        style={{
+                          fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                          padding: '2px 8px', borderRadius: '0.15rem', border: 'none', cursor: 'pointer',
+                          background: isMandatory ? '#DC2626' : '#F0EDE4',
+                          color: isMandatory ? '#fff' : MUTED,
+                          transition: 'all 0.15s',
+                        }}
+                      >
+                        {isMandatory ? '★ MUST-HAVE' : '☆ Mark as must-have'}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── 2. Readiness mode ────────────────────────────────────────────── */}
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, marginBottom: 6 }}>When should this protocol show as ready?</div>
+        <div style={{ fontSize: 12, color: MUTED, marginBottom: 14 }}>
+          This determines when the system marks the protocol staged and ready to execute.
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+          {([
+            { id: 'percentage' as const, label: 'Meets a Percentage', desc: 'Ready when X% of linked signal categories match.' },
+            { id: 'mandatory' as const,  label: 'All Must-Have Fire', desc: 'Ready only when every must-have signal fires.' },
+            { id: 'both' as const,       label: 'Either (Recommended)', desc: 'Ready on percentage OR when all must-haves fire.' },
+          ]).map(mode => (
+            <button
+              key={mode.id}
+              onClick={() => update('readinessMode', mode.id)}
+              style={{
+                textAlign: 'left', padding: '14px 16px',
+                border: `2px solid ${data.readinessMode === mode.id ? NAVY : BORDER}`,
+                borderRadius: '0.15rem',
+                background: data.readinessMode === mode.id ? NAVY : '#fff',
+                cursor: 'pointer', transition: 'all 0.15s',
+              }}
+            >
+              <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 4, color: data.readinessMode === mode.id ? GOLD : NAVY }}>{mode.label}</div>
+              <div style={{ fontSize: 11, color: data.readinessMode === mode.id ? 'rgba(255,255,255,0.6)' : MUTED }}>{mode.desc}</div>
+            </button>
+          ))}
+        </div>
+
+        {(data.readinessMode === 'percentage' || data.readinessMode === 'both') && (
+          <div style={{ marginTop: 16, padding: '16px 20px', background: '#F8F7F4', border: `1px solid ${BORDER}`, borderRadius: '0.15rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: MUTED, whiteSpace: 'nowrap' }}>Readiness Threshold</span>
+              <input
+                type="range" min={10} max={100}
+                value={data.readinessPct}
+                onChange={e => update('readinessPct', parseInt(e.target.value))}
+                style={{ flex: 1, accentColor: TEAL }}
+              />
+              <span style={{ fontSize: 22, fontWeight: 900, color: TEAL, width: 52, textAlign: 'right' }}>{data.readinessPct}%</span>
+            </div>
+            <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>
+              Protocol is staged and ready when ≥ {data.readinessPct}% of its linked signal categories are active.
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* ── 3. Custom data points ─────────────────────────────────────────── */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED }}>Custom Data Points</div>
+            <div style={{ fontSize: 12, color: MUTED, marginTop: 3 }}>
+              Define your own signals that aren't in the 20 standard categories — industry-specific metrics, internal KPIs, or proprietary triggers.
+            </div>
+          </div>
+          <button
+            onClick={() => setShowDpForm(v => !v)}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, color: TEAL, background: 'rgba(43,138,110,0.08)', border: `1px solid ${TEAL}`, borderRadius: '0.15rem', padding: '6px 12px', cursor: 'pointer' }}
+          >
+            <Plus size={12} /> Add Custom Data Point
+          </button>
+        </div>
+
+        {showDpForm && (
+          <div style={{ padding: '16px 18px', background: '#F8F7F4', border: `1.5px solid ${TEAL}`, borderRadius: '0.15rem', marginBottom: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+              <div>
+                <label style={labelStyle}>Data Point Name *</label>
+                <input style={inputStyle} placeholder='e.g. "NPS drops below 30"' value={newDp.name} onChange={e => setNewDp(d => ({ ...d, name: e.target.value }))} />
+              </div>
+              <div>
+                <label style={labelStyle}>Metric Type</label>
+                <select style={inputStyle} value={newDp.metricType} onChange={e => setNewDp(d => ({ ...d, metricType: e.target.value }))}>
+                  {METRIC_TYPES.map(m => <option key={m.value} value={m.value}>{m.label}</option>)}
+                </select>
+              </div>
+            </div>
+            <div style={{ marginBottom: 10 }}>
+              <label style={labelStyle}>Description</label>
+              <input style={inputStyle} placeholder='What does this data point measure? Where does the data come from?' value={newDp.description} onChange={e => setNewDp(d => ({ ...d, description: e.target.value }))} />
+            </div>
+            <div style={{ marginBottom: 12 }}>
+              <label style={labelStyle}>Trigger Condition</label>
+              <input style={inputStyle} placeholder='e.g. "Value drops below 30 for 2 consecutive readings"' value={newDp.condition} onChange={e => setNewDp(d => ({ ...d, condition: e.target.value }))} />
+            </div>
+            <div style={{ display: 'flex', gap: 10 }}>
+              <button onClick={addCustomDp} disabled={!newDp.name} style={{ fontSize: 12, fontWeight: 700, padding: '8px 20px', background: newDp.name ? NAVY : '#ccc', color: '#fff', border: 'none', borderRadius: '0.15rem', cursor: newDp.name ? 'pointer' : 'not-allowed' }}>
+                Add Data Point
+              </button>
+              <button onClick={() => setShowDpForm(false)} style={{ fontSize: 12, color: MUTED, background: 'none', border: 'none', cursor: 'pointer' }}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+
+        {data.customDataPointDefs.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {data.customDataPointDefs.map(dp => (
+              <div key={dp.id} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '12px 14px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem', background: '#fff' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{dp.name}</span>
+                    <span style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: TEAL, background: 'rgba(43,138,110,0.1)', padding: '1px 6px', borderRadius: '0.15rem' }}>{dp.metricType}</span>
+                  </div>
+                  {dp.description && <div style={{ fontSize: 12, color: MUTED }}>{dp.description}</div>}
+                  {dp.condition && <div style={{ fontSize: 11, color: '#D97706', marginTop: 4 }}>Fires when: {dp.condition}</div>}
+                </div>
+                <button onClick={() => removeDp(dp.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, padding: 4, flexShrink: 0 }}>
+                  <X size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {data.customDataPointDefs.length === 0 && !showDpForm && (
+          <div style={{ padding: '16px 18px', border: `1px dashed ${BORDER}`, borderRadius: '0.15rem', fontSize: 12, color: MUTED, textAlign: 'center' }}>
+            No custom data points yet. Add your own industry-specific signals.
+          </div>
+        )}
+      </div>
+
+      {/* ── Summary ──────────────────────────────────────────────────────── */}
+      {(data.linkedSignalIds.length > 0 || data.customDataPointDefs.length > 0) && (
+        <div style={{ padding: '14px 18px', borderLeft: `4px solid ${NAVY}`, background: '#F8F7F4' }}>
+          <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: NAVY, marginBottom: 6 }}>
+            This protocol will be ready when:
+          </div>
+          {data.readinessMode === 'percentage' && (
+            <div style={{ fontSize: 13, color: NAVY }}>≥ {data.readinessPct}% of {data.linkedSignalIds.length} linked signal categories are active</div>
+          )}
+          {data.readinessMode === 'mandatory' && (
+            <div style={{ fontSize: 13, color: NAVY }}>All {data.mandatorySignalIds.length} must-have signal{data.mandatorySignalIds.length !== 1 ? 's' : ''} fire simultaneously</div>
+          )}
+          {data.readinessMode === 'both' && (
+            <div style={{ fontSize: 13, color: NAVY }}>
+              ≥ {data.readinessPct}% of linked signals active <strong>OR</strong> all {data.mandatorySignalIds.length} must-haves fire — whichever comes first
+            </div>
+          )}
+          {data.customDataPointDefs.length > 0 && (
+            <div style={{ fontSize: 12, color: MUTED, marginTop: 4 }}>+ {data.customDataPointDefs.length} custom data point{data.customDataPointDefs.length !== 1 ? 's' : ''} monitored</div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -1326,8 +1646,13 @@ export default function ProtocolBuilder() {
           },
         },
         status: 'ready',
-        completedSteps: 6,
+        completedSteps: 7,
         customFields: data.customFields,
+        linkedSignalIds:     data.linkedSignalIds,
+        mandatorySignalIds:  data.mandatorySignalIds,
+        readinessMode:       data.readinessMode,
+        readinessPct:        data.readinessPct,
+        customDataPointDefs: data.customDataPointDefs,
       };
       const res = await apiRequest('POST', '/api/custom-protocols', payload);
       return res;
@@ -1368,6 +1693,7 @@ export default function ProtocolBuilder() {
       case 3: return <><Step4 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
       case 4: return <><Step5 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
       case 5: return <><Step6 data={data} update={update} updateNested={updateNested} /><CustomFieldsSection {...cfProps} /></>;
+      case 6: return <><Step7 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
       default: return null;
     }
   };
