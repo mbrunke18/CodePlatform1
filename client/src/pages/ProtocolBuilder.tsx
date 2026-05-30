@@ -259,27 +259,31 @@ const STEPS = [
 
 const mkTasks = (n: number) => Array.from({ length: n }, () => ({ description: '', assignedTo: '' }));
 
+// IDs match shared/intelligence-signals.ts SIGNAL_CATEGORIES exactly
 const SIGNAL_CATEGORIES = [
-  { id: 'competitive_movement',   label: 'Competitive Movement',       domain: 'GROWTH & POSITIONING' },
-  { id: 'market_dynamics',        label: 'Market Dynamics',            domain: 'GROWTH & POSITIONING' },
-  { id: 'mergers_acquisitions',   label: 'Mergers & Acquisitions',     domain: 'GROWTH & POSITIONING' },
-  { id: 'innovation_ip',          label: 'Innovation & IP',            domain: 'GROWTH & POSITIONING' },
-  { id: 'partnership_alliance',   label: 'Partnership & Alliance',     domain: 'GROWTH & POSITIONING' },
-  { id: 'financial_investment',   label: 'Financial & Investment',     domain: 'RISK & RESILIENCE' },
-  { id: 'regulatory_policy',      label: 'Regulatory & Policy',        domain: 'RISK & RESILIENCE' },
-  { id: 'supply_chain',           label: 'Supply Chain & Operational', domain: 'RISK & RESILIENCE' },
-  { id: 'cybersecurity_data',     label: 'Cybersecurity & Data',       domain: 'RISK & RESILIENCE' },
-  { id: 'legal_litigation',       label: 'Legal & Litigation',         domain: 'RISK & RESILIENCE' },
-  { id: 'brand_reputation',       label: 'Brand & Reputation',         domain: 'RISK & RESILIENCE' },
-  { id: 'crisis_emergency',       label: 'Crisis & Emergency',         domain: 'RISK & RESILIENCE' },
-  { id: 'economic_indicators',    label: 'Economic Indicators',        domain: 'RISK & RESILIENCE' },
-  { id: 'customer_sentiment',     label: 'Customer Sentiment',         domain: 'TRANSFORMATION' },
-  { id: 'talent_workforce',       label: 'Talent & Workforce',         domain: 'TRANSFORMATION' },
-  { id: 'technology_disruption',  label: 'Technology Disruption',      domain: 'TRANSFORMATION' },
-  { id: 'esg_sustainability',     label: 'ESG & Sustainability',       domain: 'TRANSFORMATION' },
-  { id: 'political_geopolitical', label: 'Political & Geopolitical',   domain: 'TRANSFORMATION' },
-  { id: 'industry_sector',        label: 'Industry & Sector Trends',   domain: 'TRANSFORMATION' },
-  { id: 'climate_environmental',  label: 'Climate & Environmental',    domain: 'TRANSFORMATION' },
+  // GROWTH & POSITIONING
+  { id: 'competitive',    label: 'Competitive Movement',       domain: 'GROWTH & POSITIONING' },
+  { id: 'market',         label: 'Market Dynamics',            domain: 'GROWTH & POSITIONING' },
+  { id: 'financial',      label: 'Financial & Investment',     domain: 'GROWTH & POSITIONING' },
+  { id: 'partnership',    label: 'Partnership & Ecosystem',    domain: 'GROWTH & POSITIONING' },
+  { id: 'innovation',     label: 'Innovation Pipeline',        domain: 'GROWTH & POSITIONING' },
+  { id: 'technology',     label: 'Technology Disruption',      domain: 'GROWTH & POSITIONING' },
+  // RISK & RESILIENCE
+  { id: 'regulatory',     label: 'Regulatory & Policy',        domain: 'RISK & RESILIENCE' },
+  { id: 'supplychain',    label: 'Supply Chain & Operational', domain: 'RISK & RESILIENCE' },
+  { id: 'cyber',          label: 'Cybersecurity & Threats',    domain: 'RISK & RESILIENCE' },
+  { id: 'media',          label: 'Media & Reputation',         domain: 'RISK & RESILIENCE' },
+  { id: 'geopolitical',   label: 'Geopolitical & Macro',       domain: 'RISK & RESILIENCE' },
+  { id: 'economic',       label: 'Economic Indicators',        domain: 'RISK & RESILIENCE' },
+  { id: 'brand_reputation', label: 'Brand & Reputation',      domain: 'RISK & RESILIENCE' },
+  { id: 'ai_governance',  label: 'AI Governance',              domain: 'RISK & RESILIENCE' },
+  // TRANSFORMATION
+  { id: 'customer',       label: 'Customer Sentiment',         domain: 'TRANSFORMATION' },
+  { id: 'talent',         label: 'Talent & Workforce',         domain: 'TRANSFORMATION' },
+  { id: 'esg',            label: 'ESG & Sustainability',       domain: 'TRANSFORMATION' },
+  { id: 'behavior',       label: 'Customer Behavior',          domain: 'TRANSFORMATION' },
+  { id: 'execution',      label: 'Internal Execution',         domain: 'TRANSFORMATION' },
+  { id: 'operational',    label: 'Operational Excellence',     domain: 'TRANSFORMATION' },
 ];
 
 const METRIC_TYPES = [
