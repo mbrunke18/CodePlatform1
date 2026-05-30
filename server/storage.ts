@@ -3262,12 +3262,16 @@ export class DatabaseStorage implements IStorage {
     organizationId: string,
     disabledDataPoints: string[],
     evaluationMode?: string,
-    disabledFeeds?: string[]
+    disabledFeeds?: string[],
+    thresholds?: { watchPct?: number; awarePct?: number; actionPct?: number }
   ): Promise<SignalMonitoringConfig> {
     const existing = await this.getSignalMonitoringConfig(organizationId);
     const updateFields: Record<string, any> = { disabledDataPoints, updatedAt: new Date() };
     if (evaluationMode !== undefined) updateFields.evaluationMode = evaluationMode;
     if (disabledFeeds !== undefined) updateFields.disabledFeeds = disabledFeeds;
+    if (thresholds?.watchPct  !== undefined) updateFields.watchThresholdPct  = thresholds.watchPct;
+    if (thresholds?.awarePct  !== undefined) updateFields.awareThresholdPct  = thresholds.awarePct;
+    if (thresholds?.actionPct !== undefined) updateFields.actionThresholdPct = thresholds.actionPct;
 
     if (existing) {
       const [updated] = await db.update(signalMonitoringConfig)
@@ -3277,7 +3281,15 @@ export class DatabaseStorage implements IStorage {
       return updated;
     }
     const [created] = await db.insert(signalMonitoringConfig)
-      .values({ organizationId, disabledDataPoints, disabledFeeds: disabledFeeds || [], evaluationMode: evaluationMode || 'both' })
+      .values({
+        organizationId,
+        disabledDataPoints,
+        disabledFeeds: disabledFeeds || [],
+        evaluationMode: evaluationMode || 'both',
+        watchThresholdPct:  thresholds?.watchPct  ?? 50,
+        awareThresholdPct:  thresholds?.awarePct  ?? 70,
+        actionThresholdPct: thresholds?.actionPct ?? 80,
+      })
       .returning();
     return created;
   }

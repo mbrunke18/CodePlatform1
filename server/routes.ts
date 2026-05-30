@@ -8931,13 +8931,16 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.user?.organizationId;
       if (!orgId) {
-        return res.json({ disabledDataPoints: [], disabledFeeds: [], evaluationMode: 'both' });
+        return res.json({ disabledDataPoints: [], disabledFeeds: [], evaluationMode: 'both', watchThresholdPct: 50, awareThresholdPct: 70, actionThresholdPct: 80 });
       }
       const config = await storage.getSignalMonitoringConfig(orgId);
       res.json({
         disabledDataPoints: config?.disabledDataPoints || [],
         disabledFeeds: config?.disabledFeeds || [],
         evaluationMode: config?.evaluationMode || 'both',
+        watchThresholdPct:  config?.watchThresholdPct  ?? 50,
+        awareThresholdPct:  config?.awareThresholdPct  ?? 70,
+        actionThresholdPct: config?.actionThresholdPct ?? 80,
       });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
@@ -8947,7 +8950,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app.patch('/api/signal-monitoring-config', requireOrgAccess, async (req: any, res) => {
     try {
       const orgId = req.user.organizationId;
-      const { disabledDataPoints, evaluationMode, disabledFeeds } = req.body;
+      const { disabledDataPoints, evaluationMode, disabledFeeds, watchThresholdPct, awareThresholdPct, actionThresholdPct } = req.body;
       if (disabledDataPoints !== undefined && !Array.isArray(disabledDataPoints)) {
         return res.status(400).json({ error: 'disabledDataPoints must be an array' });
       }
@@ -8958,13 +8961,31 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       if (evaluationMode !== undefined && !validModes.includes(evaluationMode)) {
         return res.status(400).json({ error: `evaluationMode must be one of: ${validModes.join(', ')}` });
       }
+      const validatePct = (v: any, name: string) => {
+        if (v !== undefined && (typeof v !== 'number' || v < 1 || v > 100)) {
+          return `${name} must be a number between 1 and 100`;
+        }
+        return null;
+      };
+      for (const [v, n] of [[watchThresholdPct, 'watchThresholdPct'], [awareThresholdPct, 'awareThresholdPct'], [actionThresholdPct, 'actionThresholdPct']] as [any, string][]) {
+        const err = validatePct(v, n);
+        if (err) return res.status(400).json({ error: err });
+      }
       const existing = await storage.getSignalMonitoringConfig(orgId);
       const resolvedDps = disabledDataPoints ?? existing?.disabledDataPoints ?? [];
-      const config = await storage.upsertSignalMonitoringConfig(orgId, resolvedDps, evaluationMode, disabledFeeds);
+      const thresholds = {
+        watchPct:  watchThresholdPct,
+        awarePct:  awareThresholdPct,
+        actionPct: actionThresholdPct,
+      };
+      const config = await storage.upsertSignalMonitoringConfig(orgId, resolvedDps, evaluationMode, disabledFeeds, thresholds);
       res.json({
         disabledDataPoints: config.disabledDataPoints || [],
         disabledFeeds: config.disabledFeeds || [],
         evaluationMode: config.evaluationMode || 'both',
+        watchThresholdPct:  config.watchThresholdPct  ?? 50,
+        awareThresholdPct:  config.awareThresholdPct  ?? 70,
+        actionThresholdPct: config.actionThresholdPct ?? 80,
       });
     } catch (err: any) {
       res.status(500).json({ error: err.message });

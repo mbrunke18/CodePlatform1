@@ -60,6 +60,11 @@ interface ConfiguredTrigger {
   recommendedPlaybooks: string[];  // customer-configured playbooks for this exact scenario
   isActive: boolean;
   source: 'executive' | 'custom';
+  // Per-trigger threshold overrides (null = use org-wide defaults)
+  watchThresholdPct?:     number | null;
+  awareThresholdPct?:     number | null;
+  actionThresholdPct?:    number | null;
+  mandatoryConditionIds?: string[];
 }
 
 // ─── Confidence floor by the customer's configured alert threshold ────────────
@@ -227,6 +232,10 @@ export async function loadConfiguredTriggers(organizationId: string): Promise<Co
         recommendedPlaybooks: playbooks,
         isActive: t.isActive ?? true,
         source: 'executive',
+        watchThresholdPct:     (t as any).watchThresholdPct     ?? null,
+        awareThresholdPct:     (t as any).awareThresholdPct     ?? null,
+        actionThresholdPct:    (t as any).actionThresholdPct    ?? null,
+        mandatoryConditionIds: (t as any).mandatoryConditionIds ?? [],
       });
     }
 
@@ -379,7 +388,8 @@ function scoreSignalAgainstConfiguredTrigger(
 //
 function scoreSignalAgainstTriggerGroup(
   signal: AnalyzedSignal,
-  groupConditions: TriggerGroupConditions
+  groupConditions: TriggerGroupConditions,
+  thresholds?: { watchPct?: number | null; awarePct?: number | null; actionPct?: number | null }
 ): ScoringResult {
   const text = (signal.description + ' ' + signal.signalType + ' ' + signal.category).toLowerCase();
   const matchedTerms: string[] = [];
@@ -387,24 +397,25 @@ function scoreSignalAgainstTriggerGroup(
 
   const { dataPoints } = groupConditions;
   // Three-tier alert thresholds — all percentages are relative to this trigger's
-  // own data point count. A 5-point trigger and a 50-point trigger use the same
-  // percentage bars. No absolute minimums that override the %.
+  // own data point count.  Per-trigger overrides take precedence; falls back to
+  // org-wide config, then platform defaults (50/70/80).
   //
-  //   WATCH  — 50% of this trigger's data points: situation developing
-  //   AWARE  — 70% of this trigger's data points: pattern strengthening
-  //   ACTION — 80% of this trigger's data points: trigger confirmed, execute now
+  //   WATCH  — watchPct%  of this trigger's data points: situation developing
+  //   AWARE  — awarePct%  of this trigger's data points: pattern strengthening
+  //   ACTION — actionPct% of this trigger's data points: trigger confirmed
   //
   // MANDATORY AUTO-TRIGGER: if every data point marked mandatory fires, the tier
   // is automatically ACTION — regardless of overall percentage.
-  // E.g. 4 mandatory indicators on a 28-point trigger → action at 14% overall.
-  //
-  // The user-configured minimumRequired acts as an additional floor on ACTION only.
+  const watchPct  = (thresholds?.watchPct  ?? 50) / 100;
+  const awarePct  = (thresholds?.awarePct  ?? 70) / 100;
+  const actionPct = (thresholds?.actionPct ?? 80) / 100;
+
   const n = dataPoints.length;
-  const watchMinimum    = Math.ceil(n * 0.50);
-  const awareMinimum    = Math.ceil(n * 0.70);
+  const watchMinimum    = Math.ceil(n * watchPct);
+  const awareMinimum    = Math.ceil(n * awarePct);
   const minimumRequired = Math.max(
     groupConditions.minimumRequired,
-    Math.ceil(n * 0.80)
+    Math.ceil(n * actionPct)
   );
 
   let validMandatory = 0;
@@ -610,7 +621,12 @@ export async function evaluateSignalsWithOrgTriggers(
 
       if (isCompositeGroup) {
         // ── Composite trigger group path (DETECT tab) ─────────────────────
-        result = scoreSignalAgainstTriggerGroup(signal, rawConditions as TriggerGroupConditions);
+        const triggerThresholds = {
+          watchPct:  trigger.watchThresholdPct,
+          awarePct:  trigger.awareThresholdPct,
+          actionPct: trigger.actionThresholdPct,
+        };
+        result = scoreSignalAgainstTriggerGroup(signal, rawConditions as TriggerGroupConditions, triggerThresholds);
 
         if (result.score === 0) {
           if (result.conditionsMet > 0) {

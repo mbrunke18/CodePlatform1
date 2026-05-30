@@ -102,7 +102,7 @@ export default function TriggerConfigurationWizard({
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [step, setStep] = useState(1);
-  const totalSteps = 4;
+  const totalSteps = 5;
   
   // Form state
   const [triggerName, setTriggerName] = useState('');
@@ -125,6 +125,14 @@ export default function TriggerConfigurationWizard({
   
   // Readiness Protocol mapping
   const [selectedPlaybooks, setSelectedPlaybooks] = useState<string[]>([]);
+
+  // Step 5: Alert sensitivity — per-trigger threshold overrides
+  const [useOrgThresholds, setUseOrgThresholds] = useState(true);
+  const [triggerWatchPct, setTriggerWatchPct]   = useState(50);
+  const [triggerAwarePct, setTriggerAwarePct]   = useState(70);
+  const [triggerActionPct, setTriggerActionPct] = useState(80);
+  // Trigger mode: 'percentage' | 'mandatory' | 'both'
+  const [triggerMode, setTriggerMode] = useState<'percentage' | 'mandatory' | 'both'>('both');
   
   // Pre-populate form when editing an existing trigger
   useEffect(() => {
@@ -144,11 +152,18 @@ export default function TriggerConfigurationWizard({
       setWebhookEnabled(editTrigger.notificationSettings?.webhook ?? false);
       setEscalationEnabled(editTrigger.notificationSettings?.escalation ?? true);
       setEscalationTimeout(String(editTrigger.escalationTimeout || '30'));
-      // Use resolved linkedPlaybooks IDs if available, fall back to stored recommendedPlaybooks
       const preloadIds = editTrigger.linkedPlaybooks?.map((p: any) => p.id)
         || editTrigger.recommendedPlaybooks
         || [];
       setSelectedPlaybooks(preloadIds);
+      // Step 5 — threshold overrides
+      const hasOverride = editTrigger.watchThresholdPct != null;
+      setUseOrgThresholds(!hasOverride);
+      if (hasOverride) {
+        setTriggerWatchPct(editTrigger.watchThresholdPct ?? 50);
+        setTriggerAwarePct(editTrigger.awareThresholdPct ?? 70);
+        setTriggerActionPct(editTrigger.actionThresholdPct ?? 80);
+      }
     }
   }, [editTrigger, isOpen]);
   
@@ -225,21 +240,22 @@ export default function TriggerConfigurationWizard({
     setEscalationEnabled(true);
     setEscalationTimeout('30');
     setSelectedPlaybooks([]);
+    setUseOrgThresholds(true);
+    setTriggerWatchPct(50);
+    setTriggerAwarePct(70);
+    setTriggerActionPct(80);
+    setTriggerMode('both');
     onClose();
   };
   
   const canProceed = () => {
     switch (step) {
-      case 1:
-        return triggerName && selectedCategory;
-      case 2:
-        return selectedField && operator && thresholdValue;
-      case 3:
-        return emailEnabled || slackEnabled || inAppEnabled || webhookEnabled;
-      case 4:
-        return true;
-      default:
-        return false;
+      case 1: return triggerName && selectedCategory;
+      case 2: return selectedField && operator && thresholdValue;
+      case 3: return emailEnabled || slackEnabled || inAppEnabled || webhookEnabled;
+      case 4: return true;
+      case 5: return true;
+      default: return false;
     }
   };
   
@@ -261,7 +277,7 @@ export default function TriggerConfigurationWizard({
     const catDataPoints = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints;
     const selectedFieldData = catDataPoints?.find((dp: any) => dp.id === selectedField);
     
-    const triggerData = {
+    const triggerData: any = {
       name: triggerName,
       description,
       category: selectedCategory,
@@ -282,6 +298,11 @@ export default function TriggerConfigurationWizard({
       escalationEnabled,
       escalationTimeoutMinutes: parseInt(escalationTimeout),
       recommendedPlaybooks: selectedPlaybooks,
+      // Step 5 — alert sensitivity
+      watchThresholdPct:  useOrgThresholds ? null : triggerWatchPct,
+      awareThresholdPct:  useOrgThresholds ? null : triggerAwarePct,
+      actionThresholdPct: useOrgThresholds ? null : triggerActionPct,
+      triggerMode,
     };
     
     saveTriggerMutation.mutate(triggerData);
@@ -331,12 +352,13 @@ export default function TriggerConfigurationWizard({
               {step === 2 && 'Conditions'}
               {step === 3 && 'Notifications'}
               {step === 4 && 'Readiness Protocol Mapping'}
+              {step === 5 && 'Alert Sensitivity'}
             </span>
           </div>
           <Progress value={(step / totalSteps) * 100} className="h-2" />
           
           <div className="flex justify-between mt-2">
-            {[1, 2, 3, 4].map((s) => (
+            {[1, 2, 3, 4, 5].map((s) => (
               <div 
                 key={s} 
                 className={`flex items-center gap-1 text-xs ${s <= step ? 'text-[#0A0F2E]' : 'text-gray-600 dark:text-gray-200'}`}
@@ -352,7 +374,8 @@ export default function TriggerConfigurationWizard({
                   {s === 1 && 'Category'}
                   {s === 2 && 'Conditions'}
                   {s === 3 && 'Notify'}
-                  {s === 4 && 'Readiness Protocols'}
+                  {s === 4 && 'Protocols'}
+                  {s === 5 && 'Sensitivity'}
                 </span>
               </div>
             ))}
@@ -857,6 +880,152 @@ export default function TriggerConfigurationWizard({
           </div>
         )}
         
+        {/* Step 5: Alert Sensitivity */}
+        {step === 5 && (
+          <div className="space-y-6">
+            {/* Header banner */}
+            <div className="p-4 border-l-4" style={{ background: 'rgba(43,138,110,0.06)', borderColor: '#2B8A6E' }}>
+              <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>How should this trigger decide when to fire?</p>
+              <p className="text-xs text-gray-500 mt-1">
+                Choose the logic that determines when an alert escalates to Watch, Aware, or Action. You can use percentage thresholds, require specific must-have signals, or both together.
+              </p>
+            </div>
+
+            {/* Trigger mode selector */}
+            <div>
+              <Label className="text-sm font-bold mb-3 block" style={{ color: '#0A0F2E' }}>Trigger Logic</Label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {([
+                  {
+                    id: 'percentage' as const,
+                    title: 'Meets a Percentage',
+                    desc: 'Fires when enough data points match — Watch / Aware / Action tiers scale with your thresholds.',
+                    icon: '≥%',
+                  },
+                  {
+                    id: 'mandatory' as const,
+                    title: 'All Must-Have Data Points',
+                    desc: 'Fires only when every data point you mark as mandatory is confirmed — bypasses percentage bars.',
+                    icon: '★',
+                  },
+                  {
+                    id: 'both' as const,
+                    title: 'Both (Recommended)',
+                    desc: 'Fires on percentage threshold OR when all mandatory signals hit — whichever comes first.',
+                    icon: '⊕',
+                  },
+                ]).map(mode => (
+                  <button
+                    key={mode.id}
+                    onClick={() => setTriggerMode(mode.id)}
+                    className="text-left p-4 border-2 transition-all"
+                    style={{
+                      borderColor: triggerMode === mode.id ? '#0A0F2E' : '#E8E4DC',
+                      background: triggerMode === mode.id ? '#0A0F2E' : '#fff',
+                    }}
+                  >
+                    <div className="text-xl font-black mb-2" style={{ color: triggerMode === mode.id ? '#C9A84C' : '#6B7280' }}>
+                      {mode.icon}
+                    </div>
+                    <p className="text-xs font-bold mb-1" style={{ color: triggerMode === mode.id ? '#fff' : '#0A0F2E' }}>
+                      {mode.title}
+                    </p>
+                    <p className="text-[10px] leading-relaxed" style={{ color: triggerMode === mode.id ? 'rgba(255,255,255,0.65)' : '#6B7280' }}>
+                      {mode.desc}
+                    </p>
+                    {triggerMode === mode.id && (
+                      <Check className="w-4 h-4 mt-2" style={{ color: '#C9A84C' }} />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Percentage threshold overrides — shown for 'percentage' and 'both' modes */}
+            {(triggerMode === 'percentage' || triggerMode === 'both') && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <Label className="text-sm font-bold" style={{ color: '#0A0F2E' }}>Percentage Thresholds</Label>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[9px] font-medium text-gray-500">Use org defaults</span>
+                    <Switch checked={useOrgThresholds} onCheckedChange={setUseOrgThresholds} />
+                  </div>
+                </div>
+
+                {useOrgThresholds ? (
+                  <div className="p-3 bg-[#F8F7F4] border border-[#E8E4DC] text-xs text-gray-500">
+                    Using your organization's thresholds: Watch ≥ 50% · Aware ≥ 70% · Action ≥ 80% of data points.
+                    Toggle off to set custom values for this trigger only.
+                  </div>
+                ) : (
+                  <div className="space-y-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                    {([
+                      { label: 'WATCH',  color: '#D97706', val: triggerWatchPct,  set: setTriggerWatchPct,  min: 1,                    max: triggerAwarePct - 1,   desc: 'Awareness alert — situation developing' },
+                      { label: 'AWARE',  color: '#EA580C', val: triggerAwarePct,  set: setTriggerAwarePct,  min: triggerWatchPct + 1,   max: triggerActionPct - 1,  desc: 'Pattern strengthening — monitor closely' },
+                      { label: 'ACTION', color: '#DC2626', val: triggerActionPct, set: setTriggerActionPct, min: triggerAwarePct + 1,   max: 99,                    desc: 'Confirmed — Readiness Protocol executes' },
+                    ] as const).map(tier => (
+                      <div key={tier.label} className="flex items-center gap-4">
+                        <div className="w-14 flex-shrink-0">
+                          <span className="text-[9px] font-black uppercase tracking-widest" style={{ color: tier.color }}>{tier.label}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min={tier.min}
+                          max={tier.max}
+                          value={tier.val}
+                          onChange={e => tier.set(parseInt(e.target.value))}
+                          className="flex-1 h-1.5 cursor-pointer"
+                          style={{ accentColor: tier.color }}
+                        />
+                        <span className="text-base font-black w-10 text-right" style={{ color: tier.color }}>
+                          {tier.val}%
+                        </span>
+                        <span className="text-[9px] text-gray-400 w-40 flex-shrink-0">{tier.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Mandatory data points info — shown for 'mandatory' and 'both' modes */}
+            {(triggerMode === 'mandatory' || triggerMode === 'both') && (
+              <div className="p-4 border border-[#E8E4DC] bg-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 flex-shrink-0" style={{ background: '#0A0F2E' }} />
+                  <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#0A0F2E' }}>Mandatory Data Points</span>
+                </div>
+                <p className="text-[10px] text-gray-500 leading-relaxed">
+                  Mark individual data points as mandatory from the trigger's conditions panel (DETECT tab). When <strong>all</strong> mandatory data points fire simultaneously, this trigger automatically escalates to <strong>Action</strong> — regardless of the overall percentage.
+                </p>
+                <p className="text-[10px] text-gray-400 mt-2">
+                  Use case: a 40-point competitive trigger where "competitor price cut" + "market share decline" are must-haves. If both fire, you get an immediate Action alert even if only 5% of other data points match.
+                </p>
+              </div>
+            )}
+
+            {/* Summary */}
+            <div className="p-4 border-l-4 bg-[#F8F7F4]" style={{ borderColor: '#0A0F2E' }}>
+              <p className="text-[10px] font-bold uppercase tracking-wider mb-1" style={{ color: '#0A0F2E' }}>This trigger will fire when:</p>
+              {triggerMode === 'percentage' && !useOrgThresholds && (
+                <p className="text-xs text-gray-600">≥ {triggerWatchPct}% of data points match → <strong>Watch</strong> · ≥ {triggerAwarePct}% → <strong>Aware</strong> · ≥ {triggerActionPct}% → <strong>Action</strong></p>
+              )}
+              {triggerMode === 'percentage' && useOrgThresholds && (
+                <p className="text-xs text-gray-600">Using org defaults: ≥ 50% → Watch · ≥ 70% → Aware · ≥ 80% → Action</p>
+              )}
+              {triggerMode === 'mandatory' && (
+                <p className="text-xs text-gray-600">All mandatory data points fire → <strong>Action</strong> (percentage thresholds ignored)</p>
+              )}
+              {triggerMode === 'both' && !useOrgThresholds && (
+                <p className="text-xs text-gray-600">≥ {triggerWatchPct}% → Watch · ≥ {triggerAwarePct}% → Aware · ≥ {triggerActionPct}% → Action <strong>OR</strong> all mandatory data points fire → Action (whichever first)</p>
+              )}
+              {triggerMode === 'both' && useOrgThresholds && (
+                <p className="text-xs text-gray-600">Org defaults (50/70/80%) <strong>OR</strong> all mandatory data points → Action (whichever first)</p>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Navigation buttons */}
         <div className="flex justify-between mt-6 pt-4 border-t">
           <Button 

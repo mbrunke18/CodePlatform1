@@ -11,9 +11,17 @@ import { evaluateSignalsWithOrgTriggers } from './TriggerEvaluationEngine.js';
 //   'both'       — run both engines, merge and deduplicate by trigger name
 type EvaluationMode = 'configured' | 'default' | 'both';
 
-async function getOrgEvaluationMode(organizationId: string): Promise<EvaluationMode> {
+interface OrgConfig {
+  mode: EvaluationMode;
+  watchPct: number;
+  awarePct: number;
+  actionPct: number;
+}
+
+async function getOrgConfig(organizationId: string): Promise<OrgConfig> {
+  const defaults: OrgConfig = { mode: 'both', watchPct: 50, awarePct: 70, actionPct: 80 };
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
-    return 'default'; // Non-UUID orgs (e.g. "system" demo) always use default
+    return { ...defaults, mode: 'default' };
   }
   try {
     const [config] = await db
@@ -21,10 +29,15 @@ async function getOrgEvaluationMode(organizationId: string): Promise<EvaluationM
       .from(signalMonitoringConfig)
       .where(eq(signalMonitoringConfig.organizationId, organizationId as any))
       .limit(1);
-    const mode = (config?.evaluationMode as EvaluationMode) || 'both';
-    return ['configured', 'default', 'both'].includes(mode) ? mode : 'both';
+    const rawMode = (config?.evaluationMode as EvaluationMode) || 'both';
+    return {
+      mode: ['configured', 'default', 'both'].includes(rawMode) ? rawMode : 'both',
+      watchPct:  config?.watchThresholdPct  ?? 50,
+      awarePct:  config?.awareThresholdPct  ?? 70,
+      actionPct: config?.actionThresholdPct ?? 80,
+    };
   } catch {
-    return 'both'; // Safe fallback on any DB error
+    return defaults;
   }
 }
 
@@ -239,32 +252,20 @@ function scoreSignalAgainstPattern(signal: AnalyzedSignal, pattern: TriggerPatte
   return Math.min(Math.round(score), 97);
 }
 
-export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
+export function evaluateSignal(
+  signal: AnalyzedSignal,
+  thresholds?: { watchPct?: number; awarePct?: number; actionPct?: number }
+): DetectedTrigger[] {
   const detections: DetectedTrigger[] = [];
 
-  // ── Two-tier alert system ────────────────────────────────────────────────────
-  //
-  // WATCH tier — "Situation developing, be aware"
-  //   Score ≥ 50, matches ≥ 3, density ≥ 8%
-  //   Sends an amber awareness email. No activation button.
-  //
-  // ACTION tier — "Trigger confirmed, protocol ready, act now"
-  //   Score ≥ 78, matches ≥ 6, density ≥ 15%
-  //   Sends the red/navy execution alert with activation CTA.
-  //
-  // A signal that clears only WATCH thresholds gets a heads-up email.
-  // A signal that clears ACTION thresholds gets the full execution alert.
-  // A signal below WATCH is dismissed — no email sent.
-  // ────────────────────────────────────────────────────────────────────────────
   // Three-tier alert system — thresholds are % of each pattern's own keyword count.
-  // A 5-keyword pattern and a 50-keyword pattern use the same % bars, not fixed counts.
-  //   WATCH  ≥ 50% of that pattern's keywords — "Situation developing"
-  //   AWARE  ≥ 70% of that pattern's keywords — "Pattern strengthening"
-  //   ACTION ≥ 80% of that pattern's keywords — "Trigger confirmed, execute now"
-  // Signals below 50% of the pattern's own keywords are dismissed — no alert sent.
-  const WATCH_SCORE   = 55;  const WATCH_DENSITY  = 0.50;
-  const AWARE_SCORE   = 70;  const AWARE_DENSITY  = 0.70;
-  const ACTION_SCORE  = 82;  const ACTION_DENSITY = 0.80;
+  // Defaults (50/70/80) can be overridden by org-level or per-trigger configuration.
+  //   WATCH  ≥ watchPct%  of that pattern's keywords — "Situation developing"
+  //   AWARE  ≥ awarePct%  of that pattern's keywords — "Pattern strengthening"
+  //   ACTION ≥ actionPct% of that pattern's keywords — "Trigger confirmed, execute now"
+  const WATCH_SCORE   = 55;  const WATCH_DENSITY  = (thresholds?.watchPct  ?? 50) / 100;
+  const AWARE_SCORE   = 70;  const AWARE_DENSITY  = (thresholds?.awarePct  ?? 70) / 100;
+  const ACTION_SCORE  = 82;  const ACTION_DENSITY = (thresholds?.actionPct ?? 80) / 100;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
@@ -746,8 +747,10 @@ export async function evaluateAndPersistSignals(
   //                  Broadest coverage: customer configs + platform defaults.
   //                  Default for all orgs until they choose otherwise.
 
-  const evaluationMode = await getOrgEvaluationMode(organizationId);
-  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
+  const orgConfig = await getOrgConfig(organizationId);
+  const evaluationMode = orgConfig.mode;
+  const orgThresholds = { watchPct: orgConfig.watchPct, awarePct: orgConfig.awarePct, actionPct: orgConfig.actionPct };
+  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}" | thresholds: watch=${orgThresholds.watchPct}% aware=${orgThresholds.awarePct}% action=${orgThresholds.actionPct}%`);
 
   // Log scan activity — proves the system is working even on quiet days
   try {
@@ -816,7 +819,7 @@ export async function evaluateAndPersistSignals(
   if (evaluationMode === 'default' || evaluationMode === 'both') {
     let defaultCount = 0;
     for (const signal of signals) {
-      const detections = evaluateSignal(signal);
+      const detections = evaluateSignal(signal, orgThresholds);
       for (const detection of detections) {
         if (seenTriggerNames.has(detection.triggerName)) continue; // Skip if already caught by configured engine
         seenTriggerNames.add(detection.triggerName);

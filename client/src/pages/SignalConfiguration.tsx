@@ -67,11 +67,22 @@ export default function SignalConfiguration() {
   const [showCalibration, setShowCalibration]             = useState(false);
   const [showSignalProfiles, setShowSignalProfiles]       = useState(false);
   const [showFeedManager, setShowFeedManager]             = useState(false);
+  const [showThresholds, setShowThresholds]               = useState(false);
+  const [localWatch, setLocalWatch]     = useState<number | null>(null);
+  const [localAware, setLocalAware]     = useState<number | null>(null);
+  const [localAction, setLocalAction]   = useState<number | null>(null);
   const [profilePlaybookId, setProfilePlaybookId]         = useState('');
   const [profileForm, setProfileForm]                     = useState<any>(null);
   const [localDisabledFeeds, setLocalDisabledFeeds]       = useState<string[] | null>(null);
 
-  const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[]; disabledFeeds: string[] }>({
+  const { data: configData, isLoading } = useQuery<{
+    disabledDataPoints: string[];
+    disabledFeeds: string[];
+    evaluationMode?: string;
+    watchThresholdPct: number;
+    awareThresholdPct: number;
+    actionThresholdPct: number;
+  }>({
     queryKey: ['/api/signal-monitoring-config'],
   });
 
@@ -113,6 +124,21 @@ export default function SignalConfiguration() {
       toast({ title: 'Save failed', variant: 'destructive' });
     },
   });
+
+  const thresholdMutation = useMutation({
+    mutationFn: (t: { watchThresholdPct: number; awareThresholdPct: number; actionThresholdPct: number }) =>
+      apiRequest('PATCH', '/api/signal-monitoring-config', t).then(r => r.json()),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/signal-monitoring-config'] });
+      setLocalWatch(null); setLocalAware(null); setLocalAction(null);
+      toast({ title: 'Alert thresholds saved', description: 'New percentages apply on the next detection cycle.' });
+    },
+    onError: () => toast({ title: 'Save failed', variant: 'destructive' }),
+  });
+
+  const watchPct  = localWatch  ?? configData?.watchThresholdPct  ?? 50;
+  const awarePct  = localAware  ?? configData?.awareThresholdPct  ?? 70;
+  const actionPct = localAction ?? configData?.actionThresholdPct ?? 80;
 
   const feedMutation = useMutation({
     mutationFn: (feeds: string[]) => apiRequest('PATCH', '/api/signal-monitoring-config', { disabledFeeds: feeds }),
@@ -589,6 +615,94 @@ export default function SignalConfiguration() {
           }}
           editTrigger={editingTrigger}
         />
+      </div>
+
+      {/* ── Alert Thresholds ────────────────────────────────────────────────── */}
+      <div className="flex-shrink-0 border-t-2" style={{ borderColor: TEAL }}>
+        <button
+          onClick={() => setShowThresholds(v => !v)}
+          className="w-full flex items-center justify-between px-6 py-3 bg-white hover:bg-[#F8F7F4] transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <SlidersHorizontal className="w-4 h-4" style={{ color: TEAL }} />
+            <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>
+              Alert Thresholds
+            </span>
+            <span className="text-[9px] font-black px-2 py-0.5" style={{ background: TEAL, color: '#fff' }}>
+              Watch {watchPct}% · Aware {awarePct}% · Action {actionPct}%
+            </span>
+            <span className="text-[9px] font-medium px-2 py-0.5 border" style={{ color: TEAL, borderColor: 'rgba(43,138,110,0.3)' }}>
+              Set when each alert tier fires for your org
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-400 font-medium">{showThresholds ? 'Collapse' : 'Expand'}</span>
+            <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400" />
+          </div>
+        </button>
+
+        {showThresholds && (
+          <div className="px-6 pb-6 bg-[#F8F7F4] border-t border-[#E8E4DC]">
+            <p className="text-[10px] text-gray-500 pt-4 pb-4 max-w-2xl">
+              Control when each alert tier fires across all triggers for your organization. Individual triggers can override these. Percentages are relative to each trigger's own data point count — a 10-point trigger and a 100-point trigger use the same percentage bars.
+            </p>
+
+            {/* Three tier cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+              {([
+                { key: 'watch' as const,  label: 'WATCH',  desc: 'Situation developing — awareness alert sent', color: '#D97706', val: watchPct,  set: setLocalWatch,  min: 1, max: awarePct - 1 },
+                { key: 'aware' as const,  label: 'AWARE',  desc: 'Pattern strengthening — closer monitoring required', color: '#EA580C', val: awarePct, set: setLocalAware,  min: watchPct + 1, max: actionPct - 1 },
+                { key: 'action' as const, label: 'ACTION', desc: 'Trigger confirmed — Readiness Protocol ready to execute', color: '#DC2626', val: actionPct, set: setLocalAction, min: awarePct + 1, max: 99 },
+              ] as const).map(tier => (
+                <div key={tier.key} className="bg-white border border-[#E8E4DC] p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-2 h-2 flex-shrink-0" style={{ background: tier.color }} />
+                    <span className="text-[9px] font-black uppercase tracking-widest" style={{ color: tier.color }}>{tier.label}</span>
+                  </div>
+                  <p className="text-[9px] text-gray-500 mb-3">{tier.desc}</p>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="range"
+                      min={tier.min}
+                      max={tier.max}
+                      value={tier.val}
+                      onChange={e => tier.set(parseInt(e.target.value))}
+                      className="flex-1 h-1.5 appearance-none cursor-pointer"
+                      style={{ accentColor: tier.color }}
+                    />
+                    <span className="text-xl font-black w-12 text-right" style={{ color: tier.color }}>
+                      {tier.val}%
+                    </span>
+                  </div>
+                  <p className="text-[9px] text-gray-400 mt-1">
+                    Fires when ≥ {tier.val}% of a trigger's data points match
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Save / reset */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => thresholdMutation.mutate({ watchThresholdPct: watchPct, awareThresholdPct: awarePct, actionThresholdPct: actionPct })}
+                disabled={thresholdMutation.isPending}
+                className="text-[10px] font-bold uppercase tracking-wider px-4 py-2 transition-opacity hover:opacity-80"
+                style={{ background: NAVY, color: '#fff' }}
+              >
+                {thresholdMutation.isPending ? 'Saving…' : 'Save Thresholds'}
+              </button>
+              <button
+                onClick={() => { setLocalWatch(50); setLocalAware(70); setLocalAction(80); }}
+                className="text-[10px] font-medium text-gray-400 underline"
+              >
+                Reset to defaults (50 / 70 / 80)
+              </button>
+              <span className="ml-auto text-[9px] text-gray-400">
+                Per-trigger overrides can be set in the Alert Rule wizard (Step 5)
+              </span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── Signal Feed Manager ─────────────────────────────────────────────── */}

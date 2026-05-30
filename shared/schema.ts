@@ -2111,6 +2111,13 @@ export const executiveTriggers = pgTable('executive_triggers', {
   createdBy: varchar('created_by').references(() => users.id).notNull(),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
+  // Per-trigger alert threshold overrides (null = use org-wide defaults)
+  watchThresholdPct:       integer('watch_threshold_pct'),   // null → org default (50%)
+  awareThresholdPct:       integer('aware_threshold_pct'),   // null → org default (70%)
+  actionThresholdPct:      integer('action_threshold_pct'),  // null → org default (80%)
+  // IDs/keys of data points within this trigger's conditions that are mandatory.
+  // If ALL listed data points fire, the trigger auto-escalates to Action regardless of % total.
+  mandatoryConditionIds:   text('mandatory_condition_ids').array().default([]),
 });
 
 // Trigger Monitoring History - Track trigger state changes
@@ -6274,6 +6281,11 @@ export const signalMonitoringConfig = pgTable('signal_monitoring_config', {
   //   'default'    — use the original 16-pattern keyword scoring only (legacy engine)
   //   'both'       — run both in parallel, merge and deduplicate detections
   evaluationMode: varchar('evaluation_mode', { length: 20 }).default('both'),
+  // Org-wide alert threshold percentages (% of total data points / keywords that must match)
+  // Individual triggers can override these. Defaults: watch=50, aware=70, action=80
+  watchThresholdPct:  integer('watch_threshold_pct').default(50),
+  awareThresholdPct:  integer('aware_threshold_pct').default(70),
+  actionThresholdPct: integer('action_threshold_pct').default(80),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 export const insertSignalMonitoringConfigSchema = createInsertSchema(signalMonitoringConfig).omit({ id: true, updatedAt: true });
