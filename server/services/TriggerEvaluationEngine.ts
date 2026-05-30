@@ -387,14 +387,17 @@ function scoreSignalAgainstTriggerGroup(
 
   const { dataPoints } = groupConditions;
   // Two-tier thresholds for composite groups:
-  //   WATCH  — 15% of data points (minimum 2): situation developing, awareness email
-  //   ACTION — 35% of data points (minimum 4): trigger confirmed, execute now
+  //   WATCH  — 25% of data points (minimum 5): situation developing, awareness email
+  //            For a 28-point trigger this means 7 data points must hit.
+  //   ACTION — 50% of data points (minimum 8): trigger confirmed, execute now
+  //            For a 28-point trigger this means 14 data points must hit.
   // The user-configured minimumRequired acts as an additional floor on the ACTION bar.
-  const watchMinimum   = Math.max(Math.ceil(dataPoints.length * 0.15), 2);
+  // In both cases ALL mandatory/key data points must also be present.
+  const watchMinimum   = Math.max(Math.ceil(dataPoints.length * 0.25), 5);
   const minimumRequired = Math.max(
     groupConditions.minimumRequired,
-    Math.ceil(dataPoints.length * 0.35),
-    4
+    Math.ceil(dataPoints.length * 0.50),
+    8
   );
 
   let validMandatory = 0;

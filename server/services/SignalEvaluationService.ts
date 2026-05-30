@@ -253,13 +253,17 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   // A signal that clears ACTION thresholds gets the full execution alert.
   // A signal below WATCH is dismissed — no email sent.
   // ────────────────────────────────────────────────────────────────────────────
-  const WATCH_SCORE   = 50;
-  const WATCH_MATCHES = 3;
-  const WATCH_DENSITY = 0.08;
+  // WATCH  — 25% keyword density, 4+ matches, score ≥ 62
+  //          A 28-keyword pattern needs 7 matches before a watch email fires.
+  // ACTION — 40% keyword density, 8+ matches, score ≥ 82
+  //          A 28-keyword pattern needs 12 matches before the execution alert fires.
+  const WATCH_SCORE   = 62;
+  const WATCH_MATCHES = 4;
+  const WATCH_DENSITY = 0.25;
 
-  const ACTION_SCORE   = 78;
-  const ACTION_MATCHES = 6;
-  const ACTION_DENSITY = 0.15;
+  const ACTION_SCORE   = 82;
+  const ACTION_MATCHES = 8;
+  const ACTION_DENSITY = 0.40;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
