@@ -115,6 +115,19 @@ const DOMAIN_DB_MAP: Record<string, string[]> = {
   strategic: ["AI Governance"],
 };
 
+// Domain display string → relevant signal category IDs for live coverage indicator
+const DOMAIN_SIGNAL_MAP: Record<string, string[]> = {
+  "Financial Strategy":       ['financial', 'economic', 'regulatory'],
+  "Market Dynamics":          ['competitive', 'market', 'partnership'],
+  "Operational Excellence":   ['operational', 'execution', 'supplychain'],
+  "Technology & Innovation":  ['technology', 'cyber', 'innovation', 'ai_governance'],
+  "Regulatory & Compliance":  ['regulatory', 'geopolitical', 'legal'],
+  "Market Opportunities":     ['financial', 'competitive', 'partnership'],
+  "Brand & Reputation":       ['media', 'brand_reputation', 'competitive'],
+  "Talent & Leadership":      ['talent', 'behavior', 'execution'],
+  "AI Governance":            ['ai_governance', 'regulatory', 'technology'],
+};
+
 // Reverse map: full domain name → DOMAIN_DB_MAP key
 // Allows ?domain=Operational Excellence (from trigger routing) to resolve correctly
 const DOMAIN_NAME_TO_KEY: Record<string, string> = Object.entries(DOMAIN_DB_MAP)
@@ -428,6 +441,13 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
   const { data: templates } = useQuery<LibraryPlaybook[]>({
     queryKey: ["/api/playbooks/templates"],
   });
+
+  const { data: dashRaw } = useQuery<{ success: boolean; data: { categories: Array<{ categoryId: string; status: string }> } }>({
+    queryKey: ["/api/intelligence/dashboard"],
+    refetchInterval: 60_000,
+    staleTime: 30_000,
+  });
+  const liveCategories: Array<{ categoryId: string; status: string }> = dashRaw?.data?.categories ?? [];
 
   const liveDomainCounts = useMemo(() => {
     if (!templates) return {} as Record<string, number>;
@@ -915,6 +935,30 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                       </span>
                     ))}
                   </div>
+
+                  {/* Live Signal Match — shows how many relevant signals are active for this domain */}
+                  {(() => {
+                    const relevantIds = DOMAIN_SIGNAL_MAP[playbook.domain] ?? [];
+                    if (relevantIds.length === 0 || liveCategories.length === 0) return null;
+                    const relevant = liveCategories.filter(c => relevantIds.includes(c.categoryId));
+                    const active   = relevant.filter(c => c.status !== 'inactive');
+                    const pct      = relevant.length > 0 ? Math.round((active.length / relevant.length) * 100) : 0;
+                    const color    = pct >= 67 ? TEAL : pct >= 34 ? '#D97706' : '#9CA3AF';
+                    return (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, padding: '6px 0', borderTop: '1px solid #F0EDE4' }}>
+                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: color, flexShrink: 0, display: 'inline-block' }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, color, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em' }}>
+                          {active.length}/{relevant.length} signals active
+                        </span>
+                        <div style={{ flex: 1, height: 2, background: '#F0EDE4', borderRadius: 1, maxWidth: 60 }}>
+                          <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 1, transition: 'width 0.4s ease' }} />
+                        </div>
+                        <span style={{ fontSize: 9, color: '#9CA3AF', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: "'Barlow Condensed', sans-serif" }}>
+                          Live Match
+                        </span>
+                      </div>
+                    );
+                  })()}
 
                   {/* Evolution indicators — map compounds through activation */}
                   <div style={{

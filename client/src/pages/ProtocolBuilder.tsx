@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -1394,6 +1394,146 @@ function TriggerSandbox({ data }: { data: Data }) {
   );
 }
 
+// ── Protocol Saved — rich success screen ──────────────────────────────────────
+
+interface SavedCategoryStatus { categoryId: string; categoryName: string; status: string; }
+
+function ProtocolSavedScreen({ data, savedId }: { data: Data; savedId: string }) {
+  const [, navigate] = useLocation();
+  const { data: dashRaw } = useQuery<{ success: boolean; data: { categories: SavedCategoryStatus[] } }>({
+    queryKey: ['/api/intelligence/dashboard'],
+  });
+  const categories: SavedCategoryStatus[] = dashRaw?.data?.categories ?? [];
+
+  const linkedIds: string[] = data.linkedSignalIds ?? [];
+  const mandatoryIds: string[] = data.mandatorySignalIds ?? [];
+  const threshold = data.readinessPct ?? 60;
+  const mode = (data.readinessMode ?? 'both') as 'percentage' | 'mandatory' | 'both';
+
+  const linked = categories.filter(c => linkedIds.includes(c.categoryId));
+  const activeLinked = linked.filter(c => c.status !== 'inactive');
+  const pctActive = linked.length > 0 ? Math.round((activeLinked.length / linked.length) * 100) : 0;
+  const pctMet = pctActive >= threshold;
+  const mandatory = linked.filter(c => mandatoryIds.includes(c.categoryId));
+  const mandatoryAllFiring = mandatory.length > 0 && mandatory.every(c => c.status !== 'inactive');
+  const readinessMet =
+    mode === 'percentage' ? pctMet :
+    mode === 'mandatory'  ? mandatoryAllFiring :
+    pctMet || mandatoryAllFiring;
+
+  const isReady   = linkedIds.length > 0 && readinessMet;
+  const isPartial = linkedIds.length > 0 && !readinessMet && activeLinked.length > 0;
+  const verdictLabel = isReady ? 'READY' : isPartial ? 'PARTIAL SIGNAL' : linkedIds.length === 0 ? 'NOT CONFIGURED' : 'NOT READY';
+  const verdictColor = isReady ? TEAL : isPartial ? '#D97706' : '#9CA3AF';
+
+  const CATEGORY_LABELS: Record<string, string> = {
+    competitive:'Competitive', market:'Market', financial:'Financial', partnership:'Partnership',
+    innovation:'Innovation', technology:'Technology', regulatory:'Regulatory', supplychain:'Supply Chain',
+    cyber:'Cybersecurity', media:'Media', geopolitical:'Geopolitical', economic:'Economic',
+    brand_reputation:'Brand & Reputation', ai_governance:'AI Governance', talent:'Talent',
+    legal:'Legal', customer:'Customer', behavior:'Behavior', execution:'Execution', operational:'Operational',
+  };
+
+  return (
+    <div style={{ maxWidth: 620, margin: '0 auto', padding: '48px 0' }}>
+      {/* Header */}
+      <div style={{ textAlign: 'center', marginBottom: 32 }}>
+        <CheckCircle2 size={52} color={TEAL} style={{ marginBottom: 16 }} />
+        <div style={{ fontSize: 26, fontWeight: 800, color: NAVY, marginBottom: 6 }}>Protocol Saved</div>
+        <div style={{ fontSize: 14, color: '#6B7280' }}>{data.name} has been staged and is live in My Protocols.</div>
+      </div>
+
+      {/* Signal readiness preview */}
+      <div style={{ border: `1.5px solid ${verdictColor}40`, borderRadius: '0.15rem', background: '#fff', marginBottom: 20, overflow: 'hidden' }}>
+        <div style={{ padding: '16px 20px', borderBottom: `1px solid #F0EDE4`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>
+              Signal Readiness
+            </div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>
+              {linkedIds.length === 0
+                ? 'No signal categories configured'
+                : `${activeLinked.length} of ${linked.length} signal categories currently active`}
+            </div>
+          </div>
+          <div style={{
+            fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+            color: verdictColor, background: `${verdictColor}14`, border: `1px solid ${verdictColor}40`,
+            padding: '4px 12px', borderRadius: '0.15rem',
+          }}>
+            {verdictLabel}
+          </div>
+        </div>
+
+        {linked.length > 0 && (
+          <div style={{ padding: '14px 20px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {linked.map(cat => {
+                const active = cat.status !== 'inactive';
+                const isMandatory = mandatoryIds.includes(cat.categoryId);
+                return (
+                  <span key={cat.categoryId} style={{
+                    fontSize: 10, fontWeight: 700, padding: '3px 10px',
+                    borderRadius: '0.15rem',
+                    background: active ? (isMandatory ? 'rgba(43,138,110,0.12)' : 'rgba(43,138,110,0.07)') : '#F3F4F6',
+                    color: active ? (isMandatory ? TEAL : '#374151') : '#9CA3AF',
+                    border: `1px solid ${active ? (isMandatory ? TEAL + '60' : '#E5E7EB') : '#E5E7EB'}`,
+                    display: 'flex', alignItems: 'center', gap: 4,
+                  }}>
+                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: active ? TEAL : '#D1D5DB', flexShrink: 0, display: 'inline-block' }} />
+                    {CATEGORY_LABELS[cat.categoryId] ?? cat.categoryName}
+                    {isMandatory && <span style={{ color: '#D97706', fontWeight: 900, marginLeft: 2 }}>★</span>}
+                  </span>
+                );
+              })}
+            </div>
+            {linked.length > 0 && (
+              <div style={{ marginTop: 10, height: 3, background: '#F0EDE4', borderRadius: 2 }}>
+                <div style={{ height: '100%', width: `${pctActive}%`, background: isReady ? TEAL : isPartial ? '#D97706' : '#E5E2D9', borderRadius: 2, transition: 'width 0.5s ease' }} />
+              </div>
+            )}
+          </div>
+        )}
+
+        {linkedIds.length === 0 && (
+          <div style={{ padding: '14px 20px', fontSize: 12, color: '#9CA3AF' }}>
+            Add signal coverage in the Protocol Builder → Step 7 to enable live readiness monitoring.
+          </div>
+        )}
+      </div>
+
+      {/* Actions */}
+      <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <button
+          onClick={() => window.location.reload()}
+          style={{ padding: '11px 22px', borderRadius: '0.15rem', border: `1.5px solid ${NAVY}`, background: 'none', color: NAVY, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}
+        >
+          Build Another Protocol
+        </button>
+        <button
+          onClick={() => navigate('/my-protocols')}
+          style={{ padding: '11px 22px', borderRadius: '0.15rem', border: `1.5px solid ${TEAL}`, background: 'none', color: TEAL, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}
+        >
+          View in My Protocols →
+        </button>
+        {isReady && (
+          <button
+            onClick={() => navigate('/live-activation-center')}
+            style={{ padding: '11px 22px', borderRadius: '0.15rem', border: 'none', background: TEAL, color: '#fff', fontWeight: 700, fontSize: 13, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
+          >
+            <Play size={12} fill="#fff" /> Activate Now
+          </button>
+        )}
+        <Link href="/founding-partner-program">
+          <button style={{ padding: '11px 22px', borderRadius: '0.15rem', border: 'none', background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>
+            Apply for Founding Partner Access →
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 // ── Summary / Review ──────────────────────────────────────────────────────────
 
 function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave: () => void; isPending: boolean; savedId?: string }) {
@@ -1403,25 +1543,7 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
   const allFollowUp = data.followUpTasks.filter(t => t.description);
 
   if (savedId) {
-    return (
-      <div style={{ textAlign: 'center', padding: '60px 0' }}>
-        <CheckCircle2 size={56} color={TEAL} style={{ marginBottom: 20 }} />
-        <div style={{ fontSize: 28, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Protocol Saved</div>
-        <div style={{ fontSize: 16, color: MUTED, marginBottom: 32 }}>{data.name} is ready for activation.</div>
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link href="/protocol-builder">
-            <button onClick={() => window.location.reload()} style={{ padding: '12px 24px', borderRadius: '0.15rem', border: `1.5px solid ${NAVY}`, background: 'none', color: NAVY, fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
-              Build Another Protocol
-            </button>
-          </Link>
-          <Link href="/founding-partner-program">
-            <button style={{ padding: '12px 24px', borderRadius: '0.15rem', border: 'none', background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
-              Apply for Founding Partner Access →
-            </button>
-          </Link>
-        </div>
-      </div>
-    );
+    return <ProtocolSavedScreen data={data} savedId={savedId} />;
   }
 
   return (

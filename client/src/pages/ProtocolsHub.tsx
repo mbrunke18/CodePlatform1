@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'wouter';
-import { CheckCircle2, AlertTriangle, XCircle, Radio, Shield, Star, ChevronDown, ChevronUp, Plus, Clock } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
+import { CheckCircle2, AlertTriangle, XCircle, Radio, Shield, Star, ChevronDown, ChevronUp, Plus, Clock, Play } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import type { CustomProtocol } from '@shared/schema';
 
@@ -137,6 +137,7 @@ function SignalPill({ cat, isMandatory }: { cat: CategoryStatus; isMandatory: bo
 // ── Protocol card ─────────────────────────────────────────────────────────────
 function ProtocolCard({ protocol, categories }: { protocol: CustomProtocol; categories: CategoryStatus[] }) {
   const [expanded, setExpanded] = useState(false);
+  const [, navigate] = useLocation();
   const r            = computeReadiness(protocol, categories);
   const mandatoryIds = protocol.mandatorySignalIds ?? [];
   const mode         = (protocol.readinessMode ?? 'both') as 'percentage' | 'mandatory' | 'both';
@@ -179,12 +180,23 @@ function ProtocolCard({ protocol, categories }: { protocol: CustomProtocol; cate
           </div>
         )}
 
-        <button
-          onClick={() => setExpanded(v => !v)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, padding: 4, flexShrink: 0, marginTop: 2 }}
-        >
-          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+          {r.verdict === 'ready' && (
+            <button
+              onClick={() => navigate('/live-activation-center')}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '6px 14px', background: TEAL, color: '#fff', border: 'none', borderRadius: '0.15rem', fontWeight: 700, fontSize: 11, cursor: 'pointer', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}
+            >
+              <Play size={10} fill="#fff" />
+              Activate Now
+            </button>
+          )}
+          <button
+            onClick={() => setExpanded(v => !v)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, padding: 4, marginTop: 2 }}
+          >
+            {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+        </div>
       </div>
 
       {/* ── Progress bar ── */}
