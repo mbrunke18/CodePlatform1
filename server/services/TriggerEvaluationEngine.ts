@@ -281,7 +281,7 @@ interface ScoringResult {
   totalConditions: number;
   dataPoints: string[];           // human-readable labels for each condition hit
   allConditionsMet: boolean;      // the AND gate — all conditions must pass
-  alertTier?: 'watch' | 'action';
+  alertTier?: 'watch' | 'aware' | 'action';
 }
 
 function scoreSignalAgainstConfiguredTrigger(
@@ -386,18 +386,23 @@ function scoreSignalAgainstTriggerGroup(
   const dataPointLabels: string[] = [];
 
   const { dataPoints } = groupConditions;
-  // Two-tier thresholds for composite groups:
-  //   WATCH  — 25% of data points (minimum 5): situation developing, awareness email
-  //            For a 28-point trigger this means 7 data points must hit.
-  //   ACTION — 50% of data points (minimum 8): trigger confirmed, execute now
-  //            For a 28-point trigger this means 14 data points must hit.
-  // The user-configured minimumRequired acts as an additional floor on the ACTION bar.
-  // In both cases ALL mandatory/key data points must also be present.
-  const watchMinimum   = Math.max(Math.ceil(dataPoints.length * 0.25), 5);
+  // Three-tier alert thresholds for composite groups:
+  //   WATCH  — 50% of data points (minimum 5): situation developing, heads-up email
+  //   AWARE  — 70% of data points (minimum 8): pattern strengthening, monitor closely
+  //   ACTION — 80% of data points (minimum 10): trigger confirmed, execute now
+  //
+  // MANDATORY AUTO-TRIGGER: if every data point marked mandatory fires, the tier
+  // is automatically ACTION — regardless of overall percentage.
+  // This handles the case where 4 critical indicators fire on a 28-point trigger
+  // and the evidence is already conclusive without needing 22 more data points.
+  //
+  // The user-configured minimumRequired acts as an additional floor on ACTION only.
+  const watchMinimum  = Math.max(Math.ceil(dataPoints.length * 0.50), 5);
+  const awareMinimum  = Math.max(Math.ceil(dataPoints.length * 0.70), 8);
   const minimumRequired = Math.max(
     groupConditions.minimumRequired,
-    Math.ceil(dataPoints.length * 0.50),
-    8
+    Math.ceil(dataPoints.length * 0.80),
+    10
   );
 
   let validMandatory = 0;
@@ -440,44 +445,62 @@ function scoreSignalAgainstTriggerGroup(
   }
 
   // ── Gate checks ───────────────────────────────────────────────────────────
-  const allMandatoryMet    = validMandatory === mandatoryTotal;
-  const totalValid         = validMandatory + validOptional;
-  const watchThresholdMet  = allMandatoryMet && totalValid >= watchMinimum;
-  const actionThresholdMet = allMandatoryMet && totalValid >= minimumRequired;
-  const allConditionsMet   = actionThresholdMet; // keeps downstream logic unchanged
+  const allMandatoryMet     = validMandatory === mandatoryTotal;
+  const mandatoryAutoFire   = mandatoryTotal > 0 && validMandatory === mandatoryTotal;
+  const totalValid          = validMandatory + validOptional;
+  const watchThresholdMet   = allMandatoryMet && totalValid >= watchMinimum;
+  const awareThresholdMet   = allMandatoryMet && totalValid >= awareMinimum;
+  const actionThresholdMet  = mandatoryAutoFire || (allMandatoryMet && totalValid >= minimumRequired);
+  const allConditionsMet    = actionThresholdMet;
 
   // ── Confidence score ──────────────────────────────────────────────────────
+  // Score bands:  watch=35–59, aware=60–74, action=75–95
   let score = 0;
-  let alertTier: 'watch' | 'action' | undefined;
+  let alertTier: 'watch' | 'aware' | 'action' | undefined;
 
   if (actionThresholdMet) {
     alertTier = 'action';
     const matchRatio = totalValid / Math.max(dataPoints.length, 1);
-    score = 45 + Math.round(matchRatio * 35);
+    // Mandatory auto-fire gets a guaranteed floor of 75; percentage-based action starts at 75
+    score = mandatoryAutoFire && totalValid < minimumRequired
+      ? 75  // mandatory key data points fired — confirmed regardless of %
+      : 75 + Math.round(matchRatio * 20);
 
-    if (signal.impact === 'critical')    score += 12;
-    else if (signal.impact === 'high')   score += 7;
-    else if (signal.impact === 'medium') score += 3;
+    if (signal.impact === 'critical')    score += 10;
+    else if (signal.impact === 'high')   score += 6;
+    else if (signal.impact === 'medium') score += 2;
 
-    score += Math.max(0, (signal.confidence - 50) * 0.25);
+    score += Math.max(0, (signal.confidence - 50) * 0.20);
 
     if (
-      signal.source.includes('SEC')    ||
+      signal.source.includes('SEC')     ||
       signal.source.includes('Reuters') ||
       signal.source.includes('Bloomberg')
-    ) score += 8;
+    ) score += 6;
 
     score = Math.min(Math.round(score), 95);
+
+  } else if (awareThresholdMet) {
+    alertTier = 'aware';
+    // Score band 60–74: pattern is strengthening, monitor closely
+    const matchRatio = totalValid / Math.max(dataPoints.length, 1);
+    score = 60 + Math.round(matchRatio * 14);
+
+    if (signal.impact === 'critical') score += 6;
+    else if (signal.impact === 'high') score += 3;
+
+    score = Math.min(Math.round(score), 74); // hard cap below action floor
+
   } else if (watchThresholdMet) {
     alertTier = 'watch';
-    // Lower base score range (35–55) for watch-tier — situation developing
+    // Score band 35–59: situation developing, heads-up only
     const matchRatio = totalValid / Math.max(dataPoints.length, 1);
-    score = 35 + Math.round(matchRatio * 20);
+    score = 35 + Math.round(matchRatio * 24);
 
-    if (signal.impact === 'critical') score += 8;
-    else if (signal.impact === 'high') score += 4;
+    if (signal.impact === 'critical') score += 5;
+    else if (signal.impact === 'high') score += 2;
 
-    score = Math.min(Math.round(score), 59); // capped below action floor
+    score = Math.min(Math.round(score), 59); // hard cap below aware floor
   }
 
   return {

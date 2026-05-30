@@ -200,7 +200,10 @@ export interface DetectedTrigger {
   totalConditions?: number;         // total configured conditions that were evaluated
   dataPoints?: string[];            // human-readable labels of the matched data points
   engine?: 'configured' | 'default';
-  alertTier?: 'watch' | 'action';  // watch = situation developing; action = trigger confirmed, execute
+  alertTier?: 'watch' | 'aware' | 'action';
+  // watch  = 50% signals — situation developing, heads up
+  // aware  = 70% signals — pattern strengthening, monitor closely
+  // action = 80%+ signals OR all mandatory data points hit — trigger confirmed, execute
 }
 
 export interface AnalyzedSignal {
@@ -253,17 +256,14 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   // A signal that clears ACTION thresholds gets the full execution alert.
   // A signal below WATCH is dismissed — no email sent.
   // ────────────────────────────────────────────────────────────────────────────
-  // WATCH  — 25% keyword density, 4+ matches, score ≥ 62
-  //          A 28-keyword pattern needs 7 matches before a watch email fires.
-  // ACTION — 40% keyword density, 8+ matches, score ≥ 82
-  //          A 28-keyword pattern needs 12 matches before the execution alert fires.
-  const WATCH_SCORE   = 62;
-  const WATCH_MATCHES = 4;
-  const WATCH_DENSITY = 0.25;
-
-  const ACTION_SCORE   = 82;
-  const ACTION_MATCHES = 8;
-  const ACTION_DENSITY = 0.40;
+  // Three-tier alert system based on keyword density:
+  //   WATCH  ≥ 50% density — "Situation developing, heads up"
+  //   AWARE  ≥ 70% density — "Pattern strengthening, monitor closely"
+  //   ACTION ≥ 80% density — "Trigger confirmed, execute now"
+  // Signals below 50% density are dismissed — no alert sent.
+  const WATCH_SCORE   = 55;  const WATCH_MATCHES = 4;  const WATCH_DENSITY = 0.50;
+  const AWARE_SCORE   = 70;  const AWARE_MATCHES = 6;  const AWARE_DENSITY = 0.70;
+  const ACTION_SCORE  = 82;  const ACTION_MATCHES = 8; const ACTION_DENSITY = 0.80;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
@@ -279,11 +279,22 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
     if (confidenceScore < WATCH_SCORE) continue;
 
     // Classify into tier
-    const alertTier: 'watch' | 'action' = (
+    let alertTier: 'watch' | 'aware' | 'action';
+    if (
       confidenceScore >= ACTION_SCORE &&
       matchedKeywords.length >= ACTION_MATCHES &&
       density >= ACTION_DENSITY
-    ) ? 'action' : 'watch';
+    ) {
+      alertTier = 'action';
+    } else if (
+      confidenceScore >= AWARE_SCORE &&
+      matchedKeywords.length >= AWARE_MATCHES &&
+      density >= AWARE_DENSITY
+    ) {
+      alertTier = 'aware';
+    } else {
+      alertTier = 'watch';
+    }
 
     detections.push({
       triggerName: pattern.name,
@@ -541,6 +552,118 @@ async function sendWatchEmail(
     if (!sent) console.error(`✗ All senders failed for watch alert to ${recipientEmail}`);
   }
   console.log(`📧 Watch alert sent to ${emails.join(', ')}`);
+}
+
+async function sendAwareEmail(
+  detection: DetectedTrigger,
+  signal: AnalyzedSignal,
+  emails: string[],
+  orgId: string
+): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey || emails.length === 0) return;
+
+  const resend = new Resend(apiKey);
+  const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
+
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#7a3c0a;padding:32px 36px;">
+          <div style="color:#f5c08a;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Pattern Awareness Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Pattern Strengthening — Monitor Closely</div>
+          <div style="color:#f5c08a;font-size:13px;margin-top:8px;">This situation is gaining weight. Verify your protocol is staged and your key contacts are briefed.</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <div style="background:#fff7f0;border:1px solid #d4700040;border-left:3px solid #d47000;border-radius:4px;padding:14px 18px;margin-bottom:24px;">
+            <div style="color:#7a3c0a;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🟠 Be Aware — Not Yet a Confirmed Trigger</div>
+            <div style="color:#5c2d00;font-size:13px;line-height:1.5;">Signal strength has crossed 70% of monitored indicators. This is not yet a confirmed execution trigger, but the pattern is strengthening. No protocol activation is required — confirm your prepared response is staged and ready.</div>
+          </div>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Pattern</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Strength</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#7a3c0a;font-size:13px;font-weight:700;">${detection.confidenceScore}% — approaching execution threshold</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Indicators Matched</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} monitored indicators</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;color:#666;font-size:13px;">Protocol Staged</td>
+              <td style="padding:10px 0;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:600;">${detection.recommendedPlaybook}</span>
+                <span style="display:inline-block;margin-left:6px;background:#d4700020;color:#7a3c0a;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">Confirm ready</span>
+              </td>
+            </tr>
+          </table>
+          ${(detection.matchedKeywords && detection.matchedKeywords.length > 0) ? `
+          <div style="background:#fff7f0;border:1px solid #d4700030;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="color:#7a3c0a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Indicators detected in source signal</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${detection.matchedKeywords.map(kw => `<span style="display:inline-block;background:#d4700015;border:1px solid #d4700050;color:#7a3c0a;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join('')}
+            </div>
+          </div>` : ''}
+          <div style="background:#f0ede4;border-left:3px solid #d47000;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? '…' : ''}</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#7a3c0a;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">Review Signal in Platform →</a>
+          </div>
+          <div style="text-align:center;color:#999;font-size:12px;margin-top:8px;">If this reaches 80% of monitored indicators, you will receive a <strong>Trigger Confirmed</strong> alert with full execution authority.</div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. Awareness alerts require no action — verify your protocol staging only.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const fromAddresses = [
+    'Readiness OS <onboarding@resend.dev>',
+    'Readiness OS <pilot@vaughnmartin.com>',
+  ];
+
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString('base64url');
+    const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend.emails.send({
+          from,
+          replyTo: 'pilot@vaughnmartin.com',
+          to: [recipientEmail],
+          subject: `🟠 Pattern Awareness: ${detection.triggerName} — Monitor Closely`,
+          html: personalizedHtml,
+        });
+        if (error) {
+          console.warn(`⚠ Aware email sender ${from} rejected (${error.message}) — trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err: any) {
+        console.warn(`⚠ Aware email sender ${from} threw: ${err.message} — trying next`);
+      }
+    }
+    if (!sent) console.error(`✗ All senders failed for awareness alert to ${recipientEmail}`);
+  }
+  console.log(`📧 Awareness alert sent to ${emails.join(', ')}`);
 }
 
 async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSignal): Promise<void> {
@@ -969,20 +1092,32 @@ export async function evaluateAndPersistSignals(
         }
       } catch { /* non-blocking */ }
 
-      // Fire notifications — route by alert tier
+      // Route to the correct email function based on alert tier:
+      //   watch  (50–69% match)      → amber "Situation Developing" email only
+      //   aware  (70–79% match)      → orange "Pattern Strengthening" email only
+      //   action (80%+ or mandatory) → red "Trigger Confirmed" email + Slack
       const isActionTier = detection.alertTier === 'action' || detection.alertTier === undefined;
+      const isAwareTier  = detection.alertTier === 'aware';
+
+      let emailFn: Promise<void> = Promise.resolve();
+      if (contactEmails.length > 0) {
+        if (isActionTier) {
+          emailFn = sendDetectionEmail(detection, signal, contactEmails, organizationId);
+        } else if (isAwareTier) {
+          emailFn = sendAwareEmail(detection, signal, contactEmails, organizationId);
+        } else {
+          emailFn = sendWatchEmail(detection, signal, contactEmails, organizationId);
+        }
+      }
+
       await Promise.allSettled([
         isActionTier ? sendDetectionSlack(detection, signal) : Promise.resolve(),
-        contactEmails.length > 0
-          ? (isActionTier
-              ? sendDetectionEmail(detection, signal, contactEmails, organizationId)
-              : sendWatchEmail(detection, signal, contactEmails, organizationId))
-          : Promise.resolve(),
+        emailFn,
       ]);
 
       // Stamp notification milestone on the Execution Clock
       const notifiedAt = new Date();
-      const timelineStatus = isActionTier ? 'notified' : 'watch';
+      const timelineStatus = isActionTier ? 'notified' : isAwareTier ? 'aware' : 'watch';
       try {
         if (executionTimelineId) {
           await db.update(executionTimelines)
