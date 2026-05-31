@@ -321,6 +321,90 @@ practiceDrillRouter.get('/performance/:organizationId', async (req, res) => {
 });
 
 /**
+ * POST /api/practice-drills/:drillId/complication
+ * Inject a mid-drill complication — uses OpenAI when available, falls back to curated templates
+ */
+practiceDrillRouter.post('/:drillId/complication', async (req, res) => {
+  try {
+    const { minuteElapsed = 0, playbookName = 'Readiness Protocol', domain = 'risk' } = req.body;
+
+    const templates = {
+      growth: [
+        { title: 'Competitor Announcement Breaking', description: 'A direct competitor has just announced a conflicting initiative. Media is requesting comment and your messaging window is closing fast.', severity: 'HIGH', responseOptions: ['Accelerate primary announcement', 'Coordinate counter-narrative brief', 'Issue media holding statement'] },
+        { title: 'Deal Counsel Unreachable', description: 'Lead legal counsel is in an emergency session and cannot be reached. Secondary authorization chain must be activated immediately.', severity: 'HIGH', responseOptions: ['Activate backup legal authority', 'Proceed with delegated authorization', 'Pause execution of legal-gated tasks'] },
+        { title: 'Data Room Access Breach', description: 'Unauthorized access attempt detected on the secure data room. CISO and Legal must be notified — a second response track must open now.', severity: 'CRITICAL', responseOptions: ['Suspend data room immediately', 'Notify CISO and General Counsel', 'Activate cyber incident protocol'] },
+      ],
+      risk: [
+        { title: 'Regulatory Emergency Inquiry', description: 'A regulatory agency has issued a simultaneous emergency data request. A second response track must be opened without pausing the primary execution.', severity: 'CRITICAL', responseOptions: ['Assign separate regulatory lead', 'Notify General Counsel immediately', 'Document all actions in real-time'] },
+        { title: 'Story Published Ahead of Plan', description: 'A breaking news article has been published before your communications plan executed. Your narrative window has closed — rapid response required.', severity: 'HIGH', responseOptions: ['Activate media rapid response', 'Issue immediate holding statement', 'Brief board communications lead'] },
+        { title: 'Primary Vendor Gone Silent', description: 'Your primary recovery vendor has gone unresponsive. Alternative sourcing must be activated within the next 15 minutes to hold the timeline.', severity: 'HIGH', responseOptions: ['Activate backup vendor immediately', 'Escalate to Chief Procurement Officer', 'Document vendor failure for legal review'] },
+      ],
+      transformation: [
+        { title: 'Employee Representative Escalation', description: 'Workforce representatives have escalated concerns and are requesting immediate executive dialogue. Protocol scope must expand to include a parallel HR track.', severity: 'HIGH', responseOptions: ['Arrange executive briefing in 10 minutes', 'Activate HR emergency response line', 'Pause impacted workforce announcements'] },
+        { title: 'Board Member Requesting Briefing', description: 'A board member has requested a real-time executive update. Primary execution must continue while a parallel briefing track is opened.', severity: 'MEDIUM', responseOptions: ['Assign dedicated board briefing lead', 'Prepare 5-minute executive summary', 'Continue primary execution uninterrupted'] },
+        { title: 'Communication System Degraded', description: 'Primary stakeholder communication infrastructure is showing failures. Backup notification channels must be validated and activated now.', severity: 'HIGH', responseOptions: ['Switch to backup communication channels', 'Notify IT Lead immediately', 'Activate manual notification tree'] },
+      ],
+    };
+
+    const domainKey = (domain?.toLowerCase() ?? '').includes('growth') ? 'growth' :
+                      (domain?.toLowerCase() ?? '').includes('risk') ? 'risk' : 'transformation';
+    const pool = templates[domainKey as keyof typeof templates] ?? templates.risk;
+    const idx = minuteElapsed <= 4 ? 0 : minuteElapsed <= 7 ? 1 : 2;
+    const fallback = pool[idx % pool.length];
+
+    // Try OpenAI for protocol-specific complication
+    try {
+      const { default: OpenAI } = await import('openai');
+      const openai = new OpenAI({
+        apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY!,
+        baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+      });
+
+      const aiRes = await openai.chat.completions.create({
+        model: 'gpt-4o',
+        max_tokens: 220,
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a crisis drill complication generator for executive readiness simulations. Generate a realistic mid-drill complication that adds executive pressure without derailing the primary response. Respond ONLY with valid JSON matching this shape: { "title": string (max 8 words), "description": string (max 45 words, urgent tone), "severity": "MEDIUM"|"HIGH"|"CRITICAL" }'
+          },
+          {
+            role: 'user',
+            content: `Protocol: "${playbookName}". Domain: "${domain}". Minute ${minuteElapsed} of 12. Generate a complication requiring immediate executive decision-making.`
+          }
+        ],
+      });
+
+      const raw = aiRes.choices[0]?.message?.content?.trim() ?? '';
+      const cleaned = raw.replace(/```json\n?|```/g, '').trim();
+      const parsed = JSON.parse(cleaned);
+
+      return res.json({
+        id: `comp-${Date.now()}`,
+        title: parsed.title ?? fallback.title,
+        description: parsed.description ?? fallback.description,
+        severity: parsed.severity ?? fallback.severity,
+        responseOptions: fallback.responseOptions,
+        injectedAt: new Date().toISOString(),
+        minuteElapsed,
+      });
+    } catch (_aiErr) {
+      // Fall through to template
+    }
+
+    res.json({
+      id: `comp-${Date.now()}`,
+      ...fallback,
+      injectedAt: new Date().toISOString(),
+      minuteElapsed,
+    });
+  } catch (error) {
+    console.error('Error injecting complication:', error);
+    res.status(500).json({ error: 'Failed to inject complication' });
+  }
+});
+
+/**
  * DELETE /api/practice-drills/:drillId
  * Cancel/delete a practice drill
  */

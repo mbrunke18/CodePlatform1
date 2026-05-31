@@ -56,30 +56,80 @@ export async function sendSlackNotification(message: SlackMessage): Promise<bool
 }
 
 /**
- * Notify stakeholders of playbook activation
+ * Notify stakeholders of playbook activation — rich Block Kit format
  */
 export async function notifyPlaybookActivation(playbookName: string, stakeholdersCount: number, deadline: Date): Promise<void> {
   try {
     const timeLeft = Math.round((deadline.getTime() - Date.now()) / 60000);
-    
+    const deadlineStr = deadline.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    const appUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+
     await sendSlackNotification({
-      text: `🚀 *Strategic Playbook Activated*\n\n*Playbook:* ${playbookName}\n*Stakeholders:* ${stakeholdersCount}\n*Execution Window:* ${timeLeft} minutes`,
+      text: `🚨 Readiness Protocol Activated — ${playbookName} · 12-Minute Execution Window`,
       blocks: [
+        {
+          type: 'header',
+          text: {
+            type: 'plain_text',
+            text: '🚨 Readiness Protocol Activated',
+            emoji: true
+          }
+        },
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `🚀 *Strategic Playbook Activated*\n\n*Playbook:* ${playbookName}\n*Stakeholders:* ${stakeholdersCount}\n*Execution Window:* ${timeLeft} minutes remaining`
+            text: `*${playbookName}*\nPre-staged response is underway. Executive authorization required.`
           }
+        },
+        {
+          type: 'divider'
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Execution Window*\n${timeLeft} minutes remaining`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Deadline*\n${deadlineStr}`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Stakeholders Notified*\n${stakeholdersCount}`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Status*\nPre-staged — tasks ready`
+            }
+          ]
+        },
+        {
+          type: 'context',
+          elements: [
+            {
+              type: 'mrkdwn',
+              text: '⚡ Readiness OS · The response was ready before the trigger fired'
+            }
+          ]
         },
         {
           type: 'actions',
           elements: [
             {
               type: 'button',
-              text: { type: 'plain_text', text: 'View Execution' },
-              url: `${process.env.APP_URL || 'http://localhost:5000'}/command-center`,
-              action_id: 'view_execution'
+              style: 'primary',
+              text: { type: 'plain_text', text: '→ Open War Room', emoji: true },
+              url: `${appUrl}/command-center`,
+              action_id: 'open_war_room'
+            },
+            {
+              type: 'button',
+              text: { type: 'plain_text', text: 'View Protocol', emoji: true },
+              url: `${appUrl}/playbook-library`,
+              action_id: 'view_protocol'
             }
           ]
         }
@@ -95,15 +145,59 @@ export async function notifyPlaybookActivation(playbookName: string, stakeholder
  */
 export async function notifyExecutionComplete(playbookName: string, success: boolean, metrics: any): Promise<void> {
   try {
+    const appUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+    const statusEmoji = success ? '✅' : '❌';
+    const statusText = success ? 'Execution Complete' : 'Execution Requires Attention';
+
     await sendSlackNotification({
-      text: `${success ? '✅' : '❌'} *Execution Complete*\n\n*Playbook:* ${playbookName}\n*Status:* ${success ? 'Success' : 'Failed'}\n*Duration:* ${metrics.duration}\n*Tasks:* ${metrics.tasksCompleted}/${metrics.tasksTotal}`,
+      text: `${statusEmoji} ${statusText} — ${playbookName}`,
       blocks: [
+        {
+          type: 'header',
+          text: {
+            type: 'plain_text',
+            text: `${statusEmoji} ${statusText}`,
+            emoji: true
+          }
+        },
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `${success ? '✅' : '❌'} *Execution Complete*\n\n*Playbook:* ${playbookName}\n*Status:* ${success ? 'Success' : 'Failed'}\n*Stakeholder Response:* ${metrics.stakeholderResponseRate}%\n*Task Completion:* ${metrics.taskCompletionRate}%`
+            text: `*${playbookName}*`
           }
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Stakeholder Response*\n${metrics.stakeholderResponseRate ?? '--'}%`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Task Completion*\n${metrics.taskCompletionRate ?? '--'}%`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Duration*\n${metrics.duration ?? '--'}`
+            },
+            {
+              type: 'mrkdwn',
+              text: `*Result*\n${success ? 'Within 12-minute window' : 'Exceeded target window'}`
+            }
+          ]
+        },
+        {
+          type: 'actions',
+          elements: [
+            {
+              type: 'button',
+              text: { type: 'plain_text', text: 'View Debrief', emoji: true },
+              url: `${appUrl}/practice-drills`,
+              action_id: 'view_debrief'
+            }
+          ]
         }
       ]
     });
@@ -112,8 +206,40 @@ export async function notifyExecutionComplete(playbookName: string, success: boo
   }
 }
 
+/**
+ * Notify drill complication injection to Slack channel
+ */
+export async function notifyDrillComplication(playbookName: string, complication: { title: string; description: string; severity: string }): Promise<void> {
+  try {
+    const severityEmoji = complication.severity === 'CRITICAL' ? '🔴' : complication.severity === 'HIGH' ? '🟠' : '🟡';
+    await sendSlackNotification({
+      text: `${severityEmoji} Drill Complication: ${complication.title} — ${playbookName}`,
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `${severityEmoji} *Drill Complication Injected*\n*${complication.title}*\n${complication.description}`
+          }
+        },
+        {
+          type: 'context',
+          elements: [
+            {
+              type: 'mrkdwn',
+              text: `Protocol: ${playbookName} · Severity: ${complication.severity}`
+            }
+          ]
+        }
+      ]
+    });
+  } catch (error) {
+    log.warn({ error }, 'Failed to notify drill complication via Slack');
+  }
+}
+
 function logNotificationLocally(message: SlackMessage) {
   log.info({ message }, '📤 [LOCAL] Slack notification logged (webhook not configured)');
 }
 
-export default { sendSlackNotification, notifyPlaybookActivation, notifyExecutionComplete };
+export default { sendSlackNotification, notifyPlaybookActivation, notifyExecutionComplete, notifyDrillComplication };

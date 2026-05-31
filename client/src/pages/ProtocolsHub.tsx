@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
-import { CheckCircle2, AlertTriangle, XCircle, Radio, Shield, Star, ChevronDown, ChevronUp, Plus, Clock, Play } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, XCircle, Radio, Shield, Star, ChevronDown, ChevronUp, Plus, Clock, Play, Link2 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import type { CustomProtocol } from '@shared/schema';
 
@@ -159,6 +159,12 @@ function ProtocolCard({ protocol, categories }: { protocol: CustomProtocol; cate
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: NAVY }}>{protocol.name}</span>
             <VerdictBadge verdict={r.verdict} />
+            {protocol.isCompound && (
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '2px 8px', borderRadius: '0.15rem', background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.3)' }}>
+                <Link2 size={10} color="#7C3AED" />
+                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.1em', color: '#7C3AED' }}>COMPOUND</span>
+              </div>
+            )}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
             {protocol.riskThreshold && (
@@ -305,11 +311,18 @@ export default function ProtocolsHub() {
                 Live signal coverage for each Readiness Protocol you've built. The verdict updates as signals fire — the response is ready before the trigger fires.
               </p>
             </div>
-            <Link href="/protocol-builder">
-              <button style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 18px', background: NAVY, color: GOLD, border: 'none', borderRadius: '0.15rem', fontWeight: 700, fontSize: 13, cursor: 'pointer', whiteSpace: 'nowrap' }}>
-                <Plus size={14} /> New Protocol
-              </button>
-            </Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Link href="/compound-protocol-builder">
+                <button style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 18px', background: 'transparent', color: NAVY, border: `1.5px solid ${NAVY}`, borderRadius: '0.15rem', fontWeight: 700, fontSize: 13, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                  <Link2 size={14} /> Compound Protocol
+                </button>
+              </Link>
+              <Link href="/protocol-builder">
+                <button style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 18px', background: NAVY, color: GOLD, border: 'none', borderRadius: '0.15rem', fontWeight: 700, fontSize: 13, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                  <Plus size={14} /> New Protocol
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
 

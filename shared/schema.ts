@@ -6770,6 +6770,10 @@ export const customProtocols = pgTable('custom_protocols', {
   readinessMode: varchar('readiness_mode', { length: 20 }).default('both'),
   readinessPct: integer('readiness_pct').default(80),
   customDataPointDefs: jsonb('custom_data_point_defs').default([]),
+  // Compound Protocol fields
+  isCompound: boolean('is_compound').default(false),
+  linkedProtocolIds: text('linked_protocol_ids').array().default([]),
+  compoundTriggerLogic: varchar('compound_trigger_logic', { length: 10 }).default('AND'), // AND = both must fire, OR = either fires
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
