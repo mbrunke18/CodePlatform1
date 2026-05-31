@@ -10544,7 +10544,8 @@ Respond ONLY as JSON with this exact structure:
   app.get('/api/custom-protocols', async (req: any, res) => {
     try {
       const userId = req.user?.id ?? undefined;
-      const protocols = await storage.getCustomProtocols(userId);
+      const orgId = req.user?.organizationId ?? undefined;
+      const protocols = await storage.getCustomProtocols(userId, orgId);
       res.json(protocols);
     } catch (err: any) {
       res.status(500).json({ error: err.message });

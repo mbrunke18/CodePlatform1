@@ -154,7 +154,7 @@ import {
   type ComprehensiveScenarioTemplate 
 } from "@shared/comprehensive-scenario-templates";
 import { db } from "./db";
-import { eq, desc, and, sql, inArray } from "drizzle-orm";
+import { eq, desc, and, sql, inArray, or } from "drizzle-orm";
 import { decisionOutcomes, investorLeads } from "@shared/schema";
 
 export interface IStorage {
@@ -434,7 +434,7 @@ export interface IStorage {
 
   // Custom Protocols (Protocol Builder)
   createCustomProtocol(data: InsertCustomProtocol): Promise<CustomProtocol>;
-  getCustomProtocols(userId?: string): Promise<CustomProtocol[]>;
+  getCustomProtocols(userId?: string, organizationId?: string): Promise<CustomProtocol[]>;
   getCustomProtocol(id: string): Promise<CustomProtocol | undefined>;
   updateCustomProtocol(id: string, data: Partial<InsertCustomProtocol>): Promise<CustomProtocol>;
 
@@ -3572,7 +3572,12 @@ export class DatabaseStorage implements IStorage {
     return row;
   }
 
-  async getCustomProtocols(userId?: string): Promise<CustomProtocol[]> {
+  async getCustomProtocols(userId?: string, organizationId?: string): Promise<CustomProtocol[]> {
+    if (userId && organizationId) {
+      return await db.select().from(customProtocols)
+        .where(or(eq(customProtocols.userId, userId), eq(customProtocols.organizationId, organizationId as any)))
+        .orderBy(desc(customProtocols.createdAt));
+    }
     if (userId) {
       return await db.select().from(customProtocols)
         .where(eq(customProtocols.userId, userId))

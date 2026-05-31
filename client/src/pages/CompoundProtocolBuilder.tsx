@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { Link2, Shield, ChevronRight, ChevronLeft, CheckCircle, AlertTriangle, Zap } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import { apiRequest, queryClient } from '@/lib/queryClient';

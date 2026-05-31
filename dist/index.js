@@ -6448,6 +6448,11 @@ var init_schema = __esm({
       readinessMode: varchar("readiness_mode", { length: 20 }).default("both"),
       readinessPct: integer2("readiness_pct").default(80),
       customDataPointDefs: jsonb("custom_data_point_defs").default([]),
+      // Compound Protocol fields
+      isCompound: boolean("is_compound").default(false),
+      linkedProtocolIds: text2("linked_protocol_ids").array().default([]),
+      compoundTriggerLogic: varchar("compound_trigger_logic", { length: 10 }).default("AND"),
+      // AND = both must fire, OR = either fires
       createdAt: timestamp2("created_at").defaultNow(),
       updatedAt: timestamp2("updated_at").defaultNow()
     });
@@ -9828,7 +9833,7 @@ var init_CredentialEncryptionService = __esm({
 });
 
 // server/storage.ts
-import { eq, desc, and, sql as sql3, inArray } from "drizzle-orm";
+import { eq, desc, and, sql as sql3, inArray, or } from "drizzle-orm";
 var DatabaseStorage, storage;
 var init_storage = __esm({
   "server/storage.ts"() {
@@ -11834,9 +11839,9 @@ var init_storage = __esm({
       async getSignalConnectors(organizationId) {
         try {
           const { signalConnectors: signalConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq62, or: or2, isNull: isNull5 } = await import("drizzle-orm");
+          const { eq: eq62, or: or3, isNull: isNull5 } = await import("drizzle-orm");
           if (organizationId) {
-            return await db.select().from(signalConnectors2).where(or2(isNull5(signalConnectors2.organizationId), eq62(signalConnectors2.organizationId, organizationId)));
+            return await db.select().from(signalConnectors2).where(or3(isNull5(signalConnectors2.organizationId), eq62(signalConnectors2.organizationId, organizationId)));
           }
           return await db.select().from(signalConnectors2).orderBy(signalConnectors2.name);
         } catch {
@@ -12094,7 +12099,10 @@ var init_storage = __esm({
         const [row] = await db.insert(customProtocols).values(data).returning();
         return row;
       }
-      async getCustomProtocols(userId) {
+      async getCustomProtocols(userId, organizationId) {
+        if (userId && organizationId) {
+          return await db.select().from(customProtocols).where(or(eq(customProtocols.userId, userId), eq(customProtocols.organizationId, organizationId))).orderBy(desc(customProtocols.createdAt));
+        }
         if (userId) {
           return await db.select().from(customProtocols).where(eq(customProtocols.userId, userId)).orderBy(desc(customProtocols.createdAt));
         }
@@ -16289,32 +16297,79 @@ async function sendSlackNotification(message) {
 async function notifyPlaybookActivation(playbookName, stakeholdersCount, deadline) {
   try {
     const timeLeft = Math.round((deadline.getTime() - Date.now()) / 6e4);
+    const deadlineStr = deadline.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+    const appUrl = process.env.APP_URL || "https://vaughnmartin.com";
     await sendSlackNotification({
-      text: `\u{1F680} *Strategic Playbook Activated*
-
-*Playbook:* ${playbookName}
-*Stakeholders:* ${stakeholdersCount}
-*Execution Window:* ${timeLeft} minutes`,
+      text: `\u{1F6A8} Readiness Protocol Activated \u2014 ${playbookName} \xB7 12-Minute Execution Window`,
       blocks: [
+        {
+          type: "header",
+          text: {
+            type: "plain_text",
+            text: "\u{1F6A8} Readiness Protocol Activated",
+            emoji: true
+          }
+        },
         {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: `\u{1F680} *Strategic Playbook Activated*
-
-*Playbook:* ${playbookName}
-*Stakeholders:* ${stakeholdersCount}
-*Execution Window:* ${timeLeft} minutes remaining`
+            text: `*${playbookName}*
+Pre-staged response is underway. Executive authorization required.`
           }
+        },
+        {
+          type: "divider"
+        },
+        {
+          type: "section",
+          fields: [
+            {
+              type: "mrkdwn",
+              text: `*Execution Window*
+${timeLeft} minutes remaining`
+            },
+            {
+              type: "mrkdwn",
+              text: `*Deadline*
+${deadlineStr}`
+            },
+            {
+              type: "mrkdwn",
+              text: `*Stakeholders Notified*
+${stakeholdersCount}`
+            },
+            {
+              type: "mrkdwn",
+              text: `*Status*
+Pre-staged \u2014 tasks ready`
+            }
+          ]
+        },
+        {
+          type: "context",
+          elements: [
+            {
+              type: "mrkdwn",
+              text: "\u26A1 Readiness OS \xB7 The response was ready before the trigger fired"
+            }
+          ]
         },
         {
           type: "actions",
           elements: [
             {
               type: "button",
-              text: { type: "plain_text", text: "View Execution" },
-              url: `${process.env.APP_URL || "http://localhost:5000"}/command-center`,
-              action_id: "view_execution"
+              style: "primary",
+              text: { type: "plain_text", text: "\u2192 Open War Room", emoji: true },
+              url: `${appUrl}/command-center`,
+              action_id: "open_war_room"
+            },
+            {
+              type: "button",
+              text: { type: "plain_text", text: "View Protocol", emoji: true },
+              url: `${appUrl}/playbook-library`,
+              action_id: "view_protocol"
             }
           ]
         }
@@ -36088,6 +36143,75 @@ var init_practiceDrillRoutes = __esm({
         res.status(500).json({ error: "Failed to fetch performance data" });
       }
     });
+    practiceDrillRouter.post("/:drillId/complication", async (req, res) => {
+      try {
+        const { minuteElapsed = 0, playbookName = "Readiness Protocol", domain = "risk" } = req.body;
+        const templates = {
+          growth: [
+            { title: "Competitor Announcement Breaking", description: "A direct competitor has just announced a conflicting initiative. Media is requesting comment and your messaging window is closing fast.", severity: "HIGH", responseOptions: ["Accelerate primary announcement", "Coordinate counter-narrative brief", "Issue media holding statement"] },
+            { title: "Deal Counsel Unreachable", description: "Lead legal counsel is in an emergency session and cannot be reached. Secondary authorization chain must be activated immediately.", severity: "HIGH", responseOptions: ["Activate backup legal authority", "Proceed with delegated authorization", "Pause execution of legal-gated tasks"] },
+            { title: "Data Room Access Breach", description: "Unauthorized access attempt detected on the secure data room. CISO and Legal must be notified \u2014 a second response track must open now.", severity: "CRITICAL", responseOptions: ["Suspend data room immediately", "Notify CISO and General Counsel", "Activate cyber incident protocol"] }
+          ],
+          risk: [
+            { title: "Regulatory Emergency Inquiry", description: "A regulatory agency has issued a simultaneous emergency data request. A second response track must be opened without pausing the primary execution.", severity: "CRITICAL", responseOptions: ["Assign separate regulatory lead", "Notify General Counsel immediately", "Document all actions in real-time"] },
+            { title: "Story Published Ahead of Plan", description: "A breaking news article has been published before your communications plan executed. Your narrative window has closed \u2014 rapid response required.", severity: "HIGH", responseOptions: ["Activate media rapid response", "Issue immediate holding statement", "Brief board communications lead"] },
+            { title: "Primary Vendor Gone Silent", description: "Your primary recovery vendor has gone unresponsive. Alternative sourcing must be activated within the next 15 minutes to hold the timeline.", severity: "HIGH", responseOptions: ["Activate backup vendor immediately", "Escalate to Chief Procurement Officer", "Document vendor failure for legal review"] }
+          ],
+          transformation: [
+            { title: "Employee Representative Escalation", description: "Workforce representatives have escalated concerns and are requesting immediate executive dialogue. Protocol scope must expand to include a parallel HR track.", severity: "HIGH", responseOptions: ["Arrange executive briefing in 10 minutes", "Activate HR emergency response line", "Pause impacted workforce announcements"] },
+            { title: "Board Member Requesting Briefing", description: "A board member has requested a real-time executive update. Primary execution must continue while a parallel briefing track is opened.", severity: "MEDIUM", responseOptions: ["Assign dedicated board briefing lead", "Prepare 5-minute executive summary", "Continue primary execution uninterrupted"] },
+            { title: "Communication System Degraded", description: "Primary stakeholder communication infrastructure is showing failures. Backup notification channels must be validated and activated now.", severity: "HIGH", responseOptions: ["Switch to backup communication channels", "Notify IT Lead immediately", "Activate manual notification tree"] }
+          ]
+        };
+        const domainKey = (domain?.toLowerCase() ?? "").includes("growth") ? "growth" : (domain?.toLowerCase() ?? "").includes("risk") ? "risk" : "transformation";
+        const pool3 = templates[domainKey] ?? templates.risk;
+        const idx = minuteElapsed <= 4 ? 0 : minuteElapsed <= 7 ? 1 : 2;
+        const fallback = pool3[idx % pool3.length];
+        try {
+          const { default: OpenAI8 } = await import("openai");
+          const openai6 = new OpenAI8({
+            apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
+            baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
+          });
+          const aiRes = await openai6.chat.completions.create({
+            model: "gpt-4o",
+            max_tokens: 220,
+            messages: [
+              {
+                role: "system",
+                content: 'You are a crisis drill complication generator for executive readiness simulations. Generate a realistic mid-drill complication that adds executive pressure without derailing the primary response. Respond ONLY with valid JSON matching this shape: { "title": string (max 8 words), "description": string (max 45 words, urgent tone), "severity": "MEDIUM"|"HIGH"|"CRITICAL" }'
+              },
+              {
+                role: "user",
+                content: `Protocol: "${playbookName}". Domain: "${domain}". Minute ${minuteElapsed} of 12. Generate a complication requiring immediate executive decision-making.`
+              }
+            ]
+          });
+          const raw = aiRes.choices[0]?.message?.content?.trim() ?? "";
+          const cleaned = raw.replace(/```json\n?|```/g, "").trim();
+          const parsed = JSON.parse(cleaned);
+          return res.json({
+            id: `comp-${Date.now()}`,
+            title: parsed.title ?? fallback.title,
+            description: parsed.description ?? fallback.description,
+            severity: parsed.severity ?? fallback.severity,
+            responseOptions: fallback.responseOptions,
+            injectedAt: (/* @__PURE__ */ new Date()).toISOString(),
+            minuteElapsed
+          });
+        } catch (_aiErr) {
+        }
+        res.json({
+          id: `comp-${Date.now()}`,
+          ...fallback,
+          injectedAt: (/* @__PURE__ */ new Date()).toISOString(),
+          minuteElapsed
+        });
+      } catch (error) {
+        console.error("Error injecting complication:", error);
+        res.status(500).json({ error: "Failed to inject complication" });
+      }
+    });
     practiceDrillRouter.delete("/:drillId", async (req, res) => {
       try {
         const { drillId } = req.params;
@@ -55709,7 +55833,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   });
   app2.get("/api/signal-accountability", async (req, res) => {
     try {
-      const { and: and41, or: or2, lte: lte2, isNull: isNull5, desc: desc30 } = await import("drizzle-orm");
+      const { and: and41, or: or3, lte: lte2, isNull: isNull5, desc: desc30 } = await import("drizzle-orm");
       const { eq: eqOp } = await import("drizzle-orm");
       const { triggerDetections: td } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const orgId = req.query.organizationId || req.orgId || "system";
@@ -58142,7 +58266,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/custom-protocols", async (req, res) => {
     try {
       const userId = req.user?.id ?? void 0;
-      const protocols = await storage.getCustomProtocols(userId);
+      const orgId = req.user?.organizationId ?? void 0;
+      const protocols = await storage.getCustomProtocols(userId, orgId);
       res.json(protocols);
     } catch (err) {
       res.status(500).json({ error: err.message });
