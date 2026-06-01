@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import { ExecutiveDecisionPanel } from "@/components/ExecutiveDecisionPanel";
 
 const NAVY    = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -245,9 +246,7 @@ export default function EnergyGridFailureDemo() {
                 </div>
               </div>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
-            </div>
+            <ExecutiveDecisionPanel onProceed={() => { setStep(3); scrollToTop(); startWarRoom(); }} />
           </div>
         )}
 
