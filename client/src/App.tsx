@@ -54,6 +54,7 @@ const Homepage = lazy(() => import("./pages/Homepage"));
 const HowItWorks = lazy(() => import("./pages/HowItWorks"));
 const TryDemo = lazy(() => import("./pages/TryDemo"));
 const TwelveMinuteTestDrive = lazy(() => import("./pages/TwelveMinuteTestDrive"));
+const SituationScanner = lazy(() => import("./pages/SituationScanner"));
 const IncidentAnalyzer = lazy(() => import("./pages/IncidentAnalyzer"));
 const ReadinessAssessment = lazy(() => import("./pages/ReadinessAssessment"));
 const WhatIfAnalyzer = lazy(() => import("./pages/WhatIfAnalyzer"));
@@ -598,6 +599,7 @@ function Router() {
         <Route path="/board-export" component={BoardExport} />
         <Route path="/12-minute-experience" component={TwelveMinuteTestDrive} />
         <Route path="/test-drive" component={TwelveMinuteTestDrive} />
+        <Route path="/situation-scanner" component={SituationScanner} />
         <Route path="/protocol-builder" component={ProtocolBuilder} />
         <Route path="/compound-protocol-builder" component={CompoundProtocolBuilder} />
         <Route path="/my-protocols" component={ProtocolsHub} />

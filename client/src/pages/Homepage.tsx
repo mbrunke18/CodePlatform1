@@ -390,13 +390,22 @@ function LiveSignalFeedSection() {
             <p style={{ ...DM, fontSize: 13, color: 'rgba(255,255,255,0.68)', margin: 0, lineHeight: 1.5 }}>
               Every signal above stages a Readiness Protocol. When the trigger fires, the execution is already built.
             </p>
-            <Link href="/12-minute-experience" style={{
-              ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
-              textTransform: 'uppercase' as const, color: GOLD, textDecoration: 'none',
-              borderBottom: `1px solid rgba(201,168,76,0.4)`, paddingBottom: 1,
-            }}>
-              See how the response deploys in 12 minutes →
-            </Link>
+            <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' as const, alignItems: 'center' }}>
+              <Link href="/12-minute-experience" style={{
+                ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
+                textTransform: 'uppercase' as const, color: GOLD, textDecoration: 'none',
+                borderBottom: `1px solid rgba(201,168,76,0.4)`, paddingBottom: 1,
+              }}>
+                See how the response deploys in 12 minutes →
+              </Link>
+              <Link href="/situation-scanner" style={{
+                ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
+                textTransform: 'uppercase' as const, color: 'rgba(43,138,110,0.9)', textDecoration: 'none',
+                borderBottom: `1px solid rgba(43,138,110,0.35)`, paddingBottom: 1,
+              }}>
+                Try the Situation Scanner →
+              </Link>
+            </div>
           </div>
         </Reveal>
       </div>

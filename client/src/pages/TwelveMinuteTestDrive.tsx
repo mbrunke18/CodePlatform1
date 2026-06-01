@@ -1045,6 +1045,9 @@ export default function TwelveMinuteTestDrive() {
                   Try Another Scenario
                 </button>
               </div>
+              <a href="/situation-scanner" style={{ fontSize: 12, color: `${TEAL}`, fontWeight: 700, textDecoration: 'none', borderBottom: `1px solid ${TEAL}60`, paddingBottom: 1, letterSpacing: '0.04em' }}>
+                Try the Situation Scanner — pick any trigger, see the response →
+              </a>
             </div>
           </div>
         )}
