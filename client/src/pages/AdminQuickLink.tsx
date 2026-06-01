@@ -46,7 +46,8 @@ export default function AdminQuickLink() {
     setError('');
     setGenerating(true);
     try {
-      const data = await apiRequest('POST', '/api/admin/generate-demo-link', { name, email, hours, sendEmail }) as unknown as GeneratedLink;
+      const res = await apiRequest('POST', '/api/admin/generate-demo-link', { name, email, hours, sendEmail });
+      const data: GeneratedLink = await res.json();
       setResult(data);
       setHistory(prev => [data, ...prev].slice(0, 10));
       setName('');
