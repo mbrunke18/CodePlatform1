@@ -107,7 +107,7 @@ export default function AdminQuickLink() {
         <div style={{ marginBottom: 32 }}>
           <h1 style={{ fontSize: 24, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Generate a Demo Access Link</h1>
           <p style={{ fontSize: 14, color: '#64748B', lineHeight: 1.7, maxWidth: 580 }}>
-            Generate a personalized, time-limited demo link to send directly to a specific prospect or executive via DM. Each link is unique, signed, and expires automatically. No email flow required — copy and send directly.
+            Generate a personalized, time-limited access link for a specific prospect or executive. Toggle email delivery on to send automatically — or leave it off to copy and send via DM yourself.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function AdminQuickLink() {
               />
             </div>
 
-            <div style={{ marginBottom: 24 }}>
+            <div style={{ marginBottom: 16 }}>
               <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 6 }}>Email Address</label>
               <input
                 type="email"
@@ -148,6 +148,32 @@ export default function AdminQuickLink() {
                 }}
               />
             </div>
+
+            {/* Send email toggle — placed immediately after email field */}
+            <label style={{
+              display: 'flex', alignItems: 'center', gap: 12,
+              padding: '12px 14px', border: `1px solid ${sendEmail ? TEAL : '#E2E8F0'}`,
+              background: sendEmail ? 'rgba(43,138,110,0.05)' : '#FAFAFA',
+              cursor: 'pointer', marginBottom: 24, transition: 'all 0.1s',
+            }}>
+              <input
+                type="checkbox"
+                checked={sendEmail}
+                onChange={e => setSendEmail(e.target.checked)}
+                style={{ accentColor: TEAL, width: 15, height: 15 }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                  <Mail size={12} color={sendEmail ? TEAL : '#94A3B8'} />
+                  <span style={{ fontSize: 12, fontWeight: 700, color: sendEmail ? TEAL : '#64748B' }}>
+                    Send email directly to prospect
+                  </span>
+                </div>
+                <span style={{ fontSize: 11, color: '#94A3B8' }}>
+                  {sendEmail ? 'Link will be emailed automatically when you generate' : 'Link only — copy and send via DM manually'}
+                </span>
+              </div>
+            </label>
 
             <div style={{ marginBottom: 28 }}>
               <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 10 }}>Access Window</label>
@@ -175,32 +201,6 @@ export default function AdminQuickLink() {
                 ))}
               </div>
             </div>
-
-            {/* Send email toggle */}
-            <label style={{
-              display: 'flex', alignItems: 'center', gap: 12,
-              padding: '12px 14px', border: `1px solid ${sendEmail ? TEAL : '#E2E8F0'}`,
-              background: sendEmail ? 'rgba(43,138,110,0.05)' : '#FAFAFA',
-              cursor: 'pointer', marginBottom: 20, transition: 'all 0.1s',
-            }}>
-              <input
-                type="checkbox"
-                checked={sendEmail}
-                onChange={e => setSendEmail(e.target.checked)}
-                style={{ accentColor: TEAL, width: 15, height: 15 }}
-              />
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-                  <Mail size={12} color={sendEmail ? TEAL : '#94A3B8'} />
-                  <span style={{ fontSize: 12, fontWeight: 700, color: sendEmail ? TEAL : '#64748B' }}>
-                    Send email directly to prospect
-                  </span>
-                </div>
-                <span style={{ fontSize: 11, color: '#94A3B8' }}>
-                  {sendEmail ? 'Email will be delivered automatically on generate' : 'Link only — copy and send manually'}
-                </span>
-              </div>
-            </label>
 
             {error && (
               <div style={{ background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderRadius: 0, padding: '10px 14px', fontSize: 13, color: '#C0392B', marginBottom: 16 }}>
