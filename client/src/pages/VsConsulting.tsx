@@ -21,7 +21,7 @@ const COMPARISON_ROWS = [
   { dimension: "Signal detection", consulting: "Not included", executionOs: "248+ data points, continuous monitoring" },
   { dimension: "Time to coordinate", consulting: "Still 30 days", executionOs: "12 minutes" },
   { dimension: "Ongoing updates", consulting: "Refresh engagement: $150K+", executionOs: "Continuous — included in subscription" },
-  { dimension: "Shelf life", consulting: "6–18 months before stale", executionOs: "Always current — AI-maintained" },
+  { dimension: "Shelf life", consulting: "6–18 months before stale", executionOs: "Always current — continuously updated" },
 ];
 
 export default function VsConsulting() {

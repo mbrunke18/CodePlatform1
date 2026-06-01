@@ -333,7 +333,7 @@ export default function ReadinessBenchmark() {
 
               {/* CTAs */}
               <div style={{ textAlign: "center" as const }}>
-                <p style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Founding Partner Program — 12 Seats · 2026 Cohort</p>
+                <p style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Founding Partner Program — Selective Cohort · 2026</p>
                 <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const, marginBottom: 20 }}>
                   <Link href="/founding-partner-program">
                     <span style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontWeight: 800, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "14px 28px", cursor: "pointer", textDecoration: "none" }}>

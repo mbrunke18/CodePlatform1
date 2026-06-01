@@ -1,0 +1,35 @@
+i want the board to provide insight on what specifics they would look for in the first few founders to give full access for those 90 days2:42 PMClaude responded: The board would not all agree on the same criteria.The board would not all agree on the same criteria. That is actually useful because the disagreement reveals what matters most.
+Buffett would ask one question first
+Does this organization have a strategic trigger that is likely to fire within the next 90 days. Not hypothetically. Actually likely. An activist investor already circling. A regulatory inquiry already open. A supply chain already under stress. A leadership transition already in motion.
+His reasoning is simple. A Founding Partner who experiences a real trigger during the 90 days produces proof. A Founding Partner who completes the 90 days without a real trigger produces a case study about preparation but not about execution. The proof that matters is the platform responding to a real situation in real conditions. Find organizations where the pressure is already building.
+Gates would ask about technical readiness
+Can this organization actually deploy the platform in the first 30 days. Do they have someone who can complete the onboarding, establish the protocols, configure the triggers, and integrate with their existing stack without requiring your personal involvement on every step.
+His reasoning is that the 90 days only produces useful evidence if the platform is actually running. An organization that spends 60 days in onboarding and 30 days in actual use does not give you meaningful data. He would look for organizations with a designated technical owner, an existing Microsoft or enterprise technology stack that matches your connector catalog, and someone at the VP or COO level who has explicit executive sponsorship for the deployment.
+Blakely would ask who feels the pain most acutely
+Not who has the biggest budget or the most impressive title. Who woke up last week thinking about the problem Readiness OS solves. Who has already experienced the thirty day mobilization cycle and felt what it cost them personally.
+She would look for the COO who just went through a crisis and spent three weeks in alignment meetings before anything moved. The CFO who missed a regulatory window because the internal coordination was not ready. The Chief Strategy Officer who watched a competitor respond to an activist investor in days while their organization spent a month figuring out who owned the decision.
+Her instinct is that the best Founding Partners are not the ones who are intellectually convinced the problem exists. They are the ones who have already lived it and would pay anything to not live it again.
+Branson would ask about the storytelling potential
+Which of these organizations will be willing to talk about what happened during the 90 days in a way that other organizations can relate to. Not necessarily a public case study. But a conversation. A reference call. A willingness to describe the before and after in enough detail that the next prospect understands what changed.
+He would look for organizations in industries where strategic triggers are visible and recognizable. Financial services. Healthcare. Manufacturing. Energy. Industries where a COO saying we used Readiness OS when the ransomware hit and here is what was different means something concrete to the next person in that industry who hears it.
+Obama would ask about organizational readiness for change
+Does the leadership team actually want this to work or are they evaluating it to say they evaluated it. Is there genuine executive sponsorship or is this a technology experiment that lives below the VP level without real organizational authority behind it.
+His reasoning is that the platform requires the organization to do preparation work before the value is visible. They have to name the situations. Build the triggers. Define the ownership. If the executive sponsor is not genuinely committed to that preparation work the 90 days produces nothing useful and potentially a negative reference.
+He would look for organizations where the CEO or COO personally champions the deployment not where it was delegated to a project manager.
+Williams would ask about the competitive pressure
+Which organizations are in an industry where being first to have this infrastructure built creates a real and visible competitive advantage. Where the Founding Partner designation actually means something to their board or their investors.
+She would look for PE-backed companies where the board is already asking about operational readiness. Companies that have recently completed an acquisition and are managing integration risk. Companies in regulated industries where the next compliance cycle is already on the calendar.
+Her instinct is that the best Founding Partners are not just willing to use the platform. They are motivated to make it work because the competitive stakes are real.
+Where the board would agree collectively
+Six specific criteria every Founding Partner should meet regardless of which board member is doing the evaluation.
+One. A named executive sponsor at COO CFO or CEO level with personal accountability for the deployment outcome. Not a project owner. An executive sponsor.
+Two. An identified technical owner who can complete onboarding and protocol configuration in the first 30 days without requiring your daily involvement.
+Three. At least three specific situations the organization can name right now where they would deploy Readiness OS if a trigger fired. The situations have to be real and recognized by the executive sponsor as genuinely important.
+Four. An existing enterprise technology stack with at least one live connector available. Microsoft Teams. Slack. Jira. Any of the 55 plus connectors. The platform needs somewhere to deploy into.
+Five. Genuine willingness to participate in a 60 day progress conversation and a 90 day conversion discussion. Not vague openness. An explicit commitment before access is granted.
+Six. An organization where a real strategic trigger is plausible within the 90 day window. Not guaranteed. Plausible. The industries and situations where this is most likely are financial services, healthcare, manufacturing, energy, and any organization currently navigating a significant regulatory, competitive, or operational pressure.
+The honest summary from the board
+Two organizations that meet all six criteria and deploy the platform seriously during the 90 days are worth more than twelve organizations that get access and treat it as a vendor evaluation.
+Hajo meets several of these criteria right now. Industrial sector. Real trigger plausibility in the HVACR supply chain environment. Executive level. The question is whether he has the technical owner and the organizational commitment to deploy seriously.
+Wayne Roye is a different profile. His value is channel and amplification not necessarily a Founding Partner deployment.
+Before you grant 90 day access to anyone confirm those six criteria are met explicitly. Not assumed. Confirmed in a direct conversation before the access link is sent.

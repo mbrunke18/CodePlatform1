@@ -715,7 +715,7 @@ export default function BrandKit() {
                 <div style={{ position: "relative", zIndex: 1, display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(201,168,76,0.2)", paddingTop: 24 }}>
                   <div>
                     <div style={{ fontFamily: EDITORIAL, fontSize: 18, color: B.ivory, fontWeight: 400, marginBottom: 4 }}>We Make Enterprises Fearless.</div>
-                    <div style={{ fontFamily: LABEL, fontSize: 10, color: "rgba(201,168,76,0.55)", letterSpacing: "0.2em", fontWeight: 600 }}>vaughnmartin.com · Founding Partner Program · 12 spots</div>
+                    <div style={{ fontFamily: LABEL, fontSize: 10, color: "rgba(201,168,76,0.55)", letterSpacing: "0.2em", fontWeight: 600 }}>vaughnmartin.com · Founding Partner Program · Selective Cohort</div>
                   </div>
                   <div style={{ background: B.gold, color: B.navy, fontFamily: LABEL, fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" as const, fontWeight: 700, padding: "14px 28px", borderRadius: 2 }}>
                     Apply for Access
@@ -753,7 +753,7 @@ export default function BrandKit() {
                   <div>
                     <div style={{ fontFamily: LABEL, fontSize: 11, color: B.navy, letterSpacing: "0.1em", marginBottom: 4, fontWeight: 700 }}>vaughnmartin.com</div>
                     <div style={{ fontFamily: LABEL, fontSize: 10, color: B.muted, letterSpacing: "0.08em", fontWeight: 500 }}>
-                      founding@vaughnmartin.com · 12 spots · Applications reviewed personally
+                      founding@vaughnmartin.com · Selective Cohort · Applications reviewed personally
                     </div>
                   </div>
                   <div style={{ fontFamily: EDITORIAL, fontSize: 18, color: B.teal, fontStyle: "italic" }}>We Make Enterprises Fearless.</div>

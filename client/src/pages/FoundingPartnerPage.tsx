@@ -167,7 +167,7 @@ export default function FoundingPartnerPage() {
               Apply for Founding Partner Access <ArrowRight size={18} />
             </button>
           </Link>
-          <div style={{ fontSize: 12, color: MUTED, marginTop: 12 }}>12 spots · No commitment required to apply · Response within 48 hours</div>
+          <div style={{ fontSize: 12, color: MUTED, marginTop: 12 }}>2 spots · No commitment required to apply · Response within 48 hours</div>
         </div>
 
         {/* What you get */}
