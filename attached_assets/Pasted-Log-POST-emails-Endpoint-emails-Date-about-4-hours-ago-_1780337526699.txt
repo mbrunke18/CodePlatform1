@@ -1,0 +1,32 @@
+Log
+POST /emails
+Endpoint
+/emails
+Date
+about 4 hours ago
+Status
+Method
+POST
+User-Agent
+Node.js v6.9.2
+ID
+3b7fb74d-5c47-49b9-bd02-0cacf2efd8cd
+Response body
+{
+  "id": "0020f1b0-7309-48e4-9052-096bb0089d29"
+}
+Request body
+{
+  "cc": [],
+  "to": [
+    "wroye@troinet.com"
+  ],
+  "bcc": [],
+  "from": "Readiness OS <pilot@vaughnmartin.com>",
+  "html": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"></head><body style=\"margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;\">  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f5f5f5;padding:40px 0;\">    <tr><td align=\"center\">      <table width=\"560\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;\">        <tr><td style=\"background:#0A0F2E;padding:28px 36px;\">          <div style=\"color:#C9A84C;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;\">VAUGHNMARTIN · READINESS OS</div>          <div style=\"color:#ffffff;font-size:20px;font-weight:700;\">Your 72-Hour Full Access</div>        </td></tr>        <tr><td style=\"height:3px;background:#C9A84C;\"></td></tr>        <tr><td style=\"padding:36px;\">          <p style=\"margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;\">Hi Wayne,</p>          <p style=\"margin:0 0 28px;color:#374151;font-size:15px;line-height:1.7;\">            You have been granted full 72-hour access to the Readiness OS platform.             Explore live trigger detection, 180 pre-staged Readiness Protocols, Mission Control,             and the complete IDEA Framework — with your own session, no restrictions.          </p>          <table cellpadding=\"0\" cellspacing=\"0\" style=\"margin:0 0 28px;\">            <tr>              <td style=\"background:#0A0F2E;padding:14px 32px;\">                <a href=\"https://vaughnmartin.com/api/demo-access?token=QK-eyJuYW1lIjoiV2F5bmUgUm95ZSIsImVtYWlsIjoid3JveWVAdHJvaW5ldC5jb20iLCJleHBpcmVzQXQiOjE3ODA1ODM4Nzg2ODYsIm5vbmNlIjoiMWNhOGMyNGU2Mzc5In0-P_B7s6ow3hpJTziOe9olWqsm64S2Pu65tiociPTqgsg\" style=\"font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A84C;text-decoration:none;\">                  Access Readiness OS →                </a>              </td>            </tr>          </table>          <p style=\"margin:0 0 6px;color:#6B7280;font-size:13px;line-height:1.6;\">            This link is personal to you and expires in <strong>72 hours</strong>.<br/>            If you have any questions, reply directly to this email.          </p>          <p style=\"margin:12px 0 0;font-size:11px;color:#9CA3AF;word-break:break-all;\">https://vaughnmartin.com/api/demo-access?token=QK-eyJuYW1lIjoiV2F5bmUgUm95ZSIsImVtYWlsIjoid3JveWVAdHJvaW5ldC5jb20iLCJleHBpcmVzQXQiOjE3ODA1ODM4Nzg2ODYsIm5vbmNlIjoiMWNhOGMyNGU2Mzc5In0-P_B7s6ow3hpJTziOe9olWqsm64S2Pu65tiociPTqgsg</p>        </td></tr>        <tr><td style=\"background:#0A0F2E;padding:20px 36px;\">          <p style=\"margin:0;color:rgba(255,255,255,0.4);font-size:11px;\">            VaughnMartin · Readiness OS<br/>pilot@vaughnmartin.com          </p>        </td></tr>      </table>    </td></tr>  </table></body></html>",
+  "text": "VAUGHNMARTIN · READINESS OSYour 72-Hour Full AccessHi Wayne,You have been granted full 72-hour access to the Readiness OS platform. Explore live trigger detection, 180 pre-staged Readiness Protocols, Mission Control, and the complete IDEA Framework — with your own session, no restrictions.Access Readiness OS → https://vaughnmartin.com/api/demo-access?token=QK-eyJuYW1lIjoiV2F5bmUgUm95ZSIsImVtYWlsIjoid3JveWVAdHJvaW5ldC5jb20iLCJleHBpcmVzQXQiOjE3ODA1ODM4Nzg2ODYsIm5vbmNlIjoiMWNhOGMyNGU2Mzc5In0-P_B7s6ow3hpJTziOe9olWqsm64S2Pu65tiociPTqgsgThis link is personal to you and expires in 72 hours.If you have any questions, reply directly to this email.https://vaughnmartin.com/api/demo-access?token=QK-eyJuYW1lIjoiV2F5bmUgUm95ZSIsImVtYWlsIjoid3JveWVAdHJvaW5ldC5jb20iLCJleHBpcmVzQXQiOjE3ODA1ODM4Nzg2ODYsIm5vbmNlIjoiMWNhOGMyNGU2Mzc5In0-P_B7s6ow3hpJTziOe9olWqsm64S2Pu65tiociPTqgsgVaughnMartin · Readiness OSpilot@vaughnmartin.com",
+  "replyTo": [
+    "pilot@vaughnmartin.com"
+  ],
+  "subject": "Your 72-Hour Readiness OS Access — Wayne Roye"
+}
