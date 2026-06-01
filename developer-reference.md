@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 26, 2026 (rev 50) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 1, 2026 (rev 51) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -38,12 +38,34 @@ The retired phrase "16 signal categories" was a previous UI label shown to users
 - **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any organization — startup to Fortune 500 — facing strategic velocity challenges.
 - **Enterprise Pricing Tiers (LOCKED — May 2026):** Three tiers for enterprise buyers — the product capability layer is what differentiates them, NOT relationship depth or support level. Old names (Enterprise / Enterprise Plus / Global) are **RETIRED**. New canonical names:
   - **Core** — $250K/yr — Full Readiness OS platform: 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration. The complete operating model.
-  - **Foresight** — $450K/yr — Everything in Core + **Digital Twin simulation** (Shadow Strategy Simulator) + **predictive foresight alerts** — war-gaming responses to triggers that haven't fired yet. This is a product capability tier, not just a support tier.
-  - **Enterprise** — $750K–$1.5M/yr — Everything in Foresight + **autonomous evolution network**: protocols that improve in aggregate across every client activation, proprietary compounding dataset. Multi-entity + global deployments.
+  - **Foresight** — $450K/yr — Everything in Core + **Digital Twin simulation** (Shadow Strategy Simulator at `/simulation-studio`) + **predictive foresight alerts** — war-gaming responses to triggers that haven't fired yet. This is a product capability tier, not just a support tier. ⚠️ **Demo readiness flag (Rev 51):** Before these capabilities appear as public tier differentiators in any sales or marketing surface, confirm the Shadow Strategy Simulator demo is fully functional and representative. The capability is built — verify the demo is ready.
+  - **Enterprise** — $750K–$1.5M/yr — Everything in Foresight + **autonomous evolution network**: protocols that improve in aggregate across every client activation, proprietary compounding dataset. Multi-entity + global deployments. ⚠️ **Demo readiness flag (Rev 51):** The autonomous evolution network is delivered by ADVANCE 2.0 (`/advance-intelligence`). Before this appears as a distinct tier differentiator publicly, confirm the ADVANCE 2.0 loop demo — including hypothesis measurement and Learning Velocity Index — is fully demonstrable to a prospect.
   - **Founding Partner Program** — $75K (90-day validation partnership, 100% credited to Year 1 subscription). This is the ENTRY PATH, not a fourth tier.
   - Any developer writing pricing copy must use Core / Foresight / Enterprise. The word "Global" as a tier name is retired. "Enterprise Plus" is retired. "Oracle Pro" is retired.
 - **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Founding Partner Program or the enterprise tiers above.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. The enterprise conversion page is `/founding-partner-program` — completely separate audience, separate page, separate CTA. `/pilot-program` is an alias that resolves to `/founding-partner-program` (see Section 55).
 - **Email Routing (canonical):** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `founding@vaughnmartin.com` → Founding Partner Program page (error fallback + questions CTA) | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
+
+- **Canonical Product Value Story — Precise 5-Sequence Description (Rev 51, locked):** This is the defensible, grounded description of what Readiness OS actually does. Use this as the authoritative source for any website copy, investor materials, or sales assets. Every claim is verifiable against built platform capabilities.
+
+  **Sequence 1 — Name every situation.** The organization defines every situation it may face. 180 pre-built Readiness Protocols across 9 strategic domains are available immediately. 30 compound protocols for cross-domain scenarios. Custom protocols built to match any situation the organization defines. 221 trigger patterns monitored continuously across 39 live data sources, updating every 15 minutes around the clock.
+
+  **Sequence 2 — Define the threshold.** The organization defines what constitutes a threshold for each situation — not a single lagging metric, but multiple data points combined to meet the specific definition of when a situation crosses from monitor to act.
+
+  **Sequence 3 — Four executive choices at the threshold.** When the threshold is crossed, the system does not send an alert and wait. It presents the executive with four structured choices. These four choices are **LOCKED UI LANGUAGE** — do not paraphrase or simplify:
+  1. **Execute the protocol exactly as pre-staged** — full activation, no changes
+  2. **Adjust the protocol before executing** — "Audible Called" — modify specifics, then activate
+  3. **Choose an entirely different protocol** — select a different pre-staged response
+  4. **Stand down with a governance record** — explicit decision not to act, timestamped and recorded
+
+  One executive decision unlocks everything simultaneously: pre-staged tasks assigned to pre-defined roles, budget routing prepared, communications ready for coordinated deployment, stakeholders notified with the right context already attached. Not assembled at trigger time. Already built.
+
+  **Sequence 4 — Coordinate through the existing stack.** The entire execution is coordinated through whatever technology stack the organization already uses. Microsoft, Salesforce, ServiceNow, Slack, Jira. 55+ pre-built connectors (`/universal-connector`). Readiness OS sits above the existing stack and orchestrates it — nothing gets replaced.
+
+  **Sequence 5 — Encode every learning.** Every activation encodes what was learned back into the preparation before the next trigger arrives. The ADVANCE loop (`/advance-intelligence`) classifies every protocol update as proven or disproven after three subsequent activations. The platform gets measurably smarter with every use. The moat compounds.
+
+  **The one-sentence version (locked):** "Readiness OS pre-stages the organizational response before the trigger fires so when it arrives the answer to every question is already built — who owns the decision, what the tasks are, who is notified, what the communications say, where the budget comes from, and what was learned from last time."
+
+- **The Mobilization Tax (canonical framing):** The Mobilization Tax is the cost every organization pays before a single action is taken when a strategic trigger fires — leadership time, alignment meetings, escalation cycles, budget approval cycles — 30 days before execution begins. The ROI Calculator (`/roi-calculator`) quantifies this cost specifically for each organization using their own inputs: regulatory penalty avoidance, revenue protection during the 30-day mobilization window, operating cost elimination from the cycle itself, and vendor stack displacement. The "Mobilization Tax" phrase is cleared for use in all product copy, investor materials, and sales assets.
 
 ---
 
