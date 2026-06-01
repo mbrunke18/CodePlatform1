@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'wouter';
 import { apiRequest } from '@/lib/queryClient';
-import { Copy, Check, Zap, Clock, Users, ExternalLink, ArrowLeft, Shield, Mail, AlertCircle } from 'lucide-react';
+import { Copy, Check, Zap, Clock, Users, ExternalLink, ArrowLeft, Shield, Mail, AlertCircle, FileText } from 'lucide-react';
 
 const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
@@ -302,6 +302,19 @@ export default function AdminQuickLink() {
                   </div>
                 </div>
               ))}
+              {/* Leave-behind document */}
+              <div style={{ display: 'flex', gap: 10, marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid #F1F5F9' }}>
+                <div style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: 7, flexShrink: 0, height: 30, display: 'flex', alignItems: 'center' }}>
+                  <FileText size={13} color={GOLD} />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 2 }}>Leave-behind document</div>
+                  <div style={{ fontSize: 11, color: '#64748B', lineHeight: 1.6, marginBottom: 5 }}>Print-ready one-pager: the offer, three mutual commitments, and day-90 success definition. Send before a call or print for in-person meetings.</div>
+                  <Link href="/founding-partner-brief" target="_blank" style={{ fontSize: 11, color: GOLD, fontWeight: 700, textDecoration: 'none' }}>
+                    Open &amp; Print → /founding-partner-brief
+                  </Link>
+                </div>
+              </div>
               <Link href="/request-access" style={{ display: 'block', textAlign: 'center', fontSize: 11, color: TEAL, fontWeight: 700, textDecoration: 'none', paddingTop: 4 }}>
                 View /request-access →
               </Link>

@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import PageLayout from "@/components/layout/PageLayout";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { updatePageMetadata } from "@/lib/seo";
 
@@ -12,300 +11,287 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', 'Barlow', sans-serif" };
 const DM: React.CSSProperties = { fontFamily: "'Barlow', sans-serif" };
 
-function GoldRule() {
-  return <div style={{ width: 48, height: 2, background: GOLD, margin: "16px 0" }} />;
-}
-
-const milestones = [
+const COMMITMENTS = [
   {
-    day: "Day 30",
-    label: "Foundation Built",
-    color: GOLD,
-    deliverables: [
-      "5 Readiness Protocols fully configured to your organization's scenarios",
-      "Signal monitoring live across your 3 highest-priority intelligence categories",
-      "Microsoft Teams integration active — notifications routing to correct stakeholders",
-      "Executive owner mapped to every protocol and task",
-      "First tabletop exercise completed — response gaps documented",
-      "Readiness Score baseline established (your Day 0 benchmark)",
-    ],
+    num: "01",
+    title: "Protocol Deployment Milestone — Day 30",
+    body: "Your organization completes structured onboarding with 5 Readiness Protocols fully configured to your specific scenarios, stakeholders, and decision authorities within the first 30 days.",
   },
   {
-    day: "Day 60",
-    label: "First Live Activation",
-    color: TEAL,
-    deliverables: [
-      "First live or sanctioned activation completed — full 12-minute cycle documented",
-      "Activation report generated — elapsed time, decision log, acknowledgment rate",
-      "Retrospect™ record seeded — institutional memory begins compounding",
-      "Readiness Score tracked against Day 30 baseline — delta measured",
-      "Second tabletop completed with cross-functional stakeholders",
-      "Protocol timing and ownership refined based on activation learnings",
-    ],
+    num: "02",
+    title: "Progress Conversation — Day 60",
+    body: "A structured check-in at 60 days to review your first activation, measure your Readiness Score delta from baseline, and identify any protocol gaps before the final validation.",
   },
   {
-    day: "Day 90",
-    label: "Proof Package Complete",
-    color: NAVY,
-    deliverables: [
-      "Board-ready Readiness Report — executive summary with activation metrics",
-      "ROI documentation — executive time recovered, mobilization cost avoided",
-      "3,600× Head Start demonstrated with your organization's actual data",
-      "Third tabletop exercise — compound scenario (two simultaneous situations)",
-      "Founding Partner investment (100%) credited toward enterprise contract",
-      "Series A proof package — real ARR, real activation data, real readiness score",
-    ],
+    num: "03",
+    title: "Conversion Conversation + Reference — Day 90",
+    body: "At 90 days you participate in a direct conversation about continuing as a paying subscriber — and you provide a reference regardless of whether you convert. The proof package is yours either way.",
   },
 ];
 
-const included = [
-  { label: "Platform Access", body: "Full Readiness OS for up to 25 users — all 180 Readiness Protocols, signal monitoring, war room, activation console, and debrief engine." },
-  { label: "Protocol Configuration", body: "5 Readiness Protocols built and configured to your specific organizational scenarios, stakeholders, and decision authorities." },
-  { label: "Signal Intelligence", body: "Live monitoring across 3 intelligence categories — 248+ data points refreshed every 15 minutes against your priority situations." },
-  { label: "Microsoft Integration", body: "Teams notifications, M365 document staging, and Azure AI signal enrichment — all within your existing enterprise stack." },
-  { label: "Three Tabletop Exercises", body: "Facilitated drills with your actual leadership team — single-domain, multi-domain, and compound scenario. Gaps documented and closed." },
-  { label: "Customer Success Manager", body: "Dedicated CSM for the full 90 days — configuration support, stakeholder coordination, and activation readout." },
-  { label: "Readiness Score Trendline", body: "Board-ready KPI tracked across all three milestones — your organization's readiness trajectory in a single number." },
-  { label: "Proof Documentation", body: "Activation report, ROI summary, and Readiness Score delta — the evidence package for internal champions and Series A conversations." },
-];
-
-const positions = [
-  { label: "Internal champion", body: "Your Readiness Report is the artifact that gets budget approved. Quantified outcomes. Board-ready format. No interpretation required." },
-  { label: "Board KPI", body: "The Readiness Score becomes a standing board metric. Once the board benchmarks it quarterly, the platform becomes infrastructure — not a vendor." },
-  { label: "Series A narrative", body: "3–5 Founding Partners with live data and documented ROI is the proof story that closes the category argument for institutional investors." },
-  { label: "Expansion path", body: "Core opens the account. Industry Protocol Packs expand it. Enterprise tier seals multi-year. Day 90 is the beginning of the expansion conversation." },
+const OFFER_ITEMS = [
+  "Full Readiness OS platform access — all 180 Readiness Protocols",
+  "Up to 25 users for the full 90-day period",
+  "Live signal monitoring across 3 intelligence categories",
+  "War room, activation console, and debrief engine",
+  "3 facilitated tabletop exercises with your leadership team",
+  "Dedicated configuration support for the first 30 days",
+  "Board-ready Readiness Report generated at day 90",
 ];
 
 export default function FoundingPartnerBrief() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Founding Partner Brief — Readiness OS by VaughnMartin",
-      description: "What you get in 90 days as a Readiness OS Founding Partner. Specific deliverables, milestones, and proof points — the commercial unlock for executive champions.",
+      title: "Founding Partner Validation — Readiness OS by VaughnMartin",
+      description: "90-day structured validation partnership. No subscription fee. Three mutual commitments. One proof package that belongs to you at day 90.",
     });
   }, []);
 
   return (
-    <PageLayout>
-      <h1 className="sr-only">Founding Partner Program Brief — VaughnMartin Readiness OS</h1>
-      <div style={{ background: "#fff", minHeight: "100vh" }}>
+    <div style={{ background: "#fff", minHeight: "100vh", ...DM }}>
 
-        {/* ── HEADER ─────────────────────────────────────────────────────── */}
-        <div style={{ background: NAVY, padding: "40px 0 36px" }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}>
-              <VaughnMartinLogo variant="full" height={72} color="light" animated={false} />
-              <div style={{ textAlign: "right" }}>
-                <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>
-                  Founding Partner Program
-                </div>
-                <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#fff", lineHeight: 1.2 }}>
-                  What you get in 90 days.
-                </div>
-              </div>
-            </div>
-          </div>
+      <style>{`
+        @media print {
+          .no-print { display: none !important; }
+          .print-page { page-break-inside: avoid; }
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          a { text-decoration: none !important; }
+        }
+      `}</style>
+
+      {/* ── HEADER ──────────────────────────────────────────────────────── */}
+      <div className="no-print" style={{ background: NAVY, padding: "16px 40px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <VaughnMartinLogo variant="full" height={40} color="light" animated={false} noLink />
+          </Link>
+          <button
+            onClick={() => window.print()}
+            style={{
+              ...BC, background: "transparent", border: "1px solid rgba(201,168,76,0.5)",
+              color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em",
+              textTransform: "uppercase", padding: "8px 18px", cursor: "pointer",
+              borderRadius: "0.15rem",
+            }}
+          >
+            Print / Save as PDF
+          </button>
         </div>
+      </div>
 
-        {/* ── GOLD RULE ───────────────────────────────────────────────────── */}
-        <div style={{ background: GOLD, height: 3 }} />
-
-        {/* ── OPENING STATEMENT ───────────────────────────────────────────── */}
-        <div style={{ background: IVORY, padding: "48px 0" }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
-              <div>
-                <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
-                  The Founding Partner Program
-                </div>
-                <h2 style={{ ...CG, fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1.2, margin: "0 0 20px" }}>
-                  The response is ready before the situation presents itself.
-                </h2>
-                <p style={{ ...DM, fontSize: 15, color: "#374151", lineHeight: 1.7, margin: "0 0 20px" }}>
-                  The Founding Partner Program is a 90-day validation partnership — not a trial, not a pilot. You are building the infrastructure your organization will use at the moment it matters most.
-                </p>
-                <p style={{ ...DM, fontSize: 15, color: "#374151", lineHeight: 1.7, margin: 0 }}>
-                  At Day 90, you have documented proof, a board-ready report, and 100% of the Founding Partner investment credited toward your enterprise contract.
-                </p>
+      {/* ── DOCUMENT HEADER (prints) ─────────────────────────────────────── */}
+      <div className="print-page" style={{ background: NAVY, padding: "40px 0 36px" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 40px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}>
+            <VaughnMartinLogo variant="full" height={64} color="light" animated={false} noLink />
+            <div style={{ textAlign: "right" }}>
+              <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>
+                Founding Partner Program
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                {[
-                  { value: "90", label: "Days to documented proof" },
-                  { value: "12 min", label: "Trigger to full coordination" },
-                  { value: "180", label: "Readiness Protocols available" },
-                  { value: "100%", label: "Investment credited to contract" },
-                ].map((s, i) => (
-                  <div key={i} style={{ background: "#fff", border: `1px solid rgba(10,15,46,0.1)`, padding: "24px 20px" }}>
-                    <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{s.value}</div>
-                    <div style={{ ...DM, fontSize: 12, color: "#6B7280", marginTop: 8, lineHeight: 1.4 }}>{s.label}</div>
-                  </div>
-                ))}
+              <div style={{ ...CG, fontSize: 26, fontWeight: 600, color: "#fff", lineHeight: 1.2 }}>
+                90-Day Validation Partnership
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── MILESTONES ──────────────────────────────────────────────────── */}
-        <div style={{ padding: "64px 0" }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
-              The 90-Day Arc
-            </div>
-            <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: NAVY, marginBottom: 40 }}>
-              Exactly what you will have built — milestone by milestone.
-            </h2>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-              {milestones.map((m, i) => (
-                <div key={i} style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 0, borderTop: `1px solid rgba(10,15,46,0.10)` }}>
-                  <div style={{ padding: "32px 32px 32px 0", borderRight: `3px solid ${m.color}` }}>
-                    <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: m.color }}>{m.day}</div>
-                    <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: NAVY, marginTop: 8 }}>{m.label}</div>
-                  </div>
-                  <div style={{ padding: "32px 0 32px 40px" }}>
-                    <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
-                      {m.deliverables.map((d, j) => (
-                        <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                          <span style={{ color: m.color, fontWeight: 700, fontSize: 16, lineHeight: 1.4, flexShrink: 0 }}>→</span>
-                          <span style={{ ...DM, fontSize: 14, color: "#374151", lineHeight: 1.55 }}>{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── WHAT'S INCLUDED ─────────────────────────────────────────────── */}
-        <div style={{ background: IVORY, padding: "64px 0" }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
-              What's Included
-            </div>
-            <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: NAVY, marginBottom: 40 }}>
-              Every component of the Founding Partner engagement.
-            </h2>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
-              {included.map((item, i) => (
-                <div key={i} style={{ background: "#fff", padding: "28px 28px 24px", borderLeft: `3px solid ${GOLD}` }}>
-                  <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: NAVY, marginBottom: 10 }}>
-                    {item.label}
-                  </div>
-                  <p style={{ ...DM, fontSize: 13.5, color: "#374151", lineHeight: 1.6, margin: 0 }}>{item.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── WHAT THIS POSITIONS YOU FOR ─────────────────────────────────── */}
-        <div style={{ padding: "64px 0" }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
-              Day 90 Is Not the End
-            </div>
-            <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: NAVY, marginBottom: 12 }}>
-              What Founding Partner status positions you for.
-            </h2>
-            <p style={{ ...DM, fontSize: 15, color: "#6B7280", marginBottom: 40, lineHeight: 1.6 }}>
-              The 90-day program is the foundation. Here is what it unlocks inside your organization and beyond.
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-              {positions.map((p, i) => (
-                <div key={i} style={{ borderTop: `3px solid ${NAVY}`, paddingTop: 24 }}>
-                  <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: NAVY, marginBottom: 12 }}>
-                    {p.label}
-                  </div>
-                  <p style={{ ...DM, fontSize: 14, color: "#374151", lineHeight: 1.65, margin: 0 }}>{p.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── PRICING ─────────────────────────────────────────────────────── */}
-        <div style={{ background: NAVY, padding: "64px 0" }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-              <div>
-                <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
-                  Founding Partner Pricing
-                </div>
-                <div style={{ ...CG, fontSize: 48, fontWeight: 700, color: "#fff", lineHeight: 1 }}>$75K – $120K</div>
-                <div style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.6)", marginTop: 12, lineHeight: 1.5 }}>
-                  ACV · 90-day validation · 100% credited to enterprise contract
-                </div>
-                <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 12 }}>
-                  {[
-                    "No per-seat fees during the validation period",
-                    "No implementation surcharge",
-                    "Full enterprise feature access from Day 1",
-                    "Investment credited in full at contract signature",
-                  ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                      <span style={{ color: GOLD, fontWeight: 700, fontSize: 16, flexShrink: 0, lineHeight: 1.4 }}>→</span>
-                      <span style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(201,168,76,0.25)", padding: "40px 36px" }}>
-                <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 8, lineHeight: 1.3 }}>
-                  The Founding Partner Program is accepting 5–7 organizations.
-                </div>
-                <GoldRule />
-                <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, marginBottom: 32 }}>
-                  Selection criteria: strategic complexity, organizational readiness, and executive sponsorship. This is not open enrollment — it is a partnership selection.
-                </p>
-                <Link href="/contact">
-                  <button style={{
-                    width: "100%", padding: "16px 24px",
-                    background: GOLD, border: "none", cursor: "pointer",
-                    ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
-                    color: NAVY,
-                  }}>
-                    Apply for Founding Partner Access
-                  </button>
-                </Link>
-                <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)", textAlign: "center", marginTop: 16 }}>
-                  Or schedule a conversation at{" "}
-                  <a href="mailto:partners@vaughnmartin.com" style={{ color: GOLD, textDecoration: "none" }}>
-                    partners@vaughnmartin.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── PROOF ACCESSIBLE NOW ────────────────────────────────────────── */}
-        <div style={{ padding: "48px 0", borderTop: `4px solid ${GOLD}`, background: IVORY }}>
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}>
-            <div>
-              <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
-                Before You Apply
-              </div>
-              <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: NAVY, lineHeight: 1.3 }}>
-                See the full 12-minute execution cycle — right now, no login required.
-              </div>
-              <p style={{ ...DM, fontSize: 14, color: "#6B7280", marginTop: 12, marginBottom: 0 }}>
-                Seven scenarios. Activist investor, ransomware, supply chain collapse, M&A response, and more. Full cycle on your device in 12 minutes.
-              </p>
-            </div>
-            <Link href="/12-minute-experience">
-              <button style={{
-                padding: "16px 32px", background: NAVY, border: "none", cursor: "pointer",
-                ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
-                color: "#fff", whiteSpace: "nowrap",
+              <div style={{
+                marginTop: 10, display: "inline-block",
+                background: "rgba(43,138,110,0.25)", border: "1px solid rgba(43,138,110,0.5)",
+                ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.16em",
+                textTransform: "uppercase", color: "#4EC99A", padding: "4px 12px",
+                borderRadius: "0.15rem",
               }}>
-                Run the 12-Minute Test Drive →
+                No Subscription Fee During Validation
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── GOLD RULE ───────────────────────────────────────────────────── */}
+      <div style={{ background: GOLD, height: 3 }} />
+
+      {/* ── SCARCITY SIGNAL ─────────────────────────────────────────────── */}
+      <div style={{ background: IVORY, padding: "14px 40px", textAlign: "center", borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
+          <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>
+            Founding Partner Program — 2 organizations · 90 days · no subscription fee
+          </span>
+          <span style={{
+            ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
+            background: GOLD, color: NAVY, padding: "3px 10px", borderRadius: "0.15rem",
+          }}>
+            Founding Partner #1 of 2
+          </span>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 820, margin: "0 auto", padding: "0 40px" }}>
+
+        {/* ── SECTION 1: THE OFFER ────────────────────────────────────────── */}
+        <div className="print-page" style={{ padding: "48px 0 40px", borderBottom: `1px solid rgba(10,15,46,0.1)` }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
+            01 — The Offer
+          </div>
+          <h2 style={{ ...CG, fontSize: 30, fontWeight: 700, color: NAVY, margin: "0 0 10px", lineHeight: 1.2 }}>
+            What your organization gets.
+          </h2>
+          <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, margin: "0 0 28px", maxWidth: 560 }}>
+            Full platform access. No subscription fee during the 90-day validation period. Everything below is included from Day 1.
+          </p>
+
+          <div style={{ background: IVORY, border: `1px solid rgba(201,168,76,0.25)`, borderLeft: `4px solid ${GOLD}`, padding: "28px 32px", borderRadius: "0.15rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+              {OFFER_ITEMS.map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "9px 16px 9px 0", borderBottom: i < OFFER_ITEMS.length - 2 ? "1px solid rgba(10,15,46,0.07)" : "none" }}>
+                  <span style={{ color: GOLD, fontWeight: 700, fontSize: 14, lineHeight: 1.5, flexShrink: 0 }}>→</span>
+                  <span style={{ fontSize: 13.5, color: "#374151", lineHeight: 1.5 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(10,15,46,0.1)", display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{
+                ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
+                background: TEAL, color: "white", padding: "4px 12px", borderRadius: "0.15rem", flexShrink: 0,
+              }}>
+                No Subscription Fee During Validation
+              </div>
+              <span style={{ fontSize: 12, color: "#6B7280" }}>
+                The 90-day validation period carries no subscription cost. What you invest is time and organizational commitment — defined below.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── SECTION 2: THREE COMMITMENTS ────────────────────────────────── */}
+        <div className="print-page" style={{ padding: "48px 0 40px", borderBottom: `1px solid rgba(10,15,46,0.1)` }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
+            02 — Three Commitments
+          </div>
+          <h2 style={{ ...CG, fontSize: 30, fontWeight: 700, color: NAVY, margin: "0 0 10px", lineHeight: 1.2 }}>
+            What your organization commits to.
+          </h2>
+          <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, margin: "0 0 32px", maxWidth: 560 }}>
+            Free without structure is a gift. Free with defined obligations on both sides is a partnership. These three commitments make this a structured commercial validation.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            {COMMITMENTS.map((c, i) => (
+              <div key={i} style={{
+                display: "grid", gridTemplateColumns: "56px 1fr",
+                borderLeft: `3px solid ${GOLD}`, marginBottom: i < COMMITMENTS.length - 1 ? 16 : 0,
+                borderRadius: "0.15rem",
+              }}>
+                <div style={{ background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px 0" }}>
+                  <span style={{ ...BC, fontSize: 16, fontWeight: 800, color: NAVY }}>{c.num}</span>
+                </div>
+                <div style={{ background: "#FAFAF8", border: "1px solid rgba(201,168,76,0.18)", borderLeft: "none", padding: "22px 28px" }}>
+                  <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: NAVY, marginBottom: 8 }}>
+                    {c.title}
+                  </div>
+                  <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.65, margin: 0 }}>{c.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── SECTION 3: WHAT DAY 90 PROVES ───────────────────────────────── */}
+        <div className="print-page" style={{ padding: "48px 0 40px", borderBottom: `1px solid rgba(10,15,46,0.1)` }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
+            03 — What Day 90 Proves
+          </div>
+          <h2 style={{ ...CG, fontSize: 30, fontWeight: 700, color: NAVY, margin: "0 0 28px", lineHeight: 1.2 }}>
+            Success defined in one sentence.
+          </h2>
+
+          <div style={{ background: NAVY, padding: "40px 44px", borderRadius: "0.15rem", marginBottom: 20 }}>
+            <div style={{ width: 40, height: 2, background: GOLD, marginBottom: 24 }} />
+            <p style={{ ...CG, fontSize: 26, fontWeight: 600, color: "#fff", lineHeight: 1.45, margin: "0 0 20px" }}>
+              "At day 90, your organization has completed three protocol activations, documented your mobilization time reduction, and produced a board-ready Readiness Report."
+            </p>
+            <div style={{ width: 40, height: 2, background: GOLD, marginTop: 24 }} />
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+            {[
+              { metric: "3", label: "Protocol activations completed" },
+              { metric: "12 min", label: "Documented mobilization time" },
+              { metric: "3,600×", label: "Execution head start demonstrated" },
+              { metric: "100%", label: "Investment credited to contract" },
+            ].map((s, i) => (
+              <div key={i} style={{ background: IVORY, border: "1px solid rgba(10,15,46,0.08)", padding: "20px 24px" }}>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{s.metric}</div>
+                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 8, lineHeight: 1.4 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: 13, color: "#9CA3AF", lineHeight: 1.7, marginTop: 20, fontStyle: "italic" }}>
+            Whether you convert to a paid subscription or not, the proof package — activation report, Readiness Score trendline, ROI summary — belongs to your organization to keep.
+          </p>
+        </div>
+
+        {/* ── SECTION 4: CTA ──────────────────────────────────────────────── */}
+        <div className="print-page no-print" style={{ padding: "48px 0 64px" }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>
+            04 — Apply
+          </div>
+          <h2 style={{ ...CG, fontSize: 30, fontWeight: 700, color: NAVY, margin: "0 0 10px", lineHeight: 1.2 }}>
+            Two slots. First come, first validated.
+          </h2>
+          <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, margin: "0 0 32px", maxWidth: 520 }}>
+            The Founding Partner Program closes when both slots are filled. Selection is based on strategic complexity, organizational readiness, and executive sponsorship — not first-in-line.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 400 }}>
+            <Link href="/request-access">
+              <button style={{
+                width: "100%", padding: "18px 32px",
+                background: GOLD, border: "none", cursor: "pointer", borderRadius: "0.15rem",
+                ...BC, fontSize: 13, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase",
+                color: NAVY,
+              }}>
+                Apply for Founding Partner Access →
               </button>
             </Link>
+            <p style={{ fontSize: 12, color: "#9CA3AF", margin: 0, textAlign: "center" }}>
+              Program closes when both slots are filled.
+            </p>
           </div>
+        </div>
+
+        {/* ── PRINT-ONLY CTA ──────────────────────────────────────────────── */}
+        <div style={{ padding: "40px 0 56px", display: "none" }} className="print-cta">
+          <style>{`@media print { .print-cta { display: block !important; } }`}</style>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#374151", marginBottom: 12 }}>
+            04 — Apply
+          </div>
+          <p style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY, margin: "0 0 16px" }}>
+            Apply for Founding Partner Access
+          </p>
+          <p style={{ fontSize: 13, color: "#374151", margin: "0 0 8px" }}>
+            vaughnmartin.com/request-access
+          </p>
+          <p style={{ fontSize: 12, color: "#6B7280", margin: 0 }}>
+            Program closes when both Founding Partner slots are filled.
+          </p>
         </div>
 
       </div>
-    </PageLayout>
+
+      {/* ── FOOTER ──────────────────────────────────────────────────────── */}
+      <div className="no-print" style={{ background: NAVY, padding: "28px 40px", marginTop: 0 }}>
+        <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+          <VaughnMartinLogo variant="full" height={36} color="light" animated={false} noLink />
+          <div style={{ display: "flex", gap: 24 }}>
+            <Link href="/12-minute-experience" style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>
+              12-Minute Test Drive
+            </Link>
+            <Link href="/request-access" style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, textDecoration: "none" }}>
+              Apply Now →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+    </div>
   );
 }
