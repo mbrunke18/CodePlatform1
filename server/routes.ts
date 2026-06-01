@@ -10530,6 +10530,119 @@ Respond ONLY as JSON with this exact structure:
     }
   });
 
+  // POST /api/situation-scanner/lead — capture prospect + send situation brief email
+  app.post('/api/situation-scanner/lead', async (req: any, res) => {
+    try {
+      const { email, situationId, situationName, domain, protocolNum, protocol } = req.body;
+      if (!email || !situationId || !situationName) {
+        return res.status(400).json({ success: false, error: 'email, situationId, and situationName are required' });
+      }
+
+      // Reuse test_drive_leads table — scenarioId = situationId, scenarioTitle = situationName
+      await db.insert(testDriveLeads).values({
+        email: email.trim().toLowerCase(),
+        companyName: null,
+        scenarioId: situationId,
+        scenarioTitle: `[Scanner] ${situationName}`,
+        completedTasks: 6,
+        totalTasks: 6,
+      });
+
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) {
+        console.log(`[Scanner] No Resend key — lead stored without email for ${email}`);
+        return res.json({ success: true, emailSent: false });
+      }
+
+      const { Resend } = await import('resend');
+      const resend = new Resend(apiKey);
+
+      const NAVY_C = '#0A0F2E';
+      const GOLD_C = '#C9A84C';
+      const TEAL_C = '#2B8A6E';
+
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+        <body style="margin:0;padding:0;background:#f4f4f4;font-family:'Helvetica Neue',Arial,sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:32px 16px;">
+            <tr><td align="center">
+              <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
+                <tr><td style="background:${NAVY_C};padding:32px 40px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD_C};margin-bottom:8px;">VaughnMartin · Readiness OS</div>
+                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Situation Brief: ${situationName}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Protocol #${protocolNum} — ${protocol}</div>
+                </td></tr>
+                <tr><td style="height:3px;background:${GOLD_C};"></td></tr>
+                <tr><td style="padding:40px;">
+                  <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 20px;">
+                    You just used the Situation Scanner to see the pre-staged response to <strong>${situationName}</strong>. Here is what you saw — and what it means.
+                  </p>
+                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD_C};margin-bottom:28px;">
+                    <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What the response represents</div>
+                    <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
+                      Protocol #${protocolNum} was pre-staged before this trigger arrived. When it fires, you don't mobilize — you authorize. Every task has an owner. Every stakeholder is pre-notified. The 30-day alignment cycle compresses to <strong>12 minutes</strong>.
+                    </p>
+                  </div>
+                  <div style="margin-bottom:28px;">
+                    <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:${TEAL_C};margin-bottom:8px;">Domain</div>
+                    <div style="font-size:15px;font-weight:700;color:${NAVY_C};">${domain}</div>
+                  </div>
+                  <p style="font-size:15px;font-weight:600;color:${NAVY_C};margin:0 0 8px;">Founding Partner Program</p>
+                  <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    Two slots remain. Founding Partners get 90 days to pre-stage Readiness Protocols against their real strategic scenarios — with their actual team, actual risk register, and actual authorization structure. No subscription fee for the validation period.
+                  </p>
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td style="background:${NAVY_C};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD_C};text-decoration:none;">Apply for Founding Partner Access →</a>
+                      </td>
+                    </tr>
+                  </table>
+                  <p style="font-size:12px;color:#9ca3af;line-height:1.6;margin:0;">
+                    VaughnMartin · Readiness OS<br>
+                    You received this because you used the Situation Scanner at readinessOS.replit.app<br>
+                    <a href="mailto:pilot@vaughnmartin.com" style="color:#9ca3af;">pilot@vaughnmartin.com</a>
+                  </p>
+                </td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </body>
+        </html>
+      `;
+
+      const fromAddresses = [
+        'Readiness OS <onboarding@resend.dev>',
+        'Readiness OS <pilot@vaughnmartin.com>',
+      ];
+
+      let sent = false;
+      for (const from of fromAddresses) {
+        try {
+          const { error } = await resend.emails.send({
+            from,
+            replyTo: 'pilot@vaughnmartin.com',
+            to: [email.trim()],
+            subject: `Your Situation Brief: ${situationName} — Readiness OS`,
+            html,
+          });
+          if (!error) { sent = true; break; }
+          console.warn(`[Scanner] Sender ${from} rejected: ${error.message}`);
+        } catch (err: any) {
+          console.warn(`[Scanner] Sender ${from} threw: ${err.message}`);
+        }
+      }
+
+      console.log(`✅ [Scanner] Lead captured: ${email} · ${situationName} · email ${sent ? 'sent' : 'failed'}`);
+      res.json({ success: true, emailSent: sent });
+    } catch (err: any) {
+      console.error('[Scanner] Error:', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   // ── Custom Protocols (Protocol Builder) ──────────────────────────────────
   app.post('/api/custom-protocols', async (req: any, res) => {
     try {

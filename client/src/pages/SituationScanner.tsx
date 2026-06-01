@@ -317,13 +317,13 @@ const DOMAIN_ORDER: Domain[] = ["GROWTH & POSITIONING", "RISK & RESILIENCE", "TR
 const DOMAIN_COLOR: Record<Domain, string> = {
   "GROWTH & POSITIONING": GOLD,
   "RISK & RESILIENCE": TEAL,
-  "TRANSFORMATION": "#7C5CBF",
+  "TRANSFORMATION": NAVY,
 };
 
 const DOMAIN_BG: Record<Domain, string> = {
   "GROWTH & POSITIONING": "rgba(201,168,76,0.08)",
   "RISK & RESILIENCE": "rgba(43,138,110,0.08)",
-  "TRANSFORMATION": "rgba(124,92,191,0.08)",
+  "TRANSFORMATION": "rgba(10,15,46,0.07)",
 };
 
 const TIMELINE_STEPS = ["Signal detected", "Protocol matched", "Tasks staged", "Stakeholders notified", "Executive authorizes"];
@@ -331,6 +331,8 @@ const TIMELINE_STEPS = ["Signal detected", "Protocol matched", "Tasks staged", "
 export default function SituationScanner() {
   const [selected, setSelected] = useState<Situation | null>(null);
   const [visible, setVisible] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
+  const [emailStatus, setEmailStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
 
   useEffect(() => {
     updatePageMetadata({
@@ -342,6 +344,8 @@ export default function SituationScanner() {
   useEffect(() => {
     if (selected) {
       setVisible(false);
+      setEmailStatus("idle");
+      setEmailInput("");
       const t = setTimeout(() => setVisible(true), 60);
       return () => clearTimeout(t);
     }
@@ -359,20 +363,15 @@ export default function SituationScanner() {
       <div style={{ background: NAVY, padding: "16px 40px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <VaughnMartinLogo variant="full" height={40} color="light" animated={false} />
-          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <Link href="/founding-partner-brief" style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>
-              Founding Partner Brief
-            </Link>
-            <Link href="/request-access">
-              <button style={{
-                ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 11,
-                fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase",
-                padding: "9px 20px", cursor: "pointer", borderRadius: "0.15rem",
-              }}>
-                Apply for Access →
-              </button>
-            </Link>
-          </div>
+          <Link href="/request-access">
+            <button style={{
+              ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 11,
+              fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase",
+              padding: "9px 20px", cursor: "pointer", borderRadius: "0.15rem",
+            }}>
+              Apply for Founding Partner Access →
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -580,6 +579,81 @@ export default function SituationScanner() {
                 </div>
               </div>
             </div>
+
+            {/* ── EMAIL CAPTURE ──────────────────────────────────────────── */}
+            <div style={{ marginTop: 32, paddingTop: 28, borderTop: "1px solid rgba(10,15,46,0.1)" }}>
+              {emailStatus === "sent" ? (
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: "50%", background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ color: "#fff", fontSize: 13, fontWeight: 700 }}>✓</span>
+                  </div>
+                  <div>
+                    <div style={{ ...BC, fontSize: 12, fontWeight: 700, color: TEAL, letterSpacing: "0.08em" }}>Summary sent — check your inbox</div>
+                    <div style={{ fontSize: 12, color: "#9CA3AF", marginTop: 2 }}>We'll follow up about the Founding Partner Program within 24 hours.</div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280", marginBottom: 6 }}>
+                    Send me this response brief
+                  </div>
+                  <p style={{ fontSize: 13, color: "#9CA3AF", margin: "0 0 14px" }}>
+                    Get Protocol #{selected.protocolNum} — {selected.protocol} — in your inbox with the full task sequence and Founding Partner details.
+                  </p>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" as const }}>
+                    <input
+                      type="email"
+                      value={emailInput}
+                      onChange={e => setEmailInput(e.target.value)}
+                      placeholder="Your work email"
+                      style={{
+                        flex: 1, minWidth: 220, padding: "10px 14px",
+                        border: "1px solid rgba(10,15,46,0.2)", background: "#fff",
+                        fontSize: 13, color: NAVY, outline: "none", fontFamily: "inherit",
+                        borderRadius: "0.15rem",
+                      }}
+                    />
+                    <button
+                      disabled={emailStatus === "loading" || !emailInput.includes("@")}
+                      onClick={async () => {
+                        if (!emailInput.includes("@") || !selected) return;
+                        setEmailStatus("loading");
+                        try {
+                          const r = await fetch("/api/situation-scanner/lead", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              email: emailInput,
+                              situationId: selected.id,
+                              situationName: selected.name,
+                              domain: selected.domain,
+                              protocolNum: selected.protocolNum,
+                              protocol: selected.protocol,
+                            }),
+                          });
+                          const d = await r.json();
+                          setEmailStatus(d.success ? "sent" : "error");
+                        } catch { setEmailStatus("error"); }
+                      }}
+                      style={{
+                        padding: "10px 22px", background: emailInput.includes("@") ? NAVY : "rgba(10,15,46,0.25)",
+                        color: "#fff", border: "none", fontSize: 12, fontWeight: 700,
+                        letterSpacing: "0.08em", textTransform: "uppercase" as const,
+                        cursor: emailInput.includes("@") ? "pointer" : "not-allowed",
+                        whiteSpace: "nowrap" as const, borderRadius: "0.15rem",
+                      }}
+                    >
+                      {emailStatus === "loading" ? "Sending…" : "Send Brief →"}
+                    </button>
+                  </div>
+                  {emailStatus === "error" && (
+                    <p style={{ fontSize: 12, color: "#C0392B", marginTop: 8, marginBottom: 0 }}>
+                      Something went wrong — email pilot@vaughnmartin.com directly.
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         )}
 
@@ -613,16 +687,6 @@ export default function SituationScanner() {
                   color: NAVY,
                 }}>
                   Apply for Founding Partner Access →
-                </button>
-              </Link>
-              <Link href="/founding-partner-brief">
-                <button style={{
-                  width: "100%", padding: "14px 32px",
-                  background: "transparent", border: `1px solid ${NAVY}`, cursor: "pointer", borderRadius: "0.15rem",
-                  ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
-                  color: NAVY,
-                }}>
-                  Read the Founding Partner Brief
                 </button>
               </Link>
               <p style={{ fontSize: 11, color: "#9CA3AF", margin: 0, textAlign: "center" }}>

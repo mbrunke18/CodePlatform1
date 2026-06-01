@@ -450,6 +450,7 @@ function HomepageNav() {
             }}>
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
+            <Link href="/situation-scanner" style={{ ...DM, color: TEAL, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(43,138,110,0.3)`, paddingBottom: 1 }}>Situation Scanner</Link>
             <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>Founder's Story</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -2946,6 +2947,7 @@ function HomepageFooter() {
           <div style={{ flex: 1 }}>
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>DEMOS</div>
             {[
+              { label: "Situation Scanner",          href: "/situation-scanner" },
               { label: "12-Minute Test Drive",      href: "/12-minute-experience" },
               { label: "Shadow Simulator",          href: "/simulation-studio" },
               { label: "ROI Calculator",            href: "/roi-calculator" },
