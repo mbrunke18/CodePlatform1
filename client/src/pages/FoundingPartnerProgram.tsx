@@ -367,14 +367,14 @@ export default function FoundingPartnerProgram() {
                 180 Readiness Protocols pre-staged. 221 trigger patterns monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65 }}>
-                12 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
+                2 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
               </p>
             </div>
 
             {/* Stats strip */}
             <div style={{ display: 'flex', gap: 0, marginBottom: 52, borderTop: '1px solid rgba(201,168,76,0.18)', paddingTop: 32 }}>
               {[
-                { val: '12', label: 'Founding Partner Seats' },
+                { val: '2', label: 'Founding Partner Seats' },
                 { val: '$75K', label: 'Engagement Investment' },
                 { val: '90', label: 'Days' },
                 { val: '100%', label: 'Credited to Enterprise Contract' },
