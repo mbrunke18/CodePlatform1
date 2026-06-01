@@ -86,9 +86,13 @@ export function registerQuickLinkRoute(app: Express) {
       console.log(`[QuickLink] Generated link for ${name} <${email}> — expires in ${durationHours}h`);
 
       let emailSent = false;
+      let emailError: string | undefined;
       if (sendEmail) {
         const apiKey = process.env.RESEND_API_KEY;
-        if (apiKey) {
+        if (!apiKey) {
+          emailError = "RESEND_API_KEY not configured";
+          console.warn("[QuickLink] Email skipped — RESEND_API_KEY not set");
+        } else {
           try {
             const resend = new Resend(apiKey);
             const firstName = name.split(" ")[0] || name;
@@ -136,16 +140,32 @@ export function registerQuickLinkRoute(app: Express) {
     </td></tr>
   </table>
 </body></html>`;
-            const { error } = await resend.emails.send({
-              from: "Readiness OS <pilot@vaughnmartin.com>",
-              replyTo: "pilot@vaughnmartin.com",
-              to: [email.trim()],
-              subject: `Your ${durationHours}-Hour Readiness OS Access — ${name}`,
-              html,
-            });
-            if (!error) emailSent = true;
-            else console.warn(`[QuickLink] Email send failed: ${error.message}`);
+
+            // Try verified custom domain first; fall back to Resend's shared domain
+            const fromAddresses = [
+              "Readiness OS <pilot@vaughnmartin.com>",
+              "Readiness OS <onboarding@resend.dev>",
+            ];
+            for (const from of fromAddresses) {
+              const { error } = await resend.emails.send({
+                from,
+                replyTo: "pilot@vaughnmartin.com",
+                to: [email.trim()],
+                subject: `Your ${durationHours}-Hour Readiness OS Access — ${name}`,
+                html,
+              });
+              if (!error) {
+                emailSent = true;
+                console.log(`[QuickLink] Email sent via ${from} to ${email}`);
+                break;
+              } else {
+                console.warn(`[QuickLink] Send failed from ${from}: ${error.message}`);
+                emailError = error.message;
+              }
+            }
+            if (!emailSent) console.warn(`[QuickLink] All from-addresses failed — copy link manually`);
           } catch (err: any) {
+            emailError = err.message;
             console.warn(`[QuickLink] Email threw: ${err.message}`);
           }
         }
@@ -159,6 +179,7 @@ export function registerQuickLinkRoute(app: Express) {
         expiresAt: new Date(expiresAt).toISOString(),
         durationHours,
         emailSent,
+        emailError: emailSent ? undefined : emailError,
       });
     } catch (err) {
       console.error("[QuickLink] Error:", err);

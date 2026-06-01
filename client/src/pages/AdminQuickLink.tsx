@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'wouter';
 import { apiRequest } from '@/lib/queryClient';
-import { Copy, Check, Zap, Clock, Users, ExternalLink, ArrowLeft, Shield } from 'lucide-react';
+import { Copy, Check, Zap, Clock, Users, ExternalLink, ArrowLeft, Shield, Mail, AlertCircle } from 'lucide-react';
 
 const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
@@ -22,6 +22,8 @@ interface GeneratedLink {
   email: string;
   expiresAt: string;
   durationHours: number;
+  emailSent?: boolean;
+  emailError?: string;
 }
 
 export default function AdminQuickLink() {
@@ -29,6 +31,7 @@ export default function AdminQuickLink() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [hours, setHours] = useState(48);
+  const [sendEmail, setSendEmail] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [result, setResult] = useState<GeneratedLink | null>(null);
   const [error, setError] = useState('');
@@ -43,7 +46,7 @@ export default function AdminQuickLink() {
     setError('');
     setGenerating(true);
     try {
-      const data = await apiRequest('POST', '/api/admin/generate-demo-link', { name, email, hours }) as unknown as GeneratedLink;
+      const data = await apiRequest('POST', '/api/admin/generate-demo-link', { name, email, hours, sendEmail }) as unknown as GeneratedLink;
       setResult(data);
       setHistory(prev => [data, ...prev].slice(0, 10));
       setName('');
@@ -173,6 +176,32 @@ export default function AdminQuickLink() {
               </div>
             </div>
 
+            {/* Send email toggle */}
+            <label style={{
+              display: 'flex', alignItems: 'center', gap: 12,
+              padding: '12px 14px', border: `1px solid ${sendEmail ? TEAL : '#E2E8F0'}`,
+              background: sendEmail ? 'rgba(43,138,110,0.05)' : '#FAFAFA',
+              cursor: 'pointer', marginBottom: 20, transition: 'all 0.1s',
+            }}>
+              <input
+                type="checkbox"
+                checked={sendEmail}
+                onChange={e => setSendEmail(e.target.checked)}
+                style={{ accentColor: TEAL, width: 15, height: 15 }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                  <Mail size={12} color={sendEmail ? TEAL : '#94A3B8'} />
+                  <span style={{ fontSize: 12, fontWeight: 700, color: sendEmail ? TEAL : '#64748B' }}>
+                    Send email directly to prospect
+                  </span>
+                </div>
+                <span style={{ fontSize: 11, color: '#94A3B8' }}>
+                  {sendEmail ? 'Email will be delivered automatically on generate' : 'Link only — copy and send manually'}
+                </span>
+              </div>
+            </label>
+
             {error && (
               <div style={{ background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderRadius: 0, padding: '10px 14px', fontSize: 13, color: '#C0392B', marginBottom: 16 }}>
                 {error}
@@ -189,7 +218,7 @@ export default function AdminQuickLink() {
                 letterSpacing: '0.04em', transition: 'background 0.15s',
               }}
             >
-              {generating ? 'Generating...' : 'Generate Demo Link'}
+              {generating ? 'Generating...' : sendEmail ? 'Generate & Send Email' : 'Generate Demo Link'}
             </button>
           </div>
 
@@ -207,10 +236,30 @@ export default function AdminQuickLink() {
                   <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{result.name}</div>
                   <div style={{ fontSize: 11, color: '#64748B' }}>{result.email}</div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
                   <Clock size={11} color='#94A3B8' />
                   <span style={{ fontSize: 11, color: '#64748B' }}>Expires {formatExpiry(result.expiresAt)}</span>
                 </div>
+                {/* Email delivery status */}
+                {result.emailSent ? (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 10px', background: 'rgba(43,138,110,0.07)', border: '1px solid rgba(43,138,110,0.25)', marginBottom: 14 }}>
+                    <Mail size={11} color={TEAL} />
+                    <span style={{ fontSize: 11, fontWeight: 700, color: TEAL }}>Email delivered to {result.email}</span>
+                  </div>
+                ) : result.emailError ? (
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6, padding: '7px 10px', background: 'rgba(192,57,43,0.06)', border: '1px solid rgba(192,57,43,0.2)', marginBottom: 14 }}>
+                    <AlertCircle size={11} color='#C0392B' style={{ flexShrink: 0, marginTop: 1 }} />
+                    <div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: '#C0392B', display: 'block' }}>Email delivery failed — copy link below and send manually</span>
+                      <span style={{ fontSize: 10, color: '#94A3B8' }}>{result.emailError}</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 10px', background: '#F8FAFC', border: '1px solid #E2E8F0', marginBottom: 14 }}>
+                    <Mail size={11} color='#94A3B8' />
+                    <span style={{ fontSize: 11, color: '#64748B' }}>Copy link below and send manually</span>
+                  </div>
+                )}
                 <div style={{
                   background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0,
                   padding: '10px 12px', fontSize: 11, color: '#475569', wordBreak: 'break-all' as const,
