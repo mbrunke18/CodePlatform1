@@ -115,34 +115,34 @@ const pilotInclusions = [
 
 const idealCandidates = [
   {
-    criteria: 'Organization Size',
-    description: 'Startup through enterprise — any organization facing strategic triggers',
+    criteria: 'C-Suite Executive Sponsor',
+    description: 'COO, CFO, or CEO with personal accountability for the deployment outcome — not a project owner, not a delegated team.',
     importance: 'Required'
   },
   {
-    criteria: 'Executive Sponsor',
-    description: 'C-level or SVP champion with budget authority',
+    criteria: 'Named Technical Owner',
+    description: 'A designated internal owner who can complete onboarding and protocol configuration within 30 days without requiring daily external support.',
     importance: 'Required'
   },
   {
-    criteria: 'PM Tool',
-    description: 'Active Jira, Asana, or Monday.com deployment',
+    criteria: 'Three Real Situations',
+    description: 'At least three specific situations your executive sponsor can name right now where Readiness OS would deploy if a trigger fired — recognized as genuinely important, not hypothetical.',
     importance: 'Required'
   },
   {
-    criteria: 'Recent Pain Point',
-    description: 'Experienced slow response to strategic event in past 12 months',
-    importance: 'Preferred'
+    criteria: 'Enterprise Tech Stack',
+    description: 'An existing deployment of at least one live connector — Microsoft Teams, Slack, Jira, or any of the 55+ supported integrations the platform deploys into.',
+    importance: 'Required'
   },
   {
-    criteria: 'Multi-Department',
-    description: 'Strategic events require 4+ departments to coordinate',
-    importance: 'Preferred'
+    criteria: 'Trigger Plausibility',
+    description: 'A real strategic trigger plausible within the 90-day window. Not guaranteed — plausible. Financial, regulatory, competitive, or operational pressure already building.',
+    importance: 'Required'
   },
   {
-    criteria: 'Growth Intent',
-    description: 'Committed to enterprise rollout if the engagement succeeds',
-    importance: 'Preferred'
+    criteria: 'Explicit Commitment',
+    description: 'Confirmed willingness — stated before access is granted — to participate in a 60-day progress conversation and a 90-day conversion discussion.',
+    importance: 'Required'
   }
 ];
 
@@ -747,7 +747,7 @@ export default function FoundingPartnerProgram() {
                 Ideal Founding Partners
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }} data-testid="heading-candidates">
-                Organizations built to validate strategic readiness.
+                Six criteria. All required. No exceptions.
               </h2>
             </div>
             <div className="fpp-three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
