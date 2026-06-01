@@ -345,7 +345,7 @@ export default function FoundingPartnerProgram() {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 44, padding: '8px 16px', border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.06)' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#C9A84C' }} />
               <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
-                2026 Founding Partner Cohort · 12 Seats
+                2026 Founding Partner Cohort · Selective Cohort
               </span>
             </div>
 
@@ -1079,7 +1079,7 @@ export default function FoundingPartnerProgram() {
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24, padding: '6px 14px', border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.05)' }}>
                 <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#C9A84C' }} />
                 <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
-                  2026 Cohort · 12 Seats
+                  2026 Cohort · Selective Cohort
                 </span>
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px,4vw,46px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }} data-testid="heading-cta">

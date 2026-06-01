@@ -155,7 +155,7 @@ export function registerDemoAccessRoute(app: Express) {
       const userOrgs = await storage.getUserOrganizations(DEMO_USER_ID);
       if (userOrgs.length === 0) {
         await storage.createOrganization({
-          name: "Acme Corporation — Executive Demo",
+          name: "Readiness OS — Executive Demo Environment",
           description: "startup to Fortune 500 enterprise pilot demonstration environment",
           ownerId: DEMO_USER_ID,
           industry: "Financial Services",

@@ -43807,9 +43807,13 @@ function registerQuickLinkRoute(app2) {
       const url = `${baseUrl}/api/demo-access?token=${token}`;
       console.log(`[QuickLink] Generated link for ${name} <${email}> \u2014 expires in ${durationHours}h`);
       let emailSent = false;
+      let emailError;
       if (sendEmail) {
         const apiKey = process.env.RESEND_API_KEY;
-        if (apiKey) {
+        if (!apiKey) {
+          emailError = "RESEND_API_KEY not configured";
+          console.warn("[QuickLink] Email skipped \u2014 RESEND_API_KEY not set");
+        } else {
           try {
             const resend2 = new Resend3(apiKey);
             const firstName = name.split(" ")[0] || name;
@@ -43857,16 +43861,30 @@ function registerQuickLinkRoute(app2) {
     </td></tr>
   </table>
 </body></html>`;
-            const { error } = await resend2.emails.send({
-              from: "Readiness OS <pilot@vaughnmartin.com>",
-              replyTo: "pilot@vaughnmartin.com",
-              to: [email.trim()],
-              subject: `Your ${durationHours}-Hour Readiness OS Access \u2014 ${name}`,
-              html
-            });
-            if (!error) emailSent = true;
-            else console.warn(`[QuickLink] Email send failed: ${error.message}`);
+            const fromAddresses = [
+              "Readiness OS <pilot@vaughnmartin.com>",
+              "Readiness OS <onboarding@resend.dev>"
+            ];
+            for (const from of fromAddresses) {
+              const { error } = await resend2.emails.send({
+                from,
+                replyTo: "pilot@vaughnmartin.com",
+                to: [email.trim()],
+                subject: `Your ${durationHours}-Hour Readiness OS Access \u2014 ${name}`,
+                html
+              });
+              if (!error) {
+                emailSent = true;
+                console.log(`[QuickLink] Email sent via ${from} to ${email}`);
+                break;
+              } else {
+                console.warn(`[QuickLink] Send failed from ${from}: ${error.message}`);
+                emailError = error.message;
+              }
+            }
+            if (!emailSent) console.warn(`[QuickLink] All from-addresses failed \u2014 copy link manually`);
           } catch (err) {
+            emailError = err.message;
             console.warn(`[QuickLink] Email threw: ${err.message}`);
           }
         }
@@ -43878,7 +43896,8 @@ function registerQuickLinkRoute(app2) {
         email,
         expiresAt: new Date(expiresAt).toISOString(),
         durationHours,
-        emailSent
+        emailSent,
+        emailError: emailSent ? void 0 : emailError
       });
     } catch (err) {
       console.error("[QuickLink] Error:", err);
@@ -44026,7 +44045,7 @@ function registerDemoAccessRoute(app2) {
       const userOrgs = await storage.getUserOrganizations(DEMO_USER_ID);
       if (userOrgs.length === 0) {
         await storage.createOrganization({
-          name: "Acme Corporation \u2014 Executive Demo",
+          name: "Readiness OS \u2014 Executive Demo Environment",
           description: "startup to Fortune 500 enterprise pilot demonstration environment",
           ownerId: DEMO_USER_ID,
           industry: "Financial Services",
@@ -58251,6 +58270,111 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.json({ success: true, emailSent: sent });
     } catch (err) {
       console.error("[TestDrive] Error:", err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+  app2.post("/api/situation-scanner/lead", async (req, res) => {
+    try {
+      const { email, situationId, situationName, domain, protocolNum, protocol } = req.body;
+      if (!email || !situationId || !situationName) {
+        return res.status(400).json({ success: false, error: "email, situationId, and situationName are required" });
+      }
+      await db.insert(testDriveLeads).values({
+        email: email.trim().toLowerCase(),
+        companyName: null,
+        scenarioId: situationId,
+        scenarioTitle: `[Scanner] ${situationName}`,
+        completedTasks: 6,
+        totalTasks: 6
+      });
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) {
+        console.log(`[Scanner] No Resend key \u2014 lead stored without email for ${email}`);
+        return res.json({ success: true, emailSent: false });
+      }
+      const { Resend: Resend9 } = await import("resend");
+      const resend2 = new Resend9(apiKey);
+      const NAVY_C = "#0A0F2E";
+      const GOLD_C = "#C9A84C";
+      const TEAL_C = "#2B8A6E";
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+        <body style="margin:0;padding:0;background:#f4f4f4;font-family:'Helvetica Neue',Arial,sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:32px 16px;">
+            <tr><td align="center">
+              <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
+                <tr><td style="background:${NAVY_C};padding:32px 40px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD_C};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
+                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Situation Brief: ${situationName}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Protocol #${protocolNum} \u2014 ${protocol}</div>
+                </td></tr>
+                <tr><td style="height:3px;background:${GOLD_C};"></td></tr>
+                <tr><td style="padding:40px;">
+                  <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 20px;">
+                    You just used the Situation Scanner to see the pre-staged response to <strong>${situationName}</strong>. Here is what you saw \u2014 and what it means.
+                  </p>
+                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD_C};margin-bottom:28px;">
+                    <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What the response represents</div>
+                    <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
+                      Protocol #${protocolNum} was pre-staged before this trigger arrived. When it fires, you don't mobilize \u2014 you authorize. Every task has an owner. Every stakeholder is pre-notified. The 30-day alignment cycle compresses to <strong>12 minutes</strong>.
+                    </p>
+                  </div>
+                  <div style="margin-bottom:28px;">
+                    <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:${TEAL_C};margin-bottom:8px;">Domain</div>
+                    <div style="font-size:15px;font-weight:700;color:${NAVY_C};">${domain}</div>
+                  </div>
+                  <p style="font-size:15px;font-weight:600;color:${NAVY_C};margin:0 0 8px;">Founding Partner Program</p>
+                  <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    Two slots remain. Founding Partners get 90 days to pre-stage Readiness Protocols against their real strategic scenarios \u2014 with their actual team, actual risk register, and actual authorization structure. No subscription fee for the validation period.
+                  </p>
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td style="background:${NAVY_C};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD_C};text-decoration:none;">Apply for Founding Partner Access \u2192</a>
+                      </td>
+                    </tr>
+                  </table>
+                  <p style="font-size:12px;color:#9ca3af;line-height:1.6;margin:0;">
+                    VaughnMartin \xB7 Readiness OS<br>
+                    You received this because you used the Situation Scanner at readinessOS.replit.app<br>
+                    <a href="mailto:pilot@vaughnmartin.com" style="color:#9ca3af;">pilot@vaughnmartin.com</a>
+                  </p>
+                </td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </body>
+        </html>
+      `;
+      const fromAddresses = [
+        "Readiness OS <onboarding@resend.dev>",
+        "Readiness OS <pilot@vaughnmartin.com>"
+      ];
+      let sent = false;
+      for (const from of fromAddresses) {
+        try {
+          const { error } = await resend2.emails.send({
+            from,
+            replyTo: "pilot@vaughnmartin.com",
+            to: [email.trim()],
+            subject: `Your Situation Brief: ${situationName} \u2014 Readiness OS`,
+            html
+          });
+          if (!error) {
+            sent = true;
+            break;
+          }
+          console.warn(`[Scanner] Sender ${from} rejected: ${error.message}`);
+        } catch (err) {
+          console.warn(`[Scanner] Sender ${from} threw: ${err.message}`);
+        }
+      }
+      console.log(`\u2705 [Scanner] Lead captured: ${email} \xB7 ${situationName} \xB7 email ${sent ? "sent" : "failed"}`);
+      res.json({ success: true, emailSent: sent });
+    } catch (err) {
+      console.error("[Scanner] Error:", err.message);
       res.status(500).json({ success: false, error: err.message });
     }
   });

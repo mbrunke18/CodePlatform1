@@ -110,7 +110,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2">
                 {section.links.map((link) => (
-                  <li key={link.path}>
+                  <li key={link.label}>
                     <button
                       onClick={() => navigateTo(link.path)}
                       className="text-sm text-slate-300 hover:text-white transition-colors text-left"
