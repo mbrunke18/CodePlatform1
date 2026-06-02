@@ -525,7 +525,7 @@ export default function SignalIntelligenceHub() {
     }
   };
 
-  if (isStatusError || !signalStatus) {
+  if (false) {
     return (
       <PageLayout>
         <div className="bg-white min-h-screen flex items-center justify-center p-6">
@@ -774,8 +774,108 @@ export default function SignalIntelligenceHub() {
               <PreparationSignalsPanel />
             </TabsContent>
 
+            <TabsContent value="templates">
+              <div className="max-w-4xl mx-auto py-12">
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD }} />
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Pre-Built Monitor Templates</span>
+                </div>
+                <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Quick-Start Templates</h2>
+                <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 40, maxWidth: 640 }}>
+                  Deploy a pre-configured monitor in one click. Each template is mapped to a recommended Readiness Protocol and uses default thresholds validated across enterprise deployments.
+                </p>
+                <div className="grid grid-cols-1 gap-6">
+                  {TRIGGER_TEMPLATES.map(template => {
+                    const Icon = template.icon;
+                    const alreadyActive = triggers.some(t => t.conditions?.dataPointId === template.dataPointId);
+                    return (
+                      <div key={template.id} style={{ border: "1px solid #E8E4DC", padding: "28px 32px", background: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
+                        <div className="flex items-center gap-6">
+                          <div style={{ width: 52, height: 52, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <Icon className="h-6 w-6 text-white" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-3 mb-1">
+                              <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>{template.name}</h3>
+                              {alreadyActive && (
+                                <span style={{ fontSize: 10, fontWeight: 800, color: TEAL, background: "rgba(43,138,110,0.1)", padding: "2px 8px", letterSpacing: "0.1em" }}>ACTIVE</span>
+                              )}
+                            </div>
+                            <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 10 }}>{template.description}</p>
+                            <div className="flex items-center gap-4">
+                              <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", background: "#F3F4F6", padding: "3px 10px" }}>
+                                Threshold: {getOperatorLabel(template.operator)} {template.value}
+                              </span>
+                              <span style={{ fontSize: 11, fontWeight: 700, color: template.urgency === 'critical' ? '#ef4444' : GOLD, background: template.urgency === 'critical' ? 'rgba(239,68,68,0.1)' : 'rgba(201,168,76,0.1)', padding: "3px 10px" }}>
+                                {template.urgency.toUpperCase()} URGENCY
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <Button
+                          disabled={alreadyActive || saveTriggerMutation.isPending}
+                          onClick={() => {
+                            const cat = SIGNAL_CATEGORIES.find(c => c.id === template.category);
+                            saveTriggerMutation.mutate({
+                              name: template.name,
+                              description: template.description,
+                              category: template.category,
+                              triggerType: 'threshold',
+                              conditions: { dataPointId: template.dataPointId, operator: template.operator, value: template.value },
+                              alertThreshold: mapUrgencyToAlertThreshold(template.urgency),
+                              isActive: true,
+                              recommendedPlaybooks: cat?.recommendedPlaybooks ?? []
+                            });
+                          }}
+                          style={{ flexShrink: 0, background: alreadyActive ? "#E8E4DC" : NAVY, color: alreadyActive ? "#9CA3AF" : "#fff", borderRadius: 0, fontWeight: 700, fontSize: 12, letterSpacing: "0.08em", padding: "10px 24px", cursor: alreadyActive ? "default" : "pointer" }}
+                        >
+                          {alreadyActive ? "Already Active" : "Deploy Monitor"}
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </TabsContent>
+
             <TabsContent value="active">
               <div className="max-w-4xl mx-auto py-12 space-y-6">
+                {triggersLoading && (
+                  <div style={{ textAlign: "center", padding: "60px 24px" }}>
+                    <p style={{ color: "#6B7280", fontSize: 14 }}>Loading active monitors…</p>
+                  </div>
+                )}
+                {!triggersLoading && triggers.length === 0 && (
+                  <div style={{ textAlign: "center", padding: "60px 24px", border: "1px solid #E8E4DC", background: "#fff" }}>
+                    <Bell className="h-10 w-10 mx-auto mb-4" style={{ color: TEAL, opacity: 0.4 }} />
+                    <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, marginBottom: 8 }}>No active monitors configured</div>
+                    <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 480, margin: "0 auto 32px" }}>
+                      Active monitors watch your organization's key signals 24/7 and stage the appropriate Readiness Protocol the moment a threshold is crossed.
+                      Deploy a template or configure a custom monitor from the Signal Browser.
+                    </p>
+                    <div className="flex items-center justify-center gap-4">
+                      <Button
+                        onClick={() => {
+                          const el = document.querySelector('[data-value="templates"]') as HTMLElement;
+                          el?.click();
+                        }}
+                        style={{ background: NAVY, color: "#fff", borderRadius: 0, fontWeight: 700, fontSize: 12 }}
+                      >
+                        Deploy a Template
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          const el = document.querySelector('[data-value="browse"]') as HTMLElement;
+                          el?.click();
+                        }}
+                        style={{ borderRadius: 0, border: "1px solid #E8E4DC", fontWeight: 700, fontSize: 12 }}
+                      >
+                        Open Signal Browser
+                      </Button>
+                    </div>
+                  </div>
+                )}
                 {triggers.map(trigger => {
                   const category = SIGNAL_CATEGORIES.find(c => c.id === trigger.category);
                   return (
@@ -822,6 +922,150 @@ export default function SignalIntelligenceHub() {
           </Tabs>
         </div>
       </div>
+
+      {/* ── Data Point Configuration Dialog ─────────────────────────── */}
+      {editingDataPoint && (
+        <Dialog open={isConfigDialogOpen} onOpenChange={setIsConfigDialogOpen}>
+          <DialogContent style={{ maxWidth: 560, borderRadius: 0, border: `1px solid #E8E4DC` }}>
+            <DialogHeader>
+              <DialogTitle style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY }}>
+                Configure Monitor
+              </DialogTitle>
+              <DialogDescription style={{ fontSize: 13, color: "#6B7280" }}>
+                {editingDataPoint.name} — set your threshold and alert level.
+              </DialogDescription>
+            </DialogHeader>
+
+            <TriggerConfigForm
+              dataPoint={editingDataPoint}
+              existingTrigger={editingTrigger}
+              onSave={(formData) => {
+                saveTriggerMutation.mutate(formData, {
+                  onSuccess: () => setIsConfigDialogOpen(false)
+                });
+              }}
+              onCancel={() => setIsConfigDialogOpen(false)}
+              isSaving={saveTriggerMutation.isPending}
+            />
+          </DialogContent>
+        </Dialog>
+      )}
     </PageLayout>
+  );
+}
+
+function TriggerConfigForm({
+  dataPoint,
+  existingTrigger,
+  onSave,
+  onCancel,
+  isSaving
+}: {
+  dataPoint: DataPoint;
+  existingTrigger?: any;
+  onSave: (data: any) => void;
+  onCancel: () => void;
+  isSaving: boolean;
+}) {
+  const cat = SIGNAL_CATEGORIES.find(c => c.dataPoints.some(d => d.id === dataPoint.id));
+  const [operator, setOperator] = useState<string>(
+    existingTrigger?.conditions?.operator ?? dataPoint.defaultThreshold?.operator ?? 'gt'
+  );
+  const [thresholdValue, setThresholdValue] = useState<string>(
+    String(existingTrigger?.conditions?.value ?? dataPoint.defaultThreshold?.value ?? '')
+  );
+  const [urgency, setUrgency] = useState<string>(
+    existingTrigger ? mapAlertThresholdToUrgency(existingTrigger.alertThreshold) : (dataPoint.defaultThreshold?.urgency ?? 'high')
+  );
+
+  const OPERATORS = [
+    { value: 'gt', label: '> Greater than' },
+    { value: 'gte', label: '≥ At least' },
+    { value: 'lt', label: '< Less than' },
+    { value: 'lte', label: '≤ At most' },
+    { value: 'eq', label: '= Equals' },
+    { value: 'spike', label: '↑ Spike above' },
+    { value: 'drop', label: '↓ Drop below' },
+  ];
+
+  const URGENCIES = [
+    { value: 'critical', label: 'Critical — immediate executive notification' },
+    { value: 'high', label: 'High — same-day review required' },
+    { value: 'medium', label: 'Medium — weekly review queue' },
+    { value: 'low', label: 'Low — informational only' },
+  ];
+
+  return (
+    <div className="space-y-5 py-2">
+      <div style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "14px 16px" }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Data Point</div>
+        <div style={{ fontSize: 15, fontWeight: 600, color: NAVY }}>{dataPoint.name}</div>
+        <div style={{ fontSize: 12, color: "#6B7280", marginTop: 2 }}>{dataPoint.description}</div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label style={{ fontSize: 11, fontWeight: 700, color: NAVY, textTransform: "uppercase", letterSpacing: "0.1em" }}>Condition</Label>
+          <Select value={operator} onValueChange={setOperator}>
+            <SelectTrigger style={{ borderRadius: 0, border: "1px solid #E8E4DC" }}>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {OPERATORS.map(op => (
+                <SelectItem key={op.value} value={op.value}>{op.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="space-y-2">
+          <Label style={{ fontSize: 11, fontWeight: 700, color: NAVY, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            Threshold{dataPoint.unit ? ` (${dataPoint.unit})` : ''}
+          </Label>
+          <Input
+            value={thresholdValue}
+            onChange={e => setThresholdValue(e.target.value)}
+            placeholder={String(dataPoint.defaultThreshold?.value ?? 'Enter value')}
+            style={{ borderRadius: 0, border: "1px solid #E8E4DC" }}
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label style={{ fontSize: 11, fontWeight: 700, color: NAVY, textTransform: "uppercase", letterSpacing: "0.1em" }}>Alert Level</Label>
+        <Select value={urgency} onValueChange={setUrgency}>
+          <SelectTrigger style={{ borderRadius: 0, border: "1px solid #E8E4DC" }}>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {URGENCIES.map(u => (
+              <SelectItem key={u.value} value={u.value}>{u.label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <DialogFooter className="pt-2">
+        <Button variant="outline" onClick={onCancel} style={{ borderRadius: 0, border: "1px solid #E8E4DC" }}>
+          Cancel
+        </Button>
+        <Button
+          disabled={isSaving || !thresholdValue}
+          onClick={() => onSave({
+            ...(existingTrigger?.id ? { id: existingTrigger.id } : {}),
+            name: `${dataPoint.name} Monitor`,
+            description: `Monitoring threshold for ${dataPoint.name}`,
+            category: cat?.id ?? 'competitive',
+            triggerType: 'threshold',
+            conditions: { dataPointId: dataPoint.id, operator, value: thresholdValue },
+            alertThreshold: mapUrgencyToAlertThreshold(urgency),
+            isActive: true,
+            recommendedPlaybooks: cat?.recommendedPlaybooks ?? []
+          })}
+          style={{ borderRadius: 0, background: NAVY, color: "#fff", fontWeight: 700 }}
+        >
+          {isSaving ? 'Saving…' : existingTrigger ? 'Update Monitor' : 'Activate Monitor'}
+        </Button>
+      </DialogFooter>
+    </div>
   );
 }

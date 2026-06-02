@@ -244,7 +244,7 @@ export default function PulseMap() {
 
           <div className="space-y-3 mb-6">
             {[
-              { label: 'AT RISK', count: atRiskCount, color: '#EF4444', desc: 'domains proximity ≥80%' },
+              { label: 'IMMINENT', count: atRiskCount, color: '#EF4444', desc: 'trigger threshold confirmed ≥80%' },
               { label: 'APPROACHING', count: approachingCount, color: '#F97316', desc: 'domains proximity ≥55%' },
               { label: 'ACTIVE RESPONSES', count: activeActivations, color: TEAL, desc: 'Readiness Protocols executing now' },
             ].map(s => (

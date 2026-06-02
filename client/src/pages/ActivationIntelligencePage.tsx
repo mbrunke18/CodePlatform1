@@ -100,7 +100,7 @@ function MilestoneRow({ m, index }: { m: typeof DEMO_SCORECARD["milestones"][0];
   const statusConfig = {
     hit:     { color: TEAL,     icon: "✓", label: "HIT" },
     missed:  { color: "#ef4444", icon: "✗", label: "MISSED" },
-    at_risk: { color: GOLD,     icon: "!", label: "AT RISK" },
+    at_risk: { color: GOLD,     icon: "!", label: "IMMINENT" },
     pending: { color: "#9CA3AF", icon: "·", label: "PENDING" },
   };
   const s = statusConfig[m.status];
