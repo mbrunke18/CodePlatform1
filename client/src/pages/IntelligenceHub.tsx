@@ -76,7 +76,7 @@ export default function IntelligenceHub() {
                 Intelligence <em style={{ color: GOLD, fontStyle: 'italic' }}>Hub</em>
               </h1>
               <p className="text-white/60 max-w-xl">
-                248+ data points. 9 strategic domains. Real-time AI pattern detection. 15-minute monitoring cycles.
+                248+ data points. 19 signal categories. Real-time pattern detection. 15-minute monitoring cycles.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-wrap">
@@ -122,7 +122,7 @@ export default function IntelligenceHub() {
               {/* KPI Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
-                  { label: 'Signal Categories', value: '20', desc: 'Enterprise domains monitored', icon: Layers, color: TEAL },
+                  { label: 'Signal Categories', value: '19', desc: 'Enterprise domains monitored', icon: Layers, color: TEAL },
                   { label: 'Data Points', value: '248+', desc: 'Tracked in real time', icon: Database, color: GOLD },
                   { label: 'Active Triggers', value: String(activeTriggers), desc: 'Currently firing', icon: Zap, color: TEAL },
                   { label: 'AI Patterns', value: String(oraclePatterns), desc: 'Cross-domain correlations', icon: Brain, color: NAVY },
@@ -167,7 +167,7 @@ export default function IntelligenceHub() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
                   { title: 'Signal Radar Dashboard', desc: 'Real-time signal detection and pattern analysis', path: '/ai-radar', tab: 'radar', icon: Radio, color: GOLD },
-                  { title: 'Signal Intelligence', desc: '248+ data points, 9 strategic domains', path: '/signal-intelligence', tab: 'signals', icon: Zap, color: TEAL },
+                  { title: 'Signal Intelligence', desc: '248+ data points, 19 signal categories', path: '/signal-intelligence', tab: 'signals', icon: Zap, color: TEAL },
                   { title: 'Compound Threats', desc: 'Cross-domain disruption synthesis', path: '/intelligence', tab: 'compound', icon: Brain, color: NAVY },
                 ].map(item => (
                   <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
@@ -196,7 +196,7 @@ export default function IntelligenceHub() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
                   <div className="flex items-center gap-3"><h2 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Signal Intelligence Dashboard</h2><Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge></div>
-                  <p className="text-[#6B7280] mt-1">248+ data points monitored across 9 strategic domains</p>
+                  <p className="text-[#6B7280] mt-1">248+ data points monitored across 19 signal categories</p>
                 </div>
                 <div className="flex gap-3">
                   <Link href="/signal-intelligence"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Signal Hub</Button></Link>
@@ -282,7 +282,7 @@ export default function IntelligenceHub() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[
-                      { step: '01', title: 'Weak Signal Aggregation', desc: 'The system reads signals across all 20 domains simultaneously, identifying patterns invisible to domain-specific analysis.' },
+                      { step: '01', title: 'Weak Signal Aggregation', desc: 'The system reads signals across all 19 signal categories simultaneously, identifying patterns invisible to category-specific analysis.' },
                       { step: '02', title: 'Cross-Domain Correlation', desc: 'The system identifies when signals from multiple domains show convergent patterns that amplify total risk.' },
                       { step: '03', title: 'Situation Synthesis', desc: 'A compound situation card is generated with severity score, confidence rating, and recommended response playbooks.' },
                     ].map(s => (

@@ -67,7 +67,7 @@ export default function IntelligenceControlCenter() {
   useEffect(() => {
     updatePageMetadata({
       title: "Intelligence Control Center - VaughnMartin Readiness OS",
-      description: "Monitor 248+ data points across 9 strategic domains. Pattern-based detection, trigger management, and strategic intelligence.",
+      description: "Monitor 248+ data points across 19 signal categories. Pattern-based detection, trigger management, and strategic intelligence.",
       ogTitle: "Intelligence Control Center",
       ogDescription: "Real-time strategic intelligence with Pattern-based detection and 12-minute response coordination.",
     });
@@ -138,8 +138,8 @@ export default function IntelligenceControlCenter() {
       id: 'signal-hub', title: 'Signal Intelligence',
       description: 'Configure triggers and monitor data points',
       path: '/signal-intelligence', icon: Radio, accentColor: TEAL, badge: '248+ DATA POINTS',
-      stat: '248+ Points', statSub: '9 strategic domains',
-      features: ['9 Strategic Domains', '248+ Data Points', 'Custom Triggers', 'Alert Management'],
+      stat: '248+ Points', statSub: '19 signal categories',
+      features: ['19 Signal Categories', '248+ Data Points', 'Custom Triggers', 'Alert Management'],
       anim: 'icc-tile-2',
     },
     {
@@ -208,7 +208,7 @@ export default function IntelligenceControlCenter() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, marginBottom: 24, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.07)' }} data-testid="grid-quick-stats">
             {[
               { label: 'Data Points Monitored', value: '248+', icon: Activity, color: GOLD, id: 'data-points' },
-              { label: 'Signal Categories', value: '16', icon: Layers, color: TEAL, id: 'signal-categories' },
+              { label: 'Signal Categories', value: '19', icon: Layers, color: TEAL, id: 'signal-categories' },
               { label: 'Weak Signals', value: String(weakSignalCount), icon: AlertCircle, color: GOLD, id: 'weak-signals' },
               { label: 'Active Patterns', value: String(dynamicStatus?.oraclePatternsActive ?? PATTERN_CORRELATIONS.length), icon: TrendingUp, color: TEAL, id: 'active-patterns' },
             ].map(stat => (
@@ -362,7 +362,7 @@ export default function IntelligenceControlCenter() {
                     <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: overallHealth >= 90 ? TEAL : GOLD, lineHeight: 1 }}>{overallHealth}%</div>
                     <div style={{ flex: 1, minWidth: 200 }}>
                       <Progress value={overallHealth} className="h-2" />
-                      <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 4 }}>16 of 16 categories operational</div>
+                      <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 4 }}>19 of 19 categories operational</div>
                     </div>
                   </div>
                 </div>
