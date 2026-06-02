@@ -258,33 +258,33 @@ export function evaluateSignal(
 ): DetectedTrigger[] {
   const detections: DetectedTrigger[] = [];
 
-  // Three-tier alert system — thresholds are % of each pattern's own keyword count.
-  // Defaults (50/70/80) can be overridden by org-level or per-trigger configuration.
-  //   WATCH  ≥ watchPct%  of that pattern's keywords — "Situation developing"
-  //   AWARE  ≥ awarePct%  of that pattern's keywords — "Pattern strengthening"
-  //   ACTION ≥ actionPct% of that pattern's keywords — "Trigger confirmed, execute now"
-  const WATCH_SCORE   = 55;  const WATCH_DENSITY  = (thresholds?.watchPct  ?? 50) / 100;
-  const AWARE_SCORE   = 70;  const AWARE_DENSITY  = (thresholds?.awarePct  ?? 70) / 100;
-  const ACTION_SCORE  = 82;  const ACTION_DENSITY = (thresholds?.actionPct ?? 80) / 100;
+  // Three-tier alert system — uses absolute keyword match counts, not density percentages.
+  // RSS feed article descriptions are short; requiring 50% of a 35-keyword pattern
+  // would need 18 matches in one headline — structurally impossible.
+  // Instead: require a minimum number of absolute keyword hits per tier.
+  //   WATCH  ≥ 2 keyword matches — "Situation developing"
+  //   AWARE  ≥ 4 keyword matches — "Pattern strengthening"
+  //   ACTION ≥ 6 keyword matches — "Trigger confirmed, execute now"
+  // Score thresholds still apply as a secondary gate.
+  const WATCH_SCORE   = 55;  const WATCH_MIN_KW  = 2;
+  const AWARE_SCORE   = 70;  const AWARE_MIN_KW  = 4;
+  const ACTION_SCORE  = 82;  const ACTION_MIN_KW = 6;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter(kw => text.includes(kw.toLowerCase()));
 
-    // Density is always relative to this pattern's own keyword count — no fixed minimums.
-    const density = matchedKeywords.length / pattern.keywords.length;
-
-    // Below 50% of this pattern's keywords — dismiss entirely, no alert
-    if (density < WATCH_DENSITY) continue;
+    // Require at least 2 keyword matches — single-word coincidences are noise
+    if (matchedKeywords.length < WATCH_MIN_KW) continue;
 
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
     if (confidenceScore < WATCH_SCORE) continue;
 
-    // Classify into tier purely by density % and score — same bar regardless of pattern size
+    // Classify into tier by absolute keyword count + confidence score
     let alertTier: 'watch' | 'aware' | 'action';
-    if (confidenceScore >= ACTION_SCORE && density >= ACTION_DENSITY) {
+    if (confidenceScore >= ACTION_SCORE && matchedKeywords.length >= ACTION_MIN_KW) {
       alertTier = 'action';
-    } else if (confidenceScore >= AWARE_SCORE && density >= AWARE_DENSITY) {
+    } else if (confidenceScore >= AWARE_SCORE && matchedKeywords.length >= AWARE_MIN_KW) {
       alertTier = 'aware';
     } else {
       alertTier = 'watch';
