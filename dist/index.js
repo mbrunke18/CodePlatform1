@@ -19773,6 +19773,13 @@ __export(TriggerEvaluationEngine_exports, {
   loadConfiguredTriggers: () => loadConfiguredTriggers
 });
 import { eq as eq22, and as and13 } from "drizzle-orm";
+function findDataPointById(dpId) {
+  for (const cat of SIGNAL_CATEGORIES) {
+    const dp = cat.dataPoints.find((d) => d.id === dpId);
+    if (dp) return { name: dp.name, category: cat.id, categoryName: cat.name, unit: dp.unit ?? "" };
+  }
+  return null;
+}
 function isValidUuid(id) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 }
@@ -20018,6 +20025,7 @@ async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
     for (const trigger of configuredTriggers) {
       const rawConditions = trigger.conditions;
       const isCompositeGroup = rawConditions && typeof rawConditions === "object" && !Array.isArray(rawConditions) && rawConditions.type === "trigger_group" && Array.isArray(rawConditions.dataPoints) && rawConditions.dataPoints.length > 0;
+      const isModelB = !isCompositeGroup && rawConditions && typeof rawConditions === "object" && !Array.isArray(rawConditions) && Array.isArray(rawConditions.signals) && rawConditions.signals.length > 0;
       let result;
       if (isCompositeGroup) {
         const triggerThresholds = {
@@ -20046,6 +20054,47 @@ async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
           console.log(
             `[TriggerEvaluationEngine] \u26A0 COMPOSITE WATCH "${trigger.name}" \u2014 ${result.conditionsMet} data points hit (below action threshold of ${result.totalConditions}) \u2014 awareness alert queued`
           );
+        }
+      } else if (isModelB) {
+        const signals2 = rawConditions.signals;
+        const fireThresh = rawConditions.fireThreshold || "any";
+        const n = signals2.length;
+        const minimumRequired = fireThresh === "all" ? n : fireThresh === "majority" ? Math.floor(n / 2) + 1 : 1;
+        const groupConditions = {
+          type: "trigger_group",
+          minimumRequired,
+          dataPoints: signals2.map((s) => {
+            const dpRes = findDataPointById(s.dpId);
+            return {
+              id: s.dpId,
+              name: dpRes?.name ?? s.dpId.replace(/_/g, " "),
+              category: dpRes?.category ?? trigger.category,
+              categoryName: dpRes?.categoryName ?? trigger.category,
+              unit: dpRes?.unit ?? "",
+              operator: s.operator || "breach",
+              value: parseFloat(s.value) || 0,
+              mandatory: !!s.isMandatory
+            };
+          })
+        };
+        const triggerThresholds = {
+          watchPct: trigger.watchThresholdPct,
+          awarePct: trigger.awareThresholdPct,
+          actionPct: trigger.actionThresholdPct
+        };
+        result = scoreSignalAgainstTriggerGroup(signal, groupConditions, triggerThresholds);
+        if (result.score > 0) {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
+          const mustCount = signals2.filter((s) => s.isMandatory).length;
+          console.log(
+            `[TriggerEvaluationEngine] \u2713 MODEL-B "${trigger.name}" (${fireThresh}) fired at ${result.score}% \u2014 ${result.conditionsMet}/${n} signals hit, ${mustCount} mandatory \u2014 tier: ${result.alertTier}`
+          );
+        } else {
+          console.log(
+            `[TriggerEvaluationEngine] \u2717 MODEL-B "${trigger.name}" (${fireThresh}) \u2014 threshold not met: ${result.conditionsMet}/${n} signals matched`
+          );
+          continue;
         }
       } else {
         result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
@@ -20093,6 +20142,7 @@ var init_TriggerEvaluationEngine = __esm({
     "use strict";
     init_db();
     init_schema();
+    init_intelligence_signals();
     THRESHOLD_CONFIDENCE_FLOOR = {
       red: 85,
       yellow: 78,

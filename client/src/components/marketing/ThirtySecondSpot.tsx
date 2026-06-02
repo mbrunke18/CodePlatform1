@@ -144,7 +144,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               <div className="flex items-center gap-2">
                 <Sword className="h-6 w-6 text-red-400" />
-                <span className="text-red-400 font-semibold">GROWTH</span>
+                <span className="text-red-400 font-semibold">GROWTH & POSITIONING</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="h-6 w-6 text-[#0A0F2E]" />
