@@ -1,134 +1,216 @@
+/**
+ * RSS News Velocity Service — replaces GDELT.
+ *
+ * GDELT (gdeltproject.org) returns HTTP 429 from Replit's shared cloud IP pool
+ * because its per-IP rate limit is triggered by other tenants on the same IP.
+ * This service achieves the same goal — measuring global news velocity for
+ * reputational, supply-chain, and geopolitical triggers — using a curated set
+ * of proven-accessible RSS feeds (same transport as our 36-feed pipeline).
+ *
+ * Exported function name kept identical so LiveSignalIngestionService.ts
+ * requires no changes.
+ */
+
 import type { QuantitativeSignal } from './types.js';
 
-const GDELT_DOC_API = 'https://api.gdeltproject.org/api/v2/doc/doc';
-const LOOKBACK_HOURS = 24;
+const LOOKBACK_HOURS = 72;
+const REQUEST_TIMEOUT_MS = 12000;
 
-interface GDELTResponse {
-  articles?: GDELTArticle[];
-}
-
-interface GDELTArticle {
-  url: string;
-  url_mobile?: string;
+interface RSSItem {
   title: string;
-  seendate: string;
-  socialimage?: string;
-  domain: string;
-  language: string;
-  sourcecountry: string;
+  pubDate: string;
+  link?: string;
 }
 
-const GEOPOLITICAL_QUERIES = [
-  { query: 'sanctions OR "supply chain disruption" OR "trade war" OR embargo', trigger: 'Geopolitical Risk Signal', domain: 'geopolitical', label: 'Trade & Sanctions' },
-  { query: 'cyberattack OR "data breach" OR ransomware OR "critical infrastructure"', trigger: 'Cybersecurity Breach Signal', domain: 'cybersecurity', label: 'Cyber Threat' },
-  { query: '"class action" OR "SEC investigation" OR "DOJ investigation" OR "regulatory fine"', trigger: 'Regulatory Enforcement Action', domain: 'regulatory', label: 'Legal/Regulatory' },
-  { query: '"activist investor" OR "hostile takeover" OR "shareholder pressure" OR "proxy fight"', trigger: 'M&A Activity Detected', domain: 'market', label: 'Activist Activity' },
-  { query: '"executive departure" OR "CEO resign" OR "CFO resign" OR "board resignation"', trigger: 'Executive Leadership Event', domain: 'reputation', label: 'Leadership Change' },
+interface VelocityQuery {
+  label: string;
+  trigger: string;
+  domain: string;
+  feeds: string[];
+  keywords: string[];
+  threshold: number;
+}
+
+const VELOCITY_QUERIES: VelocityQuery[] = [
+  {
+    label: 'Reputational Crisis',
+    trigger: 'Reputational Crisis Signal',
+    domain: 'reputation',
+    // PR Newswire and Courthouse News cover boycotts, scandals, class-actions
+    feeds: [
+      'https://www.prnewswire.com/rss/news-releases-list.rss',
+      'https://www.courthousenews.com/feed/',
+      'https://apnews.com/hub/business?format=rss',
+    ],
+    keywords: ['boycott', 'scandal', 'backlash', 'controversy', 'lawsuit', 'class action', 'investigation', 'protest'],
+    threshold: 3,
+  },
+  {
+    label: 'Supply Chain Disruption',
+    trigger: 'Supply Chain Disruption',
+    domain: 'supply_chain',
+    feeds: [
+      'https://apnews.com/hub/business?format=rss',
+      'https://feeds.marketwatch.com/marketwatch/topstories/',
+      'https://www.globenewswire.com/RssFeed/country/United+States',
+    ],
+    keywords: ['supply chain', 'shipping disruption', 'port closure', 'logistics', 'shortage', 'freight', 'tariff'],
+    threshold: 3,
+  },
+  {
+    label: 'Geopolitical Escalation',
+    trigger: 'Geopolitical Risk Signal',
+    domain: 'geopolitical',
+    feeds: [
+      'https://www.state.gov/press-releases/feed/',
+      'https://www.whitehouse.gov/news/feed/',
+      'https://apnews.com/hub/business?format=rss',
+    ],
+    keywords: ['sanctions', 'trade war', 'export ban', 'embargo', 'geopolitical', 'tariff', 'diplomatic', 'conflict'],
+    threshold: 2,
+  },
 ];
 
-function toneToConfidence(articleCount: number, query: string): number {
-  if (articleCount >= 20) return 86;
-  if (articleCount >= 10) return 78;
-  if (articleCount >= 5) return 70;
-  return 62;
-}
-
-function articleCountToImpact(count: number): 'critical' | 'high' | 'medium' | 'low' {
-  if (count >= 20) return 'critical';
-  if (count >= 10) return 'high';
-  if (count >= 5) return 'medium';
-  return 'low';
-}
-
-async function queryGDELT(queryDef: typeof GEOPOLITICAL_QUERIES[0]): Promise<QuantitativeSignal | null> {
+function parsePubDate(dateStr: string): Date | null {
   try {
-    const timespan = `${LOOKBACK_HOURS}h`;
-    const url = new URL(GDELT_DOC_API);
-    url.searchParams.set('query', queryDef.query);
-    url.searchParams.set('mode', 'artlist');
-    url.searchParams.set('maxrecords', '50');
-    url.searchParams.set('timespan', timespan);
-    url.searchParams.set('format', 'json');
-    url.searchParams.set('sort', 'DateDesc');
-
-    const res = await fetch(url.toString(), {
-      headers: { 'User-Agent': 'ReadinessOS/1.0 signal-intelligence' },
-      signal: AbortSignal.timeout(15000),
-    });
-
-    if (!res.ok) return null;
-
-    const data = await res.json() as GDELTResponse;
-    const articles = data.articles || [];
-    if (articles.length === 0) return null;
-
-    const domains = [...new Set(articles.map(a => a.domain))].slice(0, 5);
-    const countries = [...new Set(articles.map(a => a.sourcecountry).filter(Boolean))].slice(0, 4);
-    const topTitles = articles.slice(0, 3).map(a => a.title).join(' | ');
-    const confidence = toneToConfidence(articles.length, queryDef.query);
-    const impact = articleCountToImpact(articles.length);
-
-    return {
-      signalType: queryDef.domain,
-      description: `GDELT Event Velocity: ${articles.length} global coverage events in last ${LOOKBACK_HOURS}h for "${queryDef.label}" pattern. Leading sources: ${domains.join(', ')}. Countries: ${countries.join(', ')}. Top headlines: ${topTitles.substring(0, 400)}`,
-      confidence,
-      impact,
-      timeline: '1-7 days',
-      source: 'GDELT Project — Global Event Database',
-      sourceUrl: url.toString(),
-      category: queryDef.domain,
-      jurisdiction: 'Global',
-      confidenceTier: 2,
-      enforcementActionType: null,
-      regulatorAgency: null,
-      penaltyAmountRange: null,
-      namedSector: queryDef.label,
-      threatSeverity: impact === 'critical' ? 'critical' : impact === 'high' ? 'high' : 'medium',
-      exploitStatus: null,
-      affectedVendor: null,
-      cveId: null,
-      affectedSector: queryDef.label,
-      economicIndicatorType: null,
-      indicatorDirection: 'increasing',
-      indicatorMagnitude: `${articles.length} articles`,
-      centralBank: null,
-      tradeActionType: queryDef.domain === 'geopolitical' ? 'geopolitical_event' : null,
-      effectiveTimeline: null,
-      tradePartner: countries[0] || null,
-      affectedHsCodes: null,
-      recallClass: null,
-      affectedProductType: null,
-      recallScope: null,
-      signalEventType: 'news_velocity_spike',
-      metricName: 'Global Article Count (24h)',
-      metricValue: articles.length,
-      metricThreshold: 5,
-      metricUnit: 'articles',
-    };
+    const d = new Date(dateStr);
+    return isNaN(d.getTime()) ? null : d;
   } catch {
     return null;
   }
 }
 
+function extractItems(xml: string): RSSItem[] {
+  const items: RSSItem[] = [];
+  const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = itemPattern.exec(xml)) !== null) {
+    const block = match[1];
+
+    const titleMatch = block.match(/<title(?:[^>]*)>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/);
+    const dateMatch = block.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/);
+    const linkMatch = block.match(/<link[^>]*>([\s\S]*?)<\/link>/);
+
+    if (titleMatch && dateMatch) {
+      items.push({
+        title: titleMatch[1].trim(),
+        pubDate: dateMatch[1].trim(),
+        link: linkMatch?.[1]?.trim(),
+      });
+    }
+  }
+  return items;
+}
+
+async function fetchFeedItems(feedUrl: string): Promise<RSSItem[]> {
+  try {
+    const res = await fetch(feedUrl, {
+      headers: {
+        'User-Agent': 'ReadinessOS/1.0 signal-intelligence',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+      },
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    });
+    if (!res.ok) return [];
+    const xml = await res.text();
+    return extractItems(xml);
+  } catch {
+    return [];
+  }
+}
+
+function countKeywordMatches(items: RSSItem[], keywords: string[], cutoff: Date): number {
+  return items.filter(item => {
+    const pubDate = parsePubDate(item.pubDate);
+    if (!pubDate || pubDate < cutoff) return false;
+    const titleLower = item.title.toLowerCase();
+    return keywords.some(kw => titleLower.includes(kw.toLowerCase()));
+  }).length;
+}
+
+function countToConfidence(count: number): number {
+  if (count >= 15) return 84;
+  if (count >= 8)  return 77;
+  if (count >= 4)  return 70;
+  return 63;
+}
+
+function countToImpact(count: number): 'critical' | 'high' | 'medium' | 'low' {
+  if (count >= 15) return 'critical';
+  if (count >= 8)  return 'high';
+  if (count >= 4)  return 'medium';
+  return 'low';
+}
+
+async function runVelocityQuery(query: VelocityQuery, cutoff: Date): Promise<QuantitativeSignal | null> {
+  const allItems: RSSItem[] = [];
+  for (const feedUrl of query.feeds) {
+    const items = await fetchFeedItems(feedUrl);
+    allItems.push(...items);
+  }
+
+  const matchCount = countKeywordMatches(allItems, query.keywords, cutoff);
+  if (matchCount < query.threshold) return null;
+
+  const confidence = countToConfidence(matchCount);
+  const impact = countToImpact(matchCount);
+
+  return {
+    signalType: query.domain,
+    description: `News Velocity Spike: ${matchCount} articles in last ${LOOKBACK_HOURS}h across ${query.feeds.length} sources matched "${query.label}" signal pattern (keywords: ${query.keywords.slice(0, 4).join(', ')}). Cross-source keyword velocity indicates active ${query.label.toLowerCase()} pattern requiring executive awareness.`,
+    confidence,
+    impact,
+    timeline: '1–7 days',
+    source: 'RSS Velocity Monitor — Multi-Source News Pipeline',
+    sourceUrl: query.feeds[0],
+    category: query.domain,
+    jurisdiction: 'Global',
+    confidenceTier: 2,
+    enforcementActionType: null,
+    regulatorAgency: null,
+    penaltyAmountRange: null,
+    namedSector: query.label,
+    threatSeverity: impact === 'critical' ? 'critical' : impact === 'high' ? 'high' : 'medium',
+    exploitStatus: null,
+    affectedVendor: null,
+    cveId: null,
+    affectedSector: query.label,
+    economicIndicatorType: null,
+    indicatorDirection: 'increasing',
+    indicatorMagnitude: `${matchCount} articles`,
+    centralBank: null,
+    tradeActionType: query.domain === 'geopolitical' ? 'geopolitical_event' : null,
+    effectiveTimeline: null,
+    tradePartner: null,
+    affectedHsCodes: null,
+    recallClass: null,
+    affectedProductType: null,
+    recallScope: null,
+    signalEventType: 'news_velocity_spike',
+    metricName: `${query.label} Article Count (${LOOKBACK_HOURS}h)`,
+    metricValue: matchCount,
+    metricThreshold: query.threshold,
+    metricUnit: 'articles',
+  };
+}
+
 export async function fetchGDELTSignals(): Promise<QuantitativeSignal[]> {
   const signals: QuantitativeSignal[] = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_HOURS * 3600 * 1000);
 
   try {
-    const results = await Promise.allSettled(
-      GEOPOLITICAL_QUERIES.map(q => queryGDELT(q))
-    );
-
     let detected = 0;
-    for (const r of results) {
-      if (r.status === 'fulfilled' && r.value) {
-        signals.push(r.value);
+    for (const query of VELOCITY_QUERIES) {
+      const result = await runVelocityQuery(query, cutoff);
+      if (result) {
+        signals.push(result);
         detected++;
       }
     }
-
-    console.log(`[GDELT] ${detected} event velocity pattern(s) detected across ${GEOPOLITICAL_QUERIES.length} query domains`);
+    console.log(`[NewsVelocity] ${detected} velocity pattern(s) across ${VELOCITY_QUERIES.length} domains (${LOOKBACK_HOURS}h window, RSS-based)`);
   } catch (err) {
-    console.warn(`[GDELT] Fetch failed:`, err instanceof Error ? err.message : err);
+    console.warn(`[NewsVelocity] Error:`, err instanceof Error ? err.message : err);
   }
 
   return signals;

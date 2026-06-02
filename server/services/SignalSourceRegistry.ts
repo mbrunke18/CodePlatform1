@@ -118,10 +118,10 @@ signalSourceRegistry.register({
   category: 'regulatory',
   tier: 1,
   status: 'active',
-  triggersEnabled: ['M&A Activity Detected', 'Activist Investor (13D)', '8-K Material Event Filing', 'Market Valuation Shift'],
+  triggersEnabled: ['M&A Activity Detected', '8-K Material Event Filing', 'Executive Leadership Event', 'Earnings Surprise', 'Financial Distress Signal', 'Competitive Market Entry'],
   requiresApiKey: false,
   apiKeyEnvVar: null,
-  description: 'SEC EDGAR full-text search and filing API — 13D activist disclosures, 8-K material events, 13G position changes. Actual structured filing data, not RSS headlines.',
+  description: 'SEC EDGAR full-text search API — 13D activist stakes, 8-K material events, 13G/A institutional repositioning, Form D private capital (competitive entry), Schedule TO tender offers, Form 13F institutional holdings, 8-K Item 5.02 executive departures, 8-K Item 2.02 earnings disclosures, 8-K Item 2.04 covenant defaults. Nine structured filing types — actual mandatory disclosure data, not RSS headlines.',
   upgradeNote: null,
 });
 
@@ -169,15 +169,15 @@ signalSourceRegistry.register({
 
 signalSourceRegistry.register({
   sourceKey: 'gdelt_events',
-  sourceName: 'GDELT Project — Global Event Database',
+  sourceName: 'RSS News Velocity Monitor',
   sourceType: 'free',
   category: 'market',
   tier: 1,
   status: 'active',
-  triggersEnabled: ['Geopolitical Risk Signal', 'Reputational Crisis Signal', 'M&A Activity Detected', 'Executive Leadership Event', 'Cybersecurity Breach Signal'],
+  triggersEnabled: ['Geopolitical Risk Signal', 'Reputational Crisis Signal', 'Supply Chain Disruption', 'Executive Leadership Event', 'Cybersecurity Breach Signal'],
   requiresApiKey: false,
   apiKeyEnvVar: null,
-  description: 'World\'s largest open-access real-time event database. 100+ languages, 65+ countries, updated every 15 minutes. Measures event velocity and tone — detects when coverage is accelerating before it becomes a crisis.',
+  description: 'Multi-source RSS news velocity monitor. Measures keyword-cluster article frequency across AP, PR Newswire, Courthouse News, State Dept, and White House feeds to detect reputational, supply chain, and geopolitical event velocity spikes before they reach mainstream awareness.',
   upgradeNote: null,
 });
 
@@ -262,6 +262,20 @@ signalSourceRegistry.register({
   requiresApiKey: false,
   apiKeyEnvVar: null,
   description: 'Consumer Financial Protection Bureau complaint database — measures complaint volume velocity by company, product, and issue type. Elevated complaint rates are a leading indicator of CFPB investigation and reputational exposure for financial services.',
+  upgradeNote: null,
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'arxiv_velocity',
+  sourceName: 'arXiv — Research Velocity Index',
+  sourceType: 'free',
+  category: 'technology',
+  tier: 2,
+  status: 'active',
+  triggersEnabled: ['AI Disruption Signal', 'Cybersecurity Breach Signal'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'arXiv open-access repository velocity tracker — measures publication rate in CS.AI (Artificial Intelligence), CS.LG (Machine Learning), and CS.CR (Cryptography & Security) categories over a rolling 14-day window. Academic research velocity precedes commercial AI deployment by 12–18 months, making it a leading indicator of competitive disruption before it registers in business news.',
   upgradeNote: null,
 });
 

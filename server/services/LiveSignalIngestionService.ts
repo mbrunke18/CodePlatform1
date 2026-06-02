@@ -16,6 +16,7 @@ import { fetchNOAAFEMASignals } from './signals/NOAAFEMAService.js';
 import { fetchCongressSignals } from './signals/CongressService.js';
 import { fetchFTCEnforcementSignals } from './signals/FTCEnforcementService.js';
 import { fetchCFPBComplaintSignals } from './signals/CFPBComplaintService.js';
+import { fetchArXivVelocitySignals } from './signals/ArXivVelocityService.js';
 import { signalSourceRegistry } from './SignalSourceRegistry.js';
 
 interface RSSItem {
@@ -626,6 +627,7 @@ class LiveSignalIngestionService {
       congressSignals,
       ftcSignals,
       cfpbSignals,
+      arXivSignals,
     ] = await Promise.allSettled([
       this.ingestAllFeeds(),
       fetchCISAKEVSignals().then(s => {
@@ -684,6 +686,10 @@ class LiveSignalIngestionService {
         signalSourceRegistry.recordFetch('cfpb_complaints', s.length, true);
         return s;
       }).catch(() => { signalSourceRegistry.recordFetch('cfpb_complaints', 0, false); return []; }),
+      fetchArXivVelocitySignals().then(s => {
+        signalSourceRegistry.recordFetch('arxiv_velocity', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('arxiv_velocity', 0, false); return []; }),
     ]);
 
     const rss = rssSignals.status === 'fulfilled' ? rssSignals.value : [];
@@ -705,6 +711,7 @@ class LiveSignalIngestionService {
       ...(congressSignals.status === 'fulfilled' ? congressSignals.value : []),
       ...(ftcSignals.status === 'fulfilled' ? ftcSignals.value : []),
       ...(cfpbSignals.status === 'fulfilled' ? cfpbSignals.value : []),
+      ...(arXivSignals.status === 'fulfilled' ? arXivSignals.value : []),
     ] as AnalyzedSignal[];
 
     const signals = [...rss, ...quantitative];
@@ -716,7 +723,7 @@ class LiveSignalIngestionService {
       edgarSignals.status === 'fulfilled' && edgarSignals.value.length ? `EDGAR:${edgarSignals.value.length}` : null,
       nvdSignals.status === 'fulfilled' && nvdSignals.value.length ? `NVD:${nvdSignals.value.length}` : null,
       ofacSignals.status === 'fulfilled' && ofacSignals.value.length ? `OFAC:${ofacSignals.value.length}` : null,
-      gdeltSignals.status === 'fulfilled' && gdeltSignals.value.length ? `GDELT:${gdeltSignals.value.length}` : null,
+      gdeltSignals.status === 'fulfilled' && gdeltSignals.value.length ? `NewsVelocity:${gdeltSignals.value.length}` : null,
       fedRegSignals.status === 'fulfilled' && fedRegSignals.value.length ? `FedReg:${fedRegSignals.value.length}` : null,
       noaaFemaSignals.status === 'fulfilled' && noaaFemaSignals.value.length ? `NOAA/FEMA:${noaaFemaSignals.value.length}` : null,
       ftcSignals.status === 'fulfilled' && ftcSignals.value.length ? `FTC:${ftcSignals.value.length}` : null,
@@ -724,6 +731,7 @@ class LiveSignalIngestionService {
       congressSignals.status === 'fulfilled' && congressSignals.value.length ? `Congress:${congressSignals.value.length}` : null,
       internalSignals.status === 'fulfilled' && internalSignals.value.length ? `Internal:${internalSignals.value.length}` : null,
       calendarSignals.status === 'fulfilled' && calendarSignals.value.length ? `Calendar:${calendarSignals.value.length}` : null,
+      arXivSignals.status === 'fulfilled' && arXivSignals.value.length ? `arXiv:${arXivSignals.value.length}` : null,
     ].filter(Boolean).join(' ');
 
     console.log(`   RSS: ${rss.length} signals from ${RSS_FEEDS.length} feeds | Quantitative: ${quantitative.length}${qSummary ? ` (${qSummary})` : ''} | Total: ${signals.length}`);

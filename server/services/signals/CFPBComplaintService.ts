@@ -1,115 +1,149 @@
+/**
+ * CFPB Enforcement Action Service — replaces the CFPB complaint search API.
+ *
+ * The CFPB complaint search API (/search/api/v1/) streams 95MB+ of complaint
+ * records regardless of size=0 parameter, causing consistent 20-35s timeouts.
+ * This service instead parses the CFPB's official newsroom RSS feed
+ * (https://www.consumerfinance.gov/about-us/newsroom/feed/) to count
+ * enforcement actions — a higher-signal indicator than raw complaint volume
+ * because enforcement actions represent regulatory escalation, not just volume.
+ *
+ * Covers triggers: Financial Distress Signal, Reputational Crisis Signal,
+ * Regulatory Enforcement Action.
+ *
+ * Exported function name kept identical so LiveSignalIngestionService.ts
+ * requires no changes.
+ */
+
 import type { QuantitativeSignal } from './types.js';
 
-const CFPB_API = 'https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/';
+const CFPB_NEWSROOM_RSS = 'https://www.consumerfinance.gov/about-us/newsroom/feed/';
 const LOOKBACK_DAYS = 30;
+const TIMEOUT_MS = 15000;
 
-interface CFPBResponse {
-  hits?: {
-    total?: { value: number };
-    hits?: { _source: CFPBComplaint }[];
-  };
-  aggregations?: {
-    product?: { buckets: { key: string; doc_count: number }[] };
-    issue?: { buckets: { key: string; doc_count: number }[] };
-    company?: { buckets: { key: string; doc_count: number }[] };
-  };
+const ENFORCEMENT_KEYWORDS = [
+  'enforcement', 'action', 'fine', 'penalty', 'settlement', 'consent order',
+  'violation', 'charged', 'lawsuit', 'complaint', 'investigation', 'order',
+];
+
+const HIGH_VOLUME_THRESHOLD = 3;
+
+interface RSSItem {
+  title: string;
+  pubDate: string;
+  link?: string;
+  description?: string;
 }
 
-interface CFPBComplaint {
-  product: string;
-  issue: string;
-  company: string;
-  date_received: string;
-  state?: string;
-  consumer_consent_provided?: string;
+function extractItems(xml: string): RSSItem[] {
+  const items: RSSItem[] = [];
+  const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = itemPattern.exec(xml)) !== null) {
+    const block = match[1];
+
+    const titleMatch = block.match(/<title(?:[^>]*)>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/);
+    const dateMatch = block.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/);
+    const linkMatch = block.match(/<link[^>]*>([\s\S]*?)<\/link>/);
+    const descMatch = block.match(/<description(?:[^>]*)>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/);
+
+    if (titleMatch) {
+      items.push({
+        title: titleMatch[1].trim(),
+        pubDate: dateMatch?.[1]?.trim() ?? '',
+        link: linkMatch?.[1]?.trim(),
+        description: descMatch?.[1]?.trim(),
+      });
+    }
+  }
+  return items;
 }
 
-const HIGH_VOLUME_THRESHOLD = 500;
-const SPIKE_THRESHOLD = 200;
-
-const PRODUCT_TO_TRIGGER: Record<string, string> = {
-  'Mortgage': 'Financial Distress Signal',
-  'Credit card': 'Financial Distress Signal',
-  'Debt collection': 'Financial Distress Signal',
-  'Student loan': 'Regulatory Enforcement Action',
-  'Payday loan': 'Regulatory Enforcement Action',
-  'Bank account': 'Cybersecurity Breach Signal',
-  'Credit reporting': 'Reputational Crisis Signal',
-  'Money transfer': 'Cybersecurity Breach Signal',
-  'Virtual currency': 'Regulatory Enforcement Action',
-};
+function isEnforcementItem(item: RSSItem, cutoff: Date): boolean {
+  if (item.pubDate) {
+    try {
+      const d = new Date(item.pubDate);
+      if (!isNaN(d.getTime()) && d < cutoff) return false;
+    } catch {
+      // ignore unparseable dates
+    }
+  }
+  const text = `${item.title} ${item.description || ''}`.toLowerCase();
+  return ENFORCEMENT_KEYWORDS.some(kw => text.includes(kw));
+}
 
 export async function fetchCFPBComplaintSignals(): Promise<QuantitativeSignal[]> {
   const signals: QuantitativeSignal[] = [];
   const cutoff = new Date(Date.now() - LOOKBACK_DAYS * 86400000);
-  const dateStr = cutoff.toISOString().split('T')[0];
 
   try {
-    const url = new URL(CFPB_API);
-    url.searchParams.set('date_received_min', dateStr);
-    url.searchParams.set('size', '0');
-    url.searchParams.set('field', 'all');
-    url.searchParams.set('format', 'json');
-    url.searchParams.set('no_aggs', 'false');
-    url.searchParams.set('frm', '0');
-    url.searchParams.set('sort', 'created_date_desc');
-
-    const res = await fetch(url.toString(), {
-      headers: { 'User-Agent': 'ReadinessOS/1.0 signal-intelligence' },
-      signal: AbortSignal.timeout(25000),
+    const res = await fetch(CFPB_NEWSROOM_RSS, {
+      headers: {
+        'User-Agent': 'ReadinessOS/1.0 signal-intelligence',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+      },
+      signal: AbortSignal.timeout(TIMEOUT_MS),
     });
-    if (!res.ok) throw new Error(`CFPB API ${res.status}`);
 
-    const data = await res.json() as CFPBResponse;
-    const totalComplaints = data.hits?.total?.value || 0;
-    const productBuckets = data.aggregations?.product?.buckets || [];
-    const issueBuckets = data.aggregations?.issue?.buckets || [];
-    const companyBuckets = data.aggregations?.company?.buckets || [];
+    if (!res.ok) throw new Error(`CFPB RSS ${res.status}`);
 
-    if (totalComplaints === 0) {
-      console.log(`[CFPB] No complaints returned from API`);
+    const xml = await res.text();
+    const items = extractItems(xml);
+    const enforcementItems = items.filter(item => isEnforcementItem(item, cutoff));
+    const totalItems = items.length;
+    const enforcementCount = enforcementItems.length;
+
+    if (enforcementCount === 0 && totalItems === 0) {
+      console.log(`[CFPB] No newsroom items parsed from RSS`);
       return [];
     }
 
-    const dailyRate = totalComplaints / LOOKBACK_DAYS;
-    const topProducts = productBuckets.slice(0, 5).map(b => `${b.key} (${b.doc_count})`).join(', ');
-    const topIssues = issueBuckets.slice(0, 3).map(b => b.key).join(', ');
-    const topCompanies = companyBuckets.slice(0, 3).map(b => b.key).join(', ');
+    console.log(`[CFPB] ${enforcementCount} enforcement-related newsroom item(s) in last ${LOOKBACK_DAYS} days (${totalItems} total items)`);
 
-    const isHighVolume = totalComplaints >= HIGH_VOLUME_THRESHOLD;
-    const confidence = isHighVolume ? 78 : 66;
-    const impact = dailyRate >= 50 ? 'high' : dailyRate >= 20 ? 'medium' : 'low';
+    if (enforcementCount >= HIGH_VOLUME_THRESHOLD) {
+      const topTitles = enforcementItems.slice(0, 3).map(i => i.title).join(' | ');
+      const confidence = enforcementCount >= 5 ? 80 : 70;
+      const impact: 'critical' | 'high' | 'medium' | 'low' = enforcementCount >= 5 ? 'high' : 'medium';
 
-    if (confidence >= 66) {
       signals.push({
         signalType: 'regulatory',
-        description: `CFPB Complaint Velocity: ${totalComplaints.toLocaleString()} consumer complaints filed in last ${LOOKBACK_DAYS} days (${Math.round(dailyRate)}/day). Top products: ${topProducts}. Top issues: ${topIssues}. Top companies: ${topCompanies}. Elevated complaint volume indicates regulatory scrutiny risk and potential reputational exposure for financial services sector.`,
+        description: `CFPB Enforcement Velocity: ${enforcementCount} enforcement-related actions announced in last ${LOOKBACK_DAYS} days. Recent actions: ${topTitles.substring(0, 400)}. Elevated enforcement activity signals heightened financial services regulatory risk and reputational exposure.`,
         confidence,
         impact,
         timeline: '30-90 days',
-        source: 'CFPB — Consumer Financial Protection Bureau',
-        sourceUrl: 'https://www.consumerfinance.gov/data-research/consumer-complaints/',
+        source: 'CFPB — Consumer Financial Protection Bureau Newsroom',
+        sourceUrl: 'https://www.consumerfinance.gov/about-us/newsroom/',
         category: 'regulatory',
         jurisdiction: 'US',
         confidenceTier: 2,
-        enforcementActionType: 'complaint_volume_spike',
+        enforcementActionType: 'enforcement_velocity',
         regulatorAgency: 'Consumer Financial Protection Bureau',
         penaltyAmountRange: null,
         namedSector: 'Financial Services',
-        threatSeverity: null, exploitStatus: null, affectedVendor: null, cveId: null, affectedSector: 'Financial Services',
-        economicIndicatorType: null, indicatorDirection: 'increasing', indicatorMagnitude: `${totalComplaints} complaints`,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: 'Financial Services',
+        economicIndicatorType: null,
+        indicatorDirection: 'increasing',
+        indicatorMagnitude: `${enforcementCount} enforcement actions`,
         centralBank: null,
-        tradeActionType: null, effectiveTimeline: null, tradePartner: null, affectedHsCodes: null,
-        recallClass: null, affectedProductType: 'Financial Products', recallScope: null,
-        signalEventType: 'complaint_velocity',
-        metricName: 'Consumer Complaints (30 days)',
-        metricValue: totalComplaints,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: 'Financial Products',
+        recallScope: null,
+        signalEventType: 'enforcement_velocity',
+        metricName: `CFPB Enforcement Actions (${LOOKBACK_DAYS} days)`,
+        metricValue: enforcementCount,
         metricThreshold: HIGH_VOLUME_THRESHOLD,
-        metricUnit: 'complaints',
+        metricUnit: 'enforcement actions',
       });
     }
-
-    console.log(`[CFPB] ${totalComplaints.toLocaleString()} consumer complaint(s) in last ${LOOKBACK_DAYS} days (${Math.round(dailyRate)}/day)`);
   } catch (err) {
     console.warn(`[CFPB] Fetch failed:`, err instanceof Error ? err.message : err);
   }

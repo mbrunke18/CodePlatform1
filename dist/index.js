@@ -21680,12 +21680,12 @@ function daysAgo(n) {
 async function searchFilings(formType, query, days = 3) {
   try {
     const params = new URLSearchParams({
-      q: query,
       dateRange: "custom",
       startdt: daysAgo(days),
       enddt: daysAgo(0),
       forms: formType
     });
+    if (query) params.set("q", query);
     const url = `${EDGAR_SEARCH}?${params}`;
     const res = await fetch(url, {
       headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence@vaughnmartin.com" },
@@ -21698,23 +21698,47 @@ async function searchFilings(formType, query, days = 3) {
     return [];
   }
 }
+function extractEntities(hits, max = 5) {
+  return hits.slice(0, max).map((h) => h._source?.entity_name || "Unknown").filter((n) => n !== "Unknown").join(", ") || "various filers";
+}
 async function fetchSECEdgarSignals() {
   const signals = [];
-  const [filings13D, filings8K, filings13G] = await Promise.allSettled([
+  const [
+    filings13D,
+    filings8K,
+    filings13G,
+    filingsFormD,
+    filingsTO,
+    filings13F,
+    filings8KLeadership,
+    filings8KEarnings,
+    filings8KCovenantDefault
+  ] = await Promise.allSettled([
     searchFilings("SC 13D", "activist investor", 7),
     searchFilings("8-K", "material definitive agreement", 2),
-    searchFilings("SC 13G/A", "schedule 13G amendment", 5)
+    searchFilings("SC 13G/A", "schedule 13G amendment", 5),
+    searchFilings("D", "", 7),
+    // Form D: new equity offerings (startup/competitive entry)
+    searchFilings("SC TO-T", "", 7),
+    // Schedule TO: tender offers (M&A precursor)
+    searchFilings("13F-HR", "", 90),
+    // 13F: institutional holdings (M&A position buildup)
+    searchFilings("8-K", '"Item 5.02" departure resign terminated director officer', 3),
+    // Executive leadership departure
+    searchFilings("8-K", '"Item 2.02" "results of operations" earnings revenue', 2),
+    // Earnings disclosure
+    searchFilings("8-K", '"Item 2.04" covenant default waiver amendment credit', 7)
+    // Financial distress / covenant breach
   ]);
   const hits13D = filings13D.status === "fulfilled" ? filings13D.value : [];
   if (hits13D.length > 0) {
-    const entities = hits13D.slice(0, 5).map((h) => h._source?.entity_name || "Unknown").join(", ");
     signals.push({
       signalType: "regulatory",
-      description: `SEC EDGAR: ${hits13D.length} Schedule 13D filing(s) detected in last 7 days. Activist investor disclosures from: ${entities}. 13D filings indicate an investor has acquired \u22655% of a company's shares with intent to influence management or strategy. This is the opening move in most activist campaigns.`,
+      description: `SEC EDGAR: ${hits13D.length} Schedule 13D filing(s) in last 7 days. Activist disclosures from: ${extractEntities(hits13D)}. A 13D filing means an investor acquired \u22655% of shares with intent to influence management or strategy \u2014 the opening move of most activist campaigns.`,
       confidence: 91,
       impact: "high",
       timeline: "immediate",
-      source: "SEC EDGAR \u2014 Schedule 13D",
+      source: "SEC EDGAR \u2014 Schedule 13D (Activist Stake)",
       sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=SC+13D",
       category: "regulatory",
       jurisdiction: "US",
@@ -21723,12 +21747,12 @@ async function fetchSECEdgarSignals() {
       enforcementActionType: null,
       regulatorAgency: "SEC",
       penaltyAmountRange: null,
-      namedSector: "finance",
+      namedSector: "Finance",
       threatSeverity: null,
       exploitStatus: null,
       affectedVendor: null,
       cveId: null,
-      affectedSector: "finance",
+      affectedSector: "Finance",
       economicIndicatorType: null,
       indicatorDirection: null,
       indicatorMagnitude: null,
@@ -21748,10 +21772,9 @@ async function fetchSECEdgarSignals() {
   }
   const hits8K = filings8K.status === "fulfilled" ? filings8K.value : [];
   if (hits8K.length >= 3) {
-    const entities = hits8K.slice(0, 5).map((h) => h._source?.entity_name || "Unknown").join(", ");
     signals.push({
       signalType: "market",
-      description: `SEC EDGAR: ${hits8K.length} material event 8-K filing(s) in last 48 hours. Companies filing: ${entities}. Elevated 8-K volume indicates significant corporate events (M&A, leadership changes, material agreements, financial restatements) across the market \u2014 relevant to competitive positioning and supply chain risk.`,
+      description: `SEC EDGAR: ${hits8K.length} material event 8-K filings in last 48 hours. Companies: ${extractEntities(hits8K)}. Elevated 8-K volume signals significant corporate events (M&A, leadership changes, agreements, financial restatements) across the market.`,
       confidence: hits8K.length >= 10 ? 85 : 75,
       impact: hits8K.length >= 10 ? "high" : "medium",
       timeline: "near-term",
@@ -21791,11 +21814,11 @@ async function fetchSECEdgarSignals() {
   if (hits13G.length >= 5) {
     signals.push({
       signalType: "market",
-      description: `SEC EDGAR: ${hits13G.length} Schedule 13G amendment(s) in last 5 days \u2014 institutional investors adjusting significant equity positions. Elevated amendment volume signals portfolio repositioning by major institutions, often preceding broader market moves or industry-specific strategic shifts.`,
+      description: `SEC EDGAR: ${hits13G.length} Schedule 13G amendment(s) in last 5 days \u2014 institutional investors adjusting significant equity positions. Elevated amendment volume signals portfolio repositioning by major institutions, often preceding broader market moves.`,
       confidence: 76,
       impact: "medium",
       timeline: "near-term",
-      source: "SEC EDGAR \u2014 Schedule 13G/A",
+      source: "SEC EDGAR \u2014 Schedule 13G/A (Institutional Repositioning)",
       sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=SC+13G",
       category: "market",
       jurisdiction: "US",
@@ -21827,8 +21850,248 @@ async function fetchSECEdgarSignals() {
       metricUnit: "filings"
     });
   }
+  const hitsFormD = filingsFormD.status === "fulfilled" ? filingsFormD.value : [];
+  if (hitsFormD.length >= 10) {
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hitsFormD.length} Form D exempt offering filings in last 7 days. Companies raising private capital: ${extractEntities(hitsFormD, 6)}. Elevated Form D volume indicates accelerating private capital deployment \u2014 a leading indicator of new market entrants and competitive launches 6\u201318 months ahead of public announcement.`,
+      confidence: hitsFormD.length >= 30 ? 80 : 70,
+      impact: hitsFormD.length >= 40 ? "high" : "medium",
+      timeline: "6\u201318 months",
+      source: "SEC EDGAR \u2014 Form D (Private Capital & Competitive Entry)",
+      sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=D",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "competitive_market_entry",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "Market Entry",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Multi-sector",
+      economicIndicatorType: null,
+      indicatorDirection: "increasing",
+      indicatorMagnitude: `${hitsFormD.length} offerings`,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: "6\u201318 months",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "Form D Filings (7 days)",
+      metricValue: hitsFormD.length,
+      metricThreshold: 10,
+      metricUnit: "filings"
+    });
+  }
+  const hitsTO = filingsTO.status === "fulfilled" ? filingsTO.value : [];
+  if (hitsTO.length > 0) {
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hitsTO.length} Schedule TO tender offer filing(s) in last 7 days. Bidders: ${extractEntities(hitsTO)}. Tender offers are formal acquisition bids made directly to shareholders \u2014 concrete M&A execution in progress. Investor communications and board response protocols are directly relevant.`,
+      confidence: 92,
+      impact: "high",
+      timeline: "30\u201390 days",
+      source: "SEC EDGAR \u2014 Schedule TO (Tender Offer)",
+      sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=SC+TO-T",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "tender_offer",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "M&A",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Finance",
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: null,
+      tradeActionType: "merger_acquisition",
+      effectiveTimeline: "30\u201390 days",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "Tender Offers (7 days)",
+      metricValue: hitsTO.length,
+      metricThreshold: 1,
+      metricUnit: "filings"
+    });
+  }
+  const hits13F = filings13F.status === "fulfilled" ? filings13F.value : [];
+  if (hits13F.length >= 20) {
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hits13F.length} Form 13F institutional holding reports in last 90 days. Major institutions disclosing positions: ${extractEntities(hits13F, 6)}. 13F filings reveal equity positions that must be disclosed once \u2265$100M is managed \u2014 elevated volume indicates institutional repositioning that can precede 13D activist disclosures by 45\u201390 days.`,
+      confidence: 72,
+      impact: "medium",
+      timeline: "45\u201390 days",
+      source: "SEC EDGAR \u2014 Form 13F (Institutional Holdings)",
+      sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=13F-HR",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "institutional_repositioning",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "Finance",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Finance",
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: `${hits13F.length} institutions`,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: "45\u201390 days",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "13F Reports (90 days)",
+      metricValue: hits13F.length,
+      metricThreshold: 20,
+      metricUnit: "filings"
+    });
+  }
+  const hits8KLeadership = filings8KLeadership.status === "fulfilled" ? filings8KLeadership.value : [];
+  if (hits8KLeadership.length >= 2) {
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hits8KLeadership.length} 8-K Item 5.02 filing(s) in last 3 days disclosing executive departures. Companies: ${extractEntities(hits8KLeadership)}. Item 5.02 requires public companies to disclose departure of principal officers within 4 business days \u2014 this is structured, mandatory disclosure of leadership transitions with immediate board and investor communication obligations.`,
+      confidence: 89,
+      impact: hits8KLeadership.length >= 5 ? "high" : "medium",
+      timeline: "immediate",
+      source: "SEC EDGAR \u2014 8-K Item 5.02 (Executive Departure)",
+      sourceUrl: "https://efts.sec.gov/LATEST/search-index?q=%22Item+5.02%22+departure&forms=8-K",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "executive_departure",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "Leadership",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Multi-sector",
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: "immediate",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "8-K Item 5.02 (3 days)",
+      metricValue: hits8KLeadership.length,
+      metricThreshold: 2,
+      metricUnit: "filings"
+    });
+  }
+  const hits8KEarnings = filings8KEarnings.status === "fulfilled" ? filings8KEarnings.value : [];
+  if (hits8KEarnings.length >= 5) {
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hits8KEarnings.length} 8-K Item 2.02 earnings disclosure filings in last 48 hours. Companies: ${extractEntities(hits8KEarnings)}. Item 2.02 is the mandatory SEC disclosure for "Results of Operations and Financial Condition" \u2014 concentrated earnings releases in a short window indicate earnings season volatility risk requiring pre-staged investor communications.`,
+      confidence: hits8KEarnings.length >= 20 ? 84 : 74,
+      impact: hits8KEarnings.length >= 20 ? "high" : "medium",
+      timeline: "near-term",
+      source: "SEC EDGAR \u2014 8-K Item 2.02 (Earnings Disclosure)",
+      sourceUrl: "https://efts.sec.gov/LATEST/search-index?q=%22Item+2.02%22+earnings&forms=8-K",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "earnings_disclosure",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "Finance",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Multi-sector",
+      economicIndicatorType: "earnings_velocity",
+      indicatorDirection: "spike",
+      indicatorMagnitude: `${hits8KEarnings.length} filings`,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: "near-term",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "8-K Item 2.02 (48h)",
+      metricValue: hits8KEarnings.length,
+      metricThreshold: 5,
+      metricUnit: "filings"
+    });
+  }
+  const hits8KCovenant = filings8KCovenantDefault.status === "fulfilled" ? filings8KCovenantDefault.value : [];
+  if (hits8KCovenant.length >= 1) {
+    signals.push({
+      signalType: "regulatory",
+      description: `SEC EDGAR: ${hits8KCovenant.length} 8-K Item 2.04 filing(s) in last 7 days disclosing triggering events under financial agreements (covenant violations, defaults, waivers). Companies: ${extractEntities(hits8KCovenant)}. Item 2.04 is the mandatory disclosure for financial covenant defaults \u2014 these filings signal financial distress 60\u201390 days before it becomes publicly visible through other channels.`,
+      confidence: 90,
+      impact: hits8KCovenant.length >= 3 ? "high" : "medium",
+      timeline: "30\u201390 days",
+      source: "SEC EDGAR \u2014 8-K Item 2.04 (Covenant Default)",
+      sourceUrl: "https://efts.sec.gov/LATEST/search-index?q=%22Item+2.04%22+covenant+default&forms=8-K",
+      category: "regulatory",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "covenant_default",
+      enforcementActionType: "financial_covenant_breach",
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "Finance",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Multi-sector",
+      economicIndicatorType: "covenant_default",
+      indicatorDirection: "deteriorating",
+      indicatorMagnitude: `${hits8KCovenant.length} defaults`,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: "30\u201390 days",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "8-K Item 2.04 (7 days)",
+      metricValue: hits8KCovenant.length,
+      metricThreshold: 1,
+      metricUnit: "filings"
+    });
+  }
   if (signals.length > 0) {
-    console.log(`[SEC EDGAR] ${signals.length} structured filing signal(s) detected`);
+    console.log(`[SEC EDGAR] ${signals.length} structured filing signal(s) detected (13D/8K/13G/FormD/TO/13F/5.02/2.02/2.04)`);
   }
   return signals;
 }
@@ -22327,47 +22590,58 @@ var init_OFACSDNService = __esm({
 });
 
 // server/services/signals/GDELTService.ts
-function toneToConfidence(articleCount, query) {
-  if (articleCount >= 20) return 86;
-  if (articleCount >= 10) return 78;
-  if (articleCount >= 5) return 70;
-  return 62;
+function articleCountToConfidence(count12) {
+  if (count12 >= 25) return 87;
+  if (count12 >= 15) return 80;
+  if (count12 >= 8) return 73;
+  return 64;
 }
 function articleCountToImpact(count12) {
-  if (count12 >= 20) return "critical";
-  if (count12 >= 10) return "high";
-  if (count12 >= 5) return "medium";
+  if (count12 >= 25) return "critical";
+  if (count12 >= 15) return "high";
+  if (count12 >= 8) return "medium";
   return "low";
 }
 async function queryGDELT(queryDef) {
   try {
-    const timespan = `${LOOKBACK_HOURS}h`;
     const url = new URL(GDELT_DOC_API);
     url.searchParams.set("query", queryDef.query);
     url.searchParams.set("mode", "artlist");
-    url.searchParams.set("maxrecords", "50");
-    url.searchParams.set("timespan", timespan);
+    url.searchParams.set("maxrecords", "75");
+    url.searchParams.set("timespan", `${LOOKBACK_HOURS}h`);
     url.searchParams.set("format", "json");
     url.searchParams.set("sort", "DateDesc");
+    url.searchParams.set("SOURCELANG", "english");
     const res = await fetch(url.toString(), {
-      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
-      signal: AbortSignal.timeout(15e3)
+      headers: {
+        "User-Agent": "ReadinessOS/1.0 signal-intelligence",
+        "Accept": "application/json",
+        "Referer": "https://www.gdeltproject.org/"
+      },
+      signal: AbortSignal.timeout(18e3)
     });
     if (!res.ok) return null;
-    const data = await res.json();
+    const text3 = await res.text();
+    if (!text3 || text3.trim() === "" || text3.trim() === "{}") return null;
+    let data;
+    try {
+      data = JSON.parse(text3);
+    } catch {
+      return null;
+    }
     const articles = data.articles || [];
-    if (articles.length === 0) return null;
+    if (articles.length < queryDef.threshold) return null;
     const domains = [...new Set(articles.map((a) => a.domain))].slice(0, 5);
     const countries = [...new Set(articles.map((a) => a.sourcecountry).filter(Boolean))].slice(0, 4);
-    const topTitles = articles.slice(0, 3).map((a) => a.title).join(" | ");
-    const confidence = toneToConfidence(articles.length, queryDef.query);
+    const topTitles = articles.slice(0, 3).map((a) => a.title).filter(Boolean).join(" | ");
+    const confidence = articleCountToConfidence(articles.length);
     const impact = articleCountToImpact(articles.length);
     return {
       signalType: queryDef.domain,
-      description: `GDELT Event Velocity: ${articles.length} global coverage events in last ${LOOKBACK_HOURS}h for "${queryDef.label}" pattern. Leading sources: ${domains.join(", ")}. Countries: ${countries.join(", ")}. Top headlines: ${topTitles.substring(0, 400)}`,
+      description: `GDELT Event Velocity: ${articles.length} global coverage events in last ${LOOKBACK_HOURS}h for "${queryDef.label}". Leading sources: ${domains.join(", ")}. Countries: ${countries.join(", ")}. Headlines: ${topTitles.substring(0, 400)}`,
       confidence,
       impact,
-      timeline: "1-7 days",
+      timeline: "1\u20137 days",
       source: "GDELT Project \u2014 Global Event Database",
       sourceUrl: url.toString(),
       category: queryDef.domain,
@@ -22394,9 +22668,9 @@ async function queryGDELT(queryDef) {
       affectedProductType: null,
       recallScope: null,
       signalEventType: "news_velocity_spike",
-      metricName: "Global Article Count (24h)",
+      metricName: `Global Article Count (${LOOKBACK_HOURS}h)`,
       metricValue: articles.length,
-      metricThreshold: 5,
+      metricThreshold: queryDef.threshold,
       metricUnit: "articles"
     };
   } catch {
@@ -22406,15 +22680,14 @@ async function queryGDELT(queryDef) {
 async function fetchGDELTSignals() {
   const signals = [];
   try {
-    const results = await Promise.allSettled(
-      GEOPOLITICAL_QUERIES.map((q) => queryGDELT(q))
-    );
     let detected = 0;
-    for (const r of results) {
-      if (r.status === "fulfilled" && r.value) {
-        signals.push(r.value);
+    for (const queryDef of GEOPOLITICAL_QUERIES) {
+      const result = await queryGDELT(queryDef);
+      if (result) {
+        signals.push(result);
         detected++;
       }
+      await new Promise((r) => setTimeout(r, 900));
     }
     console.log(`[GDELT] ${detected} event velocity pattern(s) detected across ${GEOPOLITICAL_QUERIES.length} query domains`);
   } catch (err) {
@@ -22427,13 +22700,57 @@ var init_GDELTService = __esm({
   "server/services/signals/GDELTService.ts"() {
     "use strict";
     GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc";
-    LOOKBACK_HOURS = 24;
+    LOOKBACK_HOURS = 72;
     GEOPOLITICAL_QUERIES = [
-      { query: 'sanctions OR "supply chain disruption" OR "trade war" OR embargo', trigger: "Geopolitical Risk Signal", domain: "geopolitical", label: "Trade & Sanctions" },
-      { query: 'cyberattack OR "data breach" OR ransomware OR "critical infrastructure"', trigger: "Cybersecurity Breach Signal", domain: "cybersecurity", label: "Cyber Threat" },
-      { query: '"class action" OR "SEC investigation" OR "DOJ investigation" OR "regulatory fine"', trigger: "Regulatory Enforcement Action", domain: "regulatory", label: "Legal/Regulatory" },
-      { query: '"activist investor" OR "hostile takeover" OR "shareholder pressure" OR "proxy fight"', trigger: "M&A Activity Detected", domain: "market", label: "Activist Activity" },
-      { query: '"executive departure" OR "CEO resign" OR "CFO resign" OR "board resignation"', trigger: "Executive Leadership Event", domain: "reputation", label: "Leadership Change" }
+      {
+        query: '"trade sanctions"',
+        trigger: "Geopolitical Risk Signal",
+        domain: "geopolitical",
+        label: "Trade Sanctions",
+        threshold: 3
+      },
+      {
+        query: '"supply chain disruption"',
+        trigger: "Supply Chain Disruption",
+        domain: "supply_chain",
+        label: "Supply Chain Disruption",
+        threshold: 3
+      },
+      {
+        query: '"regulatory enforcement" OR "antitrust investigation"',
+        trigger: "Regulatory Enforcement Action",
+        domain: "regulatory",
+        label: "Regulatory Enforcement",
+        threshold: 3
+      },
+      {
+        query: '"activist investor" OR "proxy fight"',
+        trigger: "M&A Activity Detected",
+        domain: "market",
+        label: "Activist Investor Activity",
+        threshold: 2
+      },
+      {
+        query: '"CEO resign" OR "executive departure" OR "CFO resign"',
+        trigger: "Executive Leadership Event",
+        domain: "reputation",
+        label: "Executive Leadership Change",
+        threshold: 2
+      },
+      {
+        query: '"data breach" OR "ransomware attack"',
+        trigger: "Cybersecurity Breach Signal",
+        domain: "cybersecurity",
+        label: "Cyber Incident",
+        threshold: 3
+      },
+      {
+        query: '"reputational crisis" OR "brand boycott" OR "public backlash"',
+        trigger: "Reputational Crisis Signal",
+        domain: "reputation",
+        label: "Reputational Crisis",
+        threshold: 2
+      }
     ];
   }
 });
@@ -23254,6 +23571,138 @@ var init_CFPBComplaintService = __esm({
   }
 });
 
+// server/services/signals/ArXivVelocityService.ts
+function countRecentPapers(xmlText, cutoff) {
+  const entries = [...xmlText.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
+  const titles = [];
+  let count12 = 0;
+  for (const entry of entries) {
+    const content = entry[1];
+    const dateMatch = content.match(/<published>([^<]+)<\/published>/);
+    const titleMatch = content.match(/<title>([^<]+)<\/title>/);
+    if (!dateMatch) continue;
+    const published = new Date(dateMatch[1]);
+    if (published >= cutoff) {
+      count12++;
+      if (titles.length < 3 && titleMatch) {
+        titles.push(titleMatch[1].trim().replace(/\s+/g, " "));
+      }
+    }
+  }
+  return { count: count12, titles };
+}
+async function fetchCategoryVelocity(domain) {
+  try {
+    const cutoff = new Date(Date.now() - LOOKBACK_DAYS10 * 864e5);
+    const params = new URLSearchParams({
+      search_query: `cat:${domain.category}`,
+      start: "0",
+      max_results: String(domain.maxResults),
+      sortBy: "submittedDate",
+      sortOrder: "descending"
+    });
+    const res = await fetch(`${ARXIV_API}?${params}`, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(2e4)
+    });
+    if (!res.ok) return null;
+    const xml = await res.text();
+    const { count: count12, titles } = countRecentPapers(xml, cutoff);
+    const dailyRate = Math.round(count12 / LOOKBACK_DAYS10);
+    if (count12 < domain.threshold) return null;
+    const confidence = count12 >= domain.threshold * 3 ? 82 : count12 >= domain.threshold * 2 ? 74 : 66;
+    const impact = count12 >= domain.threshold * 3 ? "high" : "medium";
+    const sampleTitles = titles.join(" | ");
+    return {
+      signalType: domain.domain,
+      description: `arXiv Research Velocity: ${count12} new papers published in ${domain.label} (${domain.category}) in last ${LOOKBACK_DAYS10} days \u2014 ${dailyRate}/day average (threshold: ${domain.threshold}). Academic research velocity precedes commercial deployment by 12\u201318 months and is a leading indicator of competitive disruption. Sample: ${sampleTitles.substring(0, 350)}`,
+      confidence,
+      impact,
+      timeline: "12\u201318 months",
+      source: `arXiv \u2014 ${domain.label} Research Velocity`,
+      sourceUrl: `https://arxiv.org/list/${domain.category}/recent`,
+      category: domain.domain,
+      jurisdiction: "Global",
+      confidenceTier: 2,
+      enforcementActionType: null,
+      regulatorAgency: null,
+      penaltyAmountRange: null,
+      namedSector: domain.label,
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Technology",
+      economicIndicatorType: null,
+      indicatorDirection: "increasing",
+      indicatorMagnitude: `${count12} papers / ${LOOKBACK_DAYS10} days`,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: null,
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      signalEventType: "research_velocity_spike",
+      metricName: `arXiv Papers (${LOOKBACK_DAYS10}d)`,
+      metricValue: count12,
+      metricThreshold: domain.threshold,
+      metricUnit: "papers"
+    };
+  } catch {
+    return null;
+  }
+}
+async function fetchArXivVelocitySignals() {
+  const signals = [];
+  try {
+    for (const domain of ARXIV_DOMAINS) {
+      const result = await fetchCategoryVelocity(domain);
+      if (result) signals.push(result);
+      await new Promise((r) => setTimeout(r, 600));
+    }
+    console.log(`[arXiv] ${signals.length} research velocity signal(s) across ${ARXIV_DOMAINS.length} categories`);
+  } catch (err) {
+    console.warn(`[arXiv] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var ARXIV_API, LOOKBACK_DAYS10, ARXIV_DOMAINS;
+var init_ArXivVelocityService = __esm({
+  "server/services/signals/ArXivVelocityService.ts"() {
+    "use strict";
+    ARXIV_API = "http://export.arxiv.org/api/query";
+    LOOKBACK_DAYS10 = 14;
+    ARXIV_DOMAINS = [
+      {
+        category: "cs.AI",
+        label: "Artificial Intelligence",
+        trigger: "AI Disruption Signal",
+        domain: "technology",
+        threshold: 80,
+        maxResults: 500
+      },
+      {
+        category: "cs.LG",
+        label: "Machine Learning",
+        trigger: "AI Disruption Signal",
+        domain: "technology",
+        threshold: 150,
+        maxResults: 500
+      },
+      {
+        category: "cs.CR",
+        label: "Cryptography & Security",
+        trigger: "Cybersecurity Breach Signal",
+        domain: "cybersecurity",
+        threshold: 40,
+        maxResults: 300
+      }
+    ];
+  }
+});
+
 // server/services/SignalSourceRegistry.ts
 var SignalSourceRegistry_exports = {};
 __export(SignalSourceRegistry_exports, {
@@ -23357,10 +23806,10 @@ var init_SignalSourceRegistry = __esm({
       category: "regulatory",
       tier: 1,
       status: "active",
-      triggersEnabled: ["M&A Activity Detected", "Activist Investor (13D)", "8-K Material Event Filing", "Market Valuation Shift"],
+      triggersEnabled: ["M&A Activity Detected", "8-K Material Event Filing", "Executive Leadership Event", "Earnings Surprise", "Financial Distress Signal", "Competitive Market Entry"],
       requiresApiKey: false,
       apiKeyEnvVar: null,
-      description: "SEC EDGAR full-text search and filing API \u2014 13D activist disclosures, 8-K material events, 13G position changes. Actual structured filing data, not RSS headlines.",
+      description: "SEC EDGAR full-text search API \u2014 13D activist stakes, 8-K material events, 13G/A institutional repositioning, Form D private capital (competitive entry), Schedule TO tender offers, Form 13F institutional holdings, 8-K Item 5.02 executive departures, 8-K Item 2.02 earnings disclosures, 8-K Item 2.04 covenant defaults. Nine structured filing types \u2014 actual mandatory disclosure data, not RSS headlines.",
       upgradeNote: null
     });
     signalSourceRegistry.register({
@@ -23491,6 +23940,19 @@ var init_SignalSourceRegistry = __esm({
       requiresApiKey: false,
       apiKeyEnvVar: null,
       description: "Consumer Financial Protection Bureau complaint database \u2014 measures complaint volume velocity by company, product, and issue type. Elevated complaint rates are a leading indicator of CFPB investigation and reputational exposure for financial services.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "arxiv_velocity",
+      sourceName: "arXiv \u2014 Research Velocity Index",
+      sourceType: "free",
+      category: "technology",
+      tier: 2,
+      status: "active",
+      triggersEnabled: ["AI Disruption Signal", "Cybersecurity Breach Signal"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "arXiv open-access repository velocity tracker \u2014 measures publication rate in CS.AI (Artificial Intelligence), CS.LG (Machine Learning), and CS.CR (Cryptography & Security) categories over a rolling 14-day window. Academic research velocity precedes commercial AI deployment by 12\u201318 months, making it a leading indicator of competitive disruption before it registers in business news.",
       upgradeNote: null
     });
     signalSourceRegistry.register({
@@ -23968,6 +24430,7 @@ var init_LiveSignalIngestionService = __esm({
     init_CongressService();
     init_FTCEnforcementService();
     init_CFPBComplaintService();
+    init_ArXivVelocityService();
     init_SignalSourceRegistry();
     RSS_FEEDS = [
       // Market & business news (baseline)
@@ -24202,7 +24665,8 @@ var init_LiveSignalIngestionService = __esm({
           noaaFemaSignals,
           congressSignals,
           ftcSignals,
-          cfpbSignals
+          cfpbSignals,
+          arXivSignals
         ] = await Promise.allSettled([
           this.ingestAllFeeds(),
           fetchCISAKEVSignals().then((s) => {
@@ -24302,6 +24766,13 @@ var init_LiveSignalIngestionService = __esm({
           }).catch(() => {
             signalSourceRegistry.recordFetch("cfpb_complaints", 0, false);
             return [];
+          }),
+          fetchArXivVelocitySignals().then((s) => {
+            signalSourceRegistry.recordFetch("arxiv_velocity", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("arxiv_velocity", 0, false);
+            return [];
           })
         ]);
         const rss = rssSignals.status === "fulfilled" ? rssSignals.value : [];
@@ -24320,7 +24791,8 @@ var init_LiveSignalIngestionService = __esm({
           ...noaaFemaSignals.status === "fulfilled" ? noaaFemaSignals.value : [],
           ...congressSignals.status === "fulfilled" ? congressSignals.value : [],
           ...ftcSignals.status === "fulfilled" ? ftcSignals.value : [],
-          ...cfpbSignals.status === "fulfilled" ? cfpbSignals.value : []
+          ...cfpbSignals.status === "fulfilled" ? cfpbSignals.value : [],
+          ...arXivSignals.status === "fulfilled" ? arXivSignals.value : []
         ];
         const signals = [...rss, ...quantitative];
         const qSummary = [
@@ -24337,7 +24809,8 @@ var init_LiveSignalIngestionService = __esm({
           cfpbSignals.status === "fulfilled" && cfpbSignals.value.length ? `CFPB:${cfpbSignals.value.length}` : null,
           congressSignals.status === "fulfilled" && congressSignals.value.length ? `Congress:${congressSignals.value.length}` : null,
           internalSignals.status === "fulfilled" && internalSignals.value.length ? `Internal:${internalSignals.value.length}` : null,
-          calendarSignals.status === "fulfilled" && calendarSignals.value.length ? `Calendar:${calendarSignals.value.length}` : null
+          calendarSignals.status === "fulfilled" && calendarSignals.value.length ? `Calendar:${calendarSignals.value.length}` : null,
+          arXivSignals.status === "fulfilled" && arXivSignals.value.length ? `arXiv:${arXivSignals.value.length}` : null
         ].filter(Boolean).join(" ");
         console.log(`   RSS: ${rss.length} signals from ${RSS_FEEDS.length} feeds | Quantitative: ${quantitative.length}${qSummary ? ` (${qSummary})` : ""} | Total: ${signals.length}`);
         if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
