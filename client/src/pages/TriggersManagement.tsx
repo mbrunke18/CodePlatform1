@@ -468,7 +468,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 {/* Pane 2 footer */}
                 <div className="flex-shrink-0 px-4 py-3 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between">
                   <span className="text-[9px] text-gray-400">
-                    <span className="font-bold" style={{ color: NAVY }}>{selectedEntry.triggers.length}</span> rules ·{' '}
+                    <span className="font-bold" style={{ color: NAVY }}>{selectedEntry.triggers.length}</span> monitoring rules ·{' '}
                     <span className="font-bold" style={{ color: TEAL }}>{selectedEntry.triggers.filter(t => t.isActive).length} active</span>
                   </span>
                   {isAuthenticated && (
@@ -857,7 +857,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     </h3>
                     <span className="text-[9px] font-bold px-2 py-0.5 rounded"
                       style={{ background: `${GOLD}12`, color: GOLD }}>
-                      {selectedEntry.sc.dataPoints.length} data points
+                      {selectedEntry.sc.dataPoints.length} metric types
                     </span>
                     <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
                   </div>
@@ -937,7 +937,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           <div>
                             <p className="text-sm font-bold" style={{ color: NAVY }}>{sc.name}</p>
                             <p className="text-[9px] text-gray-400 mt-0.5">
-                              {triggers.length} rule{triggers.length !== 1 ? 's' : ''} · {sc.dataPoints.length} data pts
+                              {triggers.length} monitoring rule{triggers.length !== 1 ? 's' : ''} · {sc.dataPoints.length} metric type{sc.dataPoints.length !== 1 ? 's' : ''}
                             </p>
                           </div>
                           <span className="text-[8px] font-black uppercase tracking-wider px-2 py-1 rounded"
