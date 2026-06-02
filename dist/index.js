@@ -21391,85 +21391,104 @@ var init_CISAKEVService = __esm({
 });
 
 // server/services/signals/FREDService.ts
-async function fetchSeries(seriesId, apiKey) {
+async function yahooClose(symbol) {
   try {
-    const url = `${BASE_URL}?series_id=${seriesId}&api_key=${apiKey}&file_type=json&limit=5&sort_order=desc`;
-    const res = await fetch(url, { signal: AbortSignal.timeout(1e4) });
+    const url = `${YF_BASE}/${encodeURIComponent(symbol)}?interval=1d&range=10d`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 ReadinessOS/1.0" },
+      signal: AbortSignal.timeout(1e4)
+    });
     if (!res.ok) return null;
-    const data = await res.json();
-    const obs = (data.observations || []).filter((o) => o.value !== "." && o.value !== "NA");
-    if (obs.length === 0) return null;
-    const value = parseFloat(obs[0].value);
-    const prevValue = obs.length > 1 ? parseFloat(obs[1].value) : null;
-    if (isNaN(value)) return null;
-    return { value, date: obs[0].date, prevValue };
+    const d = await res.json();
+    const closes = d?.chart?.result?.[0]?.indicators?.quote?.[0]?.close ?? [];
+    const valid = closes.filter((v) => v != null && !isNaN(v));
+    if (valid.length === 0) return null;
+    return { current: valid[valid.length - 1], prev: valid.length > 1 ? valid[valid.length - 2] : null };
+  } catch {
+    return null;
+  }
+}
+async function yahooYield(symbol) {
+  try {
+    const url = `${YF_SUMMARY}/${encodeURIComponent(symbol)}?modules=summaryDetail`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 ReadinessOS/1.0" },
+      signal: AbortSignal.timeout(1e4)
+    });
+    if (!res.ok) return null;
+    const d = await res.json();
+    const y = d?.quoteSummary?.result?.[0]?.summaryDetail?.yield?.raw;
+    return typeof y === "number" ? y * 100 : null;
+  } catch {
+    return null;
+  }
+}
+async function fetchTreasuryYields() {
+  try {
+    const year = (/* @__PURE__ */ new Date()).getFullYear();
+    const url = `${TREASURY_CSV_BASE}/${year}/all?type=daily_treasury_yield_curve&field_tdr_date_value=${year}&page&_format=csv`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "ReadinessOS/1.0" },
+      signal: AbortSignal.timeout(12e3)
+    });
+    if (!res.ok) throw new Error(`Treasury CSV ${res.status}`);
+    const text3 = await res.text();
+    const lines = text3.trim().split("\n").filter((l) => l.trim());
+    if (lines.length < 2) return null;
+    const last = lines[lines.length - 1].split(",");
+    const oneMonth = parseFloat(last[1]);
+    const twoYear = parseFloat(last[8]);
+    const tenYear = parseFloat(last[12]);
+    if (isNaN(twoYear) || isNaN(tenYear)) return null;
+    return { twoYear, tenYear, oneMonth: isNaN(oneMonth) ? 0 : oneMonth };
+  } catch {
+    return null;
+  }
+}
+async function fetchUnemploymentRate() {
+  try {
+    const res = await fetch("https://api.bls.gov/publicAPI/v1/timeseries/data/LNS14000000", {
+      headers: { "User-Agent": "ReadinessOS/1.0", "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(12e3)
+    });
+    if (!res.ok) return null;
+    const d = await res.json();
+    const dp = d?.Results?.series?.[0]?.data?.[0];
+    if (!dp) return null;
+    return parseFloat(dp.value);
   } catch {
     return null;
   }
 }
 async function fetchFREDSignals() {
-  const apiKey = process.env.FRED_API_KEY;
-  if (!apiKey) {
-    console.log("[FRED] FRED_API_KEY not configured \u2014 economic indicator monitoring inactive. Free key at https://fred.stlouisfed.org/docs/api/api_key.html");
-    return [];
-  }
   const signals = [];
-  const results = await Promise.allSettled(
-    SERIES.map(async (series) => {
-      const obs = await fetchSeries(series.id, apiKey);
-      if (!obs) return null;
-      const { value, prevValue } = obs;
-      let shouldFire = false;
-      let impact = "medium";
-      let confidence = 78;
-      if (series.direction === "above") {
-        if (value >= series.actionThreshold) {
-          shouldFire = true;
-          impact = "critical";
-          confidence = 91;
-        } else if (value >= series.watchThreshold) {
-          shouldFire = true;
-          impact = "high";
-          confidence = 82;
-        }
-      } else if (series.direction === "below") {
-        if (value <= series.actionThreshold) {
-          shouldFire = true;
-          impact = "critical";
-          confidence = 90;
-        } else if (value <= series.watchThreshold) {
-          shouldFire = true;
-          impact = "high";
-          confidence = 81;
-        }
-      } else if (series.direction === "change" && prevValue !== null) {
-        const change = Math.abs(value - prevValue);
-        if (change >= series.actionThreshold) {
-          shouldFire = true;
-          impact = "high";
-          confidence = 85;
-        } else if (change >= series.watchThreshold) {
-          shouldFire = true;
-          impact = "medium";
-          confidence = 76;
-        }
-      }
-      if (!shouldFire) return null;
-      return {
+  const [vixData, treasuryYields, unemployment, hygYield, lqdYield] = await Promise.allSettled([
+    yahooClose("^VIX"),
+    fetchTreasuryYields(),
+    fetchUnemploymentRate(),
+    yahooYield("HYG"),
+    yahooYield("LQD")
+  ]);
+  if (vixData.status === "fulfilled" && vixData.value) {
+    const { current: vix } = vixData.value;
+    console.log(`[EconMonitor] VIX: ${vix.toFixed(1)}`);
+    if (vix >= 25) {
+      const action = vix >= 35;
+      signals.push({
         signalType: "economic",
-        description: series.triggerDescription(value, prevValue),
-        confidence,
-        impact,
+        description: `Market volatility (VIX) reached ${vix.toFixed(1)}, ${action ? "well above" : "above"} the stress threshold of ${action ? 35 : 25}. Readings above 30 historically correlate with significant market dislocations requiring executive attention. Activist investor and M&A defense protocols should be reviewed.`,
+        confidence: action ? 91 : 82,
+        impact: action ? "critical" : "high",
         timeline: "near-term",
-        source: `FRED \u2014 ${series.name}`,
-        sourceUrl: `https://fred.stlouisfed.org/series/${series.id}`,
+        source: "CBOE Volatility Index (VIX) \u2014 Yahoo Finance",
+        sourceUrl: "https://finance.yahoo.com/quote/%5EVIX",
         category: "economic",
         jurisdiction: "US",
         confidenceTier: 1,
-        economicIndicatorType: series.indicatorType,
-        indicatorDirection: series.direction === "above" ? "rising" : series.direction === "below" ? "falling" : "change",
-        indicatorMagnitude: impact === "critical" ? "significant" : "moderate",
-        centralBank: series.id === "FEDFUNDS" ? "Federal Reserve" : null,
+        economicIndicatorType: "market_volatility",
+        indicatorDirection: "rising",
+        indicatorMagnitude: action ? "significant" : "moderate",
+        centralBank: null,
         threatSeverity: null,
         exploitStatus: null,
         affectedVendor: null,
@@ -21483,92 +21502,167 @@ async function fetchFREDSignals() {
         affectedProductType: null,
         recallScope: null,
         enforcementActionType: null,
-        regulatorAgency: series.id === "FEDFUNDS" ? "Federal Reserve" : null,
+        regulatorAgency: null,
         penaltyAmountRange: null,
         namedSector: null,
         signalEventType: null,
-        metricName: series.name,
-        metricValue: value,
-        metricThreshold: series.watchThreshold,
-        metricUnit: series.unit
-      };
-    })
-  );
-  for (const r of results) {
-    if (r.status === "fulfilled" && r.value) signals.push(r.value);
+        metricName: "CBOE VIX Index",
+        metricValue: vix,
+        metricThreshold: 25,
+        metricUnit: "index points"
+      });
+    }
+  }
+  if (treasuryYields.status === "fulfilled" && treasuryYields.value) {
+    const { twoYear, tenYear, oneMonth } = treasuryYields.value;
+    const spread = tenYear - twoYear;
+    console.log(`[EconMonitor] Yield curve: 10Y=${tenYear.toFixed(2)}% 2Y=${twoYear.toFixed(2)}% spread=${spread.toFixed(2)}%`);
+    if (spread <= 0) {
+      const action = spread <= -0.5;
+      signals.push({
+        signalType: "economic",
+        description: `Treasury yield curve is inverted at ${spread.toFixed(2)}% (10Y ${tenYear.toFixed(2)}% minus 2Y ${twoYear.toFixed(2)}%). An inverted yield curve has preceded every US recession in the last 50 years with a 6-18 month lead time. Executive teams should review recession scenario protocols and financial contingency plans.`,
+        confidence: action ? 90 : 81,
+        impact: action ? "critical" : "high",
+        timeline: "6-18 months",
+        source: "US Treasury \u2014 Daily Yield Curve (10Y-2Y Spread)",
+        sourceUrl: "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/",
+        category: "economic",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        economicIndicatorType: "yield_curve",
+        indicatorDirection: "falling",
+        indicatorMagnitude: action ? "significant" : "moderate",
+        centralBank: "Federal Reserve",
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        enforcementActionType: null,
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        signalEventType: null,
+        metricName: "10Y-2Y Treasury Yield Spread",
+        metricValue: spread,
+        metricThreshold: 0,
+        metricUnit: "percent"
+      });
+    }
+    console.log(`[EconMonitor] 1M T-bill (Fed Funds proxy): ${oneMonth.toFixed(2)}%`);
+  }
+  if (unemployment.status === "fulfilled" && unemployment.value != null) {
+    const rate = unemployment.value;
+    console.log(`[EconMonitor] Unemployment: ${rate.toFixed(1)}%`);
+    if (rate >= 5.5) {
+      const action = rate >= 7;
+      signals.push({
+        signalType: "economic",
+        description: `Unemployment rate reached ${rate.toFixed(1)}%, ${action ? "significantly above" : "above"} the stress threshold. Elevated unemployment signals weakened consumer demand and workforce restructuring risk. Workforce transformation and operational continuity protocols apply.`,
+        confidence: action ? 88 : 78,
+        impact: action ? "critical" : "high",
+        timeline: "near-term",
+        source: "Bureau of Labor Statistics \u2014 US Unemployment Rate (LNS14000000)",
+        sourceUrl: "https://www.bls.gov/cps/cpsaat01.htm",
+        category: "economic",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        economicIndicatorType: "labor_market",
+        indicatorDirection: "rising",
+        indicatorMagnitude: action ? "significant" : "moderate",
+        centralBank: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        enforcementActionType: null,
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        signalEventType: null,
+        metricName: "US Unemployment Rate",
+        metricValue: rate,
+        metricThreshold: 5.5,
+        metricUnit: "percent"
+      });
+    }
+  }
+  if (hygYield.status === "fulfilled" && hygYield.value != null && lqdYield.status === "fulfilled" && lqdYield.value != null) {
+    const hygY = hygYield.value;
+    const lqdY = lqdYield.value;
+    const spread = hygY - lqdY;
+    console.log(`[EconMonitor] Credit spread proxy: HYG ${hygY.toFixed(2)}% - LQD ${lqdY.toFixed(2)}% = ${spread.toFixed(2)}%`);
+    if (spread >= 3.5) {
+      const action = spread >= 5.5;
+      signals.push({
+        signalType: "economic",
+        description: `High-yield credit spread reached ${spread.toFixed(2)}% (HYG yield ${hygY.toFixed(2)}% minus LQD investment-grade yield ${lqdY.toFixed(2)}%), indicating ${action ? "severe" : "elevated"} credit market stress. Elevated spreads signal increased corporate default risk and capital market disruption. Financial crisis response and investor communications protocols are relevant.`,
+        confidence: action ? 85 : 76,
+        impact: action ? "critical" : "high",
+        timeline: "near-term",
+        source: "High-Yield Credit Spread (HYG-LQD Yield Differential) \u2014 Yahoo Finance",
+        sourceUrl: "https://finance.yahoo.com/quote/HYG",
+        category: "economic",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        economicIndicatorType: "credit_stress",
+        indicatorDirection: "rising",
+        indicatorMagnitude: action ? "significant" : "moderate",
+        centralBank: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        enforcementActionType: null,
+        regulatorAgency: "Federal Reserve",
+        penaltyAmountRange: null,
+        namedSector: null,
+        signalEventType: null,
+        metricName: "HY Credit Spread (HYG-LQD)",
+        metricValue: spread,
+        metricThreshold: 3.5,
+        metricUnit: "percent"
+      });
+    }
   }
   if (signals.length > 0) {
-    console.log(`[FRED] ${signals.length} economic threshold breach(es) detected`);
+    console.log(`[EconMonitor] ${signals.length} economic threshold breach(es) detected`);
+  } else {
+    console.log("[EconMonitor] All economic indicators within normal range");
   }
   return signals;
 }
-var BASE_URL, SERIES;
+var YF_BASE, YF_SUMMARY, TREASURY_CSV_BASE;
 var init_FREDService = __esm({
   "server/services/signals/FREDService.ts"() {
     "use strict";
-    BASE_URL = "https://api.stlouisfed.org/fred/series/observations";
-    SERIES = [
-      {
-        id: "VIXCLS",
-        name: "CBOE Volatility Index (VIX)",
-        description: "Market volatility index \u2014 measures investor fear and uncertainty",
-        unit: "index points",
-        watchThreshold: 25,
-        actionThreshold: 35,
-        direction: "above",
-        domain: "Financial",
-        indicatorType: "market_volatility",
-        triggerDescription: (v, _p) => `Market volatility (VIX) reached ${v.toFixed(1)}, ${v >= 35 ? "well above" : "above"} the stress threshold of ${v >= 35 ? 35 : 25}. Readings above 30 historically correlate with significant market dislocations requiring executive attention. Activist investor and M&A defense protocols should be reviewed.`
-      },
-      {
-        id: "BAMLH0A0HYM2",
-        name: "US High Yield Credit Spread (OAS)",
-        description: "Credit risk premium on high-yield bonds \u2014 a direct measure of financial distress risk",
-        unit: "percent",
-        watchThreshold: 5,
-        actionThreshold: 8,
-        direction: "above",
-        domain: "Financial",
-        indicatorType: "credit_stress",
-        triggerDescription: (v, _p) => `US High Yield credit spread reached ${v.toFixed(2)}%, indicating ${v >= 8 ? "severe" : "elevated"} financial market stress. Spreads above 5% signal increased corporate default risk and capital market disruption. Financial crisis response and investor communications protocols are relevant.`
-      },
-      {
-        id: "T10Y2Y",
-        name: "10Y-2Y Treasury Yield Spread",
-        description: "Yield curve spread \u2014 negative reading (inversion) is a leading recession indicator",
-        unit: "percent",
-        watchThreshold: 0,
-        actionThreshold: -0.5,
-        direction: "below",
-        domain: "Financial",
-        indicatorType: "yield_curve",
-        triggerDescription: (v, _p) => `Treasury yield curve is ${v < 0 ? "inverted" : "flattening"} at ${v.toFixed(2)}%. An inverted yield curve (10Y below 2Y) has preceded every US recession in the last 50 years with a 6-18 month lead time. Executive teams should review recession scenario protocols and financial contingency plans.`
-      },
-      {
-        id: "UNRATE",
-        name: "US Unemployment Rate",
-        description: "Civilian unemployment rate \u2014 rising rate signals labor market deterioration",
-        unit: "percent",
-        watchThreshold: 5.5,
-        actionThreshold: 7,
-        direction: "above",
-        domain: "Supply Chain & Operations",
-        indicatorType: "labor_market",
-        triggerDescription: (v, _p) => `Unemployment rate reached ${v.toFixed(1)}%, ${v >= 7 ? "significantly above" : "above"} the stress threshold. Elevated unemployment signals weakened consumer demand and workforce restructuring risk. Workforce transformation and operational continuity protocols apply.`
-      },
-      {
-        id: "FEDFUNDS",
-        name: "Federal Funds Rate",
-        description: "Federal Reserve benchmark interest rate \u2014 rapid changes signal monetary policy shock",
-        unit: "percent",
-        watchThreshold: 0.5,
-        actionThreshold: 1,
-        direction: "change",
-        domain: "Financial",
-        indicatorType: "interest_rate",
-        triggerDescription: (v, prev) => `Federal funds rate is ${v.toFixed(2)}%${prev !== null ? `, changed from ${prev.toFixed(2)}% (${v - prev >= 0 ? "+" : ""}${(v - prev).toFixed(2)}%)` : ""}. Rapid rate changes affect debt service costs, capital access, and acquisition financing. Financial modeling and investor communications protocols should be reviewed.`
-      }
-    ];
+    YF_BASE = "https://query1.finance.yahoo.com/v8/finance/chart";
+    YF_SUMMARY = "https://query1.finance.yahoo.com/v10/finance/quoteSummary";
+    TREASURY_CSV_BASE = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv";
   }
 });
 
@@ -22590,165 +22684,177 @@ var init_OFACSDNService = __esm({
 });
 
 // server/services/signals/GDELTService.ts
-function articleCountToConfidence(count12) {
-  if (count12 >= 25) return 87;
-  if (count12 >= 15) return 80;
-  if (count12 >= 8) return 73;
-  return 64;
-}
-function articleCountToImpact(count12) {
-  if (count12 >= 25) return "critical";
-  if (count12 >= 15) return "high";
-  if (count12 >= 8) return "medium";
-  return "low";
-}
-async function queryGDELT(queryDef) {
+function parsePubDate(dateStr) {
   try {
-    const url = new URL(GDELT_DOC_API);
-    url.searchParams.set("query", queryDef.query);
-    url.searchParams.set("mode", "artlist");
-    url.searchParams.set("maxrecords", "75");
-    url.searchParams.set("timespan", `${LOOKBACK_HOURS}h`);
-    url.searchParams.set("format", "json");
-    url.searchParams.set("sort", "DateDesc");
-    url.searchParams.set("SOURCELANG", "english");
-    const res = await fetch(url.toString(), {
-      headers: {
-        "User-Agent": "ReadinessOS/1.0 signal-intelligence",
-        "Accept": "application/json",
-        "Referer": "https://www.gdeltproject.org/"
-      },
-      signal: AbortSignal.timeout(18e3)
-    });
-    if (!res.ok) return null;
-    const text3 = await res.text();
-    if (!text3 || text3.trim() === "" || text3.trim() === "{}") return null;
-    let data;
-    try {
-      data = JSON.parse(text3);
-    } catch {
-      return null;
-    }
-    const articles = data.articles || [];
-    if (articles.length < queryDef.threshold) return null;
-    const domains = [...new Set(articles.map((a) => a.domain))].slice(0, 5);
-    const countries = [...new Set(articles.map((a) => a.sourcecountry).filter(Boolean))].slice(0, 4);
-    const topTitles = articles.slice(0, 3).map((a) => a.title).filter(Boolean).join(" | ");
-    const confidence = articleCountToConfidence(articles.length);
-    const impact = articleCountToImpact(articles.length);
-    return {
-      signalType: queryDef.domain,
-      description: `GDELT Event Velocity: ${articles.length} global coverage events in last ${LOOKBACK_HOURS}h for "${queryDef.label}". Leading sources: ${domains.join(", ")}. Countries: ${countries.join(", ")}. Headlines: ${topTitles.substring(0, 400)}`,
-      confidence,
-      impact,
-      timeline: "1\u20137 days",
-      source: "GDELT Project \u2014 Global Event Database",
-      sourceUrl: url.toString(),
-      category: queryDef.domain,
-      jurisdiction: "Global",
-      confidenceTier: 2,
-      enforcementActionType: null,
-      regulatorAgency: null,
-      penaltyAmountRange: null,
-      namedSector: queryDef.label,
-      threatSeverity: impact === "critical" ? "critical" : impact === "high" ? "high" : "medium",
-      exploitStatus: null,
-      affectedVendor: null,
-      cveId: null,
-      affectedSector: queryDef.label,
-      economicIndicatorType: null,
-      indicatorDirection: "increasing",
-      indicatorMagnitude: `${articles.length} articles`,
-      centralBank: null,
-      tradeActionType: queryDef.domain === "geopolitical" ? "geopolitical_event" : null,
-      effectiveTimeline: null,
-      tradePartner: countries[0] || null,
-      affectedHsCodes: null,
-      recallClass: null,
-      affectedProductType: null,
-      recallScope: null,
-      signalEventType: "news_velocity_spike",
-      metricName: `Global Article Count (${LOOKBACK_HOURS}h)`,
-      metricValue: articles.length,
-      metricThreshold: queryDef.threshold,
-      metricUnit: "articles"
-    };
+    const d = new Date(dateStr);
+    return isNaN(d.getTime()) ? null : d;
   } catch {
     return null;
   }
 }
+function extractItems(xml) {
+  const items = [];
+  const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
+  let match;
+  while ((match = itemPattern.exec(xml)) !== null) {
+    const block = match[1];
+    const titleMatch = block.match(/<title(?:[^>]*)>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/);
+    const dateMatch = block.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/);
+    const linkMatch = block.match(/<link[^>]*>([\s\S]*?)<\/link>/);
+    if (titleMatch && dateMatch) {
+      items.push({
+        title: titleMatch[1].trim(),
+        pubDate: dateMatch[1].trim(),
+        link: linkMatch?.[1]?.trim()
+      });
+    }
+  }
+  return items;
+}
+async function fetchFeedItems(feedUrl) {
+  try {
+    const res = await fetch(feedUrl, {
+      headers: {
+        "User-Agent": "ReadinessOS/1.0 signal-intelligence",
+        "Accept": "application/rss+xml, application/xml, text/xml, */*"
+      },
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
+    });
+    if (!res.ok) return [];
+    const xml = await res.text();
+    return extractItems(xml);
+  } catch {
+    return [];
+  }
+}
+function countKeywordMatches(items, keywords, cutoff) {
+  return items.filter((item) => {
+    const pubDate = parsePubDate(item.pubDate);
+    if (!pubDate || pubDate < cutoff) return false;
+    const titleLower = item.title.toLowerCase();
+    return keywords.some((kw) => titleLower.includes(kw.toLowerCase()));
+  }).length;
+}
+function countToConfidence(count12) {
+  if (count12 >= 15) return 84;
+  if (count12 >= 8) return 77;
+  if (count12 >= 4) return 70;
+  return 63;
+}
+function countToImpact(count12) {
+  if (count12 >= 15) return "critical";
+  if (count12 >= 8) return "high";
+  if (count12 >= 4) return "medium";
+  return "low";
+}
+async function runVelocityQuery(query, cutoff) {
+  const allItems = [];
+  for (const feedUrl of query.feeds) {
+    const items = await fetchFeedItems(feedUrl);
+    allItems.push(...items);
+  }
+  const matchCount = countKeywordMatches(allItems, query.keywords, cutoff);
+  if (matchCount < query.threshold) return null;
+  const confidence = countToConfidence(matchCount);
+  const impact = countToImpact(matchCount);
+  return {
+    signalType: query.domain,
+    description: `News Velocity Spike: ${matchCount} articles in last ${LOOKBACK_HOURS}h across ${query.feeds.length} sources matched "${query.label}" signal pattern (keywords: ${query.keywords.slice(0, 4).join(", ")}). Cross-source keyword velocity indicates active ${query.label.toLowerCase()} pattern requiring executive awareness.`,
+    confidence,
+    impact,
+    timeline: "1\u20137 days",
+    source: "RSS Velocity Monitor \u2014 Multi-Source News Pipeline",
+    sourceUrl: query.feeds[0],
+    category: query.domain,
+    jurisdiction: "Global",
+    confidenceTier: 2,
+    enforcementActionType: null,
+    regulatorAgency: null,
+    penaltyAmountRange: null,
+    namedSector: query.label,
+    threatSeverity: impact === "critical" ? "critical" : impact === "high" ? "high" : "medium",
+    exploitStatus: null,
+    affectedVendor: null,
+    cveId: null,
+    affectedSector: query.label,
+    economicIndicatorType: null,
+    indicatorDirection: "increasing",
+    indicatorMagnitude: `${matchCount} articles`,
+    centralBank: null,
+    tradeActionType: query.domain === "geopolitical" ? "geopolitical_event" : null,
+    effectiveTimeline: null,
+    tradePartner: null,
+    affectedHsCodes: null,
+    recallClass: null,
+    affectedProductType: null,
+    recallScope: null,
+    signalEventType: "news_velocity_spike",
+    metricName: `${query.label} Article Count (${LOOKBACK_HOURS}h)`,
+    metricValue: matchCount,
+    metricThreshold: query.threshold,
+    metricUnit: "articles"
+  };
+}
 async function fetchGDELTSignals() {
   const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_HOURS * 3600 * 1e3);
   try {
     let detected = 0;
-    for (const queryDef of GEOPOLITICAL_QUERIES) {
-      const result = await queryGDELT(queryDef);
+    for (const query of VELOCITY_QUERIES) {
+      const result = await runVelocityQuery(query, cutoff);
       if (result) {
         signals.push(result);
         detected++;
       }
-      await new Promise((r) => setTimeout(r, 900));
     }
-    console.log(`[GDELT] ${detected} event velocity pattern(s) detected across ${GEOPOLITICAL_QUERIES.length} query domains`);
+    console.log(`[NewsVelocity] ${detected} velocity pattern(s) across ${VELOCITY_QUERIES.length} domains (${LOOKBACK_HOURS}h window, RSS-based)`);
   } catch (err) {
-    console.warn(`[GDELT] Fetch failed:`, err instanceof Error ? err.message : err);
+    console.warn(`[NewsVelocity] Error:`, err instanceof Error ? err.message : err);
   }
   return signals;
 }
-var GDELT_DOC_API, LOOKBACK_HOURS, GEOPOLITICAL_QUERIES;
+var LOOKBACK_HOURS, REQUEST_TIMEOUT_MS, VELOCITY_QUERIES;
 var init_GDELTService = __esm({
   "server/services/signals/GDELTService.ts"() {
     "use strict";
-    GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc";
     LOOKBACK_HOURS = 72;
-    GEOPOLITICAL_QUERIES = [
+    REQUEST_TIMEOUT_MS = 12e3;
+    VELOCITY_QUERIES = [
       {
-        query: '"trade sanctions"',
-        trigger: "Geopolitical Risk Signal",
-        domain: "geopolitical",
-        label: "Trade Sanctions",
-        threshold: 3
-      },
-      {
-        query: '"supply chain disruption"',
-        trigger: "Supply Chain Disruption",
-        domain: "supply_chain",
-        label: "Supply Chain Disruption",
-        threshold: 3
-      },
-      {
-        query: '"regulatory enforcement" OR "antitrust investigation"',
-        trigger: "Regulatory Enforcement Action",
-        domain: "regulatory",
-        label: "Regulatory Enforcement",
-        threshold: 3
-      },
-      {
-        query: '"activist investor" OR "proxy fight"',
-        trigger: "M&A Activity Detected",
-        domain: "market",
-        label: "Activist Investor Activity",
-        threshold: 2
-      },
-      {
-        query: '"CEO resign" OR "executive departure" OR "CFO resign"',
-        trigger: "Executive Leadership Event",
-        domain: "reputation",
-        label: "Executive Leadership Change",
-        threshold: 2
-      },
-      {
-        query: '"data breach" OR "ransomware attack"',
-        trigger: "Cybersecurity Breach Signal",
-        domain: "cybersecurity",
-        label: "Cyber Incident",
-        threshold: 3
-      },
-      {
-        query: '"reputational crisis" OR "brand boycott" OR "public backlash"',
+        label: "Reputational Crisis",
         trigger: "Reputational Crisis Signal",
         domain: "reputation",
-        label: "Reputational Crisis",
+        // PR Newswire and Courthouse News cover boycotts, scandals, class-actions
+        feeds: [
+          "https://www.prnewswire.com/rss/news-releases-list.rss",
+          "https://www.courthousenews.com/feed/",
+          "https://apnews.com/hub/business?format=rss"
+        ],
+        keywords: ["boycott", "scandal", "backlash", "controversy", "lawsuit", "class action", "investigation", "protest"],
+        threshold: 3
+      },
+      {
+        label: "Supply Chain Disruption",
+        trigger: "Supply Chain Disruption",
+        domain: "supply_chain",
+        feeds: [
+          "https://apnews.com/hub/business?format=rss",
+          "https://feeds.marketwatch.com/marketwatch/topstories/",
+          "https://www.globenewswire.com/RssFeed/country/United+States"
+        ],
+        keywords: ["supply chain", "shipping disruption", "port closure", "logistics", "shortage", "freight", "tariff"],
+        threshold: 3
+      },
+      {
+        label: "Geopolitical Escalation",
+        trigger: "Geopolitical Risk Signal",
+        domain: "geopolitical",
+        feeds: [
+          "https://www.state.gov/press-releases/feed/",
+          "https://www.whitehouse.gov/news/feed/",
+          "https://apnews.com/hub/business?format=rss"
+        ],
+        keywords: ["sanctions", "trade war", "export ban", "embargo", "geopolitical", "tariff", "diplomatic", "conflict"],
         threshold: 2
       }
     ];
@@ -23189,11 +23295,7 @@ function billRelevanceScore(bill) {
 }
 async function fetchCongressSignals() {
   const signals = [];
-  const apiKey = process.env.CONGRESS_API_KEY;
-  if (!apiKey) {
-    console.log(`[Congress.gov] CONGRESS_API_KEY not configured \u2014 legislative monitoring inactive. Free key at https://api.congress.gov/sign-up/`);
-    return [];
-  }
+  const apiKey = process.env.CONGRESS_API_KEY || "DEMO_KEY";
   const cutoff = new Date(Date.now() - LOOKBACK_DAYS7 * 864e5);
   const fromDate = cutoff.toISOString().split("T")[0];
   try {
@@ -23482,53 +23584,76 @@ var init_FTCEnforcementService = __esm({
 });
 
 // server/services/signals/CFPBComplaintService.ts
+function extractItems2(xml) {
+  const items = [];
+  const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
+  let match;
+  while ((match = itemPattern.exec(xml)) !== null) {
+    const block = match[1];
+    const titleMatch = block.match(/<title(?:[^>]*)>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/);
+    const dateMatch = block.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/);
+    const linkMatch = block.match(/<link[^>]*>([\s\S]*?)<\/link>/);
+    const descMatch = block.match(/<description(?:[^>]*)>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/);
+    if (titleMatch) {
+      items.push({
+        title: titleMatch[1].trim(),
+        pubDate: dateMatch?.[1]?.trim() ?? "",
+        link: linkMatch?.[1]?.trim(),
+        description: descMatch?.[1]?.trim()
+      });
+    }
+  }
+  return items;
+}
+function isEnforcementItem(item, cutoff) {
+  if (item.pubDate) {
+    try {
+      const d = new Date(item.pubDate);
+      if (!isNaN(d.getTime()) && d < cutoff) return false;
+    } catch {
+    }
+  }
+  const text3 = `${item.title} ${item.description || ""}`.toLowerCase();
+  return ENFORCEMENT_KEYWORDS.some((kw) => text3.includes(kw));
+}
 async function fetchCFPBComplaintSignals() {
   const signals = [];
   const cutoff = new Date(Date.now() - LOOKBACK_DAYS9 * 864e5);
-  const dateStr = cutoff.toISOString().split("T")[0];
   try {
-    const url = new URL(CFPB_API);
-    url.searchParams.set("date_received_min", dateStr);
-    url.searchParams.set("size", "0");
-    url.searchParams.set("field", "all");
-    url.searchParams.set("format", "json");
-    url.searchParams.set("no_aggs", "false");
-    url.searchParams.set("frm", "0");
-    url.searchParams.set("sort", "created_date_desc");
-    const res = await fetch(url.toString(), {
-      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
-      signal: AbortSignal.timeout(25e3)
+    const res = await fetch(CFPB_NEWSROOM_RSS, {
+      headers: {
+        "User-Agent": "ReadinessOS/1.0 signal-intelligence",
+        "Accept": "application/rss+xml, application/xml, text/xml, */*"
+      },
+      signal: AbortSignal.timeout(TIMEOUT_MS)
     });
-    if (!res.ok) throw new Error(`CFPB API ${res.status}`);
-    const data = await res.json();
-    const totalComplaints = data.hits?.total?.value || 0;
-    const productBuckets = data.aggregations?.product?.buckets || [];
-    const issueBuckets = data.aggregations?.issue?.buckets || [];
-    const companyBuckets = data.aggregations?.company?.buckets || [];
-    if (totalComplaints === 0) {
-      console.log(`[CFPB] No complaints returned from API`);
+    if (!res.ok) throw new Error(`CFPB RSS ${res.status}`);
+    const xml = await res.text();
+    const items = extractItems2(xml);
+    const enforcementItems = items.filter((item) => isEnforcementItem(item, cutoff));
+    const totalItems = items.length;
+    const enforcementCount = enforcementItems.length;
+    if (enforcementCount === 0 && totalItems === 0) {
+      console.log(`[CFPB] No newsroom items parsed from RSS`);
       return [];
     }
-    const dailyRate = totalComplaints / LOOKBACK_DAYS9;
-    const topProducts = productBuckets.slice(0, 5).map((b) => `${b.key} (${b.doc_count})`).join(", ");
-    const topIssues = issueBuckets.slice(0, 3).map((b) => b.key).join(", ");
-    const topCompanies = companyBuckets.slice(0, 3).map((b) => b.key).join(", ");
-    const isHighVolume = totalComplaints >= HIGH_VOLUME_THRESHOLD;
-    const confidence = isHighVolume ? 78 : 66;
-    const impact = dailyRate >= 50 ? "high" : dailyRate >= 20 ? "medium" : "low";
-    if (confidence >= 66) {
+    console.log(`[CFPB] ${enforcementCount} enforcement-related newsroom item(s) in last ${LOOKBACK_DAYS9} days (${totalItems} total items)`);
+    if (enforcementCount >= HIGH_VOLUME_THRESHOLD) {
+      const topTitles = enforcementItems.slice(0, 3).map((i) => i.title).join(" | ");
+      const confidence = enforcementCount >= 5 ? 80 : 70;
+      const impact = enforcementCount >= 5 ? "high" : "medium";
       signals.push({
         signalType: "regulatory",
-        description: `CFPB Complaint Velocity: ${totalComplaints.toLocaleString()} consumer complaints filed in last ${LOOKBACK_DAYS9} days (${Math.round(dailyRate)}/day). Top products: ${topProducts}. Top issues: ${topIssues}. Top companies: ${topCompanies}. Elevated complaint volume indicates regulatory scrutiny risk and potential reputational exposure for financial services sector.`,
+        description: `CFPB Enforcement Velocity: ${enforcementCount} enforcement-related actions announced in last ${LOOKBACK_DAYS9} days. Recent actions: ${topTitles.substring(0, 400)}. Elevated enforcement activity signals heightened financial services regulatory risk and reputational exposure.`,
         confidence,
         impact,
         timeline: "30-90 days",
-        source: "CFPB \u2014 Consumer Financial Protection Bureau",
-        sourceUrl: "https://www.consumerfinance.gov/data-research/consumer-complaints/",
+        source: "CFPB \u2014 Consumer Financial Protection Bureau Newsroom",
+        sourceUrl: "https://www.consumerfinance.gov/about-us/newsroom/",
         category: "regulatory",
         jurisdiction: "US",
         confidenceTier: 2,
-        enforcementActionType: "complaint_volume_spike",
+        enforcementActionType: "enforcement_velocity",
         regulatorAgency: "Consumer Financial Protection Bureau",
         penaltyAmountRange: null,
         namedSector: "Financial Services",
@@ -23539,7 +23664,7 @@ async function fetchCFPBComplaintSignals() {
         affectedSector: "Financial Services",
         economicIndicatorType: null,
         indicatorDirection: "increasing",
-        indicatorMagnitude: `${totalComplaints} complaints`,
+        indicatorMagnitude: `${enforcementCount} enforcement actions`,
         centralBank: null,
         tradeActionType: null,
         effectiveTimeline: null,
@@ -23548,26 +23673,40 @@ async function fetchCFPBComplaintSignals() {
         recallClass: null,
         affectedProductType: "Financial Products",
         recallScope: null,
-        signalEventType: "complaint_velocity",
-        metricName: "Consumer Complaints (30 days)",
-        metricValue: totalComplaints,
+        signalEventType: "enforcement_velocity",
+        metricName: `CFPB Enforcement Actions (${LOOKBACK_DAYS9} days)`,
+        metricValue: enforcementCount,
         metricThreshold: HIGH_VOLUME_THRESHOLD,
-        metricUnit: "complaints"
+        metricUnit: "enforcement actions"
       });
     }
-    console.log(`[CFPB] ${totalComplaints.toLocaleString()} consumer complaint(s) in last ${LOOKBACK_DAYS9} days (${Math.round(dailyRate)}/day)`);
   } catch (err) {
     console.warn(`[CFPB] Fetch failed:`, err instanceof Error ? err.message : err);
   }
   return signals;
 }
-var CFPB_API, LOOKBACK_DAYS9, HIGH_VOLUME_THRESHOLD;
+var CFPB_NEWSROOM_RSS, LOOKBACK_DAYS9, TIMEOUT_MS, ENFORCEMENT_KEYWORDS, HIGH_VOLUME_THRESHOLD;
 var init_CFPBComplaintService = __esm({
   "server/services/signals/CFPBComplaintService.ts"() {
     "use strict";
-    CFPB_API = "https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/";
+    CFPB_NEWSROOM_RSS = "https://www.consumerfinance.gov/about-us/newsroom/feed/";
     LOOKBACK_DAYS9 = 30;
-    HIGH_VOLUME_THRESHOLD = 500;
+    TIMEOUT_MS = 15e3;
+    ENFORCEMENT_KEYWORDS = [
+      "enforcement",
+      "action",
+      "fine",
+      "penalty",
+      "settlement",
+      "consent order",
+      "violation",
+      "charged",
+      "lawsuit",
+      "complaint",
+      "investigation",
+      "order"
+    ];
+    HIGH_VOLUME_THRESHOLD = 3;
   }
 });
 
@@ -23775,16 +23914,16 @@ var init_SignalSourceRegistry = __esm({
     });
     signalSourceRegistry.register({
       sourceKey: "fred_economic",
-      sourceName: "FRED \u2014 Federal Reserve Economic Data",
-      sourceType: "free_key_required",
+      sourceName: "Economic Indicator Monitor",
+      sourceType: "free",
       category: "economic",
       tier: 1,
-      status: process.env.FRED_API_KEY ? "active" : "not_configured",
+      status: "active",
       triggersEnabled: ["Financial Distress Signal", "Market Valuation Shift", "Earnings Surprise", "Supply Chain Disruption"],
-      requiresApiKey: true,
-      apiKeyEnvVar: "FRED_API_KEY",
-      description: "Federal Reserve Bank of St. Louis \u2014 800,000+ economic time series including VIX, credit spreads, yield curve, unemployment. Free API key at fred.stlouisfed.org.",
-      upgradeNote: "Free API key required. Register at fred.stlouisfed.org/docs/api/api_key.html and add FRED_API_KEY secret."
+      requiresApiKey: false,
+      apiKeyEnvVar: void 0,
+      description: "Keyless economic intelligence layer \u2014 CBOE VIX (Yahoo Finance), US Treasury yield curve (10Y-2Y spread), BLS unemployment rate, and HYG-LQD credit spread proxy. Covers market volatility, yield curve inversion, labor market stress, and credit market disruption. No API key required.",
+      upgradeNote: null
     });
     signalSourceRegistry.register({
       sourceKey: "openfda_recalls",
@@ -23853,15 +23992,15 @@ var init_SignalSourceRegistry = __esm({
     });
     signalSourceRegistry.register({
       sourceKey: "gdelt_events",
-      sourceName: "GDELT Project \u2014 Global Event Database",
+      sourceName: "RSS News Velocity Monitor",
       sourceType: "free",
       category: "market",
       tier: 1,
       status: "active",
-      triggersEnabled: ["Geopolitical Risk Signal", "Reputational Crisis Signal", "M&A Activity Detected", "Executive Leadership Event", "Cybersecurity Breach Signal"],
+      triggersEnabled: ["Geopolitical Risk Signal", "Reputational Crisis Signal", "Supply Chain Disruption", "Executive Leadership Event", "Cybersecurity Breach Signal"],
       requiresApiKey: false,
       apiKeyEnvVar: null,
-      description: "World's largest open-access real-time event database. 100+ languages, 65+ countries, updated every 15 minutes. Measures event velocity and tone \u2014 detects when coverage is accelerating before it becomes a crisis.",
+      description: "Multi-source RSS news velocity monitor. Measures keyword-cluster article frequency across AP, PR Newswire, Courthouse News, State Dept, and White House feeds to detect reputational, supply chain, and geopolitical event velocity spikes before they reach mainstream awareness.",
       upgradeNote: null
     });
     signalSourceRegistry.register({
@@ -23906,15 +24045,15 @@ var init_SignalSourceRegistry = __esm({
     signalSourceRegistry.register({
       sourceKey: "congress_gov",
       sourceName: "Congress.gov \u2014 Legislative Tracking",
-      sourceType: "free_key_required",
+      sourceType: "free",
       category: "regulatory",
       tier: 2,
-      status: process.env.CONGRESS_API_KEY ? "active" : "not_configured",
+      status: "active",
       triggersEnabled: ["Legislation Change", "Regulatory Enforcement Action"],
-      requiresApiKey: true,
-      apiKeyEnvVar: "CONGRESS_API_KEY",
-      description: "Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change.",
-      upgradeNote: "Free API key required. Register at api.congress.gov/sign-up/ and add CONGRESS_API_KEY secret."
+      requiresApiKey: false,
+      apiKeyEnvVar: void 0,
+      description: "Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change. Uses public API access \u2014 no key required.",
+      upgradeNote: null
     });
     signalSourceRegistry.register({
       sourceKey: "ftc_enforcement",
@@ -24802,7 +24941,7 @@ var init_LiveSignalIngestionService = __esm({
           edgarSignals.status === "fulfilled" && edgarSignals.value.length ? `EDGAR:${edgarSignals.value.length}` : null,
           nvdSignals.status === "fulfilled" && nvdSignals.value.length ? `NVD:${nvdSignals.value.length}` : null,
           ofacSignals.status === "fulfilled" && ofacSignals.value.length ? `OFAC:${ofacSignals.value.length}` : null,
-          gdeltSignals.status === "fulfilled" && gdeltSignals.value.length ? `GDELT:${gdeltSignals.value.length}` : null,
+          gdeltSignals.status === "fulfilled" && gdeltSignals.value.length ? `NewsVelocity:${gdeltSignals.value.length}` : null,
           fedRegSignals.status === "fulfilled" && fedRegSignals.value.length ? `FedReg:${fedRegSignals.value.length}` : null,
           noaaFemaSignals.status === "fulfilled" && noaaFemaSignals.value.length ? `NOAA/FEMA:${noaaFemaSignals.value.length}` : null,
           ftcSignals.status === "fulfilled" && ftcSignals.value.length ? `FTC:${ftcSignals.value.length}` : null,
