@@ -694,9 +694,11 @@ export async function evaluateSignalsWithOrgTriggers(
         const n           = signals.length;
 
         // Translate fireThreshold → minimumRequired count
+        // 'majority' uses Math.floor(n/2)+1 — strict majority (>50%), not a tie.
+        // e.g. 4 signals: majority = 3 (75%), not 2 (50%)
         const minimumRequired =
           fireThresh === 'all'      ? n
-          : fireThresh === 'majority' ? Math.ceil(n * 0.5)
+          : fireThresh === 'majority' ? Math.floor(n / 2) + 1
           : 1; // 'any' — one signal is enough
 
         // Build TriggerGroupConditions from Model B signals
