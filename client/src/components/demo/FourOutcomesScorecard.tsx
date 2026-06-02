@@ -390,8 +390,9 @@ export default function FourOutcomesScorecard({
               asChild
             >
               <a 
-                href="#" 
-                onClick={(e) => e.preventDefault()}
+                href="https://hbr.org/2018/07/collaborative-intelligence-humans-and-ai-are-joining-forces"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1"
                 data-testid="link-augmented-execution"
               >
@@ -420,8 +421,9 @@ export default function FourOutcomesScorecard({
               asChild
             >
               <a 
-                href="#" 
-                onClick={(e) => e.preventDefault()}
+                href="https://mitsloan.mit.edu/ideas-made-to-matter/how-ai-can-help-organizations-make-better-decisions"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1"
                 data-testid="link-mit-research"
               >
@@ -450,8 +452,9 @@ export default function FourOutcomesScorecard({
               asChild
             >
               <a 
-                href="#" 
-                onClick={(e) => e.preventDefault()}
+                href="https://www.salesforce.com/resources/research-reports/state-of-connected-customer/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1"
                 data-testid="link-salesforce-research"
               >
