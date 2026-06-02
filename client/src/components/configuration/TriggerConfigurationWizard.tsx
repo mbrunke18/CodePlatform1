@@ -2,43 +2,16 @@ import { useState, useEffect } from 'react';
 import { SIGNAL_CATEGORIES as INTEL_CATEGORIES } from '@shared/intelligence-signals';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
-import { Badge } from '@/components/ui/badge';
-import { Textarea } from '@/components/ui/textarea';
-import { Progress } from '@/components/ui/progress';
-import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
-import { 
-  Target, 
-  ArrowLeft, 
-  ArrowRight, 
-  Check, 
-  AlertTriangle,
-  Bell,
-  Settings,
-  Zap,
-  TrendingUp,
-  Users,
-  DollarSign,
-  Shield,
-  Globe,
-  Cpu,
-  BarChart3,
-  Activity,
-  Eye,
-  Mail,
-  MessageSquare,
-  Smartphone,
-  Webhook,
-  PlayCircle,
-  Clock
-} from 'lucide-react';
+import { Check, ChevronRight, Target, Zap, AlertTriangle, TrendingUp, Users, DollarSign, Shield, Globe, Cpu, BarChart3, Activity, Eye, PlayCircle, ArrowLeft, Plus, Minus } from 'lucide-react';
+
+const NAVY = '#0A0F2E';
+const GOLD = '#C9A84C';
+const TEAL = '#2B8A6E';
 
 interface TriggerConfigurationWizardProps {
   isOpen: boolean;
@@ -47,1024 +20,701 @@ interface TriggerConfigurationWizardProps {
   editTrigger?: any;
 }
 
-const SIGNAL_CATEGORIES = [
-  { id: 'competitive', name: 'Competitive Intelligence', icon: Target, color: 'text-[#C9A84C]', description: 'Track competitor moves, pricing, market share' },
-  { id: 'market', name: 'Market Dynamics', icon: TrendingUp, color: 'text-[#0A0F2E]', description: 'Monitor market trends, demand shifts, sentiment' },
-  { id: 'financial', name: 'Financial Signals', icon: DollarSign, color: 'text-green-500', description: 'Track revenue, margins, cash flow indicators' },
-  { id: 'regulatory', name: 'Regulatory & Compliance', icon: Shield, color: 'text-red-500', description: 'Monitor policy changes, compliance requirements' },
-  { id: 'supplychain', name: 'Supply Chain', icon: Activity, color: 'text-orange-500', description: 'Track supplier health, logistics, inventory' },
-  { id: 'customer', name: 'Customer Signals', icon: Users, color: 'text-[#0A0F2E]', description: 'Monitor NPS, churn, satisfaction metrics' },
-  { id: 'talent', name: 'Talent & Workforce', icon: Users, color: 'text-pink-500', description: 'Track attrition, engagement, skill gaps' },
-  { id: 'geopolitical', name: 'Geopolitical', icon: Globe, color: 'text-amber-500', description: 'Monitor regional stability, trade policies' },
-  { id: 'technology', name: 'Technology', icon: Cpu, color: 'text-[#2B8A6E]', description: 'Track tech disruptions, infrastructure issues' },
-  { id: 'media', name: 'Media & Reputation', icon: Eye, color: 'text-[#C9A84C]', description: 'Monitor brand mentions, sentiment, PR issues' },
-  { id: 'cyber', name: 'Cybersecurity', icon: Shield, color: 'text-red-600', description: 'Track threat levels, vulnerabilities, incidents' },
-  { id: 'economic', name: 'Economic Indicators', icon: BarChart3, color: 'text-[#2B8A6E]', description: 'Monitor GDP, inflation, interest rates' },
-  { id: 'partnership', name: 'Partnership & Alliance', icon: Users, color: 'text-teal-500', description: 'Track partner health, joint venture status' },
-  { id: 'execution', name: 'Execution Velocity', icon: Zap, color: 'text-yellow-500', description: 'Monitor project timelines, delivery metrics' },
-  { id: 'behavior', name: 'Behavioral Analytics', icon: Activity, color: 'text-rose-500', description: 'Track user patterns, engagement shifts' },
-  { id: 'innovation', name: 'Innovation Pipeline', icon: PlayCircle, color: 'text-sky-500', description: 'Monitor R&D progress, patent filings' },
+const SITUATIONS = [
+  { label: 'Competitor Price Cut', cat: 'competitive', desc: 'A key competitor significantly reduces pricing', signals: ['comp_pricing_change', 'comp_market_share', 'comp_product_launch'] },
+  { label: 'Key Executive Departure', cat: 'talent', desc: 'Critical leadership role becomes vacant', signals: ['tal_key_departures', 'tal_attrition', 'tal_enps'] },
+  { label: 'Supply Chain Disruption', cat: 'supplychain', desc: 'Supplier failure or logistics breakdown', signals: ['sc_supplier_risk', 'sc_lead_times', 'sc_inventory_risk'] },
+  { label: 'Regulatory Mandate', cat: 'regulatory', desc: 'New regulation requires immediate compliance', signals: ['reg_new_rules', 'reg_enforcement', 'reg_compliance_gap'] },
+  { label: 'Cybersecurity Incident', cat: 'cyber', desc: 'Security breach or threat detected', signals: ['cyber_threat_level', 'cyber_vulnerabilities', 'cyber_incident'] },
+  { label: 'Market Share Decline', cat: 'market', desc: 'Measurable loss of market position', signals: ['mkt_market_share', 'mkt_sentiment', 'mkt_demand_shift'] },
+  { label: 'Customer Churn Risk', cat: 'customer', desc: 'Signs of significant customer attrition', signals: ['cust_churn_risk', 'cust_nps', 'cust_csat', 'cust_contract_renewal'] },
+  { label: 'Activist Investor Signal', cat: 'financial', desc: 'Activist position or pressure building', signals: ['fin_stock_volatility', 'fin_institutional_flow', 'fin_analyst_ratings'] },
 ];
 
+const CATEGORY_META: Record<string, { name: string; icon: any; color: string }> = {
+  competitive: { name: 'Competitive Intelligence', icon: Target, color: GOLD },
+  market:      { name: 'Market Dynamics',          icon: TrendingUp, color: NAVY },
+  financial:   { name: 'Financial Signals',        icon: DollarSign, color: '#16A34A' },
+  regulatory:  { name: 'Regulatory & Compliance',  icon: Shield, color: '#DC2626' },
+  supplychain: { name: 'Supply Chain',             icon: Activity, color: '#EA580C' },
+  customer:    { name: 'Customer Signals',         icon: Users, color: NAVY },
+  talent:      { name: 'Talent & Workforce',       icon: Users, color: '#EC4899' },
+  geopolitical:{ name: 'Geopolitical',             icon: Globe, color: '#D97706' },
+  technology:  { name: 'Technology',               icon: Cpu, color: TEAL },
+  media:       { name: 'Media & Reputation',       icon: Eye, color: GOLD },
+  cyber:       { name: 'Cybersecurity',            icon: Shield, color: '#DC2626' },
+  economic:    { name: 'Economic Indicators',      icon: BarChart3, color: TEAL },
+  partnership: { name: 'Partnership & Alliance',   icon: Users, color: TEAL },
+  execution:   { name: 'Execution Velocity',       icon: Zap, color: '#CA8A04' },
+  behavior:    { name: 'Behavioral Analytics',     icon: Activity, color: '#F43F5E' },
+  innovation:  { name: 'Innovation Pipeline',      icon: PlayCircle, color: '#0EA5E9' },
+};
 
-const OPERATORS = [
-  { id: 'gt', name: 'Greater than', symbol: '>' },
-  { id: 'lt', name: 'Less than', symbol: '<' },
-  { id: 'gte', name: 'Greater than or equal', symbol: '>=' },
-  { id: 'lte', name: 'Less than or equal', symbol: '<=' },
-  { id: 'eq', name: 'Equal to', symbol: '=' },
-  { id: 'change', name: 'Changes by', symbol: '±' },
-  { id: 'drop', name: 'Drops by', symbol: '↓' },
-  { id: 'spike', name: 'Spikes by', symbol: '↑' },
-];
+const CATEGORY_DOMAIN_MAP: Record<string, string> = {
+  competitive: 'Market Dynamics', market: 'Market Dynamics',
+  financial: 'Financial Strategy', economic: 'Financial Strategy',
+  regulatory: 'Regulatory & Compliance', esg: 'Regulatory & Compliance',
+  talent: 'Talent & Leadership', customer: 'Operational Excellence',
+  supplychain: 'Operational Excellence', execution: 'Operational Excellence',
+  behavior: 'Operational Excellence', partnership: 'Market Opportunities',
+  technology: 'Technology & Innovation', cyber: 'Technology & Innovation',
+  innovation: 'Technology & Innovation', media: 'Brand & Reputation',
+  geopolitical: 'AI Governance',
+};
 
-const SEVERITY_LEVELS = [
-  { id: 'low', name: 'Low', color: 'bg-[#F8F7F4] text-[#0A0F2E]', description: 'Informational, monitor only' },
-  { id: 'medium', name: 'Medium', color: 'bg-yellow-100 text-yellow-800', description: 'Requires attention within 24 hours' },
-  { id: 'high', name: 'High', color: 'bg-orange-100 text-orange-800', description: 'Urgent, requires action within 4 hours' },
-  { id: 'critical', name: 'Critical', color: 'bg-red-100 text-red-800', description: 'Emergency, immediate response required' },
-];
+function getDefaultThresholdLabel(dp: any): string {
+  const dt = dp.defaultThreshold;
+  if (!dt) return 'breach detected';
+  const ops: Record<string, string> = { gt: 'exceeds', lt: 'drops below', gte: 'reaches', lte: 'falls to', drop: 'drops by', spike: 'spikes by', eq: 'equals', change: 'changes by' };
+  const opLabel = ops[dt.operator] || dt.operator;
+  const unit = dp.unit || dp.metricType === 'percentage' ? '%' : dp.metricType === 'currency' ? 'USD' : '';
+  return `${opLabel} ${dt.value}${unit}`;
+}
 
-const MONITORING_FREQUENCIES = [
-  { id: 'realtime', name: 'Real-time', description: 'Continuous monitoring' },
-  { id: '5min', name: 'Every 5 minutes', description: 'Near real-time' },
-  { id: '15min', name: 'Every 15 minutes', description: 'Frequent checks' },
-  { id: 'hourly', name: 'Hourly', description: 'Standard monitoring' },
-  { id: 'daily', name: 'Daily', description: 'Daily digest' },
-];
-
-export default function TriggerConfigurationWizard({ 
-  isOpen, 
-  onClose, 
-  onSuccess,
-  editTrigger 
-}: TriggerConfigurationWizardProps) {
+export default function TriggerConfigurationWizard({ isOpen, onClose, onSuccess, editTrigger }: TriggerConfigurationWizardProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
   const [step, setStep] = useState(1);
-  const totalSteps = 5;
-  
-  // Form state
-  const [triggerName, setTriggerName] = useState('');
-  const [description, setDescription] = useState('');
+  const TOTAL_STEPS = 3;
+
+  // Step 1 state
+  const [situationName, setSituationName] = useState('');
+  const [situationDesc, setSituationDesc] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedField, setSelectedField] = useState('');
-  const [operator, setOperator] = useState('gt');
-  const [thresholdValue, setThresholdValue] = useState('');
-  const [severity, setSeverity] = useState('medium');
-  const [monitoringFrequency, setMonitoringFrequency] = useState('realtime');
-  const [autoActivatePlaybook, setAutoActivatePlaybook] = useState(false);
-  
-  // Notification settings
-  const [emailEnabled, setEmailEnabled] = useState(true);
-  const [slackEnabled, setSlackEnabled] = useState(false);
-  const [inAppEnabled, setInAppEnabled] = useState(true);
-  const [webhookEnabled, setWebhookEnabled] = useState(false);
-  const [escalationEnabled, setEscalationEnabled] = useState(true);
-  const [escalationTimeout, setEscalationTimeout] = useState('30');
-  
-  // Readiness Protocol mapping
+
+  // Step 2 state — array of { dpId, operator, value, isMandatory }
+  const [selectedSignals, setSelectedSignals] = useState<{ dpId: string; operator: string; value: string; isMandatory: boolean }[]>([]);
+  const [fireThreshold, setFireThreshold] = useState<'any' | 'all' | 'majority'>('any');
+
+  // Step 3 state
   const [selectedPlaybooks, setSelectedPlaybooks] = useState<string[]>([]);
+  const [severity, setSeverity] = useState<'low' | 'medium' | 'high' | 'critical'>('high');
 
-  // Step 5: Alert sensitivity — per-trigger threshold overrides
-  const [useOrgThresholds, setUseOrgThresholds] = useState(true);
-  const [triggerWatchPct, setTriggerWatchPct]   = useState(50);
-  const [triggerAwarePct, setTriggerAwarePct]   = useState(70);
-  const [triggerActionPct, setTriggerActionPct] = useState(80);
-  // Trigger mode: 'percentage' | 'mandatory' | 'both'
-  const [triggerMode, setTriggerMode] = useState<'percentage' | 'mandatory' | 'both'>('both');
-  
-  // Pre-populate form when editing an existing trigger
-  useEffect(() => {
-    if (editTrigger && isOpen) {
-      setTriggerName(editTrigger.name || '');
-      setDescription(editTrigger.description || '');
-      setSelectedCategory(editTrigger.category || '');
-      setSelectedField(editTrigger.conditions?.field || '');
-      setOperator(editTrigger.conditions?.operator || 'gt');
-      setThresholdValue(String(editTrigger.conditions?.value || ''));
-      setSeverity(editTrigger.severity || 'medium');
-      setMonitoringFrequency(editTrigger.monitoringFrequency || 'realtime');
-      setAutoActivatePlaybook(editTrigger.autoActivatePlaybook || false);
-      setEmailEnabled(editTrigger.notificationSettings?.email ?? true);
-      setSlackEnabled(editTrigger.notificationSettings?.slack ?? false);
-      setInAppEnabled(editTrigger.notificationSettings?.inApp ?? true);
-      setWebhookEnabled(editTrigger.notificationSettings?.webhook ?? false);
-      setEscalationEnabled(editTrigger.notificationSettings?.escalation ?? true);
-      setEscalationTimeout(String(editTrigger.escalationTimeout || '30'));
-      const preloadIds = editTrigger.linkedPlaybooks?.map((p: any) => p.id)
-        || editTrigger.recommendedPlaybooks
-        || [];
-      setSelectedPlaybooks(preloadIds);
-      // Step 5 — threshold overrides
-      const hasOverride = editTrigger.watchThresholdPct != null;
-      setUseOrgThresholds(!hasOverride);
-      if (hasOverride) {
-        setTriggerWatchPct(editTrigger.watchThresholdPct ?? 50);
-        setTriggerAwarePct(editTrigger.awareThresholdPct ?? 70);
-        setTriggerActionPct(editTrigger.actionThresholdPct ?? 80);
-      }
-    }
-  }, [editTrigger, isOpen]);
-  
-  // Fetch available Readiness Protocols (all 180 templates)
-  const { data: playbooks } = useQuery({
-    queryKey: ['/api/playbooks/templates'],
-  });
-
-  // Map trigger categories to Readiness Protocol domains for smart filtering
-  const CATEGORY_TO_DOMAIN: Record<string, string> = {
-    competitive: 'Market Dynamics', market: 'Market Dynamics',
-    financial: 'Financial Strategy', economic: 'Financial Strategy',
-    regulatory: 'Regulatory & Compliance', esg: 'Regulatory & Compliance',
-    talent: 'Talent & Leadership', customer: 'Operational Excellence',
-    supplychain: 'Operational Excellence', execution: 'Operational Excellence',
-    behavior: 'Operational Excellence', partnership: 'Market Opportunities',
-    technology: 'Technology & Innovation', cyber: 'Technology & Innovation',
-    innovation: 'Technology & Innovation', media: 'Brand & Reputation',
-    geopolitical: 'AI Governance',
-  };
+  // Fetch all protocols
+  const { data: playbooks } = useQuery({ queryKey: ['/api/playbooks/templates'] });
 
   const relevantPlaybooks = Array.isArray(playbooks)
-    ? playbooks.filter((p: any) => !selectedCategory || p.domain === CATEGORY_TO_DOMAIN[selectedCategory])
+    ? playbooks.filter((p: any) => !selectedCategory || p.domain === CATEGORY_DOMAIN_MAP[selectedCategory])
     : [];
   const otherPlaybooks = Array.isArray(playbooks)
-    ? playbooks.filter((p: any) => selectedCategory && p.domain !== CATEGORY_TO_DOMAIN[selectedCategory])
+    ? playbooks.filter((p: any) => selectedCategory && p.domain !== CATEGORY_DOMAIN_MAP[selectedCategory])
     : [];
-  
-  // Create/Update trigger mutation
-  const saveTriggerMutation = useMutation({
-    mutationFn: async (triggerData: any) => {
-      if (editTrigger?.id) {
-        return apiRequest('PUT', `/api/executive-triggers/${editTrigger.id}`, triggerData);
+
+  const dataPoints = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints ?? [];
+
+  // Pre-populate when editing
+  useEffect(() => {
+    if (editTrigger && isOpen) {
+      setSituationName(editTrigger.name || '');
+      setSituationDesc(editTrigger.description || '');
+      setSelectedCategory(editTrigger.category || '');
+      setSeverity(editTrigger.severity || 'high');
+      const preloadIds = editTrigger.linkedPlaybooks?.map((p: any) => p.id) || editTrigger.recommendedPlaybooks || [];
+      setSelectedPlaybooks(preloadIds);
+      // Reconstruct signals from conditions
+      const conds = editTrigger.conditions;
+      if (Array.isArray(conds?.signals)) {
+        setSelectedSignals(conds.signals);
+      } else if (conds?.dataPointId) {
+        setSelectedSignals([{ dpId: conds.dataPointId || conds.field || '', operator: conds.operator || 'breach', value: String(conds.value || ''), isMandatory: false }]);
+      } else {
+        setSelectedSignals([]);
       }
-      return apiRequest('POST', '/api/config/triggers', triggerData);
+      setFireThreshold(conds?.fireThreshold || 'any');
+    }
+  }, [editTrigger, isOpen]);
+
+  // When category changes, auto-select recommended signals
+  useEffect(() => {
+    if (!selectedCategory) return;
+    if (editTrigger) return; // don't overwrite when editing
+    const catDps = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints ?? [];
+    // Pre-select the first 4–6 data points that have defaultThreshold
+    const preselect = catDps
+      .filter((dp: any) => dp.defaultThreshold)
+      .slice(0, 6)
+      .map((dp: any) => ({
+        dpId: dp.id,
+        operator: dp.defaultThreshold?.operator || 'breach',
+        value: String(dp.defaultThreshold?.value ?? ''),
+        isMandatory: false,
+      }));
+    setSelectedSignals(preselect);
+  }, [selectedCategory]);
+
+  const handleClose = () => {
+    setStep(1);
+    setSituationName('');
+    setSituationDesc('');
+    setSelectedCategory('');
+    setSelectedSignals([]);
+    setFireThreshold('any');
+    setSelectedPlaybooks([]);
+    setSeverity('high');
+    onClose();
+  };
+
+  const canProceed = () => {
+    if (step === 1) return !!situationName && !!selectedCategory;
+    if (step === 2) return selectedSignals.length > 0;
+    if (step === 3) return true;
+    return false;
+  };
+
+  const saveMutation = useMutation({
+    mutationFn: async (data: any) => {
+      const res = editTrigger?.id
+        ? await apiRequest('PUT', `/api/executive-triggers/${editTrigger.id}`, data)
+        : await apiRequest('POST', '/api/config/triggers', data);
+      return res.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/config/triggers'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/triggers'] });
       queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
-      toast({
-        title: editTrigger ? 'Trigger Updated' : 'Trigger Created',
-        description: editTrigger 
-          ? 'Your trigger has been updated successfully.'
-          : 'Your custom trigger has been configured successfully.',
-      });
+      queryClient.invalidateQueries({ queryKey: ['/api/config/triggers'] });
+      toast({ title: editTrigger ? 'Trigger updated' : 'Trigger created', description: editTrigger ? 'Monitoring rule updated.' : 'Now monitoring for this situation.' });
       onSuccess?.();
       handleClose();
     },
-    onError: (error: any) => {
-      toast({
-        title: 'Error',
-        description: error.message || `Failed to ${editTrigger ? 'update' : 'create'} trigger`,
-        variant: 'destructive',
-      });
+    onError: (e: any) => {
+      toast({ title: 'Error', description: e.message || 'Failed to save trigger', variant: 'destructive' });
     },
   });
-  
-  const handleClose = () => {
-    setStep(1);
-    setTriggerName('');
-    setDescription('');
-    setSelectedCategory('');
-    setSelectedField('');
-    setOperator('gt');
-    setThresholdValue('');
-    setSeverity('medium');
-    setMonitoringFrequency('realtime');
-    setAutoActivatePlaybook(false);
-    setEmailEnabled(true);
-    setSlackEnabled(false);
-    setInAppEnabled(true);
-    setWebhookEnabled(false);
-    setEscalationEnabled(true);
-    setEscalationTimeout('30');
-    setSelectedPlaybooks([]);
-    setUseOrgThresholds(true);
-    setTriggerWatchPct(50);
-    setTriggerAwarePct(70);
-    setTriggerActionPct(80);
-    setTriggerMode('both');
-    onClose();
-  };
-  
-  const canProceed = () => {
-    switch (step) {
-      case 1: return triggerName && selectedCategory;
-      case 2: return selectedField && operator && thresholdValue;
-      case 3: return emailEnabled || slackEnabled || inAppEnabled || webhookEnabled;
-      case 4: return true;
-      case 5: return true;
-      default: return false;
-    }
-  };
-  
-  const handleNext = () => {
-    if (step < totalSteps) {
-      setStep(step + 1);
-    } else {
-      handleSubmit();
-    }
-  };
-  
-  const handleBack = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
-  
+
   const handleSubmit = () => {
-    const catDataPoints = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints;
-    const selectedFieldData = catDataPoints?.find((dp: any) => dp.id === selectedField);
-    
-    const triggerData: any = {
-      name: triggerName,
-      description,
+    // Build the operator/value for the primary condition from selected signals for backward compat
+    const primary = selectedSignals[0];
+    const catDps = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints ?? [];
+    const primaryDp = catDps.find((dp: any) => dp.id === primary?.dpId) as any;
+
+    saveMutation.mutate({
+      name: situationName,
+      description: situationDesc,
       category: selectedCategory,
-      signalType: selectedField,
-      conditionField: selectedFieldData?.name || selectedField,
-      conditionOperator: operator,
-      conditionValue: parseFloat(thresholdValue),
-      conditionUnit: (selectedFieldData as any)?.metricType || '',
+      signalType: primary?.dpId || '',
+      conditionField: primaryDp?.name || primary?.dpId || '',
+      conditionOperator: primary?.operator || 'breach',
+      conditionValue: parseFloat(primary?.value || '0'),
+      conditionUnit: primaryDp?.metricType || '',
       severity,
-      monitoringFrequency,
-      autoActivatePlaybook,
-      notificationChannels: {
-        email: emailEnabled,
-        slack: slackEnabled,
-        inApp: inAppEnabled,
-        webhook: webhookEnabled,
+      conditions: {
+        signals: selectedSignals,
+        fireThreshold,
+        // legacy compat fields
+        dataPointId: primary?.dpId,
+        field: primary?.dpId,
+        operator: primary?.operator || 'breach',
+        value: parseFloat(primary?.value || '0'),
       },
-      escalationEnabled,
-      escalationTimeoutMinutes: parseInt(escalationTimeout),
       recommendedPlaybooks: selectedPlaybooks,
-      // Step 5 — alert sensitivity
-      watchThresholdPct:  useOrgThresholds ? null : triggerWatchPct,
-      awareThresholdPct:  useOrgThresholds ? null : triggerAwarePct,
-      actionThresholdPct: useOrgThresholds ? null : triggerActionPct,
-      triggerMode,
-    };
-    
-    saveTriggerMutation.mutate(triggerData);
-  };
-  
-  const getFieldUnit = () => {
-    if (!selectedCategory || !selectedField) return '';
-    const dp = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)
-      ?.dataPoints?.find((d: any) => d.id === selectedField);
-    return (dp as any)?.metricType || '';
+      notificationChannels: { email: true, inApp: true, slack: false, webhook: false },
+      escalationEnabled: true,
+      escalationTimeoutMinutes: 30,
+      monitoringFrequency: 'realtime',
+      autoActivatePlaybook: false,
+    });
   };
 
-  const getFieldName = () => {
-    if (!selectedCategory || !selectedField) return selectedField;
-    const dp = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)
-      ?.dataPoints?.find((d: any) => d.id === selectedField);
-    return dp?.name || selectedField;
+  const toggleSignal = (dpId: string, dp: any) => {
+    setSelectedSignals(prev => {
+      const exists = prev.find(s => s.dpId === dpId);
+      if (exists) return prev.filter(s => s.dpId !== dpId);
+      return [...prev, {
+        dpId,
+        operator: dp.defaultThreshold?.operator || 'breach',
+        value: String(dp.defaultThreshold?.value ?? ''),
+        isMandatory: false,
+      }];
+    });
   };
-  
-  const togglePlaybook = (playbookId: string) => {
-    setSelectedPlaybooks(prev => 
-      prev.includes(playbookId)
-        ? prev.filter(id => id !== playbookId)
-        : [...prev, playbookId]
-    );
+
+  const updateSignalValue = (dpId: string, field: 'operator' | 'value', val: string) => {
+    setSelectedSignals(prev => prev.map(s => s.dpId === dpId ? { ...s, [field]: val } : s));
   };
+
+  const toggleMandatory = (dpId: string) => {
+    setSelectedSignals(prev => prev.map(s => s.dpId === dpId ? { ...s, isMandatory: !s.isMandatory } : s));
+  };
+
+  const togglePlaybook = (id: string) => {
+    setSelectedPlaybooks(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  };
+
+  const stepLabel = ['Name the Situation', 'Select Signals to Watch', 'Link Readiness Protocol'];
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-xl">
-            <Target className="h-6 w-6 text-[#0A0F2E]" />
-            {editTrigger ? 'Edit Trigger' : 'Create Custom Trigger'}
-          </DialogTitle>
-          <DialogDescription>
-            Define YOUR monitoring conditions - Readiness OS AI will monitor 24/7 and alert you when triggers fire
-          </DialogDescription>
-        </DialogHeader>
-        
-        {/* Progress indicator */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600 dark:text-gray-300">Step {step} of {totalSteps}</span>
-            <span className="text-sm font-medium">
-              {step === 1 && 'Category & Basics'}
-              {step === 2 && 'Conditions'}
-              {step === 3 && 'Notifications'}
-              {step === 4 && 'Readiness Protocol Mapping'}
-              {step === 5 && 'Alert Sensitivity'}
-            </span>
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0">
+        <DialogHeader className="px-8 pt-8 pb-0">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-8 h-8 flex items-center justify-center" style={{ background: NAVY }}>
+              <Target className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <DialogTitle className="text-lg font-bold" style={{ color: NAVY }}>
+                {editTrigger ? 'Edit Trigger' : 'Create a Trigger'}
+              </DialogTitle>
+              <DialogDescription className="text-xs text-gray-400 mt-0.5">
+                Define what you're watching for — the protocol will be ready before it fires
+              </DialogDescription>
+            </div>
           </div>
-          <Progress value={(step / totalSteps) * 100} className="h-2" />
-          
-          <div className="flex justify-between mt-2">
-            {[1, 2, 3, 4, 5].map((s) => (
-              <div 
-                key={s} 
-                className={`flex items-center gap-1 text-xs ${s <= step ? 'text-[#0A0F2E]' : 'text-gray-600 dark:text-gray-200'}`}
-              >
-                <div className={`w-6 h-6 flex items-center justify-center ${
-                  s < step ? 'bg-[#0A0F2E] text-white' : 
-                  s === step ? 'bg-[#F8F7F4] text-[#0A0F2E] border-2 border-[#0A0F2E]' : 
-                  'bg-gray-100 text-gray-600 dark:text-gray-200'
-                }`}>
-                  {s < step ? <Check className="h-3 w-3" /> : s}
+
+          {/* Step progress */}
+          <div className="flex items-center gap-0 mt-4 mb-6">
+            {[1, 2, 3].map((s, i) => (
+              <div key={s} className="flex items-center flex-1">
+                <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                  <div className="w-7 h-7 flex items-center justify-center text-xs font-black transition-all"
+                    style={{
+                      background: s < step ? TEAL : s === step ? NAVY : '#F0EDE8',
+                      color: s <= step ? '#fff' : '#9CA3AF',
+                    }}>
+                    {s < step ? <Check className="w-3.5 h-3.5" /> : s}
+                  </div>
+                  <span className="text-[9px] font-bold uppercase tracking-wider whitespace-nowrap"
+                    style={{ color: s === step ? NAVY : '#9CA3AF' }}>
+                    {stepLabel[i]}
+                  </span>
                 </div>
-                <span className="hidden md:inline">
-                  {s === 1 && 'Category'}
-                  {s === 2 && 'Conditions'}
-                  {s === 3 && 'Notify'}
-                  {s === 4 && 'Protocols'}
-                  {s === 5 && 'Sensitivity'}
-                </span>
+                {i < 2 && (
+                  <div className="flex-1 h-px mx-2 mt-[-12px]"
+                    style={{ background: step > s + 1 ? TEAL : step > s ? `${NAVY}30` : '#E8E4DC' }} />
+                )}
               </div>
             ))}
           </div>
-        </div>
-        
-        <Separator className="my-4" />
-        
-        {/* Step 1: Situation & Category */}
-        {step === 1 && (
-          <div className="space-y-6">
-            {/* Situation framing */}
-            <div className="p-4 border-l-4" style={{ background: 'rgba(201,168,76,0.06)', borderColor: '#C9A84C' }}>
-              <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>What strategic situation do you want to prepare for?</p>
-              <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right Readiness Protocol the moment it fires.</p>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {[
-                  { label: 'Competitor price cut', cat: 'competitive', desc: 'Competitor cuts prices significantly' },
-                  { label: 'Key executive departure', cat: 'talent', desc: 'Critical leadership role becomes vacant' },
-                  { label: 'Regulatory mandate', cat: 'regulatory', desc: 'New regulation requires immediate compliance' },
-                  { label: 'Supply chain disruption', cat: 'supplychain', desc: 'Supplier failure or logistics breakdown' },
-                  { label: 'Cybersecurity incident', cat: 'cyber', desc: 'Security breach or threat detected' },
-                  { label: 'Market share decline', cat: 'market', desc: 'Measurable loss of market position' },
-                ].map(ex => (
-                  <button key={ex.label}
-                    className="text-xs px-2.5 py-1 rounded border font-medium hover:opacity-80 transition-opacity"
-                    style={{ background: selectedCategory === ex.cat ? '#0A0F2E' : '#F0EDE8', color: selectedCategory === ex.cat ? '#fff' : '#444', borderColor: selectedCategory === ex.cat ? '#0A0F2E' : '#E8E4DC' }}
-                    onClick={() => {
-                      setSelectedCategory(ex.cat);
-                      if (!triggerName) setTriggerName(ex.label);
-                      if (!description) setDescription(ex.desc);
-                    }}
-                  >{ex.label}</button>
-                ))}
-              </div>
-            </div>
+        </DialogHeader>
 
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="trigger-name">Situation Name *</Label>
+        <div className="px-8 pb-8">
+          {/* ─── STEP 1: Name the Situation ─────────────────────────────── */}
+          {step === 1 && (
+            <div className="space-y-6">
+              {/* Situation name */}
+              <div>
+                <Label className="text-xs font-black uppercase tracking-wider mb-2 block" style={{ color: NAVY }}>
+                  What strategic situation are you preparing for? *
+                </Label>
                 <Input
-                  id="trigger-name"
-                  placeholder="e.g., Competitor Price Cut Alert"
-                  value={triggerName}
-                  onChange={(e) => setTriggerName(e.target.value)}
+                  placeholder="e.g., Customer Churn Risk, Competitor Price Cut, Regulatory Mandate…"
+                  value={situationName}
+                  onChange={e => setSituationName(e.target.value)}
+                  className="text-base font-semibold border-0 border-b-2 rounded-none focus-visible:ring-0 px-0"
+                  style={{ borderColor: situationName ? NAVY : '#E8E4DC', color: NAVY }}
                   data-testid="input-trigger-name"
                 />
               </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="description">What happens in this situation?</Label>
-                <Textarea
-                  id="description"
-                  placeholder="Describe the scenario and what outcome you want to avoid or capture..."
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+
+              {/* Quick-pick situations */}
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider mb-3" style={{ color: '#9CA3AF' }}>Common situations — click to fill</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {SITUATIONS.map(s => {
+                    const meta = CATEGORY_META[s.cat];
+                    const Icon = meta?.icon;
+                    const isActive = situationName === s.label;
+                    return (
+                      <button key={s.label}
+                        onClick={() => {
+                          setSituationName(s.label);
+                          setSituationDesc(s.desc);
+                          setSelectedCategory(s.cat);
+                        }}
+                        className="text-left px-3 py-2.5 border transition-all flex items-center gap-3"
+                        style={{
+                          borderColor: isActive ? NAVY : '#E8E4DC',
+                          background: isActive ? NAVY : '#FAFAF9',
+                        }}
+                      >
+                        {Icon && <Icon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: isActive ? GOLD : '#9CA3AF' }} />}
+                        <div className="min-w-0">
+                          <p className="text-[11px] font-bold truncate" style={{ color: isActive ? '#fff' : NAVY }}>{s.label}</p>
+                          <p className="text-[9px] truncate" style={{ color: isActive ? 'rgba(255,255,255,0.6)' : '#9CA3AF' }}>{s.desc}</p>
+                        </div>
+                        {isActive && <Check className="w-3.5 h-3.5 ml-auto flex-shrink-0" style={{ color: GOLD }} />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Or pick a domain if no quick-pick */}
+              {!selectedCategory && (
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider mb-3" style={{ color: '#9CA3AF' }}>Or choose a signal domain</p>
+                  <div className="grid grid-cols-4 gap-2">
+                    {Object.entries(CATEGORY_META).map(([id, meta]) => {
+                      const Icon = meta.icon;
+                      const isActive = selectedCategory === id;
+                      return (
+                        <button key={id}
+                          onClick={() => setSelectedCategory(id)}
+                          className="flex flex-col items-center gap-1.5 p-3 border text-center transition-all"
+                          style={{
+                            borderColor: isActive ? NAVY : '#E8E4DC',
+                            background: isActive ? `${NAVY}06` : '#fff',
+                          }}
+                          data-testid={`category-card-${id}`}
+                        >
+                          <Icon className="w-4 h-4" style={{ color: isActive ? NAVY : '#9CA3AF' }} />
+                          <span className="text-[9px] font-bold leading-tight" style={{ color: isActive ? NAVY : '#6B7280' }}>{meta.name}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {selectedCategory && (
+                <div className="flex items-center gap-2 text-[10px]" style={{ color: TEAL }}>
+                  {(() => { const meta = CATEGORY_META[selectedCategory]; const Icon = meta?.icon; return Icon ? <Icon className="w-3.5 h-3.5" /> : null; })()}
+                  <span className="font-bold">Domain: {CATEGORY_META[selectedCategory]?.name}</span>
+                  <button className="ml-auto text-[9px] underline text-gray-400 hover:text-gray-600" onClick={() => setSelectedCategory('')}>Change</button>
+                </div>
+              )}
+
+              {/* Optional description */}
+              <div>
+                <Label className="text-xs font-black uppercase tracking-wider mb-1 block" style={{ color: '#9CA3AF' }}>
+                  Description <span className="font-normal normal-case tracking-normal">(optional)</span>
+                </Label>
+                <Input
+                  placeholder="Brief context on what this situation means for your organization…"
+                  value={situationDesc}
+                  onChange={e => setSituationDesc(e.target.value)}
+                  className="text-sm"
                   data-testid="input-trigger-description"
                 />
               </div>
             </div>
-            
-            <div className="space-y-3">
-              <Label>Select Signal Category *</Label>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {SIGNAL_CATEGORIES.map((category) => {
-                  const Icon = category.icon;
-                  const isSelected = selectedCategory === category.id;
-                  return (
-                    <Card 
-                      key={category.id}
-                      className={`cursor-pointer transition-all ${
-                        isSelected ? 'ring-2 ring-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20' : ''
-                      }`}
-                      onClick={() => {
-                        setSelectedCategory(category.id);
-                        setSelectedField('');
-                      }}
-                      data-testid={`category-card-${category.id}`}
-                    >
-                      <CardContent className="p-4">
-                        <div className="flex flex-col items-center text-center gap-2">
-                          <Icon className={`h-6 w-6 ${category.color}`} />
-                          <span className="text-sm font-medium">{category.name}</span>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-              
-              {selectedCategory && (
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
-                  {SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.description}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
-        
-        {/* Step 2: Conditions */}
-        {step === 2 && (
-          <div className="space-y-6">
-            <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#E8E4DC]">
-              <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />
-                <span className="font-medium text-[#0A0F2E] dark:text-[#DFC178]">
-                  Category: {SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.name}
-                </span>
-              </div>
-              <p className="text-sm text-[#0A0F2E] dark:text-[#DFC178]">
-                Define the specific condition that will trigger an alert
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label>Select Data Point to Monitor *</Label>
-                <Select value={selectedField} onValueChange={setSelectedField}>
-                  <SelectTrigger data-testid="select-field">
-                    <SelectValue placeholder="Choose a data point..." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints?.map((dp: any) => (
-                      <SelectItem key={dp.id} value={dp.id}>
-                        {dp.name} ({dp.metricType || 'value'})
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Condition *</Label>
-                <Select value={operator} onValueChange={setOperator}>
-                  <SelectTrigger data-testid="select-operator">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {OPERATORS.map((op) => (
-                      <SelectItem key={op.id} value={op.id}>
-                        {op.symbol} {op.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label>Threshold Value *</Label>
-                <div className="flex items-center gap-2">
-                  <Input
-                    type="number"
-                    placeholder="Enter value..."
-                    value={thresholdValue}
-                    onChange={(e) => setThresholdValue(e.target.value)}
-                    data-testid="input-threshold"
-                  />
-                  <span className="text-sm text-gray-600 dark:text-gray-300 min-w-[60px]">
-                    {getFieldUnit()}
-                  </span>
+          )}
+
+          {/* ─── STEP 2: Select Signals ──────────────────────────────────── */}
+          {step === 2 && (
+            <div className="space-y-5">
+              {/* Context banner */}
+              <div className="flex items-start gap-3 p-4 border-l-4" style={{ background: `${TEAL}06`, borderColor: TEAL }}>
+                <Zap className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
+                <div>
+                  <p className="text-xs font-bold" style={{ color: NAVY }}>{situationName}</p>
+                  <p className="text-[10px] text-gray-500 mt-0.5">
+                    We've pre-selected the signals most likely to indicate this situation. Toggle any on or off, and adjust thresholds if needed.
+                  </p>
                 </div>
               </div>
-              
-              <div className="space-y-2">
-                <Label>Severity Level</Label>
-                <Select value={severity} onValueChange={setSeverity}>
-                  <SelectTrigger data-testid="select-severity">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SEVERITY_LEVELS.map((level) => (
-                      <SelectItem key={level.id} value={level.id}>
-                        <div className="flex items-center gap-2">
-                          <Badge className={level.color}>{level.name}</Badge>
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <p className="text-xs text-gray-600 dark:text-gray-300">
-                  {SEVERITY_LEVELS.find(l => l.id === severity)?.description}
+
+              {/* Fire threshold selector */}
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-wider mb-2" style={{ color: NAVY }}>
+                  When should this trigger fire?
                 </p>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <Label>Monitoring Frequency</Label>
-              <Select value={monitoringFrequency} onValueChange={setMonitoringFrequency}>
-                <SelectTrigger data-testid="select-frequency">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {MONITORING_FREQUENCIES.map((freq) => (
-                    <SelectItem key={freq.id} value={freq.id}>
-                      <div className="flex flex-col">
-                        <span>{freq.name}</span>
-                        <span className="text-xs text-gray-600 dark:text-gray-300">{freq.description}</span>
-                      </div>
-                    </SelectItem>
+                <div className="flex gap-2">
+                  {([
+                    { id: 'any', label: 'Any signal breaches', desc: 'Most sensitive' },
+                    { id: 'majority', label: 'Majority breach', desc: '50%+ of signals' },
+                    { id: 'all', label: 'All signals breach', desc: 'Most confident' },
+                  ] as const).map(opt => (
+                    <button key={opt.id}
+                      onClick={() => setFireThreshold(opt.id)}
+                      className="flex-1 text-center px-3 py-2.5 border transition-all"
+                      style={{
+                        borderColor: fireThreshold === opt.id ? NAVY : '#E8E4DC',
+                        background: fireThreshold === opt.id ? NAVY : '#fff',
+                      }}
+                    >
+                      <p className="text-[10px] font-bold" style={{ color: fireThreshold === opt.id ? '#fff' : NAVY }}>{opt.label}</p>
+                      <p className="text-[9px] mt-0.5" style={{ color: fireThreshold === opt.id ? 'rgba(255,255,255,0.6)' : '#9CA3AF' }}>{opt.desc}</p>
+                    </button>
                   ))}
-                </SelectContent>
-              </Select>
-            </div>
-            
-            {/* Preview */}
-            {selectedField && thresholdValue && (
-              <Card className="bg-gray-50 dark:bg-gray-800/50 border-dashed">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Eye className="h-4 w-4 text-gray-600 dark:text-gray-300" />
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-200">Trigger Preview</span>
-                  </div>
-                  <p className="text-lg font-medium">
-                    Alert when{' '}
-                    <span className="text-[#0A0F2E]">
-                      {getFieldName()}
-                    </span>{' '}
-                    <span className="text-orange-600">
-                      {OPERATORS.find(o => o.id === operator)?.symbol} {thresholdValue} {getFieldUnit()}
+                </div>
+              </div>
+
+              {/* Signal list */}
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: NAVY }}>
+                    Signals to Watch
+                    <span className="ml-2 font-normal normal-case tracking-normal" style={{ color: TEAL }}>
+                      {selectedSignals.length} selected
                     </span>
                   </p>
-                </CardContent>
-              </Card>
-            )}
-          </div>
-        )}
-        
-        {/* Step 3: Notifications */}
-        {step === 3 && (
-          <div className="space-y-6">
-            <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200">
-              <div className="flex items-center gap-2">
-                <Bell className="h-5 w-5 text-amber-600" />
-                <span className="font-medium text-amber-800 dark:text-amber-200">
-                  Configure how you want to be notified when this trigger fires
-                </span>
+                  <span className="text-[9px] text-gray-400">{(dataPoints as any[]).length} available in {CATEGORY_META[selectedCategory]?.name}</span>
+                </div>
+
+                <div className="space-y-1.5 max-h-[380px] overflow-y-auto pr-1">
+                  {(dataPoints as any[]).map(dp => {
+                    const sig = selectedSignals.find(s => s.dpId === dp.id);
+                    const isSelected = !!sig;
+                    const thresholdLabel = getDefaultThresholdLabel(dp);
+                    return (
+                      <div key={dp.id}
+                        className="border transition-all"
+                        style={{
+                          borderColor: isSelected ? `${TEAL}50` : '#F0EDE8',
+                          background: isSelected ? `${TEAL}04` : '#FAFAF9',
+                        }}
+                      >
+                        <div className="flex items-center gap-3 px-4 py-3">
+                          {/* Checkbox */}
+                          <button
+                            onClick={() => toggleSignal(dp.id, dp)}
+                            className="w-5 h-5 flex-shrink-0 flex items-center justify-center border-2 transition-all"
+                            style={{
+                              borderColor: isSelected ? TEAL : '#D1D5DB',
+                              background: isSelected ? TEAL : 'transparent',
+                            }}
+                            data-testid={`signal-toggle-${dp.id}`}
+                          >
+                            {isSelected && <Check className="w-3 h-3 text-white" />}
+                          </button>
+
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <p className="text-[12px] font-bold" style={{ color: isSelected ? NAVY : '#374151' }}>{dp.name}</p>
+                              <span className="text-[8px] font-mono text-gray-400">{dp.metricType}</span>
+                              {sig?.isMandatory && (
+                                <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5"
+                                  style={{ background: `${GOLD}20`, color: GOLD }}>MUST FIRE</span>
+                              )}
+                            </div>
+                            <p className="text-[10px] text-gray-400 mt-0.5">{dp.description}</p>
+                            {isSelected && (
+                              <p className="text-[9px] mt-1" style={{ color: TEAL }}>
+                                Alert when: <span className="font-bold">{thresholdLabel}</span>
+                              </p>
+                            )}
+                          </div>
+
+                          {/* Must-fire toggle */}
+                          {isSelected && (
+                            <button
+                              onClick={() => toggleMandatory(dp.id)}
+                              className="text-[8px] font-bold px-2 py-1 border transition-all flex-shrink-0"
+                              style={{
+                                borderColor: sig?.isMandatory ? GOLD : '#E8E4DC',
+                                color: sig?.isMandatory ? GOLD : '#9CA3AF',
+                                background: sig?.isMandatory ? `${GOLD}10` : 'transparent',
+                              }}
+                              title="Mark as must-fire — this signal must breach for the trigger to activate"
+                            >
+                              ★ {sig?.isMandatory ? 'Must fire' : 'Optional'}
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Threshold editor — shown when selected */}
+                        {isSelected && (
+                          <div className="px-12 pb-3 flex items-center gap-3">
+                            <span className="text-[9px] text-gray-400 w-24 flex-shrink-0">Threshold value:</span>
+                            <select
+                              value={sig?.operator || 'breach'}
+                              onChange={e => updateSignalValue(dp.id, 'operator', e.target.value)}
+                              className="text-[10px] border border-gray-200 px-2 py-1 rounded"
+                              style={{ color: NAVY }}
+                            >
+                              <option value="gt">exceeds</option>
+                              <option value="lt">drops below</option>
+                              <option value="gte">reaches</option>
+                              <option value="drop">drops by</option>
+                              <option value="spike">spikes by</option>
+                              <option value="eq">equals</option>
+                            </select>
+                            <Input
+                              type="number"
+                              value={sig?.value || ''}
+                              onChange={e => updateSignalValue(dp.id, 'value', e.target.value)}
+                              className="h-7 w-24 text-[11px]"
+                              placeholder={String(dp.defaultThreshold?.value ?? '')}
+                            />
+                            <span className="text-[9px] text-gray-400">{dp.unit || dp.metricType}</span>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-            
-            <div className="space-y-4">
-              <Label className="text-lg font-semibold">Notification Channels</Label>
-              
-              <Card>
-                <CardContent className="p-4 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Mail className="h-5 w-5 text-[#0A0F2E]" />
-                      <div>
-                        <p className="font-medium">Email Notifications</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Send email alerts to configured recipients</p>
-                      </div>
-                    </div>
-                    <Switch 
-                      checked={emailEnabled} 
-                      onCheckedChange={setEmailEnabled}
-                      data-testid="switch-email"
-                    />
+          )}
+
+          {/* ─── STEP 3: Link Readiness Protocol ─────────────────────────── */}
+          {step === 3 && (
+            <div className="space-y-5">
+              {/* Summary of what was built */}
+              <div className="p-4 border" style={{ background: '#F8F7F4', borderColor: '#E8E4DC' }}>
+                <p className="text-[9px] font-black uppercase tracking-wider mb-3" style={{ color: GOLD }}>Situation Summary</p>
+                <p className="text-base font-bold mb-1" style={{ color: NAVY }}>{situationName}</p>
+                <p className="text-xs text-gray-500 mb-3">{situationDesc}</p>
+                <div className="flex items-center gap-4 text-[10px]">
+                  <div className="flex items-center gap-1.5" style={{ color: TEAL }}>
+                    <div className="w-2 h-2" style={{ background: TEAL }} />
+                    <span className="font-bold">{selectedSignals.length} signals monitored</span>
                   </div>
-                  
-                  <Separator />
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <MessageSquare className="h-5 w-5 text-[#C9A84C]" />
-                      <div>
-                        <p className="font-medium">Slack Notifications</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Post alerts to Slack channels</p>
-                      </div>
-                    </div>
-                    <Switch 
-                      checked={slackEnabled} 
-                      onCheckedChange={setSlackEnabled}
-                      data-testid="switch-slack"
-                    />
+                  <div className="flex items-center gap-1.5" style={{ color: GOLD }}>
+                    <div className="w-2 h-2" style={{ background: GOLD }} />
+                    <span className="font-bold">{selectedSignals.filter(s => s.isMandatory).length} must-fire signals</span>
                   </div>
-                  
-                  <Separator />
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Smartphone className="h-5 w-5 text-green-500" />
-                      <div>
-                        <p className="font-medium">In-App Notifications</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Show alerts in the Readiness OS platform</p>
-                      </div>
-                    </div>
-                    <Switch 
-                      checked={inAppEnabled} 
-                      onCheckedChange={setInAppEnabled}
-                      data-testid="switch-in-app"
-                    />
+                  <div className="flex items-center gap-1.5" style={{ color: '#6B7280' }}>
+                    <span>Fires when: <strong style={{ color: NAVY }}>{fireThreshold === 'any' ? 'any signal breaches' : fireThreshold === 'majority' ? 'majority breach' : 'all signals breach'}</strong></span>
                   </div>
-                  
-                  <Separator />
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Webhook className="h-5 w-5 text-orange-500" />
-                      <div>
-                        <p className="font-medium">Webhook Integration</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Send data to external systems via webhook</p>
-                      </div>
-                    </div>
-                    <Switch 
-                      checked={webhookEnabled} 
-                      onCheckedChange={setWebhookEnabled}
-                      data-testid="switch-webhook"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            <div className="space-y-4">
-              <Label className="text-lg font-semibold">Escalation Rules</Label>
-              
-              <Card>
-                <CardContent className="p-4 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <TrendingUp className="h-5 w-5 text-red-500" />
-                      <div>
-                        <p className="font-medium">Auto-Escalate</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Automatically escalate if not acknowledged</p>
-                      </div>
-                    </div>
-                    <Switch 
-                      checked={escalationEnabled} 
-                      onCheckedChange={setEscalationEnabled}
-                      data-testid="switch-escalation"
-                    />
-                  </div>
-                  
-                  {escalationEnabled && (
-                    <div className="ml-8 space-y-2">
-                      <Label>Escalation Timeout (minutes)</Label>
-                      <Select value={escalationTimeout} onValueChange={setEscalationTimeout}>
-                        <SelectTrigger className="w-48" data-testid="select-timeout">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="15">15 minutes</SelectItem>
-                          <SelectItem value="30">30 minutes</SelectItem>
-                          <SelectItem value="60">1 hour</SelectItem>
-                          <SelectItem value="120">2 hours</SelectItem>
-                          <SelectItem value="240">4 hours</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <p className="text-xs text-gray-600 dark:text-gray-300">
-                        Alert will be escalated to the next level if not acknowledged within this time
-                      </p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        )}
-        
-        {/* Step 4: Readiness Protocol Mapping */}
-        {step === 4 && (
-          <div className="space-y-6">
-            <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200">
-              <div className="flex items-center gap-2">
-                <PlayCircle className="h-5 w-5 text-green-600" />
-                <span className="font-medium text-green-800 dark:text-green-200">
-                  Link Readiness Protocols to this trigger for faster response
-                </span>
+                </div>
               </div>
-            </div>
-            
-            <div className="flex items-center justify-between">
+
+              {/* Severity */}
               <div>
-                <Label className="text-lg font-semibold">Auto-Activate Readiness Protocol</Label>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected Readiness Protocol when trigger fires</p>
-              </div>
-              <Switch 
-                checked={autoActivatePlaybook} 
-                onCheckedChange={setAutoActivatePlaybook}
-                data-testid="switch-auto-activate"
-              />
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Label className="text-lg font-semibold">Link Readiness Protocols to This Trigger</Label>
-                <span className="text-xs font-semibold px-2 py-1 rounded" style={{ background: 'rgba(201,168,76,0.12)', color: '#C9A84C' }}>
-                  {selectedPlaybooks.length} selected
-                </span>
-              </div>
-              <p className="text-sm text-gray-600">
-                When this trigger fires, these Readiness Protocols will be immediately surfaced for decision-maker approval and execution.
-              </p>
-
-              {relevantPlaybooks.length > 0 && (
-                <>
-                  <div className="text-xs font-bold uppercase tracking-wider" style={{ color: '#C9A84C' }}>
-                    Recommended for this situation ({relevantPlaybooks.length} Readiness Protocols)
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto">
-                    {relevantPlaybooks.map((playbook: any) => (
-                      <div key={playbook.id}
-                        className="cursor-pointer p-3 rounded border transition-all hover:opacity-90"
-                        style={{
-                          background: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#fff',
-                          borderColor: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#E8E4DC',
-                          borderLeft: `3px solid ${selectedPlaybooks.includes(playbook.id) ? '#C9A84C' : '#E8E4DC'}`,
-                        }}
-                        onClick={() => togglePlaybook(playbook.id)}
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <div>
-                            <p className="text-sm font-semibold" style={{ color: selectedPlaybooks.includes(playbook.id) ? '#fff' : '#0A0F2E' }}>{playbook.name}</p>
-                            <p className="text-xs mt-0.5" style={{ color: selectedPlaybooks.includes(playbook.id) ? 'rgba(255,255,255,0.6)' : '#6B7280' }}>{playbook.domain}</p>
-                          </div>
-                          {selectedPlaybooks.includes(playbook.id) && <Check className="h-4 w-4 flex-shrink-0" style={{ color: '#C9A84C' }} />}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {otherPlaybooks.length > 0 && (
-                <>
-                  <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-2">
-                    Other Readiness Protocols ({otherPlaybooks.length})
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[140px] overflow-y-auto opacity-70">
-                    {otherPlaybooks.map((playbook: any) => (
-                      <div key={playbook.id}
-                        className="cursor-pointer p-3 rounded border transition-all hover:opacity-90"
-                        style={{
-                          background: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#F8F7F4',
-                          borderColor: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#E8E4DC',
-                        }}
-                        onClick={() => togglePlaybook(playbook.id)}
-                      >
-                        <div className="flex items-center justify-between gap-2">
-                          <div>
-                            <p className="text-sm font-medium" style={{ color: selectedPlaybooks.includes(playbook.id) ? '#fff' : '#0A0F2E' }}>{playbook.name}</p>
-                            <p className="text-xs" style={{ color: selectedPlaybooks.includes(playbook.id) ? 'rgba(255,255,255,0.6)' : '#9CA3AF' }}>{playbook.domain}</p>
-                          </div>
-                          {selectedPlaybooks.includes(playbook.id) && <Check className="h-4 w-4 flex-shrink-0 text-green-500" />}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-            
-            {/* Summary */}
-            <Card className="bg-gray-50 dark:bg-gray-800/50 border-dashed">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Settings className="h-5 w-5" />
-                  Trigger Summary
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="text-gray-600 dark:text-gray-300">Name:</span>
-                    <p className="font-medium">{triggerName}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-600 dark:text-gray-300">Category:</span>
-                    <p className="font-medium">{SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.name}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-600 dark:text-gray-300">Condition:</span>
-                    <p className="font-medium">
-                      {getFieldName()}{' '}
-                      {OPERATORS.find(o => o.id === operator)?.symbol} {thresholdValue} {getFieldUnit()}
-                    </p>
-                  </div>
-                  <div>
-                    <span className="text-gray-600 dark:text-gray-300">Severity:</span>
-                    <Badge className={SEVERITY_LEVELS.find(l => l.id === severity)?.color}>
-                      {severity.toUpperCase()}
-                    </Badge>
-                  </div>
-                  <div>
-                    <span className="text-gray-600 dark:text-gray-300">Notifications:</span>
-                    <div className="flex gap-1 mt-1">
-                      {emailEnabled && <Badge variant="outline">Email</Badge>}
-                      {slackEnabled && <Badge variant="outline">Slack</Badge>}
-                      {inAppEnabled && <Badge variant="outline">In-App</Badge>}
-                      {webhookEnabled && <Badge variant="outline">Webhook</Badge>}
-                    </div>
-                  </div>
-                  <div>
-                    <span className="text-gray-600 dark:text-gray-300">Linked Readiness Protocols:</span>
-                    <p className="font-medium">{selectedPlaybooks.length} selected</p>
-                  </div>
+                <p className="text-[10px] font-black uppercase tracking-wider mb-2" style={{ color: NAVY }}>Severity Level</p>
+                <div className="flex gap-2">
+                  {([
+                    { id: 'low', label: 'Low', color: '#6B7280', desc: 'Monitor only' },
+                    { id: 'medium', label: 'Medium', color: '#D97706', desc: 'Notify within 24h' },
+                    { id: 'high', label: 'High', color: '#EA580C', desc: 'Notify within 4h' },
+                    { id: 'critical', label: 'Critical', color: '#DC2626', desc: 'Immediate response' },
+                  ] as const).map(lv => (
+                    <button key={lv.id}
+                      onClick={() => setSeverity(lv.id)}
+                      className="flex-1 px-2 py-2 border text-center transition-all"
+                      style={{
+                        borderColor: severity === lv.id ? lv.color : '#E8E4DC',
+                        background: severity === lv.id ? `${lv.color}12` : '#fff',
+                      }}
+                    >
+                      <p className="text-[10px] font-bold" style={{ color: lv.color }}>{lv.label}</p>
+                      <p className="text-[8px] text-gray-400 mt-0.5">{lv.desc}</p>
+                    </button>
+                  ))}
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        )}
-        
-        {/* Step 5: Alert Sensitivity */}
-        {step === 5 && (
-          <div className="space-y-6">
-            {/* Header banner */}
-            <div className="p-4 border-l-4" style={{ background: 'rgba(43,138,110,0.06)', borderColor: '#2B8A6E' }}>
-              <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>How should this trigger decide when to fire?</p>
-              <p className="text-xs text-gray-500 mt-1">
-                Choose the logic that determines when an alert escalates to Watch, Aware, or Action. You can use percentage thresholds, require specific must-have signals, or both together.
-              </p>
-            </div>
+              </div>
 
-            {/* Trigger mode selector */}
-            <div>
-              <Label className="text-sm font-bold mb-3 block" style={{ color: '#0A0F2E' }}>Trigger Logic</Label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                {([
-                  {
-                    id: 'percentage' as const,
-                    title: 'Meets a Percentage',
-                    desc: 'Fires when enough data points match — Watch / Aware / Action tiers scale with your thresholds.',
-                    icon: '≥%',
-                  },
-                  {
-                    id: 'mandatory' as const,
-                    title: 'All Must-Have Data Points',
-                    desc: 'Fires only when every data point you mark as mandatory is confirmed — bypasses percentage bars.',
-                    icon: '★',
-                  },
-                  {
-                    id: 'both' as const,
-                    title: 'Both (Recommended)',
-                    desc: 'Fires on percentage threshold OR when all mandatory signals hit — whichever comes first.',
-                    icon: '⊕',
-                  },
-                ]).map(mode => (
-                  <button
-                    key={mode.id}
-                    onClick={() => setTriggerMode(mode.id)}
-                    className="text-left p-4 border-2 transition-all"
-                    style={{
-                      borderColor: triggerMode === mode.id ? '#0A0F2E' : '#E8E4DC',
-                      background: triggerMode === mode.id ? '#0A0F2E' : '#fff',
-                    }}
-                  >
-                    <div className="text-xl font-black mb-2" style={{ color: triggerMode === mode.id ? '#C9A84C' : '#6B7280' }}>
-                      {mode.icon}
-                    </div>
-                    <p className="text-xs font-bold mb-1" style={{ color: triggerMode === mode.id ? '#fff' : '#0A0F2E' }}>
-                      {mode.title}
-                    </p>
-                    <p className="text-[10px] leading-relaxed" style={{ color: triggerMode === mode.id ? 'rgba(255,255,255,0.65)' : '#6B7280' }}>
-                      {mode.desc}
-                    </p>
-                    {triggerMode === mode.id && (
-                      <Check className="w-4 h-4 mt-2" style={{ color: '#C9A84C' }} />
+              {/* Protocol picker */}
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: NAVY }}>
+                    Readiness Protocol
+                    {selectedPlaybooks.length > 0 && (
+                      <span className="ml-2 font-normal normal-case tracking-normal" style={{ color: TEAL }}>
+                        {selectedPlaybooks.length} linked
+                      </span>
                     )}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Percentage threshold overrides — shown for 'percentage' and 'both' modes */}
-            {(triggerMode === 'percentage' || triggerMode === 'both') && (
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <Label className="text-sm font-bold" style={{ color: '#0A0F2E' }}>Percentage Thresholds</Label>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[9px] font-medium text-gray-500">Use org defaults</span>
-                    <Switch checked={useOrgThresholds} onCheckedChange={setUseOrgThresholds} />
-                  </div>
+                  </p>
+                  <span className="text-[9px] text-gray-400">Select one or more protocols to activate when this trigger fires</span>
                 </div>
 
-                {useOrgThresholds ? (
-                  <div className="p-3 bg-[#F8F7F4] border border-[#E8E4DC] text-xs text-gray-500">
-                    Using your organization's thresholds: Watch ≥ 50% · Aware ≥ 70% · Action ≥ 80% of data points.
-                    Toggle off to set custom values for this trigger only.
-                  </div>
-                ) : (
-                  <div className="space-y-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
-                    {([
-                      { label: 'WATCH',  color: '#D97706', val: triggerWatchPct,  set: setTriggerWatchPct,  min: 1,                    max: triggerAwarePct - 1,   desc: 'Awareness alert — situation developing' },
-                      { label: 'AWARE',  color: '#EA580C', val: triggerAwarePct,  set: setTriggerAwarePct,  min: triggerWatchPct + 1,   max: triggerActionPct - 1,  desc: 'Pattern strengthening — monitor closely' },
-                      { label: 'ACTION', color: '#DC2626', val: triggerActionPct, set: setTriggerActionPct, min: triggerAwarePct + 1,   max: 99,                    desc: 'Confirmed — Readiness Protocol executes' },
-                    ] as const).map(tier => (
-                      <div key={tier.label} className="flex items-center gap-4">
-                        <div className="w-14 flex-shrink-0">
-                          <span className="text-[9px] font-black uppercase tracking-widest" style={{ color: tier.color }}>{tier.label}</span>
-                        </div>
-                        <input
-                          type="range"
-                          min={tier.min}
-                          max={tier.max}
-                          value={tier.val}
-                          onChange={e => tier.set(parseInt(e.target.value))}
-                          className="flex-1 h-1.5 cursor-pointer"
-                          style={{ accentColor: tier.color }}
-                        />
-                        <span className="text-base font-black w-10 text-right" style={{ color: tier.color }}>
-                          {tier.val}%
-                        </span>
-                        <span className="text-[9px] text-gray-400 w-40 flex-shrink-0">{tier.desc}</span>
-                      </div>
-                    ))}
-                  </div>
+                {relevantPlaybooks.length > 0 && (
+                  <>
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: GOLD }}>Recommended for this situation</p>
+                    <div className="space-y-1.5 max-h-[200px] overflow-y-auto mb-3">
+                      {relevantPlaybooks.map((pb: any) => {
+                        const selected = selectedPlaybooks.includes(pb.id);
+                        return (
+                          <button key={pb.id}
+                            onClick={() => togglePlaybook(pb.id)}
+                            className="w-full text-left flex items-center gap-3 px-4 py-3 border transition-all"
+                            style={{
+                              borderColor: selected ? NAVY : '#E8E4DC',
+                              background: selected ? NAVY : '#fff',
+                              borderLeft: `3px solid ${selected ? GOLD : '#E8E4DC'}`,
+                            }}
+                          >
+                            <div className="w-8 h-8 flex items-center justify-center flex-shrink-0"
+                              style={{ background: selected ? GOLD : '#F0EDE8' }}>
+                              <PlayCircle className="w-4 h-4" style={{ color: selected ? NAVY : '#9CA3AF' }} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[11px] font-bold truncate" style={{ color: selected ? '#fff' : NAVY }}>{pb.name}</p>
+                              <p className="text-[9px]" style={{ color: selected ? 'rgba(255,255,255,0.55)' : '#6B7280' }}>{pb.domain}</p>
+                            </div>
+                            {selected && <Check className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+
+                {otherPlaybooks.length > 0 && (
+                  <>
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2 text-gray-400">Other protocols</p>
+                    <div className="space-y-1 max-h-[120px] overflow-y-auto opacity-70">
+                      {otherPlaybooks.map((pb: any) => {
+                        const selected = selectedPlaybooks.includes(pb.id);
+                        return (
+                          <button key={pb.id}
+                            onClick={() => togglePlaybook(pb.id)}
+                            className="w-full text-left flex items-center gap-3 px-4 py-2.5 border transition-all"
+                            style={{
+                              borderColor: selected ? NAVY : '#F0EDE8',
+                              background: selected ? NAVY : '#FAFAF9',
+                            }}
+                          >
+                            <div className="flex-1 min-w-0">
+                              <p className="text-[10px] font-medium truncate" style={{ color: selected ? '#fff' : NAVY }}>{pb.name}</p>
+                              <p className="text-[8px]" style={{ color: selected ? 'rgba(255,255,255,0.5)' : '#9CA3AF' }}>{pb.domain}</p>
+                            </div>
+                            {selected && <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: GOLD }} />}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </>
                 )}
               </div>
-            )}
 
-            {/* Mandatory data points info — shown for 'mandatory' and 'both' modes */}
-            {(triggerMode === 'mandatory' || triggerMode === 'both') && (
-              <div className="p-4 border border-[#E8E4DC] bg-white">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 flex-shrink-0" style={{ background: '#0A0F2E' }} />
-                  <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#0A0F2E' }}>Mandatory Data Points</span>
+              {/* What happens next */}
+              <div className="p-4 border-l-4" style={{ background: `${NAVY}04`, borderColor: NAVY }}>
+                <p className="text-[9px] font-black uppercase tracking-wider mb-2" style={{ color: NAVY }}>When this trigger fires</p>
+                <div className="space-y-1.5">
+                  {[
+                    'Your executive team is notified immediately',
+                    `${selectedPlaybooks.length > 0 ? selectedPlaybooks.length + ' Readiness Protocol(s) surface' : 'Linked protocols surface'} for authorization`,
+                    'Pre-staged tasks are ready — 12 minutes to full mobilization',
+                    'AI monitors continuously — executive authorizes every action',
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-[10px] text-gray-600">
+                      <ChevronRight className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
+                      {item}
+                    </div>
+                  ))}
                 </div>
-                <p className="text-[10px] text-gray-500 leading-relaxed">
-                  Mark individual data points as mandatory from the trigger's conditions panel (DETECT tab). When <strong>all</strong> mandatory data points fire simultaneously, this trigger automatically escalates to <strong>Action</strong> — regardless of the overall percentage.
-                </p>
-                <p className="text-[10px] text-gray-400 mt-2">
-                  Use case: a 40-point competitive trigger where "competitor price cut" + "market share decline" are must-haves. If both fire, you get an immediate Action alert even if only 5% of other data points match.
-                </p>
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Summary */}
-            <div className="p-4 border-l-4 bg-[#F8F7F4]" style={{ borderColor: '#0A0F2E' }}>
-              <p className="text-[10px] font-bold uppercase tracking-wider mb-1" style={{ color: '#0A0F2E' }}>This trigger will fire when:</p>
-              {triggerMode === 'percentage' && !useOrgThresholds && (
-                <p className="text-xs text-gray-600">≥ {triggerWatchPct}% of data points match → <strong>Watch</strong> · ≥ {triggerAwarePct}% → <strong>Aware</strong> · ≥ {triggerActionPct}% → <strong>Action</strong></p>
-              )}
-              {triggerMode === 'percentage' && useOrgThresholds && (
-                <p className="text-xs text-gray-600">Using org defaults: ≥ 50% → Watch · ≥ 70% → Aware · ≥ 80% → Action</p>
-              )}
-              {triggerMode === 'mandatory' && (
-                <p className="text-xs text-gray-600">All mandatory data points fire → <strong>Action</strong> (percentage thresholds ignored)</p>
-              )}
-              {triggerMode === 'both' && !useOrgThresholds && (
-                <p className="text-xs text-gray-600">≥ {triggerWatchPct}% → Watch · ≥ {triggerAwarePct}% → Aware · ≥ {triggerActionPct}% → Action <strong>OR</strong> all mandatory data points fire → Action (whichever first)</p>
-              )}
-              {triggerMode === 'both' && useOrgThresholds && (
-                <p className="text-xs text-gray-600">Org defaults (50/70/80%) <strong>OR</strong> all mandatory data points → Action (whichever first)</p>
+          {/* ─── Navigation ─────────────────────────────────────────────── */}
+          <div className="flex justify-between items-center mt-8 pt-5 border-t border-[#F0EDE8]">
+            <Button variant="outline" onClick={step === 1 ? handleClose : () => setStep(s => s - 1)}
+              className="flex items-center gap-2 text-xs"
+              data-testid="button-back"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              {step === 1 ? 'Cancel' : 'Back'}
+            </Button>
+
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] text-gray-400">{step} of {TOTAL_STEPS}</span>
+              {step < TOTAL_STEPS ? (
+                <Button
+                  onClick={() => setStep(s => s + 1)}
+                  disabled={!canProceed()}
+                  className="flex items-center gap-2 text-xs font-bold"
+                  style={{ background: NAVY, color: '#fff' }}
+                  data-testid="button-next"
+                >
+                  Next — {stepLabel[step]}
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleSubmit}
+                  disabled={saveMutation.isPending}
+                  className="flex items-center gap-2 text-xs font-bold px-6"
+                  style={{ background: TEAL, color: '#fff' }}
+                  data-testid="button-next"
+                >
+                  <Check className="w-3.5 h-3.5" />
+                  {saveMutation.isPending ? 'Saving…' : editTrigger ? 'Save Changes' : 'Create Trigger'}
+                </Button>
               )}
             </div>
-          </div>
-        )}
-
-        {/* Navigation buttons */}
-        <div className="flex justify-between mt-6 pt-4 border-t">
-          <Button 
-            variant="outline" 
-            onClick={handleBack}
-            disabled={step === 1}
-            data-testid="button-back"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
-          </Button>
-          
-          <div className="flex gap-2">
-            <Button 
-              variant="outline" 
-              onClick={handleClose}
-              data-testid="button-cancel"
-            >
-              Cancel
-            </Button>
-            <Button 
-              onClick={handleNext}
-              disabled={!canProceed() || saveTriggerMutation.isPending}
-              data-testid="button-next"
-            >
-              {saveTriggerMutation.isPending ? (
-                editTrigger ? 'Updating...' : 'Creating...'
-              ) : step === totalSteps ? (
-                <>
-                  <Check className="h-4 w-4 mr-2" />
-                  {editTrigger ? 'Save Changes' : 'Create Trigger'}
-                </>
-              ) : (
-                <>
-                  Next
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </>
-              )}
-            </Button>
           </div>
         </div>
       </DialogContent>
