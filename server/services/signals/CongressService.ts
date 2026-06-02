@@ -47,12 +47,9 @@ function billRelevanceScore(bill: CongressBill): number {
 
 export async function fetchCongressSignals(): Promise<QuantitativeSignal[]> {
   const signals: QuantitativeSignal[] = [];
-  const apiKey = process.env.CONGRESS_API_KEY;
-
-  if (!apiKey) {
-    console.log(`[Congress.gov] CONGRESS_API_KEY not configured — legislative monitoring inactive. Free key at https://api.congress.gov/sign-up/`);
-    return [];
-  }
+  // Uses DEMO_KEY (30 req/hr public rate) with fallback to user-supplied key.
+  // No registration required for DEMO_KEY.
+  const apiKey = process.env.CONGRESS_API_KEY || 'DEMO_KEY';
 
   const cutoff = new Date(Date.now() - LOOKBACK_DAYS * 86400000);
   const fromDate = cutoff.toISOString().split('T')[0];

@@ -85,16 +85,16 @@ signalSourceRegistry.register({
 
 signalSourceRegistry.register({
   sourceKey: 'fred_economic',
-  sourceName: 'FRED — Federal Reserve Economic Data',
-  sourceType: 'free_key_required',
+  sourceName: 'Economic Indicator Monitor',
+  sourceType: 'free',
   category: 'economic',
   tier: 1,
-  status: process.env.FRED_API_KEY ? 'active' : 'not_configured',
+  status: 'active',
   triggersEnabled: ['Financial Distress Signal', 'Market Valuation Shift', 'Earnings Surprise', 'Supply Chain Disruption'],
-  requiresApiKey: true,
-  apiKeyEnvVar: 'FRED_API_KEY',
-  description: 'Federal Reserve Bank of St. Louis — 800,000+ economic time series including VIX, credit spreads, yield curve, unemployment. Free API key at fred.stlouisfed.org.',
-  upgradeNote: 'Free API key required. Register at fred.stlouisfed.org/docs/api/api_key.html and add FRED_API_KEY secret.',
+  requiresApiKey: false,
+  apiKeyEnvVar: undefined,
+  description: 'Keyless economic intelligence layer — CBOE VIX (Yahoo Finance), US Treasury yield curve (10Y-2Y spread), BLS unemployment rate, and HYG-LQD credit spread proxy. Covers market volatility, yield curve inversion, labor market stress, and credit market disruption. No API key required.',
+  upgradeNote: null,
 });
 
 signalSourceRegistry.register({
@@ -226,15 +226,15 @@ signalSourceRegistry.register({
 signalSourceRegistry.register({
   sourceKey: 'congress_gov',
   sourceName: 'Congress.gov — Legislative Tracking',
-  sourceType: 'free_key_required',
+  sourceType: 'free',
   category: 'regulatory',
   tier: 2,
-  status: process.env.CONGRESS_API_KEY ? 'active' : 'not_configured',
+  status: 'active',
   triggersEnabled: ['Legislation Change', 'Regulatory Enforcement Action'],
-  requiresApiKey: true,
-  apiKeyEnvVar: 'CONGRESS_API_KEY',
-  description: 'Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change.',
-  upgradeNote: 'Free API key required. Register at api.congress.gov/sign-up/ and add CONGRESS_API_KEY secret.',
+  requiresApiKey: false,
+  apiKeyEnvVar: undefined,
+  description: 'Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change. Uses public API access — no key required.',
+  upgradeNote: null,
 });
 
 signalSourceRegistry.register({
