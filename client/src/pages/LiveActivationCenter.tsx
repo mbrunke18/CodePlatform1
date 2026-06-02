@@ -1335,7 +1335,7 @@ export default function LiveActivationCenter() {
                       <div className={cn(
                         "w-6 h-6 rounded-none flex items-center justify-center border transition-colors",
                         t.status === 'completed' ? "bg-[#2B8A6E] border-[#2B8A6E] text-white" : 
-                        t.status === 'in_progress' ? "bg-[#C9A84C]/20 border-[#C9A84C] text-[#C9A84C]" : 
+                        t.status === 'in_progress' ? "bg-[#22C55E]/20 border-[#22C55E] text-[#22C55E]" : 
                         "border-white/20 text-white/20"
                       )}>
                         {t.status === 'completed' ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
@@ -1353,7 +1353,7 @@ export default function LiveActivationCenter() {
                     </div>
                     <div className="flex flex-col items-end gap-1">
                       {t.status === 'in_progress' && (
-                        <div className="flex items-center gap-2 text-[#C9A84C]">
+                        <div className="flex items-center gap-2 text-[#22C55E]">
                           <Loader2 className="w-4 h-4 animate-spin" />
                           <span className="text-[10px] font-bold uppercase tracking-widest">In Progress</span>
                         </div>
