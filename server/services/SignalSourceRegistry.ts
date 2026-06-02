@@ -153,6 +153,118 @@ signalSourceRegistry.register({
   upgradeNote: null,
 });
 
+signalSourceRegistry.register({
+  sourceKey: 'ofac_bis',
+  sourceName: 'OFAC Sanctions + BIS Entity List',
+  sourceType: 'free',
+  category: 'regulatory',
+  tier: 1,
+  status: 'active',
+  triggersEnabled: ['Supply Chain Disruption', 'Geopolitical Risk Signal', 'Regulatory Enforcement Action'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'US Treasury OFAC sanctions notices and BIS Bureau of Industry & Security entity list updates. Detects new counterparty sanctions designations before they appear in mainstream news.',
+  upgradeNote: null,
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'gdelt_events',
+  sourceName: 'GDELT Project — Global Event Database',
+  sourceType: 'free',
+  category: 'market',
+  tier: 1,
+  status: 'active',
+  triggersEnabled: ['Geopolitical Risk Signal', 'Reputational Crisis Signal', 'M&A Activity Detected', 'Executive Leadership Event', 'Cybersecurity Breach Signal'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'World\'s largest open-access real-time event database. 100+ languages, 65+ countries, updated every 15 minutes. Measures event velocity and tone — detects when coverage is accelerating before it becomes a crisis.',
+  upgradeNote: null,
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'federal_register',
+  sourceName: 'Federal Register — Regulatory Pipeline',
+  sourceType: 'free',
+  category: 'regulatory',
+  tier: 1,
+  status: 'active',
+  triggersEnabled: ['Legislation Change', 'Regulatory Enforcement Action', 'ESG / Climate Event'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'Official journal of US federal regulations — proposed rules, final rules, and agency notices from 12 high-impact agencies (SEC, FTC, DOJ, Fed, CFPB, EPA, OSHA, FDA, DHS and more). 6-12 month advance warning on regulatory change.',
+  upgradeNote: null,
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'nist_nvd',
+  sourceName: 'NIST NVD — Full CVE Database',
+  sourceType: process.env.NVD_API_KEY ? 'free_key_required' : 'free',
+  category: 'cybersecurity',
+  tier: 1,
+  status: 'active',
+  triggersEnabled: ['Cybersecurity Breach Signal'],
+  requiresApiKey: false,
+  apiKeyEnvVar: 'NVD_API_KEY',
+  description: 'NIST National Vulnerability Database — complete CVE catalog with CVSS scores, vendor affectation, and exploit availability. CISA KEV is a subset of NVD (only actively exploited). NVD fires earlier — at "vulnerability confirmed" not "actively exploited in wild."',
+  upgradeNote: 'Optional free API key at nvd.nist.gov increases rate limits from 5 req/30s to 50 req/30s.',
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'noaa_fema',
+  sourceName: 'NOAA Weather + FEMA Disaster Declarations',
+  sourceType: 'free',
+  category: 'supply_chain',
+  tier: 1,
+  status: 'active',
+  triggersEnabled: ['Operational Crisis', 'Supply Chain Disruption', 'ESG / Climate Event'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'FEMA federal disaster declaration API with affected state, incident type, and active assistance programs. NOAA National Weather Service severe and extreme weather alerts. Detects operational disruptions from natural events before impact on logistics and facilities.',
+  upgradeNote: null,
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'congress_gov',
+  sourceName: 'Congress.gov — Legislative Tracking',
+  sourceType: 'free_key_required',
+  category: 'regulatory',
+  tier: 2,
+  status: process.env.CONGRESS_API_KEY ? 'active' : 'not_configured',
+  triggersEnabled: ['Legislation Change', 'Regulatory Enforcement Action'],
+  requiresApiKey: true,
+  apiKeyEnvVar: 'CONGRESS_API_KEY',
+  description: 'Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change.',
+  upgradeNote: 'Free API key required. Register at api.congress.gov/sign-up/ and add CONGRESS_API_KEY secret.',
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'ftc_enforcement',
+  sourceName: 'FTC — Enforcement Actions & Press Releases',
+  sourceType: 'free',
+  category: 'regulatory',
+  tier: 1,
+  status: 'active',
+  triggersEnabled: ['Regulatory Enforcement Action', 'Competitive Market Entry', 'M&A Activity Detected'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'Federal Trade Commission enforcement actions, consent decrees, merger challenges, and civil investigative demands. Covers antitrust, merger review, privacy, data security, AI, and deceptive practices enforcement.',
+  upgradeNote: null,
+});
+
+signalSourceRegistry.register({
+  sourceKey: 'cfpb_complaints',
+  sourceName: 'CFPB — Consumer Complaint Velocity',
+  sourceType: 'free',
+  category: 'regulatory',
+  tier: 2,
+  status: 'active',
+  triggersEnabled: ['Regulatory Enforcement Action', 'Reputational Crisis Signal', 'Financial Distress Signal'],
+  requiresApiKey: false,
+  apiKeyEnvVar: null,
+  description: 'Consumer Financial Protection Bureau complaint database — measures complaint volume velocity by company, product, and issue type. Elevated complaint rates are a leading indicator of CFPB investigation and reputational exposure for financial services.',
+  upgradeNote: null,
+});
+
 // RSS feeds (36 total)
 signalSourceRegistry.register({
   sourceKey: 'rss_feeds',

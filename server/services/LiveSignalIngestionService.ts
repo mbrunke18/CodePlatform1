@@ -8,6 +8,14 @@ import { fetchOpenFDASignals } from './signals/OpenFDAService.js';
 import { fetchSECEdgarSignals } from './signals/SECEdgarStructuredService.js';
 import { fetchInternalReadinessSignals } from './signals/InternalReadinessSignalService.js';
 import { fetchRegulatoryCalendarSignals } from './signals/RegulatoryCalendarService.js';
+import { fetchOFACSDNSignals } from './signals/OFACSDNService.js';
+import { fetchGDELTSignals } from './signals/GDELTService.js';
+import { fetchFederalRegisterSignals } from './signals/FederalRegisterService.js';
+import { fetchNISTNVDSignals } from './signals/NISTNVDService.js';
+import { fetchNOAAFEMASignals } from './signals/NOAAFEMAService.js';
+import { fetchCongressSignals } from './signals/CongressService.js';
+import { fetchFTCEnforcementSignals } from './signals/FTCEnforcementService.js';
+import { fetchCFPBComplaintSignals } from './signals/CFPBComplaintService.js';
 import { signalSourceRegistry } from './SignalSourceRegistry.js';
 
 interface RSSItem {
@@ -610,6 +618,14 @@ class LiveSignalIngestionService {
       edgarSignals,
       internalSignals,
       calendarSignals,
+      ofacSignals,
+      gdeltSignals,
+      fedRegSignals,
+      nvdSignals,
+      noaaFemaSignals,
+      congressSignals,
+      ftcSignals,
+      cfpbSignals,
     ] = await Promise.allSettled([
       this.ingestAllFeeds(),
       fetchCISAKEVSignals().then(s => {
@@ -636,6 +652,38 @@ class LiveSignalIngestionService {
         signalSourceRegistry.recordFetch('regulatory_calendar', s.length, true);
         return s;
       }).catch(() => { signalSourceRegistry.recordFetch('regulatory_calendar', 0, false); return []; }),
+      fetchOFACSDNSignals().then(s => {
+        signalSourceRegistry.recordFetch('ofac_bis', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('ofac_bis', 0, false); return []; }),
+      fetchGDELTSignals().then(s => {
+        signalSourceRegistry.recordFetch('gdelt_events', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('gdelt_events', 0, false); return []; }),
+      fetchFederalRegisterSignals().then(s => {
+        signalSourceRegistry.recordFetch('federal_register', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('federal_register', 0, false); return []; }),
+      fetchNISTNVDSignals().then(s => {
+        signalSourceRegistry.recordFetch('nist_nvd', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('nist_nvd', 0, false); return []; }),
+      fetchNOAAFEMASignals().then(s => {
+        signalSourceRegistry.recordFetch('noaa_fema', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('noaa_fema', 0, false); return []; }),
+      fetchCongressSignals().then(s => {
+        signalSourceRegistry.recordFetch('congress_gov', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('congress_gov', 0, false); return []; }),
+      fetchFTCEnforcementSignals().then(s => {
+        signalSourceRegistry.recordFetch('ftc_enforcement', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('ftc_enforcement', 0, false); return []; }),
+      fetchCFPBComplaintSignals().then(s => {
+        signalSourceRegistry.recordFetch('cfpb_complaints', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('cfpb_complaints', 0, false); return []; }),
     ]);
 
     const rss = rssSignals.status === 'fulfilled' ? rssSignals.value : [];
@@ -649,6 +697,14 @@ class LiveSignalIngestionService {
       ...(edgarSignals.status === 'fulfilled' ? edgarSignals.value : []),
       ...(internalSignals.status === 'fulfilled' ? internalSignals.value : []),
       ...(calendarSignals.status === 'fulfilled' ? calendarSignals.value : []),
+      ...(ofacSignals.status === 'fulfilled' ? ofacSignals.value : []),
+      ...(gdeltSignals.status === 'fulfilled' ? gdeltSignals.value : []),
+      ...(fedRegSignals.status === 'fulfilled' ? fedRegSignals.value : []),
+      ...(nvdSignals.status === 'fulfilled' ? nvdSignals.value : []),
+      ...(noaaFemaSignals.status === 'fulfilled' ? noaaFemaSignals.value : []),
+      ...(congressSignals.status === 'fulfilled' ? congressSignals.value : []),
+      ...(ftcSignals.status === 'fulfilled' ? ftcSignals.value : []),
+      ...(cfpbSignals.status === 'fulfilled' ? cfpbSignals.value : []),
     ] as AnalyzedSignal[];
 
     const signals = [...rss, ...quantitative];
@@ -658,6 +714,14 @@ class LiveSignalIngestionService {
       fredSignals.status === 'fulfilled' && fredSignals.value.length ? `FRED:${fredSignals.value.length}` : null,
       fdaSignals.status === 'fulfilled' && fdaSignals.value.length ? `FDA:${fdaSignals.value.length}` : null,
       edgarSignals.status === 'fulfilled' && edgarSignals.value.length ? `EDGAR:${edgarSignals.value.length}` : null,
+      nvdSignals.status === 'fulfilled' && nvdSignals.value.length ? `NVD:${nvdSignals.value.length}` : null,
+      ofacSignals.status === 'fulfilled' && ofacSignals.value.length ? `OFAC:${ofacSignals.value.length}` : null,
+      gdeltSignals.status === 'fulfilled' && gdeltSignals.value.length ? `GDELT:${gdeltSignals.value.length}` : null,
+      fedRegSignals.status === 'fulfilled' && fedRegSignals.value.length ? `FedReg:${fedRegSignals.value.length}` : null,
+      noaaFemaSignals.status === 'fulfilled' && noaaFemaSignals.value.length ? `NOAA/FEMA:${noaaFemaSignals.value.length}` : null,
+      ftcSignals.status === 'fulfilled' && ftcSignals.value.length ? `FTC:${ftcSignals.value.length}` : null,
+      cfpbSignals.status === 'fulfilled' && cfpbSignals.value.length ? `CFPB:${cfpbSignals.value.length}` : null,
+      congressSignals.status === 'fulfilled' && congressSignals.value.length ? `Congress:${congressSignals.value.length}` : null,
       internalSignals.status === 'fulfilled' && internalSignals.value.length ? `Internal:${internalSignals.value.length}` : null,
       calendarSignals.status === 'fulfilled' && calendarSignals.value.length ? `Calendar:${calendarSignals.value.length}` : null,
     ].filter(Boolean).join(' ');

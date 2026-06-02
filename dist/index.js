@@ -20305,22 +20305,21 @@ function scoreSignalAgainstPattern(signal, pattern) {
 function evaluateSignal(signal, thresholds) {
   const detections = [];
   const WATCH_SCORE = 55;
-  const WATCH_DENSITY = (thresholds?.watchPct ?? 50) / 100;
+  const WATCH_MIN_KW = 2;
   const AWARE_SCORE = 70;
-  const AWARE_DENSITY = (thresholds?.awarePct ?? 70) / 100;
+  const AWARE_MIN_KW = 4;
   const ACTION_SCORE = 82;
-  const ACTION_DENSITY = (thresholds?.actionPct ?? 80) / 100;
+  const ACTION_MIN_KW = 6;
   for (const pattern of TRIGGER_PATTERNS) {
     const text3 = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
-    const density = matchedKeywords.length / pattern.keywords.length;
-    if (density < WATCH_DENSITY) continue;
+    if (matchedKeywords.length < WATCH_MIN_KW) continue;
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
     if (confidenceScore < WATCH_SCORE) continue;
     let alertTier;
-    if (confidenceScore >= ACTION_SCORE && density >= ACTION_DENSITY) {
+    if (confidenceScore >= ACTION_SCORE && matchedKeywords.length >= ACTION_MIN_KW) {
       alertTier = "action";
-    } else if (confidenceScore >= AWARE_SCORE && density >= AWARE_DENSITY) {
+    } else if (confidenceScore >= AWARE_SCORE && matchedKeywords.length >= AWARE_MIN_KW) {
       alertTier = "aware";
     } else {
       alertTier = "watch";
@@ -21297,6 +21296,2243 @@ var init_SignalEvaluationService = __esm({
   }
 });
 
+// server/services/signals/CISAKEVService.ts
+function cvssToImpact(cvss, name, desc30) {
+  if (cvss !== void 0) {
+    if (cvss >= 9) return "critical";
+    if (cvss >= 7) return "high";
+    if (cvss >= 4) return "medium";
+    return "low";
+  }
+  const text3 = (name + " " + desc30).toLowerCase();
+  if (text3.includes("critical") || text3.includes("actively exploited") || text3.includes("ransomware")) return "critical";
+  if (text3.includes("remote code execution") || text3.includes("privilege escalation") || text3.includes("authentication bypass")) return "high";
+  return "high";
+}
+function cvssToConfidence(cvss, dateAdded) {
+  let base = 82;
+  if (cvss !== void 0) {
+    if (cvss >= 9) base = 94;
+    else if (cvss >= 7) base = 87;
+    else if (cvss >= 4) base = 78;
+  }
+  const daysOld = (Date.now() - new Date(dateAdded).getTime()) / 864e5;
+  if (daysOld <= 1) base = Math.min(base + 8, 97);
+  else if (daysOld <= 3) base = Math.min(base + 4, 97);
+  return base;
+}
+async function fetchCISAKEVSignals() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS * 864e5);
+  try {
+    const res = await fetch(CATALOG_URL, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(15e3)
+    });
+    if (!res.ok) throw new Error(`CISA KEV returned ${res.status}`);
+    const data = await res.json();
+    const recent = (data.vulnerabilities || []).filter((v) => new Date(v.dateAdded) >= cutoff);
+    for (const vuln of recent) {
+      const impact = cvssToImpact(vuln.cvssScore, vuln.vulnerabilityName, vuln.shortDescription);
+      const confidence = cvssToConfidence(vuln.cvssScore, vuln.dateAdded);
+      const cvssLabel = vuln.cvssScore ? ` CVSS ${vuln.cvssScore}/10.` : "";
+      const dueLabel = vuln.dueDate ? ` Remediation required by ${vuln.dueDate}.` : "";
+      signals.push({
+        signalType: "cybersecurity",
+        description: `CISA KEV: ${vuln.vulnerabilityName} affecting ${vuln.vendorProject} ${vuln.product}.${cvssLabel} ${vuln.shortDescription.substring(0, 300)}${dueLabel} Required action: ${vuln.requiredAction?.substring(0, 150) || "Apply vendor patch immediately."}`,
+        confidence,
+        impact,
+        timeline: "immediate",
+        source: "CISA Known Exploited Vulnerabilities",
+        sourceUrl: `https://www.cisa.gov/known-exploited-vulnerabilities-catalog`,
+        category: "cybersecurity",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        threatSeverity: impact === "critical" ? "critical" : "high",
+        exploitStatus: "known_exploited",
+        affectedVendor: vuln.vendorProject,
+        cveId: vuln.cveID,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: vuln.dueDate || null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        enforcementActionType: null,
+        regulatorAgency: "CISA",
+        penaltyAmountRange: null,
+        namedSector: null,
+        signalEventType: null,
+        metricName: "CVSS Score",
+        metricValue: vuln.cvssScore,
+        metricThreshold: 7,
+        metricUnit: "/10"
+      });
+    }
+    console.log(`[CISA KEV] ${signals.length} active exploits in last ${LOOKBACK_DAYS} days`);
+  } catch (err) {
+    console.warn(`[CISA KEV] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var CATALOG_URL, LOOKBACK_DAYS;
+var init_CISAKEVService = __esm({
+  "server/services/signals/CISAKEVService.ts"() {
+    "use strict";
+    CATALOG_URL = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json";
+    LOOKBACK_DAYS = 7;
+  }
+});
+
+// server/services/signals/FREDService.ts
+async function fetchSeries(seriesId, apiKey) {
+  try {
+    const url = `${BASE_URL}?series_id=${seriesId}&api_key=${apiKey}&file_type=json&limit=5&sort_order=desc`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(1e4) });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const obs = (data.observations || []).filter((o) => o.value !== "." && o.value !== "NA");
+    if (obs.length === 0) return null;
+    const value = parseFloat(obs[0].value);
+    const prevValue = obs.length > 1 ? parseFloat(obs[1].value) : null;
+    if (isNaN(value)) return null;
+    return { value, date: obs[0].date, prevValue };
+  } catch {
+    return null;
+  }
+}
+async function fetchFREDSignals() {
+  const apiKey = process.env.FRED_API_KEY;
+  if (!apiKey) {
+    console.log("[FRED] FRED_API_KEY not configured \u2014 economic indicator monitoring inactive. Free key at https://fred.stlouisfed.org/docs/api/api_key.html");
+    return [];
+  }
+  const signals = [];
+  const results = await Promise.allSettled(
+    SERIES.map(async (series) => {
+      const obs = await fetchSeries(series.id, apiKey);
+      if (!obs) return null;
+      const { value, prevValue } = obs;
+      let shouldFire = false;
+      let impact = "medium";
+      let confidence = 78;
+      if (series.direction === "above") {
+        if (value >= series.actionThreshold) {
+          shouldFire = true;
+          impact = "critical";
+          confidence = 91;
+        } else if (value >= series.watchThreshold) {
+          shouldFire = true;
+          impact = "high";
+          confidence = 82;
+        }
+      } else if (series.direction === "below") {
+        if (value <= series.actionThreshold) {
+          shouldFire = true;
+          impact = "critical";
+          confidence = 90;
+        } else if (value <= series.watchThreshold) {
+          shouldFire = true;
+          impact = "high";
+          confidence = 81;
+        }
+      } else if (series.direction === "change" && prevValue !== null) {
+        const change = Math.abs(value - prevValue);
+        if (change >= series.actionThreshold) {
+          shouldFire = true;
+          impact = "high";
+          confidence = 85;
+        } else if (change >= series.watchThreshold) {
+          shouldFire = true;
+          impact = "medium";
+          confidence = 76;
+        }
+      }
+      if (!shouldFire) return null;
+      return {
+        signalType: "economic",
+        description: series.triggerDescription(value, prevValue),
+        confidence,
+        impact,
+        timeline: "near-term",
+        source: `FRED \u2014 ${series.name}`,
+        sourceUrl: `https://fred.stlouisfed.org/series/${series.id}`,
+        category: "economic",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        economicIndicatorType: series.indicatorType,
+        indicatorDirection: series.direction === "above" ? "rising" : series.direction === "below" ? "falling" : "change",
+        indicatorMagnitude: impact === "critical" ? "significant" : "moderate",
+        centralBank: series.id === "FEDFUNDS" ? "Federal Reserve" : null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        enforcementActionType: null,
+        regulatorAgency: series.id === "FEDFUNDS" ? "Federal Reserve" : null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        signalEventType: null,
+        metricName: series.name,
+        metricValue: value,
+        metricThreshold: series.watchThreshold,
+        metricUnit: series.unit
+      };
+    })
+  );
+  for (const r of results) {
+    if (r.status === "fulfilled" && r.value) signals.push(r.value);
+  }
+  if (signals.length > 0) {
+    console.log(`[FRED] ${signals.length} economic threshold breach(es) detected`);
+  }
+  return signals;
+}
+var BASE_URL, SERIES;
+var init_FREDService = __esm({
+  "server/services/signals/FREDService.ts"() {
+    "use strict";
+    BASE_URL = "https://api.stlouisfed.org/fred/series/observations";
+    SERIES = [
+      {
+        id: "VIXCLS",
+        name: "CBOE Volatility Index (VIX)",
+        description: "Market volatility index \u2014 measures investor fear and uncertainty",
+        unit: "index points",
+        watchThreshold: 25,
+        actionThreshold: 35,
+        direction: "above",
+        domain: "Financial",
+        indicatorType: "market_volatility",
+        triggerDescription: (v, _p) => `Market volatility (VIX) reached ${v.toFixed(1)}, ${v >= 35 ? "well above" : "above"} the stress threshold of ${v >= 35 ? 35 : 25}. Readings above 30 historically correlate with significant market dislocations requiring executive attention. Activist investor and M&A defense protocols should be reviewed.`
+      },
+      {
+        id: "BAMLH0A0HYM2",
+        name: "US High Yield Credit Spread (OAS)",
+        description: "Credit risk premium on high-yield bonds \u2014 a direct measure of financial distress risk",
+        unit: "percent",
+        watchThreshold: 5,
+        actionThreshold: 8,
+        direction: "above",
+        domain: "Financial",
+        indicatorType: "credit_stress",
+        triggerDescription: (v, _p) => `US High Yield credit spread reached ${v.toFixed(2)}%, indicating ${v >= 8 ? "severe" : "elevated"} financial market stress. Spreads above 5% signal increased corporate default risk and capital market disruption. Financial crisis response and investor communications protocols are relevant.`
+      },
+      {
+        id: "T10Y2Y",
+        name: "10Y-2Y Treasury Yield Spread",
+        description: "Yield curve spread \u2014 negative reading (inversion) is a leading recession indicator",
+        unit: "percent",
+        watchThreshold: 0,
+        actionThreshold: -0.5,
+        direction: "below",
+        domain: "Financial",
+        indicatorType: "yield_curve",
+        triggerDescription: (v, _p) => `Treasury yield curve is ${v < 0 ? "inverted" : "flattening"} at ${v.toFixed(2)}%. An inverted yield curve (10Y below 2Y) has preceded every US recession in the last 50 years with a 6-18 month lead time. Executive teams should review recession scenario protocols and financial contingency plans.`
+      },
+      {
+        id: "UNRATE",
+        name: "US Unemployment Rate",
+        description: "Civilian unemployment rate \u2014 rising rate signals labor market deterioration",
+        unit: "percent",
+        watchThreshold: 5.5,
+        actionThreshold: 7,
+        direction: "above",
+        domain: "Supply Chain & Operations",
+        indicatorType: "labor_market",
+        triggerDescription: (v, _p) => `Unemployment rate reached ${v.toFixed(1)}%, ${v >= 7 ? "significantly above" : "above"} the stress threshold. Elevated unemployment signals weakened consumer demand and workforce restructuring risk. Workforce transformation and operational continuity protocols apply.`
+      },
+      {
+        id: "FEDFUNDS",
+        name: "Federal Funds Rate",
+        description: "Federal Reserve benchmark interest rate \u2014 rapid changes signal monetary policy shock",
+        unit: "percent",
+        watchThreshold: 0.5,
+        actionThreshold: 1,
+        direction: "change",
+        domain: "Financial",
+        indicatorType: "interest_rate",
+        triggerDescription: (v, prev) => `Federal funds rate is ${v.toFixed(2)}%${prev !== null ? `, changed from ${prev.toFixed(2)}% (${v - prev >= 0 ? "+" : ""}${(v - prev).toFixed(2)}%)` : ""}. Rapid rate changes affect debt service costs, capital access, and acquisition financing. Financial modeling and investor communications protocols should be reviewed.`
+      }
+    ];
+  }
+});
+
+// server/services/signals/OpenFDAService.ts
+function recallImpact(cls) {
+  if (!cls) return "medium";
+  if (cls.includes("Class I") || cls.includes("Class 1")) return "critical";
+  if (cls.includes("Class II") || cls.includes("Class 2")) return "high";
+  return "medium";
+}
+function recallConfidence(cls) {
+  if (!cls) return 72;
+  if (cls.includes("Class I") || cls.includes("Class 1")) return 93;
+  if (cls.includes("Class II") || cls.includes("Class 2")) return 85;
+  return 74;
+}
+function isRecent(dateStr) {
+  if (!dateStr) return false;
+  const d = new Date(dateStr.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3"));
+  return Date.now() - d.getTime() < LOOKBACK_DAYS2 * 864e5;
+}
+async function fetchEnforcement(type, productLabel) {
+  const signals = [];
+  try {
+    const since = new Date(Date.now() - LOOKBACK_DAYS2 * 864e5).toISOString().split("T")[0].replace(/-/g, "");
+    const url = `${BASE2}/${type}/enforcement.json?limit=20&sort=report_date:desc&search=recall_initiation_date:[${since}+TO+99991231]`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(12e3) });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const results = (data.results || []).filter((r) => isRecent(r.recall_initiation_date));
+    for (const r of results) {
+      if (!r.classification?.includes("Class I") && !r.classification?.includes("Class II")) continue;
+      const impact = recallImpact(r.classification);
+      const confidence = recallConfidence(r.classification);
+      const scope = (r.distribution_pattern || "").toLowerCase().includes("nationwide") || (r.distribution_pattern || "").toLowerCase().includes("national") ? "national" : (r.distribution_pattern || "").toLowerCase().includes("international") ? "international" : "regional";
+      signals.push({
+        signalType: "regulatory",
+        description: `FDA ${r.classification} Recall: ${r.recalling_firm || "Unknown firm"} \u2014 ${r.product_description?.substring(0, 200) || productLabel}. Reason: ${r.reason_for_recall?.substring(0, 200) || "See FDA notice"}. Distribution: ${r.distribution_pattern?.substring(0, 100) || "Not specified"}. Quantity: ${r.product_quantity || "Not specified"}. Recall #${r.recall_number || "N/A"}.`,
+        confidence,
+        impact,
+        timeline: "immediate",
+        source: "FDA Enforcement \u2014 OpenFDA",
+        sourceUrl: `https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts`,
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        recallClass: r.classification || null,
+        affectedProductType: productLabel,
+        recallScope: scope,
+        enforcementActionType: "recall",
+        regulatorAgency: "FDA",
+        penaltyAmountRange: null,
+        namedSector: productLabel === "pharma" ? "healthcare" : productLabel === "food" ? "retail" : "manufacturing",
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: r.recalling_firm || null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: "immediate",
+        tradePartner: null,
+        affectedHsCodes: null,
+        signalEventType: "product_recall",
+        metricName: "Recall Classification",
+        metricValue: r.classification?.includes("Class I") ? 1 : 2,
+        metricThreshold: 2,
+        metricUnit: "class"
+      });
+    }
+  } catch (err) {
+    console.warn(`[OpenFDA] ${type} enforcement fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+async function fetchOpenFDASignals() {
+  const [food, drug, device] = await Promise.allSettled([
+    fetchEnforcement("food", "food"),
+    fetchEnforcement("drug", "pharma"),
+    fetchEnforcement("device", "medical_device")
+  ]);
+  const all = [
+    ...food.status === "fulfilled" ? food.value : [],
+    ...drug.status === "fulfilled" ? drug.value : [],
+    ...device.status === "fulfilled" ? device.value : []
+  ];
+  if (all.length > 0) {
+    console.log(`[OpenFDA] ${all.length} Class I/II recall(s) in last ${LOOKBACK_DAYS2} days`);
+  }
+  return all;
+}
+var BASE2, LOOKBACK_DAYS2;
+var init_OpenFDAService = __esm({
+  "server/services/signals/OpenFDAService.ts"() {
+    "use strict";
+    BASE2 = "https://api.fda.gov";
+    LOOKBACK_DAYS2 = 3;
+  }
+});
+
+// server/services/signals/SECEdgarStructuredService.ts
+function daysAgo(n) {
+  const d = new Date(Date.now() - n * 864e5);
+  return d.toISOString().split("T")[0];
+}
+async function searchFilings(formType, query, days = 3) {
+  try {
+    const params = new URLSearchParams({
+      q: query,
+      dateRange: "custom",
+      startdt: daysAgo(days),
+      enddt: daysAgo(0),
+      forms: formType
+    });
+    const url = `${EDGAR_SEARCH}?${params}`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence@vaughnmartin.com" },
+      signal: AbortSignal.timeout(12e3)
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.hits?.hits || [];
+  } catch {
+    return [];
+  }
+}
+async function fetchSECEdgarSignals() {
+  const signals = [];
+  const [filings13D, filings8K, filings13G] = await Promise.allSettled([
+    searchFilings("SC 13D", "activist investor", 7),
+    searchFilings("8-K", "material definitive agreement", 2),
+    searchFilings("SC 13G/A", "schedule 13G amendment", 5)
+  ]);
+  const hits13D = filings13D.status === "fulfilled" ? filings13D.value : [];
+  if (hits13D.length > 0) {
+    const entities = hits13D.slice(0, 5).map((h) => h._source?.entity_name || "Unknown").join(", ");
+    signals.push({
+      signalType: "regulatory",
+      description: `SEC EDGAR: ${hits13D.length} Schedule 13D filing(s) detected in last 7 days. Activist investor disclosures from: ${entities}. 13D filings indicate an investor has acquired \u22655% of a company's shares with intent to influence management or strategy. This is the opening move in most activist campaigns.`,
+      confidence: 91,
+      impact: "high",
+      timeline: "immediate",
+      source: "SEC EDGAR \u2014 Schedule 13D",
+      sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=SC+13D",
+      category: "regulatory",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "activist_investor",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: "finance",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "finance",
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: "immediate",
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "13D Filings (7 days)",
+      metricValue: hits13D.length,
+      metricThreshold: 1,
+      metricUnit: "filings"
+    });
+  }
+  const hits8K = filings8K.status === "fulfilled" ? filings8K.value : [];
+  if (hits8K.length >= 3) {
+    const entities = hits8K.slice(0, 5).map((h) => h._source?.entity_name || "Unknown").join(", ");
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hits8K.length} material event 8-K filing(s) in last 48 hours. Companies filing: ${entities}. Elevated 8-K volume indicates significant corporate events (M&A, leadership changes, material agreements, financial restatements) across the market \u2014 relevant to competitive positioning and supply chain risk.`,
+      confidence: hits8K.length >= 10 ? 85 : 75,
+      impact: hits8K.length >= 10 ? "high" : "medium",
+      timeline: "near-term",
+      source: "SEC EDGAR \u2014 8-K Material Events",
+      sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "material_event",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: null,
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: null,
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: null,
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "8-K Filings (48h)",
+      metricValue: hits8K.length,
+      metricThreshold: 3,
+      metricUnit: "filings"
+    });
+  }
+  const hits13G = filings13G.status === "fulfilled" ? filings13G.value : [];
+  if (hits13G.length >= 5) {
+    signals.push({
+      signalType: "market",
+      description: `SEC EDGAR: ${hits13G.length} Schedule 13G amendment(s) in last 5 days \u2014 institutional investors adjusting significant equity positions. Elevated amendment volume signals portfolio repositioning by major institutions, often preceding broader market moves or industry-specific strategic shifts.`,
+      confidence: 76,
+      impact: "medium",
+      timeline: "near-term",
+      source: "SEC EDGAR \u2014 Schedule 13G/A",
+      sourceUrl: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=SC+13G",
+      category: "market",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      signalEventType: "institutional_repositioning",
+      enforcementActionType: null,
+      regulatorAgency: "SEC",
+      penaltyAmountRange: null,
+      namedSector: null,
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: null,
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: null,
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      metricName: "13G Amendments (5 days)",
+      metricValue: hits13G.length,
+      metricThreshold: 5,
+      metricUnit: "filings"
+    });
+  }
+  if (signals.length > 0) {
+    console.log(`[SEC EDGAR] ${signals.length} structured filing signal(s) detected`);
+  }
+  return signals;
+}
+var EDGAR_SEARCH;
+var init_SECEdgarStructuredService = __esm({
+  "server/services/signals/SECEdgarStructuredService.ts"() {
+    "use strict";
+    EDGAR_SEARCH = "https://efts.sec.gov/LATEST/search-index";
+  }
+});
+
+// server/services/signals/InternalReadinessSignalService.ts
+async function fetchInternalReadinessSignals(organizationId) {
+  const signals = [];
+  try {
+    const { playbookLibrary: playbookLibrary2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { lt: lt3, and: and41, eq: eq62, sql: sql26 } = await import("drizzle-orm");
+    const warnCutoff = new Date(Date.now() - STALE_DAYS_WARN * 864e5);
+    const critCutoff = new Date(Date.now() - STALE_DAYS_CRITICAL * 864e5);
+    const staleProtocols = await db.select({
+      id: playbookLibrary2.id,
+      name: playbookLibrary2.name,
+      updatedAt: playbookLibrary2.updatedAt,
+      domain: playbookLibrary2.domain
+    }).from(playbookLibrary2).where(lt3(playbookLibrary2.updatedAt, warnCutoff)).limit(50);
+    const criticalStale = staleProtocols.filter(
+      (p) => p.updatedAt && new Date(p.updatedAt) < critCutoff
+    );
+    const warnStale = staleProtocols.filter(
+      (p) => p.updatedAt && new Date(p.updatedAt) >= critCutoff
+    );
+    if (criticalStale.length > 0) {
+      const names = criticalStale.slice(0, 5).map((p) => p.name).join(", ");
+      signals.push({
+        signalType: "regulatory",
+        description: `INTERNAL READINESS GAP: ${criticalStale.length} Readiness Protocol(s) have not been reviewed in over ${STALE_DAYS_CRITICAL} days: ${names}${criticalStale.length > 5 ? ` and ${criticalStale.length - 5} more` : ""}. Stale protocols represent unverified preparation \u2014 owners may have changed, procedures may be outdated, and contact lists may be incorrect. These protocols cannot be relied upon in a live situation without immediate review.`,
+        confidence: 95,
+        impact: "critical",
+        timeline: "immediate",
+        source: "Readiness OS \u2014 Internal Protocol Audit",
+        sourceUrl: "/playbook-library",
+        category: "internal",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "advisory",
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: null,
+        metricName: `Protocols stale >${STALE_DAYS_CRITICAL} days`,
+        metricValue: criticalStale.length,
+        metricThreshold: 0,
+        metricUnit: "protocols"
+      });
+    } else if (warnStale.length >= 10) {
+      signals.push({
+        signalType: "regulatory",
+        description: `READINESS DECAY SIGNAL: ${warnStale.length} Readiness Protocol(s) not reviewed in ${STALE_DAYS_WARN}\u2013${STALE_DAYS_CRITICAL} days. Protocol reviews ensure ownership, contacts, and procedures remain accurate. Unreviewed protocols are a liability when a situation fires \u2014 the response may be built on outdated assumptions. Recommend scheduling protocol review sprint.`,
+        confidence: 83,
+        impact: "high",
+        timeline: "near-term",
+        source: "Readiness OS \u2014 Internal Protocol Audit",
+        sourceUrl: "/playbook-library",
+        category: "internal",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "advisory",
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: null,
+        metricName: `Protocols stale >${STALE_DAYS_WARN} days`,
+        metricValue: warnStale.length,
+        metricThreshold: 10,
+        metricUnit: "protocols"
+      });
+    }
+  } catch {
+  }
+  try {
+    const { stakeholderContacts: stakeholderContacts2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq62, isNull: isNull5, or: or3 } = await import("drizzle-orm");
+    const contacts = await db.select({ email: stakeholderContacts2.email, name: stakeholderContacts2.name, role: stakeholderContacts2.role, isActive: stakeholderContacts2.isActive }).from(stakeholderContacts2).where(eq62(stakeholderContacts2.organizationId, organizationId));
+    const missingEmail = contacts.filter((c) => c.isActive && (!c.email || c.email.trim() === ""));
+    const total = contacts.filter((c) => c.isActive).length;
+    if (total === 0) {
+      signals.push({
+        signalType: "regulatory",
+        description: `CRITICAL READINESS GAP: No stakeholder contacts are configured. When a trigger fires, the system has no one to notify. Protocols cannot route executive authorization requests, task assignments, or communications without a stakeholder roster. This renders the platform's core notification and authorization chain inactive.`,
+        confidence: 97,
+        impact: "critical",
+        timeline: "immediate",
+        source: "Readiness OS \u2014 Stakeholder Audit",
+        sourceUrl: "/settings",
+        category: "internal",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "advisory",
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: null,
+        metricName: "Active stakeholder contacts",
+        metricValue: 0,
+        metricThreshold: 1,
+        metricUnit: "contacts"
+      });
+    } else if (missingEmail.length > 0) {
+      const names = missingEmail.slice(0, 3).map((c) => `${c.name} (${c.role})`).join(", ");
+      signals.push({
+        signalType: "regulatory",
+        description: `STAKEHOLDER GAP: ${missingEmail.length} active stakeholder contact(s) are missing email addresses: ${names}. These contacts will not receive trigger notifications or authorization requests. Notification gaps in the execution chain compromise the 12-minute response window.`,
+        confidence: 88,
+        impact: "high",
+        timeline: "immediate",
+        source: "Readiness OS \u2014 Stakeholder Audit",
+        sourceUrl: "/settings",
+        category: "internal",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "advisory",
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: null,
+        metricName: "Contacts missing email",
+        metricValue: missingEmail.length,
+        metricThreshold: 0,
+        metricUnit: "contacts"
+      });
+    }
+  } catch {
+  }
+  try {
+    const { triggerDetections: triggerDetections3, playbookActivations: playbookActivations3 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { count: count12, gte: gte17 } = await import("drizzle-orm");
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5);
+    const [detCount] = await db.select({ c: count12() }).from(triggerDetections3).where(gte17(triggerDetections3.detectedAt, thirtyDaysAgo));
+    const [actCount] = await db.select({ c: count12() }).from(playbookActivations3).where(gte17(playbookActivations3.createdAt, thirtyDaysAgo));
+    const detections = Number(detCount?.c || 0);
+    const activations = Number(actCount?.c || 0);
+    if (detections >= 5 && activations === 0) {
+      signals.push({
+        signalType: "market",
+        description: `ACTIVATION GAP: ${detections} trigger detection(s) in the last 30 days but 0 protocol activations. Triggers are firing \u2014 situations are being detected \u2014 but no executive authorizations are occurring. This indicates either: (1) the review + authorization workflow is not fully configured, (2) executives are not receiving notifications, or (3) the trigger sensitivity needs calibration. An unactivated trigger is a missed response window.`,
+        confidence: 89,
+        impact: "high",
+        timeline: "immediate",
+        source: "Readiness OS \u2014 Activation Velocity Audit",
+        sourceUrl: "/live-detection-feed",
+        category: "internal",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "advisory",
+        regulatorAgency: null,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: null,
+        metricName: "Trigger-to-activation ratio (30 days)",
+        metricValue: 0,
+        metricThreshold: 1,
+        metricUnit: "activations per trigger cluster"
+      });
+    }
+  } catch {
+  }
+  if (signals.length > 0) {
+    console.log(`[Internal Readiness] ${signals.length} internal readiness gap(s) detected`);
+  }
+  return signals;
+}
+var STALE_DAYS_WARN, STALE_DAYS_CRITICAL;
+var init_InternalReadinessSignalService = __esm({
+  "server/services/signals/InternalReadinessSignalService.ts"() {
+    "use strict";
+    init_db();
+    STALE_DAYS_WARN = 90;
+    STALE_DAYS_CRITICAL = 180;
+  }
+});
+
+// server/services/signals/RegulatoryCalendarService.ts
+function daysUntil(dateStr) {
+  const eventDate = /* @__PURE__ */ new Date(dateStr + "T12:00:00Z");
+  return Math.ceil((eventDate.getTime() - Date.now()) / 864e5);
+}
+async function fetchRegulatoryCalendarSignals() {
+  const signals = [];
+  const today = /* @__PURE__ */ new Date();
+  for (const event of CALENDAR_EVENTS) {
+    const days = daysUntil(event.date);
+    if (days < 0 || days > event.warningDays) continue;
+    const isAction = days <= event.actionDays;
+    const confidence = isAction ? 96 : days <= 5 ? 89 : 82;
+    const impact = isAction ? event.impact : event.impact === "critical" ? "high" : "medium";
+    const urgencyPrefix = days === 0 ? "TODAY:" : days === 1 ? "TOMORROW:" : `${days} DAYS:`;
+    signals.push({
+      signalType: "regulatory",
+      description: `REGULATORY CALENDAR \u2014 ${urgencyPrefix} ${event.name} (${event.date}). ${event.description} Recommended Readiness Protocols: ${event.triggerProtocols.join(", ")}.`,
+      confidence,
+      impact,
+      timeline: days <= 2 ? "immediate" : days <= 7 ? "near-term" : "14 days",
+      source: "Readiness OS \u2014 Regulatory Calendar",
+      sourceUrl: "/getting-started",
+      category: "regulatory",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      enforcementActionType: "advisory",
+      regulatorAgency: event.name.includes("FOMC") ? "Federal Reserve" : event.name.includes("SEC") ? "SEC" : event.name.includes("GDPR") ? "EU DPA" : null,
+      penaltyAmountRange: null,
+      namedSector: null,
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: null,
+      economicIndicatorType: event.name.includes("FOMC") ? "interest_rate" : null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: event.name.includes("FOMC") ? "Federal Reserve" : null,
+      tradeActionType: null,
+      effectiveTimeline: `${days} days`,
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      signalEventType: null,
+      metricName: `Days until ${event.name}`,
+      metricValue: days,
+      metricThreshold: event.actionDays,
+      metricUnit: "days"
+    });
+  }
+  if (signals.length > 0) {
+    console.log(`[Regulatory Calendar] ${signals.length} upcoming event(s) within warning window`);
+  }
+  return signals;
+}
+var CALENDAR_EVENTS;
+var init_RegulatoryCalendarService = __esm({
+  "server/services/signals/RegulatoryCalendarService.ts"() {
+    "use strict";
+    CALENDAR_EVENTS = [
+      // FOMC meetings 2026 (Federal Reserve)
+      { date: "2026-01-29", name: "FOMC Rate Decision", description: "Federal Reserve Federal Open Market Committee rate decision. Markets and executive teams must be prepared for unexpected rate moves affecting debt service, capital access, and acquisition financing.", domain: "Financial", triggerProtocols: ["Financial Crisis Response", "Investor Communications Protocol"], impact: "high", warningDays: 7, actionDays: 2 },
+      { date: "2026-03-19", name: "FOMC Rate Decision", description: "Federal Reserve FOMC rate decision with updated Summary of Economic Projections (SEP). Rate surprises at this meeting can trigger broad market volatility.", domain: "Financial", triggerProtocols: ["Financial Crisis Response", "Investor Communications Protocol"], impact: "high", warningDays: 7, actionDays: 2 },
+      { date: "2026-05-07", name: "FOMC Rate Decision", description: "Federal Reserve FOMC rate decision. Mid-year policy decisions often reflect accumulated data surprises.", domain: "Financial", triggerProtocols: ["Financial Crisis Response"], impact: "high", warningDays: 7, actionDays: 2 },
+      { date: "2026-06-18", name: "FOMC Rate Decision + SEP", description: "Federal Reserve FOMC rate decision with Summary of Economic Projections \u2014 highest-impact Fed meeting of the year for market reaction.", domain: "Financial", triggerProtocols: ["Financial Crisis Response", "Investor Communications Protocol"], impact: "critical", warningDays: 10, actionDays: 3 },
+      { date: "2026-07-30", name: "FOMC Rate Decision", description: "Federal Reserve FOMC rate decision. Summer meeting often coincides with Q2 earnings season, compounding market sensitivity.", domain: "Financial", triggerProtocols: ["Financial Crisis Response"], impact: "high", warningDays: 7, actionDays: 2 },
+      { date: "2026-09-17", name: "FOMC Rate Decision + SEP", description: "Federal Reserve FOMC rate decision with SEP. September meetings are historically the most market-sensitive \u2014 this is the meeting investors watch for rate cycle pivots.", domain: "Financial", triggerProtocols: ["Financial Crisis Response", "Investor Communications Protocol"], impact: "critical", warningDays: 10, actionDays: 3 },
+      { date: "2026-11-05", name: "FOMC Rate Decision", description: "Federal Reserve FOMC rate decision. Post-election meeting \u2014 policy may be influenced by new fiscal outlook.", domain: "Financial", triggerProtocols: ["Financial Crisis Response", "Geopolitical Risk Response"], impact: "high", warningDays: 7, actionDays: 2 },
+      { date: "2026-12-17", name: "FOMC Rate Decision + SEP", description: "Federal Reserve year-end FOMC decision with SEP. Year-end policy signals set expectations for the following year \u2014 critical for strategic planning and investor relations.", domain: "Financial", triggerProtocols: ["Financial Crisis Response", "Investor Communications Protocol"], impact: "critical", warningDays: 10, actionDays: 3 },
+      // Earnings seasons (Q1-Q4)
+      { date: "2026-01-12", name: "Q4 Earnings Season Opens", description: "Major corporate Q4 earnings reporting begins. Earnings misses, guidance cuts, and unexpected charges trigger rapid investor and media response. Activist investor activity historically spikes in weeks following earnings disappointments.", domain: "Financial", triggerProtocols: ["Investor Communications Protocol", "M&A Response Prepared response"], impact: "medium", warningDays: 5, actionDays: 1 },
+      { date: "2026-04-13", name: "Q1 Earnings Season Opens", description: "Q1 corporate earnings season. First quarter results reveal how companies absorbed year-start conditions. Supply chain, consumer demand, and cost signals emerge here first.", domain: "Financial", triggerProtocols: ["Investor Communications Protocol", "Supply Chain Disruption Protocol"], impact: "medium", warningDays: 5, actionDays: 1 },
+      { date: "2026-07-13", name: "Q2 Earnings Season Opens", description: "Q2 corporate earnings season \u2014 mid-year check. Companies may revise full-year guidance, triggering volatility. M&A activity tends to peak in the weeks following earnings season.", domain: "Financial", triggerProtocols: ["Investor Communications Protocol", "M&A Response Prepared response"], impact: "medium", warningDays: 5, actionDays: 1 },
+      { date: "2026-10-12", name: "Q3 Earnings Season Opens", description: "Q3 corporate earnings season. Fall earnings reflect back-to-school and pre-holiday conditions. Retail, consumer, and tech sectors show highest sensitivity. This season frequently precedes significant strategic announcements.", domain: "Financial", triggerProtocols: ["Investor Communications Protocol", "Competitive Threat Response"], impact: "medium", warningDays: 5, actionDays: 1 },
+      // Annual compliance deadlines
+      { date: "2026-03-31", name: "Q4 SEC Annual Report Deadline (10-K)", description: "SEC 10-K annual report deadline for calendar-year-end public companies. Material weaknesses disclosed in 10-K filings trigger significant investor and regulatory scrutiny. Restatement risks are highest in the weeks surrounding this deadline.", domain: "Regulatory & Compliance", triggerProtocols: ["Regulatory Disclosure Protocol", "Regulatory Compliance Sprint"], impact: "high", warningDays: 14, actionDays: 5 },
+      { date: "2026-05-15", name: "Proxy Season Peak (Shareholder Votes)", description: "Annual shareholder meeting season peaks. Activist investor proposals, executive compensation votes, and ESG resolutions reach maximum investor attention. Proxy advisors (ISS, Glass Lewis) publish final recommendations 6 weeks prior.", domain: "Brand & Reputation", triggerProtocols: ["Investor Communications Protocol", "ESG Crisis Response"], impact: "high", warningDays: 21, actionDays: 7 },
+      // GDPR anniversary / enforcement cycle
+      { date: "2026-05-25", name: "GDPR Enforcement Anniversary", description: "Annual peak in EU GDPR enforcement actions. European Data Protection Authorities historically issue major fines in the May-June window. Organizations with EU data operations should review data governance protocols.", domain: "Regulatory & Compliance", triggerProtocols: ["Regulatory Compliance Sprint", "Regulatory Disclosure Protocol"], impact: "medium", warningDays: 14, actionDays: 3 },
+      // US election / political transition
+      { date: "2026-11-03", name: "US Midterm Election Day", description: "US midterm elections. Congressional composition changes affect regulatory agency priorities, enforcement budgets, and legislative agendas across healthcare, energy, finance, and technology sectors. Strategic scenario planning for regulatory shifts is recommended.", domain: "Regulatory & Compliance", triggerProtocols: ["Geopolitical Risk Response", "Regulatory Compliance Sprint"], impact: "high", warningDays: 21, actionDays: 3 }
+    ];
+  }
+});
+
+// server/services/signals/OFACSDNService.ts
+function parseRSSDate(dateStr) {
+  try {
+    return new Date(dateStr);
+  } catch {
+    return /* @__PURE__ */ new Date(0);
+  }
+}
+async function fetchOFACRSSNotices() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS3 * 864e5);
+  try {
+    const res = await fetch(OFAC_RSS, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence", Accept: "application/rss+xml,application/xml,text/xml" },
+      signal: AbortSignal.timeout(12e3)
+    });
+    if (!res.ok) throw new Error(`OFAC RSS ${res.status}`);
+    const xml = await res.text();
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+    let count12 = 0;
+    for (const item of items) {
+      const title = (item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) || item.match(/<title>(.*?)<\/title>/))?.[1]?.trim() || "";
+      const link = (item.match(/<link>(.*?)<\/link>/) || [])[1]?.trim() || "";
+      const pubDateStr = (item.match(/<pubDate>(.*?)<\/pubDate>/) || [])[1]?.trim() || "";
+      const desc30 = (item.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/) || item.match(/<description>(.*?)<\/description>/))?.[1]?.trim() || "";
+      const pubDate = pubDateStr ? parseRSSDate(pubDateStr) : /* @__PURE__ */ new Date();
+      if (pubDate < cutoff) continue;
+      count12++;
+      const isSanctionsUpdate = /sanction|designation|SDN|blocked|delisted|added|entity list/i.test(title + " " + desc30);
+      const confidence = isSanctionsUpdate ? 88 : 72;
+      const isHighValue = /russia|china|iran|north korea|venezuela|myanmar|cuba|belarus/i.test(title + " " + desc30);
+      signals.push({
+        signalType: "regulatory",
+        description: `OFAC Sanctions Notice: ${title}. ${desc30.substring(0, 400)} Supply chain counterparty risk requires immediate verification against SDN list.`,
+        confidence: isHighValue ? Math.min(confidence + 8, 96) : confidence,
+        impact: isHighValue ? "critical" : "high",
+        timeline: "immediate",
+        source: "OFAC \u2014 Office of Foreign Assets Control",
+        sourceUrl: link || "https://home.treasury.gov/policy-issues/financial-sanctions/recent-actions",
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "sanctions_designation",
+        regulatorAgency: "OFAC / US Treasury",
+        penaltyAmountRange: "Civil penalties up to $1M+ per violation",
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: "sanctions_action",
+        effectiveTimeline: pubDateStr,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: "sanctions_update",
+        metricName: "Days Since Sanctions Update",
+        metricValue: Math.round((Date.now() - pubDate.getTime()) / 864e5),
+        metricThreshold: 7,
+        metricUnit: "days"
+      });
+    }
+    console.log(`[OFAC] ${count12} sanctions notice(s) in last ${LOOKBACK_DAYS3} days`);
+  } catch (err) {
+    console.warn(`[OFAC] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+async function fetchBISEntityListUpdates() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS3 * 864e5);
+  try {
+    const res = await fetch(BIS_FEDERAL_REGISTER_URL, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(12e3)
+    });
+    if (!res.ok) throw new Error(`BIS Fed Register ${res.status}`);
+    const data = await res.json();
+    const results = (data.results || []).filter((r) => new Date(r.publication_date) >= cutoff);
+    for (const article of results.slice(0, 3)) {
+      signals.push({
+        signalType: "regulatory",
+        description: `BIS Export Control Update: ${article.title}. ${(article.abstract || "").substring(0, 350)} New entity list designations may restrict supply chain partnerships and technology exports.`,
+        confidence: 81,
+        impact: "high",
+        timeline: "1-7 days",
+        source: "BIS \u2014 Bureau of Industry and Security",
+        sourceUrl: article.html_url,
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: "export_control",
+        regulatorAgency: "BIS / Commerce Dept",
+        penaltyAmountRange: "Criminal penalties up to $1M; civil up to $300K per violation",
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: "export_control",
+        effectiveTimeline: article.publication_date,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: "entity_list_update",
+        metricName: "Days Since BIS Update",
+        metricValue: Math.round((Date.now() - new Date(article.publication_date).getTime()) / 864e5),
+        metricThreshold: 7,
+        metricUnit: "days"
+      });
+    }
+    if (results.length > 0) console.log(`[BIS Entity List] ${results.length} export control update(s) in last ${LOOKBACK_DAYS3} days`);
+  } catch (err) {
+    console.warn(`[BIS] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+async function fetchOFACSDNSignals() {
+  const [ofac, bis] = await Promise.allSettled([fetchOFACRSSNotices(), fetchBISEntityListUpdates()]);
+  return [
+    ...ofac.status === "fulfilled" ? ofac.value : [],
+    ...bis.status === "fulfilled" ? bis.value : []
+  ];
+}
+var OFAC_RSS, BIS_FEDERAL_REGISTER_URL, LOOKBACK_DAYS3;
+var init_OFACSDNService = __esm({
+  "server/services/signals/OFACSDNService.ts"() {
+    "use strict";
+    OFAC_RSS = "https://home.treasury.gov/rss-feeds/ofac-notices";
+    BIS_FEDERAL_REGISTER_URL = "https://www.federalregister.gov/api/v1/articles.json?conditions[agencies][]=industry-and-security-bureau&conditions[type][]=RULE&conditions[type][]=NOTICE&per_page=10&order=newest";
+    LOOKBACK_DAYS3 = 14;
+  }
+});
+
+// server/services/signals/GDELTService.ts
+function toneToConfidence(articleCount, query) {
+  if (articleCount >= 20) return 86;
+  if (articleCount >= 10) return 78;
+  if (articleCount >= 5) return 70;
+  return 62;
+}
+function articleCountToImpact(count12) {
+  if (count12 >= 20) return "critical";
+  if (count12 >= 10) return "high";
+  if (count12 >= 5) return "medium";
+  return "low";
+}
+async function queryGDELT(queryDef) {
+  try {
+    const timespan = `${LOOKBACK_HOURS}h`;
+    const url = new URL(GDELT_DOC_API);
+    url.searchParams.set("query", queryDef.query);
+    url.searchParams.set("mode", "artlist");
+    url.searchParams.set("maxrecords", "50");
+    url.searchParams.set("timespan", timespan);
+    url.searchParams.set("format", "json");
+    url.searchParams.set("sort", "DateDesc");
+    const res = await fetch(url.toString(), {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(15e3)
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const articles = data.articles || [];
+    if (articles.length === 0) return null;
+    const domains = [...new Set(articles.map((a) => a.domain))].slice(0, 5);
+    const countries = [...new Set(articles.map((a) => a.sourcecountry).filter(Boolean))].slice(0, 4);
+    const topTitles = articles.slice(0, 3).map((a) => a.title).join(" | ");
+    const confidence = toneToConfidence(articles.length, queryDef.query);
+    const impact = articleCountToImpact(articles.length);
+    return {
+      signalType: queryDef.domain,
+      description: `GDELT Event Velocity: ${articles.length} global coverage events in last ${LOOKBACK_HOURS}h for "${queryDef.label}" pattern. Leading sources: ${domains.join(", ")}. Countries: ${countries.join(", ")}. Top headlines: ${topTitles.substring(0, 400)}`,
+      confidence,
+      impact,
+      timeline: "1-7 days",
+      source: "GDELT Project \u2014 Global Event Database",
+      sourceUrl: url.toString(),
+      category: queryDef.domain,
+      jurisdiction: "Global",
+      confidenceTier: 2,
+      enforcementActionType: null,
+      regulatorAgency: null,
+      penaltyAmountRange: null,
+      namedSector: queryDef.label,
+      threatSeverity: impact === "critical" ? "critical" : impact === "high" ? "high" : "medium",
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: queryDef.label,
+      economicIndicatorType: null,
+      indicatorDirection: "increasing",
+      indicatorMagnitude: `${articles.length} articles`,
+      centralBank: null,
+      tradeActionType: queryDef.domain === "geopolitical" ? "geopolitical_event" : null,
+      effectiveTimeline: null,
+      tradePartner: countries[0] || null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: null,
+      recallScope: null,
+      signalEventType: "news_velocity_spike",
+      metricName: "Global Article Count (24h)",
+      metricValue: articles.length,
+      metricThreshold: 5,
+      metricUnit: "articles"
+    };
+  } catch {
+    return null;
+  }
+}
+async function fetchGDELTSignals() {
+  const signals = [];
+  try {
+    const results = await Promise.allSettled(
+      GEOPOLITICAL_QUERIES.map((q) => queryGDELT(q))
+    );
+    let detected = 0;
+    for (const r of results) {
+      if (r.status === "fulfilled" && r.value) {
+        signals.push(r.value);
+        detected++;
+      }
+    }
+    console.log(`[GDELT] ${detected} event velocity pattern(s) detected across ${GEOPOLITICAL_QUERIES.length} query domains`);
+  } catch (err) {
+    console.warn(`[GDELT] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var GDELT_DOC_API, LOOKBACK_HOURS, GEOPOLITICAL_QUERIES;
+var init_GDELTService = __esm({
+  "server/services/signals/GDELTService.ts"() {
+    "use strict";
+    GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc";
+    LOOKBACK_HOURS = 24;
+    GEOPOLITICAL_QUERIES = [
+      { query: 'sanctions OR "supply chain disruption" OR "trade war" OR embargo', trigger: "Geopolitical Risk Signal", domain: "geopolitical", label: "Trade & Sanctions" },
+      { query: 'cyberattack OR "data breach" OR ransomware OR "critical infrastructure"', trigger: "Cybersecurity Breach Signal", domain: "cybersecurity", label: "Cyber Threat" },
+      { query: '"class action" OR "SEC investigation" OR "DOJ investigation" OR "regulatory fine"', trigger: "Regulatory Enforcement Action", domain: "regulatory", label: "Legal/Regulatory" },
+      { query: '"activist investor" OR "hostile takeover" OR "shareholder pressure" OR "proxy fight"', trigger: "M&A Activity Detected", domain: "market", label: "Activist Activity" },
+      { query: '"executive departure" OR "CEO resign" OR "CFO resign" OR "board resignation"', trigger: "Executive Leadership Event", domain: "reputation", label: "Leadership Change" }
+    ];
+  }
+});
+
+// server/services/signals/FederalRegisterService.ts
+function scoreArticle(article) {
+  let score = 60;
+  if (article.significant) score += 15;
+  if (article.type === "RULE") score += 10;
+  if (article.type === "PRORULE") score += 8;
+  const text3 = (article.title + " " + (article.abstract || "")).toLowerCase();
+  const matchCount = HIGH_IMPACT_TERMS.filter((t) => text3.includes(t.toLowerCase())).length;
+  score += Math.min(matchCount * 5, 20);
+  const daysAgo2 = (Date.now() - new Date(article.publication_date).getTime()) / 864e5;
+  if (daysAgo2 <= 3) score += 8;
+  else if (daysAgo2 <= 7) score += 4;
+  return Math.min(score, 94);
+}
+function articleToImpact(confidence) {
+  if (confidence >= 85) return "high";
+  if (confidence >= 75) return "medium";
+  return "low";
+}
+async function fetchAgencyRules(agencySlug) {
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS4 * 864e5);
+  const dateStr = cutoff.toISOString().split("T")[0];
+  const url = `${BASE3}?conditions[agencies][]=${agencySlug}&conditions[type][]=RULE&conditions[type][]=PRORULE&conditions[publication_date][gte]=${dateStr}&per_page=5&order=newest&fields[]=title&fields[]=abstract&fields[]=html_url&fields[]=publication_date&fields[]=effective_on&fields[]=agencies&fields[]=document_number&fields[]=type&fields[]=action&fields[]=significant`;
+  const res = await fetch(url, {
+    headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+    signal: AbortSignal.timeout(1e4)
+  });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.results || [];
+}
+async function fetchFederalRegisterSignals() {
+  const signals = [];
+  try {
+    const results = await Promise.allSettled(
+      HIGH_IMPACT_AGENCIES.slice(0, 6).map((a) => fetchAgencyRules(a))
+    );
+    const articles = [];
+    for (const r of results) {
+      if (r.status === "fulfilled") articles.push(...r.value);
+    }
+    const seen = /* @__PURE__ */ new Set();
+    let significant = 0;
+    for (const article of articles) {
+      if (seen.has(article.document_number)) continue;
+      seen.add(article.document_number);
+      const confidence = scoreArticle(article);
+      if (confidence < 68) continue;
+      significant++;
+      const agencyNames = article.agencies.map((a) => a.short_name || a.name).join(", ");
+      const effectiveLabel = article.effective_on ? ` Effective: ${article.effective_on}.` : "";
+      const commentLabel = article.comment_date ? ` Comment deadline: ${article.comment_date}.` : "";
+      const typeLabel = article.type === "RULE" ? "Final Rule" : "Proposed Rule";
+      signals.push({
+        signalType: "regulatory",
+        description: `Federal Register ${typeLabel}: "${article.title}" \u2014 ${agencyNames}.${effectiveLabel}${commentLabel} ${(article.abstract || "").substring(0, 400)} Regulatory pipeline item requiring compliance readiness assessment.`,
+        confidence,
+        impact: articleToImpact(confidence),
+        timeline: article.effective_on ? `Effective ${article.effective_on}` : "30-90 days",
+        source: "Federal Register \u2014 Unified Regulatory Agenda",
+        sourceUrl: article.html_url,
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: article.type === "RULE" ? "final_rule" : "proposed_rule",
+        regulatorAgency: agencyNames,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: article.effective_on || null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: "regulatory_pipeline",
+        metricName: "Days Until Effective",
+        metricValue: article.effective_on ? Math.round((new Date(article.effective_on).getTime() - Date.now()) / 864e5) : null,
+        metricThreshold: 90,
+        metricUnit: "days"
+      });
+    }
+    console.log(`[Federal Register] ${significant} significant rule(s) in last ${LOOKBACK_DAYS4} days`);
+  } catch (err) {
+    console.warn(`[Federal Register] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var BASE3, LOOKBACK_DAYS4, HIGH_IMPACT_AGENCIES, HIGH_IMPACT_TERMS;
+var init_FederalRegisterService = __esm({
+  "server/services/signals/FederalRegisterService.ts"() {
+    "use strict";
+    BASE3 = "https://www.federalregister.gov/api/v1/articles.json";
+    LOOKBACK_DAYS4 = 30;
+    HIGH_IMPACT_AGENCIES = [
+      "securities-and-exchange-commission",
+      "federal-trade-commission",
+      "department-of-justice",
+      "federal-reserve-system",
+      "office-of-the-comptroller-of-the-currency",
+      "consumer-financial-protection-bureau",
+      "environmental-protection-agency",
+      "department-of-labor",
+      "occupational-safety-and-health-administration",
+      "department-of-health-and-human-services",
+      "food-and-drug-administration",
+      "department-of-homeland-security"
+    ];
+    HIGH_IMPACT_TERMS = [
+      "cybersecurity",
+      "data breach",
+      "artificial intelligence",
+      "machine learning",
+      "climate risk",
+      "ESG",
+      "supply chain",
+      "sanctions",
+      "export control",
+      "antitrust",
+      "merger",
+      "acquisition",
+      "privacy",
+      "CCPA",
+      "GDPR",
+      "cryptocurrency",
+      "digital asset",
+      "banking",
+      "capital requirement"
+    ];
+  }
+});
+
+// server/services/signals/NISTNVDService.ts
+function getCVSSScore(cve) {
+  const v31 = cve.metrics?.cvssMetricV31?.[0];
+  if (v31) return { score: v31.cvssData.baseScore, severity: v31.cvssData.baseSeverity, vector: v31.cvssData.vectorString };
+  const v30 = cve.metrics?.cvssMetricV30?.[0];
+  if (v30) return { score: v30.cvssData.baseScore, severity: v30.cvssData.baseSeverity, vector: "" };
+  const v2 = cve.metrics?.cvssMetricV2?.[0];
+  if (v2) return { score: v2.cvssData.baseScore, severity: v2.cvssData.baseScore >= 7 ? "HIGH" : "MEDIUM", vector: "" };
+  return null;
+}
+function extractVendorsFromConfig(cve) {
+  const vendors = [];
+  try {
+    const configs = cve.configurations || [];
+    for (const config of configs) {
+      for (const node of config.nodes || []) {
+        for (const cpeMatch of node.cpeMatch || []) {
+          const parts = (cpeMatch.criteria || "").split(":");
+          if (parts[3]) vendors.push(parts[3]);
+        }
+      }
+    }
+  } catch {
+  }
+  return [...new Set(vendors)].slice(0, 3);
+}
+function hasPublicExploit(cve) {
+  return (cve.references || []).some(
+    (r) => r.tags?.some((t) => ["Exploit", "Patch", "Third Party Advisory"].includes(t))
+  );
+}
+async function fetchNISTNVDSignals() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS5 * 864e5);
+  const pubStartDate = cutoff.toISOString().replace("Z", ".000");
+  const pubEndDate = (/* @__PURE__ */ new Date()).toISOString().replace("Z", ".000");
+  try {
+    const apiKey = process.env.NVD_API_KEY;
+    const headers = { "User-Agent": "ReadinessOS/1.0 signal-intelligence" };
+    if (apiKey) headers["apiKey"] = apiKey;
+    const url = `${NVD_BASE}?pubStartDate=${encodeURIComponent(pubStartDate)}&pubEndDate=${encodeURIComponent(pubEndDate)}&cvssV3Severity=CRITICAL&resultsPerPage=20`;
+    const res = await fetch(url, { headers, signal: AbortSignal.timeout(2e4) });
+    if (!res.ok) throw new Error(`NVD returned ${res.status}`);
+    const data = await res.json();
+    const cves = data.vulnerabilities || [];
+    let added = 0;
+    for (const { cve } of cves.slice(0, 15)) {
+      const cvss = getCVSSScore(cve);
+      if (!cvss) continue;
+      if (cvss.score < CVSS_HIGH_THRESHOLD) continue;
+      const desc30 = cve.descriptions.find((d) => d.lang === "en")?.value || "No description available.";
+      const vendors = extractVendorsFromConfig(cve);
+      const hasExploit = hasPublicExploit(cve);
+      const daysOld = (Date.now() - new Date(cve.published).getTime()) / 864e5;
+      let confidence = cvss.score >= CVSS_CRITICAL_THRESHOLD ? 89 : 79;
+      if (hasExploit) confidence = Math.min(confidence + 7, 96);
+      if (daysOld <= 2) confidence = Math.min(confidence + 5, 97);
+      const vendorLabel = vendors.length > 0 ? ` Affects: ${vendors.join(", ")}.` : "";
+      const exploitLabel = hasExploit ? " Public exploit code available." : "";
+      const vectorLabel = cvss.vector ? ` Vector: ${cvss.vector.substring(0, 60)}.` : "";
+      signals.push({
+        signalType: "cybersecurity",
+        description: `NVD CVE: ${cve.id} \u2014 CVSS ${cvss.score}/10 (${cvss.severity}).${vendorLabel}${exploitLabel}${vectorLabel} ${desc30.substring(0, 350)}`,
+        confidence,
+        impact: cvss.score >= CVSS_CRITICAL_THRESHOLD ? "critical" : "high",
+        timeline: hasExploit ? "immediate" : "1-7 days",
+        source: "NIST National Vulnerability Database",
+        sourceUrl: `https://nvd.nist.gov/vuln/detail/${cve.id}`,
+        category: "cybersecurity",
+        jurisdiction: "Global",
+        confidenceTier: 1,
+        threatSeverity: cvss.severity.toLowerCase(),
+        exploitStatus: hasExploit ? "public_exploit_available" : "no_known_exploit",
+        affectedVendor: vendors[0] || null,
+        cveId: cve.id,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        enforcementActionType: null,
+        regulatorAgency: "NIST",
+        penaltyAmountRange: null,
+        namedSector: null,
+        signalEventType: null,
+        metricName: "CVSS Score",
+        metricValue: cvss.score,
+        metricThreshold: CVSS_HIGH_THRESHOLD,
+        metricUnit: "/10"
+      });
+      added++;
+    }
+    console.log(`[NIST NVD] ${added} critical/high CVE(s) published in last ${LOOKBACK_DAYS5} days (total: ${data.totalResults})`);
+  } catch (err) {
+    console.warn(`[NIST NVD] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var NVD_BASE, LOOKBACK_DAYS5, CVSS_CRITICAL_THRESHOLD, CVSS_HIGH_THRESHOLD;
+var init_NISTNVDService = __esm({
+  "server/services/signals/NISTNVDService.ts"() {
+    "use strict";
+    NVD_BASE = "https://services.nvd.nist.gov/rest/json/cves/2.0";
+    LOOKBACK_DAYS5 = 7;
+    CVSS_CRITICAL_THRESHOLD = 9;
+    CVSS_HIGH_THRESHOLD = 7;
+  }
+});
+
+// server/services/signals/NOAAFEMAService.ts
+function incidentToImpact(incidentType, state, programsActive) {
+  const isHigh = HIGH_IMPACT_INCIDENTS.some((i) => incidentType.toLowerCase().includes(i.toLowerCase()));
+  const isMajorHub = OPERATIONAL_HUBS.includes(state);
+  if (isHigh && isMajorHub && programsActive >= 3) return "critical";
+  if (isHigh && (isMajorHub || programsActive >= 2)) return "high";
+  if (isHigh || programsActive >= 2) return "medium";
+  return "low";
+}
+async function fetchFEMADeclarations() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS6 * 864e5);
+  const dateStr = cutoff.toISOString();
+  try {
+    const url = `${FEMA_API}?$filter=declarationDate ge '${dateStr}'&$orderby=declarationDate desc&$top=20&$format=json`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(15e3)
+    });
+    if (!res.ok) throw new Error(`FEMA API ${res.status}`);
+    const data = await res.json();
+    const declarations = data.DisasterDeclarationsSummaries || [];
+    let added = 0;
+    for (const dec of declarations.slice(0, 10)) {
+      const programsActive = [dec.ihProgramDeclared, dec.iaProgramDeclared, dec.paProgramDeclared, dec.hmProgramDeclared].filter(Boolean).length;
+      const impact = incidentToImpact(dec.incidentType, dec.state, programsActive);
+      if (impact === "low") continue;
+      const confidence = impact === "critical" ? 87 : impact === "high" ? 80 : 72;
+      const activePrograms = [
+        dec.ihProgramDeclared && "Individual Assistance",
+        dec.iaProgramDeclared && "Individual & Households",
+        dec.paProgramDeclared && "Public Assistance",
+        dec.hmProgramDeclared && "Hazard Mitigation"
+      ].filter(Boolean).join(", ");
+      signals.push({
+        signalType: "supply_chain",
+        description: `FEMA Disaster Declaration #${dec.disasterNumber}: ${dec.declarationTitle} \u2014 ${dec.incidentType} in ${dec.state}. ${dec.declarationType} declaration. Active programs: ${activePrograms || "Basic assistance"}. Operational continuity and supply chain resilience protocols warranted for operations in or through ${dec.state}.`,
+        confidence,
+        impact,
+        timeline: "1-7 days",
+        source: "FEMA \u2014 Federal Emergency Management Agency",
+        sourceUrl: `https://www.fema.gov/disaster/${dec.disasterNumber}`,
+        category: "supply_chain",
+        jurisdiction: `US-${dec.state}`,
+        confidenceTier: 1,
+        enforcementActionType: null,
+        regulatorAgency: "FEMA",
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: dec.incidentBeginDate,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: "Operations / Infrastructure",
+        recallScope: `${dec.state} \u2014 ${dec.declarationType} declaration`,
+        signalEventType: "disaster_declaration",
+        metricName: "Programs Activated",
+        metricValue: programsActive,
+        metricThreshold: 2,
+        metricUnit: "federal programs"
+      });
+      added++;
+    }
+    console.log(`[FEMA] ${added} significant disaster declaration(s) in last ${LOOKBACK_DAYS6} days`);
+    return signals;
+  } catch (err) {
+    console.warn(`[FEMA] Fetch failed:`, err instanceof Error ? err.message : err);
+    return [];
+  }
+}
+async function fetchNOAASevereWeather() {
+  const signals = [];
+  try {
+    const res = await fetch(NOAA_ALERTS, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence (contact: readiness-os@example.com)", Accept: "application/geo+json" },
+      signal: AbortSignal.timeout(12e3)
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const alerts = (data.features || []).filter((f) => {
+      const sev = f.properties.severity;
+      return sev === "Extreme" || sev === "Severe";
+    });
+    if (alerts.length === 0) return [];
+    const extremeAlerts = alerts.filter((a) => a.properties.severity === "Extreme");
+    const affectedAreas = [...new Set(alerts.map((a) => a.properties.areaDesc.split(";")[0].trim()))].slice(0, 5);
+    const eventTypes = [...new Set(alerts.map((a) => a.properties.event))].slice(0, 4);
+    const confidence = extremeAlerts.length > 0 ? 83 : 73;
+    const impact = extremeAlerts.length >= 3 ? "critical" : extremeAlerts.length >= 1 ? "high" : "medium";
+    signals.push({
+      signalType: "supply_chain",
+      description: `NOAA Weather Alert: ${alerts.length} active severe/extreme weather alert(s). ${extremeAlerts.length > 0 ? `${extremeAlerts.length} EXTREME severity.` : ""} Event types: ${eventTypes.join(", ")}. Affected areas: ${affectedAreas.join("; ")}. Operational continuity and logistics readiness review recommended.`,
+      confidence,
+      impact,
+      timeline: "immediate",
+      source: "NOAA \u2014 National Weather Service",
+      sourceUrl: "https://www.weather.gov/alerts",
+      category: "supply_chain",
+      jurisdiction: "US",
+      confidenceTier: 1,
+      enforcementActionType: null,
+      regulatorAgency: "NOAA",
+      penaltyAmountRange: null,
+      namedSector: "Logistics / Operations",
+      threatSeverity: null,
+      exploitStatus: null,
+      affectedVendor: null,
+      cveId: null,
+      affectedSector: "Operations",
+      economicIndicatorType: null,
+      indicatorDirection: null,
+      indicatorMagnitude: null,
+      centralBank: null,
+      tradeActionType: null,
+      effectiveTimeline: null,
+      tradePartner: null,
+      affectedHsCodes: null,
+      recallClass: null,
+      affectedProductType: "Logistics / Facilities",
+      recallScope: affectedAreas.join("; "),
+      signalEventType: "severe_weather",
+      metricName: "Active Severe/Extreme Alerts",
+      metricValue: alerts.length,
+      metricThreshold: 3,
+      metricUnit: "alerts"
+    });
+    console.log(`[NOAA] ${alerts.length} active severe/extreme weather alert(s)`);
+    return signals;
+  } catch (err) {
+    console.warn(`[NOAA] Fetch failed:`, err instanceof Error ? err.message : err);
+    return [];
+  }
+}
+async function fetchNOAAFEMASignals() {
+  const [fema, noaa] = await Promise.allSettled([fetchFEMADeclarations(), fetchNOAASevereWeather()]);
+  return [
+    ...fema.status === "fulfilled" ? fema.value : [],
+    ...noaa.status === "fulfilled" ? noaa.value : []
+  ];
+}
+var FEMA_API, NOAA_ALERTS, LOOKBACK_DAYS6, HIGH_IMPACT_INCIDENTS, OPERATIONAL_HUBS;
+var init_NOAAFEMAService = __esm({
+  "server/services/signals/NOAAFEMAService.ts"() {
+    "use strict";
+    FEMA_API = "https://www.fema.gov/api/open/v2/disasterDeclarationsSummaries";
+    NOAA_ALERTS = "https://api.weather.gov/alerts/active?status=actual&message_type=alert&severity=Extreme,Severe&urgency=Immediate,Expected&limit=50";
+    LOOKBACK_DAYS6 = 14;
+    HIGH_IMPACT_INCIDENTS = ["Hurricane", "Flood", "Tornado", "Earthquake", "Wildfire", "Winter Storm", "Tsunami", "Severe Storm", "Drought", "Extreme Cold"];
+    OPERATIONAL_HUBS = ["CA", "TX", "NY", "FL", "IL", "OH", "PA", "GA", "NC", "WA", "OR", "NJ", "VA", "MA"];
+  }
+});
+
+// server/services/signals/CongressService.ts
+function billRelevanceScore(bill) {
+  const text3 = (bill.title + " " + (bill.latestAction?.text || "")).toLowerCase();
+  let score = 50;
+  const matchCount = HIGH_IMPACT_KEYWORDS.filter((k) => text3.includes(k)).length;
+  score += matchCount * 8;
+  if (bill.type === "HR" || bill.type === "S") score += 15;
+  const action = (bill.latestAction?.text || "").toLowerCase();
+  if (action.includes("passed") || action.includes("signed")) score += 20;
+  if (action.includes("committee")) score += 10;
+  if (action.includes("floor")) score += 15;
+  return Math.min(score, 92);
+}
+async function fetchCongressSignals() {
+  const signals = [];
+  const apiKey = process.env.CONGRESS_API_KEY;
+  if (!apiKey) {
+    console.log(`[Congress.gov] CONGRESS_API_KEY not configured \u2014 legislative monitoring inactive. Free key at https://api.congress.gov/sign-up/`);
+    return [];
+  }
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS7 * 864e5);
+  const fromDate = cutoff.toISOString().split("T")[0];
+  try {
+    const url = `${CONGRESS_API_BASE}/bill?format=json&limit=50&sort=updateDate+desc&fromDateTime=${fromDate}T00:00:00Z&api_key=${apiKey}`;
+    const res = await fetch(url, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(15e3)
+    });
+    if (!res.ok) throw new Error(`Congress.gov returned ${res.status}`);
+    const data = await res.json();
+    const bills = data.bills || [];
+    let added = 0;
+    for (const bill of bills) {
+      const score = billRelevanceScore(bill);
+      if (score < 68) continue;
+      const chamberLabel = CHAMBER_LABELS[bill.originChamberCode] || bill.originChamber;
+      const actionText = bill.latestAction ? `Latest action (${bill.latestAction.actionDate}): ${bill.latestAction.text}` : "";
+      const confidence = Math.min(score, 88);
+      signals.push({
+        signalType: "regulatory",
+        description: `Legislation Signal: ${chamberLabel} ${bill.type}${bill.number} \u2014 "${bill.title}". ${actionText}. Advance monitoring of regulatory pipeline \u2014 policy change readiness protocols recommended.`,
+        confidence,
+        impact: score >= 82 ? "high" : "medium",
+        timeline: "30-180 days",
+        source: "Congress.gov \u2014 Legislative Intelligence",
+        sourceUrl: bill.url.replace("api.congress.gov/v3", "congress.gov").replace("/bill/", "/bill/").replace(".json", ""),
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 2,
+        enforcementActionType: "pending_legislation",
+        regulatorAgency: `US Congress \u2014 ${chamberLabel}`,
+        penaltyAmountRange: null,
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: "legislative_activity",
+        metricName: "Relevance Score",
+        metricValue: score,
+        metricThreshold: 68,
+        metricUnit: "/100"
+      });
+      added++;
+    }
+    console.log(`[Congress.gov] ${added} relevant bill(s) with activity in last ${LOOKBACK_DAYS7} days`);
+  } catch (err) {
+    console.warn(`[Congress.gov] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var CONGRESS_API_BASE, LOOKBACK_DAYS7, HIGH_IMPACT_KEYWORDS, CHAMBER_LABELS;
+var init_CongressService = __esm({
+  "server/services/signals/CongressService.ts"() {
+    "use strict";
+    CONGRESS_API_BASE = "https://api.congress.gov/v3";
+    LOOKBACK_DAYS7 = 30;
+    HIGH_IMPACT_KEYWORDS = [
+      "artificial intelligence",
+      "cybersecurity",
+      "data privacy",
+      "antitrust",
+      "supply chain",
+      "climate",
+      "ESG",
+      "labor",
+      "healthcare",
+      "drug pricing",
+      "financial regulation",
+      "trade",
+      "tariff",
+      "sanctions",
+      "infrastructure",
+      "cryptocurrency",
+      "digital asset",
+      "banking",
+      "merger",
+      "acquisition"
+    ];
+    CHAMBER_LABELS = {
+      H: "House",
+      S: "Senate",
+      HR: "House Resolution",
+      SRES: "Senate Resolution"
+    };
+  }
+});
+
+// server/services/signals/FTCEnforcementService.ts
+function parseRSSDate2(d) {
+  try {
+    return new Date(d);
+  } catch {
+    return /* @__PURE__ */ new Date(0);
+  }
+}
+function parseFTCRSS(xml) {
+  const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+  return items.map((item) => ({
+    title: (item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/) || item.match(/<title>(.*?)<\/title>/))?.[1]?.trim() || "",
+    description: (item.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/) || item.match(/<description>(.*?)<\/description>/))?.[1]?.trim() || "",
+    link: (item.match(/<link>(.*?)<\/link>/) || [])[1]?.trim() || "",
+    pubDate: (item.match(/<pubDate>(.*?)<\/pubDate>/) || [])[1]?.trim() || "",
+    category: (item.match(/<category><!\[CDATA\[(.*?)\]\]><\/category>/) || item.match(/<category>(.*?)<\/category>/))?.[1]?.trim()
+  }));
+}
+function scoreEnforcement(item) {
+  const text3 = (item.title + " " + item.description).toLowerCase();
+  let score = 62;
+  const matchCount = HIGH_IMPACT_CATEGORIES.filter((k) => text3.includes(k)).length;
+  score += matchCount * 7;
+  if (text3.includes("complaint") || text3.includes("charges")) score += 12;
+  if (text3.includes("penalty") || text3.includes("fine") || text3.includes("million")) score += 10;
+  if (text3.includes("consent") || text3.includes("order") || text3.includes("settlement")) score += 8;
+  if (text3.includes("merger") || text3.includes("acquisition") || text3.includes("antitrust")) score += 10;
+  return Math.min(score, 92);
+}
+async function fetchFTCEnforcementSignals() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS8 * 864e5);
+  try {
+    const feedUrl = FTC_PRESS_RSS;
+    const res = await fetch(feedUrl, {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence (enforcement-monitoring)", Accept: "application/rss+xml,application/xml,text/xml,*/*" },
+      signal: AbortSignal.timeout(15e3)
+    });
+    if (!res.ok) {
+      const res2 = await fetch(FTC_ENFORCEMENT_RSS, {
+        headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence", Accept: "*/*" },
+        signal: AbortSignal.timeout(12e3)
+      });
+      if (!res2.ok) throw new Error(`FTC RSS ${res2.status}`);
+      const xml2 = await res2.text();
+      const items2 = parseFTCRSS(xml2);
+      const recent2 = items2.filter((i) => parseRSSDate2(i.pubDate) >= cutoff);
+      let added2 = 0;
+      for (const item of recent2) {
+        const score = scoreEnforcement(item);
+        if (score < 72) continue;
+        const text3 = (item.title + " " + item.description).toLowerCase();
+        let actionType = "enforcement_notice";
+        if (text3.includes("merger") || text3.includes("acquisition")) actionType = "merger_challenge";
+        if (text3.includes("complaint")) actionType = "enforcement_complaint";
+        if (text3.includes("consent") || text3.includes("settlement")) actionType = "consent_order";
+        signals.push({
+          signalType: "regulatory",
+          description: `FTC Enforcement Action: ${item.title}. ${item.description.substring(0, 450)}`,
+          confidence: Math.min(score, 91),
+          impact: score >= 84 ? "high" : "medium",
+          timeline: "30-90 days",
+          source: "FTC \u2014 Federal Trade Commission",
+          sourceUrl: item.link || "https://www.ftc.gov/news-events/news/press-releases",
+          category: "regulatory",
+          jurisdiction: "US",
+          confidenceTier: 1,
+          enforcementActionType: actionType,
+          regulatorAgency: "Federal Trade Commission",
+          penaltyAmountRange: text3.includes("billion") ? "$100M\u2013$1B+" : text3.includes("million") ? "$1M\u2013$100M" : "TBD",
+          namedSector: null,
+          threatSeverity: null,
+          exploitStatus: null,
+          affectedVendor: null,
+          cveId: null,
+          affectedSector: null,
+          economicIndicatorType: null,
+          indicatorDirection: null,
+          indicatorMagnitude: null,
+          centralBank: null,
+          tradeActionType: null,
+          effectiveTimeline: null,
+          tradePartner: null,
+          affectedHsCodes: null,
+          recallClass: null,
+          affectedProductType: null,
+          recallScope: null,
+          signalEventType: "enforcement_action",
+          metricName: "Enforcement Relevance Score",
+          metricValue: score,
+          metricThreshold: 72,
+          metricUnit: "/100"
+        });
+        added2++;
+      }
+      console.log(`[FTC] ${added2} significant enforcement action(s) via fallback feed`);
+      return signals;
+    }
+    const xml = await res.text();
+    const items = parseFTCRSS(xml);
+    const recent = items.filter((i) => parseRSSDate2(i.pubDate) >= cutoff);
+    let added = 0;
+    for (const item of recent) {
+      const score = scoreEnforcement(item);
+      if (score < 72) continue;
+      const isHighValue = score >= 84;
+      const text3 = (item.title + " " + item.description).toLowerCase();
+      let actionType = "enforcement_notice";
+      if (text3.includes("merger") || text3.includes("acquisition")) actionType = "merger_challenge";
+      if (text3.includes("complaint")) actionType = "enforcement_complaint";
+      if (text3.includes("consent") || text3.includes("settlement")) actionType = "consent_order";
+      if (text3.includes("civil investigative")) actionType = "civil_investigative_demand";
+      signals.push({
+        signalType: "regulatory",
+        description: `FTC Enforcement Action: ${item.title}. ${item.description.substring(0, 450)} Companies in affected industries should assess compliance exposure and activate regulatory readiness protocols.`,
+        confidence: Math.min(score, 91),
+        impact: isHighValue ? "high" : "medium",
+        timeline: "30-90 days",
+        source: "FTC \u2014 Federal Trade Commission",
+        sourceUrl: item.link || "https://www.ftc.gov/news-events/news/press-releases",
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 1,
+        enforcementActionType: actionType,
+        regulatorAgency: "Federal Trade Commission",
+        penaltyAmountRange: text3.includes("billion") ? "$100M\u2013$1B+" : text3.includes("million") ? "$1M\u2013$100M" : "TBD",
+        namedSector: null,
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: null,
+        economicIndicatorType: null,
+        indicatorDirection: null,
+        indicatorMagnitude: null,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: null,
+        recallScope: null,
+        signalEventType: "enforcement_action",
+        metricName: "Enforcement Relevance Score",
+        metricValue: score,
+        metricThreshold: 72,
+        metricUnit: "/100"
+      });
+      added++;
+    }
+    console.log(`[FTC] ${added} significant enforcement action(s) in last ${LOOKBACK_DAYS8} days`);
+  } catch (err) {
+    console.warn(`[FTC] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var FTC_PRESS_RSS, FTC_ENFORCEMENT_RSS, LOOKBACK_DAYS8, HIGH_IMPACT_CATEGORIES;
+var init_FTCEnforcementService = __esm({
+  "server/services/signals/FTCEnforcementService.ts"() {
+    "use strict";
+    FTC_PRESS_RSS = "https://www.ftc.gov/news-events/news.rss";
+    FTC_ENFORCEMENT_RSS = "https://www.ftc.gov/news-events/news/press-releases.rss";
+    LOOKBACK_DAYS8 = 30;
+    HIGH_IMPACT_CATEGORIES = [
+      "antitrust",
+      "merger",
+      "acquisition",
+      "privacy",
+      "data security",
+      "AI",
+      "artificial intelligence",
+      "dark pattern",
+      "deceptive",
+      "unfair",
+      "monopoly",
+      "consent decree",
+      "civil investigative demand",
+      "technology",
+      "social media",
+      "health",
+      "financial",
+      "pharmaceutical"
+    ];
+  }
+});
+
+// server/services/signals/CFPBComplaintService.ts
+async function fetchCFPBComplaintSignals() {
+  const signals = [];
+  const cutoff = new Date(Date.now() - LOOKBACK_DAYS9 * 864e5);
+  const dateStr = cutoff.toISOString().split("T")[0];
+  try {
+    const url = new URL(CFPB_API);
+    url.searchParams.set("date_received_min", dateStr);
+    url.searchParams.set("size", "0");
+    url.searchParams.set("field", "all");
+    url.searchParams.set("format", "json");
+    url.searchParams.set("no_aggs", "false");
+    url.searchParams.set("frm", "0");
+    url.searchParams.set("sort", "created_date_desc");
+    const res = await fetch(url.toString(), {
+      headers: { "User-Agent": "ReadinessOS/1.0 signal-intelligence" },
+      signal: AbortSignal.timeout(25e3)
+    });
+    if (!res.ok) throw new Error(`CFPB API ${res.status}`);
+    const data = await res.json();
+    const totalComplaints = data.hits?.total?.value || 0;
+    const productBuckets = data.aggregations?.product?.buckets || [];
+    const issueBuckets = data.aggregations?.issue?.buckets || [];
+    const companyBuckets = data.aggregations?.company?.buckets || [];
+    if (totalComplaints === 0) {
+      console.log(`[CFPB] No complaints returned from API`);
+      return [];
+    }
+    const dailyRate = totalComplaints / LOOKBACK_DAYS9;
+    const topProducts = productBuckets.slice(0, 5).map((b) => `${b.key} (${b.doc_count})`).join(", ");
+    const topIssues = issueBuckets.slice(0, 3).map((b) => b.key).join(", ");
+    const topCompanies = companyBuckets.slice(0, 3).map((b) => b.key).join(", ");
+    const isHighVolume = totalComplaints >= HIGH_VOLUME_THRESHOLD;
+    const confidence = isHighVolume ? 78 : 66;
+    const impact = dailyRate >= 50 ? "high" : dailyRate >= 20 ? "medium" : "low";
+    if (confidence >= 66) {
+      signals.push({
+        signalType: "regulatory",
+        description: `CFPB Complaint Velocity: ${totalComplaints.toLocaleString()} consumer complaints filed in last ${LOOKBACK_DAYS9} days (${Math.round(dailyRate)}/day). Top products: ${topProducts}. Top issues: ${topIssues}. Top companies: ${topCompanies}. Elevated complaint volume indicates regulatory scrutiny risk and potential reputational exposure for financial services sector.`,
+        confidence,
+        impact,
+        timeline: "30-90 days",
+        source: "CFPB \u2014 Consumer Financial Protection Bureau",
+        sourceUrl: "https://www.consumerfinance.gov/data-research/consumer-complaints/",
+        category: "regulatory",
+        jurisdiction: "US",
+        confidenceTier: 2,
+        enforcementActionType: "complaint_volume_spike",
+        regulatorAgency: "Consumer Financial Protection Bureau",
+        penaltyAmountRange: null,
+        namedSector: "Financial Services",
+        threatSeverity: null,
+        exploitStatus: null,
+        affectedVendor: null,
+        cveId: null,
+        affectedSector: "Financial Services",
+        economicIndicatorType: null,
+        indicatorDirection: "increasing",
+        indicatorMagnitude: `${totalComplaints} complaints`,
+        centralBank: null,
+        tradeActionType: null,
+        effectiveTimeline: null,
+        tradePartner: null,
+        affectedHsCodes: null,
+        recallClass: null,
+        affectedProductType: "Financial Products",
+        recallScope: null,
+        signalEventType: "complaint_velocity",
+        metricName: "Consumer Complaints (30 days)",
+        metricValue: totalComplaints,
+        metricThreshold: HIGH_VOLUME_THRESHOLD,
+        metricUnit: "complaints"
+      });
+    }
+    console.log(`[CFPB] ${totalComplaints.toLocaleString()} consumer complaint(s) in last ${LOOKBACK_DAYS9} days (${Math.round(dailyRate)}/day)`);
+  } catch (err) {
+    console.warn(`[CFPB] Fetch failed:`, err instanceof Error ? err.message : err);
+  }
+  return signals;
+}
+var CFPB_API, LOOKBACK_DAYS9, HIGH_VOLUME_THRESHOLD;
+var init_CFPBComplaintService = __esm({
+  "server/services/signals/CFPBComplaintService.ts"() {
+    "use strict";
+    CFPB_API = "https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/";
+    LOOKBACK_DAYS9 = 30;
+    HIGH_VOLUME_THRESHOLD = 500;
+  }
+});
+
+// server/services/SignalSourceRegistry.ts
+var SignalSourceRegistry_exports = {};
+__export(SignalSourceRegistry_exports, {
+  signalSourceRegistry: () => signalSourceRegistry
+});
+var SignalSourceRegistryClass, signalSourceRegistry, premiumStubs;
+var init_SignalSourceRegistry = __esm({
+  "server/services/SignalSourceRegistry.ts"() {
+    "use strict";
+    SignalSourceRegistryClass = class {
+      sources = /* @__PURE__ */ new Map();
+      register(source) {
+        if (!this.sources.has(source.sourceKey)) {
+          this.sources.set(source.sourceKey, {
+            ...source,
+            lastFetchAt: null,
+            lastSuccessAt: null,
+            recordsLastFetch: 0,
+            fetchCount: 0,
+            errorCount: 0
+          });
+        }
+      }
+      recordFetch(sourceKey, recordCount, success) {
+        const s = this.sources.get(sourceKey);
+        if (!s) return;
+        s.lastFetchAt = /* @__PURE__ */ new Date();
+        s.fetchCount++;
+        s.recordsLastFetch = recordCount;
+        if (success) {
+          s.lastSuccessAt = /* @__PURE__ */ new Date();
+          s.errorCount = 0;
+          s.status = recordCount > 0 ? "active" : "active";
+        } else {
+          s.errorCount++;
+          s.status = s.errorCount >= 3 ? "down" : "degraded";
+        }
+      }
+      getAll() {
+        return Array.from(this.sources.values()).map(({ fetchCount, errorCount, ...rest }) => rest);
+      }
+      getSummary() {
+        const all = Array.from(this.sources.values());
+        const fetchTimes = all.map((s) => s.lastFetchAt).filter(Boolean);
+        return {
+          totalSources: all.length,
+          activeSources: all.filter((s) => s.status === "active").length,
+          degradedSources: all.filter((s) => s.status === "degraded").length,
+          downSources: all.filter((s) => s.status === "down").length,
+          notConfiguredSources: all.filter((s) => s.status === "not_configured").length,
+          paidAvailableSources: all.filter((s) => s.status === "paid_available").length,
+          tier1Sources: all.filter((s) => s.tier === 1).length,
+          lastScanAt: fetchTimes.length > 0 ? new Date(Math.max(...fetchTimes.map((d) => d.getTime()))) : null
+        };
+      }
+    };
+    signalSourceRegistry = new SignalSourceRegistryClass();
+    signalSourceRegistry.register({
+      sourceKey: "cisa_kev",
+      sourceName: "CISA Known Exploited Vulnerabilities",
+      sourceType: "free",
+      category: "cybersecurity",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Cybersecurity Breach Signal"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "CISA catalog of actively exploited vulnerabilities \u2014 updated daily, authoritative source for cyber threat intelligence.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "fred_economic",
+      sourceName: "FRED \u2014 Federal Reserve Economic Data",
+      sourceType: "free_key_required",
+      category: "economic",
+      tier: 1,
+      status: process.env.FRED_API_KEY ? "active" : "not_configured",
+      triggersEnabled: ["Financial Distress Signal", "Market Valuation Shift", "Earnings Surprise", "Supply Chain Disruption"],
+      requiresApiKey: true,
+      apiKeyEnvVar: "FRED_API_KEY",
+      description: "Federal Reserve Bank of St. Louis \u2014 800,000+ economic time series including VIX, credit spreads, yield curve, unemployment. Free API key at fred.stlouisfed.org.",
+      upgradeNote: "Free API key required. Register at fred.stlouisfed.org/docs/api/api_key.html and add FRED_API_KEY secret."
+    });
+    signalSourceRegistry.register({
+      sourceKey: "openfda_recalls",
+      sourceName: "OpenFDA \u2014 Recall & Enforcement Database",
+      sourceType: "free",
+      category: "regulatory",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Operational Crisis", "Supply Chain Disruption", "Regulatory Enforcement Action"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "FDA structured enforcement and recall database \u2014 real Class I/II/III recall data with scope, quantity, and distribution pattern.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "sec_edgar_structured",
+      sourceName: "SEC EDGAR \u2014 Structured Filing Intelligence",
+      sourceType: "free",
+      category: "regulatory",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["M&A Activity Detected", "Activist Investor (13D)", "8-K Material Event Filing", "Market Valuation Shift"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "SEC EDGAR full-text search and filing API \u2014 13D activist disclosures, 8-K material events, 13G position changes. Actual structured filing data, not RSS headlines.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "internal_readiness",
+      sourceName: "Internal Readiness Audit",
+      sourceType: "internal",
+      category: "internal",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Protocol Staleness", "Stakeholder Roster Gap", "Activation Velocity Gap"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "Continuous internal audit of protocol freshness, stakeholder completeness, and activation velocity. Fires when readiness decays below operational threshold.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "regulatory_calendar",
+      sourceName: "Regulatory & Market Calendar",
+      sourceType: "internal",
+      category: "regulatory",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Financial Distress Signal", "Regulatory Enforcement Action", "Legislation Change", "Market Valuation Shift"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "Known FOMC dates, earnings seasons, proxy deadlines, and regulatory filing windows. Fires warning and action alerts as events approach.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "ofac_bis",
+      sourceName: "OFAC Sanctions + BIS Entity List",
+      sourceType: "free",
+      category: "regulatory",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Supply Chain Disruption", "Geopolitical Risk Signal", "Regulatory Enforcement Action"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "US Treasury OFAC sanctions notices and BIS Bureau of Industry & Security entity list updates. Detects new counterparty sanctions designations before they appear in mainstream news.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "gdelt_events",
+      sourceName: "GDELT Project \u2014 Global Event Database",
+      sourceType: "free",
+      category: "market",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Geopolitical Risk Signal", "Reputational Crisis Signal", "M&A Activity Detected", "Executive Leadership Event", "Cybersecurity Breach Signal"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "World's largest open-access real-time event database. 100+ languages, 65+ countries, updated every 15 minutes. Measures event velocity and tone \u2014 detects when coverage is accelerating before it becomes a crisis.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "federal_register",
+      sourceName: "Federal Register \u2014 Regulatory Pipeline",
+      sourceType: "free",
+      category: "regulatory",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Legislation Change", "Regulatory Enforcement Action", "ESG / Climate Event"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "Official journal of US federal regulations \u2014 proposed rules, final rules, and agency notices from 12 high-impact agencies (SEC, FTC, DOJ, Fed, CFPB, EPA, OSHA, FDA, DHS and more). 6-12 month advance warning on regulatory change.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "nist_nvd",
+      sourceName: "NIST NVD \u2014 Full CVE Database",
+      sourceType: process.env.NVD_API_KEY ? "free_key_required" : "free",
+      category: "cybersecurity",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Cybersecurity Breach Signal"],
+      requiresApiKey: false,
+      apiKeyEnvVar: "NVD_API_KEY",
+      description: 'NIST National Vulnerability Database \u2014 complete CVE catalog with CVSS scores, vendor affectation, and exploit availability. CISA KEV is a subset of NVD (only actively exploited). NVD fires earlier \u2014 at "vulnerability confirmed" not "actively exploited in wild."',
+      upgradeNote: "Optional free API key at nvd.nist.gov increases rate limits from 5 req/30s to 50 req/30s."
+    });
+    signalSourceRegistry.register({
+      sourceKey: "noaa_fema",
+      sourceName: "NOAA Weather + FEMA Disaster Declarations",
+      sourceType: "free",
+      category: "supply_chain",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Operational Crisis", "Supply Chain Disruption", "ESG / Climate Event"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "FEMA federal disaster declaration API with affected state, incident type, and active assistance programs. NOAA National Weather Service severe and extreme weather alerts. Detects operational disruptions from natural events before impact on logistics and facilities.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "congress_gov",
+      sourceName: "Congress.gov \u2014 Legislative Tracking",
+      sourceType: "free_key_required",
+      category: "regulatory",
+      tier: 2,
+      status: process.env.CONGRESS_API_KEY ? "active" : "not_configured",
+      triggersEnabled: ["Legislation Change", "Regulatory Enforcement Action"],
+      requiresApiKey: true,
+      apiKeyEnvVar: "CONGRESS_API_KEY",
+      description: "Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change.",
+      upgradeNote: "Free API key required. Register at api.congress.gov/sign-up/ and add CONGRESS_API_KEY secret."
+    });
+    signalSourceRegistry.register({
+      sourceKey: "ftc_enforcement",
+      sourceName: "FTC \u2014 Enforcement Actions & Press Releases",
+      sourceType: "free",
+      category: "regulatory",
+      tier: 1,
+      status: "active",
+      triggersEnabled: ["Regulatory Enforcement Action", "Competitive Market Entry", "M&A Activity Detected"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "Federal Trade Commission enforcement actions, consent decrees, merger challenges, and civil investigative demands. Covers antitrust, merger review, privacy, data security, AI, and deceptive practices enforcement.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "cfpb_complaints",
+      sourceName: "CFPB \u2014 Consumer Complaint Velocity",
+      sourceType: "free",
+      category: "regulatory",
+      tier: 2,
+      status: "active",
+      triggersEnabled: ["Regulatory Enforcement Action", "Reputational Crisis Signal", "Financial Distress Signal"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "Consumer Financial Protection Bureau complaint database \u2014 measures complaint volume velocity by company, product, and issue type. Elevated complaint rates are a leading indicator of CFPB investigation and reputational exposure for financial services.",
+      upgradeNote: null
+    });
+    signalSourceRegistry.register({
+      sourceKey: "rss_feeds",
+      sourceName: "Live RSS Intelligence Network (36 feeds)",
+      sourceType: "free",
+      category: "market",
+      tier: 3,
+      status: "active",
+      triggersEnabled: ["All 16 trigger patterns \u2014 keyword-based"],
+      requiresApiKey: false,
+      apiKeyEnvVar: null,
+      description: "Network of 36 public RSS feeds across market news, regulatory agencies, cybersecurity, labor, geopolitical, and health sources. Covers NY Times, CNBC, SEC EDGAR, CISA, DOJ, FDA, Federal Reserve, and more.",
+      upgradeNote: null
+    });
+    premiumStubs = [
+      { key: "alpha_vantage", name: "Alpha Vantage \u2014 Real-Time Market Data", env: "ALPHA_VANTAGE_KEY", cat: "financial", triggers: ["Market Valuation Shift", "M&A Activity Detected", "Earnings Surprise"], desc: "Real-time stock prices, volume anomalies, sector ETF movements. Enables equity-price-based trigger signals." },
+      { key: "newsapi", name: "NewsAPI \u2014 Structured News Intelligence", env: "NEWS_API_KEY", cat: "market", triggers: ["Reputational Crisis Signal", "Executive Leadership Event", "Competitive Market Entry"], desc: "150,000+ sources with sentiment scoring and entity extraction. Transforms news monitoring from keyword matching to structured intelligence." },
+      { key: "recorded_future", name: "Recorded Future \u2014 Threat Intelligence", env: "RECORDED_FUTURE_KEY", cat: "cybersecurity", triggers: ["Cybersecurity Breach Signal"], desc: "Dark web monitoring, vulnerability exploitation prediction, ransomware group tracking. 24-72 hour advance warning on cyber threats." },
+      { key: "dun_bradstreet", name: "Dun & Bradstreet \u2014 Supplier Risk", env: "DNB_API_KEY", cat: "supply_chain", triggers: ["Supply Chain Disruption", "Financial Distress Signal"], desc: "Supplier financial health scores, payment behavior, legal events. Early warning on supplier distress before force majeure." },
+      { key: "lexisnexis", name: "LexisNexis \u2014 Legal & Regulatory Intelligence", env: "LEXISNEXIS_KEY", cat: "regulatory", triggers: ["Regulatory Enforcement Action", "Reputational Crisis Signal"], desc: "Court filings, regulatory dockets, class action early warning. Detects legal signals 5-30 days before mainstream coverage." },
+      { key: "bloomberg_enterprise", name: "Bloomberg Enterprise Data", env: "BLOOMBERG_API_KEY", cat: "financial", triggers: ["Market Valuation Shift", "M&A Activity Detected", "Financial Distress Signal"], desc: "Terminal-grade market data, M&A deal flow, credit events. Institutional-quality financial trigger intelligence." },
+      { key: "social_listening", name: "Brandwatch \u2014 Social Listening", env: "BRANDWATCH_KEY", cat: "brand", triggers: ["Reputational Crisis Signal", "Executive Leadership Event"], desc: "Real-time brand mention monitoring, sentiment trending, viral velocity scoring across 100M+ social sources." }
+    ];
+    for (const stub of premiumStubs) {
+      signalSourceRegistry.register({
+        sourceKey: stub.key,
+        sourceName: stub.name,
+        sourceType: process.env[stub.env] ? "paid_active" : "paid_available",
+        category: stub.cat,
+        tier: 2,
+        status: process.env[stub.env] ? "active" : "paid_available",
+        triggersEnabled: stub.triggers,
+        requiresApiKey: true,
+        apiKeyEnvVar: stub.env,
+        description: stub.desc,
+        upgradeNote: `Set ${stub.env} environment secret to activate this data source.`
+      });
+    }
+  }
+});
+
 // server/services/PreparationSignalService.ts
 var PreparationSignalService_exports = {};
 __export(PreparationSignalService_exports, {
@@ -21718,6 +23954,21 @@ var init_LiveSignalIngestionService = __esm({
     init_db();
     init_schema();
     init_SignalEvaluationService();
+    init_CISAKEVService();
+    init_FREDService();
+    init_OpenFDAService();
+    init_SECEdgarStructuredService();
+    init_InternalReadinessSignalService();
+    init_RegulatoryCalendarService();
+    init_OFACSDNService();
+    init_GDELTService();
+    init_FederalRegisterService();
+    init_NISTNVDService();
+    init_NOAAFEMAService();
+    init_CongressService();
+    init_FTCEnforcementService();
+    init_CFPBComplaintService();
+    init_SignalSourceRegistry();
     RSS_FEEDS = [
       // Market & business news (baseline)
       { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", source: "NY Times Business", category: "market" },
@@ -21936,8 +24187,159 @@ var init_LiveSignalIngestionService = __esm({
       }
       async runIngestionCycle(organizationId) {
         console.log("\u{1F4E1} Running live signal ingestion cycle...");
-        const signals = await this.ingestAllFeeds();
-        console.log(`   Found ${signals.length} strategic signals from ${RSS_FEEDS.length} feeds`);
+        const [
+          rssSignals,
+          cisaSignals,
+          fredSignals,
+          fdaSignals,
+          edgarSignals,
+          internalSignals,
+          calendarSignals,
+          ofacSignals,
+          gdeltSignals,
+          fedRegSignals,
+          nvdSignals,
+          noaaFemaSignals,
+          congressSignals,
+          ftcSignals,
+          cfpbSignals
+        ] = await Promise.allSettled([
+          this.ingestAllFeeds(),
+          fetchCISAKEVSignals().then((s) => {
+            signalSourceRegistry.recordFetch("cisa_kev", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("cisa_kev", 0, false);
+            return [];
+          }),
+          fetchFREDSignals().then((s) => {
+            signalSourceRegistry.recordFetch("fred_economic", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("fred_economic", 0, false);
+            return [];
+          }),
+          fetchOpenFDASignals().then((s) => {
+            signalSourceRegistry.recordFetch("openfda_recalls", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("openfda_recalls", 0, false);
+            return [];
+          }),
+          fetchSECEdgarSignals().then((s) => {
+            signalSourceRegistry.recordFetch("sec_edgar_structured", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("sec_edgar_structured", 0, false);
+            return [];
+          }),
+          fetchInternalReadinessSignals(organizationId).then((s) => {
+            signalSourceRegistry.recordFetch("internal_readiness", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("internal_readiness", 0, false);
+            return [];
+          }),
+          fetchRegulatoryCalendarSignals().then((s) => {
+            signalSourceRegistry.recordFetch("regulatory_calendar", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("regulatory_calendar", 0, false);
+            return [];
+          }),
+          fetchOFACSDNSignals().then((s) => {
+            signalSourceRegistry.recordFetch("ofac_bis", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("ofac_bis", 0, false);
+            return [];
+          }),
+          fetchGDELTSignals().then((s) => {
+            signalSourceRegistry.recordFetch("gdelt_events", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("gdelt_events", 0, false);
+            return [];
+          }),
+          fetchFederalRegisterSignals().then((s) => {
+            signalSourceRegistry.recordFetch("federal_register", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("federal_register", 0, false);
+            return [];
+          }),
+          fetchNISTNVDSignals().then((s) => {
+            signalSourceRegistry.recordFetch("nist_nvd", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("nist_nvd", 0, false);
+            return [];
+          }),
+          fetchNOAAFEMASignals().then((s) => {
+            signalSourceRegistry.recordFetch("noaa_fema", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("noaa_fema", 0, false);
+            return [];
+          }),
+          fetchCongressSignals().then((s) => {
+            signalSourceRegistry.recordFetch("congress_gov", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("congress_gov", 0, false);
+            return [];
+          }),
+          fetchFTCEnforcementSignals().then((s) => {
+            signalSourceRegistry.recordFetch("ftc_enforcement", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("ftc_enforcement", 0, false);
+            return [];
+          }),
+          fetchCFPBComplaintSignals().then((s) => {
+            signalSourceRegistry.recordFetch("cfpb_complaints", s.length, true);
+            return s;
+          }).catch(() => {
+            signalSourceRegistry.recordFetch("cfpb_complaints", 0, false);
+            return [];
+          })
+        ]);
+        const rss = rssSignals.status === "fulfilled" ? rssSignals.value : [];
+        signalSourceRegistry.recordFetch("rss_feeds", rss.length, rssSignals.status === "fulfilled");
+        const quantitative = [
+          ...cisaSignals.status === "fulfilled" ? cisaSignals.value : [],
+          ...fredSignals.status === "fulfilled" ? fredSignals.value : [],
+          ...fdaSignals.status === "fulfilled" ? fdaSignals.value : [],
+          ...edgarSignals.status === "fulfilled" ? edgarSignals.value : [],
+          ...internalSignals.status === "fulfilled" ? internalSignals.value : [],
+          ...calendarSignals.status === "fulfilled" ? calendarSignals.value : [],
+          ...ofacSignals.status === "fulfilled" ? ofacSignals.value : [],
+          ...gdeltSignals.status === "fulfilled" ? gdeltSignals.value : [],
+          ...fedRegSignals.status === "fulfilled" ? fedRegSignals.value : [],
+          ...nvdSignals.status === "fulfilled" ? nvdSignals.value : [],
+          ...noaaFemaSignals.status === "fulfilled" ? noaaFemaSignals.value : [],
+          ...congressSignals.status === "fulfilled" ? congressSignals.value : [],
+          ...ftcSignals.status === "fulfilled" ? ftcSignals.value : [],
+          ...cfpbSignals.status === "fulfilled" ? cfpbSignals.value : []
+        ];
+        const signals = [...rss, ...quantitative];
+        const qSummary = [
+          cisaSignals.status === "fulfilled" && cisaSignals.value.length ? `CISA:${cisaSignals.value.length}` : null,
+          fredSignals.status === "fulfilled" && fredSignals.value.length ? `FRED:${fredSignals.value.length}` : null,
+          fdaSignals.status === "fulfilled" && fdaSignals.value.length ? `FDA:${fdaSignals.value.length}` : null,
+          edgarSignals.status === "fulfilled" && edgarSignals.value.length ? `EDGAR:${edgarSignals.value.length}` : null,
+          nvdSignals.status === "fulfilled" && nvdSignals.value.length ? `NVD:${nvdSignals.value.length}` : null,
+          ofacSignals.status === "fulfilled" && ofacSignals.value.length ? `OFAC:${ofacSignals.value.length}` : null,
+          gdeltSignals.status === "fulfilled" && gdeltSignals.value.length ? `GDELT:${gdeltSignals.value.length}` : null,
+          fedRegSignals.status === "fulfilled" && fedRegSignals.value.length ? `FedReg:${fedRegSignals.value.length}` : null,
+          noaaFemaSignals.status === "fulfilled" && noaaFemaSignals.value.length ? `NOAA/FEMA:${noaaFemaSignals.value.length}` : null,
+          ftcSignals.status === "fulfilled" && ftcSignals.value.length ? `FTC:${ftcSignals.value.length}` : null,
+          cfpbSignals.status === "fulfilled" && cfpbSignals.value.length ? `CFPB:${cfpbSignals.value.length}` : null,
+          congressSignals.status === "fulfilled" && congressSignals.value.length ? `Congress:${congressSignals.value.length}` : null,
+          internalSignals.status === "fulfilled" && internalSignals.value.length ? `Internal:${internalSignals.value.length}` : null,
+          calendarSignals.status === "fulfilled" && calendarSignals.value.length ? `Calendar:${calendarSignals.value.length}` : null
+        ].filter(Boolean).join(" ");
+        console.log(`   RSS: ${rss.length} signals from ${RSS_FEEDS.length} feeds | Quantitative: ${quantitative.length}${qSummary ? ` (${qSummary})` : ""} | Total: ${signals.length}`);
         if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
         const inserted = await this.persistSignals(signals, organizationId);
         await this.generateAlerts(signals, organizationId);
@@ -22009,7 +24411,8 @@ var init_LiveSignalIngestionService = __esm({
         return {
           running: this.isRunning,
           feedCount: RSS_FEEDS.length,
-          cachedUrls: this.lastFetchedUrls.size
+          cachedUrls: this.lastFetchedUrls.size,
+          sourceSummary: signalSourceRegistry.getSummary()
         };
       }
     };
@@ -30371,6 +32774,257 @@ var init_SignalLearningService = __esm({
   }
 });
 
+// server/services/signals/PaidAPIRegistry.ts
+var PaidAPIRegistry_exports = {};
+__export(PaidAPIRegistry_exports, {
+  getActivePaidAPISources: () => getActivePaidAPISources,
+  getPaidAPISourceByKey: () => getPaidAPISourceByKey,
+  getPaidAPISources: () => getPaidAPISources,
+  getPaidAPIStatus: () => getPaidAPIStatus
+});
+function getPaidAPISources() {
+  return PAID_SOURCES;
+}
+function getActivePaidAPISources() {
+  return PAID_SOURCES.filter((s) => s.isConfigured);
+}
+function getPaidAPISourceByKey(key) {
+  return PAID_SOURCES.find((s) => s.key === key);
+}
+function getPaidAPIStatus() {
+  const configured = PAID_SOURCES.filter((s) => s.isConfigured).length;
+  return {
+    total: PAID_SOURCES.length,
+    configured,
+    available: PAID_SOURCES.length - configured,
+    byTier: {
+      premium: PAID_SOURCES.filter((s) => s.tier === "premium").length,
+      enterprise: PAID_SOURCES.filter((s) => s.tier === "enterprise").length,
+      enterprise_plus: PAID_SOURCES.filter((s) => s.tier === "enterprise_plus").length
+    }
+  };
+}
+var PAID_SOURCES;
+var init_PaidAPIRegistry = __esm({
+  "server/services/signals/PaidAPIRegistry.ts"() {
+    "use strict";
+    PAID_SOURCES = [
+      {
+        key: "alpha_vantage",
+        name: "Alpha Vantage \u2014 Real-Time Market Data",
+        vendor: "Alpha Vantage",
+        vendorUrl: "https://www.alphavantage.co",
+        category: "financial",
+        tier: "premium",
+        apiKeyEnvVar: "ALPHA_VANTAGE_KEY",
+        description: "Real-time and historical stock prices, technical indicators, forex, and cryptocurrency data. Enables live monitoring of specific company equity movements as trigger signals.",
+        whatYouGet: [
+          "Real-time stock price alerts for monitored companies",
+          "Volume spike detection (unusual trading activity before announcements)",
+          "Sector ETF movement signals (tech selloff, healthcare rally)",
+          "Options unusual activity as activist/M&A leading indicator",
+          "Currency pair movements for geopolitical signals"
+        ],
+        triggersEnabled: [
+          "Market Valuation Shift",
+          "M&A Activity Detected",
+          "Earnings Surprise",
+          "Financial Distress Signal",
+          "Competitive Market Entry"
+        ],
+        estimatedMonthlyCost: "$50\u2013$500/month (Premium plan)",
+        activationInstructions: "Sign up at alphavantage.co, get API key, set ALPHA_VANTAGE_KEY environment secret.",
+        isConfigured: !!process.env.ALPHA_VANTAGE_KEY
+      },
+      {
+        key: "newsapi",
+        name: "NewsAPI \u2014 Structured News Intelligence",
+        vendor: "NewsAPI.org",
+        vendorUrl: "https://newsapi.org",
+        category: "market",
+        tier: "premium",
+        apiKeyEnvVar: "NEWS_API_KEY",
+        description: "Aggregated news from 150,000+ sources worldwide with sentiment scoring, entity extraction, and category classification. Transforms news monitoring from keyword guessing to structured intelligence.",
+        whatYouGet: [
+          "Company-specific news monitoring (by ticker or name)",
+          "Sentiment scoring on every article (-1 to +1)",
+          "Entity extraction (names, organizations, locations)",
+          "Topic classification with confidence scores",
+          "30-day historical archive for trend detection"
+        ],
+        triggersEnabled: [
+          "Reputational Crisis Signal",
+          "Executive Leadership Event",
+          "Competitive Market Entry",
+          "M&A Activity Detected",
+          "ESG / Climate Event"
+        ],
+        estimatedMonthlyCost: "$449/month (Business plan)",
+        activationInstructions: "Sign up at newsapi.org, subscribe to Business plan for production use, set NEWS_API_KEY environment secret.",
+        isConfigured: !!process.env.NEWS_API_KEY
+      },
+      {
+        key: "recorded_future",
+        name: "Recorded Future \u2014 Threat Intelligence",
+        vendor: "Recorded Future",
+        vendorUrl: "https://www.recordedfuture.com",
+        category: "cybersecurity",
+        tier: "enterprise",
+        apiKeyEnvVar: "RECORDED_FUTURE_KEY",
+        description: "The gold standard for enterprise threat intelligence. Monitors dark web, criminal forums, paste sites, and technical indicators for threats targeting your organization and sector before they become public.",
+        whatYouGet: [
+          "Dark web monitoring for your company name, domains, and executive names",
+          "Vulnerability intelligence with exploitation prediction scores",
+          "Ransomware group activity monitoring",
+          "Industry-specific threat actor tracking",
+          "Breach credential monitoring for your domain",
+          "Real-time alerts 24-72 hours before public disclosure"
+        ],
+        triggersEnabled: [
+          "Cybersecurity Breach Signal",
+          "Reputational Crisis Signal",
+          "Regulatory Enforcement Action"
+        ],
+        estimatedMonthlyCost: "$20,000\u2013$100,000/year (enterprise contract)",
+        activationInstructions: "Contact Recorded Future sales at recordedfuture.com/contact. Enterprise contract required. Set RECORDED_FUTURE_KEY.",
+        isConfigured: !!process.env.RECORDED_FUTURE_KEY
+      },
+      {
+        key: "dun_bradstreet",
+        name: "Dun & Bradstreet \u2014 Supplier & Counterparty Risk",
+        vendor: "Dun & Bradstreet",
+        vendorUrl: "https://www.dnb.com",
+        category: "supply_chain",
+        tier: "enterprise",
+        apiKeyEnvVar: "DNB_API_KEY",
+        description: "Continuous monitoring of supplier financial health, payment behavior, legal events, and operational risk. Enables early warning on supplier distress before force majeure or bankruptcy announcement.",
+        whatYouGet: [
+          "Real-time supplier financial health scores (Paydex, Failure Score)",
+          "Legal filing alerts (liens, judgments, bankruptcies)",
+          "Management change notifications at key suppliers",
+          "Operational disruption signals (facility closures, strikes)",
+          "Tier 2/3 supplier visibility for supply chain mapping"
+        ],
+        triggersEnabled: [
+          "Supply Chain Disruption",
+          "Financial Distress Signal",
+          "Operational Crisis"
+        ],
+        estimatedMonthlyCost: "$2,000\u2013$20,000/month (API access)",
+        activationInstructions: "Contact D&B at dnb.com/en-us/solutions/risk.html. API access requires enterprise agreement. Set DNB_API_KEY.",
+        isConfigured: !!process.env.DNB_API_KEY
+      },
+      {
+        key: "lexisnexis",
+        name: "LexisNexis \u2014 Legal & Regulatory Intelligence",
+        vendor: "LexisNexis",
+        vendorUrl: "https://www.lexisnexis.com",
+        category: "regulatory",
+        tier: "enterprise",
+        apiKeyEnvVar: "LEXISNEXIS_KEY",
+        description: "Real-time monitoring of court filings, regulatory dockets, enforcement actions, and legal news. Enables detection of litigation and regulatory signals 5-30 days before mainstream news coverage.",
+        whatYouGet: [
+          "Real-time court filing alerts (federal, state, and international)",
+          "Regulatory docket monitoring (SEC, FTC, DOJ, EPA enforcement)",
+          "Class action litigation early warning",
+          "Executive legal risk monitoring",
+          "Patent filings and IP dispute tracking"
+        ],
+        triggersEnabled: [
+          "Regulatory Enforcement Action",
+          "Legislation Change",
+          "8-K Material Event Filing",
+          "Reputational Crisis Signal"
+        ],
+        estimatedMonthlyCost: "$5,000\u2013$30,000/month",
+        activationInstructions: "Contact LexisNexis at lexisnexis.com/en-us/products/api.page. Enterprise API agreement required. Set LEXISNEXIS_KEY.",
+        isConfigured: !!process.env.LEXISNEXIS_KEY
+      },
+      {
+        key: "bloomberg_enterprise",
+        name: "Bloomberg Enterprise Data \u2014 Terminal-Grade Intelligence",
+        vendor: "Bloomberg LP",
+        vendorUrl: "https://www.bloomberg.com/professional/product/enterprise-data/",
+        category: "financial",
+        tier: "enterprise_plus",
+        apiKeyEnvVar: "BLOOMBERG_API_KEY",
+        description: "The same data powering Bloomberg Terminal \u2014 real-time market data, company fundamentals, earnings intelligence, and M&A deal flow. The authoritative source for financial trigger signals at institutional quality.",
+        whatYouGet: [
+          "Real-time equity, fixed income, and derivatives data",
+          "M&A deal flow and rumor intelligence",
+          "Earnings surprise detection before market open",
+          "Credit event monitoring (CDS spreads, rating changes)",
+          "Executive departure and board change alerts",
+          "Institutional ownership changes in real-time"
+        ],
+        triggersEnabled: [
+          "Market Valuation Shift",
+          "M&A Activity Detected",
+          "Financial Distress Signal",
+          "Earnings Surprise",
+          "Executive Leadership Event"
+        ],
+        estimatedMonthlyCost: "$24,000\u2013$120,000/year (enterprise contract)",
+        activationInstructions: "Contact Bloomberg at bloomberg.com/professional. Enterprise Data License required. Set BLOOMBERG_API_KEY.",
+        isConfigured: !!process.env.BLOOMBERG_API_KEY
+      },
+      {
+        key: "refinitiv",
+        name: "Refinitiv (LSEG) \u2014 Market & ESG Intelligence",
+        vendor: "LSEG (Refinitiv)",
+        vendorUrl: "https://www.lseg.com/en/data-analytics",
+        category: "market",
+        tier: "enterprise_plus",
+        apiKeyEnvVar: "REFINITIV_KEY",
+        description: "Former Thomson Reuters financial data platform \u2014 comprehensive market data, ESG scores, M&A intelligence, and regulatory filing data. Particularly strong for ESG signal monitoring and international markets.",
+        whatYouGet: [
+          "ESG controversy scores and rating changes (Sustainalytics, MSCI)",
+          "Global M&A deal intelligence",
+          "Real-time regulatory filing parsing",
+          "International market and currency signals",
+          "Supply chain exposure mapping by sector"
+        ],
+        triggersEnabled: [
+          "ESG / Climate Event",
+          "M&A Activity Detected",
+          "Geopolitical Risk Signal",
+          "Market Valuation Shift"
+        ],
+        estimatedMonthlyCost: "$20,000\u2013$100,000/year",
+        activationInstructions: "Contact LSEG at lseg.com/en/data-analytics. Enterprise license required. Set REFINITIV_KEY.",
+        isConfigured: !!process.env.REFINITIV_KEY
+      },
+      {
+        key: "social_listening",
+        name: "Brandwatch / Sprinklr \u2014 Social Listening",
+        vendor: "Brandwatch or Sprinklr",
+        vendorUrl: "https://www.brandwatch.com",
+        category: "brand",
+        tier: "premium",
+        apiKeyEnvVar: "BRANDWATCH_KEY",
+        description: "Real-time social media monitoring at scale \u2014 Twitter/X, LinkedIn, Reddit, Glassdoor, news comments, and review platforms. Volume spikes and sentiment drops are often the first signal of a reputational crisis \u2014 hours before media pickup.",
+        whatYouGet: [
+          "Brand mention volume alerts (spike detection)",
+          "Sentiment trend monitoring (week-over-week)",
+          "Viral content early warning (velocity scoring)",
+          "Executive name monitoring",
+          "Competitor crisis monitoring (their crisis = your opportunity)",
+          "Glassdoor/employee sentiment as workforce risk signal"
+        ],
+        triggersEnabled: [
+          "Reputational Crisis Signal",
+          "Executive Leadership Event",
+          "ESG / Climate Event",
+          "Competitive Market Entry"
+        ],
+        estimatedMonthlyCost: "$1,000\u2013$5,000/month",
+        activationInstructions: "Contact Brandwatch at brandwatch.com or Sprinklr at sprinklr.com. API access included in enterprise plans. Set BRANDWATCH_KEY.",
+        isConfigured: !!process.env.BRANDWATCH_KEY
+      }
+    ];
+  }
+});
+
 // server/seeds/data/playbooksData.ts
 var playbooksData_exports = {};
 __export(playbooksData_exports, {
@@ -37183,7 +39837,7 @@ function buildHypothesis(detections, compoundScore) {
 }
 async function runCompoundDetection(organizationId) {
   try {
-    const cutoff = new Date(Date.now() - LOOKBACK_HOURS * 60 * 60 * 1e3);
+    const cutoff = new Date(Date.now() - LOOKBACK_HOURS2 * 60 * 60 * 1e3);
     const subThresholdDetections = await db.select().from(triggerDetections).where(and34(
       eq52(triggerDetections.organizationId, organizationId),
       gte12(triggerDetections.detectedAt, cutoff),
@@ -37282,7 +39936,7 @@ async function runCompoundDetectionAllOrgs() {
     console.error("[CrossDomainCompoundEngine] Error in all-org sweep:", err);
   }
 }
-var SUB_THRESHOLD_MIN, SUB_THRESHOLD_MAX, LOOKBACK_HOURS, COMPOUND_FIRE_THRESHOLD, DOMAIN_STAKEHOLDERS, COMPOUND_PROTOCOLS;
+var SUB_THRESHOLD_MIN, SUB_THRESHOLD_MAX, LOOKBACK_HOURS2, COMPOUND_FIRE_THRESHOLD, DOMAIN_STAKEHOLDERS, COMPOUND_PROTOCOLS;
 var init_CrossDomainCompoundEngine = __esm({
   "server/services/CrossDomainCompoundEngine.ts"() {
     "use strict";
@@ -37290,7 +39944,7 @@ var init_CrossDomainCompoundEngine = __esm({
     init_schema();
     SUB_THRESHOLD_MIN = 40;
     SUB_THRESHOLD_MAX = 74;
-    LOOKBACK_HOURS = 48;
+    LOOKBACK_HOURS2 = 48;
     COMPOUND_FIRE_THRESHOLD = 65;
     DOMAIN_STAKEHOLDERS = {
       competitive: ["CEO", "CMO", "Sales", "Strategy", "Board"],
@@ -55731,6 +58385,22 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       console.error("[Startup] Signal Learning job scheduling failed:", err);
     }
   }, 1e4);
+  app2.get("/api/signal-sources", async (_req, res) => {
+    try {
+      const { signalSourceRegistry: signalSourceRegistry2 } = await Promise.resolve().then(() => (init_SignalSourceRegistry(), SignalSourceRegistry_exports));
+      const { getPaidAPISources: getPaidAPISources2, getPaidAPIStatus: getPaidAPIStatus2 } = await Promise.resolve().then(() => (init_PaidAPIRegistry(), PaidAPIRegistry_exports));
+      res.json({
+        success: true,
+        sources: signalSourceRegistry2.getAll(),
+        paidAvailable: getPaidAPISources2().filter((s) => !s.isConfigured),
+        paidActive: getPaidAPISources2().filter((s) => s.isConfigured),
+        summary: signalSourceRegistry2.getSummary(),
+        paidStatus: getPaidAPIStatus2()
+      });
+    } catch (err) {
+      res.status(500).json({ success: false, error: "Failed to load signal sources" });
+    }
+  });
   const { getRecentDetections: getRecentDetections2 } = await Promise.resolve().then(() => (init_SignalEvaluationService(), SignalEvaluationService_exports));
   const { stakeholderContacts: stakeholderContactsTable, triggerDetections: triggerDetectionsTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
   app2.get("/api/detections", async (req, res) => {

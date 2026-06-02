@@ -6,8 +6,115 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import BoardDeckGenerator from '@/components/BoardDeckGenerator';
 import { useAuth } from "@/hooks/useAuth";
-import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award, AlertTriangle, Brain, Target, Clock, Zap } from 'lucide-react';
+import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award, AlertTriangle, Brain, Target, Clock, Zap, Shield, Globe, Scale, Activity, Database, Radio } from 'lucide-react';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
+
+const NAVY = '#0A0F2E';
+const GOLD = '#C9A84C';
+const TEAL = '#2B8A6E';
+
+const TRIGGER_COVERAGE = [
+  { name: 'Cybersecurity Breach', sources: ['CISA KEV', 'NIST NVD'], quantitative: true, icon: Shield },
+  { name: 'Regulatory Enforcement', sources: ['OpenFDA', 'FTC', 'Fed. Register', 'CFPB'], quantitative: true, icon: Scale },
+  { name: 'Supply Chain Disruption', sources: ['OFAC/BIS', 'NOAA/FEMA', 'OpenFDA'], quantitative: true, icon: Activity },
+  { name: 'M&A / Activist Investor', sources: ['SEC EDGAR 13D/13G', '8-K Filings'], quantitative: true, icon: TrendingUp },
+  { name: 'Geopolitical Risk', sources: ['GDELT Global Events', 'OFAC Sanctions'], quantitative: true, icon: Globe },
+  { name: 'Legislation Change', sources: ['Federal Register', 'Congress.gov'], quantitative: true, icon: Scale },
+  { name: 'Reputational Crisis', sources: ['GDELT Velocity', 'CFPB Complaints'], quantitative: true, icon: Radio },
+  { name: 'Financial Distress', sources: ['FRED Economic Data', 'CFPB'], quantitative: true, icon: TrendingUp },
+  { name: 'ESG / Climate Event', sources: ['NOAA Weather', 'FEMA Declarations'], quantitative: true, icon: Globe },
+  { name: 'Operational Crisis', sources: ['FEMA', 'NOAA', 'OpenFDA'], quantitative: true, icon: AlertTriangle },
+  { name: 'Executive Leadership', sources: ['SEC EDGAR 8-K'], quantitative: true, icon: Target },
+  { name: 'Competitive Market Entry', sources: ['RSS Network (36 feeds)'], quantitative: false, icon: Brain },
+  { name: 'AI Disruption Signal', sources: ['RSS Network (36 feeds)'], quantitative: false, icon: Brain },
+  { name: 'Earnings Surprise', sources: ['SEC EDGAR 8-K', 'FRED'], quantitative: true, icon: TrendingUp },
+  { name: 'Market Valuation Shift', sources: ['FRED VIX / Yield Curve'], quantitative: true, icon: TrendingUp },
+  { name: '8-K Material Event', sources: ['SEC EDGAR Structured'], quantitative: true, icon: Scale },
+];
+
+function SignalIntelligenceBoard({ sourceSummary }: { sourceSummary: any }) {
+  const quantCovered = TRIGGER_COVERAGE.filter(t => t.quantitative).length;
+  const totalTriggers = TRIGGER_COVERAGE.length;
+  const liveSources = sourceSummary?.activeSources || 0;
+  const totalSources = sourceSummary?.totalSources || 0;
+  const lastScan = sourceSummary?.lastScanAt ? new Date(sourceSummary.lastScanAt).toLocaleTimeString() : 'Pending';
+
+  return (
+    <div style={{ marginTop: 32, borderTop: '1px solid #E8E4DC', paddingTop: 32 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
+        <div style={{ width: 24, height: 2, background: TEAL }} />
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>
+          Signal Intelligence Coverage
+        </span>
+        <span style={{ fontSize: 10, color: '#9CA3AF' }}>— Board oversight summary</span>
+      </div>
+      <p style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.7, marginBottom: 24, maxWidth: 800 }}>
+        The platform monitors {totalSources} data sources across {totalTriggers} strategic trigger categories.
+        {quantCovered} of {totalTriggers} triggers are backed by quantitative data with measurable thresholds —
+        not keyword matching. The system scans continuously, every 15 minutes.
+      </p>
+
+      {/* Stats row */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 1, background: '#E8E4DC', borderRadius: '0.15rem', overflow: 'hidden', marginBottom: 28 }}>
+        {[
+          { label: 'Data Sources', value: totalSources, color: NAVY },
+          { label: 'Live Now', value: liveSources, color: TEAL },
+          { label: 'Triggers Monitored', value: totalTriggers, color: NAVY },
+          { label: 'Quantitative Backed', value: `${quantCovered}/${totalTriggers}`, color: TEAL },
+          { label: 'Last Scan', value: lastScan, color: '#6B7280', small: true },
+        ].map(({ label, value, color, small }) => (
+          <div key={label} style={{ background: '#fff', padding: '18px 20px' }}>
+            <div style={{ fontSize: small ? 16 : 26, fontWeight: 700, color, fontFamily: "'Cormorant Garamond', serif" }}>{value}</div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9CA3AF', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 4 }}>{label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Trigger coverage grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+        {TRIGGER_COVERAGE.map(trigger => {
+          const Icon = trigger.icon;
+          return (
+            <div key={trigger.name} style={{
+              display: 'flex', alignItems: 'flex-start', gap: 12, padding: '14px 18px',
+              background: '#fff', border: '1px solid #E8E4DC', borderRadius: '0.15rem',
+              borderLeft: `3px solid ${trigger.quantitative ? TEAL : '#E8E4DC'}`,
+            }}>
+              <div style={{
+                width: 32, height: 32, borderRadius: '0.15rem', flexShrink: 0,
+                background: trigger.quantitative ? 'rgba(43,138,110,0.08)' : 'rgba(107,114,128,0.06)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Icon size={15} style={{ color: trigger.quantitative ? TEAL : '#9CA3AF' }} />
+              </div>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{trigger.name}</div>
+                <div style={{ fontSize: 11, color: '#6B7280', marginTop: 2 }}>
+                  {trigger.sources.join(' · ')}
+                </div>
+                <div style={{ marginTop: 4 }}>
+                  <span style={{
+                    fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                    color: trigger.quantitative ? TEAL : '#9CA3AF',
+                    background: trigger.quantitative ? 'rgba(43,138,110,0.08)' : 'rgba(107,114,128,0.06)',
+                    padding: '2px 6px', borderRadius: '0.15rem',
+                  }}>
+                    {trigger.quantitative ? 'Quantitative' : 'Signal Network'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <p style={{ fontSize: 11, color: '#9CA3AF', marginTop: 20, lineHeight: 1.6 }}>
+        <strong style={{ color: '#6B7280' }}>Quantitative</strong> — measured against numeric thresholds (CVSS scores, filing types, disaster severity, complaint velocity, event counts, economic indicators).
+        {' '}<strong style={{ color: '#6B7280' }}>Signal Network</strong> — 36-feed RSS network with semantic pattern matching; premium quantitative sources available for activation.
+      </p>
+    </div>
+  );
+}
 
 const demoBriefings = [
   {
@@ -111,6 +218,12 @@ export default function BoardBriefings() {
   const { data: boardReportsData, isLoading: reportsLoading } = useQuery<any[]>({
     queryKey: ['/api/board-reports'],
   });
+
+  const { data: signalStatusRaw } = useQuery({
+    queryKey: ['/api/signals/live/status'],
+    refetchInterval: 60000,
+  });
+  const signalStatus = signalStatusRaw as any;
 
   const briefings = (briefingsData && briefingsData.length > 0) ? briefingsData : demoBriefings;
   const boardReports = (boardReportsData && boardReportsData.length > 0) ? boardReportsData : demoBoardReports;
@@ -431,10 +544,34 @@ export default function BoardBriefings() {
         </CardContent>
       </Card>
 
+      {/* Signal Intelligence Coverage — board oversight */}
+      <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#2B8A6E', boxShadow: '0 0 6px #2B8A6E' }} />
+                Continuous Signal Monitoring
+              </CardTitle>
+              <CardDescription className="text-[#6B7280] dark:text-white/60 mt-1">
+                What the platform is watching — data sources, trigger coverage, and detection methodology
+              </CardDescription>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 14px', background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: '0.15rem' }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#2B8A6E', animation: 'pulse 2s infinite' }} />
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#2B8A6E', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Monitoring Active</span>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <SignalIntelligenceBoard sourceSummary={signalStatus?.sourceSummary} />
+        </CardContent>
+      </Card>
+
       <div style={{ marginTop: 32 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
           <div style={{ width: 28, height: 2, background: "#C9A84C" }} />
-          <h2 style={{ fontSize: 20, fontWeight: 700, color: "#0A0F2E", fontFamily: "serif" }}>AI Board Deck Generation</h2>
+          <h2 style={{ fontSize: 20, fontWeight: 700, color: "#0A0F2E", fontFamily: "serif" }}>Board Deck Generation</h2>
         </div>
         <BoardDeckGenerator organizationId={(user as any)?.organizationId?.toString() || 'demo-org'} />
       </div>
