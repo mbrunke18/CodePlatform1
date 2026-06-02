@@ -20,6 +20,17 @@ import { db } from '../db.js';
 import { executiveTriggers, customTriggers } from '@shared/schema';
 import { eq, and } from 'drizzle-orm';
 import type { AnalyzedSignal, DetectedTrigger } from './SignalEvaluationService.js';
+import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
+
+// ─── Data point lookup (for Model B signal resolution) ───────────────────────
+
+function findDataPointById(dpId: string): { name: string; category: string; categoryName: string; unit: string } | null {
+  for (const cat of SIGNAL_CATEGORIES) {
+    const dp = (cat.dataPoints as any[]).find(d => d.id === dpId);
+    if (dp) return { name: dp.name, category: (cat as any).id, categoryName: cat.name, unit: dp.unit ?? '' };
+  }
+  return null;
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -607,8 +618,10 @@ export async function evaluateSignalsWithOrgTriggers(
     const signalDetections: DetectedTrigger[] = [];
 
     for (const trigger of configuredTriggers) {
-      // ── Route: composite trigger group vs. standard condition ────────────
+      // ── Route: composite trigger group vs. Model B signals array vs. standard condition ──
       const rawConditions = trigger.conditions as any;
+
+      // Path A: legacy composite trigger group (DETECT tab — conditions.type === 'trigger_group')
       const isCompositeGroup =
         rawConditions &&
         typeof rawConditions === 'object' &&
@@ -616,6 +629,15 @@ export async function evaluateSignalsWithOrgTriggers(
         rawConditions.type === 'trigger_group' &&
         Array.isArray(rawConditions.dataPoints) &&
         rawConditions.dataPoints.length > 0;
+
+      // Path B: Model B wizard format (conditions.signals array + conditions.fireThreshold)
+      const isModelB =
+        !isCompositeGroup &&
+        rawConditions &&
+        typeof rawConditions === 'object' &&
+        !Array.isArray(rawConditions) &&
+        Array.isArray(rawConditions.signals) &&
+        rawConditions.signals.length > 0;
 
       let result: ScoringResult;
 
@@ -656,6 +678,70 @@ export async function evaluateSignalsWithOrgTriggers(
             `${result.conditionsMet} data points hit (below action threshold of ${result.totalConditions}) — awareness alert queued`
           );
         }
+
+      } else if (isModelB) {
+        // ── Model B wizard path (conditions.signals[] + conditions.fireThreshold) ──────
+        //
+        // Translates the Model B signal format into the TriggerGroupConditions shape
+        // so the full three-mode logic runs:
+        //   1. Percentage threshold  — fireThreshold: 'any' | 'majority' | 'all'
+        //   2. Must-fire group       — isMandatory signals auto-fire at ACTION tier
+        //      even when overall percentage threshold is NOT met
+        //   3. Hybrid                — both: must-fires must all pass AND threshold met
+        //
+        const signals     = rawConditions.signals as Array<{ dpId: string; operator: string; value: string; isMandatory: boolean }>;
+        const fireThresh  = rawConditions.fireThreshold as string || 'any';
+        const n           = signals.length;
+
+        // Translate fireThreshold → minimumRequired count
+        const minimumRequired =
+          fireThresh === 'all'      ? n
+          : fireThresh === 'majority' ? Math.ceil(n * 0.5)
+          : 1; // 'any' — one signal is enough
+
+        // Build TriggerGroupConditions from Model B signals
+        const groupConditions: TriggerGroupConditions = {
+          type: 'trigger_group',
+          minimumRequired,
+          dataPoints: signals.map(s => {
+            const dpRes = findDataPointById(s.dpId);
+            return {
+              id:           s.dpId,
+              name:         dpRes?.name ?? s.dpId.replace(/_/g, ' '),
+              category:     dpRes?.category ?? trigger.category,
+              categoryName: dpRes?.categoryName ?? trigger.category,
+              unit:         dpRes?.unit ?? '',
+              operator:     s.operator || 'breach',
+              value:        parseFloat(s.value) || 0,
+              mandatory:    !!s.isMandatory,
+            };
+          }),
+        };
+
+        const triggerThresholds = {
+          watchPct:  trigger.watchThresholdPct,
+          awarePct:  trigger.awareThresholdPct,
+          actionPct: trigger.actionThresholdPct,
+        };
+
+        result = scoreSignalAgainstTriggerGroup(signal, groupConditions, triggerThresholds);
+
+        if (result.score > 0) {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
+          const mustCount = signals.filter(s => s.isMandatory).length;
+          console.log(
+            `[TriggerEvaluationEngine] ✓ MODEL-B "${trigger.name}" (${fireThresh}) fired at ${result.score}% — ` +
+            `${result.conditionsMet}/${n} signals hit, ${mustCount} mandatory — tier: ${result.alertTier}`
+          );
+        } else {
+          console.log(
+            `[TriggerEvaluationEngine] ✗ MODEL-B "${trigger.name}" (${fireThresh}) — ` +
+            `threshold not met: ${result.conditionsMet}/${n} signals matched`
+          );
+          continue;
+        }
+
       } else {
         // ── Standard condition path (field/operator/value) ────────────────
         result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
