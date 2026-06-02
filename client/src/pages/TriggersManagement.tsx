@@ -128,6 +128,22 @@ function isTriggerWatchingDp(trigger: any, dpId: string): boolean {
   }
   return (trigger?.conditions?.dataPointId || trigger?.conditions?.field || trigger?.conditions?.metric) === dpId;
 }
+// True if the signal is marked must-fire (mandatory) for this trigger
+function isTriggerMustFireDp(trigger: any, dpId: string): boolean {
+  if (!Array.isArray(trigger?.conditions?.signals)) return false;
+  const sig = trigger.conditions.signals.find((s: any) => s.dpId === dpId);
+  return !!sig?.isMandatory;
+}
+// Get the threshold config for a monitored signal
+function getTriggerSignalThreshold(trigger: any, dpId: string): { operator: string; value: string } | null {
+  if (!Array.isArray(trigger?.conditions?.signals)) return null;
+  const sig = trigger.conditions.signals.find((s: any) => s.dpId === dpId);
+  return sig ? { operator: sig.operator || 'breach', value: String(sig.value ?? '') } : null;
+}
+const OP_LABELS: Record<string, string> = {
+  gt: 'exceeds', lt: 'drops below', gte: 'reaches', lte: 'falls to',
+  drop: 'drops by', spike: 'spikes by', eq: 'equals', breach: 'breaches threshold',
+};
 
 // ── Threshold level config ─────────────────────────────────────────────────────
 const THRESHOLD_CONFIG: Record<string, { label: string; color: string; desc: string }> = {
@@ -886,10 +902,10 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
                 {/* All data points in this category */}
                 <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     <Database className="w-4 h-4" style={{ color: GOLD }} />
                     <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
-                      Available Data Points in This Category
+                      {selectedTrigger ? 'Signal Coverage' : 'Available Data Points in This Category'}
                     </h3>
                     <span className="text-[9px] font-bold px-2 py-0.5 rounded"
                       style={{ background: `${GOLD}12`, color: GOLD }}>
@@ -898,38 +914,143 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
                   </div>
 
-                  <div className="grid grid-cols-1 gap-3">
+                  {/* Fire-threshold banner — only when a trigger is selected */}
+                  {selectedTrigger && (() => {
+                    const sigCount    = getTriggerSignalCount(selectedTrigger);
+                    const mustCount   = Array.isArray(selectedTrigger.conditions?.signals)
+                      ? selectedTrigger.conditions.signals.filter((s: any) => s.isMandatory).length
+                      : 0;
+                    const optCount    = sigCount - mustCount;
+                    const ft          = selectedTrigger.conditions?.fireThreshold;
+                    const ftLabel     = ft === 'all' ? 'ALL signals must breach'
+                                      : ft === 'majority' ? 'MAJORITY of signals must breach'
+                                      : 'ANY signal breach fires this trigger';
+                    const isHybrid    = mustCount > 0 && optCount > 0;
+
+                    return (
+                      <div className="mb-4 border overflow-hidden" style={{ borderColor: '#E8E4DC' }}>
+                        {/* Header row */}
+                        <div className="px-4 py-3 flex items-center gap-3 flex-wrap"
+                          style={{ background: `${NAVY}08` }}>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: NAVY }}>
+                              Trigger fires when:
+                            </span>
+                            <span className="text-[9px] font-black px-2 py-0.5"
+                              style={{ background: NAVY, color: '#fff' }}>
+                              {ftLabel}
+                            </span>
+                          </div>
+                          {isHybrid && (
+                            <span className="text-[8px] font-bold px-2 py-0.5 border"
+                              style={{ borderColor: GOLD, color: GOLD, background: `${GOLD}10` }}>
+                              HYBRID MODE
+                            </span>
+                          )}
+                        </div>
+                        {/* Legend */}
+                        <div className="px-4 py-2.5 flex items-center gap-5 border-t border-[#F0EDE8]"
+                          style={{ background: '#fff' }}>
+                          {mustCount > 0 && (
+                            <div className="flex items-center gap-1.5">
+                              <div className="w-3 h-3 border-2 flex items-center justify-center"
+                                style={{ borderColor: GOLD, background: `${GOLD}15` }}>
+                                <span style={{ fontSize: 7, color: GOLD, fontWeight: 900 }}>★</span>
+                              </div>
+                              <span className="text-[9px] font-bold" style={{ color: GOLD }}>
+                                {mustCount} must fire
+                              </span>
+                              <span className="text-[9px] text-gray-400">— required to activate</span>
+                            </div>
+                          )}
+                          {optCount > 0 && (
+                            <div className="flex items-center gap-1.5">
+                              <div className="w-3 h-3 border-2"
+                                style={{ borderColor: TEAL, background: `${TEAL}15` }} />
+                              <span className="text-[9px] font-bold" style={{ color: TEAL }}>
+                                {optCount} monitoring
+                              </span>
+                              <span className="text-[9px] text-gray-400">— contributes to threshold</span>
+                            </div>
+                          )}
+                          {selectedEntry.sc.dataPoints.length - sigCount > 0 && (
+                            <div className="flex items-center gap-1.5 ml-auto">
+                              <div className="w-3 h-3 border border-gray-200 bg-gray-50" />
+                              <span className="text-[9px] text-gray-400">
+                                {selectedEntry.sc.dataPoints.length - sigCount} available, not selected
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
+
+                  <div className="grid grid-cols-1 gap-2">
                     {selectedEntry.sc.dataPoints.map((dp: any) => {
-                      // If a specific trigger is selected, show which signals IT watches.
-                      // Fall back to "is any trigger in this category watching it" when no trigger selected.
-                      const isWatched = selectedTrigger
+                      const isWatched  = selectedTrigger
                         ? isTriggerWatchingDp(selectedTrigger, dp.id)
                         : selectedTriggers.some(t => isTriggerWatchingDp(t, dp.id));
+                      const isMustFire = selectedTrigger ? isTriggerMustFireDp(selectedTrigger, dp.id) : false;
+                      const threshold  = selectedTrigger ? getTriggerSignalThreshold(selectedTrigger, dp.id) : null;
+
+                      // Border / background by tier
+                      const borderColor = isMustFire ? GOLD
+                        : isWatched ? `${TEAL}50`
+                        : '#E8E4DC';
+                      const bgColor = isMustFire ? `${GOLD}06`
+                        : isWatched ? `${TEAL}04`
+                        : '#F8F7F4';
+                      const leftAccent = isMustFire ? `3px solid ${GOLD}`
+                        : isWatched ? `3px solid ${TEAL}`
+                        : '3px solid transparent';
+
                       return (
                         <div key={dp.id}
                           className="border overflow-hidden"
-                          style={{ borderColor: isWatched ? `${TEAL}40` : '#E8E4DC' }}>
-                          <div className="px-5 py-4" style={{ background: isWatched ? `${TEAL}05` : '#F8F7F4' }}>
+                          style={{ borderColor, borderLeft: leftAccent }}>
+                          <div className="px-5 py-3.5" style={{ background: bgColor }}>
                             <div className="flex items-start justify-between gap-3 mb-1">
-                              <p className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</p>
-                              <div className="flex items-center gap-2 flex-shrink-0">
-                                {isWatched && (
-                                  <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded"
+                              {/* Name + must-fire star */}
+                              <div className="flex items-center gap-2 min-w-0">
+                                {isMustFire && (
+                                  <span className="text-[10px] flex-shrink-0" style={{ color: GOLD }}>★</span>
+                                )}
+                                <p className="text-sm font-bold leading-snug" style={{ color: NAVY }}>{dp.name}</p>
+                              </div>
+                              {/* Badges */}
+                              <div className="flex items-center gap-1.5 flex-shrink-0">
+                                {isMustFire ? (
+                                  <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5"
+                                    style={{ background: `${GOLD}20`, color: GOLD, border: `1px solid ${GOLD}50` }}>
+                                    ★ Must Fire
+                                  </span>
+                                ) : isWatched ? (
+                                  <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5"
                                     style={{ background: `${TEAL}15`, color: TEAL }}>
                                     <CheckCircle2 className="w-2.5 h-2.5 inline mr-0.5" />
-                                    Monitored
+                                    Monitoring
                                   </span>
-                                )}
-                                <span className="text-[9px] font-bold px-2 py-0.5 rounded"
+                                ) : null}
+                                <span className="text-[9px] font-bold px-2 py-0.5"
                                   style={{ background: `${GOLD}10`, color: GOLD }}>{dp.metricType}</span>
                               </div>
                             </div>
                             <p className="text-xs text-gray-500 leading-relaxed">{dp.description}</p>
+                            {/* Threshold display for monitored signals */}
+                            {threshold && threshold.value && (
+                              <p className="text-[9px] mt-2 font-semibold"
+                                style={{ color: isMustFire ? GOLD : TEAL }}>
+                                Alert when value <strong>{OP_LABELS[threshold.operator] ?? threshold.operator}</strong> {threshold.value}
+                                {dp.unit ? ` ${dp.unit}` : ''}
+                              </p>
+                            )}
                           </div>
                           {dp.sources?.length > 0 && (
-                            <div className="px-5 py-2.5 border-t border-[#E8E4DC] flex flex-wrap gap-1.5">
+                            <div className="px-5 py-2 border-t flex flex-wrap gap-1.5"
+                              style={{ borderColor: isMustFire ? `${GOLD}20` : isWatched ? `${TEAL}15` : '#E8E4DC' }}>
                               {dp.sources.map((src: string) => (
-                                <span key={src} className="text-[9px] font-semibold px-2 py-0.5 rounded"
+                                <span key={src} className="text-[9px] font-semibold px-2 py-0.5"
                                   style={{ background: 'rgba(43,138,110,0.08)', color: TEAL, border: '1px solid rgba(43,138,110,0.2)' }}>
                                   {sourceLabel(src)}
                                 </span>
