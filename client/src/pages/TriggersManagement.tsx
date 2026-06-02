@@ -115,6 +115,19 @@ function findDataPoint(dpId: string) {
   }
   return null;
 }
+// Returns how many signals/data points a trigger is actively monitoring
+function getTriggerSignalCount(trigger: any): number {
+  if (Array.isArray(trigger?.conditions?.signals)) return trigger.conditions.signals.length;
+  const dpId = trigger?.conditions?.dataPointId || trigger?.conditions?.field || trigger?.conditions?.metric;
+  return dpId ? 1 : 0;
+}
+// True if a specific trigger is watching a given data point id
+function isTriggerWatchingDp(trigger: any, dpId: string): boolean {
+  if (Array.isArray(trigger?.conditions?.signals)) {
+    return trigger.conditions.signals.some((s: any) => s.dpId === dpId);
+  }
+  return (trigger?.conditions?.dataPointId || trigger?.conditions?.field || trigger?.conditions?.metric) === dpId;
+}
 
 // ── Threshold level config ─────────────────────────────────────────────────────
 const THRESHOLD_CONFIG: Record<string, { label: string; color: string; desc: string }> = {
@@ -459,6 +472,18 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           <div className="w-full h-0.5 bg-gray-100 mt-2">
                             <div className="h-full" style={{ width: `${trigger.proximity}%`, background: barColor }} />
                           </div>
+
+                          {/* Signal coverage */}
+                          {(() => {
+                            const sigCount = getTriggerSignalCount(trigger);
+                            const totalDps = selectedEntry.sc.dataPoints.length;
+                            return sigCount > 0 ? (
+                              <p className="text-[9px] mt-1.5" style={{ color: TEAL }}>
+                                <strong>{sigCount}</strong>
+                                <span className="text-gray-400"> of {totalDps} signals monitored</span>
+                              </p>
+                            ) : null;
+                          })()}
                         </button>
                       );
                     })
@@ -525,6 +550,17 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           style={{ background: `${SEV_COLOR[selectedTrigger.severity] ?? GOLD}25`, color: SEV_COLOR[selectedTrigger.severity] ?? GOLD }}>
                           {selectedTrigger.severity}
                         </span>
+                        {/* Signal coverage pill */}
+                        {(() => {
+                          const sigCount = getTriggerSignalCount(selectedTrigger);
+                          const totalDps = selectedEntry?.sc?.dataPoints?.length ?? 0;
+                          return sigCount > 0 ? (
+                            <span className="text-[9px] font-bold px-2 py-0.5 rounded ml-1"
+                              style={{ background: 'rgba(43,138,110,0.18)', color: '#9FEDD7', border: '1px solid rgba(43,138,110,0.3)' }}>
+                              {sigCount} of {totalDps} signals
+                            </span>
+                          ) : null;
+                        })()}
                       </div>
                     </div>
                     {/* Toggle */}
@@ -864,9 +900,11 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
                   <div className="grid grid-cols-1 gap-3">
                     {selectedEntry.sc.dataPoints.map((dp: any) => {
-                      const isWatched = selectedTriggers.some(t =>
-                        (t.conditions?.dataPointId || t.conditions?.field || t.conditions?.metric) === dp.id
-                      );
+                      // If a specific trigger is selected, show which signals IT watches.
+                      // Fall back to "is any trigger in this category watching it" when no trigger selected.
+                      const isWatched = selectedTrigger
+                        ? isTriggerWatchingDp(selectedTrigger, dp.id)
+                        : selectedTriggers.some(t => isTriggerWatchingDp(t, dp.id));
                       return (
                         <div key={dp.id}
                           className="border overflow-hidden"
