@@ -16,6 +16,7 @@ import {
   Database, Globe, Server, Zap, RefreshCw, Shield, Lock, Activity,
   ChevronRight, ExternalLink, Info
 } from 'lucide-react';
+import SignalSourcesPanel from '@/components/SignalSourcesPanel';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -499,6 +500,7 @@ export default function SignalConnectors() {
             <TabsList style={{ background: 'transparent', borderBottom: '1px solid #E8E4DC', width: '100%', justifyContent: 'flex-start', borderRadius: 0, height: 'auto', padding: 0, marginBottom: 40 }}>
               {[
                 { key: 'connectors', label: 'Signal Sources' },
+                { key: 'quantitative', label: 'Data Intelligence Sources' },
                 { key: 'taxonomy', label: 'Trigger Taxonomy' },
                 { key: 'learning', label: 'Learning Engine' },
               ].map(tab => (
@@ -568,6 +570,11 @@ export default function SignalConnectors() {
                   </div>
                 </div>
               </div>
+            </TabsContent>
+
+            {/* ── Data Intelligence Sources Tab ──────────────────────────────── */}
+            <TabsContent value="quantitative">
+              <SignalSourcesPanel />
             </TabsContent>
 
             {/* ── Trigger Taxonomy Tab ───────────────────────────────────────── */}

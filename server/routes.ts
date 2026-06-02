@@ -7658,6 +7658,24 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     }
   }, 10000);
 
+  // ── Signal Source Registry API ─────────────────────────────────────────────
+  app.get('/api/signal-sources', async (_req, res) => {
+    try {
+      const { signalSourceRegistry } = await import('./services/SignalSourceRegistry.js');
+      const { getPaidAPISources, getPaidAPIStatus } = await import('./services/signals/PaidAPIRegistry.js');
+      res.json({
+        success: true,
+        sources: signalSourceRegistry.getAll(),
+        paidAvailable: getPaidAPISources().filter(s => !s.isConfigured),
+        paidActive: getPaidAPISources().filter(s => s.isConfigured),
+        summary: signalSourceRegistry.getSummary(),
+        paidStatus: getPaidAPIStatus(),
+      });
+    } catch (err) {
+      res.status(500).json({ success: false, error: 'Failed to load signal sources' });
+    }
+  });
+
   // ── Trigger Detection API (Tier 5) ─────────────────────────────────────────
   const { getRecentDetections } = await import('./services/SignalEvaluationService.js');
   const { stakeholderContacts: stakeholderContactsTable, triggerDetections: triggerDetectionsTable } = await import('@shared/schema');

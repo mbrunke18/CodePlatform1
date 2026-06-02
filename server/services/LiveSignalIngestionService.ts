@@ -2,6 +2,13 @@ import { db } from '../db.js';
 import { weakSignals, strategicAlerts } from '@shared/schema';
 import { eq, desc, sql } from 'drizzle-orm';
 import { evaluateAndPersistSignals, evaluateLeadingIndicators, evaluateCompoundPatterns } from './SignalEvaluationService.js';
+import { fetchCISAKEVSignals } from './signals/CISAKEVService.js';
+import { fetchFREDSignals } from './signals/FREDService.js';
+import { fetchOpenFDASignals } from './signals/OpenFDAService.js';
+import { fetchSECEdgarSignals } from './signals/SECEdgarStructuredService.js';
+import { fetchInternalReadinessSignals } from './signals/InternalReadinessSignalService.js';
+import { fetchRegulatoryCalendarSignals } from './signals/RegulatoryCalendarService.js';
+import { signalSourceRegistry } from './SignalSourceRegistry.js';
 
 interface RSSItem {
   title: string;
@@ -593,8 +600,69 @@ class LiveSignalIngestionService {
 
   async runIngestionCycle(organizationId: string): Promise<{ signals: number; alerts: number; detections: number }> {
     console.log('📡 Running live signal ingestion cycle...');
-    const signals = await this.ingestAllFeeds();
-    console.log(`   Found ${signals.length} strategic signals from ${RSS_FEEDS.length} feeds`);
+
+    // ── Fetch RSS + all quantitative sources in parallel ───────────────────────
+    const [
+      rssSignals,
+      cisaSignals,
+      fredSignals,
+      fdaSignals,
+      edgarSignals,
+      internalSignals,
+      calendarSignals,
+    ] = await Promise.allSettled([
+      this.ingestAllFeeds(),
+      fetchCISAKEVSignals().then(s => {
+        signalSourceRegistry.recordFetch('cisa_kev', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('cisa_kev', 0, false); return []; }),
+      fetchFREDSignals().then(s => {
+        signalSourceRegistry.recordFetch('fred_economic', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('fred_economic', 0, false); return []; }),
+      fetchOpenFDASignals().then(s => {
+        signalSourceRegistry.recordFetch('openfda_recalls', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('openfda_recalls', 0, false); return []; }),
+      fetchSECEdgarSignals().then(s => {
+        signalSourceRegistry.recordFetch('sec_edgar_structured', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('sec_edgar_structured', 0, false); return []; }),
+      fetchInternalReadinessSignals(organizationId).then(s => {
+        signalSourceRegistry.recordFetch('internal_readiness', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('internal_readiness', 0, false); return []; }),
+      fetchRegulatoryCalendarSignals().then(s => {
+        signalSourceRegistry.recordFetch('regulatory_calendar', s.length, true);
+        return s;
+      }).catch(() => { signalSourceRegistry.recordFetch('regulatory_calendar', 0, false); return []; }),
+    ]);
+
+    const rss = rssSignals.status === 'fulfilled' ? rssSignals.value : [];
+    signalSourceRegistry.recordFetch('rss_feeds', rss.length, rssSignals.status === 'fulfilled');
+
+    // Merge all signal sources — quantitative signals are already AnalyzedSignal-compatible
+    const quantitative = [
+      ...(cisaSignals.status === 'fulfilled' ? cisaSignals.value : []),
+      ...(fredSignals.status === 'fulfilled' ? fredSignals.value : []),
+      ...(fdaSignals.status === 'fulfilled' ? fdaSignals.value : []),
+      ...(edgarSignals.status === 'fulfilled' ? edgarSignals.value : []),
+      ...(internalSignals.status === 'fulfilled' ? internalSignals.value : []),
+      ...(calendarSignals.status === 'fulfilled' ? calendarSignals.value : []),
+    ] as AnalyzedSignal[];
+
+    const signals = [...rss, ...quantitative];
+
+    const qSummary = [
+      cisaSignals.status === 'fulfilled' && cisaSignals.value.length ? `CISA:${cisaSignals.value.length}` : null,
+      fredSignals.status === 'fulfilled' && fredSignals.value.length ? `FRED:${fredSignals.value.length}` : null,
+      fdaSignals.status === 'fulfilled' && fdaSignals.value.length ? `FDA:${fdaSignals.value.length}` : null,
+      edgarSignals.status === 'fulfilled' && edgarSignals.value.length ? `EDGAR:${edgarSignals.value.length}` : null,
+      internalSignals.status === 'fulfilled' && internalSignals.value.length ? `Internal:${internalSignals.value.length}` : null,
+      calendarSignals.status === 'fulfilled' && calendarSignals.value.length ? `Calendar:${calendarSignals.value.length}` : null,
+    ].filter(Boolean).join(' ');
+
+    console.log(`   RSS: ${rss.length} signals from ${RSS_FEEDS.length} feeds | Quantitative: ${quantitative.length}${qSummary ? ` (${qSummary})` : ''} | Total: ${signals.length}`);
 
     if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
 
@@ -691,11 +759,12 @@ class LiveSignalIngestionService {
     console.log('📡 Live Signal Ingestion stopped');
   }
 
-  getStatus(): { running: boolean; feedCount: number; cachedUrls: number } {
+  getStatus(): { running: boolean; feedCount: number; cachedUrls: number; sourceSummary: ReturnType<typeof signalSourceRegistry.getSummary> } {
     return {
       running: this.isRunning,
       feedCount: RSS_FEEDS.length,
       cachedUrls: this.lastFetchedUrls.size,
+      sourceSummary: signalSourceRegistry.getSummary(),
     };
   }
 }
