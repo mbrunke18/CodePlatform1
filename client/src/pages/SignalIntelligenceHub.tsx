@@ -435,6 +435,7 @@ export default function SignalIntelligenceHub() {
   const [editingDataPoint, setEditingDataPoint] = useState<DataPoint | null>(null);
   const [editingTrigger, setEditingTrigger] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('browse');
 
   const { data: leadingDetectionsRaw } = useQuery<any[]>({
     queryKey: ['/api/leading-indicator-detections'],
@@ -589,7 +590,7 @@ export default function SignalIntelligenceHub() {
         </div>
 
         <div className="max-w-[1600px] mx-auto px-6 py-12">
-          <Tabs defaultValue="browse" className="w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList style={{ background: "transparent", borderBottom: "1px solid #E8E4DC", width: "100%", justifyContent: "flex-start", borderRadius: 0, height: "auto", padding: 0, marginBottom: 48 }}>
               {[
                 { key: "browse", label: "Signal Browser", icon: <Grid3X3 className="w-4 h-4 mr-2" /> },
@@ -855,20 +856,14 @@ export default function SignalIntelligenceHub() {
                     </p>
                     <div className="flex items-center justify-center gap-4">
                       <Button
-                        onClick={() => {
-                          const el = document.querySelector('[data-value="templates"]') as HTMLElement;
-                          el?.click();
-                        }}
+                        onClick={() => setActiveTab("templates")}
                         style={{ background: NAVY, color: "#fff", borderRadius: 0, fontWeight: 700, fontSize: 12 }}
                       >
                         Deploy a Template
                       </Button>
                       <Button
                         variant="outline"
-                        onClick={() => {
-                          const el = document.querySelector('[data-value="browse"]') as HTMLElement;
-                          el?.click();
-                        }}
+                        onClick={() => setActiveTab("browse")}
                         style={{ borderRadius: 0, border: "1px solid #E8E4DC", fontWeight: 700, fontSize: 12 }}
                       >
                         Open Signal Browser
