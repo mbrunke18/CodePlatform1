@@ -77,17 +77,17 @@ function categoryProximity(triggers: any[]): number {
   return triggers.length ? Math.max(...triggers.map(proximityScore)) : 0;
 }
 function proximityLabel(score: number): { label: string; color: string; bg: string } {
-  if (score >= 80) return { label: 'IMMINENT',    color: '#EF4444', bg: 'rgba(239,68,68,0.08)' };
-  if (score >= 55) return { label: 'APPROACHING', color: '#F97316', bg: 'rgba(249,115,22,0.08)' };
+  if (score >= 80) return { label: 'IMMINENT',    color: '#DC2626', bg: 'rgba(220,38,38,0.10)' };
+  if (score >= 55) return { label: 'APPROACHING', color: '#CA8A04', bg: 'rgba(234,179,8,0.09)' };
   if (score >= 25) return { label: 'MONITORING',  color: TEAL,      bg: 'rgba(43,138,110,0.08)' };
-  if (score > 0)   return { label: 'STABLE',      color: '#6B7280', bg: 'rgba(107,114,128,0.06)' };
+  if (score > 0)   return { label: 'STABLE',      color: '#3B82F6', bg: 'rgba(59,130,246,0.08)' };
   return              { label: 'NO RULES',    color: '#D1D5DB', bg: 'transparent' };
 }
 function proximityBarColor(score: number): string {
-  if (score >= 80) return '#EF4444';
-  if (score >= 55) return '#F97316';
+  if (score >= 80) return '#DC2626';
+  if (score >= 55) return '#CA8A04';
   if (score >= 25) return TEAL;
-  return '#9CA3AF';
+  return '#3B82F6';
 }
 
 function formatOp(op: string, val?: any): string {
@@ -261,8 +261,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           {/* Stats strip */}
           <div className="flex items-center gap-6 mt-4 pt-4 border-t border-[#F0EDE8]">
             {[
-              { label: 'At Risk',       value: atRiskCount,       color: '#EF4444', icon: AlertTriangle, desc: 'categories' },
-              { label: 'Approaching',   value: approachingCount,  color: '#F97316', icon: TrendingUp,    desc: 'categories' },
+              { label: 'Imminent',      value: atRiskCount,       color: '#DC2626', icon: AlertTriangle, desc: 'categories' },
+              { label: 'Approaching',   value: approachingCount,  color: '#CA8A04', icon: TrendingUp,    desc: 'categories' },
               { label: 'Rules Active',  value: activeCount,       color: TEAL,      icon: Activity,      desc: 'monitoring' },
               { label: 'Total Rules',   value: allTriggers.length, color: NAVY,     icon: Target,        desc: 'configured' },
             ].map(s => {
