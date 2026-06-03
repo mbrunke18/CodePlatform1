@@ -84,8 +84,12 @@ async function upsertUser(claims: any): Promise<{ id: string } | null> {
   }
 
   if (assignedOrgId) {
-    // Add user as a member of the pre-configured org
+    // Add user as a member of the pre-configured org and set it as primary
     await storage.addOrgMembership(user.id, assignedOrgId, 'member');
+    // Force the user's primary organizationId to the assigned org
+    await db.update(users)
+      .set({ organizationId: assignedOrgId, updatedAt: new Date() })
+      .where(eq(users.id, user.id));
   }
 
   // Auto-create personal organization only if user has no orgs at all

@@ -74,6 +74,8 @@ const CustomerContext = createContext<CustomerContextType>({
 export function CustomerProvider({ children }: { children: ReactNode }) {
   const { data: rawOrganizations, isLoading: orgsLoading } = useQuery<any[]>({
     queryKey: ['/api/organizations'],
+    staleTime: 0,
+    refetchOnMount: 'always',
   });
 
   const { data: rawDepartments, isLoading: deptsLoading } = useQuery<any[]>({

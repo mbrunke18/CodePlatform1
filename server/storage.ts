@@ -539,7 +539,17 @@ export class DatabaseStorage implements IStorage {
       createdAt: organizations.createdAt,
       updatedAt: organizations.updatedAt,
     };
-    const owned = await db.select(cols).from(organizations).where(eq(organizations.ownerId, userId));
+    // Look up the user's primary organizationId so we can put it first
+    const [userRow] = await db
+      .select({ organizationId: users.organizationId })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1);
+    const primaryOrgId = userRow?.organizationId;
+
+    const owned = await db.select(cols).from(organizations)
+      .where(eq(organizations.ownerId, userId))
+      .orderBy(desc(organizations.createdAt));
     const membered = await db.select(cols).from(organizations)
       .innerJoin(orgMemberships, eq(orgMemberships.organizationId, organizations.id))
       .where(eq(orgMemberships.userId, userId));
@@ -547,6 +557,10 @@ export class DatabaseStorage implements IStorage {
     const combined = [...owned];
     for (const org of membered) {
       if (!seen.has(org.id)) combined.push(org);
+    }
+    // Primary org always first — regardless of creation date
+    if (primaryOrgId) {
+      combined.sort((a, b) => (a.id === primaryOrgId ? -1 : b.id === primaryOrgId ? 1 : 0));
     }
     return combined;
   }
