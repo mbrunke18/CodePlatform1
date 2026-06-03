@@ -868,6 +868,65 @@ server.listen(
             logger.warn({ contactSeedErr }, "⚠️ Stakeholder contact seed skipped (non-blocking)");
           }
 
+          // ── Founder org name migration ─────────────────────────────────────
+          // Renames the auto-generated "martybrunke" org to "VaughnMartin"
+          // and migrates all associated data to the correct org.
+          // Idempotent — only runs if the old name still exists.
+          try {
+            const oldOrgRows = await db.execute(sql`
+              SELECT id FROM organizations WHERE name = 'martybrunke' LIMIT 1
+            `);
+            if (oldOrgRows.rows.length > 0) {
+              const oldOrgId = (oldOrgRows.rows[0] as any).id as string;
+              logger.info({ oldOrgId }, "🔧 Renaming martybrunke org → VaughnMartin");
+
+              // Check if a VaughnMartin org already exists
+              const vmOrgRows = await db.execute(sql`
+                SELECT id FROM organizations WHERE name = 'VaughnMartin' LIMIT 1
+              `);
+
+              if (vmOrgRows.rows.length > 0) {
+                // VaughnMartin already exists — migrate user + real data to it, clear trial contacts, delete old
+                const vmOrgId = (vmOrgRows.rows[0] as any).id as string;
+                await db.execute(sql.raw(`
+                  UPDATE users SET organization_id = '${vmOrgId}'
+                  WHERE organization_id = '${oldOrgId}'
+                `));
+                // Clear trial-user entries from old org (not real stakeholders)
+                await db.execute(sql.raw(`
+                  DELETE FROM stakeholder_contacts WHERE organization_id = '${oldOrgId}'
+                `));
+                await db.execute(sql.raw(`
+                  UPDATE executive_triggers SET organization_id = '${vmOrgId}'
+                  WHERE organization_id = '${oldOrgId}'::uuid
+                `));
+                await db.execute(sql.raw(`
+                  UPDATE playbook_activations SET organization_id = '${vmOrgId}'
+                  WHERE organization_id = '${oldOrgId}'
+                `));
+                await db.execute(sql.raw(`
+                  DELETE FROM org_memberships WHERE organization_id::text = '${oldOrgId}'
+                `));
+                await db.execute(sql.raw(`DELETE FROM organizations WHERE id::text = '${oldOrgId}'`));
+                logger.info({ vmOrgId }, "✅ Migrated founder data to existing VaughnMartin org, cleared trial contacts");
+              } else {
+                // No separate VaughnMartin org — rename in place, clear trial-user stakeholder entries
+                await db.execute(sql.raw(`
+                  UPDATE organizations SET name = 'VaughnMartin' WHERE id::text = '${oldOrgId}'
+                `));
+                // Remove trial users who were added as stakeholders (not real team contacts)
+                await db.execute(sql.raw(`
+                  DELETE FROM stakeholder_contacts WHERE organization_id = '${oldOrgId}'
+                `));
+                logger.info({ oldOrgId }, "✅ Renamed org to VaughnMartin, cleared trial-user stakeholder entries");
+              }
+            } else {
+              logger.info("✅ Founder org migration: no martybrunke org found — already clean");
+            }
+          } catch (founderMigErr) {
+            logger.warn({ founderMigErr }, "⚠️ Founder org migration skipped (non-blocking)");
+          }
+
           // Initialize Enterprise Job Service (non-blocking)
           logger.info("🔧 Initializing Enterprise Job Service...");
           await enterpriseJobService.initialize();
