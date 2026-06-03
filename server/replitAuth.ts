@@ -208,19 +208,34 @@ export async function setupAuth(app: Express) {
   passport.serializeUser((user: Express.User, cb) => cb(null, user));
   passport.deserializeUser((user: Express.User, cb) => cb(null, user));
 
-  // Middleware: after session restore, ensure dbUserId is always set correctly
-  // This patches old sessions that were created before the email-lookup fix.
+  // Middleware: after session restore, ensure dbUserId and organizationId are
+  // always synced from the DB. This corrects stale sessions and ensures every
+  // route using req.user.organizationId gets the correct primary org — not
+  // undefined or a stale value from a previous session.
   app.use(async (req: any, _res, next) => {
     try {
-      if (req.user && !req.user.dbUserId && req.user.claims?.email) {
-        const email = (req.user.claims.email as string).toLowerCase().trim();
-        const [existing] = await db
-          .select({ id: users.id })
-          .from(users)
-          .where(eq(users.email, email))
-          .limit(1);
-        if (existing) {
-          req.user.dbUserId = existing.id;
+      if (req.user && req.user.claims?.email) {
+        if (!req.user.dbUserId) {
+          const email = (req.user.claims.email as string).toLowerCase().trim();
+          const [existing] = await db
+            .select({ id: users.id, organizationId: users.organizationId })
+            .from(users)
+            .where(eq(users.email, email))
+            .limit(1);
+          if (existing) {
+            req.user.dbUserId = existing.id;
+            req.user.organizationId = existing.organizationId;
+          }
+        } else if (!req.user.organizationId) {
+          // dbUserId already set but organizationId was never written to session
+          const [existing] = await db
+            .select({ organizationId: users.organizationId })
+            .from(users)
+            .where(eq(users.id, req.user.dbUserId))
+            .limit(1);
+          if (existing?.organizationId) {
+            req.user.organizationId = existing.organizationId;
+          }
         }
       }
     } catch { /* non-fatal */ }
