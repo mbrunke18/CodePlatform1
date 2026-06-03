@@ -474,6 +474,31 @@ export class DatabaseStorage implements IStorage {
       .limit(1);
     const defaultRoleId = adminRole[0]?.id ?? null;
 
+    // Email-first lookup: if a pre-seeded user exists with this email (e.g. audit-test-3
+    // for the founder), update and return that record rather than creating a new one
+    // keyed to the OIDC sub. This ensures all seeded data stays intact on real login.
+    if (userData.email) {
+      const [existing] = await db
+        .select()
+        .from(users)
+        .where(eq(users.email, userData.email))
+        .limit(1);
+
+      if (existing && existing.id !== userData.id) {
+        const [updated] = await db
+          .update(users)
+          .set({
+            firstName: userData.firstName ?? existing.firstName,
+            lastName: userData.lastName ?? existing.lastName,
+            profileImageUrl: userData.profileImageUrl ?? existing.profileImageUrl,
+            updatedAt: new Date(),
+          })
+          .where(eq(users.id, existing.id))
+          .returning();
+        return updated;
+      }
+    }
+
     const [user] = await db
       .insert(users)
       .values({ ...userData, roleId: userData.roleId ?? defaultRoleId })
