@@ -316,9 +316,9 @@ async function sendDetectionEmail(
   signal: AnalyzedSignal,
   emails: string[],
   orgId: string
-): Promise<void> {
+): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
+  if (!apiKey || emails.length === 0) return false;
 
   const resend = new Resend(apiKey);
   const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
@@ -408,6 +408,7 @@ async function sendDetectionEmail(
     'Readiness OS <pilot@vaughnmartin.com>',
   ];
 
+  let anySent = false;
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString('base64url');
     const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
@@ -426,6 +427,7 @@ async function sendDetectionEmail(
           continue;
         }
         sent = true;
+        anySent = true;
         break;
       } catch (err: any) {
         console.warn(`⚠ Detection email sender ${from} threw: ${err.message} — trying next`);
@@ -433,7 +435,8 @@ async function sendDetectionEmail(
     }
     if (!sent) console.error(`✗ All senders failed for detection alert to ${recipientEmail}`);
   }
-  console.log(`📧 Detection alert sent to ${emails.join(', ')}`);
+  if (anySent) console.log(`📧 Detection alert sent to ${emails.join(', ')}`);
+  return anySent;
 }
 
 async function sendWatchEmail(
@@ -441,9 +444,9 @@ async function sendWatchEmail(
   signal: AnalyzedSignal,
   emails: string[],
   orgId: string
-): Promise<void> {
+): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
+  if (!apiKey || emails.length === 0) return false;
 
   const resend = new Resend(apiKey);
   const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
@@ -520,6 +523,7 @@ async function sendWatchEmail(
     'Readiness OS <pilot@vaughnmartin.com>',
   ];
 
+  let anySent = false;
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString('base64url');
     const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
@@ -538,6 +542,7 @@ async function sendWatchEmail(
           continue;
         }
         sent = true;
+        anySent = true;
         break;
       } catch (err: any) {
         console.warn(`⚠ Watch email sender ${from} threw: ${err.message} — trying next`);
@@ -545,7 +550,8 @@ async function sendWatchEmail(
     }
     if (!sent) console.error(`✗ All senders failed for watch alert to ${recipientEmail}`);
   }
-  console.log(`📧 Watch alert sent to ${emails.join(', ')}`);
+  if (anySent) console.log(`📧 Watch alert sent to ${emails.join(', ')}`);
+  return anySent;
 }
 
 async function sendAwareEmail(
@@ -553,9 +559,9 @@ async function sendAwareEmail(
   signal: AnalyzedSignal,
   emails: string[],
   orgId: string
-): Promise<void> {
+): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
+  if (!apiKey || emails.length === 0) return false;
 
   const resend = new Resend(apiKey);
   const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
@@ -632,6 +638,7 @@ async function sendAwareEmail(
     'Readiness OS <pilot@vaughnmartin.com>',
   ];
 
+  let anySent = false;
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString('base64url');
     const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
@@ -650,6 +657,7 @@ async function sendAwareEmail(
           continue;
         }
         sent = true;
+        anySent = true;
         break;
       } catch (err: any) {
         console.warn(`⚠ Aware email sender ${from} threw: ${err.message} — trying next`);
@@ -657,7 +665,8 @@ async function sendAwareEmail(
     }
     if (!sent) console.error(`✗ All senders failed for awareness alert to ${recipientEmail}`);
   }
-  console.log(`📧 Awareness alert sent to ${emails.join(', ')}`);
+  if (anySent) console.log(`📧 Awareness alert sent to ${emails.join(', ')}`);
+  return anySent;
 }
 
 async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSignal): Promise<void> {
@@ -731,6 +740,25 @@ export async function evaluateAndPersistSignals(
       .where(eq(stakeholderContacts.organizationId, organizationId as any));
   } catch {
     // table may not exist yet on first run
+  }
+
+  // If no stakeholder contacts are configured, fall back to registered org members
+  // This ensures Founding Partners and any org with users always receive alerts
+  if (allContacts.length === 0) {
+    try {
+      const { users } = await import('@shared/schema');
+      const { isNotNull, eq: eqUsers } = await import('drizzle-orm');
+      const orgMembers = await db
+        .select({ email: users.email })
+        .from(users)
+        .where(eqUsers(users.organizationId as any, organizationId as any));
+      allContacts = orgMembers
+        .filter(m => m.email)
+        .map(m => ({ email: m.email, triggerDomains: null, isActive: true }));
+      if (allContacts.length > 0) {
+        console.log(`📋 Using ${allContacts.length} registered org member(s) as alert recipients for org ${organizationId}`);
+      }
+    } catch { /* non-critical */ }
   }
 
   // ── EVALUATION PATH ────────────────────────────────────────────────────────
@@ -1095,7 +1123,7 @@ export async function evaluateAndPersistSignals(
       const isActionTier = detection.alertTier === 'action' || detection.alertTier === undefined;
       const isAwareTier  = detection.alertTier === 'aware';
 
-      let emailFn: Promise<void> = Promise.resolve();
+      let emailFn: Promise<boolean> = Promise.resolve(false);
       if (contactEmails.length > 0) {
         if (isActionTier) {
           emailFn = sendDetectionEmail(detection, signal, contactEmails, organizationId);
@@ -1106,10 +1134,11 @@ export async function evaluateAndPersistSignals(
         }
       }
 
-      await Promise.allSettled([
+      const [, emailResult] = await Promise.allSettled([
         isActionTier ? sendDetectionSlack(detection, signal) : Promise.resolve(),
         emailFn,
       ]);
+      const emailDelivered = emailResult.status === 'fulfilled' && emailResult.value === true;
 
       // Stamp notification milestone on the Execution Clock
       const notifiedAt = new Date();
@@ -1122,11 +1151,18 @@ export async function evaluateAndPersistSignals(
         }
       } catch { /* non-critical */ }
 
-      // Mark notification as sent
-      await db
-        .update(triggerDetections)
-        .set({ notificationSent: true, status: timelineStatus })
-        .where(eq(triggerDetections.triggerName, detection.triggerName));
+      // Only mark as sent when the email actually delivered — preserves daily cap accuracy
+      if (emailDelivered) {
+        await db
+          .update(triggerDetections)
+          .set({ notificationSent: true, status: timelineStatus })
+          .where(eq(triggerDetections.triggerName, detection.triggerName));
+      } else {
+        await db
+          .update(triggerDetections)
+          .set({ status: timelineStatus })
+          .where(eq(triggerDetections.triggerName, detection.triggerName));
+      }
 
       detectionsCreated++;
     } catch (err) {

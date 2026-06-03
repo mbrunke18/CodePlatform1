@@ -778,19 +778,34 @@ class LiveSignalIngestionService {
     console.log(`   ✅ Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
 
     // ── Multi-org evaluation: run trigger detection for every org that has
-    //    a signal_monitoring_config entry (Founding Partners + configured orgs).
+    //    a signal_monitoring_config entry OR has at least one registered user.
     //    Signal fetch is shared — only evaluation runs per-org.
     try {
-      const { signalMonitoringConfig } = await import('@shared/schema');
-      const { ne } = await import('drizzle-orm');
+      const { signalMonitoringConfig, users } = await import('@shared/schema');
+      const { ne, isNotNull } = await import('drizzle-orm');
+
+      // Orgs with explicit monitoring config
       const configuredOrgs = await db
         .select({ orgId: signalMonitoringConfig.organizationId })
         .from(signalMonitoringConfig)
         .where(ne(signalMonitoringConfig.organizationId, organizationId));
 
-      for (const { orgId } of configuredOrgs) {
+      // Orgs that have at least one registered user (Founding Partners, real customers)
+      const userOrgs = await db
+        .selectDistinct({ orgId: users.organizationId })
+        .from(users)
+        .where(isNotNull(users.organizationId));
+
+      // Merge, deduplicate, exclude the primary org (already evaluated above)
+      const allOrgIds = new Set([
+        ...configuredOrgs.map(r => r.orgId),
+        ...userOrgs.map(r => r.orgId).filter(Boolean) as string[],
+      ]);
+      allOrgIds.delete(organizationId);
+
+      for (const orgId of allOrgIds) {
         try {
-          const extraDetections = await evaluateAndPersistSignals(signals, orgId);
+          const extraDetections = await evaluateAndPersistSignals(signals, orgId!);
           if (extraDetections > 0) {
             console.log(`   🎯 ${extraDetections} trigger detection(s) for org ${orgId}`);
           }
