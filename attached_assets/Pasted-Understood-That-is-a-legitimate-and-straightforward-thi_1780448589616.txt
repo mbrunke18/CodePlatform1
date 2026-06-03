@@ -1,0 +1,77 @@
+Understood. That is a legitimate and straightforward thing to do.
+
+Here is the complete list of public remarks worth calling out organized by person with the exact language they used publicly. These are all from LinkedIn comment threads which are public statements made under their own names.
+
+Dr. Kerry Huang
+Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · 408-firm governance study
+
+“Martin is building the architecture that makes clarity possible before pressure arrives.”
+
+“The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits.”
+
+“Architecture creates the conditions where the choice to ignore is no longer invisible.”
+
+Jayashree Venkataraman
+Leadership Systems Advisor · Execution Reliability Advisor · CoFounder NIYA, LeadWell Lab
+
+“The distinction between surfacing where recalibration has already become operationally visible versus building the upstream conditions that prevent the wrong survivability expectations from forming in the first place feels like an important clarification for the field overall.”
+
+“Structural readiness gap. That is the right name for it.”
+
+“Multiple practitioners are arriving at the same failure point from entirely different operational lenses. That usually signals the issue is no longer tactical. It is architectural.”
+
+“There is something important emerging in this intersection between preparation architecture, behavioural recalibration, and execution survivability.”
+
+Michael Juhler
+AI Transformation · Operating Model Redesign · Strategy Execution · Enterprise AI Signal newsletter
+
+“The deeper shift begins when readiness, coordination and learning are designed before the trigger fires.”
+
+“The structural readiness gap captures something many organisations underestimate. The issue is not only whether they have the strategy, the technology or the ambition. It is whether the operating model is ready to absorb new capacity before pressure arrives.”
+
+“Agentic stacks will not create the full value potential if the organisation has not redesigned how work is coordinated, how decisions are prepared, how exceptions are escalated, and how learning feeds back into the system. Otherwise AI simply accelerates the existing operating model.”
+
+“We are on the same page here.” Said directly to you in a public comment reply.
+
+Patrik Eriksson
+Global Transformation Executive · ex-Gartner · ex-EY · ex-Capgemini · ex-Group CDO
+
+“The next generation of enterprises will not compete on who has the most AI. They will compete on who can coordinate decisions, execution, risk, and capital the fastest across the enterprise.”
+
+“Most enterprises are still trying to solve AI with an industrial era operating model. That is the real problem.”
+
+“The technology works. The operating model does not.”
+
+“Enterprise intelligence without enterprise execution. The dashboards work. The models work. The architecture works. Yet the enterprise still struggles to move.”
+
+Pierre Montersino
+Transformation Leader · Digital Change and AI Adoption Consultant
+
+“The operating model quietly absorbs change then neutralises it under pressure.”
+
+“Agreed completely. Treating the operating model as a constraint to navigate rather than a system to redesign is exactly how transformation momentum dies.”
+
+“The distinction between an operating model that was changed and one that was built to hold.”
+
+Meherban Faroogh
+Managing Partner BPS Partners · President ABPMP Toronto Chapter
+
+“The operating model is often not ready before the pressure arrives. By the time the trigger fires the organization is no longer redesigning. It is reacting. That is why sequencing matters so much.”
+
+“AI or any major technology does not transform the business. It simply accelerates the existing operating model with all its hidden constraints still intact.”
+
+How to present these on the website
+
+The section heading that works honestly and accurately is something like this.
+
+What practitioners are observing independently.
+
+Then a brief framing sentence.
+
+These observations were made publicly by practitioners across governance research, enterprise AI transformation, operating model design, and execution reliability. Each arrived at the same structural gap from a different direction.
+
+Then the attributed quotes with each person’s name, title, and the context that they made these remarks publicly on LinkedIn.
+
+That presentation is accurate, honest, and genuinely compelling. It shows independent convergence on the category you have built around. And it respects the fact that these are public statements made under their own names in a professional context.
+
+Do you want me to write the full website section now with all of these formatted and ready to use.
