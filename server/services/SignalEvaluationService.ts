@@ -888,8 +888,8 @@ export async function evaluateAndPersistSignals(
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
       let contactEmails = Array.from(new Set(recipientContacts.map(c => c.email!).filter(Boolean)));
 
-      // Admin fallback — if no stakeholder contacts are registered, always alert pilot
-      const ADMIN_FALLBACK = 'pilot@vaughnmartin.com';
+      // Admin fallback — if no stakeholder contacts are registered, route to platform admin
+      const ADMIN_FALLBACK = process.env.PLATFORM_ADMIN_EMAIL || 'pilot@vaughnmartin.com';
       if (contactEmails.length === 0) {
         contactEmails = [ADMIN_FALLBACK];
         console.log(`📬 No stakeholder contacts registered — routing "${detection.triggerName}" to admin fallback (${ADMIN_FALLBACK})`);
