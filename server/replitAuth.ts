@@ -204,6 +204,25 @@ export async function setupAuth(app: Express) {
   passport.serializeUser((user: Express.User, cb) => cb(null, user));
   passport.deserializeUser((user: Express.User, cb) => cb(null, user));
 
+  // Middleware: after session restore, ensure dbUserId is always set correctly
+  // This patches old sessions that were created before the email-lookup fix.
+  app.use(async (req: any, _res, next) => {
+    try {
+      if (req.user && !req.user.dbUserId && req.user.claims?.email) {
+        const email = (req.user.claims.email as string).toLowerCase().trim();
+        const [existing] = await db
+          .select({ id: users.id })
+          .from(users)
+          .where(eq(users.email, email))
+          .limit(1);
+        if (existing) {
+          req.user.dbUserId = existing.id;
+        }
+      }
+    } catch { /* non-fatal */ }
+    next();
+  });
+
   app.get("/api/login", (req, res, next) => {
     if (req.query.returnTo && typeof req.query.returnTo === 'string') {
       (req.session as any).returnTo = req.query.returnTo;

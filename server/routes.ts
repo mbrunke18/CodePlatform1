@@ -2171,7 +2171,24 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   app.get('/api/organizations', async (req: any, res) => {
     try {
-      // For demo purposes, show all organizations to showcase comprehensive test data
+      const userId = getUserId(req);
+      if (userId) {
+        // Authenticated: return only this user's orgs, primary org first
+        const userOrgs = await storage.getUserOrganizations(userId);
+        const [userRecord] = await db
+          .select({ organizationId: users.organizationId })
+          .from(users)
+          .where(eq(users.id, userId))
+          .limit(1);
+        const primaryOrgId = userRecord?.organizationId;
+        if (primaryOrgId) {
+          userOrgs.sort((a, b) =>
+            a.id === primaryOrgId ? -1 : b.id === primaryOrgId ? 1 : 0
+          );
+        }
+        return res.json(userOrgs);
+      }
+      // Unauthenticated: return all orgs for demo browsing
       const orgList = await db.select({
         id: organizations.id,
         name: organizations.name,
