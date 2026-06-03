@@ -1684,6 +1684,75 @@ function ExecutionGapSection() {
   );
 }
 
+// ─── PRACTITIONER OBSERVATIONS ───────────────────────────────────────────────
+function PractitionerObservationsSection() {
+  const practitioners = [
+    {
+      name: "Jayashree Venkataraman",
+      credential: "Leadership Systems Advisor · Execution Reliability Advisor · CoFounder, NIYA & LeadWell Lab",
+      quote: "Multiple practitioners are arriving at the same failure point from entirely different operational lenses. That usually signals the issue is no longer tactical. It is architectural.",
+    },
+    {
+      name: "Patrik Eriksson",
+      credential: "Global Transformation Executive · ex-Gartner · ex-EY · ex-Capgemini · ex-Group CDO",
+      quote: "The next generation of enterprises will not compete on who has the most AI. They will compete on who can coordinate decisions, execution, risk, and capital the fastest across the enterprise.",
+    },
+    {
+      name: "Michael Juhler",
+      credential: "AI Transformation · Operating Model Redesign · Enterprise AI Signal newsletter",
+      quote: "The deeper shift begins when readiness, coordination and learning are designed before the trigger fires. Otherwise AI simply accelerates the existing operating model.",
+    },
+    {
+      name: "Dr. Kerry Huang",
+      credential: "Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · 408-Firm Governance Study",
+      quote: "Martin is building the architecture that makes clarity possible before pressure arrives.",
+    },
+    {
+      name: "Pierre Montersino",
+      credential: "Transformation Leader · Digital Change and AI Adoption Consultant",
+      quote: "Treating the operating model as a constraint to navigate rather than a system to redesign is exactly how transformation momentum dies.",
+    },
+    {
+      name: "Meherban Faroogh",
+      credential: "Managing Partner, BPS Partners · President, ABPMP Toronto Chapter",
+      quote: "By the time the trigger fires the organization is no longer redesigning. It is reacting. That is why sequencing matters so much.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "#fff", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "88px 0" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>
+            What Practitioners Are Observing
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3vw, 38px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, margin: "0 auto 16px", maxWidth: 640 }}>
+            Independent convergence on the same structural gap.
+          </h2>
+          <p style={{ fontFamily: "'Barlow', Arial, sans-serif", fontSize: 15, color: "#555", lineHeight: 1.75, maxWidth: 640, margin: "0 auto" }}>
+            Practitioners across governance research, enterprise AI transformation, and execution reliability — each arriving at the same failure point from a different direction. These are public statements made under their own names on LinkedIn.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
+          {practitioners.map(({ name, credential, quote }) => (
+            <div key={name} style={{ background: "#F8F7F4", padding: "32px 28px", borderTop: `3px solid ${GOLD}`, display: "flex", flexDirection: "column" as const, gap: 20 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 17, fontStyle: "italic", color: `${NAVY}CC`, lineHeight: 1.7, margin: 0, flex: 1 }}>
+                "{quote}"
+              </p>
+              <div>
+                <div style={{ fontFamily: "'Barlow', Arial, sans-serif", fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{name}</div>
+                <div style={{ fontFamily: "'Barlow', Arial, sans-serif", fontSize: 11, fontWeight: 600, color: "#2B8A6E", lineHeight: 1.45 }}>{credential}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 600, color: "#aaa", letterSpacing: "0.12em", textTransform: "uppercase" as const, marginTop: 10 }}>Public statement · LinkedIn</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── WHY NOW STRIP ────────────────────────────────────────────────────────────
 function WhyNowStrip() {
   const forces = [
@@ -3955,6 +4024,9 @@ export default function Homepage() {
 
       {/* THE POSITIONING — The entire decision lifecycle (not just one moment) */}
       <PositioningSection />
+
+      {/* PRACTITIONERS — Independent convergence on the same structural gap */}
+      <PractitionerObservationsSection />
 
       {/* THESIS — The missing operating model */}
       <WhyNowStrip />
