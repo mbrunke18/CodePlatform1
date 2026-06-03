@@ -51,6 +51,15 @@ function updateUserSession(user: any, tokens: any) {
 }
 
 async function upsertUser(claims: any): Promise<{ id: string } | null> {
+  // TEMP: log claims so we can see the real Replit email/sub
+  console.log('[AUTH DEBUG] Login claims:', JSON.stringify({
+    sub: claims["sub"],
+    email: claims["email"],
+    name: claims["name"],
+    first_name: claims["first_name"],
+    last_name: claims["last_name"],
+  }));
+
   const user = await storage.upsertUser({
     id: claims["sub"],
     email: claims["email"],
