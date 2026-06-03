@@ -105,4 +105,50 @@ export function registerAdminRoutes(app: Express) {
       res.status(500).json({ error: err.message });
     }
   });
+
+  // POST /api/admin/test-email — live Resend delivery test, result returned to caller
+  app.post("/api/admin/test-email", requirePlatformAdmin, async (_req: any, res) => {
+    const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+    if (!apiKey) {
+      return res.status(503).json({ success: false, error: "RESEND_API_KEY is not set in environment secrets" });
+    }
+    const to = process.env.PLATFORM_ADMIN_EMAIL;
+    if (!to) {
+      return res.status(503).json({ success: false, error: "PLATFORM_ADMIN_EMAIL is not set" });
+    }
+    try {
+      const { Resend } = await import("resend");
+      const resend = new Resend(apiKey);
+      const fromAddresses = [
+        "Readiness OS <pilot@vaughnmartin.com>",
+        "Readiness OS <onboarding@resend.dev>",
+      ];
+      let lastError = "";
+      for (const from of fromAddresses) {
+        const { data, error } = await resend.emails.send({
+          from,
+          to: [to],
+          subject: "Readiness OS — Email Delivery Test",
+          html: `<div style="font-family:sans-serif;padding:32px;background:#f8f7f4;">
+            <div style="max-width:520px;margin:0 auto;background:#fff;border:1px solid #e8e4dc;border-radius:8px;padding:32px;">
+              <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Delivery Test</div>
+              <div style="color:#0A0F2E;font-size:20px;font-weight:700;margin-bottom:16px;">Email delivery confirmed ✓</div>
+              <p style="color:#444;font-size:14px;line-height:1.6;">Resend is correctly configured. Trigger alert emails will be delivered to registered users.</p>
+              <p style="color:#999;font-size:12px;margin-top:24px;">From: ${from}<br>To: ${to}<br>Time: ${new Date().toISOString()}</p>
+            </div>
+          </div>`,
+        });
+        if (error) {
+          lastError = `${from} → ${error.message}`;
+          console.warn(`[test-email] Sender rejected: ${lastError}`);
+          continue;
+        }
+        console.log(`[test-email] Delivered via ${from} → ${to} (id: ${data?.id})`);
+        return res.json({ success: true, from, to, messageId: data?.id });
+      }
+      return res.status(500).json({ success: false, error: `All senders failed. Last: ${lastError}` });
+    } catch (err: any) {
+      return res.status(500).json({ success: false, error: err.message });
+    }
+  });
 }
