@@ -94,12 +94,10 @@ import { db } from './db';
 
 // Helper function to get authenticated user ID from session
 function getUserId(req: any): string | undefined {
-  // Get user ID from authenticated session
-  if (req.isAuthenticated() && req.user?.claims?.sub) {
-    return req.user.claims.sub;
-  }
-  // No fallback to demo user - unauthenticated requests return undefined
-  return undefined;
+  if (!req.isAuthenticated()) return undefined;
+  // Prefer the resolved DB user ID (set during login when email-matched to a
+  // pre-seeded record like the founder account). Falls back to raw OIDC sub.
+  return req.user?.dbUserId || req.user?.claims?.sub;
 }
 
 // Helper to get org ID for a user

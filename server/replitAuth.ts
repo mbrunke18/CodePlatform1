@@ -50,7 +50,7 @@ function updateUserSession(user: any, tokens: any) {
   user.expires_at = user.claims?.exp;
 }
 
-async function upsertUser(claims: any) {
+async function upsertUser(claims: any): Promise<{ id: string } | null> {
   const user = await storage.upsertUser({
     id: claims["sub"],
     email: claims["email"],
@@ -100,6 +100,8 @@ async function upsertUser(claims: any) {
       await db.update(users).set({ organizationId: allOrgs[0].id }).where(eq(users.id, user.id));
     }
   }
+
+  return user;
 }
 
 // Returns true if this email is allowed to log in.
@@ -153,9 +155,14 @@ export async function setupAuth(app: Express) {
       return verified(null, false, { message: "access_denied" });
     }
 
-    const user = {};
+    const user: any = {};
     updateUserSession(user, tokens);
-    await upsertUser(claims);
+    const resolvedUser = await upsertUser(claims);
+    // Store the resolved DB user ID so routes use the correct record
+    // (e.g. pre-seeded founder account audit-test-3) rather than the raw OIDC sub
+    if (resolvedUser?.id) {
+      user.dbUserId = resolvedUser.id;
+    }
     verified(null, user);
   };
 
