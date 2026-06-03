@@ -2017,13 +2017,28 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   // Auth routes - returns current user from session
   app.get('/api/auth/user', async (req: any, res) => {
     try {
-      // Check for user from Replit OIDC (stored in claims.sub) or direct sub
-      const userId = req.user?.claims?.sub || req.user?.sub;
+      // Use resolved DB user ID (respects email-based mapping set by session middleware)
+      // then fall back to raw OIDC sub for backwards compatibility
+      const userId = getUserId(req) || req.user?.claims?.sub || req.user?.sub;
       if (!userId) {
         return res.status(200).json(null);
       }
 
-      const user = await storage.getUser(userId);
+      // If userId from claims.sub doesn't match any record, try email fallback
+      let user = await storage.getUser(userId);
+      if (!user && req.user?.claims?.email) {
+        const email = (req.user.claims.email as string).toLowerCase().trim();
+        const [byEmail] = await db
+          .select()
+          .from(users)
+          .where(eq(users.email, email))
+          .limit(1);
+        if (byEmail) {
+          user = byEmail;
+          // Patch the session so future requests use the right ID
+          req.user.dbUserId = byEmail.id;
+        }
+      }
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
