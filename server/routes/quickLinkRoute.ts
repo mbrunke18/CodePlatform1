@@ -58,15 +58,17 @@ export function signGroupLink(payload: GroupLinkPayload): string {
   const data = JSON.stringify(payload);
   const b64 = Buffer.from(data).toString("base64url");
   const hmac = crypto.createHmac("sha256", SECRET).update(b64).digest("base64url");
-  return `GK-${b64}-${hmac}`;
+  // Use "." as separator — base64url never uses ".", so this is always unambiguous
+  return `GK-${b64}.${hmac}`;
 }
 
 export function parseGroupLinkToken(token: string): { valid: boolean; payload?: GroupLinkPayload; reason?: string } {
   if (!token.startsWith("GK-")) return { valid: false, reason: "not_group_link" };
-  const parts = token.split("-");
-  if (parts.length < 3) return { valid: false, reason: "malformed" };
-  const hmacReceived = parts[parts.length - 1];
-  const b64 = parts.slice(1, parts.length - 1).join("-");
+  const inner = token.slice(3); // strip "GK-"
+  const dotIdx = inner.indexOf(".");
+  if (dotIdx === -1) return { valid: false, reason: "malformed" };
+  const b64 = inner.slice(0, dotIdx);
+  const hmacReceived = inner.slice(dotIdx + 1);
   const hmacExpected = crypto.createHmac("sha256", SECRET).update(b64).digest("base64url");
   if (hmacReceived !== hmacExpected) return { valid: false, reason: "invalid_signature" };
   try {
