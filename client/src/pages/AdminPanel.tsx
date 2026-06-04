@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/useAuth";
-import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send } from "lucide-react";
+import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send, Share2 } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -49,6 +49,11 @@ export default function AdminPanel() {
   const [generatedLink, setGeneratedLink] = useState<{ url: string; expiresAt: string; emailSent?: boolean } | null>(null);
   const [linkCopied, setLinkCopied] = useState(false);
 
+  // ── Group link state ───────────────────────────────────────────────────────
+  const [groupLinkDays, setGroupLinkDays] = useState(7);
+  const [generatedGroupLink, setGeneratedGroupLink] = useState<{ url: string; linkExpiresAt: string; linkDays: number; sessionHours: number } | null>(null);
+  const [groupLinkCopied, setGroupLinkCopied] = useState(false);
+
   const { data: rawUsers, isLoading: usersLoading, error: usersError } = useQuery<AdminUser[]>({
     queryKey: ["/api/admin/users"],
   });
@@ -93,6 +98,17 @@ export default function AdminPanel() {
       }).then(res => res.json()),
     onSuccess: (data: any) => {
       setGeneratedLink({ url: data.url, expiresAt: data.expiresAt, emailSent: data.emailSent });
+    },
+  });
+
+  const generateGroupLink = useMutation({
+    mutationFn: () =>
+      apiRequest("POST", "/api/admin/generate-group-link", {
+        linkDays: groupLinkDays,
+        sessionHours: 72,
+      }).then(res => res.json()),
+    onSuccess: (data: any) => {
+      setGeneratedGroupLink(data);
     },
   });
 
@@ -354,6 +370,104 @@ export default function AdminPanel() {
                     {linkCopied ? <><Check size={13} /> Copied</> : <><Copy size={13} /> Copy</>}
                   </button>
                 </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ── Shareable Group Link ────────────────────────── */}
+        <div style={{ marginBottom: "2.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem" }}>
+            <Share2 size={18} color={NAVY} />
+            <h2 style={{ margin: 0, fontSize: "1.0625rem", fontWeight: 700, color: NAVY }}>
+              Shareable Group Link
+            </h2>
+            <span style={{ marginLeft: 8, background: "#EFF6FF", color: "#1D4ED8", fontSize: "0.7rem", fontWeight: 700, padding: "2px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+              ADMIN ONLY
+            </span>
+          </div>
+          <p style={{ margin: "0 0 1rem", fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.6 }}>
+            One link you can send to multiple people. Each person who clicks it gets their own
+            72-hour full access session — no name or email required from them.
+            Only you can generate this link.
+          </p>
+          <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: "1.5rem" }}>
+            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 12 }}>
+              <label style={{ fontSize: "0.875rem", color: NAVY, fontWeight: 600, whiteSpace: "nowrap" }}>
+                Link stays active for
+              </label>
+              <select
+                value={groupLinkDays}
+                onChange={e => { setGroupLinkDays(Number(e.target.value)); setGeneratedGroupLink(null); }}
+                style={{ padding: "0.5rem 0.75rem", border: "1px solid #D1D5DB", borderRadius: 4, fontSize: "0.875rem", color: NAVY, background: "#fff", cursor: "pointer" }}
+              >
+                <option value={3}>3 days</option>
+                <option value={7}>7 days</option>
+                <option value={14}>14 days</option>
+                <option value={30}>30 days</option>
+              </select>
+              <span style={{ fontSize: "0.8125rem", color: "#6B7280" }}>· Each session: 72 hours</span>
+            </div>
+            <button
+              onClick={() => generateGroupLink.mutate()}
+              disabled={generateGroupLink.isPending}
+              style={{
+                padding: "0.5rem 1.25rem", background: NAVY, color: "#fff",
+                border: "none", borderRadius: 4, fontSize: "0.875rem", fontWeight: 600,
+                cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
+              }}
+            >
+              {generateGroupLink.isPending
+                ? <><Loader2 size={14} style={{ animation: "spin 1s linear infinite" }} /> Generating…</>
+                : <><Share2 size={14} /> Generate Shareable Link</>}
+            </button>
+            {generateGroupLink.isError && (
+              <p style={{ margin: "0.75rem 0 0", fontSize: "0.8125rem", color: "#DC2626" }}>
+                {(generateGroupLink.error as any)?.message ?? "Failed to generate link"}
+              </p>
+            )}
+            {generatedGroupLink && (
+              <div style={{ marginTop: "1.25rem", background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 4, padding: "1rem 1.25rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <Check size={15} color="#1D4ED8" />
+                  <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#1E40AF" }}>
+                    Shareable link ready — anyone with this link gets 72-hour access
+                  </span>
+                  <span style={{ marginLeft: "auto", fontSize: "0.75rem", color: "#6B7280" }}>
+                    Link expires {new Date(generatedGroupLink.linkExpiresAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                  </span>
+                </div>
+                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                  <input
+                    readOnly
+                    value={generatedGroupLink.url}
+                    style={{
+                      flex: 1, padding: "0.5rem 0.75rem", border: "1px solid #BFDBFE",
+                      borderRadius: 4, fontSize: "0.8rem", color: NAVY,
+                      background: "#fff", fontFamily: "monospace", outline: "none",
+                    }}
+                    onFocus={e => e.target.select()}
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedGroupLink.url);
+                      setGroupLinkCopied(true);
+                      setTimeout(() => setGroupLinkCopied(false), 2000);
+                    }}
+                    style={{
+                      padding: "0.5rem 1rem", background: groupLinkCopied ? "#1D4ED8" : NAVY,
+                      color: "#fff", border: "none", borderRadius: 4, fontSize: "0.8125rem",
+                      fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center",
+                      gap: 6, transition: "background 0.2s", whiteSpace: "nowrap",
+                    }}
+                  >
+                    {groupLinkCopied ? <><Check size={13} /> Copied</> : <><Copy size={13} /> Copy</>}
+                  </button>
+                </div>
+                <p style={{ margin: "0.625rem 0 0", fontSize: "0.75rem", color: "#1E40AF", lineHeight: 1.5 }}>
+                  Send this link via DM, email, or text. Each recipient clicks once and is in — no sign-up.
+                  Generate a new link at any time to retire this one.
+                </p>
               </div>
             )}
           </div>

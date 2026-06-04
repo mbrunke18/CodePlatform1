@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { storage } from "../storage";
-import { parseQuickLinkToken } from "./quickLinkRoute";
+import { parseQuickLinkToken, parseGroupLinkToken } from "./quickLinkRoute";
 
 const DEMO_USER_ID = "vm-demo-exec-2026";
 const DEFAULT_TOKEN = "VMdemo2026";
@@ -116,8 +116,18 @@ export function registerDemoAccessRoute(app: Express) {
 
       let guestFirstName = "Executive";
 
+      // ── Group link (GK-...) — multi-use, platform admin created ─────────
+      if (token.startsWith("GK-")) {
+        const result = parseGroupLinkToken(token);
+        if (!result.valid) {
+          const reason = result.reason === "expired" ? "expired" : "invalid";
+          return res.status(reason === "expired" ? 403 : 401).send(buildExpiredPage(reason));
+        }
+        console.log(`[DemoAccess] Group-link access — ${result.payload!.sessionHours}h session granted`);
+        // Falls through to session creation below; SESSION_SECONDS set from payload
+      }
       // ── Quick-link token (QK-...) — personalized, signed, self-expiring ──
-      if (token.startsWith("QK-")) {
+      else if (token.startsWith("QK-")) {
         const result = parseQuickLinkToken(token);
         if (!result.valid) {
           const reason = result.reason === "expired" ? "expired" : "invalid";
@@ -163,9 +173,14 @@ export function registerDemoAccessRoute(app: Express) {
         });
       }
 
-      // ── Session: honour QK- token duration, otherwise 4-hour window ─────
+      // ── Session: honour token duration ───────────────────────────────────
       let SESSION_SECONDS = 4 * 60 * 60;
-      if (token.startsWith("QK-")) {
+      if (token.startsWith("GK-")) {
+        const result2 = parseGroupLinkToken(token);
+        if (result2.valid && result2.payload) {
+          SESSION_SECONDS = result2.payload.sessionHours * 60 * 60;
+        }
+      } else if (token.startsWith("QK-")) {
         const result2 = parseQuickLinkToken(token);
         if (result2.valid && result2.payload) {
           const remainingMs = result2.payload.expiresAt - Date.now();
