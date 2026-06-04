@@ -79,7 +79,7 @@ const phases = [
     aiColor: "#2B8A6E",
     humanColor: "#C9A84C",
     description:
-      "When an executive authorizes activation, the system simultaneously creates structured tasks, notifies stakeholders with role-specific briefs, stages documents, allocates budget, and opens collaboration channels. Every action has a pre-defined owner and SLA.",
+      "This is the Coordinate + Execute phase — the step that previously took 30 days. When an executive authorizes activation, the platform simultaneously coordinates stakeholders with role-specific briefs, creates structured tasks with pre-defined owners, stages documents, allocates pre-authorized budget, and opens collaboration channels. Every action has an SLA. The 30-day mobilization cycle compresses to 12 minutes.",
     aiActions: [
       "Generate task structures with role-specific assignments",
       "Send stakeholder notifications with contextual briefs",
@@ -193,6 +193,35 @@ export default function IDEAFramework() {
                 <div className="text-[10px] text-[#6B7280] uppercase tracking-wider">{stat.sublabel}</div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* CxO Translation Strip — maps IDEA architecture to executive value chain */}
+        <section style={{ background: "#0A0F2E", borderBottom: "1px solid rgba(201,168,76,0.15)" }}>
+          <div className="max-w-5xl mx-auto px-6 py-8">
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>How the IDEA Framework maps to the CxO value chain</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, border: "1px solid rgba(201,168,76,0.15)" }}>
+              {[
+                { idea: "I — IDENTIFY", cxo: "Preparation", desc: "Protocols built, triggers configured, ownership set — before any trigger fires", color: TEAL, note: "Pre-trigger" },
+                { idea: "D — DETECT", cxo: "Detect", desc: "221 signals monitored continuously — situation matched to protocol in seconds", color: GOLD, note: "→ CxO chain" },
+                { idea: "E — EXECUTE", cxo: "Coordinate + Execute", desc: "Platform coordinates stakeholders, tasks, budget, and communications. Executive authorizes once. Execution deploys in 12 minutes.", color: GOLD, note: "→ CxO chain" },
+                { idea: "A — ADVANCE", cxo: "Learn", desc: "Every activation encodes lessons back into the protocol — next response is faster and more precise", color: TEAL, note: "→ CxO chain" },
+              ].map(({ idea, cxo, desc, color, note }, i, arr) => (
+                <div key={idea} style={{ padding: "18px 20px", borderRight: i < arr.length - 1 ? "1px solid rgba(201,168,76,0.1)" : "none", background: i === 0 ? "rgba(43,138,110,0.06)" : "rgba(201,168,76,0.03)" }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, color, letterSpacing: "0.12em", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 4 }}>{idea}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 6, fontFamily: "'Barlow Condensed', sans-serif" }}>{cxo}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.55, fontFamily: "'Barlow', sans-serif" }}>{desc}</div>
+                  {i > 0 && <div style={{ marginTop: 8, fontSize: 8, fontWeight: 700, color: `${color}60`, letterSpacing: "0.14em", textTransform: "uppercase" as const, fontFamily: "'Barlow Condensed', sans-serif" }}>{note}</div>}
+                  {i === 0 && <div style={{ marginTop: 8, fontSize: 8, fontWeight: 700, color: `${TEAL}60`, letterSpacing: "0.14em", textTransform: "uppercase" as const, fontFamily: "'Barlow Condensed', sans-serif" }}>Infrastructure layer</div>}
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 10, color: "rgba(255,255,255,0.3)", fontFamily: "'Barlow', sans-serif", lineHeight: 1.5 }}>
+              The IDEA Framework is the platform architecture. "Detect → Coordinate → Execute → Learn" is what the enterprise experiences. <span style={{ color: GOLD }}>Coordinate is the most compressed step — the one that previously took 30 days.</span>
+            </div>
           </div>
         </section>
 

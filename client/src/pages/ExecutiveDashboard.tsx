@@ -352,7 +352,7 @@ export default function ExecutiveDashboard() {
                   trendDirection="up"
                   status="good"
                   icon={Eye}
-                  description="AI pattern recognition accuracy"
+                  description="Signal pattern recognition accuracy"
                 />
               </div>
 
