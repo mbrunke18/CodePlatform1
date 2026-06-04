@@ -316,6 +316,33 @@ export default function WelcomeBrief() {
           </div>
         </div>
 
+        {/* ── WHAT YOU CONTROL ── */}
+        <div style={{
+          border: '1px solid rgba(201,168,76,0.2)', background: 'rgba(201,168,76,0.04)', padding: '24px 28px', marginBottom: 32,
+          opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.25s',
+        }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>What You Control at Every Trigger</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10, marginBottom: 14 }}>
+            {[
+              { n: '01', label: 'Execute the pre-staged protocol', note: '12 minutes to coordinated response' },
+              { n: '02', label: 'Adjust it before executing', note: 'Scope, budget, or stakeholders' },
+              { n: '03', label: 'Switch to a different protocol', note: '180 options pre-staged and ready' },
+              { n: '04', label: 'Stand down with a governance record', note: 'Decision logged with full rationale' },
+            ].map(({ n, label, note }) => (
+              <div key={n} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                <span style={{ color: GOLD, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em', flexShrink: 0, marginTop: 1 }}>{n}</span>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.88)' }}>{label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', marginTop: 1 }}>{note}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 10 }}>
+            The preparation is pre-staged. The decision is yours. The platform coordinates everything that follows authorization.
+          </div>
+        </div>
+
         {/* ── CTA ── */}
         <div style={{
           textAlign: 'center',

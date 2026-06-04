@@ -508,7 +508,7 @@ export default function MissionControl() {
                   <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.12em' }}>READINESS OS</span>
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, marginTop: 1 }}>
-                  Welcome back, {firstName} · Map · Monitor · Decide · Execute · Learn
+                  Welcome back, {firstName} — Detect · Coordinate · Execute · Learn
                 </div>
               </div>
             </div>
@@ -543,6 +543,69 @@ export default function MissionControl() {
               <Link href="/command-tower" title="Command Tower — Live wall display for conference rooms & NOC screens (auto-refreshing, read-only)" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
                 <Radar size={11} /> Command Tower
               </Link>
+            </div>
+          </div>
+
+          {/* ── CxO ORIENTATION STRIP — answers "what do I control" + "what's the outcome" ── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, marginBottom: 24, border: '1px solid rgba(201,168,76,0.18)', background: 'rgba(10,15,46,0.7)' }}>
+            {/* Left: What you control */}
+            <div style={{ padding: '20px 28px', borderRight: '1px solid rgba(201,168,76,0.12)' }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>What you control</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', marginBottom: 12, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
+                Four decisions at every strategic trigger — nothing more, nothing less.
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 7 }}>
+                {[
+                  { n: '01', label: 'Execute the pre-staged protocol', note: 'Response deploys in 12 minutes' },
+                  { n: '02', label: 'Adjust it before executing', note: 'Modify scope, budget, or stakeholders' },
+                  { n: '03', label: 'Switch to a different protocol', note: 'Choose from 180 pre-staged options' },
+                  { n: '04', label: 'Stand down with a governance record', note: 'Decision logged, rationale preserved' },
+                ].map(({ n, label, note }) => (
+                  <div key={n} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                    <span style={{ color: GOLD, fontSize: 9, fontWeight: 800, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.1em', flexShrink: 0, marginTop: 2 }}>{n}</span>
+                    <div>
+                      <span style={{ color: 'rgba(255,255,255,0.88)', fontSize: 11, fontWeight: 600, fontFamily: "'Barlow Condensed', sans-serif" }}>{label}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.38)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", marginLeft: 8 }}>{note}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Right: What the outcome is */}
+            <div style={{ padding: '20px 28px' }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>What the expected outcome is</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', marginBottom: 14, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
+                Three outcomes that are measurable from day one.
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
+                <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{ textAlign: 'center' as const, flexShrink: 0 }}>
+                    <div style={{ fontSize: 22, fontWeight: 700, color: GOLD, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1 }}>12 min</div>
+                    <div style={{ fontSize: 8, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', fontFamily: "'Barlow Condensed', sans-serif" }}>was 30 days</div>
+                  </div>
+                  <div style={{ color: 'rgba(255,255,255,0.65)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1.5 }}>
+                    The mobilization cycle that previously took 30 days — aligning stakeholders, agreeing on a plan — compresses to 12 minutes.
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{ textAlign: 'center' as const, flexShrink: 0 }}>
+                    <div style={{ fontSize: 22, fontWeight: 700, color: TEAL, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1 }}>180</div>
+                    <div style={{ fontSize: 8, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', fontFamily: "'Barlow Condensed', sans-serif" }}>protocols</div>
+                  </div>
+                  <div style={{ color: 'rgba(255,255,255,0.65)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1.5 }}>
+                    Preparation that previously lived in documents activates as infrastructure the moment the trigger fires.
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{ textAlign: 'center' as const, flexShrink: 0 }}>
+                    <div style={{ fontSize: 22, fontWeight: 700, color: 'rgba(255,255,255,0.7)', fontFamily: "'Cormorant Garamond', serif", lineHeight: 1 }}>↑</div>
+                    <div style={{ fontSize: 8, fontWeight: 700, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', fontFamily: "'Barlow Condensed', sans-serif" }}>advance</div>
+                  </div>
+                  <div style={{ color: 'rgba(255,255,255,0.65)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1.5 }}>
+                    Every activation encodes what was learned back into the preparation — the next response is faster and more precise than the last.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

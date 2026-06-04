@@ -1025,9 +1025,24 @@ function HeroSection() {
                   What the 30-day mobilization gap actually costs — read the brief →
                 </Link>
               </div>
-              <p style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 48px" }}>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 24px" }}>
                 Pre-staged before the trigger. Authorized in real time. Executed in 12 minutes. And every activation makes the next response faster.
               </p>
+
+              {/* Detect → Coordinate → Execute → Learn chain — Patrik framing */}
+              <div style={{ display: "flex", alignItems: "stretch", gap: 0, marginBottom: 36, maxWidth: 500, border: "1px solid rgba(201,168,76,0.18)" }}>
+                {[
+                  { verb: "Detect", desc: "221 trigger patterns", color: GOLD },
+                  { verb: "Coordinate", desc: "Pre-staged stakeholders", color: GOLD },
+                  { verb: "Execute", desc: "12 minutes to full response", color: GOLD },
+                  { verb: "Learn", desc: "ADVANCE loop compounds", color: TEAL },
+                ].map(({ verb, desc, color }, i, arr) => (
+                  <div key={verb} style={{ flex: 1, padding: "10px 12px", borderRight: i < arr.length - 1 ? "1px solid rgba(201,168,76,0.12)" : "none", background: i === arr.length - 1 ? "rgba(43,138,110,0.08)" : "rgba(201,168,76,0.04)" }}>
+                    <div style={{ ...DM, fontSize: 12, fontWeight: 800, color, letterSpacing: "0.06em", marginBottom: 3 }}>{verb}</div>
+                    <div style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.42)", letterSpacing: "0.04em" }}>{desc}</div>
+                  </div>
+                ))}
+              </div>
 
               {/* CTAs — clear primary dominance, secondary recedes */}
               <div style={{ marginBottom: 16 }}>

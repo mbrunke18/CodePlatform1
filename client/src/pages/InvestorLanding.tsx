@@ -127,8 +127,13 @@ export default function InvestorLanding() {
               <p className="text-base font-bold leading-relaxed" style={{ color: '#C9A84C' }}>
                 VaughnMartin redesigned how work flows from first principles for the AI era. Pre-staged Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
               </p>
-              <div className="mt-4 pt-4 border-t border-white/10 text-sm text-white/50 italic">
-                We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model startup to Fortune 500s have been running for 40 years.
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <p className="text-sm font-bold leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.82)' }}>
+                  Readiness OS is the system that allows an enterprise to detect, coordinate, execute, and learn from strategic change faster than its competitors — from startup to Fortune 500.
+                </p>
+                <p className="text-sm text-white/50 italic">
+                  We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model startup to Fortune 500s have been running for 40 years.
+                </p>
               </div>
             </div>
 

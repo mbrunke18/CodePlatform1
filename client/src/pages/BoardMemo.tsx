@@ -151,7 +151,7 @@ function MemoDocument({ form }: { form: FormState }) {
           Readiness OS is not a technology tool — it is an operating model. It pre-stages execution for every scenario we are likely to face: tasks sequenced, budgets pre-authorized, executives mapped, and stakeholder communications pre-drafted. When a situation presents itself, the response is already prepared. Executives authorize; the platform orchestrates. Human authority is preserved; coordination lag is eliminated.
         </p>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8, marginTop: 10 }}>
-          Readiness OS aligns with the next wave of enterprise operating models: AI-enabled autonomy with governance. Rather than automating isolated tasks, the platform stages end-to-end response architecture — scenarios, trigger logic, authority gates, budgets, and communications — so leadership can authorize action at speed with full accountability. This creates both earlier situational awareness and faster coordinated execution without compromising control.
+          Readiness OS is the operating model layer above the technology stack — not a tool that automates tasks, but a system that allows an enterprise to detect, coordinate, execute, and learn from strategic change faster than its competitors. The platform stages end-to-end response architecture — scenarios, trigger logic, authority gates, budgets, and communications — so leadership can authorize action at speed with full accountability. This creates both earlier situational awareness and faster coordinated execution without compromising control.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginTop: 14 }}>
           {[
