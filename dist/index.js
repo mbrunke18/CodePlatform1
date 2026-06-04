@@ -9855,6 +9855,18 @@ var init_storage = __esm({
       async upsertUser(userData) {
         const adminRole = await db.select({ id: roles.id }).from(roles).where(eq(roles.name, "Admin")).limit(1);
         const defaultRoleId = adminRole[0]?.id ?? null;
+        if (userData.email) {
+          const [existing] = await db.select().from(users).where(eq(users.email, userData.email)).limit(1);
+          if (existing && existing.id !== userData.id) {
+            const [updated] = await db.update(users).set({
+              firstName: userData.firstName ?? existing.firstName,
+              lastName: userData.lastName ?? existing.lastName,
+              profileImageUrl: userData.profileImageUrl ?? existing.profileImageUrl,
+              updatedAt: /* @__PURE__ */ new Date()
+            }).where(eq(users.id, existing.id)).returning();
+            return updated;
+          }
+        }
         const [user] = await db.insert(users).values({ ...userData, roleId: userData.roleId ?? defaultRoleId }).onConflictDoUpdate({
           target: users.id,
           set: {
@@ -9889,12 +9901,17 @@ var init_storage = __esm({
           createdAt: organizations.createdAt,
           updatedAt: organizations.updatedAt
         };
-        const owned = await db.select(cols).from(organizations).where(eq(organizations.ownerId, userId));
+        const [userRow] = await db.select({ organizationId: users.organizationId }).from(users).where(eq(users.id, userId)).limit(1);
+        const primaryOrgId = userRow?.organizationId;
+        const owned = await db.select(cols).from(organizations).where(eq(organizations.ownerId, userId)).orderBy(desc(organizations.createdAt));
         const membered = await db.select(cols).from(organizations).innerJoin(orgMemberships, eq(orgMemberships.organizationId, organizations.id)).where(eq(orgMemberships.userId, userId));
         const seen = new Set(owned.map((o) => o.id));
         const combined = [...owned];
         for (const org of membered) {
           if (!seen.has(org.id)) combined.push(org);
+        }
+        if (primaryOrgId) {
+          combined.sort((a, b) => a.id === primaryOrgId ? -1 : b.id === primaryOrgId ? 1 : 0);
         }
         return combined;
       }
@@ -16400,7 +16417,7 @@ __export(magicLinkService_exports, {
 });
 import { Resend as Resend4 } from "resend";
 import crypto3 from "crypto";
-import { eq as eq9 } from "drizzle-orm";
+import { eq as eq10 } from "drizzle-orm";
 function generateToken() {
   return crypto3.randomBytes(48).toString("hex");
 }
@@ -16731,7 +16748,7 @@ async function sendWelcomeTriggerDemo(email, firstName) {
   console.warn(`[WelcomeTrigger] All senders failed for ${email}`);
 }
 async function validateMagicLinkToken(token) {
-  const rows = await db.select().from(magicLinkTokens).where(eq9(magicLinkTokens.token, token)).limit(1);
+  const rows = await db.select().from(magicLinkTokens).where(eq10(magicLinkTokens.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
   const row = rows[0];
   if (row.usedAt) return { valid: false, reason: "already_used" };
@@ -16748,12 +16765,12 @@ async function validateMagicLinkToken(token) {
   };
 }
 async function verifyMagicLinkToken(token) {
-  const rows = await db.select().from(magicLinkTokens).where(eq9(magicLinkTokens.token, token)).limit(1);
+  const rows = await db.select().from(magicLinkTokens).where(eq10(magicLinkTokens.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
   const row = rows[0];
   if (row.usedAt) return { valid: false, reason: "already_used" };
   if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
-  await db.update(magicLinkTokens).set({ usedAt: /* @__PURE__ */ new Date() }).where(eq9(magicLinkTokens.token, token));
+  await db.update(magicLinkTokens).set({ usedAt: /* @__PURE__ */ new Date() }).where(eq10(magicLinkTokens.token, token));
   return {
     valid: true,
     data: {
@@ -20392,7 +20409,7 @@ function evaluateSignal(signal, thresholds) {
 }
 async function sendDetectionEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
+  if (!apiKey || emails.length === 0) return false;
   const resend2 = new Resend6(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
@@ -20477,6 +20494,7 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
     "Readiness OS <onboarding@resend.dev>",
     "Readiness OS <pilot@vaughnmartin.com>"
   ];
+  let anySent = false;
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString("base64url");
     const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
@@ -20495,6 +20513,7 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
           continue;
         }
         sent = true;
+        anySent = true;
         break;
       } catch (err) {
         console.warn(`\u26A0 Detection email sender ${from} threw: ${err.message} \u2014 trying next`);
@@ -20502,11 +20521,12 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
     }
     if (!sent) console.error(`\u2717 All senders failed for detection alert to ${recipientEmail}`);
   }
-  console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
+  if (anySent) console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
+  return anySent;
 }
 async function sendWatchEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
+  if (!apiKey || emails.length === 0) return false;
   const resend2 = new Resend6(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
@@ -20579,6 +20599,7 @@ async function sendWatchEmail(detection, signal, emails, orgId) {
     "Readiness OS <onboarding@resend.dev>",
     "Readiness OS <pilot@vaughnmartin.com>"
   ];
+  let anySent = false;
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString("base64url");
     const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
@@ -20597,6 +20618,7 @@ async function sendWatchEmail(detection, signal, emails, orgId) {
           continue;
         }
         sent = true;
+        anySent = true;
         break;
       } catch (err) {
         console.warn(`\u26A0 Watch email sender ${from} threw: ${err.message} \u2014 trying next`);
@@ -20604,11 +20626,12 @@ async function sendWatchEmail(detection, signal, emails, orgId) {
     }
     if (!sent) console.error(`\u2717 All senders failed for watch alert to ${recipientEmail}`);
   }
-  console.log(`\u{1F4E7} Watch alert sent to ${emails.join(", ")}`);
+  if (anySent) console.log(`\u{1F4E7} Watch alert sent to ${emails.join(", ")}`);
+  return anySent;
 }
 async function sendAwareEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
+  if (!apiKey || emails.length === 0) return false;
   const resend2 = new Resend6(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
@@ -20681,6 +20704,7 @@ async function sendAwareEmail(detection, signal, emails, orgId) {
     "Readiness OS <onboarding@resend.dev>",
     "Readiness OS <pilot@vaughnmartin.com>"
   ];
+  let anySent = false;
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString("base64url");
     const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
@@ -20699,6 +20723,7 @@ async function sendAwareEmail(detection, signal, emails, orgId) {
           continue;
         }
         sent = true;
+        anySent = true;
         break;
       } catch (err) {
         console.warn(`\u26A0 Aware email sender ${from} threw: ${err.message} \u2014 trying next`);
@@ -20706,7 +20731,8 @@ async function sendAwareEmail(detection, signal, emails, orgId) {
     }
     if (!sent) console.error(`\u2717 All senders failed for awareness alert to ${recipientEmail}`);
   }
-  console.log(`\u{1F4E7} Awareness alert sent to ${emails.join(", ")}`);
+  if (anySent) console.log(`\u{1F4E7} Awareness alert sent to ${emails.join(", ")}`);
+  return anySent;
 }
 async function sendDetectionSlack(detection, signal) {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
@@ -20771,6 +20797,18 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   try {
     allContacts = await db.select().from(stakeholderContacts).where(eq23(stakeholderContacts.organizationId, organizationId));
   } catch {
+  }
+  if (allContacts.length === 0) {
+    try {
+      const { users: users6 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { isNotNull: isNotNull2, eq: eqUsers } = await import("drizzle-orm");
+      const orgMembers = await db.select({ email: users6.email }).from(users6).where(eqUsers(users6.organizationId, organizationId));
+      allContacts = orgMembers.filter((m) => m.email).map((m) => ({ email: m.email, triggerDomains: null, isActive: true }));
+      if (allContacts.length > 0) {
+        console.log(`\u{1F4CB} Using ${allContacts.length} registered org member(s) as alert recipients for org ${organizationId}`);
+      }
+    } catch {
+    }
   }
   const orgConfig = await getOrgConfig(organizationId);
   const evaluationMode = orgConfig.mode;
@@ -20876,7 +20914,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       );
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
       let contactEmails = Array.from(new Set(recipientContacts.map((c) => c.email).filter(Boolean)));
-      const ADMIN_FALLBACK = "pilot@vaughnmartin.com";
+      const ADMIN_FALLBACK = process.env.PLATFORM_ADMIN_EMAIL || "pilot@vaughnmartin.com";
       if (contactEmails.length === 0) {
         contactEmails = [ADMIN_FALLBACK];
         console.log(`\u{1F4EC} No stakeholder contacts registered \u2014 routing "${detection.triggerName}" to admin fallback (${ADMIN_FALLBACK})`);
@@ -21048,7 +21086,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       }
       const isActionTier = detection.alertTier === "action" || detection.alertTier === void 0;
       const isAwareTier = detection.alertTier === "aware";
-      let emailFn = Promise.resolve();
+      let emailFn = Promise.resolve(false);
       if (contactEmails.length > 0) {
         if (isActionTier) {
           emailFn = sendDetectionEmail(detection, signal, contactEmails, organizationId);
@@ -21058,10 +21096,11 @@ async function evaluateAndPersistSignals(signals, organizationId) {
           emailFn = sendWatchEmail(detection, signal, contactEmails, organizationId);
         }
       }
-      await Promise.allSettled([
+      const [, emailResult] = await Promise.allSettled([
         isActionTier ? sendDetectionSlack(detection, signal) : Promise.resolve(),
         emailFn
       ]);
+      const emailDelivered = emailResult.status === "fulfilled" && emailResult.value === true;
       const notifiedAt = /* @__PURE__ */ new Date();
       const timelineStatus = isActionTier ? "notified" : isAwareTier ? "aware" : "watch";
       try {
@@ -21070,7 +21109,11 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         }
       } catch {
       }
-      await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq23(triggerDetections.triggerName, detection.triggerName));
+      if (emailDelivered) {
+        await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq23(triggerDetections.triggerName, detection.triggerName));
+      } else {
+        await db.update(triggerDetections).set({ status: timelineStatus }).where(eq23(triggerDetections.triggerName, detection.triggerName));
+      }
       detectionsCreated++;
     } catch (err) {
       console.error("Error persisting detection:", err);
@@ -25032,10 +25075,19 @@ var init_LiveSignalIngestionService = __esm({
         }
         console.log(`   \u2705 Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
         try {
-          const { signalMonitoringConfig: signalMonitoringConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { ne: ne3 } = await import("drizzle-orm");
+          const { signalMonitoringConfig: signalMonitoringConfig2, users: users6, organizations: organizations6 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { ne: ne3, isNotNull: isNotNull2, inArray: inArray8 } = await import("drizzle-orm");
           const configuredOrgs = await db.select({ orgId: signalMonitoringConfig2.organizationId }).from(signalMonitoringConfig2).where(ne3(signalMonitoringConfig2.organizationId, organizationId));
-          for (const { orgId } of configuredOrgs) {
+          const userOrgs = await db.selectDistinct({ orgId: users6.organizationId }).from(users6).where(isNotNull2(users6.organizationId));
+          const allOrgIds = /* @__PURE__ */ new Set([
+            ...configuredOrgs.map((r) => r.orgId),
+            ...userOrgs.map((r) => r.orgId).filter(Boolean)
+          ]);
+          allOrgIds.delete(organizationId);
+          const DEMO_ORG_NAMES = ["Innovate Dynamics"];
+          const demoOrgRows = await db.select({ id: organizations6.id }).from(organizations6).where(inArray8(organizations6.name, DEMO_ORG_NAMES));
+          for (const { id } of demoOrgRows) allOrgIds.delete(id);
+          for (const orgId of allOrgIds) {
             try {
               const extraDetections = await evaluateAndPersistSignals(signals, orgId);
               if (extraDetections > 0) {
@@ -47068,6 +47120,241 @@ init_storage();
 // server/routes/quickLinkRoute.ts
 import crypto2 from "crypto";
 import { Resend as Resend3 } from "resend";
+
+// server/replitAuth.ts
+init_storage();
+init_db();
+init_schema();
+import * as client from "openid-client";
+import { Strategy } from "openid-client/passport";
+import passport from "passport";
+import session from "express-session";
+import memoize from "memoizee";
+import connectPg from "connect-pg-simple";
+import { eq as eq9 } from "drizzle-orm";
+var getOidcConfig = memoize(
+  async () => {
+    return await client.discovery(
+      new URL(process.env.ISSUER_URL ?? "https://replit.com/oidc"),
+      process.env.REPL_ID
+    );
+  },
+  { maxAge: 3600 * 1e3 }
+);
+function getSession() {
+  const sessionTtl = 7 * 24 * 60 * 60 * 1e3;
+  const pgStore = connectPg(session);
+  const sessionStore = new pgStore({
+    conString: process.env.DATABASE_URL,
+    createTableIfMissing: false,
+    ttl: sessionTtl,
+    tableName: "sessions"
+  });
+  return session({
+    secret: process.env.SESSION_SECRET,
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      maxAge: sessionTtl
+    }
+  });
+}
+function updateUserSession(user, tokens) {
+  user.claims = tokens.claims();
+  user.access_token = tokens.access_token;
+  user.refresh_token = tokens.refresh_token;
+  user.expires_at = user.claims?.exp;
+}
+async function upsertUser(claims) {
+  console.log("[AUTH DEBUG] Login claims:", JSON.stringify({
+    sub: claims["sub"],
+    email: claims["email"],
+    name: claims["name"],
+    first_name: claims["first_name"],
+    last_name: claims["last_name"]
+  }));
+  const user = await storage.upsertUser({
+    id: claims["sub"],
+    email: claims["email"],
+    firstName: claims["first_name"],
+    lastName: claims["last_name"],
+    profileImageUrl: claims["profile_image_url"]
+  });
+  const email = (claims["email"] ?? "").toLowerCase().trim();
+  let assignedOrgId = null;
+  try {
+    const rows = await db.select({ organizationId: allowedEmails.organizationId }).from(allowedEmails).where(eq9(allowedEmails.email, email)).limit(1);
+    assignedOrgId = rows[0]?.organizationId ?? null;
+  } catch {
+  }
+  if (assignedOrgId) {
+    await storage.addOrgMembership(user.id, assignedOrgId, "member");
+    await db.update(users).set({ organizationId: assignedOrgId, updatedAt: /* @__PURE__ */ new Date() }).where(eq9(users.id, user.id));
+  }
+  const userOrgs = await storage.getUserOrganizations(user.id);
+  if (userOrgs.length === 0) {
+    const orgName = claims["name"] || (email ? email.split("@")[0] : "My Organization");
+    await storage.createOrganization({
+      name: orgName,
+      description: "My Organization",
+      ownerId: user.id,
+      onboardingCompleted: false
+    });
+  }
+  const [currentUser] = await db.select({ organizationId: users.organizationId }).from(users).where(eq9(users.id, user.id)).limit(1);
+  if (!currentUser?.organizationId) {
+    const allOrgs = await storage.getUserOrganizations(user.id);
+    if (allOrgs.length > 0) {
+      await db.update(users).set({ organizationId: allOrgs[0].id }).where(eq9(users.id, user.id));
+    }
+  }
+  return user;
+}
+async function isEmailAllowed(email) {
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+  if (adminEmail && email === adminEmail) return true;
+  try {
+    const [countRow] = await db.select({ count: allowedEmails.id }).from(allowedEmails).limit(1);
+    if (!countRow) return true;
+    const rows = await db.select().from(allowedEmails).where(eq9(allowedEmails.email, email.toLowerCase().trim())).limit(1);
+    return rows.length > 0;
+  } catch {
+    return true;
+  }
+}
+async function setupAuth(app2) {
+  app2.set("trust proxy", 1);
+  app2.use(getSession());
+  app2.use(passport.initialize());
+  app2.use(passport.session());
+  if (!process.env.REPLIT_DOMAINS) {
+    return;
+  }
+  const config = await getOidcConfig();
+  const verify = async (tokens, verified) => {
+    const claims = tokens.claims();
+    const email = claims["email"] ?? "";
+    const allowed = await isEmailAllowed(email);
+    if (!allowed) {
+      return verified(null, false, { message: "access_denied" });
+    }
+    const user = {};
+    updateUserSession(user, tokens);
+    const resolvedUser = await upsertUser(claims);
+    if (resolvedUser?.id) {
+      user.dbUserId = resolvedUser.id;
+    }
+    verified(null, user);
+  };
+  const registeredDomains = [];
+  for (const domain of process.env.REPLIT_DOMAINS.split(",")) {
+    const trimmed = domain.trim();
+    const strategy = new Strategy(
+      {
+        name: `replitauth:${trimmed}`,
+        config,
+        scope: "openid email profile offline_access",
+        callbackURL: `https://${trimmed}/api/callback`
+      },
+      verify
+    );
+    passport.use(strategy);
+    registeredDomains.push(trimmed);
+  }
+  function resolveStrategy(hostname) {
+    if (registeredDomains.includes(hostname)) {
+      return `replitauth:${hostname}`;
+    }
+    const replId = hostname.split(".")[0];
+    const match = registeredDomains.find((d) => d.startsWith(replId));
+    return `replitauth:${match || registeredDomains[0]}`;
+  }
+  passport.serializeUser((user, cb) => cb(null, user));
+  passport.deserializeUser((user, cb) => cb(null, user));
+  app2.use(async (req, _res, next) => {
+    try {
+      if (req.user && req.user.claims?.email) {
+        if (!req.user.dbUserId) {
+          const email = req.user.claims.email.toLowerCase().trim();
+          const [existing] = await db.select({ id: users.id, organizationId: users.organizationId }).from(users).where(eq9(users.email, email)).limit(1);
+          if (existing) {
+            req.user.dbUserId = existing.id;
+            req.user.organizationId = existing.organizationId;
+          }
+        } else if (!req.user.organizationId) {
+          const [existing] = await db.select({ organizationId: users.organizationId }).from(users).where(eq9(users.id, req.user.dbUserId)).limit(1);
+          if (existing?.organizationId) {
+            req.user.organizationId = existing.organizationId;
+          }
+        }
+      }
+    } catch {
+    }
+    next();
+  });
+  app2.get("/api/login", (req, res, next) => {
+    if (req.query.returnTo && typeof req.query.returnTo === "string") {
+      req.session.returnTo = req.query.returnTo;
+    } else if (!req.session.returnTo) {
+      req.session.returnTo = "/mission-control";
+    }
+    passport.authenticate(resolveStrategy(req.hostname), {
+      prompt: "login consent"
+    })(req, res, next);
+  });
+  app2.get("/api/callback", (req, res, next) => {
+    passport.authenticate(
+      resolveStrategy(req.hostname),
+      (err, user, info) => {
+        if (err) return next(err);
+        if (!user) {
+          if (info?.message === "access_denied") {
+            return res.redirect("/access-denied");
+          }
+          return res.redirect("/api/login");
+        }
+        req.logIn(user, (loginErr) => {
+          if (loginErr) return next(loginErr);
+          const returnTo = req.session.returnTo || "/mission-control";
+          delete req.session.returnTo;
+          return res.redirect(returnTo);
+        });
+      }
+    )(req, res, next);
+  });
+  app2.get("/api/logout", (req, res) => {
+    req.logout(() => {
+      res.redirect(
+        client.buildEndSessionUrl(config, {
+          client_id: process.env.REPL_ID,
+          post_logout_redirect_uri: `${req.protocol}://${req.hostname}`
+        }).href
+      );
+    });
+  });
+}
+var isAuthenticated = async (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  return next();
+};
+var requirePlatformAdmin = async (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  const userEmail = req.user?.claims?.email ?? "";
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL ?? "";
+  if (!adminEmail || userEmail !== adminEmail) {
+    return res.status(403).json({ message: "Forbidden \u2014 platform admin only" });
+  }
+  return next();
+};
+
+// server/routes/quickLinkRoute.ts
 var SECRET = process.env.QUICK_LINK_SECRET || "vm-quick-link-2026";
 function sign(payload) {
   const data = JSON.stringify(payload);
@@ -47086,6 +47373,30 @@ function parseQuickLinkToken(token) {
   try {
     const payload = JSON.parse(Buffer.from(b64, "base64url").toString());
     if (Date.now() > payload.expiresAt) return { valid: false, reason: "expired" };
+    return { valid: true, payload };
+  } catch {
+    return { valid: false, reason: "parse_error" };
+  }
+}
+function signGroupLink(payload) {
+  const data = JSON.stringify(payload);
+  const b64 = Buffer.from(data).toString("base64url");
+  const hmac = crypto2.createHmac("sha256", SECRET).update(b64).digest("base64url");
+  return `GK-${b64}.${hmac}`;
+}
+function parseGroupLinkToken(token) {
+  if (!token.startsWith("GK-")) return { valid: false, reason: "not_group_link" };
+  const inner = token.slice(3);
+  const dotIdx = inner.indexOf(".");
+  if (dotIdx === -1) return { valid: false, reason: "malformed" };
+  const b64 = inner.slice(0, dotIdx);
+  const hmacReceived = inner.slice(dotIdx + 1);
+  const hmacExpected = crypto2.createHmac("sha256", SECRET).update(b64).digest("base64url");
+  if (hmacReceived !== hmacExpected) return { valid: false, reason: "invalid_signature" };
+  try {
+    const payload = JSON.parse(Buffer.from(b64, "base64url").toString());
+    if (payload.type !== "group") return { valid: false, reason: "wrong_type" };
+    if (Date.now() > payload.linkExpiresAt) return { valid: false, reason: "expired" };
     return { valid: true, payload };
   } catch {
     return { valid: false, reason: "parse_error" };
@@ -47220,6 +47531,32 @@ function registerQuickLinkRoute(app2) {
       return res.status(500).json({ error: "Failed to generate link" });
     }
   });
+  app2.post("/api/admin/generate-group-link", requirePlatformAdmin, async (req, res) => {
+    try {
+      const { linkDays = 7, sessionHours = 72 } = req.body;
+      const linkDaysCapped = Math.min(Math.max(Number(linkDays) || 7, 1), 30);
+      const sessionHoursCapped = Math.min(Math.max(Number(sessionHours) || 72, 24), 168);
+      const linkExpiresAt = Date.now() + linkDaysCapped * 24 * 60 * 60 * 1e3;
+      const nonce = crypto2.randomBytes(8).toString("hex");
+      const payload = { type: "group", linkExpiresAt, sessionHours: sessionHoursCapped, nonce };
+      const token = signGroupLink(payload);
+      const domains = (process.env.REPLIT_DOMAINS || "").split(",").map((d) => d.trim()).filter(Boolean);
+      const customDomain = domains.find((d) => !d.includes("replit.app")) || domains[0];
+      const baseUrl = customDomain ? `https://${customDomain}` : "https://vaughnmartin.com";
+      const url = `${baseUrl}/api/demo-access?token=${token}`;
+      console.log(`[GroupLink] Generated by platform admin \u2014 ${sessionHoursCapped}h session, link valid ${linkDaysCapped} days`);
+      return res.json({
+        url,
+        token,
+        linkExpiresAt: new Date(linkExpiresAt).toISOString(),
+        linkDays: linkDaysCapped,
+        sessionHours: sessionHoursCapped
+      });
+    } catch (err) {
+      console.error("[GroupLink] Error:", err);
+      return res.status(500).json({ error: "Failed to generate group link" });
+    }
+  });
 }
 
 // server/routes/demoAccessRoute.ts
@@ -47329,7 +47666,14 @@ function registerDemoAccessRoute(app2) {
       const token = req.query.token;
       if (!token) return res.status(401).send(buildExpiredPage("invalid"));
       let guestFirstName = "Executive";
-      if (token.startsWith("QK-")) {
+      if (token.startsWith("GK-")) {
+        const result = parseGroupLinkToken(token);
+        if (!result.valid) {
+          const reason = result.reason === "expired" ? "expired" : "invalid";
+          return res.status(reason === "expired" ? 403 : 401).send(buildExpiredPage(reason));
+        }
+        console.log(`[DemoAccess] Group-link access \u2014 ${result.payload.sessionHours}h session granted`);
+      } else if (token.startsWith("QK-")) {
         const result = parseQuickLinkToken(token);
         if (!result.valid) {
           const reason = result.reason === "expired" ? "expired" : "invalid";
@@ -47369,7 +47713,12 @@ function registerDemoAccessRoute(app2) {
         });
       }
       let SESSION_SECONDS = 4 * 60 * 60;
-      if (token.startsWith("QK-")) {
+      if (token.startsWith("GK-")) {
+        const result2 = parseGroupLinkToken(token);
+        if (result2.valid && result2.payload) {
+          SESSION_SECONDS = result2.payload.sessionHours * 60 * 60;
+        }
+      } else if (token.startsWith("QK-")) {
         const result2 = parseQuickLinkToken(token);
         if (result2.valid && result2.payload) {
           const remainingMs = result2.payload.expiresAt - Date.now();
@@ -47414,7 +47763,7 @@ init_db();
 init_schema();
 import { Resend as Resend5 } from "resend";
 import crypto4 from "crypto";
-import { eq as eq10 } from "drizzle-orm";
+import { eq as eq11 } from "drizzle-orm";
 var NAVY2 = "#0A0F2E";
 var GOLD2 = "#C9A84C";
 var TRIAL_HOURS = 48;
@@ -47551,12 +47900,12 @@ async function createTrialSession(data) {
   return { success: true, token, emailSent };
 }
 async function activateTrialToken(token) {
-  const rows = await db.select().from(trialSessions).where(eq10(trialSessions.token, token)).limit(1);
+  const rows = await db.select().from(trialSessions).where(eq11(trialSessions.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
   const row = rows[0];
   if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
   const trialExpiresAt = new Date(Date.now() + TRIAL_HOURS * 60 * 60 * 1e3);
-  await db.update(trialSessions).set({ activatedAt: /* @__PURE__ */ new Date(), expiresAt: trialExpiresAt }).where(eq10(trialSessions.token, token));
+  await db.update(trialSessions).set({ activatedAt: /* @__PURE__ */ new Date(), expiresAt: trialExpiresAt }).where(eq11(trialSessions.token, token));
   return {
     valid: true,
     data: {
@@ -47573,7 +47922,7 @@ async function activateTrialToken(token) {
 // server/routes/peerReviewRoute.ts
 init_db();
 init_schema();
-import { desc as desc4, eq as eq11 } from "drizzle-orm";
+import { desc as desc4, eq as eq12 } from "drizzle-orm";
 function registerPeerReviewRoute(app2) {
   app2.post("/api/peer-reviews", async (req, res) => {
     try {
@@ -47765,7 +48114,7 @@ function registerPeerReviewRoute(app2) {
       if (req.body.status) updates.status = req.body.status;
       if (req.body.action) updates.action = req.body.action;
       if (req.body.status === "completed") updates.completedAt = /* @__PURE__ */ new Date();
-      const [row] = await db.update(peerReviewActions).set(updates).where(eq11(peerReviewActions.id, req.params.id)).returning();
+      const [row] = await db.update(peerReviewActions).set(updates).where(eq12(peerReviewActions.id, req.params.id)).returning();
       res.json(row);
     } catch (err) {
       console.error("[PeerReviewActions] Update error:", err);
@@ -47777,7 +48126,7 @@ function registerPeerReviewRoute(app2) {
       if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
         return res.status(403).json({ error: "Admin access required." });
       }
-      await db.delete(peerReviewActions).where(eq11(peerReviewActions.id, req.params.id));
+      await db.delete(peerReviewActions).where(eq12(peerReviewActions.id, req.params.id));
       res.json({ success: true });
     } catch (err) {
       console.error("[PeerReviewActions] Delete error:", err);
@@ -49865,208 +50214,6 @@ function registerOrgSetupRoutes(app2) {
 init_db();
 init_schema();
 import { eq as eq13, desc as desc5, inArray as inArray2 } from "drizzle-orm";
-
-// server/replitAuth.ts
-init_storage();
-init_db();
-init_schema();
-import * as client from "openid-client";
-import { Strategy } from "openid-client/passport";
-import passport from "passport";
-import session from "express-session";
-import memoize from "memoizee";
-import connectPg from "connect-pg-simple";
-import { eq as eq12 } from "drizzle-orm";
-var getOidcConfig = memoize(
-  async () => {
-    return await client.discovery(
-      new URL(process.env.ISSUER_URL ?? "https://replit.com/oidc"),
-      process.env.REPL_ID
-    );
-  },
-  { maxAge: 3600 * 1e3 }
-);
-function getSession() {
-  const sessionTtl = 7 * 24 * 60 * 60 * 1e3;
-  const pgStore = connectPg(session);
-  const sessionStore = new pgStore({
-    conString: process.env.DATABASE_URL,
-    createTableIfMissing: false,
-    ttl: sessionTtl,
-    tableName: "sessions"
-  });
-  return session({
-    secret: process.env.SESSION_SECRET,
-    store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      maxAge: sessionTtl
-    }
-  });
-}
-function updateUserSession(user, tokens) {
-  user.claims = tokens.claims();
-  user.access_token = tokens.access_token;
-  user.refresh_token = tokens.refresh_token;
-  user.expires_at = user.claims?.exp;
-}
-async function upsertUser(claims) {
-  const user = await storage.upsertUser({
-    id: claims["sub"],
-    email: claims["email"],
-    firstName: claims["first_name"],
-    lastName: claims["last_name"],
-    profileImageUrl: claims["profile_image_url"]
-  });
-  const email = (claims["email"] ?? "").toLowerCase().trim();
-  let assignedOrgId = null;
-  try {
-    const rows = await db.select({ organizationId: allowedEmails.organizationId }).from(allowedEmails).where(eq12(allowedEmails.email, email)).limit(1);
-    assignedOrgId = rows[0]?.organizationId ?? null;
-  } catch {
-  }
-  if (assignedOrgId) {
-    await storage.addOrgMembership(user.id, assignedOrgId, "member");
-  }
-  const userOrgs = await storage.getUserOrganizations(user.id);
-  if (userOrgs.length === 0) {
-    const orgName = claims["name"] || (email ? email.split("@")[0] : "My Organization");
-    await storage.createOrganization({
-      name: orgName,
-      description: "My Organization",
-      ownerId: user.id,
-      onboardingCompleted: false
-    });
-  }
-  const [currentUser] = await db.select({ organizationId: users.organizationId }).from(users).where(eq12(users.id, user.id)).limit(1);
-  if (!currentUser?.organizationId) {
-    const allOrgs = await storage.getUserOrganizations(user.id);
-    if (allOrgs.length > 0) {
-      await db.update(users).set({ organizationId: allOrgs[0].id }).where(eq12(users.id, user.id));
-    }
-  }
-}
-async function isEmailAllowed(email) {
-  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
-  if (adminEmail && email === adminEmail) return true;
-  try {
-    const [countRow] = await db.select({ count: allowedEmails.id }).from(allowedEmails).limit(1);
-    if (!countRow) return true;
-    const rows = await db.select().from(allowedEmails).where(eq12(allowedEmails.email, email.toLowerCase().trim())).limit(1);
-    return rows.length > 0;
-  } catch {
-    return true;
-  }
-}
-async function setupAuth(app2) {
-  app2.set("trust proxy", 1);
-  app2.use(getSession());
-  app2.use(passport.initialize());
-  app2.use(passport.session());
-  if (!process.env.REPLIT_DOMAINS) {
-    return;
-  }
-  const config = await getOidcConfig();
-  const verify = async (tokens, verified) => {
-    const claims = tokens.claims();
-    const email = claims["email"] ?? "";
-    const allowed = await isEmailAllowed(email);
-    if (!allowed) {
-      return verified(null, false, { message: "access_denied" });
-    }
-    const user = {};
-    updateUserSession(user, tokens);
-    await upsertUser(claims);
-    verified(null, user);
-  };
-  const registeredDomains = [];
-  for (const domain of process.env.REPLIT_DOMAINS.split(",")) {
-    const trimmed = domain.trim();
-    const strategy = new Strategy(
-      {
-        name: `replitauth:${trimmed}`,
-        config,
-        scope: "openid email profile offline_access",
-        callbackURL: `https://${trimmed}/api/callback`
-      },
-      verify
-    );
-    passport.use(strategy);
-    registeredDomains.push(trimmed);
-  }
-  function resolveStrategy(hostname) {
-    if (registeredDomains.includes(hostname)) {
-      return `replitauth:${hostname}`;
-    }
-    const replId = hostname.split(".")[0];
-    const match = registeredDomains.find((d) => d.startsWith(replId));
-    return `replitauth:${match || registeredDomains[0]}`;
-  }
-  passport.serializeUser((user, cb) => cb(null, user));
-  passport.deserializeUser((user, cb) => cb(null, user));
-  app2.get("/api/login", (req, res, next) => {
-    if (req.query.returnTo && typeof req.query.returnTo === "string") {
-      req.session.returnTo = req.query.returnTo;
-    } else if (!req.session.returnTo) {
-      req.session.returnTo = "/mission-control";
-    }
-    passport.authenticate(resolveStrategy(req.hostname), {
-      prompt: "login consent"
-    })(req, res, next);
-  });
-  app2.get("/api/callback", (req, res, next) => {
-    passport.authenticate(
-      resolveStrategy(req.hostname),
-      (err, user, info) => {
-        if (err) return next(err);
-        if (!user) {
-          if (info?.message === "access_denied") {
-            return res.redirect("/access-denied");
-          }
-          return res.redirect("/api/login");
-        }
-        req.logIn(user, (loginErr) => {
-          if (loginErr) return next(loginErr);
-          const returnTo = req.session.returnTo || "/mission-control";
-          delete req.session.returnTo;
-          return res.redirect(returnTo);
-        });
-      }
-    )(req, res, next);
-  });
-  app2.get("/api/logout", (req, res) => {
-    req.logout(() => {
-      res.redirect(
-        client.buildEndSessionUrl(config, {
-          client_id: process.env.REPL_ID,
-          post_logout_redirect_uri: `${req.protocol}://${req.hostname}`
-        }).href
-      );
-    });
-  });
-}
-var isAuthenticated = async (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
-  return next();
-};
-var requirePlatformAdmin = async (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
-  const userEmail = req.user?.claims?.email ?? "";
-  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL ?? "";
-  if (!adminEmail || userEmail !== adminEmail) {
-    return res.status(403).json({ message: "Forbidden \u2014 platform admin only" });
-  }
-  return next();
-};
-
-// server/routes/admin-routes.ts
 import { z as z5 } from "zod";
 function registerAdminRoutes(app2) {
   app2.get("/api/admin/users", requirePlatformAdmin, async (_req, res) => {
@@ -50134,6 +50281,50 @@ function registerAdminRoutes(app2) {
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/admin/test-email", requirePlatformAdmin, async (_req, res) => {
+    const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+    if (!apiKey) {
+      return res.status(503).json({ success: false, error: "RESEND_API_KEY is not set in environment secrets" });
+    }
+    const to = process.env.PLATFORM_ADMIN_EMAIL;
+    if (!to) {
+      return res.status(503).json({ success: false, error: "PLATFORM_ADMIN_EMAIL is not set" });
+    }
+    try {
+      const { Resend: Resend9 } = await import("resend");
+      const resend2 = new Resend9(apiKey);
+      const fromAddresses = [
+        "Readiness OS <pilot@vaughnmartin.com>",
+        "Readiness OS <onboarding@resend.dev>"
+      ];
+      let lastError = "";
+      for (const from of fromAddresses) {
+        const { data, error } = await resend2.emails.send({
+          from,
+          to: [to],
+          subject: "Readiness OS \u2014 Email Delivery Test",
+          html: `<div style="font-family:sans-serif;padding:32px;background:#f8f7f4;">
+            <div style="max-width:520px;margin:0 auto;background:#fff;border:1px solid #e8e4dc;border-radius:8px;padding:32px;">
+              <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Delivery Test</div>
+              <div style="color:#0A0F2E;font-size:20px;font-weight:700;margin-bottom:16px;">Email delivery confirmed \u2713</div>
+              <p style="color:#444;font-size:14px;line-height:1.6;">Resend is correctly configured. Trigger alert emails will be delivered to registered users.</p>
+              <p style="color:#999;font-size:12px;margin-top:24px;">From: ${from}<br>To: ${to}<br>Time: ${(/* @__PURE__ */ new Date()).toISOString()}</p>
+            </div>
+          </div>`
+        });
+        if (error) {
+          lastError = `${from} \u2192 ${error.message}`;
+          console.warn(`[test-email] Sender rejected: ${lastError}`);
+          continue;
+        }
+        console.log(`[test-email] Delivered via ${from} \u2192 ${to} (id: ${data?.id})`);
+        return res.json({ success: true, from, to, messageId: data?.id });
+      }
+      return res.status(500).json({ success: false, error: `All senders failed. Last: ${lastError}` });
+    } catch (err) {
+      return res.status(500).json({ success: false, error: err.message });
     }
   });
 }
@@ -52980,10 +53171,8 @@ init_schema();
 init_db();
 import { eq as eq58, desc as desc29, sql as sql24, like, and as and39, asc as asc2, count as count10, gte as gte16, ne as ne2, inArray as inArray7 } from "drizzle-orm";
 function getUserId6(req) {
-  if (req.isAuthenticated() && req.user?.claims?.sub) {
-    return req.user.claims.sub;
-  }
-  return void 0;
+  if (!req.isAuthenticated()) return void 0;
+  return req.user?.dbUserId || req.user?.claims?.sub;
 }
 async function getOrgIdForUser5(userId) {
   const orgs = await storage.getUserOrganizations(userId);
@@ -54649,11 +54838,19 @@ async function registerRoutes(app2, existingServer) {
   };
   app2.get("/api/auth/user", async (req, res) => {
     try {
-      const userId = req.user?.claims?.sub || req.user?.sub;
+      const userId = getUserId6(req) || req.user?.claims?.sub || req.user?.sub;
       if (!userId) {
         return res.status(200).json(null);
       }
-      const user = await storage.getUser(userId);
+      let user = await storage.getUser(userId);
+      if (!user && req.user?.claims?.email) {
+        const email = req.user.claims.email.toLowerCase().trim();
+        const [byEmail] = await db.select().from(users).where(eq58(users.email, email)).limit(1);
+        if (byEmail) {
+          user = byEmail;
+          req.user.dbUserId = byEmail.id;
+        }
+      }
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
@@ -54772,6 +54969,18 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/organizations", async (req, res) => {
     try {
+      const userId = getUserId6(req);
+      if (userId) {
+        const userOrgs = await storage.getUserOrganizations(userId);
+        const [userRecord] = await db.select({ organizationId: users.organizationId }).from(users).where(eq58(users.id, userId)).limit(1);
+        const primaryOrgId = userRecord?.organizationId;
+        if (primaryOrgId) {
+          userOrgs.sort(
+            (a, b) => a.id === primaryOrgId ? -1 : b.id === primaryOrgId ? 1 : 0
+          );
+        }
+        return res.json(userOrgs);
+      }
       const orgList = await db.select({
         id: organizations.id,
         name: organizations.name,
@@ -63405,6 +63614,72 @@ server.listen(
         }
       } catch (contactSeedErr) {
         logger13.warn({ contactSeedErr }, "\u26A0\uFE0F Stakeholder contact seed skipped (non-blocking)");
+      }
+      try {
+        const oldOrgRows = await db.execute(sql25`
+              SELECT id FROM organizations WHERE name = 'martybrunke' LIMIT 1
+            `);
+        if (oldOrgRows.rows.length > 0) {
+          const oldOrgId = oldOrgRows.rows[0].id;
+          logger13.info({ oldOrgId }, "\u{1F527} Renaming martybrunke org \u2192 VaughnMartin");
+          const vmOrgRows = await db.execute(sql25`
+                SELECT id FROM organizations WHERE name = 'VaughnMartin' LIMIT 1
+              `);
+          if (vmOrgRows.rows.length > 0) {
+            const vmOrgId = vmOrgRows.rows[0].id;
+            await db.execute(sql25.raw(`
+                  UPDATE users SET organization_id = '${vmOrgId}'
+                  WHERE organization_id = '${oldOrgId}'
+                `));
+            await db.execute(sql25.raw(`
+                  DELETE FROM stakeholder_contacts WHERE organization_id = '${oldOrgId}'
+                `));
+            await db.execute(sql25.raw(`
+                  UPDATE executive_triggers SET organization_id = '${vmOrgId}'
+                  WHERE organization_id = '${oldOrgId}'::uuid
+                `));
+            await db.execute(sql25.raw(`
+                  UPDATE playbook_activations SET organization_id = '${vmOrgId}'
+                  WHERE organization_id = '${oldOrgId}'
+                `));
+            await db.execute(sql25.raw(`
+                  DELETE FROM org_memberships WHERE organization_id::text = '${oldOrgId}'
+                `));
+            await db.execute(sql25.raw(`DELETE FROM organizations WHERE id::text = '${oldOrgId}'`));
+            logger13.info({ vmOrgId }, "\u2705 Migrated founder data to existing VaughnMartin org, cleared trial contacts");
+          } else {
+            await db.execute(sql25.raw(`
+                  UPDATE organizations SET name = 'VaughnMartin' WHERE id::text = '${oldOrgId}'
+                `));
+            await db.execute(sql25.raw(`
+                  DELETE FROM stakeholder_contacts WHERE organization_id = '${oldOrgId}'
+                `));
+            logger13.info({ oldOrgId }, "\u2705 Renamed org to VaughnMartin, cleared trial-user stakeholder entries");
+          }
+        } else {
+          logger13.info("\u2705 Founder org migration: no martybrunke org found \u2014 already clean");
+        }
+      } catch (founderMigErr) {
+        logger13.warn({ founderMigErr }, "\u26A0\uFE0F Founder org migration skipped (non-blocking)");
+      }
+      try {
+        const deleted = await db.execute(sql25`
+              DELETE FROM stakeholder_contacts
+              WHERE email IN (
+                'test@a16z.com',
+                'test.user@fortune500.com',
+                's.chen@hpe.com',
+                'jane@enterprise.com'
+              )
+            `);
+        const count12 = deleted.rowCount ?? 0;
+        if (count12 > 0) {
+          logger13.info({ count: count12 }, "\u2705 Demo contact cleanup: removed fake stakeholder emails");
+        } else {
+          logger13.info("\u2705 Demo contact cleanup: no fake emails found \u2014 already clean");
+        }
+      } catch (demoCleanErr) {
+        logger13.warn({ demoCleanErr }, "\u26A0\uFE0F Demo contact cleanup skipped (non-blocking)");
       }
       logger13.info("\u{1F527} Initializing Enterprise Job Service...");
       await enterpriseJobService.initialize();
