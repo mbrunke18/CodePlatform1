@@ -17,7 +17,7 @@ const STACK_LAYERS = [
   {
     num: "5",
     label: "Business Impact Layer",
-    sub: "Where AI creates measurable value",
+    sub: "Where signal intelligence delivers measurable value",
     items: ["Operations", "Customer Experience", "Employees & Productivity", "Strategy & Decision Making", "New Business Models"],
     readinessRole: "Primary deployment layer. Readiness OS delivers measurable Business Impact specifically in Strategy & Decision Making and Operations — the two domains where 30-day alignment cycles cause the most financial damage.",
     readinessItems: ["180 cross-industry Readiness Protocols", "221 pre-mapped trigger scenarios", "12-minute mobilization vs. 30-day baseline", "3,600× execution head start"],

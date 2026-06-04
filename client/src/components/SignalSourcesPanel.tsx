@@ -27,7 +27,7 @@ const TIER_LABELS: Record<string, string> = {
 
 const TIER_COLORS: Record<string, string> = {
   premium: GOLD,
-  enterprise: '#8B5CF6',
+  enterprise: '#2B8A6E',
   enterprise_plus: NAVY,
 };
 
@@ -256,7 +256,7 @@ export default function SignalSourcesPanel() {
           { label: 'Total Sources', value: summary.totalSources || freeActive.length + paidAvailable.length + paidActive.length },
           { label: 'Live Now', value: summary.activeSources || freeActive.filter((s: any) => s.status === 'active').length, color: TEAL },
           { label: 'Key Required', value: summary.notConfiguredSources || freeActive.filter((s: any) => s.status === 'not_configured').length, color: GOLD },
-          { label: 'Premium Available', value: paidAvailable.length, color: '#8B5CF6' },
+          { label: 'Premium Available', value: paidAvailable.length, color: '#2B8A6E' },
           { label: 'Tier 1 Authoritative', value: summary.tier1Sources || freeActive.filter((s: any) => s.tier === 1).length, color: NAVY },
         ].map(({ label, value, color }) => (
           <div key={label} style={{ background: '#fff', padding: '20px 24px' }}>

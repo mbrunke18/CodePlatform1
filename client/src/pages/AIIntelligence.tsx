@@ -119,7 +119,7 @@ export default function AIIntelligence() {
                 All Modules Active
               </div>
               <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
-                Enterprise AI
+                Signal Intelligence
               </div>
             </div>
           </div>

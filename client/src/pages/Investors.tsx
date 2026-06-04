@@ -79,8 +79,8 @@ const metrics = [
   },
   { 
     value: "98 days", 
-    label: "Saved with AI", 
-    description: "Faster breach detection & containment",
+    label: "Days Faster", 
+    description: "Faster breach detection & containment with pre-staged response",
     source: "IBM 2024 Report",
     icon: Zap,
     color: `text-[${TEAL}]`

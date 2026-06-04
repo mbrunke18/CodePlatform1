@@ -44,7 +44,7 @@ const features = [
   {
     icon: BarChart3,
     title: 'ADVANCE — Outcome tracking',
-    description: 'Every execution feeds back into your Readiness Protocols. AI suggests refinements. Your organization gets smarter.',
+    description: 'Every execution feeds back into your Readiness Protocols. The system surfaces refinements. Your organization gets faster and more precise.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',
   },
@@ -126,6 +126,23 @@ export default function ExplorePage() {
             <p className="mt-6 text-[10px] uppercase tracking-widest font-bold" style={{ color: 'rgba(240,237,228,0.35)' }}>
               No credit card required. Your workspace is private and under your control.
             </p>
+          </div>
+        </section>
+
+        {/* CxO Chain Strip */}
+        <section style={{ background: '#F0EDE4', borderBottom: '1px solid #E8E4DC', padding: '0' }}>
+          <div className="max-w-4xl mx-auto grid grid-cols-4" style={{ borderLeft: '1px solid #E8E4DC' }}>
+            {[
+              { step: 'DETECT', label: 'Signals monitored continuously', color: '#2B8A6E' },
+              { step: 'COORDINATE', label: 'Stakeholders & tasks staged instantly', color: '#C9A84C' },
+              { step: 'EXECUTE', label: 'Response live in 12 minutes', color: '#C9A84C' },
+              { step: 'LEARN', label: 'Every activation improves the next', color: '#2B8A6E' },
+            ].map(({ step, label, color }, i) => (
+              <div key={step} style={{ padding: '14px 20px', borderRight: '1px solid #E8E4DC', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div style={{ fontSize: 9, fontWeight: 800, color, letterSpacing: '0.18em', fontFamily: "'Barlow Condensed', sans-serif" }}>{step}</div>
+                <div style={{ fontSize: 11, color: '#0A0F2E', fontWeight: 500, lineHeight: 1.4, fontFamily: "'Barlow', sans-serif" }}>{label}</div>
+              </div>
+            ))}
           </div>
         </section>
 

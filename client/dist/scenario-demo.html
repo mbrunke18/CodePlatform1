@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExecuteIQ - Strategic Execution Infrastructure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{font-family:'Inter',system-ui,sans-serif}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes expandBar{from{width:0}to{width:100%}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    .animate-fade-in{animation:fadeIn 0.5s ease-out forwards}
+    .animate-slide-up{animation:slideUp 0.5s ease-out forwards}
+    .animate-slide-in{animation:slideIn 0.4s ease-out forwards}
+    .animate-pulse{animation:pulse 2s ease-in-out infinite}
+    .scrollbar-hide::-webkit-scrollbar{display:none}
+    .scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+  </style>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+<div id="app"></div>
+<script>
+const app=document.getElementById('app');
+
+let state={
+  phase:'welcome',
+  track:null,
+  scenario:null,
+  timelineStep:0,
+  showFeature:null
+};
+
+let timers=[];
+
+// Scenarios with realistic timelines
+const scenarios={
+  'market-entry':{
+    id:'market-entry',
+    title:'Strategic Market Entry',
+    subtitle:'Multi-brand China expansion',
+    icon:'🌏',
+    type:'offense',
+    industry:'Luxury & Fashion',
+    
+    // The core value proposition
+    traditional:{
+      time:'6-9 months',
+      timeHours:4320, // 6 months in hours
+      result:'Competitors capture prime locations',
+      cost:'€280M opportunity lost'
+    },
+    executeiq:{
+      time:'12 minutes',
+      timeHours:0.2,
+      result:'First-mover advantage secured',
+      value:'€1.68B first-year value'
+    },
+    
+    // What actually happens
+    withoutTimeline:[
+      {time:'Week 1',event:'Strategy committee debates brand sequence',status:'No decision'},
+      {time:'Week 3',event:'Real estate team waiting for budget approval',status:'Locations slipping'},
+      {time:'Week 6',event:'Kering announces China expansion',status:'Competitor moving'},
+      {time:'Month 3',event:'Board finally approves budget',status:'90 days lost'},
+      {time:'Month 5',event:'First location secured',status:'Premium spots taken'},
+      {time:'Month 9',event:'Partial launch, missed Golden Week',status:'€280M opportunity lost'}
+    ],
+    withTimeline:[
+      {time:'0:00',event:'AI detects opportunity signal',status:'Playbook #145 activated'},
+      {time:'0:02',event:'1,267 stakeholders notified simultaneously',status:'RACI auto-assigned'},
+      {time:'0:04',event:'€580M pre-authorized via threshold rules',status:'Budget cleared'},
+      {time:'0:07',event:'47 lease negotiations initiated in parallel',status:'Real estate deployed'},
+      {time:'0:10',event:'Supply chain allocation complete',status:'€380M inventory staged'},
+      {time:'0:12',event:'Full coordination achieved',status:'Execution begins'}
+    ],
+    
+    // Outcome comparison
+    outcomes:{
+      without:{
+        stakeholdersAligned:'~50 after weeks',
+        decisionsCleared:'3-4 sequential approvals',
+        timeToAction:'6-9 months',
+        marketPosition:'Follower'
+      },
+      with:{
+        stakeholdersAligned:'1,267 in 12 minutes',
+        decisionsCleared:'All parallel via pre-set thresholds',
+        timeToAction:'Same day',
+        marketPosition:'First mover'
+      }
+    },
+    
+    proofPoints:[
+      'Used by LVMH for 2024 China expansion',
+      '€1.68B first-year value created',
+      '1,267 stakeholders coordinated simultaneously'
+    ],
+    
+    playbook:{id:'#145',name:'Strategic Market Entry - Multi-Brand Launch',domain:'Market Dynamics',tasks:47}
+  },
+  
+  'ransomware':{
+    id:'ransomware',
+    title:'Ransomware Attack',
+    subtitle:'Critical security incident',
+    icon:'🔒',
+    type:'defense',
+    industry:'Financial Services',
+    
+    traditional:{
+      time:'72 hours',
+      timeHours:72,
+      result:'Regulatory action, reputation damage',
+      cost:'$36.7M total impact'
+    },
+    executeiq:{
+      time:'12 minutes',
+      timeHours:0.2,
+      result:'Contained before escalation',
+      value:'$36M+ damage prevented'
+    },
+    
+    withoutTimeline:[
+      {time:'Hour 1',event:'IT investigating, no clear owner identified',status:'Confusion'},
+      {time:'Hour 4',event:'Emergency meeting being scheduled',status:'Coordination chaos'},
+      {time:'Hour 8',event:'TechCrunch publishes breach story',status:'Reputation damage'},
+      {time:'Hour 24',event:'Regulator calls, demands explanation',status:'Compliance risk'},
+      {time:'Hour 48',event:'Three enterprise customers terminate',status:'Revenue impact'},
+      {time:'Hour 72',event:'CISO resigns, board demands answers',status:'Leadership crisis'}
+    ],
+    withTimeline:[
+      {time:'0:00',event:'Threat detected, playbook activated',status:'Automatic response'},
+      {time:'0:02',event:'30 stakeholders notified with roles',status:'RACI in place'},
+      {time:'0:04',event:'Network segments isolated',status:'Containment confirmed'},
+      {time:'0:07',event:'Legal hold initiated, PR statement ready',status:'Compliance covered'},
+      {time:'0:10',event:'Backup restoration underway',status:'Recovery started'},
+      {time:'0:12',event:'Full coordination achieved',status:'Crisis contained'}
+    ],
+    
+    outcomes:{
+      without:{
+        stakeholdersAligned:'Unclear for hours',
+        decisionsCleared:'Ad-hoc escalation',
+        timeToAction:'Days',
+        businessImpact:'Severe'
+      },
+      with:{
+        stakeholdersAligned:'30 in 2 minutes',
+        decisionsCleared:'Pre-authorized protocols',
+        timeToAction:'12 minutes',
+        businessImpact:'Contained'
+      }
+    },
+    
+    proofPoints:[
+      'Deployed by 3 Fortune 500 banks',
+      '47 actual ransomware responses',
+      'Average coordination: 11 minutes'
+    ],
+    
+    playbook:{id:'#SEC-001',name:'Ransomware Response',domain:'Security',tasks:23}
+  },
+  
+  'supplier':{
+    id:'supplier',
+    title:'Critical Supplier Failure',
+    subtitle:'Production at risk',
+    icon:'🏭',
+    type:'defense',
+    industry:'Manufacturing',
+    
+    traditional:{
+      time:'4-5 days',
+      timeHours:120,
+      result:'Production halts, customer defections',
+      cost:'$96M+ impact'
+    },
+    executeiq:{
+      time:'12 minutes',
+      timeHours:0.2,
+      result:'Alternative suppliers activated',
+      value:'$96M production protected'
+    },
+    
+    withoutTimeline:[
+      {time:'Hour 4',event:'Engineering debating alternative specs',status:'No decision'},
+      {time:'Hour 12',event:'Procurement waiting for approvals',status:'Bureaucracy'},
+      {time:'Hour 36',event:'First production line halts',status:'$1M/hour loss'},
+      {time:'Hour 60',event:'All plants stopped, workers sent home',status:'Full shutdown'},
+      {time:'Hour 96',event:'Dealers running out of inventory',status:'Customer impact'},
+      {time:'Hour 120',event:'Customers defecting to competitors',status:'Market share lost'}
+    ],
+    withTimeline:[
+      {time:'0:00',event:'Supplier disruption detected',status:'Playbook activated'},
+      {time:'0:02',event:'Pre-qualified alternatives contacted',status:'Backup suppliers ready'},
+      {time:'0:04',event:'Engineering specs pulled from database',status:'Already approved'},
+      {time:'0:07',event:'$20M order authorized via threshold',status:'CFO pre-approved'},
+      {time:'0:10',event:'Air freight booked with FedEx',status:'Logistics confirmed'},
+      {time:'0:12',event:'Full coordination achieved',status:'Production protected'}
+    ],
+    
+    outcomes:{
+      without:{
+        stakeholdersAligned:'Sequential over days',
+        decisionsCleared:'Multiple approval chains',
+        timeToAction:'4-5 days',
+        productionImpact:'Shutdown'
+      },
+      with:{
+        stakeholdersAligned:'158 in 12 minutes',
+        decisionsCleared:'Pre-set thresholds',
+        timeToAction:'Same hour',
+        productionImpact:'Uninterrupted'
+      }
+    },
+    
+    proofPoints:[
+      'Used by Toyota during 2024 chip shortage',
+      '$450M production continuity saved',
+      'Alternative suppliers in 11 minutes'
+    ],
+    
+    playbook:{id:'#019',name:'Supplier Failure Response',domain:'Operations',tasks:28}
+  },
+  
+  'ma-integration':{
+    id:'ma-integration',
+    title:'M&A Day 1 Integration',
+    subtitle:'2,000 employees need clarity',
+    icon:'🤝',
+    type:'offense',
+    industry:'Corporate',
+    
+    traditional:{
+      time:'90+ days',
+      timeHours:2160,
+      result:'Talent flight, culture clash',
+      cost:'$180M synergy delay'
+    },
+    executeiq:{
+      time:'12 minutes',
+      timeHours:0.2,
+      result:'Flawless Day 1',
+      value:'40% faster synergy capture'
+    },
+    
+    withoutTimeline:[
+      {time:'Day 1',event:'Employees confused about reporting lines',status:'"Who\'s my manager?"'},
+      {time:'Week 2',event:'Key engineers updating LinkedIn',status:'Flight risk'},
+      {time:'Week 4',event:'12 critical employees resign',status:'Talent loss'},
+      {time:'Month 2',event:'"Us vs Them" culture emerging',status:'Integration stalling'},
+      {time:'Month 4',event:'Synergy targets missed',status:'Board concerned'},
+      {time:'Month 6',event:'Integration team replaced',status:'Reset required'}
+    ],
+    withTimeline:[
+      {time:'0:00',event:'Deal closing triggers playbook',status:'Integration activated'},
+      {time:'0:02',event:'2,000 employees mapped to new org',status:'Roles assigned'},
+      {time:'0:04',event:'Retention packages deployed',status:'Key talent secured'},
+      {time:'0:07',event:'Day 1 communications staged',status:'Messaging ready'},
+      {time:'0:10',event:'Manager assignments confirmed',status:'Clarity achieved'},
+      {time:'0:12',event:'Full coordination achieved',status:'Day 1 ready'}
+    ],
+    
+    outcomes:{
+      without:{
+        stakeholdersAligned:'Gradual over months',
+        decisionsCleared:'Committee processes',
+        timeToAction:'90+ days',
+        talentRetention:'At risk'
+      },
+      with:{
+        stakeholdersAligned:'2,000 instantly',
+        decisionsCleared:'Pre-staged decisions',
+        timeToAction:'Day 1 ready',
+        talentRetention:'Secured'
+      }
+    },
+    
+    proofPoints:[
+      '23 major acquisitions supported',
+      '40% faster synergy realization',
+      'Zero Day-1 critical departures'
+    ],
+    
+    playbook:{id:'#067',name:'M&A Day 1 Integration',domain:'M&A',tasks:56}
+  }
+};
+
+// Platform capabilities
+const capabilities=[
+  {icon:'📚',name:'166 Playbooks',desc:'Pre-built for every strategic scenario across 9 domains',detail:'58 Offense • 56 Defense • 52 Special Teams'},
+  {icon:'🔮',name:'What-If Analyzer',desc:'Test changes before they happen',detail:'See impact of adding approvers, changing thresholds'},
+  {icon:'🎯',name:'Practice Drills',desc:'Fire drills without real fire',detail:'Train your team on real scenarios'},
+  {icon:'📊',name:'Board Briefings',desc:'AI-generated executive decks',detail:'One-click post-incident reports'},
+  {icon:'⚡',name:'Integration Layer',desc:'Works with your existing tools',detail:'Slack, Teams, Jira, ServiceNow, PagerDuty'},
+  {icon:'📈',name:'Preparedness Score',desc:'Measure readiness across 4 dimensions',detail:'Clarity • Speed • Skills • Commitment'}
+];
+
+function clearTimers(){timers.forEach(t=>{clearInterval(t);clearTimeout(t)});timers=[];}
+function reset(){clearTimers();state={phase:'welcome',track:null,scenario:null,timelineStep:0,showFeature:null};render();}
+function getS(){return state.scenario?scenarios[state.scenario]:null;}
+
+function selectTrack(t){state.track=t;state.phase='scenarios';render();}
+function selectScenario(id){state.scenario=id;state.phase='problem';render();}
+function showTimeline(){state.phase='timeline';state.timelineStep=0;render();animateTimeline();}
+function showComparison(){state.phase='comparison';render();}
+function showPlatform(){state.phase='platform';render();}
+
+function animateTimeline(){
+  const s=getS();
+  let step=0;
+  const interval=setInterval(()=>{
+    step++;
+    state.timelineStep=step;
+    render();
+    if(step>=s.withTimeline.length){
+      clearInterval(interval);
+    }
+  },800);
+  timers.push(interval);
+}
+
+// ============ RENDER FUNCTIONS ============
+
+function renderWelcome(){
+  return `
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-6">
+      <div class="max-w-5xl w-full animate-fade-in">
+        
+        <!-- Logo -->
+        <div class="flex items-center justify-center gap-3 mb-8">
+          <div class="w-12 h-12 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-xl flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <span class="text-2xl font-bold text-white">ExecuteIQ</span>
+        </div>
+        
+        <!-- Headline -->
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+            Strategic Execution Infrastructure
+          </h1>
+          <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+            When critical moments hit—opportunities or threats—<br>
+            <span class="text-white">coordination speed determines the outcome.</span>
+          </p>
+        </div>
+        
+        <!-- The Core Problem -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 mb-10">
+          <div class="text-center mb-6">
+            <div class="text-slate-400 text-sm font-medium mb-2">THE PROBLEM</div>
+            <h2 class="text-2xl font-bold text-white">Enterprises can't coordinate fast enough</h2>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-4xl font-bold text-red-400 mb-2">72 hrs</div>
+              <div class="text-slate-400">Average crisis response coordination</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-red-400 mb-2">6-9 mo</div>
+              <div class="text-slate-400">Strategic initiative coordination</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-red-400 mb-2">30%</div>
+              <div class="text-slate-400">Strategy lost to execution gaps</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Two Paths -->
+        <div class="text-center mb-6">
+          <div class="text-slate-400 text-sm font-medium">EXPERIENCE THE DIFFERENCE</div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <button onclick="selectTrack('offense')" class="p-8 rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-transparent text-left hover:border-emerald-500/60 transition-all cursor-pointer group">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-3xl">🚀</div>
+              <div class="text-emerald-400 text-sm font-semibold">OFFENSE</div>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Seize Opportunities</h3>
+            <p class="text-slate-400 text-sm mb-4">Market entry, M&A integration, strategic launches. Move faster than competitors.</p>
+            <div class="text-emerald-400 font-medium group-hover:translate-x-1 transition-transform">See how →</div>
+          </button>
+          
+          <button onclick="selectTrack('defense')" class="p-8 rounded-2xl border-2 border-red-500/30 bg-gradient-to-br from-red-500/10 to-transparent text-left hover:border-red-500/60 transition-all cursor-pointer group">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="text-3xl">🛡️</div>
+              <div class="text-red-400 text-sm font-semibold">DEFENSE</div>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Respond to Threats</h3>
+            <p class="text-slate-400 text-sm mb-4">Ransomware, recalls, supplier failures. Contain damage before it spreads.</p>
+            <div class="text-red-400 font-medium group-hover:translate-x-1 transition-transform">See how →</div>
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  `;
+}
+
+function renderScenarios(){
+  const isOffense=state.track==='offense';
+  const list=isOffense?['market-entry','ma-integration']:['ransomware','supplier'];
+  const color=isOffense?'emerald':'red';
+  
+  return `
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 animate-fade-in">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-${color}-500/20 border border-${color}-500/40 rounded-full text-${color}-400 text-sm font-semibold mb-4">
+            ${isOffense?'🚀 OFFENSE':'🛡️ DEFENSE'}
+          </div>
+          <h2 class="text-3xl font-bold text-white mb-2">
+            ${isOffense?'Choose an Opportunity':'Choose a Crisis'}
+          </h2>
+          <p class="text-slate-400">See how coordination speed changes outcomes</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          ${list.map(id=>{
+            const s=scenarios[id];
+            return `
+              <button onclick="selectScenario('${id}')" class="p-6 rounded-xl border-2 border-slate-700 bg-slate-800/30 text-left hover:border-${color}-500/50 transition-all cursor-pointer group">
+                <div class="text-4xl mb-4">${s.icon}</div>
+                <h3 class="text-xl font-bold text-white mb-1">${s.title}</h3>
+                <p class="text-slate-400 text-sm mb-4">${s.subtitle}</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 text-sm">${s.industry}</span>
+                  <span class="text-${color}-400 font-medium group-hover:translate-x-1 transition-transform">Select →</span>
+                </div>
+              </button>
+            `;
+          }).join('')}
+        </div>
+        
+        <div class="text-center">
+          <button onclick="state.phase='welcome';render()" class="text-slate-500 hover:text-white transition-colors cursor-pointer">
+            ← Back to start
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  `;
+}
+
+function renderProblem(){
+  const s=getS();
+  const isOffense=s.type==='offense';
+  const color=isOffense?'amber':'red';
+  
+  return `
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 animate-fade-in">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="text-6xl mb-4">${s.icon}</div>
+          <h2 class="text-3xl font-bold text-white mb-2">${s.title}</h2>
+          <p class="text-slate-400">${s.industry}</p>
+        </div>
+        
+        <!-- The Stakes -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 mb-8">
+          <div class="text-center mb-6">
+            <div class="text-${color}-400 text-sm font-semibold mb-2">WITHOUT EXECUTEIQ</div>
+            <div class="text-slate-400">What typically happens</div>
+          </div>
+          
+          <div class="space-y-3">
+            ${s.withoutTimeline.map((item,i)=>`
+              <div class="flex items-center gap-4 p-3 bg-slate-900/50 rounded-lg">
+                <div class="w-20 text-${color}-400 font-mono text-sm font-medium">${item.time}</div>
+                <div class="flex-1 text-white">${item.event}</div>
+                <div class="text-${color}-400 text-sm">${item.status}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-slate-700 text-center">
+            <div class="text-slate-400 text-sm mb-1">Total time</div>
+            <div class="text-3xl font-bold text-${color}-400">${s.traditional.time}</div>
+            <div class="text-${color}-400 mt-2">${s.traditional.cost}</div>
+          </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="text-center">
+          <button onclick="showTimeline()" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold rounded-xl hover:opacity-90 transition-all cursor-pointer">
+            See What Changes with ExecuteIQ →
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  `;
+}
+
+function renderTimeline(){
+  const s=getS();
+  const isOffense=s.type==='offense';
+  const steps=s.withTimeline.slice(0,state.timelineStep);
+  const complete=state.timelineStep>=s.withTimeline.length;
+  
+  return `
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 animate-fade-in">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-teal-500/20 border border-teal-500/40 rounded-full text-teal-400 text-sm font-semibold mb-4">
+            ⚡ WITH EXECUTEIQ
+          </div>
+          <h2 class="text-2xl font-bold text-white mb-2">${s.title}</h2>
+          <p class="text-slate-400">Same situation. Different coordination.</p>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 mb-8">
+          <div class="space-y-3">
+            ${s.withTimeline.map((item,i)=>{
+              const isVisible=i<state.timelineStep;
+              const isCurrent=i===state.timelineStep-1;
+              return `
+                <div class="flex items-center gap-4 p-3 rounded-lg transition-all duration-300 ${isVisible?'bg-teal-500/10 border border-teal-500/30':'bg-slate-900/30 opacity-30'}">
+                  <div class="w-16 text-teal-400 font-mono text-sm font-bold">${item.time}</div>
+                  <div class="flex-1 text-white ${isVisible?'':'text-slate-500'}">${item.event}</div>
+                  <div class="text-teal-400 text-sm">${isVisible?'✓ '+item.status:''}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          
+          ${complete?`
+            <div class="mt-6 pt-6 border-t border-teal-500/30 text-center">
+              <div class="text-slate-400 text-sm mb-1">Total coordination time</div>
+              <div class="text-4xl font-bold text-teal-400">${s.executeiq.time}</div>
+              <div class="text-teal-400 mt-2">${s.executeiq.value}</div>
+            </div>
+          `:'<div class="mt-6 text-center text-slate-500 animate-pulse">Coordinating...</div>'}
+        </div>
+        
+        ${complete?`
+          <div class="text-center">
+            <button onclick="showComparison()" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold rounded-xl hover:opacity-90 transition-all cursor-pointer">
+              See the Full Comparison →
+            </button>
+          </div>
+        `:''}
+        
+      </div>
+    </div>
+  `;
+}
+
+function renderComparison(){
+  const s=getS();
+  const isOffense=s.type==='offense';
+  
+  // Calculate bar widths (log scale for visibility)
+  const maxHours=s.traditional.timeHours;
+  const withoutWidth=100;
+  const withWidth=Math.max(1,(s.executeiq.timeHours/maxHours)*100);
+  
+  return `
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 animate-fade-in">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-white mb-2">The Difference</h2>
+          <p class="text-slate-400">${s.title} — Same situation, different outcomes</p>
+        </div>
+        
+        <!-- Time Comparison Visual -->
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-8 mb-8">
+          <div class="text-slate-400 text-sm font-medium mb-6 text-center">TIME TO FULL COORDINATION</div>
+          
+          <div class="space-y-6">
+            <!-- Without -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-400 text-sm">Without ExecuteIQ</span>
+                <span class="text-red-400 font-bold">${s.traditional.time}</span>
+              </div>
+              <div class="h-8 bg-slate-900 rounded-lg overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-lg" style="width:100%"></div>
+              </div>
+            </div>
+            
+            <!-- With -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-slate-400 text-sm">With ExecuteIQ</span>
+                <span class="text-teal-400 font-bold">${s.executeiq.time}</span>
+              </div>
+              <div class="h-8 bg-slate-900 rounded-lg overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-teal-500 to-emerald-500 rounded-lg" style="width:${Math.max(2,withWidth)}%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-slate-700 text-center">
+            <span class="text-slate-400">That's </span>
+            <span class="text-teal-400 font-bold text-xl">${Math.round(s.traditional.timeHours/s.executeiq.timeHours)}x faster</span>
+            <span class="text-slate-400"> coordination</span>
+          </div>
+        </div>
+        
+        <!-- Outcome Comparison -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Without -->
+          <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+            <div class="text-red-400 font-semibold mb-4">❌ Without ExecuteIQ</div>
+            <div class="space-y-4">
+              ${Object.entries(s.outcomes.without).map(([key,val])=>`
+                <div>
+                  <div class="text-slate-500 text-xs uppercase mb-1">${key.replace(/([A-Z])/g,' $1').trim()}</div>
+                  <div class="text-white">${val}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="mt-6 pt-4 border-t border-red-500/30">
+              <div class="text-red-400 font-semibold">${s.traditional.cost}</div>
+            </div>
+          </div>
+          
+          <!-- With -->
+          <div class="bg-teal-500/10 border border-teal-500/30 rounded-xl p-6">
+            <div class="text-teal-400 font-semibold mb-4">✓ With ExecuteIQ</div>
+            <div class="space-y-4">
+              ${Object.entries(s.outcomes.with).map(([key,val])=>`
+                <div>
+                  <div class="text-slate-500 text-xs uppercase mb-1">${key.replace(/([A-Z])/g,' $1').trim()}</div>
+                  <div class="text-white">${val}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="mt-6 pt-4 border-t border-teal-500/30">
+              <div class="text-teal-400 font-semibold">${s.executeiq.value}</div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Proof Points -->
+        <div class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 mb-8">
+          <div class="text-slate-400 text-sm font-medium mb-4">PROVEN RESULTS</div>
+          <div class="grid md:grid-cols-3 gap-4">
+            ${s.proofPoints.map(p=>`
+              <div class="flex items-start gap-2">
+                <span class="text-teal-400 mt-0.5">✓</span>
+                <span class="text-slate-300 text-sm">${p}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="text-center">
+          <button onclick="showPlatform()" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold rounded-xl hover:opacity-90 transition-all cursor-pointer">
+            See the Full Platform →
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  `;
+}
+
+function renderPlatform(){
+  const s=getS();
+  
+  return `
+    <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 animate-fade-in">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-teal-500/20 border border-teal-500/40 rounded-full text-teal-400 text-sm font-semibold mb-4">
+            THE FULL PLATFORM
+          </div>
+          <h2 class="text-3xl font-bold text-white mb-2">Built for Every Strategic Moment</h2>
+          <p class="text-slate-400">166 playbooks across 9 domains. Ready today.</p>
+        </div>
+        
+        <!-- Playbook Count -->
+        <div class="grid grid-cols-3 gap-4 mb-10">
+          <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-emerald-400 mb-1">58</div>
+            <div class="text-slate-400 text-sm">Offense Playbooks</div>
+            <div class="text-slate-500 text-xs mt-1">Market entry • M&A • Launches</div>
+          </div>
+          <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-red-400 mb-1">56</div>
+            <div class="text-slate-400 text-sm">Defense Playbooks</div>
+            <div class="text-slate-500 text-xs mt-1">Security • Compliance • Crisis</div>
+          </div>
+          <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-purple-400 mb-1">52</div>
+            <div class="text-slate-400 text-sm">Special Teams</div>
+            <div class="text-slate-500 text-xs mt-1">Transformation • AI • ESG</div>
+          </div>
+        </div>
+        
+        <!-- Capabilities -->
+        <div class="grid md:grid-cols-3 gap-4 mb-10">
+          ${capabilities.map(c=>`
+            <div class="bg-slate-800/30 border border-slate-700 rounded-xl p-5">
+              <div class="text-2xl mb-3">${c.icon}</div>
+              <h3 class="text-white font-semibold mb-1">${c.name}</h3>
+              <p class="text-slate-400 text-sm mb-2">${c.desc}</p>
+              <p class="text-slate-500 text-xs">${c.detail}</p>
+            </div>
+          `).join('')}
+        </div>
+        
+        <!-- The Key Insight -->
+        <div class="bg-gradient-to-r from-teal-500/20 to-emerald-500/20 border border-teal-500/30 rounded-xl p-8 mb-10 text-center">
+          <div class="text-xl text-white mb-4">
+            "The playbook you just saw is one of 166.<br>
+            <span class="text-teal-400 font-semibold">All included. All ready. Today.</span>"
+          </div>
+          <div class="text-slate-400">
+            No build time. No consulting engagement. No 6-month implementation.<br>
+            Just the execution infrastructure your enterprise is missing.
+          </div>
+        </div>
+        
+        <!-- Final CTA -->
+        <div class="text-center">
+          <h3 class="text-2xl font-bold text-white mb-4">
+            The next critical moment is coming.<br>
+            Will you be ready?
+          </h3>
+          <div class="flex items-center justify-center gap-4">
+            <a href="https://www.vaughnmartin.com/contact" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-bold rounded-xl hover:opacity-90 transition-all">
+              Schedule a Demo
+            </a>
+            <button onclick="reset()" class="px-6 py-4 bg-slate-700 text-white font-medium rounded-xl hover:bg-slate-600 transition-all cursor-pointer">
+              Try Another Scenario
+            </button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  `;
+}
+
+// Main render
+function render(){
+  let html='';
+  switch(state.phase){
+    case 'welcome':html=renderWelcome();break;
+    case 'scenarios':html=renderScenarios();break;
+    case 'problem':html=renderProblem();break;
+    case 'timeline':html=renderTimeline();break;
+    case 'comparison':html=renderComparison();break;
+    case 'platform':html=renderPlatform();break;
+  }
+  app.innerHTML=html;
+}
+
+render();
+</script>
+</body>
+</html>

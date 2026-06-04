@@ -87,9 +87,9 @@ const PHASES = [
     label: 'Decision Coordination',
     sub: 'During execution',
     icon: Users,
-    color: '#7C6FAF',
-    bg: 'rgba(124,111,175,0.06)',
-    border: 'rgba(124,111,175,0.2)',
+    color: TEAL,
+    bg: 'rgba(43,138,110,0.06)',
+    border: 'rgba(43,138,110,0.2)',
     thesis: 'Every dimension that typically degrades under pressure has already been resolved. Roles assigned. Decision rights mapped. Communications drafted. Ownership explicit. The organization executes with precision because the ambiguity was eliminated before the signal ever arrived.',
     capabilities: [
       {

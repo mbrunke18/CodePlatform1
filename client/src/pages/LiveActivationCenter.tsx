@@ -1173,6 +1173,15 @@ export default function LiveActivationCenter() {
   return (
     <PageLayout>
       <ExecutionStageGuide variant="banner" />
+      {/* Coordinate + Execute context strip */}
+      <div style={{ background: 'rgba(43,138,110,0.12)', borderBottom: '1px solid rgba(43,138,110,0.2)', padding: '8px 40px', display: 'flex', alignItems: 'center', gap: 24 }}>
+        <div style={{ fontSize: 9, fontWeight: 800, color: '#2B8A6E', letterSpacing: '0.2em', fontFamily: "'Barlow Condensed', sans-serif", whiteSpace: 'nowrap' }}>COORDINATE + EXECUTE</div>
+        <div style={{ width: 1, height: 14, background: 'rgba(43,138,110,0.3)', flexShrink: 0 }} />
+        <div style={{ fontSize: 10, color: 'rgba(43,138,110,0.8)', fontFamily: "'Barlow', sans-serif" }}>
+          The step that previously took 30 days — stakeholders coordinated, tasks deployed, budget unlocked — compressed to 12 minutes. Executive authorization preserved at every gate.
+        </div>
+        <div style={{ marginLeft: 'auto', fontSize: 9, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.15em', fontFamily: "'Barlow Condensed', sans-serif", whiteSpace: 'nowrap' }}>IDEA FRAMEWORK · EXECUTE PHASE</div>
+      </div>
       <div className="p-6 lg:p-10 font-sans selection:bg-[#C9A84C] selection:text-[#0A0F2E]" style={{ background: '#0A0F2E', minHeight: '100vh' }}>
         <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
           

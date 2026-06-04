@@ -308,6 +308,24 @@ export default function GettingStarted() {
         </div>
       </div>
 
+      {/* CxO Execution Chain */}
+      <div style={{ background: '#F0EDE4', borderBottom: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderLeft: `1px solid ${BORDER}` }}>
+          {[
+            { step: 'DETECT', label: 'Signals monitored continuously', sub: '221 triggers · 248+ data points', color: TEAL },
+            { step: 'COORDINATE', label: 'Stakeholders & tasks staged automatically', sub: 'Roles, budgets, comms — pre-staged', color: GOLD },
+            { step: 'EXECUTE', label: 'Executive authorizes — response deploys', sub: '12-minute activation window', color: GOLD },
+            { step: 'LEARN', label: 'Every activation improves the next', sub: 'ADVANCE phase closes the loop', color: TEAL },
+          ].map(({ step, label, sub, color }) => (
+            <div key={step} style={{ padding: '14px 24px', borderRight: `1px solid ${BORDER}` }}>
+              <div style={{ fontSize: 9, fontWeight: 800, color, letterSpacing: '0.18em', fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 3 }}>{step}</div>
+              <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, lineHeight: 1.35, marginBottom: 2 }}>{label}</div>
+              <div style={{ fontSize: 10, color: '#6B7280' }}>{sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* User Guide callout */}
       <div style={{ background: '#fff', borderBottom: `1px solid ${BORDER}`, padding: '14px 48px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 16, justifyContent: 'space-between', flexWrap: 'wrap' }}>

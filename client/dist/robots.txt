@@ -1,0 +1,98 @@
+User-agent: *
+Allow: /
+
+# Core marketing pages
+Allow: /platform-overview
+Allow: /readiness-infrastructure
+Allow: /the-proof
+Allow: /founder-story
+Allow: /growth
+Allow: /research
+Allow: /capabilities
+Allow: /coordination-intelligence
+Allow: /proof-story
+Allow: /roi-calculator
+Allow: /executive-brief
+Allow: /security-compliance
+Allow: /sitemap
+Allow: /terms
+
+# Demo & Experience Center
+Allow: /demo-hub
+Allow: /master-demo
+Allow: /12-minute-experience
+Allow: /how-it-executes
+Allow: /how-it-works
+Allow: /protocol-builder
+Allow: /industry-demos
+
+# Growth & Positioning scenarios
+Allow: /demo/market-entry
+Allow: /demo/acquisition
+
+# Risk & Resilience scenarios
+Allow: /demo/activist
+Allow: /demo/ransomware
+Allow: /demo/pharma
+Allow: /demo/supply-chain
+Allow: /demo/energy
+Allow: /demo/food-safety
+Allow: /demo/data-breach
+Allow: /demo/regulatory
+
+# Transformation scenarios
+Allow: /demo/product-launch
+Allow: /demo/workforce
+
+# Playbook & Platform
+Allow: /playbook-library
+Allow: /platform-reality
+Allow: /ms-project
+Allow: /vs-consulting
+
+# Investor & Partner
+Allow: /investors
+Allow: /pitch-deck
+Allow: /roadmap
+Allow: /founding-partner-program
+Allow: /request-access
+Allow: /role-selector
+Allow: /executive-scenarios
+Allow: /readiness-assessment
+
+# Block authenticated platform internals
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /mission-control
+Disallow: /playbook-activation/
+Disallow: /triggers-management
+Disallow: /signal-intelligence
+Disallow: /signal-configuration
+Disallow: /command-tower
+Disallow: /simulation-studio
+Disallow: /strategic-recorder
+Disallow: /roi-dashboard
+Disallow: /executive-summary
+Disallow: /workspace
+Disallow: /workspace-advance
+Disallow: /workspace-detect
+Disallow: /workspace-execute
+Disallow: /workspace-identify
+Disallow: /board-readiness
+Disallow: /welcome-brief
+Disallow: /onboarding
+Disallow: /settings
+Disallow: /organization-setup
+Disallow: /audit-logging
+Disallow: /investor-resources
+Disallow: /investor-presentation
+Disallow: /board-briefings
+Disallow: /demo-access
+Disallow: /magic-login
+Disallow: /admin/
+Disallow: /try-demo
+Disallow: /begin
+Disallow: /start
+Disallow: /test-drive
+
+Sitemap: https://vaughnmartin.com/sitemap.xml
