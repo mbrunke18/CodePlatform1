@@ -927,6 +927,29 @@ server.listen(
             logger.warn({ founderMigErr }, "⚠️ Founder org migration skipped (non-blocking)");
           }
 
+          // ── Demo contact cleanup ────────────────────────────────────────────
+          // Removes test/demo email addresses that were accidentally seeded into
+          // stakeholder_contacts. Idempotent — safe to run on every boot.
+          try {
+            const deleted = await db.execute(sql`
+              DELETE FROM stakeholder_contacts
+              WHERE email IN (
+                'test@a16z.com',
+                'test.user@fortune500.com',
+                's.chen@hpe.com',
+                'jane@enterprise.com'
+              )
+            `);
+            const count = (deleted as any).rowCount ?? 0;
+            if (count > 0) {
+              logger.info({ count }, "✅ Demo contact cleanup: removed fake stakeholder emails");
+            } else {
+              logger.info("✅ Demo contact cleanup: no fake emails found — already clean");
+            }
+          } catch (demoCleanErr) {
+            logger.warn({ demoCleanErr }, "⚠️ Demo contact cleanup skipped (non-blocking)");
+          }
+
           // Initialize Enterprise Job Service (non-blocking)
           logger.info("🔧 Initializing Enterprise Job Service...");
           await enterpriseJobService.initialize();

@@ -781,8 +781,8 @@ class LiveSignalIngestionService {
     //    a signal_monitoring_config entry OR has at least one registered user.
     //    Signal fetch is shared — only evaluation runs per-org.
     try {
-      const { signalMonitoringConfig, users } = await import('@shared/schema');
-      const { ne, isNotNull } = await import('drizzle-orm');
+      const { signalMonitoringConfig, users, organizations } = await import('@shared/schema');
+      const { ne, isNotNull, inArray } = await import('drizzle-orm');
 
       // Orgs with explicit monitoring config
       const configuredOrgs = await db
@@ -802,6 +802,14 @@ class LiveSignalIngestionService {
         ...userOrgs.map(r => r.orgId).filter(Boolean) as string[],
       ]);
       allOrgIds.delete(organizationId);
+
+      // Exclude demo orgs — they have seeded/test contacts and must not receive real emails
+      const DEMO_ORG_NAMES = ['Innovate Dynamics'];
+      const demoOrgRows = await db
+        .select({ id: organizations.id })
+        .from(organizations)
+        .where(inArray(organizations.name, DEMO_ORG_NAMES));
+      for (const { id } of demoOrgRows) allOrgIds.delete(id);
 
       for (const orgId of allOrgIds) {
         try {
