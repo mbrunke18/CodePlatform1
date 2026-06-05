@@ -543,6 +543,22 @@ export default function Investors() {
                   </div>
                 </div>
               </div>
+
+              {/* Moat Quantified — investor-grade numbers */}
+              <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 2 }}>
+                {[
+                  { metric: '12–36 mo', label: 'Estimated rebuild time', sub: 'Time for a competitor to replicate your activation history on a new platform — grows with every close-out' },
+                  { metric: '40–60%', label: 'Faster by Year 3', sub: 'Evidence-backed response speed improvement vs. Year 1 baseline, driven by proven ADVANCE hypotheses' },
+                  { metric: '100%', label: 'Knowledge retention', sub: 'Institutional memory encoded in protocols — survives any executive departure or org restructure' },
+                  { metric: '3,600×', label: 'Execution head start', sub: '30-day traditional mobilization compressed to 12 minutes — the moat is speed, but the compounding is institutional' },
+                ].map((m) => (
+                  <div key={m.metric} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '22px 18px' }}>
+                    <div style={{ fontSize: 28, fontWeight: 800, color: GOLD, fontFamily: "'Barlow', sans-serif", lineHeight: 1, marginBottom: 4 }}>{m.metric}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.08em', textTransform: 'uppercase' as const, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>{m.label}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>{m.sub}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
 

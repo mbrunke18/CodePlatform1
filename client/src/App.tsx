@@ -260,6 +260,7 @@ const OnboardingGuide = lazy(() => import("./pages/OnboardingGuide"));
 const BrandKit = lazy(() => import("./pages/BrandKit"));
 const PlanningGap = lazy(() => import("./pages/PlanningGap"));
 const InternalCase = lazy(() => import("./pages/InternalCase"));
+const DeviationMetric = lazy(() => import("./pages/DeviationMetric"));
 const AuthorizationRecord = lazy(() => import("./pages/AuthorizationRecord"));
 
 const ProtocolsLibraryPage = lazy(() => import("./pages/identify/ProtocolsLibraryPage"));
@@ -565,6 +566,7 @@ function Router() {
         {renderRoutes(["/platform-reality", "/vs-theory", "/the-execution-gap", "/thought-leadership-trap"], PlatformReality)}
         <Route path="/planning-gap" component={PlanningGap} />
         <Route path="/making-the-case" component={InternalCase} />
+        <Route path="/deviation-metric" component={DeviationMetric} />
         <Route path="/authorization-record" component={AuthorizationRecord} />
         <Route path="/explore" component={ExplorePage} />
         {renderRoutes(["/contact", "/early-access"], Contact)}

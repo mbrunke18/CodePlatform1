@@ -22,6 +22,7 @@ const TIERS = [
     name: "Core",
     anchor: "$150,000 / year",
     annual: "$12,500 / month · billed annually",
+    escalator: "Year 2: +8%  ·  Year 3: +12%  ·  Pricing scales with institutional value delivered.",
     sub: "Full platform. Full readiness. 180 Protocols ready before the trigger fires.",
     tag: null,
     dark: false,
@@ -61,6 +62,7 @@ const TIERS = [
     name: "Foresight",
     anchor: "$250,000 / year",
     annual: "$20,800 / month · billed annually",
+    escalator: "Year 2: +8%  ·  Year 3: +12%  ·  Pricing scales with institutional value delivered.",
     sub: "Predictive foresight + Digital Twin simulation. See the trigger coming before it fires.",
     tag: "Recommended",
     dark: true,
@@ -100,6 +102,7 @@ const TIERS = [
     name: "Enterprise",
     anchor: "$450,000 / year",
     annual: "$37,500 / month · billed annually · scales with deployment scope",
+    escalator: "Structured escalators by agreement  ·  Anchored to your deployment scope and SLA.",
     sub: "The full network. Protocols that evolve across every activation. Built for Fortune 500 scale.",
     tag: "Fortune 500",
     dark: false,
@@ -207,6 +210,24 @@ function TierCard({ tier }: { tier: typeof TIERS[0] }) {
           <div style={{ fontSize: 12, color: tier.dark ? "rgba(255,255,255,0.4)" : MUTED, marginTop: 2 }}>{tier.annual}</div>
         </div>
 
+        {/* Williams — 12-minute SLA guarantee */}
+        <div style={{
+          display: "flex", alignItems: "center", gap: 8, padding: "8px 12px",
+          background: tier.dark ? "rgba(43,138,110,0.15)" : "rgba(43,138,110,0.07)",
+          border: `1px solid ${tier.dark ? "rgba(43,138,110,0.3)" : "rgba(43,138,110,0.2)"}`,
+          marginBottom: 12,
+        }}>
+          <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+          <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.08em", ...BC }}>
+            12-MINUTE RESPONSE · PERFORMANCE GUARANTEE
+          </span>
+        </div>
+
+        {/* Buffett — contract escalator */}
+        <div style={{ fontSize: 10, color: tier.dark ? "rgba(255,255,255,0.3)" : "#9CA3AF", marginBottom: 14, lineHeight: 1.5, letterSpacing: "0.02em" }}>
+          {tier.escalator}
+        </div>
+
         {/* Tagline */}
         <p style={{ fontSize: 13, color: tier.dark ? "rgba(255,255,255,0.6)" : MUTED, lineHeight: 1.6, marginBottom: 20, borderTop: `1px solid ${tier.dark ? "rgba(255,255,255,0.1)" : BORDER}`, paddingTop: 16 }}>{tier.sub}</p>
 
@@ -230,7 +251,7 @@ function TierCard({ tier }: { tier: typeof TIERS[0] }) {
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
           <TrendingUp style={{ width: 13, height: 13, color: tier.dark ? GOLD : TEAL, flexShrink: 0 }} />
           <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", color: tier.dark ? GOLD : TEAL, textTransform: "uppercase", ...BC }}>
-            Why This Investment Pays Back
+            The Return on Readiness
           </span>
         </div>
         <p style={{ fontSize: 13, fontWeight: 700, color: tier.dark ? "#fff" : NAVY, marginBottom: 14, lineHeight: 1.4 }}>
@@ -574,6 +595,81 @@ export default function Pricing() {
                     <div style={{ fontSize: 10, color: node.color, fontWeight: 600, fontStyle: "italic", lineHeight: 1.4 }}>{node.label}</div>
                   </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gates — The Strategic Jump: Core → Foresight */}
+      <section style={{ background: IVORY, padding: "56px 48px", borderBottom: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 12 }}>
+              <div style={{ width: 28, height: 2, background: TEAL, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL, ...BC }}>The Strategic Jump</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(24px,3vw,38px)", color: NAVY, marginBottom: 12 }}>
+              Core responds in 12 minutes.<br />
+              <span style={{ color: TEAL }}>Foresight starts responding 48–72 hours earlier.</span>
+            </h2>
+            <p style={{ fontSize: 14, color: MUTED, maxWidth: 600, margin: "0 auto" }}>
+              Core and Foresight share the same 180-protocol foundation. The difference is when the response begins — and how much of the strategic window you capture before anyone else knows the trigger fired.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, border: `1px solid ${BORDER}`, overflow: "hidden" }}>
+            {[
+              {
+                label: "Core", price: "$150K/yr", color: NAVY, bg: "#fff",
+                items: [
+                  { icon: "✓", text: "180 Protocols pre-staged and ready" },
+                  { icon: "✓", text: "12-minute response from trigger detection" },
+                  { icon: "✓", text: "221 continuous signal patterns monitored" },
+                  { icon: "✓", text: "Standard integrations: Slack, Jira, Teams" },
+                  { icon: "✓", text: "Quarterly strategy sessions" },
+                  { icon: "✓", text: "24-hour support SLA" },
+                  { icon: "—", text: "No predictive advance warning window", dim: true },
+                  { icon: "—", text: "No Digital Twin simulation capability", dim: true },
+                  { icon: "—", text: "No advanced enterprise integrations", dim: true },
+                ],
+              },
+              {
+                label: "Foresight", price: "$250K/yr", color: TEAL, bg: NAVY,
+                items: [
+                  { icon: "✓", text: "Everything in Core" },
+                  { icon: "✓", text: "48–72hr predictive alert window before trigger peaks", bold: true },
+                  { icon: "✓", text: "Digital Twin: rehearse before you respond", bold: true },
+                  { icon: "✓", text: "Advanced integrations: Salesforce, ServiceNow, SAP", bold: true },
+                  { icon: "✓", text: "3 custom Readiness Protocol builds per year", bold: true },
+                  { icon: "✓", text: "Monthly strategy sessions (vs. quarterly)" },
+                  { icon: "✓", text: "2-hour support SLA (vs. 24-hour)" },
+                  { icon: "✓", text: "Sector-level signal benchmarking" },
+                  { icon: "✓", text: "ADVANCE causal learning loop + hypothesis validation", bold: true },
+                ],
+              },
+            ].map((col) => (
+              <div key={col.label} style={{ background: col.bg, padding: "32px 28px" }}>
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: col.color, ...BC, marginBottom: 4 }}>{col.label}</div>
+                  <div style={{ fontSize: 18, fontWeight: 800, color: col.label === "Foresight" ? GOLD : NAVY, fontFamily: "'Barlow', sans-serif" }}>{col.price}</div>
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: 9 }}>
+                  {col.items.map((item) => (
+                    <li key={item.text} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, lineHeight: 1.45 }}>
+                      <span style={{ fontWeight: 700, color: item.icon === "—" ? "#D1D5DB" : col.color, flexShrink: 0, fontSize: 13 }}>{item.icon}</span>
+                      <span style={{
+                        color: item.icon === "—" ? "#9CA3AF" : col.label === "Foresight" ? (item.bold ? "#fff" : "rgba(255,255,255,0.65)") : (item.bold ? NAVY : "#4B5563"),
+                        fontWeight: item.bold ? 700 : 400,
+                      }}>{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 16, padding: "16px 24px", background: NAVY, display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ width: 3, height: 48, background: GOLD, flexShrink: 0 }} />
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", margin: 0, lineHeight: 1.65 }}>
+              <span style={{ color: GOLD, fontWeight: 700 }}>The $100K gap buys a 48–72 hour head start.</span> In most strategic scenarios — a competitor filing, a regulatory development, a supply chain signal — the organizations that see the trigger coming have already begun responding before it's publicly visible. That lead is worth more than the incremental subscription cost in a single activation.
+            </p>
           </div>
         </div>
       </section>
