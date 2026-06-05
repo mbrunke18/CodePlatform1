@@ -452,6 +452,7 @@ function HomepageNav() {
             </Link>
             <Link href="/situation-scanner" style={{ ...DM, color: TEAL, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(43,138,110,0.3)`, paddingBottom: 1 }}>Try It Now — No Login</Link>
             <Link href="/cost-of-delay" style={{ ...DM, color: GOLD, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(201,168,76,0.35)`, paddingBottom: 1 }}>Cost of Delay</Link>
+            <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Pricing</Link>
             <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>Founder's Story</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -1045,21 +1046,28 @@ function HeroSection() {
                 ))}
               </div>
 
-              {/* CTAs — Situation Scanner primary (best conversion tool per board), Founding Partner secondary */}
-              <div style={{ marginBottom: 14 }}>
+              {/* CTAs — primary pair, then secondary text links */}
+              <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 16, flexWrap: "wrap" as const }}>
                 <Link
                   href="/situation-scanner"
                   onClick={() => trackCTA("hero_scanner")}
-                  style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 40px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
+                  style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 32px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
                 >
-                  Try It Now — No Login Required →
+                  Try It Now — No Login →
+                </Link>
+                <Link
+                  href="/12-minute-experience"
+                  onClick={() => trackCTA("hero_12min")}
+                  style={{ ...DM, display: "inline-block", background: "transparent", color: "#fff", fontWeight: 700, fontSize: 13, padding: "15px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, border: "1px solid rgba(255,255,255,0.28)", whiteSpace: "nowrap" as const }}
+                >
+                  12-Minute Test Drive →
                 </Link>
               </div>
               <div style={{ display: "flex", gap: 24, alignItems: "center", marginBottom: 28, flexWrap: "wrap" as const }}>
                 <Link
                   href="/founding-partner-program"
                   onClick={() => trackCTA("hero")}
-                  style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1, letterSpacing: "0.02em" }}
+                  style={{ ...DM, color: "rgba(255,255,255,0.5)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
                   Apply for Founding Partner Access →
                 </Link>
@@ -1067,7 +1075,7 @@ function HeroSection() {
                 <Link
                   href="/contact"
                   onClick={() => trackCTA("hero_schedule")}
-                  style={{ ...DM, color: "rgba(255,255,255,0.38)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 1, letterSpacing: "0.02em" }}
+                  style={{ ...DM, color: "rgba(255,255,255,0.35)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
                   Schedule a conversation first →
                 </Link>
