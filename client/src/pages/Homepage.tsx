@@ -1720,11 +1720,6 @@ function PractitionerObservationsSection() {
       quote: "Multiple practitioners are arriving at the same failure point from entirely different operational lenses. That usually signals the issue is no longer tactical. It is architectural.",
     },
     {
-      name: "Patrik Eriksson",
-      credential: "Global Transformation Executive · ex-Gartner · ex-EY · ex-Capgemini · ex-Group CDO",
-      quote: "The next generation of enterprises will not compete on who has the most AI. They will compete on who can coordinate decisions, execution, risk, and capital the fastest across the enterprise.",
-    },
-    {
       name: "Michael Juhler",
       credential: "AI Transformation · Operating Model Redesign · Enterprise AI Signal newsletter",
       quote: "The deeper shift begins when readiness, coordination and learning are designed before the trigger fires. Otherwise AI simply accelerates the existing operating model.",
@@ -2672,11 +2667,6 @@ function CredibilitySection() {
                   quote: "What Readiness OS captures is the difference between preparation and improvisation. The 12-minute claim is credible precisely because the work was done before the clock started.",
                   name: "Michael Juhler",
                   title: "Chief Risk Officer · Global Financial Services",
-                },
-                {
-                  quote: "Every CISO I've worked with has faced the same mobilization delay. Readiness OS is the first architecture I've seen that addresses the root cause rather than the symptom.",
-                  name: "Patrik Lindström",
-                  title: "Cybersecurity Executive · Critical Infrastructure",
                 },
                 {
                   quote: "The concept of pre-commitment at the organizational level — not just individual — is precisely what enterprise resilience frameworks have failed to operationalize. This does it.",
@@ -3919,11 +3909,6 @@ function StartHereSection() {
 // ─── SOCIAL PROOF STRIP — surfaces near top per board recommendation ──────────
 function SocialProofStrip() {
   const quotes = [
-    {
-      name: "Patrik Eriksson",
-      title: "Global Transformation Executive · ex-Gartner · ex-EY",
-      excerpt: "The next generation of enterprises will compete on who can coordinate decisions and execution the fastest. Readiness OS is that layer.",
-    },
     {
       name: "Dr. Kerry Huang",
       title: "Fortune 50 AVP · Forbes Business Council · 408-Firm Governance Study",
