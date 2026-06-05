@@ -2969,7 +2969,7 @@ function CTASection() {
 
           <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 20, opacity: 0.6 }}>
             No long-term commitment required ·{" "}
-            <Link href="/growth" style={{ color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
+            <Link href="/pricing" style={{ color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
               View pricing →
             </Link>
           </p>
@@ -3023,7 +3023,7 @@ function HomepageFooter() {
               { label: "How It Works",   href: "/how-it-works" },
               { label: "Protocol Coverage Browser", href: "/protocol-browser" },
               { label: "Readiness Protocols", href: "/playbook-library" },
-              { label: "Pricing & Plans", href: "/growth" },
+              { label: "Pricing & Plans", href: "/pricing" },
               { label: "Request Founding Partner Access", href: "/founding-partner-program" },
               { label: "Schedule a Conversation", href: "/contact" },
             ].map(l => (

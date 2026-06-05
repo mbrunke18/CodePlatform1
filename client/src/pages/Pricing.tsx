@@ -20,8 +20,8 @@ const TIERS = [
     id: "core",
     tier: "Tier 1",
     name: "Core",
-    anchor: "$150,000 / year",
-    annual: "$12,500 / month · billed annually",
+    anchor: "$250,000 / year",
+    annual: "$20,800 / month · billed annually",
     sub: "Full platform. Full readiness. 180 Protocols ready before the trigger fires.",
     tag: null,
     dark: false,
@@ -40,7 +40,7 @@ const TIERS = [
       headline: "One activation pays for Core. Every one after that is pure upside.",
       lines: [
         { label: "Avg. cost of ONE prevented mobilization delay", value: "$2.1M–$8.4M" },
-        { label: "Annual Core subscription", value: "$150K" },
+        { label: "Annual Core subscription", value: "$250K" },
         { label: "Break-even", value: "First activation" },
         { label: "Exec time saved (5 leaders × 8hrs × 6 triggers/yr @ $500/hr)", value: "$120K/yr" },
         { label: "Consulting retainer equivalent (reactive)", value: "$300K–$800K/yr" },
@@ -49,8 +49,8 @@ const TIERS = [
       punch: "You're not buying software. You're replacing a coordination model that costs millions per trigger — and building organizational intelligence that compounds every year you're on the platform.",
     },
     objections: [
-      { q: "That's more than we expected.", a: "The average enterprise loses $2.1M–$8.4M per delayed trigger response. Core at $150K costs less than 10% of the average single incident it prevents. The math runs in your favor on the first activation." },
-      { q: "We already have consultants.", a: "Consultants bill $300K–$800K annually and show up after the trigger fires. Core costs $150K and responds in 12 minutes — every trigger, including the ones that happen at 2 AM on a Sunday." },
+      { q: "That's more than we expected.", a: "The average enterprise loses $2.1M–$8.4M per delayed trigger response. Core at $250K costs less than 15% of the average single incident it prevents. The math runs in your favor on the first activation." },
+      { q: "We already have consultants.", a: "Consultants bill $300K–$800K annually and show up after the trigger fires. Core costs $250K and responds in 12 minutes — every trigger, including the ones that happen at 2 AM on a Sunday." },
       { q: "We can coordinate this ourselves.", a: "Your team currently takes 30 days to mobilize. That gap costs $847B annually across enterprises. Core replaces the coordination delay — not the people making the decisions." },
     ],
     cta: "Contact Sales",
@@ -59,8 +59,8 @@ const TIERS = [
     id: "foresight",
     tier: "Tier 2",
     name: "Foresight",
-    anchor: "$250,000 / year",
-    annual: "$21,000 / month · billed annually",
+    anchor: "$450,000 / year",
+    annual: "$37,500 / month · billed annually",
     sub: "Predictive foresight + Digital Twin simulation. See the trigger coming before it fires.",
     tag: "Recommended",
     dark: true,
@@ -82,7 +82,7 @@ const TIERS = [
         { label: "Digital Twin prevents mis-activations per year (est.)", value: "8–12" },
         { label: "Custom protocol build — consulting equivalent", value: "$25K–$75K each" },
         { label: "3 included builds value vs. consulting", value: "$75K–$225K" },
-        { label: "Annual Foresight subscription", value: "$250K" },
+        { label: "Annual Foresight subscription", value: "$450K" },
         { label: "Institutional memory ROI — Year 3 vs Year 1", value: "3× faster activation" },
       ],
       punch: "Predictive alerts mean you've already started responding 48–72 hours before competitors know the trigger fired. The Digital Twin lets you rehearse before the real thing. And the ADVANCE phase means every activation teaches the platform — so your 10th response is measurably sharper than your first.",
@@ -98,8 +98,8 @@ const TIERS = [
     id: "enterprise",
     tier: "Tier 3",
     name: "Enterprise",
-    anchor: "$450,000 / year",
-    annual: "$37,500 / month · billed annually",
+    anchor: "$750,000–$1.5M / year",
+    annual: "$62,500–$125,000 / month · billed annually",
     sub: "The full network. Protocols that evolve across every activation. Built for Fortune 500 scale.",
     tag: "Fortune 500",
     dark: false,
@@ -116,7 +116,7 @@ const TIERS = [
       "Custom SLA agreements",
     ],
     valueCase: {
-      headline: "At Fortune 500 scale, $450K is the cost of two weeks of not knowing.",
+      headline: "At Fortune 500 scale, $750K is the cost of two weeks of not knowing.",
       lines: [
         { label: "2 FTE strategic coordinators (personnel equivalent)", value: "$300K–$400K/yr" },
         { label: "Unlimited protocol builds vs. consulting equivalent", value: "$1M+ value" },
@@ -127,7 +127,7 @@ const TIERS = [
       punch: "Enterprise is where institutional memory becomes a moat. Every activation your organization survives is encoded into your protocols. When a key executive leaves, the knowledge stays. When the same trigger fires 18 months later, your response is already faster. No competitor can buy that history — they have to live it.",
     },
     objections: [
-      { q: "How do we justify $450K to the board?", a: "Frame it as infrastructure, not software. A Fortune 500 that faces one major strategic trigger per quarter — and each delayed response costs $5M–$50M in exposure — is spending $450K to protect $20M–$200M annually. The board-ready activation report documents this in real numbers after every event." },
+      { q: "How do we justify this to the board?", a: "Frame it as infrastructure, not software. A Fortune 500 that faces one major strategic trigger per quarter — and each delayed response costs $5M–$50M in exposure — is spending $750K to protect $20M–$200M annually. The board-ready activation report documents this in real numbers after every event." },
       { q: "We have an internal team for coordination.", a: "Enterprise supplements your team — it doesn't replace it. Your executives still authorize every response. What changes is that the coordination is pre-staged before they walk into the room. Your people spend their time on decisions, not logistics." },
       { q: "What's the institutional memory value over time?", a: "In Year 1, the platform responds in 12 minutes. By Year 3, the ADVANCE phase has encoded evidence from every activation into your protocols. Your responses are 40–60% faster. Your stakeholder map is current. Your budget allocations are pre-approved. That infrastructure took 3 years to build — and no competitor can buy it tomorrow." },
     ],
@@ -138,7 +138,7 @@ const TIERS = [
 const OBJECTIONS_GLOBAL = [
   {
     q: "Isn't this expensive for what it does?",
-    a: "The question isn't whether $150K–$450K is expensive. The question is whether the mobilization delay it replaces is expensive. McKinsey's published research on enterprise mobilization costs — the source of the $847B annual figure — shows organizations spend 30 days just getting organized when a strategic trigger fires. At a $1B company, that 30-day delay typically costs $2M–$10M in competitive exposure, regulatory risk, and wasted executive time. Readiness OS replaces that cost with a 12-minute response. One trigger. One activation. Subscription paid.",
+    a: "The question isn't whether $250K–$750K+ is expensive. The question is whether the mobilization delay it replaces is expensive. McKinsey's published research on enterprise mobilization costs — the source of the $847B annual figure — shows organizations spend 30 days just getting organized when a strategic trigger fires. At a $1B company, that 30-day delay typically costs $2M–$10M in competitive exposure, regulatory risk, and wasted executive time. Readiness OS replaces that cost with a 12-minute response. One trigger. One activation. Subscription paid.",
   },
   {
     q: "We've managed fine without this.",
@@ -165,9 +165,9 @@ const OBJECTIONS_GLOBAL = [
 const ALT_COMPARE = [
   { label: "McKinsey crisis retainer", cost: "$300K–$800K/yr", speed: "Days to weeks", available: "On-call (not 24/7)", protocols: "Built per engagement", learns: "No" },
   { label: "Internal coordination team", cost: "$400K–$700K/yr", speed: "Days to weeks", available: "Business hours", protocols: "Ad-hoc", learns: "Slowly" },
-  { label: "Readiness OS Core", cost: "$150K/yr", speed: "12 minutes", available: "24/7 continuous", protocols: "180 pre-staged", learns: "Yes — every activation" },
-  { label: "Readiness OS Foresight", cost: "$250K/yr", speed: "12 min + 48hr advance", available: "24/7 + predictive", protocols: "180 + Digital Twin", learns: "Yes + causal validation" },
-  { label: "Readiness OS Enterprise", cost: "$450K/yr", speed: "12 min + 72hr foresight", available: "24/7 + dedicated team", protocols: "180 + unlimited custom", learns: "Yes + cross-client network" },
+  { label: "Readiness OS Core", cost: "$250K/yr", speed: "12 minutes", available: "24/7 continuous", protocols: "180 pre-staged", learns: "Yes — every activation" },
+  { label: "Readiness OS Foresight", cost: "$450K/yr", speed: "12 min + 48hr advance", available: "24/7 + predictive", protocols: "180 + Digital Twin", learns: "Yes + causal validation" },
+  { label: "Readiness OS Enterprise", cost: "$750K–$1.5M/yr", speed: "12 min + 72hr foresight", available: "24/7 + dedicated team", protocols: "180 + unlimited custom", learns: "Yes + cross-client network" },
 ];
 
 function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: string | null; onToggle: (id: string) => void }) {
