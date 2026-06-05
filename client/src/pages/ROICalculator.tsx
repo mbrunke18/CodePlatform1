@@ -354,7 +354,7 @@ function FirstUsePaybackCalculator() {
 
 export default function ROICalculator() {
   const [, setLocation] = useLocation();
-  const [platformCost, setPlatformCost] = useState(120000);
+  const [platformCost, setPlatformCost] = useState(250000);
   
   const [inputs, setInputs] = useState<ROIInputs>({
     companySize: 'enterprise',
@@ -599,13 +599,13 @@ export default function ROICalculator() {
                     </div>
                     <input
                       type="range"
-                      min={60000} max={240000} step={5000}
+                      min={150000} max={450000} step={10000}
                       value={platformCost}
                       onChange={e => setPlatformCost(Number(e.target.value))}
                       style={{ width: "100%", accentColor: "#C9A84C", cursor: "pointer" }}
                     />
                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 4 }}>
-                      <span>$60K</span><span>$240K</span>
+                      <span>$150K Core</span><span>$450K Enterprise</span>
                     </div>
                   </div>
 

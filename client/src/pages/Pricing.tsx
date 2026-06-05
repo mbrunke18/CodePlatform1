@@ -20,8 +20,8 @@ const TIERS = [
     id: "core",
     tier: "Tier 1",
     name: "Core",
-    anchor: "Starting at $5,000 / month",
-    annual: "$60,000 / year",
+    anchor: "$150,000 / year",
+    annual: "$12,500 / month · billed annually",
     sub: "Full platform. Full readiness. 180 Protocols ready before the trigger fires.",
     tag: null,
     dark: false,
@@ -30,26 +30,28 @@ const TIERS = [
       "Continuous signal monitoring — 221 trigger patterns",
       "12-minute response orchestration",
       "Standard integrations (Slack, Jira, Teams, Email)",
+      "ADVANCE phase — institutional memory built every activation",
       "Dedicated Customer Success Manager",
       "Quarterly strategy sessions",
       "Board-ready activation reports",
       "99.9% uptime SLA",
     ],
     valueCase: {
-      headline: "One activation pays for 35 years of Core.",
+      headline: "One activation pays for Core. Every one after that is pure upside.",
       lines: [
         { label: "Avg. cost of ONE prevented mobilization delay", value: "$2.1M–$8.4M" },
-        { label: "Annual Core subscription", value: "$60K" },
+        { label: "Annual Core subscription", value: "$150K" },
         { label: "Break-even", value: "First activation" },
-        { label: "Exec time saved (5 senior leaders × 8hrs/trigger × 6 triggers/yr)", value: "$480K/yr" },
-        { label: "Consulting retainer equivalent", value: "$300K–$800K/yr" },
+        { label: "Exec time saved (5 leaders × 8hrs × 6 triggers/yr @ $500/hr)", value: "$120K/yr" },
+        { label: "Consulting retainer equivalent (reactive)", value: "$300K–$800K/yr" },
+        { label: "Institutional memory built: Year 3 vs. Year 1 response speed", value: "40–60% faster" },
       ],
-      punch: "You're not buying software. You're replacing a coordination model that costs you millions every time a trigger fires.",
+      punch: "You're not buying software. You're replacing a coordination model that costs millions per trigger — and building organizational intelligence that compounds every year you're on the platform.",
     },
     objections: [
-      { q: "We already have consultants.", a: "Consultants bill $300K–$800K annually and show up after the trigger fires. Core costs $60K and responds in 12 minutes. Every trigger." },
-      { q: "We can coordinate this ourselves.", a: "Your team currently takes 30 days to mobilize. That coordination gap costs $847B annually across enterprises. Core replaces the gap — not the people." },
-      { q: "It's not in this year's budget.", a: "The average enterprise loses $2.1M per delayed trigger response. One prevented incident funds Core for 35 years." },
+      { q: "That's more than we expected.", a: "The average enterprise loses $2.1M–$8.4M per delayed trigger response. Core at $150K costs less than 10% of the average single incident it prevents. The math runs in your favor on the first activation." },
+      { q: "We already have consultants.", a: "Consultants bill $300K–$800K annually and show up after the trigger fires. Core costs $150K and responds in 12 minutes — every trigger, including the ones that happen at 2 AM on a Sunday." },
+      { q: "We can coordinate this ourselves.", a: "Your team currently takes 30 days to mobilize. That gap costs $847B annually across enterprises. Core replaces the coordination delay — not the people making the decisions." },
     ],
     cta: "Contact Sales",
   },
@@ -57,36 +59,38 @@ const TIERS = [
     id: "foresight",
     tier: "Tier 2",
     name: "Foresight",
-    anchor: "Starting at $10,000 / month",
-    annual: "$120,000 / year",
+    anchor: "$250,000 / year",
+    annual: "$21,000 / month · billed annually",
     sub: "Predictive foresight + Digital Twin simulation. See the trigger coming before it fires.",
     tag: "Most Selected",
     dark: true,
     features: [
       "Everything in Core",
       "Digital Twin activation simulation — rehearse before you respond",
-      "Predictive foresight alerts — advance warning before signals peak",
+      "Predictive foresight alerts — 48–72hr advance warning before signals peak",
       "3 custom Readiness Protocol builds per year",
       "Monthly strategy sessions",
       "Advanced integrations (Salesforce, ServiceNow, SAP)",
       "Priority support — 2-hour SLA",
       "Sector-level signal benchmarking",
+      "ADVANCE phase — causal learning loop with hypothesis validation",
     ],
     valueCase: {
-      headline: "Foresight pays for itself before the first alert.",
+      headline: "Foresight is where the compounding begins.",
       lines: [
         { label: "Avg. cost of one mis-activation (wrong protocol, wrong team)", value: "$50K–$200K" },
-        { label: "Digital Twin prevents mis-activations (estimated)", value: "8–12 per year" },
-        { label: "Custom protocol build (consulting equivalent)", value: "$25K–$75K each" },
-        { label: "3 included builds vs. consultant cost", value: "$75K–$225K value" },
-        { label: "Annual Foresight subscription", value: "$120K" },
+        { label: "Digital Twin prevents mis-activations per year (est.)", value: "8–12" },
+        { label: "Custom protocol build — consulting equivalent", value: "$25K–$75K each" },
+        { label: "3 included builds value vs. consulting", value: "$75K–$225K" },
+        { label: "Annual Foresight subscription", value: "$250K" },
+        { label: "Institutional memory ROI — Year 3 vs Year 1", value: "3× faster activation" },
       ],
-      punch: "Predictive alerts mean you're acting 48–72 hours before competitors even know the trigger fired. That window is where markets are won.",
+      punch: "Predictive alerts mean you've already started responding 48–72 hours before competitors know the trigger fired. The Digital Twin lets you rehearse before the real thing. And the ADVANCE phase means every activation teaches the platform — so your 10th response is measurably sharper than your first.",
     },
     objections: [
-      { q: "The base tier seems enough.", a: "Core responds in 12 minutes. Foresight means you've already started responding 48 hours earlier. The Digital Twin alone prevents costly mis-activations worth $50K–$200K each." },
-      { q: "What's the ROI on simulation?", a: "Healthcare clients using Digital Twin rehearsal reduce their protocol execution errors by 60%. Manufacturing clients prevent an average of $3.4M in production losses per trigger." },
-      { q: "The custom protocol builds — do we really need them?", a: "A single bespoke Readiness Protocol from a consulting firm costs $25K–$75K. You get 3 per year included. That's $75K–$225K in value before you count anything else." },
+      { q: "Core seems sufficient — why step up?", a: "Core responds in 12 minutes. Foresight means you've already begun responding 48–72 hours earlier via predictive alerts. That early window is where competitive advantages are built and protected." },
+      { q: "What's the ROI on the Digital Twin?", a: "Healthcare clients using simulation rehearsal reduce protocol execution errors by 60%. Manufacturing clients prevent an average of $3.4M per trigger in production losses. Each prevented mis-activation alone covers a significant portion of the annual subscription." },
+      { q: "The causal learning — what does that actually mean?", a: "Every activation generates a hypothesis: 'This protocol change should reduce response time by X minutes.' After the next activation, the system measures whether it was right. Over time, your protocols are tuned by evidence — not by opinion. No competitor can replicate that history." },
     ],
     cta: "Contact Sales",
   },
@@ -94,15 +98,16 @@ const TIERS = [
     id: "enterprise",
     tier: "Tier 3",
     name: "Enterprise",
-    anchor: "Custom — scoped to your org",
-    annual: "Typically $200,000–$400,000 / year",
-    sub: "The full network. Protocols that evolve. A dedicated team. Built for Fortune 500 scale.",
+    anchor: "$450,000 / year",
+    annual: "$37,500 / month · billed annually",
+    sub: "The full network. Protocols that evolve across every activation. Built for Fortune 500 scale.",
     tag: "Fortune 500",
     dark: false,
     features: [
       "Everything in Foresight",
-      "Autonomous protocol evolution network — every activation improves every protocol",
+      "Autonomous protocol evolution network — cross-client learning",
       "Unlimited custom Readiness Protocol development",
+      "Full institutional memory — deep org knowledge encoded in protocols",
       "Dedicated account team (4 specialists)",
       "On-site executive advisory visits",
       "Multi-region / on-premise deployment",
@@ -111,20 +116,20 @@ const TIERS = [
       "Custom SLA agreements",
     ],
     valueCase: {
-      headline: "For a Fortune 500, Enterprise costs less than one bad quarter of inaction.",
+      headline: "At Fortune 500 scale, $450K is the cost of two weeks of not knowing.",
       lines: [
-        { label: "2 FTE strategic coordinators (equivalent personnel replaced)", value: "$300K/yr" },
-        { label: "Unlimited protocol builds vs. consulting cost", value: "$1M+ value" },
-        { label: "Network learning — protocols improve across all Enterprise clients", value: "Compounding" },
-        { label: "Typical Enterprise subscription", value: "$200K–$400K" },
-        { label: "Enterprise ROI (3-year, conservative)", value: "12×–40×" },
+        { label: "2 FTE strategic coordinators (personnel equivalent)", value: "$300K–$400K/yr" },
+        { label: "Unlimited protocol builds vs. consulting equivalent", value: "$1M+ value" },
+        { label: "Network learning — every Enterprise activation improves your protocols", value: "Compounding" },
+        { label: "Institutional memory moat — months to rebuild on any competitor", value: "12–36 months" },
+        { label: "Enterprise ROI (3-year, conservative)", value: "15×–50×" },
       ],
-      punch: "Enterprise is the only tier where your protocols improve every time any client activates them. The network learns for you. Every activation across the entire Enterprise client base makes your readiness sharper.",
+      punch: "Enterprise is where institutional memory becomes a moat. Every activation your organization survives is encoded into your protocols. When a key executive leaves, the knowledge stays. When the same trigger fires 18 months later, your response is already faster. No competitor can buy that history — they have to live it.",
     },
     objections: [
-      { q: "The custom price makes it hard to budget.", a: "We scope Enterprise to your org size and strategic exposure. Most Fortune 500 clients find the total cost of NOT being ready — $50M–$200M in reactive losses per major trigger — makes Enterprise pricing look like infrastructure, not software." },
-      { q: "We have an internal team for this.", a: "Enterprise includes a dedicated VaughnMartin account team alongside your internal team. We're the infrastructure layer. Your people make the decisions — we make sure the coordination is already done." },
-      { q: "How do we justify this to the board?", a: "We provide a board-ready activation report with every engagement showing exactly which triggers were detected, how fast coordination happened, and what the estimated exposure would have been without Readiness OS. The ROI is documented, not estimated." },
+      { q: "How do we justify $450K to the board?", a: "Frame it as infrastructure, not software. A Fortune 500 that faces one major strategic trigger per quarter — and each delayed response costs $5M–$50M in exposure — is spending $450K to protect $20M–$200M annually. The board-ready activation report documents this in real numbers after every event." },
+      { q: "We have an internal team for coordination.", a: "Enterprise supplements your team — it doesn't replace it. Your executives still authorize every response. What changes is that the coordination is pre-staged before they walk into the room. Your people spend their time on decisions, not logistics." },
+      { q: "What's the institutional memory value over time?", a: "In Year 1, the platform responds in 12 minutes. By Year 3, the ADVANCE phase has encoded evidence from every activation into your protocols. Your responses are 40–60% faster. Your stakeholder map is current. Your budget allocations are pre-approved. That infrastructure took 3 years to build — and no competitor can buy it tomorrow." },
     ],
     cta: "Contact Sales",
   },
@@ -133,7 +138,7 @@ const TIERS = [
 const OBJECTIONS_GLOBAL = [
   {
     q: "Isn't this expensive for what it does?",
-    a: "The question isn't whether $60K–$400K is expensive. The question is whether the mobilization delay it replaces is expensive. Research from McKinsey, Gartner, and PwC shows enterprises spend 30 days just getting organized when a strategic trigger fires. At a $1B company, that 30-day delay typically costs $2M–$10M in competitive exposure, regulatory risk, and wasted executive time. Readiness OS replaces that cost with a 12-minute response. One trigger. One activation. Subscription paid.",
+    a: "The question isn't whether $150K–$450K is expensive. The question is whether the mobilization delay it replaces is expensive. Research from McKinsey, Gartner, and PwC shows enterprises spend 30 days just getting organized when a strategic trigger fires. At a $1B company, that 30-day delay typically costs $2M–$10M in competitive exposure, regulatory risk, and wasted executive time. Readiness OS replaces that cost with a 12-minute response. One trigger. One activation. Subscription paid.",
   },
   {
     q: "We've managed fine without this.",
@@ -160,8 +165,9 @@ const OBJECTIONS_GLOBAL = [
 const ALT_COMPARE = [
   { label: "McKinsey crisis retainer", cost: "$300K–$800K/yr", speed: "Days to weeks", available: "On-call (not 24/7)", protocols: "Built per engagement", learns: "No" },
   { label: "Internal coordination team", cost: "$400K–$700K/yr", speed: "Days to weeks", available: "Business hours", protocols: "Ad-hoc", learns: "Slowly" },
-  { label: "Readiness OS Core", cost: "$60K/yr", speed: "12 minutes", available: "24/7 continuous", protocols: "180 pre-staged", learns: "Yes (ADVANCE)" },
-  { label: "Readiness OS Foresight", cost: "$120K/yr", speed: "12 min + 48hr advance", available: "24/7 + predictive", protocols: "180 + Digital Twin", learns: "Yes + compounding" },
+  { label: "Readiness OS Core", cost: "$150K/yr", speed: "12 minutes", available: "24/7 continuous", protocols: "180 pre-staged", learns: "Yes — every activation" },
+  { label: "Readiness OS Foresight", cost: "$250K/yr", speed: "12 min + 48hr advance", available: "24/7 + predictive", protocols: "180 + Digital Twin", learns: "Yes + causal validation" },
+  { label: "Readiness OS Enterprise", cost: "$450K/yr", speed: "12 min + 72hr foresight", available: "24/7 + dedicated team", protocols: "180 + unlimited custom", learns: "Yes + cross-client network" },
 ];
 
 function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: string | null; onToggle: (id: string) => void }) {
@@ -287,9 +293,9 @@ export default function Pricing() {
   useEffect(() => {
     updatePageMetadata({
       title: "Platform Tiers & Pricing — Readiness OS | Strategic Readiness Platform",
-      description: "Three tiers of enterprise strategic readiness: Core ($60K/yr), Foresight ($120K/yr), and Enterprise (custom). Full platform access — 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration.",
+      description: "Three tiers of enterprise strategic readiness: Core ($150K/yr), Foresight ($250K/yr), and Enterprise ($450K/yr). 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration, and institutional memory that compounds with every activation.",
       ogTitle: "Readiness OS — Core · Foresight · Enterprise Pricing",
-      ogDescription: "Built for startup to Fortune 500. Starting at $5,000/month. One activation pays for the annual subscription. See the value case for each tier.",
+      ogDescription: "Built for startup to Fortune 500. Starting at $150,000/year. One activation pays for the annual subscription. Institutional memory compounds with every trigger survived.",
     });
   }, []);
 
@@ -395,7 +401,7 @@ export default function Pricing() {
                   "Consulting retainer replaced: $300K–$800K/yr",
                   "Exec coordination time recovered: $480K/yr",
                   "Regulatory exposure reduced: $6M–$23M/trigger",
-                  "Subscription cost: $60K–$400K/yr",
+                  "Subscription cost: $150K–$450K/yr",
                 ],
                 dark: false,
               },
@@ -443,6 +449,82 @@ export default function Pricing() {
           <p style={{ textAlign: "center", fontSize: 12, color: MUTED, marginTop: 24 }}>
             All tiers billed annually. Multi-year agreements available at preferred pricing. Founding Partner program fee is 100% credited to Year 1 subscription.
           </p>
+        </div>
+      </section>
+
+      {/* ADVANCE — Institutional Memory Value */}
+      <section style={{ background: NAVY, padding: "72px 48px", borderBottom: `1px solid rgba(201,168,76,0.15)` }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
+              <div style={{ width: 28, height: 2, background: TEAL, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL, ...BC }}>ADVANCE Phase · Included in Every Tier</span>
+              <div style={{ width: 28, height: 2, background: TEAL, flexShrink: 0 }} />
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,3.2vw,42px)", color: "#fff", marginBottom: 16 }}>
+              The longer you're on the platform,<br />
+              <span style={{ color: GOLD }}>the wider the gap becomes.</span>
+            </h2>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
+              Every other vendor charges you the same price for the same software forever. Readiness OS compounds. Every activation your organization survives is encoded into your protocols — building institutional memory no competitor can replicate without your history.
+            </p>
+          </div>
+
+          {/* How ADVANCE works */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, marginBottom: 48, background: "rgba(255,255,255,0.06)" }}>
+            {[
+              { step: "01", label: "Trigger Detected", desc: "Signal monitoring identifies a strategic event. Protocol pre-staged. Executive notified.", icon: "◎" },
+              { step: "02", label: "Activation Executed", desc: "12-minute response. Tasks assigned. Stakeholders coordinated. Executive authorizes.", icon: "⚡" },
+              { step: "03", label: "Close-Out Learning", desc: "Every activation generates improvement hypotheses — timing, stakeholders, budget pre-approvals.", icon: "⟳" },
+              { step: "04", label: "Protocol Evolves", desc: "Proven improvements are encoded. Your next similar trigger is handled faster. Automatically.", icon: "↑" },
+            ].map((s, i) => (
+              <div key={i} style={{ background: i === 2 ? "rgba(43,138,110,0.12)" : "rgba(10,15,46,0.6)", padding: "28px 24px", borderLeft: i === 2 ? `2px solid ${TEAL}` : "none" }}>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.25em", color: TEAL, ...BC, marginBottom: 8 }}>STEP {s.step}</div>
+                <div style={{ fontSize: 22, marginBottom: 10 }}>{s.icon}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 8, ...BC, letterSpacing: "0.04em" }}>{s.label}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{s.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Value statements */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, marginBottom: 48 }}>
+            {[
+              {
+                headline: "Your 10th activation is faster than your 1st.",
+                body: "Causal learning tracks what changed, what it predicted, and whether it delivered. By Year 2, your protocols are tuned by evidence — not by opinion.",
+                metric: "40–60% faster", label: "response speed, Year 3 vs. Year 1",
+              },
+              {
+                headline: "Knowledge survives when people don't.",
+                body: "When a CISO leaves, the institutional memory stays. Stakeholder maps, escalation chains, budget pre-approvals — encoded in protocols, not in someone's head.",
+                metric: "100%", label: "of institutional knowledge retained through personnel changes",
+              },
+              {
+                headline: "No competitor can buy your history.",
+                body: "A competitor could license the same platform tomorrow. They cannot buy the 36 months of activation data that made your protocols yours. That gap is the moat.",
+                metric: "12–36 mo", label: "estimated rebuild time on any competing platform",
+              },
+            ].map((v, i) => (
+              <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "28px 24px" }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD, fontFamily: "monospace", marginBottom: 4 }}>{v.metric}</div>
+                <div style={{ fontSize: 10, color: TEAL, letterSpacing: "0.1em", textTransform: "uppercase" as const, ...BC, marginBottom: 16 }}>{v.label}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>{v.headline}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>{v.body}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Pricing implication */}
+          <div style={{ background: "rgba(201,168,76,0.07)", border: `1px solid rgba(201,168,76,0.2)`, padding: "28px 32px", display: "flex", alignItems: "center", gap: 32 }}>
+            <div style={{ flexShrink: 0, width: 4, height: 64, background: GOLD }} />
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase" as const, ...BC, marginBottom: 10 }}>What This Means for Pricing</div>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, margin: 0 }}>
+                At $150K/year, you are not paying for access to 180 protocols. You are paying to begin building the institutional memory that makes those protocols <em>yours</em>. By Year 3, the compounded value of your activation history — faster responses, refined stakeholder maps, proven hypotheses — is worth multiples of the annual subscription. The price is fixed. The value compounds.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -555,9 +637,9 @@ export default function Pricing() {
             <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr" }}>
               <div style={{ padding: "14px 20px", background: NAVY, borderRight: "1px solid rgba(255,255,255,0.08)" }} />
               {[
-                { name: "Core", price: "$60K/yr", dark: false },
-                { name: "Foresight", price: "$120K/yr", dark: true },
-                { name: "Enterprise", price: "Custom", dark: false },
+                { name: "Core", price: "$150K/yr", dark: false },
+                { name: "Foresight", price: "$250K/yr", dark: true },
+                { name: "Enterprise", price: "$450K/yr", dark: false },
               ].map((t, i) => (
                 <div key={t.name} style={{ padding: "16px", background: i === 1 ? NAVY : "#132558", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>
                   <div style={{ fontSize: 12, fontWeight: 700, color: i === 1 ? GOLD : "rgba(255,255,255,0.85)", letterSpacing: "0.08em", textTransform: "uppercase", ...BC }}>{t.name}</div>
