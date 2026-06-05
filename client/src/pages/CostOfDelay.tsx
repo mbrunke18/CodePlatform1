@@ -292,41 +292,65 @@ export default function CostOfDelay() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
             {[
               {
-                day: "Day 14",
-                title: "Activist investor discloses 8.2% stake",
-                sector: "Financial Services",
-                cost: "$12M–$40M",
-                outcome: "Organizations without pre-staged Protocol #31 spent 3–4 weeks building their response team. The proxy window moved faster.",
+                day: "Day 8",
+                title: "Your CFO resigns without notice on a Monday morning",
+                who: "Every organization",
+                cost: "$10M–$45M",
+                outcome: "Legal, IR, HR, the board, and the CEO each get a separate phone call. No unified brief exists. The narrative fractures before 10 AM. Investors call before you have a statement.",
                 color: RED,
               },
               {
-                day: "Day 31",
-                title: "Tier-1 supplier declares force majeure",
-                sector: "Manufacturing",
-                cost: "$3M–$18M",
-                outcome: "Without pre-staged sourcing maps and stakeholder alerts, procurement spent 2 weeks identifying alternatives while production slowed.",
-                color: "#F59E0B",
+                day: "Day 19",
+                title: "Ransomware indicators appear in log monitoring at 3:17 AM",
+                who: "Every organization",
+                cost: "$4.5M avg + operational disruption",
+                outcome: "The on-call engineer can't reach the CISO until 6 AM. Legal doesn't know until Day 2. The 72-hour regulatory notification window is already compressing before a single decision is made.",
+                color: RED,
               },
               {
-                day: "Day 67",
-                title: "SEC subpoena arrives Friday at 4:45 PM",
-                sector: "Financial / Tech",
-                cost: "$8M–$35M",
-                outcome: "Legal wasn't looped in until Monday. The response team wasn't aligned until Day 73. The 5-day response window had already compressed.",
+                day: "Day 33",
+                title: "DOJ investigation notice arrives via certified mail",
+                who: "Any company with regulatory exposure",
+                cost: "$15M–$80M in fees and disruption",
+                outcome: "General counsel calls outside counsel. Outside counsel says don't talk to anyone. Three days pass before a coordinated response strategy exists — and the DOJ clock doesn't pause.",
+                color: "#D97706",
+              },
+              {
+                day: "Day 46",
+                title: "Your largest customer signals they won't renew",
+                who: "Any B2B company",
+                cost: "15–30% ARR at risk",
+                outcome: "Account team escalates to the CSO. CSO calls the CEO. CEO schedules a meeting. Two weeks pass before a retention brief reaches the board — by then the customer has already talked to your competitor.",
+                color: "#D97706",
+              },
+              {
+                day: "Day 61",
+                title: "A product safety signal surfaces in customer support data",
+                who: "Any company with a product",
+                cost: "$5M–$30M + regulatory penalties",
+                outcome: "Quality flags it internally on a Tuesday. Legal is looped in Thursday. By the time a public statement is approved, the story is already on social media and the CPSC clock is running.",
+                color: RED,
+              },
+              {
+                day: "Day 74",
+                title: "Activist investor discloses a significant stake in your company",
+                who: "Public companies",
+                cost: "$12M–$40M + strategic distraction",
+                outcome: "Legal reads the 13D on a Saturday morning. The CEO gets called at home. Nobody has a pre-built board brief, IR response, or proxy defense framework. The proxy window doesn't wait for Monday.",
                 color: RED,
               },
             ].map((event, i) => (
-              <div key={i} style={{ border: `1px solid ${BORDER}`, padding: "24px 20px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                  <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.15em", color: event.color, ...BC }}>{event.day} OF EVALUATION</span>
-                  <span style={{ fontSize: 9, color: MUTED, ...BC, letterSpacing: "0.1em" }}>{event.sector.toUpperCase()}</span>
+              <div key={i} style={{ border: `1px solid ${BORDER}`, padding: "20px 18px", background: "#fff" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, gap: 8 }}>
+                  <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.15em", color: event.color, ...BC, whiteSpace: "nowrap" as const }}>{event.day} OF EVALUATION</span>
+                  <span style={{ fontSize: 8, color: MUTED, ...BC, letterSpacing: "0.08em", textAlign: "right" as const, lineHeight: 1.3 }}>{event.who.toUpperCase()}</span>
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 10, lineHeight: 1.3 }}>{event.title}</h3>
-                <div style={{ fontSize: 10, fontWeight: 800, color: event.color, letterSpacing: "0.1em", marginBottom: 8, ...BC }}>ESTIMATED EXPOSURE: {event.cost}</div>
-                <p style={{ fontSize: 12, color: MUTED, lineHeight: 1.6, margin: 0 }}>{event.outcome}</p>
+                <h3 style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 8, lineHeight: 1.4 }}>{event.title}</h3>
+                <div style={{ fontSize: 10, fontWeight: 800, color: event.color, letterSpacing: "0.08em", marginBottom: 8, ...BC }}>EXPOSURE: {event.cost}</div>
+                <p style={{ fontSize: 11, color: MUTED, lineHeight: 1.6, margin: 0 }}>{event.outcome}</p>
               </div>
             ))}
           </div>
