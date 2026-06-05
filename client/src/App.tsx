@@ -199,6 +199,7 @@ const StartHere = lazy(() => import("./pages/StartHere"));
 const CostOfInaction = lazy(() => import("./pages/CostOfInaction"));
 const FirstNinetyDays = lazy(() => import("./pages/FirstNinetyDays"));
 const BoardMemo = lazy(() => import("./pages/BoardMemo"));
+const DesignLogic = lazy(() => import("./pages/DesignLogic"));
 const BuyerDecisionPacket = lazy(() => import("./pages/BuyerDecisionPacket"));
 const FoundingPartnerOnboarding = lazy(() => import("./pages/FoundingPartnerOnboarding"));
 const ProtocolBuilder = lazy(() => import("./pages/ProtocolBuilder"));
@@ -781,6 +782,7 @@ function Router() {
         <Route path="/cost-of-inaction" component={CostOfInaction} />
         <Route path="/first-90-days" component={FirstNinetyDays} />
         <Route path="/board-memo" component={BoardMemo} />
+        <Route path="/design-logic" component={DesignLogic} />
         <Route path="/buyer-decision-packet" component={BuyerDecisionPacket} />
         {renderRoutes(["/why-execution-os", "/the-proof", "/why-readiness-os"], WhyExecutionOS)}
         {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/industry-demos")}
