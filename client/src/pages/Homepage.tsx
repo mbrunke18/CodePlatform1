@@ -1981,8 +1981,11 @@ function AthletePreparationSection() {
                 Thirty days is not a performance problem. It is an architecture problem.
               </p>
               <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24, marginBottom: 0 }}>
-                <p style={{ ...GEO, fontSize: 20, fontWeight: 700, color: NAVY, lineHeight: 1.4, marginBottom: 0 }}>
+                <p style={{ ...GEO, fontSize: 20, fontWeight: 700, color: NAVY, lineHeight: 1.4, marginBottom: 12 }}>
                   Readiness OS is the preparation infrastructure that makes the organizational response ready before the trigger arrives.
+                </p>
+                <p style={{ ...DM, fontSize: 14, color: NAVY, opacity: 0.6, lineHeight: 1.6, marginBottom: 0, fontStyle: 'italic' }}>
+                  The system that allows an enterprise to detect, coordinate, execute, and learn from strategic change faster than its competitors.
                 </p>
               </div>
             </div>

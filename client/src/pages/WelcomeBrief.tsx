@@ -168,9 +168,12 @@ export default function WelcomeBrief() {
             The response is ready before the trigger fires.
           </p>
 
-          <p style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 560, margin: '0 auto 28px', lineHeight: 1.65 }}>
+          <p style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 560, margin: '0 auto 12px', lineHeight: 1.65 }}>
             We didn't wait for you to log in. While your account was being configured, Readiness OS was monitoring
             248+ strategic signals across 9 domains. This is your activation brief.
+          </p>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', maxWidth: 520, margin: '0 auto 28px', lineHeight: 1.6, fontStyle: 'italic' }}>
+            The system that allows an enterprise to detect, coordinate, execute, and learn from strategic change faster than its competitors — from startup to Fortune 500.
           </p>
 
           {/* 3,600× callout */}

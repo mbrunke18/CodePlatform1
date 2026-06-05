@@ -94,8 +94,11 @@ function InvestorPresentation() {
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 'clamp(15px,1.5vw,20px)', color: '#0A0F2E', maxWidth: 680, marginBottom: 16, lineHeight: 1.65, fontWeight: 400 }}>
           The new operating model for startup to Fortune 500 enterprises — 180 pre-staged Readiness Protocols that compress 30 days of mobilization into 12 minutes of live execution
         </p>
-        <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#6B7280', maxWidth: 560, marginBottom: 48, lineHeight: 1.65 }}>
+        <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#6B7280', maxWidth: 560, marginBottom: 16, lineHeight: 1.65 }}>
           Not another AI tool bolted onto the old workflow. A fundamental redesign of how strategic work flows from first principles for the AI era.
+        </p>
+        <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#2B8A6E', maxWidth: 560, marginBottom: 48, lineHeight: 1.65, fontStyle: 'italic', fontWeight: 500 }}>
+          The system that allows an enterprise to detect, coordinate, execute, and learn from strategic change faster than its competitors.
         </p>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#0A0F2E' }}>
           <span style={{ fontWeight: 600 }}>Martin Brunke</span>
