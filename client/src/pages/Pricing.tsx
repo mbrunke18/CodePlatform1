@@ -62,7 +62,7 @@ const TIERS = [
     anchor: "$250,000 / year",
     annual: "$21,000 / month · billed annually",
     sub: "Predictive foresight + Digital Twin simulation. See the trigger coming before it fires.",
-    tag: "Most Selected",
+    tag: "Recommended",
     dark: true,
     features: [
       "Everything in Core",
@@ -89,7 +89,7 @@ const TIERS = [
     },
     objections: [
       { q: "Core seems sufficient — why step up?", a: "Core responds in 12 minutes. Foresight means you've already begun responding 48–72 hours earlier via predictive alerts. That early window is where competitive advantages are built and protected." },
-      { q: "What's the ROI on the Digital Twin?", a: "Healthcare clients using simulation rehearsal reduce protocol execution errors by 60%. Manufacturing clients prevent an average of $3.4M per trigger in production losses. Each prevented mis-activation alone covers a significant portion of the annual subscription." },
+      { q: "What's the ROI on the Digital Twin?", a: "In modeled scenarios using simulation rehearsal, protocol execution error rates are projected to decrease by 40–60%. In manufacturing contexts, pre-staged production disruption protocols project $3M+ in preserved output per trigger event. Each prevented mis-activation — estimated at $50K–$200K — covers a significant portion of the annual subscription." },
       { q: "The causal learning — what does that actually mean?", a: "Every activation generates a hypothesis: 'This protocol change should reduce response time by X minutes.' After the next activation, the system measures whether it was right. Over time, your protocols are tuned by evidence — not by opinion. No competitor can replicate that history." },
     ],
     cta: "Contact Sales",
@@ -105,7 +105,7 @@ const TIERS = [
     dark: false,
     features: [
       "Everything in Foresight",
-      "Autonomous protocol evolution network — cross-client learning",
+      "ADVANCE learning network — every activation refines your protocols, automatically",
       "Unlimited custom Readiness Protocol development",
       "Full institutional memory — deep org knowledge encoded in protocols",
       "Dedicated account team (4 specialists)",
@@ -138,7 +138,7 @@ const TIERS = [
 const OBJECTIONS_GLOBAL = [
   {
     q: "Isn't this expensive for what it does?",
-    a: "The question isn't whether $150K–$450K is expensive. The question is whether the mobilization delay it replaces is expensive. Research from McKinsey, Gartner, and PwC shows enterprises spend 30 days just getting organized when a strategic trigger fires. At a $1B company, that 30-day delay typically costs $2M–$10M in competitive exposure, regulatory risk, and wasted executive time. Readiness OS replaces that cost with a 12-minute response. One trigger. One activation. Subscription paid.",
+    a: "The question isn't whether $150K–$450K is expensive. The question is whether the mobilization delay it replaces is expensive. McKinsey's published research on enterprise mobilization costs — the source of the $847B annual figure — shows organizations spend 30 days just getting organized when a strategic trigger fires. At a $1B company, that 30-day delay typically costs $2M–$10M in competitive exposure, regulatory risk, and wasted executive time. Readiness OS replaces that cost with a 12-minute response. One trigger. One activation. Subscription paid.",
   },
   {
     q: "We've managed fine without this.",
@@ -326,6 +326,12 @@ export default function Pricing() {
               Calculate Your ROI <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
             </Button>
             <Button
+              onClick={() => setLocation("/12-minute-experience")}
+              style={{ background: TEAL, color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", ...BC }}
+            >
+              See It Execute First <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
+            </Button>
+            <Button
               onClick={() => setLocation("/contact")}
               variant="outline"
               style={{ border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", background: "transparent", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "16px 32px", ...BC }}
@@ -449,6 +455,81 @@ export default function Pricing() {
           <p style={{ textAlign: "center", fontSize: 12, color: MUTED, marginTop: 24 }}>
             All tiers billed annually. Multi-year agreements available at preferred pricing. Founding Partner program fee is 100% credited to Year 1 subscription.
           </p>
+          <div style={{ marginTop: 20, display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
+            <button onClick={() => setLocation("/security-compliance")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 11, color: TEAL, fontWeight: 700, letterSpacing: "0.08em", textDecoration: "underline", ...BC }}>Security & Compliance Documentation →</button>
+            <button onClick={() => setLocation("/executive-brief")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 11, color: TEAL, fontWeight: 700, letterSpacing: "0.08em", textDecoration: "underline", ...BC }}>Download Executive Brief →</button>
+            <button onClick={() => setLocation("/proof-story")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 11, color: TEAL, fontWeight: 700, letterSpacing: "0.08em", textDecoration: "underline", ...BC }}>See Real Activation Outcomes →</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Expansion Journey */}
+      <section style={{ background: "#fff", padding: "56px 48px", borderBottom: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 12 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD, ...BC }}>Your Growth Path</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(22px,3vw,34px)", color: NAVY, marginBottom: 10 }}>Most organizations start at Core. Most expand.</h2>
+            <p style={{ fontSize: 14, color: MUTED, maxWidth: 560, margin: "0 auto" }}>
+              Expansion is driven by what you encounter — not by sales pressure. Here's what typically triggers each step up.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 40px 1fr 40px 1fr", alignItems: "start", gap: 0 }}>
+            {[
+              {
+                tier: "Core", price: "$150K", color: NAVY,
+                starts: "Organizations running 3–6 strategic triggers per year across 1–2 domains.",
+                upgrades: [
+                  "Trigger frequency exceeds 6/year across multiple domains",
+                  "A high-stakes event reveals the value of early warning",
+                  "Board requests simulation-based preparedness evidence",
+                  "Competitor response gap reveals need for predictive lead time",
+                ],
+                label: "Typical Year 1 starting point for mid-market and high-growth companies.",
+              },
+              {
+                tier: "Foresight", price: "$250K", color: TEAL,
+                starts: "Organizations that survived one major trigger on Core and want to be ahead of the next one.",
+                upgrades: [
+                  "Scale exceeds 10,000+ employees or multi-geography operations",
+                  "Microsoft enterprise deployment requires dedicated integration team",
+                  "Executive team requires on-site advisory and custom protocol architecture",
+                  "Board mandates zero-latency response capability enterprise-wide",
+                ],
+                label: "Most common expansion path. Typically triggered after the first major activation.",
+              },
+              {
+                tier: "Enterprise", price: "$450K", color: GOLD,
+                starts: "Fortune 500 organizations or PE-backed companies with complex multi-jurisdiction exposure.",
+                upgrades: [],
+                label: "The full operating model. Unlimited scale, dedicated team, full Microsoft ecosystem depth.",
+              },
+            ].map((node, i) => (
+              i % 2 === 1
+                ? <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: 48 }}>
+                    <div style={{ fontSize: 20, color: GOLD, fontWeight: 700 }}>→</div>
+                  </div>
+                : <div key={i} style={{ border: `1px solid ${BORDER}`, padding: "24px 20px" }}>
+                    <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: node.color, marginBottom: 6, ...BC }}>{node.tier} · {node.price}/yr</div>
+                    <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.55, marginBottom: 14 }}>{node.starts}</p>
+                    {node.upgrades.length > 0 && (
+                      <>
+                        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 8, ...BC }}>Typically upgrades when:</div>
+                        <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                          {node.upgrades.map((u) => (
+                            <li key={u} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 11, color: MUTED, lineHeight: 1.4 }}>
+                              <span style={{ color: GOLD, fontWeight: 700, flexShrink: 0 }}>›</span>{u}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    <div style={{ fontSize: 10, color: node.color, fontWeight: 600, fontStyle: "italic", lineHeight: 1.4 }}>{node.label}</div>
+                  </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -722,9 +803,9 @@ export default function Pricing() {
               <div style={{ width: 28, height: 2, background: TEAL, flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase", color: TEAL, ...BC }}>Founding Partner Program</span>
             </div>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(24px,3.5vw,38px)", color: NAVY, marginBottom: 12 }}>Join Before the Price Increases.</h2>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(24px,3.5vw,38px)", color: NAVY, marginBottom: 12 }}>A 90-Day Structured Validation Partnership.</h2>
             <p style={{ fontSize: 15, color: MUTED, maxWidth: 640, margin: "0 auto" }}>
-              We're selecting 10 organizations for a 90-day validation partnership. Full platform access. Dedicated implementation. And 100% of the program fee credited toward your Year 1 annual subscription.
+              We're selectively onboarding organizations whose strategic landscape aligns with our validation objectives. Full platform access, dedicated implementation, defined milestones at Day 30 and Day 60, and 100% of the program fee credited toward Year 1.
             </p>
           </div>
 
@@ -769,7 +850,7 @@ export default function Pricing() {
                 </div>
                 <div style={{ marginTop: 16, padding: "12px 16px", background: NAVY }}>
                   <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", margin: 0, lineHeight: 1.5 }}>
-                    <span style={{ color: GOLD, fontWeight: 700 }}>Spots remaining: limited to 10 organizations.</span> Founding Partners lock in pre-commercial pricing before the platform's full launch pricing takes effect.
+                    <span style={{ color: GOLD, fontWeight: 700 }}>Selective program.</span> Founding Partners work directly with the founding team, shape the development roadmap, and receive a dedicated reference documentation package regardless of whether they convert to an annual subscription.
                   </p>
                 </div>
               </div>
@@ -791,10 +872,11 @@ export default function Pricing() {
       <section style={{ background: NAVY, padding: "72px 48px", textAlign: "center" }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
           <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,4vw,42px)", color: "#fff", marginBottom: 16, lineHeight: 1.15 }}>
-            The response is ready before the trigger fires.
+            Fearless organizations don't get surprised by strategic triggers.<br />
+            <em style={{ color: GOLD, fontStyle: "italic" }}>They're waiting for them.</em>
           </h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", marginBottom: 32, lineHeight: 1.7 }}>
-            Every enterprise faces strategic triggers. The only question is whether your response is already staged when the trigger fires — or whether you're still in the first committee meeting three weeks later.
+            The response is ready before the trigger fires. That's not a tagline — it's the operating model. Every protocol pre-staged. Every stakeholder pre-mapped. Every budget pre-approved. The only thing left when the trigger fires is the decision — which remains yours.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Button
@@ -802,6 +884,12 @@ export default function Pricing() {
               style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", padding: "18px 36px", ...BC }}
             >
               Calculate Your ROI <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
+            </Button>
+            <Button
+              onClick={() => setLocation("/12-minute-experience")}
+              style={{ background: TEAL, color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", padding: "18px 36px", ...BC }}
+            >
+              Experience 12 Minutes <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
             </Button>
             <Button
               onClick={() => setLocation("/contact")}
