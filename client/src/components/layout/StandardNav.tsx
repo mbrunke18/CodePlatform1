@@ -93,6 +93,8 @@ const SEARCH_ITEMS = [
   { label: 'Request Founding Partner Access', path: '/founding-partner', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'The Mobilization Tax — Cost-by-Trigger One-Pager', path: '/mobilization-tax', category: 'Action', icon: DollarSign },
+  { label: 'Cost of Delay — Real-Time Mobilization Cost Counter', path: '/cost-of-delay', category: 'Action', icon: DollarSign },
+  { label: 'Sector Threat Briefing — Live Signals for Your Industry', path: '/sector-briefing', category: 'Action', icon: AlertTriangle },
   { label: 'Why Readiness OS?', path: '/the-proof', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
   { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
@@ -446,27 +448,16 @@ export default function StandardNav() {
           </div>
         </div>
 
-        {/* Two columns */}
+        {/* Two columns — Tools first (what a prospect acts on), Case second (validation) */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
           <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
-            {megaColHeading("The Case for Readiness OS")}
+            {megaColHeading("Tools & Calculators")}
             {[
-              { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
-              { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
-              { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
-              { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
-              { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
-              { path: '/vs-bcp', icon: Scale, label: 'Readiness OS vs. BCP', sub: 'Your BCP covers catastrophe. We cover the triggers that happen every year.' },
-            ].map(l => megaItem(l))}
-          </div>
-          <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
-            {megaColHeading("Tools & Proof")}
-            {[
-              { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
               { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate', featured: true },
-              { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector. Protocols already staged.', featured: true },
+              { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector right now. Protocols already staged.', featured: true },
+              { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
-              { path: '/growth', icon: TrendingUp, label: 'Pricing & Plans', sub: 'Accessible entry — full platform, grow as you scale', featured: true },
+              { path: '/growth', icon: TrendingUp, label: 'Pricing & Plans', sub: 'Core · Foresight · Enterprise — transparent value-based pricing', featured: true },
               { path: '/customer-journey', icon: Users, label: 'Customer Journey', sub: 'See how enterprise teams onboard & scale' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
@@ -480,6 +471,17 @@ export default function StandardNav() {
                 <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Run the 12-Minute Test Drive — no login required →</p>
               </div>
             </div>
+          </div>
+          <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
+            {megaColHeading("The Case for Readiness OS")}
+            {[
+              { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
+              { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
+              { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
+              { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
+              { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
+              { path: '/vs-bcp', icon: Scale, label: 'Readiness OS vs. BCP', sub: 'Your BCP covers catastrophe. We cover the triggers that happen every year.' },
+            ].map(l => megaItem(l))}
           </div>
         </div>
       </DropdownMenuContent>
