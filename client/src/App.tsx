@@ -257,6 +257,8 @@ const RegulatoryCalendar = lazy(() => import("./pages/RegulatoryCalendar"));
 const Roadmap = lazy(() => import("./pages/Roadmap"));
 const OnboardingGuide = lazy(() => import("./pages/OnboardingGuide"));
 const BrandKit = lazy(() => import("./pages/BrandKit"));
+const PlanningGap = lazy(() => import("./pages/PlanningGap"));
+const InternalCase = lazy(() => import("./pages/InternalCase"));
 
 const ProtocolsLibraryPage = lazy(() => import("./pages/identify/ProtocolsLibraryPage"));
 const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
@@ -346,6 +348,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/sitemap', '/user-guide', '/access-denied', '/situation-scanner', '/getting-started',
   '/readiness-rhythm', '/onboarding-guide', '/ecosystems', '/idea-framework',
   '/protocol-browser', '/industry-demo-library', '/security-compliance',
+  '/planning-gap', '/making-the-case',
 ];
 
 function WelcomeBriefRedirect() {
@@ -546,6 +549,8 @@ function Router() {
         <Route path="/vs-bcp" component={VsBCP} />
         {renderRoutes(["/ms-project", "/ms-project-transition", "/vs-servicenow", "/migration"], MsProjectTransition)}
         {renderRoutes(["/platform-reality", "/vs-theory", "/the-execution-gap", "/thought-leadership-trap"], PlatformReality)}
+        <Route path="/planning-gap" component={PlanningGap} />
+        <Route path="/making-the-case" component={InternalCase} />
         <Route path="/explore" component={ExplorePage} />
         {renderRoutes(["/contact", "/early-access"], Contact)}
 
