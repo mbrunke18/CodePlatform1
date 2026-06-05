@@ -345,7 +345,7 @@ export default function FoundingPartnerProgram() {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20, padding: '8px 16px', border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.06)' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#C9A84C', flexShrink: 0 }} />
               <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
-                2026 Founding Partner Cohort · 2 of 12 Spots Filled · 10 Remaining
+                2026 Founding Partner Cohort · 12 Seats · Applications Now Open
               </span>
             </div>
 
