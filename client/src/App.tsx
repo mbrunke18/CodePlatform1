@@ -225,6 +225,8 @@ const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
 const HowItExecutes = lazy(() => import("./pages/HowItExecutes"));
 const ProofStory = lazy(() => import("./pages/ProofStory"));
+const SectorBriefing = lazy(() => import("./pages/SectorBriefing"));
+const CostOfDelay = lazy(() => import("./pages/CostOfDelay"));
 const BrunkeSistersCaseStudy = lazy(() => import("./pages/BrunkeSistersCaseStudy"));
 const UserGuide = lazy(() => import("./pages/UserGuide"));
 const MobilizationTax = lazy(() => import("./pages/MobilizationTax"));
@@ -498,6 +500,8 @@ function Router() {
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/idea-framework" component={IDEAFramework} />
         <Route path="/pricing" component={Pricing} />
+        <Route path="/sector-briefing" component={SectorBriefing} />
+        <Route path="/cost-of-delay" component={CostOfDelay} />
         <Route path="/terms" component={TermsOfService} />
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
