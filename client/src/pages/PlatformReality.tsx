@@ -404,6 +404,72 @@ export default function PlatformReality() {
         </div>
       </section>
 
+      {/* ── THE OFFSEASON INSIGHT — Williams ── */}
+      <section style={{ background: OFF, padding: "80px 48px", borderTop: "1px solid #E8E4DC" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+            <div style={{ width: 28, height: 2, background: GOLD }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>The Structural Advantage</span>
+            <div style={{ width: 28, height: 2, background: GOLD }} />
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
+            <div>
+              <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 20 }}>
+                Your competitor already has an offseason.<br />
+                <em style={{ color: GOLD, fontStyle: "italic" }}>Most organizations just don't use it for this.</em>
+              </h2>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
+                Annual planning cycles, Q4 budget conversations, multi-year strategic roadmaps — that IS the organizational offseason. The calendar exists. The executive attention exists. The board alignment happens. Companies are not failing to prepare; they are preparing exclusively for the plays they called, not the defenses they will face.
+              </p>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginBottom: 24 }}>
+                If your competitor redirects even 15% of their annual planning cycle toward pre-staging and you do not, you enter the next fiscal year structurally behind on every unintended situation. Not slower — unreadied before the year begins. That gap is structural. It compounds.
+              </p>
+              <div style={{ background: NAVY, padding: "24px 28px", borderLeft: `4px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>The Question to Ask Any COO</div>
+                <p style={{ ...CG, fontSize: 18, fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.55, margin: 0 }}>
+                  "In your last annual planning cycle, how much time was spent preparing for situations that were not on your roadmap — the ones that arrived anyway?"
+                </p>
+                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.5)", marginTop: 10, marginBottom: 0 }}>The answer is almost always zero.</p>
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {[
+                {
+                  label: "Annual Planning — What Gets Prepared",
+                  items: ["Revenue targets and growth initiatives", "Product roadmap and release schedule", "Headcount plans and org structure", "Budget allocation across departments"],
+                  state: "current",
+                },
+                {
+                  label: "What the Planning Cycle Misses",
+                  items: ["Activist investor campaign protocol", "Regulatory inquiry response", "Ransomware containment plan", "Supply chain failure coordination", "Key talent departure response", "M&A counter-move readiness"],
+                  state: "gap",
+                },
+                {
+                  label: "Readiness OS Redirect — What Changes",
+                  items: ["180 protocols pre-staged for exactly these situations", "221 triggers monitoring for them continuously", "12-minute execution when one fires", "Response ready before the trigger fires"],
+                  state: "solution",
+                },
+              ].map(({ label, items, state }) => (
+                <div key={label} style={{
+                  background: state === "solution" ? `rgba(43,138,110,0.06)` : state === "gap" ? `rgba(239,68,68,0.04)` : "#fff",
+                  border: `1px solid ${state === "solution" ? "rgba(43,138,110,0.2)" : state === "gap" ? "rgba(239,68,68,0.15)" : "#E8E4DC"}`,
+                  borderLeft: `3px solid ${state === "solution" ? TEAL : state === "gap" ? "#EF4444" : "#E8E4DC"}`,
+                  padding: "20px 20px",
+                }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: state === "solution" ? TEAL : state === "gap" ? "#EF4444" : "#9CA3AF", marginBottom: 12 }}>{label}</div>
+                  {items.map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: i < items.length - 1 ? 6 : 0 }}>
+                      <div style={{ width: 4, height: 4, background: state === "solution" ? TEAL : state === "gap" ? "#EF4444" : "#D1D5DB", flexShrink: 0 }} />
+                      <span style={{ fontSize: 12, color: state === "solution" ? "#1F4D3D" : state === "gap" ? "#991B1B" : "#6B7280" }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CLOSING CTA ── */}
       <section style={{ background: "#fff", padding: "80px 48px", borderTop: `1px solid #E8E4DC` }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>

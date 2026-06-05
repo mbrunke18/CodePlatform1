@@ -295,6 +295,18 @@ export default function WelcomeBrief() {
           </div>
         </div>
 
+        {/* ── THE PLANNING CYCLE INSIGHT — Blakely ── */}
+        <div style={{
+          background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderLeft: `3px solid ${GOLD}`,
+          padding: '24px 28px', marginBottom: 24,
+          opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.17s',
+        }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>One Thing to Understand About How This Works</div>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, margin: 0 }}>
+            You are not starting from scratch. Your organization already has the offseason — it is called annual planning. Budget cycles. Strategic roadmaps. Executive attention carved out specifically to prepare for what is coming. That calendar already exists. What changes now is what part of it gets redirected toward pre-staging responses to the situations that were not on the roadmap — but arrived anyway. Your planning cycle was addressing the intended. Readiness OS addresses the unintended. Both matter. Only one of them had infrastructure before today.
+          </p>
+        </div>
+
         {/* ── WHAT HAPPENS NEXT ── */}
         <div style={{
           background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', padding: '28px 28px 24px', marginBottom: 48,

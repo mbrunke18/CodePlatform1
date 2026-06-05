@@ -509,6 +509,54 @@ export default function GettingStarted() {
           </div>
         </div>
       </div>
+
+      {/* ── READINESS PLANNING SPRINT — Gates ── */}
+      <section style={{ background: NAVY, padding: '64px 48px', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+        <div style={{ maxWidth: 960, margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+            <div style={{ width: 28, height: 2, background: GOLD }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: GOLD }}>Readiness Planning Sprint</span>
+            <div style={{ width: 28, height: 2, background: GOLD }} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'start' }}>
+            <div>
+              <h2 style={{ ...CG, fontSize: 'clamp(24px,3vw,34px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }}>
+                Redirect Part of Your Annual Planning Cycle — Not All of It
+              </h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, marginBottom: 16 }}>
+                Your organization already has the offseason — it is called annual planning. Budget cycles. Q4 roadmap sessions. Executive time carved out specifically to prepare for what is coming. The calendar already exists. The Readiness Planning Sprint redirects 15–20% of that existing window toward pre-staging responses to situations that were not on the roadmap but will arrive anyway.
+              </p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, marginBottom: 24 }}>
+                This is not new budget. It is not new time. It is a redirect of preparation capacity toward the category of situations that your planning cycle has never addressed — until now.
+              </p>
+              <div style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)', borderLeft: `3px solid ${GOLD}`, padding: '18px 20px' }}>
+                <p style={{ fontSize: 13, fontStyle: 'italic', color: 'rgba(255,255,255,0.75)', lineHeight: 1.65, margin: 0 }}>
+                  "In your last annual planning cycle, how much time was spent preparing for situations that were not on your roadmap — the ones that arrived anyway?" The answer is almost always zero.
+                </p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                { session: 'Session 1', title: 'Map Your Unintended Situations', desc: 'Identify the 10–15 strategic triggers most likely to fire in your industry this year that are not currently on your roadmap. Use the 221-trigger library as your starting point.', cta: 'Open Protocol Library →', href: '/playbooks', color: GOLD },
+                { session: 'Session 2', title: 'Select Your Priority Protocols', desc: 'From the 180 Readiness Protocols, select the 5–10 most critical for your organization. Configure them to your specific org structure, decision rights, and stakeholder roster.', cta: 'Browse 180 Protocols →', href: '/playbooks', color: TEAL },
+                { session: 'Session 3', title: 'Run a Tabletop Simulation', desc: 'Activate your top protocol against a practice trigger. Full execution chain — stakeholder alerts, task assignments, executive authorization — before a real situation demands it.', cta: 'Schedule a Practice Drill →', href: '/practice-drills', color: GOLD },
+                { session: 'Session 4', title: 'Confirm Your Readiness Benchmark', desc: 'Document your confirmed response time, activation chain, and readiness score. This is your baseline — every future activation improves it.', cta: 'View Readiness Score →', href: '/mission-control', color: TEAL },
+              ].map(({ session, title, desc, cta, href, color }) => (
+                <div key={session} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${color}30`, padding: '18px 20px', cursor: 'pointer' }}
+                  onClick={() => {}}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color }}>{session}</div>
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{title}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, marginBottom: 10 }}>{desc}</div>
+                  <a href={href} style={{ fontSize: 11, fontWeight: 700, color, textDecoration: 'none', letterSpacing: '0.04em' }}>{cta}</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
     </PageLayout>
   );
 }

@@ -240,6 +240,31 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* The COO Question — Buffett */}
+        <section style={{ background: "#fff", padding: "48px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ background: NAVY, padding: "40px 48px", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+              <div style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "center" }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>The Question to Ask Before Any Evaluation</div>
+                  <p style={{ ...CG, fontSize: "clamp(20px,2.8vw,30px)", fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.45, marginBottom: 16 }}>
+                    "In your last annual planning cycle, how much time was spent preparing for situations that were not on your roadmap — the ones that arrived anyway?"
+                  </p>
+                  <p style={{ fontSize: 14, color: "rgba(240,237,228,0.6)", lineHeight: 1.7, marginBottom: 0, maxWidth: 580 }}>
+                    Organizations are not failing to make time for preparation. They are making time — and spending it entirely on intended outcomes: roadmaps, initiatives, growth targets. The activist investor, the regulatory inquiry, the ransomware attack — those situations arrive regardless of the plan. Readiness OS addresses the unintended. Your planning cycle was already addressing the intended. Both are necessary. Only one currently gets the offseason.
+                  </p>
+                </div>
+                <div style={{ flexShrink: 0, textAlign: "center", padding: "24px 28px", border: `1px solid rgba(201,168,76,0.2)`, background: "rgba(201,168,76,0.06)" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>The Answer</div>
+                  <div style={{ ...CG, fontSize: 48, fontWeight: 700, color: "#fff", lineHeight: 1, marginBottom: 4 }}>~0%</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", maxWidth: 120, lineHeight: 1.5 }}>of planning cycles address unintended situations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* The 3,600× Metric */}
         <section style={{ background: NAVY, padding: "56px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 800px 600px at 70% 50%, rgba(201,168,76,0.08), transparent)", pointerEvents: "none" }} />

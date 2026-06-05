@@ -247,6 +247,48 @@ export default function VsConsulting() {
         </div>
       </section>
 
+      {/* ── THE OFFSEASON INSIGHT — Williams ── */}
+      <section style={{ background: OFF, padding: "72px 48px", borderTop: "1px solid #E8E4DC" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>The Structural Gap</div>
+              <h2 style={{ ...CG, fontSize: "clamp(24px,3vw,36px)", fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 20 }}>
+                Consulting delivers documents. Neither gives you the offseason.
+              </h2>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
+                Organizations already have the offseason — annual planning cycles, Q4 budget conversations, multi-year roadmaps. Executive time carved out specifically to prepare for what is coming. That calendar already exists.
+              </p>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
+                McKinsey uses that time to deliver a document about what you should do if certain situations arise. Readiness OS uses that same window to pre-stage the actual organizational response — so when those situations arrive, you execute in 12 minutes instead of spending 30 days assembling what the document described.
+              </p>
+              <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1.65 }}>
+                Consulting gets you the playbook. Readiness OS gets you the execution.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ background: NAVY, padding: "28px 28px", borderLeft: `4px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>The Question That Changes the Conversation</div>
+                <p style={{ ...CG, fontSize: 18, fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.55, marginBottom: 12 }}>
+                  "In your last annual planning cycle, how much time was spent preparing for the situations that were not on your roadmap — the ones that arrived anyway?"
+                </p>
+                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.5)", marginBottom: 0 }}>The answer is almost always zero. Not negligence — the planning process was never designed for it.</p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderTop: `2px solid #EF4444`, padding: "18px 18px" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "#EF4444", letterSpacing: "0.15em", textTransform: "uppercase" as const, marginBottom: 8 }}>Consulting Result</div>
+                  <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>A document that describes what to do. Still 30 days to coordinate when it actually happens.</div>
+                </div>
+                <div style={{ background: "#fff", border: `1px solid rgba(43,138,110,0.25)`, borderTop: `2px solid ${TEAL}`, padding: "18px 18px" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.15em", textTransform: "uppercase" as const, marginBottom: 8 }}>Readiness OS Result</div>
+                  <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>Pre-staged infrastructure. 12 minutes from trigger to live execution. No document, no delay.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── THE BOTTOM LINE ── */}
       <section style={{ background: "#fff", padding: "80px 48px", borderTop: `1px solid #E8E4DC` }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
