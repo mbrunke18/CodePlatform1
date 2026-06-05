@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-import PageLayout from "@/components/PageLayout";
+import PageLayout from "@/components/layout/PageLayout";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { ArrowRight, Send, Copy, CheckCircle } from "lucide-react";
 
