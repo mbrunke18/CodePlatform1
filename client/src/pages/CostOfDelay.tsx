@@ -307,7 +307,7 @@ export default function CostOfDelay() {
                 title: "Ransomware indicators appear in log monitoring at 3:17 AM",
                 who: "Every organization",
                 cost: "$4.5M avg + operational disruption",
-                outcome: "The on-call engineer can't reach the CISO until 6 AM. Legal doesn't know until Day 2. The 72-hour regulatory notification window is already compressing before a single decision is made.",
+                outcome: "The on-call engineer can't reach the CISO until 6 AM. Legal doesn't know until Day 2. The breach was contained in hours. The decision about whether to notify customers took 11 days — and that's where the real cost was.",
                 color: RED,
               },
               {
@@ -315,7 +315,7 @@ export default function CostOfDelay() {
                 title: "Regulatory enforcement inquiry notice arrives without warning",
                 who: "Any company with regulatory exposure",
                 cost: "$8M–$60M in fees and operational disruption",
-                outcome: "General counsel calls outside counsel. Outside counsel says don't talk to anyone. Three days pass before a coordinated response strategy exists — and the regulatory clock doesn't pause for alignment meetings.",
+                outcome: "General counsel calls outside counsel. Outside counsel says don't talk to anyone. So they say nothing — separately. Every stakeholder goes quiet on their own terms. The story gets written without you, by reporters talking to each other.",
                 color: "#D97706",
               },
               {
@@ -323,7 +323,7 @@ export default function CostOfDelay() {
                 title: "Your largest customer signals they won't renew",
                 who: "Any B2B company",
                 cost: "15–30% of annual revenue at risk",
-                outcome: "Account team escalates to the CSO. CSO calls the CEO. CEO schedules a meeting. Two weeks pass before a retention brief reaches the board — by then the customer has already taken a meeting with your competitor.",
+                outcome: "Account team escalates to the CSO. CSO calls the CEO. CEO schedules a meeting. Two weeks pass before a retention brief reaches the board — by then the customer has already taken a meeting with your competitor. Buyers talk. The other meetings are already scheduled.",
                 color: "#D97706",
               },
               {
