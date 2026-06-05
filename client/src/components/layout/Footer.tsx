@@ -67,6 +67,7 @@ export default function Footer() {
         { label: "User Guide", path: "/user-guide" },
         { label: "About the Founder", path: "/about" },
         { label: "Founder's Story", path: "/founder-story" },
+        { label: "Design Logic", path: "/design-logic" },
         { label: "Microsoft Ecosystem", path: "/ecosystems" },
         { label: "Request Access", path: "/request-access" },
         { label: "Investors", path: "/investor-landing" },

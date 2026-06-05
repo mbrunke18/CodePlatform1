@@ -1104,6 +1104,19 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                     </Button>
                   </Link>
                 </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 3.2 }}
+                  className="mt-6"
+                >
+                  <Link
+                    href="/design-logic"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 16, fontStyle: "italic", color: "#0A0F2E", opacity: 0.65, textDecoration: "none", borderBottom: "1px solid rgba(10,15,46,0.25)", paddingBottom: 2 }}
+                  >
+                    Read the full design logic — for those who prefer the written account →
+                  </Link>
+                </motion.div>
               </div>
             </Scene>
           )}
