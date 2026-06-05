@@ -98,8 +98,8 @@ const TIERS = [
     id: "enterprise",
     tier: "Tier 3",
     name: "Enterprise",
-    anchor: "$450,000+ / year",
-    annual: "$37,500+ / month · billed annually · scales with scope",
+    anchor: "$450,000 / year",
+    annual: "$37,500 / month · billed annually · scales with deployment scope",
     sub: "The full network. Protocols that evolve across every activation. Built for Fortune 500 scale.",
     tag: "Fortune 500",
     dark: false,
@@ -116,7 +116,7 @@ const TIERS = [
       "Custom SLA agreements",
     ],
     valueCase: {
-      headline: "At Fortune 500 scale, $450K is the cost of two weeks of not knowing.",
+      headline: "At Fortune 500 scale, $450K is the cost of two weeks of uncertainty.",
       lines: [
         { label: "2 FTE strategic coordinators (personnel equivalent)", value: "$300K–$400K/yr" },
         { label: "Unlimited protocol builds vs. consulting equivalent", value: "$1M+ value" },
@@ -167,7 +167,7 @@ const ALT_COMPARE = [
   { label: "Internal coordination team", cost: "$400K–$700K/yr", speed: "Days to weeks", available: "Business hours", protocols: "Ad-hoc", learns: "Slowly" },
   { label: "Readiness OS Core", cost: "$150K/yr", speed: "12 minutes", available: "24/7 continuous", protocols: "180 pre-staged", learns: "Yes — every activation" },
   { label: "Readiness OS Foresight", cost: "$250K/yr", speed: "12 min + 48hr advance", available: "24/7 + predictive", protocols: "180 + Digital Twin", learns: "Yes + causal validation" },
-  { label: "Readiness OS Enterprise", cost: "$450K+/yr", speed: "12 min + 72hr foresight", available: "24/7 + dedicated team", protocols: "180 + unlimited custom", learns: "Yes + cross-client network" },
+  { label: "Readiness OS Enterprise", cost: "$450K/yr", speed: "12 min + 72hr foresight", available: "24/7 + dedicated team", protocols: "180 + unlimited custom", learns: "Yes + cross-client network" },
 ];
 
 function TierCard({ tier }: { tier: typeof TIERS[0] }) {
@@ -450,8 +450,45 @@ export default function Pricing() {
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,44px)", color: NAVY, marginBottom: 12 }}>Three Layers of Readiness.</h2>
             <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto" }}>
-              Every tier includes the full 180-Protocol Library. Price scales with prediction depth, integration breadth, and how fast the system learns. Click "Why This Price Is Actually Cheap" under any tier to see the value case.
+              Every tier includes the full 180-Protocol Library. Price scales with prediction depth, integration breadth, and how fast the system learns.
             </p>
+          </div>
+
+          {/* Founding Partner entry ramp — Blakely: visible entry point before the annual commitment */}
+          <div
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24,
+              background: "#fff", border: `1px solid ${BORDER}`, borderLeft: `4px solid ${TEAL}`,
+              padding: "28px 36px", marginBottom: 36,
+            }}
+          >
+            <div style={{ flex: 1, minWidth: 260 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase", color: TEAL, marginBottom: 8, ...BC }}>
+                Founding Partner Program · Limited to 12 Seats
+              </div>
+              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY, marginBottom: 6, lineHeight: 1.2 }}>
+                Start with a 90-Day Validation Partnership
+              </h3>
+              <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.6, margin: 0 }}>
+                Not ready for a full annual commitment? The Founding Partner Program is a 90-day live validation — real protocols, real signals, real activations. The full $75,000 fee is credited 100% toward your Year 1 subscription.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 10, flexShrink: 0 }}>
+              <div style={{ textAlign: "right" }}>
+                <div style={{ fontSize: 26, fontWeight: 800, color: NAVY, fontFamily: "'Barlow', sans-serif", lineHeight: 1 }}>$75,000</div>
+                <div style={{ fontSize: 11, color: MUTED, marginTop: 3 }}>90-day · 100% credited to Year 1</div>
+              </div>
+              <Button
+                onClick={() => setLocation("/founding-partner")}
+                style={{
+                  background: TEAL, color: "#fff", fontSize: 10, fontWeight: 800,
+                  letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 24px",
+                  border: "none", ...BC, whiteSpace: "nowrap",
+                }}
+              >
+                Apply for Founding Partner Access <ArrowRight style={{ marginLeft: 6, width: 13, height: 13 }} />
+              </Button>
+            </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "start" }}>
