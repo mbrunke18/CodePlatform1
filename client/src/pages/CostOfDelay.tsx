@@ -242,7 +242,7 @@ export default function CostOfDelay() {
               <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.15em", color: TEAL, ...BC, marginBottom: 14, textTransform: "uppercase" as const }}>vs. Readiness OS Core</div>
               {[
                 { label: "Your current annual cost", value: fmt(calc.annualMobilizationTax), color: RED },
-                { label: "Readiness OS Core", value: "$250K/yr", color: TEAL },
+                { label: "Readiness OS Core", value: "$150K/yr", color: TEAL },
                 { label: "Net annual saving", value: calc.netSavingsCore > 0 ? fmt(calc.netSavingsCore) : "See below", color: calc.netSavingsCore > 0 ? TEAL : MUTED },
                 { label: "First-year ROI", value: `${calc.roiCore.toLocaleString()}%`, color: NAVY },
               ].map((row, i) => (
