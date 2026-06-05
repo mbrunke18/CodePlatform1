@@ -7134,3 +7134,28 @@ export const certificationRecords = pgTable('certification_records', {
 export const insertCertificationRecordSchema = createInsertSchema(certificationRecords).omit({ id: true, startedAt: true, updatedAt: true });
 export type InsertCertificationRecord = z.infer<typeof insertCertificationRecordSchema>;
 export type CertificationRecord = typeof certificationRecords.$inferSelect;
+
+// ─── Board Review System ──────────────────────────────────────────────────────
+
+export const boardFeedback = pgTable('board_feedback', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  boardMember: varchar('board_member', { length: 50 }).notNull(),
+  // gates | buffett | blakely | branson | obama | williams
+  pageUrl: varchar('page_url', { length: 500 }).notNull(),
+  pageName: varchar('page_name', { length: 200 }).notNull(),
+  actionType: varchar('action_type', { length: 20 }).notNull(),
+  // change | add | eliminate
+  area: varchar('area', { length: 30 }).notNull(),
+  // design | layout | messaging | feature | navigation | content | data
+  priority: varchar('priority', { length: 20 }).notNull(),
+  // critical | important | nice_to_have
+  feedback: text('feedback').notNull(),
+  status: varchar('status', { length: 20 }).default('pending'),
+  // pending | in_review | planned | implemented | declined
+  founderNote: text('founder_note'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertBoardFeedbackSchema = createInsertSchema(boardFeedback).omit({ id: true, createdAt: true });
+export type InsertBoardFeedback = z.infer<typeof insertBoardFeedbackSchema>;
+export type BoardFeedback = typeof boardFeedback.$inferSelect;

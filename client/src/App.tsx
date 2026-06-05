@@ -8,6 +8,7 @@ import { Loader2, RefreshCw, Home } from "lucide-react";
 import RoleIndustryCaptureModal from "@/components/RoleIndustryCaptureModal";
 import QuickActions from "@/components/QuickActions";
 import EvalBanner from "@/components/EvalBanner";
+import BoardReviewPanel from "@/components/BoardReviewPanel";
 
 interface ErrorBoundaryState { hasError: boolean; error: Error | null; }
 class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryState> {
@@ -287,6 +288,8 @@ const ExecuteDecisionsPage = lazy(() => import("./pages/execute/DecisionsPage"))
 const AdvanceIntelligence = lazy(() => import("./pages/AdvanceIntelligence"));
 const MicrosoftConnectors = lazy(() => import("./pages/MicrosoftConnectors"));
 const CertificationProgram = lazy(() => import("./pages/CertificationProgram"));
+const BoardReview = lazy(() => import("./pages/BoardReview"));
+const BoardAdmin = lazy(() => import("./pages/BoardAdmin"));
 const AdvanceMetricsPage = lazy(() => import("./pages/advance/MetricsPage"));
 const AdvanceOutcomesPage = lazy(() => import("./pages/advance/OutcomesPage"));
 const AdvanceEffectivenessPage = lazy(() => import("./pages/advance/EffectivenessPage"));
@@ -452,6 +455,10 @@ function Router() {
         {/* Board Priorities */}
         <Route path="/microsoft-connectors" component={MicrosoftConnectors} />
         <Route path="/certification" component={CertificationProgram} />
+
+        {/* Board Review System */}
+        <Route path="/board-review" component={BoardReview} />
+        <Route path="/board-admin" component={BoardAdmin} />
 
         {/* ADVANCE Phase */}
         <Route path="/advance-intelligence" component={AdvanceIntelligence} />
@@ -806,6 +813,7 @@ function App() {
                   <ErrorBoundary>
                     <Router />
                   </ErrorBoundary>
+                  <BoardReviewPanel />
                 </TooltipProvider>
               </ThemeProvider>
             </OnboardingProvider>

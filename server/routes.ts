@@ -11441,6 +11441,95 @@ Respond ONLY as JSON with this exact structure:
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
 
+  // ─── BOARD REVIEW SYSTEM ─────────────────────────────────────────────────────
+  // Note: these routes are open (no requireOrgAccess) — board review is platform-level
+
+  // POST /api/board/feedback — submit feedback item
+  app.post('/api/board/feedback', async (req: any, res) => {
+    try {
+      const { boardFeedback } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { boardMember, pageUrl, pageName, actionType, area, priority, feedback } = req.body;
+      if (!boardMember || !pageUrl || !pageName || !actionType || !area || !priority || !feedback) {
+        return res.status(400).json({ error: 'All fields required' });
+      }
+      const [row] = await db.insert(boardFeedback).values({
+        boardMember, pageUrl, pageName, actionType, area, priority, feedback,
+        status: 'pending',
+      }).returning();
+      res.json(row);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/board/feedback — get all feedback (admin) or filtered by member/page
+  app.get('/api/board/feedback', async (req: any, res) => {
+    try {
+      const { boardFeedback } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq, desc, and } = await import('drizzle-orm');
+      const { member, pageUrl } = req.query;
+
+      let query = db.select().from(boardFeedback).orderBy(desc(boardFeedback.createdAt)) as any;
+
+      const conditions = [];
+      if (member) conditions.push(eq(boardFeedback.boardMember, member as string));
+      if (pageUrl) conditions.push(eq(boardFeedback.pageUrl, pageUrl as string));
+      if (conditions.length > 0) query = query.where(and(...conditions));
+
+      const rows = await query.limit(500);
+      res.json(rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // PATCH /api/board/feedback/:id — update status or add founder note
+  app.patch('/api/board/feedback/:id', async (req: any, res) => {
+    try {
+      const { boardFeedback } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+      const updates: any = {};
+      if (req.body.status !== undefined) updates.status = req.body.status;
+      if (req.body.founderNote !== undefined) updates.founderNote = req.body.founderNote;
+      const [row] = await db.update(boardFeedback).set(updates)
+        .where(eq(boardFeedback.id, req.params.id)).returning();
+      res.json(row);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // DELETE /api/board/feedback/:id
+  app.delete('/api/board/feedback/:id', async (req: any, res) => {
+    try {
+      const { boardFeedback } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+      await db.delete(boardFeedback).where(eq(boardFeedback.id, req.params.id));
+      res.json({ ok: true });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/board/feedback/summary — counts by member, page, type
+  app.get('/api/board/feedback/summary', async (req: any, res) => {
+    try {
+      const { boardFeedback } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { sql } = await import('drizzle-orm');
+
+      const rows = await db.execute(sql`
+        SELECT
+          board_member,
+          action_type,
+          area,
+          priority,
+          status,
+          COUNT(*) as count
+        FROM board_feedback
+        GROUP BY board_member, action_type, area, priority, status
+        ORDER BY count DESC
+      `);
+      res.json(rows.rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
   // POST /api/certification/reset — restart certification (for demos)
   app.post('/api/certification/reset', requireOrgAccess, async (req: any, res) => {
     try {
