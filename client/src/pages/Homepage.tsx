@@ -3797,6 +3797,111 @@ function TimestampCloseSection() {
   );
 }
 
+function StartHereSection() {
+  const steps = [
+    {
+      n: "01",
+      label: "Feel the cost of not acting",
+      desc: "What is your current 30-day mobilization model costing — while you evaluate this? See it counting in real time.",
+      cta: "Open Cost of Delay →",
+      href: "/cost-of-delay",
+      accent: GOLD,
+    },
+    {
+      n: "02",
+      label: "Watch a trigger execute",
+      desc: "A real Readiness Protocol from signal detection to full authorized response. 12 minutes, no login required.",
+      cta: "Run the 12-Minute Experience →",
+      href: "/12-minute-experience",
+      accent: TEAL,
+    },
+    {
+      n: "03",
+      label: "See your sector's live exposure",
+      desc: "Which signals are active in your industry right now — and which of the 180 Readiness Protocols are already staged for them.",
+      cta: "View Sector Threat Briefing →",
+      href: "/sector-briefing",
+      accent: GOLD,
+    },
+    {
+      n: "04",
+      label: "Calculate your organization's return",
+      desc: "Your size, your risk profile, your contract value. A precise ROI figure — not a range, not a benchmark. Yours.",
+      cta: "Open ROI Calculator →",
+      href: "/roi-calculator",
+      accent: TEAL,
+    },
+    {
+      n: "05",
+      label: "Apply for Founding Partner Access",
+      desc: "90-day validation partnership. 12 enterprises. The response is already staged before you arrive.",
+      cta: "Apply for Founding Partner Access →",
+      href: "/founding-partner",
+      accent: GOLD,
+    },
+  ];
+
+  return (
+    <section style={{ background: "#F0EDE4", borderTop: "3px solid rgba(201,168,76,0.35)", padding: "64px 0 56px" }}>
+      <div style={{ ...CONTAINER, width: "100%" }}>
+        {/* Header */}
+        <div style={{ marginBottom: 40 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+            <div style={{ width: 32, height: 2, background: GOLD }} />
+            <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD }}>First Time Here</span>
+            <div style={{ width: 32, height: 2, background: GOLD }} />
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 700, color: NAVY, margin: "0 0 10px", lineHeight: 1.15 }}>
+            Your sequence. Five steps. No guessing.
+          </h2>
+          <p style={{ ...DM, fontSize: 15, color: "#4B5563", maxWidth: 560, margin: 0, lineHeight: 1.65 }}>
+            Two visitors. Two different starting points. This path closes the gap — every time, in the right order.
+          </p>
+        </div>
+
+        {/* Steps */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+          {steps.map(({ n, label, desc, cta, href, accent }) => (
+            <Link
+              key={n}
+              href={href}
+              style={{ textDecoration: "none", display: "block" }}
+            >
+              <div
+                style={{
+                  background: "#fff",
+                  border: "1px solid rgba(10,15,46,0.10)",
+                  borderTop: `3px solid ${accent}`,
+                  padding: "24px 22px 22px",
+                  height: "100%",
+                  boxSizing: "border-box",
+                  transition: "box-shadow 0.15s, transform 0.15s",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.boxShadow = "0 8px 32px rgba(10,15,46,0.12)";
+                  el.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.boxShadow = "none";
+                  el.style.transform = "translateY(0)";
+                }}
+              >
+                <div style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.18em", color: accent, marginBottom: 10 }}>{n}</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 17, fontWeight: 700, color: NAVY, marginBottom: 10, lineHeight: 1.3 }}>{label}</div>
+                <div style={{ ...DM, fontSize: 12.5, color: "#6B7280", lineHeight: 1.65, marginBottom: 16 }}>{desc}</div>
+                <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: accent, letterSpacing: "0.04em" }}>{cta}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useScrollDepth();
   useEffect(() => {
@@ -3815,6 +3920,9 @@ export default function Homepage() {
 
       {/* 1. CLAIM */}
       <HeroSection />
+
+      {/* START HERE — guided sequence for first-time visitors */}
+      <StartHereSection />
 
       {/* VALUE RAMP — what you get and when, plus the compounding permanent value */}
       <div style={{ background: "#0D1435", borderTop: "1px solid rgba(201,168,76,0.18)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>

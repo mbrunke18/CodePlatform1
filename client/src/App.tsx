@@ -333,6 +333,36 @@ function OnboardingGuard({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+const WELCOME_SEEN_KEY = 'vm_welcome_brief_seen';
+const PUBLIC_PATH_PREFIXES = [
+  '/welcome-brief', '/home', '/demo', '/master-demo', '/the-proof',
+  '/how-it-works', '/how-it-executes', '/readiness-infrastructure', '/platform-overview',
+  '/12-minute-experience', '/roi-calculator', '/cost-of-delay', '/sector-briefing',
+  '/executive-brief', '/founding-partner', '/contact', '/request-access',
+  '/trial-access', '/demo-access', '/proof-story', '/research', '/vs-',
+  '/ms-project', '/platform-reality', '/investor', '/pitch-deck', '/capabilities',
+  '/founder-story', '/about', '/team', '/roadmap', '/entry', '/new-user-journey',
+  '/readiness-benchmark', '/mobilization-tax', '/pricing', '/growth', '/industry',
+  '/sitemap', '/user-guide', '/access-denied', '/situation-scanner', '/getting-started',
+  '/readiness-rhythm', '/onboarding-guide', '/ecosystems', '/idea-framework',
+  '/protocol-browser', '/industry-demo-library', '/security-compliance',
+];
+
+function WelcomeBriefRedirect() {
+  const [location, setLocation] = useLocation();
+  const { isAuthenticated, isLoading } = useAuth();
+  useEffect(() => {
+    if (isLoading || !isAuthenticated) return;
+    if (typeof window === 'undefined') return;
+    if (localStorage.getItem(WELCOME_SEEN_KEY)) return;
+    const isPublic = location === '/' || PUBLIC_PATH_PREFIXES.some(prefix => location.startsWith(prefix));
+    if (!isPublic) {
+      setLocation('/welcome-brief');
+    }
+  }, [isAuthenticated, isLoading, location, setLocation]);
+  return null;
+}
+
 function Redirect({ to }: { to: string }) {
   const [, setLocation] = useLocation();
   useEffect(() => { setLocation(to); }, [setLocation, to]);
@@ -367,6 +397,7 @@ function Router() {
         <ScrollToTop />
         <CanonicalUpdater />
         <OnboardingGuard>
+          <WelcomeBriefRedirect />
           <Suspense fallback={<PageLoader />}>
             <Switch>
             <Route path="/" component={Homepage} />
