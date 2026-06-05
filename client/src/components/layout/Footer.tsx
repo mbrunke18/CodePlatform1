@@ -53,6 +53,8 @@ export default function Footer() {
         { label: "Strategic Recorder", path: "/strategic-recorder" },
         { label: "Readiness Assessment", path: "/readiness-assessment" },
         { label: "ROI Calculator", path: "/roi-calculator" },
+        { label: "Cost of Delay", path: "/cost-of-delay" },
+        { label: "Sector Threat Briefing", path: "/sector-briefing" },
       ]
     },
     {

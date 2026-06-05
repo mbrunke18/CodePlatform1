@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -236,6 +236,8 @@ export default function StandardNav() {
     { label: "Readiness Benchmark — Free", path: "/readiness-benchmark", icon: ClipboardCheck, description: "3-minute score. Typical enterprise: 22. Founding Partners: 87. See where you stand.", featured: true },
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open", featured: true },
+    { label: "Cost of Delay", path: "/cost-of-delay", icon: DollarSign, description: "Real-time counter: what your current mobilization model costs while you evaluate", featured: true },
+    { label: "Sector Threat Briefing", path: "/sector-briefing", icon: AlertTriangle, description: "Live signal scan for your sector — trigger patterns active today, protocols already staged", featured: true },
     { label: "Proof Story", path: "/proof-story", icon: Scale, description: "Same trigger — entirely different outcome. The numbers side by side." },
     { label: "Pricing & Plans", path: "/pricing", icon: TrendingUp, description: "Core · Foresight · Enterprise — three layers of readiness, transparent value-based pricing", featured: true },
     { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how enterprise teams onboard & scale" },
@@ -461,6 +463,8 @@ export default function StandardNav() {
             {megaColHeading("Tools & Proof")}
             {[
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
+              { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate', featured: true },
+              { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector. Protocols already staged.', featured: true },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
               { path: '/growth', icon: TrendingUp, label: 'Pricing & Plans', sub: 'Accessible entry — full platform, grow as you scale', featured: true },
               { path: '/customer-journey', icon: Users, label: 'Customer Journey', sub: 'See how enterprise teams onboard & scale' },
