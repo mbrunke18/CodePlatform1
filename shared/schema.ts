@@ -7075,3 +7075,62 @@ export const updateHypotheses = pgTable('update_hypotheses', {
 export const insertUpdateHypothesisSchema = createInsertSchema(updateHypotheses).omit({ id: true, createdAt: true });
 export type InsertUpdateHypothesis = z.infer<typeof insertUpdateHypothesisSchema>;
 export type UpdateHypothesis = typeof updateHypotheses.$inferSelect;
+
+// ─── Microsoft 365 Connector Layer ───────────────────────────────────────────
+
+export const microsoftConnectors = pgTable('microsoft_connectors', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  connectorType: varchar('connector_type', { length: 40 }).notNull(),
+  displayName: varchar('display_name', { length: 100 }).notNull(),
+  status: varchar('status', { length: 20 }).default('disconnected'),
+  config: jsonb('config'),
+  authStatus: varchar('auth_status', { length: 30 }).default('unauthenticated'),
+  lastActivityAt: timestamp('last_activity_at'),
+  eventsInLast24h: integer('events_in_last_24h').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+export const insertMicrosoftConnectorSchema = createInsertSchema(microsoftConnectors).omit({ id: true, createdAt: true, updatedAt: true });
+export type InsertMicrosoftConnector = z.infer<typeof insertMicrosoftConnectorSchema>;
+export type MicrosoftConnector = typeof microsoftConnectors.$inferSelect;
+
+export const microsoftEvents = pgTable('microsoft_events', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  connectorId: uuid('connector_id').notNull().references(() => microsoftConnectors.id),
+  connectorType: varchar('connector_type', { length: 40 }).notNull(),
+  direction: varchar('direction', { length: 10 }).notNull().default('outbound'),
+  eventType: varchar('event_type', { length: 60 }).notNull(),
+  summary: text('summary').notNull(),
+  payload: jsonb('payload'),
+  activationId: uuid('activation_id'),
+  protocolId: uuid('protocol_id'),
+  status: varchar('status', { length: 20 }).default('delivered'),
+  processedAt: timestamp('processed_at').defaultNow(),
+});
+export const insertMicrosoftEventSchema = createInsertSchema(microsoftEvents).omit({ id: true, processedAt: true });
+export type InsertMicrosoftEvent = z.infer<typeof insertMicrosoftEventSchema>;
+export type MicrosoftEvent = typeof microsoftEvents.$inferSelect;
+
+// ─── 12-Minute Certification Program ─────────────────────────────────────────
+
+export const certificationRecords = pgTable('certification_records', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  certificationNumber: varchar('certification_number', { length: 30 }).unique(),
+  currentPhase: integer('current_phase').default(1),
+  completedPhases: integer('completed_phases').array().default([]),
+  phaseData: jsonb('phase_data').default({}),
+  status: varchar('status', { length: 20 }).default('in_progress'),
+  certifiedAt: timestamp('certified_at'),
+  certifiedResponseTimeSeconds: integer('certified_response_time_seconds'),
+  certifiedByUserId: uuid('certified_by_user_id'),
+  organizationName: varchar('organization_name', { length: 200 }),
+  expiresAt: timestamp('expires_at'),
+  startedAt: timestamp('started_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+export const insertCertificationRecordSchema = createInsertSchema(certificationRecords).omit({ id: true, startedAt: true, updatedAt: true });
+export type InsertCertificationRecord = z.infer<typeof insertCertificationRecordSchema>;
+export type CertificationRecord = typeof certificationRecords.$inferSelect;

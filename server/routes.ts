@@ -11151,5 +11151,317 @@ Respond ONLY as JSON with this exact structure:
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
 
+  // GET /api/advance/live-feed — recent learning events (deltas + proven hypotheses)
+  app.get('/api/advance/live-feed', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftConnectors: _mc, ...schema } = await import('@shared/schema');
+      const { protocolVersionDeltas, updateHypotheses, playbooks } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq, and, desc } = await import('drizzle-orm');
+
+      const recentDeltas = await db
+        .select()
+        .from(protocolVersionDeltas as any)
+        .where(eq((protocolVersionDeltas as any).organizationId, req.orgId))
+        .orderBy(desc((protocolVersionDeltas as any).appliedAt))
+        .limit(20);
+
+      const recentHypotheses = await db
+        .select()
+        .from(updateHypotheses as any)
+        .where(
+          and(
+            eq((updateHypotheses as any).organizationId, req.orgId),
+            eq((updateHypotheses as any).status, 'proven'),
+          )
+        )
+        .orderBy(desc((updateHypotheses as any).provenAt))
+        .limit(10);
+
+      const feed = [
+        ...recentDeltas.map((d: any) => ({
+          id: d.id,
+          type: 'delta',
+          eventType: d.deltaType,
+          summary: d.deltaDescription,
+          versionBefore: d.versionBefore,
+          versionAfter: d.versionAfter,
+          timestamp: d.appliedAt,
+        })),
+        ...recentHypotheses.map((h: any) => ({
+          id: h.id,
+          type: 'hypothesis_proven',
+          eventType: 'proven',
+          summary: h.evidenceSummary ?? h.hypothesis,
+          impact: h.actualImpactMinutes,
+          confidence: h.confidenceScore,
+          timestamp: h.provenAt,
+        })),
+      ].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()).slice(0, 25);
+
+      res.json(feed);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // ─── MICROSOFT 365 CONNECTOR LAYER ──────────────────────────────────────────
+
+  // GET /api/microsoft/connectors
+  app.get('/api/microsoft/connectors', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftConnectors } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq, desc } = await import('drizzle-orm');
+      const rows = await db.select().from(microsoftConnectors)
+        .where(eq(microsoftConnectors.organizationId, req.orgId))
+        .orderBy(desc(microsoftConnectors.createdAt));
+      res.json(rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // POST /api/microsoft/connectors — create or upsert a connector
+  app.post('/api/microsoft/connectors', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftConnectors } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq, and } = await import('drizzle-orm');
+      const { connectorType, displayName, config, status } = req.body;
+      if (!connectorType || !displayName) return res.status(400).json({ error: 'connectorType and displayName required' });
+
+      const [existing] = await db.select().from(microsoftConnectors)
+        .where(and(eq(microsoftConnectors.organizationId, req.orgId), eq(microsoftConnectors.connectorType, connectorType)))
+        .limit(1);
+
+      if (existing) {
+        const [updated] = await db.update(microsoftConnectors)
+          .set({ displayName, config: config ?? existing.config, status: status ?? existing.status, updatedAt: new Date() })
+          .where(eq(microsoftConnectors.id, existing.id))
+          .returning();
+        return res.json(updated);
+      }
+
+      const [created] = await db.insert(microsoftConnectors).values({
+        organizationId: req.orgId,
+        connectorType,
+        displayName,
+        config: config ?? {},
+        status: status ?? 'disconnected',
+      }).returning();
+      res.json(created);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // PATCH /api/microsoft/connectors/:id — update status/config
+  app.patch('/api/microsoft/connectors/:id', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftConnectors } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+      const updates: any = { updatedAt: new Date() };
+      if (req.body.status !== undefined) updates.status = req.body.status;
+      if (req.body.config !== undefined) updates.config = req.body.config;
+      if (req.body.authStatus !== undefined) updates.authStatus = req.body.authStatus;
+      if (req.body.lastActivityAt !== undefined) updates.lastActivityAt = new Date();
+      const [row] = await db.update(microsoftConnectors).set(updates)
+        .where(eq(microsoftConnectors.id, req.params.id)).returning();
+      res.json(row);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/microsoft/events — recent activity feed across all connectors
+  app.get('/api/microsoft/events', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftEvents } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq, desc } = await import('drizzle-orm');
+      const rows = await db.select().from(microsoftEvents)
+        .where(eq(microsoftEvents.organizationId, req.orgId))
+        .orderBy(desc(microsoftEvents.processedAt))
+        .limit(50);
+      res.json(rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // POST /api/microsoft/events — log an outbound event (called when protocol activates)
+  app.post('/api/microsoft/events', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftEvents } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { connectorId, connectorType, direction, eventType, summary, payload, activationId, protocolId } = req.body;
+      if (!connectorId || !connectorType || !eventType || !summary) {
+        return res.status(400).json({ error: 'connectorId, connectorType, eventType, summary required' });
+      }
+      const [row] = await db.insert(microsoftEvents).values({
+        organizationId: req.orgId,
+        connectorId, connectorType,
+        direction: direction ?? 'outbound',
+        eventType, summary,
+        payload: payload ?? {},
+        activationId: activationId ?? null,
+        protocolId: protocolId ?? null,
+        status: 'delivered',
+      }).returning();
+
+      // Bump connector event count
+      const { microsoftConnectors } = await import('@shared/schema');
+      const { sql } = await import('drizzle-orm');
+      const { eq } = await import('drizzle-orm');
+      await db.update(microsoftConnectors)
+        .set({ lastActivityAt: new Date(), eventsInLast24h: sql`events_in_last_24h + 1` })
+        .where(eq(microsoftConnectors.id, connectorId));
+
+      res.json(row);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // POST /api/microsoft/simulate-activation — seed demo events for a connector
+  app.post('/api/microsoft/simulate-activation', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { microsoftConnectors, microsoftEvents } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq, sql } = await import('drizzle-orm');
+      const { connectorId, connectorType, scenarioName } = req.body;
+
+      const eventSets: Record<string, any[]> = {
+        teams: [
+          { eventType: 'teams_notification', direction: 'outbound', summary: `Protocol activation alert sent to #incident-response — ${scenarioName ?? 'Readiness Protocol activated'}. 8 stakeholders notified. Authorization gate opened.` },
+          { eventType: 'teams_reply', direction: 'inbound', summary: 'CFO acknowledged via Teams: "Authorized. Proceed with containment protocol as pre-staged."' },
+          { eventType: 'teams_notification', direction: 'outbound', summary: 'Status update posted to #executive-channel: Execution at T+4min. All tasks staged. No deviation from protocol.' },
+        ],
+        sharepoint: [
+          { eventType: 'sharepoint_document_staged', direction: 'outbound', summary: `Crisis response brief pre-staged to /Incident-Response/Active — "${scenarioName ?? 'Protocol Activation'}_brief.docx" ready for board review.` },
+          { eventType: 'sharepoint_document_staged', direction: 'outbound', summary: 'Stakeholder communication templates uploaded to /Comms/Pre-approved — 3 documents staged, pending authorization.' },
+          { eventType: 'sharepoint_document_approved', direction: 'inbound', summary: 'Board counsel approved crisis_comms_v2.docx — document promoted to /Approved for immediate distribution.' },
+        ],
+        power_automate: [
+          { eventType: 'flow_triggered', direction: 'outbound', summary: `Power Automate flow "Executive Notification Chain" triggered — ${scenarioName ?? 'Protocol'} activation. 12 downstream automations queued.` },
+          { eventType: 'flow_completed', direction: 'inbound', summary: 'Flow completed: budget approval routed, legal hold initiated, PR hold activated. All 12 automations confirmed.' },
+          { eventType: 'flow_triggered', direction: 'outbound', summary: 'Secondary flow "Regulatory Notification" triggered — SEC and state AG notification drafts prepared per protocol.' },
+        ],
+        copilot_studio: [
+          { eventType: 'copilot_context_injected', direction: 'outbound', summary: `Copilot Studio context updated — "${scenarioName ?? 'Active protocol'}" response playbook injected. Executive queries now return protocol-aligned guidance.` },
+          { eventType: 'copilot_query', direction: 'inbound', summary: 'CEO query via Copilot: "What is our containment status?" — answered using pre-staged protocol context. Response time: 4 seconds.' },
+          { eventType: 'copilot_context_injected', direction: 'outbound', summary: 'Post-activation debrief context loaded — ADVANCE learning mode active. Next 30 queries will capture behavioral data.' },
+        ],
+      };
+
+      const events = eventSets[connectorType] ?? [];
+      const inserted = [];
+      for (const e of events) {
+        const [row] = await db.insert(microsoftEvents).values({
+          organizationId: req.orgId,
+          connectorId, connectorType,
+          direction: e.direction,
+          eventType: e.eventType,
+          summary: e.summary,
+          payload: { scenario: scenarioName, simulated: true },
+          status: 'delivered',
+        }).returning();
+        inserted.push(row);
+      }
+
+      await db.update(microsoftConnectors)
+        .set({ lastActivityAt: new Date(), eventsInLast24h: sql`events_in_last_24h + ${events.length}`, status: 'connected' })
+        .where(eq(microsoftConnectors.id, connectorId));
+
+      res.json({ simulated: inserted.length, events: inserted });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // ─── 12-MINUTE CERTIFICATION PROGRAM ────────────────────────────────────────
+
+  // GET /api/certification — get org's certification record (creates if missing)
+  app.get('/api/certification', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { certificationRecords, organizations } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+
+      let [record] = await db.select().from(certificationRecords)
+        .where(eq(certificationRecords.organizationId, req.orgId))
+        .limit(1);
+
+      if (!record) {
+        const [org] = await db.select().from(organizations).where(eq(organizations.id, req.orgId)).limit(1);
+        const [created] = await db.insert(certificationRecords).values({
+          organizationId: req.orgId,
+          organizationName: org?.name ?? 'Your Organization',
+          currentPhase: 1,
+          completedPhases: [],
+          phaseData: {},
+          status: 'in_progress',
+        }).returning();
+        record = created;
+      }
+
+      res.json(record);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // POST /api/certification/complete-phase — advance to next phase
+  app.post('/api/certification/complete-phase', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { certificationRecords } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+
+      const { phase, phaseData } = req.body;
+      if (!phase) return res.status(400).json({ error: 'phase required' });
+
+      const [existing] = await db.select().from(certificationRecords)
+        .where(eq(certificationRecords.organizationId, req.orgId)).limit(1);
+
+      if (!existing) return res.status(404).json({ error: 'Certification record not found' });
+
+      const completed = Array.from(new Set([...(existing.completedPhases ?? []), Number(phase)]));
+      const nextPhase = Math.min(Number(phase) + 1, 4);
+      const existingPhaseData: any = existing.phaseData ?? {};
+      const updatedPhaseData = { ...existingPhaseData, [`phase${phase}`]: { completedAt: new Date().toISOString(), ...(phaseData ?? {}) } };
+
+      const isFinalPhase = Number(phase) === 4;
+      const certNum = isFinalPhase
+        ? `CERT-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9000) + 1000)}`
+        : existing.certificationNumber;
+
+      const expires = isFinalPhase ? new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) : existing.expiresAt;
+
+      const [updated] = await db.update(certificationRecords).set({
+        currentPhase: isFinalPhase ? 4 : nextPhase,
+        completedPhases: completed,
+        phaseData: updatedPhaseData,
+        status: isFinalPhase ? 'certified' : 'in_progress',
+        certifiedAt: isFinalPhase ? new Date() : existing.certifiedAt,
+        certifiedResponseTimeSeconds: isFinalPhase ? (phaseData?.responseTimeSeconds ?? 720) : existing.certifiedResponseTimeSeconds,
+        certifiedByUserId: isFinalPhase ? (req.user?.id ?? null) : existing.certifiedByUserId,
+        certificationNumber: certNum,
+        expiresAt: expires,
+        updatedAt: new Date(),
+      }).where(eq(certificationRecords.organizationId, req.orgId)).returning();
+
+      res.json(updated);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // POST /api/certification/reset — restart certification (for demos)
+  app.post('/api/certification/reset', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { certificationRecords } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+      await db.update(certificationRecords).set({
+        currentPhase: 1,
+        completedPhases: [],
+        phaseData: {},
+        status: 'in_progress',
+        certifiedAt: null,
+        certifiedResponseTimeSeconds: null,
+        certificationNumber: null,
+        certifiedByUserId: null,
+        expiresAt: null,
+        updatedAt: new Date(),
+      }).where(eq(certificationRecords.organizationId, req.orgId));
+      res.json({ ok: true });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
   return httpServer;
 }

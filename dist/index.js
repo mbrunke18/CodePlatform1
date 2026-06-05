@@ -78,6 +78,7 @@ __export(schema_exports, {
   budgetUnlocks: () => budgetUnlocks,
   businessUnits: () => businessUnits,
   businessUnitsRelations: () => businessUnitsRelations,
+  certificationRecords: () => certificationRecords,
   checkpointValidations: () => checkpointValidations,
   communicationChannels: () => communicationChannels,
   complianceFrameworks: () => complianceFrameworks,
@@ -158,6 +159,7 @@ __export(schema_exports, {
   insertBackgroundJobSchema: () => insertBackgroundJobSchema,
   insertBoardReportSchema: () => insertBoardReportSchema,
   insertBusinessUnitSchema: () => insertBusinessUnitSchema,
+  insertCertificationRecordSchema: () => insertCertificationRecordSchema,
   insertCheckpointValidationSchema: () => insertCheckpointValidationSchema,
   insertCommunicationChannelSchema: () => insertCommunicationChannelSchema,
   insertComplianceFrameworkSchema: () => insertComplianceFrameworkSchema,
@@ -225,6 +227,8 @@ __export(schema_exports, {
   insertMckTransformationWorkstreamSchema: () => insertMckTransformationWorkstreamSchema,
   insertMckValueRealizationMetricSchema: () => insertMckValueRealizationMetricSchema,
   insertMessageSchema: () => insertMessageSchema,
+  insertMicrosoftConnectorSchema: () => insertMicrosoftConnectorSchema,
+  insertMicrosoftEventSchema: () => insertMicrosoftEventSchema,
   insertModuleUsageAnalyticSchema: () => insertModuleUsageAnalyticSchema,
   insertNotificationSchema: () => insertNotificationSchema,
   insertNovaInnovationSchema: () => insertNovaInnovationSchema,
@@ -346,6 +350,8 @@ __export(schema_exports, {
   mckValueRealizationMetrics: () => mckValueRealizationMetrics,
   messages: () => messages,
   metricCategoryEnum: () => metricCategoryEnum,
+  microsoftConnectors: () => microsoftConnectors,
+  microsoftEvents: () => microsoftEvents,
   moduleUsageAnalytics: () => moduleUsageAnalytics,
   moduleUsageAnalyticsRelations: () => moduleUsageAnalyticsRelations,
   notifications: () => notifications,
@@ -499,7 +505,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6698,6 +6704,52 @@ var init_schema = __esm({
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertUpdateHypothesisSchema = createInsertSchema2(updateHypotheses).omit({ id: true, createdAt: true });
+    microsoftConnectors = pgTable2("microsoft_connectors", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: uuid("organization_id").notNull().references(() => organizations.id),
+      connectorType: varchar("connector_type", { length: 40 }).notNull(),
+      displayName: varchar("display_name", { length: 100 }).notNull(),
+      status: varchar("status", { length: 20 }).default("disconnected"),
+      config: jsonb("config"),
+      authStatus: varchar("auth_status", { length: 30 }).default("unauthenticated"),
+      lastActivityAt: timestamp2("last_activity_at"),
+      eventsInLast24h: integer2("events_in_last_24h").default(0),
+      createdAt: timestamp2("created_at").defaultNow(),
+      updatedAt: timestamp2("updated_at").defaultNow()
+    });
+    insertMicrosoftConnectorSchema = createInsertSchema2(microsoftConnectors).omit({ id: true, createdAt: true, updatedAt: true });
+    microsoftEvents = pgTable2("microsoft_events", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: uuid("organization_id").notNull().references(() => organizations.id),
+      connectorId: uuid("connector_id").notNull().references(() => microsoftConnectors.id),
+      connectorType: varchar("connector_type", { length: 40 }).notNull(),
+      direction: varchar("direction", { length: 10 }).notNull().default("outbound"),
+      eventType: varchar("event_type", { length: 60 }).notNull(),
+      summary: text2("summary").notNull(),
+      payload: jsonb("payload"),
+      activationId: uuid("activation_id"),
+      protocolId: uuid("protocol_id"),
+      status: varchar("status", { length: 20 }).default("delivered"),
+      processedAt: timestamp2("processed_at").defaultNow()
+    });
+    insertMicrosoftEventSchema = createInsertSchema2(microsoftEvents).omit({ id: true, processedAt: true });
+    certificationRecords = pgTable2("certification_records", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: uuid("organization_id").notNull().references(() => organizations.id),
+      certificationNumber: varchar("certification_number", { length: 30 }).unique(),
+      currentPhase: integer2("current_phase").default(1),
+      completedPhases: integer2("completed_phases").array().default([]),
+      phaseData: jsonb("phase_data").default({}),
+      status: varchar("status", { length: 20 }).default("in_progress"),
+      certifiedAt: timestamp2("certified_at"),
+      certifiedResponseTimeSeconds: integer2("certified_response_time_seconds"),
+      certifiedByUserId: uuid("certified_by_user_id"),
+      organizationName: varchar("organization_name", { length: 200 }),
+      expiresAt: timestamp2("expires_at"),
+      startedAt: timestamp2("started_at").defaultNow(),
+      updatedAt: timestamp2("updated_at").defaultNow()
+    });
+    insertCertificationRecordSchema = createInsertSchema2(certificationRecords).omit({ id: true, startedAt: true, updatedAt: true });
   }
 });
 
@@ -62326,6 +62378,262 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { measureHypothesesForActivation: measureHypothesesForActivation2 } = await Promise.resolve().then(() => (init_AdvanceLoopService(), AdvanceLoopService_exports));
       await measureHypothesesForActivation2(req.params.outcomeId, req.orgId);
+      res.json({ ok: true });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/advance/live-feed", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftConnectors: _mc, ...schema } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { protocolVersionDeltas: protocolVersionDeltas2, updateHypotheses: updateHypotheses2, playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62, and: and41, desc: desc30 } = await import("drizzle-orm");
+      const recentDeltas = await db2.select().from(protocolVersionDeltas2).where(eq62(protocolVersionDeltas2.organizationId, req.orgId)).orderBy(desc30(protocolVersionDeltas2.appliedAt)).limit(20);
+      const recentHypotheses = await db2.select().from(updateHypotheses2).where(
+        and41(
+          eq62(updateHypotheses2.organizationId, req.orgId),
+          eq62(updateHypotheses2.status, "proven")
+        )
+      ).orderBy(desc30(updateHypotheses2.provenAt)).limit(10);
+      const feed = [
+        ...recentDeltas.map((d) => ({
+          id: d.id,
+          type: "delta",
+          eventType: d.deltaType,
+          summary: d.deltaDescription,
+          versionBefore: d.versionBefore,
+          versionAfter: d.versionAfter,
+          timestamp: d.appliedAt
+        })),
+        ...recentHypotheses.map((h) => ({
+          id: h.id,
+          type: "hypothesis_proven",
+          eventType: "proven",
+          summary: h.evidenceSummary ?? h.hypothesis,
+          impact: h.actualImpactMinutes,
+          confidence: h.confidenceScore,
+          timestamp: h.provenAt
+        }))
+      ].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()).slice(0, 25);
+      res.json(feed);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/microsoft/connectors", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62, desc: desc30 } = await import("drizzle-orm");
+      const rows = await db2.select().from(microsoftConnectors2).where(eq62(microsoftConnectors2.organizationId, req.orgId)).orderBy(desc30(microsoftConnectors2.createdAt));
+      res.json(rows);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/microsoft/connectors", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62, and: and41 } = await import("drizzle-orm");
+      const { connectorType, displayName, config, status } = req.body;
+      if (!connectorType || !displayName) return res.status(400).json({ error: "connectorType and displayName required" });
+      const [existing] = await db2.select().from(microsoftConnectors2).where(and41(eq62(microsoftConnectors2.organizationId, req.orgId), eq62(microsoftConnectors2.connectorType, connectorType))).limit(1);
+      if (existing) {
+        const [updated] = await db2.update(microsoftConnectors2).set({ displayName, config: config ?? existing.config, status: status ?? existing.status, updatedAt: /* @__PURE__ */ new Date() }).where(eq62(microsoftConnectors2.id, existing.id)).returning();
+        return res.json(updated);
+      }
+      const [created] = await db2.insert(microsoftConnectors2).values({
+        organizationId: req.orgId,
+        connectorType,
+        displayName,
+        config: config ?? {},
+        status: status ?? "disconnected"
+      }).returning();
+      res.json(created);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.patch("/api/microsoft/connectors/:id", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62 } = await import("drizzle-orm");
+      const updates = { updatedAt: /* @__PURE__ */ new Date() };
+      if (req.body.status !== void 0) updates.status = req.body.status;
+      if (req.body.config !== void 0) updates.config = req.body.config;
+      if (req.body.authStatus !== void 0) updates.authStatus = req.body.authStatus;
+      if (req.body.lastActivityAt !== void 0) updates.lastActivityAt = /* @__PURE__ */ new Date();
+      const [row] = await db2.update(microsoftConnectors2).set(updates).where(eq62(microsoftConnectors2.id, req.params.id)).returning();
+      res.json(row);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/microsoft/events", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftEvents: microsoftEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62, desc: desc30 } = await import("drizzle-orm");
+      const rows = await db2.select().from(microsoftEvents2).where(eq62(microsoftEvents2.organizationId, req.orgId)).orderBy(desc30(microsoftEvents2.processedAt)).limit(50);
+      res.json(rows);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/microsoft/events", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftEvents: microsoftEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { connectorId, connectorType, direction, eventType, summary, payload, activationId, protocolId } = req.body;
+      if (!connectorId || !connectorType || !eventType || !summary) {
+        return res.status(400).json({ error: "connectorId, connectorType, eventType, summary required" });
+      }
+      const [row] = await db2.insert(microsoftEvents2).values({
+        organizationId: req.orgId,
+        connectorId,
+        connectorType,
+        direction: direction ?? "outbound",
+        eventType,
+        summary,
+        payload: payload ?? {},
+        activationId: activationId ?? null,
+        protocolId: protocolId ?? null,
+        status: "delivered"
+      }).returning();
+      const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { sql: sql26 } = await import("drizzle-orm");
+      const { eq: eq62 } = await import("drizzle-orm");
+      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql26`events_in_last_24h + 1` }).where(eq62(microsoftConnectors2.id, connectorId));
+      res.json(row);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/microsoft/simulate-activation", requireOrgAccess2, async (req, res) => {
+    try {
+      const { microsoftConnectors: microsoftConnectors2, microsoftEvents: microsoftEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62, sql: sql26 } = await import("drizzle-orm");
+      const { connectorId, connectorType, scenarioName } = req.body;
+      const eventSets = {
+        teams: [
+          { eventType: "teams_notification", direction: "outbound", summary: `Protocol activation alert sent to #incident-response \u2014 ${scenarioName ?? "Readiness Protocol activated"}. 8 stakeholders notified. Authorization gate opened.` },
+          { eventType: "teams_reply", direction: "inbound", summary: 'CFO acknowledged via Teams: "Authorized. Proceed with containment protocol as pre-staged."' },
+          { eventType: "teams_notification", direction: "outbound", summary: "Status update posted to #executive-channel: Execution at T+4min. All tasks staged. No deviation from protocol." }
+        ],
+        sharepoint: [
+          { eventType: "sharepoint_document_staged", direction: "outbound", summary: `Crisis response brief pre-staged to /Incident-Response/Active \u2014 "${scenarioName ?? "Protocol Activation"}_brief.docx" ready for board review.` },
+          { eventType: "sharepoint_document_staged", direction: "outbound", summary: "Stakeholder communication templates uploaded to /Comms/Pre-approved \u2014 3 documents staged, pending authorization." },
+          { eventType: "sharepoint_document_approved", direction: "inbound", summary: "Board counsel approved crisis_comms_v2.docx \u2014 document promoted to /Approved for immediate distribution." }
+        ],
+        power_automate: [
+          { eventType: "flow_triggered", direction: "outbound", summary: `Power Automate flow "Executive Notification Chain" triggered \u2014 ${scenarioName ?? "Protocol"} activation. 12 downstream automations queued.` },
+          { eventType: "flow_completed", direction: "inbound", summary: "Flow completed: budget approval routed, legal hold initiated, PR hold activated. All 12 automations confirmed." },
+          { eventType: "flow_triggered", direction: "outbound", summary: 'Secondary flow "Regulatory Notification" triggered \u2014 SEC and state AG notification drafts prepared per protocol.' }
+        ],
+        copilot_studio: [
+          { eventType: "copilot_context_injected", direction: "outbound", summary: `Copilot Studio context updated \u2014 "${scenarioName ?? "Active protocol"}" response playbook injected. Executive queries now return protocol-aligned guidance.` },
+          { eventType: "copilot_query", direction: "inbound", summary: 'CEO query via Copilot: "What is our containment status?" \u2014 answered using pre-staged protocol context. Response time: 4 seconds.' },
+          { eventType: "copilot_context_injected", direction: "outbound", summary: "Post-activation debrief context loaded \u2014 ADVANCE learning mode active. Next 30 queries will capture behavioral data." }
+        ]
+      };
+      const events = eventSets[connectorType] ?? [];
+      const inserted = [];
+      for (const e of events) {
+        const [row] = await db2.insert(microsoftEvents2).values({
+          organizationId: req.orgId,
+          connectorId,
+          connectorType,
+          direction: e.direction,
+          eventType: e.eventType,
+          summary: e.summary,
+          payload: { scenario: scenarioName, simulated: true },
+          status: "delivered"
+        }).returning();
+        inserted.push(row);
+      }
+      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql26`events_in_last_24h + ${events.length}`, status: "connected" }).where(eq62(microsoftConnectors2.id, connectorId));
+      res.json({ simulated: inserted.length, events: inserted });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/certification", requireOrgAccess2, async (req, res) => {
+    try {
+      const { certificationRecords: certificationRecords2, organizations: organizations6 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62 } = await import("drizzle-orm");
+      let [record] = await db2.select().from(certificationRecords2).where(eq62(certificationRecords2.organizationId, req.orgId)).limit(1);
+      if (!record) {
+        const [org] = await db2.select().from(organizations6).where(eq62(organizations6.id, req.orgId)).limit(1);
+        const [created] = await db2.insert(certificationRecords2).values({
+          organizationId: req.orgId,
+          organizationName: org?.name ?? "Your Organization",
+          currentPhase: 1,
+          completedPhases: [],
+          phaseData: {},
+          status: "in_progress"
+        }).returning();
+        record = created;
+      }
+      res.json(record);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/certification/complete-phase", requireOrgAccess2, async (req, res) => {
+    try {
+      const { certificationRecords: certificationRecords2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62 } = await import("drizzle-orm");
+      const { phase, phaseData } = req.body;
+      if (!phase) return res.status(400).json({ error: "phase required" });
+      const [existing] = await db2.select().from(certificationRecords2).where(eq62(certificationRecords2.organizationId, req.orgId)).limit(1);
+      if (!existing) return res.status(404).json({ error: "Certification record not found" });
+      const completed = Array.from(/* @__PURE__ */ new Set([...existing.completedPhases ?? [], Number(phase)]));
+      const nextPhase = Math.min(Number(phase) + 1, 4);
+      const existingPhaseData = existing.phaseData ?? {};
+      const updatedPhaseData = { ...existingPhaseData, [`phase${phase}`]: { completedAt: (/* @__PURE__ */ new Date()).toISOString(), ...phaseData ?? {} } };
+      const isFinalPhase = Number(phase) === 4;
+      const certNum = isFinalPhase ? `CERT-${(/* @__PURE__ */ new Date()).getFullYear()}-${String(Math.floor(Math.random() * 9e3) + 1e3)}` : existing.certificationNumber;
+      const expires = isFinalPhase ? new Date(Date.now() + 365 * 24 * 60 * 60 * 1e3) : existing.expiresAt;
+      const [updated] = await db2.update(certificationRecords2).set({
+        currentPhase: isFinalPhase ? 4 : nextPhase,
+        completedPhases: completed,
+        phaseData: updatedPhaseData,
+        status: isFinalPhase ? "certified" : "in_progress",
+        certifiedAt: isFinalPhase ? /* @__PURE__ */ new Date() : existing.certifiedAt,
+        certifiedResponseTimeSeconds: isFinalPhase ? phaseData?.responseTimeSeconds ?? 720 : existing.certifiedResponseTimeSeconds,
+        certifiedByUserId: isFinalPhase ? req.user?.id ?? null : existing.certifiedByUserId,
+        certificationNumber: certNum,
+        expiresAt: expires,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq62(certificationRecords2.organizationId, req.orgId)).returning();
+      res.json(updated);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/certification/reset", requireOrgAccess2, async (req, res) => {
+    try {
+      const { certificationRecords: certificationRecords2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { eq: eq62 } = await import("drizzle-orm");
+      await db2.update(certificationRecords2).set({
+        currentPhase: 1,
+        completedPhases: [],
+        phaseData: {},
+        status: "in_progress",
+        certifiedAt: null,
+        certifiedResponseTimeSeconds: null,
+        certificationNumber: null,
+        certifiedByUserId: null,
+        expiresAt: null,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq62(certificationRecords2.organizationId, req.orgId));
       res.json({ ok: true });
     } catch (err) {
       res.status(500).json({ error: err.message });

@@ -11,7 +11,7 @@ import {
   TrendingUp, TrendingDown, CheckCircle2, Clock, Zap, BarChart3,
   ArrowRight, RefreshCw, Shield, Target, Activity, Brain,
   ChevronDown, ChevronRight, Award, Layers, GitCommit, FlaskConical,
-  AlertTriangle, Lock, Unlock, Timer
+  AlertTriangle, Lock, Unlock, Timer, GitBranch, Star, Cpu
 } from 'lucide-react';
 
 const NAVY = '#0A0F2E';
@@ -113,6 +113,108 @@ function MonthBar({ month, applied, proven, minutesSaved, maxApplied }: any) {
       <div className="text-xs text-gray-400">{month}</div>
       <div className="text-xs font-bold" style={{ color: NAVY }}>{applied}</div>
     </div>
+  );
+}
+
+// ─── Live Learning Feed component ─────────────────────────────────────────────
+const DELTA_ICONS: Record<string, any> = {
+  signal_keyword_added: Cpu,
+  owner_assigned: Target,
+  note_encoded: GitBranch,
+};
+
+const DELTA_LABELS: Record<string, string> = {
+  signal_keyword_added: 'Signal Keywords Added',
+  owner_assigned: 'Owner Pre-Assigned',
+  note_encoded: 'Learning Encoded',
+};
+
+function LiveLearningFeed() {
+  const { data: feedData, isLoading } = useQuery<any[]>({
+    queryKey: ['/api/advance/live-feed'],
+    refetchInterval: 30000,
+  });
+  const feed: any[] = feedData || [];
+
+  return (
+    <section>
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-xs font-bold tracking-widest uppercase text-gray-400">Live Learning Feed</span>
+        <div className="h-px flex-1 bg-gray-100" />
+        <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: TEAL }} />
+          Real-time
+        </span>
+      </div>
+
+      {isLoading && (
+        <div className="space-y-2 animate-pulse">
+          {[...Array(3)].map((_, i) => <div key={i} className="h-14 bg-gray-100 rounded-sm" />)}
+        </div>
+      )}
+
+      {!isLoading && feed.length === 0 && (
+        <div className="border border-gray-100 rounded-sm p-6 text-center">
+          <Activity className="h-8 w-8 mx-auto mb-2 text-gray-200" />
+          <div className="text-sm font-bold text-gray-400 mb-1">No learning events yet</div>
+          <div className="text-xs text-gray-400">
+            Apply pending updates above to generate version deltas. Each close-out creates a new learning event here.
+          </div>
+        </div>
+      )}
+
+      {!isLoading && feed.length > 0 && (
+        <div className="border border-gray-100 rounded-sm bg-white overflow-hidden">
+          {feed.slice(0, 8).map((event: any, idx: number) => {
+            const isProven = event.type === 'hypothesis_proven';
+            const Icon = isProven ? Star : (DELTA_ICONS[event.eventType] ?? GitCommit);
+            const color = isProven ? GOLD : TEAL;
+            const label = isProven ? 'Hypothesis Proven' : (DELTA_LABELS[event.eventType] ?? 'Protocol Updated');
+
+            return (
+              <div key={event.id} className={`flex items-start gap-4 px-4 py-3 ${idx < feed.length - 1 ? 'border-b border-gray-50' : ''}`}>
+                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ background: color + '15' }}>
+                  <Icon className="h-3.5 w-3.5" style={{ color }} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-xs font-bold" style={{ color: NAVY }}>{label}</span>
+                    {isProven && event.impact != null && (
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-sm"
+                        style={{ background: TEAL + '20', color: TEAL }}>
+                        −{Math.abs(event.impact)} min saved
+                      </span>
+                    )}
+                    {isProven && event.confidence != null && (
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-sm"
+                        style={{ background: GOLD + '20', color: GOLD }}>
+                        {event.confidence}% confidence
+                      </span>
+                    )}
+                    {!isProven && event.versionBefore && event.versionAfter && (
+                      <span className="text-[10px] font-mono text-gray-400">
+                        v{event.versionBefore} → v{event.versionAfter}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{event.summary}</p>
+                  <span className="text-[10px] text-gray-400 mt-0.5 block">
+                    {event.timestamp ? new Date(event.timestamp).toLocaleString() : '—'}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+
+          {feed.length > 8 && (
+            <div className="px-4 py-3 border-t border-gray-50 text-center">
+              <span className="text-xs text-gray-400">{feed.length - 8} more events in history</span>
+            </div>
+          )}
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -253,6 +355,9 @@ export default function AdvanceIntelligence() {
             </span>
           </div>
         </section>
+
+        {/* ── Live Learning Feed ─────────────────────────────────────────────── */}
+        <LiveLearningFeed />
 
         {/* ── Two-column: Pending Queue + Monthly Trend ─────────────────────── */}
         <div className="grid md:grid-cols-2 gap-6">

@@ -285,6 +285,8 @@ const ExecuteUpdatesPage = lazy(() => import("./pages/execute/UpdatesPage"));
 const ExecuteDecisionsPage = lazy(() => import("./pages/execute/DecisionsPage"));
 
 const AdvanceIntelligence = lazy(() => import("./pages/AdvanceIntelligence"));
+const MicrosoftConnectors = lazy(() => import("./pages/MicrosoftConnectors"));
+const CertificationProgram = lazy(() => import("./pages/CertificationProgram"));
 const AdvanceMetricsPage = lazy(() => import("./pages/advance/MetricsPage"));
 const AdvanceOutcomesPage = lazy(() => import("./pages/advance/OutcomesPage"));
 const AdvanceEffectivenessPage = lazy(() => import("./pages/advance/EffectivenessPage"));
@@ -446,6 +448,10 @@ function Router() {
         <Route path="/execute/tracking" component={ExecuteTrackingPage} />
         <Route path="/execute/updates" component={ExecuteUpdatesPage} />
         <Route path="/execute/decisions" component={ExecuteDecisionsPage} />
+
+        {/* Board Priorities */}
+        <Route path="/microsoft-connectors" component={MicrosoftConnectors} />
+        <Route path="/certification" component={CertificationProgram} />
 
         {/* ADVANCE Phase */}
         <Route path="/advance-intelligence" component={AdvanceIntelligence} />
