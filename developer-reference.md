@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 1, 2026 (rev 51) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 5, 2026 (rev 52) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -905,7 +905,7 @@ In-content links to `/begin` appear throughout the marketing site as plain under
 - **Homepage IDEASection** — end of section: "Experience the IDEA Framework in real time →"
 - **TryDemo** — mid-page between industry demos and playbook examples
 - **HowItWorks** — final CTA block
-- **Homepage hero** — primary CTA button: "Experience 12-Minute Execution"
+- **Homepage hero** — primary CTA button: **"Try It Now — No Login Required →"** (routes to `/situation-scanner`). Secondary text link: "Apply for Founding Partner Access →" (routes to `/founding-partner-program`). The Situation Scanner is the designated primary front door — do not restore "Request Founding Partner Access" as the hero primary CTA.
 
 ---
 
@@ -2833,7 +2833,7 @@ The primary public conversion page for enterprise prospects — startup to Fortu
 
 ### Page Structure
 
-1. **Hero** — Problem-first framing: "The response was / before you knew you needed it." with scarcity badge "2026 Founding Partner Cohort · 12 Seats" in gold
+1. **Hero** — Problem-first framing: "The response was / before you knew you needed it." with two badges: (a) scarcity badge **"2026 Founding Partner Cohort · 12 Seats · Applications Now Open"** in gold — update the seat count as partners sign; never show a filled count that is inaccurate; (b) budget qualifier **"Founding Partner engagements are structured for organizations with operational budgets of $50M+"** in teal — this is a permanent prospect pre-qualifier, do not remove it
 2. **Differentiation strip** — 4 cards: "Pre-staged, not assembled" / "Pre-committed, not considered" / "Signal-based, not meeting-based" / "Execution in 12 minutes, not 30 days"
 3. **Inline ApplicationForm** — no redirect; submits directly to the backend
 4. **Success state** — "We'll be in touch within 48 hours." confirmation in place of the form
@@ -3974,3 +3974,110 @@ Full sweep of all page and component files against the locked terminology and me
 - API slug-lookup truncation: ✅ fixed — `.orderBy(playbookNumber).limit(300)`
 - Nav broken links (`/command-center`): ✅ fixed in StandardNav (×2) and GlobalPhaseIndicator
 - Full terminology audit: ✅ zero violations across all locked rule sets
+
+## 70. Board Review System — June 2026 (rev 52)
+
+A private advisory feedback tool that lets the founder simulate review sessions from each board member's perspective. No auth bypass required — activated via `localStorage` flags.
+
+### Architecture
+
+**Three files:**
+
+| File | Route | Purpose |
+|---|---|---|
+| `client/src/components/BoardReviewPanel.tsx` | (global overlay) | Floating review panel injected via `App.tsx`; appears on every page when board mode is active |
+| `client/src/pages/BoardReview.tsx` | `/board-review` | Identity selection portal — choose which board member you are reviewing as |
+| `client/src/pages/BoardAdmin.tsx` | `/board-admin` | Founder-only dashboard — all feedback across all pages, filterable by member/type/status/priority |
+
+### Board Members (`BOARD_MEMBERS` — exported from `BoardReviewPanel.tsx`)
+
+```ts
+{ id: 'gates',    name: 'Bill Gates',      initials: 'BG', color: '#0A2A4A', role: 'Technology & Global Scale' }
+{ id: 'buffett',  name: 'Warren Buffett',  initials: 'WB', color: '#1B4332', role: 'Risk & Capital Allocation' }
+{ id: 'blakely',  name: 'Sara Blakely',   initials: 'SB', color: '#7C2D44', role: 'Founder Experience & Go-to-Market' }
+{ id: 'branson',  name: 'Richard Branson', initials: 'RB', color: '#3730A3', role: 'Brand & Enterprise Culture' }
+{ id: 'obama',    name: 'Barack Obama',    initials: 'BO', color: '#1E3A5F', role: 'Stakeholder Coordination & Trust' }
+{ id: 'williams', name: 'Serena Williams', initials: 'SW', color: '#065F46', role: 'Performance & Resilience' }
+{ id: 'founder',  name: 'Founder',         initials: 'VM', color: '#0A0F2E', role: 'Platform Review (Private)' }
+```
+
+### localStorage Keys
+
+```
+vm_board_mode=true        — activates the review panel globally
+vm_board_member=<id>      — which identity is active (gates / buffett / etc.)
+```
+
+Helper functions exported from `BoardReviewPanel.tsx`: `activateBoardMode(id)`, `deactivateBoardMode()`, `isBoardMode()`, `getBoardMember()`.
+
+### Feedback Schema
+
+Each feedback record stores: `boardMember` (id string), `pageUrl`, `pageName`, `actionType` (change/add/eliminate), `area` (design/layout/messaging/feature/navigation/content/data), `priority` (critical/important/nice_to_have), `feedback` (text), `status` (pending/in_review/planned/implemented/declined), `createdAt`.
+
+API endpoints: `GET /api/board/feedback?pageUrl=...` · `POST /api/board/feedback` · `PATCH /api/board/feedback/:id` · `DELETE /api/board/feedback/:id`
+
+### Panel Behavior
+
+- **Collapsed state:** Fixed tab on right edge of viewport, showing member initials + "Review" label + note count badge (color = member's identity color)
+- **Expanded state:** 380px right-side drawer with identity header, current page display, feedback form (action type → area → priority → text), and all existing notes for the current page
+- **LogOut button:** Calls `deactivateBoardMode()` and hides the panel
+- **Identity is page-persistent:** `useEffect` on `location` re-reads localStorage so the correct identity is always shown
+
+### Notes for Future Developers
+
+- Do NOT add authentication to `/board-review` or `/board-admin` — these routes are intentionally obscure (not in the public nav) rather than auth-gated. The founder navigates there directly.
+- The `BOARD_MEMBERS` array is the single source of truth for member identities. If members change, update only this array — the panel, review page, and admin page all import from it.
+- Never export plain functions alongside the default component export from `BoardReview.tsx` — Vite Fast Refresh will fail. Utility functions belong in `BoardReviewPanel.tsx` which is not a page component.
+
+---
+
+## 71. Homepage Conversion Overhaul — June 2026 (rev 52)
+
+Applied all board-assessed conversion recommendations. Rules that must not be reverted:
+
+### Hero CTA Hierarchy (LOCKED)
+
+**Primary:** `"Try It Now — No Login Required →"` → `/situation-scanner` (gold filled button)
+**Secondary:** `"Apply for Founding Partner Access →"` → `/founding-partner-program` (dim text link below the primary)
+
+The Situation Scanner is the lowest-friction entry point on the platform — a prospect experiences the product in under 3 minutes with zero commitment. It must remain the dominant hero CTA. Do not promote "Request Founding Partner Access" back to primary position.
+
+### HomepageNav Labels (LOCKED)
+
+| Old label | New label | Route |
+|---|---|---|
+| Readiness Infrastructure | How It Works | `/how-it-executes` |
+| Situation Scanner | Try It Now — No Login | `/situation-scanner` |
+
+### StandardNav Mega-Menu (LOCKED)
+
+In the Evidence section: "What is Readiness Infrastructure?" → **"How It Works"** → `/how-it-executes`
+
+### GuestPreviewBanner Ticker (LOCKED)
+
+The ticker bar (`GuestPreviewBanner.tsx`) displays live signal monitoring data only. **No gold CTA button in the ticker.** The previous "See It Execute in 12 Minutes →" button has been removed. A small ghost link "Try it — no login →" → `/situation-scanner` remains on the right side. Do not add a competing primary CTA back to the ticker.
+
+### Social Proof Strip
+
+`SocialProofStrip` component defined in `Homepage.tsx` and rendered **immediately after `<HeroSection />`** in the page render order (before `<StartHereSection />`). Shows 3 named practitioner quotes (Eriksson, Huang, Venkataraman) with name and title. All quotes sourced from public LinkedIn statements — confirmed by founder June 2026.
+
+### Hero Widget Hint
+
+Single italic line rendered below `<HeroSimPanel />`: *"This is live — click any scenario to see it execute in real time."* Do not remove — the board identified the passive widget as a missed engagement driver.
+
+### Founding Partner Program Scarcity Counter
+
+Scarcity badge text: `"2026 Founding Partner Cohort · [N] of 12 Spots Filled · [12-N] Remaining"`. **Update the filled count in `FoundingPartnerProgram.tsx` as partners sign.** Never display a filled number that is inaccurate — prospects will ask and catch it immediately. While no partners are signed, use `"12 Seats · Applications Now Open"`.
+
+### Rev 52 Known State
+
+- Build: ✅ clean (dev server)
+- Tests: ✅ 208/208 passing (11 test files)
+- Hero CTA: ✅ Situation Scanner primary
+- Ticker CTA: ✅ removed (ghost link only)
+- Nav labels: ✅ "How It Works" + "Try It Now — No Login"
+- Social proof: ✅ surfaced above the fold immediately after hero
+- Hero widget hint: ✅ live
+- Founding Partner scarcity: ✅ accurate ("12 Seats · Applications Now Open")
+- Founding Partner budget qualifier: ✅ "$50M+" line present
+- Board identity system: ✅ all 6 advisors + founder, full admin dashboard
