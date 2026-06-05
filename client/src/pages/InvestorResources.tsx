@@ -145,7 +145,7 @@ function McKinseyResearchSection() {
               {[
                 { sector: "Global Tech", result: "7–12% projected revenue lift", detail: "AI agents handled lead scoring — sales specialists redirected 30–50% of time to negotiation" },
                 { sector: "Global Pharma", result: "60% faster · 50% fewer errors", detail: "Clinical reporting redesigned — time to first human-reviewed draft fell nearly 60%" },
-                { sector: "Large Utility", result: "40% AI-resolved · 50% cost cut · +6 NPS", detail: "7 million annual calls — 40% fully resolved without human involvement" },
+                { sector: "Large Utility", result: "40% system-resolved · 50% cost cut · +6 NPS", detail: "7 million annual calls — 40% fully resolved without human involvement" },
               ].map(({ sector, result, detail }) => (
                 <div key={sector} style={{ background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.12)", borderRadius: 0, padding: "12px 14px" }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>

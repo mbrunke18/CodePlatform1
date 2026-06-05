@@ -77,7 +77,7 @@ const sections = [
       { label: "Prompt Injection Controls", detail: "User inputs sanitized before passing to AI analysis pipeline" },
       { label: "Model Provider", detail: "Azure OpenAI (primary) with OpenAI fallback — enterprise data processing agreements" },
       { label: "Output Validation", detail: "Model output validated against schema before persisting to database" },
-      { label: "Audit Trail", detail: "All AI-assisted recommendations logged with model, timestamp, and confidence score" },
+      { label: "Audit Trail", detail: "All system-analyzed recommendations logged with model, timestamp, and confidence score" },
     ],
   },
 ];

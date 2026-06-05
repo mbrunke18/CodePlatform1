@@ -178,7 +178,7 @@ export default function ConcurrentSituationBoard() {
                   Concurrent Situation <em style={{ color: GOLD }}>Board</em>
                 </div>
                 <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.6)', maxWidth: 580, lineHeight: 1.7 }}>
-                  Active command view when multiple situations compete for C-suite bandwidth simultaneously. Surface resource conflicts, leadership capacity constraints, and AI-recommended reallocation before they create bottlenecks.
+                  Active command view when multiple situations compete for C-suite bandwidth simultaneously. Surface resource conflicts, leadership capacity constraints, and system-recommended reallocation before they create bottlenecks.
                 </div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end', flexShrink: 0 }}>

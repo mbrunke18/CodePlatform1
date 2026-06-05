@@ -219,7 +219,7 @@ function InvestorPresentation() {
               {[
                 { s: "Global Tech", r: "7–12% revenue lift", d: "Workflow redesign → sales specialists freed for negotiation" },
                 { s: "Global Pharma", r: "60% faster · 50% fewer errors", d: "Clinical reporting redesigned from the ground up" },
-                { s: "Large Utility", r: "40% AI-resolved · 50% cost cut · +6 NPS", d: "7M annual calls — CEO owned the redesign" },
+                { s: "Large Utility", r: "40% system-resolved · 50% cost cut · +6 NPS", d: "7M annual calls — CEO owned the redesign" },
               ].map(({ s, r, d }) => (
                 <div key={s} className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/15 px-3 py-2">
                   <div className="flex items-baseline gap-2 mb-0.5">
@@ -566,9 +566,9 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { tier: 'Core', price: '$250K', desc: 'Complete operating model — all 9 domains', features: ['Full 180 Readiness Protocols', '221 triggers monitored', 'Standard integrations', 'Dedicated CSM'] },
-            { tier: 'Foresight', price: '$450K', desc: 'Digital Twin + predictive foresight', features: ['Everything in Core', 'Digital Twin simulation', 'Predictive foresight alerts', 'Priority 2-hour SLA'], highlight: true },
-            { tier: 'Enterprise', price: '$750K–$1.5M+', desc: 'Autonomous evolution network', features: ['Everything in Foresight', 'Autonomous protocol evolution', 'Unlimited custom protocols', 'White-glove onboarding'] },
+            { tier: 'Core', price: '$150K', desc: 'Full 180-Protocol Library — every strategic domain', features: ['Full 180 Readiness Protocols', '221 triggers monitored', 'Standard integrations', 'Dedicated CSM'] },
+            { tier: 'Foresight', price: '$250K', desc: 'Digital Twin + predictive foresight', features: ['Everything in Core', 'Digital Twin simulation', 'Predictive foresight alerts', 'Priority 2-hour SLA'], highlight: true },
+            { tier: 'Enterprise', price: '$450K', desc: 'Autonomous evolution network · scales with scope', features: ['Everything in Foresight', 'Autonomous protocol evolution', 'Unlimited custom protocols', 'White-glove onboarding'] },
           ].map((t, i) => (
             <div key={i} className={`rounded-none p-6 ${t.highlight ? 'bg-[#0A0F2E] border-2 border-[#C9A84C] text-white' : 'bg-white border border-[#E8E4DC]'}`}>
               {t.highlight && <div className="text-[#C9A84C] text-xs font-bold uppercase mb-2">TARGET</div>}

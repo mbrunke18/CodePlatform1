@@ -103,7 +103,7 @@ export default function SettingsHub() {
               {/* ── OVERVIEW ── */}
               {activeSection === 'overview' && (() => {
                 const SECTION_META: Record<string, { desc: string; stat: string; statSub: string; accent: string }> = {
-                  organization: { desc: 'Company name, industry, pilot parameters, and response window.', stat: org?.name ? '1 Org' : 'Pending', statSub: 'configuration', accent: TEAL },
+                  organization: { desc: 'Company name, industry, engagement parameters, and response window.', stat: org?.name ? '1 Org' : 'Pending', statSub: 'configuration', accent: TEAL },
                   stakeholders: { desc: 'Manage who gets notified for each Readiness Protocol activation and trigger.', stat: `${stakeholders.length}`, statSub: 'stakeholders configured', accent: GOLD },
                   metrics: { desc: 'Define success criteria and KPIs for all execution outcomes.', stat: `${metrics.length}`, statSub: 'metrics tracked', accent: TEAL },
                   roles: { desc: 'Control who can authorize Readiness Protocol activation and view intel.', stat: '4', statSub: 'permission levels', accent: '#7C9DB5' },
@@ -189,7 +189,7 @@ export default function SettingsHub() {
               {/* ── ORGANIZATION ── */}
               {activeSection === 'organization' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Organization Settings</h2><p className="text-[#6B7280] mt-1">Configure your company profile and pilot parameters</p></div><Link href="/organization-setup"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Setup Page</Button></Link></div>
+                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Organization Settings</h2><p className="text-[#6B7280] mt-1">Configure your company profile and engagement parameters</p></div><Link href="/organization-setup"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Setup Page</Button></Link></div>
 
                   <Card className="border-[#E8E4DC] bg-white">
                     <CardHeader className="border-b border-[#E8E4DC]"><CardTitle className="text-lg text-[#0A0F2E]" style={CG}>Organization Profile</CardTitle></CardHeader>

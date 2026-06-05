@@ -70,7 +70,7 @@ const ROUNDS: RoadmapRound[] = [
   },
   {
     round: "Round 2",
-    theme: "Pilot Stickiness",
+    theme: "Founding Partner Retention",
     description: "Features that deepen daily engagement for Founding Partner organizations — turning Readiness OS from a one-time demo into an always-on operating model.",
     items: [
       {
@@ -110,11 +110,11 @@ const ROUNDS: RoadmapRound[] = [
   {
     round: "Round 3",
     theme: "Investor & Sales Proof",
-    description: "Features designed for the pilot review meeting, the board packet, and the Series A narrative — quantifying the value Readiness OS delivers in a language finance understands.",
+    description: "Features designed for the Founding Partner review meeting, the board packet, and the Series A narrative — quantifying the value Readiness OS delivers in a language finance understands.",
     items: [
       {
-        title: "Pilot ROI Snapshot",
-        description: "One-click page showing the full value delivered during a pilot engagement: activations completed, total time saved vs. 30-day mobilization baseline, estimated dollar value preserved, and readiness score trajectory over the pilot period.",
+        title: "Founding Partner ROI Snapshot",
+        description: "One-click page showing the full value delivered during a Founding Partner engagement: activations completed, total time saved vs. 30-day mobilization baseline, estimated dollar value preserved, and readiness score trajectory over the engagement period.",
         value: "The number that closes the enterprise contract — denominated in dollars, minutes, and decisions made.",
         status: "planned",
         eta: "Q3 2026",

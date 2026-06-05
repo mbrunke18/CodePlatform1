@@ -434,7 +434,7 @@ export default function ProspectDemo() {
                 See this live in {displayName}'s environment
               </div>
               <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginBottom: 20, lineHeight: 1.6 }}>
-                This demo used generic data. A pilot deploys your specific triggers, your stakeholder map, and your org's Readiness Protocol configurations — in 2 weeks.
+                This demo used generic data. A Founding Partner engagement deploys your specific triggers, your stakeholder map, and your org's Readiness Protocol configurations — in 2 weeks.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <button

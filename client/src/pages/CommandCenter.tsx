@@ -459,7 +459,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}` }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Compound Risk Score</div>
                 <div style={{ fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{compoundAnalysisResult.compoundRiskScore || compoundAnalysisResult.riskScore || 72}</div>
-                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>/ 100 — AI-assessed exposure</div>
+                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>/ 100 — system-assessed exposure</div>
               </div>
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E" }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>Recommended Readiness Protocols</div>

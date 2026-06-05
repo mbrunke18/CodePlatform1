@@ -392,7 +392,7 @@ export default function InvestorLanding() {
 
             <div className="bg-[#F8F7F4] border border-[#E8E4DC] px-6 py-4 text-center">
               <p className="text-[#0A0F2E]">
-                <span className="text-[#0A0F2E] font-semibold">Readiness OS at $250K–$1.5M/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
+                <span className="text-[#0A0F2E] font-semibold">Readiness OS at $150K–$450K+/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
               </p>
             </div>
           </div>
@@ -1342,7 +1342,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-[#2B8A6E] mb-2" data-testid="text-price-enterprise">$250K</div>
+                  <div className="text-3xl font-bold text-[#2B8A6E] mb-2" data-testid="text-price-enterprise">$150K</div>
                   <div className="text-sm text-[#0A0F2E] mb-4">Annual Contract Value</div>
                   <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
@@ -1369,7 +1369,7 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2" data-testid="text-price-team">$450K</div>
+                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2" data-testid="text-price-team">$250K</div>
                   <div className="text-sm text-[#0A0F2E] mb-4">Annual Contract Value</div>
                   <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
@@ -1396,8 +1396,8 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-price-executive">$750K-$1.5M</div>
-                  <div className="text-sm text-[#0A0F2E] mb-4">Custom Annual Contract</div>
+                  <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-price-executive">$450K</div>
+                  <div className="text-sm text-[#0A0F2E] mb-4">Annual Contract Value</div>
                   <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#C9A84C]" />

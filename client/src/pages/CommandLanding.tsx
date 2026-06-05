@@ -588,7 +588,7 @@ export default function CommandLanding() {
                       180 Response<br />Architectures
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 300, color: 'rgba(240,237,228,0.45)', lineHeight: 1.5, marginBottom: 20 }}>
-                      Pre-built, AI-informed readiness Readiness Protocols across 9 strategic domains.
+                      Pre-built, signal-informed Readiness Protocols across 9 strategic domains.
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, margin: '16px 0' }}>

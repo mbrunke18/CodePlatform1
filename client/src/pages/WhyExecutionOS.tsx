@@ -99,7 +99,7 @@ const competitors: Competitor[] = [
     claim: "Strategy and transformation platforms — proprietary models, deep data science, and transformation programs backed by top-tier consulting expertise.",
     whatTheyDo: "These consulting firms have built digital products — McKinsey Quantum Black, BCG X, Bain's digital ventures — that combine proprietary AI with multi-year transformation engagements. For organizations with the budget and patience, they deliver sophisticated strategic analysis.",
     whereTheyStop: "These are consulting-led digital products. The product is often inseparable from the consulting relationship. Implementation is measured in years. Cost is measured in millions. And when a supply chain collapses at 2 AM on a Sunday, McKinsey Quantum Black does not automatically notify your CPO and alternative suppliers. It has a partner who will analyze the situation next week.",
-    theGap: "McKinsey will analyze your execution gap after the situation resolves. Readiness OS closes it before the situation arrives — continuously, automatically, at a fraction of the cost. $75K pilot vs. $3M+ consulting engagement is not the same conversation. Readiness OS runs 24/7, not episodically.",
+    theGap: "McKinsey will analyze your execution gap after the situation resolves. Readiness OS closes it before the situation arrives — continuously, automatically, at a fraction of the cost. A $75K Founding Partner engagement vs. a $3M+ consulting retainer is not the same conversation. Readiness OS runs 24/7, not episodically.",
     oneLiner: "McKinsey analyzes your execution gap after the situation resolves. Readiness OS closes it before.",
   },
 ];
@@ -131,9 +131,9 @@ const fiveReasons = [
   },
   {
     icon: Target,
-    title: "The pilot eliminates risk",
+    title: "The Founding Partner program eliminates risk",
     body: "$75K flat. 90 days. 100% credited to the enterprise contract. At least one live activation with a measured 12-minute response, or the data shows why not. No competitor offers this because no competitor is confident enough in their outcome to structure an engagement this way. Readiness OS does.",
-    metric: "$75K pilot · 100% credited",
+    metric: "$75K Founding Partner · 100% credited",
   },
 ];
 

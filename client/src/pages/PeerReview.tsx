@@ -564,7 +564,7 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Competitive Landscape</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>How does this compare to what already exists?</p>
             </div>
-            <QBlock num="Q20" question="Are you aware of any existing product or platform that does what Readiness OS does — specifically pre-staged, AI-activated strategic execution Readiness Protocols that deploy across an organization in minutes?">
+            <QBlock num="Q20" question="Are you aware of any existing product or platform that does what Readiness OS does — specifically pre-staged, system-activated strategic execution Readiness Protocols that deploy across an organization in minutes?">
               <RadioGroup options={Q20_OPTIONS} selected={q20Selection} onChange={setQ20Selection} />
               <FollowUp label="If yes, what product(s) come closest and why?" value={q20Text} onChange={setQ20Text} />
             </QBlock>

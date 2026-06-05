@@ -71,7 +71,7 @@ const pilotIncludes = [
   "Dedicated Customer Success Manager",
   "3 facilitated tabletop exercises",
   "Executive readout with documented ROI at Day 90",
-  "100% pilot investment credits to enterprise contract",
+  "100% Founding Partner investment credits to enterprise contract",
 ];
 
 const roiCase = [
@@ -524,7 +524,7 @@ export default function ExecutiveBrief() {
                   Ready to see it in your environment?
                 </h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.8, marginBottom: 24 }}>
-                  A 45-minute executive briefing walks your team through a live industry-specific scenario, answers the "why not existing tools" questions directly, and outlines a clear pilot engagement path.
+                  A 45-minute executive briefing walks your team through a live industry-specific scenario, answers the "why not existing tools" questions directly, and outlines a clear Founding Partner engagement path.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>

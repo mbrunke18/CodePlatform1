@@ -22,10 +22,10 @@ const roles = [
     sees: [
       { label: 'Readiness Intelligence Dashboard', detail: 'Real-time coordination velocity, active trigger count, and how your organization\'s speed compares to the 30-day industry baseline — expressed as the 3,600× head start.' },
       { label: 'Coordination Intelligence', detail: 'Historical activation records with timestamps proving the 12-minute standard. Board-ready AI narrative generated on demand from live activation data.' },
-      { label: 'Execution History', detail: 'KPI trends across the 90-day pilot — activations completed, time-to-coordination, and the compounding ROI as more triggers are handled through the platform.' },
+      { label: 'Execution History', detail: 'KPI trends across the 90-day engagement — activations completed, time-to-coordination, and the compounding ROI as more triggers are handled through the platform.' },
     ],
     owns: [
-      'Go / No-Go decision authority on high-stakes activations during the pilot',
+      'Go / No-Go decision authority on high-stakes activations during the engagement',
       'Success criteria sign-off — what "working" looks like at 30, 60, and 90 days',
       'Renewal decision at day 90 based on documented activation performance',
     ],
@@ -56,9 +56,9 @@ const roles = [
       'Readiness Protocol activation decision — which Readiness Protocol fires for which trigger',
       'Stakeholder assignment — who gets what task, in what sequence',
       'Escalation calls — when a task is overdue and needs to move up the chain',
-      'Maintaining execution velocity — keeping the platform active across all 10 pilot users',
+      'Maintaining execution velocity — keeping the platform active across all 10 Founding Partner users',
     ],
-    success: 'Zero unacknowledged tasks beyond 15 minutes. All pilot triggers activated and resolved within the 12-minute coordination target. Full adoption across all 10 pilot users by day 45.',
+    success: 'Zero unacknowledged tasks beyond 15 minutes. All engagement triggers activated and resolved within the 12-minute coordination target. Full adoption across all 10 Founding Partner users by day 45.',
     pages: [
       { label: 'Command Center', href: '/command-center' },
       { label: 'Live Activation', href: '/live-activation' },
@@ -78,16 +78,16 @@ const roles = [
     ),
     color: '#2B8A6E',
     sees: [
-      { label: 'Execution History & KPIs', detail: 'Coordination time trends across every activation, executive hours recovered per event, and projected annual value if the pilot performance holds at scale.' },
+      { label: 'Execution History & KPIs', detail: 'Coordination time trends across every activation, executive hours recovered per event, and projected annual value if the engagement performance holds at scale.' },
       { label: 'Pre-Approved Budget Allocations', detail: 'Each Readiness Protocol carries pre-staged resource authorizations — no mid-crisis approval cycles. The CFO reviews and approves these ceilings before the trigger fires, not after.' },
       { label: 'ROI Benchmarks', detail: 'Side-by-side comparison of your organization\'s coordination speed vs. the 30-day industry baseline — expressed in time saved, headcount hours, and revenue-at-risk events resolved.' },
     ],
     owns: [
       'Pre-approved budget ceilings per Readiness Protocol domain — set before triggers fire',
-      'ROI validation at 30, 60, and 90-day pilot checkpoints',
+      'ROI validation at 30, 60, and 90-day engagement checkpoints',
       'Renewal business case — quantified value that justifies full enterprise rollout',
     ],
-    success: 'ROI case fully documented with hard numbers: executive hours recovered per activation, coordination cost reduction vs. baseline, and at least one revenue-at-risk event resolved within the pilot window.',
+    success: 'ROI case fully documented with hard numbers: executive hours recovered per activation, coordination cost reduction vs. baseline, and at least one revenue-at-risk event resolved within the engagement window.',
     pages: [
       { label: 'Execution History', href: '/execution-history' },
       { label: 'Coordination Intelligence', href: '/coordination-intelligence' },
@@ -110,12 +110,12 @@ const roles = [
       { label: 'Settings & Security Configuration', detail: 'Role-based access control, audit logging, and organization-level configuration. Every action on the platform is logged with user, timestamp, and decision context.' },
     ],
     owns: [
-      'Technical integration sign-off before pilot goes live',
+      'Technical integration sign-off before the engagement goes live',
       'Security review confirmation — data flows, authentication model, audit trail',
-      'Ensuring zero new infrastructure requirements are introduced during the pilot',
+      'Ensuring zero new infrastructure requirements are introduced during the engagement',
       'Architecture documentation for any future compliance or procurement review',
     ],
-    success: 'Clean integration running for the full 90-day pilot with zero security incidents. Complete audit log available for any compliance review. Architecture documentation produced that can be handed to a procurement or vendor management team for full enterprise rollout.',
+    success: 'Clean integration running for the full 90-day engagement with zero security incidents. Complete audit log available for any compliance review. Architecture documentation produced that can be handed to a procurement or vendor management team for full enterprise rollout.',
     note: 'Readiness OS does not replace your Microsoft stack — it orchestrates it. Every enterprise already has Microsoft\'s AI investment. None have the operating model to use it. This is that operating model layer.',
     pages: [
       { label: 'Integration Hub', href: '/integrations' },
@@ -127,7 +127,7 @@ const roles = [
     id: 'champion',
     title: 'Internal Champion',
     subtitle: 'The adoption driver',
-    who: 'Chief of Staff, Head of Strategy, or designated Pilot Coordinator',
+    who: 'Chief of Staff, Head of Strategy, or designated Engagement Coordinator',
     icon: (
       <svg width={22} height={22} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
@@ -135,17 +135,17 @@ const roles = [
     ),
     color: '#C97B4C',
     sees: [
-      { label: 'Full Platform Access', detail: 'This role has access to every section of the platform — they are the bridge between all other pilot users and the central point of contact for the VaughnMartin team.' },
-      { label: 'Stakeholder Management', detail: 'Overview of all 10 pilot users — who has logged in, which roles have acknowledged their tasks, and where adoption is lagging before it becomes a problem.' },
-      { label: 'Success Metrics Configuration', detail: 'The dashboard where pilot KPIs are configured, tracked, and reported. The Internal Champion owns this view and surfaces the data the Executive Sponsor needs at each 30-day checkpoint.' },
+      { label: 'Full Platform Access', detail: 'This role has access to every section of the platform — they are the bridge between all other Founding Partner users and the central point of contact for the VaughnMartin team.' },
+      { label: 'Stakeholder Management', detail: 'Overview of all 10 Founding Partner users — who has logged in, which roles have acknowledged their tasks, and where adoption is lagging before it becomes a problem.' },
+      { label: 'Success Metrics Configuration', detail: 'The dashboard where engagement KPIs are configured, tracked, and reported. The Internal Champion owns this view and surfaces the data the Executive Sponsor needs at each 30-day checkpoint.' },
     ],
     owns: [
-      'Onboarding all 10 pilot users — getting each role into the platform and active within the first two weeks',
-      'Managing the 90-day pilot calendar — activation exercises, checkpoint reviews, and escalations',
+      'Onboarding all 10 Founding Partner users — getting each role into the platform and active within the first two weeks',
+      'Managing the 90-day engagement calendar — activation exercises, checkpoint reviews, and escalations',
       'Surfacing wins to the Executive Sponsor in real time — not waiting for the 90-day review',
       'Producing the internal case study at day 90 that makes the renewal conversation easy',
     ],
-    success: 'All 10 pilot users active by day 14. At least 3 documented activation wins with timestamps and outcome records. Internal renewal case study complete and ready for the Executive Sponsor before the 90-day review.',
+    success: 'All 10 Founding Partner users active by day 14. At least 3 documented activation wins with timestamps and outcome records. Internal renewal case study complete and ready for the Executive Sponsor before the 90-day review.',
     pages: [
       { label: 'Platform Overview', href: '/platform-overview' },
       { label: 'Stakeholder Management', href: '/stakeholder-management' },
@@ -161,7 +161,7 @@ const timeline = [
     label: 'Foundation',
     color: TEAL,
     milestones: [
-      'All 10 pilot users onboarded and active',
+      'All 10 Founding Partner users onboarded and active',
       'Microsoft integration configured and tested',
       'First live Readiness Protocol activation completed',
       'Pre-approved budget ceilings set per domain',
@@ -219,14 +219,14 @@ export default function FoundingPartnerOnboarding() {
           <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 40px', position: 'relative' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
               <div style={{ width: 3, height: 20, background: GOLD, borderRadius: 0 }} />
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,228,0.5)', textTransform: 'uppercase' }}>Pilot Onboarding Guide</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,228,0.5)', textTransform: 'uppercase' }}>Founding Partner Onboarding Guide</span>
             </div>
             <h1 style={{ fontSize: 42, fontWeight: 700, color: '#F0EDE4', margin: '0 0 16px', lineHeight: 1.15, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
               Your First 90 Days<br />
               <span style={{ color: GOLD }}>Inside Readiness OS</span>
             </h1>
             <p style={{ fontSize: 17, color: 'rgba(240,237,228,0.65)', maxWidth: 620, margin: '0 0 40px', lineHeight: 1.65, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-              This guide is built for your pilot team — not a generic walkthrough.
+              This guide is built for your Founding Partner team — not a generic walkthrough.
               Each role has a specific view, a specific set of decisions, and a specific
               definition of success at day 90.
             </p>
@@ -396,7 +396,7 @@ export default function FoundingPartnerOnboarding() {
             <div style={{ marginBottom: 36 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                 <div style={{ width: 3, height: 18, background: GOLD, borderRadius: 0 }} />
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(10,15,46,0.4)', textTransform: 'uppercase' }}>Pilot Timeline</span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(10,15,46,0.4)', textTransform: 'uppercase' }}>Engagement Timeline</span>
               </div>
               <h2 style={{ fontSize: 26, fontWeight: 700, color: NAVY, margin: 0, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>What Happens Across 90 Days</h2>
             </div>

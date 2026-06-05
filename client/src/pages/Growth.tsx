@@ -99,7 +99,7 @@ const TIERS = [
       { label: "Support", value: "Dedicated success manager + white-glove onboarding" },
     ],
     bestFor: "Companies managing multi-front risk across every domain. M&A disruptions, regulatory shifts, talent crises, competitive entries — happening simultaneously.",
-    roiNote: "Organizations managing multi-front threats protect $10M+ per coordinated response. At $250K/year, you are running the full operating model — 180 Readiness Protocols, 248+ data points, and full AI coordination. One activation at this level pays for the year.",
+    roiNote: "Organizations managing multi-front threats protect $10M+ per coordinated response. At $250K/year, you are running Foresight — 180 Readiness Protocols, 248+ data points, and continuous system coordination. One activation at this level pays for the year.",
   },
   {
     id: "enterprise",

@@ -724,7 +724,7 @@ export default function ProtocolDetail() {
                                             {phase.tasks.length - 1} more task{phase.tasks.length > 2 ? "s" : ""} in this phase
                                           </div>
                                           <div style={{ fontSize: 13, color: MUTED, marginBottom: 16, lineHeight: 1.6 }}>
-                                            Task sequences, decision rights mapping, stakeholder sequencing, and decision gates are available to pilot participants.
+                                            Task sequences, decision rights mapping, stakeholder sequencing, and decision gates are available to Founding Partners.
                                           </div>
                                           <button
                                             onClick={() => setLocation('/request-access')}

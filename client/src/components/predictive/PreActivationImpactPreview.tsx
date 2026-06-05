@@ -427,7 +427,7 @@ export default function PreActivationImpactPreview({
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {([
                   { value: 'accelerated', label: 'Accelerated', mins: '8 min', desc: 'Maximum compression — all parallel tracks active', color: RED, recommended: false },
-                  { value: 'standard', label: 'Standard', mins: '12 min', desc: 'Default — AI-recommended pacing for this Readiness Protocol', color: TEAL, recommended: true },
+                  { value: 'standard', label: 'Standard', mins: '12 min', desc: 'Default — system-recommended pacing for this Readiness Protocol', color: TEAL, recommended: true },
                   { value: 'extended', label: 'Extended', mins: '20 min', desc: 'Deliberate pacing — additional stakeholder review cycles', color: '#9CA3AF', recommended: false },
                 ] as const).map(opt => (
                   <button key={opt.value} onClick={() => setExecTimeline(opt.value)}

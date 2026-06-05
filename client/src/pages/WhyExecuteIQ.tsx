@@ -249,7 +249,7 @@ export default function WhyExecutionOS() {
             </div>
 
             <div className="bg-white/5 border border-white/10 p-8">
-              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#DFC178", marginBottom: 24 }}>AI-Coordinated Execution</h3>
+              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#DFC178", marginBottom: 24 }}>System-Coordinated Execution</h3>
               <ul className="space-y-4">
                 {[
                   "Agents detect signals and activate Readiness Protocols",

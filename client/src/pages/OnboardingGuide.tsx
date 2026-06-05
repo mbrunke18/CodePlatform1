@@ -229,7 +229,7 @@ export default function OnboardingGuide() {
             <StepCard number={2} icon={Radio} title="Command Tower" path="/command-tower"
               description="Full-screen executive display. Shows live trigger detections as they fire, system pulse stats, your 12-minute execution clock, and a signal ticker in real time. Designed for war room situations and leadership reviews." />
             <StepCard number={3} icon={BookOpen} title="Readiness Protocol Library" path="/playbooks"
-              description="Browse all 180 pre-built strategic Readiness Protocols across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
+              description="Browse all 180 pre-built strategic Readiness Protocols across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are Founding Partner-exclusive." />
             <StepCard number={4} icon={Activity} title="Simulation Studio" path="/simulation-studio"
               description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a coverage readiness map with recommended Readiness Protocols pre-staged for activation. Use this in board preparation and executive planning sessions." />
             <StepCard number={5} icon={FileText} title="Board Readiness Snapshot" path="/board-readiness"
@@ -428,7 +428,7 @@ export default function OnboardingGuide() {
               { period: "Day 1", color: NAVY, tasks: ["Complete platform walkthrough (this guide)", "Explore Mission Control and Command Tower", "Review 3 flagship Readiness Protocols relevant to your sector", "Share the 12-Minute Test Drive link with your leadership team"] },
               { period: "Days 2–7", color: TEAL, tasks: ["Configure trigger sensitivity for your top 3 risk domains", "Add your stakeholder contacts to the registry", "Run a Simulation Studio scenario on your highest-priority threat", "Monitor live signal feed daily (5 minutes each morning)"] },
               { period: "Days 8–14", color: GOLD, tasks: ["Review your first Board Readiness Snapshot", "Check Execution Dividend ROI counter", "Activate one Readiness Protocol drill using Practice Drills", "Share role-specific demos with CISO, CFO, or COO"] },
-              { period: "Days 15–30", color: TEAL, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize Readiness Protocol task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for pilot ROI summary"] },
+              { period: "Days 15–30", color: TEAL, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize Readiness Protocol task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for Founding Partner ROI summary"] },
             ].map(({ period, color, tasks }) => (
               <div key={period} style={{ background: "#fff", border: "1px solid #E5E7EB", borderLeft: `4px solid ${color}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 12, fontWeight: 900, color, textTransform: "uppercase" as const, letterSpacing: "1.5px", marginBottom: 16 }}>{period}</div>

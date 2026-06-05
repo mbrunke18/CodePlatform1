@@ -253,7 +253,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{learningPatterns.length}</div>
-            <p className="text-xs text-[#6B7280]">AI-discovered insights</p>
+            <p className="text-xs text-[#6B7280]">System-discovered insights</p>
           </CardContent>
         </Card>
 
@@ -462,7 +462,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <TabsContent value="patterns" className="space-y-4">
           <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
             <CardHeader>
-              <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI-Discovered Learning Patterns</CardTitle>
+              <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>System-Discovered Learning Patterns</CardTitle>
               <CardDescription>
                 Patterns identified from historical data to improve future recommendations
               </CardDescription>

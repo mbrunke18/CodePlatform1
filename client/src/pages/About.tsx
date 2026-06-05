@@ -196,7 +196,7 @@ export default function About() {
                 Seeking a commercial co-founder.
               </h2>
               <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, margin: "0 0 28px" }}>
-                The platform is built and live. The category is defined. The gap is the first startup to Fortune 500 pilot introduction — the moment where thesis becomes signed contract.
+                The platform is built and live. The category is defined. The gap is the first startup to Fortune 500 Founding Partner introduction — the moment where thesis becomes signed contract.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, margin: 0 }}>
                 The right co-founder has enterprise sales DNA, has sold into C-suites before, and understands that what we're selling isn't software — it's an operating model replacement. Equity-based. 10–15% co-founder pool reserved.

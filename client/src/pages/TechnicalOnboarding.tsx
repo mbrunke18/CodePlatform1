@@ -59,7 +59,7 @@ const PHASES: Phase[] = [
           "Register Readiness OS as an Enterprise Application in Microsoft Entra admin center",
           "Configure SAML 2.0 or OIDC endpoint (provided by VaughnMartin onboarding team)",
           "Map Entra user attributes: email, displayName, jobTitle to Readiness OS user fields",
-          "Test SSO login with 2–3 pilot users before full rollout",
+          "Test SSO login with 2–3 Founding Partner users before full rollout",
         ],
         notes: "Single sign-on is the recommended auth path for all Founding Partners. Users log in with their existing Microsoft credentials — no separate passwords.",
       },

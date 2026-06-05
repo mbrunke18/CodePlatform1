@@ -485,7 +485,7 @@ export default function ProofStory() {
                     tool: "Microsoft Copilot / AI Assistants",
                     they: "Summarize documents, draft communications, and surface insights inside existing workflows",
                     also: "Drafts stakeholder communications, summarizes trigger context, and surfaces protocol recommendations at the moment of detection",
-                    beyond: "Doesn't assist with a meeting — eliminates the need for one. The operating model is rebuilt so that AI-prepared briefs replace real-time alignment. The decision is human. The preparation is complete."
+                    beyond: "Doesn't assist with a meeting — eliminates the need for one. The operating model is rebuilt so that pre-staged briefs replace real-time alignment. The decision is human. The preparation is complete."
                   },
                   {
                     tool: "Executive War Room Coordination\n(Bridge lines, ERM platforms)",

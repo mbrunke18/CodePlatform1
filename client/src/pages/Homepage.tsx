@@ -1869,7 +1869,7 @@ function MissingLayerSection() {
   const rows = [
     { label: "STRATEGY",         sub: "Board Decisions · Planning · Vision",  hi: false },
     { label: "ERP / CRM / ITSM", sub: "SAP · Salesforce · ServiceNow",        hi: false },
-    { label: "READINESS OS",     sub: "New Operating Model · AI-Native Enterprises", hi: true  },
+    { label: "READINESS OS",     sub: "New Operating Model · Readiness-Native Enterprises", hi: true  },
     { label: "TASK MANAGEMENT",  sub: "Jira · Monday · Asana",                 hi: false },
     { label: "PEOPLE",           sub: "Your Organization",                     hi: false },
   ];

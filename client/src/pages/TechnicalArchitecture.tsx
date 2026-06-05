@@ -182,7 +182,7 @@ const INTEGRATIONS = [
   { platform: "Microsoft Outlook", status: "LIVE", desc: "Executive authorization requests, CEO inbox briefings, board-ready activation reports", color: GOLD },
   { platform: "Microsoft SharePoint", status: "LIVE", desc: "Protocol document storage, full brief archival, institutional memory repository", color: "#0078D4" },
   { platform: "Microsoft Entra", status: "LIVE", desc: "Enterprise SSO / OIDC authentication, role provisioning, org tenant isolation", color: "#0078D4" },
-  { platform: "Copilot Studio", status: "ROADMAP", desc: "Conversational protocol query, AI-assisted debrief generation, executive Q&A on active situations", color: "rgba(255,255,255,0.3)" },
+  { platform: "Copilot Studio", status: "ROADMAP", desc: "Conversational protocol query, system-assisted debrief generation, executive Q&A on active situations", color: "rgba(255,255,255,0.3)" },
   { platform: "Power Automate", status: "ROADMAP", desc: "Automated task routing into existing enterprise workflow systems, approval escalation chains", color: "rgba(255,255,255,0.3)" },
   { platform: "Microsoft Sentinel", status: "ROADMAP", desc: "Direct SIEM signal ingestion for cybersecurity triggers — ransomware, breach detection, anomalous access", color: "rgba(255,255,255,0.3)" },
   { platform: "Microsoft Fabric", status: "ROADMAP", desc: "Enterprise data lake integration — signal enrichment from internal financial and operational data", color: "rgba(255,255,255,0.3)" },
