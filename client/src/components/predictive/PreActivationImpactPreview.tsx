@@ -406,7 +406,7 @@ export default function PreActivationImpactPreview({
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 {([
                   { value: 'full', label: 'Full Deployment', desc: 'All teams and stakeholders activated simultaneously', icon: '⚡' },
-                  { value: 'pilot', label: 'Pilot Deployment', desc: 'Core team only — expand after initial validation', icon: '🔬' },
+                  { value: 'pilot', label: 'Founding Partner Deployment', desc: 'Core team only — expand after initial validation', icon: '🔬' },
                 ] as const).map(opt => (
                   <button key={opt.value} onClick={() => setExecScope(opt.value)}
                     style={{ textAlign: 'left', padding: '14px 16px', border: `2px solid ${execScope === opt.value ? GOLD : BORDER}`, background: execScope === opt.value ? `${GOLD}08` : '#fff', cursor: 'pointer', transition: 'all 0.15s' }}>

@@ -619,7 +619,7 @@ export default function ProtocolActivationConsole() {
     setStakeholderStatuses(activeStakeholders.map(s => ({ ...s, status: 'pending' as const })));
     setTimeout(() => enqueueInsight(INSIGHTS.stakeholderNotified(activeStakeholders.length)), 4000);
     const now = formatEventTime();
-    const scopeLabel = scope === 'pilot' ? 'Pilot Deployment (core team)' : 'Full Deployment (all teams)';
+    const scopeLabel = scope === 'pilot' ? 'Founding Partner Deployment (core team)' : 'Full Deployment (all teams)';
     setLiveEvents([
       { time: now, text: `⚡ Execution protocol activated — ${timelineMinutes}-minute response clock started`, type: 'init' },
       { time: now, text: `🎯 ${scopeLabel} — ${activeStakeholders.length} stakeholders queued for notification`, type: 'init' },
