@@ -471,6 +471,81 @@ export default function Investors() {
             </div>
           </motion.div>
 
+          {/* ── ADVANCE Competitive Moat ────────────────────────────────────── */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.085 }} className="mb-20">
+            <div style={{ background: '#F8F7F4', border: '1px solid #E8E4DC', borderTop: `3px solid ${GOLD}`, padding: '56px 56px 48px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+                <div style={{ height: 1, width: 28, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>The Irreplaceable Moat</span>
+                <div style={{ height: 1, flex: 1, background: `${GOLD}30` }} />
+              </div>
+
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,3.2vw,44px)', fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 20 }}>
+                What cannot be rebuilt from scratch is three years of proven protocol improvements encoded from real activations.
+              </h2>
+
+              <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.8, maxWidth: 720, marginBottom: 28, fontWeight: 500 }}>
+                A competitor can license enterprise software on Day 1. They cannot buy the institutional memory of 180 protocols tested against real strategic triggers, refined through real executive decisions, and proven through real outcomes. That history is the moat. Every activation deepens it.
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2, marginBottom: 36 }}>
+                {[
+                  {
+                    label: 'Day 1',
+                    heading: 'Any competitor can buy',
+                    items: ['180 pre-built protocols', 'IDEA Framework architecture', 'Signal detection infrastructure', '12-minute execution engine'],
+                    color: '#6B7280',
+                    bg: '#fff',
+                    border: '#E8E4DC',
+                  },
+                  {
+                    label: 'Year 1',
+                    heading: 'No competitor can replicate',
+                    items: ['Real activation history — your triggers, your responses', 'Protocol refinements from actual executive decisions', 'Proven improvements with measured time savings', 'Behavioral confidence built through repetition'],
+                    color: TEAL,
+                    bg: '#EBF5F1',
+                    border: `${TEAL}40`,
+                  },
+                  {
+                    label: 'Year 3',
+                    heading: 'Category-defining separation',
+                    items: ['Institutional memory of every strategic inflection point', 'ADVANCE 2.0: closed-loop causal learning', 'Deviation rate data — proof of organizational readiness', 'Moat measured in months-to-rebuild (grows continuously)'],
+                    color: GOLD,
+                    bg: '#FBF8F0',
+                    border: `${GOLD}40`,
+                  },
+                ].map((col) => (
+                  <div key={col.label} style={{ padding: '28px 24px', background: col.bg, border: `1px solid ${col.border}`, borderTop: `2px solid ${col.color}` }}>
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: col.color, marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{col.label}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 12, lineHeight: 1.3 }}>{col.heading}</div>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                      {col.items.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+                          <span style={{ width: 4, height: 4, background: col.color, flexShrink: 0, marginTop: 6 }} />
+                          <span style={{ fontSize: 12, color: '#374151', lineHeight: 1.5 }}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ background: NAVY, padding: '24px 32px', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20 }}>
+                  <Shield className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>ADVANCE 2.0 — Closed-Loop Causal Learning</div>
+                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, fontWeight: 500, margin: 0 }}>
+                      Every activation close-out generates a structured preparation update. The system applies the update, creates a causal hypothesis ("expected −4 min response time"), and measures the result against the next activation on the same protocol.
+                      Proven improvements are encoded permanently. The platform learns from every organization that uses it — and that learning is specific to each organization's history, which no competitor can replicate.
+                      The Behavioral Confidence Index measures the most important outcome: not that the protocols exist, but that executives reach for them when the pressure arrives.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Microsoft Ecosystem — Go-to-Market Fit */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.09 }} className="mb-20">
             <div style={{ background: '#0A0F2E', borderRadius: 0, overflow: 'hidden', position: 'relative' }}>

@@ -41949,7 +41949,6 @@ __export(vite_exports, {
 import express from "express";
 import fs from "fs";
 import path from "path";
-import { createServer as createViteServer, createLogger } from "vite";
 import { nanoid as nanoid3 } from "nanoid";
 import pino16 from "pino";
 function log5(message, source = "express") {
@@ -41967,9 +41966,33 @@ async function setupVite(app2, server2) {
     hmr: { server: server2 },
     allowedHosts: true
   };
-  const { default: viteConfig } = await import("../vite.config");
+  const projectRoot = path.resolve(import.meta.dirname, "..");
+  const setupUrl = new URL("./vite-setup.mjs", import.meta.url);
+  const {
+    createServer: createViteServer,
+    reactPlugin: reactPluginExport
+  } = await import(
+    /* @vite-ignore */
+    setupUrl.href
+  );
+  const reactPlugin = reactPluginExport.default ?? reactPluginExport;
+  const inlineConfig = {
+    plugins: [reactPlugin()],
+    resolve: {
+      alias: {
+        "@": path.resolve(projectRoot, "client/src"),
+        "@shared": path.resolve(projectRoot, "shared"),
+        "@assets": path.resolve(projectRoot, "client/src/assets")
+      }
+    },
+    root: path.resolve(projectRoot, "client"),
+    build: {
+      outDir: path.resolve(projectRoot, "dist/public"),
+      emptyOutDir: true
+    }
+  };
   const vite = await createViteServer({
-    ...viteConfig,
+    ...inlineConfig,
     configFile: false,
     customLogger: {
       ...viteLogger,
@@ -41985,12 +42008,7 @@ async function setupVite(app2, server2) {
   app2.use("*", async (req, res, next) => {
     const url = req.originalUrl;
     try {
-      const clientTemplate = path.resolve(
-        import.meta.dirname,
-        "..",
-        "client",
-        "index.html"
-      );
+      const clientTemplate = path.resolve(projectRoot, "client", "index.html");
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
@@ -42015,7 +42033,16 @@ var init_vite = __esm({
   "server/vite.ts"() {
     "use strict";
     logger12 = pino16({ name: "vite-service" });
-    viteLogger = createLogger();
+    viteLogger = {
+      info: (msg) => logger12.info(msg),
+      warn: (msg) => logger12.warn(msg),
+      warnOnce: (msg) => logger12.warn(msg),
+      error: (msg, _opts) => logger12.error(msg),
+      clearScreen: (_type) => {
+      },
+      hasErrorLogged: (_error) => false,
+      hasWarned: false
+    };
   }
 });
 

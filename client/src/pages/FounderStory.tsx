@@ -448,6 +448,35 @@ export default function FounderStory() {
             </div>
           </div>
 
+          {/* ── The Design Tension — Blakely: Draw from the Huang exchange ─── */}
+          <div style={{ background: "#F0EDE4", border: `1px solid ${BORDER}`, borderLeft: `4px solid ${NAVY}`, padding: "44px 40px", margin: "48px 0" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <div style={{ width: 20, height: 1.5, background: NAVY, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: NAVY }}>The Problem I Have Not Yet Fully Solved</span>
+            </div>
+            <p style={{ ...CG, fontSize: "clamp(19px,2.2vw,24px)", fontWeight: 600, color: NAVY, lineHeight: 1.45, marginBottom: 24, fontStyle: "italic" }}>
+              "Building the infrastructure that makes readiness possible is the easy part. The hard part is the moment of trigger — when the pressure arrives and the executive reaches for what is familiar instead of what is pre-staged."
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.85, color: "#374151", marginBottom: 20 }}>
+              I have spent the last four years in conversation with practitioners at the intersection of governance and execution — people who operate in the space where organizational design meets actual strategic pressure. The question that came back from those conversations, most precisely in an extended exchange with Dr. Kerry Huang, was not whether the platform works. It was whether organizations will reach for it when the pressure arrives.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.85, color: "#374151", marginBottom: 20 }}>
+              This is the distinction Dr. Huang named with precision: there are two different governance functions at work here. The first is readiness infrastructure — the 180 pre-staged responses, the signal detection, the 12-minute execution capability. That exists. It works. The second is behavioral readiness — whether an executive who has that infrastructure available will reach for it rather than defaulting to the coordination pattern they have used for twenty years. That is a different problem entirely.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.85, color: "#374151", marginBottom: 20 }}>
+              The football parallel holds, but it requires an extension. The offensive coordinator who spent the offseason building the right response for every defensive look the opponent might show — that preparation is not complete when the playbook is finished. It becomes complete when the quarterback has run the response enough times in practice that reaching for it under pressure is automatic. The infrastructure is necessary but not sufficient. The behavior has to be encoded through repetition.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.85, color: "#374151", marginBottom: 24 }}>
+              I named this the behavioral confidence gap. The Behavioral Confidence Index inside ADVANCE 2.0 tracks it directly: how often do executives execute exactly as pre-staged versus defaulting to ad-hoc coordination when a trigger fires? The evidence-based estimate is ten activations before the deviation rate drops below 10%. Not a guess — a measurement we are now building the instrumentation to make.
+            </p>
+            <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 20 }}>
+              <p style={{ fontSize: 15, fontWeight: 700, color: NAVY, margin: "0 0 8px" }}>The product implication:</p>
+              <p style={{ fontSize: 15, lineHeight: 1.75, color: "#374151", margin: 0 }}>
+                Readiness OS does not just need to make the response available. It needs to make reaching for the response the path of least resistance under pressure. The Founding Partner Program is where we are building this evidence — real activations, real pressure, real measurement of whether preparation becomes behavior. That is the hardest problem on the roadmap. It is also the most important one.
+              </p>
+            </div>
+          </div>
+
           {/* VII */}
           <RomanDivider num="VII" />
           <Body>

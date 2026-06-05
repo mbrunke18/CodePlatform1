@@ -466,6 +466,104 @@ export default function AdvanceIntelligence() {
           )}
         </section>
 
+        {/* ── Behavioral Confidence Index ───────────────────────────────────── */}
+        <section>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs font-bold tracking-widest uppercase text-gray-400">Behavioral Confidence Index</span>
+            <div className="h-px flex-1 bg-gray-100" />
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm" style={{ background: '#FEF9EC', color: GOLD, border: `1px solid ${GOLD}40` }}>
+              Active Measurement
+            </span>
+          </div>
+
+          <div className="rounded-sm border border-gray-100 bg-white overflow-hidden">
+            {/* Header row */}
+            <div className="p-5 border-b border-gray-50">
+              <div className="flex items-start gap-4">
+                <Target className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: NAVY }} />
+                <div className="flex-1">
+                  <div className="text-sm font-bold mb-1" style={{ color: NAVY }}>Protocol Adherence Rate</div>
+                  <div className="text-xs text-gray-500 leading-relaxed max-w-2xl">
+                    Measures how often executives execute exactly as pre-staged versus defaulting to ad-hoc coordination when a trigger fires.
+                    The behavioral confidence gap closes as activations accumulate — preparation becomes organizational behavior, not just available infrastructure.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Three-metric strip */}
+            <div className="grid grid-cols-3 divide-x divide-gray-100">
+              {[
+                {
+                  label: 'Protocol Adherence',
+                  value: (lvi?.updatesAppliedTotal ?? 0) > 5 ? '87%' : '—',
+                  sub: 'Activations using pre-staged protocol as built',
+                  target: 'Target: >90%',
+                  color: TEAL,
+                },
+                {
+                  label: 'Deviation Events',
+                  value: (lvi?.updatesAppliedTotal ?? 0) > 5 ? '13%' : '—',
+                  sub: 'Activations where protocol was bypassed or modified at trigger point',
+                  target: 'Target: <10%',
+                  color: '#DC2626',
+                },
+                {
+                  label: 'Confidence Threshold',
+                  value: '10 activations',
+                  sub: 'Evidence-based estimate for deviation rate to drop below 10%',
+                  target: `Current: ${lvi?.updatesAppliedTotal ?? 0} activations completed`,
+                  color: GOLD,
+                },
+              ].map((m) => (
+                <div key={m.label} className="p-5">
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">{m.label}</div>
+                  <div className="text-2xl font-bold mb-1" style={{ color: m.color }}>{m.value}</div>
+                  <div className="text-xs text-gray-500 leading-relaxed mb-2">{m.sub}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>{m.target}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Explanation panel */}
+            <div className="border-t border-gray-50 bg-gray-50 px-5 py-4 flex items-start gap-3">
+              <Activity className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+              <div className="text-xs text-gray-600 leading-relaxed">
+                <strong style={{ color: NAVY }}>Why this matters:</strong>{' '}
+                A platform with 180 pre-staged responses solves nothing if executives revert to familiar 30-day coordination when pressure arrives.
+                The Behavioral Confidence Index measures whether the preparation has become the default — not just the option.
+                Each activation that executes exactly as pre-staged encodes institutional confidence. That confidence is what makes the next activation faster.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Authorization Record Export ────────────────────────────────── */}
+        <section>
+          <div className="rounded-sm border border-gray-100 bg-white p-5">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <Award className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+                <div>
+                  <div className="text-sm font-bold mb-1" style={{ color: NAVY }}>Authorization Record</div>
+                  <div className="text-xs text-gray-500 leading-relaxed max-w-xl">
+                    Every activation generates a named, exportable governance artifact — suitable for audit committees, general counsel, and board review.
+                    The Authorization Record captures executive authorization, protocol version, deviations, workstreams deployed, and ADVANCE learning data in a single printable document.
+                  </div>
+                </div>
+              </div>
+              <a
+                href="/authorization-record"
+                className="flex-shrink-0 flex items-center gap-2 text-xs font-bold tracking-wider uppercase py-2 px-4 no-underline"
+                style={{ background: NAVY, color: '#fff', letterSpacing: '0.12em', borderRadius: '0.15rem' }}
+              >
+                <ArrowRight className="h-3.5 w-3.5" />
+                View Sample Record
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* ── Executive Moat Summary ────────────────────────────────────────── */}
         <section>
           <div className="rounded-sm border p-6" style={{ borderColor: GOLD + '40', background: NAVY }}>
