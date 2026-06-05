@@ -1,0 +1,52 @@
+WHAT TO PROTECT — DO NOT CHANGE
+1. The Situation Scanner (/situation-scanner) is your best sales tool.
+"No login. No sales call. Just the response." This is the highest-friction-removing page on the entire site. A prospect can experience the product in under 3 minutes with no commitment. This page should be receiving the most traffic and the most promotion. It currently sits quietly in the nav. It deserves to be on the homepage hero.
+
+2. The Founding Partner page framing is excellent.
+"A partnership, not a purchase" combined with "2 spots · No commitment required to apply · Response within 48 hours" and the partial refund option is a textbook risk reversal. This converts skeptical enterprise buyers. Keep every word of it.
+
+3. The ROI Calculator opens with $61.3M.
+That number is immediately visible before the prospect does anything. It creates a reason to engage. Keep it.
+
+4. The Request Access form scenario copy is strong.
+"Picture 9:12am — a high-stakes situation presents itself..." That story in the form header is doing real conversion work. Do not replace it with generic copy.
+
+WHAT TO FIX — BEFORE SHIP
+Priority 1 — Too many front doors, none of them dominant
+
+A prospect on the homepage sees: the nav CTA ("Request Founding Partner Access"), the ticker CTA ("SEE IT EXECUTE IN 12 MINUTES"), and then across the site finds: /request-access, /trial-access, /demo-access, /founding-partner, /12-minute-experience, /demo-hub, /situation-scanner, /master-demo. That is eight ways to "start" — which means a confused prospect does nothing. Pick one primary CTA for the entire site and make every other path secondary.
+
+Recommended: Make "Try it now — no login required" (pointing to Situation Scanner) the hero CTA. Make "Apply for Founding Partner Access" the secondary CTA in the nav. Remove or hide the rest from the main navigation.
+
+Priority 2 — Social proof is completely absent
+
+I went through every public page. There are no customer logos, no testimonials, no named quotes, no "X companies already activated," no case study pull quotes. The Proof Story uses anonymized companies. For enterprise buyers — who need to see that someone else already trusted you with real money — this is the single biggest gap between a great-looking site and one that actually closes deals.
+
+Even one sentence from a real person with a real title ("— Chief Strategy Officer, Fortune 500 retailer") would outperform everything else on the site in terms of conversion impact.
+
+Priority 3 — The Situation Scanner is named wrong in the nav
+
+"Situation Scanner" as a nav label does not explain what it does. A prospect reads it and thinks "what is that?" and moves on. Rename the nav item to something like "Try It Now — No Login" or "See Your 12-Minute Response". The page itself already has the right headline — the nav item just needs to match it.
+
+Priority 4 — The homepage hero widget is passive
+
+The live execution simulation widget on the right side of the homepage looks impressive but a first-time visitor has no signal that it is interactive or that it will change. Add a single line below it: "This is live — click any scenario to see it execute." That one line turns a visual element into an engagement driver.
+
+Priority 5 — Price is invisible
+
+Sophisticated enterprise buyers do a quiet budget pre-qualification before they ever request a demo. Right now the site gives them no signal whatsoever about cost range — not even a "Starting at" or "Enterprise pricing" mention. If your Founding Partner price is $120K/year, a $20K-budget company is wasting your time on a sales call. A brief line on the Founding Partner page — "Founding Partner engagements are structured for organizations with operational budgets of $50M+" — filters for the right prospects and actually makes the right prospects feel this is serious.
+
+WHAT TO REMOVE — BEFORE SHIP
+1. The ticker CTA duplicates the nav CTA.
+"SEE IT EXECUTE IN 12 MINUTES →" in the gold ticker bar and "Request Founding Partner Access" in the nav are both CTAs competing for the same click at the same moment. The ticker should display live signal information only — not a CTA. Remove the button from the ticker.
+
+2. "Readiness Infrastructure" in the nav needs renaming.
+This label means nothing to a first-time visitor. It sounds like a product category from an internal roadmap, not a benefit. Rename it to "How It Works" or "The Platform."
+
+3. Consolidate demo paths to two, not eight.
+Keep exactly two: one animated walkthrough ("Watch it execute") and one interactive tool ("Try it yourself — Situation Scanner"). Every other demo path should redirect to one of these two or be removed from the main navigation entirely.
+
+ONE ADDITION THAT WOULD DIRECTLY ACCELERATE SALES
+Add a "X of 12 Founding Partner spots have been filled" live counter to the Founding Partner page and the homepage. Real scarcity — when it is true — is the most powerful conversion mechanism in enterprise sales. If you have 3 signed partners already, "9 spots remaining" changes how seriously a prospect treats your next email to them.
+
+Bottom line: The product, the brand, and the thesis are all ready. What is standing between you and new customers right now is not the platform — it is the absence of social proof, too many competing entry points, and a homepage that does not make the Situation Scanner the obvious first move for every visitor.

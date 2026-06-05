@@ -440,7 +440,7 @@ function HomepageNav() {
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
-            <Link href="/readiness-infrastructure" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Readiness Infrastructure</Link>
+            <Link href="/how-it-executes" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
             <Link href="/demo-hub" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
@@ -450,7 +450,7 @@ function HomepageNav() {
             }}>
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
-            <Link href="/situation-scanner" style={{ ...DM, color: TEAL, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(43,138,110,0.3)`, paddingBottom: 1 }}>Situation Scanner</Link>
+            <Link href="/situation-scanner" style={{ ...DM, color: TEAL, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(43,138,110,0.3)`, paddingBottom: 1 }}>Try It Now — No Login</Link>
             <Link href="/cost-of-delay" style={{ ...DM, color: GOLD, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(201,168,76,0.35)`, paddingBottom: 1 }}>Cost of Delay</Link>
             <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>Founder's Story</Link>
@@ -1045,23 +1045,23 @@ function HeroSection() {
                 ))}
               </div>
 
-              {/* CTAs — clear primary dominance, secondary recedes */}
-              <div style={{ marginBottom: 16 }}>
+              {/* CTAs — Situation Scanner primary (best conversion tool per board), Founding Partner secondary */}
+              <div style={{ marginBottom: 14 }}>
                 <Link
-                  href="/founding-partner-program"
-                  onClick={() => trackCTA("hero")}
+                  href="/situation-scanner"
+                  onClick={() => trackCTA("hero_scanner")}
                   style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 40px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
                 >
-                  Request Founding Partner Access →
+                  Try It Now — No Login Required →
                 </Link>
               </div>
               <div style={{ display: "flex", gap: 24, alignItems: "center", marginBottom: 28, flexWrap: "wrap" as const }}>
                 <Link
-                  href="/12-minute-experience"
-                  onClick={() => trackCTA("hero_testdrive")}
+                  href="/founding-partner-program"
+                  onClick={() => trackCTA("hero")}
                   style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
-                  Run a live scenario in 12 minutes →
+                  Apply for Founding Partner Access →
                 </Link>
                 <span style={{ color: "rgba(255,255,255,0.14)", fontSize: 10 }}>or</span>
                 <Link
@@ -1149,8 +1149,11 @@ function HeroSection() {
           </div>
 
           {/* RIGHT — Live Simulation Panel */}
-          <div style={{ padding: "32px 0 32px 32px", display: "flex", alignItems: "stretch" }}>
+          <div style={{ padding: "32px 0 32px 32px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: 10 }}>
             <HeroSimPanel />
+            <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.38)", textAlign: "center", letterSpacing: "0.03em", fontStyle: "italic" }}>
+              This is live — click any scenario to see it execute in real time.
+            </div>
           </div>
         </div>
       </div>
@@ -3902,6 +3905,54 @@ function StartHereSection() {
   );
 }
 
+// ─── SOCIAL PROOF STRIP — surfaces near top per board recommendation ──────────
+function SocialProofStrip() {
+  const quotes = [
+    {
+      name: "Patrik Eriksson",
+      title: "Global Transformation Executive · ex-Gartner · ex-EY",
+      excerpt: "The next generation of enterprises will compete on who can coordinate decisions and execution the fastest. Readiness OS is that layer.",
+    },
+    {
+      name: "Dr. Kerry Huang",
+      title: "Fortune 50 AVP · Forbes Business Council · 408-Firm Governance Study",
+      excerpt: "Martin is building the architecture that makes clarity possible before pressure arrives.",
+    },
+    {
+      name: "Jayashree Venkataraman",
+      title: "Execution Reliability Advisor · CoFounder, NIYA & LeadWell Lab",
+      excerpt: "When multiple practitioners converge on the same failure point from different lenses, the issue is no longer tactical — it is architectural.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "#F0EDE4", borderTop: "1px solid rgba(10,15,46,0.08)", borderBottom: "1px solid rgba(10,15,46,0.08)", padding: "36px 0" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
+          {/* Label */}
+          <div style={{ flexShrink: 0, paddingRight: 32, borderRight: "1px solid rgba(10,15,46,0.10)", marginRight: 32, display: "flex", alignItems: "center", minWidth: 160 }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, lineHeight: 1.5 }}>
+              What<br />Practitioners<br />Are Saying
+            </div>
+          </div>
+          {/* Quotes grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 28, flex: 1 }}>
+            {quotes.map(q => (
+              <div key={q.name}>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 15, fontStyle: "italic", color: NAVY, lineHeight: 1.65, margin: "0 0 10px", opacity: 0.85 }}>
+                  "{q.excerpt}"
+                </p>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, color: NAVY }}>{q.name}</div>
+                <div style={{ ...DM, fontSize: 10, color: TEAL, lineHeight: 1.4, marginTop: 2 }}>{q.title}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useScrollDepth();
   useEffect(() => {
@@ -3920,6 +3971,9 @@ export default function Homepage() {
 
       {/* 1. CLAIM */}
       <HeroSection />
+
+      {/* 2. SOCIAL PROOF — surfaces practitioner validation before visitor scrolls away */}
+      <SocialProofStrip />
 
       {/* START HERE — guided sequence for first-time visitors */}
       <StartHereSection />
