@@ -438,35 +438,30 @@ function HomepageNav() {
           <VaughnMartinLogo variant="full" height={68} color="dark" animated={true} />
 
           {/* Desktop nav — hidden below 768px via CSS */}
-          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
-            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
-            <Link href="/how-it-executes" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
+          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 32 }}>
+            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>What We Do</Link>
+            <Link href="/how-it-executes" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>How It Works</Link>
             <Link href="/demo-hub" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
               background: "rgba(201,168,76,0.10)",
               border: "1px solid rgba(201,168,76,0.35)",
-              display: "flex", alignItems: "center", gap: 6,
+              display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap",
             }}>
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
-            <Link href="/situation-scanner" style={{ ...DM, color: TEAL, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(43,138,110,0.3)`, paddingBottom: 1 }}>Try It Now — No Login</Link>
-            <Link href="/cost-of-delay" style={{ ...DM, color: GOLD, fontSize: 13, fontWeight: 700, textDecoration: "none", opacity: 0.9, borderBottom: `1px solid rgba(201,168,76,0.35)`, paddingBottom: 1 }}>Cost of Delay</Link>
-            <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Pricing</Link>
-            <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
-            <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>Founder's Story</Link>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <Link
-                href="/founding-partner-program"
-                onClick={() => trackCTA("nav")}
-                style={{
-                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
-                  padding: "10px 20px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
-                }}
-              >
-                Request Founding Partner Access
-              </Link>
-            </div>
+            <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Pricing</Link>
+            <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Proof</Link>
+            <Link
+              href="/founding-partner-program"
+              onClick={() => trackCTA("nav")}
+              style={{
+                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
+                padding: "10px 20px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
+              }}
+            >
+              Request Founding Partner Access
+            </Link>
           </div>
 
           {/* Hamburger — shown below 768px via CSS */}
