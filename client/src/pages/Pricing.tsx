@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 import { updatePageMetadata } from '@/lib/seo';
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ArrowRight, X, ChevronDown, ChevronUp, TrendingUp } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -170,9 +170,9 @@ const ALT_COMPARE = [
   { label: "Readiness OS Enterprise", cost: "$750K–$1.5M/yr", speed: "12 min + 72hr foresight", available: "24/7 + dedicated team", protocols: "180 + unlimited custom", learns: "Yes + cross-client network" },
 ];
 
-function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: string | null; onToggle: (id: string) => void }) {
+function TierCard({ tier }: { tier: typeof TIERS[0] }) {
   const [, setLocation] = useLocation();
-  const isOpen = open === tier.id;
+  const [objOpen, setObjOpen] = useState(false);
 
   return (
     <div
@@ -204,14 +204,14 @@ function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: strin
         {/* Price anchor */}
         <div style={{ marginBottom: 6 }}>
           <div style={{ fontSize: 22, fontWeight: 800, color: tier.dark ? GOLD : NAVY, fontFamily: "'Barlow', sans-serif", lineHeight: 1.1 }}>{tier.anchor}</div>
-          <div style={{ fontSize: 12, color: tier.dark ? "rgba(255,255,255,0.4)" : MUTED, marginTop: 2 }}>{tier.annual} · billed annually</div>
+          <div style={{ fontSize: 12, color: tier.dark ? "rgba(255,255,255,0.4)" : MUTED, marginTop: 2 }}>{tier.annual}</div>
         </div>
 
         {/* Tagline */}
-        <p style={{ fontSize: 13, color: tier.dark ? "rgba(255,255,255,0.6)" : MUTED, lineHeight: 1.6, marginBottom: 24, borderTop: `1px solid ${tier.dark ? "rgba(255,255,255,0.1)" : BORDER}`, paddingTop: 16 }}>{tier.sub}</p>
+        <p style={{ fontSize: 13, color: tier.dark ? "rgba(255,255,255,0.6)" : MUTED, lineHeight: 1.6, marginBottom: 20, borderTop: `1px solid ${tier.dark ? "rgba(255,255,255,0.1)" : BORDER}`, paddingTop: 16 }}>{tier.sub}</p>
 
         {/* Features */}
-        <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: 10 }}>
+        <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", display: "flex", flexDirection: "column", gap: 10 }}>
           {tier.features.map((f) => (
             <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10, fontSize: 13, color: tier.dark ? "rgba(255,255,255,0.75)" : "#374151", lineHeight: 1.4 }}>
               <Check style={{ width: 14, height: 14, color: tier.dark ? GOLD : TEAL, flexShrink: 0, marginTop: 1 }} />
@@ -219,8 +219,38 @@ function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: strin
             </li>
           ))}
         </ul>
+      </div>
 
-        {/* CTA */}
+      {/* Value ROI — always visible */}
+      <div style={{
+        borderTop: `1px solid ${tier.dark ? "rgba(255,255,255,0.1)" : BORDER}`,
+        background: tier.dark ? "rgba(201,168,76,0.06)" : OFF,
+        padding: "24px 32px",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+          <TrendingUp style={{ width: 13, height: 13, color: tier.dark ? GOLD : TEAL, flexShrink: 0 }} />
+          <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", color: tier.dark ? GOLD : TEAL, textTransform: "uppercase", ...BC }}>
+            Why This Investment Pays Back
+          </span>
+        </div>
+        <p style={{ fontSize: 13, fontWeight: 700, color: tier.dark ? "#fff" : NAVY, marginBottom: 14, lineHeight: 1.4 }}>
+          {tier.valueCase.headline}
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 16 }}>
+          {tier.valueCase.lines.map((line) => (
+            <div key={line.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, borderBottom: `1px solid ${tier.dark ? "rgba(255,255,255,0.06)" : BORDER}`, paddingBottom: 6 }}>
+              <span style={{ fontSize: 11, color: tier.dark ? "rgba(255,255,255,0.55)" : MUTED, lineHeight: 1.4, flex: 1 }}>{line.label}</span>
+              <span style={{ fontSize: 12, fontWeight: 800, color: tier.dark ? GOLD : NAVY, flexShrink: 0, ...BC }}>{line.value}</span>
+            </div>
+          ))}
+        </div>
+        <p style={{ fontSize: 12, color: tier.dark ? "rgba(255,255,255,0.55)" : "#374151", lineHeight: 1.65, borderLeft: `3px solid ${tier.dark ? GOLD : TEAL}`, paddingLeft: 12, margin: 0 }}>
+          {tier.valueCase.punch}
+        </p>
+      </div>
+
+      {/* CTA */}
+      <div style={{ padding: "24px 32px" }}>
         <Button
           onClick={() => setLocation("/contact")}
           style={{
@@ -236,48 +266,28 @@ function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: strin
         </Button>
       </div>
 
-      {/* Value case toggle */}
-      <div style={{ borderTop: `1px solid ${tier.dark ? "rgba(255,255,255,0.1)" : BORDER}` }}>
+      {/* Objections — collapsible */}
+      <div style={{ borderTop: `1px solid ${tier.dark ? "rgba(255,255,255,0.08)" : BORDER}` }}>
         <button
-          onClick={() => onToggle(tier.id)}
+          onClick={() => setObjOpen(!objOpen)}
           style={{
             width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-            padding: "14px 32px", background: "transparent", border: "none", cursor: "pointer",
-            fontSize: 10, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase",
-            color: tier.dark ? GOLD : TEAL, ...BC,
+            padding: "12px 32px", background: "transparent", border: "none", cursor: "pointer",
+            fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase",
+            color: tier.dark ? "rgba(255,255,255,0.35)" : "#9CA3AF", ...BC,
           }}
         >
-          Why This Price Is Actually Cheap
-          {isOpen ? <ChevronUp style={{ width: 14, height: 14 }} /> : <ChevronDown style={{ width: 14, height: 14 }} />}
+          Common Questions
+          {objOpen ? <ChevronUp style={{ width: 13, height: 13 }} /> : <ChevronDown style={{ width: 13, height: 13 }} />}
         </button>
-
-        {isOpen && (
-          <div style={{ padding: "0 32px 28px", background: tier.dark ? "rgba(255,255,255,0.04)" : OFF }}>
-            <p style={{ fontSize: 13, fontWeight: 700, color: tier.dark ? "#fff" : NAVY, marginBottom: 16, lineHeight: 1.4 }}>
-              {tier.valueCase.headline}
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
-              {tier.valueCase.lines.map((line) => (
-                <div key={line.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, borderBottom: `1px solid ${tier.dark ? "rgba(255,255,255,0.06)" : BORDER}`, paddingBottom: 6 }}>
-                  <span style={{ fontSize: 11, color: tier.dark ? "rgba(255,255,255,0.55)" : MUTED, lineHeight: 1.4, flex: 1 }}>{line.label}</span>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: tier.dark ? GOLD : NAVY, flexShrink: 0, ...BC }}>{line.value}</span>
-                </div>
-              ))}
-            </div>
-            <p style={{ fontSize: 12, color: tier.dark ? "rgba(255,255,255,0.5)" : MUTED, lineHeight: 1.6, fontStyle: "italic" }}>
-              {tier.valueCase.punch}
-            </p>
-
-            {/* Per-tier objections */}
-            <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 10 }}>
-              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", color: tier.dark ? "rgba(255,255,255,0.35)" : "#9CA3AF", textTransform: "uppercase", ...BC }}>Common Questions</div>
-              {tier.objections.map((obj) => (
-                <div key={obj.q} style={{ borderLeft: `2px solid ${tier.dark ? GOLD : TEAL}`, paddingLeft: 12 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: tier.dark ? "rgba(255,255,255,0.8)" : NAVY, marginBottom: 4 }}>"{obj.q}"</div>
-                  <div style={{ fontSize: 11, color: tier.dark ? "rgba(255,255,255,0.5)" : MUTED, lineHeight: 1.5 }}>{obj.a}</div>
-                </div>
-              ))}
-            </div>
+        {objOpen && (
+          <div style={{ padding: "0 32px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
+            {tier.objections.map((obj) => (
+              <div key={obj.q} style={{ borderLeft: `2px solid ${tier.dark ? GOLD : TEAL}`, paddingLeft: 12 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: tier.dark ? "rgba(255,255,255,0.8)" : NAVY, marginBottom: 4 }}>"{obj.q}"</div>
+                <div style={{ fontSize: 11, color: tier.dark ? "rgba(255,255,255,0.5)" : MUTED, lineHeight: 1.55 }}>{obj.a}</div>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -287,19 +297,17 @@ function TierCard({ tier, open, onToggle }: { tier: typeof TIERS[0]; open: strin
 
 export default function Pricing() {
   const [, setLocation] = useLocation();
-  const [openTier, setOpenTier] = useState<string | null>(null);
   const [openObjIdx, setOpenObjIdx] = useState<number | null>(null);
 
   useEffect(() => {
     updatePageMetadata({
       title: "Platform Tiers & Pricing — Readiness OS | Strategic Readiness Platform",
-      description: "Three tiers of enterprise strategic readiness: Core ($150K/yr), Foresight ($250K/yr), and Enterprise ($450K/yr). 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration, and institutional memory that compounds with every activation.",
+      description: "Three tiers of enterprise strategic readiness: Core ($250K/yr), Foresight ($450K/yr), and Enterprise ($750K–$1.5M/yr). 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration, and institutional memory that compounds with every activation.",
       ogTitle: "Readiness OS — Core · Foresight · Enterprise Pricing",
-      ogDescription: "Built for startup to Fortune 500. Starting at $150,000/year. One activation pays for the annual subscription. Institutional memory compounds with every trigger survived.",
+      ogDescription: "Built for startup to Fortune 500. Starting at $250,000/year. One activation pays for the annual subscription. Institutional memory compounds with every trigger survived.",
     });
   }, []);
 
-  const toggleTier = (id: string) => setOpenTier(openTier === id ? null : id);
 
   return (
     <PageLayout>
@@ -448,7 +456,7 @@ export default function Pricing() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "start" }}>
             {TIERS.map((tier) => (
-              <TierCard key={tier.id} tier={tier} open={openTier} onToggle={toggleTier} />
+              <TierCard key={tier.id} tier={tier} />
             ))}
           </div>
 
