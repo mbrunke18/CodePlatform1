@@ -1143,7 +1143,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   // Audio/TTS routes for voice features
   registerAudioRoutes(app);
 
-  // Comprehensive Scenario Template routes (auth temporarily disabled for development)
+  // Comprehensive Scenario Template routes
   
   /**
    * @openapi

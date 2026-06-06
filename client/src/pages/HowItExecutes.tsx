@@ -502,6 +502,54 @@ export default function HowItExecutes() {
           </div>
         </div>
 
+        {/* ADVANCE Closed-Loop Section */}
+        <div style={{ background: "rgba(43,138,110,0.06)", borderTop: "1px solid rgba(43,138,110,0.2)", borderBottom: "1px solid rgba(43,138,110,0.2)", padding: "64px 48px" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, display: "inline-block" }} />
+              <span style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: TEAL }}>ADVANCE Closed-Loop Learning</span>
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, color: "#fff", marginBottom: 12, lineHeight: 1.1 }}>
+              Every activation makes the next one faster.
+            </h2>
+            <p style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 13, color: MUTED, maxWidth: 620, lineHeight: 1.7, marginBottom: 48 }}>
+              The 12-minute execution is only the beginning. The moment an activation closes, Readiness OS opens a learning loop — updating protocols, generating causal hypotheses, and measuring actual time saved on the next trigger. The platform gets measurably better with every event.
+            </p>
+
+            {/* 5-stage loop */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.06)" }}>
+              {[
+                { num: "01", label: "Activation", desc: "Protocol fires. 12-minute execution window opens. All tasks, stakeholders, and budget staged instantly.", color: GOLD },
+                { num: "02", label: "Close-Out Gate", desc: "Formal structured debrief captures what happened, what deviated, and what caused it.", color: GOLD },
+                { num: "03", label: "Update Generated", desc: "System extracts signal keywords and ownership gaps. Protocol update drafted automatically.", color: TEAL },
+                { num: "04", label: "Applied + Delta", desc: "Protocol mutates. An immutable version delta is stored. A causal hypothesis is created: 'Expected −4 min.'", color: TEAL },
+                { num: "05", label: "Hypothesis Measured", desc: "Next activation auto-measures actual vs. expected. Hypothesis classified: proven or disproven.", color: TEAL },
+              ].map((stage, i) => (
+                <div key={i} style={{ background: "rgba(10,15,46,0.7)", padding: "28px 22px" }}>
+                  <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: stage.color, marginBottom: 10 }}>{stage.num}</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.2 }}>{stage.label}</div>
+                  <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 11, color: MUTED, lineHeight: 1.6 }}>{stage.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Moat metrics */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "rgba(255,255,255,0.06)", marginTop: 1 }}>
+              {[
+                { stat: "180", label: "Protocols in the learning library", sub: "Every one evidence-eligible after first activation" },
+                { stat: "Causal", label: "Hypotheses — not correlation", sub: "Expected vs. actual measured on every re-activation" },
+                { stat: "Months", label: "To rebuild this on any competitor", sub: "The moat compounds with every activation" },
+              ].map((m, i) => (
+                <div key={i} style={{ background: "rgba(43,138,110,0.08)", padding: "24px 28px", borderTop: `2px solid ${TEAL}` }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: TEAL, marginBottom: 4 }}>{m.stat}</div>
+                  <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color: "#fff", marginBottom: 4, textTransform: "uppercase" as const, letterSpacing: "0.08em" }}>{m.label}</div>
+                  <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 11, color: MUTED }}>{m.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* CTA */}
         <div style={{ padding: "64px 48px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>

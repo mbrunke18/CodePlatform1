@@ -395,7 +395,10 @@ export function registerPitchDeckV2Route(app: Express): void {
    * GET /api/pitch-v2-clear-cache
    * Clears the page screenshot cache (force re-screenshot on next request).
    */
-  app.get("/api/pitch-v2-clear-cache", (_req, res) => {
+  app.get("/api/pitch-v2-clear-cache", (req: any, res) => {
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+      return res.status(401).json({ error: "Authentication required" });
+    }
     screenshotCache.clear();
     res.json({ ok: true, message: "Screenshot cache cleared" });
   });

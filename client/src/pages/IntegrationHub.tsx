@@ -986,6 +986,12 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           {/* Main Integration Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-12">
             <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-12">
+              <TabsTrigger
+                value="microsoft"
+                className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]"
+              >
+                Microsoft Stack
+              </TabsTrigger>
               {['dashboard', 'integrations', 'apis', 'dataflows', 'monitoring'].map((tab) => (
                 <TabsTrigger 
                   key={tab}
@@ -996,6 +1002,79 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 </TabsTrigger>
               ))}
             </TabsList>
+
+          {/* Microsoft Stack */}
+          <TabsContent value="microsoft" className="mt-0">
+            <div style={{ background: "#0A0F2E", padding: "40px 0", marginBottom: 1 }}>
+              <div style={{ maxWidth: 820 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Operating Model Layer</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px,2.2vw,30px)", fontWeight: 600, color: "#fff", lineHeight: 1.3, marginBottom: 12 }}>
+                  Every enterprise has Microsoft's AI stack.<br />
+                  <em style={{ fontStyle: "italic", color: "#DFC178" }}>None have the operating model to use it.</em>
+                </p>
+                <p style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 13, color: "rgba(240,237,228,0.6)", lineHeight: 1.7, maxWidth: 640 }}>
+                  Readiness OS is not a replacement for Teams, Copilot Studio, or Azure OpenAI. It is the orchestration layer that sits above them — telling each system exactly what to do the moment a strategic trigger fires. Your Microsoft investment finally has an operating model.
+                </p>
+              </div>
+            </div>
+
+            <div style={{ background: "#0D1435", padding: "32px 0 40px", marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 20 }}>Architecture — How It Sits</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 1, maxWidth: 700 }}>
+                {[
+                  { layer: "Readiness OS", sub: "Orchestration · Protocol Activation · Executive Authorization", highlight: true, border: "#C9A84C", label: "Your OS" },
+                  { layer: "Microsoft Copilot Studio", sub: "Context-injected executive queries · Protocol-aware responses", highlight: false, border: "#2B8A6E", label: "Orchestrated" },
+                  { layer: "Microsoft Teams", sub: "Stakeholder channels · War room creation · Notifications", highlight: false, border: "#2B8A6E", label: "Orchestrated" },
+                  { layer: "Microsoft Entra ID", sub: "Identity resolution · Authority chains · Stakeholder staging", highlight: false, border: "#2B8A6E", label: "Orchestrated" },
+                  { layer: "Azure OpenAI", sub: "Signal analysis · Hypothesis measurement · All inside your tenant", highlight: false, border: "#2B8A6E", label: "Orchestrated" },
+                ].map((row, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 20px", background: row.highlight ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.03)", borderLeft: `3px solid ${row.border}` }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: row.highlight ? 13 : 12, fontWeight: 700, color: row.highlight ? "#C9A84C" : "#fff", letterSpacing: "0.03em" }}>{row.layer}</div>
+                      <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 11, color: "rgba(240,237,228,0.45)", marginTop: 2 }}>{row.sub}</div>
+                    </div>
+                    <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: row.highlight ? "#C9A84C" : "#2B8A6E", textTransform: "uppercase" as const }}>{row.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: "Copilot Studio",
+                  desc: "Readiness OS injects protocol context into Copilot Studio so every executive query during an activation returns protocol-aligned guidance — not generic AI answers.",
+                  caps: ["Context injection", "Protocol-aware responses", "Post-activation learning"],
+                },
+                {
+                  name: "Microsoft Entra ID",
+                  desc: "Stakeholder identity and role resolution from Entra ID — every Readiness Protocol knows exactly who to notify and what authority they hold before the trigger fires.",
+                  caps: ["Identity resolution", "Authority chains", "Stakeholder pre-staging"],
+                },
+                {
+                  name: "Azure OpenAI",
+                  desc: "All signal analysis, protocol staging, and hypothesis measurement runs on your organization's Azure OpenAI deployment — data stays inside your Microsoft tenant.",
+                  caps: ["Signal analysis", "Protocol staging", "Tenant isolation"],
+                },
+              ].map((card) => (
+                <Card key={card.name} className="p-8 border-[#E8E4DC] bg-white rounded-none border-t-2 border-t-[#0A0F2E]">
+                  <div className="mb-6">
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#0A0F2E", background: "rgba(10,15,46,0.06)", padding: "4px 10px", display: "inline-block" }}>Microsoft</div>
+                  </div>
+                  <CardTitle className="text-xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{card.name}</CardTitle>
+                  <p className="text-sm text-[#6B7280] mb-6 leading-relaxed">{card.desc}</p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {card.caps.map((c) => (
+                      <Badge key={c} variant="secondary" className="text-[9px] font-bold tracking-widest uppercase bg-[#F8F7F4] text-[#0A0F2E] rounded-none px-2 py-0.5 border border-[#E8E4DC]">{c}</Badge>
+                    ))}
+                  </div>
+                  <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none font-bold text-[10px] tracking-widest uppercase h-12">
+                    <Zap className="w-4 h-4 mr-2" />Configure
+                  </Button>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
 
           {/* Dashboard */}
           <TabsContent value="dashboard" className="space-y-6">
