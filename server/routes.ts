@@ -942,6 +942,59 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
+  // ─── Founding Partner Stats (public) ─────────────────────────────────────────
+  app.get('/api/founding-partner/stats', async (_req, res) => {
+    try {
+      const TOTAL_SEATS = 12;
+      const [row] = await db
+        .select({ filled: count() })
+        .from(foundingPartnerApplications)
+        .where(eq(foundingPartnerApplications.status, 'accepted'));
+      const filled = Number(row?.filled ?? 0);
+      res.json({ total: TOTAL_SEATS, filled, remaining: Math.max(0, TOTAL_SEATS - filled) });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // GET /api/founding-partner/applications — platform admin: view all applications
+  app.get('/api/founding-partner/applications', async (req: any, res) => {
+    try {
+      const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+      const userEmail = req.user?.claims?.email || req.user?.email;
+      if (!adminEmail || userEmail !== adminEmail) return res.status(403).json({ error: 'Forbidden' });
+      const apps = await db
+        .select()
+        .from(foundingPartnerApplications)
+        .orderBy(desc(foundingPartnerApplications.createdAt));
+      res.json(apps);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // PATCH /api/founding-partner/applications/:id/status — platform admin: accept or reject
+  app.patch('/api/founding-partner/applications/:id/status', async (req: any, res) => {
+    try {
+      const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+      const userEmail = req.user?.claims?.email || req.user?.email;
+      if (!adminEmail || userEmail !== adminEmail) return res.status(403).json({ error: 'Forbidden' });
+      const { status } = req.body;
+      if (!['pending', 'accepted', 'rejected'].includes(status)) {
+        return res.status(400).json({ error: 'status must be pending, accepted, or rejected' });
+      }
+      const [updated] = await db
+        .update(foundingPartnerApplications)
+        .set({ status })
+        .where(eq(foundingPartnerApplications.id, req.params.id))
+        .returning();
+      if (!updated) return res.status(404).json({ error: 'Application not found' });
+      res.json({ ok: true, application: updated });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // Safe read-only check — does NOT consume the token, safe for email scanners to prefetch
   app.get('/api/auth/magic-link/validate', async (req, res) => {
     const token = req.query.token as string;

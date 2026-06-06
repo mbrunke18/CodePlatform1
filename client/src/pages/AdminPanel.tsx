@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/useAuth";
-import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send, Share2 } from "lucide-react";
+import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send, Share2, Briefcase, CheckCircle, XCircle, Clock } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -63,6 +63,37 @@ export default function AdminPanel() {
     queryKey: ["/api/admin/allowlist"],
   });
   const allowlist: AllowedEmail[] = rawAllowlist ?? [];
+
+  interface PartnerApplication {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    company: string;
+    title: string;
+    triggerDomain: string | null;
+    message: string | null;
+    status: string;
+    createdAt: string | null;
+  }
+
+  const { data: rawPartnerApps, isLoading: partnerAppsLoading } = useQuery<PartnerApplication[]>({
+    queryKey: ["/api/founding-partner/applications"],
+  });
+  const partnerApps: PartnerApplication[] = rawPartnerApps ?? [];
+
+  const { data: partnerStats } = useQuery<{ total: number; filled: number; remaining: number }>({
+    queryKey: ["/api/founding-partner/stats"],
+  });
+
+  const updatePartnerStatus = useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) =>
+      apiRequest("PATCH", `/api/founding-partner/applications/${id}/status`, { status }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/founding-partner/applications"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/founding-partner/stats"] });
+    },
+  });
 
   const deleteUser = useMutation({
     mutationFn: (id: string) => apiRequest("DELETE", `/api/admin/users/${id}`),
@@ -586,6 +617,125 @@ export default function AdminPanel() {
             To revoke access fully: remove the email above, then delete their user account in the table above.
           </p>
         </div>
+
+        {/* ── Founding Partner Applications ────────────────── */}
+        <div style={{ marginBottom: "2.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem" }}>
+            <Briefcase size={18} color={NAVY} />
+            <h2 style={{ margin: 0, fontSize: "1.0625rem", fontWeight: 700, color: NAVY }}>
+              Founding Partner Applications
+            </h2>
+            {partnerStats && (
+              <span style={{ marginLeft: 8, background: "#E8E4DC", color: NAVY, fontSize: "0.75rem", fontWeight: 700, padding: "2px 8px", borderRadius: 10 }}>
+                {partnerStats.filled} / {partnerStats.total} Accepted
+              </span>
+            )}
+            {partnerStats && partnerStats.remaining > 0 && (
+              <span style={{ background: "rgba(201,168,76,0.12)", color: "#92670A", fontSize: "0.7rem", fontWeight: 700, padding: "2px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+                {partnerStats.remaining} REMAINING
+              </span>
+            )}
+            {partnerStats && partnerStats.remaining === 0 && (
+              <span style={{ background: "rgba(220,38,38,0.08)", color: "#DC2626", fontSize: "0.7rem", fontWeight: 700, padding: "2px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+                COHORT FULL
+              </span>
+            )}
+          </div>
+
+          <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, overflow: "hidden" }}>
+            {partnerAppsLoading ? (
+              <div style={{ padding: "2rem", textAlign: "center" }}>
+                <Loader2 size={20} style={{ animation: "spin 1s linear infinite", color: NAVY }} />
+              </div>
+            ) : partnerApps.length === 0 ? (
+              <div style={{ padding: "2rem", textAlign: "center", color: "#9CA3AF", fontSize: "0.875rem" }}>
+                No applications yet.
+              </div>
+            ) : (
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }}>
+                <thead>
+                  <tr style={{ borderBottom: "1px solid #E8E4DC", background: "#F8F7F4" }}>
+                    {["Applicant", "Company / Title", "Domain", "Submitted", "Status", ""].map(h => (
+                      <th key={h} style={{ padding: "0.625rem 1rem", textAlign: "left", fontWeight: 600, color: "#6B7280", fontSize: "0.75rem", letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {partnerApps.map((app, i) => (
+                    <tr key={app.id} style={{ borderBottom: i < partnerApps.length - 1 ? "1px solid #F3F4F6" : "none" }}>
+                      <td style={{ padding: "0.75rem 1rem" }}>
+                        <div style={{ fontWeight: 600, color: NAVY }}>{app.firstName} {app.lastName}</div>
+                        <div style={{ fontSize: "0.75rem", color: "#6B7280" }}>{app.email}</div>
+                      </td>
+                      <td style={{ padding: "0.75rem 1rem" }}>
+                        <div style={{ color: NAVY, fontWeight: 500 }}>{app.company}</div>
+                        <div style={{ fontSize: "0.75rem", color: "#6B7280" }}>{app.title}</div>
+                      </td>
+                      <td style={{ padding: "0.75rem 1rem", color: "#6B7280", fontSize: "0.8125rem" }}>
+                        {app.triggerDomain || "—"}
+                      </td>
+                      <td style={{ padding: "0.75rem 1rem", color: "#6B7280", fontSize: "0.8125rem", whiteSpace: "nowrap" }}>
+                        {formatDate(app.createdAt)}
+                      </td>
+                      <td style={{ padding: "0.75rem 1rem" }}>
+                        {app.status === "accepted" && (
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "rgba(43,138,110,0.10)", color: "#2B8A6E", fontSize: "0.7rem", fontWeight: 700, padding: "3px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+                            <CheckCircle size={11} /> ACCEPTED
+                          </span>
+                        )}
+                        {app.status === "rejected" && (
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "rgba(220,38,38,0.08)", color: "#DC2626", fontSize: "0.7rem", fontWeight: 700, padding: "3px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+                            <XCircle size={11} /> REJECTED
+                          </span>
+                        )}
+                        {app.status === "pending" && (
+                          <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "rgba(107,114,128,0.10)", color: "#6B7280", fontSize: "0.7rem", fontWeight: 700, padding: "3px 8px", borderRadius: 10, letterSpacing: "0.04em" }}>
+                            <Clock size={11} /> PENDING
+                          </span>
+                        )}
+                      </td>
+                      <td style={{ padding: "0.75rem 1rem" }}>
+                        <div style={{ display: "flex", gap: 6 }}>
+                          {app.status !== "accepted" && (
+                            <button
+                              onClick={() => updatePartnerStatus.mutate({ id: app.id, status: "accepted" })}
+                              disabled={updatePartnerStatus.isPending}
+                              title="Accept"
+                              style={{ background: "rgba(43,138,110,0.10)", border: "none", cursor: "pointer", color: "#2B8A6E", padding: "4px 8px", borderRadius: 3, fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", gap: 3 }}
+                            >
+                              <CheckCircle size={12} /> Accept
+                            </button>
+                          )}
+                          {app.status !== "rejected" && (
+                            <button
+                              onClick={() => updatePartnerStatus.mutate({ id: app.id, status: "rejected" })}
+                              disabled={updatePartnerStatus.isPending}
+                              title="Reject"
+                              style={{ background: "rgba(220,38,38,0.06)", border: "none", cursor: "pointer", color: "#DC2626", padding: "4px 8px", borderRadius: 3, fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", gap: 3 }}
+                            >
+                              <XCircle size={12} /> Reject
+                            </button>
+                          )}
+                          {app.status !== "pending" && (
+                            <button
+                              onClick={() => updatePartnerStatus.mutate({ id: app.id, status: "pending" })}
+                              disabled={updatePartnerStatus.isPending}
+                              title="Reset to pending"
+                              style={{ background: "rgba(107,114,128,0.08)", border: "none", cursor: "pointer", color: "#6B7280", padding: "4px 8px", borderRadius: 3, fontSize: "0.7rem", fontWeight: 700, display: "flex", alignItems: "center", gap: 3 }}
+                            >
+                              <Clock size={12} /> Reset
+                            </button>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </div>
+
       </div>
 
       <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>

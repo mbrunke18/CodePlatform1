@@ -4,7 +4,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import { useEffect, useState } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -318,6 +318,11 @@ function ApplicationForm() {
 export default function FoundingPartnerProgram() {
   const [, setLocation] = useLocation();
 
+  const { data: partnerStats } = useQuery<{ total: number; filled: number; remaining: number }>({
+    queryKey: ['/api/founding-partner/stats'],
+    staleTime: 60_000,
+  });
+
   useEffect(() => {
     updatePageMetadata({
       title: "Founding Partner Program — Readiness OS | VaughnMartin",
@@ -345,7 +350,9 @@ export default function FoundingPartnerProgram() {
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 20, padding: '8px 16px', border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.06)' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#C9A84C', flexShrink: 0 }} />
               <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
-                2026 Founding Partner Cohort · 12 Seats · Applications Now Open
+                {partnerStats && partnerStats.filled > 0
+                  ? `2026 Founding Partner Cohort · ${partnerStats.filled} of ${partnerStats.total} Spots Filled · ${partnerStats.remaining} Remaining`
+                  : '2026 Founding Partner Cohort · 12 Seats · Applications Now Open'}
               </span>
             </div>
 
