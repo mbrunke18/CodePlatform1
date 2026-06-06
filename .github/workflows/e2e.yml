@@ -1,4 +1,4 @@
-name: E2E Tests
+name: Pre-Production Gate
 
 on:
   pull_request:
@@ -8,11 +8,28 @@ on:
   schedule:
     - cron: '0 4 * * *'
 
+# ─── PR: smoke gate (fast, blocks merge) ─────────────────────────────────────
 jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: Run unit tests
+        run: npm run test
+        env:
+          CI: true
+
   smoke:
-    name: Smoke Suite (PR gate)
+    name: Smoke Suite
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
+    needs: unit-tests
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,10 +50,12 @@ jobs:
           path: playwright-report/
           retention-days: 7
 
-  full:
-    name: Full Suite (merge / nightly)
+# ─── Merge / nightly: full gate (must pass before production is safe) ─────────
+  full-e2e:
+    name: Full E2E Suite
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'schedule'
+    needs: unit-tests
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -56,3 +75,12 @@ jobs:
           name: full-e2e-report
           path: playwright-report/
           retention-days: 14
+
+  production-gate:
+    name: Production Gate — All Tests Passed
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+    needs: [unit-tests, full-e2e]
+    steps:
+      - name: All tests passed — safe to deploy
+        run: echo "✅ Unit tests + full E2E passed. Production deployment is cleared."
