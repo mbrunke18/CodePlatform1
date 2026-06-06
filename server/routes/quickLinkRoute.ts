@@ -168,6 +168,20 @@ export function registerQuickLinkRoute(app: Express) {
             If you have any questions, reply directly to this email.
           </p>
           <p style="margin:12px 0 0;font-size:11px;color:#9CA3AF;word-break:break-all;">${url}</p>
+          <table cellpadding="0" cellspacing="0" style="margin:28px 0 0;border-top:1px solid #E5E7EB;width:100%;">
+            <tr><td style="padding-top:24px;">
+              <p style="margin:0 0 6px;color:#374151;font-size:13px;font-weight:600;">Explore a Founding Partner Engagement</p>
+              <p style="margin:0 0 16px;color:#6B7280;font-size:13px;line-height:1.6;">
+                Before your access expires, see what a 90-day Founding Partner engagement looks like — 
+                full validation partnership, dedicated onboarding, and direct access to the team.
+              </p>
+              <a href="https://vaughnmartin.com/founding-partner-brief"
+                 style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${NAVY};text-decoration:none;border:1.5px solid ${NAVY};padding:10px 22px;display:inline-block;">
+                View the 90-Day Validation Brief →
+              </a>
+              <p style="margin:10px 0 0;font-size:11px;color:#9CA3AF;">vaughnmartin.com/founding-partner-brief</p>
+            </td></tr>
+          </table>
         </td></tr>
         <tr><td style="background:${NAVY};padding:20px 36px;">
           <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">
