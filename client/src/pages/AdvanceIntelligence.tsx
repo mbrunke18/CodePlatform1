@@ -218,6 +218,35 @@ function LiveLearningFeed() {
   );
 }
 
+// ─── Preview data shown before first activation ───────────────────────────────
+const PREVIEW_LVI = {
+  updatesAppliedTotal: 47,
+  updatesAppliedLast30Days: 9,
+  hypothesesTotal: 52,
+  hypothesesProven: 31,
+  hypothesesMeasuring: 8,
+  provenSuccessRate: 60,
+  totalMinutesSaved: 127,
+  avgMinutesSavedPerUpdate: 4.1,
+  protocolsWithEvidenceCount: 41,
+  protocolLibraryImprovementPct: 23,
+  compoundScore: 74,
+  monthsToRebuild: 11,
+  topProvenUpdates: [
+    { updateId: 'prev-1', hypothesis: 'Adding CISO direct-dial to ransomware protocol will reduce first contact time', actualImpactMinutes: 8, confidenceScore: 0.91, evidenceSummary: 'Measured across 3 activations. Avg first-contact time: 4 min vs 12 min baseline.', provenAt: new Date(Date.now() - 14 * 86400000).toISOString() },
+    { updateId: 'prev-2', hypothesis: 'Pre-staging regulatory disclosure template reduces legal review cycle', actualImpactMinutes: 6, confidenceScore: 0.85, evidenceSummary: '2 of 2 activations confirmed. Outside counsel review: 6 min vs 48 hrs.', provenAt: new Date(Date.now() - 30 * 86400000).toISOString() },
+    { updateId: 'prev-3', hypothesis: 'Board chair briefing window pre-staged at T+3 min eliminates scheduling delay', actualImpactMinutes: 5, confidenceScore: 0.88, evidenceSummary: '4 activations. Board chair in loop avg 3:22 vs 6+ hours.', provenAt: new Date(Date.now() - 45 * 86400000).toISOString() },
+  ],
+  monthlyTrend: [
+    { month: 'Jan', applied: 4,  proven: 2,  minutesSaved: 11 },
+    { month: 'Feb', applied: 6,  proven: 3,  minutesSaved: 16 },
+    { month: 'Mar', applied: 8,  proven: 5,  minutesSaved: 22 },
+    { month: 'Apr', applied: 9,  proven: 6,  minutesSaved: 26 },
+    { month: 'May', applied: 11, proven: 8,  minutesSaved: 30 },
+    { month: 'Jun', applied: 9,  proven: 7,  minutesSaved: 22 },
+  ],
+};
+
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function AdvanceIntelligence() {
   const { toast } = useToast();
@@ -231,6 +260,9 @@ export default function AdvanceIntelligence() {
   const { data: queue, isLoading: queueLoading } = useQuery<PendingQueue>({
     queryKey: ['/api/advance/pending-queue'],
   });
+
+  const isPreviewMode = !lviLoading && (lvi?.updatesAppliedTotal ?? 0) === 0;
+  const display = isPreviewMode ? PREVIEW_LVI : lvi;
 
   const applyMutation = useMutation({
     mutationFn: (updateId: string) =>
@@ -248,7 +280,7 @@ export default function AdvanceIntelligence() {
   });
 
   const totalPending = (queue?.autoApply?.length ?? 0) + (queue?.requiresApproval?.length ?? 0);
-  const maxApplied = Math.max(...(lvi?.monthlyTrend?.map(m => m.applied) ?? [1]), 1);
+  const maxApplied = Math.max(...((isPreviewMode ? PREVIEW_LVI : lvi)?.monthlyTrend?.map(m => m.applied) ?? [1]), 1);
 
   return (
     <PageLayout>
@@ -272,13 +304,18 @@ export default function AdvanceIntelligence() {
             </div>
             <div className="text-right hidden md:block">
               <div className="text-4xl font-bold" style={{ color: TEAL }}>
-                {lvi?.compoundScore ?? 0}
+                {display?.compoundScore ?? 0}
                 <span className="text-lg text-gray-400">/100</span>
               </div>
               <div className="text-xs text-gray-500 mt-1">Preparation Compound Score</div>
-              {(lvi?.monthsToRebuild ?? 0) > 0 && (
+              {(display?.monthsToRebuild ?? 0) > 0 && (
                 <div className="text-xs font-bold mt-1" style={{ color: GOLD }}>
-                  {lvi?.monthsToRebuild} months to rebuild on any competitor
+                  {display?.monthsToRebuild} months to rebuild on any competitor
+                </div>
+              )}
+              {isPreviewMode && (
+                <div className="mt-2 text-xs font-bold px-2 py-1 rounded-sm" style={{ background: 'rgba(43,138,110,0.12)', color: TEAL }}>
+                  REPRESENTATIVE PREVIEW
                 </div>
               )}
             </div>
@@ -287,6 +324,17 @@ export default function AdvanceIntelligence() {
       </div>
 
       <div className="max-w-6xl mx-auto px-8 py-8 space-y-10">
+
+        {/* ── Preview mode banner ────────────────────────────────────────────── */}
+        {isPreviewMode && (
+          <div className="flex items-center gap-3 px-5 py-3 rounded-sm border" style={{ background: 'rgba(43,138,110,0.06)', borderColor: 'rgba(43,138,110,0.25)' }}>
+            <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: TEAL }} />
+            <div>
+              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: TEAL }}>Representative Preview</span>
+              <span className="text-xs text-gray-500 ml-3">Metrics shown below represent typical values after 6 months of activations. Your dashboard populates from the first close-out.</span>
+            </div>
+          </div>
+        )}
 
         {/* ── Learning Velocity Index stat bar ──────────────────────────────── */}
         <section>
@@ -304,29 +352,29 @@ export default function AdvanceIntelligence() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <StatCard
                 label="Updates Applied"
-                value={lvi?.updatesAppliedTotal ?? 0}
-                sub={`${lvi?.updatesAppliedLast30Days ?? 0} in past 30 days`}
+                value={display?.updatesAppliedTotal ?? 0}
+                sub={`${display?.updatesAppliedLast30Days ?? 0} in past 30 days`}
                 icon={GitCommit}
                 color={NAVY}
               />
               <StatCard
                 label="Proven Improvements"
-                value={lvi?.hypothesesProven ?? 0}
-                sub={`${lvi?.provenSuccessRate ?? 0}% success rate`}
+                value={display?.hypothesesProven ?? 0}
+                sub={`${display?.provenSuccessRate ?? 0}% success rate`}
                 icon={CheckCircle2}
                 color={TEAL}
               />
               <StatCard
                 label="Response Time Saved"
-                value={`${lvi?.totalMinutesSaved ?? 0} min`}
-                sub={`avg ${lvi?.avgMinutesSavedPerUpdate ?? 0} min per update`}
+                value={`${display?.totalMinutesSaved ?? 0} min`}
+                sub={`avg ${display?.avgMinutesSavedPerUpdate ?? 0} min per update`}
                 icon={Timer}
                 color={GOLD}
               />
               <StatCard
                 label="Protocols Improved"
-                value={`${lvi?.protocolLibraryImprovementPct ?? 0}%`}
-                sub={`${lvi?.protocolsWithEvidenceCount ?? 0} of 180 with evidence`}
+                value={`${display?.protocolLibraryImprovementPct ?? 0}%`}
+                sub={`${display?.protocolsWithEvidenceCount ?? 0} of 180 with evidence`}
                 icon={Layers}
                 color={TEAL}
               />
@@ -351,7 +399,7 @@ export default function AdvanceIntelligence() {
             <FlaskConical className="h-4 w-4 flex-shrink-0" style={{ color: GOLD }} />
             <span className="text-xs text-gray-600">
               <strong style={{ color: NAVY }}>Currently measuring:</strong>{' '}
-              {lvi?.hypothesesMeasuring ?? 0} active hypotheses. Each will prove or disprove within 3 activations or 90 days.
+              {display?.hypothesesMeasuring ?? 0} active hypotheses. Each will prove or disprove within 3 activations or 90 days.
             </span>
           </div>
         </section>
@@ -474,7 +522,7 @@ export default function AdvanceIntelligence() {
               ) : (
                 <>
                   <div className="flex items-end gap-2 h-20">
-                    {(lvi?.monthlyTrend ?? []).map((m) => (
+                    {(display?.monthlyTrend ?? []).map((m) => (
                       <MonthBar key={m.month} {...m} maxApplied={maxApplied} />
                     ))}
                   </div>
@@ -512,7 +560,7 @@ export default function AdvanceIntelligence() {
             </div>
           )}
 
-          {!lviLoading && (lvi?.topProvenUpdates?.length ?? 0) === 0 && (
+          {!lviLoading && !isPreviewMode && (lvi?.topProvenUpdates?.length ?? 0) === 0 && (
             <div className="border border-gray-100 rounded-sm p-8 text-center">
               <FlaskConical className="h-10 w-10 mx-auto mb-3 text-gray-200" />
               <div className="text-sm font-bold text-gray-400 mb-1">No proven results yet</div>
@@ -523,9 +571,9 @@ export default function AdvanceIntelligence() {
             </div>
           )}
 
-          {!lviLoading && (lvi?.topProvenUpdates?.length ?? 0) > 0 && (
+          {!lviLoading && (isPreviewMode || (lvi?.topProvenUpdates?.length ?? 0) > 0) && (
             <div className="space-y-2">
-              {lvi!.topProvenUpdates.map((p, idx) => (
+              {(display?.topProvenUpdates ?? []).map((p, idx) => (
                 <div key={p.updateId} className="border border-gray-100 rounded-sm bg-white overflow-hidden">
                   <button
                     className="w-full flex items-center gap-4 p-4 text-left hover:bg-gray-50 transition-colors"
@@ -601,14 +649,14 @@ export default function AdvanceIntelligence() {
               {[
                 {
                   label: 'Protocol Adherence',
-                  value: (lvi?.updatesAppliedTotal ?? 0) > 5 ? '87%' : '—',
+                  value: (display?.updatesAppliedTotal ?? 0) > 5 ? '87%' : '—',
                   sub: 'Activations using pre-staged protocol as built',
                   target: 'Target: >90%',
                   color: TEAL,
                 },
                 {
                   label: 'Deviation Events',
-                  value: (lvi?.updatesAppliedTotal ?? 0) > 5 ? '13%' : '—',
+                  value: (display?.updatesAppliedTotal ?? 0) > 5 ? '13%' : '—',
                   sub: 'Activations where protocol was bypassed or modified at trigger point',
                   target: 'Target: <10%',
                   color: '#DC2626',
@@ -617,7 +665,7 @@ export default function AdvanceIntelligence() {
                   label: 'Confidence Threshold',
                   value: '10 activations',
                   sub: 'Evidence-based estimate for deviation rate to drop below 10%',
-                  target: `Current: ${lvi?.updatesAppliedTotal ?? 0} activations completed`,
+                  target: `Current: ${display?.updatesAppliedTotal ?? 0} activations completed`,
                   color: GOLD,
                 },
               ].map((m) => (
@@ -679,15 +727,15 @@ export default function AdvanceIntelligence() {
                   Your Competitive Moat — Quantified
                 </div>
                 <div className="text-white text-lg font-bold mb-2">
-                  {lvi?.monthsToRebuild ?? 0} months for any competitor to replicate what this
+                  {display?.monthsToRebuild ?? 0} months for any competitor to replicate what this
                   organization has encoded. That number grows with every close-out.
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                   {[
-                    { label: 'Compound Score', val: `${lvi?.compoundScore ?? 0}/100` },
-                    { label: 'Updates Applied', val: lvi?.updatesAppliedTotal ?? 0 },
-                    { label: 'Minutes Saved', val: `${lvi?.totalMinutesSaved ?? 0} total` },
-                    { label: 'Protocols Hardened', val: `${lvi?.protocolsWithEvidenceCount ?? 0} of 180` },
+                    { label: 'Compound Score', val: `${display?.compoundScore ?? 0}/100` },
+                    { label: 'Updates Applied', val: display?.updatesAppliedTotal ?? 0 },
+                    { label: 'Minutes Saved', val: `${display?.totalMinutesSaved ?? 0} total` },
+                    { label: 'Protocols Hardened', val: `${display?.protocolsWithEvidenceCount ?? 0} of 180` },
                   ].map((m) => (
                     <div key={m.label}>
                       <div className="text-xl font-bold" style={{ color: GOLD }}>{m.val}</div>
