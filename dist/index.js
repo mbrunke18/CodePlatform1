@@ -38322,7 +38322,16 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/domains", async (req, res) => {
       try {
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);
-        res.json(domains);
+        const counts = await db.select({
+          domainId: playbookLibrary.domainId,
+          count: sql17`count(*)::int`
+        }).from(playbookLibrary).where(sql17`${playbookLibrary.id} <= 180`).groupBy(playbookLibrary.domainId);
+        const countMap = new Map(counts.map((c) => [c.domainId, c.count]));
+        const domainsWithCounts = domains.map((d) => ({
+          ...d,
+          totalPlaybooks: countMap.get(d.id) ?? d.totalPlaybooks ?? 0
+        }));
+        res.json(domainsWithCounts);
       } catch (error) {
         console.error("Error fetching domains:", error);
         res.status(500).json({ error: "Failed to fetch playbook domains" });
@@ -63474,9 +63483,16 @@ app.use(
       }
     },
     crossOriginEmbedderPolicy: false,
-    crossOriginResourcePolicy: { policy: "cross-origin" }
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    noSniff: true,
+    frameguard: { action: "sameorigin" },
+    referrerPolicy: { policy: "strict-origin-when-cross-origin" }
   })
 );
+app.use((_req, res, next) => {
+  res.setHeader("Permissions-Policy", "geolocation=(), microphone=(), camera=(), payment=()");
+  next();
+});
 var apiLimiter = rateLimit2({
   windowMs: 15 * 60 * 1e3,
   // 15 minutes

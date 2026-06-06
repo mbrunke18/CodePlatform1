@@ -42,11 +42,13 @@ const fieldStyle: React.CSSProperties = {
   letterSpacing: "0.01em",
 };
 
-function MinimalInput({ field, placeholder }: { field: any; placeholder: string }) {
+function MinimalInput({ field, placeholder, type = "text" }: { field: any; placeholder: string; type?: string }) {
   return (
     <input
       {...field}
+      type={type}
       placeholder={placeholder}
+      required
       style={fieldStyle}
       className="request-field"
     />

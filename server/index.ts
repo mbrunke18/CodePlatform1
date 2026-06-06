@@ -160,8 +160,16 @@ app.use(
     },
     crossOriginEmbedderPolicy: false,
     crossOriginResourcePolicy: { policy: "cross-origin" },
+    noSniff: true,
+    frameguard: { action: "sameorigin" },
+    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   }),
 );
+
+app.use((_req, res, next) => {
+  res.setHeader("Permissions-Policy", "geolocation=(), microphone=(), camera=(), payment=()");
+  next();
+});
 
 // Production Security: API Rate Limiting
 const apiLimiter = rateLimit({

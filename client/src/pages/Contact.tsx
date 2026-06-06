@@ -175,7 +175,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">First Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="John" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
+                              <Input placeholder="John" {...field} required className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -188,7 +188,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Last Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Smith" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
+                              <Input placeholder="Smith" {...field} required className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -203,7 +203,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Business Email *</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="john.smith@company.com" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
+                            <Input type="email" placeholder="john.smith@company.com" {...field} required className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -218,7 +218,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Company Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Acme Corporation" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
+                              <Input placeholder="Acme Corporation" {...field} required className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -231,7 +231,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Job Title *</FormLabel>
                             <FormControl>
-                              <Input placeholder="VP of Strategy" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
+                              <Input placeholder="VP of Strategy" {...field} required className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>

@@ -108,6 +108,11 @@ export default function FoundingPartnerBrief() {
       {/* ── GOLD RULE ───────────────────────────────────────────────────── */}
       <div style={{ background: GOLD, height: 3 }} />
 
+      {/* Semantically required h1 — visually hidden, preserves accessibility + SEO */}
+      <h1 style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0 }}>
+        Founding Partner Program — 90-Day Validation Partnership | VaughnMartin Readiness OS
+      </h1>
+
       {/* ── SCARCITY SIGNAL ─────────────────────────────────────────────── */}
       <div style={{ background: IVORY, padding: "14px 40px", textAlign: "center", borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
         <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>

@@ -173,7 +173,23 @@ playbookLibraryRouter.get('/domains', async (req, res) => {
       .from(playbookDomains)
       .orderBy(playbookDomains.sequence);
 
-    res.json(domains);
+    const counts = await db
+      .select({
+        domainId: playbookLibrary.domainId,
+        count: sql<number>`count(*)::int`,
+      })
+      .from(playbookLibrary)
+      .where(sql`${playbookLibrary.id} <= 180`)
+      .groupBy(playbookLibrary.domainId);
+
+    const countMap = new Map(counts.map(c => [c.domainId, c.count]));
+
+    const domainsWithCounts = domains.map(d => ({
+      ...d,
+      totalPlaybooks: countMap.get(d.id) ?? (d as any).totalPlaybooks ?? 0,
+    }));
+
+    res.json(domainsWithCounts);
   } catch (error) {
     console.error('Error fetching domains:', error);
     res.status(500).json({ error: 'Failed to fetch playbook domains' });

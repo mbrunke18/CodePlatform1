@@ -444,6 +444,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
 
   const { data: dashRaw } = useQuery<{ success: boolean; data: { categories: Array<{ categoryId: string; status: string }> } }>({
     queryKey: ["/api/intelligence/dashboard"],
+    enabled: isAuthenticated,
     refetchInterval: 60_000,
     staleTime: 30_000,
   });
