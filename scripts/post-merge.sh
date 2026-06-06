@@ -45,3 +45,13 @@ const sql = \`
 \`;
 pool.query(sql).then(() => { console.log('Tables created/verified.'); pool.end(); }).catch(e => { console.error(e.message); pool.end(); process.exit(1); });
 "
+
+# Push latest commits to GitHub so the repo stays in sync automatically.
+echo "Pushing to GitHub (origin)..."
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "GITHUB_TOKEN not set — skipping GitHub push."
+else
+  git remote set-url origin "https://mbrunke18:${GITHUB_TOKEN}@github.com/mbrunke18/CodePlatform1.git"
+  git push --force-with-lease origin main
+  echo "GitHub sync complete."
+fi
