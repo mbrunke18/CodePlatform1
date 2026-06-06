@@ -1,0 +1,65 @@
+Perfect — here’s the production-grade hardening checklist in priority order.
+P0 (must do first) — make failures signal real regressions
+Stabilize selectors (stop relying on marketing copy)
+Add data-testid to all conversion-critical elements:
+request-access submit
+founding partner apply CTA
+playbook guest gate CTA
+12-minute demo scenario cards + start/authorize buttons
+Refactor tests to use these selectors first, text second.
+Replace fixed sleeps with condition-based waits
+In e2e/readiness-os-full-suite.spec.ts, remove waitForTimeout(8500) patterns.
+Use await expect(locator).toBeVisible() / toContainText() with explicit timeouts.
+This single change will cut flake rate significantly.
+Split “smoke” from “full”
+Smoke: homepage, request-access happy path, one API endpoint, one demo route.
+Full: all current scenarios.
+Run smoke on every PR; full on merge/nightly.
+Normalize API endpoint assertions
+Pick one canonical endpoint name (/api/readiness-score vs /api/preparedness/score) and align:
+docs
+test file
+product routes
+Avoid drift between docs and tests.
+P1 (next) — improve maintainability and confidence
+Create reusable page objects/helpers
+Add:
+e2e/helpers/navigation.ts
+e2e/helpers/assertions.ts
+e2e/pages/requestAccessPage.ts
+Keep test bodies short and readable.
+Add schema-level API checks (not just status/body length)
+Validate key response fields for:
+/api/playbook-library
+/api/playbook-library/domains
+/api/public/live-context
+Catch silent shape regressions early.
+Harden redirect/alias tests
+Assert final URL and key element presence (not only URL).
+Example: /command-center should both route correctly and render mission-control anchor element.
+Make text checks resilient
+For narrative sections, assert on 1–2 stable phrases max, not whole sentence structures.
+Prevent tests breaking from harmless copy edits.
+P2 (operational) — turn suite into release guardrail
+Wire CI workflow
+Add .github/workflows/e2e.yml:
+install deps
+install Playwright browsers
+run smoke on PR
+upload report/artifacts on failure
+Optional: run full suite nightly and on main.
+Add npm scripts for clear execution modes
+test:e2e:smoke
+test:e2e:full
+test:e2e:prod (with PLAYWRIGHT_BASE_URL)
+Makes local/CI/prod verification consistent.
+Set pragmatic retries only in CI
+Local: retries 0
+CI: retries 1–2
+Keep trace/video/screenshot on failure for triage speed.
+“Done” criteria (definition of production-grade)
+Smoke suite passes reliably on PRs.
+Full suite passes on merge/nightly with low flake.
+No fixed sleeps in critical-path tests.
+Endpoint/docs/test naming fully aligned.
+Failures produce actionable artifacts automatically.
