@@ -1,0 +1,81 @@
+Great — here’s a concrete 3-release build plan for CodePlatform1 to create that “must-have / obvious purchase” moment.
+North-star capability
+Readiness Autopilot: detect -> decide -> execute -> learn -> auto-improve, with executive guardrails and audited ROI.
+Release 1: MVP Autopilot Execution Layer
+Goal: move from “recommendations” to pre-approved machine execution.
+Backend (new components)
+AutopilotOrchestratorService
+Consumes trigger events, evaluates policy, dispatches actions.
+ActionConnectorService
+Unified adapters: Teams, Jira, ServiceNow, PagerDuty, Salesforce, email/SMS.
+Policy engine
+Rules: trigger type, confidence threshold, severity, org scope, auto-run allowed, required approvals.
+New tables
+autopilotPolicies (org policy + guardrails)
+autopilotActionTemplates (typed action payloads)
+autopilotExecutions (run header: trigger, policy, status, latency)
+autopilotExecutionSteps (step-level state + external IDs)
+autopilotAuditLog (immutable decision trail)
+API surface
+POST /api/autopilot/policies
+GET /api/autopilot/policies
+POST /api/autopilot/evaluate (dry-run decision)
+POST /api/autopilot/execute (manual or auto path)
+POST /api/autopilot/executions/:id/approve
+POST /api/autopilot/executions/:id/abort
+GET /api/autopilot/executions/:id
+UI flow
+Mission Control -> “Autopilot Queue”
+“Auto-run”, “Needs approval”, “Blocked by policy”
+one-click approve/abort, step-by-step audit pane
+Release 2: Safe Auto-Improve (Learning -> Applied Change)
+Goal: close the loop so ADVANCE suggestions become controlled production improvements.
+Extend existing learning services
+DebriefFeedbackService + PlaybookLearningService generate change proposals (not just insights).
+PreparationUpdateEngine creates structured deltas (task order, owner role, decision gate thresholds, signal weights).
+New tables
+playbookChangeProposals (diff + rationale + expected impact)
+playbookVersionHistory (versioned snapshots)
+playbookRolloutPlans (canary scope, success criteria)
+playbookRolloutResults (outcome and rollback metadata)
+API surface
+GET /api/playbooks/:id/proposals
+POST /api/playbooks/:id/proposals/:proposalId/simulate
+POST /api/playbooks/:id/proposals/:proposalId/approve
+POST /api/playbooks/:id/proposals/:proposalId/apply-canary
+POST /api/playbooks/:id/versions/:versionId/rollback
+UI flow
+Workspace Advance -> “Learning Queue”
+proposal diff view (before/after)
+simulation score + risk flags
+canary apply and rollback controls
+Release 3: Board ROI Ledger (Proof engine)
+Goal: make purchase non-negotiable by proving quantified value continuously.
+New tables
+roiModelInputs (hourly rates, incident cost curves, SLA penalties, downtime cost)
+activationValueLedger (per-activation value entries)
+readinessKpiSnapshots (periodic KPI history)
+boardEvidenceArtifacts (reports + signed audit references)
+API surface
+POST /api/roi/model
+GET /api/roi/ledger
+GET /api/roi/summary?period=quarter
+GET /api/board/readiness-report
+UI flow
+Board Readiness Dashboard
+“Value created this period”
+“Loss avoided”
+“Time-to-coordination delta”
+“Autopilot contribution vs manual”
+Guardrails that make this enterprise-safe
+Tiered approvals by severity and business function
+Blast-radius limits (max systems/users/actions per run)
+Kill switch at org and domain level
+Immutable audit trail + signed evidence
+Mandatory simulation/canary before broad auto-apply
+“Must-have” success criteria (product-level)
+Measurable reduction in activation latency (p95)
+Growing share of safe auto-executed actions
+Demonstrable improvement from versioned protocol changes
+Financial value ledger trusted by CFO/board
+If you want, next I can turn this into an implementation spec mapped to your current code (routes.ts, PlaybookLearningService, PreparationUpdateEngine, WorkspaceAdvance) with exact file-by-file changes.
