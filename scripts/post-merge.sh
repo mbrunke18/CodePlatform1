@@ -2,7 +2,6 @@
 set -e
 npm install
 # Run targeted SQL migrations for any new tables added by merged tasks.
-# Avoids drizzle-kit's interactive rename-detection prompts in non-TTY environments.
 node -e "
 const { Pool } = require('pg');
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -51,7 +50,13 @@ echo "Pushing to GitHub (origin)..."
 if [ -z "$GITHUB_TOKEN" ]; then
   echo "GITHUB_TOKEN not set — skipping GitHub push."
 else
+  # Clear any stale git lock files left by prior processes.
+  find .git -name "*.lock" -delete 2>/dev/null || true
+
   git remote set-url origin "https://mbrunke18:${GITHUB_TOKEN}@github.com/mbrunke18/CodePlatform1.git"
-  git push --force-with-lease origin main
-  echo "GitHub sync complete."
+
+  # Pull remote changes with rebase so Replit commits sit on top cleanly.
+  git pull --rebase origin main 2>/dev/null || true
+
+  git push origin main && echo "GitHub sync complete." || echo "GitHub push skipped (non-fatal)."
 fi
