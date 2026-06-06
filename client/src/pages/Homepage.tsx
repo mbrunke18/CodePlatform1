@@ -455,6 +455,7 @@ function HomepageNav() {
             <Link
               href="/founding-partner-program"
               onClick={() => trackCTA("nav")}
+              data-testid="nav-founding-partner-cta"
               style={{
                 ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
                 padding: "10px 20px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",

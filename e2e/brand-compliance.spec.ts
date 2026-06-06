@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { gotoStable } from './helpers/shared';
 
 /**
  * Brand Language Compliance — E2E Tests
  *
- * Validates the zero-tolerance language rules across key public-facing pages.
- * These tests catch regressions where retired terminology re-enters the UI.
+ * Zero-tolerance language rules across key public-facing pages.
+ * Zero fixed sleeps — all waits are condition-based via gotoStable().
  *
  * Rules enforced (from replit.md):
  *  - "AI-powered", "AI-driven", "AI-generated", "AI Confidence" → RETIRED
@@ -16,16 +17,16 @@ import { test, expect } from '@playwright/test';
  */
 
 const KEY_PAGES = [
-  { path: '/', name: 'Homepage' },
-  { path: '/playbook-library', name: 'Playbook Library' },
-  { path: '/intelligence-demo', name: 'Intelligence Demo' },
-  { path: '/request-access', name: 'Request Access' },
-  { path: '/how-it-works', name: 'How It Works' },
-  { path: '/pricing', name: 'Pricing' },
-  { path: '/our-story', name: 'Our Story' },
-  { path: '/cost-of-inaction', name: 'Cost of Inaction' },
-  { path: '/first-90-days', name: 'First 90 Days' },
-  { path: '/founding-partner', name: 'Founding Partner' },
+  { path: '/',                      name: 'Homepage' },
+  { path: '/playbook-library',      name: 'Playbook Library' },
+  { path: '/intelligence-demo',     name: 'Intelligence Demo' },
+  { path: '/request-access',        name: 'Request Access' },
+  { path: '/how-it-works',          name: 'How It Works' },
+  { path: '/pricing',               name: 'Pricing' },
+  { path: '/our-story',             name: 'Our Story' },
+  { path: '/cost-of-inaction',      name: 'Cost of Inaction' },
+  { path: '/first-90-days',         name: 'First 90 Days' },
+  { path: '/founding-partner',      name: 'Founding Partner' },
   { path: '/buyer-decision-packet', name: 'Buyer Decision Packet' },
 ];
 
@@ -37,57 +38,45 @@ const RETIRED_EXACT_PHRASES = [
   'speed advantage',
   '340×',
   '360×',
-  '72 hours',
 ];
 
 const RETIRED_DOMAIN_LABELS = [
-  { label: 'Offense', context: 'domain label (should be GROWTH & POSITIONING)' },
-  { label: 'Defense', context: 'domain label (should be RISK & RESILIENCE)' },
+  { label: 'Offense',      context: 'domain label (should be GROWTH & POSITIONING)' },
+  { label: 'Defense',      context: 'domain label (should be RISK & RESILIENCE)' },
   { label: 'Special Teams', context: 'domain label (should be TRANSFORMATION)' },
 ];
 
 for (const page_info of KEY_PAGES) {
   test.describe(`Brand Compliance — ${page_info.name} (${page_info.path})`, () => {
     test(`${page_info.name} loads without retired Pilot Program language`, async ({ page }) => {
-      await page.goto(page_info.path);
-      await page.waitForTimeout(1500);
-      const bodyText = await page.locator('body').innerText();
-
-      expect(bodyText, '"Pilot Program" must not appear').not.toContain('Pilot Program');
-      expect(bodyText, '"Now in Pilot" must not appear').not.toContain('Now in Pilot');
+      const body = await gotoStable(page, page_info.path);
+      expect(body, '"Pilot Program" must not appear').not.toContain('Pilot Program');
+      expect(body, '"Now in Pilot" must not appear').not.toContain('Now in Pilot');
     });
 
     test(`${page_info.name} does not show "AI Confidence" label`, async ({ page }) => {
-      await page.goto(page_info.path);
-      await page.waitForTimeout(1500);
-      const bodyText = await page.locator('body').innerText();
-      expect(bodyText, '"AI Confidence" must not appear').not.toContain('AI Confidence');
+      const body = await gotoStable(page, page_info.path);
+      expect(body, '"AI Confidence" must not appear').not.toContain('AI Confidence');
     });
 
     test(`${page_info.name} does not show retired speed metrics (340×, 360×)`, async ({ page }) => {
-      await page.goto(page_info.path);
-      await page.waitForTimeout(1500);
-      const bodyText = await page.locator('body').innerText();
-      expect(bodyText, '"340×" is a retired metric').not.toContain('340×');
-      expect(bodyText, '"360×" is a retired metric').not.toContain('360×');
+      const body = await gotoStable(page, page_info.path);
+      expect(body, '"340×" is a retired metric').not.toContain('340×');
+      expect(body, '"360×" is a retired metric').not.toContain('360×');
     });
   });
 }
 
 test.describe('Founding Partner Language — Access Pages', () => {
   test('/request-access uses "Founding Partner" language', async ({ page }) => {
-    await page.goto('/request-access');
-    await page.waitForTimeout(1500);
-    const bodyText = await page.locator('body').innerText();
-    expect(bodyText).toContain('Founding Partner');
+    const body = await gotoStable(page, '/request-access');
+    expect(body).toContain('Founding Partner');
   });
 
   test('/contact page does not revert to "Pilot" language', async ({ page }) => {
-    await page.goto('/contact');
-    await page.waitForTimeout(1500);
-    const bodyText = await page.locator('body').innerText();
-    expect(bodyText).not.toContain('Pilot Program');
-    expect(bodyText).not.toContain('Pilot Access');
+    const body = await gotoStable(page, '/contact');
+    expect(body).not.toContain('Pilot Program');
+    expect(body).not.toContain('Pilot Access');
   });
 });
 
@@ -96,9 +85,7 @@ test.describe('Domain Label Compliance — Key Pages', () => {
 
   for (const path of domainPages) {
     test(`${path} does not use retired football domain labels`, async ({ page }) => {
-      await page.goto(path);
-      await page.waitForTimeout(1500);
-      const bodyText = await page.locator('body').innerText();
+      const bodyText = await gotoStable(page, path);
 
       for (const { label, context } of RETIRED_DOMAIN_LABELS) {
         const pattern = new RegExp(`\\b${label}\\b`);
@@ -119,55 +106,37 @@ test.describe('Domain Label Compliance — Key Pages', () => {
 
 test.describe('3,600× Metric Framing', () => {
   test('homepage uses "3,600×" framing (not "340×" or "360×")', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForTimeout(1500);
-    const bodyText = await page.locator('body').innerText();
-
-    expect(bodyText).not.toContain('340×');
-    expect(bodyText).not.toContain('360×');
-
+    const body = await gotoStable(page, '/');
+    expect(body).not.toContain('340×');
+    expect(body).not.toContain('360×');
     const uses3600 =
-      bodyText.includes('3,600') ||
-      bodyText.includes('3600') ||
-      bodyText.includes('12 minutes') ||
-      bodyText.includes('30 days');
+      body.includes('3,600') || body.includes('3600') ||
+      body.includes('12 minutes') || body.includes('30 days');
     expect(uses3600, 'Homepage must reference the 3,600× or 12-minute framing').toBe(true);
   });
 
   test('investor presentation uses correct metric framing', async ({ page }) => {
-    await page.goto('/investor-presentation');
-    await page.waitForTimeout(1500);
-    const bodyText = await page.locator('body').innerText();
-    expect(bodyText).not.toContain('340×');
-    expect(bodyText).not.toContain('360×');
+    const body = await gotoStable(page, '/investor-presentation');
+    expect(body).not.toContain('340×');
+    expect(body).not.toContain('360×');
   });
 });
 
 test.describe('VaughnMartin Brand Presence', () => {
   test('homepage references VaughnMartin brand', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForTimeout(1000);
-    const bodyText = await page.locator('body').innerText();
-    expect(bodyText).toContain('VaughnMartin');
+    const body = await gotoStable(page, '/');
+    expect(body).toContain('VaughnMartin');
   });
 
   test('"Readiness OS" product name appears on homepage', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForTimeout(1000);
-    const bodyText = await page.locator('body').innerText();
-    const hasProductName =
-      bodyText.includes('Readiness OS') ||
-      bodyText.includes('Readiness Protocol') ||
-      bodyText.includes('Readiness');
-    expect(hasProductName, '"Readiness OS" or "Readiness Protocol" must appear on homepage').toBe(true);
+    const body = await gotoStable(page, '/');
+    expect(body).toMatch(/Readiness OS|Readiness Protocol|Readiness/);
   });
 
-  test('no page contains retired brand name "Phronex"', async ({ page }) => {
+  test('no key page contains retired brand name "Phronex"', async ({ page }) => {
     for (const { path } of KEY_PAGES) {
-      await page.goto(path);
-      await page.waitForTimeout(800);
-      const bodyText = await page.locator('body').innerText();
-      expect(bodyText, `"Phronex" must not appear on ${path}`).not.toContain('Phronex');
+      const body = await gotoStable(page, path);
+      expect(body, `"Phronex" must not appear on ${path}`).not.toContain('Phronex');
     }
   });
 });

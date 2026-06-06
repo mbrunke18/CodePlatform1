@@ -411,7 +411,7 @@ export default function FoundingPartnerProgram() {
               <button
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#C9A84C', color: '#0A0F2E', fontWeight: 800, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 40px', border: 'none', cursor: 'pointer' }}
                 onClick={() => document.getElementById('fp-application')?.scrollIntoView({ behavior: 'smooth' })}
-                data-testid="button-apply-pilot"
+                data-testid="founding-partner-apply-cta"
               >
                 Apply for the 2026 Cohort →
               </button>

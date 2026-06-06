@@ -239,6 +239,7 @@ export default function RequestAccess() {
                       type="submit"
                       disabled={mutation.isPending}
                       className="access-submit"
+                      data-testid="request-access-submit"
                       style={{
                         width: "100%", padding: "16px 0",
                         background: "transparent",

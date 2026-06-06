@@ -1,21 +1,29 @@
 import { defineConfig, devices } from '@playwright/test';
 
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
-const BASE_URL = process.env.BASE_URL || 'http://localhost:5000';
-const isProduction = BASE_URL.includes('vaughnmartin.com') || BASE_URL.includes('https://');
+const BASE_URL =
+  process.env.PLAYWRIGHT_BASE_URL ||
+  process.env.BASE_URL ||
+  'http://localhost:5000';
+
+const isProduction =
+  BASE_URL.includes('vaughnmartin.com') ||
+  (BASE_URL.startsWith('https://') && !BASE_URL.includes('localhost'));
+
+const isCI = !!process.env.CI;
 
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  forbidOnly: isCI,
+  retries: isCI ? 2 : 0,
+  workers: isCI ? 1 : undefined,
+  reporter: isCI ? [['html'], ['github']] : 'html',
+
   use: {
     baseURL: BASE_URL,
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'on-first-retry',
   },
 
   projects: [
@@ -33,14 +41,14 @@ export default defineConfig({
     },
   ],
 
-  /* Only start the local dev server when not running against production */
   ...(isProduction
     ? {}
     : {
         webServer: {
           command: 'npm run dev',
           url: 'http://localhost:5000',
-          reuseExistingServer: !process.env.CI,
+          reuseExistingServer: !isCI,
+          timeout: 60000,
         },
       }),
 });

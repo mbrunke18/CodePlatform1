@@ -5,3 +5,4 @@
 - [apiRequest returns Response not JSON](api-request-json.md) — useMutation mutationFn must chain .then(res => res.json()) or data will be the raw Response object
 - [External signal API limits in Replit](signal-api-limits.md) — GDELT HTTP 429 and CFPB 95MB streams are incompatible with shared cloud IPs; replace with RSS-based alternatives
 - [Vite tsx ESM fix](vite-tsx-esm-fix.md) — tsx zeroes vite's namespace via CJS resolve; use direct file:// URLs in a .mjs shim to load vite's ESM entry
+- [E2E Test Infrastructure](e2e-test-infra.md) — helper locations, data-testid canonical map, zero-sleep rule, playwright.config, and npm scripts to add

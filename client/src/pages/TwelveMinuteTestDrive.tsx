@@ -455,7 +455,7 @@ export default function TwelveMinuteTestDrive() {
                 return isExternal ? (
                   <button key={s.id} onClick={() => { window.location.href = (s as any).href; }} style={{ ...cardStyle, width: '100%' }}>{cardInner}</button>
                 ) : (
-                  <button key={s.id} onClick={() => setSelectedId(s.id)} style={{ ...cardStyle, width: '100%' }}>{cardInner}</button>
+                  <button key={s.id} data-testid={`scenario-card-${s.id}`} onClick={() => setSelectedId(s.id)} style={{ ...cardStyle, width: '100%' }}>{cardInner}</button>
                 );
               })}
             </div>
@@ -610,6 +610,7 @@ export default function TwelveMinuteTestDrive() {
                     <div style={{ textAlign: 'center' }}>
                       {/* Primary path: straight to war room */}
                       <button
+                        data-testid="testdrive-launch-war-room"
                         onClick={() => { setStep(3); scrollToTop(); startWarRoom(tasks); }}
                         style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 44px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', display: 'block', margin: '0 auto' }}
                       >
