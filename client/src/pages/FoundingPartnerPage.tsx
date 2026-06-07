@@ -170,6 +170,76 @@ export default function FoundingPartnerPage() {
           <div style={{ fontSize: 12, color: MUTED, marginTop: 12 }}>2 spots · No commitment required to apply · Response within 48 hours</div>
         </div>
 
+        {/* Investment Comparison */}
+        <div style={{ marginBottom: 72 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 36 }}>
+            <div style={{ flex: 1, height: 1, background: BORDER }} />
+            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: MUTED }}>The Investment Comparison</div>
+            <div style={{ flex: 1, height: 1, background: BORDER }} />
+          </div>
+
+          {/* Positioning statement */}
+          <div style={{ maxWidth: 680, margin: '0 auto 40px', textAlign: 'center' }}>
+            <p style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, lineHeight: 1.55, marginBottom: 16, fontStyle: 'italic' }}>
+              Most organizations pay $75K–$300K for a consulting engagement that produces organizational clarity about how to respond to strategic triggers.
+            </p>
+            <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75 }}>
+              The clarity lives in a document. The document does not activate when the next trigger fires.
+            </p>
+          </div>
+
+          {/* Comparison table */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 32 }}>
+            {/* Consulting column */}
+            <div style={{ padding: '32px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem', background: '#FAFAF8' }}>
+              <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Strategic Consulting Engagement</div>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: NAVY, marginBottom: 24 }}>$75K – $300K</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {[
+                  { label: "Duration", value: "4–12 week engagement" },
+                  { label: "Output", value: "Strategic document and recommendations" },
+                  { label: "After the engagement ends", value: "The document stays. The consultant leaves." },
+                  { label: "Next trigger fires", value: "New engagement. New cost. Same mobilization cycle." },
+                  { label: "Institutional memory", value: "Lives with the consultant — not the organization" },
+                ].map(row => (
+                  <div key={row.label} style={{ paddingBottom: 14, borderBottom: `1px solid ${BORDER}` }}>
+                    <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginBottom: 4 }}>{row.label}</div>
+                    <div style={{ fontSize: 13, color: NAVY, lineHeight: 1.5 }}>{row.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Readiness OS column */}
+            <div style={{ padding: '32px', border: `1.5px solid ${GOLD}`, borderRadius: '0.15rem', background: 'rgba(201,168,76,0.03)', position: 'relative' }}>
+              <div style={{ position: 'absolute', top: -1, left: 0, right: 0, height: 3, background: GOLD, borderRadius: '0.15rem 0.15rem 0 0' }} />
+              <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Founding Partner Program</div>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: NAVY, marginBottom: 24 }}>$75K</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {[
+                  { label: "Duration", value: "90-day structured onboarding" },
+                  { label: "Output", value: "Running infrastructure — 5 staged protocols, live signal monitoring" },
+                  { label: "After the engagement ends", value: "The platform stays. The preparation stays. It compounds." },
+                  { label: "Next trigger fires", value: "Infrastructure activates. No additional mobilization cost." },
+                  { label: "Institutional memory", value: "Encoded in the platform — grows with every activation" },
+                ].map(row => (
+                  <div key={row.label} style={{ paddingBottom: 14, borderBottom: `1px solid rgba(201,168,76,0.2)` }}>
+                    <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>{row.label}</div>
+                    <div style={{ fontSize: 13, color: NAVY, lineHeight: 1.5, fontWeight: 500 }}>{row.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* The line */}
+          <div style={{ textAlign: 'center', padding: '28px 32px', background: NAVY, borderRadius: '0.15rem' }}>
+            <p style={{ ...CG, fontSize: 24, fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>
+              Same entry investment.&nbsp;&nbsp;<span style={{ color: GOLD }}>Permanently different outcome.</span>
+            </p>
+          </div>
+        </div>
+
         {/* What you get */}
         <div style={{ marginBottom: 64 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
