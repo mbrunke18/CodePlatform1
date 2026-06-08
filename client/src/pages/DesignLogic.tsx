@@ -211,6 +211,78 @@ export default function DesignLogic() {
 
         <GoldRule />
 
+        {/* THREE LAYERS */}
+        <Section label="The Complete Problem" title="Three Layers — Each Necessary, None Sufficient Alone">
+          <Body>
+            Recent exchanges with governance researchers have produced the most precise framing of the
+            complete problem I have encountered. I want to name it here because it is the clearest way
+            to explain what the platform addresses, what it partially addresses, and what it has not yet solved.
+          </Body>
+          <Emphasis>
+            Preparation architecture determines whether a response exists.
+            Decision survivability determines whether ownership holds under pressure.
+            Capability survivability determines whether the standard continues holding when the person changes.
+          </Emphasis>
+          <Body>
+            Each layer is necessary. None is sufficient on its own. Most organizations work on one.
+          </Body>
+
+          <div style={{ marginTop: 8 }}>
+            {[
+              {
+                number: "01",
+                label: "Preparation Architecture",
+                status: "Addressed",
+                statusColor: TEAL,
+                question: "Does the response exist?",
+                body: "The protocol library, signal detection, task staging, and stakeholder mapping exist before the trigger fires. This is what the platform was built to solve. The architecture supplies the response so the organization does not have to construct it under pressure.",
+              },
+              {
+                number: "02",
+                label: "Decision Survivability",
+                status: "Partially addressed",
+                statusColor: GOLD,
+                question: "Does ownership hold under pressure?",
+                body: "The Close Out Gate, the four decision options, and the governance record address this layer directly. The design ensures that one named person owns the authorization and that the close-out captures what held and what did not. The measurement of whether that ownership pattern holds consistently across multiple activations is still maturing.",
+              },
+              {
+                number: "03",
+                label: "Capability Survivability",
+                status: "In progress",
+                statusColor: "#9CA3AF",
+                question: "Does the standard hold when the person changes?",
+                body: "This is the layer the platform has not yet fully closed. The ADVANCE loop encodes learning from every activation and the institutional memory compounds with use. But whether the standard continues holding when leadership changes — whether the new executive authorizes with the same rigor as the one who built the preparation — is upstream of what the architecture can currently measure. This is the open question the next phase of the work is designed to address.",
+              },
+            ].map(layer => (
+              <div key={layer.number} style={{ display: "flex", gap: 24, borderTop: `1px solid ${GOLD}18`, paddingTop: 28, paddingBottom: 28 }}>
+                <div style={{ flexShrink: 0, width: 40, height: 40, background: `${GOLD}12`, border: `1px solid ${GOLD}30`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 800, color: GOLD, letterSpacing: "0.05em" }}>{layer.number}</span>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6, flexWrap: "wrap" as const }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: NAVY }}>{layer.label}</div>
+                    <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: layer.statusColor, background: `${layer.statusColor}12`, border: `1px solid ${layer.statusColor}30`, padding: "2px 8px" }}>
+                      {layer.status}
+                    </span>
+                  </div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 600, color: TEAL, marginBottom: 10, letterSpacing: "0.02em" }}>
+                    {layer.question}
+                  </div>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: "#2A2F4A", lineHeight: 1.8, margin: 0 }}>{layer.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Body style={{ marginTop: 8 }}>
+            The sections that follow explain each design decision in this platform — which layer it
+            addresses, why that boundary was drawn where it was, and where the honest limits of the
+            architecture currently sit.
+          </Body>
+        </Section>
+
+        <GoldRule />
+
         {/* WHAT I DECIDED TO ENFORCE */}
         <Section label="Structural Enforcement" title="What I Decided to Enforce Structurally">
           <Body>
