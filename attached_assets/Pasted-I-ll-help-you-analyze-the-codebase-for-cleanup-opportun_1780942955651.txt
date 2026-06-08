@@ -1,0 +1,89 @@
+I'll help you analyze the codebase for cleanup opportunities. Let me first examine the repository structure and code quality.Let me get a better view of the repository structure and code files:Your codebase shows several signs that it would benefit from a comprehensive cleanup. Here's a practical approach to address code quality and technical debt:
+
+## Key Issues Identified
+
+**1. Clutter in Root Directory**
+Your repository root contains numerous large export/dump files that shouldn't be there:
+- Multiple codebase dumps (`.txt` files: 3.6MB, 5.8MB, 6.8MB+)
+- Legacy exports (PHRONEX, ACUETIC, Bastion, Vexor, ExecuteIQ complete code exports)
+- Numerous screenshots and PNG files
+
+These bloat the repo and suggest historical organization problems.
+
+**2. Archive & Legacy Directories**
+- `archive/`, `executeiq-complete/`, `deck_v2/`, `exports/` - these accumulate old code
+- `attached_assets/`, `carousel/`, `screenshots/` - loose collections
+
+**3. Large Repository Size**
+At 669KB, your codebase is substantial. When combined with duplicative export files, this impacts clone times and navigation.
+
+## Recommended Cleanup Strategy
+
+### Phase 1: Remove Non-Code Artifacts (Immediate)
+1. **Delete root-level export/dump files** (.txt files with codebase exports)
+2. **Remove all PNG screenshots** from root (move to `/docs/screenshots` if needed for documentation)
+3. **Clean up empty or stale directories**: `archive/`, `artifacts/`, `carousel/`, `exported/`, `executeiq-complete/`, `deck_assets/`, `deck_v2/`
+4. **Delete unused config files**: Empty files like `tsx`, `vite`
+
+### Phase 2: Code Organization (Week 1-2)
+```
+Desired structure:
+/
+├── client/          (React/TypeScript components)
+├── server/          (Backend API)
+├── shared/          (Shared types & utilities)
+├── scripts/         (Build/automation scripts)
+├── e2e/             (End-to-end tests)
+├── docs/            (Documentation & screenshots)
+├── migrations/      (Database migrations)
+└── config files     (Only active configs)
+```
+
+### Phase 3: Code Quality Audit
+1. **Identify unused code**:
+   - Search for commented-out blocks (common in legacy projects)
+   - Find imports that reference deleted files
+   - Check for dead code paths (unused functions/exports)
+
+2. **Dependency review**:
+   - Audit `package.json` - remove unused npm packages
+   - Check for deprecated dependencies (e.g., outdated versions of major libraries)
+
+3. **Duplicate features**: 
+   - Document what each of these represents (PHRONEX, ACUETIC, Bastion, Vexor, ExecuteIQ mentioned in your exports)
+   - Consolidate into a single codebase or clearly separate concerns
+
+### Phase 4: Code Standards
+1. **Establish patterns**:
+   - Add ESLint rules (TypeScript strict mode)
+   - Configure Prettier for consistent formatting
+   - Add pre-commit hooks via husky
+
+2. **Test coverage**:
+   - Set up test coverage thresholds in `vitest.config.ts`
+   - Ensure critical paths have tests
+
+3. **Documentation**:
+   - Update `developer-reference.md` with current architecture
+   - Add README for each major module
+
+## Immediate Actions
+
+Create a cleanup PR:
+
+```bash
+# Remove exports (be careful - verify these aren't needed first)
+rm -f *.txt *.png
+
+# Clean empty dirs
+rmdir archive/ artifacts/ carousel/ etc.
+
+# Verify structure
+git add -A
+git commit -m "chore: remove legacy exports and artifacts"
+```
+
+Would you like me to:
+1. Create a detailed audit of specific files to determine what can be safely removed?
+2. Analyze the actual source code (`client/`, `server/`, `shared/`) for duplicate functionality?
+3. Set up automated tooling (ESLint, Prettier, code analysis) to prevent future technical debt?
