@@ -2008,8 +2008,9 @@ export default function InvestorLanding() {
                 Investor Resources
               </Button>
               <a
-                href="/product-overview.pdf"
-                download="VaughnMartin_Readiness_OS_Product_Overview.pdf"
+                href="/product-overview"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-[#C9A84C]/30 text-[#C9A84C]/85 hover:border-[#C9A84C]/60 hover:text-[#C9A84C] transition-colors px-6 py-3 text-sm font-bold tracking-widest uppercase"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", textDecoration: 'none' }}
                 data-testid="button-download-overview"
