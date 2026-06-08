@@ -1,0 +1,59 @@
+Yes — now that GitHub is synced, here’s my current assessment based on the latest origin/main (9141ef3dd) plus live validation.
+
+Current state (high level)
+You’re in a much better operational state (sync-wise and product stability), but still have 2 trust-layer blockers that keep it from being “enterprise-tight.”
+
+Score snapshot
+Platform stability: 8.8/10
+Messaging/positioning: 8.5/10
+Data trust consistency: 6.0/10
+Enterprise readiness overall: 7.6/10
+What’s good right now
+GitHub is actually current
+
+origin/main updated and coherent with recent work.
+Latest commit is docs (developer-reference.md) + generated mapping file change.
+Recent product commits are directionally strong
+
+Founding Partner page got stronger investment framing/comparison.
+Design Logic page got better architecture framing (3-layer model).
+Positioning is sharper and more board-facing.
+Live app still stable
+
+/api/health is healthy.
+Playbook API is available and complete (210 returned).
+No broad route instability detected.
+Top issues still holding it back
+Trust mismatch: product data vs public claims
+
+API returns 210 playbooks, while major public pages still claim 180 repeatedly.
+Domain totals from API metadata still report 166 total (domains.totalPlaybooks) while actual is 210.
+This is the #1 credibility risk in executive evaluations.
+Public page regression: Founding Partner stats endpoint now 401
+
+/api/founding-partner/stats currently responds 401.
+Founding Partner program page is still trying to call it, so you get console noise and broken public-stat behavior.
+Server-rendered SEO remains generic
+
+Initial HTML for multiple routes still shares homepage title/canonical metadata.
+Client-side hydration may fix some tags for users, but crawlers/social parsers still see generic SSR output.
+Homepage jump-nav controls still look non-functional in automation
+
+Overview, The Problem, How It Works, Proof, Get Access show no hash/scroll change in repeated checks.
+Security headers remain minimal
+
+HSTS present, but still missing key headers (CSP, X-Content-Type-Options, Referrer-Policy, etc.).
+Repo-quality observation (important)
+Your main still tracks lots of generated/non-product content (dist/**, attached_assets/**), which increases noise and review friction:
+
+tracked dist/** files: 389
+tracked attached_assets/** files: 429
+Not a runtime bug, but it slows velocity and obscures real changes.
+
+Bottom line
+You’re now synced and much cleaner from a release process perspective, but to make this unmistakably “ready” for high-stakes buyers, prioritize:
+
+Fix 210 vs 180 + domain totals mismatch
+Make /api/founding-partner/stats truly public (or stop calling it publicly)
+Ship SSR route-specific metadata
+Those three changes would materially upgrade trust and conversion quality fast.

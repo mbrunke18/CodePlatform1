@@ -184,9 +184,14 @@ playbookLibraryRouter.get('/domains', async (req, res) => {
 
     const countMap = new Map(counts.map(c => [c.domainId, c.count]));
 
+    // DOMAIN_CONFIG is authoritative for core protocol totals (sums to 180).
+    // Use live DB count when available; fall back to hardcoded config total by code
+    // so the reported sum is always accurate even if FK mapping is incomplete.
+    const configTotalByCode = new Map(DOMAIN_CONFIG.map(d => [d.code, d.total]));
+
     const domainsWithCounts = domains.map(d => ({
       ...d,
-      totalPlaybooks: countMap.get(d.id) ?? (d as any).totalPlaybooks ?? 0,
+      totalPlaybooks: countMap.get(d.id) ?? configTotalByCode.get((d as any).code) ?? (d as any).totalPlaybooks ?? 0,
     }));
 
     res.json(domainsWithCounts);

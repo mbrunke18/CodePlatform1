@@ -179,8 +179,9 @@ export const PUBLIC_ROUTES = [
   '/api/pilot/scenarios',
   '/api/pilot/playbooks',
 
-  // Founding Partner application — public form submission (lead capture, no auth required)
+  // Founding Partner application & stats — public (lead capture and seat counter, no auth required)
   '/api/founding-partner/apply',
+  '/api/founding-partner/stats',
   
   // Incident Analysis & Readiness Assessment - public demo for prospects
   '/api/incidents/analyze',
