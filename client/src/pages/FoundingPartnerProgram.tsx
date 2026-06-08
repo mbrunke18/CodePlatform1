@@ -429,6 +429,14 @@ export default function FoundingPartnerProgram() {
               >
                 Preview the Protocol Builder →
               </button>
+              <a
+                href="/product-overview.pdf"
+                download="VaughnMartin_Readiness_OS_Product_Overview.pdf"
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", display: 'inline-flex', alignItems: 'center', gap: 8, background: 'transparent', color: 'rgba(201,168,76,0.85)', fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 32px', border: '1px solid rgba(201,168,76,0.25)', textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' as const }}
+                data-testid="button-download-overview"
+              >
+                ↓ Product Overview
+              </a>
             </div>
           </div>
         </section>
