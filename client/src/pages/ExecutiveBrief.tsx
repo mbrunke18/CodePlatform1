@@ -48,6 +48,11 @@ const comparisonRows = [
     executionOS: "One executive authorization unlocks full execution. No alignment cycle.",
   },
   {
+    category: "Authorization Accountability",
+    traditional: "No structured record of who authorized which response — or whether they'd do it again",
+    executionOS: "Named authorization precedent per protocol. Every verdict on record, visible to the next executive before they decide.",
+  },
+  {
     category: "Vendor Stack Required",
     traditional: "Crisis comms + GRC platform + project management + consulting retainer = $500K–$1M+/yr",
     executionOS: "One platform. Every capability. One annual subscription.",

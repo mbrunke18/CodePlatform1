@@ -240,10 +240,10 @@ export default function DesignLogic() {
               {
                 number: "02",
                 label: "Decision Survivability",
-                status: "Partially addressed",
-                statusColor: GOLD,
+                status: "Addressed",
+                statusColor: TEAL,
                 question: "Does ownership hold under pressure?",
-                body: "The Close Out Gate, the four decision options, and the governance record address this layer directly. The design ensures that one named person owns the authorization and that the close-out captures what held and what did not. The measurement of whether that ownership pattern holds consistently across multiple activations is still maturing.",
+                body: "The Close Out Gate, the four decision options, and the Authorization Precedent Registry address this layer directly. The design ensures that one named person owns the authorization and that the close-out captures what held and what did not — including a named verdict on whether they would authorize again. That verdict is visible to the next executive before their authorization decision. The accountability path is named, not blank.",
               },
               {
                 number: "03",
@@ -414,6 +414,18 @@ export default function DesignLogic() {
               on and too vague to implement. One specific change that can be built into the protocol
               before the next activation is the only form of learning that actually compounds.
             </GateField>
+
+            <GateField number="V" title="The Authorization Precedent" optional>
+              This field asks whether the executive who authorized the protocol would authorize it again.
+              It is the structural answer to a gap identified through research exchanges: the prepared
+              response has no named accountability history, while the default response always does.
+              An executive standing at the four-option decision point is not only weighing the quality
+              of the preparation. They are weighing the exposure of being the first person on record to
+              trust it. The Authorization Precedent changes that exposure calculation. Someone before
+              them owned this path. Their verdict is named and visible. The accountability is no longer
+              uncharted — and the prepared response is no longer asking the next executive to accept
+              exposure the default response does not carry.
+            </GateField>
           </div>
 
           <Body style={{ marginTop: 16 }}>
@@ -506,19 +518,28 @@ export default function DesignLogic() {
           <Body>
             The behavioral confidence gap is real and I have seen it repeatedly. The infrastructure
             exists. The protocol exists. The executive has the four options in front of them. And they
-            still call the same person they always call and start the familiar thirty day cycle anyway
-            because the old behavior feels safer under pressure than the new infrastructure.
+            still call the same person they always call and start the familiar thirty day cycle anyway.
           </Body>
           <Body>
-            I believe the answer to that gap is activation history. The more times the organization
-            deploys the platform under real conditions the more the institutional trust builds. The
-            ADVANCE loop measures that trust indirectly through response time improvement. But the
-            behavioral confidence layer is upstream of what the architecture can currently measure.
+            Research exchanges produced the most precise diagnosis of why this happens. The default
+            response feels safer not because it works better — it frequently does not. It feels safer
+            because it has a named owner and a known story, even in failure. The prepared response asks
+            the executive to take on personal exposure that the default response does not carry. No one
+            before them has owned this path in public. That asymmetry is the real obstacle.
           </Body>
           <Body>
-            That intersection between preparation architecture and behavioral confidence is where the next
-            decade of this work sits. The boundary between what architecture can supply and what only
-            human capacity can carry — that line is one I will keep building on for a long time.
+            The Authorization Precedent field in the Close Out Gate is the structural answer to that
+            specific mechanism. Every executive who completes a close-out records whether they would
+            authorize the protocol again. That verdict enters the Authorization Precedent Registry and
+            is visible to the next executive before their authorization decision. The accountability
+            path becomes familiar before the next person has to personally own it.
+          </Body>
+          <Body>
+            What remains open is whether the standard holds when leadership changes entirely — whether
+            a new executive who did not build the preparation and has no relationship to the activation
+            history will authorize with the same rigor as the one who did. That question is upstream of
+            what the architecture can currently answer. The ADVANCE loop and the Precedent Registry
+            narrow the gap. They do not close it.
           </Body>
         </Section>
 
