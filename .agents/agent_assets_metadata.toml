@@ -641,3 +641,39 @@ id = "wC2_lpdk8SdQb-5WziHtX"
 uri = "file://screenshots/vm_logo_on_dark.png"
 type = "image"
 title = "⑥ VaughnMartin Logo on Dark — for navy/dark backgrounds in the video"
+
+[[outputs]]
+id = "G8UqszOwnOU8N_sxP299Y"
+uri = "file://screenshots/video_advance_loop.jpg"
+type = "image"
+title = "2:00–2:30 — ADVANCE Loop: Closed-Loop Learning Intelligence (47 updates, 31 proven, 127 min saved)"
+
+[[outputs]]
+id = "gQbnVisBusHyIGkGdtNW7"
+uri = "file://screenshots/deck_signals.jpg"
+type = "image"
+title = "2:15–2:30 — Signal Detection Feed (live monitoring, threshold scoring, domain classification)"
+
+[[outputs]]
+id = "OBsosHHR6udGhN0jUAfJJ"
+uri = "file://screenshots/video_proof_story.jpg"
+type = "image"
+title = "2:30–3:00 — Proof Story: 'The situation arrives. The response was ready. Or it wasn’t.' (cinematic closing)"
+
+[[outputs]]
+id = "Ao4JMojvJylet19wZ8JY5"
+uri = "file://screenshots/deck_activation.jpg"
+type = "image"
+title = "2:20–2:45 — Activation Console (tasks deploying, stakeholders notified, execution live)"
+
+[[outputs]]
+id = "JQjhu4Oy0EUvXZ7CWCZFl"
+uri = "file://screenshots/video_signals_feed.jpg"
+type = "image"
+title = "2:45–3:08 — Request Access page — 180 / 12 min / 3,600× stat block on dark navy (closing CTA frame)"
+
+[[outputs]]
+id = "ol8twpR4kVyYOIEx8oQN7"
+uri = "file://screenshots/hq_command_tower.jpg"
+type = "image"
+title = "Backup — High-res Command Tower (use if the earlier version needs replacing)"
