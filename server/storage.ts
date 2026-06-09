@@ -3416,12 +3416,49 @@ export class DatabaseStorage implements IStorage {
     whatDidntHold: string;
     preparationGap: string;
     oneThingToEncode: string;
+    wouldAuthorizeAgain?: boolean | null;
+    wouldAuthorizeNote?: string;
   }): Promise<ActivationOutcome> {
     const [updated] = await db.update(activationOutcomes)
       .set({ ...data, closeOutCompleted: true })
       .where(eq(activationOutcomes.id, outcomeId))
       .returning();
     return updated;
+  }
+
+  async getAuthorizationPrecedents(organizationId: string): Promise<any[]> {
+    const records = await db
+      .select({
+        id: activationOutcomes.id,
+        activationId: activationOutcomes.activationId,
+        playbookId: activationOutcomes.playbookId,
+        outcomeClassification: activationOutcomes.outcomeClassification,
+        targetMet: activationOutcomes.targetMet,
+        actualMinutes: activationOutcomes.actualMinutes,
+        whatHeld: activationOutcomes.whatHeld,
+        wouldAuthorizeAgain: activationOutcomes.wouldAuthorizeAgain,
+        wouldAuthorizeNote: activationOutcomes.wouldAuthorizeNote,
+        createdAt: activationOutcomes.createdAt,
+        authorizerFirstName: users.firstName,
+        authorizerLastName: users.lastName,
+        authorizerEmail: users.email,
+        activatedAt: playbookActivations.activatedAt,
+        activationReason: playbookActivations.activationReason,
+        protocolName: sql<string>`pl.name`,
+        protocolNumber: sql<number>`pl.playbook_number`,
+      })
+      .from(activationOutcomes)
+      .leftJoin(playbookActivations, eq(playbookActivations.id, sql`${activationOutcomes.activationId}::uuid`))
+      .leftJoin(users, eq(users.id, playbookActivations.activatedBy))
+      .leftJoin(sql`playbook_library pl`, sql`pl.id = ${activationOutcomes.playbookId}`)
+      .where(
+        and(
+          eq(activationOutcomes.organizationId, organizationId),
+          eq(activationOutcomes.closeOutCompleted, true)
+        )
+      )
+      .orderBy(desc(activationOutcomes.createdAt));
+    return records;
   }
 
   async updateActivationOutcomeAI(outcomeId: string, aiSummary: string): Promise<ActivationOutcome> {

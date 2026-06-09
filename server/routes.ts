@@ -8828,12 +8828,14 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
 
   app.patch('/api/activation-outcomes/:id/closeout', requireOrgAccess, async (req: any, res) => {
     try {
-      const { whatHeld, whatDidntHold, preparationGap, oneThingToEncode } = req.body;
+      const { whatHeld, whatDidntHold, preparationGap, oneThingToEncode, wouldAuthorizeAgain, wouldAuthorizeNote } = req.body;
       if (!whatHeld || !whatDidntHold || !oneThingToEncode) {
         return res.status(400).json({ error: 'whatHeld, whatDidntHold, and oneThingToEncode are required to close out' });
       }
       const outcome = await storage.updateActivationOutcomeCloseOut(req.params.id, {
-        whatHeld, whatDidntHold, preparationGap: preparationGap || '', oneThingToEncode
+        whatHeld, whatDidntHold, preparationGap: preparationGap || '', oneThingToEncode,
+        wouldAuthorizeAgain: wouldAuthorizeAgain ?? null,
+        wouldAuthorizeNote: wouldAuthorizeNote || '',
       });
       // ── Moat 1: Trigger Preparation Compounding Loop ──────────────────────
       try {
@@ -8848,6 +8850,15 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: 'Failed to save close-out data' });
+    }
+  });
+
+  app.get('/api/organization/authorization-precedents', requireOrgAccess, async (req: any, res) => {
+    try {
+      const records = await storage.getAuthorizationPrecedents(req.orgId);
+      res.json(records);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch authorization precedents' });
     }
   });
 

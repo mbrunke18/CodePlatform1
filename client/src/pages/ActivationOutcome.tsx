@@ -76,6 +76,9 @@ export default function ActivationOutcome() {
 
   // Close-Out Gate — required fields
   const [whatHeld, setWhatHeld] = useState("");
+  // Authorization Precedent fields
+  const [wouldAuthorizeAgain, setWouldAuthorizeAgain] = useState<boolean | null>(null);
+  const [wouldAuthorizeNote, setWouldAuthorizeNote] = useState("");
   const [whatDidntHold, setWhatDidntHold] = useState("");
   const [preparationGap, setPreparationGap] = useState("");
   const [oneThingToEncode, setOneThingToEncode] = useState("");
@@ -114,7 +117,7 @@ export default function ActivationOutcome() {
   });
 
   const closeOutMutation = useMutation({
-    mutationFn: ({ id, data }: { id: string; data: { whatHeld: string; whatDidntHold: string; preparationGap: string; oneThingToEncode: string } }) =>
+    mutationFn: ({ id, data }: { id: string; data: { whatHeld: string; whatDidntHold: string; preparationGap: string; oneThingToEncode: string; wouldAuthorizeAgain?: boolean | null; wouldAuthorizeNote?: string } }) =>
       apiRequest("PATCH", `/api/activation-outcomes/${id}/closeout`, data),
     onSuccess: () => {
       setCloseOutSaved(true);
@@ -475,6 +478,52 @@ export default function ActivationOutcome() {
                         />
                       </div>
 
+                      {/* ── Authorization Precedent ─────────────────────────────── */}
+                      <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16 }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 4, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>
+                          Would you authorize this protocol again?
+                        </div>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 10, lineHeight: 1.6 }}>
+                          Your answer becomes the authorization precedent the next executive sees before deciding whether to trust the prepared response.
+                        </p>
+                        <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+                          {[{ val: true, label: "Yes — authorize again" }, { val: false, label: "No — would not" }].map(opt => (
+                            <button
+                              key={String(opt.val)}
+                              type="button"
+                              onClick={() => { if (!(closeOutSaved || outcome?.closeOutCompleted)) setWouldAuthorizeAgain(wouldAuthorizeAgain === opt.val ? null : opt.val); }}
+                              disabled={closeOutSaved || outcome?.closeOutCompleted}
+                              style={{
+                                fontFamily: "'Barlow Condensed', sans-serif",
+                                fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const,
+                                padding: "8px 20px",
+                                border: `1px solid ${wouldAuthorizeAgain === opt.val ? (opt.val ? TEAL : RED) : BORDER}`,
+                                background: wouldAuthorizeAgain === opt.val ? (opt.val ? `${TEAL}18` : `${RED}12`) : "transparent",
+                                color: wouldAuthorizeAgain === opt.val ? (opt.val ? TEAL : RED) : MUTED,
+                                cursor: (closeOutSaved || outcome?.closeOutCompleted) ? "default" : "pointer",
+                              }}
+                            >
+                              {opt.label}
+                            </button>
+                          ))}
+                        </div>
+                        {wouldAuthorizeAgain !== null && !(closeOutSaved || outcome?.closeOutCompleted) && (
+                          <Textarea
+                            value={wouldAuthorizeNote}
+                            onChange={e => setWouldAuthorizeNote(e.target.value)}
+                            placeholder={wouldAuthorizeAgain ? "Optional: What made this protocol trustworthy under live pressure?" : "Optional: What would need to change for you to authorize it next time?"}
+                            style={{ minHeight: 70, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
+                          />
+                        )}
+                        {(closeOutSaved || outcome?.closeOutCompleted) && outcome?.wouldAuthorizeAgain !== null && outcome?.wouldAuthorizeAgain !== undefined && (
+                          <div style={{ fontSize: 12, color: outcome.wouldAuthorizeAgain ? TEAL : RED, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
+                            <Award style={{ width: 13, height: 13 }} />
+                            Recorded: {outcome.wouldAuthorizeAgain ? "Would authorize again" : "Would not authorize again"}
+                            {outcome.wouldAuthorizeNote && <span style={{ color: MUTED, fontWeight: 400 }}> — "{outcome.wouldAuthorizeNote}"</span>}
+                          </div>
+                        )}
+                      </div>
+
                       {!(closeOutSaved || outcome?.closeOutCompleted) && (
                         <Button
                           style={{ background: RED, color: "#fff", borderRadius: 0, width: "100%" }}
@@ -482,7 +531,7 @@ export default function ActivationOutcome() {
                             if (!outcome?.id) return;
                             closeOutMutation.mutate({
                               id: outcome.id,
-                              data: { whatHeld, whatDidntHold, preparationGap, oneThingToEncode }
+                              data: { whatHeld, whatDidntHold, preparationGap, oneThingToEncode, wouldAuthorizeAgain, wouldAuthorizeNote }
                             });
                           }}
                           disabled={closeOutMutation.isPending || !whatHeld.trim() || !whatDidntHold.trim() || !oneThingToEncode.trim()}

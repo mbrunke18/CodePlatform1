@@ -2977,6 +2977,10 @@ export const activationOutcomes = pgTable('activation_outcomes', {
   oneThingToEncode: text('one_thing_to_encode'), // The one lesson that changes the playbook
   closeOutCompleted: boolean('close_out_completed').default(false),
 
+  // Authorization Precedent — "Would you authorize this protocol again?"
+  wouldAuthorizeAgain: boolean('would_authorize_again'),
+  wouldAuthorizeNote: text('would_authorize_note'),
+
   // Outcome classification (set during activation close)
   outcomeClassification: varchar('outcome_classification', { length: 100 }), // 'contained' | 'board_notified' | 'regulatory_filing' | 'escalated'
 

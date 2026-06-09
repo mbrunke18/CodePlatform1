@@ -717,6 +717,48 @@ export default function AdvanceIntelligence() {
           </div>
         </section>
 
+        {/* ── Authorization Precedent Registry ──────────────────────────────── */}
+        <section>
+          <div className="rounded-sm overflow-hidden" style={{ border: `1px solid ${GOLD}30` }}>
+            <div className="p-5" style={{ background: `${NAVY}` }}>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div>
+                    <div className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: GOLD }}>
+                      Authorization Precedent Registry
+                    </div>
+                    <div className="text-base font-bold text-white mb-1">
+                      Named accountability history. The structural answer to why executives revert.
+                    </div>
+                    <div className="text-xs leading-relaxed" style={{ color: 'rgba(240,237,228,0.65)', maxWidth: 560 }}>
+                      The default response feels safer because it has a known owner and a known story, even when it fails. The prepared response puts personal exposure on one named person. The Precedent Registry is what makes the new path feel ownable — someone before them owned it, and their verdict is on record.
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href="/authorization-precedents"
+                  className="flex-shrink-0 flex items-center gap-2 text-xs font-bold tracking-wider uppercase py-2 px-4 no-underline"
+                  style={{ background: GOLD, color: NAVY, letterSpacing: '0.12em', borderRadius: '0.15rem', whiteSpace: 'nowrap' }}
+                >
+                  View Full Registry →
+                </a>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 divide-x bg-white" style={{ borderTop: `1px solid ${GOLD}20`, borderColor: `${GOLD}20` }}>
+              {[
+                { label: 'Authorization Verdicts', desc: 'Named records of who authorized each protocol and whether they would authorize again.' },
+                { label: 'Accountability Path', desc: 'Each record names the authorizing executive, the outcome classification, and the 12-minute benchmark result.' },
+                { label: 'Precedent Access', desc: 'Visible at the Close-Out Gate. The next executive sees this record before their authorization decision.' },
+              ].map((item) => (
+                <div key={item.label} className="p-4">
+                  <div className="text-[10px] font-bold uppercase tracking-widest mb-2" style={{ color: GOLD }}>{item.label}</div>
+                  <div className="text-xs text-gray-500 leading-relaxed">{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Executive Moat Summary ────────────────────────────────────────── */}
         <section>
           <div className="rounded-sm border p-6" style={{ borderColor: GOLD + '40', background: NAVY }}>
