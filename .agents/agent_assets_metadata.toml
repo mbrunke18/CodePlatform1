@@ -605,3 +605,39 @@ id = "jjvjBANgRaYeL9vd5ZDn7"
 uri = "file://attached_assets/linkedin_banner_v1_fixed.png"
 type = "image"
 title = "Command Center Banner — Real Logo + Tagline Added"
+
+[[outputs]]
+id = "MxU-xt4cQQVc3wlCihCFK"
+uri = "file://screenshots/video_howitexecutes.jpg"
+type = "image"
+title = "① How It Executes — 'The response is ready before the trigger fires' (opening + 12-min breakdown)"
+
+[[outputs]]
+id = "eghCouYhKJNiX2kqfz5hC"
+uri = "file://screenshots/video_protocollibrary.jpg"
+type = "image"
+title = "② Protocol Library — 180 Readiness Protocols, 9 domains (Feature 1)"
+
+[[outputs]]
+id = "d6umqZXYo0b3JguKaQgA2"
+uri = "file://screenshots/video_commandtower.jpg"
+type = "image"
+title = "③ Command Tower — 221 triggers, 180 protocols, live HIGH signal card (Feature 2 — your strongest frame)"
+
+[[outputs]]
+id = "ZaPxq0Jl3QUx7YMGV2vJX"
+uri = "file://screenshots/video_executivebrief.jpg"
+type = "image"
+title = "④ Executive Brief — thesis headline + CTA buttons (closing frame)"
+
+[[outputs]]
+id = "2cOzXB9FUHbObKETvR6N0"
+uri = "file://screenshots/vm_logo_full.png"
+type = "image"
+title = "⑤ VaughnMartin Logo — clean PNG, use for opening slate and closing card"
+
+[[outputs]]
+id = "wC2_lpdk8SdQb-5WziHtX"
+uri = "file://screenshots/vm_logo_on_dark.png"
+type = "image"
+title = "⑥ VaughnMartin Logo on Dark — for navy/dark backgrounds in the video"
