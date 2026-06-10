@@ -507,8 +507,8 @@ function AdContent({ onClose }: Props) {
           <div className="fv-fearless-line fv-rise" id="fv-s4-l3">
             the organization stops being afraid of what comes next.
           </div>
-          <div className="fv-fade" id="fv-s4-logo" style={{ margin: "clamp(20px,3vw,36px) auto", display: "flex", justifyContent: "center" }}>
-            <VaughnMartinLogo variant="icon-only" height={156} color="light" noLink animated />
+          <div className="fv-fade" id="fv-s4-logo" style={{ width: "100%", padding: "clamp(28px,4vw,52px) 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <VaughnMartinLogo variant="icon-only" height={220} color="light" noLink animated />
           </div>
           <div className="fv-fade" id="fv-s4-rule" />
           <div className="fv-rise" id="fv-s4-tl">
