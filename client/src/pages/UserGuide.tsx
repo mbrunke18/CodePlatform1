@@ -389,7 +389,7 @@ export default function UserGuide() {
             "Bold text indicates a platform feature name, a required action, or a key term.",
             "Callout boxes (gold border) highlight critical concepts, warnings, or important notes.",
             "Teal callout boxes highlight tips and best practices.",
-            "Screen paths are shown as /path — e.g., /playbooks — representing the URL in the platform.",
+            "Screen paths are shown as /path — e.g., /playbook-library — representing the URL in the platform.",
             "All protocol counts, trigger counts, and metrics reflect the current production configuration.",
           ]} />
 
@@ -525,7 +525,7 @@ export default function UserGuide() {
           </P>
 
           <Callout label="Founding Partner Program">
-            The pre-launch Founding Partner Program is a <strong>90-day validation partnership</strong>. Founding Partners receive full platform access, a dedicated onboarding session, and direct input into protocol development. Access is granted via invitation only. Apply at <code>/request-access</code>.
+            The pre-launch Founding Partner Program is a <strong>90-day validation partnership</strong>. Founding Partners receive full platform access, a dedicated onboarding session, and direct input into protocol development. Apply at <code>/founding-partner-program</code>.
           </Callout>
 
           <PageBreak />
@@ -631,7 +631,7 @@ export default function UserGuide() {
           <H1 id="s7">7. Readiness Protocol Library</H1>
           <GoldRule />
           <P>
-            The Protocol Library at <code>/playbooks</code> is the central repository of all 180 core protocols and 30 compound protocols. It is the most frequently used area of the platform for administrators and operations leads.
+            The Protocol Library at <code>/playbook-library</code> is the central repository of all 180 core protocols and 30 compound protocols. It is the most frequently used area of the platform for administrators and operations leads.
           </P>
 
           <H2>Browsing the Library</H2>
