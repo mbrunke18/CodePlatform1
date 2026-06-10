@@ -486,6 +486,7 @@ export default function StandardNav() {
           <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("The Case for Readiness OS")}
             {[
+              { path: '/the-case', icon: Scale, label: 'The Case', sub: 'The complete buying argument — problem cost → proof → moat → ROI → decision', featured: true },
               { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
               { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
