@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useLocation } from "wouter";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const STORAGE_KEY = "vm_seen_brief";
 
@@ -83,12 +84,13 @@ function AdContent({ onClose }: Props) {
         setTimeout(() => show("fv-s4-l1"), 200);
         setTimeout(() => show("fv-s4-l2"), 1500);
         setTimeout(() => show("fv-s4-l3"), 2800);
-        setTimeout(() => show("fv-s4-rule"), 3800);
-        setTimeout(() => show("fv-s4-tl"), 4300);
-        setTimeout(() => show("fv-s4-cta"), 5600);
-        setTimeout(() => show("fv-s4-ghost"), 6100);
+        setTimeout(() => show("fv-s4-logo"), 3500);
+        setTimeout(() => show("fv-s4-rule"), 3900);
+        setTimeout(() => show("fv-s4-tl"), 4400);
+        setTimeout(() => show("fv-s4-cta"), 5700);
+        setTimeout(() => show("fv-s4-ghost"), 6200);
       },
-      onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost"]),
+      onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost"]),
     },
   ];
 
@@ -504,6 +506,9 @@ function AdContent({ onClose }: Props) {
           </div>
           <div className="fv-fearless-line fv-rise" id="fv-s4-l3">
             the organization stops being afraid of what comes next.
+          </div>
+          <div className="fv-fade" id="fv-s4-logo" style={{ marginBottom: "clamp(14px,2vw,20px)" }}>
+            <VaughnMartinLogo variant="icon-only" height={48} color="light" noLink animated />
           </div>
           <div className="fv-fade" id="fv-s4-rule" />
           <div className="fv-rise" id="fv-s4-tl">
