@@ -512,7 +512,7 @@ function InvestorPresentation() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-4 max-w-4xl w-full">
+        <div className="grid grid-cols-3 gap-4 max-w-4xl w-full mb-6">
           {[
             { from: 'Signal-First', to: 'IDENTIFY', desc: 'Signal detection before cascades' },
             { from: 'Rapid Coordination', to: 'DETECT + EXECUTE', desc: '12-min coordination, pre-defined rights' },
@@ -524,6 +524,19 @@ function InvestorPresentation() {
               <div className="text-[#0A0F2E] text-xs font-medium">{m.desc}</div>
             </div>
           ))}
+        </div>
+        <div className="max-w-4xl w-full bg-[#0A0F2E] border border-[#C9A84C]/30 p-6 grid grid-cols-2 gap-8 items-center">
+          <div>
+            <div className="text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest mb-3">What You're Actually Buying</div>
+            <p className="text-white font-semibold text-base italic leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem" }}>
+              "Decision-speed. Coordination certainty. Governance traceability — at the exact moment stakes are highest."
+            </p>
+          </div>
+          <div className="border-l border-[#C9A84C]/20 pl-8">
+            <div className="text-[#2B8A6E] text-[10px] font-bold uppercase tracking-widest mb-2">The Category Distinction</div>
+            <p className="text-white font-bold text-sm mb-1">Preparedness as infrastructure, not consulting.</p>
+            <p className="text-white/50 text-xs leading-relaxed">180 protocols pre-staged. The response ready before the trigger fires. No consultant required.</p>
+          </div>
         </div>
       </div>
     ),

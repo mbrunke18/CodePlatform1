@@ -337,6 +337,29 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* What You're Actually Buying */}
+        <section style={{ background: NAVY, padding: "48px 48px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>What You're Actually Buying</div>
+                <p style={{ ...CG, fontSize: "clamp(22px,2.8vw,30px)", fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.45, margin: 0 }}>
+                  "Decision-speed. Coordination certainty. Governance traceability — at the exact moment stakes are highest."
+                </p>
+              </div>
+              <div style={{ borderLeft: "1px solid rgba(201,168,76,0.25)", paddingLeft: 40 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: TEAL, marginBottom: 12 }}>The Category Distinction</div>
+                <p style={{ fontSize: 16, fontWeight: 700, color: "#fff", lineHeight: 1.5, marginBottom: 12 }}>
+                  Preparedness as infrastructure, not consulting.
+                </p>
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.75, margin: 0 }}>
+                  Every alternative shows up after the trigger fires. Readiness OS is the infrastructure that makes the response ready before the trigger arrives — 180 protocols pre-staged, no consultant engagement required.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ROI Case */}
         <section style={{ background: "#F8F7F4", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
