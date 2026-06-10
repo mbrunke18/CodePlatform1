@@ -290,6 +290,9 @@ const ExecuteUpdatesPage = lazy(() => import("./pages/execute/UpdatesPage"));
 const ExecuteDecisionsPage = lazy(() => import("./pages/execute/DecisionsPage"));
 
 const AdvanceIntelligence = lazy(() => import("./pages/AdvanceIntelligence"));
+const PredictiveSignalIntelligence = lazy(() => import("./pages/PredictiveSignalIntelligence"));
+const OrganizationalTendencyIntelligence = lazy(() => import("./pages/OrganizationalTendencyIntelligence"));
+const SectorIntelligenceLibrary = lazy(() => import("./pages/SectorIntelligenceLibrary"));
 const MicrosoftConnectors = lazy(() => import("./pages/MicrosoftConnectors"));
 const CertificationProgram = lazy(() => import("./pages/CertificationProgram"));
 const BoardReview = lazy(() => import("./pages/BoardReview"));
@@ -463,6 +466,11 @@ function Router() {
         {/* Board Review System */}
         <Route path="/board-review" component={BoardReview} />
         <Route path="/board-admin" component={BoardAdmin} />
+
+        {/* Intelligence Engine — Predictive, Tendency, Sector */}
+        <Route path="/predictive-intelligence" component={PredictiveSignalIntelligence} />
+        <Route path="/tendency-intelligence" component={OrganizationalTendencyIntelligence} />
+        <Route path="/sector-intelligence" component={SectorIntelligenceLibrary} />
 
         {/* ADVANCE Phase */}
         <Route path="/advance-intelligence" component={AdvanceIntelligence} />
