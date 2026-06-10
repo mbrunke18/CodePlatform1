@@ -165,6 +165,8 @@ export default function StandardNav() {
       heading: "Inside the Platform",
       links: [
         { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
+        { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible." },
+        { label: "Build a Protocol", path: "/build-protocol", icon: Layers, description: "Not sure which builder to use? One question routes you to the right path — Matrix Builder, Protocol Builder, or Compound." },
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
         { label: "Onboarding Guide", path: "/onboarding-guide", icon: BookOpen, description: "Step-by-step guide for new Founding Partner customers — platform map, quick start, and first 30 days", featured: true },

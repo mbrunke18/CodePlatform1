@@ -393,13 +393,46 @@ export default function GettingStarted() {
             </PhaseCard>
 
             {/* PHASE 3 */}
-            <PhaseCard num="03" title="Protocol Readiness" timing="Ongoing" doing="System + your team" score={p3} phaseRef={phaseRefs[2]}>
+            <PhaseCard num="03" title="Protocol Readiness" timing="Week 2 — ongoing" doing="Executive team + domain owners" score={p3} phaseRef={phaseRefs[2]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Signal Monitoring</div>
               <Item done={c.signalMonitoring} label="Signal monitoring active" sub="221 triggers scanned across 8 sources every 15 minutes — always on" />
 
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Protocol Configuration</div>
-              <Item done={c.protocolReviewed} label={`Priority protocols selected — ${protocolsSelected.length} domains`} sub="Your top scenarios are pinned and ready" href="/playbooks" />
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Call Sheet Build — Situation Matrix Builder</div>
+
+              {/* Matrix Builder callout */}
+              <div style={{ background: `rgba(43,138,110,0.06)`, border: `1px solid rgba(43,138,110,0.2)`, borderLeft: `3px solid ${TEAL}`, padding: '14px 16px', marginBottom: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+                  <div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>Build your first call sheet</div>
+                    <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6 }}>
+                      Use the Situation Matrix Builder to pre-stage a role × situation call sheet for your highest-priority trigger. Every role. Every scenario variant. Every responsibility defined before the trigger fires.
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => nav('/situation-matrix-builder')}
+                    style={{ flexShrink: 0, padding: '8px 14px', background: NAVY, color: '#fff', border: 'none', cursor: 'pointer', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' as const, borderRadius: '0.15rem' }}
+                  >
+                    Build Call Sheet <ChevronRight size={12} />
+                  </button>
+                </div>
+              </div>
+
+              <Item done={c.protocolReviewed} label={`Priority protocols selected — ${protocolsSelected.length} domains`} sub="Your top trigger scenarios have published call sheets ready" href="/situation-matrix-builder" />
               <Item done={c.riskThresholdsSet} label="Budget authority defined per activation" sub="Eliminates the most common cause of execution delay — funding approval" href="/onboarding-wizard" />
+
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>30-Day Preparation Arc</div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: `1px solid ${BORDER}` }}>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>View the full 30-day preparation journey</div>
+                  <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>Week-by-week arc from Installation to Go-Live — with task-level detail and direct links to each tool</div>
+                </div>
+                <button
+                  onClick={() => nav('/preparation-arc')}
+                  style={{ fontSize: 11, fontWeight: 700, color: GOLD, background: 'none', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' as const, display: 'flex', alignItems: 'center', gap: 4 }}
+                >
+                  View Arc <ChevronRight size={12} />
+                </button>
+              </div>
             </PhaseCard>
 
             {/* PHASE 4 */}
@@ -490,11 +523,11 @@ export default function GettingStarted() {
               {[
                 { label: 'Setup Wizard', href: '/onboarding-wizard', icon: Target },
                 { label: 'Organization Setup', href: '/organization-setup', icon: Building2 },
+                { label: 'Situation Matrix Builder', href: '/situation-matrix-builder', icon: Radio },
+                { label: 'Build a Protocol', href: '/build-protocol', icon: BookOpen },
+                { label: '30-Day Preparation Arc', href: '/preparation-arc', icon: Rocket },
                 { label: 'Protocol Library', href: '/playbooks', icon: ClipboardList },
-                { label: 'Protocol Builder', href: '/protocol-builder', icon: BookOpen },
-                { label: '12-Minute Test Drive', href: '/12-minute-experience', icon: Rocket },
-                { label: 'Onboarding Guide', href: '/onboarding-guide', icon: BookOpen },
-                { label: 'Integration Setup Plan', href: '/technical-onboarding', icon: Globe },
+                { label: '12-Minute Test Drive', href: '/12-minute-experience', icon: Zap },
               ].map((link, i) => {
                 const Icon = link.icon;
                 return (

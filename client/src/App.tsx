@@ -208,6 +208,8 @@ const ProtocolBuilder = lazy(() => import("./pages/ProtocolBuilder"));
 const ProtocolsHub = lazy(() => import("./pages/ProtocolsHub"));
 const CompoundProtocolBuilder = lazy(() => import("./pages/CompoundProtocolBuilder"));
 const ProtocolSituationMatrixBuilder = lazy(() => import("./pages/ProtocolSituationMatrixBuilder"));
+const BuildProtocolRouter = lazy(() => import("./pages/BuildProtocolRouter"));
+const PreparationArc = lazy(() => import("./pages/PreparationArc"));
 const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const VsBCP = lazy(() => import("./pages/VsBCP"));
@@ -672,6 +674,8 @@ function Router() {
         <Route path="/protocol-builder" component={ProtocolBuilder} />
         <Route path="/compound-protocol-builder" component={CompoundProtocolBuilder} />
         <Route path="/situation-matrix-builder" component={ProtocolSituationMatrixBuilder} />
+        <Route path="/build-protocol" component={BuildProtocolRouter} />
+        <Route path="/preparation-arc" component={PreparationArc} />
         <Route path="/my-protocols" component={ProtocolsHub} />
         <Route path="/executive-scenarios" component={ExecutiveScenarioSuite} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />

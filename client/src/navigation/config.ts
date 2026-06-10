@@ -45,6 +45,20 @@ export const navigationConfig: NavigationConfig = {
           description: 'Build a Role × Situation call sheet — every role, every scenario variant, every responsibility pre-staged before the trigger fires'
         },
         {
+          id: 'build-protocol',
+          label: 'Build a Protocol',
+          path: '/build-protocol',
+          icon: '🔀',
+          description: 'Not sure which builder? One question routes you to the right path — Matrix Builder, Protocol Builder, or Compound'
+        },
+        {
+          id: 'preparation-arc',
+          label: '30-Day Preparation Arc',
+          path: '/preparation-arc',
+          icon: '📅',
+          description: 'Week-by-week preparation journey from installation to go-live — the 30 days that make 12-minute execution possible'
+        },
+        {
           id: 'templates',
           label: 'Scenario Templates',
           path: '/identify/templates',
