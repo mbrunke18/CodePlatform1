@@ -9,10 +9,9 @@ const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const OFF = "#F8F7F4";
 const MUTED = "#6B7280";
-const RED = "#C0392B";
 
-// 4 scenes, ~30 seconds total
-const SCENE_DURATIONS = [7000, 7000, 7000, 9000];
+// 4 scenes — ~26 seconds total
+const SCENE_DURATIONS = [7000, 6000, 8000, 8000];
 const TOTAL_DURATION = SCENE_DURATIONS.reduce((a, b) => a + b, 0);
 
 type Props = { onClose: () => void };
@@ -25,7 +24,6 @@ function AdContent({ onClose }: Props) {
   const progressStartRef = useRef<number | null>(null);
   const prevElapsedRef = useRef(0);
   const elapsedRef = useRef(0);
-  const [ended, setEnded] = useState(false);
 
   const show = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -40,54 +38,57 @@ function AdContent({ onClose }: Props) {
   }, []);
 
   const SCENES = [
+    // SCENE 1 — THE MOMENT
     {
       id: "fv-s1",
       onEnter: () => {
-        setTimeout(() => show("fv-clock"), 200);
-        setTimeout(() => show("fv-clock-lbl"), 700);
-        setTimeout(() => show("fv-ci1"), 1300);
-        setTimeout(() => show("fv-ci2"), 2100);
-        setTimeout(() => show("fv-ci3"), 3000);
+        setTimeout(() => show("fv-s1-time"), 100);
+        setTimeout(() => show("fv-s1-r1"), 900);
+        setTimeout(() => show("fv-s1-r2"), 2000);
+        setTimeout(() => show("fv-s1-r3"), 3100);
+        setTimeout(() => show("fv-s1-r4"), 4200);
+        setTimeout(() => show("fv-s1-q"), 5400);
       },
-      onExit: () => hideAll(["fv-clock", "fv-clock-lbl", "fv-ci1", "fv-ci2", "fv-ci3"]),
+      onExit: () => hideAll(["fv-s1-time","fv-s1-r1","fv-s1-r2","fv-s1-r3","fv-s1-r4","fv-s1-q"]),
     },
+    // SCENE 2 — THE COST
     {
       id: "fv-s2",
       onEnter: () => {
-        setTimeout(() => show("fv-t-eye"), 200);
-        setTimeout(() => show("fv-t-time"), 500);
-        setTimeout(() => show("fv-ts1"), 1100);
-        setTimeout(() => show("fv-ts2"), 1900);
-        setTimeout(() => show("fv-ts3"), 2700);
-        setTimeout(() => show("fv-t-q"), 4000);
+        setTimeout(() => show("fv-s2-l1"), 200);
+        setTimeout(() => show("fv-s2-l2"), 1400);
+        setTimeout(() => show("fv-s2-l3"), 2600);
       },
-      onExit: () => hideAll(["fv-t-eye", "fv-t-time", "fv-ts1", "fv-ts2", "fv-ts3", "fv-t-q"]),
+      onExit: () => hideAll(["fv-s2-l1","fv-s2-l2","fv-s2-l3"]),
     },
+    // SCENE 3 — THE MACHINE MOVING
     {
       id: "fv-s3",
       onEnter: () => {
-        setTimeout(() => show("fv-a-eye"), 200);
-        setTimeout(() => show("fv-a-hl"), 500);
-        setTimeout(() => show("fv-a-sub"), 1100);
-        setTimeout(() => show("fv-sb1"), 1700);
-        setTimeout(() => show("fv-sb2"), 2100);
-        setTimeout(() => show("fv-sb3"), 2500);
-        setTimeout(() => show("fv-sb4"), 2900);
+        setTimeout(() => show("fv-s3-hd"), 200);
+        setTimeout(() => show("fv-s3-st1"), 800);
+        setTimeout(() => show("fv-s3-cn1"), 1300);
+        setTimeout(() => show("fv-s3-st2"), 1800);
+        setTimeout(() => show("fv-s3-cn2"), 2300);
+        setTimeout(() => show("fv-s3-st3"), 2800);
+        setTimeout(() => show("fv-s3-cn3"), 3300);
+        setTimeout(() => show("fv-s3-st4"), 3800);
+        setTimeout(() => show("fv-s3-cn4"), 4300);
+        setTimeout(() => show("fv-s3-st5"), 4800);
       },
-      onExit: () => hideAll(["fv-a-eye", "fv-a-hl", "fv-a-sub", "fv-sb1", "fv-sb2", "fv-sb3", "fv-sb4"]),
+      onExit: () => hideAll(["fv-s3-hd","fv-s3-st1","fv-s3-cn1","fv-s3-st2","fv-s3-cn2","fv-s3-st3","fv-s3-cn3","fv-s3-st4","fv-s3-cn4","fv-s3-st5"]),
     },
+    // SCENE 4 — THE DECLARATION + CTA
     {
       id: "fv-s4",
       onEnter: () => {
-        setTimeout(() => show("fv-dr"), 300);
-        setTimeout(() => show("fv-dt"), 700);
-        setTimeout(() => show("fv-pi1"), 1900);
-        setTimeout(() => show("fv-pi2"), 2300);
-        setTimeout(() => show("fv-pi3"), 2700);
-        setTimeout(() => show("fv-pi4"), 3100);
-        setTimeout(() => show("fv-ctas"), 4800);
+        setTimeout(() => show("fv-s4-rule"), 300);
+        setTimeout(() => show("fv-s4-tl"), 700);
+        setTimeout(() => show("fv-s4-sub"), 2000);
+        setTimeout(() => show("fv-s4-cta"), 3200);
+        setTimeout(() => show("fv-s4-ghost"), 3700);
       },
-      onExit: () => hideAll(["fv-dr", "fv-dt", "fv-pi1", "fv-pi2", "fv-pi3", "fv-pi4", "fv-ctas"]),
+      onExit: () => hideAll(["fv-s4-rule","fv-s4-tl","fv-s4-sub","fv-s4-cta","fv-s4-ghost"]),
     },
   ];
 
@@ -110,19 +111,12 @@ function AdContent({ onClose }: Props) {
       if (prevEl) prevEl.classList.remove("fv-active");
       prev.onExit();
     }
-
     currentSceneRef.current = index;
-
-    if (index >= SCENES.length) {
-      setEnded(true);
-      return;
-    }
-
+    if (index >= SCENES.length) return;
     const scene = SCENES[index];
     const sceneEl = document.getElementById(scene.id);
     if (sceneEl) sceneEl.classList.add("fv-active");
     scene.onEnter();
-
     sceneTimerRef.current = setTimeout(() => showScene(index + 1), SCENE_DURATIONS[index]);
   }, []);
 
@@ -131,8 +125,7 @@ function AdContent({ onClose }: Props) {
       progressStartRef.current = Date.now();
       rafRef.current = requestAnimationFrame(updateProgress);
       showScene(0);
-    }, 300);
-
+    }, 400);
     return () => {
       clearTimeout(timer);
       if (sceneTimerRef.current) clearTimeout(sceneTimerRef.current);
@@ -140,9 +133,9 @@ function AdContent({ onClose }: Props) {
     };
   }, [showScene, updateProgress]);
 
-  const handleWatchFull = () => {
+  const handleTryIt = () => {
     onClose();
-    setLocation("/readiness-ad");
+    setLocation("/situation-scanner");
   };
 
   return (
@@ -158,247 +151,254 @@ function AdContent({ onClose }: Props) {
         .fv-grid {
           position: absolute; inset: 0;
           background-image:
-            linear-gradient(rgba(201,168,76,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(201,168,76,0.035) 1px, transparent 1px);
+            linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
           background-size: 60px 60px;
           pointer-events: none;
         }
         .fv-glow-teal {
-          position: absolute; width: 500px; height: 500px; border-radius: 50%;
-          background: radial-gradient(circle, rgba(43,138,110,0.07) 0%, transparent 70%);
-          top: -180px; right: -180px; pointer-events: none;
+          position: absolute; width: 700px; height: 700px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(43,138,110,0.06) 0%, transparent 70%);
+          top: -250px; right: -250px; pointer-events: none;
         }
         .fv-glow-gold {
-          position: absolute; width: 400px; height: 400px; border-radius: 50%;
+          position: absolute; width: 500px; height: 500px; border-radius: 50%;
           background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
-          bottom: -120px; left: -120px; pointer-events: none;
+          bottom: -150px; left: -150px; pointer-events: none;
         }
         .fv-scanline {
           position: absolute; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, transparent, rgba(201,168,76,0.12), transparent);
-          animation: fv-scan 8s linear infinite; pointer-events: none; z-index: 1;
+          background: linear-gradient(90deg, transparent, rgba(201,168,76,0.1), transparent);
+          animation: fv-scan 8s linear infinite; pointer-events: none;
         }
         @keyframes fv-scan { 0% { top: -2px; } 100% { top: 100%; } }
-
         .fv-progress {
           position: absolute; bottom: 0; left: 0; height: 3px;
           background: ${GOLD}; width: 0; transition: width 0.1s linear; z-index: 10;
         }
-
         .fv-skip {
-          position: absolute; top: 24px; right: 28px; z-index: 20;
+          position: absolute; top: 22px; right: 24px; z-index: 20;
           background: transparent; border: none;
           font-family: 'Barlow Condensed', sans-serif;
-          font-size: 11px; font-weight: 600; letter-spacing: 4px;
-          text-transform: uppercase; color: rgba(248,247,244,0.3);
+          font-size: 10px; font-weight: 600; letter-spacing: 4px;
+          text-transform: uppercase; color: rgba(248,247,244,0.25);
           cursor: pointer; transition: color 0.3s; padding: 0;
         }
-        .fv-skip:hover { color: ${GOLD}; }
+        .fv-skip:hover { color: rgba(248,247,244,0.55); }
 
-        /* Scene container */
+        /* Scene base */
         .fv-scene {
           position: absolute; inset: 0;
           display: flex; flex-direction: column;
           justify-content: center; align-items: center;
           opacity: 0; transition: opacity 0.7s ease;
-          padding: clamp(32px, 6vw, 72px);
+          padding: clamp(36px, 7vw, 80px);
           pointer-events: none;
         }
         .fv-scene.fv-active { opacity: 1; pointer-events: auto; }
         .fv-scene > * { position: relative; z-index: 2; }
 
-        /* Show transitions */
-        .fv-show-el { opacity: 0; transition: opacity 0.7s ease; }
-        .fv-show-el.fv-show { opacity: 1; }
-        .fv-slide-el {
-          opacity: 0; transform: translateX(-18px);
-          transition: all 0.5s ease;
-        }
-        .fv-slide-el.fv-show { opacity: 1; transform: translateX(0); }
-        .fv-up-el {
-          opacity: 0; transform: translateY(18px);
-          transition: all 0.7s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        .fv-up-el.fv-show { opacity: 1; transform: translateY(0); }
-
-        /* ── SCENE 1 ── */
+        /* ── SCENE 1 — THE MOMENT ── */
         #fv-s1 { text-align: center; gap: 0; }
 
-        #fv-clock {
+        #fv-s1-time {
           font-family: 'Barlow Condensed', sans-serif;
-          font-size: clamp(100px, 18vw, 200px);
-          font-weight: 700; color: ${RED};
-          letter-spacing: -4px; line-height: 1;
-          opacity: 0; transform: scale(0.8);
-          transition: all 0.9s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        #fv-clock.fv-show { opacity: 1; transform: scale(1); }
-
-        #fv-clock-lbl {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: clamp(13px, 2vw, 20px); font-weight: 500;
-          letter-spacing: 6px; color: ${MUTED}; text-transform: uppercase;
-          margin-top: 12px;
-          opacity: 0; transition: opacity 0.8s ease 0.3s;
-        }
-        #fv-clock-lbl.fv-show { opacity: 1; }
-
-        .fv-cost-list {
-          display: flex; flex-direction: column; gap: 12px;
-          margin-top: 32px; width: 100%; max-width: 540px;
-        }
-        .fv-cost-item {
-          display: flex; align-items: center; gap: 18px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.06);
-          border-left: 3px solid ${RED};
-          padding: clamp(10px,1.2vw,14px) clamp(14px,1.8vw,22px);
-          border-radius: 2px;
-        }
-        .fv-cost-dot { width: 7px; height: 7px; border-radius: 50%; background: ${RED}; flex-shrink: 0; }
-        .fv-cost-text { font-size: clamp(13px,1.5vw,16px); color: rgba(248,247,244,0.75); }
-
-        /* ── SCENE 2 ── */
-        #fv-s2 { text-align: center; gap: 24px; }
-
-        .fv-eyebrow {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 13px; font-weight: 600; letter-spacing: 8px;
-          color: ${GOLD}; text-transform: uppercase;
-        }
-
-        #fv-t-time {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: clamp(60px, 10vw, 100px);
-          font-weight: 700; color: ${GOLD}; letter-spacing: -2px; line-height: 1;
-          opacity: 0; transform: translateY(18px);
-          transition: all 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.15s;
-        }
-        #fv-t-time.fv-show { opacity: 1; transform: translateY(0); }
-
-        .fv-trigger-list { display: flex; flex-direction: column; gap: 9px; width: 100%; max-width: 520px; }
-        .fv-trigger-item {
-          display: flex; align-items: center; gap: 14px;
-          padding: 11px 20px;
-          background: rgba(201,168,76,0.05);
-          border: 1px solid rgba(201,168,76,0.14);
-          border-radius: 2px;
-        }
-        .fv-tdot {
-          width: 5px; height: 5px; border-radius: 50%; background: ${GOLD};
-          flex-shrink: 0; animation: fv-pulse 2s infinite;
-        }
-        @keyframes fv-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
-        .fv-ttext { font-size: clamp(12px,1.4vw,15px); color: rgba(248,247,244,0.85); }
-
-        #fv-t-q {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(20px,3.2vw,32px); font-style: italic;
-          color: rgba(248,247,244,0.6); line-height: 1.3;
-        }
-
-        /* ── SCENE 3 ── */
-        #fv-s3 { text-align: center; gap: 0; background: ${NAVY_MID}; }
-
-        .fv-teal-eye {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 13px; font-weight: 600; letter-spacing: 8px;
-          color: ${TEAL}; text-transform: uppercase; margin-bottom: 18px;
-        }
-
-        #fv-a-hl {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(56px, 9vw, 80px);
-          font-weight: 700; color: ${OFF}; line-height: 1; margin-bottom: 10px;
-          opacity: 0; transform: translateY(18px);
-          transition: all 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.15s;
-        }
-        #fv-a-hl.fv-show { opacity: 1; transform: translateY(0); }
-        #fv-a-hl em { color: ${GOLD}; font-style: italic; }
-
-        #fv-a-sub {
-          font-size: clamp(13px,1.6vw,18px); color: rgba(248,247,244,0.5);
+          font-size: clamp(72px, 13vw, 140px);
+          font-weight: 700; color: ${GOLD};
+          letter-spacing: -3px; line-height: 1;
+          opacity: 0; transform: translateY(12px);
+          transition: all 0.8s cubic-bezier(0.34,1.56,0.64,1);
           margin-bottom: 40px;
-          opacity: 0; transition: opacity 0.6s ease 0.4s;
         }
-        #fv-a-sub.fv-show { opacity: 1; }
+        #fv-s1-time.fv-show { opacity: 1; transform: translateY(0); }
 
-        .fv-stats { display: flex; gap: 2px; width: 100%; }
-        .fv-stat {
-          flex: 1; padding: clamp(14px,2vw,22px) clamp(10px,1.2vw,16px);
-          background: rgba(255,255,255,0.04);
-          border-top: 2px solid ${GOLD};
-          opacity: 0; transform: translateY(18px); transition: all 0.5s ease;
+        .fv-s1-row {
+          display: flex; align-items: flex-start; gap: 18px;
+          width: 100%; max-width: 620px;
+          margin-bottom: 14px;
+          opacity: 0; transform: translateY(8px);
+          transition: all 0.45s ease;
         }
-        .fv-stat.fv-show { opacity: 1; transform: translateY(0); }
-        .fv-stat-v {
+        .fv-s1-row.fv-show { opacity: 1; transform: translateY(0); }
+
+        .fv-s1-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: ${GOLD}; flex-shrink: 0; margin-top: 8px;
+          animation: fv-pulse 2s infinite;
+        }
+        @keyframes fv-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(1.6)} }
+
+        .fv-s1-type {
           font-family: 'Barlow Condensed', sans-serif;
-          font-size: clamp(26px,4vw,40px); font-weight: 700;
-          color: ${GOLD}; line-height: 1; margin-bottom: 6px;
+          font-size: clamp(11px,1.2vw,13px); font-weight: 700;
+          letter-spacing: 3px; text-transform: uppercase;
+          color: ${GOLD}; width: 130px; flex-shrink: 0;
+          padding-top: 2px;
         }
-        .fv-stat-l { font-size: 11px; color: ${MUTED}; text-transform: uppercase; letter-spacing: 2px; }
+        .fv-s1-desc {
+          font-size: clamp(14px,1.5vw,17px);
+          color: rgba(248,247,244,0.75); line-height: 1.4;
+          text-align: left;
+        }
 
-        /* ── SCENE 4 ── */
+        #fv-s1-q {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(20px,3vw,30px); font-style: italic;
+          color: rgba(248,247,244,0.45); margin-top: 28px;
+          opacity: 0; transition: opacity 0.8s ease;
+        }
+        #fv-s1-q.fv-show { opacity: 1; }
+
+        /* ── SCENE 2 — THE COST ── */
+        #fv-s2 {
+          text-align: center; gap: 0;
+          background: ${NAVY_MID};
+        }
+
+        .fv-s2-line {
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 700;
+          color: ${OFF};
+          line-height: 1.2;
+          opacity: 0; transform: translateY(14px);
+          transition: all 0.8s cubic-bezier(0.25,1,0.5,1);
+        }
+        .fv-s2-line.fv-show { opacity: 1; transform: translateY(0); }
+
+        #fv-s2-l1 {
+          font-size: clamp(36px,6vw,64px);
+          margin-bottom: 6px;
+        }
+        #fv-s2-l2 {
+          font-size: clamp(36px,6vw,64px);
+          color: rgba(248,247,244,0.45);
+          margin-bottom: 32px;
+          font-style: italic;
+        }
+        #fv-s2-l3 {
+          font-family: 'Barlow', sans-serif;
+          font-size: clamp(15px,1.8vw,20px);
+          font-weight: 400;
+          color: rgba(248,247,244,0.38);
+          letter-spacing: 0.02em;
+          font-style: normal;
+        }
+
+        /* ── SCENE 3 — THE MACHINE MOVING ── */
+        #fv-s3 {
+          align-items: flex-start; gap: 0;
+          background: ${NAVY};
+        }
+
+        #fv-s3-hd {
+          font-family: 'Barlow Condensed', sans-serif;
+          font-size: 12px; font-weight: 700; letter-spacing: 7px;
+          color: ${TEAL}; text-transform: uppercase;
+          margin-bottom: 32px; width: 100%;
+          opacity: 0; transition: opacity 0.6s ease;
+        }
+        #fv-s3-hd.fv-show { opacity: 1; }
+
+        .fv-chain { width: 100%; }
+
+        .fv-step {
+          display: flex; align-items: flex-start; gap: 24px;
+          opacity: 0; transform: translateX(-14px);
+          transition: all 0.5s ease;
+        }
+        .fv-step.fv-show { opacity: 1; transform: translateX(0); }
+
+        .fv-step-left {
+          display: flex; flex-direction: column;
+          align-items: center; flex-shrink: 0; width: 80px;
+        }
+        .fv-step-node {
+          width: 10px; height: 10px; border-radius: 50%;
+          border: 2px solid ${TEAL}; background: ${NAVY};
+          flex-shrink: 0; position: relative;
+        }
+        .fv-step-node.active { background: ${TEAL}; }
+
+        .fv-step-time {
+          font-family: 'Barlow Condensed', sans-serif;
+          font-size: clamp(18px,2.5vw,26px); font-weight: 700;
+          color: ${TEAL}; line-height: 1; margin-top: 4px;
+        }
+
+        .fv-connector {
+          width: 2px; height: 28px; margin-top: 4px;
+          background: linear-gradient(to bottom, ${TEAL}, rgba(43,138,110,0.2));
+          opacity: 0; transition: opacity 0.4s ease;
+        }
+        .fv-connector.fv-show { opacity: 1; }
+
+        .fv-step-content { padding-top: 2px; padding-bottom: 20px; }
+        .fv-step-label {
+          font-family: 'Barlow Condensed', sans-serif;
+          font-size: clamp(14px,1.6vw,17px); font-weight: 700;
+          color: ${GOLD}; letter-spacing: 2px; text-transform: uppercase;
+          margin-bottom: 3px;
+        }
+        .fv-step-desc {
+          font-size: clamp(12px,1.3vw,14px);
+          color: rgba(248,247,244,0.5); line-height: 1.4;
+        }
+
+        /* ── SCENE 4 — DECLARATION ── */
         #fv-s4 { text-align: center; gap: 0; }
 
-        #fv-dr {
-          width: 50px; height: 2px; background: ${GOLD}; margin: 0 auto 28px;
-          opacity: 0; transition: opacity 0.6s ease;
+        #fv-s4-rule {
+          width: 48px; height: 2px; background: ${GOLD};
+          margin: 0 auto 28px;
+          opacity: 0; transition: opacity 0.5s ease;
         }
-        #fv-dr.fv-show { opacity: 1; }
+        #fv-s4-rule.fv-show { opacity: 1; }
 
-        #fv-dt {
+        #fv-s4-tl {
           font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(32px,5vw,54px); font-weight: 700; font-style: italic;
-          color: ${OFF}; line-height: 1.2; margin-bottom: 36px;
-          opacity: 0; transform: translateY(18px);
-          transition: all 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.15s;
+          font-size: clamp(34px,5.5vw,58px);
+          font-weight: 700; font-style: italic;
+          color: ${OFF}; line-height: 1.2; margin-bottom: 18px;
+          opacity: 0; transform: translateY(16px);
+          transition: all 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.1s;
         }
-        #fv-dt.fv-show { opacity: 1; transform: translateY(0); }
-        #fv-dt em { color: ${GOLD}; }
+        #fv-s4-tl.fv-show { opacity: 1; transform: translateY(0); }
+        #fv-s4-tl em { color: ${GOLD}; }
 
-        .fv-proof { display: flex; gap: 2px; width: 100%; margin-bottom: 36px; }
-        .fv-pi {
-          flex: 1; padding: 14px 12px;
-          background: rgba(255,255,255,0.03);
-          border-top: 2px solid rgba(201,168,76,0.4);
-          opacity: 0; transition: all 0.4s ease;
-        }
-        .fv-pi.fv-show { opacity: 1; }
-        .fv-pv {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: clamp(20px,2.8vw,28px); font-weight: 700;
-          color: ${GOLD}; margin-bottom: 3px;
-        }
-        .fv-pl { font-size: 10px; color: ${MUTED}; text-transform: uppercase; letter-spacing: 2px; }
-
-        #fv-ctas {
-          display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+        #fv-s4-sub {
+          font-family: 'Barlow', sans-serif;
+          font-size: clamp(13px,1.5vw,16px);
+          color: rgba(248,247,244,0.38);
+          letter-spacing: 0.04em; margin-bottom: 44px;
           opacity: 0; transition: opacity 0.6s ease;
         }
-        #fv-ctas.fv-show { opacity: 1; }
+        #fv-s4-sub.fv-show { opacity: 1; }
 
-        .fv-cta-primary {
+        #fv-s4-cta {
           font-family: 'Barlow Condensed', sans-serif;
-          font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
-          text-transform: uppercase;
+          font-size: clamp(13px,1.4vw,15px); font-weight: 700;
+          letter-spacing: 0.2em; text-transform: uppercase;
           background: ${GOLD}; color: ${NAVY};
-          border: none; padding: 12px 28px; border-radius: 0.15rem;
-          cursor: pointer; transition: opacity 0.2s;
+          border: none; padding: 14px 36px; border-radius: 0.15rem;
+          cursor: pointer;
+          opacity: 0; transition: opacity 0.5s ease;
+          display: block; margin: 0 auto 14px;
         }
-        .fv-cta-primary:hover { opacity: 0.88; }
+        #fv-s4-cta.fv-show { opacity: 1; }
+        #fv-s4-cta:hover { opacity: 0.88; }
 
-        .fv-cta-ghost {
+        #fv-s4-ghost {
           font-family: 'Barlow Condensed', sans-serif;
-          font-size: 13px; font-weight: 600; letter-spacing: 0.18em;
-          text-transform: uppercase;
-          background: transparent;
-          color: rgba(248,247,244,0.5);
-          border: 1px solid rgba(248,247,244,0.15);
-          padding: 12px 28px; border-radius: 0.15rem;
-          cursor: pointer; transition: all 0.2s;
+          font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+          background: transparent; border: none;
+          color: rgba(248,247,244,0.25);
+          cursor: pointer;
+          opacity: 0; transition: opacity 0.5s ease;
+          display: block; margin: 0 auto;
+          padding: 0;
         }
-        .fv-cta-ghost:hover { color: ${OFF}; border-color: rgba(248,247,244,0.35); }
+        #fv-s4-ghost.fv-show { opacity: 1; }
+        #fv-s4-ghost:hover { color: rgba(248,247,244,0.5); }
       `}</style>
 
       <div className="fv-wrap">
@@ -407,65 +407,114 @@ function AdContent({ onClose }: Props) {
         <div className="fv-glow-gold" />
         <div className="fv-scanline" />
         <div className="fv-progress" id="fv-progress" />
-
         <button className="fv-skip" onClick={onClose}>Skip ×</button>
 
-        {/* SCENE 1 — THE COST */}
+        {/* ── SCENE 1 — THE MOMENT ── */}
         <div className="fv-scene" id="fv-s1">
-          <div id="fv-clock">30</div>
-          <div id="fv-clock-lbl">days. before a single action is taken.</div>
-          <div className="fv-cost-list">
-            <div className="fv-cost-item fv-slide-el" id="fv-ci1"><div className="fv-cost-dot" /><div className="fv-cost-text">Figuring out who needs to be in the room</div></div>
-            <div className="fv-cost-item fv-slide-el" id="fv-ci2"><div className="fv-cost-dot" /><div className="fv-cost-text">Agreeing on a plan. Getting budget approved.</div></div>
-            <div className="fv-cost-item fv-slide-el" id="fv-ci3"><div className="fv-cost-dot" /><div className="fv-cost-text">Starting from zero. Every. Single. Time.</div></div>
+          <div id="fv-s1-time">3:17 AM</div>
+
+          <div className="fv-s1-row" id="fv-s1-r1">
+            <div className="fv-s1-dot" />
+            <div className="fv-s1-type">Ransomware</div>
+            <div className="fv-s1-desc">23 servers encrypted. Ransom note across payment infrastructure.</div>
+          </div>
+          <div className="fv-s1-row" id="fv-s1-r2">
+            <div className="fv-s1-dot" />
+            <div className="fv-s1-type">Activist Investor</div>
+            <div className="fv-s1-desc">13D filed. Board seat demanded. Press release in 6 hours.</div>
+          </div>
+          <div className="fv-s1-row" id="fv-s1-r3">
+            <div className="fv-s1-dot" />
+            <div className="fv-s1-type">Enforcement</div>
+            <div className="fv-s1-desc">Federal notice received. 48-hour disclosure window open.</div>
+          </div>
+          <div className="fv-s1-row" id="fv-s1-r4">
+            <div className="fv-s1-dot" />
+            <div className="fv-s1-type">Supply Chain</div>
+            <div className="fv-s1-desc">Primary supplier declares force majeure. 14 facilities exposed.</div>
+          </div>
+
+          <div id="fv-s1-q">Is the response already built?</div>
+        </div>
+
+        {/* ── SCENE 2 — THE COST ── */}
+        <div className="fv-scene" id="fv-s2" style={{ background: NAVY_MID }}>
+          <div className="fv-s2-line" id="fv-s2-l1">Most organizations spend<br />the next 30 days</div>
+          <div className="fv-s2-line" id="fv-s2-l2">just figuring out who<br />should be in the room.</div>
+          <div className="fv-s2-line" id="fv-s2-l3">That delay is not a process failure. It is the architecture.</div>
+        </div>
+
+        {/* ── SCENE 3 — THE MACHINE MOVING ── */}
+        <div className="fv-scene" id="fv-s3">
+          <div id="fv-s3-hd">When Readiness OS is active and the trigger fires</div>
+          <div className="fv-chain">
+
+            <div className="fv-step" id="fv-s3-st1">
+              <div className="fv-step-left">
+                <div className="fv-step-node active" />
+                <div className="fv-step-time">0:00</div>
+              </div>
+              <div className="fv-step-content">
+                <div className="fv-step-label">Signal Detected</div>
+                <div className="fv-step-desc">39 live sources. 231 trigger patterns. Threshold crossed. Protocol matched.</div>
+              </div>
+            </div>
+
+            <div className="fv-connector" id="fv-s3-cn1" />
+
+            <div className="fv-step" id="fv-s3-st2">
+              <div className="fv-step-left">
+                <div className="fv-step-node active" />
+                <div className="fv-step-time">2:00</div>
+              </div>
+              <div className="fv-step-content">
+                <div className="fv-step-label">Executive Decides</div>
+                <div className="fv-step-desc">Four pre-staged choices delivered. One authorized action unlocks everything.</div>
+              </div>
+            </div>
+
+            <div className="fv-connector" id="fv-s3-cn2" />
+
+            <div className="fv-step" id="fv-s3-st3">
+              <div className="fv-step-left">
+                <div className="fv-step-node active" />
+                <div className="fv-step-time">4:15</div>
+              </div>
+              <div className="fv-step-content">
+                <div className="fv-step-label">Tasks Deploy</div>
+                <div className="fv-step-desc">Every role assigned. Budget routed. Stakeholders notified. Zero improvisation.</div>
+              </div>
+            </div>
+
+            <div className="fv-connector" id="fv-s3-cn3" />
+
+            <div className="fv-step" id="fv-s3-st4">
+              <div className="fv-step-left">
+                <div className="fv-step-node" />
+                <div className="fv-step-time" style={{ color: GOLD }}>12:00</div>
+              </div>
+              <div className="fv-step-content">
+                <div className="fv-step-label" style={{ color: GOLD }}>Execution Live</div>
+                <div className="fv-step-desc">Coordinated across your entire stack. The response was ready before the trigger fired.</div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* SCENE 2 — THE TRIGGER */}
-        <div className="fv-scene" id="fv-s2">
-          <div className="fv-eyebrow fv-show-el" id="fv-t-eye">It fires without warning</div>
-          <div id="fv-t-time">3:17 AM</div>
-          <div className="fv-trigger-list">
-            <div className="fv-trigger-item fv-slide-el" id="fv-ts1"><div className="fv-tdot" /><div className="fv-ttext">23 servers encrypted. Ransom note across payment infrastructure.</div></div>
-            <div className="fv-trigger-item fv-slide-el" id="fv-ts2"><div className="fv-tdot" /><div className="fv-ttext">Activist investor files 13D. Board seat demanded.</div></div>
-            <div className="fv-trigger-item fv-slide-el" id="fv-ts3"><div className="fv-tdot" /><div className="fv-ttext">Primary supplier declares force majeure. 14 facilities exposed.</div></div>
-          </div>
-          <div className="fv-show-el" id="fv-t-q" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px,3.2vw,32px)", fontStyle: "italic", color: "rgba(248,247,244,0.6)" }}>
-            Is the response already built?
-          </div>
-        </div>
-
-        {/* SCENE 3 — THE ANSWER */}
-        <div className="fv-scene" id="fv-s3" style={{ background: NAVY_MID }}>
-          <div className="fv-teal-eye fv-show-el" id="fv-a-eye">The alternative</div>
-          <div id="fv-a-hl">12 <em>minutes.</em></div>
-          <div id="fv-a-sub">From signal detection to full coordinated execution.</div>
-          <div className="fv-stats">
-            <div className="fv-stat" id="fv-sb1"><div className="fv-stat-v">180</div><div className="fv-stat-l">Protocols</div></div>
-            <div className="fv-stat" id="fv-sb2"><div className="fv-stat-v">231</div><div className="fv-stat-l">Triggers</div></div>
-            <div className="fv-stat" id="fv-sb3"><div className="fv-stat-v">3,600×</div><div className="fv-stat-l">Head Start</div></div>
-            <div className="fv-stat" id="fv-sb4"><div className="fv-stat-v">39</div><div className="fv-stat-l">Data Sources</div></div>
-          </div>
-        </div>
-
-        {/* SCENE 4 — THE DECLARATION */}
+        {/* ── SCENE 4 — THE DECLARATION ── */}
         <div className="fv-scene" id="fv-s4">
-          <div id="fv-dr" />
-          <div id="fv-dt">The response is ready<br />before the <em>trigger fires.</em></div>
-          <div className="fv-proof">
-            <div className="fv-pi" id="fv-pi1"><div className="fv-pv">180</div><div className="fv-pl">Protocols</div></div>
-            <div className="fv-pi" id="fv-pi2"><div className="fv-pv">12 min</div><div className="fv-pl">To Execution</div></div>
-            <div className="fv-pi" id="fv-pi3"><div className="fv-pv">3,600×</div><div className="fv-pl">Head Start</div></div>
-            <div className="fv-pi" id="fv-pi4"><div className="fv-pv">24/7</div><div className="fv-pl">Monitoring</div></div>
+          <div id="fv-s4-rule" />
+          <div id="fv-s4-tl">
+            The response is ready<br />before the <em>trigger fires.</em>
           </div>
-          <div id="fv-ctas">
-            <button className="fv-cta-primary" onClick={handleWatchFull}>
-              Watch the Full 60-Second Brief →
-            </button>
-            <button className="fv-cta-ghost" onClick={onClose}>
-              Continue to Site ×
-            </button>
-          </div>
+          <div id="fv-s4-sub">VaughnMartin · Readiness OS · Coordination Infrastructure</div>
+          <button id="fv-s4-cta" onClick={handleTryIt}>
+            Try It Now — No Login Required →
+          </button>
+          <button id="fv-s4-ghost" onClick={onClose}>
+            Continue to site ×
+          </button>
         </div>
       </div>
     </>
@@ -479,7 +528,6 @@ export function FirstVisitAdModal() {
   useEffect(() => {
     const seen = localStorage.getItem(STORAGE_KEY);
     if (!seen) {
-      // Small delay so the homepage finishes its initial paint first
       const t = setTimeout(() => setVisible(true), 800);
       return () => clearTimeout(t);
     }
