@@ -213,48 +213,49 @@ export default function TheCase() {
             </div>
             <div>
               <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "28px 24px", marginBottom: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>The Mobilization Tax — By Trigger Severity</div>
-                <div style={{ fontSize: 11, color: MUTED, marginBottom: 16 }}>Most triggers fall in the Standard or Significant tier. High-severity applies to regulatory incidents, data breaches, and activist situations.</div>
-
-                {/* Header */}
-                <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 8, paddingBottom: 8, borderBottom: `2px solid ${BORDER}`, marginBottom: 4 }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Cost Component</div>
-                  {[
-                    { label: "Standard", sub: "Competitive, market, ops" },
-                    { label: "Significant", sub: "Supply chain, leadership" },
-                    { label: "High-Severity", sub: "Regulatory, breach, activist" },
-                  ].map((h, i) => (
-                    <div key={i} style={{ textAlign: "center" }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: i === 2 ? "#DC2626" : NAVY }}>{h.label}</div>
-                      <div style={{ fontSize: 9, color: MUTED }}>{h.sub}</div>
-                    </div>
-                  ))}
-                </div>
-
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>The Mobilization Tax — What It Actually Costs</div>
+                <div style={{ fontSize: 11, color: MUTED, marginBottom: 20 }}>Every trigger event carries these costs — not from the response itself, but from the 30 days spent mobilizing before execution can begin.</div>
                 {[
-                  { label: "Executive labor (8 leaders × 15 hrs × $500/hr)", standard: "$60K", significant: "$60K", severe: "$60K" },
-                  { label: "Outside counsel / specialist engagement", standard: "—", significant: "$30K–$80K", severe: "$80K–$300K" },
-                  { label: "Revenue impact during delay window", standard: "$50K–$200K", significant: "$200K–$1M", severe: "$1M–$5M" },
-                  { label: "Regulatory penalty exposure", standard: "—", significant: "—", severe: "$500K–$10M" },
-                  { label: "Consulting retainer for response plan", standard: "—", significant: "$50K–$150K", severe: "$150K–$500K" },
-                ].map((row, i) => (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 8, padding: "9px 0", borderBottom: `1px solid ${BORDER}`, alignItems: "center" }}>
-                    <div style={{ fontSize: 11, color: "#374151" }}>{row.label}</div>
-                    <div style={{ fontSize: 12, fontWeight: 600, color: TEAL, textAlign: "center" }}>{row.standard}</div>
-                    <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, textAlign: "center" }}>{row.significant}</div>
-                    <div style={{ fontSize: 12, fontWeight: 600, color: "#DC2626", textAlign: "center" }}>{row.severe}</div>
+                  {
+                    category: "Executive Time",
+                    desc: "Senior leaders pulled from their core work — alignment calls, decision meetings, stakeholder briefings — before a single action is taken. Every hour of C-suite delay is the most expensive hour in your organization.",
+                    icon: "⏱",
+                  },
+                  {
+                    category: "Revenue at Risk",
+                    desc: "For every day the mobilization cycle extends, the window for competitive response, customer retention, or containment narrows. The delay doesn't pause the business — it exposes it.",
+                    icon: "📉",
+                  },
+                  {
+                    category: "Outside Counsel & Specialists",
+                    desc: "Unplanned legal, regulatory, and communications engagement. Retained at emergency rates because the situation wasn't pre-staged — contracts weren't ready, counsel wasn't briefed, relationships weren't established before the trigger.",
+                    icon: "⚖️",
+                  },
+                  {
+                    category: "Regulatory Penalty Exposure",
+                    desc: "For incidents with disclosure requirements — data breaches, FDA recalls, SEC material events — the clock starts at the moment of the trigger, not when your team finishes mobilizing. Every day of delay in the response is a day closer to a missed deadline.",
+                    icon: "🏛",
+                  },
+                  {
+                    category: "Consulting Retainer to Build the Response Plan",
+                    desc: "The engagement that shouldn't exist. When a trigger fires and there's no pre-staged protocol, the organization commissions one — at emergency rates, under time pressure, from a team that doesn't know your people or your authorization chain.",
+                    icon: "📋",
+                  },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 14, padding: "14px 0", borderBottom: i < 4 ? `1px solid ${BORDER}` : "none" }}>
+                    <div style={{ fontSize: 20, flexShrink: 0, marginTop: 2 }}>{item.icon}</div>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.category}</div>
+                      <div style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.7 }}>{item.desc}</div>
+                    </div>
                   </div>
                 ))}
-
-                <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 8, marginTop: 12, background: NAVY, padding: "12px 8px", alignItems: "center" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.7)" }}>Total Exposure Per Event</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: TEAL, textAlign: "center" }}>$110K–$260K</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#fff", textAlign: "center" }}>$340K–$1.3M</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: GOLD, textAlign: "center" }}>$1.8M–$15.9M</div>
-                </div>
               </div>
-              <div style={{ fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
-                Sources: McKinsey Global Institute (executive labor), IBM Cost of a Data Breach 2023, Gartner (revenue-at-risk). Conservative lower bounds used throughout.
+              <div style={{ padding: "14px 16px", background: NAVY, borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: GOLD, marginBottom: 4 }}>Use the ROI calculator below to put your organization's numbers on this.</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", lineHeight: 1.6 }}>
+                  Input your revenue, trigger frequency, and executive count. The model uses published benchmark rates — you control every assumption.
+                </div>
               </div>
             </div>
           </div>
