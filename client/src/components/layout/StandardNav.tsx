@@ -179,6 +179,14 @@ export default function StandardNav() {
       ],
     },
     {
+      heading: "Intelligence Engine",
+      links: [
+        { label: "Predictive Signal Intelligence", path: "/predictive-intelligence", icon: Target, description: "Pattern-matched clusters — pre-stage protocols before the trigger fires", featured: true },
+        { label: "Organizational Tendency Intelligence", path: "/tendency-intelligence", icon: BarChart3, description: "Your organization measured against itself — bottlenecks, stakeholder profiles, execution patterns", featured: true },
+        { label: "Sector Intelligence Library", path: "/sector-intelligence", icon: Globe, description: "How 203 organizations in your sector have responded — anonymized, aggregated, actionable", featured: true },
+      ],
+    },
+    {
       heading: "Execute Phase Tools",
       links: [
         { label: "Strategic Monitoring", path: "/strategic-monitoring", icon: AlertCircle, description: "Active trigger monitoring — 15+ pre-staged response protocols, real-time coordination", featured: true },
@@ -410,6 +418,13 @@ export default function StandardNav() {
               { path: '/situations-hub', icon: Shield, label: '9-Domain Coverage Board', sub: 'Exposure & readiness across all 9 strategic domains' },
               { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
               { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'Signal radar, monitoring & compound situation synthesis' },
+            ].map(l => megaItem(l))}
+            <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
+            {megaColHeading("Intelligence Engine")}
+            {[
+              { path: '/predictive-intelligence', icon: Target, label: 'Predictive Signal Intelligence', sub: 'Pattern clusters — pre-stage protocols before the trigger fires', featured: true },
+              { path: '/tendency-intelligence', icon: BarChart3, label: 'Organizational Tendency Intelligence', sub: 'Your organization measured against itself', featured: true },
+              { path: '/sector-intelligence', icon: Globe, label: 'Sector Intelligence Library', sub: 'How 203 organizations in your sector have responded', featured: true },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Execute Phase Tools")}

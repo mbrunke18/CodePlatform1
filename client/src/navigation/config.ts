@@ -145,6 +145,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Real signals crossing trigger thresholds — Slack + email auto-fired'
         },
         {
+          id: 'predictive-intelligence',
+          label: 'Predictive Signal Intelligence',
+          path: '/predictive-intelligence',
+          icon: '🎯',
+          description: 'Pattern-matched clusters — pre-stage protocols before the trigger fires'
+        },
+        {
           id: 'foresight-radar',
           label: 'Foresight Radar',
           path: '/foresight-radar',
@@ -364,6 +371,20 @@ export const navigationConfig: NavigationConfig = {
           path: '/workforce-intelligence',
           icon: '🧠',
           description: 'Cultural health, team dynamics, and organizational resilience'
+        },
+        {
+          id: 'tendency-intelligence',
+          label: 'Organizational Tendency Intelligence',
+          path: '/tendency-intelligence',
+          icon: '📐',
+          description: 'Your organization measured against itself — bottlenecks, patterns, stakeholder profiles'
+        },
+        {
+          id: 'sector-intelligence',
+          label: 'Sector Intelligence Library',
+          path: '/sector-intelligence',
+          icon: '🏛️',
+          description: 'How organizations in your sector have responded — anonymized, aggregated, actionable'
         },
         {
           id: 'strategic-innovation',
