@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 10, 2026 (rev 55) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 10, 2026 (rev 56) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3846,7 +3846,7 @@ Full scan of all pages and components against all locked retirement rules:
 | Fortune 1000 in pages | ✅ Zero violations |
 | GPT-4o in UI copy | ✅ Zero violations |
 | human-AI partnership | ✅ Zero violations |
-| Pilot Program / Pilot Access (user-facing) | ✅ Only a code comment (`{/* Pilot Program */}`) in `ExecutiveBrief.tsx` — not rendered text |
+| Pilot Program / Pilot Access (user-facing) | ✅ Clean — further instances found and fixed in Rev 56 (FoundingPartnerHealthMonitor, FoundingPartnerMonitoring, FoundingPartnerDemo, CustomerJourney, Team, AdminCustomerHealth, JourneyNavigator) |
 | Football category labels (Offense / Defense / Special Teams) | ✅ All occurrences are protocol names, industry sectors, legal terms, or the protected founder origin narrative |
 | Retired 340× / 360× metric | ✅ `ThirtySecondSpot` `render360xSpot()` renders "3,600× Execution Head Start" correctly; `"360x-faster"` is an internal code key (exempt) |
 | "72 hours" retirement | ✅ All remaining occurrences are factual regulatory contexts (GDPR Art. 33 72-hr window, ransomware deadlines) — not the retired speed benchmark |
@@ -3965,7 +3965,7 @@ Full sweep of all page and component files against the locked terminology and me
 | Check | Result |
 |---|---|
 | AI-powered / AI-driven / AI-generated / AI-detected | ✅ Zero violations |
-| Pilot Program / Pilot Access (user-facing) | ✅ Only a code comment in `ExecutiveBrief.tsx` — not rendered |
+| Pilot Program / Pilot Access (user-facing) | ✅ Clean — further instances found and fixed in Rev 56 (see §72) |
 | Football labels (Offense / Defense / Special Teams) | ✅ Zero violations outside the protected founder narrative |
 | Retired metrics (340×, 360×) | ✅ Zero violations |
 | "72 hours" as speed benchmark | ✅ All remaining occurrences are factual regulatory contexts (GDPR Art. 33, breach notification windows) — not the retired benchmark |
@@ -4086,3 +4086,73 @@ Scarcity badge text: `"2026 Founding Partner Cohort · [N] of 12 Spots Filled ·
 - Founding Partner scarcity: ✅ accurate ("12 Seats · Applications Now Open")
 - Founding Partner budget qualifier: ✅ "$50M+" line present
 - Board identity system: ✅ all 6 advisors + founder, full admin dashboard
+
+---
+
+## 72. Pre-Launch Terminology Audit + ExecutiveBrief Corrections — June 10, 2026 (rev 56)
+
+### 1. Canonical Trigger Count — Locked at 231
+
+The trigger count is **231** — confirmed against the live DB after protocol enrichment (210 protocols, compound protocols validated). The `replit.md` Terminology Enforcement line previously said "221 triggers" — corrected to "231 triggers." Any future reference must use 231.
+
+**Rule (do not override):** developer-reference.md already carried the correct 231 throughout (Signal Vocabulary table §1, Sequence 1 narrative, ProofStory section §60). Only `replit.md` needed correction.
+
+### 2. Founding Partner Terminology — Wave 3 Sweep
+
+Eight files contained user-facing "Pilot" language that survived earlier sweeps:
+
+| File | Before | After |
+|---|---|---|
+| `FoundingPartnerHealthMonitor.tsx` | Page title, H1, description, empty-state copy (5 instances) | "Founding Partner Health Monitor" / "Founding Partner organizations" |
+| `FoundingPartnerMonitoring.tsx` | "Pilot Company Status" card heading | "Founding Partner Status" |
+| `FoundingPartnerMonitoring.tsx` | "Total Pilots" metric label | "Total Partners" |
+| `FoundingPartnerDemo.tsx` | "Start Full Pilot" button | "Apply for Founding Partner Access" |
+| `FoundingPartnerDemo.tsx` | "Pilot Execution Complete" toast | "Execution Complete" |
+| `CustomerJourney.tsx` | "Pilot scope document" deliverable | "Founding Partner scope document" |
+| `Team.tsx` | "Pilot activation through to enterprise renewal" | "Founding Partner activation through to enterprise renewal" |
+| `AdminCustomerHealth.tsx` | "all pilot organizations" | "all Founding Partner organizations" |
+| `JourneyNavigator.tsx` (component) | "define pilot scope" / "Pilot scope defined" | "define Founding Partner scope" / "Founding Partner scope defined" |
+
+**Still acceptable — do not change:**
+- `scope === 'pilot'` internal code variable in `ProtocolActivationConsole.tsx` — code key, not UI text
+- `/api/pilot/execute`, `/api/pilot/apply` — API route strings
+- `id: 'pilot'`, `path: '/pilot-demo'` — internal code identifiers
+- "co-pilot", "Co-pilot" — Microsoft product references, not the Pilot Program
+- "65% of Fortune 1000 companies are still piloting AI" — third-party analyst stat
+- `{/* Pilot Program */}` comment in `ExecutiveBrief.tsx` — comment only, never rendered
+
+### 3. ExecutiveBrief (`/executive-brief`) — Four Corrections
+
+| Location | Before | After | Reason |
+|---|---|---|---|
+| H1 hero heading | "We Redesign How Work Flows in the Age of AI." | "The response is ready before the trigger fires." | Founder vision is the thesis (for Homepage/Investor/FounderStory); canonical tagline is the correct hero on the commercial brief |
+| Proof numbers stat | `"231"` → `"221"` (incorrectly changed — reverted) | `"231"` | 231 is the validated DB count; 221 was the stale pre-enrichment number |
+| ROI case basis text | `"Documented in ransomware + supply chain activations"` | `"Projected based on regulatory penalty frameworks (HHS, SEC, FTC) — not documented customer activations"` | Original implied external customer data that does not yet exist |
+| Section label + intro | `"Validated Outcomes"` / `"These are not projected outcomes."` | `"Modeled Scenarios"` / `"These are illustrative scenarios modeled on platform architecture and industry mobilization benchmarks — not documented external customer activations."` | Same reason — honest framing for buyer-facing page |
+
+**Note on "Fortune 1000 in meta" (board reviewer claim):** The reviewer flagged this but the code already read "startup to Fortune 500" — no change needed.
+
+**Note on "We redesign how work flows in footer" (board reviewer claim):** The phrase was actually the H1 hero heading, not the footer. The footer was clean. The H1 was changed to the canonical tagline as described above. The founder thesis must still appear on Homepage, Investor pages, FounderStory, and Presentation slides per replit.md — it is NOT removed from the platform, only repositioned off the buyer brief H1.
+
+### 4. Peer-Reviewed Phrases — Surfaced on Homepage + FounderStory
+
+Two board-validated phrases now appear in context:
+
+| Page | Location | Phrase |
+|---|---|---|
+| `Homepage.tsx` | AthletePreparationSection footer pull-quote (right column) | *"Preparedness as infrastructure, not consulting."* |
+| `FounderStory.tsx` | Above closing CTA section, with "The Category Distinction" label | *"Preparedness as infrastructure, not consulting."* |
+
+`ExecutiveBrief.tsx` and `InvestorPresentation.tsx` received both phrases in the previous session (Rev 55).
+
+### 5. Documentation Rule — Established This Session
+
+**Both `replit.md` and `developer-reference.md` must be updated whenever any platform change is made** — whether terminology, metrics, page structure, or messaging. This is the single source of truth contract. Never let a canonical number (like the trigger count) drift between docs and the codebase.
+
+### Rev 56 Known State
+- Build: ✅ clean (zero TypeScript errors, pre-existing eval warning only)
+- Tests: ✅ 208/208 passing
+- Trigger count: ✅ 231 locked in replit.md, developer-reference.md, and all pages
+- Pilot terminology: ✅ zero user-facing violations across all pages and components
+- ExecutiveBrief: ✅ canonical tagline as H1, honest proof qualification, correct trigger count
+- Peer-reviewed phrases: ✅ surfaced on Homepage + FounderStory (and ExecutiveBrief + InvestorPresentation from Rev 55)
