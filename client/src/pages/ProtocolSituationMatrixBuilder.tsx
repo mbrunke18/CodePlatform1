@@ -723,21 +723,30 @@ function CellEditor({ cell, role, variant, onChange, onAcceptSuggestion }: CellE
 }
 
 function Step4Matrix({
-  roles, variants, cells, onCellChange, onAcceptSuggestion
+  roles, variants, cells, onCellChange, onAcceptSuggestion, onAcceptAll
 }: {
   roles: RoleRow[];
   variants: SituationVariant[];
   cells: MatrixCell[];
   onCellChange: (roleId: string, variantId: string, updates: Partial<MatrixCell>) => void;
   onAcceptSuggestion: (roleId: string, variantId: string) => void;
+  onAcceptAll: () => void;
 }) {
+  const [acceptedAll, setAcceptedAll] = useState(false);
+
   const getCell = (roleId: string, variantId: string) =>
     cells.find(c => c.roleId === roleId && c.variantId === variantId) ||
     { roleId, variantId, primaryResponsibility: '', watchSignal: '', authorizationCriteria: '' };
 
   const completedCells = cells.filter(c => c.primaryResponsibility && c.watchSignal && c.authorizationCriteria).length;
+  const suggestedCells = cells.filter(c => c.suggestion).length;
   const totalCells = roles.length * variants.length;
   const completionPct = Math.round((completedCells / totalCells) * 100);
+
+  const handleAcceptAll = () => {
+    onAcceptAll();
+    setAcceptedAll(true);
+  };
 
   return (
     <div>
@@ -758,13 +767,51 @@ function Step4Matrix({
         <div className="h-1.5 rounded-none transition-all" style={{ width: `${completionPct}%`, background: completionPct === 100 ? TEAL : GOLD }} />
       </div>
 
-      <div className="p-3 rounded-sm mb-5 flex items-center gap-2" style={{ background: TEAL + '10', border: `1px solid ${TEAL}20` }}>
-        <Star className="h-4 w-4 flex-shrink-0" style={{ color: TEAL }} />
-        <span className="text-xs font-bold text-gray-700">
-          System suggestions pre-filled from Protocol #{' '}
-          <span style={{ color: NAVY }}>library</span>. Accept them in one click or customize for your organization.
-        </span>
-      </div>
+      {/* Fast Path Banner */}
+      {!acceptedAll && suggestedCells > 0 && completionPct < 100 && (
+        <div
+          className="p-4 rounded-sm mb-4 flex items-center justify-between gap-4"
+          style={{ background: NAVY, border: `1px solid ${NAVY}` }}
+        >
+          <div className="flex items-start gap-3">
+            <Zap className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+            <div>
+              <div className="text-sm font-bold text-white mb-0.5">Need to move fast?</div>
+              <div className="text-xs text-white/60">
+                Accept all {suggestedCells} system suggestions instantly — publish a complete call sheet now, refine the detail on your own schedule.
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={handleAcceptAll}
+            className="flex-shrink-0 px-5 py-2 rounded-sm text-xs font-bold tracking-wide transition-all hover:opacity-90"
+            style={{ background: GOLD, color: NAVY }}
+          >
+            Accept All Suggestions
+          </button>
+        </div>
+      )}
+
+      {acceptedAll && (
+        <div
+          className="p-3 rounded-sm mb-4 flex items-center gap-3"
+          style={{ background: TEAL + '10', border: `1px solid ${TEAL}30` }}
+        >
+          <CheckCircle2 className="h-4 w-4 flex-shrink-0" style={{ color: TEAL }} />
+          <span className="text-xs font-bold text-gray-700">
+            All suggestions accepted — call sheet is complete. Open any cell to customize for your organization.
+          </span>
+        </div>
+      )}
+
+      {!acceptedAll && suggestedCells === 0 && (
+        <div className="p-3 rounded-sm mb-4 flex items-center gap-2" style={{ background: TEAL + '10', border: `1px solid ${TEAL}20` }}>
+          <Star className="h-4 w-4 flex-shrink-0" style={{ color: TEAL }} />
+          <span className="text-xs font-bold text-gray-700">
+            Click any cell to define the responsibility, watch signal, and authorization criteria for that role and situation.
+          </span>
+        </div>
+      )}
 
       {/* Matrix Grid */}
       <div className="overflow-x-auto">
@@ -1174,6 +1221,21 @@ export default function ProtocolSituationMatrixBuilder() {
     });
   };
 
+  const handleAcceptAll = () => {
+    setCells(prev => prev.map(c => {
+      if (c.suggestion) {
+        return {
+          ...c,
+          primaryResponsibility: c.suggestion.primary,
+          watchSignal: c.suggestion.signal,
+          authorizationCriteria: c.suggestion.auth,
+          isAccepted: true,
+        };
+      }
+      return c;
+    }));
+  };
+
   const handleAcceptSuggestion = (roleId: string, variantId: string) => {
     setCells(prev => prev.map(c => {
       if (c.roleId === roleId && c.variantId === variantId && c.suggestion) {
@@ -1292,6 +1354,7 @@ export default function ProtocolSituationMatrixBuilder() {
                   cells={cells}
                   onCellChange={handleCellChange}
                   onAcceptSuggestion={handleAcceptSuggestion}
+                  onAcceptAll={handleAcceptAll}
                 />
               )}
               {currentStep === 5 && (
