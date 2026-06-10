@@ -25,7 +25,7 @@ const COMPARISON_ROWS = [
   {
     dimension: "Cadence",
     bcp: "Reviewed annually. Activated during a once-in-a-decade catastrophe.",
-    ros: "Runs continuously. Monitors 221 triggers every 15 minutes. Designed for the everyday strategic triggers that happen multiple times per year.",
+    ros: "Runs continuously. Monitors 231 triggers every 15 minutes. Designed for the everyday strategic triggers that happen multiple times per year.",
   },
   {
     dimension: "Trigger detection",
@@ -198,7 +198,7 @@ export default function VsBCP() {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
             {[
-              { label: "221", sub: "Strategic triggers monitored" },
+              { label: "231", sub: "Strategic triggers monitored" },
               { label: "15 min", sub: "Signal check cadence" },
               { label: "12 min", sub: "Trigger to full execution" },
             ].map(s => (

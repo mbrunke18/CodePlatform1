@@ -123,7 +123,7 @@ export default function MarketingLanding() {
               When a strategic trigger fires — a competitor launches, a regulation shifts, a market window opens — enterprises typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">spend 30 days just getting organized</span>. Readiness OS compresses that entire mobilization cycle to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
-              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched Readiness Protocol: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
+              AI monitors 248+ signals across 9 strategic domains and 231 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched Readiness Protocol: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
               We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>

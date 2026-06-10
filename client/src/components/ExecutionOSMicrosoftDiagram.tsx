@@ -326,7 +326,7 @@ export default function ExecutionOSMicrosoftDiagram() {
       {[
         { v: "12 min", l: "to execution" },
         { v: "180", l: "Readiness Protocols" },
-        { v: "221", l: "triggers" },
+        { v: "231", l: "triggers" },
         { v: "3,600×", l: "head start" },
       ].map((m, i) => (
         <g key={m.l}>

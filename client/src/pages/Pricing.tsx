@@ -28,7 +28,7 @@ const TIERS = [
     dark: false,
     features: [
       "Full 180-Protocol Library — every strategic domain",
-      "Continuous signal monitoring — 221 trigger patterns",
+      "Continuous signal monitoring — 231 trigger patterns",
       "12-minute response orchestration",
       "Standard integrations (Slack, Jira, Teams, Email)",
       "ADVANCE phase — institutional memory built every activation",
@@ -149,7 +149,7 @@ const OBJECTIONS_GLOBAL = [
   },
   {
     q: "Can't we build this internally?",
-    a: "You could. The average cost to build and maintain a coordination infrastructure with 180 protocols, 221 trigger patterns, continuous signal monitoring, and an executive authorization layer is $2M–$4M in internal engineering, plus 18–24 months before it's operational. And you'd maintain it forever. Readiness OS is live in 90 days. The build-vs-buy math is not close.",
+    a: "You could. The average cost to build and maintain a coordination infrastructure with 180 protocols, 231 trigger patterns, continuous signal monitoring, and an executive authorization layer is $2M–$4M in internal engineering, plus 18–24 months before it's operational. And you'd maintain it forever. Readiness OS is live in 90 days. The build-vs-buy math is not close.",
   },
   {
     q: "We already have Microsoft. Why do we need Readiness OS?",
@@ -622,7 +622,7 @@ export default function Pricing() {
                 items: [
                   { icon: "✓", text: "180 Protocols pre-staged and ready" },
                   { icon: "✓", text: "12-minute response from trigger detection" },
-                  { icon: "✓", text: "221 continuous signal patterns monitored" },
+                  { icon: "✓", text: "231 continuous signal patterns monitored" },
                   { icon: "✓", text: "Standard integrations: Slack, Jira, Teams" },
                   { icon: "✓", text: "Quarterly strategy sessions" },
                   { icon: "✓", text: "24-hour support SLA" },
@@ -792,7 +792,7 @@ export default function Pricing() {
           <div style={{ marginTop: 20, padding: "16px 24px", background: NAVY, display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ width: 3, height: 40, background: GOLD, flexShrink: 0 }} />
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", margin: 0, lineHeight: 1.6 }}>
-              <span style={{ color: GOLD, fontWeight: 700 }}>The consulting retainer covers one crisis.</span> Readiness OS covers 221 trigger patterns, 180 protocols, and every future trigger your organization faces — for the same price or less. And unlike a consulting retainer, it's ready before the crisis starts.
+              <span style={{ color: GOLD, fontWeight: 700 }}>The consulting retainer covers one crisis.</span> Readiness OS covers 231 trigger patterns, 180 protocols, and every future trigger your organization faces — for the same price or less. And unlike a consulting retainer, it's ready before the crisis starts.
             </p>
           </div>
         </div>
@@ -870,7 +870,7 @@ export default function Pricing() {
               ))}
               {[
                 { feature: "Full 180-Protocol Library", c: "✓", f: "✓", e: "✓" },
-                { feature: "221 trigger patterns monitored", c: "✓", f: "✓", e: "✓" },
+                { feature: "231 trigger patterns monitored", c: "✓", f: "✓", e: "✓" },
                 { feature: "12-minute response orchestration", c: "✓", f: "✓", e: "✓" },
                 { feature: "Standard integrations (Slack, Jira, Email)", c: "✓", f: "✓", e: "✓" },
                 { feature: "Advanced integrations (Salesforce, ServiceNow, SAP)", c: "—", f: "✓", e: "✓" },

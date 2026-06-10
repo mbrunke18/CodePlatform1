@@ -136,7 +136,7 @@ export default function ReadinessInfrastructure() {
                 {
                   phase: "01",
                   label: "Signal Intelligence",
-                  desc: "Continuous monitoring across 221 trigger patterns — news feeds, regulatory dockets, SEC filings, threat intelligence, competitive signals. The system detects before humans notice.",
+                  desc: "Continuous monitoring across 231 trigger patterns — news feeds, regulatory dockets, SEC filings, threat intelligence, competitive signals. The system detects before humans notice.",
                 },
                 {
                   phase: "02",
@@ -321,7 +321,7 @@ export default function ReadinessInfrastructure() {
                 {
                   phase: "D — DETECT",
                   color: TEAL,
-                  headline: "Continuous monitoring across 221 trigger patterns",
+                  headline: "Continuous monitoring across 231 trigger patterns",
                   body: "Real-time signal ingestion from news, regulatory dockets, SEC filings, threat intelligence, and competitive feeds. System-detected, not human-monitored. The signal arrives before the call does.",
                 },
                 {
@@ -349,7 +349,7 @@ export default function ReadinessInfrastructure() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 2, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}>
               {[
                 { n: "180", label: "Readiness Protocols" },
-                { n: "221", label: "Monitored Triggers" },
+                { n: "231", label: "Monitored Triggers" },
                 { n: "12 min", label: "Execution Time" },
                 { n: "3,600×", label: "Execution Head Start" },
                 { n: "3", label: "Strategic Domains" },
@@ -445,7 +445,7 @@ export default function ReadinessInfrastructure() {
                 The Category
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>
-                Readiness Infrastructure · VaughnMartin Readiness OS · 180 Protocols · 221 Triggers · 3 Domains · 12 Minutes
+                Readiness Infrastructure · VaughnMartin Readiness OS · 180 Protocols · 231 Triggers · 3 Domains · 12 Minutes
               </p>
             </div>
           </div>

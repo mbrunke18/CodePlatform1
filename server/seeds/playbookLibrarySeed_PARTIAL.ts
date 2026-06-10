@@ -1022,7 +1022,7 @@ export async function seedPlaybookLibrary() {
       budgetApprovalRequired: false,
       targetExecutionTime: 12,
       averageActivationFrequency: 'low',
-      historicalSuccessRate: 0.7396451002217596,
+      historicalSuccessRate: 0.7396451002317596,
     },
     {
       playbookNumber: 46,

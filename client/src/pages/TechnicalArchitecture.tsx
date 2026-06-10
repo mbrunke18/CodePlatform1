@@ -19,10 +19,10 @@ const LAYERS = [
     label: "Signal Detection",
     title: "Continuous Signal Ingestion",
     color: GOLD,
-    desc: "39 pre-configured signal sources active from day one — zero setup required. Each incoming signal is scored against 221 trigger pattern templates using weighted keyword matching and domain classification. The evaluation engine accepts any additional source an enterprise wants to connect.",
+    desc: "39 pre-configured signal sources active from day one — zero setup required. Each incoming signal is scored against 231 trigger pattern templates using weighted keyword matching and domain classification. The evaluation engine accepts any additional source an enterprise wants to connect.",
     details: [
       { label: "Pre-configured sources", value: "39 live feeds covering market news, corporate announcements (PR Newswire, Business Wire), SEC EDGAR filings, government enforcement (FTC, DOJ, FDA, OSHA, EPA, CFPB, FINRA, EEOC, NLRB, FDIC, OCC, US Treasury), cybersecurity (CISA, SANS ISC), energy (EIA, FERC), economic indicators (Federal Reserve, BLS, ECB), global health (WHO, HHS), geopolitical (State Dept, White House, CBP), international regulatory (UK FCA) — all active immediately, no configuration required." },
-      { label: "Custom sources", value: "Additional enterprise feeds, internal systems (ERP alerts, incident logs, Salesforce signals), and industry-specific data sources connect to the same 221-pattern evaluation engine." },
+      { label: "Custom sources", value: "Additional enterprise feeds, internal systems (ERP alerts, incident logs, Salesforce signals), and industry-specific data sources connect to the same 231-pattern evaluation engine." },
       { label: "Cadence", value: "Every 15 minutes — continuous during market hours, hourly overnight" },
       { label: "Risk classification", value: "Each signal scored and classified as LOW, MEDIUM, or HIGH risk. Classification drives protocol prioritization and executive notification thresholds." },
       { label: "Domain tagging", value: "Each signal classified to GROWTH & POSITIONING, RISK & RESILIENCE, or TRANSFORMATION" },
@@ -36,7 +36,7 @@ const LAYERS = [
     desc: "When a trigger pattern fires, the system resolves the appropriate Readiness Protocol from a library of 180 single-domain and 30 compound protocols. Compound protocols coordinate simultaneous multi-domain response.",
     details: [
       { label: "Protocol library", value: "180 cross-industry protocols · IDs 1–180. 30 compound protocols · IDs 181–210 (multi-domain, simultaneous activation)" },
-      { label: "Trigger patterns", value: "221 named trigger templates. Each template maps to 1–4 primary protocols and includes escalation logic" },
+      { label: "Trigger patterns", value: "231 named trigger templates. Each template maps to 1–4 primary protocols and includes escalation logic" },
       { label: "Compound logic", value: "Activist + Regulatory compound triggers both GROWTH & POSITIONING and RISK & RESILIENCE protocols simultaneously. Full 10-task dual-track war room." },
       { label: "Resolution speed", value: "Protocol selected in <2 seconds after trigger detection. No human routing required." },
     ],
@@ -221,7 +221,7 @@ export default function TechnicalArchitecture() {
             Four architectural layers — signal detection, protocol resolution, execution engine, and institutional memory — operating on a Microsoft-native integration stack.
           </p>
           <div style={{ display: "inline-flex", gap: 2 }}>
-            {["221 trigger patterns", "180 Readiness Protocols", "12-minute execution", "Microsoft-native"].map(tag => (
+            {["231 trigger patterns", "180 Readiness Protocols", "12-minute execution", "Microsoft-native"].map(tag => (
               <span key={tag} style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(201,168,76,0.75)", padding: "6px 14px", border: "1px solid rgba(201,168,76,0.2)", background: "rgba(201,168,76,0.05)" }}>
                 {tag}
               </span>
@@ -411,7 +411,7 @@ export default function TechnicalArchitecture() {
                 num: "5",
                 label: "Business Impact Layer",
                 desc: "Strategy & Decision Making · Operations",
-                role: "Readiness OS primary layer — 180 pre-staged Readiness Protocols across 221 trigger scenarios. 12-minute response replaces 30-day mobilization cycle.",
+                role: "Readiness OS primary layer — 180 pre-staged Readiness Protocols across 231 trigger scenarios. 12-minute response replaces 30-day mobilization cycle.",
                 highlight: true,
                 color: GOLD,
               },
@@ -427,7 +427,7 @@ export default function TechnicalArchitecture() {
                 num: "3",
                 label: "Intelligence Layer",
                 desc: "RAG · Memory · Context Orchestration",
-                role: "Readiness OS intelligence layer — 39-feed live signal ingestion, 221-pattern trigger evaluation, semantic embedding scoring, institutional activation memory.",
+                role: "Readiness OS intelligence layer — 39-feed live signal ingestion, 231-pattern trigger evaluation, semantic embedding scoring, institutional activation memory.",
                 highlight: false,
                 color: TEAL,
               },

@@ -117,7 +117,7 @@ export default function WelcomeBrief() {
   }
 
   const d = data || {
-    triggersArmed: 221, domainsMonitored: 9, signalsTracked: 248, playbooksReady: 180,
+    triggersArmed: 231, domainsMonitored: 9, signalsTracked: 248, playbooksReady: 180,
     signalsScanned72h: 0, recentDetections: [], stakeholdersEnrolled: 0, isNewOrg: true,
   };
   const detections: any[] = d.recentDetections || [];
@@ -264,7 +264,7 @@ export default function WelcomeBrief() {
               {
                 day: 'Day 1',
                 title: 'Platform Armed',
-                desc: '221 triggers active. 248+ signals scanning. Your organization is already being monitored.',
+                desc: '231 triggers active. 248+ signals scanning. Your organization is already being monitored.',
                 color: TEAL,
               },
               {

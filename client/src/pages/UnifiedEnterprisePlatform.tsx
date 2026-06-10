@@ -364,7 +364,7 @@ export default function UnifiedEnterprisePlatform() {
                   <div>
                     <h2 className="text-xl font-bold mb-2">Identify → Detect → Execute → Advance</h2>
                     <p className="text-sm text-white/70">
-                      Build Readiness Protocols from 80+ templates. AI monitors 221 triggers 24/7. When one fires: roles assigned, tasks staged, comms sent — execution live in 12 minutes.
+                      Build Readiness Protocols from 80+ templates. AI monitors 231 triggers 24/7. When one fires: roles assigned, tasks staged, comms sent — execution live in 12 minutes.
                     </p>
                   </div>
                   <div className="flex gap-2">

@@ -158,7 +158,7 @@ export default function OnboardingGuide() {
               Everything you need to understand, activate, and operate your Readiness OS from day one.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
-              {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["180", "Pre-Built Readiness Protocols"], ["221", "Live Triggers"]].map(([v, l]) => (
+              {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["180", "Pre-Built Readiness Protocols"], ["231", "Live Triggers"]].map(([v, l]) => (
                 <div key={l} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "16px 12px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 22, fontWeight: 900, color: GOLD, letterSpacing: "-0.5px" }}>{v}</div>
                   <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>{l}</div>
@@ -181,7 +181,7 @@ export default function OnboardingGuide() {
                 <h3 style={{ fontSize: 13, fontWeight: 800, color: NAVY, margin: "0 0 16px", textTransform: "uppercase" as const, letterSpacing: "1px" }}>What AI Does</h3>
                 {[
                   "Monitors 248+ data points across 9 strategic domains",
-                  "Detects patterns across 221 configured trigger scenarios",
+                  "Detects patterns across 231 configured trigger scenarios",
                   "Scores signal confidence and fires alerts above 72% threshold",
                   "Pre-stages the right Readiness Protocol before you are asked to act",
                   "Logs every detection for audit and board reporting",
@@ -257,7 +257,7 @@ export default function OnboardingGuide() {
 
           <ScreenPreview title="vaughnmartin.com/mission-control" accent={NAVY}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 16 }}>
-              {[["221", "Triggers Armed"], ["180", "Readiness Protocols Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
+              {[["231", "Triggers Armed"], ["180", "Readiness Protocols Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
                 <div key={l} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "12px 8px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 18, fontWeight: 900, color: NAVY }}>{v}</div>
                   <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "0.5px", marginTop: 3 }}>{l}</div>
@@ -381,7 +381,7 @@ export default function OnboardingGuide() {
             <FeatureRow icon={Users} color={NAVY} title="Stakeholder Registry" path="/stakeholders"
               description="Contact directory for rapid mobilization. Role-matched notification routing ensures the right people are reached at trigger activation." />
             <FeatureRow icon={Target} color={GOLD} title="Trigger Configuration" path="/triggers"
-              description="Configure which of the 221 triggers are active for your organization. Set sensitivity thresholds, evaluation modes, and notification recipients." />
+              description="Configure which of the 231 triggers are active for your organization. Set sensitivity thresholds, evaluation modes, and notification recipients." />
             <FeatureRow icon={Globe} color={GREEN} title="Signal Activity Feed" path="/command-tower"
               description="Live log of every signal evaluation cycle: scanning status, partial matches, and confirmed detections. Full transparency into what the system is monitoring." />
             <FeatureRow icon={Layers} color={NAVY} title="IDEA Workspace" path="/workspace"
@@ -480,7 +480,7 @@ export default function OnboardingGuide() {
                   ["72%+", "Minimum confidence score before an alert fires"],
                   ["4 hours", "Signal deduplication window (prevents repeat alerts)"],
                   ["248+", "Data points monitored across signal categories"],
-                  ["221", "Configured trigger scenarios across 9 domains"],
+                  ["231", "Configured trigger scenarios across 9 domains"],
                 ].map(([term, def]) => (
                   <div key={term} style={{ display: "flex", gap: 12, marginBottom: 10 }}>
                     <span style={{ fontSize: 12, fontWeight: 800, color: NAVY, flexShrink: 0, minWidth: 64 }}>{term}</span>

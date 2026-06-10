@@ -53,7 +53,7 @@ const PHASES: Phase[] = [
       "review and approve responses before any",
       "situation presents itself. Ownership built in.",
     ],
-    bullets: ["9 strategic domains configured", "221 trigger patterns mapped", "Executive roles pre-assigned", "Briefs reviewed and approved"],
+    bullets: ["9 strategic domains configured", "231 trigger patterns mapped", "Executive roles pre-assigned", "Briefs reviewed and approved"],
     color: GOLD,
   },
   {

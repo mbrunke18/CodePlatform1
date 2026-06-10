@@ -13,7 +13,7 @@ const FOUNDATION = [
   {
     icon: <Eye className="w-5 h-5" />,
     label: "Continuous Signal Detection",
-    desc: "248+ sources monitored every 15 minutes. 221 trigger patterns across 9 strategic domains.",
+    desc: "248+ sources monitored every 15 minutes. 231 trigger patterns across 9 strategic domains.",
     live: true,
   },
   {
@@ -50,7 +50,7 @@ const ORACLE_CAPABILITIES = [
     title: "Autonomous Strategic War Gaming",
     phase: "Phase 1 — Founding Partner Co-Development",
     color: GOLD,
-    desc: "Thousands of forward simulations run continuously using your organizational data and external signals. The system identifies converging risk patterns before they hit your 221 trigger signatures — and drafts new protocols before the trigger fully materializes.",
+    desc: "Thousands of forward simulations run continuously using your organizational data and external signals. The system identifies converging risk patterns before they hit your 231 trigger signatures — and drafts new protocols before the trigger fully materializes.",
     example: "\"Three converging signals suggest a 72% probability of a tariff-related disruption in 60 days. A pre-staged Readiness Protocol has been drafted with owners, comms, and budget reallocations. Approve or modify?\"",
     distinction: "Shifts the value proposition from 'we respond in 12 minutes' to 'the response was ready before the trigger was even a pattern.'",
   },
@@ -67,7 +67,7 @@ const ORACLE_CAPABILITIES = [
     title: "Executive Time Machine",
     phase: "Phase 2 — Network Effect Module",
     color: GOLD,
-    desc: "One executive dashboard where leaders step into simulated futures. Activate any protocol in simulation and see projected financial, reputational, and operational outcomes in real time — before committing. Stress-test your organization's readiness against any scenario in the 221-trigger library.",
+    desc: "One executive dashboard where leaders step into simulated futures. Activate any protocol in simulation and see projected financial, reputational, and operational outcomes in real time — before committing. Stress-test your organization's readiness against any scenario in the 231-trigger library.",
     distinction: "Turns pre-staging from a preparation activity into a continuous strategic advantage. Executives don't just respond — they rehearse domination.",
   },
 ];

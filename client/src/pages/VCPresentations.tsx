@@ -42,7 +42,7 @@ export default function VCPresentations() {
       title: "Platform Depth",
       value: "180",
       subtitle: "Pre-built Readiness Protocols across 9 strategic domains",
-      growth: "221 executive triggers mapped",
+      growth: "231 executive triggers mapped",
       color: "text-[#2B8A6E]"
     },
     {

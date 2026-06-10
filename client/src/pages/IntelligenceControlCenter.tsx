@@ -154,7 +154,7 @@ export default function IntelligenceControlCenter() {
       id: 'triggers', title: 'Trigger Management',
       description: 'Create and manage automated triggers',
       path: '/triggers-management', icon: Bell, accentColor: TEAL, badge: 'CONFIGURE',
-      stat: '221 Triggers', statSub: 'across all scenarios',
+      stat: '231 Triggers', statSub: 'across all scenarios',
       features: ['Trigger Templates', 'Condition Builder', 'Readiness Protocol Mapping'],
       anim: 'icc-tile-4',
     },

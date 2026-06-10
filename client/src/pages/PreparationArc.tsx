@@ -29,7 +29,7 @@ const WEEKS = [
       {
         day: 'Day 1–2',
         title: 'Organization Foundation',
-        description: 'Complete the Setup Wizard — company profile, industry vertical, employee count, public or private classification, and primary market regions. These fields determine which of the 221 triggers apply to your organization.',
+        description: 'Complete the Setup Wizard — company profile, industry vertical, employee count, public or private classification, and primary market regions. These fields determine which of the 231 triggers apply to your organization.',
         actions: [
           { label: 'Open Setup Wizard', href: '/onboarding-wizard', primary: true },
         ],

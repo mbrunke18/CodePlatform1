@@ -16,7 +16,7 @@ const stats = [
   { value: "12 min", label: "Situation to full coordination" },
   { value: "3,600×", label: "Execution head start vs. traditional" },
   { value: "180", label: "Pre-staged Readiness Protocols" },
-  { value: "221", label: "Strategic situations mapped" },
+  { value: "231", label: "Strategic situations mapped" },
 ];
 
 const tracks = [

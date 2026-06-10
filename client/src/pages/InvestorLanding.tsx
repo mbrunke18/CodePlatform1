@@ -836,7 +836,7 @@ export default function InvestorLanding() {
                   {
                     n: '03',
                     label: 'Continuous pattern detection is now economically viable for the first time',
-                    body: 'Running 221 trigger patterns across real-time data streams — RSS, regulatory filings, market signals — requires inference at a cost point that didn\'t exist two years ago. The capability gap was never strategic vision; it was compute economics. That constraint lifted in 2024. We built the operating model layer on top of it immediately.',
+                    body: 'Running 231 trigger patterns across real-time data streams — RSS, regulatory filings, market signals — requires inference at a cost point that didn\'t exist two years ago. The capability gap was never strategic vision; it was compute economics. That constraint lifted in 2024. We built the operating model layer on top of it immediately.',
                     accent: '#C9A84C',
                   },
                 ].map(({ n, label, body, accent }) => (
@@ -912,7 +912,7 @@ export default function InvestorLanding() {
                 <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 10 }}>
                   {[
                     { label: '180 Readiness Protocols pre-staged', sub: 'Before the trigger fires — not assembled after' },
-                    { label: '221 trigger patterns monitored continuously', sub: 'Signal detected → protocol matched → exec notified' },
+                    { label: '231 trigger patterns monitored continuously', sub: 'Signal detected → protocol matched → exec notified' },
                     { label: 'Executive authorization gates', sub: 'AI monitors. Executives authorize. No autonomous action.' },
                     { label: '12-minute coordinated response', sub: '3,600× head start over the 30-day mobilization model' },
                   ].map(({ label, sub }) => (
@@ -1736,7 +1736,7 @@ export default function InvestorLanding() {
 
                 <div className="grid grid-cols-3 gap-3 mb-8">
                   {[
-                    { n: '221', l: 'Trigger types monitored' },
+                    { n: '231', l: 'Trigger types monitored' },
                     { n: '180', l: 'Pre-staged Readiness Protocols' },
                     { n: '12 min', l: 'Signal to execution' },
                   ].map(s => (
@@ -1844,7 +1844,7 @@ export default function InvestorLanding() {
                 },
                 {
                   q: "How does it solve it?",
-                  a: "The system ingests signals across eight sources, 221 patterns, every 15 minutes. When a situation crosses threshold it matches to a pre-staged Readiness Protocol — stakeholders assigned, budget pre-approved, communications ready. The executive sees the brief and authorizes. War room is live. Twelve minutes. Every activation encodes what held and what didn't into institutional memory, so the next response is faster and more precise.",
+                  a: "The system ingests signals across eight sources, 231 patterns, every 15 minutes. When a situation crosses threshold it matches to a pre-staged Readiness Protocol — stakeholders assigned, budget pre-approved, communications ready. The executive sees the brief and authorizes. War room is live. Twelve minutes. Every activation encodes what held and what didn't into institutional memory, so the next response is faster and more precise.",
                   proof: "3,600× Execution Head Start. The gap before any competitor has aligned stakeholders.",
                 },
                 {

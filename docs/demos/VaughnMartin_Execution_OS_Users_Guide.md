@@ -98,7 +98,7 @@ Use this page when building your internal business case. Use it when you are pre
 The IDEA Framework — Identify, Detect, Execute, Advance — is the governing logic of the entire platform. Every feature, every page, every tool in Readiness OS exists within one of these four phases. This page exists so that your team has a shared operating language and a clear mental map of how the platform works before they begin using it.
 
 ### How You Use It
-Read through each phase with your organizational structure in mind. During Identify, your team selects which of the 180 Readiness Protocols apply to your organization and pre-configures them with the right owners, tasks, and approvals. During Detect, the platform monitors 248+ data points across 9 strategic domains, 221 triggers continuously — no human monitoring required. During Execute, a single approved click deploys the entire playbook. During Advance, every activation generates performance data that improves the next response. Use this page to assign IDEA Framework ownership: who in your organization leads each phase, and what are their responsibilities.
+Read through each phase with your organizational structure in mind. During Identify, your team selects which of the 180 Readiness Protocols apply to your organization and pre-configures them with the right owners, tasks, and approvals. During Detect, the platform monitors 248+ data points across 9 strategic domains, 231 triggers continuously — no human monitoring required. During Execute, a single approved click deploys the entire playbook. During Advance, every activation generates performance data that improves the next response. Use this page to assign IDEA Framework ownership: who in your organization leads each phase, and what are their responsibilities.
 
 ### What It Produces
 A shared operating language for your leadership team. Clear ownership assignments for each phase. An understanding of where the human decisions happen (Identify setup, Execute approval, Advance review) and where the platform operates automatically (Detect monitoring, task distribution, communication delivery). After this page, your team is aligned on how to use the platform before they log in.
@@ -134,7 +134,7 @@ Use this page when preparing your board presentation. Use it before a CFO meetin
 Executives evaluating an enterprise platform need a complete picture of what they are buying — not a curated demo of the best features, but a comprehensive inventory of every capability. This page exists so that any leader can understand the full scope of the platform without needing a guided tour.
 
 ### How You Use It
-Work through the tabbed sections: IDEA Framework capabilities, Playbook Library overview, Signal Intelligence, Execution tools, and Analytics. Note the key statistics: 180 Readiness Protocols + 30 Compound Protocols (210 total), 221 triggers, 248+ monitored data points, 9 strategic domains. Read the Microsoft ecosystem section to understand which integrations are available. This page is best reviewed before your onboarding kickoff as a capability checklist — mark which features are priorities for your organization's first 90 days.
+Work through the tabbed sections: IDEA Framework capabilities, Playbook Library overview, Signal Intelligence, Execution tools, and Analytics. Note the key statistics: 180 Readiness Protocols + 30 Compound Protocols (210 total), 231 triggers, 248+ monitored data points, 9 strategic domains. Read the Microsoft ecosystem section to understand which integrations are available. This page is best reviewed before your onboarding kickoff as a capability checklist — mark which features are priorities for your organization's first 90 days.
 
 ### What It Produces
 A complete capability map. After reviewing this page, you know exactly what the platform can do, what is included in your deployment, and which capabilities to prioritize during onboarding. It produces a prioritized feature roadmap for your 90-day onboarding period.
@@ -583,10 +583,10 @@ Review this page quarterly as part of your platform performance review. Use it w
 **URL:** `/triggers-management`
 
 ### Why It Exists
-You cannot be warned about something you did not set up to monitor. Triggers Management exists to configure the 221 executive triggers that tell the platform what patterns to watch for across your monitored data sources — and what to do when those patterns emerge.
+You cannot be warned about something you did not set up to monitor. Triggers Management exists to configure the 231 executive triggers that tell the platform what patterns to watch for across your monitored data sources — and what to do when those patterns emerge.
 
 ### How You Use It
-Open Triggers Management to see the full list of 221 triggers organized by category: Behavioral, Competitive, Customer, Cyber, Economic, ESG, Execution, Financial, Geopolitical, Innovation, Market, Media, Partnership, Regulatory, Supply Chain, and Talent. Each trigger shows its current status (active or inactive), severity rating, data sources, and the playbook it is mapped to. Toggle individual triggers on or off based on your organization's priorities. Click any trigger to open its configuration panel — here you can adjust the detection sensitivity, change the mapped playbook, configure the alert routing (who gets notified when this trigger fires), and review the trigger's activation history.
+Open Triggers Management to see the full list of 231 triggers organized by category: Behavioral, Competitive, Customer, Cyber, Economic, ESG, Execution, Financial, Geopolitical, Innovation, Market, Media, Partnership, Regulatory, Supply Chain, and Talent. Each trigger shows its current status (active or inactive), severity rating, data sources, and the playbook it is mapped to. Toggle individual triggers on or off based on your organization's priorities. Click any trigger to open its configuration panel — here you can adjust the detection sensitivity, change the mapped playbook, configure the alert routing (who gets notified when this trigger fires), and review the trigger's activation history.
 
 For triggers that need custom configuration — new regulatory requirements, organization-specific competitive signals, or industry-specific thresholds — use the Trigger Configuration Wizard, which walks you through the setup in five steps.
 
@@ -1274,7 +1274,7 @@ Own the Onboarding Wizard completion. Manage Playbook Readiness Audit monthly. C
 |---|---|
 | Pre-staged Playbooks | 170 |
 | Strategic Domains | 9 |
-| Executive Triggers | 221 |
+| Executive Triggers | 231 |
 | Monitored Data Points | 248+ |
 | Signal Categories | 16 |
 | IDEA Framework AI Agents | 4 |
@@ -1302,7 +1302,7 @@ Own the Onboarding Wizard completion. Manage Playbook Readiness Audit monthly. C
 
 **Thrive Score:** A system-generated score (0–100) representing the probability that an organization's current configuration will create competitive advantage from a described scenario.
 
-**Trigger:** One of 221 configurable conditions that, when detected by the monitoring system, generates an alert and a playbook recommendation. Triggers connect specific signal patterns to specific playbook responses.
+**Trigger:** One of 231 configurable conditions that, when detected by the monitoring system, generates an alert and a playbook recommendation. Triggers connect specific signal patterns to specific playbook responses.
 
 **3,600× Execution Head Start:** The performance difference between 30 days (the traditional enterprise mobilization cycle) and 12 minutes (Readiness OS from trigger to full deployment). This is not a speed metric — it is the head start a Readiness OS organization has over a traditional enterprise when both face the same strategic trigger at the same moment.
 

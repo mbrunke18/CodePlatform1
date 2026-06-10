@@ -25,7 +25,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Leverage AI for strategic advantage.",
     source: "Nearly every AI strategy deck in circulation today",
-    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Readiness Protocol queued. Executive notified. 12 minutes to live coordination — not a dashboard."
+    reality: "AI monitors 248+ data points across 231 triggers. Pattern detected. Readiness Protocol queued. Executive notified. 12 minutes to live coordination — not a dashboard."
   },
   {
     claim: "Create a learning organization that adapts in real time.",
@@ -45,7 +45,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Develop scenario-based planning capabilities.",
     source: "War room methodology, BCG, strategic planning consultants",
-    reality: "221 triggers pre-mapped across 9 domains. 180 Readiness Protocols pre-built. The scenario is already planned. The response is already ready."
+    reality: "231 triggers pre-mapped across 9 domains. 180 Readiness Protocols pre-built. The scenario is already planned. The response is already ready."
   },
   {
     claim: "Build organizational resilience.",
@@ -173,7 +173,7 @@ export default function PlatformReality() {
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 1 }}>
                 {[
                   { step: "01", label: "The Problem is Pre-Staged", body: "180 Readiness Protocols built for every situation the organization is likely to face. Not described — deployed. Not in a deck — in the platform." },
-                  { step: "02", label: "The Intelligence is Live", body: "248+ data points monitored continuously across 221 triggers. AI detects the pattern before the leadership team reads the news." },
+                  { step: "02", label: "The Intelligence is Live", body: "248+ data points monitored continuously across 231 triggers. AI detects the pattern before the leadership team reads the news." },
                   { step: "03", label: "No Committee Required", body: "When a trigger fires, the platform surfaces the matched Readiness Protocol, assigns roles, and notifies stakeholders. Zero coordination overhead. No steering committee. No workshop." },
                   { step: "04", label: "12 Minutes to Live Execution", body: "While the thought leader's framework is still in Week 3 of stakeholder alignment, Readiness OS users are already 12 minutes into coordinated, executive-authorized execution." },
                 ].map((item) => (
@@ -391,7 +391,7 @@ export default function PlatformReality() {
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Readiness OS</div>
               <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#F0EDE4", lineHeight: 1.1 }}>Shipped It.</div>
               <p style={{ fontSize: 14, color: "rgba(240,237,228,0.55)", maxWidth: 540, marginTop: 8, lineHeight: 1.6 }}>
-                180 live playbooks. 221 pre-mapped triggers. 248+ data points monitored. Executive-authorized execution in 12 minutes. The response is ready before the trigger fires.
+                180 live playbooks. 231 pre-mapped triggers. 248+ data points monitored. Executive-authorized execution in 12 minutes. The response is ready before the trigger fires.
               </p>
             </div>
             <button
@@ -446,7 +446,7 @@ export default function PlatformReality() {
                 },
                 {
                   label: "Readiness OS Redirect — What Changes",
-                  items: ["180 protocols pre-staged for exactly these situations", "221 triggers monitoring for them continuously", "12-minute execution when one fires", "Response ready before the trigger fires"],
+                  items: ["180 protocols pre-staged for exactly these situations", "231 triggers monitoring for them continuously", "12-minute execution when one fires", "Response ready before the trigger fires"],
                   state: "solution",
                 },
               ].map(({ label, items, state }) => (

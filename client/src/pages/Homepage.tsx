@@ -994,7 +994,7 @@ function HeroSection() {
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
                 <span style={{ ...DM, color: "rgba(255,255,255,0.78)", fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>
-                  {hasReal ? `${liveCtx?.totalToday ?? 0} Signals Detected Today — System Active` : "221 Trigger Patterns Monitored — System Active"}
+                  {hasReal ? `${liveCtx?.totalToday ?? 0} Signals Detected Today — System Active` : "231 Trigger Patterns Monitored — System Active"}
                 </span>
               </div>
 
@@ -1030,7 +1030,7 @@ function HeroSection() {
               {/* Detect → Coordinate → Execute → Learn chain — Patrik framing */}
               <div style={{ display: "flex", alignItems: "stretch", gap: 0, marginBottom: 36, maxWidth: 500, border: "1px solid rgba(201,168,76,0.18)" }}>
                 {[
-                  { verb: "Detect", desc: "221 trigger patterns", color: GOLD },
+                  { verb: "Detect", desc: "231 trigger patterns", color: GOLD },
                   { verb: "Coordinate", desc: "Pre-staged stakeholders", color: GOLD },
                   { verb: "Execute", desc: "12 minutes to full response", color: GOLD },
                   { verb: "Learn", desc: "ADVANCE loop compounds", color: TEAL },
@@ -1111,7 +1111,7 @@ function HeroSection() {
                   { n: "12 min",  l: "Trigger to execution" },
                   { n: "3,600×", l: "Execution head start" },
                   { n: "180",    l: "Readiness Protocols" },
-                  { n: "221",    l: "Trigger patterns" },
+                  { n: "231",    l: "Trigger patterns" },
                 ].map((s, i) => (
                   <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
                     <div style={{ ...GEO, color: GOLD, fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, lineHeight: 1 }}>{s.n}</div>
@@ -1318,7 +1318,7 @@ function ThreeStepSection() {
         </div>
         <div className="hp-three-step-grid" style={{ display: "grid", gridTemplateColumns: "1fr 40px 1fr 40px 1fr", alignItems: "center", gap: 0 }}>
           {[
-            { n: "01", title: "Signal detected", desc: "Continuous monitoring scores 221 trigger patterns. Risk score exceeds threshold — Protocol selected in under 2 seconds.", color: GOLD },
+            { n: "01", title: "Signal detected", desc: "Continuous monitoring scores 231 trigger patterns. Risk score exceeds threshold — Protocol selected in under 2 seconds.", color: GOLD },
             { n: "02", title: "Executive authorizes", desc: "Authorization request delivered to inbox. CEO, COO, or designated executive signs off — budget unlocks, response stages.", color: TEAL },
             { n: "03", title: "Coordinated execution", desc: "Tasks seeded, roles assigned, Teams channel live, war room active. Every stakeholder knows their role before they ask.", color: NAVY },
           ].map((step, i) => (
@@ -1439,12 +1439,12 @@ function PlatformArchitectureSection() {
               <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: NAVY, opacity: 0.55, marginBottom: 6 }}>Tier 1</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Readiness OS Core</h3>
               <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
-                180 pre-staged Readiness Protocols, continuous signal monitoring across 221 strategic triggers, and the 12-minute execution engine. Available on day one — for every organization in every industry.
+                180 pre-staged Readiness Protocols, continuous signal monitoring across 231 strategic triggers, and the 12-minute execution engine. Available on day one — for every organization in every industry.
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
                   "180 Readiness Protocols — ready before any trigger fires",
-                  "221 strategic triggers continuously monitored",
+                  "231 strategic triggers continuously monitored",
                   "12-minute trigger-to-coordination execution",
                   "Executive authority preserved at every step",
                 ].map((item, i) => (
@@ -3274,7 +3274,7 @@ function HowTriggersWorkSection() {
                 <em style={{ color: GOLD, fontStyle: "italic" }}>Executives decide.</em>
               </h2>
               <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 20 }}>
-                Readiness OS monitors <strong>248+ data points across 221 trigger types</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a potential trigger for executive review.
+                Readiness OS monitors <strong>248+ data points across 231 trigger types</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a potential trigger for executive review.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 28 }}>
                 No Readiness Protocol activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
@@ -3282,7 +3282,7 @@ function HowTriggersWorkSection() {
               <div style={{ padding: "16px 20px", background: NAVY, display: "inline-block" }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>Monitoring cadence</div>
                 <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1 }}>Every 15 minutes</div>
-                <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 4 }}>8 live signal sources · 221 trigger patterns</div>
+                <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 4 }}>8 live signal sources · 231 trigger patterns</div>
               </div>
             </div>
             {/* Right: sources */}
@@ -3319,7 +3319,7 @@ function HowTriggersWorkSection() {
             <div style={{ display: "flex", alignItems: "stretch", gap: 0, overflowX: "auto" as const }}>
               {[
                 { step: "01", label: "Signal Detected", detail: "Reuters Business", sub: "Ransomware confirmed · 95% match", bg: "#F8F7F4", accent: TEAL },
-                { step: "02", label: "Trigger Matched", detail: "Ransomware Attack Confirmed", sub: "221 patterns evaluated · instant", bg: "#F0EDE4", accent: TEAL },
+                { step: "02", label: "Trigger Matched", detail: "Ransomware Attack Confirmed", sub: "231 patterns evaluated · instant", bg: "#F0EDE4", accent: TEAL },
                 { step: "03", label: "Readiness Protocol Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
                 { step: "04", label: "Executive Authorizes", detail: "CISO + CFO sign-off", sub: "Human decision preserved", bg: "#F0EDE4", accent: GOLD },
                 { step: "05", label: "Execution Begins", detail: "12 minutes after detection", sub: "30 days → 12 min", bg: NAVY, accent: GOLD },
@@ -3498,7 +3498,7 @@ function LifecycleAdvantageSection() {
     {
       num: "01", stage: "IDENTIFY",
       label: "Define every trigger — on your terms",
-      body: "You decide what you're watching for. 221 trigger patterns across 9 strategic domains, catalogued on your thresholds, in your categories. Not someone else's alert. Yours — configured before the event, not discovered after it.",
+      body: "You decide what you're watching for. 231 trigger patterns across 9 strategic domains, catalogued on your thresholds, in your categories. Not someone else's alert. Yours — configured before the event, not discovered after it.",
       accent: GOLD,
     },
     {

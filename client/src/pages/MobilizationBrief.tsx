@@ -117,7 +117,7 @@ export default function MobilizationBrief() {
                 <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 10 }}>Classification</div>
                 {[
                   { label: "Protocols", value: "180" },
-                  { label: "Trigger Patterns", value: "221" },
+                  { label: "Trigger Patterns", value: "231" },
                   { label: "Signal Sources", value: "36 active" },
                   { label: "Target Response", value: "12 minutes" },
                   { label: "Head Start", value: "3,600×" },
@@ -178,7 +178,7 @@ export default function MobilizationBrief() {
                 <SectionLabel>Ingestion Parameters</SectionLabel>
                 <DataRow label="Sources Active" value="36 RSS/API feeds" note="news, regulatory, financial" />
                 <DataRow label="Ingestion Cadence" value="Every 15 minutes" note="continuous background scan" />
-                <DataRow label="Trigger Patterns" value="221 unique patterns" note="across all strategic domains" />
+                <DataRow label="Trigger Patterns" value="231 unique patterns" note="across all strategic domains" />
                 <DataRow label="Scoring Dimensions" value="16 per signal" note="relevance, urgency, source weight" />
                 <DataRow label="Cache Depth" value="500 URLs" note="deduplication window" />
               </div>
@@ -186,7 +186,7 @@ export default function MobilizationBrief() {
                 <SectionLabel>Signal Scoring Factors</SectionLabel>
                 {[
                   { factor: "Source Authority Weight", desc: "Tier-1 sources (Reuters, WSJ, FT) score higher than aggregators" },
-                  { factor: "Keyword Density Match", desc: "Semantic match against 221 trigger pattern vocabularies" },
+                  { factor: "Keyword Density Match", desc: "Semantic match against 231 trigger pattern vocabularies" },
                   { factor: "Temporal Urgency Decay", desc: "Recency-weighted; signals devalue over 4-hour half-life" },
                   { factor: "Cross-Source Corroboration", desc: "Multi-source confirmation amplifies confidence score" },
                   { factor: "Domain Specificity", desc: "Signals matched to organization's configured trigger domains" },
@@ -251,7 +251,7 @@ export default function MobilizationBrief() {
                 <SectionLabel>Matching Inputs</SectionLabel>
                 {[
                   { label: "Signal Cluster", desc: "Grouped signals from the same event horizon (15-min window)" },
-                  { label: "Trigger Classification", desc: "One of 221 named trigger types (ransomware, activist, recall, etc.)" },
+                  { label: "Trigger Classification", desc: "One of 231 named trigger types (ransomware, activist, recall, etc.)" },
                   { label: "Domain Tag", desc: "GROWTH & POSITIONING, RISK & RESILIENCE, or TRANSFORMATION" },
                   { label: "Org Context", desc: "Industry sector, configured trigger domains, historical activations" },
                   { label: "Compound Flag", desc: "Multi-domain triggers activate 2+ protocols simultaneously" },

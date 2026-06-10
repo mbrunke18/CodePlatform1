@@ -89,7 +89,7 @@ export default function LiveDetectionFeed() {
       title: 'Live Signal Detection — Readiness OS | VaughnMartin',
       description: 'Real-time strategic trigger detections across 9 domains. System-detected signals scored and matched to pre-staged Readiness Protocols within 12 minutes.',
       ogTitle: 'Live Signal Detection — VaughnMartin Readiness OS',
-      ogDescription: 'Continuous monitoring across 221 trigger patterns. Every signal matched to a pre-staged Readiness Protocol.',
+      ogDescription: 'Continuous monitoring across 231 trigger patterns. Every signal matched to a pre-staged Readiness Protocol.',
     });
   }, []);
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
@@ -225,7 +225,7 @@ export default function LiveDetectionFeed() {
               Signal Detection Feed
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 16, margin: '0 0 40px', lineHeight: 1.6, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
-              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Scored against 221 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
+              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Scored against 231 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 48 }}>
               {[
@@ -410,7 +410,7 @@ export default function LiveDetectionFeed() {
             Signal Detection Feed
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: 0, maxWidth: 560 }}>
-              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Evaluated against 221 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
+              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Evaluated against 231 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
             <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '12px 20px', textAlign: 'center' }}>

@@ -188,7 +188,7 @@ export default function EcosystemDiagramPage() {
               {
                 phase: "02",
                 title: "Readiness OS provides the strategic layer",
-                body: "Sitting above the Microsoft stack, Readiness OS monitors 221 executive triggers, maps them to 180 pre-staged Readiness Protocols, and fires coordinated responses in 12 minutes — inside Teams, M365, and Azure.",
+                body: "Sitting above the Microsoft stack, Readiness OS monitors 231 executive triggers, maps them to 180 pre-staged Readiness Protocols, and fires coordinated responses in 12 minutes — inside Teams, M365, and Azure.",
                 color: TEAL,
               },
               {

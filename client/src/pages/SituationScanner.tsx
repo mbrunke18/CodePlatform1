@@ -475,7 +475,7 @@ export default function SituationScanner() {
           <div style={{ display: "flex", gap: 0, flexWrap: "wrap" as const, borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 28 }}>
             {[
               { val: "180", label: "Readiness Protocols" },
-              { val: "221", label: "Strategic Triggers Monitored" },
+              { val: "231", label: "Strategic Triggers Monitored" },
               { val: "3,600×", label: "Execution Head Start" },
               { val: "Startup → Fortune 500", label: "Full coverage range" },
             ].map((s, i) => (
@@ -894,7 +894,7 @@ export default function SituationScanner() {
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <VaughnMartinLogo variant="full" height={36} color="light" animated={false} noLink />
           <div style={{ ...BC, fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Readiness OS · 180 Protocols · 221 Triggers · 12-Minute Execution
+            Readiness OS · 180 Protocols · 231 Triggers · 12-Minute Execution
           </div>
         </div>
       </div>

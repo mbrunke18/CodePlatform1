@@ -58,7 +58,7 @@ const DOMAIN_TRIGGERS: Record<string, string[]> = {
 
 const IDEA_PHASES = [
   { letter: "I", name: "IDENTIFY", desc: "180 Readiness Protocols pre-built and staged across 9 domains. Nothing improvised. Everything ready before the trigger fires." },
-  { letter: "D", name: "DETECT", desc: "248+ data points monitored every 15 minutes across 39 pre-configured signal sources — news, regulatory, SEC, cybersecurity, energy, economic indicators, and government enforcement. 221 trigger patterns armed and ready." },
+  { letter: "D", name: "DETECT", desc: "248+ data points monitored every 15 minutes across 39 pre-configured signal sources — news, regulatory, SEC, cybersecurity, energy, economic indicators, and government enforcement. 231 trigger patterns armed and ready." },
   { letter: "E", name: "EXECUTE", desc: "12-minute response from trigger detection to full execution in flight. No alignment call. No mobilization delay." },
   { letter: "A", name: "ADVANCE", desc: "Every execution improves the next. Institutional memory compounds. Response time and accuracy improve continuously." },
 ];
@@ -266,7 +266,7 @@ export default function ProspectBrief() {
             { label: "Execution Head Start", value: "3,600×", sub: "vs. 30-day mobilization" },
             { label: "Time to Live Execution", value: "12 min", sub: "from trigger detection" },
             { label: "Readiness Protocols Armed", value: `${playbookCount}`, sub: `in ${form.industry}` },
-            { label: "Triggers Monitored", value: "221", sub: "across 9 domains" },
+            { label: "Triggers Monitored", value: "231", sub: "across 9 domains" },
           ].map(m => (
             <div key={m.label} style={{ background: "#fff", padding: "20px 18px", textAlign: "center" }}>
               <div style={{ fontSize: 24, fontWeight: 700, color: NAVY, fontFamily: "'Cormorant Garamond', serif", marginBottom: 4 }}>{m.value}</div>

@@ -166,7 +166,7 @@ function buildHtml(cardWidth: number): string {
     <div class="metric-sub">Pre-staged, not assembled</div>
   </div>
   <div class="metric">
-    <span class="metric-num">221</span>
+    <span class="metric-num">231</span>
     <div class="metric-title">Strategic Triggers</div>
     <div class="metric-sub">Continuously monitored</div>
   </div>
@@ -251,7 +251,7 @@ function buildHtml(cardWidth: number): string {
     </div>
     <ul class="sol-checks">
       <li>180 Readiness Protocols pre-staged</li>
-      <li>221 strategic triggers monitored</li>
+      <li>231 strategic triggers monitored</li>
       <li>12-minute execution design target</li>
       <li>Executive authority at every stage</li>
       <li>Orchestrates your Microsoft AI stack</li>
@@ -545,7 +545,7 @@ function buildLinkedInBannerHtml(): string {
       <div class="rp-copy">
         <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; startup to Fortune 500</div>
         <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
-        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 180 Protocols, 221 strategic triggers, 12-minute response.</div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 180 Protocols, 231 strategic triggers, 12-minute response.</div>
       </div>
 
       <!-- Proof stats -->
@@ -555,7 +555,7 @@ function buildLinkedInBannerHtml(): string {
           <div class="rs-lbl">Readiness Protocols</div>
         </div>
         <div class="rs">
-          <div class="rs-num">221</div>
+          <div class="rs-num">231</div>
           <div class="rs-lbl">Strategic Triggers</div>
         </div>
         <div class="rs">

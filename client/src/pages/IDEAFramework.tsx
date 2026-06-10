@@ -183,7 +183,7 @@ export default function IDEAFramework() {
           <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
             {[
               { value: "180", label: "Strategic Readiness Protocols", sublabel: "Across 9 Domains", color: NAVY },
-              { value: "221", label: "Executive Triggers", sublabel: "Pre-Configured", color: TEAL },
+              { value: "231", label: "Executive Triggers", sublabel: "Pre-Configured", color: TEAL },
               { value: "248+", label: "Live Data Points", sublabel: "Continuously Monitored", color: GOLD },
               { value: "12m", label: "Response Window", sublabel: "Signal → Execution", color: NAVY },
             ].map((stat, i) => (
@@ -206,7 +206,7 @@ export default function IDEAFramework() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, border: "1px solid rgba(201,168,76,0.15)" }}>
               {[
                 { idea: "I — IDENTIFY", cxo: "Preparation", desc: "Protocols built, triggers configured, ownership set — before any trigger fires", color: TEAL, note: "Pre-trigger" },
-                { idea: "D — DETECT", cxo: "Detect", desc: "221 signals monitored continuously — situation matched to protocol in seconds", color: GOLD, note: "→ CxO chain" },
+                { idea: "D — DETECT", cxo: "Detect", desc: "231 signals monitored continuously — situation matched to protocol in seconds", color: GOLD, note: "→ CxO chain" },
                 { idea: "E — EXECUTE", cxo: "Coordinate + Execute", desc: "Platform coordinates stakeholders, tasks, budget, and communications. Executive authorizes once. Execution deploys in 12 minutes.", color: GOLD, note: "→ CxO chain" },
                 { idea: "A — ADVANCE", cxo: "Learn", desc: "Every activation encodes lessons back into the protocol — next response is faster and more precise", color: TEAL, note: "→ CxO chain" },
               ].map(({ idea, cxo, desc, color, note }, i, arr) => (
@@ -525,7 +525,7 @@ export default function IDEAFramework() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               {[
                 { phase: "IDENTIFY", score: 98, status: "180 Readiness Protocols staged", icon: Eye },
-                { phase: "DETECT", score: 94, status: "221 triggers live", icon: Activity },
+                { phase: "DETECT", score: 94, status: "231 triggers live", icon: Activity },
                 { phase: "EXECUTE", score: 99, status: "12-min deployment ready", icon: Zap },
                 { phase: "ADVANCE", score: 91, status: "Learning loop active", icon: TrendingUp },
               ].map(({ phase, score, status, icon: Icon }) => (

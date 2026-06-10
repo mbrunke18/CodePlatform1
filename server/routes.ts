@@ -1468,7 +1468,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
           totalActivations,
           avgResponseTimeMinutes: avgResponseTime,
           playbooksReady,
-          triggersMonitored: 221,
+          triggersMonitored: 231,
           executionHeadStart: '3,600×',
         },
         trends: [],
@@ -9247,7 +9247,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.user?.organizationId;
       if (!orgId) {
-        return res.json({ total: 221, byAlertLevel: { HIGH: 3, MEDIUM: 12, LOW: 206 }, byCategory: { Geopolitical: 24, Financial: 31, Cyber: 28, Regulatory: 29, Operational: 35, Reputational: 22, Supply_Chain: 26, Talent: 16, Competitive: 30 } });
+        return res.json({ total: 231, byAlertLevel: { HIGH: 3, MEDIUM: 12, LOW: 206 }, byCategory: { Geopolitical: 24, Financial: 31, Cyber: 28, Regulatory: 29, Operational: 35, Reputational: 22, Supply_Chain: 26, Talent: 16, Competitive: 30 } });
       }
       const { getOrgTriggerSummary } = await import('./services/TriggerEvaluationEngine.js');
       const summary = await getOrgTriggerSummary(orgId);
@@ -10149,7 +10149,7 @@ Respond ONLY as JSON with this exact structure:
 
       const signalsScanned72h = recentActivity.length;
       res.json({
-        triggersArmed: 221,
+        triggersArmed: 231,
         domainsMonitored: 9,
         signalsTracked: 248,
         playbooksReady: 180,
@@ -10228,7 +10228,7 @@ Respond ONLY as JSON with this exact structure:
             : `<tr><td colspan="3" style="padding:20px 0;text-align:center;color:#999;font-size:13px;">No triggers detected this week — monitoring active across 248+ signals.</td></tr>`;
 
           const statusBadge = triggerCount === 0
-            ? `<div style="background:#2B8A6E15;border:1px solid #2B8A6E40;color:#2B8A6E;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">✓ Market was quiet this week. All 221 triggers armed and scanning continuously.</div>`
+            ? `<div style="background:#2B8A6E15;border:1px solid #2B8A6E40;color:#2B8A6E;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">✓ Market was quiet this week. All 231 triggers armed and scanning continuously.</div>`
             : `<div style="background:#C9A84C15;border:1px solid #C9A84C40;color:#8B6914;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">⚡ ${triggerCount} trigger${triggerCount > 1 ? 's' : ''} detected this week requiring your attention.</div>`;
 
           const html = `
@@ -10369,7 +10369,7 @@ Respond ONLY as JSON with this exact structure:
 
       // Pull live counts from DB when authenticated, else use canonical platform values
       let signalCount = 52;
-      let triggerCount = 221;
+      let triggerCount = 231;
       let activationCount = 0;
       let drillCount = 0;
       let avgActivationMinutes: number | null = null;
@@ -10385,7 +10385,7 @@ Respond ONLY as JSON with this exact structure:
           signalCount = Number(sigRow?.c ?? 52);
 
           const [trigRow] = await db.select({ c: countFn() }).from(executiveTriggers).where(eq(executiveTriggers.organizationId, orgId));
-          triggerCount = Number(trigRow?.c ?? 221);
+          triggerCount = Number(trigRow?.c ?? 231);
 
           const [actRow] = await db.select({ c: countFn() }).from(playbookActivations).where(eq(playbookActivations.organizationId, orgId));
           activationCount = Number(actRow?.c ?? 0);
@@ -10396,8 +10396,8 @@ Respond ONLY as JSON with this exact structure:
       // Signal Coverage (0–25): how much of the 248+ signal landscape is being monitored
       const signalScore = Math.min(25, Math.round((Math.min(signalCount, 248) / 248) * 25));
 
-      // Trigger Coverage (0–25): active triggers vs 221 canonical triggers
-      const triggerScore = Math.min(25, Math.round((Math.min(triggerCount, 221) / 221) * 25));
+      // Trigger Coverage (0–25): active triggers vs 231 canonical triggers
+      const triggerScore = Math.min(25, Math.round((Math.min(triggerCount, 231) / 231) * 25));
 
       // Playbook Readiness (0–25): 180 playbooks seeded = full score; partial credit otherwise
       const playbookScore = 24; // 180 playbooks always seeded
@@ -10428,7 +10428,7 @@ Respond ONLY as JSON with this exact structure:
         delta: 3,
         dimensions: [
           { label: 'Signal Coverage',    score: signalScore,  max: 25, detail: `${Math.min(signalCount, 248)} of 248+ data points active` },
-          { label: 'Trigger Coverage',   score: triggerScore, max: 25, detail: `${Math.min(triggerCount, 221)} of 221 triggers monitored` },
+          { label: 'Trigger Coverage',   score: triggerScore, max: 25, detail: `${Math.min(triggerCount, 231)} of 231 triggers monitored` },
           { label: 'Playbook Readiness', score: playbookScore, max: 25, detail: '180 playbooks pre-staged across 9 domains' },
           { label: 'Execution Velocity', score: velocityScore, max: 25, detail: activationCount > 0 ? `${activationCount} activations on record` : 'Activate a playbook to score' },
         ],

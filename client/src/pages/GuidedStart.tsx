@@ -178,7 +178,7 @@ const SCENARIOS: Scenario[] = [
 const BASE_DETECT_STEPS = [
   { label: 'Scanning 248+ data points across 9 strategic domains', duration: 1600 },
   { label: 'Signal threshold breach confirmed', duration: 1200 },
-  { label: 'Cross-referencing 221 executive trigger conditions', duration: 1400 },
+  { label: 'Cross-referencing 231 executive trigger conditions', duration: 1400 },
   { label: 'TRIGGER DETECTED', duration: 1100, highlight: true },
   { label: 'Matching against 180 strategic Readiness Protocols', duration: 1300 },
   { label: 'AI Commander Brief generating', duration: 1500 },

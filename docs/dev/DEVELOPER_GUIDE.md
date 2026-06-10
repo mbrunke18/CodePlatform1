@@ -22,7 +22,7 @@ VaughnMartin Readiness OS compresses the 30-day mobilization cycle to 12-minute 
 - **170 pre-staged Readiness Protocols** across 9 strategic domains
 - **IDEA Framework™** (Identify → Detect → Execute → Advance)
 - **AI monitors, executives authorize** — no protocol activates without executive sign-off
-- **221 trigger patterns** monitored across 248+ signal sources every 15 minutes
+- **231 trigger patterns** monitored across 248+ signal sources every 15 minutes
 
 ---
 

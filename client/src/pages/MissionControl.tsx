@@ -438,7 +438,7 @@ export default function MissionControl() {
   const statusCfg = STATUS_CONFIG[systemStatus];
   const StatusIcon = statusCfg.icon;
   const nextScanLabel = useCountdown(liveStatus?.nextRun);
-  const triggersArmed = triggerSummary?.total || 221;
+  const triggersArmed = triggerSummary?.total || 231;
   const evaluationMode = monitoringConfig?.evaluationMode || 'both';
   const modeLabel = evaluationMode === 'configured' ? 'Custom Engine' : evaluationMode === 'default' ? 'Default Engine' : 'Dual Engine';
   const criticalCount = detections.filter(d => d.confidenceScore >= 85 && Date.now() - new Date(d.detectedAt).getTime() < 86400000).length;
@@ -612,7 +612,7 @@ export default function MissionControl() {
           {/* ── NOC STAT RAIL — Editorial table format ───────────────────────── */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', borderTop: '1px solid rgba(255,255,255,0.08)', marginBottom: 28 }}>
             {[
-              { label: 'Triggers Armed',    value: triggersArmed.toLocaleString(), sub: '221 signals active',  color: GOLD },
+              { label: 'Triggers Armed',    value: triggersArmed.toLocaleString(), sub: '231 signals active',  color: GOLD },
               { label: 'Live Detections',   value: detections.length.toString(),   sub: detections.length > 0 ? `${criticalCount} critical` : 'All clear', color: detections.length > 0 ? RED_ALT : TEAL },
               { label: 'Readiness Protocols Ready',   value: '180', sub: 'Pre-staged, 9 domains', color: TEAL },
               { label: 'Executions Logged', value: activations.length.toString(),  sub: activations.length > 0 ? timeAgo(activations[0]?.activatedAt || '') : 'None yet', color: 'rgba(255,255,255,0.65)' },

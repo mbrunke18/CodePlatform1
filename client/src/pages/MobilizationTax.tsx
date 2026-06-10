@@ -395,7 +395,7 @@ export default function MobilizationTax() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 28 }}>
                 {[
                   { n: '1', title: 'Pre-staged before the trigger', body: '180 Readiness Protocols are fully configured — tasks assigned, budgets authorized, stakeholders mapped — before any trigger fires.' },
-                  { n: '2', title: 'Pattern-detected, not meeting-detected', body: '221 triggers monitored continuously across 8 signal sources. The system detects the situation. Your executives authorize. No coordination meeting required.' },
+                  { n: '2', title: 'Pattern-detected, not meeting-detected', body: '231 triggers monitored continuously across 8 signal sources. The system detects the situation. Your executives authorize. No coordination meeting required.' },
                   { n: '3', title: 'Execution in 12 minutes', body: 'The war room is live. Tasks are deployed to pre-assigned owners. Stakeholders are notified. The 30-day mobilization cycle is gone — permanently.' },
                 ].map(s => (
                   <div key={s.n} style={{ padding: '20px', background: '#F8F7F4', borderTop: `3px solid ${GOLD}` }}>

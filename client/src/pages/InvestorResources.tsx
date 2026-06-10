@@ -45,7 +45,7 @@ const IR_CONTAINER: React.CSSProperties = { maxWidth: 1160, margin: "0 auto", pa
 function McKinseyResearchSection() {
   const stats = [
     { pct: "65%", headline: "Not Yet Scaling", sub: "Still coordinating manually — the operating model layer is missing", bridge: "Readiness OS closes this gap — 12-minute activation vs. months of mobilization", color: IR_GOLD, bg: "rgba(201,168,76,0.07)", border: "rgba(201,168,76,0.22)" },
-    { pct: "1%", headline: "Fully Mature", sub: "Leaders — not employees — are the bottleneck", bridge: "221 executive triggers arm decision-makers so they stop being the constraint", color: IR_TEAL, bg: "rgba(43,138,110,0.07)", border: "rgba(43,138,110,0.22)" },
+    { pct: "1%", headline: "Fully Mature", sub: "Leaders — not employees — are the bottleneck", bridge: "231 executive triggers arm decision-makers so they stop being the constraint", color: IR_TEAL, bg: "rgba(43,138,110,0.07)", border: "rgba(43,138,110,0.22)" },
     { pct: "$4.4T", headline: "AI Productivity Potential", sub: "Locked inside enterprises that can't activate it", bridge: "The coordination layer — not the AI model — is what unlocks this value", color: "#3BAF8A", bg: "rgba(59,175,138,0.07)", border: "rgba(59,175,138,0.22)" },
   ];
   return (
@@ -137,7 +137,7 @@ function McKinseyResearchSection() {
                 </p>
                 <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", marginBottom: 10 }}>McKinsey Global Institute — November 2025</p>
                 <p style={{ ...IR_DM, fontSize: 12, color: IR_TEAL, lineHeight: 1.55 }}>
-                  Readiness OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 180 Readiness Protocols deploy the response. The CEO doesn't become an operator. They become the signal.
+                  Readiness OS makes executive ownership operational — 231 pre-staged triggers detect the moment, 180 Readiness Protocols deploy the response. The CEO doesn't become an operator. They become the signal.
                 </p>
               </blockquote>
             </div>

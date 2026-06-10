@@ -134,7 +134,7 @@ import { GoldRule } from "@/components/GoldRule";
 
 ```
 1. Hero — navy background, white headline, gold italic subline, CTA buttons
-2. Stat bar — key metrics (12 min, 3,600×, 170, 221) on ivory or navy
+2. Stat bar — key metrics (12 min, 3,600×, 170, 231) on ivory or navy
 3. Content sections — alternate navy / ivory / white
 4. CTA close — gold button + secondary outline button
 ```
@@ -148,7 +148,7 @@ import { GoldRule } from "@/components/GoldRule";
 | Execution time | **12 minutes** | "12 min", "twelve minutes" |
 | Speed advantage | **3,600× Execution Head Start** | "340×", "360×", "speed advantage", "faster" |
 | Protocols | **170 Readiness Protocols** | "170 playbooks", "170 scenarios" |
-| Triggers | **221 trigger patterns** | "221 signals", "248+ triggers" |
+| Triggers | **231 trigger patterns** | "231 signals", "248+ triggers" |
 | Signal monitoring | **248+ signals monitored every 15 minutes** | — |
 | Baseline comparison | **30 days compressed to 12 minutes** | "72 hours", "1 week" |
 

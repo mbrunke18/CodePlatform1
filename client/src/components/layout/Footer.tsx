@@ -137,7 +137,7 @@ export default function Footer() {
               { value: '9', label: 'Executive Domains', color: '#C9A84C' },
               { value: '12 min', label: 'To Live Execution', color: '#2B8A6E' },
               { value: '3,600×', label: 'Execution Head Start', color: '#2B8A6E' },
-              { value: '221', label: 'Executive Triggers', color: '#C9A84C' },
+              { value: '231', label: 'Executive Triggers', color: '#C9A84C' },
               { value: '248+', label: 'Live Data Points', color: '#2B8A6E' },
             ].map(({ value, label, color }) => (
               <div key={label}>

@@ -721,7 +721,7 @@ export default function IndustryDemoDetail() {
         <div style={{ maxWidth: 1080, margin: "0 auto", display: "flex", gap: 40, alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
           {[
             { label: "Readiness Protocols", value: "180" },
-            { label: "Strategic Triggers", value: "221" },
+            { label: "Strategic Triggers", value: "231" },
             { label: "Industries Covered",  value: "19"  },
             { label: "Execution Head Start", value: "3,600×" },
           ].map((s, i) => (

@@ -547,7 +547,7 @@ export default function ExecutiveDepartureBrief() {
               <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', fontWeight: 600 }}>VaughnMartin Readiness OS</span>
             </div>
             <p style={{ fontSize: 11, color: T4, margin: 0, fontWeight: 500 }}>
-              180 Readiness Protocols · 221 triggers · 248+ data points · 9 strategic domains · 12-minute execution
+              180 Readiness Protocols · 231 triggers · 248+ data points · 9 strategic domains · 12-minute execution
             </p>
           </div>
         </div>

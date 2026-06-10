@@ -27,10 +27,10 @@
 | **20** | Raw data category groups in `shared/intelligence-signals.ts` | Internal data file | No — never show this to users |
 | **16** | Pattern matchers in `SignalEvaluationService.evaluateSignal()` | Internal service | No — implementation detail only |
 | **9** | Strategic domains in the playbook library | Product taxonomy | **Yes — canonical user-facing metric** |
-| **221** | Total triggers in the DB | Product data | **Yes — canonical user-facing metric** |
+| **231** | Total triggers in the DB | Product data | **Yes — canonical user-facing metric** |
 | **248+** | Total data points across all 20 raw categories | Canonical count | **Yes — always with "+" suffix** |
 
-The retired phrase "16 signal categories" was a previous UI label shown to users. It has been replaced everywhere with "9 strategic domains, 221 triggers." Never write "16 signal categories" in any user-facing copy. The internal counts (20 categories, 16 patterns) are technical implementation details that belong only in code comments and this document.
+The retired phrase "16 signal categories" was a previous UI label shown to users. It has been replaced everywhere with "9 strategic domains, 231 triggers." Never write "16 signal categories" in any user-facing copy. The internal counts (20 categories, 16 patterns) are technical implementation details that belong only in code comments and this document.
 
 - **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×", "360×", and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time any organization — startup to Fortune 500 — spends just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Readiness OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster," never "360x." "360×" was derived from the retired 72-hour baseline and is therefore also retired. The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
 - **Microsoft Ecosystem positioning — LOCKED:** "Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the operating model layer above the Microsoft investment — not a replacement, an orchestrator. This framing lives in InvestorLanding ("The Operating Model Layer" section), InvestorPresentation (Platform Vision slide), and IDEAFramework. Do not revert to "Agentic Execution Layer" as product positioning — that phrase is retired.
@@ -47,7 +47,7 @@ The retired phrase "16 signal categories" was a previous UI label shown to users
 
 - **Canonical Product Value Story — Precise 5-Sequence Description (Rev 51, locked):** This is the defensible, grounded description of what Readiness OS actually does. Use this as the authoritative source for any website copy, investor materials, or sales assets. Every claim is verifiable against built platform capabilities.
 
-  **Sequence 1 — Name every situation.** The organization defines every situation it may face. 180 pre-built Readiness Protocols across 9 strategic domains are available immediately. 30 compound protocols for cross-domain scenarios. Custom protocols built to match any situation the organization defines. 221 trigger patterns monitored continuously across 39 live data sources, updating every 15 minutes around the clock.
+  **Sequence 1 — Name every situation.** The organization defines every situation it may face. 180 pre-built Readiness Protocols across 9 strategic domains are available immediately. 30 compound protocols for cross-domain scenarios. Custom protocols built to match any situation the organization defines. 231 trigger patterns monitored continuously across 39 live data sources, updating every 15 minutes around the clock.
 
   **Sequence 2 — Define the threshold.** The organization defines what constitutes a threshold for each situation — not a single lagging metric, but multiple data points combined to meet the specific definition of when a situation crosses from monitor to act.
 
@@ -711,7 +711,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 - Location: `client/src/components/ExecutionGapDiagram.tsx`
 - SVG comparison: left panel = "72 HOURS LATER — STILL FIGURING IT OUT" (navy/red); right panel = "EXECUTION IS LIVE" (navy/teal). **Note:** The "72 HOURS LATER" label is intentional "before-state" visual copy — it depicts the *problem* state, not a baseline metric claim. This is NOT a violation of the retired 72-hour mobilization baseline rule (see Section 32). The comparison baseline metrics (3,600×, 30 days → 12 min) appear in the proof-numbers strip at the bottom. Do not change the left-panel label without founder approval.
 - viewBox: `0 0 1320 762`
-- Bottom bar: proof-numbers strip — 180 Readiness Protocols · 221 executive triggers · 248+ data points · 12 min to live execution. **NOT a football analogy** — do not revert.
+- Bottom bar: proof-numbers strip — 180 Readiness Protocols · 231 executive triggers · 248+ data points · 12 min to live execution. **NOT a football analogy** — do not revert.
 - Used on: `Homepage.tsx`, `Investors.tsx`
 
 ### `ExecutionProcessDiagram`
@@ -764,7 +764,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 | `PharmaceuticalRecallDemo.tsx` | `/industry-demo/pharmaceutical-recall` | Pharma recall scenario. FDA timeline, 170K-unit scope, cross-functional war room, regulatory communication tracks. |
 | `ManufacturingSupplierDemo.tsx` | `/industry-demo/manufacturing-supplier` | Manufacturing supply disruption scenario. 14 downstream facilities, $2.3M/day exposure, alternate supplier routing. |
 | `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
-| `TechnicalArchitecture.tsx` | `/technical-architecture` | Technical credibility asset for investor and enterprise procurement audiences. Four-layer architecture walkthrough: Signal Detection (39 feeds, 15-min cadence, √signals×8 risk formula), Protocol Mapping (221 triggers → 180 protocols, compound logic), Execution Engine (task seeding, authority chains, budget authorization, 90-sec handoff), Institutional Memory (activation records, debrief classification, ROI tracking). Microsoft integration map — 4 live (Teams, Outlook, SharePoint, Entra) vs. 4 roadmap (Copilot Studio, Power Automate, Sentinel, Fabric). Core data model (5 entities). Security summary with links to `/security-compliance`. No auth required. |
+| `TechnicalArchitecture.tsx` | `/technical-architecture` | Technical credibility asset for investor and enterprise procurement audiences. Four-layer architecture walkthrough: Signal Detection (39 feeds, 15-min cadence, √signals×8 risk formula), Protocol Mapping (231 triggers → 180 protocols, compound logic), Execution Engine (task seeding, authority chains, budget authorization, 90-sec handoff), Institutional Memory (activation records, debrief classification, ROI tracking). Microsoft integration map — 4 live (Teams, Outlook, SharePoint, Entra) vs. 4 roadmap (Copilot Studio, Power Automate, Sentinel, Fabric). Core data model (5 entities). Security summary with links to `/security-compliance`. No auth required. |
 | `SecurityCompliance.tsx` | `/security-compliance` | Procurement-ready security one-pager. 6 sections (Auth, Infrastructure, Monitoring, AI Safety, Trust, Access). **Session additions:** SOC 2 Type II roadmap (3-phase tracker — Controls Inventory ✓, Gap Remediation in progress, Type II Audit Q3 2025 target), DPA & Legal section (data residency, retention schedule, right to deletion, AI data handling, sub-processor list), InfoSec FAQ (6 Q&A pre-answering pen test, data exit, GDPR, AI model access, incident response). Founding Partner CTA at bottom. |
 | `FoundingPartnerProgram.tsx` | `/founding-partner-program` (also `/pilot-program` alias) | Public Founding Partner conversion page. Problem-first hero, "2026 Founding Partner Cohort · 12 Seats" scarcity badge, differentiation strip, inline `ApplicationForm` component (no redirect). Form fields: name, email, company, title, companySize, primaryChallenge, timelineUrgency. On submit: POST `/api/founding-partner/apply` → saves to `founding_partner_applications` table → success state "We'll be in touch within 48 hours." Error fallback shows `founding@vaughnmartin.com`. Questions CTA also shows `founding@vaughnmartin.com`. All public "Founding Partner Access" CTAs across the product route here — never to `/request-access`. |
 | `ReadinessBenchmark.tsx` | `/readiness-benchmark` | **Public lead magnet — no auth required.** Free 5-question readiness self-assessment. Peer benchmarks shown above the fold: Typical enterprise score: 22 / Founding Partner avg: 87 / Mobilization gap: 30 days. Questions cover: last mobilization time, protocol staging, trigger monitoring, stakeholder readiness, and debrief practice. Immediate 0–100 score on completion with interpretation band and Founding Partner CTA. Listed in nav: top-level gold "Benchmark" button + "The Proof" dropdown (featured, labeled "Readiness Benchmark — Free"). Also surfaced as a Homepage strip between the ThreeStepSection and MicrosoftHookStrip. Added May 2026. |
@@ -1518,7 +1518,7 @@ Links every live detection to the actual protocol record it recommended. **This 
 Lookup runs post-insert (non-blocking). Console: `🔗 Linked detection to Protocol #73 (Ransomware Immediate Response)`.
 
 #### Batch 3 — Regulatory Enforcement Detail (added May 2026, rev 42)
-Powers precise routing across **~40–50 of the 221 triggers** sourced from the 17 regulatory feeds.
+Powers precise routing across **~40–50 of the 231 triggers** sourced from the 17 regulatory feeds.
 | Column | Type | Extraction function | Values |
 |---|---|---|---|
 | `enforcement_action_type` | varchar(50) | `extractEnforcementActionType(text)` | `fine \| investigation \| consent_order \| injunction \| criminal_indictment \| settlement \| advisory` |
@@ -1616,12 +1616,12 @@ Trade partner identity is a first-order routing signal — China tariffs, Russia
 **Routing impact:** `trade_partner: China` + `affected_hs_codes: semiconductors` = Protocol #103 (Semiconductor Supply Chain Disruption). `trade_partner: Russia` = sanctions/energy variant. Without partner identity, all trade signals hit the generic Protocol #98 (Trade Policy Response).
 
 #### Batch 14 — Trigger Graph Linkage (complete, rev 43)
-Closes the loop between the 221 trigger patterns and every detected signal.
+Closes the loop between the 231 trigger patterns and every detected signal.
 | Column | Type | Source | Values |
 |---|---|---|---|
 | `trigger_ids_matched` | text[] | `SignalEvaluationService` post-insert | `[triggerName]` — starts as single-element array of the firing trigger name; array type supports compound triggers (2+ simultaneous) in future releases |
 
-**Routing impact:** Enables activation frequency analytics per trigger — "which of the 221 triggers fires most often for your org?" `trigger_ids_matched` joins against the trigger pattern catalog without requiring a lookup back through evaluation logs.
+**Routing impact:** Enables activation frequency analytics per trigger — "which of the 231 triggers fires most often for your org?" `trigger_ids_matched` joins against the trigger pattern catalog without requiring a lookup back through evaluation logs.
 
 #### `signal_activity_log` table — 1 new column (rev 41)
 | Column | Type | Source | Purpose |
@@ -1738,7 +1738,7 @@ The following copy conventions are founder-locked. Any agent or developer who to
 ### Product Thesis Arc (LOCKED — must appear on all primary pages)
 **Preparation → Readiness → Fearless**
 - Preparation: Decision rights mapped, ownership defined, response architecture built during low pressure — before any trigger fires.
-- Readiness: 180 Readiness Protocols pre-staged. 221 triggers monitored. 12-minute deployment ready.
+- Readiness: 180 Readiness Protocols pre-staged. 231 triggers monitored. 12-minute deployment ready.
 - Fearless: Every enterprise that prepares for every situation it'll face is no longer afraid of strategic triggers.
 - Canonical tagline: "The response is ready before the trigger fires."
 - Emotional endpoint: Fearlessness — not speed. Speed is the evidence; readiness is the promise; fearless is the outcome.
@@ -1770,7 +1770,7 @@ The following copy conventions are founder-locked. Any agent or developer who to
 | "Strategic Execution Playbooks" | "Strategic Readiness Playbooks" |
 | "Execution Playbooks" (standalone) | "Readiness Playbooks" |
 | "20–50 hours getting organized" | "30 days to mobilize" |
-| "16 signal categories" | "9 strategic domains, 221 triggers" |
+| "16 signal categories" | "9 strategic domains, 231 triggers" |
 | "Offense" (as category label) | "GROWTH & POSITIONING" |
 | "Defense" (as category label) | "RISK & RESILIENCE" |
 | "Special Teams" (as category label) | "TRANSFORMATION" |
@@ -1964,7 +1964,7 @@ Contains real research citations only: McKinsey 2025 coordination cost data, MIT
 ### Metric Standardization (T001)
 **RETIRED: "16 signal categories"** — this phrase has been fully purged from all user-facing files. It was a legacy internal count that confused users. Replacement rule:
 - User-facing context → **"9 strategic domains"**
-- Navigation descriptions / signal config pages → **"221 triggers — monitored every 15 minutes"**
+- Navigation descriptions / signal config pages → **"231 triggers — monitored every 15 minutes"**
 - Never show "16" or "20" to users in any context
 
 Files corrected: `IntelligenceHub.tsx`, `IntelligenceControlCenter.tsx`, `ThreatsPage.tsx`, `FounderStory.tsx`, `GuidedStart.tsx`, `Growth.tsx`, `WorkspaceHub.tsx`, `SignalIntelligenceHub.tsx`, `StandardNav.tsx`
@@ -2749,7 +2749,7 @@ Current production counts as of May 21, 2026:
 | `server/storage.ts` size | **~3,566 lines** |
 | Readiness Protocols in library | **180 core** (+ 30 compound, IDs 181–210 = **210 total**) |
 | Strategic domains | **9** |
-| Canonical trigger count | **221** |
+| Canonical trigger count | **231** |
 | Signal data points | **248+** |
 | RSS feed sources (live signal pipeline) | **39** |
 | Ingestion interval | **15 minutes** |
@@ -3187,7 +3187,7 @@ Added missing Open Graph image and Twitter card image, plus full JSON-LD `@graph
 
 **JSON-LD `@graph` (3 schemas):**
 - `Organization` — VaughnMartin entity, founded 2023, startup to Fortune 500 audience
-- `SoftwareApplication` — Readiness OS, `BusinessApplication` category, `featureList` with 180 protocols / 221 triggers / 12 minutes / 3,600× canonical numbers
+- `SoftwareApplication` — Readiness OS, `BusinessApplication` category, `featureList` with 180 protocols / 231 triggers / 12 minutes / 3,600× canonical numbers
 - `WebSite` — with `SearchAction` pointing to `/playbook-library?search=`
 
 **SPA ceiling note:** Per-page titles/descriptions are still JS-rendered (SPA constraint). Score ceiling is ~80–85 without SSR. Social preview (og:image) and structured data (JSON-LD) are the highest-ROI fixes for the podcast/VC audience.
@@ -3602,7 +3602,7 @@ Three pages were updated together as a coordinated competitive positioning packa
 
 Three structural pillars explain the mechanism:
 1. **Pre-staged, not reactive** — Protocols built before triggers fire, so there is nothing to assemble when the moment arrives.
-2. **Pattern detection, not committee deliberation** — 221 trigger patterns scored continuously; no human has to decide when to escalate.
+2. **Pattern detection, not committee deliberation** — 231 trigger patterns scored continuously; no human has to decide when to escalate.
 3. **Executive authorization, not consensus** — One sign-off unlocks budget, tasks, and stakeholders simultaneously.
 
 **Full competitive comparison table added** (4 columns: Capability / Readiness OS / Closest Competitor / Gap):
@@ -3908,7 +3908,7 @@ Inserted immediately after the "Why Now — Three Structural Shifts" section (`<
 - **Headline:** "Microsoft is proving the category exists. *The strategic response layer remains unclaimed.*"
 - **Two-column grid:**
   - Left (`#0F1C3F`, blue border): "What Microsoft Is Building" — four bullet rows (GitHub Copilot CLI governance, Approval gate workflows, Cost management & auditability, Enterprise AI control plane). Bottom callout: *"Governs: 'Can the AI tool run this task?'"*
-  - Right (NAVY `#0A0F2E`, gold border): "What Remains Unclaimed — VaughnMartin's Layer" — four bullet rows (180 Readiness Protocols pre-staged, 221 trigger patterns monitored, Executive authorization gates, 12-minute coordinated response / 3,600× head start). Bottom callout: *"Governs: 'When the trigger fires — who does what, in 12 minutes?'"*
+  - Right (NAVY `#0A0F2E`, gold border): "What Remains Unclaimed — VaughnMartin's Layer" — four bullet rows (180 Readiness Protocols pre-staged, 231 trigger patterns monitored, Executive authorization gates, 12-minute coordinated response / 3,600× head start). Bottom callout: *"Governs: 'When the trigger fires — who does what, in 12 minutes?'"*
 - **Three-stat bar:** $13B+ / 0 / 1 — Microsoft's investment proves the need · No vendors in the strategic layer · VaughnMartin first mover
 
 ### Rev 49 Known State

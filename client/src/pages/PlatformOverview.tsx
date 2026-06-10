@@ -18,7 +18,7 @@ const timelineSteps = [
     sub: "Preparation before the trigger fires",
     aiRole: [
       "180 Readiness Protocols built and staged across 9 strategic domains",
-      "221 triggers defined and mapped to response protocols",
+      "231 triggers defined and mapped to response protocols",
       "Stakeholder roles, decision rights, and escalation paths configured",
       "Monitoring parameters set — continuous signal detection active",
     ],
@@ -36,7 +36,7 @@ const timelineSteps = [
     sub: "Signal fires — system responds instantly",
     aiRole: [
       "Ingests signal across 39 enterprise data sources",
-      "Pattern-matches against 221 trigger definitions",
+      "Pattern-matches against 231 trigger definitions",
       "Scores urgency and compound disruption risk",
       "Surfaces the right Readiness Protocol with rationale and stakeholder map",
     ],

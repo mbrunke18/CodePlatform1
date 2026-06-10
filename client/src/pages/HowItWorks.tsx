@@ -122,7 +122,7 @@ export default function HowItWorks() {
           </div>
           <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
             {[
-              { num: "01", stage: "IDENTIFY", label: "Situation Universe", body: "You define what you're watching for — 221 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
+              { num: "01", stage: "IDENTIFY", label: "Situation Universe", body: "You define what you're watching for — 231 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
               { num: "02", stage: "DETECT", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, act on your terms.", accent: TEAL },
               { num: "03", stage: "AUTHORIZE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives authorize from pre-staged options — not figure out ownership under pressure. Authority preserved at every gate.", accent: GOLD },
               { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "180 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },

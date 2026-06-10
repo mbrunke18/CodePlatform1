@@ -155,7 +155,7 @@ export default function StandardNav() {
         { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Target, description: "See the exact 12-minute execution for your industry — signals, authorization chain, and full task sequence.", featured: true },
         { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built vertical stacks", featured: true },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "231 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
         { label: "Universal Connector", path: "/universal-connector", icon: Globe, description: "Any stack. 55+ pre-built connectors. Live in 15 minutes.", featured: true },
         { label: "Integration Setup Plan", path: "/technical-onboarding", icon: Rocket, description: "Phased technical guide for connecting Readiness OS into your tech environment", featured: true },
@@ -391,7 +391,7 @@ export default function StandardNav() {
             {[
               { path: '/playbooks', icon: ClipboardList, label: 'Readiness Protocol Library', sub: '180 pre-staged Readiness Protocols across 9 strategic domains', featured: true },
               { path: '/triggers-management', icon: Zap, label: 'Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
-              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
+              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '231 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
@@ -770,7 +770,7 @@ export default function StandardNav() {
 
     const workspaceLinks = [
       { path: '/workspace', icon: Target, label: 'Identify', sub: 'Situation intents, protocols, risk mapping' },
-      { path: '/signal-intelligence', icon: Radar, label: 'Detect', sub: 'Signal monitoring across 221 triggers' },
+      { path: '/signal-intelligence', icon: Radar, label: 'Detect', sub: 'Signal monitoring across 231 triggers' },
       { path: '/live-activation-center', icon: Zap, label: 'Execute', sub: 'Activate, coordinate, authorize' },
       { path: '/advanced-analytics', icon: BarChart3, label: 'Advance', sub: 'Analytics, outcomes, board reporting' },
     ];
@@ -1261,7 +1261,7 @@ export default function StandardNav() {
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
                 </div>
                 <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>
-                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>221 Triggers Active</span>
+                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>231 Triggers Active</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Radio style={{ width: 8, height: 8, color: 'rgba(201,168,76,0.45)' }} />

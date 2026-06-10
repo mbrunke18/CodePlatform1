@@ -192,7 +192,7 @@ export default function MyPlaybooksPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <TrendingUp size={14} color={TEAL} />
             <span style={{ fontSize: 12, color: MUTED }}>
-              180 Readiness Protocols available in the library — 9 strategic domains, 221 executive triggers monitored
+              180 Readiness Protocols available in the library — 9 strategic domains, 231 executive triggers monitored
             </span>
           </div>
           <Link href="/identify/playbook-library">

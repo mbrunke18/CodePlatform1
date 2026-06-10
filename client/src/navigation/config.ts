@@ -114,7 +114,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'AI Trigger Monitoring',
           path: '/triggers-management',
           icon: '⚡',
-          description: '221 triggers — configure thresholds, situation intents, and notification routing'
+          description: '231 triggers — configure thresholds, situation intents, and notification routing'
         },
         {
           id: 'alerts',

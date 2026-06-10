@@ -102,7 +102,7 @@ export const LINKEDIN_PRODUCTS: LinkedInProduct[] = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "221 strategic triggers monitored in real time across 8 data sources",
+    tagline: "231 strategic triggers monitored in real time across 8 data sources",
     accentColor: "#2B8A6E",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <circle cx="40" cy="40" r="6" fill="#C9A84C"/>
@@ -212,7 +212,7 @@ function buildProductIconHtml(product: LinkedInProduct): string {
 
     2: `
       <div class="idea-chain">
-        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">221 strategic triggers mapped across 3 domains</div></div></div>
+        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">231 strategic triggers mapped across 3 domains</div></div></div>
         <div class="idea-phase gold-phase"><div class="phase-letter">D</div><div class="phase-content"><div class="phase-name">DETECT</div><div class="phase-desc">248+ data points · signal scored every 15 minutes</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">E</div><div class="phase-content"><div class="phase-name">EXECUTE</div><div class="phase-desc">Pre-staged protocols activate · executive authorized</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">A</div><div class="phase-content"><div class="phase-name">ADVANCE</div><div class="phase-desc">Post-activation debrief · readiness improves each cycle</div></div></div>
@@ -245,7 +245,7 @@ function buildProductIconHtml(product: LinkedInProduct): string {
         <div class="alert-row critical"><div class="sev-dot red-dot"></div><div class="alert-info"><div class="alert-name">Activist Investor Disclosure</div><div class="alert-sub">8.3% stake · Protocol #47 matched</div></div><div class="score-block"><div class="score-num">97</div><div class="score-bar"><div class="score-fill red-fill" style="width:97%"></div></div></div></div>
         <div class="alert-row high"><div class="sev-dot amber-dot"></div><div class="alert-info"><div class="alert-name">Supply Chain Disruption</div><div class="alert-sub">Tier-1 supplier · Protocol #83 matched</div></div><div class="score-block"><div class="score-num">78</div><div class="score-bar"><div class="score-fill amber-fill" style="width:78%"></div></div></div></div>
         <div class="alert-row med"><div class="sev-dot teal-dot"></div><div class="alert-info"><div class="alert-name">Regulatory Filing Deadline</div><div class="alert-sub">SEC · 14 days · Protocol #129 recommended</div></div><div class="score-block"><div class="score-num">52</div><div class="score-bar"><div class="score-fill teal-fill" style="width:52%"></div></div></div></div>
-        <div class="feed-footer">221 triggers monitored · 248+ data points · Continuous</div>
+        <div class="feed-footer">231 triggers monitored · 248+ data points · Continuous</div>
       </div>`,
 
     6: `
@@ -262,7 +262,7 @@ function buildProductIconHtml(product: LinkedInProduct): string {
           <div class="meta-div">·</div>
           <div class="meta-stat"><span class="meta-num">15 min</span><span class="meta-lbl"> cycle</span></div>
           <div class="meta-div">·</div>
-          <div class="meta-stat"><span class="meta-num">221</span><span class="meta-lbl"> patterns</span></div>
+          <div class="meta-stat"><span class="meta-num">231</span><span class="meta-lbl"> patterns</span></div>
         </div>
       </div>`,
 
@@ -611,7 +611,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
     highlights: [
       {
         title: "Identify & Detect",
-        description: "221 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified.",
+        description: "231 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified.",
       },
       {
         title: "Execute",
@@ -690,11 +690,11 @@ export const LINKEDIN_PRODUCTS_COPY = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "221 strategic triggers monitored in real time — before they become crises",
-    description: "VaughnMartin's Signal Detection Engine continuously monitors 221 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes — not weeks.",
+    tagline: "231 strategic triggers monitored in real time — before they become crises",
+    description: "VaughnMartin's Signal Detection Engine continuously monitors 231 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes — not weeks.",
     highlights: [
       {
-        title: "221 Trigger Patterns",
+        title: "231 Trigger Patterns",
         description: "Mapped across geopolitical, cybersecurity, market valuation, regulatory, reputational, and financial distress domains. Continuously monitored.",
       },
       {

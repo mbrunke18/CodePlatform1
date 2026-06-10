@@ -54,7 +54,7 @@ const VALIDATION_METHODOLOGY = [
   {
     step: "02",
     title: "Signal Pattern Backtesting",
-    description: "The 221 trigger patterns are evaluated against 5 years of news and regulatory data to confirm false-positive rates below 8% and true-positive detection rates above 87% for material enterprise events.",
+    description: "The 231 trigger patterns are evaluated against 5 years of news and regulatory data to confirm false-positive rates below 8% and true-positive detection rates above 87% for material enterprise events.",
   },
   {
     step: "03",

@@ -176,7 +176,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-8">
           {[
             { value: '65%', label: 'Still piloting AI', sub: 'Not yet scaling across the enterprise — the activation gap Readiness OS closes', color: 'border-[#C9A84C]/40 bg-[#C9A84C]/5' },
-            { value: '1%', label: 'Fully mature', sub: 'Leaders — not employees — are the bottleneck. 221 executive triggers solve this.', color: 'border-[#2B8A6E]/40 bg-[#2B8A6E]/5' },
+            { value: '1%', label: 'Fully mature', sub: 'Leaders — not employees — are the bottleneck. 231 executive triggers solve this.', color: 'border-[#2B8A6E]/40 bg-[#2B8A6E]/5' },
             { value: '$4.4T', label: 'AI productivity potential', sub: 'Locked behind the missing coordination layer — the layer Readiness OS provides', color: 'border-[#0A0F2E]/20 bg-[#0A0F2E]/5' },
           ].map((s, i) => (
             <div key={i} className={`border ${s.color} p-6 text-center`}>
@@ -260,7 +260,7 @@ function InvestorPresentation() {
               org: "McKinsey Global Institute",
               report: "Skill Partnerships in the Age of AI · November 2025",
               quote: "\"The CEO who delegates AI to IT will lose this decade to the one who does not.\" 90% of enterprises invested in AI. <40% see measurable returns.",
-              bridge: "221 triggers make the CEO the signal, not the bottleneck.",
+              bridge: "231 triggers make the CEO the signal, not the bottleneck.",
               color: "border-[#2B8A6E]/40 bg-[#2B8A6E]/5",
               dot: "bg-[#2B8A6E]",
             },
@@ -569,7 +569,7 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { tier: 'Core', price: '$150K', desc: 'Full 180-Protocol Library — every strategic domain', features: ['Full 180 Readiness Protocols', '221 triggers monitored', 'Standard integrations', 'Dedicated CSM'] },
+            { tier: 'Core', price: '$150K', desc: 'Full 180-Protocol Library — every strategic domain', features: ['Full 180 Readiness Protocols', '231 triggers monitored', 'Standard integrations', 'Dedicated CSM'] },
             { tier: 'Foresight', price: '$250K', desc: 'Digital Twin + predictive foresight', features: ['Everything in Core', 'Digital Twin simulation', 'Predictive foresight alerts', 'Priority 2-hour SLA'], highlight: true },
             { tier: 'Enterprise', price: '$450K', desc: 'Autonomous evolution network · scales with scope', features: ['Everything in Foresight', 'Autonomous protocol evolution', 'Unlimited custom protocols', 'White-glove onboarding'] },
           ].map((t, i) => (

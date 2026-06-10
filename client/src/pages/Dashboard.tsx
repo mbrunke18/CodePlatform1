@@ -143,7 +143,7 @@ function PhaseCard({
 }
 
 const ORIENTATION_STEPS = [
-  { icon: Settings, label: "Configure signal monitoring", sub: "Set up your 221 armed triggers", href: "/signal-configuration", color: TEAL },
+  { icon: Settings, label: "Configure signal monitoring", sub: "Set up your 231 armed triggers", href: "/signal-configuration", color: TEAL },
   { icon: Target, label: "Explore your Readiness Protocol library", sub: "180 pre-staged templates across 9 domains", href: "/playbook-library", color: NAVY },
   { icon: Zap, label: "Run a live simulation", sub: "Experience the 12-minute execution cycle", href: "/command-center", color: GOLD },
   { icon: Brain, label: "Invite your stakeholders", sub: "Map your executive decision network", href: "/stakeholder-management", color: TEAL },

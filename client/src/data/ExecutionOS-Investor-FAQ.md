@@ -309,7 +309,7 @@ For rapid-fire Q&A, memorize these:
 | Competitors? | "The real competitor is the status quo — 30-day mobilization cycles, email chains, retainer consultants after the fact." |
 | Market size? | "$5B+ addressable. Strategic Readiness Platform is a category that doesn't yet exist — we're defining it." |
 | Business model? | "$120K–$1.5M+ enterprise contracts, 80%+ gross margin." |
-| Traction? | "Platform live. 170 Readiness Protocols. 221 triggers. Founding Partner program open." |
+| Traction? | "Platform live. 170 Readiness Protocols. 231 triggers. Founding Partner program open." |
 | How do prospects evaluate? | "48-hour guided evaluation workspace — pre-seeded with realistic data. Full Activist Investor or Ransomware scenario, signal to war room, in 12 minutes." |
 
 ---

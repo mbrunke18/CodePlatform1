@@ -209,7 +209,7 @@ export default function HowItExecutes() {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
                 {[
-                  { window: "< 60 sec", phase: "01", label: "Signal detected & protocol matched", detail: "Continuous monitoring fires. 221 patterns checked. Readiness Protocol identified. Risk score assigned.", color: GOLD },
+                  { window: "< 60 sec", phase: "01", label: "Signal detected & protocol matched", detail: "Continuous monitoring fires. 231 patterns checked. Readiness Protocol identified. Risk score assigned.", color: GOLD },
                   { window: "< 3 min",  phase: "02", label: "All stakeholders notified", detail: "Every executive receives a role-specific brief simultaneously — not a generic alert. No one has to find the contact list.", color: TEAL },
                   { window: "< 5 min",  phase: "03", label: "Executive reviews & authorizes", detail: "Pre-staged brief reviewed. One authorization. Budget unlocked. Authority chain confirmed. No committee.", color: GOLD },
                   { window: "< 12 min", phase: "04", label: "Full team executing", detail: "Tasks deployed. Integrations triggered. Jira updated. Teams notified. Audit trail open. Response underway.", color: TEAL },
@@ -436,7 +436,7 @@ export default function HowItExecutes() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: "rgba(255,255,255,0.06)" }}>
               {[
-                { step: "Before the Trigger", icon: "◎", color: GOLD, items: ["180 Readiness Protocols pre-built", "221 trigger patterns continuously monitored", "Every stakeholder role pre-assigned", "Budget authority pre-approved", "Communication templates pre-cleared"] },
+                { step: "Before the Trigger", icon: "◎", color: GOLD, items: ["180 Readiness Protocols pre-built", "231 trigger patterns continuously monitored", "Every stakeholder role pre-assigned", "Budget authority pre-approved", "Communication templates pre-cleared"] },
                 { step: "At the Trigger", icon: "⚡", color: TEAL, items: ["Signal detected and scored in seconds", "Protocol matched automatically", "Execution brief staged instantly", "All stakeholders notified simultaneously", "CEO authorizes with full context"] },
                 { step: "12 Minutes Later", icon: "★", color: GOLD, items: ["All tasks deployed and executing", "Board briefed with full documentation", "Regulators notified on schedule", "Customers informed proactively", "Debrief staged for institutional learning"] },
               ].map(col => (

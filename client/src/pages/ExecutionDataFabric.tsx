@@ -39,7 +39,7 @@ const NODES = [
     label: "Trigger Evaluation Engine",
     color: TEAL,
     details: [
-      "221 trigger patterns scored against signal density",
+      "231 trigger patterns scored against signal density",
       "Keyword alignment + confidence threshold evaluation",
       "Square-root scaling model for risk classification",
       "LOW (<35) · MEDIUM (35–74) · HIGH (75+) outputs",
@@ -72,7 +72,7 @@ const NODES = [
 const TECH_SPECS = [
   { label: "Signal Sources", value: "8 real-time feeds" },
   { label: "Data Points Monitored", value: "248+" },
-  { label: "Trigger Patterns", value: "221" },
+  { label: "Trigger Patterns", value: "231" },
   { label: "Ingestion Cycle", value: "Every 15 minutes" },
   { label: "Risk Classification", value: "LOW · MEDIUM · HIGH" },
   { label: "Protocol Library", value: "180 pre-staged" },

@@ -461,7 +461,7 @@ export default function CommandTower() {
   // ── Derived stats ─────────────────────────────────────────────────────────
   const recentDetections = detections.slice(0, 6);
   const recentActivations = activations.slice(0, 5);
-  const triggersArmed = triggerSummary?.total || 221;
+  const triggersArmed = triggerSummary?.total || 231;
   const evaluationMode = monitoringConfig?.evaluationMode || 'both';
   const modeLabel = evaluationMode === 'configured' ? 'Custom Engine' : evaluationMode === 'default' ? 'Default Engine' : 'Dual Engine';
 
@@ -636,7 +636,7 @@ export default function CommandTower() {
           display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, marginBottom: 24,
         }}>
           {[
-            { label: 'TRIGGERS ARMED', value: triggersArmed.toLocaleString(), sub: '221 signals', icon: Target, color: GOLD, bg: 'rgba(201,168,76,0.08)', border: 'rgba(201,168,76,0.2)' },
+            { label: 'TRIGGERS ARMED', value: triggersArmed.toLocaleString(), sub: '231 signals', icon: Target, color: GOLD, bg: 'rgba(201,168,76,0.08)', border: 'rgba(201,168,76,0.2)' },
             { label: 'ACTIVE DETECTIONS', value: detections.length.toString(), sub: detections.length > 0 ? 'Live ingested · past 30 days' : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
             { label: 'Readiness Protocols READY', value: '180', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
             { label: 'NEXT SCAN', value: nextScanLabel, sub: `Engine: ${modeLabel}`, icon: Clock, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },

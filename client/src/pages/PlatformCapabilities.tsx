@@ -27,7 +27,7 @@ const PHASES = [
     thesis: 'The organization is not waiting. Every major strategic decision it will ever face has already been made — deliberately, at peak cognitive capacity, before the pressure arrives.',
     capabilities: [
       {
-        title: '221 Armed Trigger Rules',
+        title: '231 Armed Trigger Rules',
         detail: 'Pre-defined decision rules monitoring the strategic environment continuously — not alerts waiting to be configured, but decision logic already set against your organization\'s specific situation intents. When conditions match, the system knows what it means and what the response is.',
       },
       {
@@ -217,7 +217,7 @@ export default function PlatformCapabilities() {
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {[
               { label: '180 Readiness Protocols', sub: 'Pre-staged' },
-              { label: '221 Triggers', sub: 'Armed & monitoring' },
+              { label: '231 Triggers', sub: 'Armed & monitoring' },
               { label: '248+ Data Points', sub: 'Every 15 minutes' },
               { label: '12 Minutes', sub: '30 days → 12 min' },
               { label: '3,600×', sub: 'Execution head start' },

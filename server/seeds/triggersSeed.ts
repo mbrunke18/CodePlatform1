@@ -165,9 +165,9 @@ async function seedTriggersForOrg(
 ) {
   const existingTriggers = await db.select().from(executiveTriggers).where(eq(executiveTriggers.organizationId, organizationId));
   
-  // Only skip seeding if we have at least 170 triggers (close to expected 178)
+  // Only skip seeding if we have at least 170 triggers (target: 231 canonical)
   if (existingTriggers.length >= 170) {
-    console.log(`   ✅ Already have ${existingTriggers.length} triggers (target: 178)`);
+    console.log(`   ✅ Already have ${existingTriggers.length} triggers (target: 231)`);
     await seedTriggerSignals(organizationId, createdBy);
     return { triggersCreated: 0, associationsCreated: 0 };
   }

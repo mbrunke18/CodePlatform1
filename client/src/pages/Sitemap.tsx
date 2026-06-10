@@ -80,7 +80,7 @@ const SECTIONS: Section[] = [
     entries: [
       { name: 'Readiness Protocol Library', path: '/playbooks', desc: '180 pre-staged protocols across 9 strategic domains', icon: BookOpen },
       { name: 'Situation Intents', path: '/identify/situation-intents', desc: 'Define what your org is monitoring — IDEA configuration start', icon: Target },
-      { name: 'Triggers Management', path: '/triggers-management', desc: '221 triggers — configure detection thresholds', icon: Zap },
+      { name: 'Triggers Management', path: '/triggers-management', desc: '231 triggers — configure detection thresholds', icon: Zap },
       { name: 'Signal Configuration', path: '/signal-configuration', desc: 'Configure your 39 pre-configured signal sources and trigger detection thresholds', icon: Radio },
       { name: 'Response Customization', path: '/playbook-customization', desc: 'Tailor Readiness Protocols to your org context', icon: ClipboardCheck },
       { name: 'Strategic Planning Hub', path: '/strategic', desc: 'Long-range readiness planning and scenario mapping', icon: Target },
@@ -325,7 +325,7 @@ export default function Sitemap() {
               { n: totalPages.toString(), label: 'Total Pages & Features' },
               { n: '180', label: 'Readiness Protocols' },
               { n: '12', label: 'Scenario Simulations' },
-              { n: '221', label: 'Monitored Triggers' },
+              { n: '231', label: 'Monitored Triggers' },
               { n: '12 min', label: 'Execution Head Start' },
             ].map(({ n, label }) => (
               <div key={label} style={{ textAlign: 'center' }}>

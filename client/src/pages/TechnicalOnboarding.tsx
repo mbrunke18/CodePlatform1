@@ -227,7 +227,7 @@ const PHASES: Phase[] = [
         steps: [
           "In Settings → Signal Sources, add custom RSS feed URLs relevant to your industry",
           "Tag each feed with relevant trigger categories for pattern matching",
-          "Readiness OS polls all feeds on a 15-minute cycle and scores against 221 trigger patterns",
+          "Readiness OS polls all feeds on a 15-minute cycle and scores against 231 trigger patterns",
         ],
         notes: "The platform already monitors 39 public feeds. Custom feeds let you add industry-specific sources (trade publications, regulatory bodies, competitor newsrooms).",
       },

@@ -312,7 +312,7 @@ export default function GettingStarted() {
       <div style={{ background: '#F0EDE4', borderBottom: `1px solid ${BORDER}` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderLeft: `1px solid ${BORDER}` }}>
           {[
-            { step: 'DETECT', label: 'Signals monitored continuously', sub: '221 triggers · 248+ data points', color: TEAL },
+            { step: 'DETECT', label: 'Signals monitored continuously', sub: '231 triggers · 248+ data points', color: TEAL },
             { step: 'COORDINATE', label: 'Stakeholders & tasks staged automatically', sub: 'Roles, budgets, comms — pre-staged', color: GOLD },
             { step: 'EXECUTE', label: 'Executive authorizes — response deploys', sub: '12-minute activation window', color: GOLD },
             { step: 'LEARN', label: 'Every activation improves the next', sub: 'ADVANCE phase closes the loop', color: TEAL },
@@ -395,7 +395,7 @@ export default function GettingStarted() {
             {/* PHASE 3 */}
             <PhaseCard num="03" title="Protocol Readiness" timing="Week 2 — ongoing" doing="Executive team + domain owners" score={p3} phaseRef={phaseRefs[2]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Signal Monitoring</div>
-              <Item done={c.signalMonitoring} label="Signal monitoring active" sub="221 triggers scanned across 8 sources every 15 minutes — always on" />
+              <Item done={c.signalMonitoring} label="Signal monitoring active" sub="231 triggers scanned across 8 sources every 15 minutes — always on" />
 
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Call Sheet Build — Situation Matrix Builder</div>
 
@@ -498,7 +498,7 @@ export default function GettingStarted() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Already Working</div>
               {[
                 { label: '180 Readiness Protocols', sub: 'Pre-staged, ready to activate', icon: ClipboardList },
-                { label: '221 triggers monitored', sub: 'Scanning every 15 minutes', icon: Radio },
+                { label: '231 triggers monitored', sub: 'Scanning every 15 minutes', icon: Radio },
                 { label: 'Signal scoring active', sub: 'LOW / MEDIUM / HIGH risk levels', icon: Zap },
                 { label: 'Executive approval flow', sub: 'No protocol activates without sign-off', icon: Shield },
               ].map((item, i) => {
@@ -570,7 +570,7 @@ export default function GettingStarted() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
-                { session: 'Session 1', title: 'Map Your Unintended Situations', desc: 'Identify the 10–15 strategic triggers most likely to fire in your industry this year that are not currently on your roadmap. Use the 221-trigger library as your starting point.', cta: 'Open Protocol Library →', href: '/playbooks', color: GOLD },
+                { session: 'Session 1', title: 'Map Your Unintended Situations', desc: 'Identify the 10–15 strategic triggers most likely to fire in your industry this year that are not currently on your roadmap. Use the 231-trigger library as your starting point.', cta: 'Open Protocol Library →', href: '/playbooks', color: GOLD },
                 { session: 'Session 2', title: 'Select Your Priority Protocols', desc: 'From the 180 Readiness Protocols, select the 5–10 most critical for your organization. Configure them to your specific org structure, decision rights, and stakeholder roster.', cta: 'Browse 180 Protocols →', href: '/playbooks', color: TEAL },
                 { session: 'Session 3', title: 'Run a Tabletop Simulation', desc: 'Activate your top protocol against a practice trigger. Full execution chain — stakeholder alerts, task assignments, executive authorization — before a real situation demands it.', cta: 'Schedule a Practice Drill →', href: '/practice-drills', color: GOLD },
                 { session: 'Session 4', title: 'Confirm Your Readiness Benchmark', desc: 'Document your confirmed response time, activation chain, and readiness score. This is your baseline — every future activation improves it.', cta: 'View Readiness Score →', href: '/mission-control', color: TEAL },

@@ -219,7 +219,7 @@ export async function loadConfiguredTriggers(organizationId: string): Promise<Co
   }
 
   try {
-    // 1. Load executiveTriggers (seeded from 221 intelligence signals)
+    // 1. Load executiveTriggers (seeded from 231 intelligence signals)
     const execTriggers = await db
       .select()
       .from(executiveTriggers)
