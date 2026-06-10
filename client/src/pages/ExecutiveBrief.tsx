@@ -61,7 +61,7 @@ const comparisonRows = [
 
 const proofNumbers = [
   { value: "180", label: "Pre-staged Readiness Protocols across 9 strategic domains" },
-  { value: "221", label: "Trigger configurations monitoring for strategic events" },
+  { value: "231", label: "Trigger configurations monitoring for strategic events" },
   { value: "248+", label: "Enterprise data points monitored continuously" },
   { value: "12 min", label: "Trigger to full organizational coordination" },
   { value: "3,600×", label: "Execution head start vs. traditional mobilization" },
