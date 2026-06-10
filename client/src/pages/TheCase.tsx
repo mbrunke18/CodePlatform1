@@ -215,7 +215,7 @@ export default function TheCase() {
               <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "28px 24px", marginBottom: 16 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>The Mobilization Tax — Per Trigger Event</div>
                 {[
-                  { label: "Executive labor (12 execs × 40 hrs × $1,200/hr)", value: "$576K" },
+                  { label: "Executive labor (8 senior leaders × 15 hrs × $500/hr loaded rate)", value: "$60K" },
                   { label: "Outside counsel engagement", value: "$60K–$300K" },
                   { label: "Revenue at risk during delay window", value: "$1M–$18M" },
                   { label: "Regulatory penalty exposure", value: "$5M–$50M" },
