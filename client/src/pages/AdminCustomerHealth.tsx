@@ -68,7 +68,7 @@ export default function AdminCustomerHealth() {
               Customer <em style={{ fontStyle: "italic", color: GOLD }}>Health</em>
             </h1>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 15 }}>
-              RAG-status view across all pilot organizations. Green = activation last 7 days. Amber = 8–21 days. Red = 22+ days or never.
+              RAG-status view across all Founding Partner organizations. Green = activation last 7 days. Amber = 8–21 days. Red = 22+ days or never.
             </p>
 
             {/* Summary bar */}

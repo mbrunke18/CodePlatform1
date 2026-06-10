@@ -173,13 +173,13 @@ export default function FoundingPartnerMonitoring() {
           </Card>
         </div>
 
-        {/* Pilot Company Status */}
+        {/* Founding Partner Status */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                 <Users className="w-5 h-5 text-[#0A0F2E]" />
-                Pilot Company Status
+                Founding Partner Status
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -188,7 +188,7 @@ export default function FoundingPartnerMonitoring() {
                   <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">
                     {pilotMetrics.totalPilots}
                   </div>
-                  <div className="text-sm text-gray-800 dark:text-slate-300">Total Pilots</div>
+                  <div className="text-sm text-gray-800 dark:text-slate-300">Total Partners</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-[#2B8A6E]">

@@ -139,8 +139,8 @@ export default function FoundingPartnerHealthMonitor() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Pilot Health Monitor — Readiness OS Admin",
-      description: "Real-time health view for all active pilot organizations.",
+      title: "Founding Partner Health Monitor — Readiness OS Admin",
+      description: "Real-time health view for all active Founding Partner organizations.",
     });
   }, []);
 
@@ -186,9 +186,9 @@ export default function FoundingPartnerHealthMonitor() {
                 <div style={{ width: 3, height: 20, background: GOLD, borderRadius: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Admin · Internal View</span>
               </div>
-              <h1 style={{ fontSize: 28, fontWeight: 700, color: "#fff", margin: 0, lineHeight: 1.1 }}>Pilot Health Monitor</h1>
+              <h1 style={{ fontSize: 28, fontWeight: 700, color: "#fff", margin: 0, lineHeight: 1.1 }}>Founding Partner Health Monitor</h1>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginTop: 8 }}>
-                Real-time engagement and milestone tracking across all pilot organizations.
+                Real-time engagement and milestone tracking across all Founding Partner organizations.
               </p>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -260,8 +260,8 @@ export default function FoundingPartnerHealthMonitor() {
           ) : orgs.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 0" }}>
               <BookOpen size={40} color="rgba(255,255,255,0.15)" style={{ marginBottom: 16 }} />
-              <div style={{ fontSize: 16, color: "rgba(255,255,255,0.68)" }}>No pilot organizations yet.</div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)", marginTop: 8 }}>Organizations will appear here once pilots are active.</div>
+              <div style={{ fontSize: 16, color: "rgba(255,255,255,0.68)" }}>No Founding Partner organizations yet.</div>
+              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)", marginTop: 8 }}>Organizations will appear here once Founding Partners are active.</div>
             </div>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 16 }}>

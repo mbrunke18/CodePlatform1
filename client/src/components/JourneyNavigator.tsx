@@ -39,14 +39,14 @@ const journeyPhases: JourneyPhase[] = [
     number: 1,
     name: 'Discovery',
     subtitle: 'Explore & Evaluate',
-    description: 'Experience Readiness OS through demos, calculate ROI, and define pilot scope',
+    description: 'Experience Readiness OS through demos, calculate ROI, and define Founding Partner scope',
     timeline: 'Week 1-2',
     workspace: 'Demo Gallery',
     workspacePath: '/try-demo',
     icon: Rocket,
     color: 'text-pink-500',
     bgColor: 'bg-pink-500/10',
-    milestones: ['Executive sponsor identified', 'Pilot scope defined', 'ROI targets established'],
+    milestones: ['Executive sponsor identified', 'Founding Partner scope defined', 'ROI targets established'],
     status: 'completed'
   },
   {

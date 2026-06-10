@@ -143,7 +143,7 @@ export default function FoundingPartnerDemo() {
     },
     onSuccess: () => {
       toast({
-        title: "Pilot Execution Complete",
+        title: "Execution Complete",
         description: "Check your email for the stakeholder notification!",
       });
     },
@@ -781,7 +781,7 @@ export default function FoundingPartnerDemo() {
                               className="gap-2 bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white"
                               data-testid="button-start-pilot"
                             >
-                              Start Full Pilot <ArrowRight className="w-4 h-4" />
+                              Apply for Founding Partner Access <ArrowRight className="w-4 h-4" />
                             </Button>
                           </div>
                         </div>

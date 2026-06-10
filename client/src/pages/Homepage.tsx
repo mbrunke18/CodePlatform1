@@ -2011,9 +2011,10 @@ function AthletePreparationSection() {
               Any organization can be ready for every situation it expects to face.{" "}
               <em style={{ color: GOLD, fontStyle: "italic" }}>That's not a promise about speed. It's a promise about fearlessness.</em>
             </p>
-            <div style={{ flexShrink: 0 }}>
+            <div style={{ flexShrink: 0, textAlign: "right" as const }}>
               <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>The Preparation Arc</div>
-              <div style={{ ...GEO, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>Preparation → Readiness → Fearless</div>
+              <div style={{ ...GEO, fontSize: 13, color: "rgba(255,255,255,0.6)", marginBottom: 8 }}>Preparation → Readiness → Fearless</div>
+              <div style={{ ...GEO, fontSize: 12, fontStyle: "italic", color: "#2B8A6E" }}>Preparedness as infrastructure, not consulting.</div>
             </div>
           </div>
         </Reveal>

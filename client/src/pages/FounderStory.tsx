@@ -564,6 +564,10 @@ export default function FounderStory() {
       {/* ── CTA ───────────────────────────────────────────────────────────── */}
       <section style={{ background: NAVY, padding: "72px 32px", textAlign: "center" }}>
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "#2B8A6E", marginBottom: 20 }}>The Category Distinction</div>
+          <p style={{ ...CG, fontSize: 18, fontStyle: "italic", color: "rgba(201,168,76,0.9)", lineHeight: 1.5, marginBottom: 24 }}>
+            Preparedness as infrastructure, not consulting.
+          </p>
           <p style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", lineHeight: 1.3, marginBottom: 32 }}>
             Ready to close the coordination gap?
           </p>
