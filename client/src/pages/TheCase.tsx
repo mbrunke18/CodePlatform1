@@ -213,26 +213,48 @@ export default function TheCase() {
             </div>
             <div>
               <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "28px 24px", marginBottom: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>The Mobilization Tax — Per Trigger Event</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>The Mobilization Tax — By Trigger Severity</div>
+                <div style={{ fontSize: 11, color: MUTED, marginBottom: 16 }}>Most triggers fall in the Standard or Significant tier. High-severity applies to regulatory incidents, data breaches, and activist situations.</div>
+
+                {/* Header */}
+                <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 8, paddingBottom: 8, borderBottom: `2px solid ${BORDER}`, marginBottom: 4 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Cost Component</div>
+                  {[
+                    { label: "Standard", sub: "Competitive, market, ops" },
+                    { label: "Significant", sub: "Supply chain, leadership" },
+                    { label: "High-Severity", sub: "Regulatory, breach, activist" },
+                  ].map((h, i) => (
+                    <div key={i} style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: i === 2 ? "#DC2626" : NAVY }}>{h.label}</div>
+                      <div style={{ fontSize: 9, color: MUTED }}>{h.sub}</div>
+                    </div>
+                  ))}
+                </div>
+
                 {[
-                  { label: "Executive labor (8 senior leaders × 15 hrs × $500/hr loaded rate)", value: "$60K" },
-                  { label: "Outside counsel engagement", value: "$60K–$300K" },
-                  { label: "Revenue at risk during delay window", value: "$1M–$18M" },
-                  { label: "Regulatory penalty exposure", value: "$5M–$50M" },
-                  { label: "Consulting retainer to build the response plan", value: "$150K–$500K" },
+                  { label: "Executive labor (8 leaders × 15 hrs × $500/hr)", standard: "$60K", significant: "$60K", severe: "$60K" },
+                  { label: "Outside counsel / specialist engagement", standard: "—", significant: "$30K–$80K", severe: "$80K–$300K" },
+                  { label: "Revenue impact during delay window", standard: "$50K–$200K", significant: "$200K–$1M", severe: "$1M–$5M" },
+                  { label: "Regulatory penalty exposure", standard: "—", significant: "—", severe: "$500K–$10M" },
+                  { label: "Consulting retainer for response plan", standard: "—", significant: "$50K–$150K", severe: "$150K–$500K" },
                 ].map((row, i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: i < 4 ? `1px solid ${BORDER}` : "none" }}>
-                    <div style={{ fontSize: 12, color: "#374151", maxWidth: "65%" }}>{row.label}</div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{row.value}</div>
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 8, padding: "9px 0", borderBottom: `1px solid ${BORDER}`, alignItems: "center" }}>
+                    <div style={{ fontSize: 11, color: "#374151" }}>{row.label}</div>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: TEAL, textAlign: "center" }}>{row.standard}</div>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, textAlign: "center" }}>{row.significant}</div>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: "#DC2626", textAlign: "center" }}>{row.severe}</div>
                   </div>
                 ))}
-                <div style={{ marginTop: 16, padding: "12px 16px", background: NAVY, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.7)" }}>Typical Total Exposure Per Event</div>
-                  <div style={{ fontSize: 20, fontWeight: 800, color: GOLD }}>$7M–$69M</div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 8, marginTop: 12, background: NAVY, padding: "12px 8px", alignItems: "center" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.7)" }}>Total Exposure Per Event</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: TEAL, textAlign: "center" }}>$110K–$260K</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#fff", textAlign: "center" }}>$340K–$1.3M</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: GOLD, textAlign: "center" }}>$1.8M–$15.9M</div>
                 </div>
               </div>
               <div style={{ fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
-                Sources: McKinsey Global Institute (executive labor), IBM Cost of a Data Breach 2023 (regulatory exposure), Gartner (revenue-at-risk). Conservative lower bounds used throughout.
+                Sources: McKinsey Global Institute (executive labor), IBM Cost of a Data Breach 2023, Gartner (revenue-at-risk). Conservative lower bounds used throughout.
               </div>
             </div>
           </div>
