@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 10, 2026 (rev 56) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 10, 2026 (rev 57) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -4156,3 +4156,47 @@ Two board-validated phrases now appear in context:
 - Pilot terminology: ✅ zero user-facing violations across all pages and components
 - ExecutiveBrief: ✅ canonical tagline as H1, honest proof qualification, correct trigger count
 - Peer-reviewed phrases: ✅ surfaced on Homepage + FounderStory (and ExecutiveBrief + InvestorPresentation from Rev 55)
+
+---
+
+## 73. FirstVisitAdModal — Category-Creation Rebuild — June 10, 2026 (rev 57)
+
+### Purpose
+A cinematic 30-second first-impression modal that fires automatically on the first visit to the Homepage. Uses `localStorage` key `vm_seen_brief` — fires once per browser, never again after the user has seen or skipped it.
+
+### File
+`client/src/components/FirstVisitAdModal.tsx` — imported and rendered at the top of `Homepage.tsx` return (before `<HomepageNav />`).
+
+### Design Mandate
+The modal must never frame the product as a crisis-response tool. The emotional arc is: **Recognition → Dismissal of false solutions → Revelation → Fearlessness**. This maps directly to the locked product thesis: Preparation → Readiness → Fearless.
+
+### Scene Structure (30s total)
+| Scene | Duration | Content | Purpose |
+|---|---|---|---|
+| 1 — THE TRUTH | 7.5s | "Every enterprise was built for a world without AI. Committees. Alignment cycles. 30-day mobilization. They existed because humans couldn't process information fast enough to act decisively. AI changed the constraint. The operating model didn't. — Until now." | Creates instant universal recognition in every C-suite viewer without using a crisis narrative |
+| 2 — THE FAILURE OF HALF-MEASURES | 6.5s | "Every vendor bolted AI onto the old model. Faster spreadsheets. Smarter summaries. Better notes from the same slow meetings. The alignment cycle remained." — gold rule — "VaughnMartin rebuilt from first principles." | Names and dismisses the entire AI tools market (Copilot, ChatGPT, etc.) without naming them — positions as a different category entirely |
+| 3 — THE NEW ARCHITECTURE | 8s | Execution chain animating live: 0:00 Signal Detected → 2:00 Executive Decides → 4:15 Tasks Deploy → 12:00 Execution Live | Converts the abstract thesis into a concrete, moving reality. This is what "rebuilt from first principles" looks like. |
+| 4 — FEARLESS | 8s | "When every trigger has a response already staged — when the protocol matches before the phone rings — the organization stops being afraid of what comes next." — gold rule — "The response is ready before the trigger fires." — CTA | Lands on fearlessness as a felt destination, not a claimed attribute |
+
+### CTA (Scene 4)
+- **Primary:** "See It Execute — No Login Required →" → routes to `/situation-scanner`
+- **Secondary:** "Continue to site ×" — dismisses modal, sets localStorage flag
+
+### Technical Notes
+- `SCENE_DURATIONS = [7500, 6500, 8000, 8000]` — total 30,000ms
+- All animations are CSS class-toggled (`fv-show`, `fv-active`) via `getElementById` + `setTimeout` — no external animation library
+- Progress bar uses `requestAnimationFrame` against `TOTAL_DURATION` for smooth playback indicator
+- Teal/gold gradient progress bar at bottom
+- Ambient: grid overlay, two radial glows (teal top-right, gold bottom-left), scanline sweep
+- Typography: Cormorant Garamond for editorial lines; Barlow Condensed for labels, times, CTA; Barlow for body
+
+### NEVER DO
+- Do not open with a crisis scenario (ransomware, activist investor, 3:17 AM). This frames the product as crisis response, which contradicts the thesis.
+- Do not use "AI-powered," "AI-driven," or any retired language in the modal copy.
+- Do not change the emotional arc order. Recognition must precede revelation.
+
+### Rev 57 Known State
+- Build: ✅ clean
+- Tests: ✅ 208/208 passing
+- Modal: ✅ firing on homepage, correct 4-scene arc, correct CTA destinations
+- Framing: ✅ category-creation (not crisis-response)
