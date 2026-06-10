@@ -165,19 +165,11 @@ export default function StandardNav() {
       heading: "Inside the Platform",
       links: [
         { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
-        { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible." },
-        { label: "Build a Protocol", path: "/build-protocol", icon: Layers, description: "Not sure which builder to use? One question routes you to the right path — Matrix Builder, Protocol Builder, or Compound." },
+        { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible.", featured: true },
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
-        { label: "Onboarding Guide", path: "/onboarding-guide", icon: BookOpen, description: "Step-by-step guide for new Founding Partner customers — platform map, quick start, and first 30 days", featured: true },
-        { label: "New User Journey", path: "/new-user-journey", icon: Rocket, description: "Guided 6-step walkthrough — from first login to your first Readiness Protocol activation", featured: true },
-        { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of your IDEA configuration", featured: true },
-        { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
-        { label: "Regulatory Calendar", path: "/regulatory-calendar", icon: Shield, description: "Upcoming compliance deadlines mapped to pre-staged response Readiness Protocols — SEC, GDPR, SOX, FDA & more" },
-        { label: "What We're Building", path: "/roadmap", icon: TrendingUp, description: "Product roadmap — live features, what's in development, and what's coming next", featured: true },
-        { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
-        { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "Signal radar, monitoring & compound situation synthesis" },
+        { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark" },
       ],
     },
     {
@@ -898,6 +890,15 @@ export default function StandardNav() {
                 {renderExperienceDropdown()}
                 {renderEvidenceDropdown()}
                 <button
+                  onClick={() => navigateTo('/pricing')}
+                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
+                  style={{ color: NAVY, background: 'transparent', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                >
+                  Pricing
+                </button>
+                <button
                   onClick={() => navigateTo('/readiness-benchmark')}
                   className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
                   style={{ color: GOLD, background: 'transparent', whiteSpace: 'nowrap' }}
@@ -906,18 +907,6 @@ export default function StandardNav() {
                 >
                   <ClipboardCheck className="h-3.5 w-3.5" />
                   Benchmark
-                </button>
-                <button
-                  onClick={() => navigateTo('/sitemap')}
-                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-                  style={{ color: NAVY, background: 'transparent', whiteSpace: 'nowrap', opacity: 0.72 }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; (e.currentTarget as HTMLElement).style.opacity = '1'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.opacity = '0.72'; }}
-                  title="All pages and features"
-                  data-testid="nav-directory"
-                >
-                  <LayoutGrid className="h-3.5 w-3.5" />
-                  Directory
                 </button>
               </>
             )}

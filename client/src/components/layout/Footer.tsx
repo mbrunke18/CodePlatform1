@@ -190,10 +190,11 @@ export default function Footer() {
                 info@vaughnmartin.com
               </a>
               <button 
-                onClick={() => navigateTo('/try-demo')}
-                className="text-sm text-[#2B8A6E] hover:text-[#2B8A6E] transition-colors font-medium"
+                onClick={() => navigateTo('/founding-partner-program')}
+                className="text-sm font-bold transition-colors"
+                style={{ color: '#C9A84C' }}
               >
-                See Demo →
+                Apply for Founding Partner Access →
               </button>
               <button 
                 onClick={() => navigateTo("/investor-landing")}

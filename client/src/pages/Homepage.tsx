@@ -3801,43 +3801,51 @@ function StartHereSection() {
   const steps = [
     {
       n: "01",
-      label: "Feel the cost of not acting",
-      desc: "What is your current 30-day mobilization model costing — while you evaluate this? See it counting in real time.",
-      cta: "Open Cost of Delay →",
-      href: "/cost-of-delay",
+      label: "Read the complete buying argument",
+      desc: "Problem cost → proof → moat → ROI → comparison → decision. Everything an enterprise buyer needs, in sequence, on one page.",
+      cta: "Read The Case →",
+      href: "/the-case",
       accent: GOLD,
     },
     {
       n: "02",
-      label: "Watch a trigger execute",
-      desc: "A real Readiness Protocol from signal detection to full authorized response. 12 minutes, no login required.",
-      cta: "Run the 12-Minute Experience →",
-      href: "/12-minute-experience",
+      label: "Feel the cost of not acting",
+      desc: "What is your current 30-day mobilization model costing — while you evaluate this? See it counting in real time.",
+      cta: "Open Cost of Delay →",
+      href: "/cost-of-delay",
       accent: TEAL,
     },
     {
       n: "03",
-      label: "See your sector's live exposure",
-      desc: "Which signals are active in your industry right now — and which of the 180 Readiness Protocols are already staged for them.",
-      cta: "View Sector Threat Briefing →",
-      href: "/sector-briefing",
+      label: "Watch a trigger execute",
+      desc: "A real Readiness Protocol from signal detection to full authorized response. 12 minutes, no login required.",
+      cta: "Run the 12-Minute Experience →",
+      href: "/12-minute-experience",
       accent: GOLD,
     },
     {
       n: "04",
-      label: "Calculate your organization's return",
-      desc: "Your size, your risk profile, your contract value. A precise ROI figure — not a range, not a benchmark. Yours.",
-      cta: "Open ROI Calculator →",
-      href: "/roi-calculator",
+      label: "See your sector's live exposure",
+      desc: "Which signals are active in your industry right now — and which of the 180 Readiness Protocols are already staged for them.",
+      cta: "View Sector Threat Briefing →",
+      href: "/sector-briefing",
       accent: TEAL,
     },
     {
       n: "05",
+      label: "Calculate your organization's return",
+      desc: "Your size, your risk profile, your contract value. A precise ROI figure — not a range, not a benchmark. Yours.",
+      cta: "Open ROI Calculator →",
+      href: "/roi-calculator",
+      accent: GOLD,
+    },
+    {
+      n: "06",
       label: "Apply for Founding Partner Access",
       desc: "90-day validation partnership. 12 enterprises. The response is already staged before you arrive.",
       cta: "Apply for Founding Partner Access →",
       href: "/founding-partner",
-      accent: GOLD,
+      accent: TEAL,
     },
   ];
 
@@ -4230,6 +4238,37 @@ export default function Homepage() {
 
       {/* FEARLESS — Emotional finale */}
       <FearlessFinaleSection />
+
+      {/* THE CASE — Final buying argument before the decision */}
+      <div style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "48px 0" }}>
+        <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>The Complete Buying Argument</div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, margin: "0 0 12px" }}>
+              Everything in sequence. Problem cost → proof → moat → ROI → decision.
+            </h2>
+            <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
+              One page that assembles the complete case for Readiness OS — built for the CFO, CMO, or CIO who needs to take it to the board.
+            </p>
+          </div>
+          <div style={{ flexShrink: 0, display: "flex", flexDirection: "column" as const, alignItems: "flex-end", gap: 12 }}>
+            <Link
+              href="/the-case"
+              style={{
+                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
+                padding: "16px 40px", textDecoration: "none", letterSpacing: "0.05em",
+                display: "inline-block", whiteSpace: "nowrap" as const,
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#DFC178"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
+            >
+              Read The Case →
+            </Link>
+            <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>No login · 8-minute read</span>
+          </div>
+        </div>
+      </div>
 
       {/* CTA */}
       <CTASection />
