@@ -11,7 +11,7 @@ const TEAL = "#2B8A6E";
 const OFF = "#F8F7F4";
 
 // Scene durations in ms
-const SCENE_DURATIONS = [7500, 6500, 8000, 8000];
+const SCENE_DURATIONS = [9500, 8500, 9500, 10500];
 const TOTAL_DURATION = SCENE_DURATIONS.reduce((a, b) => a + b, 0);
 
 type Props = { onClose: () => void };
@@ -508,7 +508,7 @@ function AdContent({ onClose }: Props) {
             the organization stops being afraid of what comes next.
           </div>
           <div className="fv-fade" id="fv-s4-logo" style={{ marginBottom: "clamp(14px,2vw,20px)" }}>
-            <VaughnMartinLogo variant="icon-only" height={88} color="light" noLink animated />
+            <VaughnMartinLogo variant="icon-only" height={156} color="light" noLink animated />
           </div>
           <div className="fv-fade" id="fv-s4-rule" />
           <div className="fv-rise" id="fv-s4-tl">
