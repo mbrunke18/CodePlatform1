@@ -38,6 +38,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Build a new playbook from scratch or template'
         },
         {
+          id: 'situation-matrix-builder',
+          label: 'Situation Matrix Builder',
+          path: '/situation-matrix-builder',
+          icon: '⬛',
+          description: 'Build a Role × Situation call sheet — every role, every scenario variant, every responsibility pre-staged before the trigger fires'
+        },
+        {
           id: 'templates',
           label: 'Scenario Templates',
           path: '/identify/templates',

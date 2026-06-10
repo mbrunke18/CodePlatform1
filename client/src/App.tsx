@@ -207,6 +207,7 @@ const FoundingPartnerOnboarding = lazy(() => import("./pages/FoundingPartnerOnbo
 const ProtocolBuilder = lazy(() => import("./pages/ProtocolBuilder"));
 const ProtocolsHub = lazy(() => import("./pages/ProtocolsHub"));
 const CompoundProtocolBuilder = lazy(() => import("./pages/CompoundProtocolBuilder"));
+const ProtocolSituationMatrixBuilder = lazy(() => import("./pages/ProtocolSituationMatrixBuilder"));
 const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const VsBCP = lazy(() => import("./pages/VsBCP"));
@@ -670,6 +671,7 @@ function Router() {
         <Route path="/situation-scanner" component={SituationScanner} />
         <Route path="/protocol-builder" component={ProtocolBuilder} />
         <Route path="/compound-protocol-builder" component={CompoundProtocolBuilder} />
+        <Route path="/situation-matrix-builder" component={ProtocolSituationMatrixBuilder} />
         <Route path="/my-protocols" component={ProtocolsHub} />
         <Route path="/executive-scenarios" component={ExecutiveScenarioSuite} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />

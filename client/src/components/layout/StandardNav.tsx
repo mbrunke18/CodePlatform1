@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3 } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -232,6 +232,7 @@ export default function StandardNav() {
         { label: "Go-to-Market Acceleration", path: "/demo/product-launch", icon: Rocket, description: "Competitor announces launch in 30 days. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.", featured: true },
         { label: "Workforce Transformation Protocol", path: "/demo/workforce", icon: Users, description: "Board approves system-staged realignment — 6,720 roles, 12 countries. WARN Act. 48 hours to execute." },
         { label: "Protocol Builder", path: "/protocol-builder", icon: ClipboardList, description: "Pre-stage your own Readiness Protocol for any situation in 6 guided steps." },
+        { label: "Situation Matrix Builder", path: "/situation-matrix-builder", icon: Grid3X3, description: "Build a Role × Situation call sheet — every role, every scenario variant, every responsibility defined before the trigger fires.", featured: true },
         { label: "My Protocols", path: "/my-protocols", icon: Radio, description: "Live signal readiness status for every protocol you've built." },
       ],
     },
