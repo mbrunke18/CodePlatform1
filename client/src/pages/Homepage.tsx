@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { updatePageMetadata } from "@/lib/seo";
+import { FirstVisitAdModal } from "@/components/FirstVisitAdModal";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { Link, useLocation } from "wouter";
@@ -3966,6 +3967,7 @@ export default function Homepage() {
   }, []);
   return (
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>
+      <FirstVisitAdModal />
       <HomepageNav />
       <GuestPreviewBanner />
       <StickyJumpNav />
