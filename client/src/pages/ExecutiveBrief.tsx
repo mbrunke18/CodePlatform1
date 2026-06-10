@@ -61,7 +61,7 @@ const comparisonRows = [
 
 const proofNumbers = [
   { value: "180", label: "Pre-staged Readiness Protocols across 9 strategic domains" },
-  { value: "231", label: "Trigger configurations monitoring for strategic events" },
+  { value: "221", label: "Trigger configurations monitoring for strategic events" },
   { value: "248+", label: "Enterprise data points monitored continuously" },
   { value: "12 min", label: "Trigger to full organizational coordination" },
   { value: "3,600×", label: "Execution head start vs. traditional mobilization" },
@@ -81,7 +81,7 @@ const pilotIncludes = [
 
 const roiCase = [
   { metric: "Revenue protected per major event", value: "$500K–$2M", basis: "Faster response compresses the revenue loss window" },
-  { metric: "Regulatory penalty avoided", value: "$5M–$50M", basis: "Documented in ransomware + supply chain activations" },
+  { metric: "Regulatory penalty avoided", value: "$5M–$50M", basis: "Projected based on regulatory penalty frameworks (HHS, SEC, FTC) — not documented customer activations" },
   { metric: "Executive time reclaimed per event", value: "$45K–$100K", basis: "45–100 hrs × $1,000/hr C-suite rate — eliminated" },
   { metric: "Vendor stack displaced annually", value: "$300K–$900K", basis: "Crisis comms + GRC + consulting retainer + project mgmt tools" },
 ];
@@ -137,12 +137,12 @@ export default function ExecutiveBrief() {
             </div>
 
             <h1 style={{ ...CG, fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
-              We Redesign How Work Flows<br />
-              <em style={{ color: GOLD }}>in the Age of AI.</em>
+              The response is ready<br />
+              <em style={{ color: GOLD }}>before the trigger fires.</em>
             </h1>
 
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", maxWidth: 640, lineHeight: 1.75, marginBottom: 32 }}>
-              Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act decisively. AI changed the constraint. VaughnMartin rebuilds from first principles.
+              Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act decisively. AI changed the constraint. VaughnMartin rebuilds from first principles: pre-staged Readiness Protocols replace real-time coordination, and 12-minute execution replaces 30-day alignment cycles.
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -390,13 +390,13 @@ export default function ExecutiveBrief() {
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
               <div style={{ width: 24, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Validated Outcomes</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Modeled Scenarios</span>
             </div>
             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, marginBottom: 8 }}>
               Before and after Readiness OS — in the decisions that matter most
             </h3>
             <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 24, lineHeight: 1.7 }}>
-              These are not projected outcomes. They are the difference between the mobilization cycle that existed before and the execution arc that Readiness OS produces.
+              These are illustrative scenarios modeled on platform architecture and industry mobilization benchmarks — not documented external customer activations. They show the structural difference between the traditional mobilization cycle and the Readiness OS execution arc.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
               {[
