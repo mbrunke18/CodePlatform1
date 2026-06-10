@@ -11,7 +11,7 @@ const TEAL = "#2B8A6E";
 const OFF = "#F8F7F4";
 
 // Scene durations in ms
-const SCENE_DURATIONS = [9500, 8500, 9500, 10500];
+const SCENE_DURATIONS = [11000, 9000, 10000, 11000];
 const TOTAL_DURATION = SCENE_DURATIONS.reduce((a, b) => a + b, 0);
 
 type Props = { onClose: () => void };
@@ -41,12 +41,12 @@ function AdContent({ onClose }: Props) {
     {
       id: "fv-s1",
       onEnter: () => {
-        setTimeout(() => show("fv-s1-l1"), 150);
-        setTimeout(() => show("fv-s1-l2"), 1300);
-        setTimeout(() => show("fv-s1-l3"), 2500);
-        setTimeout(() => show("fv-s1-l4"), 3700);
-        setTimeout(() => show("fv-s1-l5"), 5000);
-        setTimeout(() => show("fv-s1-l6"), 6100);
+        setTimeout(() => show("fv-s1-l1"), 200);
+        setTimeout(() => show("fv-s1-l2"), 2100);
+        setTimeout(() => show("fv-s1-l3"), 4100);
+        setTimeout(() => show("fv-s1-l4"), 6100);
+        setTimeout(() => show("fv-s1-l5"), 7900);
+        setTimeout(() => show("fv-s1-l6"), 9400);
       },
       onExit: () => hideAll(["fv-s1-l1","fv-s1-l2","fv-s1-l3","fv-s1-l4","fv-s1-l5","fv-s1-l6"]),
     },
@@ -55,10 +55,10 @@ function AdContent({ onClose }: Props) {
       id: "fv-s2",
       onEnter: () => {
         setTimeout(() => show("fv-s2-l1"), 200);
-        setTimeout(() => show("fv-s2-l2"), 1400);
-        setTimeout(() => show("fv-s2-l3"), 2600);
-        setTimeout(() => show("fv-s2-rule"), 3600);
-        setTimeout(() => show("fv-s2-l4"), 4100);
+        setTimeout(() => show("fv-s2-l2"), 2000);
+        setTimeout(() => show("fv-s2-l3"), 3800);
+        setTimeout(() => show("fv-s2-rule"), 5400);
+        setTimeout(() => show("fv-s2-l4"), 5900);
       },
       onExit: () => hideAll(["fv-s2-l1","fv-s2-l2","fv-s2-l3","fv-s2-rule","fv-s2-l4"]),
     },
@@ -67,13 +67,13 @@ function AdContent({ onClose }: Props) {
       id: "fv-s3",
       onEnter: () => {
         setTimeout(() => show("fv-s3-hd"), 200);
-        setTimeout(() => show("fv-s3-st1"), 900);
-        setTimeout(() => show("fv-s3-cn1"), 1500);
-        setTimeout(() => show("fv-s3-st2"), 2100);
-        setTimeout(() => show("fv-s3-cn2"), 2700);
-        setTimeout(() => show("fv-s3-st3"), 3300);
-        setTimeout(() => show("fv-s3-cn3"), 3900);
-        setTimeout(() => show("fv-s3-st4"), 4500);
+        setTimeout(() => show("fv-s3-st1"), 1000);
+        setTimeout(() => show("fv-s3-cn1"), 1800);
+        setTimeout(() => show("fv-s3-st2"), 2600);
+        setTimeout(() => show("fv-s3-cn2"), 3400);
+        setTimeout(() => show("fv-s3-st3"), 4200);
+        setTimeout(() => show("fv-s3-cn3"), 5000);
+        setTimeout(() => show("fv-s3-st4"), 5800);
       },
       onExit: () => hideAll(["fv-s3-hd","fv-s3-st1","fv-s3-cn1","fv-s3-st2","fv-s3-cn2","fv-s3-st3","fv-s3-cn3","fv-s3-st4"]),
     },
@@ -82,13 +82,13 @@ function AdContent({ onClose }: Props) {
       id: "fv-s4",
       onEnter: () => {
         setTimeout(() => show("fv-s4-l1"), 200);
-        setTimeout(() => show("fv-s4-l2"), 1500);
-        setTimeout(() => show("fv-s4-l3"), 2800);
-        setTimeout(() => show("fv-s4-logo"), 3500);
-        setTimeout(() => show("fv-s4-rule"), 3900);
-        setTimeout(() => show("fv-s4-tl"), 4400);
-        setTimeout(() => show("fv-s4-cta"), 5700);
-        setTimeout(() => show("fv-s4-ghost"), 6200);
+        setTimeout(() => show("fv-s4-l2"), 2200);
+        setTimeout(() => show("fv-s4-l3"), 4200);
+        setTimeout(() => show("fv-s4-logo"), 5600);
+        setTimeout(() => show("fv-s4-rule"), 6200);
+        setTimeout(() => show("fv-s4-tl"), 6800);
+        setTimeout(() => show("fv-s4-cta"), 8500);
+        setTimeout(() => show("fv-s4-ghost"), 9200);
       },
       onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost"]),
     },
@@ -209,8 +209,8 @@ function AdContent({ onClose }: Props) {
 
         /* ── Shared animation ── */
         .fv-rise {
-          opacity: 0; transform: translateY(14px);
-          transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.25,1,0.5,1);
+          opacity: 0; transform: translateY(7px);
+          transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25,1,0.5,1);
         }
         .fv-rise.fv-show { opacity: 1; transform: translateY(0); }
         .fv-fade {
