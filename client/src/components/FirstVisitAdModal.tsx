@@ -111,7 +111,10 @@ function AdContent({ onClose }: Props) {
       prev.onExit();
     }
     currentSceneRef.current = index;
-    if (index >= SCENES.length) return;
+    if (index >= SCENES.length) {
+      setTimeout(() => onClose(), 1200);
+      return;
+    }
     const scene = SCENES[index];
     const el = document.getElementById(scene.id);
     if (el) el.classList.add("fv-active");
