@@ -3976,6 +3976,39 @@ export default function Homepage() {
       {/* 2. SOCIAL PROOF — surfaces practitioner validation before visitor scrolls away */}
       <SocialProofStrip />
 
+      {/* CINEMATIC BRIEF ENTRY — thin strip linking to /readiness-ad */}
+      <section style={{ background: "#080D26", borderTop: "1px solid rgba(201,168,76,0.12)", borderBottom: "1px solid rgba(201,168,76,0.10)", padding: "18px 32px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#C9A84C", flexShrink: 0, animation: "pulse 2s infinite" }} />
+            <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(248,247,244,0.6)", letterSpacing: "0.02em" }}>
+              Not sure what Readiness OS does in practice?
+            </span>
+          </div>
+          <Link
+            href="/readiness-ad"
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase" as const,
+              color: "#C9A84C",
+              textDecoration: "none",
+              border: "1px solid rgba(201,168,76,0.35)",
+              padding: "8px 20px",
+              borderRadius: "0.15rem",
+              whiteSpace: "nowrap" as const,
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(201,168,76,0.08)"; (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C9A84C"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.35)"; }}
+          >
+            Watch the 60-Second Brief →
+          </Link>
+        </div>
+      </section>
+
       {/* START HERE — guided sequence for first-time visitors */}
       <StartHereSection />
 
