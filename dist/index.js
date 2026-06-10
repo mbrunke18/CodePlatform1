@@ -3412,6 +3412,9 @@ var init_schema = __esm({
       oneThingToEncode: text2("one_thing_to_encode"),
       // The one lesson that changes the playbook
       closeOutCompleted: boolean("close_out_completed").default(false),
+      // Authorization Precedent — "Would you authorize this protocol again?"
+      wouldAuthorizeAgain: boolean("would_authorize_again"),
+      wouldAuthorizeNote: text2("would_authorize_note"),
       // Outcome classification (set during activation close)
       outcomeClassification: varchar("outcome_classification", { length: 100 }),
       // 'contained' | 'board_notified' | 'regulatory_filing' | 'escalated'
@@ -12045,6 +12048,33 @@ var init_storage = __esm({
       async updateActivationOutcomeCloseOut(outcomeId, data) {
         const [updated] = await db.update(activationOutcomes).set({ ...data, closeOutCompleted: true }).where(eq(activationOutcomes.id, outcomeId)).returning();
         return updated;
+      }
+      async getAuthorizationPrecedents(organizationId) {
+        const records = await db.select({
+          id: activationOutcomes.id,
+          activationId: activationOutcomes.activationId,
+          playbookId: activationOutcomes.playbookId,
+          outcomeClassification: activationOutcomes.outcomeClassification,
+          targetMet: activationOutcomes.targetMet,
+          actualMinutes: activationOutcomes.actualMinutes,
+          whatHeld: activationOutcomes.whatHeld,
+          wouldAuthorizeAgain: activationOutcomes.wouldAuthorizeAgain,
+          wouldAuthorizeNote: activationOutcomes.wouldAuthorizeNote,
+          createdAt: activationOutcomes.createdAt,
+          authorizerFirstName: users.firstName,
+          authorizerLastName: users.lastName,
+          authorizerEmail: users.email,
+          activatedAt: playbookActivations.activatedAt,
+          activationReason: playbookActivations.activationReason,
+          protocolName: sql3`pl.name`,
+          protocolNumber: sql3`pl.playbook_number`
+        }).from(activationOutcomes).leftJoin(playbookActivations, eq(playbookActivations.id, sql3`${activationOutcomes.activationId}::uuid`)).leftJoin(users, eq(users.id, playbookActivations.activatedBy)).leftJoin(sql3`playbook_library pl`, sql3`pl.id = ${activationOutcomes.playbookId}`).where(
+          and(
+            eq(activationOutcomes.organizationId, organizationId),
+            eq(activationOutcomes.closeOutCompleted, true)
+          )
+        ).orderBy(desc(activationOutcomes.createdAt));
+        return records;
       }
       async updateActivationOutcomeAI(outcomeId, aiSummary) {
         const [updated] = await db.update(activationOutcomes).set({ aiSummary, status: "generated", generatedAt: /* @__PURE__ */ new Date() }).where(eq(activationOutcomes.id, outcomeId)).returning();
@@ -38360,9 +38390,10 @@ var init_playbookLibraryRoutes = __esm({
           count: sql17`count(*)::int`
         }).from(playbookLibrary).where(sql17`${playbookLibrary.id} <= 180`).groupBy(playbookLibrary.domainId);
         const countMap = new Map(counts.map((c) => [c.domainId, c.count]));
+        const configTotalByCode = new Map(DOMAIN_CONFIG.map((d) => [d.code, d.total]));
         const domainsWithCounts = domains.map((d) => ({
           ...d,
-          totalPlaybooks: countMap.get(d.id) ?? d.totalPlaybooks ?? 0
+          totalPlaybooks: countMap.get(d.id) ?? configTotalByCode.get(d.code) ?? d.totalPlaybooks ?? 0
         }));
         res.json(domainsWithCounts);
       } catch (error) {
@@ -39975,7 +40006,7 @@ async function seedTriggers() {
 async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
   const existingTriggers = await db.select().from(executiveTriggers).where(eq49(executiveTriggers.organizationId, organizationId));
   if (existingTriggers.length >= 170) {
-    console.log(`   \u2705 Already have ${existingTriggers.length} triggers (target: 178)`);
+    console.log(`   \u2705 Already have ${existingTriggers.length} triggers (target: 231)`);
     await seedTriggerSignals(organizationId, createdBy);
     return { triggersCreated: 0, associationsCreated: 0 };
   }
@@ -48530,7 +48561,7 @@ function buildHtml(cardWidth) {
     <div class="metric-sub">Pre-staged, not assembled</div>
   </div>
   <div class="metric">
-    <span class="metric-num">221</span>
+    <span class="metric-num">231</span>
     <div class="metric-title">Strategic Triggers</div>
     <div class="metric-sub">Continuously monitored</div>
   </div>
@@ -48615,7 +48646,7 @@ function buildHtml(cardWidth) {
     </div>
     <ul class="sol-checks">
       <li>180 Readiness Protocols pre-staged</li>
-      <li>221 strategic triggers monitored</li>
+      <li>231 strategic triggers monitored</li>
       <li>12-minute execution design target</li>
       <li>Executive authority at every stage</li>
       <li>Orchestrates your Microsoft AI stack</li>
@@ -48900,7 +48931,7 @@ function buildLinkedInBannerHtml() {
       <div class="rp-copy">
         <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;\xB7&nbsp; startup to Fortune 500</div>
         <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
-        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution \u2014 180 Protocols, 221 strategic triggers, 12-minute response.</div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution \u2014 180 Protocols, 231 strategic triggers, 12-minute response.</div>
       </div>
 
       <!-- Proof stats -->
@@ -48910,7 +48941,7 @@ function buildLinkedInBannerHtml() {
           <div class="rs-lbl">Readiness Protocols</div>
         </div>
         <div class="rs">
-          <div class="rs-num">221</div>
+          <div class="rs-num">231</div>
           <div class="rs-lbl">Strategic Triggers</div>
         </div>
         <div class="rs">
@@ -49116,7 +49147,7 @@ var LINKEDIN_PRODUCTS = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "221 strategic triggers monitored in real time across 8 data sources",
+    tagline: "231 strategic triggers monitored in real time across 8 data sources",
     accentColor: "#2B8A6E",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <circle cx="40" cy="40" r="6" fill="#C9A84C"/>
@@ -49221,7 +49252,7 @@ function buildProductIconHtml(product) {
       </div>`,
     2: `
       <div class="idea-chain">
-        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">221 strategic triggers mapped across 3 domains</div></div></div>
+        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">231 strategic triggers mapped across 3 domains</div></div></div>
         <div class="idea-phase gold-phase"><div class="phase-letter">D</div><div class="phase-content"><div class="phase-name">DETECT</div><div class="phase-desc">248+ data points \xB7 signal scored every 15 minutes</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">E</div><div class="phase-content"><div class="phase-name">EXECUTE</div><div class="phase-desc">Pre-staged protocols activate \xB7 executive authorized</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">A</div><div class="phase-content"><div class="phase-name">ADVANCE</div><div class="phase-desc">Post-activation debrief \xB7 readiness improves each cycle</div></div></div>
@@ -49251,7 +49282,7 @@ function buildProductIconHtml(product) {
         <div class="alert-row critical"><div class="sev-dot red-dot"></div><div class="alert-info"><div class="alert-name">Activist Investor Disclosure</div><div class="alert-sub">8.3% stake \xB7 Protocol #47 matched</div></div><div class="score-block"><div class="score-num">97</div><div class="score-bar"><div class="score-fill red-fill" style="width:97%"></div></div></div></div>
         <div class="alert-row high"><div class="sev-dot amber-dot"></div><div class="alert-info"><div class="alert-name">Supply Chain Disruption</div><div class="alert-sub">Tier-1 supplier \xB7 Protocol #83 matched</div></div><div class="score-block"><div class="score-num">78</div><div class="score-bar"><div class="score-fill amber-fill" style="width:78%"></div></div></div></div>
         <div class="alert-row med"><div class="sev-dot teal-dot"></div><div class="alert-info"><div class="alert-name">Regulatory Filing Deadline</div><div class="alert-sub">SEC \xB7 14 days \xB7 Protocol #129 recommended</div></div><div class="score-block"><div class="score-num">52</div><div class="score-bar"><div class="score-fill teal-fill" style="width:52%"></div></div></div></div>
-        <div class="feed-footer">221 triggers monitored \xB7 248+ data points \xB7 Continuous</div>
+        <div class="feed-footer">231 triggers monitored \xB7 248+ data points \xB7 Continuous</div>
       </div>`,
     6: `
       <div class="scan-panel">
@@ -49267,7 +49298,7 @@ function buildProductIconHtml(product) {
           <div class="meta-div">\xB7</div>
           <div class="meta-stat"><span class="meta-num">15 min</span><span class="meta-lbl"> cycle</span></div>
           <div class="meta-div">\xB7</div>
-          <div class="meta-stat"><span class="meta-num">221</span><span class="meta-lbl"> patterns</span></div>
+          <div class="meta-stat"><span class="meta-num">231</span><span class="meta-lbl"> patterns</span></div>
         </div>
       </div>`,
     7: `
@@ -49594,7 +49625,7 @@ var LINKEDIN_PRODUCTS_COPY = [
     highlights: [
       {
         title: "Identify & Detect",
-        description: "221 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified."
+        description: "231 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified."
       },
       {
         title: "Execute",
@@ -49673,11 +49704,11 @@ var LINKEDIN_PRODUCTS_COPY = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "221 strategic triggers monitored in real time \u2014 before they become crises",
-    description: "VaughnMartin's Signal Detection Engine continuously monitors 221 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes \u2014 not weeks.",
+    tagline: "231 strategic triggers monitored in real time \u2014 before they become crises",
+    description: "VaughnMartin's Signal Detection Engine continuously monitors 231 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes \u2014 not weeks.",
     highlights: [
       {
-        title: "221 Trigger Patterns",
+        title: "231 Trigger Patterns",
         description: "Mapped across geopolitical, cybersecurity, market valuation, regulatory, reputational, and financial distress domains. Continuously monitored."
       },
       {
@@ -49901,7 +49932,7 @@ var SLIDES = [
     title: "Readiness OS: The response is ready before the trigger fires.",
     bullets: [
       "180 Readiness Protocols pre-staged",
-      "221 trigger patterns mapped",
+      "231 trigger patterns mapped",
       "248+ data points monitored every 15 minutes",
       "AI monitors. Executives authorize."
     ],
@@ -52856,8 +52887,9 @@ var PUBLIC_ROUTES = [
   "/api/pilot/execute",
   "/api/pilot/scenarios",
   "/api/pilot/playbooks",
-  // Founding Partner application — public form submission (lead capture, no auth required)
+  // Founding Partner application & stats — public (lead capture and seat counter, no auth required)
   "/api/founding-partner/apply",
+  "/api/founding-partner/stats",
   // Incident Analysis & Readiness Assessment - public demo for prospects
   "/api/incidents/analyze",
   "/api/incidents/generate-playbook",
@@ -54638,7 +54670,7 @@ async function registerRoutes(app2, existingServer) {
           totalActivations,
           avgResponseTimeMinutes: avgResponseTime,
           playbooksReady,
-          triggersMonitored: 221,
+          triggersMonitored: 231,
           executionHeadStart: "3,600\xD7"
         },
         trends: []
@@ -60510,7 +60542,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   });
   app2.patch("/api/activation-outcomes/:id/closeout", requireOrgAccess2, async (req, res) => {
     try {
-      const { whatHeld, whatDidntHold, preparationGap, oneThingToEncode } = req.body;
+      const { whatHeld, whatDidntHold, preparationGap, oneThingToEncode, wouldAuthorizeAgain, wouldAuthorizeNote } = req.body;
       if (!whatHeld || !whatDidntHold || !oneThingToEncode) {
         return res.status(400).json({ error: "whatHeld, whatDidntHold, and oneThingToEncode are required to close out" });
       }
@@ -60518,7 +60550,9 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         whatHeld,
         whatDidntHold,
         preparationGap: preparationGap || "",
-        oneThingToEncode
+        oneThingToEncode,
+        wouldAuthorizeAgain: wouldAuthorizeAgain ?? null,
+        wouldAuthorizeNote: wouldAuthorizeNote || ""
       });
       try {
         const { processCloseOutGate: processCloseOutGate2 } = await Promise.resolve().then(() => (init_PreparationUpdateEngine(), PreparationUpdateEngine_exports));
@@ -60533,6 +60567,14 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: "Failed to save close-out data" });
+    }
+  });
+  app2.get("/api/organization/authorization-precedents", requireOrgAccess2, async (req, res) => {
+    try {
+      const records = await storage.getAuthorizationPrecedents(req.orgId);
+      res.json(records);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch authorization precedents" });
     }
   });
   app2.post("/api/activation-outcomes/:id/generate", requireOrgAccess2, async (req, res) => {
@@ -60830,7 +60872,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.user?.organizationId;
       if (!orgId) {
-        return res.json({ total: 221, byAlertLevel: { HIGH: 3, MEDIUM: 12, LOW: 206 }, byCategory: { Geopolitical: 24, Financial: 31, Cyber: 28, Regulatory: 29, Operational: 35, Reputational: 22, Supply_Chain: 26, Talent: 16, Competitive: 30 } });
+        return res.json({ total: 231, byAlertLevel: { HIGH: 3, MEDIUM: 12, LOW: 206 }, byCategory: { Geopolitical: 24, Financial: 31, Cyber: 28, Regulatory: 29, Operational: 35, Reputational: 22, Supply_Chain: 26, Talent: 16, Competitive: 30 } });
       }
       const { getOrgTriggerSummary: getOrgTriggerSummary2 } = await Promise.resolve().then(() => (init_TriggerEvaluationEngine(), TriggerEvaluationEngine_exports));
       const summary = await getOrgTriggerSummary2(orgId);
@@ -61691,7 +61733,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       ]);
       const signalsScanned72h = recentActivity.length;
       res.json({
-        triggersArmed: 221,
+        triggersArmed: 231,
         domainsMonitored: 9,
         signalsTracked: 248,
         playbooksReady: 180,
@@ -61752,7 +61794,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#666;font-size:12px;">${d.triggerDomain}</td>
                 <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#2B8A6E;font-size:12px;font-weight:700;text-align:right;">${d.confidenceScore}%</td>
               </tr>`).join("") : `<tr><td colspan="3" style="padding:20px 0;text-align:center;color:#999;font-size:13px;">No triggers detected this week \u2014 monitoring active across 248+ signals.</td></tr>`;
-          const statusBadge = triggerCount === 0 ? `<div style="background:#2B8A6E15;border:1px solid #2B8A6E40;color:#2B8A6E;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">\u2713 Market was quiet this week. All 221 triggers armed and scanning continuously.</div>` : `<div style="background:#C9A84C15;border:1px solid #C9A84C40;color:#8B6914;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">\u26A1 ${triggerCount} trigger${triggerCount > 1 ? "s" : ""} detected this week requiring your attention.</div>`;
+          const statusBadge = triggerCount === 0 ? `<div style="background:#2B8A6E15;border:1px solid #2B8A6E40;color:#2B8A6E;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">\u2713 Market was quiet this week. All 231 triggers armed and scanning continuously.</div>` : `<div style="background:#C9A84C15;border:1px solid #C9A84C40;color:#8B6914;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">\u26A1 ${triggerCount} trigger${triggerCount > 1 ? "s" : ""} detected this week requiring your attention.</div>`;
           const html = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
               <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
@@ -61882,7 +61924,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const orgId = req.user?.organizationId;
       let signalCount = 52;
-      let triggerCount = 221;
+      let triggerCount = 231;
       let activationCount = 0;
       let drillCount = 0;
       let avgActivationMinutes = null;
@@ -61895,14 +61937,14 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           const [sigRow] = await db2.select({ c: countFn() }).from(triggerSignals3).where(eq62(triggerSignals3.organizationId, orgId));
           signalCount = Number(sigRow?.c ?? 52);
           const [trigRow] = await db2.select({ c: countFn() }).from(executiveTriggers3).where(eq62(executiveTriggers3.organizationId, orgId));
-          triggerCount = Number(trigRow?.c ?? 221);
+          triggerCount = Number(trigRow?.c ?? 231);
           const [actRow] = await db2.select({ c: countFn() }).from(playbookActivations3).where(eq62(playbookActivations3.organizationId, orgId));
           activationCount = Number(actRow?.c ?? 0);
         } catch {
         }
       }
       const signalScore = Math.min(25, Math.round(Math.min(signalCount, 248) / 248 * 25));
-      const triggerScore = Math.min(25, Math.round(Math.min(triggerCount, 221) / 221 * 25));
+      const triggerScore = Math.min(25, Math.round(Math.min(triggerCount, 231) / 231 * 25));
       const playbookScore = 24;
       const velocityScore = activationCount > 0 ? Math.min(25, 15 + Math.min(10, activationCount * 2)) : 12;
       const score = signalScore + triggerScore + playbookScore + velocityScore;
@@ -61920,7 +61962,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         delta: 3,
         dimensions: [
           { label: "Signal Coverage", score: signalScore, max: 25, detail: `${Math.min(signalCount, 248)} of 248+ data points active` },
-          { label: "Trigger Coverage", score: triggerScore, max: 25, detail: `${Math.min(triggerCount, 221)} of 221 triggers monitored` },
+          { label: "Trigger Coverage", score: triggerScore, max: 25, detail: `${Math.min(triggerCount, 231)} of 231 triggers monitored` },
           { label: "Playbook Readiness", score: playbookScore, max: 25, detail: "180 playbooks pre-staged across 9 domains" },
           { label: "Execution Velocity", score: velocityScore, max: 25, detail: activationCount > 0 ? `${activationCount} activations on record` : "Activate a playbook to score" }
         ],
