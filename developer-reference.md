@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 10, 2026 (rev 57) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 11, 2026 (rev 58) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
