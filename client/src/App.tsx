@@ -187,6 +187,7 @@ const ProtocolCustomize = lazy(() => import("./pages/ProtocolCustomize"));
 const SuccessMetricsConfiguration = lazy(() => import("./pages/SuccessMetricsConfiguration"));
 const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const GettingStarted = lazy(() => import("./pages/GettingStarted"));
+const PMOOnboarding = lazy(() => import("./pages/PMOOnboarding"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const GuidedStart = lazy(() => import("./pages/GuidedStart"));
 const InteractiveOnboarding = lazy(() => import("./pages/InteractiveOnboarding"));
@@ -601,6 +602,7 @@ function Router() {
         <Route path="/peer-review-report" component={PeerReviewReport} />
         {renderRoutes(["/onboarding", "/setup", "/onboarding-wizard"], OnboardingWizard)}
         <Route path="/getting-started" component={GettingStarted} />
+        <Route path="/pmo-onboarding" component={PMOOnboarding} />
         <Route path="/user-guide" component={UserGuide} />
         <Route path="/mobilization-tax" component={MobilizationTax} />
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}

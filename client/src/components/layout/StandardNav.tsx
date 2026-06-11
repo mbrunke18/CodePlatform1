@@ -35,6 +35,7 @@ function useNavLogoHeight() {
 
 const SEARCH_ITEMS = [
   { label: 'Getting Started — Go-Live Checklist', path: '/getting-started', category: 'Setup', icon: Rocket },
+  { label: 'PMO Director Onboarding — Preparation Architecture', path: '/pmo-onboarding', category: 'Setup', icon: Layers },
   { label: 'Mission Control', path: '/mission-control', category: 'Platform', icon: Compass },
   { label: 'Command Tower', path: '/command-tower', category: 'Platform', icon: Radio },
   { label: 'Execution Workspace', path: '/workspace', category: 'Platform', icon: Layers },
@@ -165,6 +166,7 @@ export default function StandardNav() {
       heading: "Inside the Platform",
       links: [
         { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
+        { label: "PMO Director Onboarding", path: "/pmo-onboarding", icon: Layers, description: "Preparation architecture ownership — your role, your 4-phase go-live path, your governance rhythm", featured: true },
         { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible.", featured: true },
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },

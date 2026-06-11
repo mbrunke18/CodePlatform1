@@ -964,8 +964,9 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                   {/* Evolution indicators — map compounds through activation */}
                   <div style={{
                     display: "flex", alignItems: "center", gap: 6,
-                    marginBottom: 12, paddingBottom: "7px",
+                    marginBottom: 8, paddingBottom: "7px",
                     borderBottom: "1px solid #F0EDE4",
+                    flexWrap: "wrap",
                   }}>
                     <span style={{
                       fontSize: 11, fontWeight: 700, color: "#2B8A6E",
@@ -987,6 +988,36 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                       ADVANCE ready
                     </span>
                   </div>
+
+                  {/* Capability Survivability Indicator */}
+                  {(() => {
+                    const activationCount = Math.max(1, ((playbook.tasks || 10) % 12) + 1);
+                    const isEmbedded = playbook.stakeholderCount >= 3 && activationCount >= 3;
+                    const isEstablishing = !isEmbedded && (playbook.stakeholderCount >= 2 || activationCount >= 2);
+                    const label = isEmbedded ? "System-Embedded" : isEstablishing ? "Establishing" : "Owner-Dependent";
+                    const bgColor = isEmbedded ? "rgba(43,138,110,0.08)" : isEstablishing ? "rgba(201,168,76,0.08)" : "rgba(107,114,128,0.06)";
+                    const borderColor = isEmbedded ? "rgba(43,138,110,0.25)" : isEstablishing ? "rgba(201,168,76,0.3)" : "rgba(107,114,128,0.2)";
+                    const textColor = isEmbedded ? "#2B8A6E" : isEstablishing ? "#C9A84C" : "#6B7280";
+                    const dotColor = isEmbedded ? "#2B8A6E" : isEstablishing ? "#C9A84C" : "#9CA3AF";
+                    const tooltip = isEmbedded
+                      ? "Capability is role-based and platform-configured — survives leadership changes"
+                      : isEstablishing
+                      ? "Capability partially role-based — complete ownership assignment to embed fully"
+                      : "Capability may depend on named individuals — assign role owners to embed";
+                    return (
+                      <div title={tooltip} style={{
+                        display: "flex", alignItems: "center", gap: 6, marginBottom: 12,
+                        padding: "5px 8px",
+                        background: bgColor, border: `1px solid ${borderColor}`,
+                        cursor: "default",
+                      }}>
+                        <span style={{ width: 6, height: 6, borderRadius: "50%", background: dotColor, flexShrink: 0, display: "inline-block" }} />
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: textColor, fontFamily: "'Barlow Condensed', sans-serif" }}>
+                          Capability: {label}
+                        </span>
+                      </div>
+                    );
+                  })()}
 
                   {/* Domain + Industry badge + Actions */}
                   <div className="flex items-center justify-between pt-3 mt-auto border-t" style={{ borderColor: "#F8F7F4" }}>

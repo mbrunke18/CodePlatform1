@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle2, XCircle, AlertTriangle, Shield, Users, ChevronRight, Play } from 'lucide-react';
+import { CheckCircle2, XCircle, AlertTriangle, Shield, Users, ChevronRight, Play, History, TrendingUp, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface GovernanceCheck {
@@ -35,6 +35,35 @@ const CHECKS: GovernanceCheck[] = [
 ];
 
 type CheckState = 'unanswered' | 'yes' | 'no';
+
+// Authorization Precedent records surface prior decisions at the moment of authorization
+// This data will be replaced with live queries from executionInstances + close-out records
+const AUTH_PRECEDENTS = [
+  {
+    executive: "Chief Risk Officer",
+    initials: "CRO",
+    date: "Nov 2024",
+    choice: "Authorized — Run as Built",
+    outcome: "Proven",
+    detail: "Execution completed in 9 min. Regulatory window met. Protocol classified Optimization.",
+  },
+  {
+    executive: "Chief Operating Officer",
+    initials: "COO",
+    date: "Feb 2025",
+    choice: "Authorized — Run as Built",
+    outcome: "Proven",
+    detail: "Full stakeholder notification in 4 min. No SLA breach. Board notified before markets opened.",
+  },
+  {
+    executive: "Chief Executive Officer",
+    initials: "CEO",
+    date: "Apr 2025",
+    choice: "Audible — Minor adjustment",
+    outcome: "Measuring",
+    detail: "Legal counsel sequencing adjusted. Causal hypothesis active: expected −2 min disclosure window.",
+  },
+];
 
 interface GovernanceReadinessCheckProps {
   playbookName: string;
@@ -108,6 +137,54 @@ export function GovernanceReadinessCheck({
           </div>
           <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13 }}>
             Before activating <strong style={{ color: 'rgba(255,255,255,0.9)' }}>{playbookName}</strong>, confirm the governance infrastructure is in place.
+          </div>
+        </div>
+
+        {/* Authorization Precedent Panel */}
+        <div style={{ padding: '20px 36px', background: '#F8F7F4', borderBottom: '1px solid #E8E4DC' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+            <History size={13} color={GOLD} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD }}>Prior Authorization Record</span>
+            <span style={{ marginLeft: 'auto', fontSize: 10, color: '#9CA3AF' }}>3 precedents on file</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {AUTH_PRECEDENTS.map((p, i) => {
+              const outcomeColor = p.outcome === 'Proven' ? TEAL : p.outcome === 'Disproven' ? '#DC2626' : '#D97706';
+              const OutcomeIcon = p.outcome === 'Proven' ? TrendingUp : p.outcome === 'Disproven' ? XCircle : Minus;
+              return (
+                <div key={i} style={{
+                  display: 'flex', gap: 12, alignItems: 'flex-start',
+                  padding: '12px 14px',
+                  background: '#fff',
+                  border: '1px solid #E8E4DC',
+                  borderLeft: `3px solid ${outcomeColor}`,
+                }}>
+                  <div style={{
+                    width: 32, height: 32, borderRadius: 0, flexShrink: 0,
+                    background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.05em',
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                  }}>
+                    {p.initials}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{p.executive}</span>
+                      <span style={{ fontSize: 10, color: '#9CA3AF' }}>{p.date}</span>
+                      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <OutcomeIcon size={11} color={outcomeColor} />
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: outcomeColor }}>{p.outcome}</span>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 600, color: '#374151', marginBottom: 3 }}>{p.choice}</div>
+                    <div style={{ fontSize: 10, color: '#6B7280', lineHeight: 1.5 }}>{p.detail}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 10, lineHeight: 1.5 }}>
+            This protocol has been authorized by 3 executives. 2 outcomes classified Proven. The new path is ownable — others have owned it and the institution held.
           </div>
         </div>
 
