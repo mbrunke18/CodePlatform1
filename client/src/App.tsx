@@ -813,6 +813,7 @@ function Router() {
         {renderRedirects(["/crisis", "/crisis-response-center"], "/strategic-monitoring")}
         <Route path="/request-evaluation" component={lazy(() => import('./pages/RequestEvaluation'))} />
         <Route path="/readiness-ad" component={lazy(() => import('./pages/ReadinessAd'))} />
+        <Route path="/commercial">{() => { window.location.replace('/commercial.html'); return null; }}</Route>
 
         <Route component={NotFound} />
         </Switch>
