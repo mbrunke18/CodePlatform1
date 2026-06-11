@@ -149,12 +149,27 @@ All navy `<section>` blocks on `Homepage.tsx` use three layers for visual depth:
 │       └── authUtils.ts         ← isUnauthorizedError helper
 ├── server/
 │   ├── index.ts                 ← Entry point + startup seeding
-│   ├── routes.ts                ← All API routes (~8,500 lines)
+│   ├── routes.ts                ← Thin index: imports all domain route modules (~11k lines total)
+│   ├── routes/                  ← Domain-scoped route modules (26 files)
+│   │   ├── helpers.ts           ← Shared auth middleware (getUserId, requireOrgAccess, requireRole)
+│   │   ├── activation-routes.ts ← /api/activations/*, /api/playbooks/:id/execute
+│   │   ├── magic-link-routes.ts ← /api/auth/magic-link/*, /api/founding-partner/*, /api/trial/*
+│   │   ├── signal-intelligence-routes.ts ← /api/signal-monitoring-config, /api/signal-calibration,
+│   │   │                                    /api/leading-indicators, /api/signal-connectors,
+│   │   │                                    /api/protocol-signal-profiles, /api/coordination-intelligence
+│   │   ├── admin-routes.ts      ← /admin/* platform-admin routes
+│   │   ├── org-setup-routes.ts  ← /api/config/* (triggers, departments, escalation, etc.)
+│   │   ├── onboarding-routes.ts ← /api/onboarding-session, /api/onboarding/*
+│   │   ├── dynamic-strategy-routes.ts ← /api/dynamic-strategy/*
+│   │   ├── execution-sync-routes.ts   ← /api/sync/*, /api/execution-orchestration/*
+│   │   ├── decision-coordination-routes.ts ← /api/decision-trees/*, /api/execution/*
+│   │   └── intelligence-routes.ts, pilot-routes.ts, incident-routes.ts, and more
 │   ├── storage.ts               ← IStorage interface + DrizzleStorage implementation
 │   ├── replitAuth.ts            ← Replit OIDC + session setup
 │   └── services/                ← AI, signal ingestion, dynamic strategy services
 ├── shared/
 │   ├── schema.ts                ← Drizzle schema — single source of truth for all types
+│   │                              (has ToC at top — search § markers to jump to sections)
 │   └── intelligence-signals.ts  ← 248+ signal data points across 20 signal categories
 ├── dist/                        ← Pre-built production bundle (committed to repo)
 ├── docs/
@@ -1334,9 +1349,9 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 
 ---
 
-## 28. Route Architecture — Server-Side Decomposition (March 2026)
+## 28. Route Architecture — Server-Side Decomposition (March 2026, updated June 2026)
 
-`server/routes.ts` was decomposed from a 9,341-line monolith to approximately 6,800 lines by extracting domain-scoped sections into dedicated route module files.
+`server/routes.ts` is a domain-composed file (~11k lines total). The bulk of routes live in dedicated modules under `server/routes/`. The main `routes.ts` acts as a thin registration index: imports and calls each module's `register*Routes(app)` function.
 
 ### Route Module Map
 
@@ -1344,6 +1359,8 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 |---|---|---|
 | `server/routes/helpers.ts` | Shared auth middleware | — |
 | `server/routes/activation-routes.ts` | `/api/activations/*`, `/api/playbooks/:id/execute` | `requireAuth` |
+| `server/routes/magic-link-routes.ts` | `/api/unsubscribe`, `/api/auth/magic-link/*`, `/api/founding-partner/*`, `/api/trial/*` | Public / session |
+| `server/routes/signal-intelligence-routes.ts` | `/api/signal-monitoring-config`, `/api/signal-calibration`, `/api/leading-indicator-detections`, `/api/signal-connectors`, `/api/protocol-signal-profiles`, `/api/trigger-evaluation-summary`, `/api/coordination-intelligence` | `requireOrgAccess` / public |
 | `server/routes/org-setup-routes.ts` | `/api/config/triggers`, `/api/config/departments`, `/api/config/escalation-policies`, `/api/config/communication-channels`, `/api/config/success-metrics`, `/api/config/setup-progress` | `requireOrgAccess` |
 | `server/routes/dynamic-strategy-routes.ts` | `/api/dynamic-strategy/*` (readiness, weak-signals, oracle-patterns, activity-feed) | `requireAuth` |
 | `server/routes/onboarding-routes.ts` | `/api/onboarding-session`, `/api/onboarding/save`, `/api/onboarding/complete`, `/api/onboarding/seed-demo-data` | `getUserId` / `isAuthenticated` |
@@ -1357,6 +1374,30 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 | `server/routes/webhookRoutes.ts` | `/api/webhooks/*` (12 enterprise systems) | HMAC-verified |
 | `server/routes/oauth-routes.ts` | `/api/oauth/*` (Jira, Slack) | Session-based |
 | `server/routes/integrations.ts` | `/api/integrations/*` | `requireAuth` |
+
+### Schema Navigation
+
+`shared/schema.ts` (7,200+ lines) has a **Table of Contents** at the top of the file. Use `Ctrl+F` for `§` markers to jump directly to any domain section:
+
+| Marker | Domain | Key Tables |
+|---|---|---|
+| `§ 1` | Enums | All pg enums |
+| `§ 2` | Auth & Identity | `sessions`, `users`, `evalInviteTokens` |
+| `§ 3` | Organizations | `organizations`, `businessUnits` |
+| `§ 4` | Scenarios | `strategicScenarios` |
+| `§ 5` | Execution Plan System | `scenarioExecutionPlans` → `executionInstanceTasks` |
+| `§ 6` | Core Operational | `tasks`, RBAC, metrics, risks, insights, notifications |
+| `§ 7` | Drizzle Relations | All table relation definitions |
+| `§ 8` | Zod Schemas & Types | Insert schemas + TypeScript types (first batch) |
+| `§ 9` | Advanced Intelligence | `decisionOutcomes`, `learningPatterns`, `institutionalMemory` |
+| `§10` | Executive Strategy | `strategicAlerts`, `warRoomSessions`, `boardReports`, `executiveTriggers` |
+| `§11` | Scenario Context System | `scenarioContext`, `triggerSignals`, `crisisSimulations`, `preparednessScores` |
+| `§12` | Playbook System | `playbookDomains`, `playbookLibrary`, `playbookActivations`, `practiceDrills` |
+| `§13` | McKinsey Operating Model | `mck_operating_model_assessments` + 7 `mck_*` tables |
+| `§14` | Readiness Intelligence | `playbookVersions`, `readinessMetrics`, `oraclePatterns`, `weakSignals` |
+| `§15` | Late-Added Tables | `testDriveLeads`, `customProtocols`, `allowedEmails`, signal calibration tables |
+| `§16` | Founding Partner & ADVANCE 2.0 | `foundingPartnerApplications`, `preparationUpdates`, `protocolVersionDeltas` |
+| `§17` | Microsoft & Certs | `microsoftConnectors`, `certificationRecords`, `boardFeedback` |
 
 ### Registration Pattern
 Each module exports a `register[Domain]Routes(app: Express)` function (sync or async). `server/routes.ts` imports and calls each at the correct position in registration order. Async registrars (`registerExecutionSyncRoutes`, `registerDecisionCoordinationRoutes`) are called with `await` since they contain top-level `await import()` calls.

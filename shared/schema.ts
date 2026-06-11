@@ -24,6 +24,42 @@ import { relations } from "drizzle-orm";
 export { conversations, messages, insertConversationSchema, insertMessageSchema } from "./models/chat";
 export type { Conversation, InsertConversation, Message, InsertMessage } from "./models/chat";
 
+// ============================================================================
+// SHARED SCHEMA — TABLE OF CONTENTS
+// ============================================================================
+// Jump to any section with Ctrl+G and the line number, or search § markers.
+//
+// § 1  ENUMS                    ~L28   organizationTypeEnum, priorityEnum, statusEnum…
+// § 2  AUTH & IDENTITY          ~L57   sessions, users, evalInviteTokens, evalAccessRequests
+// § 3  ORGANIZATIONS            ~L134  organizations, strategicObjectives, businessUnits
+// § 4  SCENARIOS                ~L198  strategicScenarios
+// § 5  EXECUTION PLAN SYSTEM    ~L238  scenarioExecutionPlans → executionInstances/Tasks
+// § 6  CORE OPERATIONAL         ~L428  tasks, roles/permissions, activities, projects,
+//                                       pulseMetrics, risks, insights, recommendations,
+//                                       notifications, approvalTokens
+// § 7  DRIZZLE RELATIONS        ~L809  all table relations definitions
+// § 8  ZOD SCHEMAS & TYPES      ~L955  first-batch insert schemas + TypeScript types
+// § 9  ADVANCED INTELLIGENCE    ~L1029 decisionOutcomes, learningPatterns, institutionalMemory
+// §10  EXECUTIVE STRATEGY       ~L1496 strategicAlerts, warRoomSessions, boardReports,
+//                                       executiveBriefings, executiveTriggers, ROI tracking
+// §11  SCENARIO CONTEXT SYSTEM  ~L2162 scenarioContext, triggerSignals, crisisSimulations,
+//                                       preparednessScores, whatIfScenarios
+// §12  PLAYBOOK SYSTEM          ~L2534 playbookDomains, playbookLibrary, playbookActivations,
+//                                       practiceDrills, taskAcknowledgments
+// §13  McKINSEY OPERATING MODEL ~L3838 mck_operating_model_assessments + 7 mck_* tables
+// §14  READINESS INTELLIGENCE   ~L4211 playbookVersions, readinessMetrics, oraclePatterns,
+//                                       weakSignals
+// §15  LATE-ADDED TABLES        ~L6736 testDriveLeads, customProtocols, allowedEmails,
+//                                       orgMemberships, signalCalibration, leadingIndicators,
+//                                       signalConnectors, protocolSignalProfiles,
+//                                       signalOntologyNodes/Edges
+// §16  FOUNDING PARTNER &       ~L6937 foundingPartnerApplications, preparationUpdates,
+//      ADVANCE 2.0 LOOP                 protocolVersionDeltas, updateHypotheses
+// §17  MICROSOFT & CERTS        ~L7085 microsoftConnectors, microsoftEvents,
+//                                       certificationRecords, boardFeedback
+// ============================================================================
+
+// ── § 1  ENUMS ────────────────────────────────────────────────────────────────
 // PostgreSQL Enums for better data integrity
 export const organizationTypeEnum = pgEnum('organization_type', ['enterprise', 'mid-market', 'startup', 'government', 'non-profit']);
 export const priorityEnum = pgEnum('priority', ['low', 'medium', 'high', 'critical']);
@@ -54,6 +90,7 @@ export const prepareItemStatusEnum = pgEnum('prepare_item_status', ['not_started
 export const learnItemTypeEnum = pgEnum('learn_item_type', ['debrief_meeting', 'survey', 'metrics_review', 'documentation', 'playbook_update', 'training_update', 'process_improvement']);
 
 // Session storage table for Replit Auth
+// ── § 2  AUTH & IDENTITY ────────────────────────────────────────────────────
 export const sessions = pgTable(
   "sessions",
   {
@@ -131,6 +168,7 @@ export type EvalAccessRequest = typeof evalAccessRequests.$inferSelect;
 export type InsertEvalAccessRequest = z.infer<typeof insertEvalAccessRequestSchema>;
 
 // Enhanced Organizations with enterprise intelligence features
+// ── § 3  ORGANIZATIONS & STRUCTURE ──────────────────────────────────────────
 export const organizations = pgTable('organizations', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name', { length: 255 }).notNull(),
@@ -195,6 +233,7 @@ export const businessUnits = pgTable('business_units', {
 });
 
 // Enhanced Strategic scenarios with adaptive intelligence
+// ── § 4  SCENARIOS ────────────────────────────────────────────────────────────
 export const strategicScenarios = pgTable('strategic_scenarios', {
   id: uuid('id').primaryKey().defaultRandom(),
   organizationId: uuid('organization_id').references(() => organizations.id).notNull(),
@@ -425,6 +464,7 @@ export const executionInstanceTasks = pgTable('execution_instance_tasks', {
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 
+// ── § 6  CORE OPERATIONAL ────────────────────────────────────────────────────
 // Enhanced Tasks with proper enum types
 export const tasks = pgTable('tasks', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -807,7 +847,7 @@ export const approvalTokens = pgTable('approval_tokens', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// Relations
+// ── § 7  DRIZZLE RELATIONS ───────────────────────────────────────────────────
 export const usersRelations = relations(users, ({ one, many }) => ({
   role: one(roles, {
     fields: [users.roleId],
@@ -952,7 +992,7 @@ export const moduleUsageAnalyticsRelations = relations(moduleUsageAnalytics, ({ 
   }),
 }));
 
-// Types
+// ── § 8  ZOD SCHEMAS & TYPES ─────────────────────────────────────────────────
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -1026,6 +1066,7 @@ export type InsertWorkflowTemplate = z.infer<typeof insertWorkflowTemplateSchema
 export type Notification = typeof notifications.$inferSelect;
 export type InsertNotification = z.infer<typeof insertNotificationSchema>;
 
+// ── § 9  ADVANCED INTELLIGENCE ───────────────────────────────────────────────
 // Advanced Enterprise Intelligence Tables for startup to Fortune 500 Decision Tracking
 
 // Decision Outcomes - Track strategic decisions and learn from results
@@ -1493,7 +1534,8 @@ export const insertInstitutionalMemorySchema = createInsertSchema(institutionalM
   detailedKnowledge: true,
 });
 
-// === STRATEGIC ENHANCEMENTS FOR PROACTIVE AI RADAR ===
+// ── §10  EXECUTIVE STRATEGY SYSTEM ───────────────────────────────────────────
+// strategicAlerts, warRoomSessions, executiveBriefings, boardReports, executiveTriggers
 
 // Strategic Alerts - Proactive AI Radar System
 export const strategicAlerts = pgTable('strategic_alerts', {
@@ -2159,6 +2201,7 @@ export const playbookTriggerAssociations = pgTable('playbook_trigger_association
 
 // Enhanced Scenario Data Capture - Comprehensive situation definition
 // Scenario Type Enum
+// ── §11  SCENARIO CONTEXT SYSTEM ─────────────────────────────────────────────
 export const scenarioTypeEnum = pgEnum('scenario_type', ['growth', 'protection', 'transformation', 'operational', 'strategic']);
 export const timeHorizonEnum = pgEnum('time_horizon', ['immediate', 'short_term', 'medium_term', 'long_term']); // 0-30, 30-90, 90-180, 180+ days
 export const influenceLevelEnum = pgEnum('influence_level', ['low', 'medium', 'high', 'critical']);
@@ -2532,7 +2575,7 @@ export const peerBenchmarks = pgTable('peer_benchmarks', {
 });
 
 // ============================================================================
-// 180 PLAYBOOK LIBRARY TAXONOMY
+// §12  PLAYBOOK SYSTEM — 180 PLAYBOOK LIBRARY TAXONOMY
 // ============================================================================
 
 // Playbook Domains - 9 Strategic Domains (including AI Governance)
@@ -3836,7 +3879,7 @@ export const insertExecutionValidationReportSchema = createInsertSchema(executio
 });
 
 // ============================================================================
-// MCKINSEY "ORGANIZE TO VALUE" FRAMEWORK - Phase 2
+// §13  McKINSEY "ORGANIZE TO VALUE" FRAMEWORK - Phase 2
 // ============================================================================
 
 // McKinsey-specific enums
@@ -4209,7 +4252,7 @@ export const insertMckSustainablePracticeItemSchema = createInsertSchema(mckSust
 });
 
 // ============================================================================
-// DYNAMIC STRATEGY - Future Readiness & Self-Learning Playbooks
+// §14  READINESS INTELLIGENCE — Dynamic Strategy & Self-Learning Playbooks
 // ============================================================================
 
 // Playbook Versions - Track self-learning playbook evolution
@@ -6733,6 +6776,9 @@ export type InsertSituationIntent = z.infer<typeof insertSituationIntentSchema>;
 export type SituationIntent = typeof situationIntents.$inferSelect;
 
 // ── Test Drive Lead Capture ───────────────────────────────────────────────────
+// ── §15  LATE-ADDED TABLES ────────────────────────────────────────────────────
+// testDriveLeads, customProtocols, allowedEmails, orgMemberships, signal calibration,
+// leadingIndicators, signalConnectors, protocolSignalProfiles, signalOntologyNodes/Edges
 export const testDriveLeads = pgTable('test_drive_leads', {
   id: uuid('id').primaryKey().defaultRandom(),
   email: text('email').notNull(),
@@ -6934,6 +6980,7 @@ export type InsertSignalOntologyEdge = z.infer<typeof insertSignalOntologyEdgeSc
 export type SignalOntologyEdge = typeof signalOntologyEdges.$inferSelect;
 
 // ─── Founding Partner Applications ────────────────────────────────────────────
+// ── §16  FOUNDING PARTNER & ADVANCE 2.0 CLOSED-LOOP LEARNING ─────────────────
 export const foundingPartnerApplications = pgTable('founding_partner_applications', {
   id: uuid('id').primaryKey().defaultRandom(),
   firstName: text('first_name').notNull(),
@@ -7082,6 +7129,7 @@ export type UpdateHypothesis = typeof updateHypotheses.$inferSelect;
 
 // ─── Microsoft 365 Connector Layer ───────────────────────────────────────────
 
+// ── §17  MICROSOFT CONNECTORS & CERTIFICATIONS ───────────────────────────────
 export const microsoftConnectors = pgTable('microsoft_connectors', {
   id: uuid('id').primaryKey().defaultRandom(),
   organizationId: uuid('organization_id').notNull().references(() => organizations.id),

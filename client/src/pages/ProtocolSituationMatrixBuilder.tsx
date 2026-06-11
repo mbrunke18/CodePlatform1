@@ -1048,9 +1048,8 @@ function Step6CallSheet({
           <div className="flex gap-2 mb-1">
             <div style={{ width: 160, flexShrink: 0 }} />
             {variants.map(v => (
-              <div key={v.id} style={{ width: 200, flexShrink: 0 }}
+              <div key={v.id} style={{ width: 200, flexShrink: 0, background: v.isBase ? NAVY : TEAL }}
                 className="px-3 py-2 text-[10px] font-bold tracking-widest uppercase text-white rounded-sm"
-                style={{ background: v.isBase ? NAVY : TEAL }}
               >
                 {v.name}
               </div>
@@ -1059,9 +1058,8 @@ function Step6CallSheet({
 
           {roles.map((role, ri) => (
             <div key={role.id} className="flex gap-2 mb-1">
-              <div style={{ width: 160, flexShrink: 0 }}
+              <div style={{ width: 160, flexShrink: 0, background: ri % 2 === 0 ? '#F9FAFB' : '#F3F4F6' }}
                 className="px-3 py-3 rounded-sm flex items-center"
-                style={{ background: ri % 2 === 0 ? '#F9FAFB' : '#F3F4F6' }}
               >
                 <div>
                   <div className="text-xs font-bold" style={{ color: NAVY }}>{role.title}</div>
@@ -1071,9 +1069,8 @@ function Step6CallSheet({
               {variants.map(v => {
                 const cell = getCell(role.id, v.id);
                 return (
-                  <div key={v.id} style={{ width: 200, flexShrink: 0 }}
+                  <div key={v.id} style={{ width: 200, flexShrink: 0, background: cell?.primaryResponsibility ? '#F0FDF4' : '#FAFAFA', border: `1px solid ${cell?.primaryResponsibility ? TEAL + '30' : '#E5E7EB'}` }}
                     className="px-3 py-3 rounded-sm"
-                    style={{ background: cell?.primaryResponsibility ? '#F0FDF4' : '#FAFAFA', border: `1px solid ${cell?.primaryResponsibility ? TEAL + '30' : '#E5E7EB'}` }}
                   >
                     {cell?.primaryResponsibility ? (
                       <p className="text-[11px] text-gray-700 leading-relaxed">{cell.primaryResponsibility}</p>
