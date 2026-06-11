@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VaughnMartin Readiness OS — The Response Is Ready Before The Trigger Fires</title>
+<meta name="description" content="Readiness OS compresses 30-day mobilization cycles to 12 minutes. 180 pre-staged Readiness Protocols. 3,600× execution head start." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A0F2E;
+    --navy-mid: #111838;
+    --navy-light: #1a2860;
+    --gold: #C9A84C;
+    --gold-dim: rgba(201,168,76,0.15);
+    --teal: #2B8A6E;
+    --teal-dim: rgba(43,138,110,0.15);
+    --ivory: #F0EDE4;
+    --white: #ffffff;
+    --gray: rgba(255,255,255,0.55);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── UTILITIES ── */
+  .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+  .reveal-delay-4 { transition-delay: 0.6s; }
+  .reveal-delay-5 { transition-delay: 0.75s; }
+
+  /* ── SECTION SHARED ── */
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-inner {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    background: var(--navy);
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 72px;
+  }
+
+  .hero-logo .seal {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-logo-text {
+    text-align: left;
+  }
+
+  .hero-logo-text .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+  }
+
+  .hero-logo-text .sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-top: 5px;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(42px, 7vw, 88px);
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gray);
+    max-width: 580px;
+    margin: 0 auto 64px;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 18px 48px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+  }
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.6;
+  }
+  .hero-scroll-hint span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .scroll-arrow {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ── SCENE: THE OLD WORLD ── */
+  #old-world {
+    background: linear-gradient(180deg, var(--navy) 0%, #0d1535 100%);
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 17px;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto 64px;
+    line-height: 1.8;
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto 64px;
+  }
+
+  .timeline-step {
+    background: rgba(255,255,255,0.03);
+    border-top: 2px solid rgba(255,255,255,0.08);
+    padding: 28px 20px;
+    text-align: left;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .timeline-step:hover {
+    background: rgba(255,255,255,0.055);
+  }
+  .timeline-step .day {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .timeline-step .action {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.3;
+  }
+  .timeline-step .cost {
+    font-size: 11px;
+    color: rgba(255,100,100,0.7);
+    margin-top: 6px;
+  }
+
+  .timeline-final {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    border: 1px solid rgba(255,80,80,0.2);
+    background: rgba(255,40,40,0.04);
+    text-align: center;
+  }
+  .timeline-final .verdict {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,140,140,0.9);
+  }
+
+  /* ── SCENE: THE TRIGGER ── */
+  #trigger {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+  }
+
+  .pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.05);
+    animation: pulseRing 3s ease infinite;
+    pointer-events: none;
+  }
+  .pulse-ring:nth-child(2) { animation-delay: 1s; width: 800px; height: 800px; }
+  .pulse-ring:nth-child(3) { animation-delay: 2s; width: 400px; height: 400px; }
+
+  .trigger-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.06);
+    margin-bottom: 40px;
+  }
+  .trigger-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: blink 1.2s ease infinite;
+  }
+
+  .trigger-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .trigger-event {
+    display: inline-block;
+    padding: 20px 40px;
+    border-left: 3px solid var(--gold);
+    background: rgba(201,168,76,0.05);
+    margin-bottom: 40px;
+    text-align: left;
+    max-width: 500px;
+  }
+  .trigger-event .event-type {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  .trigger-event .event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  /* ── SCENE: THE CONTRAST ── */
+  #contrast {
+    background: var(--navy);
+    padding: 80px 40px;
+    min-height: auto;
+  }
+
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .contrast-col {
+    padding: 48px 40px;
+  }
+
+  .contrast-col.old {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    opacity: 0.7;
+  }
+
+  .contrast-col.new {
+    background: rgba(43,138,110,0.07);
+    border: 1px solid rgba(43,138,110,0.25);
+  }
+
+  .contrast-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.2);
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+  }
+
+  .contrast-head {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .contrast-col.old .contrast-head { color: rgba(255,255,255,0.35); }
+  .contrast-col.new .contrast-head { color: var(--teal); }
+
+  .contrast-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .contrast-item .ci-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .contrast-col.old .ci-icon {
+    background: rgba(255,80,80,0.1);
+    color: rgba(255,120,120,0.7);
+  }
+  .contrast-col.new .ci-icon {
+    background: rgba(43,138,110,0.15);
+    color: var(--teal);
+  }
+  .contrast-item .ci-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .contrast-col.old .ci-text { color: rgba(255,255,255,0.45); }
+  .contrast-col.new .ci-text { color: rgba(255,255,255,0.85); }
+  .contrast-item .ci-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .contrast-col.old .ci-value { color: rgba(255,120,120,0.7); }
+  .contrast-col.new .ci-value { color: var(--teal); }
+
+  /* ── SCENE: 12 MINUTES ── */
+  #twelve-minutes {
+    background: linear-gradient(135deg, #0A0F2E 0%, #0d1535 50%, #0A0F2E 100%);
+    text-align: center;
+  }
+
+  .clock-display {
+    margin: 48px auto;
+    position: relative;
+    display: inline-block;
+  }
+
+  .clock-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(100px, 20vw, 200px);
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .clock-number .num-gold { color: var(--gold); }
+
+  .clock-unit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-top: 8px;
+  }
+
+  .clock-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .steps-row {
+    display: flex;
+    gap: 2px;
+    max-width: 800px;
+    margin: 48px auto 0;
+    justify-content: center;
+  }
+
+  .step-card {
+    flex: 1;
+    padding: 28px 20px;
+    background: rgba(255,255,255,0.03);
+    border-top: 2px solid var(--gold);
+    text-align: left;
+  }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ── SCENE: PROOF ── */
+  #proof {
+    background: var(--navy-mid);
+    text-align: center;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 900px;
+    margin: 64px auto;
+  }
+
+  .proof-stat {
+    padding: 52px 32px;
+    background: rgba(255,255,255,0.025);
+    border-bottom: 2px solid var(--gold);
+    text-align: center;
+  }
+
+  .proof-stat .stat-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 1;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .proof-stat .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    display: block;
+  }
+
+  .proof-quote {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    border-left: 3px solid var(--gold);
+    text-align: left;
+    background: rgba(201,168,76,0.04);
+  }
+
+  .proof-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+  }
+
+  .proof-quote cite {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ── SCENE: MICROSOFT ── */
+  #microsoft {
+    background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
+    text-align: center;
+  }
+
+  .ms-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.2;
+    max-width: 760px;
+    margin: 0 auto 24px;
+  }
+
+  .ms-headline strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .ms-sub {
+    font-size: 17px;
+    color: var(--gray);
+    max-width: 560px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+  }
+
+  .ms-stack {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ms-tag {
+    padding: 14px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+  }
+
+  .ms-tag.highlight {
+    background: rgba(43,138,110,0.12);
+    border-color: rgba(43,138,110,0.3);
+    color: rgba(255,255,255,0.9);
+  }
+
+  .ms-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 700px;
+  }
+
+  .ms-connector-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  .ms-connector-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ── SCENE: FEARLESS ── */
+  #fearless {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fearless-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(43,138,110,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .fearless-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fearless-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    margin: 24px 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .fearless-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(14px, 1.8vw, 20px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+
+  .fearless-arc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 72px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .arc-step {
+    text-align: center;
+  }
+
+  .arc-step .arc-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .arc-step .arc-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .arc-arrow {
+    font-size: 18px;
+    color: rgba(201,168,76,0.4);
+    padding-top: 10px;
+  }
+
+  /* ── SCENE: CTA ── */
+  #cta {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    text-align: center;
+    min-height: 80vh;
+  }
+
+  .cta-seal {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+  }
+
+  .cta-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 680px;
+    margin: 0 auto 24px;
+  }
+
+  .cta-headline em { font-style: italic; color: var(--gold); }
+
+  .cta-body {
+    font-size: 16px;
+    color: var(--gray);
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 22px 64px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-button:hover {
+    background: #d4b060;
+    transform: translateY(-2px);
+  }
+
+  .cta-secondary {
+    display: block;
+    margin-top: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .cta-footer {
+    margin-top: 96px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .cta-footer .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cta-footer .sep {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .cta-footer .tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.5; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  @keyframes pulseRing {
+    0% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.95); }
+    50% { opacity: 0.04; transform: translate(-50%, -50%) scale(1.05); }
+    100% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.95); }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes counterUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── GOLD RULE ── */
+  .gold-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 24px;
+    opacity: 0.6;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 80px 24px; }
+
+    .contrast-grid {
+      grid-template-columns: 1fr;
+    }
+    .contrast-divider { display: none; }
+    .contrast-col.old { margin-bottom: 2px; }
+
+    .proof-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .steps-row {
+      flex-direction: column;
+    }
+
+    .timeline { grid-template-columns: 1fr 1fr; }
+
+    .ms-stack { flex-direction: column; align-items: center; }
+
+    .fearless-arc { gap: 16px; }
+    .arc-arrow { display: none; }
+  }
+
+  /* ── NAV BAR ── */
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(10,15,46,0.97) 0%, transparent 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--white);
+  }
+  .nav-logo .nav-sep {
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.2);
+  }
+  .nav-logo .nav-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .nav-cta {
+    padding: 10px 28px;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="top-nav">
+  <a href="#hero" class="nav-logo">
+    <svg class="nav-seal" width="32" height="32" viewBox="0 0 64 64">
+      <defs>
+        <radialGradient id="sg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1a2860"/>
+          <stop offset="100%" stop-color="#0A0F2E"/>
+        </radialGradient>
+      </defs>
+      <circle cx="32" cy="32" r="30" fill="url(#sg)" stroke="#C9A84C" stroke-width="1"/>
+      <text x="32" y="38" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15" fill="#C9A84C">VM</text>
+    </svg>
+    <span class="nav-brand">VaughnMartin</span>
+    <span class="nav-sep"></span>
+    <span class="nav-sub">Readiness OS</span>
+  </a>
+  <a href="#cta" class="nav-cta">Apply for Access</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1 — HERO
+════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="section-inner" style="text-align:center;">
+
+    <div class="hero-eyebrow">The Operating Model for the Age of AI</div>
+
+    <div class="hero-logo">
+      <svg class="seal" width="64" height="64" viewBox="0 0 120 120">
+        <defs>
+          <radialGradient id="hg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1a2860"/>
+            <stop offset="100%" stop-color="#0A0F2E"/>
+          </radialGradient>
+        </defs>
+        <circle cx="60" cy="60" r="58" fill="url(#hg)" stroke="#C9A84C" stroke-width="1.2"/>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.5"/>
+        <!-- tick marks -->
+        <g stroke="#C9A84C" stroke-width="0.8" opacity="0.5">
+          <line x1="60" y1="4" x2="60" y2="12"/>
+          <line x1="60" y1="108" x2="60" y2="116"/>
+          <line x1="4" y1="60" x2="12" y2="60"/>
+          <line x1="108" y1="60" x2="116" y2="60"/>
+        </g>
+        <text x="60" y="67" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="24" fill="#C9A84C">VM</text>
+        <!-- teal dot -->
+        <circle cx="60" cy="108" r="3" fill="#2B8A6E"/>
+      </svg>
+      <div class="hero-logo-text">
+        <span class="brand">VaughnMartin</span>
+        <span class="sub">Readiness OS</span>
+      </div>
+    </div>
+
+    <h1 class="hero-headline">
+      The response is ready<br/><em>before the trigger fires.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act. We changed that constraint.
+    </p>
+
+    <a href="#cta" class="hero-cta">Apply for Founding Partner Access</a>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — THE OLD WORLD
+════════════════════════════════════════════════════ -->
+<section id="old-world">
+  <div class="section-inner">
+
+    <div class="label reveal" style="text-align:center; margin-bottom:16px;">The Old Operating Model</div>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">
+      A strategic trigger fires.<br/><em>Then the meetings begin.</em>
+    </h2>
+    <p class="section-body reveal reveal-delay-2">
+      In any organization — startup to Fortune 500 — when a strategic threat emerges, the enterprise spends weeks just to mobilize. Not to execute. Just to agree on who should be in the room.
+    </p>
+
+    <div class="timeline reveal reveal-delay-2">
+      <div class="timeline-step">
+        <span class="day">Day 1–3</span>
+        <div class="action">Alert reaches leadership. Emergency meeting scheduled.</div>
+        <div class="cost">Awareness gap: 72 hours</div>
+      </div>
+      <div class="timeline-step">
+        <span class="day">Day 4–8</span>
+        <div class="action">Stakeholder identification. Cross-functional task force assembled.</div>
+        <div class="cost">Coordination overhead: $180K</div>
+      </div>
+      <div class="timeline-step">
+        <span class="day">Day 9–16</span>
+        <div class="action">Situation analysis. Competing priorities surfaced. Alignment sought.</div>
+        <div class="cost">Decision delay: 8 days</div>
+      </div>
+      <div class="timeline-step">
+        <span class="day">Day 17–25</span>
+        <div class="action">Response plan drafted. Reviewed. Revised. Reviewed again.</div>
+        <div class="cost">Revision cycles: 4–7</div>
+      </div>
+      <div class="timeline-step">
+        <span class="day">Day 26–30</span>
+        <div class="action">Executive authorization secured. Resources allocated. Execution begins.</div>
+        <div class="cost">Window: already closing</div>
+      </div>
+    </div>
+
+    <div class="timeline-final reveal reveal-delay-3">
+      <p class="verdict">"By the time the plan was approved, the competitor had already moved."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — THE TRIGGER FIRES
+════════════════════════════════════════════════════ -->
+<section id="trigger">
+  <div class="pulse-ring"></div>
+  <div class="pulse-ring"></div>
+  <div class="pulse-ring"></div>
+
+  <div class="section-inner" style="text-align:center; position:relative; z-index:1;">
+
+    <div class="trigger-label reveal">
+      <div class="trigger-dot"></div>
+      <span class="label" style="margin:0;">Signal Detected · System Response Active</span>
+    </div>
+
+    <h2 class="trigger-headline reveal reveal-delay-1">
+      A threat just landed<br/>in your industry.
+    </h2>
+
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;">
+      <div class="trigger-event reveal reveal-delay-2">
+        <div class="event-type">Risk &amp; Resilience</div>
+        <div class="event-title">Ransomware detected across<br/>3 critical infrastructure nodes</div>
+      </div>
+      <div class="trigger-event reveal reveal-delay-3" style="border-left-color: var(--teal);">
+        <div class="event-type" style="color:var(--teal);">Growth &amp; Positioning</div>
+        <div class="event-title">Primary competitor files<br/>Chapter 11. Market gap: 72 hours.</div>
+      </div>
+    </div>
+
+    <p class="reveal reveal-delay-4" style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,38px); font-style:italic; color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto; line-height:1.4;">
+      Two paths diverge here.<br/>One leads to 30 days. The other to 12 minutes.
+    </p>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4 — THE CONTRAST
+════════════════════════════════════════════════════ -->
+<section id="contrast" style="min-height:auto; padding:80px 40px;">
+  <div class="section-inner">
+
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="label reveal">Side by Side</div>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-top:12px;">Two operating models.<br/>One 3,600× gap.</h2>
+    </div>
+
+    <div class="contrast-grid reveal reveal-delay-2">
+      <div class="contrast-col old">
+        <div class="contrast-head">Without Readiness OS</div>
+        <div class="contrast-item">
+          <div class="ci-icon">✗</div>
+          <div>
+            <div class="ci-text">Stakeholder alignment begins at trigger point</div>
+            <div class="ci-value">Days 1–8 lost to mobilization</div>
+          </div>
+        </div>
+        <div class="contrast-item">
+          <div class="ci-icon">✗</div>
+          <div>
+            <div class="ci-text">Response plan built from scratch under pressure</div>
+            <div class="ci-value">4–7 revision cycles</div>
+          </div>
+        </div>
+        <div class="contrast-item">
+          <div class="ci-icon">✗</div>
+          <div>
+            <div class="ci-text">Executive decision made without full context</div>
+            <div class="ci-value">$180K coordination overhead</div>
+          </div>
+        </div>
+        <div class="contrast-item">
+          <div class="ci-icon">✗</div>
+          <div>
+            <div class="ci-text">First substantive action taken</div>
+            <div class="ci-value">Day 26–30</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contrast-divider">vs</div>
+
+      <div class="contrast-col new">
+        <div class="contrast-head">With Readiness OS</div>
+        <div class="contrast-item">
+          <div class="ci-icon">✓</div>
+          <div>
+            <div class="ci-text">Continuous monitoring detects trigger automatically</div>
+            <div class="ci-value">Pre-staged before trigger fires</div>
+          </div>
+        </div>
+        <div class="contrast-item">
+          <div class="ci-icon">✓</div>
+          <div>
+            <div class="ci-text">180 Readiness Protocols pre-staged, pre-staffed</div>
+            <div class="ci-value">Automated at trigger point</div>
+          </div>
+        </div>
+        <div class="contrast-item">
+          <div class="ci-icon">✓</div>
+          <div>
+            <div class="ci-text">Executive reviews pre-built brief, authorizes</div>
+            <div class="ci-value">Informed decision in minutes</div>
+          </div>
+        </div>
+        <div class="contrast-item">
+          <div class="ci-icon">✓</div>
+          <div>
+            <div class="ci-text">Full execution underway</div>
+            <div class="ci-value">Minute 12 after detection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 5 — 12 MINUTES
+════════════════════════════════════════════════════ -->
+<section id="twelve-minutes">
+  <div class="section-inner" style="text-align:center;">
+
+    <div class="label reveal">The Readiness OS Response</div>
+    <p class="reveal reveal-delay-1" style="font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2.5vw,26px); color:var(--gray); margin:16px 0 0; font-style:italic;">
+      From signal detected to execution authorized.
+    </p>
+
+    <div class="clock-display reveal reveal-delay-2">
+      <div class="clock-glow"></div>
+      <span class="clock-number"><span class="num-gold" id="counter">12</span></span>
+      <span class="clock-unit">Minutes</span>
+    </div>
+
+    <p class="reveal reveal-delay-3" style="font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2.5vw,28px); color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:64px;">
+      vs. 30 days. Every time.
+    </p>
+
+    <div class="steps-row reveal reveal-delay-3">
+      <div class="step-card">
+        <span class="step-num">Minute 0</span>
+        <div class="step-title">Signal Detected</div>
+        <div class="step-desc">Continuous monitoring across 231 strategic triggers flags the threat. No human required to notice it.</div>
+      </div>
+      <div class="step-card">
+        <span class="step-num">Minute 1–4</span>
+        <div class="step-title">Protocol Activated</div>
+        <div class="step-desc">The matching Readiness Protocol surfaces automatically. Tasks pre-assigned. Stakeholders pre-notified. Resources pre-staged.</div>
+      </div>
+      <div class="step-card">
+        <span class="step-num">Minute 5–11</span>
+        <div class="step-title">Executive Reviews</div>
+        <div class="step-desc">A complete brief lands in the executive's hands. Pre-built context. Prior authorization precedents. One decision required.</div>
+      </div>
+      <div class="step-card">
+        <span class="step-num">Minute 12</span>
+        <div class="step-title">Execution Begins</div>
+        <div class="step-desc">Authorization given. The organization moves. Fully coordinated. No alignment overhead. No wasted cycles.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 6 — THE PROOF
+════════════════════════════════════════════════════ -->
+<section id="proof">
+  <div class="section-inner" style="text-align:center;">
+
+    <div class="label reveal">The Architecture</div>
+    <h2 class="section-title reveal reveal-delay-1" style="margin-top:12px; margin-bottom:16px;">Built for every trigger<br/>you'll ever face.</h2>
+    <p class="section-body reveal reveal-delay-2" style="margin-bottom:0;">
+      Not a template library. A living execution infrastructure — continuously monitoring, automatically updating, pattern-matching against your industry.
+    </p>
+
+    <div class="proof-stats">
+      <div class="proof-stat reveal reveal-delay-2">
+        <span class="stat-number" data-target="180">0</span>
+        <span class="stat-label">Readiness Protocols<br/>pre-staged &amp; ready</span>
+      </div>
+      <div class="proof-stat reveal reveal-delay-3">
+        <span class="stat-number" data-target="231">0</span>
+        <span class="stat-label">Strategic Triggers<br/>continuously monitored</span>
+      </div>
+      <div class="proof-stat reveal reveal-delay-4">
+        <span class="stat-number" style="font-size:clamp(36px,6vw,72px);" data-target="3600" data-suffix="×">0×</span>
+        <span class="stat-label">Execution Head Start<br/>30 days → 12 minutes</span>
+      </div>
+    </div>
+
+    <div class="gold-rule reveal"></div>
+
+    <div class="proof-quote reveal reveal-delay-2">
+      <blockquote>"Any organization that has prepared for every situation it will face is no longer afraid of strategic triggers — it is fearless."</blockquote>
+      <cite>VaughnMartin — Readiness OS Design Principle</cite>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 7 — MICROSOFT
+════════════════════════════════════════════════════ -->
+<section id="microsoft">
+  <div class="section-inner" style="text-align:center;">
+
+    <div class="label reveal">Enterprise Positioning</div>
+    <h2 class="ms-headline reveal reveal-delay-1" style="margin-top:12px;">
+      Every enterprise has <strong>Microsoft's AI stack.</strong><br/>
+      None have the operating model to use it.
+    </h2>
+    <p class="ms-sub reveal reveal-delay-2">
+      Readiness OS is not a replacement for Copilot, Teams, or Azure. It is the coordination layer that sits above your Microsoft investment — the operating model those tools were built to serve.
+    </p>
+
+    <div class="ms-stack reveal reveal-delay-3">
+      <div class="ms-tag">Microsoft 365 Copilot</div>
+      <div class="ms-tag">Microsoft Teams</div>
+      <div class="ms-tag">Azure OpenAI</div>
+      <div class="ms-tag">Microsoft Entra</div>
+      <div class="ms-tag">Copilot Studio</div>
+    </div>
+
+    <div class="ms-connector reveal reveal-delay-4">
+      <div class="ms-connector-line"></div>
+      <div class="ms-connector-text">Orchestrated by Readiness OS</div>
+      <div class="ms-connector-line"></div>
+    </div>
+
+    <div class="ms-stack reveal reveal-delay-4">
+      <div class="ms-tag highlight" style="flex:1; max-width:600px; padding:20px 28px; text-align:left;">
+        <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--teal); margin-bottom:8px;">Operating Model Layer</div>
+        <div style="font-size:16px; font-family:'Barlow Condensed',sans-serif; font-weight:700; color:white;">VaughnMartin Readiness OS</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:4px; font-style:italic;">Pre-staged execution · Executive authorization · 12-minute response</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 8 — FEARLESS
+════════════════════════════════════════════════════ -->
+<section id="fearless">
+  <div class="fearless-bg"></div>
+  <div class="section-inner" style="text-align:center; position:relative; z-index:1;">
+
+    <div class="label reveal" style="margin-bottom:48px;">The Outcome</div>
+
+    <span class="fearless-word reveal reveal-delay-1">Fearless.</span>
+
+    <p class="fearless-sub reveal reveal-delay-2">
+      Not faster. Not smarter. <em>Fearless.</em>
+    </p>
+    <p class="fearless-tagline reveal reveal-delay-3">
+      When the trigger fires, you're already moving.
+    </p>
+
+    <div class="fearless-arc reveal reveal-delay-4">
+      <div class="arc-step">
+        <span class="arc-label">Phase One</span>
+        <span class="arc-word">Preparation</span>
+      </div>
+      <div class="arc-arrow">→</div>
+      <div class="arc-step">
+        <span class="arc-label">Phase Two</span>
+        <span class="arc-word">Readiness</span>
+      </div>
+      <div class="arc-arrow">→</div>
+      <div class="arc-step">
+        <span class="arc-label">The Outcome</span>
+        <span class="arc-word" style="color:var(--gold);">Fearless</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 9 — CTA
+════════════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="section-inner" style="text-align:center;">
+
+    <svg class="cta-seal reveal" width="80" height="80" viewBox="0 0 120 120">
+      <defs>
+        <radialGradient id="ctag" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1a2860"/>
+          <stop offset="100%" stop-color="#0A0F2E"/>
+        </radialGradient>
+      </defs>
+      <circle cx="60" cy="60" r="58" fill="url(#ctag)" stroke="#C9A84C" stroke-width="1.2"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.5"/>
+      <g stroke="#C9A84C" stroke-width="0.8" opacity="0.5">
+        <line x1="60" y1="4" x2="60" y2="14"/>
+        <line x1="60" y1="106" x2="60" y2="116"/>
+        <line x1="4" y1="60" x2="14" y2="60"/>
+        <line x1="106" y1="60" x2="116" y2="60"/>
+      </g>
+      <text x="60" y="67" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="24" fill="#C9A84C">VM</text>
+      <circle cx="60" cy="108" r="3" fill="#2B8A6E"/>
+    </svg>
+
+    <h2 class="cta-headline reveal reveal-delay-1">
+      Stop preparing to prepare.<br/><em>Be ready.</em>
+    </h2>
+
+    <p class="cta-body reveal reveal-delay-2">
+      The Founding Partner Program is a 90-day validation partnership. You bring the organization. We bring 180 pre-staged Readiness Protocols and the operating model to deploy them.
+    </p>
+
+    <a href="/request-access" class="cta-button reveal reveal-delay-3">
+      Apply for Founding Partner Access
+    </a>
+
+    <span class="cta-secondary reveal reveal-delay-4">90-Day Validation Partnership · Limited Availability</span>
+
+    <div class="cta-footer reveal reveal-delay-5">
+      <span class="brand-name">VaughnMartin</span>
+      <span class="sep"></span>
+      <span class="tagline">Readiness OS · Ante Ignem Paratus</span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // ── Hero entrance — add class after brief delay for subtle lift-in
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#hero .section-inner > *').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.8s ease ${i * 0.12}s, transform 0.8s ease ${i * 0.12}s`;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.opacity = '';
+        el.style.transform = '';
+      }));
+    });
+  });
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Animated stat counters
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(ease * target);
+      el.textContent = value.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        if (!el.dataset.animated) {
+          el.dataset.animated = '1';
+          animateCounter(el);
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => statObserver.observe(el));
+
+  // ── Subtle parallax on hero headline
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const hero = document.querySelector('#hero .section-inner');
+    if (hero && y < window.innerHeight) {
+      hero.style.transform = `translateY(${y * 0.18}px)`;
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
