@@ -113,6 +113,14 @@ app.get("/scenario-demo", (_req, res) => {
   res.sendFile(path.resolve("client/public/scenario-demo.html"));
 });
 
+app.get("/commercial", (_req, res) => {
+  res.sendFile(path.resolve("client/public/commercial.html"));
+});
+
+app.get("/commercial.html", (_req, res) => {
+  res.sendFile(path.resolve("client/public/commercial.html"));
+});
+
 // Domain redirect: executeiq.io → vaughnmartin.com (legacy domain forward)
 // Placed AFTER health checks so deployment health checks always pass
 // Skips root path "/" to ensure Autoscale health checks always get 200
