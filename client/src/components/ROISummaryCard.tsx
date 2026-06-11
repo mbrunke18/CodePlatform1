@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { TrendingUp, Clock, DollarSign, Zap, ArrowRight, Loader2 } from "lucide-react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { demoData } from "@/lib/demoData";
+import { demoData } from "@/lib/demo-roi-metrics";
 
 interface ROIMetrics {
   totalSaved: number;

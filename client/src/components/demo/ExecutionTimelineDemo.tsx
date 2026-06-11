@@ -10,7 +10,7 @@ import {
   AlertCircle,
   TrendingUp
 } from 'lucide-react';
-import { DEMO_EXECUTION_PLANS } from '@/lib/demoData';
+import { DEMO_EXECUTION_PLANS } from '@/lib/demo-roi-metrics';
 
 interface ExecutionTimelineDemoProps {
   planType?: 'competitive_response' | 'compliance_deadline';

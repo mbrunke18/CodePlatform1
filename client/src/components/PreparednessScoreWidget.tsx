@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { ArrowUp, ArrowDown, TrendingUp, Shield, AlertTriangle, Target } from 'lucide-react';
 import { Link } from 'wouter';
-import { demoData } from '@/lib/demoData';
+import { demoData } from '@/lib/demo-roi-metrics';
 
 interface PreparednessScoreData {
   score: number;
