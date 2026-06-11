@@ -141,14 +141,14 @@ describe('Navigation URL Integrity', () => {
 
   it('protocol preview links use the /playbooks/:id/preview pattern', () => {
     // Positive assertion: the canonical preview pattern exists in ProtocolLibrary
-    const libraryPath = path.join(CLIENT_SRC, 'pages/ProtocolLibrary.tsx');
+    const libraryPath = path.join(CLIENT_SRC, 'src/pages/ProtocolLibrary.tsx');
     if (!fs.existsSync(libraryPath)) return;
     const content = readFile(libraryPath);
     expect(content).toContain('/playbooks/${playbook.id}/preview');
   });
 
   it('protocol customize links use the /playbooks/:id/customize pattern', () => {
-    const libraryPath = path.join(CLIENT_SRC, 'pages/ProtocolLibrary.tsx');
+    const libraryPath = path.join(CLIENT_SRC, 'src/pages/ProtocolLibrary.tsx');
     if (!fs.existsSync(libraryPath)) return;
     const content = readFile(libraryPath);
     expect(content).toContain('/playbooks/${playbook.id}/customize');
@@ -159,7 +159,7 @@ describe('Navigation URL Integrity', () => {
 
 describe('API Response Array Safety', () => {
   it('alerts data must be guarded with Array.isArray() before .filter()', () => {
-    const quickActionsPath = path.join(CLIENT_SRC, 'components/QuickActions.tsx');
+    const quickActionsPath = path.join(CLIENT_SRC, 'src/components/QuickActions.tsx');
     if (!fs.existsSync(quickActionsPath)) return;
     const content = readFile(quickActionsPath);
 
@@ -172,7 +172,7 @@ describe('API Response Array Safety', () => {
   });
 
   it('QuickActions does not call .filter() on an unguarded API response', () => {
-    const quickActionsPath = path.join(CLIENT_SRC, 'components/QuickActions.tsx');
+    const quickActionsPath = path.join(CLIENT_SRC, 'src/components/QuickActions.tsx');
     if (!fs.existsSync(quickActionsPath)) return;
     const content = readFile(quickActionsPath);
     const lines = content.split('\n');
@@ -186,7 +186,7 @@ describe('API Response Array Safety', () => {
   });
 
   it('ProtocolDetail guards array data before rendering', () => {
-    const detailPath = path.join(CLIENT_SRC, 'pages/ProtocolDetail.tsx');
+    const detailPath = path.join(CLIENT_SRC, 'src/pages/ProtocolDetail.tsx');
     if (!fs.existsSync(detailPath)) return;
     const content = readFile(detailPath);
     // Should use Array.isArray checks somewhere in the file for array data
