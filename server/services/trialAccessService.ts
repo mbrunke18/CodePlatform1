@@ -114,9 +114,12 @@ export async function createTrialSession(data: {
 
   // ── Notify platform admin ──────────────────────────────────────────────
   const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
-  if (adminEmail) {
-    try {
-      const adminHtml = `<!DOCTYPE html>
+  const notifyAddresses = Array.from(new Set([
+    'pilot@vaughnmartin.com',
+    ...(adminEmail ? [adminEmail] : []),
+  ]));
+  try {
+    const adminHtml = `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
@@ -146,14 +149,13 @@ export async function createTrialSession(data: {
 </body></html>`;
       await resend.emails.send({
         from: 'Readiness OS <pilot@vaughnmartin.com>',
-        to: adminEmail,
+        to: notifyAddresses,
         subject: `New Trial Request — ${data.firstName} ${data.lastName} (${data.company})`,
         html: adminHtml,
       });
     } catch (err: any) {
       console.warn(`⚠ Admin notification email failed: ${err.message}`);
     }
-  }
 
   console.log(`✓ Trial session created for ${data.email} | Activation: ${activationUrl}`);
   return { success: true, token, emailSent };

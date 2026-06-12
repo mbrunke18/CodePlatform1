@@ -322,8 +322,8 @@ router.post('/apply', async (req, res) => {
       try {
         const resend = new Resend(resendKey);
         await resend.emails.send({
-          from: 'Readiness OS <onboarding@resend.dev>',
-          replyTo: 'pilot@vaughnmartin.com',
+          from: 'Readiness OS <pilot@vaughnmartin.com>',
+          replyTo: data.email,
           to: 'pilot@vaughnmartin.com',
           subject: `New Pilot Application — ${data.company} (${data.firstName} ${data.lastName})`,
           html: `
