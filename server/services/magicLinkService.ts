@@ -137,8 +137,8 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
                   <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Trigger to Execution</div>
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
-                  <div style="color:${GOLD};font-size:20px;font-weight:800;">170</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Prepared responses</div>
+                  <div style="color:${GOLD};font-size:20px;font-weight:800;">180</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Readiness Protocols</div>
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;">
                   <div style="color:${GOLD};font-size:20px;font-weight:800;">3,600×</div>

@@ -28,7 +28,7 @@ function buildTrialEmailHtml(data: {
 }, activationUrl: string): string {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Your 24-Hour Trial Access — Readiness OS</title></head>
+<head><meta charset="UTF-8" /><title>Your 48-Hour Trial Access — Readiness OS</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">

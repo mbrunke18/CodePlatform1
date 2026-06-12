@@ -104,6 +104,86 @@ export function registerMagicLinkRoutes(app: Express) {
         triggerDomain: triggerDomain || '',
         message: message || '',
       }).returning();
+
+      // ── Notify platform admin of new Founding Partner application ────────
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (apiKey) {
+        try {
+          const { Resend } = await import('resend');
+          const resend = new Resend(apiKey);
+          const NAVY = '#0A0F2E';
+          const GOLD = '#C9A84C';
+          const adminHtml = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><title>New Founding Partner Application — Readiness OS</title></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="580" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <tr>
+          <td style="background:${NAVY};padding:28px 40px;">
+            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN · READINESS OS</div>
+            <div style="color:#ffffff;font-size:20px;font-weight:700;">New Founding Partner Application</div>
+          </td>
+        </tr>
+        <tr><td style="height:3px;background:${GOLD};"></td></tr>
+        <tr>
+          <td style="padding:36px 40px;">
+            <p style="margin:0 0 20px;color:#111827;font-size:15px;font-weight:700;">A new Founding Partner application has been submitted:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;margin-bottom:28px;">
+              <tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Name</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${firstName} ${lastName}</span>
+              </td></tr>
+              <tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Title &amp; Company</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${title} · ${company}</span>
+              </td></tr>
+              <tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Email</span><br/>
+                <a href="mailto:${email}" style="color:${GOLD};font-size:15px;font-weight:600;text-decoration:none;">${email}</a>
+              </td></tr>
+              ${triggerDomain ? `<tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Primary Trigger Domain</span><br/>
+                <span style="color:#111827;font-size:14px;">${triggerDomain}</span>
+              </td></tr>` : ''}
+              ${message ? `<tr><td style="padding:14px 20px;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Message</span><br/>
+                <span style="color:#111827;font-size:14px;line-height:1.6;">${message}</span>
+              </td></tr>` : ''}
+            </table>
+            <a href="https://vaughnmartin.com/admin/users" style="display:inline-block;background:${NAVY};color:${GOLD};font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;text-decoration:none;border-radius:4px;">View All Applications →</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
+            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin · Readiness OS · Founding Partner Program</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+          const { error: adminError } = await resend.emails.send({
+            from: 'Readiness OS <pilot@vaughnmartin.com>',
+            replyTo: email,
+            to: 'pilot@vaughnmartin.com',
+            subject: `New Founding Partner Application — ${firstName} ${lastName} · ${company}`,
+            html: adminHtml,
+          });
+          if (adminError) {
+            console.warn(`⚠ Founding Partner admin notification failed: ${adminError.message}`);
+          } else {
+            console.log(`✓ Founding Partner admin notification sent for ${email}`);
+          }
+        } catch (emailErr: any) {
+          console.warn(`⚠ Founding Partner admin notification threw: ${emailErr.message}`);
+        }
+      } else {
+        console.log(`ℹ [FoundingPartner] RESEND_API_KEY not set — no admin notification sent for ${email}`);
+      }
+
       res.json({ ok: true, id: application.id });
     } catch (err: any) {
       res.status(500).json({ error: 'Failed to submit application. Please email founding@vaughnmartin.com directly.' });
