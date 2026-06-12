@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/useAuth";
-import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send, Share2, Briefcase, CheckCircle, XCircle, Clock } from "lucide-react";
+import { Trash2, Plus, Shield, Users, Mail, AlertCircle, Loader2, Check, Link2, Copy, Send, Share2, Briefcase, CheckCircle, XCircle, Clock, TrendingUp } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -85,6 +85,27 @@ export default function AdminPanel() {
   const { data: partnerStats } = useQuery<{ total: number; filled: number; remaining: number }>({
     queryKey: ["/api/founding-partner/stats"],
   });
+
+  interface InboundLead {
+    id: string;
+    type: 'contact' | 'request_access' | 'trial';
+    typeLabel: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    company: string;
+    title: string;
+    detail: string | null;
+    status: string;
+    statusLabel: string;
+    createdAt: string | null;
+  }
+
+  const { data: rawLeads, isLoading: leadsLoading } = useQuery<InboundLead[]>({
+    queryKey: ["/api/admin/inbound-leads"],
+    refetchInterval: 30000,
+  });
+  const leads: InboundLead[] = rawLeads ?? [];
 
   const updatePartnerStatus = useMutation({
     mutationFn: ({ id, status }: { id: string; status: string }) =>
@@ -730,6 +751,98 @@ export default function AdminPanel() {
                       </td>
                     </tr>
                   ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </div>
+
+        {/* ── Inbound Leads ─────────────────────────────────── */}
+        <div style={{ marginBottom: "2.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem" }}>
+            <TrendingUp size={18} color={NAVY} />
+            <h2 style={{ margin: 0, fontSize: "1.0625rem", fontWeight: 700, color: NAVY }}>
+              Inbound Leads
+            </h2>
+            <span style={{
+              marginLeft: 8, background: "#E8E4DC", color: NAVY,
+              fontSize: "0.75rem", fontWeight: 700, padding: "2px 8px", borderRadius: 10,
+            }}>{leads.length}</span>
+            <span style={{ marginLeft: "auto", fontSize: "0.75rem", color: "#9CA3AF" }}>
+              Contact Form · Request Access · Trial Access · refreshes every 30s
+            </span>
+          </div>
+
+          <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, overflow: "hidden" }}>
+            {leadsLoading ? (
+              <div style={{ padding: "2rem", textAlign: "center", color: "#9CA3AF" }}>
+                <Loader2 size={20} style={{ animation: "spin 1s linear infinite" }} />
+              </div>
+            ) : leads.length === 0 ? (
+              <div style={{ padding: "2rem", textAlign: "center", color: "#9CA3AF", fontSize: "0.875rem" }}>
+                No inbound leads yet. They'll appear here as the carousel drives activity.
+              </div>
+            ) : (
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }}>
+                <thead>
+                  <tr style={{ borderBottom: "1px solid #E8E4DC", background: "#F8F7F4" }}>
+                    {["Source", "Name & Company", "Email", "Title", "Status", "Received"].map(h => (
+                      <th key={h} style={{ padding: "0.625rem 1rem", textAlign: "left", fontWeight: 600, color: "#6B7280", fontSize: "0.75rem", letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {leads.map((lead, i) => {
+                    const typeBg = lead.type === 'contact'
+                      ? { bg: "rgba(201,168,76,0.12)", color: "#8a6c1e" }
+                      : lead.type === 'request_access'
+                      ? { bg: "rgba(10,15,46,0.08)", color: NAVY }
+                      : { bg: "rgba(43,138,110,0.10)", color: "#2B8A6E" };
+
+                    const statusBg = lead.status === 'activated'
+                      ? { bg: "rgba(43,138,110,0.10)", color: "#2B8A6E" }
+                      : lead.status === 'expired'
+                      ? { bg: "rgba(220,38,38,0.08)", color: "#DC2626" }
+                      : { bg: "rgba(107,114,128,0.10)", color: "#6B7280" };
+
+                    return (
+                      <tr key={lead.id} style={{ borderBottom: i < leads.length - 1 ? "1px solid #F3F4F6" : "none" }}>
+                        <td style={{ padding: "0.75rem 1rem" }}>
+                          <span style={{
+                            display: "inline-block", padding: "2px 8px", borderRadius: 3,
+                            fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase",
+                            background: typeBg.bg, color: typeBg.color,
+                          }}>
+                            {lead.typeLabel}
+                          </span>
+                        </td>
+                        <td style={{ padding: "0.75rem 1rem" }}>
+                          <div style={{ fontWeight: 600, color: NAVY }}>
+                            {`${lead.firstName} ${lead.lastName}`.trim() || "—"}
+                          </div>
+                          <div style={{ fontSize: "0.75rem", color: "#6B7280" }}>{lead.company}</div>
+                        </td>
+                        <td style={{ padding: "0.75rem 1rem" }}>
+                          <a href={`mailto:${lead.email}`} style={{ color: NAVY, textDecoration: "none", fontWeight: 500 }}>
+                            {lead.email}
+                          </a>
+                        </td>
+                        <td style={{ padding: "0.75rem 1rem", color: "#374151" }}>{lead.title || "—"}</td>
+                        <td style={{ padding: "0.75rem 1rem" }}>
+                          <span style={{
+                            display: "inline-block", padding: "2px 8px", borderRadius: 3,
+                            fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase",
+                            background: statusBg.bg, color: statusBg.color,
+                          }}>
+                            {lead.statusLabel}
+                          </span>
+                        </td>
+                        <td style={{ padding: "0.75rem 1rem", color: "#6B7280", fontSize: "0.8125rem" }}>
+                          {formatDate(lead.createdAt)}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             )}

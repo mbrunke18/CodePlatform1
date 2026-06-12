@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { db } from "../db";
 import { eq, desc, inArray } from "drizzle-orm";
-import { users, organizations, allowedEmails, sessions } from "@shared/schema";
+import { users, organizations, allowedEmails, sessions, pilotApplications, magicLinkTokens, trialSessions } from "@shared/schema";
 import { requirePlatformAdmin } from "../replitAuth";
 import { z } from "zod";
 
@@ -101,6 +101,70 @@ export function registerAdminRoutes(app: Express) {
     try {
       await db.delete(allowedEmails).where(eq(allowedEmails.id, req.params.id));
       res.json({ success: true });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // GET /api/admin/inbound-leads — unified view of all carousel/form-driven leads
+  app.get("/api/admin/inbound-leads", requirePlatformAdmin, async (_req, res) => {
+    try {
+      const [pilots, magicLinks, trials] = await Promise.all([
+        db.select().from(pilotApplications).orderBy(desc(pilotApplications.createdAt)),
+        db.select().from(magicLinkTokens).orderBy(desc(magicLinkTokens.createdAt)),
+        db.select().from(trialSessions).orderBy(desc(trialSessions.createdAt)),
+      ]);
+
+      const leads = [
+        ...pilots.map(r => ({
+          id: r.id,
+          type: 'contact' as const,
+          typeLabel: 'Contact Form',
+          firstName: r.firstName,
+          lastName: r.lastName,
+          email: r.email,
+          company: r.company,
+          title: r.title,
+          detail: r.primaryChallenge,
+          status: r.status ?? 'pending',
+          statusLabel: r.status === 'pending' ? 'Pending' : r.status ?? 'Pending',
+          createdAt: r.createdAt?.toISOString() ?? null,
+        })),
+        ...magicLinks.map(r => ({
+          id: r.id,
+          type: 'request_access' as const,
+          typeLabel: 'Request Access',
+          firstName: r.firstName,
+          lastName: r.lastName,
+          email: r.email,
+          company: r.company,
+          title: r.title,
+          detail: null,
+          status: r.usedAt ? 'activated' : (new Date() > r.expiresAt ? 'expired' : 'sent'),
+          statusLabel: r.usedAt ? 'Activated' : (new Date() > r.expiresAt ? 'Expired' : 'Link Sent'),
+          createdAt: r.createdAt?.toISOString() ?? null,
+        })),
+        ...trials.map(r => ({
+          id: r.id,
+          type: 'trial' as const,
+          typeLabel: 'Trial Access',
+          firstName: r.firstName,
+          lastName: r.lastName,
+          email: r.email,
+          company: r.company,
+          title: r.title,
+          detail: null,
+          status: r.activatedAt ? 'activated' : (new Date() > r.expiresAt ? 'expired' : 'sent'),
+          statusLabel: r.activatedAt ? 'Activated' : (new Date() > r.expiresAt ? 'Expired' : 'Link Sent'),
+          createdAt: r.createdAt?.toISOString() ?? null,
+        })),
+      ].sort((a, b) => {
+        if (!a.createdAt) return 1;
+        if (!b.createdAt) return -1;
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      });
+
+      res.json(leads);
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
