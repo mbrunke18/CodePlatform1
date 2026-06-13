@@ -421,6 +421,13 @@ function Router() {
           <WelcomeBriefRedirect />
           <Suspense fallback={<PageLoader />}>
             <Switch>
+            <Route path="/comparison-view">{() => (
+              <iframe
+                src="/comparison.html"
+                style={{ width: '100%', height: '100vh', border: 'none', display: 'block' }}
+                title="VaughnMartin Comparison"
+              />
+            )}</Route>
             <Route path="/" component={Homepage} />
             <Route path="/home" component={Homepage} />
             <Route path="/mission-control" component={MissionControl} />
