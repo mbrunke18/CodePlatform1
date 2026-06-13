@@ -196,7 +196,10 @@ export default function AdminPanel() {
           VaughnMartin · Platform Admin
         </span>
         <span style={{ marginLeft: "auto", color: "#9CA3AF", fontSize: "0.8125rem" }}>{adminEmail}</span>
-        <a href="/mission-control" style={{ color: GOLD, fontSize: "0.8125rem", textDecoration: "none", fontWeight: 600, marginLeft: 16 }}>
+        <a href="/comparison-view" target="_blank" style={{ color: "#2B8A6E", fontSize: "0.8125rem", textDecoration: "none", fontWeight: 600, marginLeft: 16, border: "1px solid #2B8A6E", padding: "3px 10px", borderRadius: 3 }}>
+          View Comparison Image ↗
+        </a>
+        <a href="/mission-control" style={{ color: GOLD, fontSize: "0.8125rem", textDecoration: "none", fontWeight: 600, marginLeft: 12 }}>
           ← Mission Control
         </a>
       </div>

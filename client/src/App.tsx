@@ -421,13 +421,6 @@ function Router() {
           <WelcomeBriefRedirect />
           <Suspense fallback={<PageLoader />}>
             <Switch>
-            <Route path="/comparison-view">{() => (
-              <iframe
-                src="/comparison.html"
-                style={{ width: '100%', height: '100vh', border: 'none', display: 'block' }}
-                title="VaughnMartin Comparison"
-              />
-            )}</Route>
             <Route path="/" component={Homepage} />
             <Route path="/home" component={Homepage} />
             <Route path="/mission-control" component={MissionControl} />
@@ -821,6 +814,7 @@ function Router() {
         <Route path="/request-evaluation" component={lazy(() => import('./pages/RequestEvaluation'))} />
         <Route path="/readiness-ad" component={lazy(() => import('./pages/ReadinessAd'))} />
         <Route path="/commercial">{() => { window.location.replace('/commercial.html'); return null; }}</Route>
+        <Route path="/comparison-view">{() => { window.location.replace('/comparison.html'); return null; }}</Route>
 
         <Route component={NotFound} />
         </Switch>
