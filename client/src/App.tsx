@@ -843,6 +843,23 @@ function App() {
                     <Router />
                   </ErrorBoundary>
                   <BoardReviewPanel />
+                  <a
+                    href="/comparison.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      position: 'fixed', bottom: 24, right: 20, zIndex: 99999,
+                      background: '#C9A84C', color: '#0A0F2E',
+                      fontFamily: 'system-ui, sans-serif',
+                      fontWeight: 800, fontSize: 12, letterSpacing: '0.05em',
+                      textTransform: 'uppercase', textDecoration: 'none',
+                      padding: '10px 16px', borderRadius: 3,
+                      boxShadow: '0 3px 12px rgba(0,0,0,0.35)',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    View Comparison
+                  </a>
                 </TooltipProvider>
               </ThemeProvider>
             </OnboardingProvider>
