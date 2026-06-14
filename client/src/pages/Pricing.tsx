@@ -1040,6 +1040,16 @@ export default function Pricing() {
               Talk to Sales
             </Button>
           </div>
+          <div style={{ marginTop: 24 }}>
+            <a
+              href="/comparison.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(201,168,76,0.75)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 2 }}
+            >
+              View Full Comparison Table →
+            </a>
+          </div>
         </div>
       </section>
     </PageLayout>

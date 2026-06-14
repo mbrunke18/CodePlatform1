@@ -350,9 +350,19 @@ export default function ExecutiveBrief() {
         {/* Comparison Table */}
         <section style={{ background: "#fff", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
-              <div style={{ width: 24, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Side-by-Side Comparison</span>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 28 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 24, height: 1.5, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Side-by-Side Comparison</span>
+              </div>
+              <a
+                href="/comparison.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, textDecoration: "none", border: `1px solid ${GOLD}`, padding: "6px 14px", borderRadius: "0.15rem", whiteSpace: "nowrap" as const, flexShrink: 0 }}
+              >
+                Full Comparison →
+              </a>
             </div>
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
