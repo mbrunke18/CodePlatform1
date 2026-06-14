@@ -2809,6 +2809,33 @@ export const playbooksData: PlaybooksDataset = {
       "frequency": "medium",
       "budget": 15000000,
       "compound": true
+    },
+
+    {
+      "number": 211,
+      "protocol_code": "GP-211",
+      "name": "Geopolitical Risk Response",
+      "trigger": "Escalating geopolitical event — sanctions designation, trade policy shift, diplomatic breakdown, or armed conflict — creates direct exposure to supply chain, market access, customer relationships, or regulatory standing within the operating timeline of the current quarter",
+      "stakeholders": ["CEO", "CFO", "General Counsel", "Chief Compliance Officer", "VP Global Operations", "VP Government Affairs"],
+      "response": "CEO convenes geopolitical response team within 12 minutes of signal detection — General Counsel and Chief Compliance Officer assess sanctions and export control exposure across all counterparties, VP Global Operations executes supply chain rerouting and alternative vendor activation, and VP Government Affairs initiates engagement with relevant trade associations and government relations contacts to stay ahead of regulatory guidance. Without pre-staged geopolitical response protocols, enterprises spend 2–4 weeks convening the right expertise, clarifying their regulatory exposure, and developing a position — during which time competitors who have pre-staged the response are already executing market repositioning and customer communications that convert the disruption into a competitive advantage.",
+      "response_window": "24 hours",
+      "financial_exposure": "$10M–$2B+ depending on sanctions scope, trade volume in affected markets, and supply chain dependency on restricted jurisdictions or counterparties",
+      "domain": 4,
+      "frequency": "medium",
+      "budget": 5000000
+    },
+    {
+      "number": 212,
+      "protocol_code": "GP-212",
+      "name": "Regulatory Compliance Sprint",
+      "trigger": "Regulatory deadline, examination notice, or compliance gap discovery creates a compressed timeline for achieving, demonstrating, or restoring compliance across multiple organizational functions simultaneously",
+      "stakeholders": ["Chief Compliance Officer", "General Counsel", "CFO", "CTO", "VP Operations", "Regulatory Affairs Lead"],
+      "response": "Chief Compliance Officer activates compliance sprint protocol — gap assessment completed against the specific regulatory requirement within 2 hours, remediation workstreams assigned to functional owners with explicit deadlines, and regulator engagement strategy determined (proactive disclosure vs. cure-period completion vs. examination response posture). Without pre-staged compliance sprint capability, organizations discover compliance gaps in a reactive posture — the gap assessment alone takes 2–3 weeks to commission and complete, and by the time remediation begins, the examination window has already opened, converting a manageable gap into a material finding.",
+      "response_window": "24 hours",
+      "financial_exposure": "$500K–$150M in regulatory fines, enforcement actions, and remediation costs; companies that self-identify and remediate before examination face penalties averaging 60% lower than those identified by regulators",
+      "domain": 4,
+      "frequency": "medium",
+      "budget": 2000000
     }
   ],
   "total": 180

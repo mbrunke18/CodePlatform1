@@ -40,7 +40,7 @@ const DOMAIN_CONFIG = [
   { id: 1, name: 'Market Dynamics', code: 'DOMAIN1', color: '#E74C3C', icon: 'target', executiveRole: 'CEO', total: 24 },
   { id: 2, name: 'Operational Excellence', code: 'DOMAIN2', color: '#F39C12', icon: 'truck', executiveRole: 'COO', total: 21 },
   { id: 3, name: 'Financial Strategy', code: 'DOMAIN3', color: '#27AE60', icon: 'dollar-sign', executiveRole: 'CFO', total: 26 },
-  { id: 4, name: 'Regulatory & Compliance', code: 'DOMAIN4', color: '#9B59B6', icon: 'scale', executiveRole: 'CLO', total: 16 },
+  { id: 4, name: 'Regulatory & Compliance', code: 'DOMAIN4', color: '#9B59B6', icon: 'scale', executiveRole: 'CLO', total: 18 },
   { id: 5, name: 'Technology & Innovation', code: 'DOMAIN5', color: '#3498DB', icon: 'cpu', executiveRole: 'CTO', total: 20 },
   { id: 6, name: 'Talent & Leadership', code: 'DOMAIN6', color: '#E91E63', icon: 'users', executiveRole: 'CHRO', total: 15 },
   { id: 7, name: 'Brand & Reputation', code: 'DOMAIN7', color: '#FFC107', icon: 'shield', executiveRole: 'CMO', total: 18 },
