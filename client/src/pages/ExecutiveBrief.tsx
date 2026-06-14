@@ -252,7 +252,7 @@ export default function ExecutiveBrief() {
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 {[
                   { label: "Anticipate", detail: "231 trigger conditions — signal-detected every 15 minutes across geopolitical, regulatory, operational, and financial domains. Including export controls, CFIUS, data localization, and operating model disruption." },
-                  { label: "Prepare", detail: "180 Readiness Protocols pre-staged before any trigger fires. Not built in response — assembled in the offseason so execution is immediate." },
+                  { label: "Prepare", detail: "212 Readiness Protocols pre-staged before any trigger fires — 180 core, 30 compound multi-threat scenarios, 2 extended geopolitical protocols. Not built in response. Assembled before the trigger so execution is immediate." },
                   { label: "Pivot", detail: "12-minute full organizational coordination after trigger detection. The response is already assembled. The executive authorizes. Execution begins." },
                 ].map(({ label, detail }) => (
                   <div key={label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>

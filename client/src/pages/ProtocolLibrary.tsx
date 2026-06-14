@@ -537,14 +537,38 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
-              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>180 Readiness Protocols · 9 Domains</span>
+              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Protocol Library · 9 Domains</span>
             </div>
             <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
               A Readiness Protocol for Every{" "}
               <em className="italic" style={{ color: "#C9A84C" }}>Strategic Scenario</em>
             </h1>
-            <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-2">
+            <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 14, flexWrap: "wrap" as const }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 28, fontWeight: 800, color: "#0A0F2E", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>180</span>
+                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.3 }}>Core<br/>Protocols</span>
+              </div>
+              <div style={{ width: 1, height: 32, background: "#E8E4DC" }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 28, fontWeight: 800, color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>30</span>
+                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.3 }}>Compound<br/>Scenarios</span>
+              </div>
+              <div style={{ width: 1, height: 32, background: "#E8E4DC" }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 28, fontWeight: 800, color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>2+</span>
+                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.3 }}>Extended<br/>Protocols</span>
+              </div>
+              <div style={{ width: 1, height: 32, background: "#E8E4DC" }} />
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 28, fontWeight: 800, color: "#0A0F2E", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>212</span>
+                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.3 }}>Total<br/>Ready Now</span>
+              </div>
+            </div>
+            <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-1">
               Built from 20+ years of Fortune 500 transformation. 180 core protocols across Growth & Positioning, Risk & Resilience, and Transformation — every situation your organization will face, pre-staged before the trigger fires.
+            </p>
+            <p style={{ fontSize: 12, color: "#2B8A6E", fontWeight: 600, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.05em" }}>
+              The library grows with every activation.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <span style={{ width: 4, height: 4, borderRadius: 0, background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
@@ -1206,7 +1230,8 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ padding: "28px 24px", borderTop: "3px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.1)", borderTopWidth: 3 }}>
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Get Access</div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>Pre-stage these 180 protocols for your organization</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 6, lineHeight: 1.4 }}>Pre-stage 212 protocols for your organization</div>
+                <div style={{ fontSize: 11, color: "rgba(201,168,76,0.8)", marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>180 Core · 30 Compound · 2+ Extended — and growing</div>
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
                   Founding Partners configure protocols against their real scenarios, real team, and real risk calendar.
                 </p>
