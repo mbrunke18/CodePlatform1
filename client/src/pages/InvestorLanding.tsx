@@ -224,6 +224,50 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── GEOPOLITICAL TRIGGER SURFACE ─────────────────────────────────── */}
+        <section className="px-6 py-16" style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-6 h-px" style={{ background: '#C9A84C' }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>The Trigger Surface Boards Are Now Accountable For</span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-12 mb-12 items-start">
+              <div>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(22px,3vw,34px)', fontWeight: 700, color: '#fff', lineHeight: 1.3, marginBottom: 20 }}>
+                  Operating model resilience is now a board-level obligation — not an operational one.
+                </p>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.85, marginBottom: 14 }}>
+                  BCG, McKinsey, and WEF research confirms the same pattern: boards are now accountable for <em style={{ color: 'rgba(255,255,255,0.85)' }}>anticipating</em> strategic triggers, not just responding to them. The consulting engagement maps the scenarios. The question boards are starting to ask: what makes the response ready before the scenario fires?
+                </p>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.85 }}>
+                  Readiness OS is the install that follows the consulting deck — operationalizing the scenario plan across 231 trigger conditions so the response is pre-staged, not improvised.
+                </p>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 12 }}>
+                {[
+                  { domain: 'Export Control & Technology Restriction', detail: 'BIS entity lists, CHIPS Act exposure, ITAR/EAR compliance triggers — detected before a license violation surfaces' },
+                  { domain: 'Foreign Investment Scrutiny (CFIUS)', detail: 'Ownership structure reviews, national security assessments, forced divestiture signals — pre-staged before Treasury moves' },
+                  { domain: 'Data Sovereignty & Localization Mandate', detail: 'Cross-border data flow restrictions, adequacy decision changes, cloud sovereignty requirements — protocol ready before enforcement' },
+                  { domain: 'Geopolitical Operating Model Disruption', detail: 'US-China decoupling cascades, market exit triggers, friend-shoring mandates — restructuring protocol staged in advance' },
+                ].map(({ domain, detail }) => (
+                  <div key={domain} style={{ borderLeft: '3px solid rgba(201,168,76,0.4)', paddingLeft: 16, paddingTop: 4, paddingBottom: 4 }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 4 }}>{domain}</div>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.60)', lineHeight: 1.7 }}>{detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ borderTop: '1px solid rgba(201,168,76,0.2)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' as const }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontStyle: 'italic', color: 'rgba(255,255,255,0.70)', lineHeight: 1.55, maxWidth: 600 }}>
+                "The firm that survives a geopolitical trigger is not the fastest to respond. It is the one that made the response ready before the trigger fired."
+              </p>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#2B8A6E', textAlign: 'right' as const, lineHeight: 1.8 }}>
+                231 Trigger Conditions<br />15-Minute Detection Cycle<br />4 Geopolitical Signal Domains
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── COMPETITIVE MOAT SECTION ─────────────────────────────────────── */}
         <section className="py-20 px-6" style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
           <div className="max-w-5xl mx-auto">

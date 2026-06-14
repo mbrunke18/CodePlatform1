@@ -227,6 +227,46 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* Board-Level Context — anticipate-prepare-pivot vocabulary */}
+        <section style={{ background: NAVY, padding: "56px 48px", borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <div style={{ width: 24, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>The Board-Level Frame</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
+              <div>
+                <p style={{ ...CG, fontSize: "clamp(20px,2.5vw,30px)", fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 20 }}>
+                  No organization should be caught flat-footed by a trigger it could have prepared for.
+                </p>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.85, marginBottom: 14 }}>
+                  Boards now hold management accountable for <em>anticipating</em> strategic triggers — not just responding to them. The standard is no longer crisis management. It is operating model resilience.
+                </p>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.85, marginBottom: 14 }}>
+                  Geopolitical triggers — export control changes, CFIUS reviews, data localization mandates, forced operating model restructuring — are slow-burn, high-consequence events that arrive regardless of the strategic plan. Most enterprise signal architectures miss them entirely.
+                </p>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.85 }}>
+                  Readiness OS is what operationalizes the scenario plan. A consulting engagement maps the threats. Readiness OS ensures the response is pre-staged before any of them fire.
+                </p>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                {[
+                  { label: "Anticipate", detail: "231 trigger conditions — signal-detected every 15 minutes across geopolitical, regulatory, operational, and financial domains. Including export controls, CFIUS, data localization, and operating model disruption." },
+                  { label: "Prepare", detail: "180 Readiness Protocols pre-staged before any trigger fires. Not built in response — assembled in the offseason so execution is immediate." },
+                  { label: "Pivot", detail: "12-minute full organizational coordination after trigger detection. The response is already assembled. The executive authorizes. Execution begins." },
+                ].map(({ label, detail }) => (
+                  <div key={label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                    <div style={{ width: 76, flexShrink: 0, fontWeight: 800, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, paddingTop: 3 }}>{label}</div>
+                    <div style={{ flex: 1, borderLeft: "1px solid rgba(201,168,76,0.3)", paddingLeft: 16 }}>
+                      <p style={{ fontSize: 13, color: "rgba(255,255,255,0.70)", lineHeight: 1.75 }}>{detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Proof Numbers */}
         <section style={{ background: "#F8F7F4", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>

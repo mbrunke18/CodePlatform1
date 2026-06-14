@@ -188,7 +188,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     baseConfidence: 65,
   },
 
-  // Geopolitical
+  // Geopolitical — Broad signal (existing)
   {
     name: 'Geopolitical Risk Signal',
     domain: 'Geopolitical',
@@ -196,6 +196,40 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     playbookName: 'Geopolitical Risk Response',
     alternatePlaybooks: ['Supply Chain Disruption Protocol', 'Operational Crisis Response'],
     baseConfidence: 70,
+  },
+
+  // Geopolitical — Slow-burn, high-consequence triggers (BCG category: anticipate-prepare-pivot)
+  {
+    name: 'Export Control & Technology Restriction',
+    domain: 'Geopolitical',
+    keywords: ['export control', 'export restriction', 'export ban', 'export license', 'BIS', 'entity list', 'denied party', 'controlled technology', 'dual-use', 'technology transfer', 'CHIPS Act', 'semiconductor restriction', 'chip restriction', 'technology export', 'export compliance', 'deemed export', 'EAR', 'ITAR', 'commerce control list', 'export administration', 'restricted technology', 'foreign national', 're-export', 'license required', 'end-use restriction', 'technology diversion'],
+    playbookName: 'Geopolitical Risk Response',
+    alternatePlaybooks: ['Regulatory Compliance Sprint', 'Supply Chain Disruption Protocol'],
+    baseConfidence: 82,
+  },
+  {
+    name: 'Foreign Investment Scrutiny (CFIUS)',
+    domain: 'Geopolitical',
+    keywords: ['CFIUS', 'Committee on Foreign Investment', 'national security review', 'foreign ownership', 'foreign acquisition', 'FDI restriction', 'foreign direct investment', 'ownership review', 'national security concern', 'foreign entity', 'foreign investor', 'divestiture order', 'forced divestiture', 'ownership structure', 'beneficial ownership', 'foreign control', 'national security risk', 'strategic asset', 'critical infrastructure review', 'Treasury review'],
+    playbookName: 'Geopolitical Risk Response',
+    alternatePlaybooks: ['Regulatory Compliance Sprint', 'Regulatory Disclosure Protocol'],
+    baseConfidence: 85,
+  },
+  {
+    name: 'Data Sovereignty & Localization Mandate',
+    domain: 'Geopolitical',
+    keywords: ['data localization', 'data residency', 'data sovereignty', 'cross-border data', 'data transfer ban', 'data border', 'data jurisdiction', 'local data storage', 'in-country data', 'data export restriction', 'personal data transfer', 'standard contractual clauses', 'adequacy decision', 'data flow restriction', 'transborder data', 'data protection authority', 'supervisory authority', 'data localization law', 'cloud sovereignty', 'sovereign cloud', 'national data law'],
+    playbookName: 'Regulatory Compliance Sprint',
+    alternatePlaybooks: ['Geopolitical Risk Response', 'Regulatory Disclosure Protocol'],
+    baseConfidence: 78,
+  },
+  {
+    name: 'Geopolitical Operating Model Disruption',
+    domain: 'Geopolitical',
+    keywords: ['decoupling', 'tech decoupling', 'US-China', 'China technology', 'technology ban', 'market exit', 'country exit', 'forced exit', 'supply chain restructuring', 'vendor diversification', 'operating model risk', 'geopolitical restructuring', 'strategic bifurcation', 'friend-shoring', 'nearshoring', 'onshoring mandate', 'dual operating model', 'China risk', 'Russia sanctions', 'market access restriction', 'operating license revoked', 'business exit', 'forced wind-down'],
+    playbookName: 'Geopolitical Risk Response',
+    alternatePlaybooks: ['Supply Chain Disruption Protocol', 'Operational Crisis Response'],
+    baseConfidence: 80,
   },
 ];
 
