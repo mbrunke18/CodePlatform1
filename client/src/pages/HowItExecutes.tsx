@@ -536,7 +536,7 @@ export default function HowItExecutes() {
             {/* Moat metrics */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "rgba(255,255,255,0.06)", marginTop: 1 }}>
               {[
-                { stat: "180", label: "Protocols in the learning library", sub: "Every one evidence-eligible after first activation" },
+                { stat: "212", label: "Protocols in the learning library", sub: "Every one evidence-eligible after first activation" },
                 { stat: "Causal", label: "Hypotheses — not correlation", sub: "Expected vs. actual measured on every re-activation" },
                 { stat: "Months", label: "To rebuild this on any competitor", sub: "The moat compounds with every activation" },
               ].map((m, i) => (

@@ -1111,7 +1111,7 @@ function HeroSection() {
                 {[
                   { n: "12 min",  l: "Trigger to execution" },
                   { n: "3,600×", l: "Execution head start" },
-                  { n: "180",    l: "Readiness Protocols" },
+                  { n: "212",    l: "Readiness Protocols" },
                   { n: "231",    l: "Trigger patterns" },
                 ].map((s, i) => (
                   <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
