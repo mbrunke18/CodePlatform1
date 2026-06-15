@@ -278,20 +278,24 @@ export default function StandardNav() {
     <button
       className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
       style={{
-        color: highlighted ? GOLD : NAVY,
+        color: highlighted ? GOLD : 'rgba(255,255,255,0.82)',
         background: 'transparent',
         whiteSpace: 'nowrap',
       }}
       onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.background = highlighted ? 'rgba(201,168,76,0.10)' : 'rgba(10,15,46,0.07)';
+        const el = e.currentTarget as HTMLElement;
+        el.style.background = highlighted ? 'rgba(201,168,76,0.12)' : 'rgba(255,255,255,0.07)';
+        if (!highlighted) el.style.color = '#fff';
       }}
       onMouseLeave={e => {
-        (e.currentTarget as HTMLElement).style.background = 'transparent';
+        const el = e.currentTarget as HTMLElement;
+        el.style.background = 'transparent';
+        el.style.color = highlighted ? GOLD : 'rgba(255,255,255,0.82)';
       }}
       data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
     >
       {label}
-      <ChevronDown className="h-3 w-3 opacity-60" />
+      <ChevronDown className="h-3 w-3 opacity-50" />
     </button>
   );
 
@@ -616,9 +620,9 @@ export default function StandardNav() {
           <button
             className="px-3 py-2 text-sm font-bold transition-all duration-150 flex items-center gap-1.5"
             style={{
-              color: NAVY,
-              background: 'rgba(201,168,76,0.08)',
-              border: '1px solid rgba(201,168,76,0.3)',
+              color: GOLD,
+              background: 'rgba(201,168,76,0.10)',
+              border: '1px solid rgba(201,168,76,0.28)',
               whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => {
@@ -859,29 +863,89 @@ export default function StandardNav() {
     );
   };
 
+  const tickerItems = [
+    { text: "THE RESPONSE IS READY BEFORE THE TRIGGER FIRES", color: GOLD },
+    { text: "180 READINESS PROTOCOLS · STAGED AND READY", color: "rgba(255,255,255,0.55)" },
+    { text: "3,600× EXECUTION HEAD START · 30 DAYS COMPRESSED TO 12 MINUTES", color: GOLD },
+    { text: "231 TRIGGERS MONITORED · CONTINUOUSLY", color: "rgba(255,255,255,0.55)" },
+    { text: "FOUNDING PARTNER PROGRAM · 90-DAY VALIDATION PARTNERSHIP", color: TEAL },
+    { text: "WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI", color: GOLD },
+    { text: "AI MONITORS · EXECUTIVES AUTHORIZE · EXECUTION PRE-STAGED", color: "rgba(255,255,255,0.55)" },
+  ];
+
   return (
     <nav
       className="sticky top-0 z-50"
       style={{
-        background: '#ffffff',
-        borderBottom: `1px solid rgba(201,168,76,0.2)`,
-        boxShadow: '0 1px 16px rgba(10,15,46,0.06)',
+        background: NAVY,
+        borderBottom: `1px solid rgba(201,168,76,0.18)`,
+        boxShadow: '0 4px 32px rgba(0,0,0,0.55)',
       }}
     >
-      {/* Gold accent line at very top */}
-      <div style={{ height: 2, background: `linear-gradient(90deg, ${GOLD} 0%, ${TEAL} 50%, ${GOLD} 100%)`, opacity: 0.7 }} />
+      {/* Gold-to-teal accent line — 3px */}
+      <div style={{ height: 3, background: `linear-gradient(90deg, ${GOLD} 0%, ${TEAL} 45%, ${NAVY} 55%, ${TEAL} 65%, ${GOLD} 100%)` }} />
+
+      {/* ── GTM Proof-Point Ticker Strip ── */}
+      <div
+        className="vm-ticker-track hidden lg:block"
+        style={{
+          background: 'rgba(0,0,0,0.38)',
+          borderBottom: '1px solid rgba(201,168,76,0.10)',
+          height: 28,
+          cursor: 'default',
+        }}
+      >
+        <div className="vm-ticker-inner" style={{ height: 28 }}>
+          {/* Doubled for seamless loop */}
+          {[...tickerItems, ...tickerItems].map((item, i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', height: 28 }}>
+              <span
+                style={{
+                  fontSize: 9.5,
+                  fontWeight: 700,
+                  letterSpacing: '0.18em',
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  color: item.color,
+                  padding: '0 28px',
+                }}
+              >
+                {item.text}
+              </span>
+              <span style={{ color: GOLD, opacity: 0.4, fontSize: 8, flexShrink: 0 }}>◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between" style={{ height: navLogoHeight }}>
 
-          {/* Left: Logo */}
-          <div className="flex items-center">
+          {/* Left: Logo + Live System indicator */}
+          <div className="flex items-center gap-3">
             <div
               className="flex items-center cursor-pointer transition-opacity hover:opacity-80"
               onClick={() => navigateTo('/')}
               data-testid="nav-logo"
             >
-              <ExecuteIQLogo height={navLogoHeight} variant="full" color="navy" animated={true} />
+              <ExecuteIQLogo height={navLogoHeight} variant="full" color="white" animated={true} />
+            </div>
+            {/* Live system badge */}
+            <div
+              className="hidden xl:flex items-center gap-1.5"
+              style={{
+                background: 'rgba(43,138,110,0.12)',
+                border: '1px solid rgba(43,138,110,0.25)',
+                borderRadius: '0.15rem',
+                padding: '2px 7px',
+              }}
+            >
+              <span
+                className="live-dot-beat"
+                style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, display: 'block', flexShrink: 0 }}
+              />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.16em', color: TEAL, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>
+                System Active
+              </span>
             </div>
           </div>
 
@@ -893,32 +957,13 @@ export default function StandardNav() {
                 {renderExperienceDropdown()}
                 {renderEvidenceDropdown()}
                 <button
-                  onClick={() => navigateTo('/platform')}
-                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-                  style={{ color: '#fff', background: NAVY, whiteSpace: 'nowrap', borderRadius: '0.15rem' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#1a2560'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
-                >
-                  Readiness OS Hub
-                </button>
-                <button
                   onClick={() => navigateTo('/pricing')}
                   className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-                  style={{ color: NAVY, background: 'transparent', whiteSpace: 'nowrap' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                  style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
                 >
                   Pricing
-                </button>
-                <button
-                  onClick={() => navigateTo('/readiness-benchmark')}
-                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-                  style={{ color: GOLD, background: 'transparent', whiteSpace: 'nowrap' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-                >
-                  <ClipboardCheck className="h-3.5 w-3.5" />
-                  Benchmark
                 </button>
               </>
             )}
@@ -931,9 +976,9 @@ export default function StandardNav() {
               <button
                 onClick={handleBack}
                 className="h-9 w-9 flex items-center justify-center transition-all"
-                style={{ color: NAVY, background: 'transparent', border: '1px solid rgba(10,15,46,0.12)' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                style={{ color: 'rgba(255,255,255,0.55)', background: 'transparent', border: '1px solid rgba(255,255,255,0.12)' }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.55)'; }}
                 data-testid="nav-back-button"
                 title="Go back"
               >
@@ -943,8 +988,8 @@ export default function StandardNav() {
             {/* Global Search Button */}
             <button
               onClick={() => { setSearchOpen(o => !o); setSearchQuery(''); }}
-              className="h-9 w-9 flex items-center justify-center border transition-all"
-              style={{ border: '1px solid rgba(10,15,46,0.12)', color: NAVY, background: searchOpen ? 'rgba(10,15,46,0.04)' : 'transparent' }}
+              className="h-9 w-9 flex items-center justify-center transition-all"
+              style={{ border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.55)', background: searchOpen ? 'rgba(255,255,255,0.07)' : 'transparent' }}
               title="Search platform (⌘K)"
             >
               <Search className="h-4 w-4" />
@@ -967,7 +1012,7 @@ export default function StandardNav() {
                     <Button
                       variant="ghost"
                       className="flex items-center gap-2 px-3 py-1.5 h-9"
-                      style={{ color: NAVY }}
+                      style={{ color: 'rgba(255,255,255,0.75)' }}
                       data-testid="nav-user-menu"
                     >
                       <User className="h-4 w-4" style={{ color: TEAL }} />
@@ -1027,21 +1072,43 @@ export default function StandardNav() {
               </>
             ) : (
               <>
+                {/* Platform Map — right-side link */}
+                <button
+                  onClick={() => navigateTo('/platform')}
+                  className="h-9 px-3 text-sm font-semibold flex items-center gap-1.5 transition-all"
+                  style={{ color: TEAL, background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.28)', borderRadius: '0.15rem', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.2)'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.12)'; }}
+                >
+                  <Grid3X3 className="h-3.5 w-3.5" />
+                  Platform Map
+                </button>
+                {/* Benchmark — gold accent link */}
+                <button
+                  onClick={() => navigateTo('/readiness-benchmark')}
+                  className="h-9 px-3 text-sm font-semibold flex items-center gap-1.5 transition-all"
+                  style={{ color: GOLD, background: 'rgba(201,168,76,0.10)', border: '1px solid rgba(201,168,76,0.28)', borderRadius: '0.15rem', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(201,168,76,0.18)'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(201,168,76,0.10)'; }}
+                >
+                  <ClipboardCheck className="h-3.5 w-3.5" />
+                  Benchmark
+                </button>
                 <Button
                   onClick={() => navigateTo("/founding-partner")}
-                  className="h-9 px-4 text-sm font-bold"
-                  style={{ background: GOLD, color: NAVY, border: "none" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
+                  className="gold-cta-pulse h-9 px-4 text-sm font-bold"
+                  style={{ background: GOLD, color: NAVY, border: "none", borderRadius: '0.15rem' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = '#DFC178'; el.style.animationPlayState = 'paused'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.animationPlayState = 'running'; }}
                   data-testid="nav-request-access"
                 >
-                  Request Founding Partner Access
+                  Apply for Founding Partner Access
                 </Button>
                 <Button
                   variant="ghost"
                   onClick={() => login()}
                   className="h-9 px-3 text-sm font-medium"
-                  style={{ color: NAVY }}
+                  style={{ color: 'rgba(255,255,255,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}
                   data-testid="nav-login"
                 >
                   <span className="flex items-center gap-1.5">

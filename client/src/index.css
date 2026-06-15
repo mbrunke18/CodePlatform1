@@ -326,6 +326,44 @@ html {
   50% { opacity: 0.5; }
 }
 
+/* ── GTM Nav: Proof-point ticker ── */
+@keyframes vm-ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.vm-ticker-track {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.vm-ticker-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  animation: vm-ticker 55s linear infinite;
+  white-space: nowrap;
+}
+.vm-ticker-track:hover .vm-ticker-inner {
+  animation-play-state: paused;
+}
+
+/* ── GTM Nav: Primary CTA gold pulse ── */
+@keyframes gold-cta-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+  50%       { box-shadow: 0 0 18px 5px rgba(201,168,76,0.32); }
+}
+.gold-cta-pulse {
+  animation: gold-cta-glow 3.2s ease-in-out infinite;
+}
+
+/* ── GTM Nav: Live dot pulse ── */
+@keyframes live-dot-beat {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.65); }
+}
+.live-dot-beat {
+  animation: live-dot-beat 1.6s ease-in-out infinite;
+}
+
 @keyframes vm-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(43,138,110,0.6); }
   50% { box-shadow: 0 0 0 6px rgba(43,138,110,0); }
