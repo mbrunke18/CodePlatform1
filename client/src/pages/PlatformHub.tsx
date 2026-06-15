@@ -1,6 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Play, ArrowRight, ChevronRight } from "lucide-react";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import PageLayout from "@/components/layout/PageLayout";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -180,6 +181,7 @@ export default function PlatformHub() {
   const [, navigate] = useLocation();
 
   return (
+    <PageLayout>
     <div style={{ background: IVORY, minHeight: "100vh" }}>
 
       {/* ── PAGE TITLE BAND ── white, clearly separated from the navy nav above */}
@@ -398,5 +400,6 @@ export default function PlatformHub() {
 
       </div>
     </div>
+    </PageLayout>
   );
 }
