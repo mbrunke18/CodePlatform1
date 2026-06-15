@@ -118,6 +118,16 @@ const ONBOARDING = [
   { label: "Protocol Builder", href: "/protocol-builder" },
 ];
 
+const EVALUATE = [
+  { label: "Readiness Benchmark — Free", href: "/readiness-benchmark" },
+  { label: "vs. Consulting Firms", href: "/vs-consulting" },
+  { label: "vs. Microsoft Copilot", href: "/ms-project" },
+  { label: "Platform Reality Check", href: "/platform-reality" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Security & Compliance", href: "/security-compliance" },
+  { label: "Investor Overview", href: "/investors" },
+];
+
 function Btn({ label, href, color = NAVY, size = "sm" }: { label: string; href: string; color?: string; size?: "sm" | "md" | "lg" }) {
   const pad = size === "lg" ? "12px 20px" : size === "md" ? "9px 16px" : "7px 14px";
   const fs = size === "lg" ? 14 : size === "md" ? 13 : 12;
@@ -243,6 +253,23 @@ export default function PlatformHub() {
                 <div style={{ ...DM, fontSize: 10, fontWeight: 700, color: d.color, marginTop: 8, display: "flex", alignItems: "center", gap: 4 }}>
                   See Demo <ArrowRight size={9} />
                 </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ── EVALUATE & DECIDE — horizontal strip ─────── */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
+            EVALUATE & DECIDE · BENCHMARK · COMPARE · PRICE · INVEST
+          </div>
+          <div style={{ background: "#fff", border: "1px solid rgba(10,15,46,0.08)", padding: "14px 16px", display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+            {EVALUATE.map(e => (
+              <Link key={e.label} href={e.href} style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, background: IVORY, border: "1px solid rgba(10,15,46,0.12)", padding: "7px 14px", textDecoration: "none", whiteSpace: "nowrap" as const, transition: "border-color 0.12s, color 0.12s" }}
+                onMouseEnter={el => { (el.currentTarget as HTMLElement).style.borderColor = GOLD; (el.currentTarget as HTMLElement).style.color = "#8B5E0A"; }}
+                onMouseLeave={el => { (el.currentTarget as HTMLElement).style.borderColor = "rgba(10,15,46,0.12)"; (el.currentTarget as HTMLElement).style.color = NAVY; }}
+              >
+                {e.label}
               </Link>
             ))}
           </div>

@@ -165,7 +165,6 @@ export default function StandardNav() {
     {
       heading: "Inside the Platform",
       links: [
-        { label: "Onboarding Hub — Your Full Go-Live Path", path: "/start", icon: Rocket, description: "Every onboarding resource in one place — 4 phases, 4 roles, 30 days to your first live activation", featured: true },
         { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
         { label: "PMO Director Onboarding", path: "/pmo-onboarding", icon: Layers, description: "Preparation architecture ownership — your role, your 4-phase go-live path, your governance rhythm", featured: true },
         { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible.", featured: true },
@@ -178,7 +177,6 @@ export default function StandardNav() {
     {
       heading: "Intelligence Engine",
       links: [
-        { label: "Intelligence Layer Hub — Complete Map", path: "/intelligence-hub", icon: Brain, description: "Detect → Analyze → Alert → Execute → Learn — every intelligence capability in one view", featured: true },
         { label: "Predictive Signal Intelligence", path: "/predictive-intelligence", icon: Target, description: "Pattern-matched clusters — pre-stage protocols before the trigger fires", featured: true },
         { label: "Organizational Tendency Intelligence", path: "/tendency-intelligence", icon: BarChart3, description: "Your organization measured against itself — bottlenecks, stakeholder profiles, execution patterns", featured: true },
         { label: "Sector Intelligence Library", path: "/sector-intelligence", icon: Globe, description: "How 203 organizations in your sector have responded — anonymized, aggregated, actionable", featured: true },
@@ -238,7 +236,6 @@ export default function StandardNav() {
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
-    { label: "Proof Hub — Every Validation Asset in One Place", path: "/proof", icon: FileText, description: "All proof organized by buying stage and audience — CFO · Board · CEO · Procurement. Build the case, win the decision.", featured: true },
     { label: "The Case — The Argument You Can't Argue Out Of", path: "/the-case", icon: Scale, description: "Problem cost → proof → moat → ROI → comparison → decision. The complete buying argument in one page.", featured: true },
     { label: "How It Works", path: "/how-it-executes", icon: FileText, description: "From trigger detection to full coordination in 12 minutes — the complete execution sequence", featured: true },
     { label: "Why Readiness OS?", path: "/the-proof", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
@@ -372,17 +369,9 @@ export default function StandardNav() {
               <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>180 Readiness Protocols. 12 minutes.</p>
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div
-              onClick={() => navigateTo('/platform')}
-              style={{ background: GOLD, color: NAVY, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '7px 14px', cursor: 'pointer', whiteSpace: 'nowrap' }}
-            >
-              Platform Hub →
-            </div>
-            <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
-              <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
-              <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
-            </div>
+          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
+            <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
+            <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
           </div>
         </div>
 
@@ -903,6 +892,15 @@ export default function StandardNav() {
                 {renderPlatformDropdown()}
                 {renderExperienceDropdown()}
                 {renderEvidenceDropdown()}
+                <button
+                  onClick={() => navigateTo('/platform')}
+                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
+                  style={{ color: '#fff', background: NAVY, whiteSpace: 'nowrap', borderRadius: '0.15rem' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#1a2560'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
+                >
+                  Readiness OS Hub
+                </button>
                 <button
                   onClick={() => navigateTo('/pricing')}
                   className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
