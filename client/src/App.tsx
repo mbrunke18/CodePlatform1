@@ -502,8 +502,9 @@ function Router() {
 
         {/* Hub Pages */}
         <Route path="/executive-hub" component={ExecutiveHub} />
-        <Route path="/intelligence-hub" component={IntelligenceHub} />
+        <Route path="/intelligence-hub" component={lazy(() => import("./pages/IntelligenceLayerHub"))} />
         <Route path="/settings-hub" component={SettingsHub} />
+        <Route path="/proof" component={lazy(() => import("./pages/ProofHub"))} />
         <Route path="/situations-hub" component={SituationalHub} />
         {renderRedirects(["/crisis-hub"], "/situations-hub")}
 
@@ -604,6 +605,7 @@ function Router() {
         <Route path="/peer-review-report" component={PeerReviewReport} />
         {renderRoutes(["/onboarding", "/setup", "/onboarding-wizard"], OnboardingWizard)}
         <Route path="/getting-started" component={GettingStarted} />
+        <Route path="/start" component={lazy(() => import("./pages/OnboardingHub"))} />
         <Route path="/pmo-onboarding" component={PMOOnboarding} />
         <Route path="/user-guide" component={UserGuide} />
         <Route path="/mobilization-tax" component={MobilizationTax} />
