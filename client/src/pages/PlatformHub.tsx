@@ -13,6 +13,21 @@ const VIOLET = "#5B4FBE";
 const DM: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 const SERIF: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
+const OPERATING_MODEL = [
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "How It Executes", href: "/how-it-executes" },
+  { label: "IDEA Framework", href: "/idea-framework" },
+  { label: "Platform Overview", href: "/platform-overview" },
+  { label: "Why Readiness OS", href: "/the-proof" },
+  { label: "Enterprise Ecosystems", href: "/ecosystems" },
+];
+
+const TECH_ARCH = [
+  { label: "Execution Data Fabric", sub: "How signals become staged responses", href: "/execution-data-fabric" },
+  { label: "Institutional Memory Engine", sub: "The compounding dataset — improves with every activation", href: "/institutional-memory-engine" },
+  { label: "Universal Connector", sub: "Any stack · 55+ pre-built connectors · live in 15 minutes", href: "/universal-connector" },
+];
+
 const PHASES = [
   {
     id: "DETECT", color: TEAL, dark: "#1d6b52",
@@ -21,6 +36,8 @@ const PHASES = [
     buttons: [
       { label: "Signal Intelligence", href: "/signal-intelligence" },
       { label: "Trigger Monitoring", href: "/triggers-management" },
+      { label: "Intelligence Hub", href: "/intelligence-hub" },
+      { label: "Predictive Intelligence", href: "/predictive-intelligence" },
       { label: "Command Tower", href: "/command-tower" },
       { label: "Intelligence Control Center", href: "/intelligence-control-center" },
       { label: "9-Domain Coverage Board", href: "/situations-hub" },
@@ -33,6 +50,8 @@ const PHASES = [
     buttons: [
       { label: "Protocol Library — 180", href: "/playbooks" },
       { label: "Mission Control", href: "/mission-control" },
+      { label: "Workspace", href: "/workspace" },
+      { label: "Situation Intents", href: "/identify/situation-intents" },
       { label: "Protocol Builder", href: "/protocol-builder" },
       { label: "Practice Drills", href: "/practice-drills" },
       { label: "Readiness Rhythm", href: "/readiness-rhythm" },
@@ -46,6 +65,8 @@ const PHASES = [
       { label: "Live Activation Center", href: "/live-activation-center" },
       { label: "War Room", href: "/war-room" },
       { label: "Coordination Intelligence", href: "/coordination-intelligence" },
+      { label: "Crisis Communications", href: "/crisis-communications" },
+      { label: "Financial Exposure Estimator", href: "/financial-exposure" },
       { label: "Stakeholder Notifications", href: "/mission-control" },
       { label: "Concurrent Situations", href: "/concurrent-situations" },
     ],
@@ -56,6 +77,8 @@ const PHASES = [
     tagline: "Every activation sharpens the next response.",
     buttons: [
       { label: "ADVANCE 2.0", href: "/advance-intelligence" },
+      { label: "Sector Intelligence", href: "/sector-intelligence" },
+      { label: "Tendency Intelligence", href: "/tendency-intelligence" },
       { label: "Advanced Analytics", href: "/advanced-analytics" },
       { label: "AI Radar Dashboard", href: "/ai-radar" },
       { label: "Proof Story — Outcomes", href: "/proof-story" },
@@ -222,6 +245,21 @@ export default function PlatformHub() {
 
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "32px 40px 56px" }}>
 
+        {/* ── OPERATING MODEL STRIP ── */}
+        <div style={{ marginBottom: 20 }}>
+          <SectionLabel>The Operating Model</SectionLabel>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {OPERATING_MODEL.map(item => (
+              <Link key={item.href} href={item.href} style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, padding: "9px 16px", background: "#fff", border: `1px solid rgba(10,15,46,0.14)`, borderLeft: `3px solid ${NAVY}`, ...DM, fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.02em", boxShadow: "0 1px 4px rgba(10,15,46,0.06)", transition: "border-color 0.12s, box-shadow 0.12s" }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderLeftColor = GOLD; el.style.boxShadow = "0 2px 10px rgba(10,15,46,0.12)"; el.style.color = GOLD; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderLeftColor = NAVY; el.style.boxShadow = "0 1px 4px rgba(10,15,46,0.06)"; el.style.color = NAVY; }}
+              >
+                {item.label} <ChevronRight size={10} style={{ opacity: 0.4 }} />
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* ── PLATFORM CHAIN ── */}
         <div style={{ marginBottom: 28 }}>
           <SectionLabel>The Platform · Detect → Prepare → Execute → Learn</SectionLabel>
@@ -376,6 +414,25 @@ export default function PlatformHub() {
             </div>
           </div>
 
+        </div>
+
+        {/* ── TECHNICAL ARCHITECTURE STRIP ── */}
+        <div style={{ marginTop: 24, marginBottom: 16 }}>
+          <SectionLabel>Technical Architecture</SectionLabel>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+            {TECH_ARCH.map(item => (
+              <Link key={item.href} href={item.href} style={{ textDecoration: "none", display: "block", background: NAVY, borderLeft: `4px solid ${GOLD}`, padding: "16px 20px", boxShadow: "0 2px 8px rgba(10,15,46,0.15)", transition: "box-shadow 0.12s" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px rgba(10,15,46,0.25)`}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(10,15,46,0.15)"}
+              >
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+                  <span style={{ ...DM, fontSize: 13, fontWeight: 800, color: GOLD, letterSpacing: "0.02em" }}>{item.label}</span>
+                  <ChevronRight size={12} style={{ color: GOLD, opacity: 0.6 }} />
+                </div>
+                <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.5)", lineHeight: 1.4 }}>{item.sub}</div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* ── BOTTOM CTA BAR ── */}
