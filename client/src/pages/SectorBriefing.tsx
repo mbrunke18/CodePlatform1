@@ -352,7 +352,7 @@ export default function SectorBriefing() {
                   A Founding Partner engagement includes a full sector scan delivered to your executive team within 5 business days — mapped to your actual strategic exposure, not a generic demo.
                 </p>
                 <Button
-                  onClick={() => setLocation("/contact")}
+                  onClick={() => setLocation("/request-access")}
                   style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, width: "100%", padding: "14px", ...BC }}
                 >
                   Apply for Founding Partner Access <ArrowRight style={{ marginLeft: 6, width: 13, height: 13 }} />
@@ -384,7 +384,7 @@ export default function SectorBriefing() {
           </h2>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const, marginTop: 24 }}>
             <Button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation("/request-access")}
               style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "14px 28px", ...BC }}
             >
               Apply for Founding Partner Access <ArrowRight style={{ marginLeft: 6, width: 13, height: 13 }} />

@@ -722,7 +722,7 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
           The Founding Partner Program is a 90-day validation partnership with large enterprises. The first cohort is forming now. The only difference between this simulation and a live deployment: the protocols carry your organization's name, your stakeholders, and your pre-approved advisors.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
-          <a href="/contact" style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 15, fontWeight: 800, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>
+          <a href="/request-access" style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 15, fontWeight: 800, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>
             Apply for Founding Partner Access →
           </a>
           <button onClick={onRestart} style={{ ...BC, background: "transparent", border: `1px solid ${W25}`, color: W70, fontSize: 13, fontWeight: 600, letterSpacing: "0.1em", padding: "16px 24px", cursor: "pointer", textTransform: "uppercase" }}>
@@ -784,7 +784,7 @@ export default function MasterDemo() {
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <a href="/demo-hub" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: W50, textDecoration: "none", padding: "6px 14px", border: `1px solid ${W25}` }}>← All Scenarios</a>
-          <a href="/contact" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, background: GOLD, textDecoration: "none", padding: "6px 14px" }}>Request Access</a>
+          <a href="/request-access" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, background: GOLD, textDecoration: "none", padding: "6px 14px" }}>Request Access</a>
         </div>
       </div>
 

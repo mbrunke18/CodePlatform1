@@ -162,7 +162,7 @@ export default function FoundingPartnerPage() {
           <p style={{ fontSize: 17, color: MUTED, lineHeight: 1.75, maxWidth: 640, margin: '0 auto 32px' }}>
             You don't need to bet blindly on a new platform. The Founding Partner Program is a 90-day validation engagement — structured milestones, defined success criteria, a full fee credit, and a partial refund option if we don't deliver.
           </p>
-          <Link href="/contact">
+          <Link href="/request-access">
             <button style={{ padding: '16px 36px', background: GOLD, border: 'none', borderRadius: '0.15rem', color: NAVY, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               Apply for Founding Partner Access <ArrowRight size={18} />
             </button>
@@ -362,7 +362,7 @@ export default function FoundingPartnerPage() {
             Applications take 5 minutes. We respond within 48 hours with a qualification call scheduled. No commitment required to apply.
           </p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/contact">
+            <Link href="/request-access">
               <button style={{ padding: '16px 36px', background: GOLD, border: 'none', borderRadius: '0.15rem', color: NAVY, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
                 Apply for Founding Partner Access <ArrowRight size={18} />
               </button>

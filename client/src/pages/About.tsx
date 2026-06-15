@@ -146,7 +146,7 @@ export default function About() {
         <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 32px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
             {[
-              { label: "startup to Fortune 500 Experience", value: "20 years", sub: "Across 7 industries" },
+              { label: "Startup to Fortune 500 Experience", value: "20 years", sub: "Across 7 industries" },
               { label: "Stanford Coaching Staff", value: "5 years", sub: "Championship football program" },
               { label: "Platform in Production", value: "Jan 2026", sub: "193 pages · Full-stack · Live" },
             ].map(({ label, value, sub }) => (

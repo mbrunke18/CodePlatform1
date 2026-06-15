@@ -339,7 +339,7 @@ export default function AIStackPositioning() {
             ))}
           </div>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="/contact" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none" }}>
+            <a href="/request-access" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none" }}>
               Apply for Founding Partner Access
             </a>
             <a href="/technical-architecture" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", padding: "14px 32px", border: "1px solid rgba(255,255,255,0.15)", textDecoration: "none" }}>

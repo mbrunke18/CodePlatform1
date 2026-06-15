@@ -77,7 +77,7 @@ export default function Team() {
                 {[
                   { label: "Company", value: "VaughnMartin" },
                   { label: "Category", value: "Enterprise Readiness OS" },
-                  { label: "Market", value: "startup to Fortune 500" },
+                  { label: "Market", value: "Startup to Fortune 500" },
                   { label: "Founded", value: "2023" },
                 ].map(({ label, value }) => (
                   <div key={label} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: `1px solid ${NAVY}08` }}>

@@ -137,7 +137,7 @@ export default function SHEINTrendDemo() {
           </div>
         ))}
       </div>
-      <a href="/contact" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}>Request Founding Partner Access</a>
+      <a href="/request-access" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}>Request Founding Partner Access</a>
     </div>
   );
 

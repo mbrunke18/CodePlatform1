@@ -782,7 +782,7 @@ export default function Research() {
                   Try Interactive Demo
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link href="/request-access">
                 <Button
                   size="lg"
                   className="border border-white/20 text-white/60 bg-transparent hover:bg-white/10 px-8"

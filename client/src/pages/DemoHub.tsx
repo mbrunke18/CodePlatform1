@@ -312,13 +312,13 @@ export default function DemoHub() {
               Preparation &nbsp;→&nbsp; Readiness &nbsp;→&nbsp; Fearless
             </div>
             <a
-              href="/contact"
+              href="/request-access"
               style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", padding: "16px 48px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}
             >
               Apply for Founding Partner Access →
             </a>
             <div style={{ ...BC, fontSize: 9, color: W25, letterSpacing: "0.2em", marginTop: 14, textTransform: "uppercase" }}>
-              Founding Partner Program · 90-day validation · startup to Fortune 500 only
+              Founding Partner Program · 90-day validation · Startup to Fortune 500
             </div>
           </div>
 

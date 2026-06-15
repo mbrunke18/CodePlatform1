@@ -65,7 +65,7 @@ export function PeerAdoptionOverlay() {
             <div className="bg-[#0A0F2E]/20 p-4 border border-[#2B8A6E]/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#DFC178]">847</p>
-                <p className="text-[#0A0F2E] text-sm mt-1">startup to Fortune 500 Executives</p>
+                <p className="text-[#0A0F2E] text-sm mt-1">Startup to Fortune 500 Executives</p>
               </div>
             </div>
             <div className="bg-[#0A0F2E]/20 p-4 border border-[#2B8A6E]/30">

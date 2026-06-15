@@ -266,7 +266,7 @@ export default function CostOfDelay() {
             </div>
 
             <Button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation("/request-access")}
               style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, width: "100%", padding: "18px", ...BC }}
             >
               Apply for Founding Partner Access <ArrowRight style={{ marginLeft: 6, width: 13, height: 13 }} />
@@ -361,7 +361,7 @@ export default function CostOfDelay() {
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Based on trigger frequency data across enterprise clients and public regulatory filings.</div>
             </div>
             <Button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation("/request-access")}
               style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "14px 28px", ...BC, flexShrink: 0 }}
             >
               End the Evaluation Cycle <ArrowRight style={{ marginLeft: 6, width: 13, height: 13 }} />
@@ -382,7 +382,7 @@ export default function CostOfDelay() {
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const }}>
             <Button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation("/request-access")}
               style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "16px 32px", ...BC }}
             >
               Apply for Founding Partner Access <ArrowRight style={{ marginLeft: 6, width: 13, height: 13 }} />

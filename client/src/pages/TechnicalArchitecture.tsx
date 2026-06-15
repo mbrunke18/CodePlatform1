@@ -508,7 +508,7 @@ export default function TechnicalArchitecture() {
           <a href="/security-compliance" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: NAVY, padding: "10px 24px", border: `1px solid ${NAVY}`, textDecoration: "none" }}>
             Full Security & Compliance Overview →
           </a>
-          <a href="/contact" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, padding: "10px 24px", border: `1px solid rgba(201,168,76,0.4)`, textDecoration: "none" }}>
+          <a href="/request-access" style={{ ...BRC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, padding: "10px 24px", border: `1px solid rgba(201,168,76,0.4)`, textDecoration: "none" }}>
             Request Architecture Brief →
           </a>
         </div>
