@@ -292,7 +292,7 @@ export function registerAdminRoutes(app: Express) {
         .limit(30);
 
       const posts = detections
-        .filter(d => d.confidenceScore >= 75)
+        .filter(d => d.confidenceScore >= 80)
         .map(d => ({
           id: d.id,
           triggerName: d.triggerName,

@@ -1220,9 +1220,10 @@ export async function evaluateAndPersistSignals(
     notifyMatchingProspects(prospectBriefQueue).catch(err =>
       console.warn('[SignalEval] Prospect brief notification error:', (err as Error).message)
     );
-    // Notify platform admin with ready-to-post LinkedIn draft for each qualifying signal
+    // Notify platform admin with ready-to-post LinkedIn draft — ACTION tier only (80%+)
+    // 80%+ = "Trigger Confirmed" tier where a real protocol would execute
     for (const detection of prospectBriefQueue) {
-      if ((detection.confidenceScore ?? 0) >= 75) {
+      if ((detection.confidenceScore ?? 0) >= 80) {
         notifyAdminOfLinkedInPost(detection).catch(err =>
           console.warn('[SignalEval] Admin LinkedIn alert error:', (err as Error).message)
         );
