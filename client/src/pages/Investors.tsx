@@ -210,7 +210,7 @@ function PlatformArchitectureDiagram() {
 
   return (
     <div className="bg-white border border-[#E8E4DC] p-8">
-      <div className="grid grid-cols-4 gap-0 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 relative">
         {steps.map((step, i) => (
           <div key={i} className="flex items-stretch">
             <div className="flex-1 flex flex-col">
@@ -237,7 +237,7 @@ function PlatformArchitectureDiagram() {
               </div>
             </div>
             {i < steps.length - 1 && (
-              <div className="flex items-center justify-center w-8 flex-shrink-0">
+              <div className="hidden sm:flex items-center justify-center w-8 flex-shrink-0">
                 <ChevronRight className="w-5 h-5 text-[#C9A84C]" />
               </div>
             )}
@@ -448,7 +448,7 @@ export default function Investors() {
                   VaughnMartin rebuilt how work flows from first principles. Pre-staged Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. This is a new category — and Readiness OS is the first system built for the AI-native enterprise.
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+                <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2 }}>
                   {[
                     { sys: 'ERP', owns: 'Financial operations', missing: 'Strategic response' },
                     { sys: 'CRM', owns: 'Customer relationships', missing: 'Competitive reaction' },
@@ -488,7 +488,7 @@ export default function Investors() {
                 A competitor can license enterprise software on Day 1. They cannot buy the institutional memory of 180 protocols tested against real strategic triggers, refined through real executive decisions, and proven through real outcomes. That history is the moat. Every activation deepens it.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2, marginBottom: 36 }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2, marginBottom: 36 }}>
                 {[
                   {
                     label: 'Day 1',
@@ -545,7 +545,7 @@ export default function Investors() {
               </div>
 
               {/* Moat Quantified — investor-grade numbers */}
-              <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 2 }}>
+              <div className="grid grid-cols-2 lg:grid-cols-4" style={{ marginTop: 24, gap: 2 }}>
                 {[
                   { metric: '12–36 mo', label: 'Estimated rebuild time', sub: 'Time for a competitor to replicate your activation history on a new platform — grows with every close-out' },
                   { metric: '40–60%', label: 'Faster by Year 3', sub: 'Evidence-backed response speed improvement vs. Year 1 baseline, driven by proven ADVANCE hypotheses' },
@@ -654,7 +654,7 @@ export default function Investors() {
                   <div className="text-white/40 text-xs">2025–2026 Enterprise Architecture Synthesis</div>
                 </div>
               </div>
-              <div className="grid grid-cols-3 divide-x divide-white/10">
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
                 {[
                   { stat: "65%", label: "Not Yet Scaling", sub: "Still coordinating manually — the operating model layer is missing. Readiness OS closes this gap", color: "text-[#C9A84C]" },
                   { stat: "1%", label: "Fully Mature", sub: "Leaders — not employees — are the bottleneck. 231 executive triggers solve this.", color: "text-[#2B8A6E]" },
@@ -680,7 +680,7 @@ export default function Investors() {
               <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Three Research Organizations. One Structural Conclusion.</h2>
               <p className="text-[#6B7280] text-sm max-w-2xl mx-auto">McKinsey, BCG, and MIT Sloan arrived at the same finding independently — from different datasets, different methodologies, different client bases. The operating model is the constraint.</p>
             </div>
-            <div className="grid grid-cols-3 gap-px bg-[#E8E4DC]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-[#E8E4DC]">
               {[
                 {
                   firm: "McKinsey & Company",
@@ -1077,7 +1077,7 @@ export default function Investors() {
               <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">How It Works Under the Hood</h2>
               <p className="text-[#6B7280] text-sm max-w-2xl mx-auto">Three investor-facing architecture pages address the most common diligence questions: data pipeline, defensibility moat, and integration realism.</p>
             </div>
-            <div className="grid grid-cols-3 gap-px bg-[#E8E4DC]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-[#E8E4DC]">
               {[
                 {
                   label: 'Execution Data Fabric',

@@ -206,9 +206,20 @@ export default function PlatformHub() {
   return (
     <PageLayout>
     <div style={{ background: IVORY, minHeight: "100vh" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .ph-header-band { padding: 0 16px !important; }
+          .ph-content-pad { padding: 24px 16px 40px !important; }
+          .ph-4col-grid   { grid-template-columns: 1fr 1fr !important; }
+          .ph-3col-grid   { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .ph-4col-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
 
       {/* ── PAGE TITLE BAND ── white, clearly separated from the navy nav above */}
-      <div style={{
+      <div className="ph-header-band" style={{
         background: "#fff",
         borderBottom: "1px solid rgba(10,15,46,0.10)",
         padding: "0 40px",
@@ -243,7 +254,7 @@ export default function PlatformHub() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "32px 40px 56px" }}>
+      <div className="ph-content-pad" style={{ maxWidth: 1280, margin: "0 auto", padding: "32px 40px 56px" }}>
 
         {/* ── OPERATING MODEL STRIP ── */}
         <div style={{ marginBottom: 20 }}>
@@ -263,7 +274,7 @@ export default function PlatformHub() {
         {/* ── PLATFORM CHAIN ── */}
         <div style={{ marginBottom: 28 }}>
           <SectionLabel>The Platform · Detect → Prepare → Execute → Learn</SectionLabel>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
+          <div className="ph-4col-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
             {PHASES.map((phase, i) => (
               <div key={phase.id} style={{ overflow: "hidden", boxShadow: "0 2px 12px rgba(10,15,46,0.08)" }}>
                 {/* Solid colored phase header */}
@@ -289,7 +300,7 @@ export default function PlatformHub() {
         {/* ── STRATEGIC DOMAINS ── */}
         <div style={{ marginBottom: 28 }}>
           <SectionLabel>Strategic Domains · 210 Protocols Across 3 Domains</SectionLabel>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+          <div className="ph-3col-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
             {DOMAINS.map(d => (
               <Link key={d.label} href={d.href} style={{ textDecoration: "none", display: "block", background: d.bg, border: `1px solid ${d.color}30`, borderLeft: `5px solid ${d.color}`, padding: "18px 20px 16px", transition: "box-shadow 0.15s", boxShadow: "0 2px 8px rgba(10,15,46,0.05)" }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${d.color}30, 0 0 0 1px ${d.color}50`}
@@ -333,7 +344,7 @@ export default function PlatformHub() {
         </div>
 
         {/* ── BOTTOM 4-COLUMN GRID ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
+        <div className="ph-4col-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
 
           {/* CUSTOMER JOURNEY */}
           <div style={{ overflow: "hidden", boxShadow: "0 2px 8px rgba(10,15,46,0.07)" }}>
@@ -419,7 +430,7 @@ export default function PlatformHub() {
         {/* ── TECHNICAL ARCHITECTURE STRIP ── */}
         <div style={{ marginTop: 24, marginBottom: 16 }}>
           <SectionLabel>Technical Architecture</SectionLabel>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+          <div className="ph-3col-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
             {TECH_ARCH.map(item => (
               <Link key={item.href} href={item.href} style={{ textDecoration: "none", display: "block", background: NAVY, borderLeft: `4px solid ${GOLD}`, padding: "16px 20px", boxShadow: "0 2px 8px rgba(10,15,46,0.15)", transition: "box-shadow 0.12s" }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px rgba(10,15,46,0.25)`}

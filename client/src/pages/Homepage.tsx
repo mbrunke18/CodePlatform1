@@ -531,6 +531,7 @@ function HomepageNav() {
         @media (max-width: 768px) {
           .hp-desktop-nav    { display: none !important; }
           .hp-hamburger      { display: flex !important; }
+          .hp-hero-left      { padding: 56px 0 40px !important; }
           .hp-stat-row       { flex-direction: column !important; gap: 24px !important; }
           .hp-stat-div       { display: none !important; }
           .hp-prob-grid      { flex-direction: column !important; }
