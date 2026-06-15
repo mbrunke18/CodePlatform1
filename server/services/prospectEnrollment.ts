@@ -682,4 +682,3 @@ export async function sendRequestAccessWelcome(prospect: {
     console.warn('[Welcome] Send error:', err.message);
   }
 }
-}
