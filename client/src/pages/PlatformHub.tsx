@@ -182,46 +182,39 @@ export default function PlatformHub() {
   return (
     <div style={{ background: IVORY, minHeight: "100vh" }}>
 
-      {/* ── HEADER ── */}
+      {/* ── PAGE TITLE BAND ── white, clearly separated from the navy nav above */}
       <div style={{
-        background: NAVY,
-        backgroundImage: "radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(43,138,110,0.05) 0%, transparent 50%)",
+        background: "#fff",
+        borderBottom: "1px solid rgba(10,15,46,0.10)",
         padding: "0 40px",
-        borderBottom: `3px solid ${GOLD}`,
       }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Top row: logo | breadcrumb | metrics | CTAs */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 0", gap: 20, flexWrap: "wrap" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-              <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-                <ExecuteIQLogo height={38} variant="full" color="white" animated={false} />
-              </Link>
-              <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.15)" }} />
-              <div>
-                <div style={{ ...DM, fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Platform Map</div>
-                <div style={{ ...SERIF, fontSize: 18, fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>The response is ready before the trigger fires.</div>
-              </div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-              {[{ n: "180", l: "Protocols" }, { n: "231", l: "Triggers" }, { n: "9", l: "Domains" }, { n: "12 min", l: "Execution" }, { n: "3,600×", l: "Head Start" }].map(s => (
-                <div key={s.n} style={{ textAlign: "center" }}>
-                  <div style={{ ...DM, fontSize: 20, fontWeight: 900, color: GOLD, lineHeight: 1 }}>{s.n}</div>
-                  <div style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 2 }}>{s.l}</div>
-                </div>
-              ))}
-              <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.15)" }} />
-              <div style={{ display: "flex", gap: 8 }}>
-                <Link href="/12-minute-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: GOLD, color: NAVY, fontWeight: 900, fontSize: 11, padding: "9px 16px", textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase", borderRadius: "0.15rem" }}>
-                  <Play size={10} fill={NAVY} /> Try It Now
-                </Link>
-                <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: "transparent", color: "rgba(255,255,255,0.75)", fontWeight: 600, fontSize: 11, padding: "8px 14px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.22)", borderRadius: "0.15rem" }}>
-                  Apply for Access <ArrowRight size={10} />
-                </Link>
-              </div>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", gap: 20, flexWrap: "wrap" }}>
+          {/* Left: page title */}
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div style={{ width: 3, height: 28, background: TEAL, borderRadius: 2, flexShrink: 0 }} />
+            <div>
+              <div style={{ ...DM, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.2em", color: MUTED, textTransform: "uppercase", marginBottom: 2 }}>Platform Map</div>
+              <div style={{ ...SERIF, fontSize: 17, fontWeight: 700, color: NAVY, lineHeight: 1.1 }}>The response is ready before the trigger fires.</div>
             </div>
           </div>
-          {/* Gold rule */}
-          <div style={{ height: 1, background: `linear-gradient(to right, ${GOLD}60, transparent)`, marginBottom: 0 }} />
+          {/* Right: key metrics + CTAs */}
+          <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+            {[{ n: "180", l: "Protocols" }, { n: "231", l: "Triggers" }, { n: "12 min", l: "Execution" }, { n: "3,600×", l: "Head Start" }].map(s => (
+              <div key={s.n} style={{ textAlign: "center" }}>
+                <div style={{ ...DM, fontSize: 18, fontWeight: 900, color: NAVY, lineHeight: 1 }}>{s.n}</div>
+                <div style={{ ...DM, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 2 }}>{s.l}</div>
+              </div>
+            ))}
+            <div style={{ width: 1, height: 28, background: "rgba(10,15,46,0.12)", flexShrink: 0 }} />
+            <div style={{ display: "flex", gap: 8 }}>
+              <Link href="/12-minute-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: GOLD, color: NAVY, fontWeight: 900, fontSize: 11, padding: "8px 16px", textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase", borderRadius: "0.15rem" }}>
+                <Play size={10} fill={NAVY} /> Try It Now
+              </Link>
+              <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 11, padding: "7px 14px", textDecoration: "none", border: "1px solid rgba(10,15,46,0.2)", borderRadius: "0.15rem" }}>
+                Apply for Access <ArrowRight size={10} />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 

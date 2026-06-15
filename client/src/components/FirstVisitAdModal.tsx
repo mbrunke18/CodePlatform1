@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const STORAGE_KEY = "vm_seen_brief";
+const MAX_VISITS = 3;
 
 const NAVY = "#0A0F2E";
 const NAVY_MID = "#0E1538";
@@ -531,7 +532,8 @@ export function FirstVisitAdModal() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
+    const visits = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
+    if (visits < MAX_VISITS) {
       const t = setTimeout(() => setVisible(true), 800);
       return () => clearTimeout(t);
     }
@@ -542,7 +544,8 @@ export function FirstVisitAdModal() {
   }, [visible]);
 
   const handleClose = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, "1");
+    const current = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
+    localStorage.setItem(STORAGE_KEY, String(current + 1));
     setVisible(false);
     setTimeout(() => setMounted(false), 800);
   }, []);

@@ -878,7 +878,7 @@ export default function StandardNav() {
       className="sticky top-0 z-50"
       style={{
         background: NAVY,
-        borderBottom: `1px solid rgba(201,168,76,0.18)`,
+        borderBottom: `2px solid ${GOLD}`,
         boxShadow: '0 4px 32px rgba(0,0,0,0.55)',
       }}
     >
@@ -953,18 +953,24 @@ export default function StandardNav() {
           <div className="hidden lg:flex items-center gap-0.5">
             {isAuthenticated && user ? renderProductNavCenter() : (
               <>
-                {renderPlatformDropdown()}
-                {renderExperienceDropdown()}
-                {renderEvidenceDropdown()}
-                <button
-                  onClick={() => navigateTo('/pricing')}
-                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-                  style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap' }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
-                >
-                  Pricing
-                </button>
+                {/* Clean hub links — no dropdowns. Each goes to its hub page. */}
+                {[
+                  { label: 'The Platform', path: '/platform' },
+                  { label: 'See It Work', path: '/demo-hub' },
+                  { label: 'The Proof', path: '/executive-brief' },
+                  { label: 'Pricing', path: '/pricing' },
+                ].map(item => (
+                  <button
+                    key={item.path}
+                    onClick={() => navigateTo(item.path)}
+                    className="px-3 py-2 text-sm font-semibold transition-all duration-150"
+                    style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap', border: 'none' }}
+                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
+                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </>
             )}
           </div>
@@ -1072,17 +1078,6 @@ export default function StandardNav() {
               </>
             ) : (
               <>
-                {/* Platform Map — right-side link */}
-                <button
-                  onClick={() => navigateTo('/platform')}
-                  className="h-9 px-3 text-sm font-semibold flex items-center gap-1.5 transition-all"
-                  style={{ color: TEAL, background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.28)', borderRadius: '0.15rem', whiteSpace: 'nowrap' }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.2)'; }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.12)'; }}
-                >
-                  <Grid3X3 className="h-3.5 w-3.5" />
-                  Platform Map
-                </button>
                 {/* Benchmark — gold accent link */}
                 <button
                   onClick={() => navigateTo('/readiness-benchmark')}
