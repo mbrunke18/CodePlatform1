@@ -275,4 +275,46 @@ export function registerAdminRoutes(app: Express) {
       res.status(500).json({ error: err.message });
     }
   });
+
+  app.get("/api/admin/linkedin-posts", requirePlatformAdmin, async (req, res) => {
+    try {
+      const { triggerDetections } = await import("@shared/schema");
+      const { gte: gteOp, desc: descOp } = await import("drizzle-orm");
+      const { db: database } = await import("../db");
+      const { generateLinkedInPost } = await import("../services/linkedInPostGenerator.js");
+
+      const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+      const detections = await database
+        .select()
+        .from(triggerDetections)
+        .where(gteOp(triggerDetections.detectedAt, since))
+        .orderBy(descOp(triggerDetections.detectedAt))
+        .limit(30);
+
+      const posts = detections
+        .filter(d => d.confidenceScore >= 75)
+        .map(d => ({
+          id: d.id,
+          triggerName: d.triggerName,
+          triggerDomain: d.triggerDomain,
+          signalDescription: d.signalDescription,
+          confidenceScore: d.confidenceScore,
+          recommendedPlaybook: d.recommendedPlaybook,
+          detectedAt: d.detectedAt,
+          postText: generateLinkedInPost({
+            id: d.id,
+            triggerName: d.triggerName,
+            triggerDomain: d.triggerDomain,
+            signalDescription: d.signalDescription,
+            confidenceScore: d.confidenceScore,
+            recommendedPlaybook: d.recommendedPlaybook,
+            detectedAt: d.detectedAt!,
+          }),
+        }));
+
+      res.json(posts);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 }

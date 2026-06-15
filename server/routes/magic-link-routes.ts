@@ -85,6 +85,17 @@ export function registerMagicLinkRoutes(app: Express) {
     if (!result.success) {
       return res.status(500).json({ error: 'Failed to process your request. Please try again.' });
     }
+
+    // Enroll in signal brief pipeline — next qualifying trigger will reach this prospect
+    import('../services/prospectEnrollment.js').then(({ enrollProspectForAlerts }) => {
+      enrollProspectForAlerts({
+        email,
+        name: `${firstName} ${lastName}`.trim(),
+        role: title,
+        company,
+      }).catch(err => console.warn('[RequestAccess] Prospect enrollment non-fatal:', err?.message));
+    }).catch(() => {});
+
     return res.json({ ok: true, emailSent: (result as any).emailSent ?? true });
   });
 

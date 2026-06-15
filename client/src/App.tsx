@@ -225,6 +225,7 @@ const MagicLogin = lazy(() => import("./pages/MagicLogin"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
 const AdminQuickLink = lazy(() => import("./pages/AdminQuickLink"));
 const AdminProspectBriefs = lazy(() => import("./pages/AdminProspectBriefs"));
+const AdminLinkedInPosts = lazy(() => import("./pages/AdminLinkedInPosts"));
 const FoundingPartnerHealthMonitor = lazy(() => import("./pages/FoundingPartnerHealthMonitor"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
@@ -763,6 +764,7 @@ function Router() {
         <Route path="/admin/quick-link" component={AdminQuickLink} />
         <Route path="/admin/users" component={lazy(() => import("./pages/AdminPanel"))} />
         <Route path="/admin/prospect-briefs" component={AdminProspectBriefs} />
+        <Route path="/admin/linkedin-posts" component={AdminLinkedInPosts} />
         <Route path="/access-denied" component={lazy(() => import("./pages/AccessDenied"))} />
         <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
