@@ -778,9 +778,10 @@ function Router() {
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 
         {/* Legacy Redirects */}
+        <Route path="/platform" component={lazy(() => import("./pages/PlatformHub"))} />
         {renderRedirects([
           "/scorecard", "/executive-scorecard", "/executive-suite",
-          "/dashboard", "/platform", "/operating-model-health"
+          "/dashboard", "/operating-model-health"
         ], "/mission-control")}
         {renderRedirects(["/command-center", "/command-center-dynamic"], "/mission-control")}
         <Route path="/war-room">{() => <ExecutiveWarRoomPage />}</Route>

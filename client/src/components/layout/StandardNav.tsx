@@ -369,9 +369,17 @@ export default function StandardNav() {
               <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>180 Readiness Protocols. 12 minutes.</p>
             </div>
           </div>
-          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
-            <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
-            <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div
+              onClick={() => navigateTo('/platform')}
+              style={{ background: GOLD, color: NAVY, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '7px 14px', cursor: 'pointer', whiteSpace: 'nowrap' }}
+            >
+              Platform Hub →
+            </div>
+            <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
+              <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
+              <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
+            </div>
           </div>
         </div>
 
