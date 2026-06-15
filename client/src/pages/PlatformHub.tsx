@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Play, ArrowRight, ChevronLeft } from "lucide-react";
+import { Play, ArrowRight, ChevronRight } from "lucide-react";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 const NAVY = "#0A0F2E";
@@ -7,92 +7,94 @@ const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const IVORY = "#F0EDE4";
 const MUTED = "#6B7280";
+const RUST = "#C0512A";
+const VIOLET = "#5B4FBE";
 const DM: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 const SERIF: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const PHASES = [
   {
-    id: "DETECT",
-    color: TEAL,
-    bg: "rgba(43,138,110,0.08)",
-    border: "rgba(43,138,110,0.25)",
-    label: "DETECT",
-    sublabel: "Continuous monitoring",
+    id: "DETECT", color: TEAL, dark: "#1d6b52",
+    label: "DETECT", sublabel: "Continuous monitoring",
+    tagline: "Every signal. Every trigger. Every 15 minutes.",
     buttons: [
       { label: "Signal Intelligence", href: "/signal-intelligence" },
       { label: "Trigger Monitoring", href: "/triggers-management" },
       { label: "Command Tower", href: "/command-tower" },
       { label: "Intelligence Control Center", href: "/intelligence-control-center" },
-      { label: "Compound Threat Detection", href: "/situations-hub" },
+      { label: "9-Domain Coverage Board", href: "/situations-hub" },
     ],
   },
   {
-    id: "PREPARE",
-    color: GOLD,
-    bg: "rgba(201,168,76,0.08)",
-    border: "rgba(201,168,76,0.25)",
-    label: "PREPARE",
-    sublabel: "Pre-staged protocols",
+    id: "PREPARE", color: "#8B6914", dark: "#6b4f0e",
+    label: "PREPARE", sublabel: "Pre-staged protocols",
+    tagline: "180 responses ready before the trigger fires.",
     buttons: [
       { label: "Protocol Library — 180", href: "/playbooks" },
       { label: "Mission Control", href: "/mission-control" },
       { label: "Protocol Builder", href: "/protocol-builder" },
       { label: "Practice Drills", href: "/practice-drills" },
-      { label: "9-Domain Coverage Board", href: "/situations-hub" },
+      { label: "Readiness Rhythm", href: "/readiness-rhythm" },
     ],
   },
   {
-    id: "EXECUTE",
-    color: "#E05C3A",
-    bg: "rgba(224,92,58,0.07)",
-    border: "rgba(224,92,58,0.2)",
-    label: "EXECUTE",
-    sublabel: "12-minute activation",
+    id: "EXECUTE", color: RUST, dark: "#9c3e1e",
+    label: "EXECUTE", sublabel: "12-minute activation",
+    tagline: "From trigger to full coordination in 12 minutes.",
     buttons: [
       { label: "Live Activation Center", href: "/live-activation-center" },
       { label: "War Room", href: "/war-room" },
       { label: "Coordination Intelligence", href: "/coordination-intelligence" },
       { label: "Stakeholder Notifications", href: "/mission-control" },
-      { label: "Authorization Chain", href: "/pmo-onboarding" },
+      { label: "Concurrent Situations", href: "/concurrent-situations" },
     ],
   },
   {
-    id: "LEARN",
-    color: "#7B61FF",
-    bg: "rgba(123,97,255,0.07)",
-    border: "rgba(123,97,255,0.2)",
-    label: "LEARN",
-    sublabel: "Closed-loop improvement",
+    id: "LEARN", color: VIOLET, dark: "#433a96",
+    label: "LEARN", sublabel: "Closed-loop improvement",
+    tagline: "Every activation sharpens the next response.",
     buttons: [
       { label: "ADVANCE 2.0", href: "/advance-intelligence" },
       { label: "Advanced Analytics", href: "/advanced-analytics" },
-      { label: "Coordination Intelligence", href: "/coordination-intelligence" },
-      { label: "Proof Story — Outcomes", href: "/proof-story" },
       { label: "AI Radar Dashboard", href: "/ai-radar" },
+      { label: "Proof Story — Outcomes", href: "/proof-story" },
+      { label: "Debrief Center", href: "/practice-drills" },
     ],
   },
 ];
 
 const DOMAINS = [
-  { label: "GROWTH & POSITIONING", count: "63 Protocols", color: GOLD, href: "/demo/market-entry", examples: "M&A · Competitor Displacement · Go-to-Market · Workforce Transformation" },
-  { label: "RISK & RESILIENCE", count: "85 Protocols", color: TEAL, href: "/demo/ransomware", examples: "Ransomware · Activist Investor · Supply Chain · Data Breach · Regulatory" },
-  { label: "TRANSFORMATION", count: "62 Protocols", color: "#7B61FF", href: "/demo/workforce", examples: "Digital Transformation · Workforce Restructuring · System Migrations" },
+  {
+    label: "GROWTH & POSITIONING", count: "63", color: GOLD, bg: "rgba(201,168,76,0.08)",
+    href: "/demo/market-entry",
+    examples: ["M&A Response", "Competitor Displacement", "Go-to-Market Sprint", "Workforce Transformation"],
+  },
+  {
+    label: "RISK & RESILIENCE", count: "85", color: TEAL, bg: "rgba(43,138,110,0.08)",
+    href: "/demo/ransomware",
+    examples: ["Ransomware Response", "Activist Investor", "Supply Chain Collapse", "Data Breach", "DOJ Investigation"],
+  },
+  {
+    label: "TRANSFORMATION", count: "62", color: VIOLET, bg: "rgba(91,79,190,0.08)",
+    href: "/demo/workforce",
+    examples: ["Digital Transformation", "Workforce Restructuring", "System Migrations", "Culture Shift"],
+  },
 ];
 
 const JOURNEY = [
-  { step: "01", label: "Understand the Problem", href: "/cost-of-delay", accent: NAVY },
-  { step: "02", label: "See It Work", href: "/12-minute-experience", accent: TEAL },
-  { step: "03", label: "Build the Business Case", href: "/roi-calculator", accent: GOLD },
-  { step: "04", label: "Apply for Access", href: "/request-access", accent: "#E05C3A" },
-  { step: "05", label: "Go Live in 30 Days", href: "/getting-started", accent: NAVY },
-  { step: "06", label: "Run Protocols", href: "/playbooks", accent: TEAL },
-  { step: "07", label: "Improve Continuously", href: "/advance-intelligence", accent: "#7B61FF" },
+  { step: "01", label: "Understand the Problem", sub: "Cost of delay", href: "/cost-of-delay", color: NAVY },
+  { step: "02", label: "See It Work", sub: "12-minute test drive", href: "/12-minute-experience", color: TEAL },
+  { step: "03", label: "Build the Business Case", sub: "ROI calculator", href: "/roi-calculator", color: GOLD },
+  { step: "04", label: "Apply for Access", sub: "Founding Partner Program", href: "/request-access", color: RUST },
+  { step: "05", label: "Go Live in 30 Days", sub: "Setup + first activation", href: "/getting-started", color: NAVY },
+  { step: "06", label: "Run Protocols", sub: "180 pre-staged responses", href: "/playbooks", color: TEAL },
+  { step: "07", label: "Improve Continuously", sub: "ADVANCE 2.0 closed loop", href: "/advance-intelligence", color: VIOLET },
 ];
 
 const PROOF = [
-  { label: "ROI Calculator", href: "/roi-calculator" },
-  { label: "Executive Brief", href: "/executive-brief" },
-  { label: "Readiness Benchmark", href: "/readiness-benchmark" },
+  { label: "ROI Calculator", href: "/roi-calculator", featured: true },
+  { label: "Executive Brief", href: "/executive-brief", featured: true },
+  { label: "Readiness Benchmark — Free", href: "/readiness-benchmark", featured: true },
   { label: "Cost of Delay", href: "/cost-of-delay" },
   { label: "Proof Story", href: "/proof-story" },
   { label: "The Case", href: "/the-case" },
@@ -104,15 +106,15 @@ const PROOF = [
 const EXPERIENCE = [
   { label: "12-Minute Test Drive", href: "/12-minute-experience", featured: true },
   { label: "Demo Hub — 12 Scenarios", href: "/demo-hub", featured: true },
-  { label: "Master Demo — Activist Investor", href: "/master-demo", featured: false },
-  { label: "How It Executes", href: "/how-it-executes", featured: false },
-  { label: "Industry Demo Library", href: "/industry-demo-library", featured: false },
-  { label: "Protocol Coverage Browser", href: "/protocol-browser", featured: false },
+  { label: "Master Demo — Activist Investor", href: "/master-demo" },
+  { label: "How It Executes", href: "/how-it-executes" },
+  { label: "Industry Demo Library", href: "/industry-demo-library" },
+  { label: "Protocol Coverage Browser", href: "/protocol-browser" },
 ];
 
 const ONBOARDING = [
-  { label: "Getting Started Hub", href: "/getting-started" },
-  { label: "PMO Director Onboarding", href: "/pmo-onboarding" },
+  { label: "Getting Started Hub", href: "/getting-started", featured: true },
+  { label: "PMO Director Onboarding", href: "/pmo-onboarding", featured: true },
   { label: "30-Day Preparation Arc", href: "/preparation-arc" },
   { label: "Technical Onboarding", href: "/technical-onboarding" },
   { label: "Integration Setup Plan", href: "/integrations" },
@@ -129,112 +131,119 @@ const EVALUATE = [
   { label: "Investor Overview", href: "/investors" },
 ];
 
-function Btn({ label, href, color = NAVY, size = "sm" }: { label: string; href: string; color?: string; size?: "sm" | "md" | "lg" }) {
-  const pad = size === "lg" ? "12px 20px" : size === "md" ? "9px 16px" : "7px 14px";
-  const fs = size === "lg" ? 14 : size === "md" ? 13 : 12;
-  return (
-    <Link href={href} style={{
-      ...DM,
-      display: "inline-flex",
-      alignItems: "center",
-      gap: 5,
-      background: "#fff",
-      color,
-      border: `1px solid ${color}40`,
-      padding: pad,
-      fontSize: fs,
-      fontWeight: 700,
-      textDecoration: "none",
-      letterSpacing: "0.03em",
-      whiteSpace: "nowrap" as const,
-      transition: "background 0.12s, border-color 0.12s",
-    }}
-      onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = `${color}10`; el.style.borderColor = color; }}
-      onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "#fff"; el.style.borderColor = `${color}40`; }}
-    >
-      {label}
-    </Link>
-  );
-}
-
 function PhaseBtn({ label, href, color }: { label: string; href: string; color: string }) {
   return (
     <Link href={href} style={{
       ...DM,
-      display: "block",
-      padding: "8px 12px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "9px 12px 9px 14px",
       fontSize: 12,
       fontWeight: 600,
-      color: NAVY,
+      color: "#1a1a2e",
       background: "#fff",
-      border: `1px solid rgba(10,15,46,0.09)`,
+      borderLeft: `3px solid ${color}`,
+      borderTop: "1px solid rgba(10,15,46,0.06)",
+      borderRight: "1px solid rgba(10,15,46,0.06)",
+      borderBottom: "1px solid rgba(10,15,46,0.06)",
       textDecoration: "none",
-      transition: "border-color 0.12s, color 0.12s",
+      transition: "background 0.12s, color 0.12s",
     }}
-      onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = color; el.style.color = color; }}
-      onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(10,15,46,0.09)"; el.style.color = NAVY; }}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.background = `${color}10`;
+        el.style.color = color;
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.background = "#fff";
+        el.style.color = "#1a1a2e";
+      }}
     >
       {label}
+      <ChevronRight size={11} style={{ opacity: 0.4, flexShrink: 0 }} />
     </Link>
+  );
+}
+
+function SectionLabel({ children, color = GOLD }: { children: React.ReactNode; color?: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+      <div style={{ width: 24, height: 2, background: color }} />
+      <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color }}>{children}</div>
+    </div>
   );
 }
 
 export default function PlatformHub() {
   const [, navigate] = useLocation();
+
   return (
     <div style={{ background: IVORY, minHeight: "100vh" }}>
 
-      {/* ── HEADER BAR ────────────────────────────────── */}
-      <div style={{ background: NAVY, padding: "14px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
-        {/* Left: logo + title + metrics */}
-        <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-          {/* Logo → home */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", paddingRight: 20, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
-            <ExecuteIQLogo height={34} variant="full" color="white" animated={false} />
-          </Link>
-          {/* Page label + tagline */}
-          <div>
-            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: "rgba(255,255,255,0.45)", textTransform: "uppercase", marginBottom: 2 }}>Platform Map</div>
-            <div style={{ ...SERIF, fontSize: 20, fontWeight: 700, color: "#fff", lineHeight: 1 }}>The response is ready before the trigger fires.</div>
-          </div>
-          {/* Metrics */}
-          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-            {[{ n: "180", l: "Protocols" }, { n: "231", l: "Triggers" }, { n: "9", l: "Domains" }, { n: "12 min", l: "Execution" }, { n: "3,600×", l: "Head Start" }].map(s => (
-              <div key={s.n} style={{ textAlign: "center" }}>
-                <div style={{ ...DM, fontSize: 18, fontWeight: 800, color: GOLD, lineHeight: 1 }}>{s.n}</div>
-                <div style={{ ...DM, fontSize: 9, fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{s.l}</div>
+      {/* ── HEADER ── */}
+      <div style={{
+        background: NAVY,
+        backgroundImage: "radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(43,138,110,0.05) 0%, transparent 50%)",
+        padding: "0 40px",
+        borderBottom: `3px solid ${GOLD}`,
+      }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          {/* Top row: logo | breadcrumb | metrics | CTAs */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 0", gap: 20, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+              <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+                <ExecuteIQLogo height={38} variant="full" color="white" animated={false} />
+              </Link>
+              <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.15)" }} />
+              <div>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Platform Map</div>
+                <div style={{ ...SERIF, fontSize: 18, fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>The response is ready before the trigger fires.</div>
               </div>
-            ))}
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+              {[{ n: "180", l: "Protocols" }, { n: "231", l: "Triggers" }, { n: "9", l: "Domains" }, { n: "12 min", l: "Execution" }, { n: "3,600×", l: "Head Start" }].map(s => (
+                <div key={s.n} style={{ textAlign: "center" }}>
+                  <div style={{ ...DM, fontSize: 20, fontWeight: 900, color: GOLD, lineHeight: 1 }}>{s.n}</div>
+                  <div style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 2 }}>{s.l}</div>
+                </div>
+              ))}
+              <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.15)" }} />
+              <div style={{ display: "flex", gap: 8 }}>
+                <Link href="/12-minute-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: GOLD, color: NAVY, fontWeight: 900, fontSize: 11, padding: "9px 16px", textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase", borderRadius: "0.15rem" }}>
+                  <Play size={10} fill={NAVY} /> Try It Now
+                </Link>
+                <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: "transparent", color: "rgba(255,255,255,0.75)", fontWeight: 600, fontSize: 11, padding: "8px 14px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.22)", borderRadius: "0.15rem" }}>
+                  Apply for Access <ArrowRight size={10} />
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-        {/* Right: CTAs */}
-        <div style={{ display: "flex", gap: 10 }}>
-          <Link href="/12-minute-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 7, background: GOLD, color: NAVY, fontWeight: 800, fontSize: 12, padding: "10px 18px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" }}>
-            <Play size={11} /> Try It Now
-          </Link>
-          <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 7, background: "transparent", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: 12, padding: "9px 16px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)" }}>
-            Apply for Access <ArrowRight size={11} />
-          </Link>
+          {/* Gold rule */}
+          <div style={{ height: 1, background: `linear-gradient(to right, ${GOLD}60, transparent)`, marginBottom: 0 }} />
         </div>
       </div>
 
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "24px 48px 48px" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "32px 40px 56px" }}>
 
-        {/* ── PLATFORM MAP — 4 PHASES ──────────────────── */}
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
-            THE PLATFORM · DETECT → PREPARE → EXECUTE → LEARN
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
-            {PHASES.map(phase => (
-              <div key={phase.id} style={{ background: "#fff", border: `2px solid ${phase.border}`, overflow: "hidden" }}>
-                {/* Phase header */}
-                <div style={{ background: phase.bg, borderBottom: `2px solid ${phase.border}`, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 8 }}>
-                  <span style={{ ...DM, fontSize: 16, fontWeight: 900, color: phase.color, letterSpacing: "0.06em" }}>{phase.label}</span>
-                  <span style={{ ...DM, fontSize: 10, color: MUTED, fontWeight: 600 }}>{phase.sublabel}</span>
+        {/* ── PLATFORM CHAIN ── */}
+        <div style={{ marginBottom: 28 }}>
+          <SectionLabel>The Platform · Detect → Prepare → Execute → Learn</SectionLabel>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
+            {PHASES.map((phase, i) => (
+              <div key={phase.id} style={{ overflow: "hidden", boxShadow: "0 2px 12px rgba(10,15,46,0.08)" }}>
+                {/* Solid colored phase header */}
+                <div style={{ background: phase.color, padding: "14px 16px 12px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+                    <span style={{ ...DM, fontSize: 20, fontWeight: 900, color: "#fff", letterSpacing: "0.04em" }}>{phase.label}</span>
+                    <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.08em", textTransform: "uppercase" }}>0{i + 1}</span>
+                  </div>
+                  <div style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.7)", letterSpacing: "0.05em", marginBottom: 2 }}>{phase.sublabel}</div>
+                  <div style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.5)", fontStyle: "italic", lineHeight: 1.3 }}>{phase.tagline}</div>
                 </div>
-                {/* Buttons */}
-                <div style={{ padding: "10px", display: "flex", flexDirection: "column", gap: 6 }}>
+                {/* Buttons with left-border accent */}
+                <div style={{ background: "#fff", display: "flex", flexDirection: "column", gap: 4, padding: 8 }}>
                   {phase.buttons.map(btn => (
                     <PhaseBtn key={btn.label} label={btn.label} href={btn.href} color={phase.color} />
                   ))}
@@ -244,40 +253,45 @@ export default function PlatformHub() {
           </div>
         </div>
 
-        {/* ── 3 STRATEGIC DOMAINS ───────────────────────── */}
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
-            STRATEGIC DOMAINS · 210 PROTOCOLS ACROSS 3 DOMAINS
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        {/* ── STRATEGIC DOMAINS ── */}
+        <div style={{ marginBottom: 28 }}>
+          <SectionLabel>Strategic Domains · 210 Protocols Across 3 Domains</SectionLabel>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
             {DOMAINS.map(d => (
-              <Link key={d.label} href={d.href} style={{ textDecoration: "none", background: "#fff", border: `1px solid ${d.color}30`, borderLeft: `4px solid ${d.color}`, padding: "16px 20px", display: "block", transition: "box-shadow 0.15s" }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 1px ${d.color}60, 0 4px 16px rgba(10,15,46,0.08)`}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = "none"}
+              <Link key={d.label} href={d.href} style={{ textDecoration: "none", display: "block", background: d.bg, border: `1px solid ${d.color}30`, borderLeft: `5px solid ${d.color}`, padding: "18px 20px 16px", transition: "box-shadow 0.15s", boxShadow: "0 2px 8px rgba(10,15,46,0.05)" }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${d.color}30, 0 0 0 1px ${d.color}50`}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(10,15,46,0.05)"}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-                  <span style={{ ...DM, fontSize: 13, fontWeight: 900, color: d.color, letterSpacing: "0.06em" }}>{d.label}</span>
-                  <span style={{ ...DM, fontSize: 12, fontWeight: 800, color: d.color }}>{d.count}</span>
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 10 }}>
+                  <div>
+                    <div style={{ ...DM, fontSize: 14, fontWeight: 900, color: d.color, letterSpacing: "0.05em", marginBottom: 2 }}>{d.label}</div>
+                    <div style={{ ...SERIF, fontSize: 28, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{d.count} <span style={{ fontSize: 14, fontWeight: 600, color: MUTED }}>protocols</span></div>
+                  </div>
+                  <div style={{ ...DM, fontSize: 11, fontWeight: 700, color: d.color, display: "flex", alignItems: "center", gap: 3, marginTop: 4, background: `${d.color}15`, padding: "5px 10px", borderRadius: "0.15rem" }}>
+                    See Demo <ArrowRight size={10} />
+                  </div>
                 </div>
-                <p style={{ ...DM, fontSize: 11, color: MUTED, margin: 0, lineHeight: 1.5 }}>{d.examples}</p>
-                <div style={{ ...DM, fontSize: 10, fontWeight: 700, color: d.color, marginTop: 8, display: "flex", alignItems: "center", gap: 4 }}>
-                  See Demo <ArrowRight size={9} />
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                  {d.examples.map(ex => (
+                    <span key={ex} style={{ ...DM, fontSize: 10, fontWeight: 600, color: NAVY, background: "rgba(10,15,46,0.06)", padding: "3px 8px", letterSpacing: "0.02em" }}>{ex}</span>
+                  ))}
                 </div>
               </Link>
             ))}
           </div>
         </div>
 
-        {/* ── EVALUATE & DECIDE — horizontal strip ─────── */}
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
-            EVALUATE & DECIDE · BENCHMARK · COMPARE · PRICE · INVEST
-          </div>
-          <div style={{ background: "#fff", border: "1px solid rgba(10,15,46,0.08)", padding: "14px 16px", display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+        {/* ── EVALUATE & DECIDE — dark strip ── */}
+        <div style={{ marginBottom: 28, background: NAVY, padding: "16px 20px", boxShadow: "0 2px 12px rgba(10,15,46,0.15)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, whiteSpace: "nowrap" as const, marginRight: 4 }}>
+              Evaluate & Decide
+            </div>
+            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }} />
             {EVALUATE.map(e => (
-              <Link key={e.label} href={e.href} style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, background: IVORY, border: "1px solid rgba(10,15,46,0.12)", padding: "7px 14px", textDecoration: "none", whiteSpace: "nowrap" as const, transition: "border-color 0.12s, color 0.12s" }}
-                onMouseEnter={el => { (el.currentTarget as HTMLElement).style.borderColor = GOLD; (el.currentTarget as HTMLElement).style.color = "#8B5E0A"; }}
-                onMouseLeave={el => { (el.currentTarget as HTMLElement).style.borderColor = "rgba(10,15,46,0.12)"; (el.currentTarget as HTMLElement).style.color = NAVY; }}
+              <Link key={e.label} href={e.href} style={{ ...DM, fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.8)", textDecoration: "none", padding: "5px 12px", border: "1px solid rgba(255,255,255,0.18)", whiteSpace: "nowrap" as const, transition: "border-color 0.12s, color 0.12s, background 0.12s", borderRadius: "0.15rem" }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.color = GOLD; el.style.background = "rgba(201,168,76,0.08)"; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(255,255,255,0.18)"; el.style.color = "rgba(255,255,255,0.8)"; el.style.background = "transparent"; }}
               >
                 {e.label}
               </Link>
@@ -285,104 +299,105 @@ export default function PlatformHub() {
           </div>
         </div>
 
-        {/* ── LOWER 4-COLUMN GRID ───────────────────────── */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12 }}>
+        {/* ── BOTTOM 4-COLUMN GRID ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
 
           {/* CUSTOMER JOURNEY */}
-          <div style={{ background: "#fff", border: "1px solid rgba(10,15,46,0.08)", overflow: "hidden" }}>
-            <div style={{ background: NAVY, padding: "10px 14px" }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 2 }}>Customer Journey</div>
-              <div style={{ ...DM, fontSize: 13, fontWeight: 800, color: "#fff" }}>Discovery → Active Use</div>
+          <div style={{ overflow: "hidden", boxShadow: "0 2px 8px rgba(10,15,46,0.07)" }}>
+            <div style={{ background: NAVY, backgroundImage: "radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 60%)", padding: "12px 16px" }}>
+              <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 3 }}>Customer Journey</div>
+              <div style={{ ...SERIF, fontSize: 16, fontWeight: 700, color: "#fff" }}>Discovery → Active Use</div>
             </div>
-            <div style={{ padding: "12px 12px", display: "flex", flexDirection: "column", gap: 5 }}>
+            <div style={{ background: "#fff", padding: "10px" }}>
               {JOURNEY.map(j => (
-                <Link key={j.step} href={j.href} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8, padding: "7px 10px", border: "1px solid rgba(10,15,46,0.07)", background: "#fff", transition: "border-color 0.12s" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = j.accent}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = "rgba(10,15,46,0.07)"}
+                <Link key={j.step} href={j.href} style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", borderLeft: `3px solid ${j.color}`, marginBottom: 5, background: "#fff", borderTop: "1px solid rgba(10,15,46,0.05)", borderRight: "1px solid rgba(10,15,46,0.05)", borderBottom: "1px solid rgba(10,15,46,0.05)", transition: "background 0.12s" }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = `${j.color}08`}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "#fff"}
                 >
-                  <span style={{ ...DM, fontSize: 9, fontWeight: 800, color: j.accent, minWidth: 18 }}>{j.step}</span>
-                  <span style={{ ...DM, fontSize: 11, fontWeight: 600, color: NAVY }}>{j.label}</span>
+                  <div style={{ ...DM, fontSize: 11, fontWeight: 900, color: j.color, minWidth: 22, textAlign: "right" }}>{j.step}</div>
+                  <div>
+                    <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, lineHeight: 1.1 }}>{j.label}</div>
+                    <div style={{ ...DM, fontSize: 10, fontWeight: 500, color: MUTED, marginTop: 1 }}>{j.sub}</div>
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* SEE IT WORK / EXPERIENCE */}
-          <div style={{ background: "#fff", border: "1px solid rgba(10,15,46,0.08)", overflow: "hidden" }}>
-            <div style={{ background: TEAL, padding: "10px 14px" }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>Experience</div>
-              <div style={{ ...DM, fontSize: 13, fontWeight: 800, color: "#fff" }}>See It Work</div>
+          {/* EXPERIENCE */}
+          <div style={{ overflow: "hidden", boxShadow: "0 2px 8px rgba(10,15,46,0.07)" }}>
+            <div style={{ background: TEAL, padding: "12px 16px" }}>
+              <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginBottom: 3 }}>Experience</div>
+              <div style={{ ...SERIF, fontSize: 16, fontWeight: 700, color: "#fff" }}>See It Work</div>
             </div>
-            <div style={{ padding: "12px 12px", display: "flex", flexDirection: "column", gap: 6 }}>
+            <div style={{ background: "#fff", padding: "10px", display: "flex", flexDirection: "column", gap: 5 }}>
               {EXPERIENCE.map(e => (
-                <Link key={e.label} href={e.href} style={{ textDecoration: "none", display: "block", padding: "8px 10px", border: e.featured ? `1px solid ${TEAL}50` : "1px solid rgba(10,15,46,0.07)", background: e.featured ? `${TEAL}06` : "#fff", transition: "border-color 0.12s" }}
-                  onMouseEnter={el => (el.currentTarget as HTMLElement).style.borderColor = TEAL}
-                  onMouseLeave={el => (el.currentTarget as HTMLElement).style.borderColor = e.featured ? `${TEAL}50` : "rgba(10,15,46,0.07)"}
+                <Link key={e.label} href={e.href} style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 12px 9px 14px", borderLeft: `3px solid ${e.featured ? TEAL : "rgba(10,15,46,0.12)"}`, background: e.featured ? "rgba(43,138,110,0.05)" : "#fff", borderTop: "1px solid rgba(10,15,46,0.05)", borderRight: "1px solid rgba(10,15,46,0.05)", borderBottom: "1px solid rgba(10,15,46,0.05)", transition: "background 0.12s" }}
+                  onMouseEnter={el => { const t = el.currentTarget as HTMLElement; t.style.background = "rgba(43,138,110,0.08)"; t.style.borderLeftColor = TEAL; }}
+                  onMouseLeave={el => { const t = el.currentTarget as HTMLElement; t.style.background = e.featured ? "rgba(43,138,110,0.05)" : "#fff"; t.style.borderLeftColor = e.featured ? TEAL : "rgba(10,15,46,0.12)"; }}
                 >
                   <span style={{ ...DM, fontSize: 12, fontWeight: e.featured ? 700 : 600, color: e.featured ? TEAL : NAVY }}>{e.label}</span>
+                  <ChevronRight size={11} style={{ color: TEAL, opacity: 0.5, flexShrink: 0 }} />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* PROOF & VALIDATION */}
-          <div style={{ background: "#fff", border: "1px solid rgba(10,15,46,0.08)", overflow: "hidden" }}>
-            <div style={{ background: "#8B5E0A", padding: "10px 14px" }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>Proof & Validation</div>
-              <div style={{ ...DM, fontSize: 13, fontWeight: 800, color: "#fff" }}>Build the Case</div>
+          <div style={{ overflow: "hidden", boxShadow: "0 2px 8px rgba(10,15,46,0.07)" }}>
+            <div style={{ background: "#7A5210", padding: "12px 16px" }}>
+              <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginBottom: 3 }}>Proof & Validation</div>
+              <div style={{ ...SERIF, fontSize: 16, fontWeight: 700, color: "#fff" }}>Build the Case</div>
             </div>
-            <div style={{ padding: "12px 12px", display: "flex", flexDirection: "column", gap: 6 }}>
+            <div style={{ background: "#fff", padding: "10px", display: "flex", flexDirection: "column", gap: 5 }}>
               {PROOF.map(p => (
-                <Link key={p.label} href={p.href} style={{ textDecoration: "none", display: "block", padding: "8px 10px", border: "1px solid rgba(10,15,46,0.07)", background: "#fff", transition: "border-color 0.12s" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = GOLD}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = "rgba(10,15,46,0.07)"}
+                <Link key={p.label} href={p.href} style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 12px 9px 14px", borderLeft: `3px solid ${p.featured ? GOLD : "rgba(10,15,46,0.12)"}`, background: p.featured ? "rgba(201,168,76,0.06)" : "#fff", borderTop: "1px solid rgba(10,15,46,0.05)", borderRight: "1px solid rgba(10,15,46,0.05)", borderBottom: "1px solid rgba(10,15,46,0.05)", transition: "background 0.12s" }}
+                  onMouseEnter={el => { const t = el.currentTarget as HTMLElement; t.style.background = "rgba(201,168,76,0.1)"; t.style.borderLeftColor = GOLD; }}
+                  onMouseLeave={el => { const t = el.currentTarget as HTMLElement; t.style.background = p.featured ? "rgba(201,168,76,0.06)" : "#fff"; t.style.borderLeftColor = p.featured ? GOLD : "rgba(10,15,46,0.12)"; }}
                 >
-                  <span style={{ ...DM, fontSize: 12, fontWeight: 600, color: NAVY }}>{p.label}</span>
+                  <span style={{ ...DM, fontSize: 12, fontWeight: p.featured ? 700 : 600, color: p.featured ? "#7A5210" : NAVY }}>{p.label}</span>
+                  <ChevronRight size={11} style={{ color: GOLD, opacity: 0.5, flexShrink: 0 }} />
                 </Link>
               ))}
-              <Link href="/proof" style={{ ...DM, marginTop: 4, display: "flex", alignItems: "center", gap: 5, fontSize: 11, fontWeight: 700, color: GOLD, textDecoration: "none" }}>
-                Proof Hub — all validation assets <ArrowRight size={9} />
-              </Link>
             </div>
           </div>
 
           {/* ONBOARDING */}
-          <div style={{ background: "#fff", border: "1px solid rgba(10,15,46,0.08)", overflow: "hidden" }}>
-            <div style={{ background: "#2D4A8A", padding: "10px 14px" }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: 2 }}>Onboarding</div>
-              <div style={{ ...DM, fontSize: 13, fontWeight: 800, color: "#fff" }}>Get Started</div>
+          <div style={{ overflow: "hidden", boxShadow: "0 2px 8px rgba(10,15,46,0.07)" }}>
+            <div style={{ background: "#1e3a7a", padding: "12px 16px" }}>
+              <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginBottom: 3 }}>Onboarding</div>
+              <div style={{ ...SERIF, fontSize: 16, fontWeight: 700, color: "#fff" }}>Get Started</div>
             </div>
-            <div style={{ padding: "12px 12px", display: "flex", flexDirection: "column", gap: 6 }}>
+            <div style={{ background: "#fff", padding: "10px", display: "flex", flexDirection: "column", gap: 5 }}>
               {ONBOARDING.map(o => (
-                <Link key={o.label} href={o.href} style={{ textDecoration: "none", display: "block", padding: "8px 10px", border: "1px solid rgba(10,15,46,0.07)", background: "#fff", transition: "border-color 0.12s" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = "#2D4A8A"}
-                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = "rgba(10,15,46,0.07)"}
+                <Link key={o.label} href={o.href} style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 12px 9px 14px", borderLeft: `3px solid ${o.featured ? "#1e3a7a" : "rgba(10,15,46,0.12)"}`, background: o.featured ? "rgba(30,58,122,0.05)" : "#fff", borderTop: "1px solid rgba(10,15,46,0.05)", borderRight: "1px solid rgba(10,15,46,0.05)", borderBottom: "1px solid rgba(10,15,46,0.05)", transition: "background 0.12s" }}
+                  onMouseEnter={el => { const t = el.currentTarget as HTMLElement; t.style.background = "rgba(30,58,122,0.08)"; t.style.borderLeftColor = "#1e3a7a"; }}
+                  onMouseLeave={el => { const t = el.currentTarget as HTMLElement; t.style.background = o.featured ? "rgba(30,58,122,0.05)" : "#fff"; t.style.borderLeftColor = o.featured ? "#1e3a7a" : "rgba(10,15,46,0.12)"; }}
                 >
-                  <span style={{ ...DM, fontSize: 12, fontWeight: 600, color: NAVY }}>{o.label}</span>
+                  <span style={{ ...DM, fontSize: 12, fontWeight: o.featured ? 700 : 600, color: o.featured ? "#1e3a7a" : NAVY }}>{o.label}</span>
+                  <ChevronRight size={11} style={{ color: "#1e3a7a", opacity: 0.5, flexShrink: 0 }} />
                 </Link>
               ))}
-              <Link href="/start" style={{ ...DM, marginTop: 4, display: "flex", alignItems: "center", gap: 5, fontSize: 11, fontWeight: 700, color: "#2D4A8A", textDecoration: "none" }}>
-                Full Onboarding Hub <ArrowRight size={9} />
-              </Link>
             </div>
           </div>
 
         </div>
 
-        {/* ── BOTTOM CTA BAR ────────────────────────────── */}
-        <div style={{ marginTop: 20, background: NAVY, padding: "20px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
+        {/* ── BOTTOM CTA BAR ── */}
+        <div style={{ marginTop: 16, background: NAVY, backgroundImage: "radial-gradient(ellipse at 85% 50%, rgba(201,168,76,0.08) 0%, transparent 55%)", padding: "22px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap", borderTop: `3px solid ${GOLD}` }}>
           <div>
-            <div style={{ ...SERIF, fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 2 }}>Ready to close the 30-day gap?</div>
-            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)" }}>12 Founding Partner seats · 90-day validation · First activation in 30 days</div>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Founding Partner Program · 12 Seats</div>
+            <div style={{ ...SERIF, fontSize: 22, fontWeight: 700, color: "#fff", lineHeight: 1 }}>Ready to close the 30-day gap?</div>
+            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>90-day validation partnership · First activation in 30 days · Executive authority preserved</div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 7, background: GOLD, color: NAVY, fontWeight: 800, fontSize: 12, padding: "12px 22px", textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontWeight: 900, fontSize: 12, padding: "13px 24px", textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase", borderRadius: "0.15rem" }}>
               Apply for Founding Partner Access <ArrowRight size={12} />
             </Link>
-            <Link href="/roi-calculator" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 7, background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 600, fontSize: 12, padding: "11px 18px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)" }}>
-              Calculate Your ROI
+            <Link href="/roi-calculator" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 600, fontSize: 12, padding: "12px 18px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "0.15rem" }}>
+              Calculate ROI
             </Link>
-            <Link href="/executive-brief" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 7, background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 600, fontSize: 12, padding: "11px 18px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)" }}>
+            <Link href="/executive-brief" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 600, fontSize: 12, padding: "12px 18px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "0.15rem" }}>
               Executive Brief
             </Link>
           </div>
