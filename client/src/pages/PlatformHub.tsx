@@ -8,8 +8,8 @@ const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const IVORY = "#F0EDE4";
 const MUTED = "#6B7280";
-const RUST = "#C0512A";
-const VIOLET = "#5B4FBE";
+const RUST = "#1B3A6B";
+const VIOLET = "#0A0F2E";
 const DM: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 const SERIF: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
@@ -58,7 +58,7 @@ const PHASES = [
     ],
   },
   {
-    id: "EXECUTE", color: RUST, dark: "#9c3e1e",
+    id: "EXECUTE", color: RUST, dark: "#132558",
     label: "EXECUTE", sublabel: "12-minute activation",
     tagline: "From trigger to full coordination in 12 minutes.",
     buttons: [
@@ -72,7 +72,7 @@ const PHASES = [
     ],
   },
   {
-    id: "LEARN", color: VIOLET, dark: "#433a96",
+    id: "LEARN", color: VIOLET, dark: "#070B21",
     label: "LEARN", sublabel: "Closed-loop improvement",
     tagline: "Every activation sharpens the next response.",
     buttons: [
