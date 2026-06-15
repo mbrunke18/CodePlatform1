@@ -6442,6 +6442,31 @@ export const insertInvestorLeadSchema = createInsertSchema(investorLeads).omit({
 export type InsertInvestorLead = z.infer<typeof insertInvestorLeadSchema>;
 export type InvestorLead = typeof investorLeads.$inferSelect;
 
+// Signal Brief Prospects — enrolled prospects who receive automatic trigger signal briefs
+export const signalBriefProspects = pgTable('signal_brief_prospects', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  company: text('company').notNull(),
+  role: text('role').default(''),
+  enrolledAt: timestamp('enrolled_at').defaultNow(),
+  briefCount: integer('brief_count').default(0),
+  lastBriefAt: timestamp('last_brief_at'),
+  isActive: boolean('is_active').default(true),
+});
+export type SignalBriefProspect = typeof signalBriefProspects.$inferSelect;
+
+// Prospect Briefs Sent — dedup guard + full history
+export const prospectBriefsSent = pgTable('prospect_briefs_sent', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  prospectId: uuid('prospect_id').notNull(),
+  triggerName: text('trigger_name').notNull(),
+  triggerDomain: text('trigger_domain').notNull(),
+  playbookName: text('playbook_name').notNull(),
+  confidenceScore: integer('confidence_score').default(0),
+  sentAt: timestamp('sent_at').defaultNow(),
+});
+
 // Peer Review Questionnaire — Independent Product Evaluation
 export const peerReviews = pgTable('peer_reviews', {
   id: uuid('id').primaryKey().defaultRandom(),

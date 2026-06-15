@@ -215,4 +215,64 @@ export function registerAdminRoutes(app: Express) {
       return res.status(500).json({ success: false, error: err.message });
     }
   });
+
+  // ── Prospect Signal Briefs ────────────────────────────────────────────────
+
+  app.get("/api/admin/prospect-alerts", requirePlatformAdmin, async (_req, res) => {
+    try {
+      const { signalBriefProspects } = await import("@shared/schema");
+      const { desc: descOrder } = await import("drizzle-orm");
+      const { db: database } = await import("../db");
+      const prospects = await database
+        .select()
+        .from(signalBriefProspects)
+        .orderBy(descOrder(signalBriefProspects.enrolledAt));
+      res.json(prospects);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get("/api/admin/prospect-alerts/briefs", requirePlatformAdmin, async (_req, res) => {
+    try {
+      const { prospectBriefsSent, signalBriefProspects } = await import("@shared/schema");
+      const { desc: descOrder, eq: eqOp } = await import("drizzle-orm");
+      const { db: database } = await import("../db");
+      const briefs = await database
+        .select({
+          id: prospectBriefsSent.id,
+          prospectId: prospectBriefsSent.prospectId,
+          triggerName: prospectBriefsSent.triggerName,
+          triggerDomain: prospectBriefsSent.triggerDomain,
+          playbookName: prospectBriefsSent.playbookName,
+          confidenceScore: prospectBriefsSent.confidenceScore,
+          sentAt: prospectBriefsSent.sentAt,
+          prospectName: signalBriefProspects.name,
+          prospectEmail: signalBriefProspects.email,
+          prospectCompany: signalBriefProspects.company,
+        })
+        .from(prospectBriefsSent)
+        .leftJoin(signalBriefProspects, eqOp(prospectBriefsSent.prospectId, signalBriefProspects.id))
+        .orderBy(descOrder(prospectBriefsSent.sentAt))
+        .limit(200);
+      res.json(briefs);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.patch("/api/admin/prospect-alerts/:id/deactivate", requirePlatformAdmin, async (req, res) => {
+    try {
+      const { signalBriefProspects } = await import("@shared/schema");
+      const { eq: eqOp } = await import("drizzle-orm");
+      const { db: database } = await import("../db");
+      await database
+        .update(signalBriefProspects)
+        .set({ isActive: false })
+        .where(eqOp(signalBriefProspects.id, req.params.id));
+      res.json({ success: true });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 }

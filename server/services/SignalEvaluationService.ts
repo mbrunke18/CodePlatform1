@@ -4,6 +4,7 @@ import { eq, desc, and, gte } from 'drizzle-orm';
 import { Resend } from 'resend';
 import { wsService } from './WebSocketService';
 import { evaluateSignalsWithOrgTriggers } from './TriggerEvaluationEngine.js';
+import { notifyMatchingProspects, type DetectionBrief } from './prospectEnrollment.js';
 
 // Evaluation mode options:
 //   'configured' — customer's configured triggers only (new engine)
@@ -764,6 +765,7 @@ export async function evaluateAndPersistSignals(
   organizationId: string
 ): Promise<number> {
   let detectionsCreated = 0;
+  const prospectBriefQueue: DetectionBrief[] = [];
 
   // Get stakeholder contacts for this org — used for domain-specific approver routing
   let allContacts: { email: string | null; triggerDomains: string[] | null; isActive: boolean | null }[] = [];
@@ -1199,9 +1201,24 @@ export async function evaluateAndPersistSignals(
       }
 
       detectionsCreated++;
+      // Queue for tailored prospect outreach brief (non-blocking, fires after loop)
+      prospectBriefQueue.push({
+        triggerName: detection.triggerName,
+        triggerDomain: detection.triggerDomain,
+        recommendedPlaybook: detection.recommendedPlaybook,
+        confidenceScore: detection.confidenceScore,
+        signalDescription: (signal as any).description || detection.triggerName,
+      });
     } catch (err) {
       console.error('Error persisting detection:', err);
     }
+  }
+
+  // Fire prospect signal briefs asynchronously — never blocks the detection pipeline
+  if (prospectBriefQueue.length > 0) {
+    notifyMatchingProspects(prospectBriefQueue).catch(err =>
+      console.warn('[SignalEval] Prospect brief notification error:', (err as Error).message)
+    );
   }
 
   return detectionsCreated;
