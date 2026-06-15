@@ -567,19 +567,74 @@
   }
   .vm-compare-sub.gold-sub { color: #8a6a20; }
 
+  /* ---- SIDE-BY-SIDE LAYOUT ---- */
+  .side-by-side {
+    display: grid;
+    grid-template-columns: 56% calc(44% - 10px);
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: start;
+  }
+  .side-by-side > .panel-vm {
+    margin-bottom: 0;
+  }
+  .side-by-side > .grid-6 {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+    gap: 7px;
+  }
+  .side-by-side .panel {
+    min-height: 110px;
+  }
+  /* Compress vm-inner for the narrower left column */
+  .side-by-side .vm-inner {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .side-by-side .vm-separator {
+    display: none;
+  }
+  .side-by-side .vm-right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+  .side-by-side .vm-stat {
+    min-width: 70px;
+  }
+  .side-by-side .vm-stat-num { font-size: 16px; }
+  .side-by-side .vm-big-number { font-size: 48px; }
+  .side-by-side .vm-compare {
+    grid-template-columns: 1fr;
+    gap: 12px 0;
+  }
+  .side-by-side .vm-compare-divider { display: none; }
+  .side-by-side .vm-compare-heading { font-size: 8px; }
+  .side-by-side .vm-compare-text { font-size: 10px; }
+  .side-by-side .vm-compare-sub { font-size: 7.5px; }
+  .side-by-side .vm-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   /* ---- MOBILE RESPONSIVE ---- */
   @media (max-width: 780px) {
     body, .page { width: 100% !important; min-width: 0; }
 
+    .side-by-side {
+      grid-template-columns: 1fr;
+    }
+
     .grid-6 { grid-template-columns: 1fr; }
 
     .vm-inner {
-      flex-direction: column;
-      align-items: flex-start;
+      grid-template-columns: 1fr;
       gap: 14px;
       padding: 20px 16px 16px;
     }
-    .vm-separator { width: 100%; height: 1px; }
+    .vm-separator { display: none; }
 
     .vm-center { text-align: left; }
     .vm-big-number { font-size: 52px; }
@@ -591,7 +646,6 @@
     }
     .vm-stat { min-width: 80px; }
 
-    /* Stack comparison columns */
     .vm-compare {
       grid-template-columns: 1fr;
       gap: 18px 0;
@@ -599,9 +653,7 @@
       margin-top: 0;
     }
     .vm-compare-divider { display: none; }
-
     .vm-compare-heading { font-size: 9px; margin-bottom: 10px; }
-
     .vm-compare-text { font-size: 13px; }
     .vm-compare-sub { font-size: 9.5px; }
     .vm-check { font-size: 12px; }
@@ -664,10 +716,194 @@
   <!-- HEADER -->
   <div class="header">
     <h1>7 Mental Models for<span>Agentic AI</span></h1>
-    <div class="subtitle">The frameworks your peers use to think about agentic AI — and the execution layer that makes the response happen when the trigger fires</div>
+    <div class="subtitle">The execution layer that makes the response happen when the trigger fires — and the 6 frameworks your peers use to think about it</div>
   </div>
 
-  <!-- 6 ORIGINAL PANELS -->
+  <!-- SIDE-BY-SIDE: VM left, 6 frameworks right -->
+  <div class="side-by-side">
+
+  <!-- ===== VAUGHNMARTIN — LEFT PANEL ===== -->
+  <div class="panel-vm">
+    <div class="vm-inner">
+
+      <!-- LEFT: Identity -->
+      <div class="vm-left">
+        <div class="vm-brand">VaughnMartin</div>
+        <div class="vm-product">READINESS OS</div>
+        <div class="vm-descriptor">Every enterprise has Microsoft's AI stack. Readiness OS is the operating model above it — so when a strategic trigger fires, the response is already assembled.</div>
+      </div>
+
+      <!-- Separator -->
+      <div class="vm-separator"></div>
+
+      <!-- CENTER: The signature metric -->
+      <div class="vm-center">
+        <div class="vm-clock-label">Activation Time</div>
+        <div class="vm-big-number">12</div>
+        <div class="vm-big-unit">MINUTES</div>
+        <div class="vm-vs">vs.</div>
+        <div class="vm-baseline">30-day<br>mobilization cycle</div>
+        <div class="vm-multiplier">3,600× Execution Head Start</div>
+      </div>
+
+      <!-- Separator -->
+      <div class="vm-separator"></div>
+
+      <!-- RIGHT: Platform stats -->
+      <div class="vm-right">
+        <div class="vm-stat">
+          <span class="vm-stat-num">180</span>
+          <span class="vm-stat-label">Readiness Protocols</span>
+        </div>
+        <div class="vm-stat">
+          <span class="vm-stat-num">231</span>
+          <span class="vm-stat-label">Trigger Conditions</span>
+        </div>
+        <div class="vm-stat">
+          <span class="vm-stat-num">9</span>
+          <span class="vm-stat-label">Strategic Domains</span>
+        </div>
+        <div class="vm-stat">
+          <span class="vm-stat-num">248+</span>
+          <span class="vm-stat-label">Live Data Points</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bridge -->
+    <div style="
+      border-left: 3px solid #C9A84C;
+      margin: 0; padding: 10px 20px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800;
+      color: #ffffff; letter-spacing: 0.02em; line-height: 1.35;
+      text-transform: uppercase;
+    ">
+      Six frameworks map the territory.
+      <span style="color:#C9A84C; margin-left:6px;">Only one gives you the response pre-assembled — 30 days compressed to 12 minutes.</span>
+    </div>
+
+    <!-- Capability comparison strip -->
+    <div class="vm-compare">
+
+      <!-- LEFT: What the 6 frameworks collectively give you -->
+      <div class="vm-compare-col">
+        <div class="vm-compare-heading muted">The 6 frameworks below give you</div>
+        <div class="vm-compare-list">
+          <div class="vm-compare-item">
+            <span class="vm-check teal">✓</span>
+            <span class="vm-compare-text muted">Agentic maturity assessment
+              <span class="vm-compare-sub">Where you sit on the autonomy curve</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check teal">✓</span>
+            <span class="vm-compare-text muted">Investment allocation model
+              <span class="vm-compare-sub">How to split budget across people, tech, algorithms</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check teal">✓</span>
+            <span class="vm-compare-text muted">Org transformation roadmap
+              <span class="vm-compare-sub">Strategy → structure → systems sequencing</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check teal">✓</span>
+            <span class="vm-compare-text muted">AI operating model design
+              <span class="vm-compare-sub">Incremental gains vs. net-new advantage</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check teal">✓</span>
+            <span class="vm-compare-text muted">Human-agent governance framework
+              <span class="vm-compare-sub">Where human agency meets AI action</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check teal">✓</span>
+            <span class="vm-compare-text muted">Agent deployment guidance
+              <span class="vm-compare-sub">Map, govern, measure</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="vm-compare-divider"></div>
+
+      <!-- RIGHT: What VaughnMartin adds on top -->
+      <div class="vm-compare-col">
+        <div class="vm-compare-heading gold">VaughnMartin adds all of that — plus the 3,600× execution head start none of them provide</div>
+        <div class="vm-compare-list">
+          <div class="vm-compare-item">
+            <span class="vm-check gold">+</span>
+            <span class="vm-compare-text bright">180 Readiness Protocols — pre-staged, not built in response
+              <span class="vm-compare-sub gold-sub">While others draft a plan when the trigger fires, yours is already assembled and authorized</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check gold">+</span>
+            <span class="vm-compare-text bright">ADVANCE 2.0 — institutional learning after every activation
+              <span class="vm-compare-sub gold-sub">Each close-out generates a causal hypothesis. Proven improvements update protocols automatically</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check gold">+</span>
+            <span class="vm-compare-text bright">Improvement measured outcome-by-outcome — not claimed
+              <span class="vm-compare-sub gold-sub">Expected time savings tested against actual results. Every protocol has a verified evidence trail</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check gold">+</span>
+            <span class="vm-compare-text bright">231 trigger conditions — signal-detected every 15 minutes
+              <span class="vm-compare-sub gold-sub">8 live data sources. Pattern detection replaces the standing crisis committee</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check gold">+</span>
+            <span class="vm-compare-text bright">Executive authorization at every protocol activation
+              <span class="vm-compare-sub gold-sub">The system prepares the response. The executive approves. No protocol fires without sign-off</span>
+            </span>
+          </div>
+          <div class="vm-compare-item">
+            <span class="vm-check gold">+</span>
+            <span class="vm-compare-text bright">Living library — every protocol versioned with causal evidence
+              <span class="vm-compare-sub gold-sub">Not a PDF that ages on a server. 180 protocols that update based on what actually worked</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom tagline bar -->
+    <div class="vm-bottom">
+      <div class="vm-tagline">"Every other model tells you how to think about AI. Only one is ready when the trigger fires."</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:7px;">
+        <a href="https://vaughnmartin.com/request-access" style="
+          background: #C9A84C; color: #0A0F2E;
+          font-family: 'Barlow Condensed', sans-serif;
+          font-weight: 900; font-size: 11px; letter-spacing: 1px;
+          text-transform: uppercase; text-decoration: none;
+          padding: 6px 14px; border-radius: 2px;
+          display: inline-block;
+        ">Apply for Founding Partner Access</a>
+        <a href="https://vaughnmartin.com/12-minute-experience" style="
+          color: #2B8A6E;
+          font-family: 'Barlow Condensed', sans-serif;
+          font-weight: 600; font-size: 10px; letter-spacing: 0.5px;
+          text-decoration: underline; text-underline-offset: 2px;
+          display: inline-block;
+        ">or watch the 12-minute test drive →</a>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #2B8A6E; letter-spacing: 0.5px; text-align: right; line-height: 1.5;">
+          System Monitors. Executives Authorize.<br>vaughnmartin.com
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 FRAMEWORK PANELS — supporting context below -->
   <div class="grid-6">
 
     <!-- ENDGAME -->
@@ -829,186 +1065,7 @@
 
   </div>
 
-  <!-- ===== VAUGHNMARTIN — FULL WIDTH SPOTLIGHT ===== -->
-  <div class="panel-vm">
-    <div class="vm-inner">
-
-      <!-- LEFT: Identity -->
-      <div class="vm-left">
-        <div class="vm-brand">VaughnMartin</div>
-        <div class="vm-product">READINESS OS</div>
-        <div class="vm-descriptor">Every enterprise has Microsoft's AI stack. Readiness OS is the operating model above it — so when a strategic trigger fires, the response is already assembled.</div>
-      </div>
-
-      <!-- Separator -->
-      <div class="vm-separator"></div>
-
-      <!-- CENTER: The signature metric -->
-      <div class="vm-center">
-        <div class="vm-clock-label">Activation Time</div>
-        <div class="vm-big-number">12</div>
-        <div class="vm-big-unit">MINUTES</div>
-        <div class="vm-vs">vs.</div>
-        <div class="vm-baseline">30-day<br>mobilization cycle</div>
-        <div class="vm-multiplier">3,600× Execution Head Start</div>
-      </div>
-
-      <!-- Separator -->
-      <div class="vm-separator"></div>
-
-      <!-- RIGHT: Platform stats — locked metrics -->
-      <div class="vm-right">
-        <div class="vm-stat">
-          <span class="vm-stat-num">180</span>
-          <span class="vm-stat-label">Readiness Protocols</span>
-        </div>
-        <div class="vm-stat">
-          <span class="vm-stat-num">231</span>
-          <span class="vm-stat-label">Trigger Conditions</span>
-        </div>
-        <div class="vm-stat">
-          <span class="vm-stat-num">9</span>
-          <span class="vm-stat-label">Strategic Domains</span>
-        </div>
-        <div class="vm-stat">
-          <span class="vm-stat-num">248+</span>
-          <span class="vm-stat-label">Live Data Points</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Bridge -->
-    <div style="
-      border-left: 3px solid #C9A84C;
-      margin: 0; padding: 10px 20px;
-      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800;
-      color: #ffffff; letter-spacing: 0.02em; line-height: 1.35;
-      text-transform: uppercase;
-    ">
-      Six frameworks map the territory.
-      <span style="color:#C9A84C; margin-left:6px;">Only one gives you the response pre-assembled — 30 days compressed to 12 minutes.</span>
-    </div>
-
-    <!-- Capability comparison strip -->
-    <div class="vm-compare">
-
-      <!-- LEFT: What the 6 frameworks collectively give you -->
-      <div class="vm-compare-col">
-        <div class="vm-compare-heading muted">The 6 frameworks above give you</div>
-        <div class="vm-compare-list">
-          <div class="vm-compare-item">
-            <span class="vm-check teal">✓</span>
-            <span class="vm-compare-text muted">Agentic maturity assessment
-              <span class="vm-compare-sub">Where you sit on the autonomy curve</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check teal">✓</span>
-            <span class="vm-compare-text muted">Investment allocation model
-              <span class="vm-compare-sub">How to split budget across people, tech, algorithms</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check teal">✓</span>
-            <span class="vm-compare-text muted">Org transformation roadmap
-              <span class="vm-compare-sub">Strategy → structure → systems sequencing</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check teal">✓</span>
-            <span class="vm-compare-text muted">AI operating model design
-              <span class="vm-compare-sub">Incremental gains vs. net-new advantage</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check teal">✓</span>
-            <span class="vm-compare-text muted">Human-agent governance framework
-              <span class="vm-compare-sub">Where human agency meets AI action</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check teal">✓</span>
-            <span class="vm-compare-text muted">Agent deployment guidance
-              <span class="vm-compare-sub">Map, govern, measure</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Divider -->
-      <div class="vm-compare-divider"></div>
-
-      <!-- RIGHT: What VaughnMartin adds on top -->
-      <div class="vm-compare-col">
-        <div class="vm-compare-heading gold">VaughnMartin adds all of that — plus the 3,600× execution head start none of them provide</div>
-        <div class="vm-compare-list">
-          <div class="vm-compare-item">
-            <span class="vm-check gold">+</span>
-            <span class="vm-compare-text bright">180 Readiness Protocols — pre-staged, not built in response
-              <span class="vm-compare-sub gold-sub">While others draft a plan when the trigger fires, yours is already assembled and authorized</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check gold">+</span>
-            <span class="vm-compare-text bright">ADVANCE 2.0 — institutional learning after every activation
-              <span class="vm-compare-sub gold-sub">Each close-out generates a causal hypothesis. Proven improvements update protocols automatically</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check gold">+</span>
-            <span class="vm-compare-text bright">Improvement measured outcome-by-outcome — not claimed
-              <span class="vm-compare-sub gold-sub">Expected time savings tested against actual results. Every protocol has a verified evidence trail</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check gold">+</span>
-            <span class="vm-compare-text bright">231 trigger conditions — signal-detected every 15 minutes
-              <span class="vm-compare-sub gold-sub">8 live data sources. Pattern detection replaces the standing crisis committee</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check gold">+</span>
-            <span class="vm-compare-text bright">Executive authorization at every protocol activation
-              <span class="vm-compare-sub gold-sub">The system prepares the response. The executive approves. No protocol fires without sign-off</span>
-            </span>
-          </div>
-          <div class="vm-compare-item">
-            <span class="vm-check gold">+</span>
-            <span class="vm-compare-text bright">Living library — every protocol versioned with causal evidence
-              <span class="vm-compare-sub gold-sub">Not a PDF that ages on a server. 180 protocols that update based on what actually worked</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Bottom tagline bar -->
-    <div class="vm-bottom">
-      <div class="vm-tagline">"Every other model tells you how to think about AI. Only one is ready when the trigger fires."</div>
-      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:7px;">
-        <a href="https://vaughnmartin.com/request-access" style="
-          background: #C9A84C; color: #0A0F2E;
-          font-family: 'Barlow Condensed', sans-serif;
-          font-weight: 900; font-size: 11px; letter-spacing: 1px;
-          text-transform: uppercase; text-decoration: none;
-          padding: 6px 14px; border-radius: 2px;
-          display: inline-block;
-        ">Apply for Founding Partner Access</a>
-        <a href="https://vaughnmartin.com/12-minute-experience" style="
-          color: #2B8A6E;
-          font-family: 'Barlow Condensed', sans-serif;
-          font-weight: 600; font-size: 10px; letter-spacing: 0.5px;
-          text-decoration: underline; text-underline-offset: 2px;
-          display: inline-block;
-        ">or watch the 12-minute test drive →</a>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 8px; color: #2B8A6E; letter-spacing: 0.5px; text-align: right; line-height: 1.5;">
-          System Monitors. Executives Authorize.<br>vaughnmartin.com
-        </div>
-      </div>
-    </div>
-  </div>
+  </div><!-- end side-by-side -->
 
   <!-- FOOTER -->
   <div class="footer">
