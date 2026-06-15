@@ -87,13 +87,22 @@ export function registerMagicLinkRoutes(app: Express) {
     }
 
     // Enroll in signal brief pipeline — next qualifying trigger will reach this prospect
-    import('../services/prospectEnrollment.js').then(({ enrollProspectForAlerts }) => {
+    // Also fire the immediate welcome email while intent is at its peak
+    import('../services/prospectEnrollment.js').then(({ enrollProspectForAlerts, sendRequestAccessWelcome }) => {
       enrollProspectForAlerts({
         email,
         name: `${firstName} ${lastName}`.trim(),
         role: title,
         company,
       }).catch(err => console.warn('[RequestAccess] Prospect enrollment non-fatal:', err?.message));
+
+      sendRequestAccessWelcome({
+        firstName,
+        lastName,
+        email,
+        company,
+        role: title,
+      }).catch(err => console.warn('[RequestAccess] Welcome email non-fatal:', err?.message));
     }).catch(() => {});
 
     return res.json({ ok: true, emailSent: (result as any).emailSent ?? true });

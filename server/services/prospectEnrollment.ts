@@ -502,3 +502,184 @@ function buildBriefEmail(
 </body>
 </html>`;
 }
+
+/**
+ * Fires immediately when a prospect submits the /request-access form.
+ * Separate from the magic link email — that one is functional (click to sign in).
+ * This one sets the frame: what they've entered, what to expect, what to do right now.
+ */
+export async function sendRequestAccessWelcome(prospect: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company: string;
+  role: string;
+}): Promise<void> {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) return;
+
+  const platformUrl = getPlatformUrl();
+  const unsubToken = Buffer.from(prospect.email).toString('base64url');
+
+  const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#F5F5F0;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F5F0;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-top:3px solid ${GOLD};">
+
+  <!-- Header -->
+  <tr><td style="background:${NAVY};padding:32px 40px;">
+    <p style="margin:0 0 6px;font-size:10px;letter-spacing:0.18em;color:${GOLD};text-transform:uppercase;font-weight:700;">VaughnMartin · Readiness OS</p>
+    <h1 style="margin:0 0 4px;font-size:22px;font-weight:700;color:#ffffff;line-height:1.3;">Founding Partner Program</h1>
+    <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.55);">Application confirmed · ${prospect.company}</p>
+  </td></tr>
+
+  <!-- Gold rule -->
+  <tr><td style="height:2px;background:${GOLD};"></td></tr>
+
+  <!-- Opening -->
+  <tr><td style="padding:36px 40px 0;">
+    <p style="margin:0 0 20px;font-size:16px;font-weight:700;color:${NAVY};line-height:1.4;">
+      ${prospect.firstName},
+    </p>
+    <p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.8;">
+      Your application is in. You've entered the Founding Partner Program — a 90-day validation partnership with a cohort of 12 organizations who will be the first to operate on a pre-staged execution model.
+    </p>
+    <p style="margin:0 0 28px;font-size:14px;color:#374151;line-height:1.8;">
+      Here's what that means and what happens next.
+    </p>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:0 40px;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- What you've entered -->
+  <tr><td style="padding:28px 40px 0;">
+    <p style="margin:0 0 14px;font-size:10px;letter-spacing:0.14em;color:${GOLD};text-transform:uppercase;font-weight:700;">What you've entered</p>
+    <p style="margin:0 0 12px;font-size:14px;color:#374151;line-height:1.8;">
+      Most enterprises spend 30 days just mobilizing when a strategic trigger fires — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins.
+    </p>
+    <p style="margin:0 0 24px;font-size:14px;color:#374151;line-height:1.8;">
+      Readiness OS compresses that to 12 minutes. Not by moving faster — by having the response staged before the trigger fires. 180 Readiness Protocols. Pre-staged. Ready.
+    </p>
+    <p style="margin:0 0 28px;font-size:15px;font-style:italic;color:${NAVY};font-weight:600;border-left:3px solid ${GOLD};padding-left:16px;line-height:1.6;">
+      "The response is ready before the trigger fires."
+    </p>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:0 40px;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- What to expect -->
+  <tr><td style="padding:28px 40px 0;">
+    <p style="margin:0 0 14px;font-size:10px;letter-spacing:0.14em;color:${GOLD};text-transform:uppercase;font-weight:700;">What happens next</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding:12px 0;border-bottom:1px solid #F3F0EA;vertical-align:top;width:28px;">
+          <div style="width:20px;height:20px;background:${NAVY};border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;color:${GOLD};">1</div>
+        </td>
+        <td style="padding:12px 0 12px 14px;border-bottom:1px solid #F3F0EA;">
+          <p style="margin:0 0 2px;font-size:13px;font-weight:700;color:${NAVY};">Your magic link is in a separate email</p>
+          <p style="margin:0;font-size:13px;color:#6B7280;line-height:1.6;">Check your inbox — it gives you direct access to the platform. Valid for 24 hours.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0;border-bottom:1px solid #F3F0EA;vertical-align:top;width:28px;">
+          <div style="width:20px;height:20px;background:${NAVY};border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;color:${GOLD};">2</div>
+        </td>
+        <td style="padding:12px 0 12px 14px;border-bottom:1px solid #F3F0EA;">
+          <p style="margin:0 0 2px;font-size:13px;font-weight:700;color:${NAVY};">You'll receive live signal briefs</p>
+          <p style="margin:0;font-size:13px;color:#6B7280;line-height:1.6;">When a qualifying strategic trigger fires in your industry — at 75%+ confidence — you'll receive a personalized brief showing the prepared vs. traditional response gap.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0;vertical-align:top;width:28px;">
+          <div style="width:20px;height:20px;background:${NAVY};border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;color:${GOLD};">3</div>
+        </td>
+        <td style="padding:12px 0 12px 14px;">
+          <p style="margin:0 0 2px;font-size:13px;font-weight:700;color:${NAVY};">Founding Partner onboarding</p>
+          <p style="margin:0;font-size:13px;color:#6B7280;line-height:1.6;">Once accepted, your 90-day validation begins. You'll configure your first protocols against the triggers most relevant to ${prospect.company}.</p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:28px 40px 0;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- Do this now -->
+  <tr><td style="padding:28px 40px 0;">
+    <p style="margin:0 0 6px;font-size:10px;letter-spacing:0.14em;color:${TEAL};text-transform:uppercase;font-weight:700;">Do this right now</p>
+    <p style="margin:0 0 20px;font-size:14px;color:#374151;line-height:1.7;">
+      Before your magic link arrives — take the 12-minute test drive. It runs a live simulation of a strategic trigger firing, the protocol executing, and the 12-minute execution clock. No login needed.
+    </p>
+  </td></tr>
+
+  <!-- CTA buttons -->
+  <tr><td style="padding:0 40px 32px;" align="center">
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding-right:12px;">
+          <a href="${platformUrl}/12-minute-experience"
+             style="display:inline-block;background:${NAVY};color:#ffffff;text-decoration:none;padding:13px 28px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">
+            TAKE THE 12-MINUTE TEST DRIVE →
+          </a>
+        </td>
+        <td>
+          <a href="${platformUrl}/how-it-executes"
+             style="display:inline-block;background:transparent;color:${NAVY};text-decoration:none;padding:12px 24px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1px solid ${NAVY};">
+            SEE HOW IT EXECUTES
+          </a>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:0 40px;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- Closing -->
+  <tr><td style="padding:28px 40px;">
+    <p style="margin:0 0 16px;font-size:13px;color:#374151;line-height:1.8;">
+      Questions before your onboarding call? Reply directly to this email.
+    </p>
+    <p style="margin:0;font-size:13px;color:#374151;line-height:1.8;">
+      — The VaughnMartin Team
+    </p>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:${NAVY};padding:20px 40px;">
+    <p style="margin:0 0 4px;font-size:10px;color:rgba(255,255,255,0.35);line-height:1.8;">
+      VaughnMartin · Readiness OS · Founding Partner Program
+    </p>
+    <p style="margin:0;font-size:10px;color:rgba(255,255,255,0.25);line-height:1.6;">
+      <a href="${platformUrl}/api/unsubscribe?t=${unsubToken}" style="color:rgba(255,255,255,0.35);text-decoration:none;">Unsubscribe</a>
+      &nbsp;·&nbsp;
+      <a href="${platformUrl}" style="color:${GOLD};text-decoration:none;">vaughnmartin.com</a>
+    </p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+
+  const resend = new Resend(resendKey);
+  try {
+    await resend.emails.send({
+      from: 'VaughnMartin Readiness OS <pilot@vaughnmartin.com>',
+      replyTo: 'hello@vaughnmartin.com',
+      to: prospect.email,
+      subject: `${prospect.firstName}, your Founding Partner application is confirmed`,
+      html,
+    });
+    console.log(`[Welcome] Sent to ${prospect.email}`);
+  } catch (err: any) {
+    console.warn('[Welcome] Send error:', err.message);
+  }
+}
+}
