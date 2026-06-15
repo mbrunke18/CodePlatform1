@@ -193,7 +193,7 @@ export async function notifyMatchingProspects(detections: DetectionBrief[]): Pro
           from: 'Readiness OS Signals <signals@vaughnmartin.com>',
           replyTo: 'hello@vaughnmartin.com',
           to: prospect.email,
-          subject: `Signal Detected: ${detection.triggerName} — Protocol Pre-Staged`,
+          subject: `${detection.triggerName} — a prepared organization is already executing`,
           html,
         });
 
@@ -221,6 +221,112 @@ export async function notifyMatchingProspects(detections: DetectionBrief[]): Pro
   }
 }
 
+function getDomainNarrative(domain: string): {
+  prepared: Array<{ min: string; action: string }>;
+  traditional: Array<{ delay: string; action: string }>;
+  brutalLine: string;
+} {
+  const d = (domain || '').toLowerCase();
+
+  if (d.includes('cyber') || d.includes('ransom') || d.includes('breach') || d.includes('security')) {
+    return {
+      prepared: [
+        { min: 'Min 0', action: 'Threat pattern confirmed across 248 sources' },
+        { min: 'Min 2', action: 'Ransomware containment protocol staged — zero setup' },
+        { min: 'Min 5', action: 'IT, security, legal, and comms briefed simultaneously' },
+        { min: 'Min 9', action: 'Containment decision in executive inbox' },
+        { min: 'Min 12', action: 'Executing — scope contained, narrative controlled' },
+      ],
+      traditional: [
+        { delay: 'Hour 1', action: 'IT notices anomaly. Alerts go up the chain.' },
+        { delay: 'Hour 4', action: '"Let\'s get the incident response team on a call."' },
+        { delay: 'Day 1', action: 'Scope still unknown. Consultants engaged.' },
+        { delay: 'Day 3', action: 'Executive still waiting on assessment.' },
+        { delay: 'Week 1', action: 'Containment begins. Damage is done.' },
+      ],
+      brutalLine: 'In a ransomware event, the first 12 minutes determine whether you contain it or spend six months recovering from it.',
+    };
+  }
+
+  if (d.includes('regulat') || d.includes('compliance') || d.includes('fda') || d.includes('sec') || d.includes('doj')) {
+    return {
+      prepared: [
+        { min: 'Min 0', action: 'Regulatory signal confirmed — exposure pre-mapped' },
+        { min: 'Min 2', action: 'Compliance response protocol staged automatically' },
+        { min: 'Min 5', action: 'Legal, compliance, ops, and board liaison briefed' },
+        { min: 'Min 9', action: 'Response strategy authorized by executive' },
+        { min: 'Min 12', action: 'Filing in progress — narrative ahead of the cycle' },
+      ],
+      traditional: [
+        { delay: 'Hour 2', action: 'Alert surfaces in someone\'s inbox.' },
+        { delay: 'Hour 6', action: 'Legal team cc\'d on an email chain.' },
+        { delay: 'Day 3', action: 'External counsel engaged. "What\'s our exposure?"' },
+        { delay: 'Week 2', action: 'Response strategy still being drafted.' },
+        { delay: 'Week 4', action: 'Filing submitted — regulators already set the narrative.' },
+      ],
+      brutalLine: 'Regulators move fast. The organizations that respond in hours instead of weeks are the ones that had the response staged before the signal fired.',
+    };
+  }
+
+  if (d.includes('supply') || d.includes('geopol') || d.includes('logist') || d.includes('manufactur')) {
+    return {
+      prepared: [
+        { min: 'Min 0', action: 'Disruption signal confirmed — impact pre-modeled' },
+        { min: 'Min 2', action: 'Supply continuity protocol staged — alternates identified' },
+        { min: 'Min 5', action: 'Ops, procurement, finance, and sales briefed' },
+        { min: 'Min 9', action: 'Continuity decision authorized — production protected' },
+        { min: 'Min 12', action: 'Alternate sourcing executing — no production loss' },
+      ],
+      traditional: [
+        { delay: 'Day 1', action: 'Supplier sends disruption notification.' },
+        { delay: 'Day 2', action: '"Do we have backup suppliers?" Nobody knows.' },
+        { delay: 'Day 4', action: 'Procurement meeting called. Options being explored.' },
+        { delay: 'Week 2', action: 'Alternate supplier identified. Negotiations begin.' },
+        { delay: 'Week 4', action: 'Production already impacted. Customers notified.' },
+      ],
+      brutalLine: 'Supply chain disruptions don\'t wait for your next procurement meeting. The organization with pre-staged continuity plans never stops moving.',
+    };
+  }
+
+  if (d.includes('financial') || d.includes('activist') || d.includes('investor') || d.includes('m&a') || d.includes('acqui')) {
+    return {
+      prepared: [
+        { min: 'Min 0', action: 'Activist signal confirmed — stake pre-analyzed' },
+        { min: 'Min 2', action: 'Investor response protocol staged — precedents loaded' },
+        { min: 'Min 5', action: 'Board, legal, IR, and banking relationships briefed' },
+        { min: 'Min 9', action: 'Response strategy authorized by executive' },
+        { min: 'Min 12', action: 'Board-ready brief delivered — narrative controlled' },
+      ],
+      traditional: [
+        { delay: 'Hour 4', action: 'SEC filing surfaces. "Get the board on a call."' },
+        { delay: 'Day 2', action: 'Banker engaged. Defensive strategy "in development."' },
+        { delay: 'Week 1', action: 'Board meeting scheduled. Deck being prepared.' },
+        { delay: 'Week 3', action: 'Response strategy finalized.' },
+        { delay: 'Week 4', action: 'Activist already set the narrative. Defense is reactive.' },
+      ],
+      brutalLine: 'Activist investors pick organizations that are unprepared. A pre-staged response brief changes the power dynamic before the first call.',
+    };
+  }
+
+  return {
+    prepared: [
+      { min: 'Min 0', action: 'Signal confirmed across 248 continuous monitoring sources' },
+      { min: 'Min 2', action: 'Readiness Protocol staged — zero setup, zero coordination' },
+      { min: 'Min 5', action: 'All relevant stakeholders briefed with role-specific context' },
+      { min: 'Min 9', action: 'Decision package delivered to the authorizing executive' },
+      { min: 'Min 12', action: 'Executing — response ahead of the market' },
+    ],
+    traditional: [
+      { delay: 'Hour 2', action: 'Someone notices the signal. Mentions it in a meeting.' },
+      { delay: 'Day 1', action: '"We should get a call together on this."' },
+      { delay: 'Week 1', action: 'First strategy session held. Deck assigned.' },
+      { delay: 'Week 2', action: 'Stakeholder alignment still in progress.' },
+      { delay: 'Week 4', action: 'Response begins. Competitors are three weeks ahead.' },
+    ],
+    brutalLine: 'The 30-day mobilization cycle isn\'t a speed problem. It\'s a preparation problem. Organizations that stage their responses before triggers fire never run that cycle.',
+  };
+}
+
 function buildBriefEmail(
   prospect: { name: string; company: string; role: string | null },
   detection: DetectionBrief,
@@ -229,127 +335,164 @@ function buildBriefEmail(
   const firstName = prospect.name.split(' ')[0] || prospect.name;
   const protocol = detection.recommendedPlaybook || 'Readiness Protocol';
   const confidence = detection.confidenceScore;
+  const narrative = getDomainNarrative(detection.triggerDomain);
 
-  const steps = [
-    {
-      min: '0–2',
-      label: 'Signal confirmed',
-      detail: 'System verifies signal across multiple sources. Protocol staged automatically.',
-    },
-    {
-      min: '2–6',
-      label: 'Stakeholders notified',
-      detail: 'Pre-mapped contacts receive role-specific briefs. No coordination calls needed.',
-    },
-    {
-      min: '6–12',
-      label: 'Executive authorization',
-      detail: 'Decision package lands in the executive inbox. One approval to execute.',
-    },
-  ];
+  const preparedRows = narrative.prepared.map((row, i) => `
+    <tr style="border-bottom:1px solid rgba(43,138,110,0.15);">
+      <td style="padding:9px 14px;vertical-align:top;">
+        <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.14em;color:${TEAL};display:block;margin-bottom:2px;">${row.min}</span>
+        <span style="font-size:12px;font-weight:600;color:#111827;line-height:1.45;">${i < 4 ? '✓' : '→'}&nbsp; ${row.action}</span>
+      </td>
+    </tr>`).join('');
+
+  const traditionalRows = narrative.traditional.map((row) => `
+    <tr style="border-bottom:1px solid #F3F4F6;">
+      <td style="padding:9px 14px;vertical-align:top;">
+        <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.14em;color:#9CA3AF;display:block;margin-bottom:2px;">${row.delay}</span>
+        <span style="font-size:12px;color:#6B7280;line-height:1.45;">${row.action}</span>
+      </td>
+    </tr>`).join('');
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Signal Brief — VaughnMartin Readiness OS</title>
+<title>Live Signal Brief — VaughnMartin Readiness OS</title>
 </head>
-<body style="margin:0;padding:0;background:#F0EDE4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+<body style="margin:0;padding:0;background:#ECEAE3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
 <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
-<tr><td align="center" style="padding:32px 16px;">
-<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;border-collapse:collapse;box-shadow:0 2px 24px rgba(10,15,46,0.12);">
+<tr><td align="center" style="padding:28px 16px;">
+<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:620px;border-collapse:collapse;box-shadow:0 4px 32px rgba(10,15,46,0.18);">
 
   <!-- HEADER -->
-  <tr><td style="background:${NAVY};padding:28px 36px 22px;">
+  <tr><td style="background:${NAVY};padding:26px 36px 20px;">
     <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
       <tr>
         <td>
-          <div style="font-family:'Courier New',Courier,monospace;font-size:9px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:${GOLD};margin-bottom:8px;">VaughnMartin · Readiness OS</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:600;color:#ffffff;line-height:1.2;">Prospect Signal Brief</div>
+          <div style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:10px;">VaughnMartin · Readiness OS</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:600;color:#ffffff;line-height:1.2;letter-spacing:-0.01em;">Live Signal Brief</div>
         </td>
-        <td align="right" valign="top">
-          <div style="background:rgba(201,168,76,0.15);border:1px solid ${GOLD};display:inline-block;padding:5px 14px;">
-            <span style="font-family:'Courier New',Courier,monospace;font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${GOLD};">${detection.triggerDomain}</span>
+        <td align="right" valign="middle">
+          <div style="display:inline-block;">
+            <span style="display:inline-block;width:7px;height:7px;background:#EF4444;border-radius:50%;vertical-align:middle;margin-right:6px;"></span>
+            <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#EF4444;vertical-align:middle;">LIVE</span>
+            <div style="margin-top:6px;font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);text-transform:uppercase;">${detection.triggerDomain}</div>
           </div>
         </td>
       </tr>
     </table>
   </td></tr>
 
-  <!-- SIGNAL ALERT BAND -->
-  <tr><td style="background:#FFF8E8;border-left:5px solid ${GOLD};padding:16px 32px;">
-    <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${GOLD};margin-bottom:5px;">Signal Detected — ${confidence}% Confidence</div>
-    <div style="font-size:14px;font-weight:600;color:${NAVY};line-height:1.55;">${detection.signalDescription || detection.triggerName}</div>
+  <!-- SIGNAL BAND -->
+  <tr><td style="background:#1a2050;padding:20px 36px 18px;border-bottom:2px solid ${GOLD};">
+    <div style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:${GOLD};margin-bottom:8px;">Signal Confirmed · ${confidence}% Confidence</div>
+    <div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.45;">${detection.signalDescription || detection.triggerName}</div>
   </td></tr>
 
-  <!-- BODY -->
-  <tr><td style="background:#ffffff;padding:36px 36px 28px;">
-
-    <p style="margin:0 0 18px;font-size:15px;color:${NAVY};font-weight:600;line-height:1.5;">${firstName},</p>
-    <p style="margin:0 0 24px;font-size:14px;color:#374151;line-height:1.75;">
-      While ${prospect.company} runs normal operations, Readiness OS continuous monitoring detected a signal that historically precedes a coordinated organizational response. The protocol below was pre-staged automatically. No calls were scheduled. No committees convened.
+  <!-- OPENING -->
+  <tr><td style="background:#ffffff;padding:32px 36px 0;">
+    <p style="margin:0 0 10px;font-size:15px;color:${NAVY};font-weight:700;line-height:1.4;">${firstName} —</p>
+    <p style="margin:0 0 28px;font-size:14px;color:#374151;line-height:1.8;">
+      By the time you read this, a prepared organization has already responded to this trigger. No meeting was called. No committee convened. Their response was staged before the signal fired.
     </p>
+  </td></tr>
 
-    <!-- PROTOCOL CALLOUT -->
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;background:#F8F7F4;border:1px solid #E8E4DC;border-left:4px solid ${TEAL};margin-bottom:30px;">
-      <tr><td style="padding:18px 22px;">
-        <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${TEAL};margin-bottom:7px;">Protocol Pre-Staged</div>
-        <div style="font-size:18px;font-weight:700;color:${NAVY};margin-bottom:6px;">${protocol}</div>
-        <div style="font-size:11px;color:#6B7280;line-height:1.5;">Ready to activate · No setup required · Executive authorization preserves the decision</div>
-      </td></tr>
-    </table>
-
-    <!-- 12-MINUTE PREVIEW HEADER -->
-    <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${GOLD};margin-bottom:16px;">What the First 12 Minutes Look Like</div>
-
-    <!-- STEPS -->
-    ${steps.map((s, i) => {
-      const bg = i === 0 ? GOLD : i === 1 ? TEAL : NAVY;
-      return `<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:14px;">
+  <!-- CONTRAST TABLE HEADER -->
+  <tr><td style="background:#ffffff;padding:0 36px 10px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
       <tr>
-        <td style="width:44px;vertical-align:top;padding-top:2px;">
-          <div style="width:36px;height:36px;background:${bg};border-radius:50%;text-align:center;line-height:36px;">
-            <span style="font-size:14px;font-weight:800;color:#ffffff;">${i + 1}</span>
+        <td style="width:50%;padding-right:5px;">
+          <div style="background:${NAVY};padding:10px 14px;">
+            <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${TEAL};">Prepared Organization</span>
           </div>
         </td>
-        <td style="vertical-align:top;">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#9CA3AF;margin-bottom:3px;">Min ${s.min}</div>
-          <div style="font-size:13px;font-weight:700;color:${NAVY};margin-bottom:3px;">${s.label}</div>
-          <div style="font-size:12px;color:#6B7280;line-height:1.55;">${s.detail}</div>
+        <td style="width:50%;padding-left:5px;">
+          <div style="background:#F3F4F6;padding:10px 14px;">
+            <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#9CA3AF;">Traditional Response</span>
+          </div>
         </td>
       </tr>
-    </table>`;
-    }).join('')}
+    </table>
+  </td></tr>
 
-    <!-- CONTEXT RULE -->
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:24px 0 28px;">
-      <tr><td style="border-top:1px solid #E8E4DC;padding-top:22px;">
-        <p style="margin:0;font-size:12px;color:#6B7280;line-height:1.7;">
-          This is what a 3,600× execution head start looks like in practice. Thirty days of mobilization — figuring out who's in the room, aligning stakeholders, agreeing on a plan — compressed to 12 minutes. The response was ready before the trigger fired.
-        </p>
+  <!-- CONTRAST TABLE BODY -->
+  <tr><td style="background:#ffffff;padding:0 36px 28px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+      <tr>
+        <td style="width:50%;padding-right:5px;vertical-align:top;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;border:1px solid rgba(43,138,110,0.3);border-top:3px solid ${TEAL};background:#F6FBF9;">
+            ${preparedRows}
+            <tr>
+              <td style="padding:12px 14px;background:${TEAL};">
+                <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#ffffff;">Min 12 — Executing</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td style="width:50%;padding-left:5px;vertical-align:top;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;border:1px solid #E5E7EB;border-top:3px solid #D1D5DB;background:#FAFAFA;">
+            ${traditionalRows}
+            <tr>
+              <td style="padding:12px 14px;background:#E5E7EB;">
+                <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#6B7280;">Still mobilizing.</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- BRUTAL LINE -->
+  <tr><td style="background:#ffffff;padding:0 36px 28px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
+      <tr><td style="border-left:3px solid ${GOLD};padding:14px 18px;background:#FDFBF6;">
+        <p style="margin:0;font-size:13px;font-weight:600;color:${NAVY};line-height:1.7;font-style:italic;">${narrative.brutalLine}</p>
       </td></tr>
     </table>
+  </td></tr>
 
-    <!-- CTAs -->
+  <!-- PROTOCOL CALLOUT -->
+  <tr><td style="background:#ffffff;padding:0 36px 28px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;background:#F0F9F6;border:1px solid rgba(43,138,110,0.25);border-left:4px solid ${TEAL};">
+      <tr><td style="padding:18px 22px;">
+        <div style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${TEAL};margin-bottom:8px;">Protocol Pre-Staged · Ready to Activate</div>
+        <div style="font-size:17px;font-weight:700;color:${NAVY};margin-bottom:6px;line-height:1.3;">${protocol}</div>
+        <div style="font-size:11px;color:#6B7280;line-height:1.6;">No setup required &nbsp;·&nbsp; No coordination call &nbsp;·&nbsp; Executive authorization preserves the decision</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- META PROOF -->
+  <tr><td style="background:#F8F7F4;padding:24px 36px;border-top:1px solid #E8E4DC;">
+    <p style="margin:0;font-size:12px;color:#4B5563;line-height:1.85;">
+      Notice what didn't happen to send you this brief: no meeting was called, no analyst was tasked, no committee convened. The system detected the signal, staged the protocol, and briefed you — automatically.<br><br>
+      <strong style="color:${NAVY};">That is the operating model. The question is whether it's working for your organization, or for your competitors.</strong>
+    </p>
+  </td></tr>
+
+  <!-- CTAs -->
+  <tr><td style="background:#ffffff;padding:28px 36px;">
     <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
       <tr>
-        <td style="width:50%;padding-right:6px;">
-          <a href="${platformUrl}/how-it-executes" style="display:block;text-align:center;background:${NAVY};color:#ffffff;text-decoration:none;padding:14px 16px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">See It Execute →</a>
+        <td style="width:50%;padding-right:7px;">
+          <a href="${platformUrl}/how-it-executes" style="display:block;text-align:center;background:${NAVY};color:#ffffff;text-decoration:none;padding:15px 16px;font-family:'Courier New',Courier,monospace;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Watch the 12-Minute Execution →</a>
         </td>
-        <td style="width:50%;padding-left:6px;">
-          <a href="${platformUrl}/founding-partner-program" style="display:block;text-align:center;background:${GOLD};color:${NAVY};text-decoration:none;padding:14px 16px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">Apply for Founding Partner Access →</a>
+        <td style="width:50%;padding-left:7px;">
+          <a href="${platformUrl}/request-access" style="display:block;text-align:center;background:${GOLD};color:${NAVY};text-decoration:none;padding:15px 16px;font-family:'Courier New',Courier,monospace;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Apply for Founding Partner Access →</a>
         </td>
       </tr>
     </table>
-
   </td></tr>
 
   <!-- FOOTER -->
   <tr><td style="background:${NAVY};padding:22px 36px;">
-    <p style="margin:0;font-size:10px;color:rgba(255,255,255,0.4);line-height:1.7;">
-      This brief was generated automatically by Readiness OS continuous monitoring — scanning 248+ data points across regulatory, financial, geopolitical, and market intelligence sources every 15 minutes.<br><br>
-      VaughnMartin · Readiness OS · <a href="${platformUrl}" style="color:${GOLD};text-decoration:none;">vaughnmartin.com</a>
+    <p style="margin:0 0 6px;font-size:10px;color:rgba(255,255,255,0.35);line-height:1.8;">
+      Readiness OS monitors 248+ data points across regulatory, financial, geopolitical, and market sources — every 15 minutes, continuously. This brief was staged and sent automatically at the moment the signal crossed the confidence threshold.
+    </p>
+    <p style="margin:0;font-size:10px;color:rgba(255,255,255,0.25);line-height:1.6;">
+      VaughnMartin · Readiness OS &nbsp;·&nbsp; <a href="${platformUrl}" style="color:${GOLD};text-decoration:none;">vaughnmartin.com</a>
     </p>
   </td></tr>
 
