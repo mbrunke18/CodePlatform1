@@ -1,5 +1,6 @@
-import { Link } from "wouter";
-import { Play, ArrowRight } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Play, ArrowRight, ChevronLeft } from "lucide-react";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -179,16 +180,24 @@ function PhaseBtn({ label, href, color }: { label: string; href: string; color: 
 }
 
 export default function PlatformHub() {
+  const [, navigate] = useLocation();
   return (
     <div style={{ background: IVORY, minHeight: "100vh" }}>
 
       {/* ── HEADER BAR ────────────────────────────────── */}
-      <div style={{ background: NAVY, padding: "18px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 24, flexWrap: "wrap" }}>
+      <div style={{ background: NAVY, padding: "14px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+        {/* Left: logo + title + metrics */}
+        <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+          {/* Logo → home */}
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", paddingRight: 20, borderRight: "1px solid rgba(255,255,255,0.12)" }}>
+            <ExecuteIQLogo height={34} variant="full" color="white" animated={false} />
+          </Link>
+          {/* Page label + tagline */}
           <div>
-            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: "rgba(255,255,255,0.45)", textTransform: "uppercase", marginBottom: 2 }}>Readiness OS · Platform Map</div>
-            <div style={{ ...SERIF, fontSize: 22, fontWeight: 700, color: "#fff", lineHeight: 1 }}>The response is ready before the trigger fires.</div>
+            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: "rgba(255,255,255,0.45)", textTransform: "uppercase", marginBottom: 2 }}>Platform Map</div>
+            <div style={{ ...SERIF, fontSize: 20, fontWeight: 700, color: "#fff", lineHeight: 1 }}>The response is ready before the trigger fires.</div>
           </div>
+          {/* Metrics */}
           <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
             {[{ n: "180", l: "Protocols" }, { n: "231", l: "Triggers" }, { n: "9", l: "Domains" }, { n: "12 min", l: "Execution" }, { n: "3,600×", l: "Head Start" }].map(s => (
               <div key={s.n} style={{ textAlign: "center" }}>
@@ -198,6 +207,7 @@ export default function PlatformHub() {
             ))}
           </div>
         </div>
+        {/* Right: CTAs */}
         <div style={{ display: "flex", gap: 10 }}>
           <Link href="/12-minute-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 7, background: GOLD, color: NAVY, fontWeight: 800, fontSize: 12, padding: "10px 18px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" }}>
             <Play size={11} /> Try It Now
