@@ -5,6 +5,7 @@ import { Resend } from 'resend';
 import { wsService } from './WebSocketService';
 import { evaluateSignalsWithOrgTriggers } from './TriggerEvaluationEngine.js';
 import { notifyMatchingProspects, type DetectionBrief } from './prospectEnrollment.js';
+import { notifyAdminOfLinkedInPost } from './linkedInPostGenerator.js';
 
 // Evaluation mode options:
 //   'configured' — customer's configured triggers only (new engine)
@@ -1219,6 +1220,14 @@ export async function evaluateAndPersistSignals(
     notifyMatchingProspects(prospectBriefQueue).catch(err =>
       console.warn('[SignalEval] Prospect brief notification error:', (err as Error).message)
     );
+    // Notify platform admin with ready-to-post LinkedIn draft for each qualifying signal
+    for (const detection of prospectBriefQueue) {
+      if ((detection.confidenceScore ?? 0) >= 75) {
+        notifyAdminOfLinkedInPost(detection).catch(err =>
+          console.warn('[SignalEval] Admin LinkedIn alert error:', (err as Error).message)
+        );
+      }
+    }
   }
 
   return detectionsCreated;
