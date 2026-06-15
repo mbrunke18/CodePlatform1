@@ -54,7 +54,7 @@ const TIERS = [
       { q: "We already have consultants.", a: "Consultants bill $300K–$800K annually and show up after the trigger fires. Core costs $150K and responds in 12 minutes — every trigger, including the ones that happen at 2 AM on a Sunday." },
       { q: "We can coordinate this ourselves.", a: "Your team currently takes 30 days to mobilize. That gap costs $847B annually across enterprises. Core replaces the coordination delay — not the people making the decisions." },
     ],
-    cta: "Contact Sales",
+    cta: "Apply for Founding Partner Access",
   },
   {
     id: "foresight",
@@ -94,7 +94,7 @@ const TIERS = [
       { q: "What's the ROI on the Digital Twin?", a: "In modeled scenarios using simulation rehearsal, protocol execution error rates are projected to decrease by 40–60%. In manufacturing contexts, pre-staged production disruption protocols project $3M+ in preserved output per trigger event. Each prevented mis-activation — estimated at $50K–$200K — covers a significant portion of the annual subscription." },
       { q: "The causal learning — what does that actually mean?", a: "Every activation generates a hypothesis: 'This protocol change should reduce response time by X minutes.' After the next activation, the system measures whether it was right. Over time, your protocols are tuned by evidence — not by opinion. No competitor can replicate that history." },
     ],
-    cta: "Contact Sales",
+    cta: "Apply for Founding Partner Access",
   },
   {
     id: "enterprise",
@@ -134,7 +134,7 @@ const TIERS = [
       { q: "We have an internal team for coordination.", a: "Enterprise supplements your team — it doesn't replace it. Your executives still authorize every response. What changes is that the coordination is pre-staged before they walk into the room. Your people spend their time on decisions, not logistics." },
       { q: "What's the institutional memory value over time?", a: "In Year 1, the platform responds in 12 minutes. By Year 3, the ADVANCE phase has encoded evidence from every activation into your protocols. Your responses are 40–60% faster. Your stakeholder map is current. Your budget allocations are pre-approved. That infrastructure took 3 years to build — and no competitor can buy it tomorrow." },
     ],
-    cta: "Contact Sales",
+    cta: "Apply for Founding Partner Access",
   },
 ];
 
@@ -365,7 +365,7 @@ export default function Pricing() {
               variant="outline"
               style={{ border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", background: "transparent", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "16px 32px", ...BC }}
             >
-              Contact Sales
+              Apply for Founding Partner Access
             </Button>
           </div>
         </div>
@@ -1037,7 +1037,7 @@ export default function Pricing() {
               variant="outline"
               style={{ border: "1.5px solid rgba(255,255,255,0.25)", color: "#fff", background: "transparent", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "18px 36px", ...BC }}
             >
-              Talk to Sales
+              Apply for Founding Partner Access
             </Button>
           </div>
           <div style={{ marginTop: 24 }}>

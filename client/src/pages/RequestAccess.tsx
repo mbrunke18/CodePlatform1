@@ -19,12 +19,21 @@ const IVORY = "#F0EDE4";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 
+const CHALLENGE_EXAMPLES = [
+  "We take 4–6 weeks to mobilize after a major competitor event",
+  "Crisis responses are improvised — no pre-staged protocols",
+  "Regulatory triggers require weeks of meetings before execution begins",
+  "Every situation starts from zero — no institutional memory",
+  "Cross-functional coordination collapses under time pressure",
+];
+
 const schema = z.object({
   firstName: z.string().min(1, "Required"),
   lastName: z.string().min(1, "Required"),
   email: z.string().email("Enter a valid work email"),
   company: z.string().min(1, "Required"),
   title: z.string().min(1, "Required"),
+  executionChallenge: z.string().optional(),
 });
 type FormData = z.infer<typeof schema>;
 
@@ -70,7 +79,7 @@ export default function RequestAccess() {
 
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { firstName: "", lastName: "", email: "", company: "", title: "" },
+    defaultValues: { firstName: "", lastName: "", email: "", company: "", title: "", executionChallenge: "" },
   });
 
   const mutation = useMutation({
@@ -220,7 +229,7 @@ export default function RequestAccess() {
                     </div>
 
                     {/* Title */}
-                    <div style={{ marginBottom: 40 }}>
+                    <div style={{ marginBottom: 28 }}>
                       <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Title / Role</label>
                       <FormField control={form.control} name="title" render={({ field }) => (
                         <FormItem>
@@ -228,6 +237,54 @@ export default function RequestAccess() {
                           <FormMessage className="text-xs mt-1" style={{ color: "#EF4444" }} />
                         </FormItem>
                       )} />
+                    </div>
+
+                    {/* Execution Challenge */}
+                    <div style={{ marginBottom: 40 }}>
+                      <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>
+                        Your Biggest Execution Challenge <span style={{ color: "rgba(240,237,228,0.35)", fontWeight: 500, letterSpacing: "0.05em", textTransform: "none" }}>— optional</span>
+                      </label>
+                      <FormField control={form.control} name="executionChallenge" render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <textarea
+                              {...field}
+                              rows={3}
+                              placeholder="Describe the coordination gap your organization faces when a major trigger fires…"
+                              className="request-field"
+                              style={{ ...fieldStyle, resize: "none", lineHeight: 1.55, paddingTop: 8 }}
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )} />
+                      {/* Example chips */}
+                      <div style={{ marginTop: 10 }}>
+                        <p style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 7 }}>Examples — tap to use</p>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                          {CHALLENGE_EXAMPLES.map((ex) => (
+                            <button
+                              key={ex}
+                              type="button"
+                              onClick={() => form.setValue("executionChallenge", ex)}
+                              style={{
+                                ...BC, fontSize: 10, fontWeight: 500, letterSpacing: "0.02em",
+                                color: "rgba(240,237,228,0.55)",
+                                background: "rgba(240,237,228,0.04)",
+                                border: "1px solid rgba(240,237,228,0.12)",
+                                padding: "5px 10px",
+                                cursor: "pointer",
+                                textAlign: "left",
+                                transition: "border-color 0.15s, color 0.15s",
+                                borderRadius: "0.15rem",
+                              }}
+                              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = "rgba(201,168,76,0.4)"; el.style.color = GOLD; }}
+                              onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = "rgba(240,237,228,0.12)"; el.style.color = "rgba(240,237,228,0.55)"; }}
+                            >
+                              {ex}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
 
                     {mutation.isError && (
@@ -264,7 +321,7 @@ export default function RequestAccess() {
                     {/* Note */}
                     <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.55)", textAlign: "center", marginTop: 18, letterSpacing: "0.02em", lineHeight: 1.6 }}>
                       Link expires in 24 hours · single sign-in · no password required.<br />
-                      <span style={{ color: "rgba(240,237,228,0.5)" }}>This is Executive Access — not the <a href="/founding-partner-program" style={{ color: GOLD, textDecoration: "none" }}>Founding Partner Program</a>.</span>
+                      <span style={{ color: "rgba(240,237,228,0.5)" }}>Platform access only. Interested in a structured 90-day partnership? <a href="/contact" style={{ color: GOLD, textDecoration: "none" }}>Contact us directly</a>.</span>
                     </p>
                   </form>
                 </Form>
@@ -319,8 +376,8 @@ export default function RequestAccess() {
                   <p style={{ ...BC, fontSize: 11, fontWeight: 600, color: "rgba(240,237,228,0.5)", letterSpacing: "0.06em", marginBottom: 6 }}>
                     Ready for a formal engagement?
                   </p>
-                  <Link href="/founding-partner-program" style={{ ...BC, fontSize: 12, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
-                    Learn About the Founding Partner Program →
+                  <Link href="/contact" style={{ ...BC, fontSize: 12, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
+                    Apply for the Founding Partner Program →
                   </Link>
                 </div>
 
