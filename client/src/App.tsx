@@ -842,6 +842,23 @@ function App() {
                   <EvalBanner />
                   <OnboardingOverlay />
                   <RoleIndustryCaptureModal />
+                  <a
+                    href="/comparison.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      position: 'fixed', bottom: 24, left: 20, zIndex: 9998,
+                      background: '#C9A84C', color: '#0A0F2E',
+                      fontFamily: 'system-ui, sans-serif',
+                      fontWeight: 800, fontSize: 12, letterSpacing: '0.06em',
+                      textTransform: 'uppercase', textDecoration: 'none',
+                      padding: '10px 18px', borderRadius: 3,
+                      boxShadow: '0 3px 14px rgba(0,0,0,0.30)',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    View Comparison
+                  </a>
                   <QuickActions />
                   <ErrorBoundary>
                     <Router />
