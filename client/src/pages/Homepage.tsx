@@ -438,10 +438,9 @@ function HomepageNav() {
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <VaughnMartinLogo variant="full" height={68} color="dark" animated={true} />
 
-          {/* Desktop nav — hidden below 768px via CSS */}
-          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>What We Do</Link>
-            <Link href="/how-it-executes" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>How It Works</Link>
+          {/* Desktop nav — 4 hub links, no dropdowns */}
+          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
+            <Link href="/platform" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Platform</Link>
             <Link href="/demo-hub" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
@@ -451,10 +450,10 @@ function HomepageNav() {
             }}>
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
+            <Link href="/executive-brief" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Proof</Link>
             <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Pricing</Link>
-            <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Proof</Link>
             <Link
-              href="/founding-partner-program"
+              href="/request-access"
               onClick={() => trackCTA("nav")}
               data-testid="nav-founding-partner-cta"
               style={{
@@ -462,7 +461,7 @@ function HomepageNav() {
                 padding: "10px 20px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
               }}
             >
-              Request Founding Partner Access
+              Apply for Founding Partner Access
             </Link>
           </div>
 
@@ -495,9 +494,10 @@ function HomepageNav() {
             ✕
           </button>
           {[
-            { label: "What We Do",    href: "/platform-overview" },
+            { label: "The Platform",  href: "/platform" },
             { label: "See It Work",   href: "/demo-hub", highlight: true },
-            { label: "The Proof",     href: "/the-proof" },
+            { label: "The Proof",     href: "/executive-brief" },
+            { label: "Pricing",       href: "/pricing" },
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{
               ...DM, color: (item as any).highlight ? GOLD : "#fff",
@@ -505,29 +505,16 @@ function HomepageNav() {
               padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em",
             }}>{(item as any).highlight ? `▶ ${item.label}` : item.label}</Link>
           )}
-          <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>Founder's Story</Link>
           <Link
-            href="/demo-hub"
-            onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
-            style={{
-              ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
-              padding: "16px 24px", borderRadius: 0, textDecoration: "none",
-              textAlign: "center", marginTop: 24, width: "calc(100% - 48px)", display: "block",
-              border: `1.5px solid rgba(201,168,76,0.5)`,
-            }}
-          >
-            ▶ See It Work — 8 Scenarios →
-          </Link>
-          <Link
-            href="/founding-partner-program"
+            href="/request-access"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
             style={{
               ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
               padding: "18px 24px", borderRadius: 0, textDecoration: "none",
-              textAlign: "center", marginTop: 10, width: "calc(100% - 48px)", display: "block",
+              textAlign: "center", marginTop: 24, width: "calc(100% - 48px)", display: "block",
             }}
           >
-            Request Founding Partner Access
+            Apply for Founding Partner Access
           </Link>
         </div>
       )}
@@ -1062,7 +1049,7 @@ function HeroSection() {
               </div>
               <div style={{ display: "flex", gap: 24, alignItems: "center", marginBottom: 28, flexWrap: "wrap" as const }}>
                 <Link
-                  href="/founding-partner-program"
+                  href="/request-access"
                   onClick={() => trackCTA("hero")}
                   style={{ ...DM, color: "rgba(255,255,255,0.5)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1, letterSpacing: "0.02em" }}
                 >
@@ -2845,7 +2832,7 @@ function ExecutiveQASection() {
           <a href="/investor-landing" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}60`, paddingBottom: 2 }}>
             See all 8 questions answered →
           </a>
-          <a href="/founding-partner-program" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#6B7280", textDecoration: "none", borderBottom: "1px solid #D1D5DB", paddingBottom: 2 }}>
+          <a href="/request-access" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#6B7280", textDecoration: "none", borderBottom: "1px solid #D1D5DB", paddingBottom: 2 }}>
             Apply for Founding Partner Access →
           </a>
         </div>
@@ -2929,7 +2916,7 @@ function CTASection() {
           </p>
           <div>
             <Link
-              href="/founding-partner-program"
+              href="/request-access"
               onClick={() => trackCTA("cta_section")}
               className="hp-cta-btn"
               style={{
@@ -3023,7 +3010,7 @@ function HomepageFooter() {
               { label: "Protocol Coverage Browser", href: "/protocol-browser" },
               { label: "Readiness Protocols", href: "/playbook-library" },
               { label: "Pricing & Plans", href: "/pricing" },
-              { label: "Request Founding Partner Access", href: "/founding-partner-program" },
+              { label: "Apply for Founding Partner Access", href: "/request-access" },
               { label: "Schedule a Conversation", href: "/contact" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
