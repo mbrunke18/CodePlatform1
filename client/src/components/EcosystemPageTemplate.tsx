@@ -208,7 +208,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
         </p>
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <button
-            onClick={() => setLocation("/founding-partner-program")}
+            onClick={() => setLocation("/request-access")}
             style={{
               background: GOLD, color: NAVY, border: "none",
               fontFamily: "'Barlow Condensed',sans-serif",

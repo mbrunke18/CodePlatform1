@@ -49,7 +49,7 @@ const PAGE_NAMES: Record<string, string> = {
   '/board-admin':             'Board Review Dashboard',
   '/founder-story':           'Founder Story',
   '/situation-scanner':       'Situation Scanner',
-  '/founding-partner-program':'Founding Partner Program',
+  '/request-access':'Founding Partner Program',
   '/request-access':          'Request Access',
 };
 

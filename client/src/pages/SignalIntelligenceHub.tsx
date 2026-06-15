@@ -538,13 +538,13 @@ export default function SignalIntelligenceHub() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 variant="outline" 
-                onClick={() => window.location.href = '/founding-partner-program'}
+                onClick={() => window.location.href = '/request-access'}
                 style={{ borderColor: "rgba(255,255,255,0.68)", color: "white" }}
               >
                 Sign In
               </Button>
               <Button 
-                onClick={() => setLocation('/founding-partner-program')}
+                onClick={() => setLocation('/request-access')}
                 style={{ background: "#C9A84C", color: "#0A0F2E" }}
               >
                 Apply for Founding Partner Access

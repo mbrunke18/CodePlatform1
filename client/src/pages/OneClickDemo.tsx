@@ -490,7 +490,7 @@ export default function OneClickDemo() {
                   Run Demo Again
                 </Button>
                 <Button 
-                  onClick={() => { resetDemo(); setLocation('/founding-partner-program'); }}
+                  onClick={() => { resetDemo(); setLocation('/request-access'); }}
                   size="lg"
                   className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-8"
                   data-testid="button-schedule-demo"

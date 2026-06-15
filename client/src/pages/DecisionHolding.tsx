@@ -176,7 +176,7 @@ export default function DecisionHolding() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/founding-partner-program">
+              <Link href="/request-access">
                 <Button
                   style={{ background: GOLD, color: NAVY, borderRadius: 0, fontWeight: 700, fontSize: 13, padding: "12px 28px" }}
                 >

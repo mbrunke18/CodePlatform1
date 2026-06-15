@@ -634,7 +634,7 @@ export default function CustomerDemo() {
                       ))}
                       <Button 
                         className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold mt-2"
-                        onClick={() => setLocation('/founding-partner-program')}
+                        onClick={() => setLocation('/request-access')}
                       >
                         Contact for Full Demo
                         <ArrowRight className="ml-2 h-4 w-4" />

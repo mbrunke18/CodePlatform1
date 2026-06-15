@@ -91,7 +91,7 @@ export default function VsBCP() {
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <button
-              onClick={() => setLocation("/founding-partner-program")}
+              onClick={() => setLocation("/request-access")}
               style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", border: "none", cursor: "pointer" }}
             >
               Request Founding Partner Access <ArrowRight style={{ width: 16, height: 16 }} />
@@ -254,7 +254,7 @@ export default function VsBCP() {
               Run the 12-Minute Test Drive <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <button
-              onClick={() => setLocation("/founding-partner-program")}
+              onClick={() => setLocation("/request-access")}
               style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: IVORY, fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", border: "1px solid rgba(240,237,228,0.25)", cursor: "pointer" }}
             >
               Request Founding Partner Access

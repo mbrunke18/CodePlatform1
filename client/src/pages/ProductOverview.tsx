@@ -176,7 +176,7 @@ export default function ProductOverview() {
             ↓ Save as PDF
           </button>
           <button
-            onClick={() => setLocation("/founding-partner-program")}
+            onClick={() => setLocation("/request-access")}
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
               fontSize: 12,

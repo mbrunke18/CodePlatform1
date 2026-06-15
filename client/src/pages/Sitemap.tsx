@@ -170,7 +170,7 @@ const SECTIONS: Section[] = [
     color: TEAL,
     icon: Rocket,
     entries: [
-      { name: 'Founding Partner Program', path: '/founding-partner-program', desc: '90-day validation partnership — apply now', tag: 'CTA', icon: Target },
+      { name: 'Founding Partner Program', path: '/request-access', desc: '90-day validation partnership — apply now', tag: 'CTA', icon: Target },
       { name: 'Request Access', path: '/request-access', desc: 'Submit your application for platform access', icon: Rocket },
       { name: 'Contact', path: '/contact', desc: 'Reach the VaughnMartin team directly', icon: MessageSquare },
       { name: 'Security & Compliance', path: '/security-compliance', desc: 'Procurement-ready one-pager — auth, data governance, AI safety', icon: Shield },

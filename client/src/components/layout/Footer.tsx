@@ -190,7 +190,7 @@ export default function Footer() {
                 info@vaughnmartin.com
               </a>
               <button 
-                onClick={() => navigateTo('/founding-partner-program')}
+                onClick={() => navigateTo('/request-access')}
                 className="text-sm font-bold transition-colors"
                 style={{ color: '#C9A84C' }}
               >

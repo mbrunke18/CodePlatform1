@@ -597,9 +597,9 @@ export default function ProductTour() {
               variant="outline" 
               size="lg"
               className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none px-8 py-6 uppercase tracking-widest text-[10px] font-bold transition-all"
-              onClick={() => setLocation('/founding-partner-program')}
+              onClick={() => setLocation('/request-access')}
             >
-              Contact Sales
+              Apply for Founding Partner Access
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </motion.div>

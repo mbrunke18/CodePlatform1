@@ -213,14 +213,14 @@ export default function VideoLanding() {
               </Button>
             </Link>
             
-            <Link href="/founding-partner-program">
+            <Link href="/request-access">
               <Button 
                 size="lg"
                 variant="outline"
                 className="px-10 py-8 text-lg border-white/20 text-white hover:bg-white/10 rounded-none font-bold uppercase tracking-widest"
                 data-testid="button-contact"
               >
-                Contact Sales
+                Apply for Founding Partner Access
                 <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
             </Link>

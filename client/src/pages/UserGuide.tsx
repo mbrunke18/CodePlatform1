@@ -525,7 +525,7 @@ export default function UserGuide() {
           </P>
 
           <Callout label="Founding Partner Program">
-            The pre-launch Founding Partner Program is a <strong>90-day validation partnership</strong>. Founding Partners receive full platform access, a dedicated onboarding session, and direct input into protocol development. Apply at <code>/founding-partner-program</code>.
+            The pre-launch Founding Partner Program is a <strong>90-day validation partnership</strong>. Founding Partners receive full platform access, a dedicated onboarding session, and direct input into protocol development. Apply at <code>/request-access</code>.
           </Callout>
 
           <PageBreak />

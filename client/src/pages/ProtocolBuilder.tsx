@@ -1524,7 +1524,7 @@ function ProtocolSavedScreen({ data, savedId }: { data: Data; savedId: string })
             <Play size={12} fill="#fff" /> Activate Now
           </button>
         )}
-        <Link href="/founding-partner-program">
+        <Link href="/request-access">
           <button style={{ padding: '11px 22px', borderRadius: '0.15rem', border: 'none', background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>
             Apply for Founding Partner Access →
           </button>

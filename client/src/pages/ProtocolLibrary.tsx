@@ -908,7 +908,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                       <span style={{ fontSize: 10, color: "#9CA3AF" }}>Founding Partner access required</span>
                       <button
                         style={{ fontSize: 10, fontWeight: 700, background: "#0A0F2E", color: "#fff", border: "none", padding: "5px 14px", cursor: "pointer", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
-                        onClick={() => setLocation("/founding-partner-program")}
+                        onClick={() => setLocation("/request-access")}
                       >
                         Request Access
                       </button>
@@ -1133,7 +1133,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                           <span style={{ fontSize: 10, color: "#9CA3AF" }}>Founding Partner access required</span>
                           <button
                             style={{ fontSize: 10, fontWeight: 700, background: "#2B8A6E", color: "#fff", border: "none", padding: "5px 14px", cursor: "pointer", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
-                            onClick={() => setLocation("/founding-partner-program")}
+                            onClick={() => setLocation("/request-access")}
                           >Request Access</button>
                         </div>
                       </div>
@@ -1235,7 +1235,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
                   Founding Partners configure protocols against their real scenarios, real team, and real risk calendar.
                 </p>
-                <a href="/founding-partner-program" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", display: "inline-block" }}>
+                <a href="/request-access" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", display: "inline-block" }}>
                   Apply for Founding Partner Access →
                 </a>
               </div>

@@ -350,7 +350,7 @@ export default function SecurityCompliance() {
               </p>
             </div>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-              <a href="/founding-partner-program" style={{
+              <a href="/request-access" style={{
                 display: "inline-block", padding: "0.6875rem 1.25rem",
                 background: GOLD, color: NAVY, borderRadius: 3,
                 fontWeight: 700, fontSize: "0.875rem", textDecoration: "none",

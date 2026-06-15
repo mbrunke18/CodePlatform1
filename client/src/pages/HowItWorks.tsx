@@ -79,7 +79,7 @@ export default function HowItWorks() {
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Button asChild style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "none" }}>
-              <Link href="/founding-partner-program">Apply for Founding Partner Access</Link>
+              <Link href="/request-access">Apply for Founding Partner Access</Link>
             </Button>
             <Button asChild style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "1.5px solid rgba(255,255,255,0.3)" }}>
               <Link href="/try-demo">See a Live Demo</Link>
@@ -743,7 +743,7 @@ export default function HowItWorks() {
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Button asChild style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "none" }}>
-              <Link href="/founding-partner-program">Apply for Founding Partner Access</Link>
+              <Link href="/request-access">Apply for Founding Partner Access</Link>
             </Button>
             <Button asChild style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.25)" }}>
               <Link href="/12-minute-experience">Experience 12-Min Execution</Link>

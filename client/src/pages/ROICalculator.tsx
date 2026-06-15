@@ -664,7 +664,7 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/founding-partner-program')}>
+                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/request-access')}>
                     Apply for Founding Partner Access →
                   </Button>
                   <p className="text-center text-white/30 text-[10px] mt-3 leading-relaxed uppercase tracking-tighter">
@@ -794,7 +794,7 @@ export default function ROICalculator() {
               Your customized ROI estimate is a starting point. Our team builds a fully evidenced business case specific to your organization's risk profile and strategic calendar.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
-              <Button style={{ background: "#0A0F2E", color: "#fff", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 0 }} onClick={() => setLocation('/founding-partner-program')}>
+              <Button style={{ background: "#0A0F2E", color: "#fff", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 0 }} onClick={() => setLocation('/request-access')}>
                 Request Full Business Case
               </Button>
               <Link href="/12-minute-experience">

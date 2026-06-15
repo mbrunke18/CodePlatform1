@@ -107,7 +107,7 @@ export default function ExplorePage() {
               <Button
                 size="lg"
                 className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
-                onClick={() => { window.location.href = '/founding-partner-program'; }}
+                onClick={() => { window.location.href = '/request-access'; }}
               >
                 <LogIn className="h-4 w-4" />
                 Sign In to Explore
@@ -209,7 +209,7 @@ export default function ExplorePage() {
                 </ul>
                 <Button
                   className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none font-bold uppercase tracking-widest text-[10px] h-12"
-                  onClick={() => { window.location.href = '/founding-partner-program'; }}
+                  onClick={() => { window.location.href = '/request-access'; }}
                 >
                   <LogIn className="h-4 w-4 mr-2" />
                   Sign In to Explore

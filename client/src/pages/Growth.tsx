@@ -725,7 +725,7 @@ export default function Growth() {
             10 founding partner slots available. Includes custom Readiness Protocol development, white-glove onboarding, and full ROI documentation.
           </p>
           <Button
-            onClick={() => setLocation("/founding-partner-program")}
+            onClick={() => setLocation("/request-access")}
             style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
           >
             Apply for Founding Partner Access <ArrowRight className="ml-2 h-4 w-4" />
@@ -774,10 +774,10 @@ export default function Growth() {
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <button
-              onClick={() => setLocation("/contact")}
+              onClick={() => setLocation("/request-access")}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "none", cursor: "pointer" }}
             >
-              Contact Sales <ArrowRight style={{ width: 16, height: 16 }} />
+              Apply for Founding Partner Access <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <Button
               variant="outline"

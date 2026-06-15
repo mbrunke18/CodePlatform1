@@ -379,7 +379,7 @@ export default function LiveDetectionFeed() {
               Founding Partners get real-time signal detection scoped to their organization, stakeholder alert routing, and full trigger history. 12-minute execution starts here.
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/founding-partner-program" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 0, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
+              <a href="/request-access" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 0, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
                 Apply for Founding Partner Access
               </a>
               <a href="/platform-overview" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 0, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>

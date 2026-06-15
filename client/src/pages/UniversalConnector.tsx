@@ -636,7 +636,7 @@ export default function UniversalConnector() {
                 View Integration Setup Plan
                 <ArrowRight size={14} />
               </Link>
-              <Link href="/founding-partner-program" style={{
+              <Link href="/request-access" style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "transparent", color: "rgba(255,255,255,0.8)", fontWeight: 600, fontSize: 13,
                 padding: "12px 22px", borderRadius: "0.15rem", textDecoration: "none",

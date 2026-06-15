@@ -102,7 +102,7 @@ export default function ReadinessOracle() {
             </p>
 
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
-              <Link href="/founding-partner-program">
+              <Link href="/request-access">
                 <span style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontWeight: 800, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "14px 28px", cursor: "pointer", textDecoration: "none" }}>
                   Apply for Founding Partner Access <ArrowRight className="w-4 h-4" />
                 </span>
@@ -268,7 +268,7 @@ export default function ReadinessOracle() {
               Priority given to enterprise organizations with a C-level sponsor, active Microsoft or enterprise stack, and at least one strategic trigger in the last 18 months they weren't fully ready for. $75,000 fully credited toward your enterprise agreement.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
-              <Link href="/founding-partner-program">
+              <Link href="/request-access">
                 <span style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontWeight: 800, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "16px 32px", cursor: "pointer", textDecoration: "none" }}>
                   Apply for Founding Partner Access <ArrowRight className="w-4 h-4" />
                 </span>

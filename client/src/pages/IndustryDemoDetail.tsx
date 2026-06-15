@@ -698,7 +698,7 @@ export default function IndustryDemoDetail() {
               <div style={{ ...GEO, fontSize: 17, fontWeight: 600, color: NAVY, lineHeight: 1.35, marginBottom: 8 }}>Ready to stage this response for your {blueprint.industry} organization?</div>
               <p style={{ ...BAR, fontSize: 12, color: "rgba(10,15,46,0.55)", lineHeight: 1.75, marginBottom: 18 }}>Founding Partners receive all 180 Readiness Protocols pre-configured for their industry, risk calendar, and executive authorization structure. Go live in 4 weeks.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                <a href="/founding-partner-program" style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", background: NAVY, color: "#fff", padding: "13px 16px", textDecoration: "none", display: "block", textAlign: "center" }}>
+                <a href="/request-access" style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", background: NAVY, color: "#fff", padding: "13px 16px", textDecoration: "none", display: "block", textAlign: "center" }}>
                   Apply for Founding Partner Access
                 </a>
                 <a href="/12-minute-experience" style={{ ...BRC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY, padding: "13px 16px", textDecoration: "none", display: "block", textAlign: "center", border: `1px solid ${BORDER}` }}>
