@@ -21,25 +21,29 @@ function getMicrosoftCallbackURL(): string {
 }
 
 export function setupMicrosoftAuth(app: Express): void {
-  const clientId = process.env.AZURE_CLIENT_ID;
-  const clientSecret = process.env.AZURE_CLIENT_SECRET;
-  // "organizations" accepts any Microsoft work/school account (multi-tenant).
-  // Set AZURE_TENANT_ID to a specific GUID to lock to one org.
+  // Routes are always registered so the button never 404s.
+  // When credentials are absent the handler redirects gracefully.
   const tenantId = process.env.AZURE_TENANT_ID ?? "organizations";
-
-  if (!clientId || !clientSecret) {
-    console.log(
-      "[Microsoft SSO] AZURE_CLIENT_ID / AZURE_CLIENT_SECRET not configured — Microsoft login disabled"
-    );
-    return;
-  }
-
   const AUTH_URL = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize`;
   const TOKEN_URL = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`;
   const GRAPH_URL = "https://graph.microsoft.com/v1.0/me";
 
+  const isConfigured = (): boolean =>
+    !!(process.env.AZURE_CLIENT_ID && process.env.AZURE_CLIENT_SECRET);
+
+  if (!isConfigured()) {
+    console.log(
+      "[Microsoft SSO] AZURE_CLIENT_ID / AZURE_CLIENT_SECRET not configured — Microsoft login routes registered but will redirect to /request-access"
+    );
+  }
+
   // Step 1 — redirect user to Microsoft login
   app.get("/api/auth/microsoft", (req: any, res) => {
+    const clientId = process.env.AZURE_CLIENT_ID;
+    const clientSecret = process.env.AZURE_CLIENT_SECRET;
+    if (!clientId || !clientSecret) {
+      return res.redirect("/request-access");
+    }
     const state = crypto.randomBytes(16).toString("hex");
     req.session.msOAuthState = state;
 
@@ -64,6 +68,11 @@ export function setupMicrosoftAuth(app: Express): void {
 
   // Step 2 — Microsoft redirects back with auth code
   app.get("/api/auth/microsoft/callback", async (req: any, res, next) => {
+    const clientId = process.env.AZURE_CLIENT_ID;
+    const clientSecret = process.env.AZURE_CLIENT_SECRET;
+    if (!clientId || !clientSecret) {
+      return res.redirect("/request-access");
+    }
     try {
       const { code, state, error, error_description } = req.query as Record<string, string>;
 
@@ -186,5 +195,9 @@ export function setupMicrosoftAuth(app: Express): void {
     }
   });
 
-  console.log(`[Microsoft SSO] Enabled (tenant: ${tenantId}) — /api/auth/microsoft`);
+  if (isConfigured()) {
+    console.log(`[Microsoft SSO] Enabled (tenant: ${tenantId}) — /api/auth/microsoft`);
+  } else {
+    console.log(`[Microsoft SSO] Routes registered — activate by setting AZURE_CLIENT_ID + AZURE_CLIENT_SECRET`);
+  }
 }
