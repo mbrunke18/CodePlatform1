@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3 } from "lucide-react";
-import { SiGoogle, SiGithub, SiApple, SiMicrosoft } from "react-icons/si";
+import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
+
+const MicrosoftIcon = ({ size = 14 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
+    <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
+    <rect x="1" y="11" width="9" height="9" fill="#00A4EF"/>
+    <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+  </svg>
+);
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -1106,7 +1115,7 @@ export default function StandardNav() {
                   style={{ color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.2)' }}
                   data-testid="nav-login-microsoft"
                 >
-                  <SiMicrosoft className="h-3.5 w-3.5" style={{ color: '#00A4EF' }} />
+                  <MicrosoftIcon size={14} />
                   <span>Sign in with Microsoft</span>
                 </Button>
               </>
@@ -1205,7 +1214,7 @@ export default function StandardNav() {
                     style={{ color: NAVY }}
                     data-testid="nav-mobile-login-microsoft"
                   >
-                    <SiMicrosoft className="h-3.5 w-3.5" style={{ color: '#00A4EF' }} />
+                    <MicrosoftIcon size={14} />
                     <span>Sign in with Microsoft</span>
                   </Button>
                 </div>
