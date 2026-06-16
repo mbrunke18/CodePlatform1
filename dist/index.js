@@ -406,6 +406,7 @@ __export(schema_exports, {
   prismInsightsRelations: () => prismInsightsRelations,
   projects: () => projects,
   projectsRelations: () => projectsRelations,
+  prospectBriefsSent: () => prospectBriefsSent,
   protocolSignalProfiles: () => protocolSignalProfiles,
   protocolVersionDeltas: () => protocolVersionDeltas,
   pulseMetrics: () => pulseMetrics,
@@ -439,6 +440,7 @@ __export(schema_exports, {
   selectUserSchema: () => selectUserSchema,
   sessions: () => sessions,
   signalActivityLog: () => signalActivityLog,
+  signalBriefProspects: () => signalBriefProspects,
   signalCalibrationConfig: () => signalCalibrationConfig,
   signalConnectors: () => signalConnectors,
   signalMonitoringConfig: () => signalMonitoringConfig,
@@ -507,7 +509,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema, boardFeedback, insertBoardFeedbackSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, signalBriefProspects, prospectBriefsSent, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema, boardFeedback, insertBoardFeedbackSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6129,6 +6131,26 @@ var init_schema = __esm({
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertInvestorLeadSchema = createInsertSchema2(investorLeads).omit({ id: true, createdAt: true });
+    signalBriefProspects = pgTable2("signal_brief_prospects", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      name: text2("name").notNull(),
+      email: text2("email").notNull().unique(),
+      company: text2("company").notNull(),
+      role: text2("role").default(""),
+      enrolledAt: timestamp2("enrolled_at").defaultNow(),
+      briefCount: integer2("brief_count").default(0),
+      lastBriefAt: timestamp2("last_brief_at"),
+      isActive: boolean("is_active").default(true)
+    });
+    prospectBriefsSent = pgTable2("prospect_briefs_sent", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      prospectId: uuid("prospect_id").notNull(),
+      triggerName: text2("trigger_name").notNull(),
+      triggerDomain: text2("trigger_domain").notNull(),
+      playbookName: text2("playbook_name").notNull(),
+      confidenceScore: integer2("confidence_score").default(0),
+      sentAt: timestamp2("sent_at").defaultNow()
+    });
     peerReviews = pgTable2("peer_reviews", {
       id: uuid("id").primaryKey().defaultRandom(),
       createdAt: timestamp2("created_at").defaultNow(),
@@ -15897,7 +15919,19 @@ var init_intelligence_signals = __esm({
 });
 
 // server/services/prospectEnrollment.ts
-import { eq as eq5, and as and5 } from "drizzle-orm";
+var prospectEnrollment_exports = {};
+__export(prospectEnrollment_exports, {
+  enrollProspectForAlerts: () => enrollProspectForAlerts,
+  notifyMatchingProspects: () => notifyMatchingProspects,
+  sendRequestAccessWelcome: () => sendRequestAccessWelcome
+});
+import { eq as eq5, and as and5, gte as gte2, sql as sql7 } from "drizzle-orm";
+import { Resend } from "resend";
+function getPlatformUrl() {
+  if (process.env.REPLIT_DEPLOYMENT_URL) return process.env.REPLIT_DEPLOYMENT_URL;
+  if (process.env.REPL_SLUG) return `https://${process.env.REPL_SLUG}.replit.app`;
+  return "https://vaughnmartin.replit.app";
+}
 async function enrollProspectForAlerts(prospect) {
   try {
     const dbOrgs = await db.select({ id: organizations.id }).from(organizations);
@@ -15939,15 +15973,533 @@ async function enrollProspectForAlerts(prospect) {
     if (enrolled > 0) {
       console.log(`\u2705 [ProspectEnrollment] ${prospect.email} will now receive live trigger alert emails across ${enrolled} org(s)`);
     }
+    try {
+      await db.insert(signalBriefProspects).values({
+        email: prospect.email,
+        name: prospect.name,
+        role: prospect.role || "",
+        company: prospect.company,
+        isActive: true
+      }).onConflictDoUpdate({
+        target: signalBriefProspects.email,
+        set: {
+          name: prospect.name,
+          company: prospect.company,
+          role: prospect.role || "",
+          isActive: true
+        }
+      });
+    } catch (briefErr) {
+      console.warn("[ProspectEnrollment] signal_brief_prospects upsert failed (non-fatal):", briefErr.message);
+    }
   } catch (err) {
     console.error("[ProspectEnrollment] Enrollment failed (non-fatal):", err.message);
   }
 }
+async function notifyMatchingProspects(detections) {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) return;
+  const qualifying = detections.filter((d) => (d.confidenceScore ?? 0) >= MIN_CONFIDENCE);
+  if (qualifying.length === 0) return;
+  let prospects = [];
+  try {
+    prospects = await db.select({
+      id: signalBriefProspects.id,
+      name: signalBriefProspects.name,
+      email: signalBriefProspects.email,
+      company: signalBriefProspects.company,
+      role: signalBriefProspects.role,
+      briefCount: signalBriefProspects.briefCount
+    }).from(signalBriefProspects).where(eq5(signalBriefProspects.isActive, true));
+  } catch {
+    return;
+  }
+  if (prospects.length === 0) return;
+  const resend2 = new Resend(resendKey);
+  const weekAgo = new Date(Date.now() - 7 * 24 * 36e5);
+  const dupWindow = new Date(Date.now() - BRIEF_DEDUP_HOURS * 36e5);
+  const platformUrl = getPlatformUrl();
+  for (const detection of qualifying) {
+    for (const prospect of prospects) {
+      try {
+        const weeklyBriefs = await db.select({ id: prospectBriefsSent.id }).from(prospectBriefsSent).where(and5(
+          eq5(prospectBriefsSent.prospectId, prospect.id),
+          gte2(prospectBriefsSent.sentAt, weekAgo)
+        ));
+        if (weeklyBriefs.length >= MAX_BRIEFS_PER_WEEK) continue;
+        const recentSame = await db.select({ id: prospectBriefsSent.id }).from(prospectBriefsSent).where(and5(
+          eq5(prospectBriefsSent.prospectId, prospect.id),
+          eq5(prospectBriefsSent.triggerName, detection.triggerName),
+          gte2(prospectBriefsSent.sentAt, dupWindow)
+        )).limit(1);
+        if (recentSame.length > 0) continue;
+        const html = buildBriefEmail(prospect, detection, platformUrl);
+        await resend2.emails.send({
+          from: "Readiness OS Signals <signals@vaughnmartin.com>",
+          replyTo: "hello@vaughnmartin.com",
+          to: prospect.email,
+          subject: `${detection.triggerName} \u2014 a prepared organization is already executing`,
+          html
+        });
+        await db.insert(prospectBriefsSent).values({
+          prospectId: prospect.id,
+          triggerName: detection.triggerName,
+          triggerDomain: detection.triggerDomain,
+          playbookName: detection.recommendedPlaybook,
+          confidenceScore: detection.confidenceScore
+        });
+        await db.update(signalBriefProspects).set({
+          briefCount: sql7`${signalBriefProspects.briefCount} + 1`,
+          lastBriefAt: /* @__PURE__ */ new Date()
+        }).where(eq5(signalBriefProspects.id, prospect.id));
+        console.log(`[SignalBrief] Sent \u2192 ${prospect.email} | ${detection.triggerName} (${detection.confidenceScore}%)`);
+      } catch (err) {
+        console.warn(`[SignalBrief] Send error (${prospect.email}):`, err.message);
+      }
+    }
+  }
+}
+function getDomainNarrative(domain) {
+  const d = (domain || "").toLowerCase();
+  if (d.includes("cyber") || d.includes("ransom") || d.includes("breach") || d.includes("security")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Threat pattern confirmed across 248 sources" },
+        { min: "Min 2", action: "Ransomware containment protocol staged \u2014 zero setup" },
+        { min: "Min 5", action: "IT, security, legal, and comms briefed simultaneously" },
+        { min: "Min 9", action: "Containment decision in executive inbox" },
+        { min: "Min 12", action: "Executing \u2014 scope contained, narrative controlled" }
+      ],
+      traditional: [
+        { delay: "Hour 1", action: "IT notices anomaly. Alerts go up the chain." },
+        { delay: "Hour 4", action: `"Let's get the incident response team on a call."` },
+        { delay: "Day 1", action: "Scope still unknown. Consultants engaged." },
+        { delay: "Day 3", action: "Executive still waiting on assessment." },
+        { delay: "Week 1", action: "Containment begins. Damage is done." }
+      ],
+      brutalLine: "In a ransomware event, the first 12 minutes determine whether you contain it or spend six months recovering from it."
+    };
+  }
+  if (d.includes("regulat") || d.includes("compliance") || d.includes("fda") || d.includes("sec") || d.includes("doj")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Regulatory signal confirmed \u2014 exposure pre-mapped" },
+        { min: "Min 2", action: "Compliance response protocol staged automatically" },
+        { min: "Min 5", action: "Legal, compliance, ops, and board liaison briefed" },
+        { min: "Min 9", action: "Response strategy authorized by executive" },
+        { min: "Min 12", action: "Filing in progress \u2014 narrative ahead of the cycle" }
+      ],
+      traditional: [
+        { delay: "Hour 2", action: "Alert surfaces in someone's inbox." },
+        { delay: "Hour 6", action: "Legal team cc'd on an email chain." },
+        { delay: "Day 3", action: `External counsel engaged. "What's our exposure?"` },
+        { delay: "Week 2", action: "Response strategy still being drafted." },
+        { delay: "Week 4", action: "Filing submitted \u2014 regulators already set the narrative." }
+      ],
+      brutalLine: "Regulators move fast. The organizations that respond in hours instead of weeks are the ones that had the response staged before the signal fired."
+    };
+  }
+  if (d.includes("supply") || d.includes("geopol") || d.includes("logist") || d.includes("manufactur")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Disruption signal confirmed \u2014 impact pre-modeled" },
+        { min: "Min 2", action: "Supply continuity protocol staged \u2014 alternates identified" },
+        { min: "Min 5", action: "Ops, procurement, finance, and sales briefed" },
+        { min: "Min 9", action: "Continuity decision authorized \u2014 production protected" },
+        { min: "Min 12", action: "Alternate sourcing executing \u2014 no production loss" }
+      ],
+      traditional: [
+        { delay: "Day 1", action: "Supplier sends disruption notification." },
+        { delay: "Day 2", action: '"Do we have backup suppliers?" Nobody knows.' },
+        { delay: "Day 4", action: "Procurement meeting called. Options being explored." },
+        { delay: "Week 2", action: "Alternate supplier identified. Negotiations begin." },
+        { delay: "Week 4", action: "Production already impacted. Customers notified." }
+      ],
+      brutalLine: "Supply chain disruptions don't wait for your next procurement meeting. The organization with pre-staged continuity plans never stops moving."
+    };
+  }
+  if (d.includes("financial") || d.includes("activist") || d.includes("investor") || d.includes("m&a") || d.includes("acqui")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Activist signal confirmed \u2014 stake pre-analyzed" },
+        { min: "Min 2", action: "Investor response protocol staged \u2014 precedents loaded" },
+        { min: "Min 5", action: "Board, legal, IR, and banking relationships briefed" },
+        { min: "Min 9", action: "Response strategy authorized by executive" },
+        { min: "Min 12", action: "Board-ready brief delivered \u2014 narrative controlled" }
+      ],
+      traditional: [
+        { delay: "Hour 4", action: 'SEC filing surfaces. "Get the board on a call."' },
+        { delay: "Day 2", action: 'Banker engaged. Defensive strategy "in development."' },
+        { delay: "Week 1", action: "Board meeting scheduled. Deck being prepared." },
+        { delay: "Week 3", action: "Response strategy finalized." },
+        { delay: "Week 4", action: "Activist already set the narrative. Defense is reactive." }
+      ],
+      brutalLine: "Activist investors pick organizations that are unprepared. A pre-staged response brief changes the power dynamic before the first call."
+    };
+  }
+  return {
+    prepared: [
+      { min: "Min 0", action: "Signal confirmed across 248 continuous monitoring sources" },
+      { min: "Min 2", action: "Readiness Protocol staged \u2014 zero setup, zero coordination" },
+      { min: "Min 5", action: "All relevant stakeholders briefed with role-specific context" },
+      { min: "Min 9", action: "Decision package delivered to the authorizing executive" },
+      { min: "Min 12", action: "Executing \u2014 response ahead of the market" }
+    ],
+    traditional: [
+      { delay: "Hour 2", action: "Someone notices the signal. Mentions it in a meeting." },
+      { delay: "Day 1", action: '"We should get a call together on this."' },
+      { delay: "Week 1", action: "First strategy session held. Deck assigned." },
+      { delay: "Week 2", action: "Stakeholder alignment still in progress." },
+      { delay: "Week 4", action: "Response begins. Competitors are three weeks ahead." }
+    ],
+    brutalLine: "The 30-day mobilization cycle isn't a speed problem. It's a preparation problem. Organizations that stage their responses before triggers fire never run that cycle."
+  };
+}
+function buildBriefEmail(prospect, detection, platformUrl) {
+  const firstName = prospect.name.split(" ")[0] || prospect.name;
+  const protocol = detection.recommendedPlaybook || "Readiness Protocol";
+  const confidence = detection.confidenceScore;
+  const narrative = getDomainNarrative(detection.triggerDomain);
+  const preparedRows = narrative.prepared.map((row, i) => `
+    <tr style="border-bottom:1px solid rgba(43,138,110,0.15);">
+      <td style="padding:9px 14px;vertical-align:top;">
+        <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.14em;color:${TEAL};display:block;margin-bottom:2px;">${row.min}</span>
+        <span style="font-size:12px;font-weight:600;color:#111827;line-height:1.45;">${i < 4 ? "\u2713" : "\u2192"}&nbsp; ${row.action}</span>
+      </td>
+    </tr>`).join("");
+  const traditionalRows = narrative.traditional.map((row) => `
+    <tr style="border-bottom:1px solid #F3F4F6;">
+      <td style="padding:9px 14px;vertical-align:top;">
+        <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.14em;color:#9CA3AF;display:block;margin-bottom:2px;">${row.delay}</span>
+        <span style="font-size:12px;color:#6B7280;line-height:1.45;">${row.action}</span>
+      </td>
+    </tr>`).join("");
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Live Signal Brief \u2014 VaughnMartin Readiness OS</title>
+</head>
+<body style="margin:0;padding:0;background:#ECEAE3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+<tr><td align="center" style="padding:28px 16px;">
+<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:620px;border-collapse:collapse;box-shadow:0 4px 32px rgba(10,15,46,0.18);">
+
+  <!-- HEADER -->
+  <tr><td style="background:${NAVY};padding:26px 36px 20px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
+      <tr>
+        <td>
+          <div style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:10px;">VaughnMartin \xB7 Readiness OS</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:600;color:#ffffff;line-height:1.2;letter-spacing:-0.01em;">Live Signal Brief</div>
+        </td>
+        <td align="right" valign="middle">
+          <div style="display:inline-block;">
+            <span style="display:inline-block;width:7px;height:7px;background:#EF4444;border-radius:50%;vertical-align:middle;margin-right:6px;"></span>
+            <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#EF4444;vertical-align:middle;">LIVE</span>
+            <div style="margin-top:6px;font-family:'Courier New',Courier,monospace;font-size:8px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);text-transform:uppercase;">${detection.triggerDomain}</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- SIGNAL BAND -->
+  <tr><td style="background:#1a2050;padding:20px 36px 18px;border-bottom:2px solid ${GOLD};">
+    <div style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:${GOLD};margin-bottom:8px;">Signal Confirmed \xB7 ${confidence}% Confidence</div>
+    <div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.45;">${detection.signalDescription || detection.triggerName}</div>
+  </td></tr>
+
+  <!-- OPENING -->
+  <tr><td style="background:#ffffff;padding:32px 36px 0;">
+    <p style="margin:0 0 10px;font-size:15px;color:${NAVY};font-weight:700;line-height:1.4;">${firstName} \u2014</p>
+    <p style="margin:0 0 28px;font-size:14px;color:#374151;line-height:1.8;">
+      By the time you read this, a prepared organization has already responded to this trigger. No meeting was called. No committee convened. Their response was staged before the signal fired.
+    </p>
+  </td></tr>
+
+  <!-- CONTRAST TABLE HEADER -->
+  <tr><td style="background:#ffffff;padding:0 36px 10px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+      <tr>
+        <td style="width:50%;padding-right:5px;">
+          <div style="background:${NAVY};padding:10px 14px;">
+            <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${TEAL};">Prepared Organization</span>
+          </div>
+        </td>
+        <td style="width:50%;padding-left:5px;">
+          <div style="background:#F3F4F6;padding:10px 14px;">
+            <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#9CA3AF;">Traditional Response</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- CONTRAST TABLE BODY -->
+  <tr><td style="background:#ffffff;padding:0 36px 28px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+      <tr>
+        <td style="width:50%;padding-right:5px;vertical-align:top;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;border:1px solid rgba(43,138,110,0.3);border-top:3px solid ${TEAL};background:#F6FBF9;">
+            ${preparedRows}
+            <tr>
+              <td style="padding:12px 14px;background:${TEAL};">
+                <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#ffffff;">Min 12 \u2014 Executing</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td style="width:50%;padding-left:5px;vertical-align:top;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;border:1px solid #E5E7EB;border-top:3px solid #D1D5DB;background:#FAFAFA;">
+            ${traditionalRows}
+            <tr>
+              <td style="padding:12px 14px;background:#E5E7EB;">
+                <span style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#6B7280;">Still mobilizing.</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- BRUTAL LINE -->
+  <tr><td style="background:#ffffff;padding:0 36px 28px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
+      <tr><td style="border-left:3px solid ${GOLD};padding:14px 18px;background:#FDFBF6;">
+        <p style="margin:0;font-size:13px;font-weight:600;color:${NAVY};line-height:1.7;font-style:italic;">${narrative.brutalLine}</p>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- PROTOCOL CALLOUT -->
+  <tr><td style="background:#ffffff;padding:0 36px 28px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;background:#F0F9F6;border:1px solid rgba(43,138,110,0.25);border-left:4px solid ${TEAL};">
+      <tr><td style="padding:18px 22px;">
+        <div style="font-family:'Courier New',Courier,monospace;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:${TEAL};margin-bottom:8px;">Protocol Pre-Staged \xB7 Ready to Activate</div>
+        <div style="font-size:17px;font-weight:700;color:${NAVY};margin-bottom:6px;line-height:1.3;">${protocol}</div>
+        <div style="font-size:11px;color:#6B7280;line-height:1.6;">No setup required &nbsp;\xB7&nbsp; No coordination call &nbsp;\xB7&nbsp; Executive authorization preserves the decision</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- META PROOF -->
+  <tr><td style="background:#F8F7F4;padding:24px 36px;border-top:1px solid #E8E4DC;">
+    <p style="margin:0;font-size:12px;color:#4B5563;line-height:1.85;">
+      Notice what didn't happen to send you this brief: no meeting was called, no analyst was tasked, no committee convened. The system detected the signal, staged the protocol, and briefed you \u2014 automatically.<br><br>
+      <strong style="color:${NAVY};">That is the operating model. The question is whether it's working for your organization, or for your competitors.</strong>
+    </p>
+  </td></tr>
+
+  <!-- CTAs -->
+  <tr><td style="background:#ffffff;padding:28px 36px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
+      <tr>
+        <td style="width:50%;padding-right:7px;">
+          <a href="${platformUrl}/how-it-executes" style="display:block;text-align:center;background:${NAVY};color:#ffffff;text-decoration:none;padding:15px 16px;font-family:'Courier New',Courier,monospace;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Watch the 12-Minute Execution \u2192</a>
+        </td>
+        <td style="width:50%;padding-left:7px;">
+          <a href="${platformUrl}/request-access" style="display:block;text-align:center;background:${GOLD};color:${NAVY};text-decoration:none;padding:15px 16px;font-family:'Courier New',Courier,monospace;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Apply for Founding Partner Access \u2192</a>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- FOOTER -->
+  <tr><td style="background:${NAVY};padding:22px 36px;">
+    <p style="margin:0 0 6px;font-size:10px;color:rgba(255,255,255,0.35);line-height:1.8;">
+      Readiness OS monitors 248+ data points across regulatory, financial, geopolitical, and market sources \u2014 every 15 minutes, continuously. This brief was staged and sent automatically at the moment the signal crossed the confidence threshold.
+    </p>
+    <p style="margin:0;font-size:10px;color:rgba(255,255,255,0.25);line-height:1.6;">
+      VaughnMartin \xB7 Readiness OS &nbsp;\xB7&nbsp; <a href="${platformUrl}" style="color:${GOLD};text-decoration:none;">vaughnmartin.com</a>
+    </p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+async function sendRequestAccessWelcome(prospect) {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) return;
+  const platformUrl = getPlatformUrl();
+  const unsubToken = Buffer.from(prospect.email).toString("base64url");
+  const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#F5F5F0;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F5F0;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-top:3px solid ${GOLD};">
+
+  <!-- Header -->
+  <tr><td style="background:${NAVY};padding:32px 40px;">
+    <p style="margin:0 0 6px;font-size:10px;letter-spacing:0.18em;color:${GOLD};text-transform:uppercase;font-weight:700;">VaughnMartin \xB7 Readiness OS</p>
+    <h1 style="margin:0 0 4px;font-size:22px;font-weight:700;color:#ffffff;line-height:1.3;">Founding Partner Program</h1>
+    <p style="margin:0;font-size:13px;color:rgba(255,255,255,0.55);">Application confirmed \xB7 ${prospect.company}</p>
+  </td></tr>
+
+  <!-- Gold rule -->
+  <tr><td style="height:2px;background:${GOLD};"></td></tr>
+
+  <!-- Opening -->
+  <tr><td style="padding:36px 40px 0;">
+    <p style="margin:0 0 20px;font-size:16px;font-weight:700;color:${NAVY};line-height:1.4;">
+      ${prospect.firstName},
+    </p>
+    <p style="margin:0 0 16px;font-size:14px;color:#374151;line-height:1.8;">
+      Your application is in. You've entered the Founding Partner Program \u2014 a 90-day validation partnership with a cohort of 12 organizations who will be the first to operate on a pre-staged execution model.
+    </p>
+    <p style="margin:0 0 28px;font-size:14px;color:#374151;line-height:1.8;">
+      Here's what that means and what happens next.
+    </p>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:0 40px;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- What you've entered -->
+  <tr><td style="padding:28px 40px 0;">
+    <p style="margin:0 0 14px;font-size:10px;letter-spacing:0.14em;color:${GOLD};text-transform:uppercase;font-weight:700;">What you've entered</p>
+    <p style="margin:0 0 12px;font-size:14px;color:#374151;line-height:1.8;">
+      Most enterprises spend 30 days just mobilizing when a strategic trigger fires \u2014 figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders \u2014 before execution even begins.
+    </p>
+    <p style="margin:0 0 24px;font-size:14px;color:#374151;line-height:1.8;">
+      Readiness OS compresses that to 12 minutes. Not by moving faster \u2014 by having the response staged before the trigger fires. 180 Readiness Protocols. Pre-staged. Ready.
+    </p>
+    <p style="margin:0 0 28px;font-size:15px;font-style:italic;color:${NAVY};font-weight:600;border-left:3px solid ${GOLD};padding-left:16px;line-height:1.6;">
+      "The response is ready before the trigger fires."
+    </p>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:0 40px;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- What to expect -->
+  <tr><td style="padding:28px 40px 0;">
+    <p style="margin:0 0 14px;font-size:10px;letter-spacing:0.14em;color:${GOLD};text-transform:uppercase;font-weight:700;">What happens next</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding:12px 0;border-bottom:1px solid #F3F0EA;vertical-align:top;width:28px;">
+          <div style="width:20px;height:20px;background:${NAVY};border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;color:${GOLD};">1</div>
+        </td>
+        <td style="padding:12px 0 12px 14px;border-bottom:1px solid #F3F0EA;">
+          <p style="margin:0 0 2px;font-size:13px;font-weight:700;color:${NAVY};">Your magic link is in a separate email</p>
+          <p style="margin:0;font-size:13px;color:#6B7280;line-height:1.6;">Check your inbox \u2014 it gives you direct access to the platform. Valid for 24 hours.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0;border-bottom:1px solid #F3F0EA;vertical-align:top;width:28px;">
+          <div style="width:20px;height:20px;background:${NAVY};border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;color:${GOLD};">2</div>
+        </td>
+        <td style="padding:12px 0 12px 14px;border-bottom:1px solid #F3F0EA;">
+          <p style="margin:0 0 2px;font-size:13px;font-weight:700;color:${NAVY};">You'll receive live signal briefs</p>
+          <p style="margin:0;font-size:13px;color:#6B7280;line-height:1.6;">When a qualifying strategic trigger fires in your industry \u2014 at 75%+ confidence \u2014 you'll receive a personalized brief showing the prepared vs. traditional response gap.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0;vertical-align:top;width:28px;">
+          <div style="width:20px;height:20px;background:${NAVY};border-radius:50%;text-align:center;line-height:20px;font-size:10px;font-weight:700;color:${GOLD};">3</div>
+        </td>
+        <td style="padding:12px 0 12px 14px;">
+          <p style="margin:0 0 2px;font-size:13px;font-weight:700;color:${NAVY};">Founding Partner onboarding</p>
+          <p style="margin:0;font-size:13px;color:#6B7280;line-height:1.6;">Once accepted, your 90-day validation begins. You'll configure your first protocols against the triggers most relevant to ${prospect.company}.</p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:28px 40px 0;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- Do this now -->
+  <tr><td style="padding:28px 40px 0;">
+    <p style="margin:0 0 6px;font-size:10px;letter-spacing:0.14em;color:${TEAL};text-transform:uppercase;font-weight:700;">Do this right now</p>
+    <p style="margin:0 0 20px;font-size:14px;color:#374151;line-height:1.7;">
+      Before your magic link arrives \u2014 take the 12-minute test drive. It runs a live simulation of a strategic trigger firing, the protocol executing, and the 12-minute execution clock. No login needed.
+    </p>
+  </td></tr>
+
+  <!-- CTA buttons -->
+  <tr><td style="padding:0 40px 32px;" align="center">
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding-right:12px;">
+          <a href="${platformUrl}/12-minute-experience"
+             style="display:inline-block;background:${NAVY};color:#ffffff;text-decoration:none;padding:13px 28px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">
+            TAKE THE 12-MINUTE TEST DRIVE \u2192
+          </a>
+        </td>
+        <td>
+          <a href="${platformUrl}/how-it-executes"
+             style="display:inline-block;background:transparent;color:${NAVY};text-decoration:none;padding:12px 24px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1px solid ${NAVY};">
+            SEE HOW IT EXECUTES
+          </a>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:0 40px;"><div style="height:1px;background:#E8E4DC;"></div></td></tr>
+
+  <!-- Closing -->
+  <tr><td style="padding:28px 40px;">
+    <p style="margin:0 0 16px;font-size:13px;color:#374151;line-height:1.8;">
+      Questions before your onboarding call? Reply directly to this email.
+    </p>
+    <p style="margin:0;font-size:13px;color:#374151;line-height:1.8;">
+      \u2014 The VaughnMartin Team
+    </p>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="background:${NAVY};padding:20px 40px;">
+    <p style="margin:0 0 4px;font-size:10px;color:rgba(255,255,255,0.35);line-height:1.8;">
+      VaughnMartin \xB7 Readiness OS \xB7 Founding Partner Program
+    </p>
+    <p style="margin:0;font-size:10px;color:rgba(255,255,255,0.25);line-height:1.6;">
+      <a href="${platformUrl}/api/unsubscribe?t=${unsubToken}" style="color:rgba(255,255,255,0.35);text-decoration:none;">Unsubscribe</a>
+      &nbsp;\xB7&nbsp;
+      <a href="${platformUrl}" style="color:${GOLD};text-decoration:none;">vaughnmartin.com</a>
+    </p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+  const resend2 = new Resend(resendKey);
+  try {
+    await resend2.emails.send({
+      from: "VaughnMartin Readiness OS <pilot@vaughnmartin.com>",
+      replyTo: "hello@vaughnmartin.com",
+      to: prospect.email,
+      subject: `${prospect.firstName}, your Founding Partner application is confirmed`,
+      html
+    });
+    console.log(`[Welcome] Sent to ${prospect.email}`);
+  } catch (err) {
+    console.warn("[Welcome] Send error:", err.message);
+  }
+}
+var NAVY, GOLD, TEAL, MIN_CONFIDENCE, BRIEF_DEDUP_HOURS, MAX_BRIEFS_PER_WEEK;
 var init_prospectEnrollment = __esm({
   "server/services/prospectEnrollment.ts"() {
     "use strict";
     init_db();
     init_schema();
+    NAVY = "#0A0F2E";
+    GOLD = "#C9A84C";
+    TEAL = "#2B8A6E";
+    MIN_CONFIDENCE = 75;
+    BRIEF_DEDUP_HOURS = 48;
+    MAX_BRIEFS_PER_WEEK = 3;
   }
 });
 
@@ -16510,13 +17062,268 @@ var init_SlackNotificationService = __esm({
   }
 });
 
+// server/services/linkedInPostGenerator.ts
+var linkedInPostGenerator_exports = {};
+__export(linkedInPostGenerator_exports, {
+  generateLinkedInPost: () => generateLinkedInPost,
+  notifyAdminOfLinkedInPost: () => notifyAdminOfLinkedInPost
+});
+import { Resend as Resend5 } from "resend";
+function getPlatformUrl2() {
+  if (process.env.REPLIT_DEPLOYMENT_URL) return process.env.REPLIT_DEPLOYMENT_URL;
+  if (process.env.REPL_SLUG) return `https://${process.env.REPL_SLUG}.replit.app`;
+  return "https://vaughnmartin.replit.app";
+}
+async function notifyAdminOfLinkedInPost(detection) {
+  const resendKey = process.env.RESEND_API_KEY;
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+  if (!resendKey || !adminEmail) return;
+  const postText = generateLinkedInPost({
+    id: 0,
+    triggerName: detection.triggerName,
+    triggerDomain: detection.triggerDomain,
+    signalDescription: detection.signalDescription,
+    confidenceScore: detection.confidenceScore,
+    recommendedPlaybook: detection.recommendedPlaybook,
+    detectedAt: /* @__PURE__ */ new Date()
+  });
+  const platformUrl = getPlatformUrl2();
+  const escaped = postText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#F5F5F0;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F5F0;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-top:3px solid ${GOLD3};">
+
+  <tr><td style="background:${NAVY3};padding:28px 36px;">
+    <p style="margin:0 0 4px;font-size:11px;letter-spacing:0.12em;color:${GOLD3};text-transform:uppercase;font-weight:700;">SIGNAL DETECTED \xB7 POST READY</p>
+    <h1 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;line-height:1.3;">${detection.triggerName}</h1>
+    <p style="margin:8px 0 0;font-size:13px;color:#9CA3AF;">${detection.triggerDomain} \xB7 ${detection.confidenceScore}% confidence</p>
+  </td></tr>
+
+  <tr><td style="padding:28px 36px 8px;">
+    <p style="margin:0 0 6px;font-size:11px;letter-spacing:0.1em;color:${GOLD3};text-transform:uppercase;font-weight:700;">SIGNAL</p>
+    <p style="margin:0;font-size:14px;color:#374151;line-height:1.6;">${detection.signalDescription}</p>
+  </td></tr>
+
+  <tr><td style="padding:20px 36px 8px;">
+    <p style="margin:0 0 12px;font-size:11px;letter-spacing:0.1em;color:${TEAL3};text-transform:uppercase;font-weight:700;">LINKEDIN POST \u2014 READY TO COPY</p>
+    <div style="background:#F8F7F4;border-left:3px solid ${GOLD3};padding:20px 24px;border-radius:2px;">
+      <pre style="margin:0;font-family:Arial,sans-serif;font-size:13px;color:#1F2937;line-height:1.7;white-space:pre-wrap;word-break:break-word;">${escaped}</pre>
+    </div>
+  </td></tr>
+
+  <tr><td style="padding:24px 36px 36px;" align="center">
+    <a href="${platformUrl}/admin/linkedin-posts"
+       style="display:inline-block;background:${NAVY3};color:#ffffff;text-decoration:none;padding:12px 28px;font-size:13px;font-weight:700;letter-spacing:0.06em;border-radius:2px;">
+      OPEN LINKEDIN POST GENERATOR \u2192
+    </a>
+    &nbsp;&nbsp;
+    <a href="https://www.linkedin.com/feed/"
+       style="display:inline-block;background:transparent;color:${NAVY3};text-decoration:none;padding:12px 28px;font-size:13px;font-weight:700;letter-spacing:0.06em;border:1px solid ${NAVY3};border-radius:2px;">
+      OPEN LINKEDIN
+    </a>
+  </td></tr>
+
+  <tr><td style="background:#F8F7F4;padding:16px 36px;border-top:1px solid #E8E4DC;">
+    <p style="margin:0;font-size:11px;color:#9CA3AF;text-align:center;">VaughnMartin Readiness OS \xB7 Admin Signal Alert \xB7 The response is ready before the trigger fires.</p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+  const resend2 = new Resend5(resendKey);
+  try {
+    await resend2.emails.send({
+      from: "Readiness OS Signals <signals@vaughnmartin.com>",
+      replyTo: "hello@vaughnmartin.com",
+      to: adminEmail,
+      subject: `Post ready \u2014 ${detection.triggerName} (${detection.confidenceScore}%)`,
+      html
+    });
+    console.log(`[LinkedInAlert] Admin notified \u2192 ${detection.triggerName}`);
+  } catch (err) {
+    console.warn("[LinkedInAlert] Email send error:", err.message);
+  }
+}
+function getDomainNarrative2(domain) {
+  const d = (domain || "").toLowerCase();
+  if (d.includes("cyber") || d.includes("ransom") || d.includes("breach") || d.includes("security")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Threat pattern confirmed across 248 sources" },
+        { min: "Min 2", action: "Containment protocol staged \u2014 zero setup required" },
+        { min: "Min 5", action: "IT, security, legal, and comms briefed simultaneously" },
+        { min: "Min 9", action: "Containment decision in executive inbox" },
+        { min: "Min 12", action: "Executing \u2014 scope contained, narrative controlled" }
+      ],
+      traditional: [
+        { delay: "Hour 1", action: "IT notices anomaly. Alert goes up the chain." },
+        { delay: "Hour 4", action: `"Let's get the incident response team on a call."` },
+        { delay: "Day 1", action: "Scope still unknown. Consultants engaged." },
+        { delay: "Day 3", action: "Executive still waiting on full assessment." },
+        { delay: "Week 1", action: "Containment begins. Damage is done." }
+      ],
+      brutalLine: "In a ransomware event, the first 12 minutes determine whether you contain it or spend six months recovering from it.",
+      hashtags: ["#CyberResilience", "#IncidentResponse", "#ReadinessOS", "#EnterpriseExecution", "#StrategicReadiness"]
+    };
+  }
+  if (d.includes("regulat") || d.includes("compliance") || d.includes("fda") || d.includes("sec") || d.includes("doj")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Regulatory signal confirmed \u2014 exposure pre-mapped" },
+        { min: "Min 2", action: "Compliance response protocol staged automatically" },
+        { min: "Min 5", action: "Legal, compliance, ops, and board liaison briefed" },
+        { min: "Min 9", action: "Response strategy authorized by executive" },
+        { min: "Min 12", action: "Filing in progress \u2014 narrative ahead of the cycle" }
+      ],
+      traditional: [
+        { delay: "Hour 2", action: "Alert surfaces in someone's inbox." },
+        { delay: "Hour 6", action: "Legal team cc'd on an email chain." },
+        { delay: "Day 3", action: `External counsel engaged. "What's our exposure?"` },
+        { delay: "Week 2", action: "Response strategy still being drafted." },
+        { delay: "Week 4", action: "Filing submitted \u2014 regulators already set the narrative." }
+      ],
+      brutalLine: "Regulators move fast. Organizations that respond in hours are the ones who had the response staged before the signal fired.",
+      hashtags: ["#RegulatoryCompliance", "#RiskManagement", "#ReadinessOS", "#EnterpriseExecution", "#StrategicReadiness"]
+    };
+  }
+  if (d.includes("supply") || d.includes("geopol") || d.includes("logist") || d.includes("manufactur")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Disruption signal confirmed \u2014 impact pre-modeled" },
+        { min: "Min 2", action: "Supply continuity protocol staged \u2014 alternates mapped" },
+        { min: "Min 5", action: "Ops, procurement, finance, and sales briefed" },
+        { min: "Min 9", action: "Continuity plan authorized \u2014 production protected" },
+        { min: "Min 12", action: "Alternate sourcing executing \u2014 zero production loss" }
+      ],
+      traditional: [
+        { delay: "Day 1", action: "Supplier sends disruption notification." },
+        { delay: "Day 2", action: '"Do we have backup suppliers?" Nobody knows.' },
+        { delay: "Day 4", action: "Procurement meeting called. Options being explored." },
+        { delay: "Week 2", action: "Alternate supplier identified. Negotiations begin." },
+        { delay: "Week 4", action: "Production already impacted. Customers notified." }
+      ],
+      brutalLine: "Supply chain disruptions don't wait for your procurement meeting. Prepared organizations never stop moving because the response was staged before the disruption arrived.",
+      hashtags: ["#SupplyChain", "#OperationalResilience", "#ReadinessOS", "#EnterpriseExecution", "#StrategicReadiness"]
+    };
+  }
+  if (d.includes("financial") || d.includes("activist") || d.includes("investor") || d.includes("m&a") || d.includes("acqui")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Activist signal confirmed \u2014 stake and history analyzed" },
+        { min: "Min 2", action: "Investor response protocol staged \u2014 precedents loaded" },
+        { min: "Min 5", action: "Board, legal, IR, and banking relationships briefed" },
+        { min: "Min 9", action: "Response strategy authorized by executive" },
+        { min: "Min 12", action: "Board-ready brief delivered \u2014 narrative controlled" }
+      ],
+      traditional: [
+        { delay: "Hour 4", action: 'SEC filing surfaces. "Get the board on a call."' },
+        { delay: "Day 2", action: 'Banker engaged. Defensive strategy "in development."' },
+        { delay: "Week 1", action: "Board meeting scheduled. Deck being prepared." },
+        { delay: "Week 3", action: "Response strategy finalized." },
+        { delay: "Week 4", action: "Activist already set the narrative. Defense is reactive." }
+      ],
+      brutalLine: "Activist investors select organizations that are unprepared. A pre-staged response changes the power dynamic before the first call.",
+      hashtags: ["#InvestorRelations", "#ActivistInvestor", "#ReadinessOS", "#EnterpriseExecution", "#StrategicReadiness"]
+    };
+  }
+  if (d.includes("market") || d.includes("competit") || d.includes("growth") || d.includes("position")) {
+    return {
+      prepared: [
+        { min: "Min 0", action: "Competitive signal confirmed across market intelligence" },
+        { min: "Min 2", action: "Market response protocol staged automatically" },
+        { min: "Min 5", action: "Sales, marketing, product, and strategy briefed" },
+        { min: "Min 9", action: "Counter-move authorized by executive" },
+        { min: "Min 12", action: "Executing \u2014 repositioning ahead of market cycle" }
+      ],
+      traditional: [
+        { delay: "Hour 4", action: "Someone spots the news on LinkedIn." },
+        { delay: "Day 1", action: `"Let's schedule a strategy session on this."` },
+        { delay: "Week 1", action: "Competitive analysis being commissioned." },
+        { delay: "Week 2", action: "Response strategy still in review." },
+        { delay: "Week 4", action: "Competitors have already repositioned. You're reacting." }
+      ],
+      brutalLine: "Every enterprise has the same market intelligence tools. The difference is who had the response to this signal staged before it fired.",
+      hashtags: ["#CompetitiveStrategy", "#MarketIntelligence", "#ReadinessOS", "#EnterpriseExecution", "#StrategicReadiness"]
+    };
+  }
+  return {
+    prepared: [
+      { min: "Min 0", action: "Signal confirmed across 248 continuous monitoring sources" },
+      { min: "Min 2", action: "Readiness Protocol staged \u2014 zero setup, zero coordination" },
+      { min: "Min 5", action: "All relevant stakeholders briefed with role-specific context" },
+      { min: "Min 9", action: "Decision package delivered to the authorizing executive" },
+      { min: "Min 12", action: "Executing \u2014 response ahead of the market" }
+    ],
+    traditional: [
+      { delay: "Hour 2", action: "Someone notices the signal. Mentions it in a meeting." },
+      { delay: "Day 1", action: '"We should get a call together on this."' },
+      { delay: "Week 1", action: "First strategy session held. Deck assigned." },
+      { delay: "Week 2", action: "Stakeholder alignment still in progress." },
+      { delay: "Week 4", action: "Response begins. Competitors are weeks ahead." }
+    ],
+    brutalLine: "The 30-day mobilization cycle isn't a speed problem. It's a preparation problem. The response was ready before the trigger fired.",
+    hashtags: ["#StrategicReadiness", "#ReadinessOS", "#EnterpriseExecution", "#OperatingModel", "#FutureOfWork"]
+  };
+}
+function generateLinkedInPost(detection) {
+  const narrative = getDomainNarrative2(detection.triggerDomain);
+  const signal = detection.signalDescription || detection.triggerName;
+  const protocol = detection.recommendedPlaybook || "Readiness Protocol";
+  const preparedLines = narrative.prepared.map((r, i) => `${i < 4 ? "\u2713" : "\u2192"} ${r.min} \u2014 ${r.action}`).join("\n");
+  const traditionalLines = narrative.traditional.map((r) => `\u25CB ${r.delay} \u2014 ${r.action}`).join("\n");
+  const tags = narrative.hashtags.join(" ");
+  return `${signal}
+
+Most organizations just found out.
+
+A prepared organization had the response staged before this signal fired. No meeting was called. No committee convened. The clock started automatically.
+
+Here's what happened in the first 12 minutes \u2014 prepared vs. traditional:
+
+\u2501\u2501\u2501 PREPARED ORGANIZATION \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501
+${preparedLines}
+\u2192 Min 12 \u2014 Executing
+
+\u2501\u2501\u2501 TRADITIONAL RESPONSE \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501
+${traditionalLines}
+\u25CB Still mobilizing.
+
+${narrative.brutalLine}
+
+The difference isn't who has better people. It's who had the response staged before the trigger fired.
+
+That's a 3,600\xD7 execution head start \u2014 30 days of mobilization compressed to 12 minutes.
+
+\u2014\u2014
+
+${protocol} \xB7 Pre-staged across 180 Readiness Protocols
+The response is ready before the trigger fires.
+
+${tags}`;
+}
+var NAVY3, GOLD3, TEAL3;
+var init_linkedInPostGenerator = __esm({
+  "server/services/linkedInPostGenerator.ts"() {
+    "use strict";
+    NAVY3 = "#0A0F2E";
+    GOLD3 = "#C9A84C";
+    TEAL3 = "#2B8A6E";
+  }
+});
+
 // server/services/dynamicStrategyService.ts
 var dynamicStrategyService_exports = {};
 __export(dynamicStrategyService_exports, {
   DynamicStrategyService: () => DynamicStrategyService,
   dynamicStrategyService: () => dynamicStrategyService
 });
-import { eq as eq12, desc as desc6, and as and7, gte as gte2 } from "drizzle-orm";
+import { eq as eq12, desc as desc6, and as and7, gte as gte3 } from "drizzle-orm";
 import OpenAI3 from "openai";
 var openai, DynamicStrategyService, dynamicStrategyService;
 var init_dynamicStrategyService = __esm({
@@ -16538,7 +17345,7 @@ var init_dynamicStrategyService = __esm({
         const recentExecutions = await db.select().from(executionInstances).where(
           and7(
             eq12(executionInstances.organizationId, organizationId),
-            gte2(executionInstances.createdAt, new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3))
+            gte3(executionInstances.createdAt, new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3))
           )
         );
         const activeWeakSignals = await db.select().from(weakSignals).where(
@@ -16608,7 +17415,7 @@ var init_dynamicStrategyService = __esm({
         const recentLearnings = await db.select().from(playbookLearnings).where(
           and7(
             eq12(playbookLearnings.scenarioId, scenarios3[0].id),
-            gte2(playbookLearnings.extractedAt, thirtyDaysAgo)
+            gte3(playbookLearnings.extractedAt, thirtyDaysAgo)
           )
         );
         const appliedLearnings = recentLearnings.filter((l) => l.appliedAt).length;
@@ -16638,7 +17445,7 @@ var init_dynamicStrategyService = __esm({
         const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1e3);
         const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and7(
           eq12(weakSignals.organizationId, organizationId),
-          gte2(weakSignals.detectedAt, twelveHoursAgo)
+          gte3(weakSignals.detectedAt, twelveHoursAgo)
         )).limit(1);
         if (recentSignals.length > 0) {
           return [];
@@ -16679,7 +17486,7 @@ var init_dynamicStrategyService = __esm({
         const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1e3);
         const recentPatterns = await db.select({ id: oraclePatterns.id }).from(oraclePatterns).where(and7(
           eq12(oraclePatterns.organizationId, organizationId),
-          gte2(oraclePatterns.detectedAt, twentyFourHoursAgo)
+          gte3(oraclePatterns.detectedAt, twentyFourHoursAgo)
         )).limit(1);
         if (recentPatterns.length > 0) {
           return [];
@@ -16895,7 +17702,7 @@ __export(ExecutionPlanSyncService_exports, {
   ExecutionPlanSyncService: () => ExecutionPlanSyncService,
   executionPlanSyncService: () => executionPlanSyncService
 });
-import { sql as sql7 } from "drizzle-orm";
+import { sql as sql8 } from "drizzle-orm";
 var JiraAdapter2, AsanaAdapter, MondayAdapter, MSProjectAdapter, ServiceNowAdapter2, ExecutionPlanSyncService, executionPlanSyncService;
 var init_ExecutionPlanSyncService = __esm({
   "server/services/ExecutionPlanSyncService.ts"() {
@@ -17513,7 +18320,7 @@ var init_ExecutionPlanSyncService = __esm({
             return { success: false, errors: ["Invalid or expired credentials"] };
           }
           const instanceResult = await db.execute(
-            sql7`SELECT ei.*, ss.title as scenario_title, ss.description as scenario_description
+            sql8`SELECT ei.*, ss.title as scenario_title, ss.description as scenario_description
             FROM execution_instances ei
             LEFT JOIN strategic_scenarios ss ON ei.scenario_id = ss.id
             WHERE ei.id = ${executionInstanceId}`
@@ -17536,7 +18343,7 @@ var init_ExecutionPlanSyncService = __esm({
             metadata: template.custom_fields
           });
           const tasksResult = await db.execute(
-            sql7`SELECT ept.*, epp.name as phase_name
+            sql8`SELECT ept.*, epp.name as phase_name
             FROM execution_plan_tasks ept
             LEFT JOIN execution_plan_phases epp ON ept.phase_id = epp.id
             LEFT JOIN scenario_execution_plans sep ON epp.plan_id = sep.id
@@ -17638,7 +18445,7 @@ var init_ExecutionPlanSyncService = __esm({
               try {
                 const status = await adapter.getTaskStatus(credentials, mapping.externalId);
                 await db.execute(
-                  sql7`UPDATE execution_plan_tasks SET 
+                  sql8`UPDATE execution_plan_tasks SET 
                   status = ${this.mapExternalStatus(status.status)},
                   updated_at = NOW()
                   WHERE id = ${internalTaskId}`
@@ -17650,7 +18457,7 @@ var init_ExecutionPlanSyncService = __esm({
             }
           } else {
             const tasksResult = await db.execute(
-              sql7`SELECT id, status FROM execution_plan_tasks WHERE id = ANY(${Object.keys(taskSyncMap)}::uuid[])`
+              sql8`SELECT id, status FROM execution_plan_tasks WHERE id = ANY(${Object.keys(taskSyncMap)}::uuid[])`
             );
             for (const task of tasksResult.rows) {
               const mapping = taskSyncMap[task.id];
@@ -17761,7 +18568,7 @@ __export(DocumentTemplateEngine_exports, {
   DocumentTemplateEngine: () => DocumentTemplateEngine,
   documentTemplateEngine: () => documentTemplateEngine
 });
-import { sql as sql8 } from "drizzle-orm";
+import { sql as sql9 } from "drizzle-orm";
 var DEFAULT_TEMPLATES, DocumentTemplateEngine, documentTemplateEngine;
 var init_DocumentTemplateEngine = __esm({
   "server/services/DocumentTemplateEngine.ts"() {
@@ -18199,7 +19006,7 @@ var init_DocumentTemplateEngine = __esm({
       async fetchScenarioData(scenarioId) {
         try {
           const result = await db.execute(
-            sql8`SELECT title, description, priority FROM strategic_scenarios WHERE id = ${scenarioId}`
+            sql9`SELECT title, description, priority FROM strategic_scenarios WHERE id = ${scenarioId}`
           );
           return result.rows[0] || null;
         } catch {
@@ -18209,7 +19016,7 @@ var init_DocumentTemplateEngine = __esm({
       async fetchOrganizationData(organizationId) {
         try {
           const result = await db.execute(
-            sql8`SELECT name, description FROM organizations WHERE id = ${organizationId}`
+            sql9`SELECT name, description FROM organizations WHERE id = ${organizationId}`
           );
           return result.rows[0] || null;
         } catch {
@@ -18219,7 +19026,7 @@ var init_DocumentTemplateEngine = __esm({
       async fetchExecutionInstanceData(executionInstanceId) {
         try {
           const result = await db.execute(
-            sql8`SELECT status, started_at as "startDate", completed_at as "endDate" 
+            sql9`SELECT status, started_at as "startDate", completed_at as "endDate" 
             FROM execution_instances WHERE id = ${executionInstanceId}`
           );
           return result.rows[0] || null;
@@ -18244,7 +19051,7 @@ __export(FileExportService_exports, {
   FileExportService: () => FileExportService,
   fileExportService: () => fileExportService
 });
-import { sql as sql9 } from "drizzle-orm";
+import { sql as sql10 } from "drizzle-orm";
 var FileExportService, fileExportService;
 var init_FileExportService = __esm({
   "server/services/FileExportService.ts"() {
@@ -18269,7 +19076,7 @@ var init_FileExportService = __esm({
       }
       async fetchExecutionTasks(executionInstanceId) {
         const result = await db.execute(
-          sql9`SELECT 
+          sql10`SELECT 
             ept.id,
             ept.name,
             ept.description,
@@ -18307,7 +19114,7 @@ var init_FileExportService = __esm({
       }
       async fetchExecutionMetadata(executionInstanceId) {
         const result = await db.execute(
-          sql9`SELECT 
+          sql10`SELECT 
             ss.title as "projectName",
             ss.description,
             ei.started_at as "startDate",
@@ -19504,7 +20311,7 @@ __export(magicLinkService_exports, {
   validateMagicLinkToken: () => validateMagicLinkToken,
   verifyMagicLinkToken: () => verifyMagicLinkToken
 });
-import { Resend as Resend4 } from "resend";
+import { Resend as Resend6 } from "resend";
 import crypto3 from "crypto";
 import { eq as eq19 } from "drizzle-orm";
 function generateToken() {
@@ -19527,8 +20334,8 @@ function buildAdminNotificationHtml(data, magicUrl) {
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
         <tr>
-          <td style="background:${NAVY3};padding:28px 40px;">
-            <div style="color:${GOLD2};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
+          <td style="background:${NAVY4};padding:28px 40px;">
+            <div style="color:${GOLD4};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
             <div style="color:#ffffff;font-size:18px;font-weight:700;">New Access Request</div>
           </td>
         </tr>
@@ -19546,14 +20353,14 @@ function buildAdminNotificationHtml(data, magicUrl) {
               </td></tr>
               <tr><td style="padding:16px 20px;">
                 <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Email</span><br/>
-                <a href="mailto:${data.email}" style="color:${GOLD2};font-size:15px;font-weight:600;text-decoration:none;">${data.email}</a>
+                <a href="mailto:${data.email}" style="color:${GOLD4};font-size:15px;font-weight:600;text-decoration:none;">${data.email}</a>
               </td></tr>
             </table>
             <p style="margin:0 0 16px;color:#374151;font-size:14px;">Their magic link (expires 24h):</p>
             <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
               <tr>
-                <td style="background:${GOLD2};border-radius:6px;">
-                  <a href="${magicUrl}" style="display:inline-block;padding:14px 32px;color:${NAVY3};font-size:14px;font-weight:700;text-decoration:none;">
+                <td style="background:${GOLD4};border-radius:6px;">
+                  <a href="${magicUrl}" style="display:inline-block;padding:14px 32px;color:${NAVY4};font-size:14px;font-weight:700;text-decoration:none;">
                     Send This Link to ${data.firstName} \u2192
                   </a>
                 </td>
@@ -19588,8 +20395,8 @@ function buildEmailHtml(firstName, magicUrl) {
 
         <!-- Header -->
         <tr>
-          <td style="background:${NAVY3};padding:36px 48px 28px;">
-            <div style="color:${GOLD2};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
+          <td style="background:${NAVY4};padding:36px 48px 28px;">
+            <div style="color:${GOLD4};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
             <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
             <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Readiness Platform</div>
           </td>
@@ -19598,7 +20405,7 @@ function buildEmailHtml(firstName, magicUrl) {
         <!-- Body -->
         <tr>
           <td style="padding:48px 48px 36px;">
-            <p style="margin:0 0 8px;color:${NAVY3};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
+            <p style="margin:0 0 8px;color:${NAVY4};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
             <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
               Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform \u2014 prepared responses, trigger intelligence, and the 12-minute execution model.
             </p>
@@ -19606,9 +20413,9 @@ function buildEmailHtml(firstName, magicUrl) {
             <!-- CTA Button -->
             <table cellpadding="0" cellspacing="0" style="margin:0 0 36px;">
               <tr>
-                <td style="background:${GOLD2};border-radius:6px;">
+                <td style="background:${GOLD4};border-radius:6px;">
                   <a href="${magicUrl}"
-                     style="display:inline-block;padding:16px 40px;color:${NAVY3};font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.3px;">
+                     style="display:inline-block;padding:16px 40px;color:${NAVY4};font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.3px;">
                     Access the Platform \u2192
                   </a>
                 </td>
@@ -19624,15 +20431,15 @@ function buildEmailHtml(firstName, magicUrl) {
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="33%" style="text-align:center;padding:0 12px;">
-                  <div style="color:${GOLD2};font-size:20px;font-weight:800;">12 min</div>
+                  <div style="color:${GOLD4};font-size:20px;font-weight:800;">12 min</div>
                   <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Trigger to Execution</div>
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
-                  <div style="color:${GOLD2};font-size:20px;font-weight:800;">170</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Prepared responses</div>
+                  <div style="color:${GOLD4};font-size:20px;font-weight:800;">180</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Readiness Protocols</div>
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;">
-                  <div style="color:${GOLD2};font-size:20px;font-weight:800;">3,600\xD7</div>
+                  <div style="color:${GOLD4};font-size:20px;font-weight:800;">3,600\xD7</div>
                   <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Execution Head Start</div>
                 </td>
               </tr>
@@ -19684,7 +20491,7 @@ ${"\u2500".repeat(70)}`);
     console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
     return { success: true, emailSent: false };
   }
-  const resend2 = new Resend4(apiKey);
+  const resend2 = new Resend6(apiKey);
   const fromAddresses = [
     "Readiness OS <pilot@vaughnmartin.com>",
     "Readiness OS <onboarding@resend.dev>"
@@ -19810,7 +20617,7 @@ async function sendWelcomeTriggerDemo(email, firstName) {
       </div>
     </div>
   `;
-  const resend2 = new Resend4(apiKey);
+  const resend2 = new Resend6(apiKey);
   const fromAddresses = [
     "Readiness OS <pilot@vaughnmartin.com>",
     "Readiness OS <onboarding@resend.dev>"
@@ -19871,15 +20678,15 @@ async function verifyMagicLinkToken(token) {
     }
   };
 }
-var NAVY3, GOLD2, TOKEN_TTL_HOURS, ADMIN_EMAIL;
+var NAVY4, GOLD4, TOKEN_TTL_HOURS, ADMIN_EMAIL;
 var init_magicLinkService = __esm({
   "server/services/magicLinkService.ts"() {
     "use strict";
     init_db();
     init_schema();
     init_prospectEnrollment();
-    NAVY3 = "#0A0F2E";
-    GOLD2 = "#C9A84C";
+    NAVY4 = "#0A0F2E";
+    GOLD4 = "#C9A84C";
     TOKEN_TTL_HOURS = 24;
     ADMIN_EMAIL = "pilot@vaughnmartin.com";
   }
@@ -20440,8 +21247,8 @@ __export(SignalEvaluationService_exports, {
   evaluateSignal: () => evaluateSignal,
   getRecentDetections: () => getRecentDetections
 });
-import { eq as eq22, desc as desc10, and as and14, gte as gte3 } from "drizzle-orm";
-import { Resend as Resend6 } from "resend";
+import { eq as eq22, desc as desc10, and as and14, gte as gte4 } from "drizzle-orm";
+import { Resend as Resend8 } from "resend";
 async function getOrgConfig(organizationId) {
   const defaults = { mode: "both", watchPct: 50, awarePct: 70, actionPct: 80 };
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
@@ -20513,7 +21320,7 @@ function evaluateSignal(signal, thresholds) {
 async function sendDetectionEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
   if (!apiKey || emails.length === 0) return false;
-  const resend2 = new Resend6(apiKey);
+  const resend2 = new Resend8(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
   const html = `
@@ -20630,7 +21437,7 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
 async function sendWatchEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
   if (!apiKey || emails.length === 0) return false;
-  const resend2 = new Resend6(apiKey);
+  const resend2 = new Resend8(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
   const html = `
@@ -20735,7 +21542,7 @@ async function sendWatchEmail(detection, signal, emails, orgId) {
 async function sendAwareEmail(detection, signal, emails, orgId) {
   const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
   if (!apiKey || emails.length === 0) return false;
-  const resend2 = new Resend6(apiKey);
+  const resend2 = new Resend8(apiKey);
   const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
   const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
   const html = `
@@ -20896,6 +21703,7 @@ ${detection.alternatePlaybooks.join(", ")}` }] : []
 }
 async function evaluateAndPersistSignals(signals, organizationId) {
   let detectionsCreated = 0;
+  const prospectBriefQueue = [];
   let allContacts = [];
   try {
     allContacts = await db.select().from(stakeholderContacts).where(eq22(stakeholderContacts.organizationId, organizationId));
@@ -21000,7 +21808,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
           and14(
             eq22(triggerDetections.organizationId, organizationId),
             eq22(triggerDetections.notificationSent, true),
-            gte3(triggerDetections.detectedAt, todayStart)
+            gte4(triggerDetections.detectedAt, todayStart)
           )
         );
         if (emailsSentToday.length >= 3) {
@@ -21218,8 +22026,27 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         await db.update(triggerDetections).set({ status: timelineStatus }).where(eq22(triggerDetections.triggerName, detection.triggerName));
       }
       detectionsCreated++;
+      prospectBriefQueue.push({
+        triggerName: detection.triggerName,
+        triggerDomain: detection.triggerDomain,
+        recommendedPlaybook: detection.recommendedPlaybook,
+        confidenceScore: detection.confidenceScore,
+        signalDescription: signal.description || detection.triggerName
+      });
     } catch (err) {
       console.error("Error persisting detection:", err);
+    }
+  }
+  if (prospectBriefQueue.length > 0) {
+    notifyMatchingProspects(prospectBriefQueue).catch(
+      (err) => console.warn("[SignalEval] Prospect brief notification error:", err.message)
+    );
+    for (const detection of prospectBriefQueue) {
+      if ((detection.confidenceScore ?? 0) >= 80) {
+        notifyAdminOfLinkedInPost(detection).catch(
+          (err) => console.warn("[SignalEval] Admin LinkedIn alert error:", err.message)
+        );
+      }
     }
   }
   return detectionsCreated;
@@ -21253,7 +22080,7 @@ async function evaluateLeadingIndicators(signals, organizationId) {
       if (matchedIds.length < 2) continue;
       const matchScore = matchedIds.length / Math.max(indicators.length, 1) * 100;
       try {
-        const { and: and41, gte: gte17 } = await import("drizzle-orm");
+        const { and: and41, gte: gte18 } = await import("drizzle-orm");
         const cutoff = new Date(Date.now() - 4 * 36e5);
         const recent = await db.select().from(leadingIndicatorDetections2).where(
           and41(
@@ -21351,6 +22178,8 @@ var init_SignalEvaluationService = __esm({
     init_schema();
     init_WebSocketService();
     init_TriggerEvaluationEngine();
+    init_prospectEnrollment();
+    init_linkedInPostGenerator();
     TRIGGER_PATTERNS = [
       // Market Dynamics
       {
@@ -21479,7 +22308,7 @@ var init_SignalEvaluationService = __esm({
         alternatePlaybooks: ["Reputational Crisis Protocol", "Regulatory Compliance Sprint"],
         baseConfidence: 65
       },
-      // Geopolitical
+      // Geopolitical — Broad signal (existing)
       {
         name: "Geopolitical Risk Signal",
         domain: "Geopolitical",
@@ -21487,6 +22316,39 @@ var init_SignalEvaluationService = __esm({
         playbookName: "Geopolitical Risk Response",
         alternatePlaybooks: ["Supply Chain Disruption Protocol", "Operational Crisis Response"],
         baseConfidence: 70
+      },
+      // Geopolitical — Slow-burn, high-consequence triggers (BCG category: anticipate-prepare-pivot)
+      {
+        name: "Export Control & Technology Restriction",
+        domain: "Geopolitical",
+        keywords: ["export control", "export restriction", "export ban", "export license", "BIS", "entity list", "denied party", "controlled technology", "dual-use", "technology transfer", "CHIPS Act", "semiconductor restriction", "chip restriction", "technology export", "export compliance", "deemed export", "EAR", "ITAR", "commerce control list", "export administration", "restricted technology", "foreign national", "re-export", "license required", "end-use restriction", "technology diversion"],
+        playbookName: "Export Control Violation",
+        alternatePlaybooks: ["Regulatory Compliance Sprint", "Geopolitical Risk Response"],
+        baseConfidence: 82
+      },
+      {
+        name: "Foreign Investment Scrutiny (CFIUS)",
+        domain: "Geopolitical",
+        keywords: ["CFIUS", "Committee on Foreign Investment", "national security review", "foreign ownership", "foreign acquisition", "FDI restriction", "foreign direct investment", "ownership review", "national security concern", "foreign entity", "foreign investor", "divestiture order", "forced divestiture", "ownership structure", "beneficial ownership", "foreign control", "national security risk", "strategic asset", "critical infrastructure review", "Treasury review"],
+        playbookName: "CFIUS National Security Review",
+        alternatePlaybooks: ["Regulatory Compliance Sprint", "Geopolitical Risk Response"],
+        baseConfidence: 85
+      },
+      {
+        name: "Data Sovereignty & Localization Mandate",
+        domain: "Geopolitical",
+        keywords: ["data localization", "data residency", "data sovereignty", "cross-border data", "data transfer ban", "data border", "data jurisdiction", "local data storage", "in-country data", "data export restriction", "personal data transfer", "standard contractual clauses", "adequacy decision", "data flow restriction", "transborder data", "data protection authority", "supervisory authority", "data localization law", "cloud sovereignty", "sovereign cloud", "national data law"],
+        playbookName: "Regulatory Compliance Sprint",
+        alternatePlaybooks: ["Geopolitical Risk Response", "Regulatory Disclosure Protocol"],
+        baseConfidence: 78
+      },
+      {
+        name: "Geopolitical Operating Model Disruption",
+        domain: "Geopolitical",
+        keywords: ["decoupling", "tech decoupling", "US-China", "China technology", "technology ban", "market exit", "country exit", "forced exit", "supply chain restructuring", "vendor diversification", "operating model risk", "geopolitical restructuring", "strategic bifurcation", "friend-shoring", "nearshoring", "onshoring mandate", "dual operating model", "China risk", "Russia sanctions", "market access restriction", "operating license revoked", "business exit", "forced wind-down"],
+        playbookName: "Geopolitical Risk Response",
+        alternatePlaybooks: ["Supply Chain Disruption Protocol", "Operational Crisis Response"],
+        baseConfidence: 80
       }
     ];
   }
@@ -22398,7 +23260,7 @@ async function fetchInternalReadinessSignals(organizationId) {
   const signals = [];
   try {
     const { playbookLibrary: playbookLibrary2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { lt: lt3, and: and41, eq: eq64, sql: sql26 } = await import("drizzle-orm");
+    const { lt: lt3, and: and41, eq: eq64, sql: sql27 } = await import("drizzle-orm");
     const warnCutoff = new Date(Date.now() - STALE_DAYS_WARN * 864e5);
     const critCutoff = new Date(Date.now() - STALE_DAYS_CRITICAL * 864e5);
     const staleProtocols = await db.select({
@@ -22581,10 +23443,10 @@ async function fetchInternalReadinessSignals(organizationId) {
   }
   try {
     const { triggerDetections: triggerDetections3, playbookActivations: playbookActivations3 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { count: count13, gte: gte17 } = await import("drizzle-orm");
+    const { count: count13, gte: gte18 } = await import("drizzle-orm");
     const thirtyDaysAgo = new Date(Date.now() - 30 * 864e5);
-    const [detCount] = await db.select({ c: count13() }).from(triggerDetections3).where(gte17(triggerDetections3.detectedAt, thirtyDaysAgo));
-    const [actCount] = await db.select({ c: count13() }).from(playbookActivations3).where(gte17(playbookActivations3.createdAt, thirtyDaysAgo));
+    const [detCount] = await db.select({ c: count13() }).from(triggerDetections3).where(gte18(triggerDetections3.detectedAt, thirtyDaysAgo));
+    const [actCount] = await db.select({ c: count13() }).from(playbookActivations3).where(gte18(playbookActivations3.createdAt, thirtyDaysAgo));
     const detections = Number(detCount?.c || 0);
     const activations = Number(actCount?.c || 0);
     if (detections >= 5 && activations === 0) {
@@ -24337,7 +25199,7 @@ __export(PreparationSignalService_exports, {
   checkPreparationSignals: () => checkPreparationSignals,
   getRecentPreparationTriggers: () => getRecentPreparationTriggers
 });
-import { eq as eq23, desc as desc11, and as and15, gte as gte4 } from "drizzle-orm";
+import { eq as eq23, desc as desc11, and as and15, gte as gte5 } from "drizzle-orm";
 async function checkPreparationSignals(organizationId) {
   if (!organizationId || !UUID_REGEX.test(organizationId)) return [];
   const results = [];
@@ -24375,7 +25237,7 @@ async function checkPreparationSignals(organizationId) {
         and15(
           eq23(triggerDetections.triggerName, triggerName),
           eq23(triggerDetections.organizationId, organizationId),
-          gte4(triggerDetections.detectedAt, cooloffCutoff)
+          gte5(triggerDetections.detectedAt, cooloffCutoff)
         )
       ).limit(1);
       if (recentTrigger.length > 0) {
@@ -24432,7 +25294,7 @@ async function getRecentPreparationTriggers(organizationId, limitHours = 72) {
       and15(
         eq23(triggerDetections.organizationId, organizationId),
         eq23(triggerDetections.signalSource, "preparation-monitor"),
-        gte4(triggerDetections.detectedAt, cutoff)
+        gte5(triggerDetections.detectedAt, cutoff)
       )
     ).orderBy(desc11(triggerDetections.detectedAt)).limit(20);
   } catch (err) {
@@ -26753,7 +27615,7 @@ var init_scenarios = __esm({
 });
 
 // server/integrations/NotificationManager.ts
-import { Resend as Resend7 } from "resend";
+import { Resend as Resend9 } from "resend";
 function buildEmailHtml2(stakeholder, message, severity, metadata) {
   const severityColors = {
     low: "#2B8A6E",
@@ -26965,7 +27827,7 @@ var init_NotificationManager = __esm({
           console.warn(`\u26A0\uFE0F RESEND_API_KEY not set \u2014 email not sent to ${stakeholder.email}`);
           return;
         }
-        const resend2 = new Resend7(apiKey);
+        const resend2 = new Resend9(apiKey);
         const playbookName = metadata?.playbookName || metadata?.scenarioType || "Strategic Protocol";
         const { error } = await resend2.emails.send({
           from: RESEND_FROM,
@@ -27045,7 +27907,7 @@ var init_NotificationManager = __esm({
 });
 
 // server/services/DatabaseNotificationService.ts
-import { eq as eq28, and as and17, desc as desc16, isNull as isNull2, sql as sql13 } from "drizzle-orm";
+import { eq as eq28, and as and17, desc as desc16, isNull as isNull2, sql as sql14 } from "drizzle-orm";
 var DatabaseNotificationService, databaseNotificationService;
 var init_DatabaseNotificationService = __esm({
   "server/services/DatabaseNotificationService.ts"() {
@@ -27194,8 +28056,8 @@ ${notification.notification.message}`,
           const dueNotifications = await db.select().from(notifications).where(
             and17(
               isNull2(notifications.sentAt),
-              sql13`${notifications.scheduledFor} IS NOT NULL`,
-              sql13`${notifications.scheduledFor} <= NOW()`
+              sql14`${notifications.scheduledFor} IS NOT NULL`,
+              sql14`${notifications.scheduledFor} <= NOW()`
             )
           );
           console.log(`\u{1F4C5} Processing ${dueNotifications.length} scheduled notifications`);
@@ -27266,7 +28128,7 @@ ${notification.notification.message}`,
           await db.delete(notifications).where(
             and17(
               eq28(notifications.isRead, true),
-              sql13`${notifications.createdAt} <= ${cutoffDate}`
+              sql14`${notifications.createdAt} <= ${cutoffDate}`
             )
           );
           console.log(`\u{1F9F9} Cleaned up old notifications`);
@@ -27287,7 +28149,7 @@ __export(ROIMeasurementService_exports, {
   ROIMeasurementService: () => ROIMeasurementService,
   roiMeasurementService: () => roiMeasurementService
 });
-import { eq as eq29, and as and18, desc as desc17, gte as gte6, lte } from "drizzle-orm";
+import { eq as eq29, and as and18, desc as desc17, gte as gte7, lte } from "drizzle-orm";
 import pino10 from "pino";
 var logger8, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
@@ -27787,7 +28649,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
           const valueEvents = await db.select().from(valueTrackingEvents).where(
             and18(
               eq29(valueTrackingEvents.organizationId, organizationId),
-              gte6(valueTrackingEvents.createdAt, startDate),
+              gte7(valueTrackingEvents.createdAt, startDate),
               lte(valueTrackingEvents.createdAt, endDate)
             )
           ).orderBy(desc17(valueTrackingEvents.valueGenerated)).limit(10);
@@ -28695,7 +29557,7 @@ __export(TriggerIntelligenceService_exports, {
   triggerIntelligence: () => triggerIntelligence
 });
 import OpenAI6 from "openai";
-import { eq as eq31, and as and20, gte as gte8, desc as desc19 } from "drizzle-orm";
+import { eq as eq31, and as and20, gte as gte9, desc as desc19 } from "drizzle-orm";
 var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
@@ -28852,7 +29714,7 @@ Be specific and strategic. Focus on business impact.`;
         const cutoffTime = new Date(Date.now() - timeWindowHours * 60 * 60 * 1e3);
         const alerts = await db.select().from(strategicAlerts).where(and20(
           eq31(strategicAlerts.organizationId, organizationId),
-          gte8(strategicAlerts.createdAt, cutoffTime)
+          gte9(strategicAlerts.createdAt, cutoffTime)
         )).orderBy(desc19(strategicAlerts.createdAt));
         const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + Number(a.aiConfidence || 0), 0) / alerts.length) : 0;
         const byType = alerts.reduce((acc, alert) => {
@@ -28921,7 +29783,7 @@ __export(ExecutiveBriefingService_exports, {
   executiveBriefing: () => executiveBriefing
 });
 import OpenAI7 from "openai";
-import { eq as eq32, and as and21, gte as gte9, desc as desc20 } from "drizzle-orm";
+import { eq as eq32, and as and21, gte as gte10, desc as desc20 } from "drizzle-orm";
 var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
@@ -29049,7 +29911,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
           // Recent alerts
           db.select().from(strategicAlerts).where(and21(
             eq32(strategicAlerts.organizationId, organizationId),
-            gte9(strategicAlerts.createdAt, cutoffTime)
+            gte10(strategicAlerts.createdAt, cutoffTime)
           )).orderBy(desc20(strategicAlerts.createdAt)),
           // Active scenarios
           db.select().from(strategicScenarios).where(eq32(strategicScenarios.organizationId, organizationId)).limit(20),
@@ -29063,7 +29925,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
           // Recent war room sessions (playbook activations)
           db.select().from(warRoomSessions).where(and21(
             eq32(warRoomSessions.organizationId, organizationId),
-            gte9(warRoomSessions.createdAt, cutoffTime)
+            gte10(warRoomSessions.createdAt, cutoffTime)
           )).orderBy(desc20(warRoomSessions.createdAt)).limit(5)
         ]);
         return {
@@ -29299,7 +30161,7 @@ var NotificationService_exports = {};
 __export(NotificationService_exports, {
   notificationService: () => notificationService
 });
-import { Resend as Resend8 } from "resend";
+import { Resend as Resend10 } from "resend";
 import { eq as eq34 } from "drizzle-orm";
 var NotificationService, notificationService;
 var init_NotificationService = __esm({
@@ -29316,7 +30178,7 @@ var init_NotificationService = __esm({
         const apiKey = process.env.RESEND_API_KEY;
         if (apiKey) {
           try {
-            this.resend = new Resend8(apiKey);
+            this.resend = new Resend10(apiKey);
             console.log("\u2713 Resend initialized");
           } catch (error) {
             console.warn("Failed to initialize Resend:", error);
@@ -30187,7 +31049,7 @@ __export(JobProcessors_exports, {
   processPulseAnalysis: () => processPulseAnalysis,
   processRiskAssessment: () => processRiskAssessment
 });
-import { eq as eq38, and as and24, desc as desc21, gte as gte10, count as count6 } from "drizzle-orm";
+import { eq as eq38, and as and24, desc as desc21, gte as gte11, count as count6 } from "drizzle-orm";
 async function processPulseAnalysis(jobData) {
   console.log("Processing pulse_analysis job...");
   const isValidUUID2 = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -30197,7 +31059,7 @@ async function processPulseAnalysis(jobData) {
     return { status: "skipped", reason: "Invalid or missing organizationId" };
   }
   const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1e3);
-  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and24(eq38(weakSignals.organizationId, orgId), gte10(weakSignals.detectedAt, sixHoursAgo))).limit(1);
+  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and24(eq38(weakSignals.organizationId, orgId), gte11(weakSignals.detectedAt, sixHoursAgo))).limit(1);
   if (recentSignals.length > 0) {
     console.log("\u23ED\uFE0F Pulse analysis skipped \u2014 signal already created in last 6 hours");
     return { status: "skipped", reason: "Signal already created recently" };
@@ -30245,7 +31107,7 @@ async function processRiskAssessment(jobData) {
   const [{ value: signalCount }] = await db.select({ value: count6() }).from(weakSignals).where(and24(
     eq38(weakSignals.organizationId, orgId),
     eq38(weakSignals.status, "active"),
-    gte10(weakSignals.detectedAt, thirtyDaysAgo)
+    gte11(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
   const score = Math.min(100, Math.round(Math.sqrt(signals) * 8));
@@ -30265,7 +31127,7 @@ async function processOpportunityDetection(jobData) {
   const [{ value: signalCount }] = await db.select({ value: count6() }).from(weakSignals).where(and24(
     eq38(weakSignals.organizationId, orgId),
     eq38(weakSignals.status, "active"),
-    gte10(weakSignals.detectedAt, thirtyDaysAgo)
+    gte11(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
   if (signals < 3) {
@@ -30275,7 +31137,7 @@ async function processOpportunityDetection(jobData) {
   const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and24(
     eq38(weakSignals.organizationId, orgId),
     eq38(weakSignals.status, "active"),
-    gte10(weakSignals.detectedAt, thirtyDaysAgo)
+    gte11(weakSignals.detectedAt, thirtyDaysAgo)
   )).orderBy(desc21(weakSignals.detectedAt)).limit(10);
   const highImpactCount = recentSignals.filter((s) => s.impact === "high").length;
   const opportunityName = highImpactCount >= 2 ? "Strategic response window identified" : "Emerging market opportunity detected";
@@ -30318,11 +31180,11 @@ async function processExecutiveSummary(jobData) {
   const [{ value: tasksCompleted }] = await db.select({ value: count6() }).from(continuousOperationsTasks).where(and24(
     eq38(continuousOperationsTasks.organizationId, orgId),
     eq38(continuousOperationsTasks.status, "completed"),
-    gte10(continuousOperationsTasks.createdAt, thirtyDaysAgo)
+    gte11(continuousOperationsTasks.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
   const [{ value: execCount }] = await db.select({ value: count6() }).from(executionInstances).where(and24(
     eq38(executionInstances.organizationId, orgId),
-    gte10(executionInstances.createdAt, thirtyDaysAgo)
+    gte11(executionInstances.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
   const tasks4 = Number(tasksCompleted) || 0;
   const execs = Number(execCount) || 0;
@@ -30772,7 +31634,7 @@ var init_DataIntegrationManager = __esm({
 
 // server/services/integrationManager.ts
 import { eq as eq40 } from "drizzle-orm";
-import crypto5 from "crypto";
+import crypto6 from "crypto";
 var ENCRYPTION_KEY, ALGORITHM2, IntegrationManager, integrationManager;
 var init_integrationManager = __esm({
   "server/services/integrationManager.ts"() {
@@ -30794,8 +31656,8 @@ var init_integrationManager = __esm({
         if (!ENCRYPTION_KEY) {
           throw new Error("Cannot encrypt credentials: INTEGRATION_ENCRYPTION_KEY not set");
         }
-        const iv = crypto5.randomBytes(16);
-        const cipher = crypto5.createCipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
+        const iv = crypto6.randomBytes(16);
+        const cipher = crypto6.createCipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
         const encrypted = Buffer.concat([
           cipher.update(JSON.stringify(credentials), "utf8"),
           cipher.final()
@@ -30814,7 +31676,7 @@ var init_integrationManager = __esm({
         const iv = buffer.slice(0, 16);
         const authTag = buffer.slice(16, 32);
         const encrypted = buffer.slice(32);
-        const decipher = crypto5.createDecipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
+        const decipher = crypto6.createDecipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
         decipher.setAuthTag(authTag);
         const decrypted = Buffer.concat([
           decipher.update(encrypted),
@@ -32571,7 +33433,7 @@ __export(oauth_routes_exports, {
   default: () => oauth_routes_default
 });
 import { Router as Router6 } from "express";
-import crypto6 from "crypto";
+import crypto7 from "crypto";
 import { eq as eq43 } from "drizzle-orm";
 function getBaseUrl3(req) {
   const proto = req.headers["x-forwarded-proto"] || req.protocol || "https";
@@ -32609,7 +33471,7 @@ var init_oauth_routes = __esm({
       if (!JIRA_CLIENT_ID2) {
         return res.status(500).json({ error: "Jira OAuth not configured. Set JIRA_CLIENT_ID and JIRA_CLIENT_SECRET." });
       }
-      const state = crypto6.randomBytes(32).toString("hex");
+      const state = crypto7.randomBytes(32).toString("hex");
       pendingOAuthStates.set(state, { provider: "jira", organizationId, userId, createdAt: Date.now() });
       const callbackUrl = `${getBaseUrl3(req)}/api/oauth/jira/callback`;
       const scopes = [
@@ -32737,7 +33599,7 @@ var init_oauth_routes = __esm({
       if (!SLACK_CLIENT_ID) {
         return res.status(500).json({ error: "Slack OAuth not configured. Set SLACK_CLIENT_ID and SLACK_CLIENT_SECRET." });
       }
-      const state = crypto6.randomBytes(32).toString("hex");
+      const state = crypto7.randomBytes(32).toString("hex");
       pendingOAuthStates.set(state, { provider: "slack", organizationId, userId, createdAt: Date.now() });
       const callbackUrl = `${getBaseUrl3(req)}/api/oauth/slack/callback`;
       const scopes = [
@@ -33369,7 +34231,7 @@ __export(SignalLearningService_exports, {
   SignalLearningService: () => SignalLearningService,
   signalLearningService: () => signalLearningService
 });
-import { eq as eq45, desc as desc22, and as and28, gte as gte11 } from "drizzle-orm";
+import { eq as eq45, desc as desc22, and as and28, gte as gte12 } from "drizzle-orm";
 async function logLearningAudit(scope, jobType, data) {
   try {
     if (scope !== "platform") {
@@ -33519,8 +34381,8 @@ var init_SignalLearningService = __esm({
         try {
           console.log("[SignalLearning] Ontology enrichment job starting");
           const cutoff = new Date(Date.now() - 30 * 24 * 36e5);
-          const recentDetections = await db.select().from(triggerDetections).where(gte11(triggerDetections.detectedAt, cutoff)).limit(300);
-          const recentActivations = await db.select().from(playbookActivations).where(gte11(playbookActivations.activatedAt, cutoff)).limit(300);
+          const recentDetections = await db.select().from(triggerDetections).where(gte12(triggerDetections.detectedAt, cutoff)).limit(300);
+          const recentActivations = await db.select().from(playbookActivations).where(gte12(playbookActivations.activatedAt, cutoff)).limit(300);
           let correlationsFound = 0;
           for (const detection of recentDetections) {
             const matchingActivation = recentActivations.find((a) => {
@@ -36668,6 +37530,32 @@ var init_playbooksData = __esm({
           "frequency": "medium",
           "budget": 15e6,
           "compound": true
+        },
+        {
+          "number": 211,
+          "protocol_code": "GP-211",
+          "name": "Geopolitical Risk Response",
+          "trigger": "Escalating geopolitical event \u2014 sanctions designation, trade policy shift, diplomatic breakdown, or armed conflict \u2014 creates direct exposure to supply chain, market access, customer relationships, or regulatory standing within the operating timeline of the current quarter",
+          "stakeholders": ["CEO", "CFO", "General Counsel", "Chief Compliance Officer", "VP Global Operations", "VP Government Affairs"],
+          "response": "CEO convenes geopolitical response team within 12 minutes of signal detection \u2014 General Counsel and Chief Compliance Officer assess sanctions and export control exposure across all counterparties, VP Global Operations executes supply chain rerouting and alternative vendor activation, and VP Government Affairs initiates engagement with relevant trade associations and government relations contacts to stay ahead of regulatory guidance. Without pre-staged geopolitical response protocols, enterprises spend 2\u20134 weeks convening the right expertise, clarifying their regulatory exposure, and developing a position \u2014 during which time competitors who have pre-staged the response are already executing market repositioning and customer communications that convert the disruption into a competitive advantage.",
+          "response_window": "24 hours",
+          "financial_exposure": "$10M\u2013$2B+ depending on sanctions scope, trade volume in affected markets, and supply chain dependency on restricted jurisdictions or counterparties",
+          "domain": 4,
+          "frequency": "medium",
+          "budget": 5e6
+        },
+        {
+          "number": 212,
+          "protocol_code": "GP-212",
+          "name": "Regulatory Compliance Sprint",
+          "trigger": "Regulatory deadline, examination notice, or compliance gap discovery creates a compressed timeline for achieving, demonstrating, or restoring compliance across multiple organizational functions simultaneously",
+          "stakeholders": ["Chief Compliance Officer", "General Counsel", "CFO", "CTO", "VP Operations", "Regulatory Affairs Lead"],
+          "response": "Chief Compliance Officer activates compliance sprint protocol \u2014 gap assessment completed against the specific regulatory requirement within 2 hours, remediation workstreams assigned to functional owners with explicit deadlines, and regulator engagement strategy determined (proactive disclosure vs. cure-period completion vs. examination response posture). Without pre-staged compliance sprint capability, organizations discover compliance gaps in a reactive posture \u2014 the gap assessment alone takes 2\u20133 weeks to commission and complete, and by the time remediation begins, the examination window has already opened, converting a manageable gap into a material finding.",
+          "response_window": "24 hours",
+          "financial_exposure": "$500K\u2013$150M in regulatory fines, enforcement actions, and remediation costs; companies that self-identify and remediate before examination face penalties averaging 60% lower than those identified by regulators",
+          "domain": 4,
+          "frequency": "medium",
+          "budget": 2e6
         }
       ],
       "total": 180
@@ -36680,7 +37568,7 @@ var seedPipelineData_exports = {};
 __export(seedPipelineData_exports, {
   seedPipelineData: () => seedPipelineData
 });
-import { sql as sql16, count as count7 } from "drizzle-orm";
+import { sql as sql17, count as count7 } from "drizzle-orm";
 function getTasksForPlaybook(domainName, playbookIndex) {
   const templates = DOMAIN_TASK_TEMPLATES[domainName];
   if (!templates) return [];
@@ -36728,7 +37616,7 @@ async function seedPipelineData() {
     console.log(`[Seed] Playbook task sequences already seeded (${taskSeqCount.cnt} rows). Skipping.`);
   } else {
     console.log("[Seed] Seeding playbook task sequences for 180 playbooks...");
-    const playbooks2 = await db.execute(sql16`
+    const playbooks2 = await db.execute(sql17`
       SELECT pl.id, pl.playbook_number, pl.name, pl.strategic_category, pd.name as domain_name
       FROM playbook_library pl
       JOIN playbook_domains pd ON pl.domain_id = pd.id
@@ -37388,7 +38276,7 @@ __export(webhookRoutes_exports, {
   default: () => webhookRoutes_default
 });
 import { Router as Router7 } from "express";
-import crypto7 from "crypto";
+import crypto8 from "crypto";
 import { parseStringPromise } from "xml2js";
 function verifySlackSignature(req, signingSecret) {
   const timestamp3 = req.headers["x-slack-request-timestamp"];
@@ -37398,8 +38286,8 @@ function verifySlackSignature(req, signingSecret) {
   const time = Math.floor(Date.now() / 1e3);
   if (Math.abs(time - parseInt(timestamp3)) > 300) return false;
   const sigBasestring = `v0:${timestamp3}:${rawBody}`;
-  const mySignature = "v0=" + crypto7.createHmac("sha256", signingSecret).update(sigBasestring).digest("hex");
-  return crypto7.timingSafeEqual(
+  const mySignature = "v0=" + crypto8.createHmac("sha256", signingSecret).update(sigBasestring).digest("hex");
+  return crypto8.timingSafeEqual(
     Buffer.from(mySignature),
     Buffer.from(signature)
   );
@@ -37408,10 +38296,10 @@ function verifySalesforceSignature(req, secret) {
   const signature = req.headers["x-hub-signature"];
   const rawBody = req.rawBody;
   if (!signature || !rawBody) return false;
-  const hmac = crypto7.createHmac("sha1", secret);
+  const hmac = crypto8.createHmac("sha1", secret);
   hmac.update(rawBody);
   const expectedSignature = "sha1=" + hmac.digest("hex");
-  return crypto7.timingSafeEqual(
+  return crypto8.timingSafeEqual(
     Buffer.from(expectedSignature),
     Buffer.from(signature)
   );
@@ -37423,8 +38311,8 @@ function verifyHubSpotSignature(req, clientSecret) {
   const method = req.method;
   const uri = req.originalUrl;
   const sourceString = method + uri + rawBody;
-  const hash = crypto7.createHmac("sha256", clientSecret).update(sourceString).digest("hex");
-  return crypto7.timingSafeEqual(
+  const hash = crypto8.createHmac("sha256", clientSecret).update(sourceString).digest("hex");
+  return crypto8.timingSafeEqual(
     Buffer.from(hash),
     Buffer.from(signature)
   );
@@ -37996,7 +38884,7 @@ __export(playbookLibraryRoutes_exports, {
   playbookLibraryRouter: () => playbookLibraryRouter
 });
 import { Router as Router8 } from "express";
-import { eq as eq48, desc as desc24, sql as sql17, and as and30 } from "drizzle-orm";
+import { eq as eq48, desc as desc24, sql as sql18, and as and30 } from "drizzle-orm";
 function getFallbackLibraryData() {
   const domains = DOMAIN_CONFIG.map((d, i) => ({
     id: `fallback-domain-${d.id}`,
@@ -38360,7 +39248,7 @@ var init_playbookLibraryRoutes = __esm({
       { id: 1, name: "Market Dynamics", code: "DOMAIN1", color: "#E74C3C", icon: "target", executiveRole: "CEO", total: 24 },
       { id: 2, name: "Operational Excellence", code: "DOMAIN2", color: "#F39C12", icon: "truck", executiveRole: "COO", total: 21 },
       { id: 3, name: "Financial Strategy", code: "DOMAIN3", color: "#27AE60", icon: "dollar-sign", executiveRole: "CFO", total: 26 },
-      { id: 4, name: "Regulatory & Compliance", code: "DOMAIN4", color: "#9B59B6", icon: "scale", executiveRole: "CLO", total: 16 },
+      { id: 4, name: "Regulatory & Compliance", code: "DOMAIN4", color: "#9B59B6", icon: "scale", executiveRole: "CLO", total: 18 },
       { id: 5, name: "Technology & Innovation", code: "DOMAIN5", color: "#3498DB", icon: "cpu", executiveRole: "CTO", total: 20 },
       { id: 6, name: "Talent & Leadership", code: "DOMAIN6", color: "#E91E63", icon: "users", executiveRole: "CHRO", total: 15 },
       { id: 7, name: "Brand & Reputation", code: "DOMAIN7", color: "#FFC107", icon: "shield", executiveRole: "CMO", total: 18 },
@@ -38372,7 +39260,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const name = (req.query.name || "").trim();
         if (!name) return res.json(null);
-        const exact = await db.select().from(playbookLibrary).where(sql17`lower(${playbookLibrary.name}) = lower(${name})`).limit(1);
+        const exact = await db.select().from(playbookLibrary).where(sql18`lower(${playbookLibrary.name}) = lower(${name})`).limit(1);
         const row = exact[0] ?? null;
         if (!row) return res.json(null);
         const domains = await db.select().from(playbookDomains).where(eq48(playbookDomains.id, row.domainId)).limit(1);
@@ -38387,8 +39275,8 @@ var init_playbookLibraryRoutes = __esm({
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);
         const counts = await db.select({
           domainId: playbookLibrary.domainId,
-          count: sql17`count(*)::int`
-        }).from(playbookLibrary).where(sql17`${playbookLibrary.id} <= 180`).groupBy(playbookLibrary.domainId);
+          count: sql18`count(*)::int`
+        }).from(playbookLibrary).where(sql18`${playbookLibrary.id} <= 180`).groupBy(playbookLibrary.domainId);
         const countMap = new Map(counts.map((c) => [c.domainId, c.count]));
         const configTotalByCode = new Map(DOMAIN_CONFIG.map((d) => [d.code, d.total]));
         const domainsWithCounts = domains.map((d) => ({
@@ -38474,7 +39362,7 @@ var init_playbookLibraryRoutes = __esm({
     });
     playbookLibraryRouter.get("/featured", async (req, res) => {
       try {
-        const featuredPlaybooks = await db.select().from(playbookLibrary).where(sql17`${playbookLibrary.playbookNumber} BETWEEN 6 AND 18`).orderBy(playbookLibrary.playbookNumber);
+        const featuredPlaybooks = await db.select().from(playbookLibrary).where(sql18`${playbookLibrary.playbookNumber} BETWEEN 6 AND 18`).orderBy(playbookLibrary.playbookNumber);
         const playbooksWithDomains = await Promise.all(
           featuredPlaybooks.map(async (playbook) => {
             const [domain] = await db.select().from(playbookDomains).where(eq48(playbookDomains.id, playbook.domainId));
@@ -38627,12 +39515,12 @@ var init_playbookLibraryRoutes = __esm({
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);
         const coverage = await Promise.all(
           domains.map(async (domain) => {
-            const [playbookCount] = await db.select({ count: sql17`count(*)::int` }).from(playbookLibrary).where(eq48(playbookLibrary.domainId, domain.id));
-            const [drillCount] = await db.select({ count: sql17`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq48(practiceDrills.playbookId, playbookLibrary.id)).where(
-              sql17`${practiceDrills.organizationId} = ${organizationId} AND ${practiceDrills.status} = 'completed' AND ${playbookLibrary.domainId} = ${domain.id}`
+            const [playbookCount] = await db.select({ count: sql18`count(*)::int` }).from(playbookLibrary).where(eq48(playbookLibrary.domainId, domain.id));
+            const [drillCount] = await db.select({ count: sql18`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq48(practiceDrills.playbookId, playbookLibrary.id)).where(
+              sql18`${practiceDrills.organizationId} = ${organizationId} AND ${practiceDrills.status} = 'completed' AND ${playbookLibrary.domainId} = ${domain.id}`
             );
-            const [activationCount] = await db.select({ count: sql17`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq48(playbookActivations.playbookId, playbookLibrary.id)).where(
-              sql17`${playbookActivations.organizationId} = ${organizationId} AND ${playbookLibrary.domainId} = ${domain.id}`
+            const [activationCount] = await db.select({ count: sql18`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq48(playbookActivations.playbookId, playbookLibrary.id)).where(
+              sql18`${playbookActivations.organizationId} = ${organizationId} AND ${playbookLibrary.domainId} = ${domain.id}`
             );
             const totalPlaybooks2 = playbookCount?.count || 0;
             const preparedPlaybooks = Math.min(
@@ -38714,7 +39602,7 @@ var init_playbookLibraryRoutes = __esm({
         const suggestions = await db.select({
           suggestion: aiOptimizationSuggestions,
           playbook: playbookLibrary
-        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq48(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql17`${sql17.join(whereConditions, sql17.raw(" AND "))}`).orderBy(desc24(aiOptimizationSuggestions.generatedAt));
+        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq48(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql18`${sql18.join(whereConditions, sql18.raw(" AND "))}`).orderBy(desc24(aiOptimizationSuggestions.generatedAt));
         res.json(suggestions);
       } catch (error) {
         console.error("Error fetching AI suggestions:", error);
@@ -39914,7 +40802,7 @@ __export(triggersSeed_exports, {
   getTriggerStats: () => getTriggerStats,
   seedTriggers: () => seedTriggers
 });
-import { eq as eq51, sql as sql18 } from "drizzle-orm";
+import { eq as eq51, sql as sql19 } from "drizzle-orm";
 function operatorToSymbol(op) {
   const map = {
     "gt": ">",
@@ -40115,9 +41003,9 @@ async function seedTriggerSignals(organizationId, createdBy) {
   console.log(`   \u2705 Created ${signalsCreated} trigger signals`);
 }
 async function getTriggerStats() {
-  const triggers = await db.select({ count: sql18`count(*)` }).from(executiveTriggers);
-  const associations = await db.select({ count: sql18`count(*)` }).from(playbookTriggerAssociations);
-  const signals = await db.select({ count: sql18`count(*)` }).from(triggerSignals);
+  const triggers = await db.select({ count: sql19`count(*)` }).from(executiveTriggers);
+  const associations = await db.select({ count: sql19`count(*)` }).from(playbookTriggerAssociations);
+  const signals = await db.select({ count: sql19`count(*)` }).from(triggerSignals);
   return {
     triggers: Number(triggers[0]?.count || 0),
     associations: Number(associations[0]?.count || 0),
@@ -40389,7 +41277,7 @@ __export(AdvanceLoopService_exports, {
   getProtocolVersionTimeline: () => getProtocolVersionTimeline,
   measureHypothesesForActivation: () => measureHypothesesForActivation
 });
-import { eq as eq53, and as and33, desc as desc26, count as count9, avg as avg2, sql as sql19 } from "drizzle-orm";
+import { eq as eq53, and as and33, desc as desc26, count as count9, avg as avg2, sql as sql20 } from "drizzle-orm";
 function classifyUpdateRisk(update) {
   if (update.updateType === "signal_calibration") return "low";
   if (update.updateType === "ownership_assignment") return "high";
@@ -40515,7 +41403,7 @@ async function measureHypothesesForActivation(outcomeId, orgId) {
         and33(
           eq53(activationOutcomes.organizationId, orgId),
           eq53(activationOutcomes.playbookId, outcome.playbookId),
-          sql19`${activationOutcomes.createdAt} < ${hyp.createdAt}`
+          sql20`${activationOutcomes.createdAt} < ${hyp.createdAt}`
         )
       );
       const baseline = Number(baselineRows[0]?.avgMin ?? outcome.actualMinutes);
@@ -40558,7 +41446,7 @@ async function getLearningVelocityIndex(orgId) {
     and33(
       eq53(preparationUpdates.organizationId, orgId),
       eq53(preparationUpdates.status, "applied"),
-      sql19`${preparationUpdates.appliedAt} > ${thirtyDaysAgo}`
+      sql20`${preparationUpdates.appliedAt} > ${thirtyDaysAgo}`
     )
   );
   const allHypotheses = await db.select().from(updateHypotheses).where(eq53(updateHypotheses.organizationId, orgId));
@@ -40608,14 +41496,14 @@ async function buildMonthlyTrend(orgId) {
       and33(
         eq53(preparationUpdates.organizationId, orgId),
         eq53(preparationUpdates.status, "applied"),
-        sql19`${preparationUpdates.appliedAt} BETWEEN ${start} AND ${end}`
+        sql20`${preparationUpdates.appliedAt} BETWEEN ${start} AND ${end}`
       )
     );
     const provenInMonth = await db.select().from(updateHypotheses).where(
       and33(
         eq53(updateHypotheses.organizationId, orgId),
         eq53(updateHypotheses.status, "proven"),
-        sql19`${updateHypotheses.provenAt} BETWEEN ${start} AND ${end}`
+        sql20`${updateHypotheses.provenAt} BETWEEN ${start} AND ${end}`
       )
     );
     const minutesSaved = provenInMonth.reduce(
@@ -40666,7 +41554,7 @@ __export(CrossDomainCompoundEngine_exports, {
   runCompoundDetection: () => runCompoundDetection,
   runCompoundDetectionAllOrgs: () => runCompoundDetectionAllOrgs
 });
-import { eq as eq54, and as and34, gte as gte12, lt as lt2 } from "drizzle-orm";
+import { eq as eq54, and as and34, gte as gte13, lt as lt2 } from "drizzle-orm";
 function stakeholderOverlapScore(domainA, domainB) {
   const setA = new Set(DOMAIN_STAKEHOLDERS[domainA] ?? []);
   const setB = new Set(DOMAIN_STAKEHOLDERS[domainB] ?? []);
@@ -40700,8 +41588,8 @@ async function runCompoundDetection(organizationId) {
     const cutoff = new Date(Date.now() - LOOKBACK_HOURS2 * 60 * 60 * 1e3);
     const subThresholdDetections = await db.select().from(triggerDetections).where(and34(
       eq54(triggerDetections.organizationId, organizationId),
-      gte12(triggerDetections.detectedAt, cutoff),
-      gte12(triggerDetections.confidenceScore, SUB_THRESHOLD_MIN),
+      gte13(triggerDetections.detectedAt, cutoff),
+      gte13(triggerDetections.confidenceScore, SUB_THRESHOLD_MIN),
       lt2(triggerDetections.confidenceScore, SUB_THRESHOLD_MAX + 1)
     ));
     if (subThresholdDetections.length < 2) return;
@@ -40750,7 +41638,7 @@ async function runCompoundDetection(organizationId) {
     const existingAlert = await db.select().from(compoundThreatAlerts).where(and34(
       eq54(compoundThreatAlerts.organizationId, organizationId),
       eq54(compoundThreatAlerts.status, "active"),
-      gte12(compoundThreatAlerts.detectedAt, cutoff)
+      gte13(compoundThreatAlerts.detectedAt, cutoff)
     )).limit(1);
     if (existingAlert.length > 0) return;
     const protocol = matchCompoundProtocol(involvedDomains);
@@ -41250,7 +42138,7 @@ __export(ActivationIntelligenceService_exports, {
   getTopActivatedProtocols: () => getTopActivatedProtocols,
   getTwelveMinuteScorecard: () => getTwelveMinuteScorecard
 });
-import { eq as eq56, desc as desc27, and as and35, sql as sql20 } from "drizzle-orm";
+import { eq as eq56, desc as desc27, and as and35, sql as sql21 } from "drizzle-orm";
 async function generateExecutiveDecisionBrief(playbookId, organizationId, situationContext) {
   const [protocol] = await db.select().from(playbookLibrary).where(eq56(playbookLibrary.id, playbookId)).limit(1);
   if (!protocol) throw new Error(`Protocol ${playbookId} not found`);
@@ -41433,7 +42321,7 @@ async function getTopActivatedProtocols(organizationId, limit = 10) {
     grouped[a.playbookId].push(a);
   }
   const protocolIds = Object.keys(grouped);
-  const protocols = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql20`${playbookLibrary.id} = ANY(${protocolIds}::uuid[])`);
+  const protocols = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql21`${playbookLibrary.id} = ANY(${protocolIds}::uuid[])`);
   const nameMap = {};
   for (const p of protocols) nameMap[p.id] = p.name;
   return Object.entries(grouped).map(([playbookId, acts]) => {
@@ -41476,7 +42364,7 @@ __export(ProtocolHealthService_exports, {
   scoreAllProtocols: () => scoreAllProtocols,
   scoreProtocol: () => scoreProtocol
 });
-import { eq as eq57, desc as desc28, and as and36, gte as gte14, inArray as inArray6 } from "drizzle-orm";
+import { eq as eq57, desc as desc28, and as and36, gte as gte15, inArray as inArray6 } from "drizzle-orm";
 function scoreFreshness(daysSinceDrill, daysSinceActivation) {
   const best = Math.min(
     daysSinceDrill ?? 999,
@@ -41633,7 +42521,7 @@ async function scoreProtocol(protocol, organizationId, recentDetectionsByPattern
 async function scoreAllProtocols(organizationId, limit = 50) {
   const protocols = await db.select().from(playbookLibrary).orderBy(playbookLibrary.playbookNumber).limit(limit);
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const recentDetections = await db.select().from(triggerDetections).where(gte14(triggerDetections.detectedAt, thirtyDaysAgo)).limit(500);
+  const recentDetections = await db.select().from(triggerDetections).where(gte15(triggerDetections.detectedAt, thirtyDaysAgo)).limit(500);
   const recentDetectionsByPattern = {};
   for (const d of recentDetections) {
     const key = `${d.triggerDomain ?? ""} ${d.signalDescription ?? ""}`.toLowerCase();
@@ -41852,7 +42740,7 @@ __export(DebriefFeedbackService_exports, {
   generateProtocolFeedbackReport: () => generateProtocolFeedbackReport,
   getTopProtocolsNeedingFeedback: () => getTopProtocolsNeedingFeedback
 });
-import { eq as eq59, desc as desc30, and as and38, sql as sql23 } from "drizzle-orm";
+import { eq as eq59, desc as desc30, and as and38, sql as sql24 } from "drizzle-orm";
 function extractThemes(texts, topN = 5) {
   if (texts.length === 0) return [];
   const stopWords = /* @__PURE__ */ new Set(["the", "and", "was", "were", "had", "have", "our", "we", "not", "but", "that", "this", "with", "for", "from", "did", "not", "did", "could", "would", "should", "than", "more", "also"]);
@@ -41872,7 +42760,7 @@ function extractThemes(texts, topN = 5) {
 }
 async function analyzeTaskPerformance(activationIds) {
   if (activationIds.length === 0) return [];
-  const tasks4 = await db.select().from(activationTasks).where(sql23`${activationTasks.activationId} = ANY(${activationIds}::uuid[])`);
+  const tasks4 = await db.select().from(activationTasks).where(sql24`${activationTasks.activationId} = ANY(${activationIds}::uuid[])`);
   const taskGroups = {};
   for (const t of tasks4) {
     const key = t.taskName.slice(0, 80);
@@ -41983,7 +42871,7 @@ async function generateProtocolFeedbackReport(playbookId, organizationId) {
     )
   ).orderBy(desc30(playbookActivations.activatedAt));
   const activationIds = activations.map((a) => a.id);
-  const outcomes = activationIds.length > 0 ? await db.select().from(activationOutcomes).where(sql23`${activationOutcomes.activationId} = ANY(${activationIds}::uuid[])`).orderBy(desc30(activationOutcomes.createdAt)) : [];
+  const outcomes = activationIds.length > 0 ? await db.select().from(activationOutcomes).where(sql24`${activationOutcomes.activationId} = ANY(${activationIds}::uuid[])`).orderBy(desc30(activationOutcomes.createdAt)) : [];
   const closedDebriefs = outcomes.filter((o) => o.closeOutCompleted);
   const whatHeldTexts = closedDebriefs.map((o) => o.whatHeld ?? "").filter(Boolean);
   const whatFailedTexts = closedDebriefs.map((o) => o.whatDidntHold ?? "").filter(Boolean);
@@ -42055,7 +42943,7 @@ async function getTopProtocolsNeedingFeedback(organizationId, limit = 10) {
   const results = [];
   for (const [playbookId, acts] of Object.entries(grouped)) {
     const ids = acts.map((a) => a.id);
-    const outcomes = await db.select().from(activationOutcomes).where(sql23`${activationOutcomes.activationId} = ANY(${ids}::uuid[])`).limit(20);
+    const outcomes = await db.select().from(activationOutcomes).where(sql24`${activationOutcomes.activationId} = ANY(${ids}::uuid[])`).limit(20);
     const closed = outcomes.filter((o) => o.closeOutCompleted);
     const targetMet = acts.filter((a) => a.targetMet).length;
     const targetMetRate = Math.round(targetMet / acts.length * 100);
@@ -42064,7 +42952,7 @@ async function getTopProtocolsNeedingFeedback(organizationId, limit = 10) {
     results.push({ playbookId, activationCount: acts.length, closedDebriefs: closed.length, targetMetRate, latestLesson, priority });
   }
   const protocolIds = results.map((r) => r.playbookId);
-  const protocols = protocolIds.length > 0 ? await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql23`${playbookLibrary.id} = ANY(${protocolIds}::uuid[])`) : [];
+  const protocols = protocolIds.length > 0 ? await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql24`${playbookLibrary.id} = ANY(${protocolIds}::uuid[])`) : [];
   const nameMap = {};
   for (const p of protocols) nameMap[p.id] = p.name;
   return results.filter((r) => r.closedDebriefs > 0).sort((a, b) => a.targetMetRate - b.targetMetRate).slice(0, limit).map((r) => ({
@@ -43871,7 +44759,7 @@ init_prospectEnrollment();
 import { Router as Router2 } from "express";
 import sgMail from "@sendgrid/mail";
 import { z as z3 } from "zod";
-import { Resend } from "resend";
+import { Resend as Resend2 } from "resend";
 var router2 = Router2();
 async function getSendGridClient() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
@@ -44162,10 +45050,10 @@ router2.post("/apply", async (req, res) => {
     const resendKey = process.env.RESEND_API_KEY;
     if (resendKey) {
       try {
-        const resend2 = new Resend(resendKey);
+        const resend2 = new Resend2(resendKey);
         await resend2.emails.send({
-          from: "Readiness OS <onboarding@resend.dev>",
-          replyTo: "pilot@vaughnmartin.com",
+          from: "Readiness OS <pilot@vaughnmartin.com>",
+          replyTo: data.email,
           to: "pilot@vaughnmartin.com",
           subject: `New Pilot Application \u2014 ${data.company} (${data.firstName} ${data.lastName})`,
           html: `
@@ -47022,7 +47910,7 @@ init_SlackNotificationService();
 init_db();
 init_schema();
 import { eq as eq8 } from "drizzle-orm";
-import { Resend as Resend2 } from "resend";
+import { Resend as Resend3 } from "resend";
 function registerActivationRoutes(app2) {
   app2.get("/api/activation/integrations-status", async (req, res) => {
     try {
@@ -47106,7 +47994,7 @@ function registerActivationRoutes(app2) {
           const active = contacts.filter((c) => c.isActive);
           if (active.length === 0) return;
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-          const resend2 = apiKey ? new Resend2(apiKey) : null;
+          const resend2 = apiKey ? new Resend3(apiKey) : null;
           const emailHtml = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
               <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:2px;overflow:hidden;border:1px solid #e8e4dc;">
@@ -47292,7 +48180,7 @@ init_storage();
 
 // server/routes/quickLinkRoute.ts
 import crypto2 from "crypto";
-import { Resend as Resend3 } from "resend";
+import { Resend as Resend4 } from "resend";
 
 // server/replitAuth.ts
 init_storage();
@@ -47615,21 +48503,21 @@ function registerQuickLinkRoute(app2) {
           console.warn("[QuickLink] Email skipped \u2014 RESEND_API_KEY not set");
         } else {
           try {
-            const resend2 = new Resend3(apiKey);
+            const resend2 = new Resend4(apiKey);
             const firstName = name.split(" ")[0] || name;
-            const NAVY5 = "#0A0F2E";
-            const GOLD4 = "#C9A84C";
+            const NAVY6 = "#0A0F2E";
+            const GOLD6 = "#C9A84C";
             const html = `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;">
-        <tr><td style="background:${NAVY5};padding:28px 36px;">
-          <div style="color:${GOLD4};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 READINESS OS</div>
+        <tr><td style="background:${NAVY6};padding:28px 36px;">
+          <div style="color:${GOLD6};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 READINESS OS</div>
           <div style="color:#ffffff;font-size:20px;font-weight:700;">Your ${durationHours}-Hour Full Access</div>
         </td></tr>
-        <tr><td style="height:3px;background:${GOLD4};"></td></tr>
+        <tr><td style="height:3px;background:${GOLD6};"></td></tr>
         <tr><td style="padding:36px;">
           <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${firstName},</p>
           <p style="margin:0 0 28px;color:#374151;font-size:15px;line-height:1.7;">
@@ -47639,8 +48527,8 @@ function registerQuickLinkRoute(app2) {
           </p>
           <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
             <tr>
-              <td style="background:${NAVY5};padding:14px 32px;">
-                <a href="${url}" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${GOLD4};text-decoration:none;">
+              <td style="background:${NAVY6};padding:14px 32px;">
+                <a href="${url}" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${GOLD6};text-decoration:none;">
                   Access Readiness OS \u2192
                 </a>
               </td>
@@ -47659,14 +48547,14 @@ function registerQuickLinkRoute(app2) {
                 full validation partnership, dedicated onboarding, and direct access to the team.
               </p>
               <a href="https://vaughnmartin.com/founding-partner-brief"
-                 style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${NAVY5};text-decoration:none;border:1.5px solid ${NAVY5};padding:10px 22px;display:inline-block;">
+                 style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${NAVY6};text-decoration:none;border:1.5px solid ${NAVY6};padding:10px 22px;display:inline-block;">
                 View the 90-Day Validation Brief \u2192
               </a>
               <p style="margin:10px 0 0;font-size:11px;color:#9CA3AF;">vaughnmartin.com/founding-partner-brief</p>
             </td></tr>
           </table>
         </td></tr>
-        <tr><td style="background:${NAVY5};padding:20px 36px;">
+        <tr><td style="background:${NAVY6};padding:20px 36px;">
           <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">
             VaughnMartin \xB7 Readiness OS<br/>pilot@vaughnmartin.com
           </p>
@@ -47744,10 +48632,10 @@ function registerQuickLinkRoute(app2) {
             console.warn("[GroupLink] Email skipped \u2014 RESEND_API_KEY not set");
           } else {
             try {
-              const resend2 = new Resend3(apiKey);
+              const resend2 = new Resend4(apiKey);
               const firstName = recipientName ? recipientName.split(" ")[0] || recipientName : "there";
-              const NAVY5 = "#0A0F2E";
-              const GOLD4 = "#C9A84C";
+              const NAVY6 = "#0A0F2E";
+              const GOLD6 = "#C9A84C";
               const expiryLabel = linkDaysCapped === 1 ? "1 day" : `${linkDaysCapped} days`;
               const html = `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
@@ -47755,11 +48643,11 @@ function registerQuickLinkRoute(app2) {
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;">
-        <tr><td style="background:${NAVY5};padding:28px 36px;">
-          <div style="color:${GOLD4};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 READINESS OS</div>
+        <tr><td style="background:${NAVY6};padding:28px 36px;">
+          <div style="color:${GOLD6};font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 READINESS OS</div>
           <div style="color:#ffffff;font-size:20px;font-weight:700;">Your Readiness OS Demo Access</div>
         </td></tr>
-        <tr><td style="height:3px;background:${GOLD4};"></td></tr>
+        <tr><td style="height:3px;background:${GOLD6};"></td></tr>
         <tr><td style="padding:36px;">
           <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${firstName},</p>
           <p style="margin:0 0 28px;color:#374151;font-size:15px;line-height:1.7;">
@@ -47769,8 +48657,8 @@ function registerQuickLinkRoute(app2) {
           </p>
           <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
             <tr>
-              <td style="background:${NAVY5};padding:14px 32px;">
-                <a href="${url}" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${GOLD4};text-decoration:none;">
+              <td style="background:${NAVY6};padding:14px 32px;">
+                <a href="${url}" style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${GOLD6};text-decoration:none;">
                   Access Readiness OS \u2192
                 </a>
               </td>
@@ -47789,14 +48677,14 @@ function registerQuickLinkRoute(app2) {
                 full validation partnership, dedicated onboarding, and direct access to the team.
               </p>
               <a href="https://vaughnmartin.com/founding-partner-brief"
-                 style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${NAVY5};text-decoration:none;border:1.5px solid ${NAVY5};padding:10px 22px;display:inline-block;">
+                 style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${NAVY6};text-decoration:none;border:1.5px solid ${NAVY6};padding:10px 22px;display:inline-block;">
                 View the 90-Day Validation Brief \u2192
               </a>
               <p style="margin:10px 0 0;font-size:11px;color:#9CA3AF;">vaughnmartin.com/founding-partner-brief</p>
             </td></tr>
           </table>
         </td></tr>
-        <tr><td style="background:${NAVY5};padding:20px 36px;">
+        <tr><td style="background:${NAVY6};padding:20px 36px;">
           <p style="margin:0;color:rgba(255,255,255,0.4);font-size:11px;">
             VaughnMartin \xB7 Readiness OS<br/>pilot@vaughnmartin.com
           </p>
@@ -49721,10 +50609,10 @@ function registerPitchDeckRoute(app2) {
 // server/routes/pitchDeckV2Route.ts
 import { chromium as chromium4 } from "playwright-core";
 var CHROMIUM4 = process.env.REPLIT_PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/nix/store/kcvsxrmgwp3ffz5jijyy7wn9fcsjl4hz-playwright-browsers-1.55.0-with-cjk/chromium-1187/chrome-linux/chrome";
-var NAVY = "#0A0F2E";
-var NAVY2 = "#0D1436";
-var GOLD = "#C9A84C";
-var TEAL = "#2B8A6E";
+var NAVY2 = "#0A0F2E";
+var NAVY22 = "#0D1436";
+var GOLD2 = "#C9A84C";
+var TEAL2 = "#2B8A6E";
 var screenshotCache = /* @__PURE__ */ new Map();
 async function getPageShot(url) {
   if (screenshotCache.has(url)) return screenshotCache.get(url);
@@ -49760,7 +50648,7 @@ var SLIDES = [
     quote: '"Most organizations do not have a strategy problem. They have a mobilization problem. When a trigger fires, the first weeks are spent figuring out who decides and who owns the response."',
     pageUrl: `${BASE}/`,
     pageLabel: "vaughnmartin.com",
-    accent: GOLD
+    accent: GOLD2
   },
   {
     num: "02",
@@ -49775,7 +50663,7 @@ var SLIDES = [
     quote: '"We built Readiness OS to pre-stage the response architecture before pressure arrives. Authority remains human; mobilization becomes immediate."',
     pageUrl: `${BASE}/how-it-executes`,
     pageLabel: "vaughnmartin.com/how-it-executes",
-    accent: GOLD
+    accent: GOLD2
   },
   {
     num: "03",
@@ -49791,7 +50679,7 @@ var SLIDES = [
     quote: '"The key change is that coordination is pre-built, so when the trigger fires, execution starts."',
     pageUrl: `${BASE}/how-it-executes`,
     pageLabel: "vaughnmartin.com/how-it-executes",
-    accent: TEAL
+    accent: TEAL2
   },
   {
     num: "04",
@@ -49805,7 +50693,7 @@ var SLIDES = [
     quote: '"This is not a roadmap concept. The platform is live and testable now."',
     pageUrl: `${BASE}/executive-brief`,
     pageLabel: "vaughnmartin.com/executive-brief",
-    accent: GOLD
+    accent: GOLD2
   },
   {
     num: "05",
@@ -49819,7 +50707,7 @@ var SLIDES = [
     quote: '"We are not asking enterprises to invent new budget. We are replacing existing response spend with a repeatable operating model."',
     pageUrl: `${BASE}/roi-calculator`,
     pageLabel: "vaughnmartin.com/roi-calculator",
-    accent: GOLD
+    accent: GOLD2
   },
   {
     num: "06",
@@ -49834,7 +50722,7 @@ var SLIDES = [
     quote: `"Every enterprise has AI capability. Very few have mobilization readiness. We built that layer. It's live now."`,
     pageUrl: `${BASE}/founding-partner-program`,
     pageLabel: "vaughnmartin.com/founding-partner-program",
-    accent: GOLD
+    accent: GOLD2
   }
 ];
 function buildSlideHtml(slide, shotB64) {
@@ -49846,9 +50734,9 @@ function buildSlideHtml(slide, shotB64) {
   ).join("");
   const VM_SEAL = `
     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="18" cy="18" r="17" stroke="${GOLD}" stroke-width="1.5"/>
-      <circle cx="18" cy="18" r="13" stroke="${GOLD}" stroke-width="0.6" stroke-dasharray="2 2"/>
-      <text x="18" y="22" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" font-weight="700" fill="${GOLD}">VM</text>
+      <circle cx="18" cy="18" r="17" stroke="${GOLD2}" stroke-width="1.5"/>
+      <circle cx="18" cy="18" r="13" stroke="${GOLD2}" stroke-width="0.6" stroke-dasharray="2 2"/>
+      <text x="18" y="22" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" font-weight="700" fill="${GOLD2}">VM</text>
     </svg>`;
   return `<!DOCTYPE html>
 <html>
@@ -49857,13 +50745,13 @@ function buildSlideHtml(slide, shotB64) {
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:1280px;height:720px;overflow:hidden;background:${NAVY};}
+  html,body{width:1280px;height:720px;overflow:hidden;background:${NAVY2};}
   .slide{width:1280px;height:720px;display:flex;position:relative;font-family:'Barlow Condensed',sans-serif;}
 
   /* LEFT PANEL */
   .left{
     width:540px;min-width:540px;height:720px;
-    background:${NAVY};
+    background:${NAVY2};
     padding:52px 44px 40px 52px;
     display:flex;flex-direction:column;justify-content:space-between;
     position:relative;overflow:hidden;
@@ -49927,7 +50815,7 @@ function buildSlideHtml(slide, shotB64) {
 
   /* RIGHT PANEL */
   .right{
-    flex:1;height:720px;background:${NAVY2};
+    flex:1;height:720px;background:${NAVY22};
     display:flex;align-items:center;justify-content:center;
     padding:36px 36px 36px 32px;
     position:relative;overflow:hidden;
@@ -49974,7 +50862,7 @@ function buildSlideHtml(slide, shotB64) {
   .close-line{
     font-family:'Barlow Condensed',sans-serif;
     font-size:18px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;
-    color:${GOLD};margin-top:16px;line-height:1.2;
+    color:${GOLD2};margin-top:16px;line-height:1.2;
   }
 </style>
 </head>
@@ -50413,6 +51301,66 @@ function registerAdminRoutes(app2) {
       res.status(500).json({ error: err.message });
     }
   });
+  app2.get("/api/admin/inbound-leads", requirePlatformAdmin, async (_req, res) => {
+    try {
+      const [pilots, magicLinks, trials] = await Promise.all([
+        db.select().from(pilotApplications).orderBy(desc5(pilotApplications.createdAt)),
+        db.select().from(magicLinkTokens).orderBy(desc5(magicLinkTokens.createdAt)),
+        db.select().from(trialSessions).orderBy(desc5(trialSessions.createdAt))
+      ]);
+      const leads = [
+        ...pilots.map((r) => ({
+          id: r.id,
+          type: "contact",
+          typeLabel: "Contact Form",
+          firstName: r.firstName,
+          lastName: r.lastName,
+          email: r.email,
+          company: r.company,
+          title: r.title,
+          detail: r.primaryChallenge,
+          status: r.status ?? "pending",
+          statusLabel: r.status === "pending" ? "Pending" : r.status ?? "Pending",
+          createdAt: r.createdAt?.toISOString() ?? null
+        })),
+        ...magicLinks.map((r) => ({
+          id: r.id,
+          type: "request_access",
+          typeLabel: "Request Access",
+          firstName: r.firstName,
+          lastName: r.lastName,
+          email: r.email,
+          company: r.company,
+          title: r.title,
+          detail: null,
+          status: r.usedAt ? "activated" : /* @__PURE__ */ new Date() > r.expiresAt ? "expired" : "sent",
+          statusLabel: r.usedAt ? "Activated" : /* @__PURE__ */ new Date() > r.expiresAt ? "Expired" : "Link Sent",
+          createdAt: r.createdAt?.toISOString() ?? null
+        })),
+        ...trials.map((r) => ({
+          id: r.id,
+          type: "trial",
+          typeLabel: "Trial Access",
+          firstName: r.firstName,
+          lastName: r.lastName,
+          email: r.email,
+          company: r.company,
+          title: r.title,
+          detail: null,
+          status: r.activatedAt ? "activated" : /* @__PURE__ */ new Date() > r.expiresAt ? "expired" : "sent",
+          statusLabel: r.activatedAt ? "Activated" : /* @__PURE__ */ new Date() > r.expiresAt ? "Expired" : "Link Sent",
+          createdAt: r.createdAt?.toISOString() ?? null
+        }))
+      ].sort((a, b) => {
+        if (!a.createdAt) return 1;
+        if (!b.createdAt) return -1;
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      });
+      res.json(leads);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
   app2.post("/api/admin/test-email", requirePlatformAdmin, async (_req, res) => {
     const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
     if (!apiKey) {
@@ -50423,8 +51371,8 @@ function registerAdminRoutes(app2) {
       return res.status(503).json({ success: false, error: "PLATFORM_ADMIN_EMAIL is not set" });
     }
     try {
-      const { Resend: Resend9 } = await import("resend");
-      const resend2 = new Resend9(apiKey);
+      const { Resend: Resend11 } = await import("resend");
+      const resend2 = new Resend11(apiKey);
       const fromAddresses = [
         "Readiness OS <pilot@vaughnmartin.com>",
         "Readiness OS <onboarding@resend.dev>"
@@ -50455,6 +51403,81 @@ function registerAdminRoutes(app2) {
       return res.status(500).json({ success: false, error: `All senders failed. Last: ${lastError}` });
     } catch (err) {
       return res.status(500).json({ success: false, error: err.message });
+    }
+  });
+  app2.get("/api/admin/prospect-alerts", requirePlatformAdmin, async (_req, res) => {
+    try {
+      const { signalBriefProspects: signalBriefProspects2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { desc: descOrder } = await import("drizzle-orm");
+      const { db: database } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const prospects = await database.select().from(signalBriefProspects2).orderBy(descOrder(signalBriefProspects2.enrolledAt));
+      res.json(prospects);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/admin/prospect-alerts/briefs", requirePlatformAdmin, async (_req, res) => {
+    try {
+      const { prospectBriefsSent: prospectBriefsSent2, signalBriefProspects: signalBriefProspects2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { desc: descOrder, eq: eqOp } = await import("drizzle-orm");
+      const { db: database } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const briefs = await database.select({
+        id: prospectBriefsSent2.id,
+        prospectId: prospectBriefsSent2.prospectId,
+        triggerName: prospectBriefsSent2.triggerName,
+        triggerDomain: prospectBriefsSent2.triggerDomain,
+        playbookName: prospectBriefsSent2.playbookName,
+        confidenceScore: prospectBriefsSent2.confidenceScore,
+        sentAt: prospectBriefsSent2.sentAt,
+        prospectName: signalBriefProspects2.name,
+        prospectEmail: signalBriefProspects2.email,
+        prospectCompany: signalBriefProspects2.company
+      }).from(prospectBriefsSent2).leftJoin(signalBriefProspects2, eqOp(prospectBriefsSent2.prospectId, signalBriefProspects2.id)).orderBy(descOrder(prospectBriefsSent2.sentAt)).limit(200);
+      res.json(briefs);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.patch("/api/admin/prospect-alerts/:id/deactivate", requirePlatformAdmin, async (req, res) => {
+    try {
+      const { signalBriefProspects: signalBriefProspects2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eqOp } = await import("drizzle-orm");
+      const { db: database } = await Promise.resolve().then(() => (init_db(), db_exports));
+      await database.update(signalBriefProspects2).set({ isActive: false }).where(eqOp(signalBriefProspects2.id, req.params.id));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/admin/linkedin-posts", requirePlatformAdmin, async (req, res) => {
+    try {
+      const { triggerDetections: triggerDetections3 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { gte: gteOp, desc: descOp } = await import("drizzle-orm");
+      const { db: database } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { generateLinkedInPost: generateLinkedInPost2 } = await Promise.resolve().then(() => (init_linkedInPostGenerator(), linkedInPostGenerator_exports));
+      const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
+      const detections = await database.select().from(triggerDetections3).where(gteOp(triggerDetections3.detectedAt, since)).orderBy(descOp(triggerDetections3.detectedAt)).limit(30);
+      const posts = detections.filter((d) => d.confidenceScore >= 80).map((d) => ({
+        id: d.id,
+        triggerName: d.triggerName,
+        triggerDomain: d.triggerDomain,
+        signalDescription: d.signalDescription,
+        confidenceScore: d.confidenceScore,
+        recommendedPlaybook: d.recommendedPlaybook,
+        detectedAt: d.detectedAt,
+        postText: generateLinkedInPost2({
+          id: d.id,
+          triggerName: d.triggerName,
+          triggerDomain: d.triggerDomain,
+          signalDescription: d.signalDescription,
+          confidenceScore: d.confidenceScore,
+          recommendedPlaybook: d.recommendedPlaybook,
+          detectedAt: d.detectedAt
+        })
+      }));
+      res.json(posts);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
     }
   });
 }
@@ -50964,7 +51987,7 @@ function registerOnboardingRoutes(app2) {
 // server/routes/execution-sync-routes.ts
 init_db();
 init_storage();
-import { eq as eq17, desc as desc8, sql as sql10 } from "drizzle-orm";
+import { eq as eq17, desc as desc8, sql as sql11 } from "drizzle-orm";
 async function registerExecutionSyncRoutes(app2) {
   console.log("\u{1F4E1} Registering Execution Plan Sync API endpoints...");
   app2.get("/api/sync/templates", requireOrgAccess, async (req, res) => {
@@ -51532,7 +52555,7 @@ async function registerExecutionSyncRoutes(app2) {
       const { id } = req.params;
       const [resource] = await db.update(executionPreApprovedResources2).set({
         lastActivatedAt: /* @__PURE__ */ new Date(),
-        activationCount: sql10`COALESCE(${executionPreApprovedResources2.activationCount}, 0) + 1`,
+        activationCount: sql11`COALESCE(${executionPreApprovedResources2.activationCount}, 0) + 1`,
         updatedAt: /* @__PURE__ */ new Date()
       }).where(eq17(executionPreApprovedResources2.id, id)).returning();
       if (!resource) {
@@ -51628,7 +52651,7 @@ async function registerExecutionSyncRoutes(app2) {
       const userId = req.userId;
       const { stakeholderAcknowledgments: stakeholderAcknowledgments2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       await db.update(stakeholderAcknowledgments2).set({ acknowledgedAt: /* @__PURE__ */ new Date() }).where(
-        sql10`${stakeholderAcknowledgments2.executionInstanceId} = ${executionInstanceId} 
+        sql11`${stakeholderAcknowledgments2.executionInstanceId} = ${executionInstanceId} 
             AND ${stakeholderAcknowledgments2.userId} = ${userId}`
       );
       res.json({ success: true, acknowledgedAt: /* @__PURE__ */ new Date() });
@@ -51645,7 +52668,7 @@ async function registerExecutionSyncRoutes(app2) {
 
 // server/routes/decision-coordination-routes.ts
 init_db();
-import { eq as eq18, desc as desc9, and as and12, sql as sql11, asc } from "drizzle-orm";
+import { eq as eq18, desc as desc9, and as and12, sql as sql12, asc } from "drizzle-orm";
 async function registerDecisionCoordinationRoutes(app2) {
   const { decisionTrees: decisionTrees2, activeDecisions: activeDecisions2, decisionLog: decisionLog2, insertDecisionTreeSchema: insertDecisionTreeSchema2, insertDecisionLogSchema: insertDecisionLogSchema2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
   app2.get("/api/decision-trees", requireOrgAccess, async (req, res) => {
@@ -51915,7 +52938,7 @@ async function registerDecisionCoordinationRoutes(app2) {
       const cutoff = new Date(Date.now() - thresholdMs);
       const activeInstances = await db.select().from(executionInstances2).where(and12(
         eq18(executionInstances2.organizationId, organizationId),
-        sql11`${executionInstances2.status} IN ('pending', 'running')`
+        sql12`${executionInstances2.status} IN ('pending', 'running')`
       ));
       if (!activeInstances.length) return res.json([]);
       const instanceIds = activeInstances.map((i) => i.id);
@@ -51933,9 +52956,9 @@ async function registerDecisionCoordinationRoutes(app2) {
         taskPriority: executionPlanTasks3.priority,
         taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes
       }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq18(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and12(
-        sql11`${executionInstanceTasks2.executionInstanceId} = ANY(${sql11`ARRAY[${sql11.join(instanceIds.map((id) => sql11`${id}::uuid`), sql11`, `)}]`})`,
-        sql11`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
-        sql11`${executionInstanceTasks2.updatedAt} < ${cutoff}`
+        sql12`${executionInstanceTasks2.executionInstanceId} = ANY(${sql12`ARRAY[${sql12.join(instanceIds.map((id) => sql12`${id}::uuid`), sql12`, `)}]`})`,
+        sql12`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
+        sql12`${executionInstanceTasks2.updatedAt} < ${cutoff}`
       ));
       const now = Date.now();
       const annotated = stuckTasks.map((t) => {
@@ -52208,13 +53231,13 @@ import { eq as eq24, desc as desc12, count as count4 } from "drizzle-orm";
 // server/services/trialAccessService.ts
 init_db();
 init_schema();
-import { Resend as Resend5 } from "resend";
+import { Resend as Resend7 } from "resend";
 import crypto4 from "crypto";
 import { eq as eq20 } from "drizzle-orm";
-var NAVY4 = "#0A0F2E";
-var GOLD3 = "#C9A84C";
+var NAVY5 = "#0A0F2E";
+var GOLD5 = "#C9A84C";
 var TRIAL_HOURS = 48;
-var resend = new Resend5(process.env.RESEND_API_KEY);
+var resend = new Resend7(process.env.RESEND_API_KEY);
 function generateToken2() {
   return crypto4.randomBytes(48).toString("hex");
 }
@@ -52229,14 +53252,14 @@ function getBaseUrl2() {
 function buildTrialEmailHtml(data, activationUrl) {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Your 24-Hour Trial Access \u2014 Readiness OS</title></head>
+<head><meta charset="UTF-8" /><title>Your 48-Hour Trial Access \u2014 Readiness OS</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
         <tr>
-          <td style="background:${NAVY4};padding:28px 40px;">
-            <div style="color:${GOLD3};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
+          <td style="background:${NAVY5};padding:28px 40px;">
+            <div style="color:${GOLD5};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
             <div style="color:#ffffff;font-size:20px;font-weight:700;">Your 48-Hour Trial Access Is Ready</div>
           </td>
         </tr>
@@ -52250,8 +53273,8 @@ function buildTrialEmailHtml(data, activationUrl) {
             </p>
             <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
               <tr>
-                <td style="background:${GOLD3};border-radius:6px;">
-                  <a href="${activationUrl}" style="display:inline-block;padding:16px 36px;color:${NAVY4};font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.02em;">
+                <td style="background:${GOLD5};border-radius:6px;">
+                  <a href="${activationUrl}" style="display:inline-block;padding:16px 36px;color:${NAVY5};font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.02em;">
                     Activate Your Trial Access \u2192
                   </a>
                 </td>
@@ -52262,7 +53285,7 @@ function buildTrialEmailHtml(data, activationUrl) {
           </td>
         </tr>
         <tr>
-          <td style="background:${NAVY4};padding:20px 40px;">
+          <td style="background:${NAVY5};padding:20px 40px;">
             <p style="margin:0;color:rgba(255,255,255,0.5);font-size:11px;">
               After your trial, apply for the full Pilot Program at vaughnmartin.com/pilot-program<br/>
               Reserved for startup to Fortune 500 organizations meeting deployment requirements.
@@ -52303,9 +53326,12 @@ async function createTrialSession(data) {
     console.warn(`\u26A0 Trial email threw: ${err.message}`);
   }
   const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
-  if (adminEmail) {
-    try {
-      const adminHtml = `<!DOCTYPE html>
+  const notifyAddresses = Array.from(/* @__PURE__ */ new Set([
+    "pilot@vaughnmartin.com",
+    ...adminEmail ? [adminEmail] : []
+  ]));
+  try {
+    const adminHtml = `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
@@ -52333,15 +53359,14 @@ async function createTrialSession(data) {
     </td></tr>
   </table>
 </body></html>`;
-      await resend.emails.send({
-        from: "Readiness OS <pilot@vaughnmartin.com>",
-        to: adminEmail,
-        subject: `New Trial Request \u2014 ${data.firstName} ${data.lastName} (${data.company})`,
-        html: adminHtml
-      });
-    } catch (err) {
-      console.warn(`\u26A0 Admin notification email failed: ${err.message}`);
-    }
+    await resend.emails.send({
+      from: "Readiness OS <pilot@vaughnmartin.com>",
+      to: notifyAddresses,
+      subject: `New Trial Request \u2014 ${data.firstName} ${data.lastName} (${data.company})`,
+      html: adminHtml
+    });
+  } catch (err) {
+    console.warn(`\u26A0 Admin notification email failed: ${err.message}`);
   }
   console.log(`\u2713 Trial session created for ${data.email} | Activation: ${activationUrl}`);
   return { success: true, token, emailSent };
@@ -52421,6 +53446,22 @@ function registerMagicLinkRoutes(app2) {
     if (!result.success) {
       return res.status(500).json({ error: "Failed to process your request. Please try again." });
     }
+    Promise.resolve().then(() => (init_prospectEnrollment(), prospectEnrollment_exports)).then(({ enrollProspectForAlerts: enrollProspectForAlerts2, sendRequestAccessWelcome: sendRequestAccessWelcome2 }) => {
+      enrollProspectForAlerts2({
+        email,
+        name: `${firstName} ${lastName}`.trim(),
+        role: title,
+        company
+      }).catch((err) => console.warn("[RequestAccess] Prospect enrollment non-fatal:", err?.message));
+      sendRequestAccessWelcome2({
+        firstName,
+        lastName,
+        email,
+        company,
+        role: title
+      }).catch((err) => console.warn("[RequestAccess] Welcome email non-fatal:", err?.message));
+    }).catch(() => {
+    });
     return res.json({ ok: true, emailSent: result.emailSent ?? true });
   });
   app2.post("/api/founding-partner/apply", async (req, res) => {
@@ -52442,6 +53483,83 @@ function registerMagicLinkRoutes(app2) {
         triggerDomain: triggerDomain || "",
         message: message || ""
       }).returning();
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (apiKey) {
+        try {
+          const { Resend: Resend11 } = await import("resend");
+          const resend2 = new Resend11(apiKey);
+          const NAVY6 = "#0A0F2E";
+          const GOLD6 = "#C9A84C";
+          const adminHtml = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><title>New Founding Partner Application \u2014 Readiness OS</title></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="580" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <tr>
+          <td style="background:${NAVY6};padding:28px 40px;">
+            <div style="color:${GOLD6};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 READINESS OS</div>
+            <div style="color:#ffffff;font-size:20px;font-weight:700;">New Founding Partner Application</div>
+          </td>
+        </tr>
+        <tr><td style="height:3px;background:${GOLD6};"></td></tr>
+        <tr>
+          <td style="padding:36px 40px;">
+            <p style="margin:0 0 20px;color:#111827;font-size:15px;font-weight:700;">A new Founding Partner application has been submitted:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;margin-bottom:28px;">
+              <tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Name</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${firstName} ${lastName}</span>
+              </td></tr>
+              <tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Title &amp; Company</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${title} \xB7 ${company}</span>
+              </td></tr>
+              <tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Email</span><br/>
+                <a href="mailto:${email}" style="color:${GOLD6};font-size:15px;font-weight:600;text-decoration:none;">${email}</a>
+              </td></tr>
+              ${triggerDomain ? `<tr><td style="padding:14px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Primary Trigger Domain</span><br/>
+                <span style="color:#111827;font-size:14px;">${triggerDomain}</span>
+              </td></tr>` : ""}
+              ${message ? `<tr><td style="padding:14px 20px;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Message</span><br/>
+                <span style="color:#111827;font-size:14px;line-height:1.6;">${message}</span>
+              </td></tr>` : ""}
+            </table>
+            <a href="https://vaughnmartin.com/admin/users" style="display:inline-block;background:${NAVY6};color:${GOLD6};font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;text-decoration:none;border-radius:4px;">View All Applications \u2192</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
+            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin \xB7 Readiness OS \xB7 Founding Partner Program</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+          const { error: adminError } = await resend2.emails.send({
+            from: "Readiness OS <pilot@vaughnmartin.com>",
+            replyTo: email,
+            to: "pilot@vaughnmartin.com",
+            subject: `New Founding Partner Application \u2014 ${firstName} ${lastName} \xB7 ${company}`,
+            html: adminHtml
+          });
+          if (adminError) {
+            console.warn(`\u26A0 Founding Partner admin notification failed: ${adminError.message}`);
+          } else {
+            console.log(`\u2713 Founding Partner admin notification sent for ${email}`);
+          }
+        } catch (emailErr) {
+          console.warn(`\u26A0 Founding Partner admin notification threw: ${emailErr.message}`);
+        }
+      } else {
+        console.log(`\u2139 [FoundingPartner] RESEND_API_KEY not set \u2014 no admin notification sent for ${email}`);
+      }
       res.json({ ok: true, id: application.id });
     } catch (err) {
       res.status(500).json({ error: "Failed to submit application. Please email founding@vaughnmartin.com directly." });
@@ -52878,6 +53996,153 @@ Write in three short paragraphs: (1) What happened and how fast the organization
   });
 }
 
+// server/microsoftAuth.ts
+import crypto5 from "crypto";
+function getMicrosoftCallbackURL() {
+  const domains = process.env.REPLIT_DOMAINS;
+  if (domains) {
+    const primary = domains.split(",")[0].trim();
+    return `https://${primary}/api/auth/microsoft/callback`;
+  }
+  return "http://localhost:5000/api/auth/microsoft/callback";
+}
+function setupMicrosoftAuth(app2) {
+  const tenantId = process.env.AZURE_TENANT_ID ?? "organizations";
+  const AUTH_URL = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize`;
+  const TOKEN_URL = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`;
+  const GRAPH_URL = "https://graph.microsoft.com/v1.0/me";
+  const isConfigured = () => !!(process.env.AZURE_CLIENT_ID && process.env.AZURE_CLIENT_SECRET);
+  if (!isConfigured()) {
+    console.log(
+      "[Microsoft SSO] AZURE_CLIENT_ID / AZURE_CLIENT_SECRET not configured \u2014 Microsoft login routes registered but will redirect to /request-access"
+    );
+  }
+  app2.get("/api/auth/microsoft", (req, res) => {
+    const clientId = process.env.AZURE_CLIENT_ID;
+    const clientSecret = process.env.AZURE_CLIENT_SECRET;
+    if (!clientId || !clientSecret) {
+      return res.redirect("/request-access");
+    }
+    const state = crypto5.randomBytes(16).toString("hex");
+    req.session.msOAuthState = state;
+    if (req.query.returnTo && typeof req.query.returnTo === "string") {
+      req.session.returnTo = req.query.returnTo;
+    } else if (!req.session.returnTo) {
+      req.session.returnTo = "/mission-control";
+    }
+    const params = new URLSearchParams({
+      client_id: clientId,
+      response_type: "code",
+      redirect_uri: getMicrosoftCallbackURL(),
+      response_mode: "query",
+      scope: "openid email profile User.Read",
+      state,
+      prompt: "select_account"
+    });
+    res.redirect(`${AUTH_URL}?${params.toString()}`);
+  });
+  app2.get("/api/auth/microsoft/callback", async (req, res, next) => {
+    const clientId = process.env.AZURE_CLIENT_ID;
+    const clientSecret = process.env.AZURE_CLIENT_SECRET;
+    if (!clientId || !clientSecret) {
+      return res.redirect("/request-access");
+    }
+    try {
+      const { code, state, error, error_description } = req.query;
+      if (error) {
+        console.error("[Microsoft SSO] Provider error:", error, error_description);
+        return res.redirect("/access-denied");
+      }
+      if (!code) {
+        return res.redirect("/api/auth/microsoft");
+      }
+      if (!req.session.msOAuthState || state !== req.session.msOAuthState) {
+        console.error("[Microsoft SSO] State mismatch \u2014 possible CSRF attempt");
+        return res.redirect("/api/auth/microsoft");
+      }
+      delete req.session.msOAuthState;
+      const tokenRes = await fetch(TOKEN_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          client_id: clientId,
+          client_secret: clientSecret,
+          code,
+          redirect_uri: getMicrosoftCallbackURL(),
+          grant_type: "authorization_code"
+        }).toString()
+      });
+      if (!tokenRes.ok) {
+        const errText = await tokenRes.text();
+        console.error("[Microsoft SSO] Token exchange failed:", errText);
+        return res.redirect("/access-denied");
+      }
+      const tokens = await tokenRes.json();
+      const accessToken = tokens.access_token;
+      if (!accessToken) {
+        console.error("[Microsoft SSO] No access_token in response");
+        return res.redirect("/access-denied");
+      }
+      const graphRes = await fetch(GRAPH_URL, {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      });
+      if (!graphRes.ok) {
+        const errText = await graphRes.text();
+        console.error("[Microsoft SSO] Graph API error:", errText);
+        return res.redirect("/access-denied");
+      }
+      const profile = await graphRes.json();
+      const email = (profile.mail ?? profile.userPrincipalName ?? "").toLowerCase().trim();
+      if (!email || !email.includes("@")) {
+        console.error("[Microsoft SSO] No valid email in Graph profile for user:", profile.id);
+        return res.redirect("/access-denied");
+      }
+      const allowed = await isEmailAllowed(email);
+      if (!allowed) {
+        console.warn("[Microsoft SSO] Access denied for:", email);
+        return res.redirect("/access-denied");
+      }
+      const resolvedUser = await upsertUser({
+        sub: `ms_${profile.id}`,
+        email,
+        name: profile.displayName ?? email,
+        first_name: profile.givenName ?? null,
+        last_name: profile.surname ?? null,
+        profile_image_url: null
+      });
+      if (!resolvedUser) {
+        console.error("[Microsoft SSO] upsertUser returned null for:", email);
+        return res.redirect("/access-denied");
+      }
+      const sessionUser = {
+        claims: {
+          sub: `ms_${profile.id}`,
+          email,
+          name: profile.displayName ?? email
+        },
+        access_token: accessToken,
+        dbUserId: resolvedUser.id,
+        provider: "microsoft"
+      };
+      req.logIn(sessionUser, (loginErr) => {
+        if (loginErr) return next(loginErr);
+        const returnTo = req.session.returnTo || "/mission-control";
+        delete req.session.returnTo;
+        console.log(`[Microsoft SSO] Login successful: ${email}`);
+        return res.redirect(returnTo);
+      });
+    } catch (err) {
+      console.error("[Microsoft SSO] Unexpected error in callback:", err);
+      next(err);
+    }
+  });
+  if (isConfigured()) {
+    console.log(`[Microsoft SSO] Enabled (tenant: ${tenantId}) \u2014 /api/auth/microsoft`);
+  } else {
+    console.log(`[Microsoft SSO] Routes registered \u2014 activate by setting AZURE_CLIENT_ID + AZURE_CLIENT_SECRET`);
+  }
+}
+
 // server/replit_integrations/chat/storage.ts
 init_db();
 init_schema();
@@ -53253,6 +54518,9 @@ function registerAudioRoutes(app2) {
 var PUBLIC_ROUTES = [
   // Demo access bypass — shareable link for investors and pilot prospects
   "/api/demo-access",
+  // Microsoft Azure AD / Entra SSO — no prior session required
+  "/api/auth/microsoft",
+  "/api/auth/microsoft/callback",
   // Magic link authentication — no session required to request or verify
   "/api/auth/magic-link/request",
   "/api/auth/magic-link/validate",
@@ -53980,7 +55248,7 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq60, desc as desc31, sql as sql24, like, and as and39, asc as asc2, count as count11, gte as gte16, ne as ne2, inArray as inArray7 } from "drizzle-orm";
+import { eq as eq60, desc as desc31, sql as sql25, like, and as and39, asc as asc2, count as count11, gte as gte17, ne as ne2, inArray as inArray7 } from "drizzle-orm";
 function getUserId6(req) {
   if (!req.isAuthenticated()) return void 0;
   return req.user?.dbUserId || req.user?.claims?.sub;
@@ -54647,7 +55915,7 @@ async function seedFlagshipPlaybooks() {
   const results = [];
   for (const { pattern, data } of flagship) {
     try {
-      const matches = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql24`lower(${playbookLibrary.name}) like ${pattern}`).limit(3);
+      const matches = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql25`lower(${playbookLibrary.name}) like ${pattern}`).limit(3);
       if (matches.length === 0) {
         results.push(`No match for pattern: ${pattern}`);
         continue;
@@ -54664,6 +55932,7 @@ async function seedFlagshipPlaybooks() {
 }
 async function registerRoutes(app2, existingServer) {
   await setupAuth(app2);
+  setupMicrosoftAuth(app2);
   const publicApiLimiter = rateLimit({
     windowMs: 15 * 60 * 1e3,
     // 15 minutes
@@ -56779,7 +58048,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!userId) return res.status(401).json({ message: "Unauthorized" });
       const orgId = await getOrgIdForUser5(userId);
       if (!orgId) return res.json([]);
-      const rows = await db.select().from(actionItems).where(and39(eq60(actionItems.organizationId, orgId), sql24`${actionItems.tags}->>'isTaskTemplate' = 'true'`)).orderBy(actionItems.createdAt);
+      const rows = await db.select().from(actionItems).where(and39(eq60(actionItems.organizationId, orgId), sql25`${actionItems.tags}->>'isTaskTemplate' = 'true'`)).orderBy(actionItems.createdAt);
       res.json(rows.map(toTaskTemplate));
     } catch (error) {
       console.error("Error fetching task templates:", error);
@@ -57967,83 +59236,83 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!databaseUrl) {
         throw new Error("DATABASE_URL environment variable is not set");
       }
-      const sql26 = neon(databaseUrl);
-      const demoDb = drizzle2(sql26, { schema: await Promise.resolve().then(() => (init_schema(), schema_exports)) });
+      const sql27 = neon(databaseUrl);
+      const demoDb = drizzle2(sql27, { schema: await Promise.resolve().then(() => (init_schema(), schema_exports)) });
       console.log("\u{1F5D1}\uFE0F  Wiping existing data...");
       try {
-        await sql26`DELETE FROM module_usage_analytics`;
+        await sql27`DELETE FROM module_usage_analytics`;
         console.log("\u2713 Cleared module_usage_analytics");
       } catch (e) {
         console.log("\u2139\uFE0F  module_usage_analytics not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM intelligence_reports`;
+        await sql27`DELETE FROM intelligence_reports`;
         console.log("\u2713 Cleared intelligence_reports");
       } catch (e) {
         console.log("\u2139\uFE0F  intelligence_reports not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM nova_innovations`;
+        await sql27`DELETE FROM nova_innovations`;
         console.log("\u2713 Cleared nova_innovations");
       } catch (e) {
         console.log("\u2139\uFE0F  nova_innovations not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM echo_cultural_metrics`;
+        await sql27`DELETE FROM echo_cultural_metrics`;
         console.log("\u2713 Cleared echo_cultural_metrics");
       } catch (e) {
         console.log("\u2139\uFE0F  echo_cultural_metrics not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM prism_insights`;
+        await sql27`DELETE FROM prism_insights`;
         console.log("\u2713 Cleared prism_insights");
       } catch (e) {
         console.log("\u2139\uFE0F  prism_insights not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM flux_adaptations`;
+        await sql27`DELETE FROM flux_adaptations`;
         console.log("\u2713 Cleared flux_adaptations");
       } catch (e) {
         console.log("\u2139\uFE0F  flux_adaptations not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM pulse_metrics`;
+        await sql27`DELETE FROM pulse_metrics`;
         console.log("\u2713 Cleared pulse_metrics");
       } catch (e) {
         console.log("\u2139\uFE0F  pulse_metrics not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM tasks`;
+        await sql27`DELETE FROM tasks`;
         console.log("\u2713 Cleared tasks");
       } catch (e) {
         console.log("\u2139\uFE0F  tasks not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM strategic_scenarios`;
+        await sql27`DELETE FROM strategic_scenarios`;
         console.log("\u2713 Cleared strategic_scenarios");
       } catch (e) {
         console.log("\u2139\uFE0F  strategic_scenarios not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM projects`;
+        await sql27`DELETE FROM projects`;
         console.log("\u2713 Cleared projects");
       } catch (e) {
         console.log("\u2139\uFE0F  projects not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM activities`;
+        await sql27`DELETE FROM activities`;
         console.log("\u2713 Cleared activities");
       } catch (e) {
         console.log("\u2139\uFE0F  activities not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM users`;
+        await sql27`DELETE FROM users`;
         console.log("\u2713 Cleared users");
       } catch (e) {
         console.log("\u2139\uFE0F  users not found, skipping...");
       }
       try {
-        await sql26`DELETE FROM organizations`;
+        await sql27`DELETE FROM organizations`;
         console.log("\u2713 Cleared organizations");
       } catch (e) {
         console.log("\u2139\uFE0F  organizations not found, skipping...");
@@ -58052,7 +59321,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       console.log(`\u2728 Seeding scenario data: ${selectedScenario.name}...`);
       const orgId = randomUUID2();
       const org = selectedScenario.organization;
-      await sql26`
+      await sql27`
         INSERT INTO organizations (id, name, description, owner_id, industry, size, type, headquarters, domain, adaptability_score, onboarding_completed, subscription_tier)
         VALUES (${orgId}, ${org.name}, ${org.description}, 'temp-owner-id', ${org.industry}, ${org.size}, 'enterprise', ${org.headquarters}, ${org.domain}, 'excellent', true, 'enterprise');
       `;
@@ -58060,16 +59329,16 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       const executiveTeam = selectedScenario.executiveTeam;
       const ceoId = randomUUID2();
       executiveIds.ceo = ceoId;
-      await sql26`
+      await sql27`
         INSERT INTO users (id, email, first_name, last_name, organization_id)
         VALUES (${ceoId}, ${executiveTeam.ceo.email}, ${executiveTeam.ceo.firstName}, ${executiveTeam.ceo.lastName}, ${orgId});
       `;
-      await sql26`UPDATE organizations SET owner_id = ${ceoId} WHERE id = ${orgId};`;
+      await sql27`UPDATE organizations SET owner_id = ${ceoId} WHERE id = ${orgId};`;
       for (const [role, executive] of Object.entries(executiveTeam)) {
         if (role !== "ceo" && executive) {
           const execId = randomUUID2();
           executiveIds[role] = execId;
-          await sql26`
+          await sql27`
             INSERT INTO users (id, email, first_name, last_name, organization_id)
             VALUES (${execId}, ${executive.email}, ${executive.firstName}, ${executive.lastName}, ${orgId});
           `;
@@ -58079,7 +59348,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       console.log("\u{1F6A8} Creating crisis scenario...");
       const demoScenarioId = randomUUID2();
       const createdBy = executiveIds.cso || executiveIds.ceo;
-      await sql26`
+      await sql27`
         INSERT INTO strategic_scenarios (id, organization_id, name, title, description, created_by)
         VALUES (${demoScenarioId}, ${orgId}, ${selectedScenario.name}, ${selectedScenario.title}, ${selectedScenario.description}, ${createdBy});
       `;
@@ -58088,7 +59357,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       for (const task of selectedScenario.tasks) {
         const assignedToId = executiveIds[task.assignedToRole] || executiveIds.ceo;
         const dueDate = new Date(Date.now() + task.dueDays * 24 * 60 * 60 * 1e3);
-        await sql26`
+        await sql27`
           INSERT INTO tasks (scenario_id, description, priority, assigned_to, due_date)
           VALUES (${demoScenarioId}, ${task.description}, ${task.priority}, ${assignedToId}, ${dueDate});
         `;
@@ -58096,7 +59365,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       console.log(`\u{1F4CB} ${selectedScenario.tasks.length} high-priority tasks created`);
       console.log("\u{1F916} Seeding AI intelligence metrics...");
       for (const metric of selectedScenario.aiMetrics) {
-        await sql26`
+        await sql27`
           INSERT INTO pulse_metrics (organization_id, metric_name, value, unit, category, metadata)
           VALUES (${orgId}, ${metric.name}, ${metric.value}, ${metric.unit}, ${metric.category}, ${JSON.stringify(metric.metadata)});
         `;
@@ -59234,7 +60503,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   app2.get("/api/pilot-monitoring/system-health", async (req, res) => {
     try {
       const startTime = Date.now();
-      await db.execute(sql24`SELECT 1`);
+      await db.execute(sql25`SELECT 1`);
       const dbResponseTime = Date.now() - startTime;
       res.json({
         status: "healthy",
@@ -59250,10 +60519,10 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   });
   app2.get("/api/pilot-monitoring/pilot-metrics", async (req, res) => {
     try {
-      const scenariosCount = await db.execute(sql24`SELECT COUNT(*) as count FROM strategic_scenarios`);
-      const triggersCount = await db.execute(sql24`SELECT COUNT(*) as count FROM executive_triggers`);
-      const executionsCount = await db.execute(sql24`SELECT COUNT(*) as count FROM execution_instances`);
-      const avgExecTime = await db.execute(sql24`
+      const scenariosCount = await db.execute(sql25`SELECT COUNT(*) as count FROM strategic_scenarios`);
+      const triggersCount = await db.execute(sql25`SELECT COUNT(*) as count FROM executive_triggers`);
+      const executionsCount = await db.execute(sql25`SELECT COUNT(*) as count FROM execution_instances`);
+      const avgExecTime = await db.execute(sql25`
         SELECT AVG(
           EXTRACT(EPOCH FROM (completed_at - started_at)) / 60
         ) as avg_minutes
@@ -59276,7 +60545,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   });
   app2.get("/api/pilot-monitoring/recent-activity", async (req, res) => {
     try {
-      const recentActivity = await db.execute(sql24`
+      const recentActivity = await db.execute(sql25`
         SELECT 
           ei.id,
           ei.status,
@@ -59745,7 +61014,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   registerDynamicStrategyRoutes(app2);
   app2.get("/api/health", async (req, res) => {
     try {
-      await db.execute(sql24`SELECT 1`);
+      await db.execute(sql25`SELECT 1`);
       res.status(200).json({
         status: "healthy",
         timestamp: (/* @__PURE__ */ new Date()).toISOString(),
@@ -59938,7 +61207,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   });
   app2.get("/api/public/live-context", async (_req, res) => {
     try {
-      const { gte: gte17, desc: descOp, and: and41, eq: eqOp } = await import("drizzle-orm");
+      const { gte: gte18, desc: descOp, and: and41, eq: eqOp } = await import("drizzle-orm");
       const { triggerDetections: td } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1e3);
       const recent = await db.select({
@@ -59951,7 +61220,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         recommendedPlaybook: td.recommendedPlaybook,
         detectedAt: td.detectedAt,
         status: td.status
-      }).from(td).where(and41(eqOp(td.organizationId, "system"), gte17(td.detectedAt, cutoff))).orderBy(descOp(td.detectedAt)).limit(10);
+      }).from(td).where(and41(eqOp(td.organizationId, "system"), gte18(td.detectedAt, cutoff))).orderBy(descOp(td.detectedAt)).limit(10);
       const domainsActive = Array.from(new Set(recent.map((d) => d.triggerDomain).filter(Boolean)));
       const top3 = recent.slice(0, 3).map((d) => ({
         id: d.id,
@@ -60123,8 +61392,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       if (!email) return res.status(400).json({ error: "email is required" });
       const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
       if (!apiKey) return res.status(503).json({ error: "Email service not configured" });
-      const { Resend: Resend9 } = await import("resend");
-      const resend2 = new Resend9(apiKey);
+      const { Resend: Resend11 } = await import("resend");
+      const resend2 = new Resend11(apiKey);
       const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
       const token = Buffer.from(email).toString("base64url");
       const unsubUrl = `${platformUrl}/api/unsubscribe?t=${token}`;
@@ -60318,8 +61587,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     try {
       const result = await db.select({
         domainName: playbookDomains.name,
-        playbookCount: sql24`count(distinct ${playbookLibrary.id})`,
-        taskCount: sql24`count(${playbookTaskSequences.id})`
+        playbookCount: sql25`count(distinct ${playbookLibrary.id})`,
+        taskCount: sql25`count(${playbookTaskSequences.id})`
       }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq60(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
       res.json(result);
     } catch (error) {
@@ -60339,7 +61608,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         activatedAt: playbookActivations.activatedAt,
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name
-      }).from(playbookActivations).innerJoin(playbookLibrary, eq60(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql24`${playbookActivations.activatedAt} DESC`);
+      }).from(playbookActivations).innerJoin(playbookLibrary, eq60(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql25`${playbookActivations.activatedAt} DESC`);
       res.json(result);
     } catch (error) {
       console.error("Error fetching playbook activations:", error);
@@ -60350,7 +61619,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     try {
       const userId = getUserId6(req);
       const orgId = userId ? await getOrgIdForUser5(userId) : null;
-      const whereClause = orgId ? eq60(playbookActivations.organizationId, orgId) : sql24`1=1`;
+      const whereClause = orgId ? eq60(playbookActivations.organizationId, orgId) : sql25`1=1`;
       const rows = await db.select({
         id: playbookActivations.id,
         playbookId: playbookActivations.playbookId,
@@ -60508,8 +61777,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
           const displayStakeholders = stakeholderCount || 5;
           const platformUrl = process.env.APP_URL || "https://vaughnmartin.replit.app";
           const activationTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
-          const { Resend: Resend9 } = await import("resend");
-          const resend2 = new Resend9(apiKey);
+          const { Resend: Resend11 } = await import("resend");
+          const resend2 = new Resend11(apiKey);
           const html = `
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#0A0F2E;padding:40px 0;margin:0;">
               <div style="max-width:580px;margin:0 auto;">
@@ -60902,13 +62171,13 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       const orgs = await db.select().from(orgsTable).where(ne2(orgsTable.name, "System")).orderBy(asc2(orgsTable.createdAt));
       const result = await Promise.all(orgs.map(async (org) => {
         const [latestUser] = await db.select({ lastLoginAt: usersTable.lastLoginAt }).from(usersTable).where(eq60(usersTable.organizationId, org.id)).orderBy(desc31(usersTable.lastLoginAt)).limit(1);
-        const [det7] = await db.select({ c: count11() }).from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte16(tdTable.detectedAt, sevenDaysAgo)));
-        const [det30] = await db.select({ c: count11() }).from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte16(tdTable.detectedAt, thirtyDaysAgo)));
+        const [det7] = await db.select({ c: count11() }).from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, sevenDaysAgo)));
+        const [det30] = await db.select({ c: count11() }).from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, thirtyDaysAgo)));
         const [acts] = await db.select({ c: count11() }).from(paTable).where(eq60(paTable.organizationId, org.id));
         const [contacts] = await db.select({ c: count11() }).from(scTable).where(eq60(scTable.organizationId, org.id));
         let taskAcks = 0;
         try {
-          const [ta] = await db.select({ c: count11() }).from(taTable).where(and39(eq60(taTable.organizationId, org.id), gte16(taTable.acknowledgedAt, thirtyDaysAgo)));
+          const [ta] = await db.select({ c: count11() }).from(taTable).where(and39(eq60(taTable.organizationId, org.id), gte17(taTable.acknowledgedAt, thirtyDaysAgo)));
           taskAcks = Number(ta?.c ?? 0);
         } catch {
           taskAcks = 0;
@@ -61029,8 +62298,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             const contacts = await db.select().from(scTable).where(and39(eq60(scTable.organizationId, orgId), eq60(scTable.isActive, true)));
             const emails = contacts.map((c) => c.email).filter(Boolean);
             if (emails.length > 0) {
-              const { Resend: Resend9 } = await import("resend");
-              const resend2 = new Resend9(apiKey);
+              const { Resend: Resend11 } = await import("resend");
+              const resend2 = new Resend11(apiKey);
               const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
               const threatRows = highConf.map((t) => `
                 <tr>
@@ -61583,8 +62852,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
               const contacts = await db.select().from(scTable).where(and39(eq60(scTable.organizationId, org.id), eq60(scTable.isActive, true)));
               const emails = contacts.map((c) => c.email).filter(Boolean);
               if (emails.length > 0) {
-                const { Resend: Resend9 } = await import("resend");
-                const resend2 = new Resend9(apiKey);
+                const { Resend: Resend11 } = await import("resend");
+                const resend2 = new Resend11(apiKey);
                 const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
                 const threatRows = highConf.map((t) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(", ")}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis || "").substring(0, 240)}${(t.aiHypothesis || "").length > 240 ? "\u2026" : ""}</td></tr>`).join("");
                 const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center \u2192</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div></div></div></div>`;
@@ -61707,7 +62976,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
       const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1e3);
       const [detections, timelines, activations, contacts] = await Promise.all([
-        db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, req.orgId), gte16(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(30),
+        db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, req.orgId), gte17(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(30),
         db.select().from(etTable).where(eq60(etTable.organizationId, req.orgId)).orderBy(desc31(etTable.detectedAt)).limit(20),
         db.select().from(paTable).where(eq60(paTable.organizationId, req.orgId)).limit(20),
         db.select().from(scTable).where(and39(eq60(scTable.organizationId, req.orgId), eq60(scTable.isActive, true)))
@@ -61745,9 +63014,9 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
       const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1e3);
       const [detections, contacts, recentActivity] = await Promise.all([
-        db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, req.orgId), gte16(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10),
+        db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, req.orgId), gte17(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10),
         db.select().from(scTable).where(eq60(scTable.organizationId, req.orgId)),
-        db.select().from(salTable).where(gte16(salTable.createdAt, threeDaysAgo)).orderBy(desc31(salTable.createdAt)).limit(20)
+        db.select().from(salTable).where(gte17(salTable.createdAt, threeDaysAgo)).orderBy(desc31(salTable.createdAt)).limit(20)
       ]);
       const signalsScanned72h = recentActivity.length;
       res.json({
@@ -61794,11 +63063,11 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           const contacts = await db.select().from(scTable).where(and39(eq60(scTable.organizationId, org.id), eq60(scTable.isActive, true)));
           const emails = contacts.map((c) => c.email).filter(Boolean);
           if (emails.length === 0) continue;
-          const detections = await db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte16(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10);
-          const [actRow] = await db.select({ c: count11() }).from(paTable).where(and39(eq60(paTable.organizationId, org.id), gte16(paTable.activatedAt, sevenDaysAgo)));
+          const detections = await db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10);
+          const [actRow] = await db.select({ c: count11() }).from(paTable).where(and39(eq60(paTable.organizationId, org.id), gte17(paTable.activatedAt, sevenDaysAgo)));
           let taskAcks = 0;
           try {
-            const [taRow] = await db.select({ c: count11() }).from(taTable).where(and39(eq60(taTable.organizationId, org.id), gte16(taTable.acknowledgedAt, sevenDaysAgo)));
+            const [taRow] = await db.select({ c: count11() }).from(taTable).where(and39(eq60(taTable.organizationId, org.id), gte17(taTable.acknowledgedAt, sevenDaysAgo)));
             taskAcks = Number(taRow?.c ?? 0);
           } catch {
             taskAcks = 0;
@@ -61861,8 +63130,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 </div>
               </div>
             </div>`;
-          const { Resend: Resend9 } = await import("resend");
-          const resend2 = new Resend9(apiKey);
+          const { Resend: Resend11 } = await import("resend");
+          const resend2 = new Resend11(apiKey);
           const subject = triggerCount > 0 ? `\u{1F4CA} Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? "s" : ""} Detected \u2014 ${org.name}` : `\u{1F4CA} Weekly Digest: Monitoring Active, Market Quiet \u2014 ${org.name}`;
           for (const contact of contacts) {
             if (!contact.email) continue;
@@ -62064,12 +63333,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         console.log(`[TestDrive] No Resend key \u2014 lead stored without email for ${email}`);
         return res.json({ success: true, emailSent: false });
       }
-      const { Resend: Resend9 } = await import("resend");
-      const resend2 = new Resend9(apiKey);
+      const { Resend: Resend11 } = await import("resend");
+      const resend2 = new Resend11(apiKey);
       const company = companyName ? ` for ${companyName}` : "";
       const completionPct = totalTasks > 0 ? Math.round(completedTasks / totalTasks * 100) : 100;
-      const NAVY5 = "#0A0F2E";
-      const GOLD4 = "#C9A84C";
+      const NAVY6 = "#0A0F2E";
+      const GOLD6 = "#C9A84C";
       const html = `
         <!DOCTYPE html>
         <html>
@@ -62079,13 +63348,13 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             <tr><td align="center">
               <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
                 <!-- Header -->
-                <tr><td style="background:${NAVY5};padding:32px 40px;">
-                  <div style="font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD4};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
+                <tr><td style="background:${NAVY6};padding:32px 40px;">
+                  <div style="font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD6};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
                   <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your 12-Minute Execution Summary${company}</div>
                   <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Scenario: ${scenarioTitle}</div>
                 </td></tr>
                 <!-- Gold rule -->
-                <tr><td style="height:3px;background:${GOLD4};"></td></tr>
+                <tr><td style="height:3px;background:${GOLD6};"></td></tr>
                 <!-- Body -->
                 <tr><td style="padding:40px;">
                   <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px;">
@@ -62095,40 +63364,40 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                   <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
                     <tr>
                       <td width="50%" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:28px;font-weight:700;color:${NAVY5};">${completedTasks}/${totalTasks}</div>
+                        <div style="font-size:28px;font-weight:700;color:${NAVY6};">${completedTasks}/${totalTasks}</div>
                         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Tasks Completed</div>
                       </td>
                       <td width="4px"></td>
                       <td width="50%" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:28px;font-weight:700;color:${NAVY5};">${completionPct}%</div>
+                        <div style="font-size:28px;font-weight:700;color:${NAVY6};">${completionPct}%</div>
                         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Completion Rate</div>
                       </td>
                     </tr>
                     <tr><td colspan="3" height="4"></td></tr>
                     <tr>
                       <td colspan="3" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:28px;font-weight:700;color:${NAVY5};">12 min</div>
+                        <div style="font-size:28px;font-weight:700;color:${NAVY6};">12 min</div>
                         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">vs. 30 days without Readiness OS</div>
                       </td>
                     </tr>
                   </table>
                   <!-- Key message -->
-                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD4};margin-bottom:32px;">
+                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD6};margin-bottom:32px;">
                     <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What you just demonstrated</div>
                     <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
                       When a strategic trigger fires, startup to Fortune 500s typically spend 30 days just mobilizing \u2014 figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. You compressed that entire cycle to <strong>12 minutes</strong>. That is a <strong>3,600\xD7 Execution Head Start</strong>.
                     </p>
                   </div>
                   <!-- What's next -->
-                  <p style="font-size:15px;font-weight:600;color:${NAVY5};margin:0 0 8px;">What comes next</p>
+                  <p style="font-size:15px;font-weight:600;color:${NAVY6};margin:0 0 8px;">What comes next</p>
                   <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
                     The Founding Partner Program gives your organization 90 days to pre-stage Readiness Protocols against your real strategic scenarios \u2014 with your actual team, your actual risk register, and your actual authorization structure.
                   </p>
                   <!-- CTA -->
                   <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
                     <tr>
-                      <td style="background:${NAVY5};padding:14px 32px;">
-                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD4};text-decoration:none;">Apply for Founding Partner Access \u2192</a>
+                      <td style="background:${NAVY6};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD6};text-decoration:none;">Apply for Founding Partner Access \u2192</a>
                       </td>
                     </tr>
                   </table>
@@ -62193,8 +63462,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         console.log(`[Scanner] No Resend key \u2014 lead stored without email for ${email}`);
         return res.json({ success: true, emailSent: false });
       }
-      const { Resend: Resend9 } = await import("resend");
-      const resend2 = new Resend9(apiKey);
+      const { Resend: Resend11 } = await import("resend");
+      const resend2 = new Resend11(apiKey);
       const NAVY_C = "#0A0F2E";
       const GOLD_C = "#C9A84C";
       const TEAL_C = "#2B8A6E";
@@ -62785,9 +64054,9 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         status: "delivered"
       }).returning();
       const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { sql: sql26 } = await import("drizzle-orm");
+      const { sql: sql27 } = await import("drizzle-orm");
       const { eq: eq64 } = await import("drizzle-orm");
-      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql26`events_in_last_24h + 1` }).where(eq64(microsoftConnectors2.id, connectorId));
+      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql27`events_in_last_24h + 1` }).where(eq64(microsoftConnectors2.id, connectorId));
       res.json(row);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62797,7 +64066,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { microsoftConnectors: microsoftConnectors2, microsoftEvents: microsoftEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, sql: sql26 } = await import("drizzle-orm");
+      const { eq: eq64, sql: sql27 } = await import("drizzle-orm");
       const { connectorId, connectorType, scenarioName } = req.body;
       const eventSets = {
         teams: [
@@ -62836,7 +64105,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         }).returning();
         inserted.push(row);
       }
-      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql26`events_in_last_24h + ${events.length}`, status: "connected" }).where(eq64(microsoftConnectors2.id, connectorId));
+      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql27`events_in_last_24h + ${events.length}`, status: "connected" }).where(eq64(microsoftConnectors2.id, connectorId));
       res.json({ simulated: inserted.length, events: inserted });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62967,8 +64236,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { boardFeedback: boardFeedback2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { sql: sql26 } = await import("drizzle-orm");
-      const rows = await db2.execute(sql26`
+      const { sql: sql27 } = await import("drizzle-orm");
+      const rows = await db2.execute(sql27`
         SELECT
           board_member,
           action_type,
@@ -63586,7 +64855,7 @@ async function seedEnrichedPlaybooks() {
 // server/index.ts
 init_db();
 init_schema();
-import { count as count12, eq as eq63, sql as sql25 } from "drizzle-orm";
+import { count as count12, eq as eq63, sql as sql26 } from "drizzle-orm";
 import pino17 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
@@ -63697,6 +64966,12 @@ app.get("/ultimate-demo", (_req, res) => {
 });
 app.get("/scenario-demo", (_req, res) => {
   res.sendFile(path2.resolve("client/public/scenario-demo.html"));
+});
+app.get("/commercial", (_req, res) => {
+  res.sendFile(path2.resolve("client/public/commercial.html"));
+});
+app.get("/commercial.html", (_req, res) => {
+  res.sendFile(path2.resolve("client/public/commercial.html"));
 });
 app.use((req, res, next) => {
   if (req.hostname === "executeiq.io" || req.hostname === "www.executeiq.io") {
@@ -64159,14 +65434,14 @@ server.listen(
       }
       await seedEnrichedPlaybooks();
       try {
-        await db.execute(sql25`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS strategic_objectives jsonb`);
-        await db.execute(sql25`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS execution_progress_toward_goal integer DEFAULT 0`);
+        await db.execute(sql26`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS strategic_objectives jsonb`);
+        await db.execute(sql26`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS execution_progress_toward_goal integer DEFAULT 0`);
         logger13.info("\u2705 Ensured playbooks columns exist (strategic_objectives, execution_progress_toward_goal)");
       } catch (e) {
         logger13.warn("Could not add playbooks columns (may already exist)");
       }
       try {
-        await db.execute(sql25`CREATE TABLE IF NOT EXISTS investor_leads (
+        await db.execute(sql26`CREATE TABLE IF NOT EXISTS investor_leads (
               id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
               name TEXT NOT NULL,
               email TEXT NOT NULL,
@@ -64180,7 +65455,7 @@ server.listen(
         logger13.warn("Could not ensure investor_leads table");
       }
       try {
-        await db.execute(sql25`CREATE TABLE IF NOT EXISTS strategic_recordings (
+        await db.execute(sql26`CREATE TABLE IF NOT EXISTS strategic_recordings (
               id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
               organization_id UUID NOT NULL,
               user_id TEXT NOT NULL,
@@ -64196,7 +65471,7 @@ server.listen(
         logger13.warn("Could not ensure strategic_recordings table");
       }
       try {
-        await db.execute(sql25`CREATE TABLE IF NOT EXISTS action_items (
+        await db.execute(sql26`CREATE TABLE IF NOT EXISTS action_items (
               id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
               organization_id UUID NOT NULL,
               recommendation_id UUID,
@@ -64224,7 +65499,7 @@ server.listen(
         logger13.warn("Could not create action_items table (may already exist)");
       }
       try {
-        await db.execute(sql25`CREATE TABLE IF NOT EXISTS peer_review_actions (
+        await db.execute(sql26`CREATE TABLE IF NOT EXISTS peer_review_actions (
               id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
               created_at TIMESTAMP DEFAULT NOW(),
               category TEXT NOT NULL DEFAULT 'general',
@@ -64238,7 +65513,7 @@ server.listen(
         logger13.warn("Could not create peer_review_actions table (may already exist)");
       }
       logger13.info("\u{1F527} [v2] Checking strategic category distribution...");
-      const categoryCheck = await db.execute(sql25`
+      const categoryCheck = await db.execute(sql26`
           SELECT strategic_category, COUNT(*) as cnt 
           FROM playbook_library 
           GROUP BY strategic_category
@@ -64254,10 +65529,10 @@ server.listen(
       if (offenseCount !== 58 || defenseCount !== 56 || specialTeamsCount !== 52) {
         logger13.info("\u{1F527} Fixing strategic category assignments using domain names (UUID-safe)...");
         await db.execute(
-          sql25`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Market Dynamics', 'Market Opportunities'))`
+          sql26`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Market Dynamics', 'Market Opportunities'))`
         );
         await db.execute(
-          sql25`UPDATE playbook_library SET strategic_category = 'offense' 
+          sql26`UPDATE playbook_library SET strategic_category = 'offense' 
                   WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') 
                   AND name IN ('Accounting Irregularity Discovery', 'Activist Investor Campaign', 'Algorithmic Trading Malfunction',
                     'Auditor Disagreement', 'Bank Credit Line Revocation', 'Cash Flow Crisis',
@@ -64267,23 +65542,23 @@ server.listen(
                     'SWIFT/Payment System Disruption', 'Stock Price Crash (Public Company)', 'Unexpected Tax Liability')`
         );
         await db.execute(
-          sql25`UPDATE playbook_library SET strategic_category = 'defense' 
+          sql26`UPDATE playbook_library SET strategic_category = 'defense' 
                   WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') 
                   AND name IN ('Commodity Price Spike', 'Commodity Trading Desk Rogue Trader', 'M&A Target Acquisition (Offensive)',
                     'Major Customer Bankruptcy', 'Strategic Fundraising (IPO/Series)')`
         );
         await db.execute(
-          sql25`UPDATE playbook_library SET strategic_category = 'special_teams' 
+          sql26`UPDATE playbook_library SET strategic_category = 'special_teams' 
                   WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name = 'Financial Strategy') 
                   AND name = 'Portfolio Rebalancing'`
         );
         await db.execute(
-          sql25`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Operational Excellence', 'Regulatory & Compliance', 'Brand & Reputation'))`
+          sql26`UPDATE playbook_library SET strategic_category = 'defense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Operational Excellence', 'Regulatory & Compliance', 'Brand & Reputation'))`
         );
         await db.execute(
-          sql25`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Technology & Innovation', 'Talent & Leadership', 'AI Governance'))`
+          sql26`UPDATE playbook_library SET strategic_category = 'special_teams' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Technology & Innovation', 'Talent & Leadership', 'AI Governance'))`
         );
-        const verifyCheck = await db.execute(sql25`
+        const verifyCheck = await db.execute(sql26`
             SELECT strategic_category, COUNT(*) as cnt 
             FROM playbook_library 
             GROUP BY strategic_category
@@ -64326,42 +65601,42 @@ server.listen(
         logger13.warn({ contactSeedErr }, "\u26A0\uFE0F Stakeholder contact seed skipped (non-blocking)");
       }
       try {
-        const oldOrgRows = await db.execute(sql25`
+        const oldOrgRows = await db.execute(sql26`
               SELECT id FROM organizations WHERE name = 'martybrunke' LIMIT 1
             `);
         if (oldOrgRows.rows.length > 0) {
           const oldOrgId = oldOrgRows.rows[0].id;
           logger13.info({ oldOrgId }, "\u{1F527} Renaming martybrunke org \u2192 VaughnMartin");
-          const vmOrgRows = await db.execute(sql25`
+          const vmOrgRows = await db.execute(sql26`
                 SELECT id FROM organizations WHERE name = 'VaughnMartin' LIMIT 1
               `);
           if (vmOrgRows.rows.length > 0) {
             const vmOrgId = vmOrgRows.rows[0].id;
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   UPDATE users SET organization_id = '${vmOrgId}'
                   WHERE organization_id = '${oldOrgId}'
                 `));
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   DELETE FROM stakeholder_contacts WHERE organization_id = '${oldOrgId}'
                 `));
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   UPDATE executive_triggers SET organization_id = '${vmOrgId}'
                   WHERE organization_id = '${oldOrgId}'::uuid
                 `));
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   UPDATE playbook_activations SET organization_id = '${vmOrgId}'
                   WHERE organization_id = '${oldOrgId}'
                 `));
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   DELETE FROM org_memberships WHERE organization_id::text = '${oldOrgId}'
                 `));
-            await db.execute(sql25.raw(`DELETE FROM organizations WHERE id::text = '${oldOrgId}'`));
+            await db.execute(sql26.raw(`DELETE FROM organizations WHERE id::text = '${oldOrgId}'`));
             logger13.info({ vmOrgId }, "\u2705 Migrated founder data to existing VaughnMartin org, cleared trial contacts");
           } else {
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   UPDATE organizations SET name = 'VaughnMartin' WHERE id::text = '${oldOrgId}'
                 `));
-            await db.execute(sql25.raw(`
+            await db.execute(sql26.raw(`
                   DELETE FROM stakeholder_contacts WHERE organization_id = '${oldOrgId}'
                 `));
             logger13.info({ oldOrgId }, "\u2705 Renamed org to VaughnMartin, cleared trial-user stakeholder entries");
@@ -64373,7 +65648,7 @@ server.listen(
         logger13.warn({ founderMigErr }, "\u26A0\uFE0F Founder org migration skipped (non-blocking)");
       }
       try {
-        const deleted = await db.execute(sql25`
+        const deleted = await db.execute(sql26`
               DELETE FROM stakeholder_contacts
               WHERE email IN (
                 'test@a16z.com',

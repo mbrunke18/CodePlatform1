@@ -1,0 +1,68 @@
+LINKEDIN POST — READY TO PUBLISH
+Draft: "What BCG Got Right About Geopolitical Risk — And What They Left Out"
+Target: CTOs, COOs, Chief Risk Officers, Strategy Leaders, Board Members
+Tone: Authoritative, direct, no jargon
+Length: ~700 words (carousel companion or standalone)
+
+---
+
+What BCG got right about geopolitical risk — and what they left out.
+
+BCG published research recently on IT resilience and geopolitical triggers. It is worth reading. It is also worth completing.
+
+What they got right:
+
+Boards now hold management accountable for anticipating strategic triggers, not just responding to them. BCG confirms that IT resilience has moved from operational to existential — a board-level obligation, not an IT conversation. That is a real and important shift.
+
+Their anticipate-prepare-pivot framework is correct. The organizations that survived geopolitical disruptions did not react faster. They had pre-built their response options before the trigger fired. Shell's scenario planning was not valuable because it predicted the future. It was valuable because when the scenario arrived, the moves were already staged.
+
+The trigger surface they identify is real and almost entirely absent from most enterprise signal architectures: export control changes, CFIUS ownership reviews, data localization mandates, operating model bifurcation. These are slow-burn, high-consequence events. They do not announce themselves in a press release. They accumulate in regulatory registers, trade policy filings, and government notices until suddenly they are your problem.
+
+What BCG left out:
+
+The article ends exactly where the operational problem begins.
+
+Anticipation and scenario planning are the consulting engagement. They are necessary and genuinely valuable. But anticipation without pre-staged execution is expensive foresight. A scenario plan sitting in a board presentation does nothing when the trigger fires at 11pm on a Tuesday.
+
+The Shell example is the tell. Their scenario planning was not the differentiator. Pre-built operational moves were the differentiator. The plan had value only because the execution was already staged.
+
+BCG's buyer is the board asking the CEO governance questions. The board's natural next purchase after reading this research is a scenario planning engagement — which is exactly what BCG sells. That is not a criticism. It is an honest description of where the article is designed to leave you.
+
+What it does not address: what happens in the 12 minutes after a trigger fires?
+
+Most enterprises still answer that question in real time. Thirty days of mobilization — figuring out who needs to be in the room, agreeing on a response framework, assigning ownership — while the window closes, the regulator moves, the stock drops, the competitor acts.
+
+The improvement worth chasing:
+
+It is not better scenario planning. Every major consultancy can sell you that.
+
+The improvement is making the response ready before the scenario becomes reality.
+
+That means:
+— 231 trigger conditions monitored continuously, including export controls, CFIUS signals, data sovereignty mandates, and operating model disruption
+— 180 Readiness Protocols pre-staged before any trigger fires — not built in response
+— 12-minute full organizational coordination after trigger detection, with executive authorization built into the architecture
+
+This is operating model resilience. Not strategic foresight in a deck. Readiness in the system.
+
+BCG can map the threats. The question every board should now be asking the management team: when one of those threats fires, how long does it take us to respond — and what is that delay actually costing?
+
+The sharpest single insight from BCG's research is the one they do not say directly: the firm that survives a geopolitical trigger is not the fastest to respond. It is the one that made the response ready before the trigger fired.
+
+That is the standard. Most enterprises are not meeting it.
+
+---
+
+If your organization is thinking about what operating model resilience actually looks like in practice — not as a board conversation but as a deployed system — I would welcome a conversation.
+
+vaughnmartin.com/request-access
+
+#OperatingModelResilience #GeopoliticalRisk #StrategicReadiness #ExecutiveLeadership #EnterpriseStrategy #BoardGovernance #RiskManagement
+
+---
+
+USAGE NOTES:
+- Post standalone, or use as the caption for the 7-panel comparison carousel image
+- Tag BCG Research handle if posting as a response to their content
+- The last section ("If your organization...") is the CTA — keep it as a comment if the algorithm suppresses links in posts
+- Optimal posting time: Tuesday-Thursday, 8-10am or 12-2pm in target timezone
