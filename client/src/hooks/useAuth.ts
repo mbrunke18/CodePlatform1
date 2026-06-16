@@ -35,6 +35,17 @@ export function useAuth() {
     }
   };
 
+  const loginWithMicrosoft = (returnTo?: string) => {
+    const url = returnTo
+      ? `/api/auth/microsoft?returnTo=${encodeURIComponent(returnTo)}`
+      : '/api/auth/microsoft';
+    try {
+      (window.top || window).location.href = url;
+    } catch {
+      window.location.href = url;
+    }
+  };
+
   const logout = () => {
     try {
       (window.top || window).location.href = '/api/logout';
@@ -49,6 +60,7 @@ export function useAuth() {
     isAuthenticated,
     needsOnboarding,
     login,
+    loginWithMicrosoft,
     logout,
   };
 }

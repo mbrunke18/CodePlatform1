@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3 } from "lucide-react";
-import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
+import { SiGoogle, SiGithub, SiApple, SiMicrosoft } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
@@ -106,7 +106,7 @@ export default function StandardNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const { user, isAuthenticated, isLoading, login, logout } = useAuth();
+  const { user, isAuthenticated, isLoading, login, loginWithMicrosoft, logout } = useAuth();
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -1101,14 +1101,13 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={() => login()}
-                  className="h-9 px-3 text-sm font-medium"
-                  style={{ color: 'rgba(255,255,255,0.65)', border: '1px solid rgba(255,255,255,0.15)' }}
-                  data-testid="nav-login"
+                  onClick={() => loginWithMicrosoft()}
+                  className="h-9 px-3 text-sm font-medium flex items-center gap-1.5"
+                  style={{ color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.2)' }}
+                  data-testid="nav-login-microsoft"
                 >
-                  <span className="flex items-center gap-1.5">
-                    <span className="ml-0.5">Sign In</span>
-                  </span>
+                  <SiMicrosoft className="h-3.5 w-3.5" style={{ color: '#00A4EF' }} />
+                  <span>Sign in with Microsoft</span>
                 </Button>
               </>
             )}
@@ -1201,14 +1200,13 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     variant="ghost"
-                    onClick={() => login()}
-                    className="w-full justify-center h-9 text-sm"
+                    onClick={() => loginWithMicrosoft()}
+                    className="w-full justify-center h-9 text-sm flex items-center gap-1.5"
                     style={{ color: NAVY }}
-                    data-testid="nav-mobile-login"
+                    data-testid="nav-mobile-login-microsoft"
                   >
-                    <span className="flex items-center gap-1.5">
-                      <span className="ml-0.5">Sign In</span>
-                    </span>
+                    <SiMicrosoft className="h-3.5 w-3.5" style={{ color: '#00A4EF' }} />
+                    <span>Sign in with Microsoft</span>
                   </Button>
                 </div>
               )}

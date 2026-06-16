@@ -13,6 +13,10 @@ export const PUBLIC_ROUTES = [
   // Demo access bypass — shareable link for investors and pilot prospects
   '/api/demo-access',
 
+  // Microsoft Azure AD / Entra SSO — no prior session required
+  '/api/auth/microsoft',
+  '/api/auth/microsoft/callback',
+
   // Magic link authentication — no session required to request or verify
   '/api/auth/magic-link/request',
   '/api/auth/magic-link/validate',

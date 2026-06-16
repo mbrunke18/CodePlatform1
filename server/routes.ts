@@ -31,6 +31,7 @@ import { registerDecisionCoordinationRoutes } from "./routes/decision-coordinati
 import { registerMagicLinkRoutes } from "./routes/magic-link-routes";
 import { registerSignalIntelligenceRoutes } from "./routes/signal-intelligence-routes";
 import { setupAuth, isAuthenticated, hasPermission } from "./replitAuth";
+import { setupMicrosoftAuth } from "./microsoftAuth";
 import { registerAudioRoutes } from "./replit_integrations/audio";
 import { conditionalAuth } from "./authConfig";
 import { generateFullPlaybookData } from "./seeds/samplePlaybookData";
@@ -810,6 +811,9 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   // Setup authentication with Replit OIDC
   await setupAuth(app);
+
+  // Microsoft Azure AD / Entra SSO (requires AZURE_CLIENT_ID + AZURE_CLIENT_SECRET)
+  setupMicrosoftAuth(app);
 
   // Rate limiters — protect public endpoints from AI scrapers and bulk enumeration
   const publicApiLimiter = rateLimit({

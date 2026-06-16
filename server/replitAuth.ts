@@ -50,7 +50,7 @@ function updateUserSession(user: any, tokens: any) {
   user.expires_at = user.claims?.exp;
 }
 
-async function upsertUser(claims: any): Promise<{ id: string } | null> {
+export async function upsertUser(claims: any): Promise<{ id: string } | null> {
   // TEMP: log claims so we can see the real Replit email/sub
   console.log('[AUTH DEBUG] Login claims:', JSON.stringify({
     sub: claims["sub"],
@@ -121,7 +121,7 @@ async function upsertUser(claims: any): Promise<{ id: string } | null> {
 // Platform admin (PLATFORM_ADMIN_EMAIL) always passes.
 // Everyone else must be in the allowed_emails table.
 // If the table doesn't exist yet (pre-migration) we fail open so no one gets locked out.
-async function isEmailAllowed(email: string): Promise<boolean> {
+export async function isEmailAllowed(email: string): Promise<boolean> {
   const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
   if (adminEmail && email === adminEmail) return true;
 
