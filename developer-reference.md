@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 11, 2026 (rev 58) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 16, 2026 (rev 59) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -206,18 +206,51 @@ Both call `completeOnboardingMutation` → POST `/api/onboarding/complete` → i
 
 **Critical DB note:** The `roles` table schema includes a `description` column that was missing from the production database until April 3, 2026. If the DB is ever re-created from scratch, run `npm run db:push` immediately after — a missing `description` column causes `requireRole` to throw a 500 on every protected route. Do NOT assume the schema is in sync; always verify with `SELECT column_name FROM information_schema.columns WHERE table_name = 'roles'`.
 
+### Microsoft Azure AD / Entra SSO (Rev 59 — dormant until credentials set)
+
+A second login path targeting enterprise customers sits alongside Replit OIDC. It uses direct OAuth 2.0 (not openid-client) to avoid multi-tenant issuer validation complexity.
+
+**Files:**
+- `server/microsoftAuth.ts` — all OAuth 2.0 logic (redirect → token exchange → Graph API → upsert user → session)
+- `server/replitAuth.ts` — `upsertUser` and `isEmailAllowed` are now exported for reuse
+- `server/authConfig.ts` — `/api/auth/microsoft` and `/api/auth/microsoft/callback` added to `PUBLIC_ROUTES`
+- `server/routes.ts` — `setupMicrosoftAuth(app)` called immediately after `setupAuth(app)`
+- `client/src/hooks/useAuth.ts` — `loginWithMicrosoft(returnTo?)` added and returned from hook
+- `client/src/components/layout/StandardNav.tsx` — "Sign in with Microsoft" button (desktop + mobile) with inline SVG Microsoft logo
+
+**Environment variables required to activate:**
+| Variable | Source | Required |
+|---|---|---|
+| `AZURE_CLIENT_ID` | Azure portal → App registrations → Application (client) ID | Yes |
+| `AZURE_CLIENT_SECRET` | Azure portal → Certificates & secrets → client secret value | Yes |
+| `AZURE_TENANT_ID` | Specific tenant GUID, or omit to default to `organizations` (multi-tenant) | Optional |
+
+**Behavior when credentials are absent:** `setupMicrosoftAuth` logs a single warning and returns — the rest of the platform is unaffected. The nav button is visible but the route is simply not registered.
+
+**Security design:** State parameter CSRF protection on the redirect. Tokens validated server-to-server via Microsoft Graph API — no client-side token handling. Uses the same `isEmailAllowed` allowlist check as Replit OIDC. Session shape is compatible with existing session-sync middleware (`claims.email` is present for org resolution).
+
+**Azure app registration setup (when ready):**
+1. portal.azure.com → Azure Active Directory → App registrations → New registration
+2. Supported account types: "Accounts in any organizational directory" (multi-tenant)
+3. Redirect URI: `Web` → `https://[your-deployed-domain]/api/auth/microsoft/callback`
+4. Certificates & secrets → New client secret → copy the **Value** (not the ID)
+
 ### Frontend Auth Hook
 ```tsx
 import { useAuth } from '@/hooks/useAuth';
 
-const { user, isAuthenticated, isLoading, login, logout } = useAuth();
+const { user, isAuthenticated, isLoading, login, loginWithMicrosoft, logout } = useAuth();
 
 // user shape:
 // { id, email, firstName, lastName, profileImageUrl, role, initials, needsOnboarding }
 
-// Navigate to login:
-login('/dashboard');          // with returnTo
-login();                      // to default landing
+// Navigate to Replit OIDC login:
+login('/dashboard');                    // with returnTo
+login();                                // to default landing
+
+// Navigate to Microsoft Entra SSO:
+loginWithMicrosoft('/dashboard');       // with returnTo
+loginWithMicrosoft();                   // to default landing (/mission-control)
 
 // Navigate to logout:
 logout();
