@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 16, 2026 (rev 59) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 17, 2026 (rev 60) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -792,6 +792,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 | `FoundingPartnerProgram.tsx` | `/founding-partner-program` (alias: `/pilot-program`) | Primary enterprise conversion page — see Section 55 for full spec. `/pilot-program` is a permanent route alias; both routes render `FoundingPartnerProgram.tsx`. |
 | `DemoAccess.tsx` | `/demo-access` | Token-gated executive access entry point. Reads `?token=` param, validates via `/api/demo-access`, then redirects to `/mission-control` (or `?returnTo=` value). **LOCKED executive access link: `https://vaughnmartin.com/demo-access?token=VMdemo2026`** — do not change this URL or token. |
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
+| `DemoExperience.tsx` | `/demo-experience` | Full-journey guided walkthrough — 9 steps across 3 phases (PREPARATION / RESPONSE / ADVANCE). Cold-open intro establishes pain before any product screen. No login required. See Section 18a. |
 | `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `ProtocolActivationConsole`. |
 | `StartHere.tsx` | `/entry` | First-time visitor entry page — 60-second orientation. Two track cards: Enterprise Executive (→ `/founding-partner-brief`, gold accent) and Investor (→ `/investor`, teal accent), each with a brief framing statement and 3 key stats. No login required. Linked from: StandardNav "See It Work" dropdown (first item, featured), Homepage track fork ("Not sure where to start?" link). |
 | `FoundingPartnerBrief.tsx` | `/founding-partner-brief` | Enterprise buyer outcomes document — "What you get in 90 days." Three-phase milestone timeline (Days 1–30, 31–60, 61–90), included deliverables list, 4 Founding Partner seats remaining badge, and primary CTA to `/founding-partner-program`. Linked from: StandardNav "The Proof" dropdown (featured), Homepage track fork (Enterprise Executive card). |
@@ -930,6 +931,94 @@ This is critical — without it, first-time viewers cannot tell whether the floo
 
 ---
 
+## 18a. Demo Experience — Full Journey (`/demo-experience`)
+
+**File:** `client/src/pages/DemoExperience.tsx` | **Route:** `/demo-experience` | **Auth:** None required | **Lines:** ~1,000 (self-contained)
+
+The full-journey guided walkthrough — the deepest public demonstration of the platform. Designed for prospects who want to understand the complete system before a conversation, not just a 90-second clip. No login, no gating.
+
+### Narrative Arc
+
+**Pain → Understanding → Contrast → Outcome → Fearless**
+
+The demo never opens with a product screen. It opens with a cold-open that establishes the status quo pain before the prospect has seen a single feature.
+
+### Cold Open (Pre-Step Intro Screen)
+
+Before the 9-step flow begins, the prospect sees:
+
+> *"When a trigger fires, most organizations spend 30 days just to mobilize."*
+
+Four scenario cards cover the most common situations:
+
+| Card | Industry Audience | Financial Stakes |
+|---|---|---|
+| Ransomware | Financial services, healthcare, any CIO | $180K/hr exposure |
+| Activist Investor | Public companies, PE-backed | $2.3B market cap at risk |
+| Regulatory Investigation | Healthcare, pharma, financial | $847M penalty exposure |
+| Supply Chain Collapse | Manufacturing, retail, consumer | 34% revenue impact |
+
+Each card shows the industry type and dollar stakes so every prospect type sees themselves. Then the cold open closes with the canonical tagline:
+
+> *"The response is ready before the trigger fires."*
+> — 180 Readiness Protocols · 231 triggers · 12-minute response target
+
+CTA: **"See a Full Activation →"** enters Step 1.
+
+### 9-Step Flow
+
+**PREPARATION phase (TEAL accent) — Steps 1–3**
+
+| Step | Name | What It Shows |
+|---|---|---|
+| 1 | Command Center | What the platform looks like on a normal operating day — live monitoring, 0 active triggers, 18 Readiness Protocols active |
+| 2 | Trigger Portfolio | How triggers are configured, mapped to protocols, and prioritized across all 3 domains |
+| 3 | Protocol Library | Browse all 3 domains — 180 pre-built responses. The library that exists before any trigger fires |
+
+**RESPONSE phase (GOLD accent) — Steps 4–7**
+
+| Step | Name | What It Shows |
+|---|---|---|
+| 4 | Signal Detected | Live $180K/hr financial exposure counter ticking in real time. 0:16 elapsed — auto-detected |
+| 5 | Protocol Staged | 22 tasks pre-assigned to pre-defined roles. 1:04 elapsed |
+| 6 | War Room Active | 4 executives notified, coordination underway. 8:22 elapsed |
+| 7 | Executive Authorizes | The one non-delegable decision. 9:47 elapsed |
+
+**ADVANCE phase (#A78BFA accent) — Steps 8–9**
+
+| Step | Name | What It Shows |
+|---|---|---|
+| 8 | Response Complete | 11:43 elapsed, OPTIMIZATION classification, 3,600× Execution Head Start |
+| 9 | System Learns | Protocol updated, institutional memory, compounding moat. Closes: "Meridian Financial is no longer afraid of this scenario. **Fearless.**" |
+
+### ComparisonStrip Component
+
+A persistent strip renders **above the panel content on every Response phase step (steps 3–6 in 0-indexed terms, i.e., steps 4–7 in the numbered flow)**. It keeps the 30-day vs. 12-minute contrast alive throughout the Response phase — not just at the start and end.
+
+```
+| Readiness OS: [X elapsed] | Traditional response — same moment: [Day Y] |
+```
+
+| Step | Readiness OS | Traditional — same moment |
+|---|---|---|
+| Signal Detected | 0:16 · auto-detected | Day 1 · no human awareness yet |
+| Protocol Staged | 1:04 · 22 tasks pre-assigned | Day 1 · emergency calls beginning |
+| War Room Active | 8:22 · 4 executives notified | Day 2 · team still assembling |
+| Executive Authorizes | 9:47 · authorization in progress | Day 3 · consultants engaged |
+
+**Implementation:** `COMPARISON` array in `DemoExperience.tsx` has `null` entries for non-response steps and `{ elapsed, readiness, trad }` objects for response steps. The strip only renders when `COMPARISON[currentStep]` is non-null.
+
+### CTA
+Final screen CTA: **"Apply for Founding Partner Access"** — routes to `/founding-partner-program`. Sub-label: "90-day validation partnership." No invented cohort numbers or urgency claims.
+
+### VaughnMartinLogo Usage
+`VaughnMartinLogo` renders with `noLink` prop throughout — the logo's internal `<a>` tag must not be wrapped in any parent `<Link>` or `<a>`. See Section on Nested Anchor Fix.
+
+### Linked From
+- **Homepage hero** — ghost text CTA: "Experience the Platform →" (third, lowest-commitment path below primary + secondary CTAs)
+
+---
+
 ## 19. GuidedStart Experience (`/begin`)
 
 **File:** `client/src/pages/GuidedStart.tsx` | **Routes:** `/begin`, `/start` | **Auth:** None required
@@ -956,7 +1045,7 @@ In-content links to `/begin` appear throughout the marketing site as plain under
 - **Homepage IDEASection** — end of section: "Experience the IDEA Framework in real time →"
 - **TryDemo** — mid-page between industry demos and playbook examples
 - **HowItWorks** — final CTA block
-- **Homepage hero** — primary CTA button: **"Try It Now — No Login Required →"** (routes to `/situation-scanner`). Secondary text link: "Apply for Founding Partner Access →" (routes to `/founding-partner-program`). The Situation Scanner is the designated primary front door — do not restore "Request Founding Partner Access" as the hero primary CTA.
+- **Homepage hero** — primary CTA button: **"Try It Now — No Login Required →"** (routes to `/situation-scanner`). Secondary text link: "Apply for Founding Partner Access →" (routes to `/founding-partner-program`). Ghost text link: **"Experience the Platform →"** (routes to `/demo-experience`) — positioned below the two main CTAs as a third, lower-commitment discovery path. The Situation Scanner is the designated primary front door — do not restore "Request Founding Partner Access" as the hero primary CTA. Do not remove the ghost link to `/demo-experience`.
 
 ---
 
@@ -4269,8 +4358,10 @@ The modal must never frame the product as a crisis-response tool. The emotional 
 - Do not use "AI-powered," "AI-driven," or any retired language in the modal copy.
 - Do not change the emotional arc order. Recognition must precede revelation.
 
-### Rev 57 Known State
+### Rev 60 Known State
 - Build: ✅ clean
 - Tests: ✅ 208/208 passing
 - Modal: ✅ firing on homepage, correct 4-scene arc, correct CTA destinations
 - Framing: ✅ category-creation (not crisis-response)
+- `/demo-experience`: ✅ live — cold open + 9-step PREPARATION/RESPONSE/ADVANCE journey, ComparisonStrip on all Response steps, live $180K/hr counter, Fearless landing, Founding Partner CTA
+- Homepage hero ghost CTA: ✅ "Experience the Platform →" → `/demo-experience`
