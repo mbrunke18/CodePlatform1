@@ -856,6 +856,38 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
   );
 }
 
+// ─── Comparison strip (Response phase only) ──────────────────────────────────
+const COMPARISON = [
+  null, null, null,
+  { elapsed: "0:16", readiness: "Signal auto-detected — protocol identifying", trad: "Day 1 · Signal undetected — no human awareness yet" },
+  { elapsed: "1:04", readiness: "Protocol staged — 22 tasks pre-assigned", trad: "Day 1 · Emergency calls beginning — who owns this?" },
+  { elapsed: "8:22", readiness: "War room active — 4 executives notified", trad: "Day 2 · Response team still assembling" },
+  { elapsed: "9:47", readiness: "Executive authorization in progress", trad: "Day 3 · Consultants engaged — scope being negotiated" },
+  null, null,
+];
+
+function ComparisonStrip({ step }: { step: number }) {
+  const c = COMPARISON[step];
+  if (!c) return null;
+  return (
+    <div style={{ display: "flex", alignItems: "stretch", marginBottom: 18, borderRadius: "0.15rem", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+      <div style={{ flex: 1, background: `${TEAL}10`, padding: "12px 18px", display: "flex", gap: 14, alignItems: "center" }}>
+        <div style={{ flexShrink: 0 }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 3 }}>Readiness OS · {c.elapsed} elapsed</div>
+          <div style={{ fontSize: 12, color: "#fff", fontWeight: 500 }}>{c.readiness}</div>
+        </div>
+      </div>
+      <div style={{ width: 1, background: BORDER, flexShrink: 0 }} />
+      <div style={{ flex: 1, background: "rgba(220,38,38,0.05)", padding: "12px 18px", display: "flex", gap: 14, alignItems: "center" }}>
+        <div style={{ flexShrink: 0 }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, color: "#EF4444", letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 3 }}>Traditional response — same moment</div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)" }}>{c.trad}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Main page ─────────────────────────────────────────────────────────────────
 export default function DemoExperience() {
   const [intro, setIntro] = useState(true);
@@ -969,6 +1001,7 @@ export default function DemoExperience() {
             </div>
           </div>
 
+          <ComparisonStrip step={step} />
           {panels[step]}
 
           {/* Bottom nav */}
