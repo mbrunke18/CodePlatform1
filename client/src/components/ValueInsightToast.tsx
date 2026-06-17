@@ -59,9 +59,9 @@ export function ValueInsightToast({ insight, onDismiss }: ToastProps) {
     <div
       style={{
         position: "fixed",
-        bottom: 32,
-        right: 32,
-        width: 316,
+        bottom: 'calc(32px + env(safe-area-inset-bottom, 0px))',
+        right: 16,
+        width: 'min(316px, calc(100vw - 32px))',
         background: NAVY,
         borderTop: `3px solid ${GOLD}`,
         border: `1px solid rgba(201,168,76,0.28)`,

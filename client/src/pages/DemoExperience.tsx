@@ -918,6 +918,21 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
     <div style={{ minHeight: "100vh", background: NAVY, display: "flex", flexDirection: "column" }}>
       <style>{`
         @keyframes ping { 0% { transform: scale(1); opacity: 0.4; } 75%, 100% { transform: scale(2); opacity: 0; } }
+        .de-hero-h { font-size: 54px; }
+        .de-hero-body { font-size: 17px; }
+        .de-domain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .de-compare-grid { display: grid; grid-template-columns: 1fr 1fr; }
+        .de-page-pad { padding: 52px 32px 48px; }
+        .de-stat-row { display: flex; justify-content: center; gap: 52px; }
+        @media (max-width: 768px) {
+          .de-hero-h { font-size: 32px !important; line-height: 1.18 !important; }
+          .de-hero-body { font-size: 14px !important; }
+          .de-domain-grid { grid-template-columns: 1fr !important; gap: 8px !important; }
+          .de-compare-grid { grid-template-columns: 1fr !important; }
+          .de-page-pad { padding: 32px 16px 40px !important; }
+          .de-stat-row { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 24px 16px !important; }
+          .de-divider-label { font-size: 8px !important; }
+        }
       `}</style>
 
       {/* Nav */}
@@ -926,16 +941,16 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         <Link href="/request-access" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>Apply for Access</Link>
       </div>
 
-      <div style={{ flex: 1, maxWidth: 1040, margin: "0 auto", width: "100%", padding: "52px 32px 48px" }}>
+      <div className="de-page-pad" style={{ flex: 1, maxWidth: 1040, margin: "0 auto", width: "100%" }}>
 
         {/* Hero */}
-        <div style={{ textAlign: "center" as const, marginBottom: 56 }}>
+        <div style={{ textAlign: "center" as const, marginBottom: 48 }}>
           <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.22em", textTransform: "uppercase" as const, marginBottom: 16 }}>Readiness OS · Enterprise Coordination Infrastructure</div>
-          <div style={{ ...CG, fontSize: 54, fontWeight: 700, color: "#fff", lineHeight: 1.12, marginBottom: 20 }}>
+          <div className="de-hero-h" style={{ ...CG, fontWeight: 700, color: "#fff", lineHeight: 1.12, marginBottom: 20 }}>
             Whatever your organization faces next,<br />
             <span style={{ color: GOLD }}>the response is already waiting.</span>
           </div>
-          <div style={{ fontSize: 17, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, maxWidth: 600, margin: "0 auto" }}>
+          <div className="de-hero-body" style={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.75, maxWidth: 600, margin: "0 auto" }}>
             180 pre-staged protocols across every strategic domain — growth moves, risk events, and transformation initiatives. When a trigger fires, execution begins in 12 minutes. The mobilization already happened.
           </div>
         </div>
@@ -943,7 +958,7 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         {/* Three domain showcase */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 14, textAlign: "center" as const }}>180 protocols across 3 strategic domains — every one pre-staged and ready</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+          <div className="de-domain-grid">
             {DOMAINS.map((domain) => (
               <div key={domain.name} style={{ background: `${domain.color}07`, border: `1px solid ${domain.color}30`, borderTop: `3px solid ${domain.color}`, borderRadius: "0.15rem", padding: "20px 20px" }}>
                 <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: domain.color, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>{domain.name}</div>
@@ -970,7 +985,7 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         </div>
 
         {/* Side-by-side — now framed as one specific scenario */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, marginBottom: 44, borderRadius: "0.15rem", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+        <div className="de-compare-grid" style={{ gap: 0, marginBottom: 44, borderRadius: "0.15rem", overflow: "hidden", border: `1px solid ${BORDER}` }}>
           <div style={{ background: "rgba(220,38,38,0.06)", borderRight: `1px solid rgba(220,38,38,0.18)`, padding: "24px 26px" }}>
             <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: "#EF4444", letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 18, display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#EF4444" }} /> Without Readiness OS
@@ -1023,7 +1038,7 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
           <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 12 }}>
             9 steps · Protocol #14 of 180 · No login required · ~5 minutes
           </div>
-          <div style={{ marginTop: 40, display: "flex", justifyContent: "center", gap: 52 }}>
+          <div className="de-stat-row" style={{ marginTop: 40 }}>
             {[
               { val: "180", label: "Pre-staged protocols" },
               { val: "231", label: "Trigger patterns" },

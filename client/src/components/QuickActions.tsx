@@ -86,7 +86,7 @@ export default function QuickActions() {
         />
       )}
 
-      <div style={{ position: 'fixed', bottom: 28, right: 28, zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
+      <div style={{ position: 'fixed', bottom: 'calc(28px + env(safe-area-inset-bottom, 0px))', right: 16, zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
 
         {open && (
           isAuthenticated
@@ -161,7 +161,7 @@ export default function QuickActions() {
 function PanelShell({ onClose, children }: { onClose: () => void; children: React.ReactNode }) {
   return (
     <div style={{
-      width: 320,
+      width: 'min(320px, calc(100vw - 32px))',
       background: '#fff',
       border: `1px solid rgba(10,15,46,0.12)`,
       boxShadow: '0 20px 60px rgba(10,15,46,0.18)',
