@@ -459,6 +459,76 @@ export default function HowItExecutes() {
           </div>
         </div>
 
+        {/* What Readiness Does Before the Trigger Fires */}
+        <div style={{ padding: "64px 48px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
+                <div style={{ width: 28, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>The Readiness Posture</span>
+                <div style={{ width: 28, height: 1, background: GOLD }} />
+              </div>
+              <h2 style={{ ...GEO, fontSize: "clamp(26px,3.2vw,40px)", fontWeight: 700, color: "#fff", marginBottom: 16, lineHeight: 1.15 }}>
+                Readiness isn't a moment.<br /><em style={{ color: GOLD }}>It's a posture.</em>
+              </h2>
+              <p style={{ fontSize: 15, color: MUTED, maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
+                In football, four-down territory is not a yard line. It is a mindset. The offense that enters four-down territory does not expect to use the fourth down — but having it available changes every decision on the first three. The drive is different. Leadership is calmer. The plays are called without the pressure of converting everything in real time.
+              </p>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2, background: "rgba(255,255,255,0.05)", marginBottom: 2 }}>
+              {[
+                {
+                  label: "Without Readiness OS",
+                  color: "#DC2626",
+                  items: [
+                    "Every trigger requires building the response from scratch",
+                    "Every third down must convert — there is no safety net",
+                    "Leadership decisions made under full panic pressure",
+                    "Budget, stakeholders, and comms figured out mid-crisis",
+                    "30-day mobilization cycle, every time",
+                  ],
+                },
+                {
+                  label: "With Readiness OS",
+                  color: TEAL,
+                  items: [
+                    "180 protocols pre-staged — the fourth down always exists",
+                    "Calmer decisions upstream because the safety net is real",
+                    "Leadership operates differently before any trigger fires",
+                    "Budget pre-approved, stakeholders pre-assigned, comms pre-cleared",
+                    "12 minutes when the trigger fires. Not because of speed — because of preparation.",
+                  ],
+                },
+              ].map(col => (
+                <div key={col.label} style={{ background: NAVY, padding: "32px 28px" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: col.color, marginBottom: 20 }}>{col.label}</div>
+                  <div style={{ display: "flex", flexDirection: "column" as const, gap: 12 }}>
+                    {col.items.map((item, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                        <span style={{ color: col.color, fontSize: 12, flexShrink: 0, marginTop: 2 }}>{col.color === TEAL ? "→" : "×"}</span>
+                        <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", padding: "24px 32px", display: "flex", alignItems: "flex-start", gap: 20 }}>
+              <div style={{ flexShrink: 0, width: 3, alignSelf: "stretch", background: GOLD }} />
+              <div>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, margin: "0 0 8px", fontStyle: "italic" }}>
+                  "The objective isn't necessarily to convert on fourth down. The real advantage is that the offense can call plays differently throughout the entire series because a fourth down may be available."
+                </p>
+                <p style={{ fontSize: 11, color: "rgba(201,168,76,0.7)", fontWeight: 700, letterSpacing: "0.08em", margin: 0 }}>
+                  The enterprise equivalent: 180 protocols pre-staged changes how the organization operates every day — not just the day a trigger fires.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Executive Questions — 3 strongest */}
         <div style={{ padding: "64px 48px 0" }}>
           <div style={{ maxWidth: 860, margin: "0 auto" }}>

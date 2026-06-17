@@ -1012,9 +1012,19 @@ function HeroSection() {
                   What the 30-day mobilization gap actually costs — read the brief →
                 </Link>
               </div>
-              <p style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 24px" }}>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 20px" }}>
                 Pre-staged before the trigger. Authorized in real time. Executed in 12 minutes. And every activation makes the next response faster.
               </p>
+
+              {/* Four-down territory posture callout */}
+              <div style={{ maxWidth: 500, margin: "0 0 24px", padding: "14px 18px", borderLeft: "2px solid rgba(201,168,76,0.5)", background: "rgba(201,168,76,0.05)" }}>
+                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: "0 0 6px" }}>
+                  Having 180 protocols pre-staged changes how leadership operates <em style={{ color: "rgba(255,255,255,0.75)" }}>before</em> any trigger fires — not just the moment one does.
+                </p>
+                <p style={{ ...DM, fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: "0.06em", margin: 0 }}>
+                  READINESS ISN'T A MOMENT. IT'S A POSTURE.
+                </p>
+              </div>
 
               {/* Detect → Coordinate → Execute → Learn chain — Patrik framing */}
               <div style={{ display: "flex", alignItems: "stretch", gap: 0, marginBottom: 36, maxWidth: 500, border: "1px solid rgba(201,168,76,0.18)" }}>
