@@ -229,7 +229,7 @@ function TierCard({ tier }: { tier: typeof TIERS[0] }) {
         }}>
           <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
           <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.08em", ...BC }}>
-            12-MINUTE RESPONSE · PERFORMANCE GUARANTEE
+            12-MINUTE RESPONSE TARGET
           </span>
         </div>
 

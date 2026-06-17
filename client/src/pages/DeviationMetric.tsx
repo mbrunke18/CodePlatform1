@@ -54,7 +54,7 @@ export default function DeviationMetric() {
   useEffect(() => {
     updatePageMetadata({
       title: "12-Minute Deviation Metric — Readiness OS | VaughnMartin",
-      description: "Live proof that Readiness OS delivers its 12-minute response guarantee. Planned vs. actual execution times across every activation — with full deviation tracking and classification.",
+      description: "Live proof that Readiness OS delivers its 12-minute response target. Planned vs. actual execution times across every activation — with full deviation tracking and classification.",
       ogTitle: "The 12-Minute Deviation Metric — Proof, Not Promise",
       ogDescription: "Every activation measured. Planned vs. actual. Deviation classified. No claim without evidence.",
     });

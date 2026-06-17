@@ -824,7 +824,7 @@ export default function ROICalculator() {
               {[
                 { value: "3,600×", label: "Execution Head Start" },
                 { value: "180", label: "Pre-Built Readiness Protocols" },
-                { value: "12 min", label: "Guaranteed Response Time" },
+                { value: "12 min", label: "Response Target" },
               ].map(s => (
                 <div key={s.label} style={{ textAlign: "center" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: "#C9A84C" }}>{s.value}</div>

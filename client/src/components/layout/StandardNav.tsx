@@ -212,6 +212,7 @@ export default function StandardNav() {
         { label: "Full Scenario Experience Center", path: "/demo-hub", icon: LayoutGrid, description: "12 complete simulations across all 3 strategic domains — Growth · Resilience · Transformation. Pick your situation.", featured: true },
         { label: "Master Demo — Activist Investor", path: "/master-demo", icon: Play, description: "Elliott Management files 13D at 2:47 AM. The definitive 7-phase walkthrough. Every platform capability in one scenario.", featured: true },
         { label: "The 12-Minute Experience", path: "/12-minute-experience", icon: Rocket, description: "Watch a full Readiness Protocol activate from trigger detection to task assignment — in 12 minutes. No login required.", featured: true },
+        { label: "Tier Comparison — Core · Foresight · Enterprise", path: "/tier-comparison", icon: LayoutGrid, description: "Same trigger. Three tiers. See exactly what changes at each level — advance warning, Digital Twin, institutional memory.", featured: true },
       ],
     },
     {
