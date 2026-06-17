@@ -878,8 +878,44 @@ const COLD_SCENARIOS = [
 ];
 
 function ColdOpen({ onBegin }: { onBegin: () => void }) {
+  const DOMAINS = [
+    {
+      name: "Growth & Positioning",
+      color: TEAL,
+      desc: "Seize windows before competitors can react.",
+      protocols: [
+        { id: "#31", name: "Competitor Displacement Sprint", tag: "72-hr window" },
+        { id: "#58", name: "M&A Rapid Response", tag: "LOI in 48 hrs" },
+        { id: "#89", name: "Go-to-Market Acceleration", tag: "Launch sprint" },
+        { id: "#104", name: "IPO Readiness Protocol", tag: "Window defense" },
+      ],
+    },
+    {
+      name: "Risk & Resilience",
+      color: "#EF4444",
+      desc: "Navigate every threat before it becomes a crisis.",
+      protocols: [
+        { id: "#7", name: "Activist Investor Response", tag: "Board defense" },
+        { id: "#14", name: "Financial Services Ransomware", tag: "← Demo scenario", highlight: true },
+        { id: "#29", name: "DOJ/Regulatory Investigation", tag: "Day-1 response" },
+        { id: "#52", name: "Supply Chain Collapse", tag: "Tier-1 failure" },
+      ],
+    },
+    {
+      name: "Transformation",
+      color: "#A78BFA",
+      desc: "Execute organizational change without the drag.",
+      protocols: [
+        { id: "#112", name: "Workforce Transformation", tag: "6,720 roles" },
+        { id: "#127", name: "Digital Infrastructure Migration", tag: "Zero-downtime" },
+        { id: "#88", name: "Leadership Transition Protocol", tag: "Succession" },
+        { id: "#156", name: "Post-Merger Integration", tag: "Day-100 plan" },
+      ],
+    },
+  ];
+
   return (
-    <div style={{ minHeight: "100vh", background: "#060918", display: "flex", flexDirection: "column" }}>
+    <div style={{ minHeight: "100vh", background: NAVY, display: "flex", flexDirection: "column" }}>
       <style>{`
         @keyframes ping { 0% { transform: scale(1); opacity: 0.4; } 75%, 100% { transform: scale(2); opacity: 0; } }
       `}</style>
@@ -890,34 +926,54 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         <Link href="/request-access" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>Apply for Access</Link>
       </div>
 
-      {/* Crisis scenario bar */}
-      <div style={{ background: "rgba(220,38,38,0.1)", borderBottom: "1px solid rgba(220,38,38,0.28)", padding: "11px 32px", display: "flex", alignItems: "center", gap: 12 }}>
-        <StatusDot color="#EF4444" pulse />
-        <span style={{ ...BC, fontSize: 11, fontWeight: 700, color: "#EF4444", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Monday · 4:23 AM · Financial Infrastructure Compromise — Meridian Financial Group</span>
-        <span style={{ ...BC, fontSize: 10, color: MUTED, marginLeft: "auto" }}>The situation every organization dreads. Watch what happens next.</span>
-      </div>
-
-      <div style={{ flex: 1, maxWidth: 1020, margin: "0 auto", width: "100%", padding: "48px 32px" }}>
+      <div style={{ flex: 1, maxWidth: 1040, margin: "0 auto", width: "100%", padding: "52px 32px 48px" }}>
 
         {/* Hero */}
-        <div style={{ textAlign: "center" as const, marginBottom: 52 }}>
-          <div style={{ ...CG, fontSize: 54, fontWeight: 700, color: "#fff", lineHeight: 1.12, marginBottom: 18 }}>
-            It just happened.<br />
-            <span style={{ color: "#EF4444" }}>What does your organization do next?</span>
+        <div style={{ textAlign: "center" as const, marginBottom: 56 }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.22em", textTransform: "uppercase" as const, marginBottom: 16 }}>Readiness OS · Enterprise Coordination Infrastructure</div>
+          <div style={{ ...CG, fontSize: 54, fontWeight: 700, color: "#fff", lineHeight: 1.12, marginBottom: 20 }}>
+            Whatever your organization faces next,<br />
+            <span style={{ color: GOLD }}>the response is already waiting.</span>
           </div>
-          <div style={{ fontSize: 17, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto" }}>
-            Most organizations spend the next 30 days just figuring out who owns the response. You're about to see both worlds — step by step, in real time.
+          <div style={{ fontSize: 17, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, maxWidth: 600, margin: "0 auto" }}>
+            180 pre-staged protocols across every strategic domain — growth moves, risk events, and transformation initiatives. When a trigger fires, execution begins in 12 minutes. The mobilization already happened.
           </div>
         </div>
 
-        {/* The brutal side-by-side */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, marginBottom: 52, borderRadius: "0.15rem", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+        {/* Three domain showcase */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 14, textAlign: "center" as const }}>180 protocols across 3 strategic domains — every one pre-staged and ready</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+            {DOMAINS.map((domain) => (
+              <div key={domain.name} style={{ background: `${domain.color}07`, border: `1px solid ${domain.color}30`, borderTop: `3px solid ${domain.color}`, borderRadius: "0.15rem", padding: "20px 20px" }}>
+                <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: domain.color, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>{domain.name}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.62)", marginBottom: 16, lineHeight: 1.5 }}>{domain.desc}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  {domain.protocols.map((p) => (
+                    <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: p.highlight ? `${domain.color}14` : "rgba(255,255,255,0.02)", border: `1px solid ${p.highlight ? domain.color + "40" : BORDER}`, borderRadius: "0.15rem" }}>
+                      <span style={{ ...BC, fontSize: 9, fontWeight: 700, color: domain.color, flexShrink: 0 }}>{p.id}</span>
+                      <span style={{ fontSize: 11, color: p.highlight ? "#fff" : "rgba(255,255,255,0.72)", flex: 1, fontWeight: p.highlight ? 600 : 400 }}>{p.name}</span>
+                      <span style={{ ...BC, fontSize: 9, color: p.highlight ? domain.color : MUTED, letterSpacing: "0.06em", flexShrink: 0 }}>{p.tag}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-          {/* WITHOUT */}
-          <div style={{ background: "rgba(220,38,38,0.07)", borderRight: `1px solid rgba(220,38,38,0.2)`, padding: "28px 28px" }}>
-            <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: "#EF4444", letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 22, display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#EF4444" }} />
-              Without Readiness OS — same crisis
+        {/* Demo scenario divider */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "32px 0 20px" }}>
+          <div style={{ flex: 1, height: 1, background: BORDER }} />
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.16em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}>In this walkthrough — Protocol #14 · Financial Services Ransomware</div>
+          <div style={{ flex: 1, height: 1, background: BORDER }} />
+        </div>
+
+        {/* Side-by-side — now framed as one specific scenario */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, marginBottom: 44, borderRadius: "0.15rem", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+          <div style={{ background: "rgba(220,38,38,0.06)", borderRight: `1px solid rgba(220,38,38,0.18)`, padding: "24px 26px" }}>
+            <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: "#EF4444", letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 18, display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#EF4444" }} /> Without Readiness OS
             </div>
             {[
               { time: "4:23 AM", event: "Ransomware spreading. No one is watching." },
@@ -925,62 +981,52 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
               { time: "9:00 AM", event: "Emergency call assembled. 14 people, 3 with context." },
               { time: "Day 1", event: "Who owns this response? Still being determined." },
               { time: "Day 3", event: "Consultants engaged. Scope being negotiated." },
-              { time: "Day 10", event: "Response team finally executing a plan." },
-              { time: "Day 30+", event: "Exposure window closed. At enormous cost." },
-            ].map((r, i) => (
-              <div key={i} style={{ display: "flex", gap: 18, padding: "10px 0", borderBottom: i < 6 ? `1px solid rgba(220,38,38,0.1)` : "none" }}>
-                <span style={{ ...BC, fontSize: 11, fontWeight: 700, color: "#EF4444", width: 66, flexShrink: 0 }}>{r.time}</span>
-                <span style={{ fontSize: 13, color: "rgba(255,255,255,0.72)", lineHeight: 1.55 }}>{r.event}</span>
+              { time: "Day 30+", event: "Exposure window finally closed. Enormous cost." },
+            ].map((r, i, arr) => (
+              <div key={i} style={{ display: "flex", gap: 16, padding: "9px 0", borderBottom: i < arr.length - 1 ? `1px solid rgba(220,38,38,0.1)` : "none" }}>
+                <span style={{ ...BC, fontSize: 11, fontWeight: 700, color: "#EF4444", width: 64, flexShrink: 0 }}>{r.time}</span>
+                <span style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{r.event}</span>
               </div>
             ))}
-            <div style={{ marginTop: 22, paddingTop: 16, borderTop: "1px solid rgba(220,38,38,0.22)", ...BC, fontSize: 13, fontWeight: 700, color: "#EF4444" }}>
-              30 days. Uncoordinated. Exposed. Expensive.
-            </div>
+            <div style={{ marginTop: 18, paddingTop: 14, borderTop: "1px solid rgba(220,38,38,0.2)", ...BC, fontSize: 12, fontWeight: 700, color: "#EF4444" }}>30 days of exposure and confusion.</div>
           </div>
-
-          {/* WITH */}
-          <div style={{ background: `${TEAL}08`, padding: "28px 28px" }}>
-            <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 22, display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL }} />
-              With Readiness OS — same crisis
+          <div style={{ background: `${TEAL}07`, padding: "24px 26px" }}>
+            <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 18, display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ width: 7, height: 7, borderRadius: "50%", background: TEAL }} /> With Readiness OS
             </div>
             {[
-              { time: "4:23 AM", event: "Signal detected. Protocol #14 staged. Execution brief ready." },
-              { time: "4:24:30", event: "4 executives notified with full context and task assignments." },
-              { time: "4:26 AM", event: "CISO and CTO begin immediate actions. Tasks pre-assigned." },
-              { time: "Minute 8", event: "22 tasks executing across 5 departments. War room live." },
+              { time: "4:23 AM", event: "Signal detected. Protocol #14 staged. Brief ready." },
+              { time: "4:24:30", event: "4 executives notified with full context and assignments." },
+              { time: "4:26 AM", event: "CISO and CTO begin immediate actions." },
+              { time: "Minute 8", event: "22 tasks executing across 5 departments." },
               { time: "Minute 9:47", event: "CEO reviews precedents. One decision. Authorized." },
               { time: "11:43", event: "Full response complete. Exposure window closed." },
-              { time: "11:44", event: "Protocol updated. Next time: 3 minutes faster." },
-            ].map((r, i) => (
-              <div key={i} style={{ display: "flex", gap: 18, padding: "10px 0", borderBottom: i < 6 ? `1px solid ${TEAL}18` : "none" }}>
-                <span style={{ ...BC, fontSize: 11, fontWeight: 700, color: TEAL, width: 66, flexShrink: 0 }}>{r.time}</span>
-                <span style={{ fontSize: 13, color: "rgba(255,255,255,0.88)", lineHeight: 1.55 }}>{r.event}</span>
+            ].map((r, i, arr) => (
+              <div key={i} style={{ display: "flex", gap: 16, padding: "9px 0", borderBottom: i < arr.length - 1 ? `1px solid ${TEAL}16` : "none" }}>
+                <span style={{ ...BC, fontSize: 11, fontWeight: 700, color: TEAL, width: 64, flexShrink: 0 }}>{r.time}</span>
+                <span style={{ fontSize: 12, color: "rgba(255,255,255,0.88)", lineHeight: 1.5 }}>{r.event}</span>
               </div>
             ))}
-            <div style={{ marginTop: 22, paddingTop: 16, borderTop: `1px solid ${TEAL}28`, ...BC, fontSize: 13, fontWeight: 700, color: TEAL }}>
-              11 minutes, 43 seconds. Same crisis. Different outcome.
-            </div>
+            <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px solid ${TEAL}25`, ...BC, fontSize: 12, fontWeight: 700, color: TEAL }}>11 minutes, 43 seconds. Same trigger. Different outcome.</div>
           </div>
         </div>
 
         {/* CTA */}
         <div style={{ textAlign: "center" as const }}>
           <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: MUTED, letterSpacing: "0.18em", textTransform: "uppercase" as const, marginBottom: 20 }}>
-            You just saw the summary. Now watch it happen — step by step.
+            You just saw the summary. Now watch Protocol #14 activate — step by step.
           </div>
           <button onClick={onBegin} style={{ display: "inline-flex", alignItems: "center", gap: 14, background: GOLD, border: "none", padding: "20px 48px", cursor: "pointer", borderRadius: "0.15rem" }}>
             <span style={{ ...BC, fontSize: 15, fontWeight: 700, color: NAVY, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Watch the Full Activation</span>
             <ArrowRight size={20} color={NAVY} />
           </button>
           <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 12 }}>
-            9 steps · Ransomware scenario · No login required · ~5 minutes
+            9 steps · Protocol #14 of 180 · No login required · ~5 minutes
           </div>
-
           <div style={{ marginTop: 40, display: "flex", justifyContent: "center", gap: 52 }}>
             {[
               { val: "180", label: "Pre-staged protocols" },
-              { val: "231", label: "Trigger patterns monitored" },
+              { val: "231", label: "Trigger patterns" },
               { val: "12 min", label: "Response target" },
               { val: "3,600×", label: "Execution head start" },
             ].map(s => (
