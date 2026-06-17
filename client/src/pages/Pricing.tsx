@@ -214,10 +214,10 @@ function TierCard({ tier }: { tier: typeof TIERS[0] }) {
 
         {/* Demo availability note */}
         {(tier as any).demoNote && (
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: tier.dark ? "rgba(201,168,76,0.65)" : "#9CA3AF", marginBottom: 10, padding: "3px 8px", border: `1px solid ${tier.dark ? "rgba(201,168,76,0.2)" : "#E8E4DC"}` }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: tier.dark ? "rgba(201,168,76,0.5)" : "#D1D5DB", flexShrink: 0 }} />
-            {(tier as any).demoNote}
-          </div>
+          <a href="/tier-comparison" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: tier.dark ? "rgba(201,168,76,0.75)" : TEAL, marginBottom: 10, padding: "3px 8px", border: `1px solid ${tier.dark ? "rgba(201,168,76,0.25)" : "rgba(43,138,110,0.3)"}`, textDecoration: "none", cursor: "pointer", background: tier.dark ? "rgba(201,168,76,0.06)" : "rgba(43,138,110,0.05)" }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: tier.dark ? "rgba(201,168,76,0.5)" : TEAL, flexShrink: 0 }} />
+            See tier demo →
+          </a>
         )}
 
         {/* Williams — 12-minute SLA guarantee */}

@@ -229,6 +229,7 @@ const AdminLinkedInPosts = lazy(() => import("./pages/AdminLinkedInPosts"));
 const FoundingPartnerHealthMonitor = lazy(() => import("./pages/FoundingPartnerHealthMonitor"));
 const FoundingPartnerOutreachKit = lazy(() => import("./pages/FoundingPartnerOutreachKit"));
 const PartnerBrief = lazy(() => import("./pages/PartnerBrief"));
+const TierComparisonDemo = lazy(() => import("./pages/TierComparisonDemo"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
@@ -812,6 +813,7 @@ function Router() {
         <Route path="/founding-partner" component={FoundingPartnerPage} />
         <Route path="/founding-partner-outreach-kit" component={FoundingPartnerOutreachKit} />
         <Route path="/partner-brief" component={PartnerBrief} />
+        <Route path="/tier-comparison" component={TierComparisonDemo} />
         <Route path="/cost-of-inaction" component={CostOfInaction} />
         <Route path="/first-90-days" component={FirstNinetyDays} />
         <Route path="/board-memo" component={BoardMemo} />
