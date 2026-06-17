@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, ChevronLeft, Shield, Zap, Clock, Users, Database,
   CheckCircle, Lock, Circle, Loader2, TrendingUp, Search,
   BarChart2, Bell, BookOpen, Activity, ChevronRight, Settings,
-  RefreshCw, Star, AlertTriangle, Target, PlusCircle,
+  RefreshCw, Star, AlertTriangle, Target, PlusCircle, DollarSign,
 } from "lucide-react";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
@@ -392,6 +392,13 @@ function PanelProtocolLibrary() {
 }
 
 function PanelSignal() {
+  const [exposure, setExposure] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setExposure(prev => prev + 50), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const formatted = exposure.toLocaleString();
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
       <div style={{ background: "rgba(220,38,38,0.08)", border: "1px solid rgba(220,38,38,0.3)", padding: "14px 20px", borderRadius: "0.15rem", display: "flex", alignItems: "center", gap: 12 }}>
@@ -401,6 +408,22 @@ function PanelSignal() {
           <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>3 of 3 confirmation patterns matched · Trigger portfolio match: Financial Infrastructure Compromise</div>
         </div>
         <div style={{ ...BC, fontSize: 22, fontWeight: 700, color: "#EF4444" }}>94</div>
+      </div>
+
+      <div style={{ background: "rgba(220,38,38,0.06)", border: "1px solid rgba(220,38,38,0.25)", padding: "16px 20px", borderRadius: "0.15rem", display: "flex", alignItems: "center", gap: 16 }}>
+        <DollarSign size={22} color="#EF4444" style={{ flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: "rgba(220,38,38,0.8)", letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 4 }}>Financial Exposure Window — Live</div>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+            <span style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#EF4444", lineHeight: 1 }}>${formatted}</span>
+            <span style={{ ...BC, fontSize: 10, color: "rgba(220,38,38,0.7)", fontWeight: 600 }}>AND CLIMBING</span>
+          </div>
+        </div>
+        <div style={{ textAlign: "right" as const, flexShrink: 0 }}>
+          <div style={{ ...BC, fontSize: 10, color: MUTED, letterSpacing: "0.06em" }}>$180,000 / hour</div>
+          <div style={{ ...BC, fontSize: 10, color: MUTED }}>industry benchmark</div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: TEAL, marginTop: 4 }}>Readiness OS: closes in 12 min</div>
+        </div>
       </div>
 
       <Card>
@@ -707,12 +730,89 @@ function PanelAdvance() {
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 4 }}>The Compounding Moat</div>
         <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", lineHeight: 1.6 }}>After 6 months, Meridian's Protocol #14 has been refined 14 times from real activations. Rebuilding this depth on any competing platform would take years. <strong style={{ color: "#fff" }}>The platform gets harder to replace with every activation.</strong></div>
       </div>
+
+      {/* ── Fearless landing ── */}
+      <div style={{ marginTop: 8, background: `linear-gradient(135deg, ${NAVY_MID} 0%, #0d1c4a 100%)`, border: `1px solid ${GOLD}35`, borderRadius: "0.15rem", padding: "28px 28px 24px", textAlign: "center" as const }}>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 12 }}>The Outcome</div>
+        <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 10 }}>
+          Meridian Financial is no longer<br />afraid of this scenario.
+        </div>
+        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 540, margin: "0 auto 20px" }}>
+          They've activated Protocol #14 three times. Every executive knows their role. Every task is pre-assigned. The response improves automatically. There's nothing left to fear — because there's nothing left unprepared.
+        </div>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "14px 28px", background: `${GOLD}12`, border: `1px solid ${GOLD}40`, borderRadius: "0.15rem" }}>
+          <div style={{ width: 2, height: 32, background: GOLD, borderRadius: 1 }} />
+          <div style={{ textAlign: "left" as const }}>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD, lineHeight: 1 }}>Fearless.</div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>The emotional endpoint of every prepared organization.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Cold open intro ──────────────────────────────────────────────────────────
+function ColdOpen({ onBegin }: { onBegin: () => void }) {
+  const traditional = [
+    { time: "Day 1", label: "Emergency calls begin", sub: "Who owns this? Who's in the room?" },
+    { time: "Day 3", label: "Consultants engaged", sub: "Scope of work being negotiated" },
+    { time: "Day 7", label: "Response plan drafted", sub: "First version — not yet approved" },
+    { time: "Day 14", label: "Execution begins", sub: "Two weeks after the trigger fired" },
+    { time: "Day 30", label: "Recovery measured", sub: "$180K/hr exposure for the full window" },
+  ];
+  return (
+    <div style={{ minHeight: "100vh", background: NAVY, display: "flex", flexDirection: "column" }}>
+      <style>{`@keyframes ping { 0% { transform: scale(1); opacity: 0.4; } 75%, 100% { transform: scale(2); opacity: 0; } }`}</style>
+      <div style={{ background: "#06091e", borderBottom: `1px solid ${BORDER}`, padding: "0 28px", height: 50, display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
+        <VaughnMartinLogo size={26} variant="icon-only" />
+        <Link href="/request-access" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>Apply for Access</Link>
+      </div>
+
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "48px 32px", maxWidth: 860, margin: "0 auto", width: "100%" }}>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: "#EF4444", letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 20 }}>4:23 AM · Your trading infrastructure is encrypting</div>
+
+        <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: "#fff", textAlign: "center" as const, lineHeight: 1.2, marginBottom: 14 }}>
+          Most organizations have<br />no pre-built response for this.
+        </div>
+        <div style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", textAlign: "center" as const, lineHeight: 1.7, marginBottom: 40, maxWidth: 560 }}>
+          When a strategic trigger fires, enterprises spend weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution can begin.
+        </div>
+
+        <div style={{ width: "100%", marginBottom: 48 }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: MUTED, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 14, textAlign: "center" as const }}>The traditional response timeline</div>
+          <div style={{ display: "flex", gap: 0, position: "relative" as const }}>
+            <div style={{ position: "absolute" as const, top: 18, left: "10%", right: "10%", height: 1, background: `linear-gradient(90deg, rgba(220,38,38,0.2), rgba(220,38,38,0.5), rgba(220,38,38,0.2))` }} />
+            {traditional.map((t, i) => (
+              <div key={i} style={{ flex: 1, padding: "0 6px", textAlign: "center" as const, position: "relative" as const }}>
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(220,38,38,0.4)", border: "1px solid rgba(220,38,38,0.6)", margin: "0 auto 10px", position: "relative" as const, zIndex: 1 }} />
+                <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: "#EF4444", marginBottom: 4 }}>{t.time}</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", marginBottom: 3, fontWeight: 500 }}>{t.label}</div>
+                <div style={{ fontSize: 10, color: MUTED }}>{t.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ width: "100%", background: `${TEAL}10`, border: `1px solid ${TEAL}30`, borderRadius: "0.15rem", padding: "20px 28px", marginBottom: 36, textAlign: "center" as const }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>What Meridian Financial has instead</div>
+          <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#fff" }}>The response is ready before the trigger fires.</div>
+          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginTop: 6 }}>Protocol #14 · Built 8 months ago · 22 tasks pre-assigned · Activates in 12 minutes</div>
+        </div>
+
+        <button onClick={onBegin} style={{ display: "flex", alignItems: "center", gap: 12, background: GOLD, border: "none", padding: "18px 36px", cursor: "pointer", borderRadius: "0.15rem" }}>
+          <span style={{ ...BC, fontSize: 14, fontWeight: 700, color: NAVY, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>See the Difference</span>
+          <ArrowRight size={18} color={NAVY} />
+        </button>
+        <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 14 }}>9-step walkthrough · No login required · ~5 minutes</div>
+      </div>
     </div>
   );
 }
 
 // ─── Main page ─────────────────────────────────────────────────────────────────
 export default function DemoExperience() {
+  const [intro, setIntro] = useState(true);
   const [step, setStep] = useState(0);
   const [authorizing, setAuthorizing] = useState(false);
 
@@ -734,6 +834,8 @@ export default function DemoExperience() {
   ];
 
   const phaseColor = PHASES.find(p => p.steps.includes(step))?.color || GOLD;
+
+  if (intro) return <ColdOpen onBegin={() => setIntro(false)} />;
 
   return (
     <div style={{ minHeight: "100vh", background: NAVY, display: "flex", flexDirection: "column" }}>
@@ -830,9 +932,18 @@ export default function DemoExperience() {
             </button>
 
             {step === STEP_DEFS.length - 1 ? (
-              <Link href="/request-access" style={{ display: "flex", alignItems: "center", gap: 10, background: GOLD, color: NAVY, padding: "12px 28px", textDecoration: "none", ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
-                Apply for Founding Partner Access <ArrowRight size={15} />
-              </Link>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
+                <Link href="/request-access" style={{ display: "flex", alignItems: "center", gap: 10, background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none", ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
+                  Apply for Founding Partner Access <ArrowRight size={16} />
+                </Link>
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <span style={{ ...BC, fontSize: 10, color: MUTED }}>90-day validation partnership · Cohort 3 forming now</span>
+                  <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    <StatusDot color={TEAL} pulse />
+                    <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL }}>4 spots remaining</span>
+                  </span>
+                </div>
+              </div>
             ) : step === 6 ? (
               <div style={{ fontSize: 12, color: MUTED, fontStyle: "italic" }}>Click "Authorize and Deploy" above to continue</div>
             ) : (
