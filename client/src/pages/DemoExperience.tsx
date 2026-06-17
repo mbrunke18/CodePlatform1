@@ -753,14 +753,46 @@ function PanelAdvance() {
 }
 
 // ─── Cold open intro ──────────────────────────────────────────────────────────
+const COLD_SCENARIOS = [
+  {
+    trigger: "Ransomware / Cyber Attack",
+    moment: "4:23 AM — encryption spreading across infrastructure",
+    stake: "$180K/hr exposure window",
+    who: "Financial Services · Healthcare · Manufacturing",
+    color: "#EF4444",
+    protocol: "#14",
+    active: true,
+  },
+  {
+    trigger: "Activist Investor 13D Filing",
+    moment: "Pre-market — 5.2% stake disclosed, board response required",
+    stake: "30-day proxy war window",
+    who: "Any public company · C-suite · Board",
+    color: GOLD,
+    protocol: "#7",
+    active: false,
+  },
+  {
+    trigger: "Regulatory Investigation",
+    moment: "DOJ/SEC subpoena received — Day 1 response defines the outcome",
+    stake: "Weeks of reactive legal spend",
+    who: "Financial Services · Healthcare · Energy · Tech",
+    color: "#A78BFA",
+    protocol: "#29",
+    active: false,
+  },
+  {
+    trigger: "Supply Chain Collapse",
+    moment: "Tier-1 supplier halted — production stoppage imminent",
+    stake: "$340K/day downtime exposure",
+    who: "Manufacturing · Retail · CPG · Aerospace",
+    color: TEAL,
+    protocol: "#52",
+    active: false,
+  },
+];
+
 function ColdOpen({ onBegin }: { onBegin: () => void }) {
-  const traditional = [
-    { time: "Day 1", label: "Emergency calls begin", sub: "Who owns this? Who's in the room?" },
-    { time: "Day 3", label: "Consultants engaged", sub: "Scope of work being negotiated" },
-    { time: "Day 7", label: "Response plan drafted", sub: "First version — not yet approved" },
-    { time: "Day 14", label: "Execution begins", sub: "Two weeks after the trigger fired" },
-    { time: "Day 30", label: "Recovery measured", sub: "$180K/hr exposure for the full window" },
-  ];
   return (
     <div style={{ minHeight: "100vh", background: NAVY, display: "flex", flexDirection: "column" }}>
       <style>{`@keyframes ping { 0% { transform: scale(1); opacity: 0.4; } 75%, 100% { transform: scale(2); opacity: 0; } }`}</style>
@@ -769,39 +801,53 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         <Link href="/request-access" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>Apply for Access</Link>
       </div>
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "48px 32px", maxWidth: 860, margin: "0 auto", width: "100%" }}>
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: "#EF4444", letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 20 }}>4:23 AM · Your trading infrastructure is encrypting</div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "48px 32px", maxWidth: 920, margin: "0 auto", width: "100%" }}>
 
-        <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: "#fff", textAlign: "center" as const, lineHeight: 1.2, marginBottom: 14 }}>
-          Most organizations have<br />no pre-built response for this.
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: MUTED, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 16 }}>Every organization will face one of these</div>
+
+        <div style={{ ...CG, fontSize: 42, fontWeight: 700, color: "#fff", textAlign: "center" as const, lineHeight: 1.2, marginBottom: 12 }}>
+          When a trigger fires, most organizations<br />spend 30 days just to mobilize.
         </div>
-        <div style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", textAlign: "center" as const, lineHeight: 1.7, marginBottom: 40, maxWidth: 560 }}>
-          When a strategic trigger fires, enterprises spend weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution can begin.
+        <div style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", textAlign: "center" as const, lineHeight: 1.7, marginBottom: 40, maxWidth: 560 }}>
+          Figuring out who owns the response. Assembling the right people. Aligning on a plan. All before execution begins. Every day of delay has a cost.
         </div>
 
-        <div style={{ width: "100%", marginBottom: 48 }}>
-          <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: MUTED, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 14, textAlign: "center" as const }}>The traditional response timeline</div>
-          <div style={{ display: "flex", gap: 0, position: "relative" as const }}>
-            <div style={{ position: "absolute" as const, top: 18, left: "10%", right: "10%", height: 1, background: `linear-gradient(90deg, rgba(220,38,38,0.2), rgba(220,38,38,0.5), rgba(220,38,38,0.2))` }} />
-            {traditional.map((t, i) => (
-              <div key={i} style={{ flex: 1, padding: "0 6px", textAlign: "center" as const, position: "relative" as const }}>
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(220,38,38,0.4)", border: "1px solid rgba(220,38,38,0.6)", margin: "0 auto 10px", position: "relative" as const, zIndex: 1 }} />
-                <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: "#EF4444", marginBottom: 4 }}>{t.time}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", marginBottom: 3, fontWeight: 500 }}>{t.label}</div>
-                <div style={{ fontSize: 10, color: MUTED }}>{t.sub}</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, width: "100%", marginBottom: 40 }}>
+          {COLD_SCENARIOS.map((s, i) => (
+            <div key={i} style={{ padding: "18px 20px", background: s.active ? `${s.color}0a` : "rgba(255,255,255,0.02)", border: `1px solid ${s.active ? s.color + "45" : BORDER}`, borderRadius: "0.15rem", position: "relative" as const }}>
+              {s.active && (
+                <div style={{ position: "absolute" as const, top: 12, right: 14, ...BC, fontSize: 9, fontWeight: 700, color: s.color, letterSpacing: "0.1em", textTransform: "uppercase" as const, background: `${s.color}15`, padding: "3px 8px", borderRadius: "0.15rem" }}>Demo Scenario</div>
+              )}
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: s.color, flexShrink: 0 }} />
+                <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: s.color, letterSpacing: "0.06em" }}>{s.trigger}</span>
+              </div>
+              <div style={{ fontSize: 12, color: s.active ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.5)", marginBottom: 10, lineHeight: 1.5, fontStyle: "italic" }}>"{s.moment}"</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: s.active ? s.color : MUTED }}>{s.stake}</span>
+                <span style={{ fontSize: 10, color: MUTED }}>{s.who}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ width: "100%", background: `${TEAL}10`, border: `1px solid ${TEAL}30`, borderRadius: "0.15rem", padding: "18px 28px", marginBottom: 36, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
+          <div>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>Every one of these has a pre-staged response</div>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#fff" }}>The response is ready before the trigger fires.</div>
+          </div>
+          <div style={{ display: "flex", gap: 24, flexShrink: 0 }}>
+            {[{ val: "180", label: "Protocols" }, { val: "231", label: "Triggers" }, { val: "12 min", label: "Response target" }].map(s => (
+              <div key={s.label} style={{ textAlign: "center" as const }}>
+                <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD }}>{s.val}</div>
+                <div style={{ ...BC, fontSize: 9, color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 2 }}>{s.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div style={{ width: "100%", background: `${TEAL}10`, border: `1px solid ${TEAL}30`, borderRadius: "0.15rem", padding: "20px 28px", marginBottom: 36, textAlign: "center" as const }}>
-          <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>What Meridian Financial has instead</div>
-          <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#fff" }}>The response is ready before the trigger fires.</div>
-          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginTop: 6 }}>Protocol #14 · Built 8 months ago · 22 tasks pre-assigned · Activates in 12 minutes</div>
-        </div>
-
         <button onClick={onBegin} style={{ display: "flex", alignItems: "center", gap: 12, background: GOLD, border: "none", padding: "18px 36px", cursor: "pointer", borderRadius: "0.15rem" }}>
-          <span style={{ ...BC, fontSize: 14, fontWeight: 700, color: NAVY, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>See the Difference</span>
+          <span style={{ ...BC, fontSize: 14, fontWeight: 700, color: NAVY, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>See a Full Activation →  Ransomware Response</span>
           <ArrowRight size={18} color={NAVY} />
         </button>
         <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 14 }}>9-step walkthrough · No login required · ~5 minutes</div>
@@ -937,11 +983,7 @@ export default function DemoExperience() {
                   Apply for Founding Partner Access <ArrowRight size={16} />
                 </Link>
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ ...BC, fontSize: 10, color: MUTED }}>90-day validation partnership · Cohort 3 forming now</span>
-                  <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    <StatusDot color={TEAL} pulse />
-                    <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL }}>4 spots remaining</span>
-                  </span>
+                  <span style={{ ...BC, fontSize: 10, color: MUTED }}>90-day validation partnership</span>
                 </div>
               </div>
             ) : step === 6 ? (
