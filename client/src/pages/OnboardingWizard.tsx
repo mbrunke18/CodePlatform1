@@ -34,14 +34,14 @@ const PHASE_1_STEPS = [
 ];
 
 const PLAYBOOK_OPTIONS = [
-  { name: 'Financial Crisis Response', domain: 'Financial', count: 24 },
-  { name: 'Competitive Intelligence', domain: 'Competitive', count: 22 },
-  { name: 'Regulatory Response', domain: 'Regulatory', count: 19 },
-  { name: 'M&A Integration', domain: 'M&A', count: 18 },
+  { name: 'Financial Crisis Response', domain: 'Financial', count: 26 },
+  { name: 'Competitive Intelligence', domain: 'Competitive', count: 24 },
+  { name: 'Regulatory Response', domain: 'Regulatory', count: 21 },
+  { name: 'M&A Integration', domain: 'M&A', count: 20 },
   { name: 'Crisis & Reputation', domain: 'Crisis', count: 20 },
   { name: 'Go-to-Market Activation', domain: 'GTM', count: 21 },
-  { name: 'Talent & Leadership', domain: 'Talent', count: 16 },
-  { name: 'Technology & Digital', domain: 'Technology', count: 17 },
+  { name: 'Talent & Leadership', domain: 'Talent', count: 17 },
+  { name: 'Technology & Digital', domain: 'Technology', count: 18 },
   { name: 'Strategic Opportunity', domain: 'Opportunity', count: 13 },
 ];
 

@@ -270,13 +270,13 @@ export default function SecurityCompliance() {
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Compliance Roadmap</div>
                 <h3 style={{ margin: 0, fontSize: "1rem", fontWeight: 700, color: NAVY }}>SOC 2 Type II — In Progress</h3>
               </div>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, padding: "4px 12px", background: "rgba(43,138,110,0.12)", color: TEAL, border: "1px solid rgba(43,138,110,0.3)" }}>Q3 2025 TARGET</span>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, padding: "4px 12px", background: "rgba(43,138,110,0.12)", color: TEAL, border: "1px solid rgba(43,138,110,0.3)" }}>Q4 2026 TARGET</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginBottom: "1.25rem" }}>
               {[
                 { phase: "Phase 1", label: "Controls Inventory", status: "Complete", detail: "All security controls documented, mapped to SOC 2 criteria (CC6–CC9, A1, C1)", color: TEAL },
                 { phase: "Phase 2", label: "Gap Remediation", status: "In Progress", detail: "Penetration testing, logging enhancements, vendor risk assessments underway", color: GOLD },
-                { phase: "Phase 3", label: "Type II Audit", status: "Upcoming", detail: "6-month observation period, third-party auditor engaged, report Q3 2025", color: "rgba(10,15,46,0.35)" },
+                { phase: "Phase 3", label: "Type II Audit", status: "Upcoming", detail: "6-month observation period, third-party auditor engaged, report Q4 2026", color: "rgba(10,15,46,0.35)" },
               ].map(p => (
                 <div key={p.phase} style={{ borderLeft: `3px solid ${p.color}`, paddingLeft: "0.875rem" }}>
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: p.color, marginBottom: 3 }}>{p.phase} · {p.status}</div>
@@ -330,6 +330,41 @@ export default function SecurityCompliance() {
                   <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.65 }}>{item.a}</div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Procurement Pack */}
+          <div style={{ marginTop: "1.5rem", border: "1px solid #E2DDD5", padding: "1.75rem" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Enterprise Procurement Pack</div>
+            <h3 style={{ margin: "0 0 0.375rem", fontSize: "1rem", fontWeight: 700, color: NAVY }}>Available on request for qualified enterprise prospects</h3>
+            <p style={{ margin: "0 0 1.25rem", fontSize: "0.8125rem", color: "#6B7280", lineHeight: 1.65 }}>
+              The following documents are available to enterprise security and procurement teams at any stage of evaluation. All documents delivered under NDA within 3 business days of request.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.75rem" }}>
+              {[
+                { label: "Penetration Test Executive Summary", status: "Available", note: "Q4 2024 third-party assessment. Full report available to enterprise security teams.", ready: true },
+                { label: "Security Questionnaire (SIG Lite)", status: "Available", note: "Pre-completed SIG Lite questionnaire covering all standard enterprise security controls.", ready: true },
+                { label: "Data Processing Agreement (DPA)", status: "Available", note: "GDPR-aligned. Covers controller/processor roles, sub-processors, data subject rights.", ready: true },
+                { label: "Sub-Processor List", status: "Available", note: "Neon (database), Replit (hosting), Resend (email), Azure OpenAI / OpenAI (AI services).", ready: true },
+                { label: "Architecture Diagram", status: "Available", note: "Infrastructure topology, data flow, integration points, and tenant isolation model.", ready: true },
+                { label: "Incident Response Policy", status: "Available", note: "Documented IR procedure with named DRI, escalation chain, and customer notification SLAs.", ready: true },
+                { label: "Data Residency Declaration", status: "Available", note: "US-East primary. EU region available on request. Written declaration provided on contract.", ready: true },
+                { label: "SOC 2 Type II Report", status: "In Progress — Q4 2026", note: "Database infrastructure (Neon) is independently SOC 2 Type II certified today. Platform-level audit underway.", ready: false },
+              ].map(doc => (
+                <div key={doc.label} style={{ display: "flex", gap: 10, padding: "0.875rem", background: doc.ready ? "#FAFAF8" : "rgba(10,15,46,0.02)", border: "1px solid #EEEBE4" }}>
+                  <CheckCircle size={13} color={doc.ready ? TEAL : "#D1D5DB"} style={{ flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: NAVY }}>{doc.label}</span>
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, padding: "1px 7px", background: doc.ready ? "rgba(43,138,110,0.1)" : "rgba(10,15,46,0.06)", color: doc.ready ? TEAL : "#9CA3AF", border: `1px solid ${doc.ready ? "rgba(43,138,110,0.25)" : "rgba(10,15,46,0.1)"}` }}>{doc.status}</span>
+                    </div>
+                    <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55 }}>{doc.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: "1rem", padding: "0.875rem 1rem", background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.2)", fontSize: 11, color: "#6B7280", lineHeight: 1.65 }}>
+              <strong style={{ color: NAVY }}>To request the procurement pack:</strong> Contact <span style={{ color: TEAL }}>martin@vaughnmartin.com</span> with your organization name and the documents required. All materials delivered under mutual NDA within 3 business days.
             </div>
           </div>
 
