@@ -65,6 +65,7 @@ const TIERS = [
     escalator: "Year 2: +8%  ·  Year 3: +12%  ·  Pricing scales with institutional value delivered.",
     sub: "Predictive foresight + Digital Twin simulation. See the trigger coming before it fires.",
     tag: "Recommended",
+    demoNote: "Demo available by appointment",
     dark: true,
     features: [
       "Everything in Core",
@@ -105,6 +106,7 @@ const TIERS = [
     escalator: "Structured escalators by agreement  ·  Anchored to your deployment scope and SLA.",
     sub: "The full network. Protocols that evolve across every activation. Built for Fortune 500 scale.",
     tag: "Fortune 500",
+    demoNote: "Demo available by appointment",
     dark: false,
     features: [
       "Everything in Foresight",
@@ -209,6 +211,14 @@ function TierCard({ tier }: { tier: typeof TIERS[0] }) {
           <div style={{ fontSize: 22, fontWeight: 800, color: tier.dark ? GOLD : NAVY, fontFamily: "'Barlow', sans-serif", lineHeight: 1.1 }}>{tier.anchor}</div>
           <div style={{ fontSize: 12, color: tier.dark ? "rgba(255,255,255,0.4)" : MUTED, marginTop: 2 }}>{tier.annual}</div>
         </div>
+
+        {/* Demo availability note */}
+        {(tier as any).demoNote && (
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: tier.dark ? "rgba(201,168,76,0.65)" : "#9CA3AF", marginBottom: 10, padding: "3px 8px", border: `1px solid ${tier.dark ? "rgba(201,168,76,0.2)" : "#E8E4DC"}` }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: tier.dark ? "rgba(201,168,76,0.5)" : "#D1D5DB", flexShrink: 0 }} />
+            {(tier as any).demoNote}
+          </div>
+        )}
 
         {/* Williams — 12-minute SLA guarantee */}
         <div style={{

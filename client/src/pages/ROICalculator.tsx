@@ -313,7 +313,7 @@ function FirstUsePaybackCalculator() {
       <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
         {/* Primary verdict */}
         <div style={{ background: "#0A0F2E", padding: "28px 28px 24px", borderTop: "3px solid #C9A84C" }}>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 8 }}>Cost of That Delay — Single Event</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 8 }}>Projected Cost of That Delay — Single Event</div>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{fmtC(totalEventCost)}</div>
           <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 6 }}>
             {fmtC(execTimeCost)} executive time · {fmtC(revAtRisk)} revenue exposure
@@ -345,7 +345,7 @@ function FirstUsePaybackCalculator() {
         </div>
 
         <div style={{ fontSize: 10, color: "#D1D5DB", lineHeight: 1.5, textAlign: "center" as const }}>
-          Estimates based on executive productivity benchmarks and industry revenue-at-risk data. Conservative methodology — actual event costs are typically higher.
+          Projected estimates modeled on executive productivity benchmarks and industry revenue-at-risk data. Conservative methodology applied throughout — actual mobilization costs are typically higher. Individual outcomes depend on organizational profile and trigger type.
         </div>
       </div>
     </div>
