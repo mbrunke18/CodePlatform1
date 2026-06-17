@@ -54,6 +54,7 @@ import NotFound from "@/pages/not-found";
 const Homepage = lazy(() => import("./pages/Homepage"));
 const HowItWorks = lazy(() => import("./pages/HowItWorks"));
 const TryDemo = lazy(() => import("./pages/TryDemo"));
+const DemoExperience = lazy(() => import("./pages/DemoExperience"));
 const TwelveMinuteTestDrive = lazy(() => import("./pages/TwelveMinuteTestDrive"));
 const SituationScanner = lazy(() => import("./pages/SituationScanner"));
 const IncidentAnalyzer = lazy(() => import("./pages/IncidentAnalyzer"));
@@ -778,7 +779,8 @@ function Router() {
         <Route path="/demo/:scenarioId" component={lazy(() => import("./pages/MasterDemo"))} />
         <Route path="/protocol-browser" component={lazy(() => import("./pages/ProtocolCoverageBrowser"))} />
         <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
-        {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo", "/demo-experience"], "/master-demo")}
+        <Route path="/demo-experience" component={DemoExperience} />
+        {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo"], "/master-demo")}
         {renderRedirects(["/demos", "/scenario-hub", "/demo-center", "/experience-center"], "/demo-hub")}
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 

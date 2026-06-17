@@ -1051,11 +1051,11 @@ function HeroSection() {
                   Try It Now — No Login →
                 </Link>
                 <Link
-                  href="/12-minute-experience"
-                  onClick={() => trackCTA("hero_12min")}
+                  href="/demo-experience"
+                  onClick={() => trackCTA("hero_platform_demo")}
                   style={{ ...DM, display: "inline-block", background: "transparent", color: "#fff", fontWeight: 700, fontSize: 13, padding: "15px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, border: "1px solid rgba(255,255,255,0.28)", whiteSpace: "nowrap" as const }}
                 >
-                  12-Minute Test Drive →
+                  Experience the Platform →
                 </Link>
               </div>
               <div style={{ display: "flex", gap: 24, alignItems: "center", marginBottom: 28, flexWrap: "wrap" as const }}>
