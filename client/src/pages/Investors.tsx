@@ -1112,8 +1112,63 @@ export default function Investors() {
             </div>
           </motion.div>
 
+          {/* The Opportunity */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}
+            className="mt-20" style={{ background: NAVY, padding: "56px 48px" }}>
+            <div className="flex items-center gap-3 mb-5">
+              <div style={{ width: 28, height: 2, background: GOLD }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>The Opportunity</span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-12 items-start">
+              <div>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,3vw,42px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: 20 }}>
+                  The operating model market is larger than the AI tools market.
+                </h2>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.8, marginBottom: 16 }}>
+                  Enterprise AI spend will exceed $200B by 2027. The dominant share of that investment will deliver marginal productivity gains because it is layered on top of a 40-year-old coordination model that was designed for a world without AI.
+                </p>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.8 }}>
+                  The companies that win the next decade will not be the ones with the most AI tools. They will be the ones with the operating model to act on what AI detects. That is the market Readiness OS is building for.
+                </p>
+              </div>
+              <div className="grid gap-3">
+                {[
+                  { label: "$200B+", sub: "Enterprise AI investment by 2027 — most of it layered on the old model", color: GOLD },
+                  { label: "Founding Partner Program", sub: "90-day structured validation — the evidence engine for early proof. 3–5 organizations in the first cohort.", color: TEAL },
+                  { label: "$120K–$240K", sub: "Annual contract range. Enterprise pricing, pre-revenue validation underway.", color: "#fff" },
+                  { label: "Why now", sub: "The Microsoft AI stack is deployed across every major enterprise. The operating model layer doesn't exist yet. That window closes.", color: GOLD },
+                ].map(s => (
+                  <div key={s.label} className="flex items-start gap-4 p-4" style={{ borderLeft: `3px solid ${s.color}30`, background: "rgba(255,255,255,0.04)" }}>
+                    <div style={{ flexShrink: 0 }}>
+                      <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 700, color: s.color, lineHeight: 1.1 }}>{s.label}</div>
+                    </div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.45)", lineHeight: 1.65 }}>{s.sub}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Traction / Proof Points Row */}
+            <div className="mt-12 pt-10" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>Platform Readiness</div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
+                {[
+                  { stat: "180", label: "Readiness Protocols built and operational" },
+                  { stat: "231", label: "Trigger patterns continuously monitored" },
+                  { stat: "12 min", label: "Validated execution head start" },
+                  { stat: "3,600×", label: "Execution Head Start vs. traditional mobilization" },
+                ].map(p => (
+                  <div key={p.stat} className="p-5" style={{ background: NAVY }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{p.stat}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 6, lineHeight: 1.5 }}>{p.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
           {/* CTA */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="text-center mt-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Ready to take the next step?</h2>
             <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the startup to Fortune 500 executives rethinking how strategic work flows. Founding Partner validation runs in 90 days.</p>
             <div className="flex flex-wrap justify-center gap-4">
