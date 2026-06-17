@@ -1198,6 +1198,15 @@ export default function StandardNav() {
               ) : (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
+                    onClick={() => navigateTo("/demo-experience")}
+                    className="w-full justify-center h-12 text-sm font-bold"
+                    style={{ background: 'rgba(201,168,76,0.12)', border: `1px solid rgba(201,168,76,0.4)`, color: GOLD }}
+                    data-testid="nav-mobile-full-demo"
+                  >
+                    <Play className="h-4 w-4 mr-2" />
+                    Watch the Full Platform Demo
+                  </Button>
+                  <Button
                     onClick={() => navigateTo("/founding-partner")}
                     variant="outline"
                     className="w-full justify-center h-11 text-sm font-semibold"

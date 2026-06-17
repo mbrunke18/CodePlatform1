@@ -493,9 +493,14 @@ function HomepageNav() {
           >
             ✕
           </button>
+          <Link href="/demo-experience" onClick={() => setMenuOpen(false)} style={{
+            ...DM, display: "block", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.35)",
+            color: GOLD, fontSize: 16, fontWeight: 700, padding: "16px 24px", textDecoration: "none",
+            letterSpacing: "0.04em", textAlign: "center", marginBottom: 8,
+          }}>▶ Watch the Full Platform Demo</Link>
           {[
             { label: "The Platform",  href: "/platform" },
-            { label: "See It Work",   href: "/demo-hub", highlight: true },
+            { label: "See It Work",   href: "/demo-hub", highlight: false },
             { label: "The Proof",     href: "/executive-brief" },
             { label: "Pricing",       href: "/pricing" },
           ].map(item =>
