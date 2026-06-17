@@ -1,0 +1,875 @@
+PLAYBOOK · INTERACTIVE · LONG READ
+The Enterprise AI Adoption Framework
+
+Eight capabilities. One team. One score that counts. The technology was never the constraint - the organization was. A practitioner's framework for the eight capability areas that decide whether AI ever reaches your P&L, with the tools to run it on your own organization.
+
+Jimi Li · June 2026 · 15 min read · Companion to The Economics of Enterprise AI
+
+The Adoption Navigator
+This article ships with a navigation system. A roadmap is printed once; a navigator knows where you are, recalculates when conditions change, and warns you about hazards ahead. Four instruments - available throughout via the compass, bottom right:
+
+01 · EXPLORE
+The eight areas
+The whole playbook, one figure
+02 · ROUTE
+By seat
+Your side of the pitch - CEO to GC
+03 · LOCATE
+Yourself
+Find your binding constraint
+04 · HAZARDS
+The debt ledger
+What skipping a position costs
+00
+ACT 0
+The million-dollar question
+Why enterprise AI is failing to scale
+Watch Big Tech or an AI-native company operate, and scaling artificial intelligence looks effortless - a natural extension of how they already work. For the traditional enterprise, the reality is entirely different. Most organizations are attempting to bolt frontier intelligence onto decades-old operating models, and the friction is showing everywhere.
+
+I led the economics companion to this article with McKinsey's ugliest number: 81% of organizations deploying AI have yet to report meaningful bottom-line gains (State of Organizations 2026). That piece traced the money - token economics, the build-vs-buy realignment, the death of the seat. Getting the economics wrong will sink your AI program.
+
+But getting them right is necessary and not sufficient. After two decades in transformation work - the last six years of it leading with AI - I've watched organizations that negotiated smart contracts, routed models intelligently, and funded AI responsibly still stall. Because the economics are only half of the 81%. The other half is organizational, and it's the half almost nobody works on systematically.
+
+So this is the million-dollar question - the trillion-dollar question, really, given what enterprises now spend: why does the money keep going in without the value coming out?
+
+Companies treat AI as a technology they can deploy - when it actually rewires how the business runs. The same pattern repeats:
+
+01They chase a silver bullet. Reaching for a technological fix to what are really structural business problems.
+02They mistake a pilot for scale. Celebrating a working demo and assuming scale is just a procurement exercise.
+03They blame the model. When the value doesn't materialize, they conclude they picked the wrong vendor - and restart the cycle with a different logo.
+The technology was never the constraint. The organization was.
+This article is the playbook for that organizational half. It won't tell you which model to buy. It will tell you whether your organization is actually capable of turning whatever you buy into P&L impact - and exactly where it isn't yet.
+
+01
+ACT 1
+The operating system
+A framework, not a roadmap
+Every serious AI conversation starts the same way: give me a roadmap. I've never seen one survive past month six. The pull is obvious - a roadmap feels like control: a destination, a sequence of milestones, a date when you "arrive."
+
+But enterprise AI adoption breaks every assumption a roadmap makes:
+
+01The destination won't hold still. Model capabilities, regulation, and competitive dynamics shift every quarter - so any fixed two-year plan is fiction long before it's done.
+02Progress isn't linear. A reorganization resets your operating model, a new regulation rewires your governance, a model release makes last quarter's build decision obsolete.
+03It isn't really technology. AI at scale changes who decides, who does the work, and who's on the hook when something goes wrong.
+What enterprises need instead is a capability framework: a map of the organizational muscles that must develop together for AI to scale, and a way to see - honestly - which ones are missing, which are premature, and where focus will unlock the most progress. You don't need a roadmap. You need a navigation system: something that knows where you actually are, recalculates when conditions change, and warns you about hazards before you hit them.
+
+Adoption Debt: the silent tax on scaling
+
+Every capability area you neglect while your AI footprint grows accrues what I call Adoption Debt - the organizational equivalent of technical debt. Skip the strategy work and you accrue strategy debt: a portfolio of disconnected use cases nobody can defend at budget time. Skip the culture work and you accrue culture debt: tools deployed to a workforce that quietly refuses to use them. Skip governance and you accrue governance debt: an inventory of ungoverned AI you'll discover the day a regulator or a journalist does.
+
+Nobody approves it - financial debt requires a signature; this accrues silently, by omission, while everyone celebrates deployment milestones.
+
+1Nobody approves it
+Financial debt needs a signature. This accrues by omission - while everyone celebrates deployment milestones.
+2The interest compounds
+Every use case shipped on top of a missing capability raises the cost of building that capability later.
+3It caps your ceiling
+Your effective AI capability is set by your weakest area, not your strongest. A 5/5 engineering org bolted to a 1/5 governance function is, in practice, a 1/5 AI enterprise - it just doesn't know it yet.
+Balance beats brilliance.
+02
+ACT 2
+The team sheet
+AI adoption is a team sport
+As I write this, the largest World Cup in history is kicking off across North America - 48 national teams, each one a reminder of something every football fan knows instinctively: you don't win tournaments with a star striker and ten passengers. You win with a squad where every position is covered, every player knows their role, and the manager is accountable for the result. Enterprise AI works exactly the same way - and most organizations are trying to win with two players and an empty bench.
+
+It's not a CIO project. It's not a CTO initiative. And it cannot succeed within a single function. AI at scale cuts across strategy, operating models, people, risk, and value creation - which means it cuts across every chair at the executive table. Yet most organizations still staff AI adoption the way they staffed an ERP upgrade: hand it to technology leadership, ask for quarterly updates, and wait.
+
+The data says this isn't working. Gartner's surveys of AI leaders keep finding the same two gaps: in most organizations the AI strategy still isn't fully embedded in the business strategy, and participation beyond the technology function is thin. And the math is public: organizations with successful AI initiatives invest up to four times more in data and analytics foundations than their peers (Gartner, 2026). That's a squad-wide expense - you cannot quadruple your foundations from inside the IT budget.
+
+81%
+of organizations deploying AI report no meaningful bottom-line gains yet.
+MCKINSEY · 2026
+4×
+more invested in data & analytics foundations by organizations with successful AI.
+GARTNER · 2026
+12%
+of individual contributors had used GenAI for a critical task.
+GARTNER · 2025
+Delegating AI to a single accountable executive feels like decisiveness. It's actually abdication - because no single function controls enough of the eight capability areas to move them together. The CIO can stand up platforms but can't redesign the salesforce's roles. The CHRO can build a literacy program but can't fix the funding model. Each executive who acts alone optimizes their own area while Adoption Debt accrues everywhere else.
+
+CAPABILITY AREA	PRIMARY OWNER	WHAT THEY ANSWER FOR
+Strategy →	CEO	The AI thesis, its link to business strategy, and the trade-offs
+Value →	CFO + BU leaders	Use-case prioritization, value tracking, killing what doesn't work
+Financial →	CFO	Funding model, cost governance, ROI discipline
+Organization →	CEO + CHRO	Operating model, AI leadership, partnerships
+People & Culture →	CHRO	Workforce planning, literacy, trust, role redesign
+Governance →	GC / CRO	Policies, decision rights, risk tiers, compliance
+Engineering →	CIO / CTO	Platforms, architecture, build-vs-buy, path to production
+Data →	CIO / CDAO	Data readiness, quality, governance for AI
+Click any row to open that capability's full card →
+The mapping matters less than the principle: every member of the executive team owns part of the framework, and the CEO owns the whole. The CEO's role is not ceremonial sponsorship - it's three jobs no one else can do.
+
+01Set direction. Decide where AI is run-the-business improvement and where it's change-the-business reinvention.
+02Set expectations. Define what gets measured - and refuse activity metrics.
+03Enforce accountability. Review the eight areas the way the executive team reviews the P&L - regularly, together, and with consequences.
+03
+ACT 3
+The squad
+The formation: eight capability areas
+Here's the framework as a team sheet. Football people will immediately count the shirts: eight, not eleven. That's deliberate. Ask any manager how tournaments are won and they'll tell you the same thing - down the spine of the team: the keeper you trust, the back line that holds, the midfield that controls the game, the strikers who finish. These eight areas are your spine - not the full match-day squad, but the positions your AI side is built around.
+
+The shape is a 2-3-2 in front of a keeper you trust. Governance keeps goal - the last line of defense nobody notices until it fails. Engineering and Data hold the back line - nothing gets built in front of a defense that can't pass the ball forward. Organization and People & Culture run the engine room, with Strategy as the playmaker wearing the captain's armband. Financial and Value play up front - because that's where the score is kept. And the CEO isn't on the pitch at all: they're the manager - though like every manager, two things never leave their hands: the game plan (Strategy) and the shape of the squad (Organization).
+
+FIG. 01 · THE WHOLE PLAYBOOK IN ONE FIGURE
+DIRECTION
+
+10
+Strategy
+11
+Value
+9
+Financial
+STRUCTURE & PEOPLE
+
+6
+Organization
+8
+People & Culture
+TRUST
+
+1
+Governance
+FOUNDATION
+
+4
+Engineering
+5
+Data
+Center → eight named areas → every concrete move in this playbook. Cream outer segments are foundation moves; white are scale moves. Hover to explore; click any area to jump to its full card. See two more layouts →
+FIG. 02 · THE FORMATION - PICK A SEAT TO SEE YOUR SIDE OF THE PITCH
+Full squad
+CEO
+CFO
+CHRO
+CIO / CTO
+GC / CRO
+
+10
+C
+Strategy
+Playmaker
+11
+Value
+Striker
+9
+Financial
+Striker
+6
+Organization
+Midfield
+8
+People & Culture
+Midfield
+1
+Governance
+Goalkeeper
+4
+Engineering
+Defense
+5
+Data
+Defense
+CEO · the manager
+The whole team on one pitch. The score is kept up front, where Value and Financial play - and no position can sit out.
+Each player's card follows the same drill: what the capability is, where it stalls, the foundation moves (do these first) versus the scale moves (what maturity looks like), two questions to ask your team this week, and the Adoption Debt you accrue by skipping it. The foundation/scale split is a dependency order, not a calendar - jumping ahead doesn't make you faster; it means skipping steps you'll pay for later, with interest.
+
+10
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CEO
+PLAYMAKER · CAPTAIN
+Strategy
+Why AI, where, and how much?
+
+The capability. The explicit, living link between your AI thesis and your business strategy.
+
+Where it stalls. The classic failure is a polished AI strategy sitting beside the business strategy instead of inside it - a wish list with a logo. The thesis defaults to safe productivity plays because nobody decides the run-the-business vs. change-the-business split. And the strategy stays annual in a quarterly industry.
+
+FOUNDATION MOVES
+do first
+
+Write the AI thesis in one sentence, with the stance you'll fund
+Baseline maturity across all eight areas
+Make the run-vs-change investment split explicit
+Secure the board mandate and review rhythm
+SCALE MOVES
+what maturity looks like
+
+Embed AI into the business-strategy planning cycle itself
+Set adoption goals per capability area
+Define refresh triggers and who convenes them
+ASK YOUR TEAM THIS WEEK
+Can each of us state the AI thesis in one sentence - the same sentence?
+What did we explicitly decide NOT to do with AI this year?
+STRATEGY DEBT
+First symptom - every initiative re-justifies itself at budget time. At scale - a portfolio nobody can defend; funding collapses at the first downturn.
+
+← PREVIOUS
+Data
+
+NEXT →
+Value
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+11
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CFO + BU LEADERS
+STRIKER
+Value
+Which use cases, in what order, and is it working?
+
+The capability. The discipline of identifying, prioritizing, measuring - and killing - AI initiatives.
+
+Where it stalls. Success theater: demos and launch counts standing in for results. The missing kill switch: elaborate processes for starting initiatives, none for stopping them. And value defined after the fact, which guarantees a generous narrative.
+
+FOUNDATION MOVES
+do first
+
+Stand up a use-case intake: value × feasibility before building
+Write a value hypothesis per pilot: X moves KPI Y by Z in N months
+Run pilots with explicit stop / refine / scale gates
+Track portfolio value in one place, reviewed by business owners
+SCALE MOVES
+what maturity looks like
+
+Move from projects to products
+Establish portfolio decision rights and cadence
+Value monitoring with leading and lagging indicators
+Connect value to cost: value per dollar
+ASK YOUR TEAM THIS WEEK
+How many AI initiatives did we kill last quarter?
+Can anyone state the value hypothesis of our top five initiatives from memory?
+VALUE DEBT
+First symptom - zero initiatives killed last quarter. At scale - good and bad initiatives are indistinguishable - cuts take both.
+
+← PREVIOUS
+Strategy
+
+NEXT →
+Financial
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+9
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CFO
+STRIKER
+Financial
+How do we pay for this - and can we predict what it costs?
+
+The capability. The funding model and cost discipline that make AI economically sustainable.
+
+Where it stalls. AI funded as perpetual experiments with no path to the P&L. Consumption pricing decouples cost from headcount, so finance discovers the cost structure from the invoice. And AI gets funded on top of everything else because nobody decides what stops.
+
+FOUNDATION MOVES
+do first
+
+Establish the AI funding model with explicit decision rights
+Stand up cost telemetry before signing consumption contracts
+Define ROI gates for pilot → production funding
+Decide what gets decommissioned to fund the change
+SCALE MOVES
+what maturity looks like
+
+Embed AI cost governance into finance operations
+Report value per dollar per initiative
+Shift funding from projects to products
+ASK YOUR TEAM THIS WEEK
+If our AI spend doubled next month, would we learn it from our telemetry or from the invoice?
+Who can move an initiative from pilot budget to run budget - on what evidence?
+FINANCIAL DEBT
+First symptom - finance learns the cost structure from the invoice. At scale - one surprise invoice freezes the entire program.
+
+← PREVIOUS
+Value
+
+NEXT →
+Organization
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+6
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CEO + CHRO
+MIDFIELD · ENGINE ROOM
+Organization
+Who does the work, and how does it scale beyond the first team?
+
+The capability. The structures, operating model, and partnerships through which AI work gets done.
+
+Where it stalls. AI living in informal networks - whoever is enthusiastic owns it, and everything depends on heroes. A center of excellence that becomes an ivory tower or a bottleneck. Partnerships that accumulate instead of being managed.
+
+FOUNDATION MOVES
+do first
+
+Appoint an accountable AI leader with a 100-day plan
+Stand up the initial AI team/CoE with limited scope
+Build the resourcing plan: upskill, hire, borrow, or partner
+Choose first external partnerships deliberately
+SCALE MOVES
+what maturity looks like
+
+Design the target operating model: centralized vs. federated
+Manage partnerships as a portfolio with KPIs
+Connect champions in a community of practice
+ASK YOUR TEAM THIS WEEK
+If our most senior AI engineer resigned tomorrow, what stops working?
+Is our AI operating model a decision we made or an accident we inherited?
+ORGANIZATION DEBT
+First symptom - everything depends on a few heroes. At scale - scale fails structurally; heroes burn out or leave.
+
+← PREVIOUS
+Financial
+
+NEXT →
+People & Culture
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+8
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CHRO
+MIDFIELD · ENGINE ROOM
+People & Culture
+Will our people actually use this - and can they?
+
+The capability. Workforce readiness: literacy, trust, role redesign, and the change discipline that turns deployment into adoption.
+
+Where it stalls. The deployment–adoption gap: tools shipped, usage flatlines (Gartner, 2025: only 12% of individual contributors had used GenAI for critical tasks). One-size-fits-all training for a workforce that adopts at radically different speeds. Change done to people, not with them - fear hardens into quiet resistance.
+
+FOUNDATION MOVES
+do first
+
+Run a workforce impact assessment: which roles, what impact, how soon
+Co-create the change plan - two-way channels, not broadcast
+Awareness campaigns that include risks and dos-and-don'ts
+Baseline AI literacy by role
+SCALE MOVES
+what maturity looks like
+
+Tiered literacy: awareness for all, applied skills for users, depth for specialists
+Champions network inside business units
+Standing role-redesign process with HR
+Readiness monitoring per employee segment
+ASK YOUR TEAM THIS WEEK
+What share of employees used AI for a critical task last month - measured or guessed?
+When did we last change a job description because of AI?
+CULTURE DEBT
+First symptom - licenses everywhere, usage nowhere. At scale - resistance hardens into identity; talent walks.
+
+← PREVIOUS
+Organization
+
+NEXT →
+Governance
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+1
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+GC / CRO
+GOALKEEPER · LAST LINE OF DEFENSE
+Governance
+Who decides, what's allowed, and how do we know?
+
+The capability. Decision rights, policies, and risk discipline across the AI lifecycle.
+
+Where it stalls. Governance arriving after deployment, as paperwork. One-size-fits-all control - when everything needs a committee, teams route around you and shadow AI blooms. Accountability so diffuse that everyone responsible means no one is. And agents running ahead of oversight designed for chatbots.
+
+FOUNDATION MOVES
+do first
+
+Inventory top AI risks; assign owners and mitigations
+Issue initial policies in plain language
+Agree the ethical principles you'll actually enforce
+Win executive sponsorship for the governance scope
+SCALE MOVES
+what maturity looks like
+
+Cross-functional governance board with a charter and teeth
+Tier use cases by risk: govern the critical aggressively
+Map decision rights per tier
+Extend everything to agents: observability + a named accountable human
+ASK YOUR TEAM THIS WEEK
+Do we have a complete inventory of AI in production - including what business units bought?
+Could a frontline team tell you what's allowed without asking a lawyer?
+GOVERNANCE DEBT
+First symptom - no complete inventory of ai in production. At scale - one incident halts the portfolio; retrofit always costs more than build-along.
+
+← PREVIOUS
+People & Culture
+
+NEXT →
+Engineering
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+4
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CIO / CTO
+DEFENSE
+Engineering
+Can we actually ship this - again and again?
+
+The capability. The platforms, architecture, and delivery discipline that move AI from pilot to production.
+
+Where it stalls. The pilot–production chasm: a demo that works is mistaken for a system that's deployable. Every team builds bespoke - no patterns, no reuse, every success artisanal. Build-vs-buy decided by ideology, not a screen. Zero observability until a customer finds out first.
+
+FOUNDATION MOVES
+do first
+
+Establish a build-vs-buy screen wired into procurement
+Stand up a sandbox, clearly separated from production
+Select vendors against your first use cases
+Define production-ready before the first pilot ends
+SCALE MOVES
+what maturity looks like
+
+Reference architecture + pattern library: solve once, reuse
+A paved path: the platform team makes the right way the easy way
+MLOps/LLMOps as one workflow
+AI observability: behavior, cost, drift in one place
+ASK YOUR TEAM THIS WEEK
+How long from working prototype to production - weeks or quarters?
+For how many AI systems would we know within an hour that something went wrong?
+ENGINEERING DEBT
+First symptom - prototype-to-production measured in quarters. At scale - a trophy cabinet of demos; nothing repeats.
+
+← PREVIOUS
+Governance
+
+NEXT →
+Data
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+5
+BACK TO:
+
+01
+Sunburst
+
+02
+Formation
+YOUR AREA
+CIO / CDAO
+DEFENSE
+Data
+Is our data ready for the use cases we actually chose?
+
+The capability. The quality, accessibility, and governance of the data your AI runs on.
+
+Where it stalls. Two opposite failures: fix-all-the-data-first (AI delayed indefinitely) and ignore-the-data (pilots collapse on real inputs). Same root error: treating readiness as an absolute state instead of contextual to a use case. Plus silent degradation - no observability, so drift erodes models invisibly.
+
+FOUNDATION MOVES
+do first
+
+Assess readiness against your first use cases - never in the abstract
+Readiness plan limited to the priority gaps those use cases expose
+Give AI teams exploration and feature tooling early
+Tie every data investment to the value story it enables
+SCALE MOVES
+what maturity looks like
+
+Extend governance for AI realities: lineage, synthetic, model-generated data
+Quality framework + metadata so context travels with the data
+Data observability: drift, completeness, timeliness - alerted
+ASK YOUR TEAM THIS WEEK
+For our #1 use case, can we name the data sources, owners, and quality gaps?
+Would we detect data drift before our customers do?
+DATA DEBT
+First symptom - each use case re-fights the same data battles. At scale - models degrade silently; data trust caps the ai ceiling.
+
+← PREVIOUS
+Engineering
+
+NEXT →
+Strategy
+OR JUMP BACK TO A FIGURE:
+
+01
+Sunburst
+
+02
+Formation
+
+03
+Debt ledger
+FIG. 03 · THE ADOPTION DEBT LEDGER
+Strategy
+STRATEGY DEBT
+FIRST SYMPTOM
+Every initiative re-justifies itself at budget time
+AT SCALE
+A portfolio nobody can defend; funding collapses at the first downturn
+Value
+VALUE DEBT
+FIRST SYMPTOM
+Zero initiatives killed last quarter
+AT SCALE
+Good and bad initiatives are indistinguishable - cuts take both
+Financial
+FINANCIAL DEBT
+FIRST SYMPTOM
+Finance learns the cost structure from the invoice
+AT SCALE
+One surprise invoice freezes the entire program
+Organization
+ORGANIZATION DEBT
+FIRST SYMPTOM
+Everything depends on a few heroes
+AT SCALE
+Scale fails structurally; heroes burn out or leave
+People & Culture
+CULTURE DEBT
+FIRST SYMPTOM
+Licenses everywhere, usage nowhere
+AT SCALE
+Resistance hardens into identity; talent walks
+Governance
+GOVERNANCE DEBT
+FIRST SYMPTOM
+No complete inventory of AI in production
+AT SCALE
+One incident halts the portfolio; retrofit always costs more than build-along
+Engineering
+ENGINEERING DEBT
+FIRST SYMPTOM
+Prototype-to-production measured in quarters
+AT SCALE
+A trophy cabinet of demos; nothing repeats
+Data
+DATA DEBT
+FIRST SYMPTOM
+Each use case re-fights the same data battles
+AT SCALE
+Models degrade silently; data trust caps the AI ceiling
+Nobody approves Adoption Debt. It accrues by omission - and the interest compounds.
+FIG. 03B · THE SKIP SIMULATOR - WHAT DOES SKIPPING COST?
+What are you tempted to skip? Pick the capability you're least likely to fund this year. The simulator runs the debt forward, in months.
+
+10
+Strategy
+
+11
+Value
+
+9
+Financial
+
+6
+Organization
+
+8
+People & Culture
+
+1
+Governance
+
+4
+Engineering
+
+5
+Data
+04
+ACT 4
+The first season
+Locate yourself, then sequence the season
+This is not the roadmap I told you not to want. It's a route - calculated from where you actually are, recalculated when conditions change. Here's how to plot it, starting Monday.
+
+First, locate yourself. Score each of the eight areas honestly - not where the strategy deck says you are, but where last quarter's behavior says you are. Two rules make the scoring useful. Be harsher than feels fair: every organization scores itself a three. And score the system, not the heroes: if the capability lives in one person's head, it's a one, not a four.
+
+The board below does the math that matters - not your average, your minimum. The gap between them is maturity you paid for and can't use.
+
+THE MIXING BOARD · DRAG EACH FADER TO WHERE YOU HONESTLY SIT
+Strategy
+
+3
+Value
+
+2
+Financial
+
+1
+Org
+
+3
+People
+
+2
+Govern.
+
+2
+Engineer.
+
+4
+Data
+
+3
+Average maturity
+2.5/ 5
+Your effective ceiling
+1/ 5
+Maturity wasted by imbalance
+1.5pts
+YOUR BINDING CONSTRAINT · FINANCIAL - FINANCIAL DEBT
+Finance learns the cost structure from the invoice. At scale: one surprise invoice freezes the entire program. First move - Stand up cost telemetry before the next consumption contract is signed.
+LIVE DIAGNOSIS
+Your AI ceiling is Financial.
+The Expensive Pilot Machine
+Spend without telemetry.
+Value and Financial discipline trail the rest. Vendor spend grows but cost telemetry and value hypotheses do not, so pilots multiply while the P&L does not move.
+
+Engineering is your strongest area at 4/5, but it is capped at your ceiling of 1. 1.5 points of maturity are trapped behind Financial.
+
+Then sequence the season. You can't fix all eight areas at once, and you don't need to. The first twelve months are about foundations - and about the two or three moments when executives must move together or not at all. The CFO's cost telemetry has to exist before the CIO signs a consumption-priced contract. The CHRO's workforce impact assessment has to inform the CEO's operating-model decision, not follow it. Miss the interchange and both lines stall.
+
+What's missing is only half the diagnostic. The other half is what's premature: piloting governance tooling before policies exist, standing up a platform team before there's anything to platform. Scale moves executed before foundation moves don't accelerate you - they're how you buy Adoption Debt with better tooling.
+
+FIG. 04 · THE FIRST 12 MONTHS, MAPPED
+
+M1
+M2
+M3
+M4
+M5
+M6
+M7
+M8
+M9
+M10
+M11
+M12
+CEO line
+CHRO line
+CFO line
+CIO / CTO line
+GC / CRO line
+AI thesis in one
+sentence
+Eight-area
+maturity baseline
+Run-vs-change
+split agreed
+Board mandate &
+review rhythm
+Workforce impact
+assessment
+Change plan
+co-created
+Literacy baseline
+by role
+Champions in the
+business units
+Use-case intake &
+value hypotheses
+ROI gates set
+First kill / scale
+decisions
+Decommission to
+fund the change
+Build-vs-buy
+screen
+Sandbox open
+Data readiness vs.
+use cases
+Production path
+defined
+Risk inventory &
+owners
+Plain-language
+policies
+Risk tiers &
+decision rights
+Agent oversight
+named
+coordinate here
+coordinate here
+P&L
+production value
+← swipe to explore the map →
+Click any station for the detail · capsule stations are coordination points
+Five executive lines, one destination. Capsule stations are interchanges - coordinate there or the network fails.
+05
+ACT 5
+Full time
+The boardroom test, then the final whistle
+Before the closing argument, a simple test. Sixteen questions - two per capability area, collected from the cards above. Check each one your executive team could answer confidently, today, in writing. The unchecked boxes are your agenda for the next exec meeting. The uncomfortable silences are the assessment.
+
+10
+STRATEGY · CEO
+
+Can each of us state the AI thesis in one sentence - the same sentence?
+COPY
+
+What did we explicitly decide NOT to do with AI this year?
+COPY
+11
+VALUE · CFO + BU LEADERS
+
+How many AI initiatives did we kill last quarter?
+COPY
+
+Can anyone state the value hypothesis of our top five initiatives from memory?
+COPY
+9
+FINANCIAL · CFO
+
+If our AI spend doubled next month, would we learn it from our telemetry or from the invoice?
+COPY
+
+Who can move an initiative from pilot budget to run budget - on what evidence?
+COPY
+6
+ORGANIZATION · CEO + CHRO
+
+If our most senior AI engineer resigned tomorrow, what stops working?
+COPY
+
+Is our AI operating model a decision we made or an accident we inherited?
+COPY
+8
+PEOPLE & CULTURE · CHRO
+
+What share of employees used AI for a critical task last month - measured or guessed?
+COPY
+
+When did we last change a job description because of AI?
+COPY
+1
+GOVERNANCE · GC / CRO
+
+Do we have a complete inventory of AI in production - including what business units bought?
+COPY
+
+Could a frontline team tell you what's allowed without asking a lawyer?
+COPY
+4
+ENGINEERING · CIO / CTO
+
+How long from working prototype to production - weeks or quarters?
+COPY
+
+For how many AI systems would we know within an hour that something went wrong?
+COPY
+5
+DATA · CIO / CDAO
+
+For our #1 use case, can we name the data sources, owners, and quality gaps?
+COPY
+
+Would we detect data drift before our customers do?
+COPY
+CONFIDENT ANSWERS
+0 / 16
+Seven players, an empty bench. Start at the beginning: thesis, baseline, mandate.
+Generate my boardroom brief
+A one-page summary built from your fader scores and the questions you left unchecked.
+The closing argument is the opening one: the 81% gap is not a technology gap. In the economics piece I showed you half of it: money aimed at the wrong value categories, cost structures nobody governed. This article is the other half: leadership structure - a full squad on the pitch, a manager who owns the result, foundations laid before scale, and the honesty to find your weakest area before it finds you.
+
+The economics article was about the money. This one is about the muscle.
+
+You need both - but only one of them is for sale.
+This summer, 48 squads came to the World Cup with the same ball, the same pitch dimensions, and the same 90 minutes. The difference is the team. AI adoption is a team sport - the whistle has already gone, and the only question is whether your whole squad is on the pitch.
+
+BACK TO TOP
+↑
+Interactive companion to the published article. Sources cited in text: McKinsey, The State of Organizations 2026; Gartner public research: individual-contributor GenAI usage (2025); investment in data and analytics foundations (2026). Framework, Adoption Debt concept, formation, and all tools © Jimi Li. Companion piece: The Economics of Enterprise AI: Six Shifts Reshaping Technology Strategy.
