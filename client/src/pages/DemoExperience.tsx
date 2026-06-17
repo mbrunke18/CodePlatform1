@@ -55,6 +55,46 @@ const STEP_DEFS = [
 
 const ELAPSED = ["—", "—", "—", "—", "—", "8:22", "9:47", "11:43", "11:43"];
 
+// ─── Step context banners (plain-language guide for first-time visitors) ──────
+const STEP_CONTEXT = [
+  {
+    headline: "You're looking at a normal Monday morning.",
+    plain: "This is the main dashboard — your organization's readiness state at a glance. Three signals came in overnight. The system caught them, scored them, and flagged them as low-risk. Nobody had to check. No meeting was called. This is what prepared looks like.",
+  },
+  {
+    headline: "These are your organization's 'what if' monitors.",
+    plain: "You've told the platform to watch for 47 specific situations. Each one is already connected to a complete response plan. When any of these thresholds is crossed, the right response deploys automatically — no scrambling to figure out who owns it.",
+  },
+  {
+    headline: "Think of this as your organization's playbook shelf.",
+    plain: "Each card here is a complete response plan for a real scenario — tasks already written, people already assigned, decision gates already mapped. You're not building a response when a crisis hits. You've already built it. You're just waiting to activate it.",
+  },
+  {
+    headline: "A crisis just started. Nobody woke up yet.",
+    plain: "It's 4:23 AM. Ransomware is spreading across trading infrastructure. The platform detected it automatically, matched it to a pattern, and surfaced the right response plan — all before a single human was aware. Watch the exposure counter. Every second of delay has a real dollar cost.",
+  },
+  {
+    headline: "The response plan was built 8 months before this moment.",
+    plain: "Protocol #14 was created during a routine preparedness session last October. Every task written. Every person assigned. Nothing is being invented right now — it's being pulled off the shelf. This is the entire point: the work happens before the crisis, not during it.",
+  },
+  {
+    headline: "It's been 8 minutes. Your team is already executing.",
+    plain: "Four executives were notified in under 90 seconds. Twenty-two tasks are live across five departments. In a traditional response, at this exact moment you would still be figuring out who owns the problem and assembling a call. The platform skipped all of that.",
+  },
+  {
+    headline: "The preparation is done. One person makes the final call.",
+    plain: "The platform compressed weeks of alignment — but the decision stays human. You can see exactly how other executives decided in the same situation, and review three readiness questions. Then you authorize. Click 'Authorize and Deploy' below to see what happens next.",
+  },
+  {
+    headline: "11 minutes, 43 seconds. From signal to contained.",
+    plain: "Traditional response: 4+ days just to mobilize a team. This activation: 11 minutes 43 seconds from first signal to full response. The table below shows metric by metric where those days used to go — and why they're eliminated.",
+  },
+  {
+    headline: "The platform just got smarter from this activation.",
+    plain: "Three things were learned: a task was reordered, a new standard step was added, the detection threshold was lowered. Protocol #14 is now faster. The next time this happens — and it will — the response will be quicker. The platform improves automatically. Nobody has to run a lessons-learned meeting.",
+  },
+];
+
 // ─── Narration ────────────────────────────────────────────────────────────────
 const NARRATION = [
   {
@@ -222,6 +262,18 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
 }
 function Label({ children, color }: { children: React.ReactNode; color?: string }) {
   return <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: color || GOLD, marginBottom: 8 }}>{children}</div>;
+}
+function ContextBanner({ step, phaseColor }: { step: number; phaseColor: string }) {
+  const ctx = STEP_CONTEXT[step];
+  if (!ctx) return null;
+  return (
+    <div style={{ display: "flex", gap: 16, alignItems: "flex-start", padding: "16px 20px", background: `${phaseColor}0c`, border: `1px solid ${phaseColor}35`, borderLeft: `4px solid ${phaseColor}`, borderRadius: "0.15rem", marginBottom: 18 }}>
+      <div style={{ flex: 1 }}>
+        <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 7 }}>{ctx.headline}</div>
+        <div style={{ fontSize: 13, color: "rgba(255,255,255,0.88)", lineHeight: 1.75 }}>{ctx.plain}</div>
+      </div>
+    </div>
+  );
 }
 
 // ─── Step panels ──────────────────────────────────────────────────────────────
@@ -847,10 +899,24 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         </div>
 
         <button onClick={onBegin} style={{ display: "flex", alignItems: "center", gap: 12, background: GOLD, border: "none", padding: "18px 36px", cursor: "pointer", borderRadius: "0.15rem" }}>
-          <span style={{ ...BC, fontSize: 14, fontWeight: 700, color: NAVY, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>See a Full Activation →  Ransomware Response</span>
+          <span style={{ ...BC, fontSize: 14, fontWeight: 700, color: NAVY, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>See a Full Activation — Ransomware Response</span>
           <ArrowRight size={18} color={NAVY} />
         </button>
-        <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 14 }}>9-step walkthrough · No login required · ~5 minutes</div>
+        <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 10 }}>9-step walkthrough · No login required · ~5 minutes</div>
+
+        <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, width: "100%" }}>
+          {[
+            { step: "Steps 1–3", label: "Before the crisis", desc: "See how your organization monitors for threats continuously — with no meetings, no manual checks." },
+            { step: "Steps 4–7", label: "During the crisis", desc: "Watch the platform detect, stage, and execute a complete response in under 12 minutes." },
+            { step: "Steps 8–9", label: "After the crisis", desc: "See how every activation closes out and makes the next response automatically faster." },
+          ].map((s, i) => (
+            <div key={i} style={{ padding: "14px 16px", background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}`, borderRadius: "0.15rem" }}>
+              <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 4 }}>{s.step}</div>
+              <div style={{ ...BC, fontSize: 12, fontWeight: 700, color: "#fff", marginBottom: 6 }}>{s.label}</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.72)", lineHeight: 1.6 }}>{s.desc}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -1001,6 +1067,7 @@ export default function DemoExperience() {
             </div>
           </div>
 
+          <ContextBanner step={step} phaseColor={phaseColor} />
           <ComparisonStrip step={step} />
           {panels[step]}
 
