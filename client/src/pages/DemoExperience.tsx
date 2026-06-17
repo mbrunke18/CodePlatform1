@@ -10,12 +10,12 @@ import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const NAVY = "#0A0F2E";
-const NAVY_CARD = "#0d1435";
+const NAVY_CARD = "#0f1840";
 const NAVY_MID = "#132558";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
-const BORDER = "rgba(255,255,255,0.08)";
-const MUTED = "rgba(255,255,255,0.45)";
+const BORDER = "rgba(255,255,255,0.12)";
+const MUTED = "rgba(255,255,255,0.62)";
 const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', 'Barlow', sans-serif" };
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
 
@@ -281,7 +281,7 @@ function PanelCommandCenter() {
         ].map((e, i) => (
           <div key={i} style={{ display: "flex", gap: 12, padding: "8px 0", borderBottom: i < 2 ? `1px solid ${BORDER}` : "none", alignItems: "flex-start" }}>
             <span style={{ ...BC, fontSize: 10, color: MUTED, flexShrink: 0, width: 60, paddingTop: 1 }}>{e.t}</span>
-            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", flex: 1, lineHeight: 1.5 }}>{e.msg}</span>
+            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.82)", flex: 1, lineHeight: 1.5 }}>{e.msg}</span>
             <Pill color={TEAL} bg={`${TEAL}10`}>{e.risk}</Pill>
           </div>
         ))}
@@ -339,7 +339,7 @@ function PanelTriggerPortfolio() {
         <Settings size={16} color={GOLD} style={{ flexShrink: 0, marginTop: 2 }} />
         <div>
           <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 4 }}>How Triggers Are Configured</div>
-          <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>Each trigger has a <strong style={{ color: "#fff" }}>threshold</strong> (how many signal confirmations before escalating), a <strong style={{ color: "#fff" }}>mapped protocol</strong> (which response deploys), and a <strong style={{ color: "#fff" }}>priority tier</strong> (how urgently the executive is notified). You configure once. The system monitors continuously.</div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>Each trigger has a <strong style={{ color: "#fff" }}>threshold</strong> (how many signal confirmations before escalating), a <strong style={{ color: "#fff" }}>mapped protocol</strong> (which response deploys), and a <strong style={{ color: "#fff" }}>priority tier</strong> (how urgently the executive is notified). You configure once. The system monitors continuously.</div>
         </div>
       </div>
     </div>
@@ -385,7 +385,7 @@ function PanelProtocolLibrary() {
 
       <div style={{ background: `${TEAL}10`, border: `1px solid ${TEAL}30`, padding: "12px 18px", borderRadius: "0.15rem", display: "flex", gap: 10, alignItems: "center" }}>
         <BookOpen size={15} color={TEAL} style={{ flexShrink: 0 }} />
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>Every protocol is <strong style={{ color: "#fff" }}>complete before it's needed</strong> — tasks, owners, decision gates, and stakeholder lists. When a trigger fires, you activate, not build.</span>
+        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.88)", lineHeight: 1.5 }}>Every protocol is <strong style={{ color: "#fff" }}>complete before it's needed</strong> — tasks, owners, decision gates, and stakeholder lists. When a trigger fires, you activate, not build.</span>
       </div>
     </div>
   );
@@ -405,7 +405,7 @@ function PanelSignal() {
         <StatusDot color="#EF4444" pulse />
         <div style={{ flex: 1 }}>
           <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: "#EF4444", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>HIGH RISK — SIGNAL THRESHOLD EXCEEDED</div>
-          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>3 of 3 confirmation patterns matched · Trigger portfolio match: Financial Infrastructure Compromise</div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.82)", marginTop: 2 }}>3 of 3 confirmation patterns matched · Trigger portfolio match: Financial Infrastructure Compromise</div>
         </div>
         <div style={{ ...BC, fontSize: 22, fontWeight: 700, color: "#EF4444" }}>94</div>
       </div>
@@ -451,7 +451,7 @@ function PanelSignal() {
           <CheckCircle size={14} color={TEAL} />
           <div>
             <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.08em" }}>PROTOCOL MATCH</span>
-            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 10 }}>Protocol #14 — Financial Services Ransomware Response · Pre-staged</span>
+            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", marginLeft: 10 }}>Protocol #14 — Financial Services Ransomware Response · Pre-staged</span>
           </div>
         </div>
       </Card>
@@ -465,7 +465,7 @@ function PanelSignal() {
         ].map((e, i) => (
           <div key={i} style={{ display: "flex", gap: 12, padding: "7px 0", borderBottom: i < 2 ? `1px solid ${BORDER}` : "none", alignItems: "flex-start" }}>
             <span style={{ ...BC, fontSize: 10, color: MUTED, flexShrink: 0, paddingTop: 2, width: 72 }}>{e.t}</span>
-            <span style={{ fontSize: 12, color: e.hi ? GOLD : "rgba(255,255,255,0.6)", fontWeight: e.hi ? 600 : 400 }}>{e.msg}</span>
+            <span style={{ fontSize: 12, color: e.hi ? GOLD : "rgba(255,255,255,0.82)", fontWeight: e.hi ? 600 : 400 }}>{e.msg}</span>
           </div>
         ))}
       </Card>
@@ -509,7 +509,7 @@ function PanelProtocol() {
           {["IMMEDIATE", "SECONDARY", "CONTAINMENT", "RECOVERY", "CLOSE-OUT"].map((ph, i) => (
             <div key={ph} style={{ flex: 1, textAlign: "center", padding: "10px 4px", background: i === 0 ? `${TEAL}18` : "transparent", border: `1px solid ${i === 0 ? TEAL + "40" : BORDER}`, marginLeft: i > 0 ? -1 : 0 }}>
               <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: i === 0 ? TEAL : MUTED, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{ph}</div>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 3 }}>{[5, 5, 4, 5, 3][i]} tasks</div>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.65)", marginTop: 3 }}>{[5, 5, 4, 5, 3][i]} tasks</div>
             </div>
           ))}
         </div>
@@ -667,7 +667,7 @@ function PanelComplete() {
         <TrendingUp size={22} color={GOLD} style={{ flexShrink: 0 }} />
         <div>
           <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>3,600× Execution Head Start</div>
-          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)" }}>30 days of traditional mobilization compressed to 12 minutes.</div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.88)" }}>30 days of traditional mobilization compressed to 12 minutes.</div>
         </div>
       </div>
     </div>
@@ -722,13 +722,13 @@ function PanelAdvance() {
           <Label color="#A78BFA">Institutional Memory</Label>
           <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#A78BFA", lineHeight: 1, marginBottom: 4 }}>14</div>
           <div style={{ ...BC, fontSize: 9, color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 10 }}>Proven improvements · Protocol #14</div>
-          <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>This knowledge lives in the platform — not in a person. When your CISO leaves, the protocol doesn't.</div>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>This knowledge lives in the platform — not in a person. When your CISO leaves, the protocol doesn't.</div>
         </Card>
       </div>
 
       <div style={{ background: `${TEAL}10`, border: `1px solid ${TEAL}30`, padding: "14px 18px", borderRadius: "0.15rem" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 4 }}>The Compounding Moat</div>
-        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", lineHeight: 1.6 }}>After 6 months, Meridian's Protocol #14 has been refined 14 times from real activations. Rebuilding this depth on any competing platform would take years. <strong style={{ color: "#fff" }}>The platform gets harder to replace with every activation.</strong></div>
+        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.88)", lineHeight: 1.6 }}>After 6 months, Meridian's Protocol #14 has been refined 14 times from real activations. Rebuilding this depth on any competing platform would take years. <strong style={{ color: "#fff" }}>The platform gets harder to replace with every activation.</strong></div>
       </div>
 
       {/* ── Fearless landing ── */}
@@ -737,7 +737,7 @@ function PanelAdvance() {
         <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 10 }}>
           Meridian Financial is no longer<br />afraid of this scenario.
         </div>
-        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 540, margin: "0 auto 20px" }}>
+        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, maxWidth: 540, margin: "0 auto 20px" }}>
           They've activated Protocol #14 three times. Every executive knows their role. Every task is pre-assigned. The response improves automatically. There's nothing left to fear — because there's nothing left unprepared.
         </div>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "14px 28px", background: `${GOLD}12`, border: `1px solid ${GOLD}40`, borderRadius: "0.15rem" }}>
@@ -808,7 +808,7 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
         <div style={{ ...CG, fontSize: 42, fontWeight: 700, color: "#fff", textAlign: "center" as const, lineHeight: 1.2, marginBottom: 12 }}>
           When a trigger fires, most organizations<br />spend 30 days just to mobilize.
         </div>
-        <div style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", textAlign: "center" as const, lineHeight: 1.7, marginBottom: 40, maxWidth: 560 }}>
+        <div style={{ fontSize: 16, color: "rgba(255,255,255,0.78)", textAlign: "center" as const, lineHeight: 1.7, marginBottom: 40, maxWidth: 560 }}>
           Figuring out who owns the response. Assembling the right people. Aligning on a plan. All before execution begins. Every day of delay has a cost.
         </div>
 
@@ -822,7 +822,7 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: s.color, flexShrink: 0 }} />
                 <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: s.color, letterSpacing: "0.06em" }}>{s.trigger}</span>
               </div>
-              <div style={{ fontSize: 12, color: s.active ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.5)", marginBottom: 10, lineHeight: 1.5, fontStyle: "italic" }}>"{s.moment}"</div>
+              <div style={{ fontSize: 12, color: s.active ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.72)", marginBottom: 10, lineHeight: 1.5, fontStyle: "italic" }}>"{s.moment}"</div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: s.active ? s.color : MUTED }}>{s.stake}</span>
                 <span style={{ fontSize: 10, color: MUTED }}>{s.who}</span>
@@ -977,12 +977,12 @@ export default function DemoExperience() {
           ))}
 
           {/* Narration */}
-          <div style={{ margin: "16px 0 0", padding: "16px 20px 0", borderTop: `1px solid ${BORDER}`, flex: 1 }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 10 }}>What's Happening</div>
-            <div style={{ ...CG, fontSize: 15, fontWeight: 600, color: "#fff", lineHeight: 1.45, marginBottom: 10 }}>{NARRATION[step].headline}</div>
-            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 12 }}>{NARRATION[step].body}</div>
-            <div style={{ background: `${phaseColor}0d`, border: `1px solid ${phaseColor}28`, padding: "9px 12px", borderRadius: "0.15rem" }}>
-              <div style={{ fontSize: 10, color: phaseColor, fontStyle: "italic", lineHeight: 1.5 }}>"{NARRATION[step].callout}"</div>
+          <div style={{ margin: "16px 0 0", padding: "16px 20px 20px", borderTop: `1px solid ${BORDER}`, flex: 1 }}>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: phaseColor, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 10 }}>What's Happening Here</div>
+            <div style={{ ...CG, fontSize: 17, fontWeight: 700, color: "#fff", lineHeight: 1.4, marginBottom: 12 }}>{NARRATION[step].headline}</div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.82)", lineHeight: 1.75, marginBottom: 14 }}>{NARRATION[step].body}</div>
+            <div style={{ background: `${phaseColor}15`, border: `1px solid ${phaseColor}45`, padding: "11px 14px", borderRadius: "0.15rem" }}>
+              <div style={{ fontSize: 12, color: phaseColor, fontStyle: "italic", lineHeight: 1.6, fontWeight: 500 }}>"{NARRATION[step].callout}"</div>
             </div>
           </div>
         </div>

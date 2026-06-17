@@ -40,6 +40,7 @@ const FAST_PATHS = [
 
 const EXCLUDED_ROUTES = [
   '/a16z', '/a16z-print', '/podcast-prep', '/command-tower', '/12-minute-experience',
+  '/demo-experience',
   '/protocol-builder',
   '/protocol-customize',
   '/protocol-customization',
