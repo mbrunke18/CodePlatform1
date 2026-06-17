@@ -160,6 +160,8 @@ app.use(
           "wss:",
           "https://www.google-analytics.com",
           "https://analytics.google.com",
+          "https://region1.google-analytics.com",
+          "https://stats.g.doubleclick.net",
         ],
         frameSrc: ["'self'"],
         objectSrc: ["'none'"],
