@@ -664,6 +664,23 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
+                  {/* Readiness Debt */}
+                  <div className="mb-5" style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.3)", padding: "16px 16px 14px" }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 8 }}>Readiness Debt — The Hidden Cost</div>
+                    <p style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 10 }}>
+                      Every trigger that fires without a pre-staged Readiness Protocol adds to your Readiness Debt — the compounding cost of mobilizing from scratch, every time.
+                    </p>
+                    <div style={{ padding: "10px 12px", background: "rgba(255,255,255,0.04)", borderLeft: "2px solid #C9A84C", marginBottom: 10 }}>
+                      <p style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
+                        "81% of organizations deploying AI report no meaningful bottom-line gains. The technology was never the constraint — the organization was."
+                      </p>
+                      <p style={{ fontSize: 10, color: "rgba(201,168,76,0.7)", marginTop: 6, margin: "6px 0 0", fontWeight: 600 }}>McKinsey · State of Organizations 2026</p>
+                    </div>
+                    <p style={{ fontSize: 11, color: "#C9A84C", fontWeight: 700, margin: 0 }}>
+                      Readiness OS eliminates the debt. Every protocol pre-staged before the trigger fires.
+                    </p>
+                  </div>
+
                   <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/request-access')}>
                     Apply for Founding Partner Access →
                   </Button>

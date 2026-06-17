@@ -52,6 +52,11 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
     source: "Post-COVID enterprise resilience movement",
     reality: "The response is ready before the trigger fires. That's not resilience as a concept — it's resilience as infrastructure."
   },
+  {
+    claim: "AI will transform our organization.",
+    source: "McKinsey, State of Organizations 2026 — cited in every board-level AI briefing",
+    reality: "81% of organizations deploying AI report no meaningful bottom-line gains. The technology was never the constraint. The organization was. Readiness OS is the operating model that makes the AI investment work."
+  },
 ];
 
 export default function PlatformReality() {

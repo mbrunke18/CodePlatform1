@@ -13,6 +13,11 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const comparisonRows = [
   {
+    category: "Why AI Investment Stalls",
+    traditional: "Technology deployed onto a 40-year-old operating model. 81% of enterprises deploying AI report no meaningful bottom-line gains. The constraint was never the model — it was the organization.",
+    executionOS: "Readiness OS is the operating model layer. The coordination infrastructure Microsoft's AI investment was missing. The organization is no longer the constraint.",
+  },
+  {
     category: "Trigger Detection",
     traditional: "Manual monitoring — someone notices, escalates by email",
     executionOS: "Continuous signal monitoring across 248+ data points — fires before anyone reports it",
@@ -60,6 +65,7 @@ const comparisonRows = [
 ];
 
 const proofNumbers = [
+  { value: "81%", label: "of enterprises deploying AI report no meaningful bottom-line gains — McKinsey, State of Organizations 2026" },
   { value: "180", label: "Pre-staged Readiness Protocols across 9 strategic domains" },
   { value: "231", label: "Trigger configurations monitoring for strategic events" },
   { value: "248+", label: "Enterprise data points monitored continuously" },
