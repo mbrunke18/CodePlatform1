@@ -80,6 +80,7 @@ const SEARCH_ITEMS = [
   { label: 'Command Tower', path: '/command-tower', category: 'Execute', icon: Radio },
   { label: 'Live Signal Activity Feed', path: '/command-tower', category: 'Execute', icon: Activity },
   { label: 'Execution Clock', path: '/mission-control', category: 'Execute', icon: Activity },
+  { label: 'Full Platform Demo — Complete 9-Step Walkthrough', path: '/demo-experience', category: 'Demo', icon: Play },
   { label: 'Full Scenario Experience Center — 8 Demos', path: '/demo-hub', category: 'Demo', icon: LayoutGrid },
   { label: 'Master Demo — Activist Investor (CEO)', path: '/master-demo', category: 'Demo', icon: Play },
   { label: 'Demo — Financial Services Ransomware (CISO)', path: '/demo/ransomware', category: 'Demo', icon: Zap },
@@ -581,6 +582,13 @@ export default function StandardNav() {
 
   const renderExperienceDropdown = () => {
     const primaryDemos = [
+      {
+        path: '/demo-experience',
+        icon: Play,
+        label: 'Full Platform Demo — Complete Walkthrough',
+        sub: 'The full journey: cold open → PREPARATION → RESPONSE (with live contrast vs. 30-day traditional) → ADVANCE. 9 steps. No login required.',
+        featured: true,
+      },
       {
         path: '/entry',
         icon: Rocket,

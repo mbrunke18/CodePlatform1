@@ -48,6 +48,7 @@ export default function Footer() {
     {
       title: "Experience",
       links: [
+        { label: "Full Platform Demo", path: "/demo-experience" },
         { label: "12-Minute Test Drive", path: "/test-drive" },
         { label: "Shadow Simulator", path: "/simulation-studio" },
         { label: "Strategic Recorder", path: "/strategic-recorder" },
