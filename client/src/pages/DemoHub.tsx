@@ -226,11 +226,63 @@ export default function DemoHub() {
 
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "56px 28px 80px" }}>
 
+          {/* Full Platform Demo — start here banner */}
+          <a
+            href="/demo-experience"
+            style={{
+              display: "block", textDecoration: "none", marginBottom: 48,
+              background: `linear-gradient(135deg, rgba(43,138,110,0.18) 0%, rgba(10,15,46,0.6) 60%, rgba(201,168,76,0.10) 100%)`,
+              border: `1px solid rgba(43,138,110,0.45)`,
+              padding: "36px 36px 32px",
+              position: "relative", overflow: "hidden",
+              transition: "border-color 0.2s",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.75)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.45)"; }}
+          >
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(43,138,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(43,138,110,0.04) 1px, transparent 1px)`, backgroundSize: "32px 32px", pointerEvents: "none" }} />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+                <div style={{ flex: 1, minWidth: 280 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                    <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL_LT, flexShrink: 0 }}/>
+                    <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL_LT, textTransform: "uppercase" }}>
+                      Start Here · Full Platform Journey · 9 Steps · No Login Required
+                    </span>
+                  </div>
+                  <div style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 12 }}>
+                    Full Platform Demo
+                  </div>
+                  <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
+                    The complete journey — from why the old model fails to how Readiness OS replaces it. Cold open → PREPARATION (how the platform works day-to-day) → RESPONSE (live activation with real-time contrast vs. 30 days traditional) → ADVANCE (the system learns). Every phase. Every capability. One walkthrough.
+                  </p>
+                  <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+                    {[
+                      { v: "3 Phases", l: "PREPARATION · RESPONSE · ADVANCE" },
+                      { v: "9 Steps", l: "Full capability walkthrough" },
+                      { v: "3,600×", l: "Contrast shown live" },
+                    ].map(({ v, l }) => (
+                      <div key={v}>
+                        <div style={{ ...BC, fontSize: 18, fontWeight: 700, color: TEAL_LT, letterSpacing: "0.04em", lineHeight: 1 }}>{v}</div>
+                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginTop: 3 }}>{l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ flexShrink: 0 }}>
+                  <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", color: NAVY, background: TEAL_LT, padding: "14px 32px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+                    Begin Full Demo →
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+
           {/* Master Demo — featured */}
           <div style={{ marginBottom: 64 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Featured — Master Scenario · The Complete Platform Walkthrough</span>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Featured — Master Scenario · The Complete Situation Walkthrough</span>
             </div>
             <ScenarioCard
               id="activist"
