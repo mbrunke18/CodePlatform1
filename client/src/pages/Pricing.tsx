@@ -386,7 +386,7 @@ export default function Pricing() {
       <ProductShowcase
         eyebrow="What You're Investing In"
         headline="180 Readiness Protocols. Everything your organization needs. Pre-staged."
-        image="/screenshots/new_protocol_library.jpg"
+        image="/screenshots/protocol_library_v2.jpg"
         imageAlt="Readiness OS Protocol Library — 180 Pre-Staged Protocols"
         urlPath="/protocol-library"
         urlTag="180 PROTOCOLS"

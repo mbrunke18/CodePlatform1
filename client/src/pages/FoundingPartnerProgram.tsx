@@ -448,7 +448,7 @@ export default function FoundingPartnerProgram() {
           eyebrow="The Platform You're Partnering to Deploy"
           headline="The platform you'll be building your operating model on."
           subheadline="180 protocols. 90 days. Live signal detection from day one."
-          image="/screenshots/new_protocol_library.jpg"
+          image="/screenshots/protocol_library_v2.jpg"
           imageAlt="Readiness OS Protocol Library — Founding Partner View"
           urlPath="/protocol-library"
           urlTag="PARTNER ACCESS"

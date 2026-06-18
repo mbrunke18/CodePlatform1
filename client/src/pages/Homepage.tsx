@@ -1525,7 +1525,7 @@ const SCREENSHOT_TABS = [
     id: "protocols",
     label: "Protocol Library",
     tag: "READINESS",
-    src: "/screenshots/new_protocol_library.jpg",
+    src: "/screenshots/protocol_library_v2.jpg",
     headline: "180 Readiness Protocols — pre-staged across every strategic domain.",
     desc: "Each protocol contains pre-assigned owners, a three-phase task sequence, a pre-staged communication chain, a pre-drafted document package, a pre-authorized budget envelope, and a decision authority map. Nothing is figured out under pressure.",
     color: GOLD,

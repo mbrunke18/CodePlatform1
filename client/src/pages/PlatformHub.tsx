@@ -303,7 +303,7 @@ export default function PlatformHub() {
           <div className="ph-3col-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
             {([
               { img: "/screenshots/deck_signals.jpg", label: "DETECT", title: "Signal Intelligence", sub: "231 triggers · live monitoring every 15 min", color: TEAL },
-              { img: "/screenshots/new_protocol_library.jpg", label: "PREPARE", title: "Protocol Library", sub: "180 responses pre-staged before the trigger fires", color: GOLD },
+              { img: "/screenshots/protocol_library_v2.jpg", label: "PREPARE", title: "Protocol Library", sub: "180 responses pre-staged before the trigger fires", color: GOLD },
               { img: "/screenshots/deck_activation.jpg", label: "EXECUTE", title: "Activation Console", sub: "12-minute coordination chain from trigger to execution", color: NAVY },
             ] as const).map(item => (
               <div key={item.label} style={{ overflow: "hidden", boxShadow: "0 4px 20px rgba(10,15,46,0.10)", border: "1px solid rgba(10,15,46,0.10)" }}>
