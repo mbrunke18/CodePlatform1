@@ -158,7 +158,7 @@ export default function ExecutiveBrief() {
                   Schedule a Conversation <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link href="/try-demo">
+              <Link href="/demo-hub">
                 <Button variant="outline" size="lg" style={{ borderColor: "rgba(255,255,255,0.25)", color: "#fff", background: "transparent" }}>
                   Watch the 12-Minute Demo
                 </Button>
@@ -644,7 +644,7 @@ export default function ExecutiveBrief() {
                       Schedule a Conversation <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
-                  <Link href="/try-demo">
+                  <Link href="/demo-hub">
                     <Button variant="outline" size="lg" style={{ borderColor: "rgba(255,255,255,0.25)", color: "#fff", background: "transparent" }}>
                       Watch 12-Minute Demo
                     </Button>

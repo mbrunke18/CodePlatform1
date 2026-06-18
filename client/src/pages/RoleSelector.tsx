@@ -404,7 +404,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', maxWidth: 480, margin: '0 auto 22px', lineHeight: 1.6 }}>
               Jump straight into the full simulation — pick any strategic scenario and watch the IDEA Framework execute in real time.
             </p>
-            <Link href="/try-demo">
+            <Link href="/demo-hub">
               <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14, padding: '12px 28px', height: 'auto' }}>
                 <Zap size={16} style={{ marginRight: 8 }} />
                 Try the Full Execution Simulation

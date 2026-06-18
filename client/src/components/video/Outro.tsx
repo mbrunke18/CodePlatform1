@@ -100,13 +100,13 @@ export function Outro({ progress }: SceneProps) {
           transition={{ delay: 1.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="/try-demo">
+          <a href="/demo-hub">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold px-8 py-4 flex items-center gap-3 shadow-[#D4AF37]/30"
             >
-              Try Demo
+              Full Platform Demo
               <ArrowRight className="w-5 h-5" />
             </motion.button>
           </a>

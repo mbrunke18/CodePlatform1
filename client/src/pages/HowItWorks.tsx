@@ -83,7 +83,7 @@ export default function HowItWorks() {
               <Link href="/request-access">Apply for Founding Partner Access</Link>
             </Button>
             <Button asChild style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "1.5px solid rgba(255,255,255,0.3)" }}>
-              <Link href="/try-demo">See a Live Demo</Link>
+              <Link href="/demo-hub">See a Live Demo</Link>
             </Button>
           </div>
         </div>

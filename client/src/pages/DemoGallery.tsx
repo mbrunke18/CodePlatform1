@@ -325,10 +325,10 @@ export default function DemoGallery() {
                 Join enterprise organizations achieving live execution in 12 minutes — roles assigned, tasks staged, teams already moving
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
-                <Link href="/pilot-demo">
+                <Link href="/demo-hub">
                   <Button size="lg" className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-semibold">
                     <Play className="h-4 w-4 mr-2" />
-                    Try Interactive Demo
+                    Full Platform Demo
                   </Button>
                 </Link>
                 <Link href="/request-access">

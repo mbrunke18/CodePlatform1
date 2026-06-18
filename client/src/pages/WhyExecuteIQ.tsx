@@ -55,7 +55,7 @@ export default function WhyExecutionOS() {
         subtitle="McKinsey. IBM. BCG. Deloitte. Accenture. Microsoft. Google Cloud. WEF. Bain. Anthropic. OpenAI. PwC. Gartner. Forrester. IDC. Fifteen firms, one conclusion: enterprises need execution infrastructure."
         size="lg"
         actions={<>
-          <Link href="/try-demo">
+          <Link href="/demo-hub">
             <Button size="lg" style={{ background: "#C9A84C", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }}>
               <Play className="mr-2 h-4 w-4" />
               Watch Demo

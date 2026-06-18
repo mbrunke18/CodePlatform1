@@ -422,7 +422,7 @@ export default function WhyExecutionOS() {
                   Score Your Readiness — Free
                 </Button>
               </Link>
-              <Link href="/try-demo">
+              <Link href="/demo-hub">
                 <Button size="lg" variant="outline" style={{ borderColor: "#E8E4DC", color: NAVY }}>
                   Watch the 12-Minute Demo
                 </Button>

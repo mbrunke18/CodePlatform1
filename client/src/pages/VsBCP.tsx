@@ -97,7 +97,7 @@ export default function VsBCP() {
               Request Founding Partner Access <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <button
-              onClick={() => setLocation("/try-demo")}
+              onClick={() => setLocation('/demo-hub')}
               style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: IVORY, fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", border: "1px solid rgba(240,237,228,0.25)", cursor: "pointer" }}
             >
               See It Execute in 12 Minutes

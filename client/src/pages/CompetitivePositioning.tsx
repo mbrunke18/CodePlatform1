@@ -203,9 +203,9 @@ export default function CompetitivePositioning() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" style={{ background: GOLD, color: NAVY, fontWeight: 700 }} className="hover:opacity-90" onClick={() => setLocation('/try-demo')}>
+              <Button size="lg" style={{ background: GOLD, color: NAVY, fontWeight: 700 }} className="hover:opacity-90" onClick={() => setLocation('/demo-hub')}>
                 <Play className="w-5 h-5 mr-2" />
-                See 12-Minute Activation
+                Full Platform Demo
               </Button>
               <Button size="lg" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)", background: "transparent" }} className="hover:bg-white/10" onClick={() => setLocation('/contact')}>
                 Apply for Founding Partner Access
@@ -583,8 +583,8 @@ export default function CompetitivePositioning() {
               <Button size="lg" style={{ background: NAVY, color: "#fff", fontWeight: 700 }} className="hover:opacity-90" onClick={() => setLocation('/contact')}>
                 Request Founding Partner Access
               </Button>
-              <Button size="lg" style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontWeight: 600 }} className="hover:bg-white" onClick={() => setLocation('/try-demo')}>
-                Try Interactive Demo
+              <Button size="lg" style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontWeight: 600 }} className="hover:bg-white" onClick={() => setLocation('/demo-hub')}>
+                Full Platform Demo
               </Button>
             </div>
           </div>

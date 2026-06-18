@@ -185,7 +185,7 @@ export default function GetStarted() {
                 </div>
               ))}
               <button
-                onClick={() => setLocation("/try-demo")}
+                onClick={() => setLocation('/demo-hub')}
                 style={{
                   marginTop: 28, background: NAVY, color: "#fff", fontWeight: 600, fontSize: 13,
                   padding: "12px 28px", border: "none", cursor: "pointer",
@@ -195,7 +195,7 @@ export default function GetStarted() {
                 onMouseLeave={e => (e.currentTarget.style.background = NAVY)}
               >
                 <Compass size={14} />
-                Try the Demo
+                Full Platform Demo
               </button>
             </div>
 

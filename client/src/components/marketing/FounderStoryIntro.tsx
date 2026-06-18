@@ -626,14 +626,14 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.5, delay: 1.8 }}
                   className="flex gap-4 justify-center flex-wrap"
                 >
-                  <a href="/try-demo">
+                  <a href="/demo-hub">
                     <Button 
                       size="lg" 
                       className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-[#3BAF8A]"
                       onClick={() => onSkip?.()}
                     >
                       <Play className="mr-2 h-5 w-5" />
-                      Try Demo
+                      Full Platform Demo
                     </Button>
                   </a>
                   <Link href="/founder-story">

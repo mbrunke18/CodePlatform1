@@ -402,9 +402,9 @@ export default function Investors() {
               ServiceNow reacts. Everbridge notifies. McKinsey documents. Every alternative responds after the trigger fires. Readiness OS is the first platform built to make the response ready before the trigger fires.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/try-demo">
+              <Link href="/demo-hub">
                 <button style={{ display: 'inline-flex', alignItems: 'center', background: '#0A0F2E', color: '#fff', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '14px 32px', border: 'none', cursor: 'pointer', fontFamily: "'Barlow Condensed', sans-serif" }}>
-                  Watch the Platform
+                  Full Platform Demo
                 </button>
               </Link>
               <Link href="/contact">
@@ -879,10 +879,10 @@ export default function Investors() {
               ))}
             </div>
             <div className="text-center">
-              <Link href="/try-demo">
+              <Link href="/demo-hub">
                 <Button className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold transition-all">
                   <Play className="w-4 h-4" />
-                  Experience the Interactive Scenario Demo
+                  Full Platform Demo
                 </Button>
               </Link>
             </div>
@@ -1204,10 +1204,10 @@ export default function Investors() {
                   Investor Resources
                 </Button>
               </Link>
-              <Link href="/try-demo">
+              <Link href="/demo-hub">
                 <Button variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-transparent rounded-none">
                   <Play className="w-4 h-4 mr-2" />
-                  See It Live
+                  Full Platform Demo
                 </Button>
               </Link>
             </div>

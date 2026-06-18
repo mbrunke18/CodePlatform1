@@ -206,10 +206,10 @@ export default function VideoLanding() {
           </p>
           
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/try-demo">
+            <Link href="/demo-hub">
               <Button size="lg" className="px-10 py-8 text-lg bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] rounded-none font-bold uppercase tracking-widest" data-testid="button-try-demo-bottom">
                 <Play className="mr-3 h-5 w-5" />
-                Try Interactive Demo
+                Full Platform Demo
               </Button>
             </Link>
             

@@ -575,7 +575,7 @@ export default function IDEAFramework() {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/try-demo">
+              <Link href="/demo-hub">
                 <Button
                   size="lg"
                   className="font-semibold px-8 rounded-none"

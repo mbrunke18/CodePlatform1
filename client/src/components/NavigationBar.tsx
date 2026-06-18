@@ -291,10 +291,10 @@ export default function NavigationBar() {
             </Button>
             <Button
               className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-white"
-              onClick={() => setLocation('/try-demo')}
+              onClick={() => setLocation('/demo-hub')}
               data-testid="button-get-started-nav"
             >
-              See a Demo
+              Full Platform Demo
             </Button>
           </div>
 

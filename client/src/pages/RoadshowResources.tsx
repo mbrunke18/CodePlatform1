@@ -258,7 +258,7 @@ export default function RoadshowResources() {
             <div className="pt-6 border-t border-[#E8E4DC] space-y-3">
               <Button 
                 className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none h-12 font-bold"
-                onClick={() => setLocation('/try-demo')}
+                onClick={() => setLocation('/demo-hub')}
                 data-testid="button-run-investor-demo"
               >
                 <Clock className="mr-2 h-4 w-4" />

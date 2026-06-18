@@ -84,7 +84,7 @@ export default function VsConsulting() {
               See Pricing <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <button
-              onClick={() => setLocation("/try-demo")}
+              onClick={() => setLocation('/demo-hub')}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.8)", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "1px solid rgba(240,237,228,0.2)", cursor: "pointer" }}
             >
               See the Platform

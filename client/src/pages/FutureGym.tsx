@@ -198,7 +198,7 @@ export default function FutureGym() {
   const { readiness } = useDynamicStrategy();
 
   const handleStartExercise = (scenario: typeof trainingScenarios[0]) => {
-    setLocation('/try-demo');
+    setLocation('/demo-hub');
     toast({
       title: `Starting: ${scenario.name}`,
       description: `${scenario.difficulty} · ${scenario.duration} · ${scenario.domain}`,
