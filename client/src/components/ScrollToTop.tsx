@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef } from "react";
+import { useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import { useLocation } from "wouter";
 
 // Disable browser native scroll restoration — must happen once at module load
@@ -64,6 +64,25 @@ export function ScrollToTop() {
   const prevLocation = useRef(location);
   const cleanupRef = useRef<(() => void) | null>(null);
 
+  // SYNCHRONOUS — fires before the browser paints the new page, so the user
+  // never sees the wrong scroll position even for a single frame.
+  useLayoutEffect(() => {
+    if (prevLocation.current !== location) {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      } catch (_) {
+        window.scrollTo(0, 0);
+      }
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      const root = document.getElementById('root');
+      if (root) root.scrollTop = 0;
+    }
+  }, [location]);
+
+  // DEFERRED — staggered resets catch lazy-loaded pages whose content renders
+  // after the layout effect has already run. Also clears any scroll locks left
+  // by modals/sheets on the previous page.
   useEffect(() => {
     if (prevLocation.current !== location) {
       prevLocation.current = location;

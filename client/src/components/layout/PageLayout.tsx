@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useLayoutEffect } from 'react';
 import { useLocation, Link } from 'wouter';
 import StandardNav from './StandardNav';
 import Footer from './Footer';
@@ -115,11 +115,25 @@ export default function PageLayout({
     } catch (_) {}
   }, [location]);
 
-  // Scroll to top on mount AND on every location change — catches both initial
-  // render (after lazy-load) and cases where the component stays mounted but
-  // the route changes (wouter re-use, redirects, etc.)
+  // Scroll to top BEFORE paint on every mount and location change.
+  // useLayoutEffect fires synchronously after DOM mutations but before the
+  // browser paints — the user never sees the new page at the wrong position.
+  useLayoutEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    } catch (_) {
+      window.scrollTo(0, 0);
+    }
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const root = document.getElementById('root');
+    if (root) root.scrollTop = 0;
+  }, [location]);
+
+  // Second pass after paint — catches any content that shifts scroll position
+  // during initial render (e.g. sticky headers, dynamic content height).
   useEffect(() => {
-    const reset = () => {
+    const t = setTimeout(() => {
       try {
         window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
       } catch (_) {
@@ -127,12 +141,7 @@ export default function PageLayout({
       }
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-      const root = document.getElementById('root');
-      if (root) root.scrollTop = 0;
-    };
-    reset();
-    // Second pass after a tick — catches content that renders after mount
-    const t = setTimeout(reset, 60);
+    }, 60);
     return () => clearTimeout(t);
   }, [location]);
 
