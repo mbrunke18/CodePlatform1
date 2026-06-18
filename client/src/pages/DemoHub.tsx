@@ -195,8 +195,8 @@ export default function DemoHub() {
             <div style={{ ...CG, fontSize: 22, fontStyle: "italic", color: GOLD_LT, lineHeight: 1.4, marginBottom: 24 }}>
               Growth. Resilience. Transformation. The response is always ready.
             </div>
-            <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 640, marginBottom: 32 }}>
-              Every situation a startup to Fortune 500 company faces — the market opportunity that opens at 7 PM, the crisis that lands at 4 AM, the board mandate that requires coordinated action by morning — demands the same capability: your full organization mobilized in 12 minutes. Select your domain and see the platform respond.
+            <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 560, marginBottom: 32 }}>
+              Every situation demands the same capability: your full organization mobilized in 12 minutes. Select a domain and see exactly how Readiness OS responds.
             </p>
 
             {/* Domain pills */}
@@ -224,22 +224,6 @@ export default function DemoHub() {
             </div>
           </div>
         </div>
-
-        {/* ── Platform Showcase ── */}
-        <ProductShowcase
-          eyebrow="Platform in Action"
-          headline="Watch 12-minute execution across all 3 strategic domains."
-          image="/screenshots/deck_activation.jpg"
-          imageAlt="Readiness OS Activation Console — Live Execution"
-          urlPath="/demo-hub"
-          urlTag="LIVE DEMO"
-          tagColor="#2B8A6E"
-          features={[
-            { color: "#2B8A6E", label: "Growth & Positioning", description: "Competitor displacement, activist investor response, M&A — staged before the trigger fires." },
-            { color: "#C9A84C", label: "Risk & Resilience", description: "Ransomware, FDA recall, supply chain, data breach — 12-minute execution chains, pre-built." },
-            { color: "#4A90C4", label: "Transformation", description: "Go-to-market acceleration, workforce transformation — coordinated rollout across all stakeholders." },
-          ]}
-        />
 
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "56px 28px 80px" }}>
 
@@ -344,6 +328,22 @@ export default function DemoHub() {
               ))}
             </div>
           </div>
+
+          {/* ── Platform Showcase — shown after scenarios so visitors see content first ── */}
+          <ProductShowcase
+            eyebrow="Platform in Action"
+            headline="Watch 12-minute execution across all 3 strategic domains."
+            image="/screenshots/deck_activation.jpg"
+            imageAlt="Readiness OS Activation Console — Live Execution"
+            urlPath="/demo-hub"
+            urlTag="LIVE DEMO"
+            tagColor="#2B8A6E"
+            features={[
+              { color: "#2B8A6E", label: "Growth & Positioning", description: "Competitor displacement, activist investor response, M&A — staged before the trigger fires." },
+              { color: "#C9A84C", label: "Risk & Resilience", description: "Ransomware, FDA recall, supply chain, data breach — 12-minute execution chains, pre-built." },
+              { color: "#4A90C4", label: "Transformation", description: "Go-to-market acceleration, workforce transformation — coordinated rollout across all stakeholders." },
+            ]}
+          />
 
           {/* What every simulation shows */}
           <div style={{ background: GBG, border: `1px solid ${BD}`, padding: "36px 32px", marginBottom: 40 }}>

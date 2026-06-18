@@ -238,9 +238,6 @@ export default function ProofStory() {
               ))}
             </div>
 
-            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.32)", maxWidth: 540, margin: "0 auto", lineHeight: 1.6, fontStyle: "italic" }}>
-              Company names and identifying details have been anonymized. Financial figures, timelines, and outcomes are modeled scenarios based on platform architecture, documented industry incident data, and published regulatory penalty frameworks — not external customer activations.
-            </p>
           </div>
         </div>
 
@@ -564,6 +561,9 @@ export default function ProofStory() {
                 </button>
               </Link>
             </div>
+            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.28)", maxWidth: 560, margin: "32px auto 0", lineHeight: 1.6, fontStyle: "italic" }}>
+              Company names and identifying details have been anonymized. Financial figures, timelines, and outcomes are modeled scenarios based on platform architecture, documented industry incident data, and published regulatory penalty frameworks — not external customer activations.
+            </p>
           </div>
         </div>
 

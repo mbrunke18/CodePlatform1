@@ -249,7 +249,7 @@ export function GuestPreviewBanner() {
 
       {/* Right — sign-in only; no competing CTA (board: ticker = signal info only) */}
       <div className="guest-banner-right" style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-        <a href="/situation-scanner" style={{
+        <a href="/12-minute-experience" style={{
           fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 600,
           letterSpacing: '0.06em', textTransform: 'uppercase' as const,
           padding: '5px 12px', background: 'transparent',
