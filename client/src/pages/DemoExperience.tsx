@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, ChevronLeft, Shield, Zap, Clock, Users, Database,
@@ -1090,6 +1090,12 @@ function ComparisonStrip({ step }: { step: number }) {
 
 // ─── Main page ─────────────────────────────────────────────────────────────────
 export default function DemoExperience() {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
   const [intro, setIntro] = useState(true);
   const [step, setStep] = useState(0);
   const [authorizing, setAuthorizing] = useState(false);

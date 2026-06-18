@@ -48,14 +48,14 @@ export default function Footer() {
     {
       title: "Experience",
       links: [
+        { label: "12-Minute Experience — No Login", path: "/12-minute-experience" },
+        { label: "Scenario Experience Center", path: "/demo-hub" },
+        { label: "Master Demo — Activist Investor", path: "/master-demo" },
+        { label: "Industry Demo Library — 19 Scenarios", path: "/industry-demo-library" },
         { label: "Full Platform Demo", path: "/demo-experience" },
-        { label: "12-Minute Test Drive", path: "/test-drive" },
-        { label: "Shadow Simulator", path: "/simulation-studio" },
-        { label: "Strategic Recorder", path: "/strategic-recorder" },
-        { label: "Readiness Assessment", path: "/readiness-assessment" },
+        { label: "How It Executes", path: "/how-it-executes" },
         { label: "ROI Calculator", path: "/roi-calculator" },
-        { label: "Cost of Delay", path: "/cost-of-delay" },
-        { label: "Sector Threat Briefing", path: "/sector-briefing" },
+        { label: "Readiness Assessment", path: "/readiness-assessment" },
       ]
     },
     {

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { FirstVisitAdModal } from "@/components/FirstVisitAdModal";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
@@ -4103,6 +4103,12 @@ function SocialProofStrip() {
 }
 
 export default function Homepage() {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
   useScrollDepth();
   useEffect(() => {
     updatePageMetadata({

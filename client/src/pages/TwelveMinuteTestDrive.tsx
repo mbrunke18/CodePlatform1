@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
@@ -236,6 +236,13 @@ function getTaskStatus(taskIdx: number, elapsed: number, tasks: Array<{ time: st
 }
 
 export default function TwelveMinuteTestDrive() {
+  // Scroll to top before paint on initial arrival
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
   const [step, setStep]           = useState<1 | 2 | 3 | 4>(1);
   const [showAuthorization, setShowAuthorization] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);

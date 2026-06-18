@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { useParams } from "wouter";
 import { SCENARIOS, type DemoScenario } from "./demos/scenarioData";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
@@ -765,6 +765,13 @@ export default function MasterDemo() {
   const TOTAL = 7;
   const next = () => setPhase(p => Math.min(p + 1, TOTAL - 1));
   const back = () => setPhase(p => Math.max(p - 1, 0));
+
+  // Scroll to top before paint on initial arrival — fires once on mount
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   useEffect(() => { window.scrollTo(0, 0); }, [phase]);
   // Reset phase when scenario changes
