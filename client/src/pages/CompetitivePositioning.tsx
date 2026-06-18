@@ -147,7 +147,7 @@ export default function CompetitivePositioning() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Competitive Positioning - Readiness OS | Strategic Readiness Platform",
+      title: "Competitive Positioning - Readiness OS | Situational Readiness Platform",
       description: "See how Readiness OS creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer enterprise organizations need.",
       ogTitle: "Readiness OS vs. Crisis Tools vs. PM Tools | Category of One",
       ogDescription: "Readiness OS isn't competing with Everbridge or Jira. Readiness OS owns the strategic execution layer between them.",

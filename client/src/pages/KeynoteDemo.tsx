@@ -306,7 +306,7 @@ export default function KeynoteDemo() {
           className="flex items-center gap-3 mb-8 relative z-10"
         >
           <div className="h-px w-16 bg-[#C9A84C]" />
-          <span className="text-2xl text-[#C9A84C] font-light tracking-widest uppercase">Strategic Readiness Platform</span>
+          <span className="text-2xl text-[#C9A84C] font-light tracking-widest uppercase">Situational Readiness Platform</span>
           <div className="h-px w-16 bg-[#C9A84C]" />
         </motion.div>
         <motion.p

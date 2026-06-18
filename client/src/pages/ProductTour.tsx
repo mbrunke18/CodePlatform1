@@ -45,7 +45,7 @@ const TOUR_SCENES: Scene[] = [
     type: 'cinematic',
     duration: 6000,
     title: 'Readiness OS',
-    subtitle: 'Strategic Readiness Platform',
+    subtitle: 'Situational Readiness Platform',
     narration: 'Welcome to Readiness OS — the coordination infrastructure that prepares enterprise organizations for any strategic situation they\'ll face.',
     visual: 'solution'
   },

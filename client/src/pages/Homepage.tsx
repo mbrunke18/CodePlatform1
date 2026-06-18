@@ -977,7 +977,7 @@ function HeroSection() {
               {/* Category declaration */}
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
                 <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
-                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Strategic Readiness Platform · Startup to Fortune 500</span>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Situational Readiness Platform · Startup to Fortune 500</span>
               </div>
 
               {/* Headline */}

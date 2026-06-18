@@ -118,7 +118,7 @@ function MetricCard({
 export default function ExecutiveScorecard() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Scorecard | Readiness OS — Strategic Readiness Platform",
+      title: "Executive Scorecard | Readiness OS — Situational Readiness Platform",
       description: "Track your strategic execution velocity with M's Executive Scorecard. Monitor preparedness scores, active triggers, response times, and decision outcomes.",
       ogTitle: "Executive Scorecard | M",
       ogDescription: "Real-time executive metrics for strategic execution performance.",

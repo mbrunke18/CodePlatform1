@@ -186,7 +186,7 @@ export default function UnifiedEnterprisePlatform() {
                   <h1 className="text-2xl font-bold" data-testid="platform-title">
                     Readiness OS Executive Command Center
                   </h1>
-                  <p className="text-white/80">Where Strategy Meets Readiness™ — Strategic Readiness Platform</p>
+                  <p className="text-white/80">Where Strategy Meets Readiness™ — Situational Readiness Platform</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">

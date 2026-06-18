@@ -333,7 +333,7 @@ export default function Pricing() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Platform Tiers & Pricing — Readiness OS | Strategic Readiness Platform",
+      title: "Platform Tiers & Pricing — Readiness OS | Situational Readiness Platform",
       description: "Three tiers of enterprise strategic readiness: Core ($150K/yr), Foresight ($250K/yr), and Enterprise ($450K+/yr). 180 Readiness Protocols, continuous signal monitoring, 12-minute response orchestration, and institutional memory that compounds with every activation.",
       ogTitle: "Readiness OS — Core · Foresight · Enterprise Pricing",
       ogDescription: "Built for startup to Fortune 500. Starting at $150,000/year. One activation pays for the annual subscription. Institutional memory compounds with every trigger survived.",

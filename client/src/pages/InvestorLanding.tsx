@@ -76,7 +76,7 @@ export default function InvestorLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Investor Overview | Readiness OS — Strategic Readiness Platform",
+      title: "Investor Overview | Readiness OS — Situational Readiness Platform",
       description: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the operating model layer. First-mover in a new enterprise software category.",
       ogTitle: "Invest in Readiness OS — The Operating Model Layer for startup to Fortune 500",
       ogDescription: "Enterprises spend 30 days mobilizing for events they could have pre-staged. Readiness OS changes the model. 180 protocols. 12-minute execution. First-mover opportunity.",
@@ -1279,7 +1279,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#0A0F2E] mb-4">
-                    First mover defining "Strategic Readiness Platform" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
+                    First mover defining "Situational Readiness Platform" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-category-advantage">
                     Advantage: Brand moat—"Readiness OS" becomes verb for strategic execution
@@ -2055,7 +2055,7 @@ export default function InvestorLanding() {
               Let's Build This Together
             </h2>
             <p className="text-xl mb-4 text-white/80" data-testid="text-cta-description">
-              Readiness OS is defining the Strategic Readiness Platform category — a $5B+ addressable market with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              Readiness OS is defining the Situational Readiness Platform category — a $5B+ addressable market with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <p className="text-base mb-10 text-white/60">
               Schedule a conversation with the VaughnMartin founding team to review our full investment deck, pipeline metrics, and strategic roadmap.
@@ -2098,7 +2098,7 @@ export default function InvestorLanding() {
               </a>
             </div>
             <p className="text-sm text-white/40">
-              VaughnMartin · Strategic Readiness Platform · <span className="text-[#C9A84C]">info@vaughnmartin.com</span>
+              VaughnMartin · Situational Readiness Platform · <span className="text-[#C9A84C]">info@vaughnmartin.com</span>
             </p>
           </div>
         </section>

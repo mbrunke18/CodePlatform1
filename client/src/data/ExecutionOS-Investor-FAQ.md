@@ -247,7 +247,7 @@ They could build *features*—but they can't build the *system*.
 |------|------------|
 | **170 pre-staged Readiness Protocols** | 20+ years of domain expertise encoded. Competitors start from zero. |
 | **Founder credibility** | Unique combination of Fortune 500 execution + preparation-under-pressure methodology. Authentic story. |
-| **First-mover in category** | Strategic Readiness Platform category doesn't exist. We define it. |
+| **First-mover in category** | Situational Readiness Platform category doesn't exist. We define it. |
 | **Enterprise relationships** | Founding Partners become references. Network effects in enterprise sales. |
 | **Institutional memory** | Every activation encodes org-specific response logic. More activations = deeper moat. |
 
@@ -307,7 +307,7 @@ For rapid-fire Q&A, memorize these:
 | Why now? | "Every enterprise has the AI stack. None have the operating model to act on it at trigger speed." |
 | Why you? | "20 years Fortune 500 execution. 5 years coaching at Stanford. I've run this preparation model on both sides." |
 | Competitors? | "The real competitor is the status quo — 30-day mobilization cycles, email chains, retainer consultants after the fact." |
-| Market size? | "$5B+ addressable. Strategic Readiness Platform is a category that doesn't yet exist — we're defining it." |
+| Market size? | "$5B+ addressable. Situational Readiness Platform is a category that doesn't yet exist — we're defining it." |
 | Business model? | "$120K–$1.5M+ enterprise contracts, 80%+ gross margin." |
 | Traction? | "Platform live. 170 Readiness Protocols. 231 triggers. Founding Partner program open." |
 | How do prospects evaluate? | "48-hour guided evaluation workspace — pre-seeded with realistic data. Full Activist Investor or Ransomware scenario, signal to war room, in 12 minutes." |

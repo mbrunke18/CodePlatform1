@@ -320,7 +320,7 @@ export default function InvestorDemo() {
               Investor Demo — Market Creation Story
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="heading-investor-demo">
-              Readiness OS: The Strategic Readiness Platform
+              Readiness OS: The Situational Readiness Platform
             </h1>
             <p className="text-lg text-[#0A0F2E]">
               First mover in $15B+ Coordination Infrastructure category. 180 Readiness Protocols. 12-minute execution.
