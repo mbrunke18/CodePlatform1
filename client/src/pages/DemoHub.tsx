@@ -294,6 +294,22 @@ export default function DemoHub() {
             />
           </div>
 
+          {/* ── Platform Showcase — bridge between featured demo and domain grids ── */}
+          <ProductShowcase
+            eyebrow="Platform in Action"
+            headline="Watch 12-minute execution across all 3 strategic domains."
+            image="/screenshots/deck_activation.jpg"
+            imageAlt="Readiness OS Activation Console — Live Execution"
+            urlPath="/demo-hub"
+            urlTag="LIVE DEMO"
+            tagColor="#2B8A6E"
+            features={[
+              { color: "#2B8A6E", label: "Growth & Positioning", description: "Competitor displacement, activist investor response, M&A — staged before the trigger fires." },
+              { color: "#C9A84C", label: "Risk & Resilience", description: "Ransomware, FDA recall, supply chain, data breach — 12-minute execution chains, pre-built." },
+              { color: "#4A90C4", label: "Transformation", description: "Go-to-market acceleration, workforce transformation — coordinated rollout across all stakeholders." },
+            ]}
+          />
+
           {/* Growth & Positioning */}
           <div id="domain-growth">
             <DomainSection domainKey="growth" scenarios={SCENARIO_GROUPS.growth} />
@@ -328,22 +344,6 @@ export default function DemoHub() {
               ))}
             </div>
           </div>
-
-          {/* ── Platform Showcase — shown after scenarios so visitors see content first ── */}
-          <ProductShowcase
-            eyebrow="Platform in Action"
-            headline="Watch 12-minute execution across all 3 strategic domains."
-            image="/screenshots/deck_activation.jpg"
-            imageAlt="Readiness OS Activation Console — Live Execution"
-            urlPath="/demo-hub"
-            urlTag="LIVE DEMO"
-            tagColor="#2B8A6E"
-            features={[
-              { color: "#2B8A6E", label: "Growth & Positioning", description: "Competitor displacement, activist investor response, M&A — staged before the trigger fires." },
-              { color: "#C9A84C", label: "Risk & Resilience", description: "Ransomware, FDA recall, supply chain, data breach — 12-minute execution chains, pre-built." },
-              { color: "#4A90C4", label: "Transformation", description: "Go-to-market acceleration, workforce transformation — coordinated rollout across all stakeholders." },
-            ]}
-          />
 
           {/* What every simulation shows */}
           <div style={{ background: GBG, border: `1px solid ${BD}`, padding: "36px 32px", marginBottom: 40 }}>
