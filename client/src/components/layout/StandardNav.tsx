@@ -973,7 +973,7 @@ export default function StandardNav() {
               <>
                 {/* Clean hub links — no dropdowns. Each goes to its hub page. */}
                 {[
-                  { label: 'The Platform', path: '/platform' },
+                  { label: 'What We Do', path: '/platform' },
                   { label: 'See It Work', path: '/demo-hub' },
                   { label: 'The Proof', path: '/executive-brief' },
                   { label: 'Pricing', path: '/pricing' },

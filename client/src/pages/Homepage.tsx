@@ -440,7 +440,7 @@ function HomepageNav() {
 
           {/* Desktop nav — 4 hub links, no dropdowns */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
-            <Link href="/platform" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Platform</Link>
+            <Link href="/platform" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>What We Do</Link>
             <Link href="/demo-hub" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
@@ -499,7 +499,7 @@ function HomepageNav() {
             letterSpacing: "0.04em", textAlign: "center", marginBottom: 8,
           }}>▶ Watch the Full Platform Demo</Link>
           {[
-            { label: "The Platform",  href: "/platform" },
+            { label: "What We Do",  href: "/platform" },
             { label: "See It Work",   href: "/demo-hub", highlight: false },
             { label: "The Proof",     href: "/executive-brief" },
             { label: "Pricing",       href: "/pricing" },
@@ -755,7 +755,7 @@ function HeroSimPanel() {
     },
   ];
 
-  const [scenarioIdx, setScenarioIdx] = useState(0);
+  const [scenarioIdx, setScenarioIdx] = useState(1);
   const [phase, setPhase] = useState<"detect" | "stage" | "authorize" | "execute" | "complete">("detect");
   const [riskScore, setRiskScore] = useState(0);
   const [activeStep, setActiveStep] = useState(-1);
@@ -995,7 +995,7 @@ function HeroSection() {
               {/* Category declaration */}
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
                 <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
-                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Coordination Infrastructure</span>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Strategic Readiness Platform · Startup to Fortune 500</span>
               </div>
 
               {/* Headline */}
