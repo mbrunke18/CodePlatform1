@@ -682,24 +682,6 @@ function ExecutionChainDiagram() {
 function HeroSimPanel() {
   const SCENARIOS = [
     {
-      domain: "RISK & RESILIENCE" as const,
-      industry: "Healthcare",
-      trigger: "Hospital Ransomware — EHR Systems Locked",
-      protocol: "Protocol #044: Ransomware Containment",
-      tasks: 8,
-      executive: "Chief Security Officer",
-      steps: [
-        { t: "0:08", action: "Ransomware signature detected across 3 EHR nodes", owner: "System" },
-        { t: "1:20", action: "CSO authorizes — isolation sequence begins", owner: "CSO" },
-        { t: "2:45", action: "Network segmentation deployed, clean backups staged", owner: "IT Security" },
-        { t: "5:30", action: "Clinical operations shifted to downtime procedures", owner: "Operations" },
-        { t: "8:00", action: "FBI notification filed, legal hold activated", owner: "Legal / GC" },
-        { t: "12:00", action: "Patient care continuity confirmed — 0 procedures affected", owner: "All Leads" },
-      ],
-      outcome: "Patient care continuity maintained",
-      stat: "$18M exposure contained",
-    },
-    {
       domain: "GROWTH & POSITIONING" as const,
       industry: "Technology",
       trigger: "Activist Investor Files 13D — 9.2% Stake",
@@ -736,32 +718,32 @@ function HeroSimPanel() {
       stat: "$340M liability avoided",
     },
     {
-      domain: "RISK & RESILIENCE" as const,
-      industry: "Financial Services",
-      trigger: "SWIFT Outage — $4.7B Settlements at Risk",
-      protocol: "Protocol #007: Payment Infrastructure Failure",
-      tasks: 7,
-      executive: "Chief Risk Officer",
+      domain: "TRANSFORMATION" as const,
+      industry: "Consumer Goods",
+      trigger: "Market Entry Sprint — 6 Countries, 90-Day Window",
+      protocol: "Protocol #089: Go-to-Market Acceleration Sprint",
+      tasks: 12,
+      executive: "Chief Revenue Officer",
       steps: [
-        { t: "0:08", action: "SWIFT outage detected — $4.7B settlements at risk", owner: "System" },
-        { t: "1:20", action: "CRO authorizes — emergency liquidity protocol activated", owner: "CRO" },
-        { t: "2:30", action: "Fedwire backup rails live, settlement continuity confirmed", owner: "Treasury" },
-        { t: "4:00", action: "Correspondent banks notified via pre-staged comms", owner: "Comms" },
-        { t: "7:15", action: "Federal Reserve liaison briefed, regulatory filing staged", owner: "Legal" },
-        { t: "12:00", action: "Market open — zero settlement failures reported", owner: "All Leads" },
+        { t: "0:05", action: "Board green-lights expansion — 90-day execution window opens", owner: "System" },
+        { t: "1:15", action: "CRO authorizes — 6-market entry protocol staged and unlocked", owner: "CRO" },
+        { t: "2:30", action: "Market entry briefs deployed to 6 regional leads simultaneously", owner: "Regional Leads" },
+        { t: "4:00", action: "Legal entity formation and regulatory filings staged per country", owner: "Legal" },
+        { t: "7:30", action: "Distribution partnerships activated — channel agreements staged", owner: "Sales / BD" },
+        { t: "12:00", action: "All 6 markets operational — revenue pipeline active", owner: "All Leads" },
       ],
-      outcome: "Zero settlement failures at market open",
-      stat: "$4.7B protected",
+      outcome: "6-market simultaneous launch activated",
+      stat: "$280M revenue pipeline staged",
     },
   ];
 
-  const [scenarioIdx, setScenarioIdx] = useState(1);
+  const [scenarioIdx, setScenarioIdx] = useState(0);
   const [phase, setPhase] = useState<"detect" | "stage" | "authorize" | "execute" | "complete">("detect");
   const [riskScore, setRiskScore] = useState(0);
   const [activeStep, setActiveStep] = useState(-1);
 
   const scenario = SCENARIOS[scenarioIdx];
-  const domainColor = scenario.domain === "GROWTH & POSITIONING" ? GOLD : TEAL;
+  const domainColor = scenario.domain === "GROWTH & POSITIONING" ? GOLD : scenario.domain === "TRANSFORMATION" ? IVORY : TEAL;
   const PHASE_LABELS = ["DETECT", "STAGE", "AUTH", "EXECUTE", "COMPLETE"];
   const phaseIdx = ["detect", "stage", "authorize", "execute", "complete"].indexOf(phase);
 
