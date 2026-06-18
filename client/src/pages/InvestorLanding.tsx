@@ -491,7 +491,7 @@ export default function InvestorLanding() {
                   {[
                     "Pre-staged for every situation the enterprise will face",
                     "Executive authority preserved — no protocol activates without sign-off",
-                    "212 Readiness Protocols across 9 strategic domains — 180 core · 30 compound · 2+ extended",
+                    "180 Readiness Protocols across 9 strategic domains — plus 30 compound multi-threat scenarios",
                     "Risk and opportunity triggers covered — not just crisis response",
                   ].map(pt => (
                     <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 10 }}>
@@ -973,7 +973,7 @@ export default function InvestorLanding() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 10 }}>
                   {[
-                    { label: '212 Readiness Protocols pre-staged', sub: '180 core · 30 compound · 2+ extended — the library grows with every activation' },
+                    { label: '180 Readiness Protocols pre-staged', sub: 'Plus 30 compound multi-threat scenarios — the library grows with every activation' },
                     { label: '231 trigger patterns monitored continuously', sub: 'Signal detected → protocol matched → exec notified' },
                     { label: 'Executive authorization gates', sub: 'AI monitors. Executives authorize. No autonomous action.' },
                     { label: '12-minute coordinated response', sub: '3,600× head start over the 30-day mobilization model' },

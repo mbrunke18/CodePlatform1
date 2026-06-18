@@ -560,8 +560,8 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ width: 1, height: 32, background: "#E8E4DC" }} />
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 28, fontWeight: 800, color: "#0A0F2E", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>212</span>
-                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.3 }}>Total<br/>Ready Now</span>
+                <span style={{ fontSize: 28, fontWeight: 800, color: "#0A0F2E", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>180+</span>
+                <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.3 }}>Core Library<br/>+ Compound</span>
               </div>
             </div>
             <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-1">
@@ -1230,7 +1230,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ padding: "28px 24px", borderTop: "3px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.1)", borderTopWidth: 3 }}>
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Get Access</div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 6, lineHeight: 1.4 }}>Pre-stage 212 protocols for your organization</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 6, lineHeight: 1.4 }}>Pre-stage 180+ protocols for your organization</div>
                 <div style={{ fontSize: 11, color: "rgba(201,168,76,0.8)", marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>180 Core · 30 Compound · 2+ Extended — and growing</div>
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
                   Founding Partners configure protocols against their real scenarios, real team, and real risk calendar.
