@@ -1346,6 +1346,136 @@ function ThreeStepSection() {
   );
 }
 
+// ─── PLATFORM SCREENSHOT GALLERY ──────────────────────────────────────────────
+const SCREENSHOT_TABS = [
+  {
+    id: "signals",
+    label: "Signal Detection",
+    tag: "MONITORING",
+    src: "/screenshots/deck_signals.jpg",
+    headline: "231 trigger patterns monitored — continuously, automatically.",
+    desc: "The platform ingests signals across regulatory feeds, competitive intelligence, financial indicators, and operational data. When a pattern crosses threshold, the matched Readiness Protocol is staged — before anyone is paged.",
+    color: TEAL,
+  },
+  {
+    id: "protocols",
+    label: "Protocol Library",
+    tag: "READINESS",
+    src: "/screenshots/new_protocol_library.jpg",
+    headline: "180 Readiness Protocols — pre-staged across every strategic domain.",
+    desc: "Each protocol contains pre-assigned owners, a three-phase task sequence, a pre-staged communication chain, a pre-drafted document package, a pre-authorized budget envelope, and a decision authority map. Nothing is figured out under pressure.",
+    color: GOLD,
+  },
+  {
+    id: "activation",
+    label: "Activation Console",
+    tag: "EXECUTION",
+    src: "/screenshots/deck_activation.jpg",
+    headline: "From trigger detection to coordinated execution in 12 minutes.",
+    desc: "When an executive authorizes, the war room is live — tasks seeded, roles assigned, Teams channels opened, stakeholders notified. The mobilization already happened. The 12 minutes is just the final confirmation.",
+    color: GOLD,
+  },
+  {
+    id: "command",
+    label: "Command Tower",
+    tag: "INTELLIGENCE",
+    src: "/screenshots/new_command_tower.jpg",
+    headline: "Real-time executive visibility across every active and staged protocol.",
+    desc: "The Command Tower gives leadership a continuous view of trigger detections, protocol readiness scores, active authorizations, and system health — without a status meeting, without a dashboard refresh request.",
+    color: TEAL,
+  },
+] as const;
+
+function PlatformScreenshotSection() {
+  const [active, setActive] = useState<number>(0);
+  const tab = SCREENSHOT_TABS[active];
+  return (
+    <section id="hp-platform-gallery" style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.06)", padding: "88px 0 72px" }}>
+      <div style={{ ...CONTAINER }}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Platform in Action</div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "0 0 14px" }}>
+            See what readiness looks like<br /><span style={{ color: GOLD }}>when it's already staged.</span>
+          </h2>
+          <p style={{ ...DM, color: "rgba(255,255,255,0.62)", fontSize: 14, maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
+            Four views into the platform — from trigger detection to executive execution. Every screen you see is live in the platform, not a mockup.
+          </p>
+        </div>
+
+        {/* Tab bar */}
+        <div style={{ display: "flex", gap: 0, marginBottom: 32, borderBottom: "1px solid rgba(255,255,255,0.1)", justifyContent: "center", flexWrap: "wrap" as const }}>
+          {SCREENSHOT_TABS.map((t, i) => (
+            <button
+              key={t.id}
+              onClick={() => setActive(i)}
+              style={{
+                ...DM, background: "transparent", border: "none", cursor: "pointer",
+                padding: "14px 28px", fontSize: 12, fontWeight: 700,
+                letterSpacing: "0.08em", textTransform: "uppercase" as const,
+                color: i === active ? "#fff" : "rgba(255,255,255,0.42)",
+                borderBottom: i === active ? `2px solid ${t.color}` : "2px solid transparent",
+                transition: "all 0.2s ease", marginBottom: -1,
+                whiteSpace: "nowrap" as const,
+              }}
+            >
+              <span style={{ fontSize: 9, letterSpacing: "0.14em", color: i === active ? t.color : "rgba(255,255,255,0.25)", marginRight: 8 }}>{t.tag}</span>
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Browser chrome + screenshot */}
+        <div style={{ borderRadius: "6px 6px 0 0", overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)" }}>
+          {/* Chrome bar */}
+          <div style={{ background: "#0d1326", padding: "10px 16px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+            <div style={{ display: "flex", gap: 6 }}>
+              {["#FF5F57","#FEBC2E","#28C840"].map(c => <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c, opacity: 0.7 }} />)}
+            </div>
+            <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+              <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 4, padding: "3px 20px", display: "flex", alignItems: "center", gap: 6 }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(43,138,110,0.6)" }} />
+                <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: "0.04em" }}>readiness.vaughnmartin.com</span>
+              </div>
+            </div>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", color: tab.color, padding: "3px 10px", border: `1px solid ${tab.color}33`, background: `${tab.color}11` }}>
+              {tab.tag}
+            </div>
+          </div>
+          {/* Screenshot */}
+          <div style={{ position: "relative", lineHeight: 0 }}>
+            <img
+              key={tab.id}
+              src={tab.src}
+              alt={tab.label}
+              style={{ width: "100%", display: "block", transition: "opacity 0.25s ease" }}
+              loading="lazy"
+            />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 60%, rgba(10,15,46,0.85) 100%)", pointerEvents: "none" }} />
+          </div>
+        </div>
+
+        {/* Caption below screenshot */}
+        <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderTop: "none", padding: "28px 36px", display: "flex", alignItems: "flex-start", gap: 32, flexWrap: "wrap" as const }}>
+          <div style={{ flex: "1 1 300px" }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", color: tab.color, marginBottom: 8, textTransform: "uppercase" as const }}>{tab.tag}</div>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(16px,1.6vw,20px)", fontWeight: 600, color: "#fff", lineHeight: 1.35, marginBottom: 0 }}>{tab.headline}</div>
+          </div>
+          <div style={{ flex: "1 1 340px" }}>
+            <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.68)", lineHeight: 1.75, margin: 0 }}>{tab.desc}</p>
+          </div>
+          <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
+            <a href="/demo-experience" style={{ ...DM, background: "transparent", border: `1px solid ${tab.color}66`, color: tab.color, fontWeight: 700, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "12px 24px", textDecoration: "none", whiteSpace: "nowrap" as const }}>
+              See Full Demo →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 // ─── ANATOMY OF A READINESS PROTOCOL ─────────────────────────────────────────
 function AnatomySection() {
   return (
@@ -4211,6 +4341,9 @@ export default function Homepage() {
       <BinaryStakesSection />
 
       <ThreeStepSection />
+
+      {/* PLATFORM SCREENSHOT GALLERY — Product visuals */}
+      <PlatformScreenshotSection />
 
       {/* BENCHMARK — Lead magnet strip */}
       <div style={{ background: "#F0EDE4", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "20px 0" }}>
