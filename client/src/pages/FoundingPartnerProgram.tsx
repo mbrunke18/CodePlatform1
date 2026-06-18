@@ -1,5 +1,6 @@
 import { useLocation } from 'wouter';
 import { useAuth } from '@/hooks/useAuth';
+import ProductShowcase from '@/components/marketing/ProductShowcase';
 import PageLayout from '@/components/layout/PageLayout';
 import { useEffect, useState } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
@@ -442,33 +443,22 @@ export default function FoundingPartnerProgram() {
           </div>
         </section>
 
-        {/* ── Product Platform Strip ── */}
-        <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '24px 32px 0' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>The Platform You're Partnering To Deploy</span>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>180 Protocols · 231 Triggers · 12-Minute Activation</span>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-              {([
-                { img: '/screenshots/new_protocol_library.jpg', label: 'PROTOCOLS', sub: '180 pre-staged', color: '#C9A84C' },
-                { img: '/screenshots/deck_signals.jpg', label: 'SIGNALS', sub: '231 triggers · live', color: '#2B8A6E' },
-                { img: '/screenshots/deck_activation.jpg', label: 'EXECUTE', sub: '12-minute chain', color: '#1B6B9A' },
-                { img: '/screenshots/new_advance_intelligence.jpg', label: 'ADVANCE', sub: 'Institutional learning', color: '#7B5EA7' },
-              ] as const).map((item) => (
-                <div key={item.label} style={{ overflow: 'hidden' }}>
-                  <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                  </div>
-                  <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                    <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* ── Platform Showcase ── */}
+        <ProductShowcase
+          eyebrow="The Platform You're Partnering to Deploy"
+          headline="The platform you'll be building your operating model on."
+          subheadline="180 protocols. 90 days. Live signal detection from day one."
+          image="/screenshots/new_protocol_library.jpg"
+          imageAlt="Readiness OS Protocol Library — Founding Partner View"
+          urlPath="/protocol-library"
+          urlTag="PARTNER ACCESS"
+          tagColor="#C9A84C"
+          features={[
+            { color: "#C9A84C", label: "180 Protocols Ready", description: "Your Founding Partner access includes the full library — 180 cross-industry Readiness Protocols, available from day one." },
+            { color: "#2B8A6E", label: "5 Protocols Staged in 90 Days", description: "During the Founding Partner validation period, your team configures and stages 5 protocols matched to your highest-priority situations." },
+            { color: "#4A90C4", label: "Live Signal Monitoring", description: "231 triggers monitored continuously from your first day on platform — no setup delay, no manual configuration." },
+          ]}
+        />
 
         {/* Differentiation Strip */}
         <section className="py-8 px-6 bg-[#0A0F2E] border-t border-white/5">

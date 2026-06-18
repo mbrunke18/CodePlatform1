@@ -1,5 +1,6 @@
 import { useState, Fragment, type CSSProperties } from "react";
 import { Link } from "wouter";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import PageLayout from "@/components/layout/PageLayout";
 
 const NAVY    = "#0A0F2E";
@@ -243,32 +244,22 @@ export default function ProofStory() {
           </div>
         </div>
 
-        {/* ── Product Platform Strip ── */}
-        <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '24px 32px 0' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>The Platform — Coordinated Execution in 12 Minutes</span>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>All 3 Strategic Domains</span>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
-              {([
-                { img: '/screenshots/deck_signals.jpg', label: 'GROWTH & POSITIONING', sub: 'Signals monitored · Opportunities staged', color: '#2B8A6E' },
-                { img: '/screenshots/deck_activation.jpg', label: 'RISK & RESILIENCE', sub: 'Execution chain · 12 minutes', color: '#C9A84C' },
-                { img: '/screenshots/new_how_it_executes.jpg', label: 'TRANSFORMATION', sub: 'Coordinated rollout · All stakeholders', color: '#1B6B9A' },
-              ] as const).map((item) => (
-                <div key={item.label} style={{ overflow: 'hidden' }}>
-                  <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.18em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                  </div>
-                  <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                    <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* ── Platform Showcase ── */}
+        <ProductShowcase
+          eyebrow="Proof in Action"
+          headline="Three triggers. Three organizations. All 12 minutes."
+          subheadline="Real activation patterns. Documented outcomes."
+          image="/screenshots/deck_activation.jpg"
+          imageAlt="Readiness OS Activation Console — Live Execution Chain"
+          urlPath="/activation-console"
+          urlTag="LIVE CHAIN"
+          tagColor="#2B8A6E"
+          features={[
+            { color: "#2B8A6E", label: "Ransomware — 12 min", description: "Hospital EHR locked across 3 nodes. CSO authorized at 1:20. Patient care continuity confirmed at 12:00. $18M exposure contained." },
+            { color: "#C9A84C", label: "Activist Investor — 12 min", description: "Elliott Management 13D detected at 0:06. Board briefed, defense posture activated, proxy advisor outreach staged — all in 12 minutes." },
+            { color: "#4A90C4", label: "Supply Chain — 12 min", description: "847 retail partners notified, FDA hold activated, consumer advisory staged — recall contained before public exposure." },
+          ]}
+        />
 
         {/* Story Selector */}
         <div style={{ background: NAVY_BG, borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "20px 48px" }}>

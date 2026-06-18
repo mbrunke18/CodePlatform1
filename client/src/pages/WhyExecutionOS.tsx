@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -193,32 +194,21 @@ export default function WhyExecutionOS() {
           </div>
         </section>
 
-        {/* ── Product Platform Strip ── */}
-        <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '24px 48px 0' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>The Platform · What No One Else Built</span>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Detect · Coordinate · Execute · Learn</span>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
-              {([
-                { img: '/screenshots/deck_signals.jpg', label: 'DETECT', title: 'Signal Intelligence', sub: 'Continuous monitoring — 231 triggers', color: '#2B8A6E' },
-                { img: '/screenshots/new_mission_control.jpg', label: 'COORDINATE', title: 'Mission Control', sub: '180 protocols pre-staged', color: '#C9A84C' },
-                { img: '/screenshots/new_advance_intelligence.jpg', label: 'LEARN', title: 'Advance Intelligence', sub: 'Institutional memory closes the loop', color: '#7B5EA7' },
-              ] as const).map((item) => (
-                <div key={item.label} style={{ overflow: 'hidden' }}>
-                  <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label} · {item.title}</div>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                  </div>
-                  <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                    <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* ── Platform Showcase ── */}
+        <ProductShowcase
+          eyebrow="The Operating Model Layer"
+          headline="Every enterprise has the AI. None have the operating model to use it."
+          image="/screenshots/deck_signals.jpg"
+          imageAlt="Readiness OS Signal Intelligence — 231 Live Triggers"
+          urlPath="/signal-detection"
+          urlTag="MONITORING"
+          tagColor="#2B8A6E"
+          features={[
+            { color: "#2B8A6E", label: "Continuous Signal Detection", description: "231 triggers monitored across competitive, regulatory, financial, and operational domains — before any human could act." },
+            { color: "#C9A84C", label: "Pre-Staged Protocols", description: "180 Readiness Protocols fully built, approved, and staged before any trigger fires. No assembly required." },
+            { color: "#4A90C4", label: "Executive Authority Preserved", description: "No Readiness Protocol activates without executive sign-off. Preparation compresses mobilization; the decision remains human." },
+          ]}
+        />
 
         {/* ── DECISION RIGHTS FRAMING ───────────────────── */}
         <section style={{ background: "#F8F7F4", padding: "64px 48px", borderBottom: "1px solid #E8E4DC" }}>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import HofmannFrameworkDiagram from "@/components/HofmannFrameworkDiagram";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import EnterpriseAIFrameworkDiagram from "@/components/EnterpriseAIFrameworkDiagram";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -273,33 +274,22 @@ export default function InvestorResources() {
         </div>
       </section>
 
-      {/* ── Product Platform Strip ── */}
-      <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '24px 48px 0' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>The Platform Creating the Category</span>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>180 Protocols · 3,600× Execution Head Start · $15B+ Market</span>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-            {([
-              { img: '/screenshots/new_protocol_library.jpg', label: 'PROTOCOL LIBRARY', sub: '180 cross-industry protocols', color: '#C9A84C' },
-              { img: '/screenshots/deck_signals.jpg', label: 'SIGNAL INTELLIGENCE', sub: 'Continuous · 231 triggers', color: '#2B8A6E' },
-              { img: '/screenshots/new_mission_control.jpg', label: 'MISSION CONTROL', sub: 'Live command deck', color: '#1B6B9A' },
-              { img: '/screenshots/new_advance_intelligence.jpg', label: 'ADVANCE 2.0', sub: 'Closed-loop learning moat', color: '#7B5EA7' },
-            ] as const).map((item) => (
-              <div key={item.label} style={{ overflow: 'hidden' }}>
-                <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
-                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                </div>
-                <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                  <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* ── Platform Showcase ── */}
+      <ProductShowcase
+        eyebrow="The Platform Creating the Category"
+        headline="The infrastructure that makes the $15B+ Coordination market real."
+        subheadline="180 protocols. Closed-loop learning. A moat that compounds."
+        image="/screenshots/new_protocol_library.jpg"
+        imageAlt="Readiness OS Protocol Library — 180 Cross-Industry Protocols"
+        urlPath="/protocol-library"
+        urlTag="180 PROTOCOLS"
+        tagColor="#C9A84C"
+        features={[
+          { color: "#C9A84C", label: "180 Cross-Industry Protocols", description: "The full library covers startup to Fortune 500 — every trigger pattern across all 3 strategic domains." },
+          { color: "#2B8A6E", label: "Closed-Loop Learning Moat", description: "ADVANCE 2.0 generates causal hypotheses and proves them after every activation — compounding institutional memory." },
+          { color: "#4A90C4", label: "3,600× Execution Head Start", description: "The category metric: 30 days of enterprise mobilization compressed to 12 minutes. Documented, repeatable, proven." },
+        ]}
+      />
 
       {/* Key Investment Thesis */}
       <section className="py-20 px-6 bg-white">

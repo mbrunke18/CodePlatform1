@@ -1,4 +1,5 @@
 import PageLayout from "@/components/layout/PageLayout";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import { SCENARIO_GROUPS, SCENARIOS } from "./demos/scenarioData";
 
 const NAVY    = "#0A0F2E";
@@ -224,31 +225,21 @@ export default function DemoHub() {
           </div>
         </div>
 
-        {/* Product Platform Strip */}
-        <div style={{ background: "rgba(255,255,255,0.025)", borderBottom: `1px solid ${BD}`, padding: "32px 28px" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: W25 }}>Platform · Activation Console — Live Execution View</span>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: GOLD }}>12 scenarios ready below ↓</span>
-            </div>
-            <div style={{ borderRadius: "5px 5px 0 0", overflow: "hidden", boxShadow: `0 16px 56px rgba(0,0,0,0.5), 0 0 0 1px ${BD}` }}>
-              <div style={{ background: "rgba(255,255,255,0.04)", padding: "7px 12px", display: "flex", alignItems: "center", gap: 10, borderBottom: `1px solid ${W25}20` }}>
-                <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
-                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#FF5F57" }} />
-                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#FEBC2E" }} />
-                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#28C840" }} />
-                </div>
-                <div style={{ flex: 1, background: "rgba(255,255,255,0.04)", border: `1px solid ${BD}`, borderRadius: 3, padding: "2px 10px", display: "flex", alignItems: "center", gap: 6 }}>
-                  <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL_LT, flexShrink: 0 }} />
-                  <span style={{ ...BC, fontSize: 9, color: W25, letterSpacing: "0.04em" }}>readiness-os.app / demo-hub — experience center · 12 scenarios across 3 domains</span>
-                </div>
-              </div>
-              <div style={{ aspectRatio: "21/7", overflow: "hidden", background: NAVY_BG }}>
-                <img src="/screenshots/deck_activation.jpg" alt="Readiness OS Activation Console" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* ── Platform Showcase ── */}
+        <ProductShowcase
+          eyebrow="Platform in Action"
+          headline="Watch 12-minute execution across all 3 strategic domains."
+          image="/screenshots/deck_activation.jpg"
+          imageAlt="Readiness OS Activation Console — Live Execution"
+          urlPath="/demo-hub"
+          urlTag="LIVE DEMO"
+          tagColor="#2B8A6E"
+          features={[
+            { color: "#2B8A6E", label: "Growth & Positioning", description: "Competitor displacement, activist investor response, M&A — staged before the trigger fires." },
+            { color: "#C9A84C", label: "Risk & Resilience", description: "Ransomware, FDA recall, supply chain, data breach — 12-minute execution chains, pre-built." },
+            { color: "#4A90C4", label: "Transformation", description: "Go-to-market acceleration, workforce transformation — coordinated rollout across all stakeholders." },
+          ]}
+        />
 
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "56px 28px 80px" }}>
 

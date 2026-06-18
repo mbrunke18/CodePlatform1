@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -122,32 +123,21 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* ── Product Platform Strip ── */}
-        <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '20px 48px 0' }}>
-          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>The Platform You're About to Experience</span>
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>180 Protocols · 12-Minute Execution</span>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
-              {([
-                { img: '/screenshots/new_protocol_library.jpg', label: 'READINESS PROTOCOLS', sub: '180 pre-staged across all domains', color: '#C9A84C' },
-                { img: '/screenshots/deck_signals.jpg', label: 'SIGNAL INTELLIGENCE', sub: 'Continuous monitoring · 231 triggers', color: '#2B8A6E' },
-                { img: '/screenshots/deck_activation.jpg', label: 'EXECUTION CHAIN', sub: '12-minute response · all stakeholders', color: '#1B6B9A' },
-              ] as const).map((item) => (
-                <div key={item.label} style={{ overflow: 'hidden' }}>
-                  <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                  </div>
-                  <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                    <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* ── Platform Showcase ── */}
+        <ProductShowcase
+          eyebrow="The Platform You're About to Experience"
+          headline="The response will be ready before you need us."
+          image="/screenshots/new_mission_control.jpg"
+          imageAlt="Readiness OS Mission Control — Executive Command Interface"
+          urlPath="/mission-control"
+          urlTag="LIVE"
+          tagColor="#C9A84C"
+          features={[
+            { color: "#C9A84C", label: "180 Readiness Protocols", description: "Pre-staged execution packages covering every strategic situation your organization will face." },
+            { color: "#2B8A6E", label: "231 Triggers Monitored", description: "Continuous signal detection — threats and opportunities surface before the first committee call." },
+            { color: "#4A90C4", label: "12-Minute Execution", description: "From trigger detection to full organizational response. The entire mobilization cycle in 12 minutes." },
+          ]}
+        />
 
         {/* Main Form Section */}
         <section className="py-20 px-12 bg-[#F8F7F4]">

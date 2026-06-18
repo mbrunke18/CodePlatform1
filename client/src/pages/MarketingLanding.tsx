@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import { 
   Shield, 
   Zap, 
@@ -107,33 +108,22 @@ export default function MarketingLanding() {
         </div>
       </section>
 
-      {/* ── Product Platform Strip ── */}
-      <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '24px 48px 0' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>What Your Competitors Will Spend 3 Years Building</span>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>180 Protocols · 3,600× Execution Head Start</span>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-            {([
-              { img: '/screenshots/new_protocol_library.jpg', label: 'PROTOCOLS', sub: '180 pre-staged responses', color: '#C9A84C' },
-              { img: '/screenshots/new_mission_control.jpg', label: 'MISSION CONTROL', sub: 'Live command deck', color: '#2B8A6E' },
-              { img: '/screenshots/deck_signals.jpg', label: 'SIGNAL INTEL', sub: '231 triggers monitored', color: '#1B6B9A' },
-              { img: '/screenshots/deck_activation.jpg', label: 'EXECUTION CHAIN', sub: '12-minute activation', color: '#7B5EA7' },
-            ] as const).map((item) => (
-              <div key={item.label} style={{ overflow: 'hidden' }}>
-                <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
-                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                </div>
-                <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                  <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* ── Platform Showcase ── */}
+      <ProductShowcase
+        eyebrow="The Platform"
+        headline="While competitors mobilize, you're already executing."
+        subheadline="3,600× Execution Head Start — 30 days compressed to 12 minutes."
+        image="/screenshots/new_mission_control.jpg"
+        imageAlt="Readiness OS Mission Control — Command Intelligence Interface"
+        urlPath="/mission-control"
+        urlTag="LIVE"
+        tagColor="#C9A84C"
+        features={[
+          { color: "#C9A84C", label: "Pre-Staged Responses", description: "180 Readiness Protocols fully built before any trigger fires — no assembly required at the moment of crisis." },
+          { color: "#2B8A6E", label: "Continuous Detection", description: "231 triggers monitored across every strategic domain — threats and opportunities surface before the first committee call." },
+          { color: "#4A90C4", label: "12-Minute Execution", description: "Signal detected. Executive authorizes. Full organizational response deployed. 3,600× execution head start, live." },
+        ]}
+      />
 
       {/* Solution - Category Definition */}
       <section className="py-24 px-6 bg-white border-b border-[#E8E4DC]">

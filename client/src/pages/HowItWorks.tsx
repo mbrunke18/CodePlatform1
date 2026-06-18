@@ -1,4 +1,5 @@
 import PageLayout from '@/components/layout/PageLayout';
+import ProductShowcase from '@/components/marketing/ProductShowcase';
 import ExecutionProcessDiagram from '@/components/ExecutionProcessDiagram';
 import EnterpriseAIFrameworkDiagram from '@/components/EnterpriseAIFrameworkDiagram';
 import { Button } from "@/components/ui/button";
@@ -88,33 +89,23 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* ── Product Platform Strip ── */}
-      <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '28px 32px 0' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>Platform Views — The Full Advantage System</span>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Identify · Detect · Execute · Advance</span>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-            {([
-              { img: '/screenshots/new_getting_started.jpg', label: 'IDENTIFY', sub: 'Protocol setup', color: '#C9A84C' },
-              { img: '/screenshots/deck_signals.jpg', label: 'DETECT', sub: '231 live triggers', color: '#2B8A6E' },
-              { img: '/screenshots/deck_activation.jpg', label: 'EXECUTE', sub: '12-minute chain', color: '#1B6B9A' },
-              { img: '/screenshots/new_advance_intelligence.jpg', label: 'ADVANCE', sub: 'Institutional learning', color: '#7B5EA7' },
-            ] as const).map((item) => (
-              <div key={item.label} style={{ overflow: 'hidden' }}>
-                <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
-                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
-                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
-                </div>
-                <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                  <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* ── Platform Showcase ── */}
+      <ProductShowcase
+        eyebrow="How It Works"
+        headline="Preparation replaces coordination. Readiness replaces reaction."
+        subheadline="The response is ready before the trigger fires."
+        image="/screenshots/new_mission_control.jpg"
+        imageAlt="Readiness OS — Full Platform View"
+        urlPath="/how-it-works"
+        urlTag="PLATFORM"
+        tagColor="#C9A84C"
+        features={[
+          { color: "#C9A84C", label: "Identify", description: "Configure the 180 Readiness Protocols that match your organization's strategic exposure and industry profile." },
+          { color: "#2B8A6E", label: "Detect", description: "231 triggers monitored continuously — when a signal crosses the threshold, the matched protocol is instantly staged." },
+          { color: "#4A90C4", label: "Execute", description: "Executive authorizes. Stakeholders notified. Tasks deployed. Full organizational response in 12 minutes." },
+          { color: "#C9A84C", label: "Advance", description: "Every activation closes the loop — causal hypotheses proven, protocols updated, institutional memory compounded." },
+        ]}
+      />
 
       {/* ── LIFECYCLE STAGE NAV BAR ── */}
       <div style={{ background: NAVY, borderBottom: `1px solid rgba(255,255,255,0.08)`, display: "flex", overflowX: "auto" }}>

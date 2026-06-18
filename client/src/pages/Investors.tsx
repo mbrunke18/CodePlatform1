@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import PageLayout from "@/components/layout/PageLayout";
+import ProductShowcase from "@/components/marketing/ProductShowcase";
 import boardroomImg from "@/assets/images/investors-boardroom.png";
 import { Button } from "@/components/ui/button";
 import { updatePageMetadata } from "@/lib/seo";
@@ -414,33 +415,25 @@ export default function Investors() {
             </div>
           </motion.div>
 
-          {/* ── Product Platform Strip ── */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.04 }} className="mb-16">
-            <div style={{ background: '#0A0F2E', padding: '28px 28px 0' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 10 }}>
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.32)' }}>The Platform — Live Product Views</span>
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: GOLD }}>Detect · Prepare · Execute</span>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
-                {([
-                  { img: '/screenshots/deck_signals.jpg', label: 'DETECT', title: 'Signal Intelligence', sub: '231 triggers · live monitoring', color: TEAL },
-                  { img: '/screenshots/new_mission_control.jpg', label: 'PREPARE', title: 'Mission Control', sub: '180 protocols · pre-staged', color: GOLD },
-                  { img: '/screenshots/deck_activation.jpg', label: 'EXECUTE', title: 'Activation Console', sub: '12-minute execution chain', color: '#1B3A6B' },
-                ] as const).map(item => (
-                  <div key={item.label} style={{ overflow: 'hidden' }}>
-                    <div style={{ borderLeft: `3px solid ${item.color}`, padding: '7px 12px 6px', background: 'rgba(255,255,255,0.04)' }}>
-                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7.5, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const, marginBottom: 1 }}>{item.label}</div>
-                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 13, fontWeight: 700, color: '#fff', lineHeight: 1.2 }}>{item.title}</div>
-                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.35)', marginTop: 1 }}>{item.sub}</div>
-                    </div>
-                    <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
-                      <img src={item.img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          {/* ── Platform Showcase ── */}
+          <div className="mb-16">
+            <ProductShowcase
+              eyebrow="The Platform"
+              headline="The infrastructure your portfolio companies don't have."
+              subheadline="180 Readiness Protocols. Staged before the trigger fires."
+              image="/screenshots/new_mission_control.jpg"
+              imageAlt="Readiness OS Mission Control"
+              urlPath="/mission-control"
+              urlTag="LIVE"
+              tagColor="#C9A84C"
+              features={[
+                { color: "#2B8A6E", label: "231 Triggers Monitored", description: "Continuous signal detection across financial, regulatory, competitive, and operational domains." },
+                { color: "#C9A84C", label: "180 Readiness Protocols", description: "Pre-staged execution packages covering every situation from startup to Fortune 500." },
+                { color: "#4A90C4", label: "12-Minute Execution", description: "From trigger detection to full organizational response — 30 days compressed to 12 minutes." },
+              ]}
+              topBorder={false}
+            />
+          </div>
 
           {/* ── Category Manifesto ─────────────────────────────────────────── */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="mb-20">
