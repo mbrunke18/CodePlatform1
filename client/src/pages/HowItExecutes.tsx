@@ -196,12 +196,24 @@ export default function HowItExecutes() {
             <p style={{ fontSize: 16, color: MUTED, maxWidth: 640, margin: "0 auto 16px", lineHeight: 1.7 }}>
               While competitors spend 30 days figuring out who needs to be in the room, every task is pre-staged, every stakeholder is mapped, every budget authority is pre-approved. Watch exactly how 12 minutes replaces 30 days.
             </p>
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.6 }}>
-              This is the animated walkthrough — watch the chain execute. Want to run the scenario yourself?{" "}
-              <a href="/12-minute-experience" style={{ color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}55` }}>
-                Try the interactive 12-Minute Test Drive →
-              </a>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 560, margin: "0 auto 20px", lineHeight: 1.6 }}>
+              This is the animated walkthrough — watch the chain execute. Want to run the scenario yourself?
             </p>
+            {/* Primary CTAs — visible above fold */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, flexWrap: "wrap", marginBottom: 36 }}>
+              <a
+                href="/12-minute-experience"
+                style={{ fontFamily: "'Barlow', sans-serif", textDecoration: "none", display: "inline-block", background: GOLD, color: NAVY, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", padding: "15px 32px", textTransform: "uppercase", whiteSpace: "nowrap" }}
+              >
+                Run the 12-Minute Test Drive →
+              </a>
+              <a
+                href="/demo-experience"
+                style={{ fontFamily: "'Barlow', sans-serif", textDecoration: "none", display: "inline-block", background: "transparent", color: TEAL, border: `1.5px solid ${TEAL}`, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", padding: "14px 28px", textTransform: "uppercase", whiteSpace: "nowrap" }}
+              >
+                Begin Full Platform Demo →
+              </a>
+            </div>
             {/* 4-phase timing breakdown */}
             <div style={{ maxWidth: 780, margin: "0 auto", border: "1px solid rgba(201,168,76,0.18)", background: "rgba(255,255,255,0.03)" }}>
               <div style={{ padding: "12px 20px", borderBottom: "1px solid rgba(201,168,76,0.12)", textAlign: "center" }}>

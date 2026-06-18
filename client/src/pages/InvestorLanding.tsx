@@ -109,13 +109,30 @@ export default function InvestorLanding() {
               The Salesforce Moment for Strategic Readiness
             </h1>
             
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, fontStyle: 'italic', color: '#C9A84C', marginBottom: 20 }} data-testid="text-tagline">
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, fontStyle: 'italic', color: '#C9A84C', marginBottom: 28 }} data-testid="text-tagline">
               The response is ready before the trigger fires.
             </p>
-            
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: 16, maxWidth: 760, margin: '0 auto 16px', lineHeight: 1.55 }}>
+
+            {/* Investor CTAs — directly after tagline, visible above fold */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 36 }}>
+              <a
+                href="mailto:mbrunke@vaughnmartin.com"
+                style={{ fontFamily: "'Barlow', sans-serif", textDecoration: 'none', display: 'inline-block', background: '#C9A84C', color: '#0A0F2E', fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', padding: '16px 36px', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' }}
+              >
+                Talk to the Founder →
+              </a>
+              <a
+                href="/demo-experience"
+                style={{ fontFamily: "'Barlow', sans-serif", textDecoration: 'none', display: 'inline-block', background: 'transparent', color: '#2B8A6E', border: '1.5px solid #2B8A6E', fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', padding: '15px 28px', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' }}
+              >
+                See the Platform →
+              </a>
+            </div>
+
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: 32, maxWidth: 760, margin: '0 auto 32px', lineHeight: 1.55 }}>
               The problem isn't strategy, talent, or AI tools. It's that no enterprise has the coordination infrastructure to make the response ready before the trigger fires. We built it.
             </p>
+
             {/* VaughnMartin Thesis Block — leads with WHY before the market numbers */}
             <div className="max-w-3xl mx-auto mb-10 border border-[#C9A84C]/30 bg-white/5 backdrop-blur-sm p-8 text-left">
               <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C9A84C] mb-4">The VaughnMartin Thesis</div>
