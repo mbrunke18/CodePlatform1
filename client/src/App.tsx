@@ -826,6 +826,7 @@ function Router() {
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>
         {renderRedirects(["/crisis", "/crisis-response-center"], "/strategic-monitoring")}
+        <Route path="/channel-partners" component={lazy(() => import('./pages/ChannelPartners'))} />
         <Route path="/request-evaluation" component={lazy(() => import('./pages/RequestEvaluation'))} />
         <Route path="/readiness-ad" component={lazy(() => import('./pages/ReadinessAd'))} />
         <Route path="/commercial">{() => { window.location.replace('/commercial.html'); return null; }}</Route>

@@ -988,21 +988,21 @@ function HeroSection() {
                 Before the Trigger Fires.
               </h2>
 
-              <p style={{ ...DM, color: "rgba(255,255,255,0.82)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 16px" }}>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.96)", fontSize: "clamp(17px,1.4vw,19px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 16px" }}>
                 Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. That delay is the Mobilization Tax.
               </p>
-              <p style={{ ...DM, color: GOLD, fontSize: "clamp(15px,1.25vw,17px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 28px" }}>
+              <p style={{ ...DM, color: GOLD, fontSize: "clamp(17px,1.4vw,19px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 28px" }}>
                 The Mobilization Tax doesn't get reduced. It gets eliminated.
               </p>
 
               {/* CTAs — one primary experience path, one conversion path */}
               <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 32, flexWrap: "wrap" as const }}>
                 <Link
-                  href="/12-minute-experience"
+                  href="/demo-hub"
                   onClick={() => trackCTA("hero_scanner")}
                   style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 32px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
                 >
-                  Try the 12-Minute Experience →
+                  Full Platform Demo →
                 </Link>
                 <Link
                   href="/request-access"
@@ -1011,6 +1011,15 @@ function HeroSection() {
                 >
                   Apply for Founding Partner Access →
                 </Link>
+              </div>
+
+              {/* Social proof — VaughnMartin runs on its own platform */}
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 20, padding: "12px 16px", background: "rgba(43,138,110,0.08)", borderLeft: `2px solid ${TEAL}` }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 5 }} />
+                <span style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.75)", letterSpacing: "0.01em", lineHeight: 1.6 }}>
+                  <strong style={{ color: "rgba(255,255,255,0.95)", fontWeight: 700 }}>We run on our own platform.</strong>{" "}
+                  VaughnMartin uses Readiness OS for every operational situation it faces — the same 180 protocols, the same 12-minute execution standard.
+                </span>
               </div>
 
               <div style={{ margin: "0 0 20px" }}>

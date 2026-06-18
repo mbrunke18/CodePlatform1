@@ -65,6 +65,7 @@ export default function Footer() {
         { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Readiness OS", path: "/the-proof" },
         { label: "Why Not Consulting?", path: "/vs-consulting" },
+        { label: "Channel Partners", path: "/channel-partners" },
         { label: "User Guide", path: "/user-guide" },
         { label: "About the Founder", path: "/about" },
         { label: "Founder's Story", path: "/founder-story" },
@@ -202,6 +203,12 @@ export default function Footer() {
                 className="text-sm text-[#C9A84C] hover:text-[#C9A84C] transition-colors font-medium"
               >
                 Investors →
+              </button>
+              <button 
+                onClick={() => navigateTo("/channel-partners")}
+                className="text-sm text-slate-300 hover:text-white transition-colors"
+              >
+                Channel Partners →
               </button>
               <button 
                 onClick={() => navigateTo("/request-access")}
