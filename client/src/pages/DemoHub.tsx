@@ -195,9 +195,31 @@ export default function DemoHub() {
             <div style={{ ...CG, fontSize: 22, fontStyle: "italic", color: GOLD_LT, lineHeight: 1.4, marginBottom: 24 }}>
               Growth. Resilience. Transformation. The response is always ready.
             </div>
-            <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 560, marginBottom: 32 }}>
+            <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 560, marginBottom: 28 }}>
               Every situation demands the same capability: your full organization mobilized in 12 minutes. Select a domain and see exactly how Readiness OS responds.
             </p>
+
+            {/* Primary CTA — Full Platform Demo */}
+            <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 32 }}>
+              <a
+                href="/demo-experience"
+                style={{
+                  ...BC, textDecoration: "none",
+                  display: "inline-flex", alignItems: "center", gap: 10,
+                  background: TEAL_LT, color: NAVY,
+                  fontSize: 13, fontWeight: 700, letterSpacing: "0.14em",
+                  padding: "16px 36px", textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                  boxShadow: `0 0 24px rgba(43,138,110,0.35)`,
+                }}
+              >
+                Begin Full Platform Demo →
+              </a>
+              <div style={{ ...BAR, fontSize: 12, color: W50, lineHeight: 1.5 }}>
+                9 steps · No login required<br/>
+                <span style={{ color: TEAL_LT, fontWeight: 600 }}>3 Phases: Preparation · Response · Advance</span>
+              </div>
+            </div>
 
             {/* Domain pills */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
