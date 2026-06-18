@@ -1158,9 +1158,23 @@ function HeroSection() {
 
           {/* RIGHT — Live Simulation Panel */}
           <div style={{ padding: "32px 0 32px 32px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: 10 }}>
-            <HeroSimPanel />
-            <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.38)", textAlign: "center", letterSpacing: "0.03em", fontStyle: "italic" }}>
-              This is live — click any scenario to see it execute in real time.
+            {/* Browser Chrome Frame */}
+            <div style={{ borderRadius: "6px 6px 0 0", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.09)" }}>
+              <div style={{ background: "rgba(255,255,255,0.055)", padding: "8px 12px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FEBC2E" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
+                </div>
+                <div style={{ flex: 1, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 3, padding: "3px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                  <span style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.32)", letterSpacing: "0.04em" }}>readiness-os.app / live-execution-simulation</span>
+                </div>
+              </div>
+              <HeroSimPanel />
+            </div>
+            <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.35)", textAlign: "center", letterSpacing: "0.03em", fontStyle: "italic" }}>
+              Live execution simulation — click the dots to switch trigger scenarios
             </div>
           </div>
         </div>

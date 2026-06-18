@@ -297,6 +297,29 @@ export default function PlatformHub() {
           </div>
         </div>
 
+        {/* ── PRODUCT IN ACTION ── */}
+        <div style={{ marginBottom: 28 }}>
+          <SectionLabel>The Platform in Action</SectionLabel>
+          <div className="ph-3col-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+            {([
+              { img: "/screenshots/deck_signals.jpg", label: "DETECT", title: "Signal Intelligence", sub: "231 triggers · live monitoring every 15 min", color: TEAL },
+              { img: "/screenshots/new_protocol_library.jpg", label: "PREPARE", title: "Protocol Library", sub: "180 responses pre-staged before the trigger fires", color: GOLD },
+              { img: "/screenshots/deck_activation.jpg", label: "EXECUTE", title: "Activation Console", sub: "12-minute coordination chain from trigger to execution", color: NAVY },
+            ] as const).map(item => (
+              <div key={item.label} style={{ overflow: "hidden", boxShadow: "0 4px 20px rgba(10,15,46,0.10)", border: "1px solid rgba(10,15,46,0.10)" }}>
+                <div style={{ borderLeft: `3px solid ${item.color}`, padding: "9px 14px 8px", background: NAVY }}>
+                  <div style={{ ...DM, fontSize: 8, fontWeight: 700, letterSpacing: "0.22em", color: item.color, textTransform: "uppercase" as const, marginBottom: 2 }}>{item.label}</div>
+                  <div style={{ ...SERIF, fontSize: 15, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>{item.title}</div>
+                  <div style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.38)", letterSpacing: "0.06em", marginTop: 2 }}>{item.sub}</div>
+                </div>
+                <div style={{ aspectRatio: "16/10", overflow: "hidden", background: "#0a0f2e" }}>
+                  <img src={item.img} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ── STRATEGIC DOMAINS ── */}
         <div style={{ marginBottom: 28 }}>
           <SectionLabel>Strategic Domains · 210 Protocols Across 3 Domains</SectionLabel>

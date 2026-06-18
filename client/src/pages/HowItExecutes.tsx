@@ -226,6 +226,32 @@ export default function HowItExecutes() {
           </div>
         </div>
 
+        {/* Product Screenshot Strip */}
+        <div style={{ borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "32px 48px", background: "rgba(255,255,255,0.02)" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Platform Execution Interface — Live View</span>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD }}>Choose your trigger scenario below ↓</span>
+            </div>
+            <div style={{ borderRadius: "5px 5px 0 0", overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.08)" }}>
+              <div style={{ background: "rgba(255,255,255,0.05)", padding: "7px 12px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
+                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#FF5F57" }} />
+                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#FEBC2E" }} />
+                  <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#28C840" }} />
+                </div>
+                <div style={{ flex: 1, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 3, padding: "2px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                  <span style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: "0.04em" }}>readiness-os.app / how-it-executes — 12-minute execution chain</span>
+                </div>
+              </div>
+              <div style={{ aspectRatio: "21/7", overflow: "hidden", background: NAVY }}>
+                <img src="/screenshots/deck_how_it_executes.jpg" alt="Readiness OS execution chain" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Scenario Selector */}
         <div style={{ borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "20px 48px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>

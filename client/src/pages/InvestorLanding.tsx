@@ -173,6 +173,46 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── Product Platform Strip ── */}
+        <section style={{ background: '#080C22', borderTop: '1px solid rgba(201,168,76,0.15)', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '32px 28px 0' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 10 }}>
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.3)' }}>Platform Preview — Live Product Views</span>
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Detect · Prepare · Execute · Learn</span>
+            </div>
+            <div style={{ borderRadius: '4px 4px 0 0', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(201,168,76,0.18)' }}>
+              <div style={{ background: 'rgba(255,255,255,0.04)', padding: '7px 12px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                <div style={{ display: 'flex', gap: 5 }}>
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#FF5F57' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#FEBC2E' }} />
+                  <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#28C840' }} />
+                </div>
+                <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 3, padding: '2px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#2B8A6E' }} />
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, color: 'rgba(255,255,255,0.3)' }}>readiness-os.app / mission-control — coordination infrastructure for startup to Fortune 500</span>
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                {([
+                  { img: '/screenshots/deck_signals.jpg', label: 'DETECT', title: 'Signal Intelligence', sub: '231 triggers · live', color: '#2B8A6E' },
+                  { img: '/screenshots/new_mission_control.jpg', label: 'PREPARE', title: 'Mission Control', sub: '180 protocols', color: '#C9A84C' },
+                  { img: '/screenshots/deck_activation.jpg', label: 'EXECUTE', title: 'Activation Console', sub: '12 minutes', color: '#1B6B9A' },
+                ] as const).map((item, i) => (
+                  <div key={item.label} style={{ borderRight: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
+                    <div style={{ padding: '6px 12px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.025)', borderLeft: `2px solid ${item.color}` }}>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7.5, fontWeight: 700, letterSpacing: '0.22em', color: item.color, textTransform: 'uppercase' as const }}>{item.label} · {item.title}</div>
+                      <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>{item.sub}</div>
+                    </div>
+                    <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
+                      <img src={item.img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── DR. HUANG NAMED ENDORSEMENT ──────────────────────────────────── */}
         <section style={{ background: '#F0EDE4', borderTop: '4px solid #C9A84C', padding: '48px 32px' }}>
           <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', gap: 48, alignItems: 'flex-start' }}>

@@ -243,6 +243,33 @@ export default function ProofStory() {
           </div>
         </div>
 
+        {/* ── Product Platform Strip ── */}
+        <div style={{ background: '#080C22', borderBottom: '1px solid rgba(201,168,76,0.12)', padding: '24px 32px 0' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.28)' }}>The Platform — Coordinated Execution in 12 Minutes</span>
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>All 3 Strategic Domains</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+              {([
+                { img: '/screenshots/deck_signals.jpg', label: 'GROWTH & POSITIONING', sub: 'Signals monitored · Opportunities staged', color: '#2B8A6E' },
+                { img: '/screenshots/deck_activation.jpg', label: 'RISK & RESILIENCE', sub: 'Execution chain · 12 minutes', color: '#C9A84C' },
+                { img: '/screenshots/new_how_it_executes.jpg', label: 'TRANSFORMATION', sub: 'Coordinated rollout · All stakeholders', color: '#1B6B9A' },
+              ] as const).map((item) => (
+                <div key={item.label} style={{ overflow: 'hidden' }}>
+                  <div style={{ borderLeft: `2px solid ${item.color}`, padding: '5px 10px 4px', background: 'rgba(255,255,255,0.03)' }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 7, fontWeight: 700, letterSpacing: '0.18em', color: item.color, textTransform: 'uppercase' as const }}>{item.label}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 8.5, color: 'rgba(255,255,255,0.32)', marginTop: 1 }}>{item.sub}</div>
+                  </div>
+                  <div style={{ aspectRatio: '16/10', overflow: 'hidden' }}>
+                    <img src={item.img} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Story Selector */}
         <div style={{ background: NAVY_BG, borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "20px 48px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
