@@ -37,6 +37,22 @@ const tracks = [
     ],
   },
   {
+    audience: "Channel Partner",
+    headline: "Deliver the operating model your enterprise clients are missing.",
+    body: "Readiness OS is the infrastructure layer your consulting practice deploys — your expertise on top of 180 pre-staged protocols. You bring the client relationship. We bring 12-minute execution.",
+    cta: "Explore the Partner Program",
+    ctaPath: "/channel-partners",
+    secondary: "See the Platform Demo →",
+    secondaryPath: "/demo-hub",
+    accent: TEAL,
+    proof: [
+      "Co-delivery model — your expertise, our infrastructure",
+      "Referral and revenue-share on qualified placements",
+      "Dedicated partner demo environment",
+      "Early access to new protocol packs and verticals",
+    ],
+  },
+  {
     audience: "Investor",
     headline: "First-mover in a new enterprise software category.",
     body: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the orchestration layer that makes the $300B Microsoft investment execute in 12 minutes.",
@@ -44,7 +60,7 @@ const tracks = [
     ctaPath: "/investor-landing",
     secondary: "Read the Executive Brief",
     secondaryPath: "/executive-brief",
-    accent: TEAL,
+    accent: "#4A90C4",
     proof: [
       "$42B TAM — Gartner SPM + GRC + EPMO categories",
       "3,600× execution head start — math, not marketing",
@@ -69,7 +85,7 @@ export default function StartHere() {
         {/* ── HEADER ──────────────────────────────────────────────────────── */}
         <div style={{
           background: NAVY,
-          padding: "56px 0 64px",
+          padding: "36px 0 40px",
           backgroundImage: [
             `radial-gradient(ellipse 900px 600px at -10% 0%, rgba(43,138,110,0.14) 0%, transparent 60%)`,
             `radial-gradient(ellipse 900px 600px at 110% 100%, rgba(201,168,76,0.10) 0%, transparent 60%)`,
@@ -78,19 +94,19 @@ export default function StartHere() {
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }}>
 
             {/* Logo */}
-            <div style={{ marginBottom: 48 }}>
-              <VaughnMartinLogo variant="full" height={68} color="light" animated={false} />
+            <div style={{ marginBottom: 28 }}>
+              <VaughnMartinLogo variant="full" height={52} color="light" animated={false} />
             </div>
 
             {/* Headline */}
             <div style={{ maxWidth: 760 }}>
-              <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.20em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>
+              <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.20em", textTransform: "uppercase", color: GOLD, marginBottom: 14 }}>
                 Readiness OS · VaughnMartin
               </div>
-              <h1 style={{ ...CG, fontSize: "clamp(38px, 5.5vw, 62px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "0 0 24px" }}>
+              <h1 style={{ ...CG, fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "0 0 16px" }}>
                 We redesign how work flows<br />in the age of AI.
               </h1>
-              <p style={{ ...DM, fontSize: 18, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: "0 0 48px", maxWidth: 580 }}>
+              <p style={{ ...DM, fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: "0 0 24px", maxWidth: 580 }}>
                 Enterprise operating models were built before AI existed. Readiness OS rebuilds from first principles — pre-staged execution replaces real-time coordination. 30 days compressed to 12 minutes.
               </p>
 
@@ -134,18 +150,18 @@ export default function StartHere() {
         </div>
 
         {/* ── TRACK SELECTOR ──────────────────────────────────────────────── */}
-        <div style={{ padding: "80px 0", background: IVORY }}>
+        <div style={{ padding: "48px 0 64px", background: IVORY }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }}>
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 14 }}>
                 Find Your Path
               </div>
               <h2 style={{ ...CG, fontSize: 36, fontWeight: 700, color: NAVY, margin: 0 }}>
-                Two conversations. One platform.
+                Three paths. One platform.
               </h2>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 3 }}>
               {tracks.map((track, i) => (
                 <div key={i} style={{
                   background: "#fff",

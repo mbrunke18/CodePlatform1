@@ -447,6 +447,11 @@ export default function StandardNav() {
               { path: '/crisis-communications', icon: MessageSquare, label: 'Crisis Communications', sub: '5 audience-specific messages in 18 seconds' },
               { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a situation presents itself' },
             ].map(l => megaItem(l))}
+            <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
+            {megaColHeading("Grow With VaughnMartin")}
+            {[
+              { path: '/channel-partners', icon: Users, label: 'Channel Partner Program', sub: 'Consulting firms, SIs & advisory practices — deliver 12-minute execution to your enterprise clients', featured: true },
+            ].map(l => megaItem(l))}
           </div>
         </div>
       </DropdownMenuContent>
@@ -976,6 +981,7 @@ export default function StandardNav() {
                   { label: 'What We Do', path: '/platform' },
                   { label: 'See It Work', path: '/demo-hub' },
                   { label: 'The Proof', path: '/executive-brief' },
+                  { label: 'Partners', path: '/channel-partners' },
                   { label: 'Pricing', path: '/pricing' },
                 ].map(item => (
                   <button

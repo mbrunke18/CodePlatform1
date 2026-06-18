@@ -108,7 +108,7 @@ export default function RequestAccess() {
         <div style={{ position: "fixed", inset: 0, background: "radial-gradient(ellipse at 20% 60%, rgba(43,138,110,0.07) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.05) 0%, transparent 50%)", pointerEvents: "none" }} />
 
         {/* Left — editorial statement panel */}
-        <div className="hidden lg:flex" style={{ width: 480, flexShrink: 0, flexDirection: "column", justifyContent: "space-between", padding: "60px 56px", position: "relative", zIndex: 1, borderRight: "1px solid rgba(240,237,228,0.06)", backgroundImage: `url(${deskImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="hidden lg:flex" style={{ width: 480, flexShrink: 0, flexDirection: "column", justifyContent: "flex-start", gap: 24, padding: "44px 52px 36px", position: "relative", zIndex: 1, borderRight: "1px solid rgba(240,237,228,0.06)", backgroundImage: `url(${deskImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
           <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.88)", zIndex: 0 }} />
 
           <div style={{ position: "relative", zIndex: 1 }}>
@@ -116,12 +116,12 @@ export default function RequestAccess() {
           </div>
 
           <div style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ width: 28, height: 1.5, background: GOLD, marginBottom: 20 }} />
-            <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD, marginBottom: 14 }} />
+            <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
               Founding Partner Program · 10 Seats
             </p>
 
-            <h2 style={{ ...CG, fontSize: 38, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 28 }}>
+            <h2 style={{ ...CG, fontSize: 34, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 16 }}>
               The first 10 get what<br />
               <em style={{ color: GOLD }}>no one can buy later.</em>
             </h2>
@@ -135,7 +135,7 @@ export default function RequestAccess() {
                 { label: "Direct founder access", detail: "90-day onboarding with the builder — not a CSM" },
                 { label: "Investment credited to contract", detail: "100% of the Founding Partner fee credited at close" },
               ].map(({ label, detail }) => (
-                <div key={label} style={{ padding: "16px 0", borderBottom: "1px solid rgba(240,237,228,0.08)" }}>
+                <div key={label} style={{ padding: "10px 0", borderBottom: "1px solid rgba(240,237,228,0.08)" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
                     <span style={{ color: TEAL, fontWeight: 700, fontSize: 14, lineHeight: 1, flexShrink: 0 }}>→</span>
                     <span style={{ ...BC, fontSize: 13, fontWeight: 700, color: IVORY, letterSpacing: "0.02em" }}>{label}</span>

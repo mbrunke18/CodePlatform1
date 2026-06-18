@@ -451,6 +451,7 @@ function HomepageNav() {
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
             <Link href="/executive-brief" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Proof</Link>
+            <Link href="/channel-partners" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Partners</Link>
             <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Pricing</Link>
             <Link
               href="/request-access"
@@ -502,6 +503,7 @@ function HomepageNav() {
             { label: "What We Do",  href: "/platform" },
             { label: "See It Work",   href: "/demo-hub", highlight: false },
             { label: "The Proof",     href: "/executive-brief" },
+            { label: "Partners",      href: "/channel-partners" },
             { label: "Pricing",       href: "/pricing" },
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{
