@@ -34,32 +34,10 @@ const WHAT_PARTNERS_GET = [
   "Access to 180 pre-staged Readiness Protocols across all 3 strategic domains",
   "Co-delivery model — your expertise, our execution infrastructure",
   "Dedicated partner demo environment and industry scenario library",
-  "15–20% referral fee on qualified enterprise placements you source",
-  "Revenue-share on co-delivered engagements — structured per-client",
+  "Preferred partner economics — structured directly with the founder",
   "Executive briefing materials and client-ready proof assets",
   "Early access to new protocol packs and vertical expansions",
   "Named in Readiness OS partner directory — visible to enterprise buyers",
-];
-
-const REVENUE_STRUCTURE = [
-  {
-    model: "Referral",
-    desc: "You introduce a qualified enterprise client. We run the engagement.",
-    economics: "15–20% of first-year contract value",
-    bestFor: "Advisory firms, fractional executives",
-  },
-  {
-    model: "Co-Delivery",
-    desc: "Your team deploys Readiness OS alongside the client. We provide the infrastructure and training.",
-    economics: "Revenue-share negotiated per engagement",
-    bestFor: "Management consulting, systems integrators",
-  },
-  {
-    model: "White-Label",
-    desc: "Readiness OS powers the execution layer within your firm's branded offering.",
-    economics: "Wholesale licensing — discuss with founder",
-    bestFor: "Large SI practices, enterprise advisory firms",
-  },
 ];
 
 export default function ChannelPartners() {
@@ -136,37 +114,6 @@ export default function ChannelPartners() {
                 <span style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}>{item}</span>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Revenue structure */}
-        <div style={{ borderTop: "1px solid rgba(201,168,76,0.12)", background: "rgba(201,168,76,0.03)" }}>
-          <div style={{ maxWidth: 900, margin: "0 auto", padding: "72px 40px" }}>
-            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", color: GOLD, textTransform: "uppercase" as const, marginBottom: 16 }}>
-              — Revenue structure
-            </div>
-            <h3 style={{ ...CG, fontSize: "clamp(26px,2.5vw,34px)", fontWeight: 700, color: "#fff", margin: "0 0 40px", lineHeight: 1.2 }}>
-              Three ways to earn. Pick the model that fits your practice.
-            </h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 32 }}>
-              {REVENUE_STRUCTURE.map((r, i) => (
-                <div key={r.model} style={{ padding: "32px 28px", background: i === 1 ? `rgba(43,138,110,0.12)` : "rgba(255,255,255,0.03)", border: i === 1 ? `1px solid rgba(43,138,110,0.3)` : "1px solid rgba(201,168,76,0.12)" }}>
-                  <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: i === 1 ? TEAL : GOLD, marginBottom: 12 }}>
-                    {r.model}
-                  </div>
-                  <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.78)", lineHeight: 1.6, margin: "0 0 20px" }}>{r.desc}</p>
-                  <div style={{ padding: "10px 14px", background: "rgba(201,168,76,0.08)", borderLeft: `2px solid ${GOLD}`, marginBottom: 14 }}>
-                    <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: GOLD }}>{r.economics}</div>
-                  </div>
-                  <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)", letterSpacing: "0.04em" }}>
-                    Best for: {r.bestFor}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>
-              All partner structures are discussed directly with the founder during a 30-minute qualification call. No RFP, no procurement process.
-            </p>
           </div>
         </div>
 
