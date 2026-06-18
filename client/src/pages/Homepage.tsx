@@ -762,16 +762,16 @@ function HeroSimPanel() {
       if (score >= 94) clearInterval(scoreInterval);
     }, 110);
 
-    timers.push(setTimeout(() => setPhase("stage"), 4500));
-    timers.push(setTimeout(() => setPhase("authorize"), 8500));
-    timers.push(setTimeout(() => { setPhase("execute"); setActiveStep(0); }, 12500));
-    timers.push(setTimeout(() => setActiveStep(1), 15000));
-    timers.push(setTimeout(() => setActiveStep(2), 17500));
-    timers.push(setTimeout(() => setActiveStep(3), 20000));
-    timers.push(setTimeout(() => setActiveStep(4), 22500));
-    timers.push(setTimeout(() => setActiveStep(5), 25000));
-    timers.push(setTimeout(() => setPhase("complete"), 27500));
-    timers.push(setTimeout(() => setScenarioIdx(prev => (prev + 1) % SCENARIOS.length), 32000));
+    timers.push(setTimeout(() => setPhase("stage"), 2000));
+    timers.push(setTimeout(() => setPhase("authorize"), 4000));
+    timers.push(setTimeout(() => { setPhase("execute"); setActiveStep(0); }, 6000));
+    timers.push(setTimeout(() => setActiveStep(1), 8000));
+    timers.push(setTimeout(() => setActiveStep(2), 10000));
+    timers.push(setTimeout(() => setActiveStep(3), 12000));
+    timers.push(setTimeout(() => setActiveStep(4), 14000));
+    timers.push(setTimeout(() => setActiveStep(5), 16000));
+    timers.push(setTimeout(() => setPhase("complete"), 18500));
+    timers.push(setTimeout(() => setScenarioIdx(prev => (prev + 1) % SCENARIOS.length), 23000));
 
     return () => { clearInterval(scoreInterval); timers.forEach(clearTimeout); };
   }, [scenarioIdx]);
@@ -1143,6 +1143,179 @@ function HeroSection() {
               Live execution simulation — click the dots to switch trigger scenarios
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── EXECUTION CHAIN ──────────────────────────────────────────────────────────
+function ExecChainSection() {
+  const BC2: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
+  const GEO2: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+
+  const CHAINS = [
+    {
+      domain: "GROWTH & POSITIONING", color: GOLD,
+      trigger: "Activist Investor Files 13D — 9.2% Stake",
+      protocol: "Protocol #031",
+      phases: [
+        { label: "SIGNAL DETECTED",  timing: "0:06",  detail: "SEC 13D detected — Elliott Management, 9.2% stake" },
+        { label: "PROTOCOL MATCHED", timing: "1:10",  detail: "Protocol #031 matched · 11 tasks staged automatically" },
+        { label: "TASKS STAGED",     timing: "2:30",  detail: "Board brief · banker engagement · comms pre-staged" },
+        { label: "CEO AUTHORIZES",   timing: "4:00",  detail: "CEO authorizes — defense protocol activated" },
+        { label: "12 MIN COMPLETE",  timing: "12:00", detail: "3,600× execution head start · board briefed" },
+      ],
+    },
+    {
+      domain: "RISK & RESILIENCE", color: TEAL,
+      trigger: "FDA Class I Recall — Contamination Signal",
+      protocol: "Protocol #058",
+      phases: [
+        { label: "SIGNAL DETECTED",  timing: "0:12",  detail: "Contamination signal — 3 production lot IDs flagged" },
+        { label: "PROTOCOL MATCHED", timing: "1:30",  detail: "Protocol #058 matched · 9 tasks staged automatically" },
+        { label: "TASKS STAGED",     timing: "3:00",  detail: "FDA filing · distribution hold · consumer advisory staged" },
+        { label: "CRO AUTHORIZES",   timing: "4:30",  detail: "CRO authorizes — recall sequence unlocked" },
+        { label: "12 MIN COMPLETE",  timing: "12:00", detail: "$340M liability avoided · full audit trail active" },
+      ],
+    },
+    {
+      domain: "TRANSFORMATION", color: IVORY,
+      trigger: "Market Entry Sprint — 6 Countries, 90-Day Window",
+      protocol: "Protocol #089",
+      phases: [
+        { label: "SIGNAL DETECTED",  timing: "0:05",  detail: "Board greenlights expansion — 90-day execution window" },
+        { label: "PROTOCOL MATCHED", timing: "1:15",  detail: "Protocol #089 matched · 12 tasks staged automatically" },
+        { label: "TASKS STAGED",     timing: "2:30",  detail: "6 regional briefs · legal entity staging · distribution" },
+        { label: "CRO AUTHORIZES",   timing: "4:00",  detail: "CRO authorizes — 6-market protocol activated" },
+        { label: "12 MIN COMPLETE",  timing: "12:00", detail: "$280M revenue pipeline active · all 6 markets operational" },
+      ],
+    },
+  ];
+
+  const [activeDomain, setActiveDomain] = useState(0);
+  const [activePhase, setActivePhase] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    setActivePhase(0);
+    const DELAYS = [2200, 1800, 1800, 1800, 3400];
+    const runCycle = async (start = 0) => {
+      for (let i = start; i < 5; i++) {
+        if (cancelled) return;
+        setActivePhase(i);
+        await new Promise<void>(resolve => setTimeout(resolve, DELAYS[i]));
+      }
+      if (!cancelled) runCycle(0);
+    };
+    runCycle();
+    return () => { cancelled = true; };
+  }, [activeDomain]);
+
+  const chain = CHAINS[activeDomain];
+  const dc = chain.color;
+
+  return (
+    <section style={{ background: "rgba(4,7,22,0.99)", borderTop: `3px solid ${dc}`, borderBottom: "1px solid rgba(255,255,255,0.06)", transition: "border-color 0.5s ease" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "40px 40px 36px" }}>
+
+        {/* Header row — label + domain selector */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 22, flexWrap: "wrap" as const, gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ width: 28, height: 1.5, background: dc, transition: "background 0.5s" }} />
+            <span style={{ ...BC2, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: dc, transition: "color 0.5s" }}>
+              The 12-Minute Execution Chain
+            </span>
+          </div>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
+            {CHAINS.map((c, i) => (
+              <button
+                key={c.domain}
+                onClick={() => setActiveDomain(i)}
+                style={{
+                  ...BC2,
+                  fontSize: 9, fontWeight: 700, letterSpacing: "0.16em",
+                  textTransform: "uppercase" as const,
+                  padding: "5px 12px",
+                  background: i === activeDomain ? `${c.color}18` : "transparent",
+                  border: `1px solid ${i === activeDomain ? c.color : "rgba(255,255,255,0.14)"}`,
+                  color: i === activeDomain ? c.color : "rgba(255,255,255,0.36)",
+                  cursor: "pointer",
+                  transition: "all 0.25s",
+                }}
+              >
+                {c.domain}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Trigger context line */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, flexWrap: "wrap" as const }}>
+          <span style={{ ...BC2, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.26)", letterSpacing: "0.16em", textTransform: "uppercase" as const }}>Trigger:</span>
+          <span style={{ ...GEO2, fontSize: 17, fontWeight: 600, color: "#fff" }}>{chain.trigger}</span>
+          <span style={{ ...BC2, fontSize: 9, fontWeight: 700, color: dc, padding: "3px 9px", border: `1px solid ${dc}44`, letterSpacing: "0.1em", transition: "color 0.5s, border-color 0.5s" }}>{chain.protocol}</span>
+        </div>
+
+        {/* 5-phase execution chain */}
+        <div style={{ display: "flex", alignItems: "stretch", marginBottom: 28 }}>
+          {chain.phases.map((phase, i) => {
+            const isActive = i === activePhase;
+            const isPast = i < activePhase;
+            return (
+              <Fragment key={i}>
+                <div
+                  style={{
+                    flex: 1,
+                    padding: "16px 14px",
+                    background: isActive ? `${dc}14` : isPast ? `${dc}06` : "rgba(255,255,255,0.015)",
+                    borderTop: `1px solid ${isActive ? dc : isPast ? `${dc}28` : "rgba(255,255,255,0.07)"}`,
+                    borderRight: `1px solid ${isActive ? dc : isPast ? `${dc}28` : "rgba(255,255,255,0.07)"}`,
+                    borderBottom: `1px solid ${isActive ? dc : isPast ? `${dc}28` : "rgba(255,255,255,0.07)"}`,
+                    borderLeft: i === 0 ? `1px solid ${isActive ? dc : isPast ? `${dc}28` : "rgba(255,255,255,0.07)"}` : "none",
+                    transition: "all 0.45s ease",
+                    opacity: isActive ? 1 : isPast ? 0.72 : 0.28,
+                    position: "relative" as const,
+                  }}
+                >
+                  <div style={{ ...BC2, fontSize: 8, fontWeight: 700, letterSpacing: "0.22em", color: isActive ? dc : "rgba(255,255,255,0.38)", textTransform: "uppercase" as const, marginBottom: 7, transition: "color 0.45s" }}>
+                    {phase.label}
+                  </div>
+                  <div style={{ ...GEO2, fontSize: 24, fontWeight: 700, color: isActive ? dc : "#fff", lineHeight: 1, marginBottom: 7, transition: "color 0.45s" }}>
+                    {phase.timing}
+                  </div>
+                  <div style={{ ...BC2, fontSize: 10, fontWeight: 500, color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
+                    {phase.detail}
+                  </div>
+                  {isActive && (
+                    <div style={{ position: "absolute" as const, bottom: 0, left: 0, right: 0, height: 2, background: `linear-gradient(to right, ${dc}, transparent)` }} />
+                  )}
+                </div>
+                {i < 4 && (
+                  <div style={{ width: 26, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.35)", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                    <span style={{ color: isPast || isActive ? dc : "rgba(255,255,255,0.12)", fontSize: 13, transition: "color 0.45s" }}>→</span>
+                  </div>
+                )}
+              </Fragment>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTAs */}
+        <div style={{ display: "flex", alignItems: "center", gap: 28, flexWrap: "wrap" as const }}>
+          <Link
+            href="/how-it-executes"
+            style={{ ...BC2, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: dc, textDecoration: "none", transition: "color 0.5s" }}
+          >
+            Watch the full chain execute →
+          </Link>
+          <span style={{ color: "rgba(255,255,255,0.12)", fontSize: 12 }}>|</span>
+          <Link
+            href="/12-minute-experience"
+            style={{ ...BC2, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.32)", textDecoration: "none" }}
+          >
+            Run the 12-minute test drive →
+          </Link>
         </div>
       </div>
     </section>
@@ -4317,7 +4490,10 @@ export default function Homepage() {
         </div>
       </div>
 
-      {/* 2. HOOK — The readiness question */}
+      {/* 2. EXECUTION CHAIN — full demo visible immediately */}
+      <ExecChainSection />
+
+      {/* 3. HOOK — The readiness question */}
       <ScenarioHookSection />
 
       {/* 3. SCENARIOS — Breadth before explanation */}
