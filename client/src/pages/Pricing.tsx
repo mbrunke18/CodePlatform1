@@ -366,10 +366,10 @@ export default function Pricing() {
               Calculate Your ROI <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
             </Button>
             <Button
-              onClick={() => setLocation("/12-minute-experience")}
+              onClick={() => setLocation("/demo-hub")}
               style={{ background: TEAL, color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", ...BC }}
             >
-              See It Execute First <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
+              Full Platform Demo <ArrowRight style={{ marginLeft: 6, width: 14, height: 14 }} />
             </Button>
             <Button
               onClick={() => setLocation("/contact")}

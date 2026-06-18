@@ -26,8 +26,8 @@ const tracks = [
     body: "Readiness OS is the operating infrastructure that compresses your mobilization cycle from 30 days to 12 minutes — pre-staged before the situation presents itself, not assembled after.",
     cta: "See What You Get in 90 Days",
     ctaPath: "/founding-partner-brief",
-    secondary: "Run the 12-Minute Test Drive",
-    secondaryPath: "/12-minute-experience",
+    secondary: "Full Platform Demo →",
+    secondaryPath: "/demo-hub",
     accent: GOLD,
     proof: [
       "180 Readiness Protocols — pre-staged and ready",
@@ -118,15 +118,15 @@ export default function StartHere() {
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
               <span style={{ ...DM, fontSize: 14, color: NAVY, lineHeight: 1.4 }}>
-                Run the full 12-Minute Test Drive right now — 7 scenarios, full execution cycle
+                See the full platform now — all 12 scenarios, no login required
               </span>
-              <Link href="/12-minute-experience">
+              <Link href="/demo-hub">
                 <button style={{
                   padding: "10px 24px", background: NAVY, border: "none", cursor: "pointer",
                   ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.10em", textTransform: "uppercase", color: GOLD,
                   whiteSpace: "nowrap",
                 }}>
-                  Start Now →
+                  Full Platform Demo →
                 </button>
               </Link>
             </div>

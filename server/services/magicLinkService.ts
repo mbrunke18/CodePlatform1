@@ -36,7 +36,7 @@ function buildAdminNotificationHtml(data: {
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
         <tr>
           <td style="background:${NAVY};padding:28px 40px;">
-            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN · EXECUTION OS</div>
+            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN · READINESS OS</div>
             <div style="color:#ffffff;font-size:18px;font-weight:700;">New Access Request</div>
           </td>
         </tr>

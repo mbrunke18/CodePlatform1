@@ -118,31 +118,32 @@ export default function RequestAccess() {
           <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ width: 28, height: 1.5, background: GOLD, marginBottom: 20 }} />
             <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
-              Executive Access
+              Founding Partner Program · 10 Seats
             </p>
 
-            <h2 style={{ ...CG, fontSize: 38, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 36 }}>
-              The response is ready<br />
-              <em style={{ color: GOLD }}>before the trigger fires.</em>
+            <h2 style={{ ...CG, fontSize: 38, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 28 }}>
+              The first 10 get what<br />
+              <em style={{ color: GOLD }}>no one can buy later.</em>
             </h2>
 
-            {/* Editorial stats — horizontal rules, no icons */}
+            {/* First-mover benefits */}
             <div style={{ borderTop: "1px solid rgba(240,237,228,0.1)" }}>
               {[
-                { num: "180", label: "Pre-staged Readiness Protocols" },
-                { num: "12 min", label: "Trigger to full coordination" },
-                { num: "3,600×", label: "Execution head start" },
-              ].map(({ num, label }) => (
-                <div key={num} style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "18px 0", borderBottom: "1px solid rgba(240,237,228,0.08)" }}>
-                  <span style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{num}</span>
-                  <span style={{ ...BC, fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", color: "rgba(240,237,228,0.78)", textAlign: "right", maxWidth: 220 }}>{label}</span>
+                { label: "Founding pricing locked", detail: "Before Year 2 and Year 3 escalators apply to everyone else" },
+                { label: "Protocol co-authorship", detail: "Your industry's situations built into the library first" },
+                { label: "Named Founding Partner", detail: "First case study in a new enterprise software category" },
+                { label: "Direct founder access", detail: "90-day onboarding with the builder — not a CSM" },
+                { label: "Investment credited to contract", detail: "100% of the Founding Partner fee credited at close" },
+              ].map(({ label, detail }) => (
+                <div key={label} style={{ padding: "16px 0", borderBottom: "1px solid rgba(240,237,228,0.08)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+                    <span style={{ color: TEAL, fontWeight: 700, fontSize: 14, lineHeight: 1, flexShrink: 0 }}>→</span>
+                    <span style={{ ...BC, fontSize: 13, fontWeight: 700, color: IVORY, letterSpacing: "0.02em" }}>{label}</span>
+                  </div>
+                  <p style={{ ...BC, fontSize: 12, color: "rgba(240,237,228,0.55)", lineHeight: 1.5, margin: "0 0 0 24px" }}>{detail}</p>
                 </div>
               ))}
             </div>
-
-            <p style={{ ...BC, fontSize: 12, color: "rgba(240,237,228,0.65)", lineHeight: 1.65, marginTop: 28 }}>
-              Coordination infrastructure for enterprise organizations. AI monitors. Executives authorize. Execution pre-staged.
-            </p>
           </div>
 
           <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.45)", letterSpacing: "0.04em", position: "relative", zIndex: 1 }}>
