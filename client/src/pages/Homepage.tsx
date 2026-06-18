@@ -1013,38 +1013,21 @@ function HeroSection() {
                 The Mobilization Tax doesn't get reduced. It gets eliminated.
               </p>
 
-              {/* CTAs — placed immediately after pitch for above-fold visibility */}
-              <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 16, flexWrap: "wrap" as const }}>
+              {/* CTAs — one primary experience path, one conversion path */}
+              <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 32, flexWrap: "wrap" as const }}>
                 <Link
                   href="/12-minute-experience"
                   onClick={() => trackCTA("hero_scanner")}
                   style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 32px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
                 >
-                  Try It Now — No Login →
+                  Try the 12-Minute Experience →
                 </Link>
-                <Link
-                  href="/demo-experience"
-                  onClick={() => trackCTA("hero_platform_demo")}
-                  style={{ ...DM, display: "inline-block", background: "transparent", color: "#fff", fontWeight: 700, fontSize: 13, padding: "15px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, border: "1px solid rgba(255,255,255,0.28)", whiteSpace: "nowrap" as const }}
-                >
-                  Experience the Platform →
-                </Link>
-              </div>
-              <div style={{ display: "flex", gap: 24, alignItems: "center", marginBottom: 32, flexWrap: "wrap" as const }}>
                 <Link
                   href="/request-access"
                   onClick={() => trackCTA("hero")}
-                  style={{ ...DM, color: "rgba(255,255,255,0.80)", fontSize: 12, fontWeight: 600, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.30)", paddingBottom: 1, letterSpacing: "0.02em" }}
+                  style={{ ...DM, color: "rgba(255,255,255,0.75)", fontSize: 12, fontWeight: 600, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.28)", paddingBottom: 1, letterSpacing: "0.02em", whiteSpace: "nowrap" as const }}
                 >
                   Apply for Founding Partner Access →
-                </Link>
-                <span style={{ color: "rgba(255,255,255,0.25)", fontSize: 10 }}>or</span>
-                <Link
-                  href="/contact"
-                  onClick={() => trackCTA("hero_schedule")}
-                  style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: 12, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.20)", paddingBottom: 1, letterSpacing: "0.02em" }}
-                >
-                  Schedule a conversation first →
                 </Link>
               </div>
 
