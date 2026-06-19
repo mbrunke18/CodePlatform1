@@ -1,0 +1,20 @@
+Strong material — the core message and rhythm are exactly right. A few things worth pressure-testing before this goes live as the homepage hero, since it's the highest-traffic page on the entire platform.
+
+**What's working well**
+
+The headline is the locked tagline, correctly used. "30 days mobilizing" is the canonical baseline. "Mobilization Tax" is canonical product language per the platform documentation. The specificity (business analysts scope, PMO Directors map, functional leads confirm) makes the 30-day claim concrete rather than abstract — that's good, most competitors stay vague here.
+
+**What needs a second look**
+
+"The Mobilization Tax doesn't get reduced. It gets eliminated." This is a strong, punchy line — but it's a stronger claim than the rest of the platform makes anywhere else. Everywhere else the locked language is "30 days compressed to 12 minutes," which is a reduction, not an elimination. If a prospect reads "eliminated" and then sees "12 minutes" two scrolls down, that's an inconsistency a sharp buyer or analyst will catch. I'd recommend either:
+
+- "The Mobilization Tax doesn't get reduced. It gets compressed from 30 days to 12 minutes." (ties directly to the locked metric)
+- Or keep "eliminated" but immediately follow it with the 12-minute number so the claim is anchored, not left hanging as an absolute.
+
+**Specific role list** — "Business analysts... PMO Directors... functional leads" is good color, but worth checking against who the platform's actual target buyer is. Per the locked targeting, the audience is the C-suite (CEOs, CFOs, COOs, CIOs, Board of Directors) — these three roles read more like the people *under* the buyer, not the buyer themselves. That's fine as illustrative detail showing the operational drag, just make sure the page doesn't stay at that altitude for long — the C-suite reader needs to see themselves in the story quickly, not just their staff.
+
+**One honest gap-check**
+
+This homepage copy implies a single, fast read on what the Mobilization Tax costs. The platform's own documentation notes the ROI Calculator exists specifically to quantify this per-organization. If this hero block doesn't link toward that calculator fairly quickly, you're leaving the strongest proof point unused right when the reader is most primed for it.
+
+**Overall verdict:** This is good, on-brand, and ready with one tightening pass — mainly reconciling "eliminated" with the locked "compressed to 12 minutes" framing so the boldest line on the homepage doesn't contradict the rest of the site's own numbers.

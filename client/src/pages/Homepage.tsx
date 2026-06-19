@@ -994,7 +994,7 @@ function HeroSection() {
                 Most organizations spend 30 days mobilizing after a trigger fires. Business analysts scope the response. PMO Directors map who needs to be in the room. Functional leads confirm their roles. Tasks get assigned, briefs get drafted, budgets get estimated — all from scratch, under pressure, while the window closes. That is the Mobilization Tax.
               </p>
               <p style={{ ...DM, color: GOLD, fontSize: "clamp(17px,1.4vw,19px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 28px" }}>
-                The Mobilization Tax doesn't get reduced. It gets eliminated.
+                The Mobilization Tax doesn't get reduced. It gets compressed — from 30 days to 12 minutes.
               </p>
 
               {/* CTAs — one primary experience path, one conversion path */}
@@ -1024,9 +1024,14 @@ function HeroSection() {
                 </span>
               </div>
 
-              <div style={{ margin: "0 0 20px" }}>
+              <div style={{ margin: "0 0 12px" }}>
                 <Link href="/mobilization-tax" style={{ ...DM, fontSize: 12, color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.25)", paddingBottom: 1, letterSpacing: "0.04em" }}>
                   What the 30-day mobilization gap actually costs — read the brief →
+                </Link>
+              </div>
+              <div style={{ margin: "0 0 20px" }}>
+                <Link href="/roi-calculator" style={{ ...DM, fontSize: 12, color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.25)", paddingBottom: 1, letterSpacing: "0.04em" }}>
+                  Calculate what it costs your organization specifically →
                 </Link>
               </div>
               <p style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 20px" }}>
