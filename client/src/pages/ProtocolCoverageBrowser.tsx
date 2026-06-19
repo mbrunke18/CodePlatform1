@@ -249,10 +249,10 @@ export default function ProtocolCoverageBrowser() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    updatePageMetadata(
-      'Protocol Coverage Browser — 210 Pre-Staged Readiness Protocols | VaughnMartin',
-      'Search 210 pre-staged response architectures across 9 strategic domains. Every situation your organization may face — already pre-staged with response windows, stakeholders, and financial exposure quantified.',
-    );
+    updatePageMetadata({
+      title: 'Protocol Coverage Browser — 210 Pre-Staged Readiness Protocols | VaughnMartin',
+      description: 'Search 210 pre-staged response architectures across 9 strategic domains. Every situation your organization may face — already pre-staged with response windows, stakeholders, and financial exposure quantified.',
+    });
     fetch('/api/public/protocol-browser')
       .then(r => r.json())
       .then(d => { setProtocols(d.protocols ?? []); setLoading(false); })

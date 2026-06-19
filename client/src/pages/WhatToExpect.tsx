@@ -31,10 +31,10 @@ function SectionLabel({ children }: { children: string }) {
 
 export default function WhatToExpect() {
   useEffect(() => {
-    updatePageMetadata(
-      "What to Expect | VaughnMartin Readiness OS",
-      "Three questions every serious enterprise buyer asks before engaging: What is it, what does it deliver, and what does success require from us?"
-    );
+    updatePageMetadata({
+      title: "What to Expect | VaughnMartin Readiness OS",
+      description: "Three questions every serious enterprise buyer asks before engaging: What is it, what does it deliver, and what does success require from us?",
+    });
   }, []);
 
   return (

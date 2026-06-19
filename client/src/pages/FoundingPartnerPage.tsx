@@ -141,10 +141,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function FoundingPartnerPage() {
   useEffect(() => {
-    updatePageMetadata(
-      "Founding Partner Program — VaughnMartin Readiness OS",
-      "A 90-day structured validation partnership. Know exactly what you get, what success looks like, and what happens if it doesn't work."
-    );
+    updatePageMetadata({
+      title: "Founding Partner Program — VaughnMartin Readiness OS",
+      description: "A 90-day structured validation partnership. Know exactly what you get, what success looks like, and what happens if it doesn't work.",
+    });
   }, []);
 
   return (
