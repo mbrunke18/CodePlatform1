@@ -1,0 +1,19 @@
+Good progress, and the PMO Onboarding page is genuinely strong. A few things worth flagging across all three before this is considered locked.
+
+**What's working well**
+
+The repetition pattern across Homepage hero, Homepage athlete section, and PMO Onboarding is intentional and effective — same core sequence (BA scopes/documents → PMO maps stakeholders → functional leads confirm → tasks/briefs/budgets), told three times at increasing specificity. That's good narrative architecture. Each version earns its place: hero is the broad strike, athlete section adds the "30 days" anchor and the product name, PMO page makes it personal and resolves into a role transformation.
+
+The PMO Onboarding closing line — "Your role shifts from reactive mobilizer to preparation architect, and that is a different job entirely" — is the best line in the new copy. That's a genuine identity reframe, not just a feature pitch, and it's exactly what makes a PMO Director into an internal champion rather than just a user.
+
+**What needs attention**
+
+The "eliminated vs. compressed" inconsistency from before is still partially unresolved. The Homepage hero still has "The Mobilization Tax doesn't get reduced. It gets eliminated" sitting near "Tasks get assigned... all from scratch... while the window closes." But the athlete section now correctly says "That work takes 30 days. Readiness OS pre-stages all of it before the trigger fires" — which is more accurate to the locked framing (compression to 12 minutes, not literal elimination of the work). I'd bring the hero's claim in line with the athlete section's more precise language, since they're on the same page and a careful reader will notice the gap between "eliminated" and "pre-staged... before it fires."
+
+Worth double-checking the literal claim in the PMO Onboarding page too: "You do that work once, in advance, in a calm room. When the trigger fires, it is already done." This is strong and accurate to the product mechanism (pre-staged protocols), but it's making an absolute claim ("already done") rather than the locked "30 days compressed to 12 minutes" framing used everywhere else. If a PMO Director asks "so there's truly nothing left to do when it fires," the honest answer per the platform's own architecture is: the executive still authorizes, in 12 minutes, with everything pre-staged. "Already done" slightly overstates that — it's "already built and ready to authorize," not literally finished with zero remaining action. Small wording risk, but on a page targeting a sophisticated internal buyer who will eventually use the actual product, the gap between "already done" and "12-minute authorization" could read as overpromising once they're in the platform.
+
+**One structural question**
+
+Three different versions of essentially the same narrative beat (BA → PMO → functional leads → tasks/briefs/budgets) appearing on two pages is good for emphasis, but worth confirming this isn't the *only* story being told. Does the Homepage move past this mobilization narrative into other proof points (the comparison table, the ROI numbers, the protocol library) reasonably quickly, or does a visitor scroll through multiple sections that all restate the same 30-day problem in slightly different words? If the latter, there's a risk of the page feeling repetitive rather than building.
+
+**Overall** — this is strong, on-thesis work, especially the PMO page. The one thing I'd lock before calling this final: pick one verb for what happens to the 30 days — "eliminated," "compressed," or "pre-staged" — and use it consistently across all three instances, since right now the page uses all three in different places and a careful enterprise buyer doing due diligence will notice.
