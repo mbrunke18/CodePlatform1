@@ -69,7 +69,6 @@ export default function QuickActions() {
   });
 
   if (EXCLUDED_ROUTES.some(r => location.startsWith(r))) return null;
-  if (!isAuthenticated) return null;
 
   const alerts: Alert[] = Array.isArray(alertsData?.data) ? alertsData!.data : [];
   const highAlerts = alerts.filter(a => a.severity === 'HIGH');
