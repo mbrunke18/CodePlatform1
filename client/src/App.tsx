@@ -75,6 +75,7 @@ const ExecutiveScenarioSuite = lazy(() => import("./pages/ExecutiveScenarioSuite
 const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
 const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
 const WhyExecutionOS = lazy(() => import("./pages/WhyExecutionOS"));
+const WhatToExpect = lazy(() => import("./pages/WhatToExpect"));
 const ExecutiveDashboard = lazy(() => import("./pages/ExecutiveDashboard"));
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
@@ -800,6 +801,7 @@ function Router() {
         {renderRedirects(["/interactive-demo", "/interactive-master-demo"], "/how-it-works")}
         {renderRoutes(["/investor-landing", "/executive-access"], InvestorLanding)}
         <Route path="/readiness-infrastructure" component={lazy(() => import("./pages/ReadinessInfrastructure"))} />
+        <Route path="/what-to-expect" component={WhatToExpect} />
         <Route path="/executive-brief" component={ExecutiveBrief} />
         <Route path="/product-overview" component={ProductOverview} />
         <Route path="/authorization-precedents" component={AuthorizationPrecedentRegistry} />

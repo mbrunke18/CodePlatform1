@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3 } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3, CheckCircle } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 
 const MicrosoftIcon = ({ size = 14 }: { size?: number }) => (
@@ -247,6 +247,7 @@ export default function StandardNav() {
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
+    { label: "What to Expect", path: "/what-to-expect", icon: CheckCircle, description: "Purpose, value delivered, and what success requires from your team — the three questions every serious buyer asks.", featured: true },
     { label: "The Case — The Argument You Can't Argue Out Of", path: "/the-case", icon: Scale, description: "Problem cost → proof → moat → ROI → comparison → decision. The complete buying argument in one page.", featured: true },
     { label: "How It Works", path: "/how-it-executes", icon: FileText, description: "From trigger detection to full coordination in 12 minutes — the complete execution sequence", featured: true },
     { label: "Why Readiness OS?", path: "/the-proof", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
