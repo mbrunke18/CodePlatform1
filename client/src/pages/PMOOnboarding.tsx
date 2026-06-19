@@ -35,11 +35,11 @@ const TIERS = [
   {
     level: "02",
     title: "PMO Director",
-    role: "Preparation Architecture Owner",
+    role: "Preparation Architect",
     color: TEAL,
     icon: Layers,
     description:
-      "The PMO Director owns the preparation architecture. You are the internal product owner — responsible for keeping all 180 Readiness Protocols configured, drilled, and ready before any trigger fires. The C-suite authorizes. You ensure authorization is never delayed by a gap in preparation.",
+      "The PMO Director designs the readiness infrastructure — not runs it. You configure the protocols, map the stakeholders, and build the response architecture that makes 12-minute execution possible. When a trigger fires, the system responds. You've already done the work that makes that possible. Your role is architect, not operator.",
     responsibilities: [
       "Configure all 180 protocols with accurate role assignments and task owners",
       "Run quarterly drills to verify response readiness across domains",
@@ -161,15 +161,15 @@ export default function PMOOnboarding() {
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <div style={{ width: 28, height: 1, background: GOLD }} />
               <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>
-                PMO Director · Preparation Architecture Owner
+                PMO Director · Preparation Architect
               </span>
             </div>
             <h1 style={{ ...CG, fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 20 }}>
-              You own the preparation.<br />
-              <em style={{ color: GOLD }}>The C-suite owns the authorization.</em>
+              You design the readiness.<br />
+              <em style={{ color: GOLD }}>The system executes. The C-suite authorizes.</em>
             </h1>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 680, lineHeight: 1.7, marginBottom: 36 }}>
-              Every enterprise that prepares for every situation it will face is no longer afraid of strategic triggers. As PMO Director, you are the preparation architect — the internal product owner responsible for making the response ready before the trigger fires.
+              Every enterprise that prepares for every situation it will face is no longer afraid of strategic triggers. As PMO Director, you are the preparation architect — the person who designs the infrastructure that makes 12-minute execution possible. When a trigger fires, the system responds. You already did the work that makes that possible.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <Link href="/getting-started" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", textDecoration: "none", borderRadius: "0.15rem" }}>
@@ -328,10 +328,10 @@ export default function PMOOnboarding() {
                 <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>PMO Governance Rhythm</span>
               </div>
               <h2 style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, color: NAVY, marginBottom: 12, lineHeight: 1.1 }}>
-                Ongoing PMO ownership cadence.
+                Ongoing preparation calibration rhythm.
               </h2>
               <p style={{ fontSize: 15, color: MUTED, maxWidth: 620, lineHeight: 1.7 }}>
-                Readiness is not a one-time setup. The PMO governance rhythm keeps the preparation architecture current as the organization evolves.
+                Readiness is not a one-time setup — but it is not a full-time job either. This is the cadence that keeps the preparation architecture current as your organization evolves, without making the PMO Director the permanent bottleneck.
               </p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20 }}>

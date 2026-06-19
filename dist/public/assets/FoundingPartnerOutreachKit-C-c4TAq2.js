@@ -1,0 +1,73 @@
+import{j as e,L as h,r as c,a4 as p,e as g}from"./index-CkTQWqu0.js";import{P as u}from"./PageLayout-Cjs7ckLg.js";import{V as m}from"./VaughnMartinLogo-CYo1DiDx.js";import{C as f}from"./chevron-up-BAjWdror.js";import{C as y}from"./copy-5cFcZswo.js";import"./Footer-BP2si68v.js";import"./back-button-DVnjkbE0.js";import"./GuestPreviewBanner-BPitI2Zo.js";const l="#0A0F2E",n="#C9A84C",a="#2B8A6E",d={fontFamily:"'Cormorant Garamond', Georgia, serif"},i={fontFamily:"'Barlow', system-ui, sans-serif"},b=[{num:"01",timing:"Day 1 — Cold Open",subject:"The 30-day problem at [Company]",preview:"The observation that opens the conversation.",body:`Hi [First Name],
+
+Most organizations I talk to have the same pattern: when a strategic trigger fires — a competitor move, a regulatory action, a supply chain disruption — the first 30 days aren't spent executing. They're spent figuring out who needs to be in the room.
+
+That's not a people problem. It's an infrastructure problem. The response wasn't built before the trigger fired.
+
+I built Readiness OS after 20 years watching this play out at the intersection of governance and execution — in companies from startup to Fortune 500. The architecture is different: 180 Readiness Protocols pre-staged, 231 trigger patterns continuously monitored, full stakeholder and budget authority mapped before anything happens. When a trigger fires, execution begins in 12 minutes — not 30 days.
+
+Would it be useful to see how three organizations comparable to [Company] use this today?
+
+Martin Brunke
+Founder, VaughnMartin
+vaughnmartin.com`,notes:"Personalize [Company] and [First Name]. Keep the tone observational, not pitch-forward. The goal is a reply, not a sale.",color:l},{num:"02",timing:"Day 4 — The Insight",subject:"What your response infrastructure is actually costing you",preview:"Introduce Readiness Debt before you introduce the product.",body:`Hi [First Name],
+
+There's a concept I call Readiness Debt — the accumulated cost of not having prepared responses for situations you know you'll eventually face.
+
+Every organization has a set of strategic triggers that are predictable: an activist investor, a ransomware attack, a supplier failure, a regulatory action, a competitor displacement move. Most organizations know these situations are coming. Few have pre-staged responses for them. So when the trigger fires, they spend the first 30 days building the response they should have built before the signal appeared.
+
+The McKinsey 2026 operating model research put a number on it: 81% of executives say their organization's speed of decision-making is inadequate for the environment they operate in. The bottleneck isn't intelligence — it's coordination infrastructure. The data was available. The response wasn't ready.
+
+Readiness OS closes that gap. The response is built before the trigger fires. Executive authority is preserved at every step — no protocol activates without sign-off. The preparation compresses the mobilization cycle. The decision stays human.
+
+Worth a 20-minute conversation?
+
+Martin`,notes:"This email plants the 'Readiness Debt' concept. Don't over-explain. The goal is to get them nodding before you ask for time.",color:a},{num:"03",timing:"Day 8 — The Proof",subject:"12 minutes vs. 30 days — not a concept, an architecture",preview:"Make it concrete with one scenario that matches their industry.",body:`Hi [First Name],
+
+I want to make this specific.
+
+[Choose the scenario that fits their industry — see notes below]
+
+RANSOMWARE (Financial Services / Healthcare / Manufacturing):
+When EHR systems lock, the average enterprise spends the first 72 hours in stakeholder chaos — who owns what, who talks to regulators, who authorizes the ransom decision, who briefs the board. With a pre-staged Readiness Protocol, all of that is already mapped. Legal holds trigger automatically. Regulator notification templates are pre-cleared. The board briefing is staged before anyone picks up the phone. Execution begins in 12 minutes.
+
+ACTIVIST INVESTOR (Public Companies / PE-backed):
+The 13D filing hits on a Tuesday morning. Without preparation, the next 30 days are alignment — investment bankers, legal counsel, board prep, communications strategy, proxy advisors. With a pre-staged protocol, the response is already sequenced. Every stakeholder knows their role. The board brief goes out in minutes, not days. The enterprise responds from a position of readiness, not reaction.
+
+SUPPLY CHAIN (Manufacturing / Retail / CPG):
+A Tier 1 supplier goes dark. The traditional response: emergency calls, manual supplier list review, logistics rerouting negotiations, customer communication firefight — all sequential. The pre-staged protocol: alternate suppliers pre-qualified, logistics reroutes mapped, customer communications templated. Execution begins before the supplier's next business day starts.
+
+The 3,600× Execution Head Start isn't a marketing number — it's the arithmetic of 30 days compressed to 12 minutes. That compression exists because the response was built before the trigger fired.
+
+I can walk you through the full architecture in 20 minutes. No deck required.
+
+Martin`,notes:"Pick ONE scenario from the three based on their industry. Delete the others. The specificity is what makes this land.",color:n},{num:"04",timing:"Day 14 — The Ask",subject:"One conversation before [Q3/Q4] planning",preview:"Direct ask. Founding Partner framing. 20 minutes.",body:`Hi [First Name],
+
+Direct ask: 20 minutes before your [Q3/Q4] planning cycle closes.
+
+I'm not going to walk you through a slide deck. I want to understand your current response infrastructure — specifically, which strategic triggers you expect to face in the next 12 months and whether the response architecture exists before those triggers fire.
+
+If the answer is that you're building responses in real time when situations present themselves, there's a structured path to change that. The Founding Partner Program is a 90-day validation partnership — three to five organizations that want to move from reactive coordination to pre-staged execution. The program is designed to produce measurable evidence: actual activation time, actual mobilization cycle compression, actual executive hours recovered.
+
+If the timing isn't right, I understand. But the 30-day problem will still be there next quarter.
+
+If it is: [Calendar link or reply to this email]
+
+Martin Brunke
+Founder, VaughnMartin
+vaughnmartin.com/founding-partner-program`,notes:"Replace [Q3/Q4] with the relevant planning cycle. Add your calendar link. This is the ask email — be direct, don't hedge.",color:l},{num:"05",timing:"Day 21 — Final Touch",subject:"Leaving this here",preview:"Short. No pressure. Leave the door open with an asset.",body:`Hi [First Name],
+
+I'll keep this brief.
+
+I'm attaching the Executive Brief — it's a one-page summary of the architecture, the proof numbers, and the Founding Partner Program structure. If the timing isn't right now, it'll be there when it is.
+
+The 30-day mobilization problem tends to become urgent the day after a trigger fires. I'd rather have this conversation before that day.
+
+If anything changes: martin@vaughnmartin.com or vaughnmartin.com/request-access.
+
+Martin
+
+—
+Executive Brief: vaughnmartin.com/executive-brief`,notes:"This is a leave-behind, not a follow-up pitch. Short is correct. The link to the Executive Brief does the work.",color:a}];function x({text:t}){const[r,o]=c.useState(!1),s=()=>{navigator.clipboard.writeText(t),o(!0),setTimeout(()=>o(!1),2e3)};return e.jsxs("button",{onClick:s,style:{...i,display:"flex",alignItems:"center",gap:6,fontSize:11,fontWeight:700,letterSpacing:"0.08em",color:r?a:"rgba(255,255,255,0.45)",background:"none",border:"none",cursor:"pointer",padding:"6px 0",textTransform:"uppercase"},children:[r?e.jsx(g,{size:13}):e.jsx(y,{size:13}),r?"Copied":"Copy email"]})}function v({email:t,index:r}){const[o,s]=c.useState(r===0);return e.jsxs("div",{style:{border:"1px solid rgba(255,255,255,0.08)",marginBottom:2},children:[e.jsxs("button",{onClick:()=>s(!o),style:{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"22px 28px",background:o?"rgba(255,255,255,0.04)":"transparent",border:"none",cursor:"pointer",textAlign:"left"},children:[e.jsxs("div",{style:{display:"flex",alignItems:"center",gap:20},children:[e.jsx("div",{style:{...i,fontSize:11,fontWeight:800,color:t.color,letterSpacing:"0.2em",minWidth:28},children:t.num}),e.jsxs("div",{children:[e.jsx("div",{style:{...i,fontSize:13,fontWeight:700,color:"#fff",marginBottom:2},children:t.subject}),e.jsx("div",{style:{...i,fontSize:11,color:"rgba(255,255,255,0.35)",letterSpacing:"0.04em"},children:t.timing})]})]}),e.jsx("div",{style:{color:"rgba(255,255,255,0.3)",flexShrink:0},children:o?e.jsx(f,{size:16}):e.jsx(p,{size:16})})]}),o&&e.jsxs("div",{style:{borderTop:"1px solid rgba(255,255,255,0.06)",padding:"24px 28px 28px"},children:[e.jsxs("div",{style:{display:"grid",gridTemplateColumns:"1fr auto",gap:16,marginBottom:20},children:[e.jsxs("div",{children:[e.jsx("div",{style:{...i,fontSize:10,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",color:t.color,marginBottom:6},children:"Subject Line"}),e.jsx("div",{style:{...d,fontSize:18,fontWeight:600,color:"#fff",lineHeight:1.3},children:t.subject})]}),e.jsx(x,{text:`Subject: ${t.subject}
+
+${t.body}`})]}),e.jsx("div",{style:{...i,fontSize:13,color:"rgba(255,255,255,0.72)",lineHeight:1.85,whiteSpace:"pre-wrap",background:"rgba(0,0,0,0.2)",padding:"20px 24px",borderLeft:`3px solid ${t.color}`,marginBottom:20},children:t.body}),e.jsxs("div",{style:{display:"flex",alignItems:"flex-start",gap:10,padding:"14px 18px",background:"rgba(201,168,76,0.06)",border:"1px solid rgba(201,168,76,0.15)"},children:[e.jsx("span",{style:{...i,fontSize:10,fontWeight:800,color:n,letterSpacing:"0.15em",textTransform:"uppercase",flexShrink:0,marginTop:1},children:"Note"}),e.jsx("span",{style:{...i,fontSize:12,color:"rgba(255,255,255,0.5)",lineHeight:1.6},children:t.notes})]})]})]})}function W(){return e.jsx(u,{children:e.jsxs("div",{style:{background:l,minHeight:"100vh"},children:[e.jsx("div",{style:{borderBottom:"1px solid rgba(255,255,255,0.08)",padding:"48px 48px 40px"},children:e.jsxs("div",{style:{maxWidth:900,margin:"0 auto"},children:[e.jsx("div",{style:{marginBottom:28},children:e.jsx(m,{size:"sm",color:"light"})}),e.jsxs("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:16},children:[e.jsx("div",{style:{width:24,height:1,background:n}}),e.jsx("span",{style:{...i,fontSize:10,fontWeight:700,letterSpacing:"0.3em",textTransform:"uppercase",color:n},children:"Internal Sales Resource"})]}),e.jsxs("h1",{style:{...d,fontSize:"clamp(32px,4vw,52px)",fontWeight:700,color:"#fff",lineHeight:1.1,marginBottom:16},children:["Founding Partner",e.jsx("br",{}),e.jsx("em",{style:{color:n},children:"Outreach Sequence"})]}),e.jsx("p",{style:{...i,fontSize:15,color:"rgba(255,255,255,0.55)",maxWidth:560,lineHeight:1.75,marginBottom:24},children:"Five emails. Twenty-one days. One objective: get the 20-minute conversation with the executive who owns the coordination problem. Copy each email, personalize the name and company, and send."}),e.jsx("div",{style:{display:"flex",gap:24,flexWrap:"wrap"},children:[{label:"5 emails",sub:"Full sequence"},{label:"21 days",sub:"Recommended cadence"},{label:"1 ask",sub:"20-minute conversation"}].map(t=>e.jsxs("div",{style:{borderLeft:"2px solid rgba(201,168,76,0.3)",paddingLeft:12},children:[e.jsx("div",{style:{...i,fontSize:16,fontWeight:800,color:n},children:t.label}),e.jsx("div",{style:{...i,fontSize:11,color:"rgba(255,255,255,0.35)",letterSpacing:"0.06em"},children:t.sub})]},t.label))})]})}),e.jsx("div",{style:{padding:"36px 48px",borderBottom:"1px solid rgba(255,255,255,0.06)",background:"rgba(255,255,255,0.02)"},children:e.jsx("div",{style:{maxWidth:900,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:2},children:[{step:"1",title:"Identify the right person",body:"Head of Strategy, COO, Chief of Staff, or Chief Risk Officer. They own the coordination problem. Not IT, not procurement."},{step:"2",title:"Personalize each email",body:"Replace [First Name], [Company], and [Q3/Q4]. For Email 3, pick the scenario that fits their industry and delete the others."},{step:"3",title:"Send, don't follow up in the same thread",body:"Each email is a fresh send, not a reply chain. One email at a time. Let the sequence breathe."}].map(t=>e.jsxs("div",{style:{padding:"20px 24px",background:"rgba(255,255,255,0.03)",border:"1px solid rgba(255,255,255,0.06)"},children:[e.jsx("div",{style:{...i,fontSize:28,fontWeight:800,color:"rgba(201,168,76,0.2)",marginBottom:8},children:t.step}),e.jsx("div",{style:{...i,fontSize:12,fontWeight:700,color:"#fff",marginBottom:8},children:t.title}),e.jsx("div",{style:{...i,fontSize:11,color:"rgba(255,255,255,0.4)",lineHeight:1.65},children:t.body})]},t.step))})}),e.jsx("div",{style:{padding:"48px 48px 80px"},children:e.jsxs("div",{style:{maxWidth:900,margin:"0 auto"},children:[e.jsxs("div",{style:{display:"flex",alignItems:"center",gap:10,marginBottom:32},children:[e.jsx("div",{style:{width:24,height:1,background:"rgba(255,255,255,0.2)"}}),e.jsx("span",{style:{...i,fontSize:10,fontWeight:700,letterSpacing:"0.25em",textTransform:"uppercase",color:"rgba(255,255,255,0.35)"},children:"The Five-Email Sequence"})]}),b.map((t,r)=>e.jsx(v,{email:t,index:r},t.num)),e.jsxs("div",{style:{marginTop:48,padding:"28px 32px",background:"rgba(43,138,110,0.07)",border:"1px solid rgba(43,138,110,0.2)"},children:[e.jsx("div",{style:{...i,fontSize:10,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",color:a,marginBottom:16},children:"Supporting Assets — Share These"}),e.jsx("div",{style:{display:"grid",gridTemplateColumns:"repeat(3, 1fr)",gap:12},children:[{label:"Executive Brief",desc:"One-page printable pitch. Attach to Email 5.",href:"/executive-brief"},{label:"12-Minute Test Drive",desc:"Interactive simulation. Link in any email.",href:"/12-minute-experience"},{label:"Proof Story",desc:"Three full activation narratives. Link after interest.",href:"/proof-story"}].map(t=>e.jsxs(h,{href:t.href,style:{display:"block",padding:"16px 20px",background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.07)",textDecoration:"none"},children:[e.jsx("div",{style:{...i,fontSize:12,fontWeight:700,color:"#fff",marginBottom:4},children:t.label}),e.jsx("div",{style:{...i,fontSize:11,color:"rgba(255,255,255,0.35)",lineHeight:1.5},children:t.desc}),e.jsx("div",{style:{...i,fontSize:10,color:a,marginTop:8,fontWeight:600},children:"Open page →"})]},t.label))})]})]})})]})})}export{W as default};
