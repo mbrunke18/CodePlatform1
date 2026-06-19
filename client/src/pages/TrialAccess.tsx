@@ -36,6 +36,11 @@ export default function TrialAccess() {
     onSuccess: (_, variables) => {
       setSubmittedEmail(variables.email);
       setSubmitted(true);
+      (window as any).gtag?.('event', 'trial_access_request', {
+        event_category: 'Lead',
+        event_label: 'Trial Access Request',
+        value: 1,
+      });
     },
   });
 

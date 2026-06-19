@@ -87,6 +87,11 @@ export default function RequestAccess() {
     onSuccess: (_, variables) => {
       setSubmittedEmail(variables.email);
       setSubmitted(true);
+      (window as any).gtag?.('event', 'founding_partner_request', {
+        event_category: 'Lead',
+        event_label: 'Founding Partner Access Request',
+        value: 1,
+      });
     },
   });
 

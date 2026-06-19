@@ -69,6 +69,12 @@ export default function Contact() {
 
       if (!res.ok) throw new Error('Submission failed');
 
+      (window as any).gtag?.('event', 'founding_partner_apply', {
+        event_category: 'Lead',
+        event_label: 'Founding Partner Program Application',
+        value: 1,
+      });
+
       toast({
         title: "Application Received!",
         description: "Creating your account now — you'll be redirected to set up your workspace.",
