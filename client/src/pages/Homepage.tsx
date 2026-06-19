@@ -991,7 +991,7 @@ function HeroSection() {
               </h2>
 
               <p style={{ ...DM, color: "rgba(255,255,255,0.96)", fontSize: "clamp(17px,1.4vw,19px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 16px" }}>
-                Most organizations spend 30 days mobilizing after a trigger fires — aligning stakeholders, agreeing on a plan, assembling the response. That delay is the Mobilization Tax.
+                Most organizations spend 30 days mobilizing after a trigger fires. Business analysts scope the response. PMO Directors map who needs to be in the room. Functional leads confirm their roles. Tasks get assigned, briefs get drafted, budgets get estimated — all from scratch, under pressure, while the window closes. That is the Mobilization Tax.
               </p>
               <p style={{ ...DM, color: GOLD, fontSize: "clamp(17px,1.4vw,19px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 28px" }}>
                 The Mobilization Tax doesn't get reduced. It gets eliminated.
@@ -2264,7 +2264,7 @@ function AthletePreparationSection() {
                 Tuesday through Friday is where Saturday is decided. The competition is the confirmation — not the preparation.
               </p>
               <p style={{ ...DM, fontSize: 15, color: MUTED_LIGHT, lineHeight: 1.75, marginBottom: 28 }}>
-                Most enterprise organizations do the opposite. They perform when the trigger fires and prepare for nothing. Every response begins from scratch — who needs to be in the room, what the plan is, who owns what. The mobilization cycle alone takes 30 days.
+                Most enterprise organizations do the opposite. They prepare for nothing and perform when the trigger fires. Every response begins from scratch — the BA documents what needs to happen, the PMO maps who needs to be in the room, functional leads confirm their roles, tasks get assigned, briefs get drafted. That work takes 30 days. Readiness OS pre-stages all of it before the trigger fires.
               </p>
               <p style={{ ...DM, fontSize: 15, fontWeight: 700, color: NAVY, lineHeight: 1.6, marginBottom: 20 }}>
                 Thirty days is not a performance problem. It is an architecture problem.

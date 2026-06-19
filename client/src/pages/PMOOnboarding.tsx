@@ -169,7 +169,7 @@ export default function PMOOnboarding() {
               <em style={{ color: GOLD }}>The system executes. The C-suite authorizes.</em>
             </h1>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 680, lineHeight: 1.7, marginBottom: 36 }}>
-              Every enterprise that prepares for every situation it will face is no longer afraid of strategic triggers. As PMO Director, you are the preparation architect — the person who designs the infrastructure that makes 12-minute execution possible. When a trigger fires, the system responds. You already did the work that makes that possible.
+              Right now, when a trigger fires, the 30-day mobilization begins — and you are at the center of it. Mapping stakeholders, assigning tasks, drafting briefs, aligning functional leads. All from scratch, under pressure, while the window closes. Readiness OS changes the sequence. You do that work once, in advance, in a calm room. When the trigger fires, it is already done. Your role shifts from reactive mobilizer to preparation architect — and that is a different job entirely.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <Link href="/getting-started" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", textDecoration: "none", borderRadius: "0.15rem" }}>
