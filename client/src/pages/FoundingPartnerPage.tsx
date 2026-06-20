@@ -323,7 +323,7 @@ export default function FoundingPartnerPage() {
           <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD, marginBottom: 20 }}>Who the Founding Partner Program Is For</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
             {[
-              { label: "The right fit", items: ["startup to Fortune 500 or equivalent-scale organization", "Executive sponsor with authorization authority (CISO, CRO, COO, or equivalent)", "PMO Director or Chief of Staff to own the 90-day readiness architecture build", "At least 2 high-priority trigger scenarios (cyber, regulatory, supply chain, M&A)", "Appetite to move from reactive to pre-staged execution model"], color: TEAL },
+              { label: "The right fit", items: ["startup to Fortune 500 or equivalent-scale organization", "Executive sponsor with authorization authority (CISO, CRO, COO, or equivalent)", "Preparation Architect (COO, Chief of Staff, VP Operations, or equivalent) to own the 90-day readiness architecture build", "At least 2 high-priority trigger scenarios (cyber, regulatory, supply chain, M&A)", "Appetite to move from reactive to pre-staged execution model"], color: TEAL },
               { label: "Not the right fit", items: ["Organizations seeking a point tool or dashboard replacement", "Teams without executive sponsorship or authority to map authorization chains", "Organizations requiring customer references before engaging (this cohort is the reference group)", "Companies not currently facing any of the 231 trigger categories"], color: "#DC2626" },
             ].map(col => (
               <div key={col.label}>

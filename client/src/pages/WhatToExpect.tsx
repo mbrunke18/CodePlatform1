@@ -255,7 +255,7 @@ export default function WhatToExpect() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem" }}>
                   {[
                     { label: "Executive Sponsor", detail: "A C-suite principal who holds authorization authority and can sign off on protocol activations. Without this, the platform cannot function as designed." },
-                    { label: "PMO Director or Chief of Staff", detail: "The person who designs your readiness posture — mapping stakeholders, staging protocols, and building the calibration rhythm. They architect the infrastructure once. When a trigger fires, the system responds. They are not in the war room — they already did the work that makes the war room unnecessary." },
+                    { label: "Preparation Architect", detail: "The person who designs your readiness posture — mapping stakeholders, staging protocols, and building the calibration rhythm. This role goes by many titles: COO, Chief of Staff, VP Operations, PMO Director. The title varies by organization; the function does not. They architect the infrastructure once. When a trigger fires, the system responds. They are not in the war room — they already did the work that makes the war room unnecessary." },
                     { label: "2–3 Priority Scenarios", detail: "You do not configure all 180 protocols on day one. Start with the 2–3 situations your organization is most likely to face. Everything else stages from there." },
                     { label: "Stakeholder Participation", detail: "4–6 hours across your functional leads in the first two weeks to map their response roles. This is the most important investment you will make — it is what pre-stages the execution before any trigger fires." },
                   ].map(({ label, detail }) => (
@@ -327,7 +327,7 @@ export default function WhatToExpect() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: "1rem", color: "#fff", lineHeight: 1.7, fontWeight: 500 }}>
-                    Most organizations reach a full readiness posture within the first 90 days. The preparation is not a project — it is infrastructure, built once and kept current. Once staged, the system responds. The PMO Director is not in the war room — they already did the work that makes the war room possible. Keeping that architecture current takes roughly 2–4 hours per week, plus a quarterly calibration session.
+                    Most organizations reach a full readiness posture within the first 90 days. The preparation is not a project — it is infrastructure, built once and kept current. Once staged, the system responds. The Preparation Architect is not in the war room — they already did the work that makes the war room possible. Keeping that architecture current takes roughly 2–4 hours per week, plus a quarterly calibration session.
                   </div>
                 </div>
               </div>

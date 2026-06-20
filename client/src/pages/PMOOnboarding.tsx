@@ -34,12 +34,12 @@ const TIERS = [
   },
   {
     level: "02",
-    title: "PMO Director",
+    title: "Preparation Architect",
     role: "Preparation Architect",
     color: TEAL,
     icon: Layers,
     description:
-      "The PMO Director designs the readiness infrastructure — not runs it. You configure the protocols, map the stakeholders, and build the response architecture that makes 12-minute execution possible. When a trigger fires, the system responds. You've already done the work that makes that possible. Your role is architect, not operator.",
+      "This role goes by many titles — COO, Chief of Staff, VP Operations, PMO Director. The title varies by organization; the function does not. You design the readiness infrastructure — not run it. You configure the protocols, map the stakeholders, and build the response architecture that makes 12-minute execution possible. When a trigger fires, the system responds. You've already done the work that makes that possible. Your role is architect, not operator.",
     responsibilities: [
       "Configure all 180 protocols with accurate role assignments and task owners",
       "Run quarterly drills to verify response readiness across domains",
@@ -120,7 +120,7 @@ const SETUP_PHASES = [
       "Activate live signal monitoring across your 231 trigger categories",
       "Review your Readiness Score — resolve any protocols below threshold",
       "Brief your C-suite executives on authorization flow and mobile access",
-      "Confirm the PMO governance rhythm — monthly protocol audit, quarterly drill",
+      "Confirm the preparation governance rhythm — monthly protocol audit, quarterly drill",
     ],
     href: "/command-tower",
     ctaLabel: "Activate Signal Detection →",
@@ -161,7 +161,7 @@ export default function PMOOnboarding() {
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <div style={{ width: 28, height: 1, background: GOLD }} />
               <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>
-                PMO Director · Preparation Architect
+                Preparation Architect
               </span>
             </div>
             <h1 style={{ ...CG, fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 20 }}>
@@ -267,14 +267,14 @@ export default function PMOOnboarding() {
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
                 <div style={{ width: 28, height: 1, background: GOLD }} />
-                <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>PMO Go-Live Path</span>
+                <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Preparation Architect Go-Live Path</span>
                 <div style={{ width: 28, height: 1, background: GOLD }} />
               </div>
               <h2 style={{ ...CG, fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 700, color: NAVY, marginBottom: 14, lineHeight: 1.1 }}>
                 Your 4-phase path to live.
               </h2>
               <p style={{ fontSize: 15, color: MUTED, maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
-                From first login to live signal detection in 30 days. Each phase has explicit PMO owner tasks — not generic setup steps.
+                From first login to live signal detection in 30 days. Each phase has explicit Preparation Architect tasks — not generic setup steps.
               </p>
             </div>
 
@@ -319,19 +319,19 @@ export default function PMOOnboarding() {
           </div>
         </div>
 
-        {/* PMO Governance Rhythm */}
+        {/* Governance Rhythm */}
         <div style={{ background: IVORY, padding: "72px 48px", borderTop: `1px solid ${BORDER}` }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <div style={{ marginBottom: 40 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                 <div style={{ width: 28, height: 1, background: GOLD }} />
-                <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>PMO Governance Rhythm</span>
+                <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Governance Rhythm</span>
               </div>
               <h2 style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, color: NAVY, marginBottom: 12, lineHeight: 1.1 }}>
                 Ongoing preparation calibration rhythm.
               </h2>
               <p style={{ fontSize: 15, color: MUTED, maxWidth: 620, lineHeight: 1.7 }}>
-                Readiness is not a one-time setup — but it is not a full-time job either. This is the cadence that keeps the preparation architecture current as your organization evolves, without making the PMO Director the permanent bottleneck.
+                Readiness is not a one-time setup — but it is not a full-time job either. This is the cadence that keeps the preparation architecture current as your organization evolves, without becoming a full-time job for whoever holds the architect role.
               </p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20 }}>
@@ -364,7 +364,7 @@ export default function PMOOnboarding() {
               The response is ready<br /><em style={{ color: GOLD }}>before the trigger fires.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", maxWidth: 520, margin: "0 auto 36px", lineHeight: 1.7 }}>
-              Your role as PMO Director is to ensure that sentence is true — across every domain, every trigger category, every protocol in the library. Begin the configuration now.
+              Your role as Preparation Architect is to ensure that sentence is true — across every domain, every trigger category, every protocol in the library. Begin the configuration now.
             </p>
             <Link href="/getting-started" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "14px 32px", textDecoration: "none", borderRadius: "0.15rem" }}>
               Begin Configuration <ArrowRight size={14} />
