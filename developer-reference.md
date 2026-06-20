@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 18, 2026 (rev 61) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 20, 2026 (rev 62) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -789,6 +789,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 | `InvestorLanding.tsx` | `/investor-landing`, `/executive-access` | Full investor pitch page. Hero primary CTA: "Schedule a Conversation" → `/founding-partner-program`. Secondary: "See 8-Minute Demo" + "Investor Resources". Closing CTA section: "Let's Build This Together" with same priority order + `investor@vaughnmartin.com` contact line. **Previously redirected to `/how-it-works` — now a live route.** Public (not gated). |
 | `Settings.tsx` | `/settings` | Admin settings. All buttons are functional (March 2026). |
 | `OnboardingWizard.tsx` | `/onboarding` | 5-step new user setup |
+| `PreparationDiagnostic.tsx` | `/preparation-diagnostic` | **Readiness Architecture Studio** — three-mode landing: (1) Full Setup (6-step wizard: Profile → Risk & Triggers → Priorities → Protocols → Authorization → Activate), (2) Build a Custom Protocol (4-step: Intent → Signal Coverage → Authorization → Package), (3) Customize Existing Protocol (selects from library). **Demo Quick-Start:** ivory section at the bottom of the landing with 5 industry buttons (Financial Services, Healthcare, Technology, Manufacturing, Energy) — clicking pre-fills `DEMO_PRESETS[industry]` and jumps directly to step 4 (Protocols, index 3) with `isDemoMode=true`. Demo mode shows a "Demo Mode · {industry}" teal badge in the wizard header. **Architecture View (step 4):** defaults to 3-column domain layout (GROWTH & POSITIONING / teal, RISK & RESILIENCE / red-navy, TRANSFORMATION / #1E3A5F — NOT purple) with protocol checkboxes, a Coverage % score (0–95% derived from selected protocol weights), and per-column coverage bars. **Save/Resume:** draft saved to `localStorage` key `vm_studio_draft` on every step change; a resume banner appears on landing if a draft is detected. **Stakeholder bridge:** at activation (step 6), selected domain owners with valid emails are POSTed to `POST /api/stakeholder-contacts` to seed org stakeholders. Linked from: StandardNav "What to Expect → Inside the Platform" (featured), StandardNav top bar. |
 | `ExecutiveSummaryGenerator.tsx` | `/executive-summary` | AI-generated executive summaries |
 | `FoundingPartnerProgram.tsx` | `/founding-partner-program` (alias: `/pilot-program`) | Primary enterprise conversion page — see Section 55 for full spec. `/pilot-program` is a permanent route alias; both routes render `FoundingPartnerProgram.tsx`. |
 | `DemoAccess.tsx` | `/demo-access` | Token-gated executive access entry point. Reads `?token=` param, validates via `/api/demo-access`, then redirects to `/mission-control` (or `?returnTo=` value). **LOCKED executive access link: `https://vaughnmartin.com/demo-access?token=VMdemo2026`** — do not change this URL or token. |
@@ -4367,3 +4368,45 @@ The modal must never frame the product as a crisis-response tool. The emotional 
 - Framing: ✅ category-creation (not crisis-response)
 - `/demo-experience`: ✅ live — cold open + 9-step PREPARATION/RESPONSE/ADVANCE journey, ComparisonStrip on all Response steps, live $180K/hr counter, Fearless landing, Founding Partner CTA
 - Homepage hero ghost CTA: ✅ "Experience the Platform →" → `/demo-experience`
+
+---
+
+## 74. June 20, 2026 — Rev 62 Change Log
+
+### Readiness Architecture Studio — `/preparation-diagnostic` Rebuild
+
+`PreparationDiagnostic.tsx` was rebuilt from a simple 3-question diagnostic into a full-featured **Readiness Architecture Studio**. The page table (Section 13) now documents this component fully. Key additions for any developer extending this page:
+
+#### Mode selector (landing)
+Three mode cards on the white landing below the navy hero: Full Setup (6-step), Build a Custom Protocol (4-step), Customize Existing Protocol (select from library). Mode cards use a `selectedMode` state and a "Begin →" CTA that transitions to the wizard.
+
+#### Demo Quick-Start
+Ivory section at the bottom of the landing. Five navy industry buttons. Each calls `handleDemoQuickStart(industry)` which:
+1. Sets `demoPresets` from the `DEMO_PRESETS[industry]` constant (pre-wires org profile, risk selections, priorities)
+2. Sets `isDemoMode = true`
+3. Sets `currentStep = 3` (index 3 = step 4 of 6, "Protocols")
+4. Sets `mode = "setup"` and transitions past the landing
+
+A "Demo Mode · {industry}" teal badge renders in the wizard header next to the step title whenever `isDemoMode` is true.
+
+#### Architecture View (default for step 4 / Protocols)
+Three-column domain layout rendered when `protocolView === "architecture"`. Columns:
+- **GROWTH & POSITIONING** — teal top border (`#2B8A6E`)
+- **RISK & RESILIENCE** — red-navy top border (`#8B1A1A`)
+- **TRANSFORMATION** — deep navy top border (`#1E3A5F`) — **NOT purple**
+
+Coverage % score calculated as `(sum of weights for selected protocols) / (sum of all protocol weights) × 100`, capped at 95. Shown in a navy score bar above the columns.
+
+#### Save / Resume
+Draft state serialized to `localStorage` under key `vm_studio_draft` on every `currentStep` change. On landing page mount, if the key exists, a teal resume banner appears: "You have a saved architecture draft — Resume where you left off →". Banner has both a Resume and a Start Fresh button.
+
+#### Stakeholder bridge
+At activation (step 6), for each domain owner in the authorization config that has a non-empty email, the component calls `POST /api/stakeholder-contacts` to create a real org stakeholder record. Errors are silently swallowed (fire-and-forget) so a missing email does not block the activation flow.
+
+### Production Readiness Verification — June 20, 2026
+- Build: ✅ clean (zero TypeScript errors, pre-existing eval warning in `DocumentTemplateEngine.ts` only)
+- Tests: ✅ 208/208 passing
+- GitHub: ✅ pushed — all commits from Rev 56 through Rev 62 synced to `origin/main` (mbrunke18/CodePlatform1)
+- Critical public pages verified via screenshot: `/`, `/preparation-diagnostic`, `/playbook-library`, `/12-minute-experience`, `/executive-brief`, `/investors`, `/how-it-executes`
+- Zero browser console errors on any public page
+- TRANSFORMATION domain color: ✅ `#1E3A5F` (deep navy) — no purple anywhere on the platform
