@@ -138,7 +138,7 @@ const EXPERIENCE = [
 
 const ONBOARDING = [
   { label: "Getting Started Hub", href: "/getting-started", featured: true },
-  { label: "PMO Director Onboarding", href: "/pmo-onboarding", featured: true },
+  { label: "Preparation Architect Onboarding", href: "/pmo-onboarding", featured: true },
   { label: "30-Day Preparation Arc", href: "/preparation-arc" },
   { label: "Technical Onboarding", href: "/technical-onboarding" },
   { label: "Integration Setup Plan", href: "/integrations" },

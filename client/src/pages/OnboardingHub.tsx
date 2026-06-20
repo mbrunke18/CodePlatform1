@@ -48,7 +48,7 @@ const PHASES = [
     links: [
       { label: "Protocol Library — 180 Protocols", href: "/playbooks" },
       { label: "Protocol Builder", href: "/protocol-builder" },
-      { label: "PMO Director Onboarding", href: "/pmo-onboarding" },
+      { label: "Preparation Architect Onboarding", href: "/pmo-onboarding" },
     ],
   },
   {
@@ -105,15 +105,15 @@ const ROLES = [
     ],
   },
   {
-    role: "PMO Director",
+    role: "Preparation Architect",
     icon: Layers,
     color: TEAL,
     responsibility: "Preparation Architecture",
     desc: "You own the go-live path. Your role: protocol selection, ownership assignment, drill scheduling, and governance rhythm.",
     start: "/pmo-onboarding",
-    startLabel: "Open PMO Onboarding Path",
+    startLabel: "Open Preparation Architect Path",
     resources: [
-      { label: "PMO Director Onboarding", href: "/pmo-onboarding" },
+      { label: "Preparation Architect Onboarding", href: "/pmo-onboarding" },
       { label: "30-Day Preparation Arc", href: "/preparation-arc" },
       { label: "Protocol Library", href: "/playbooks" },
     ],
@@ -154,7 +154,7 @@ const ALL_RESOURCES = [
     color: TEAL,
     links: [
       { label: "Getting Started Hub", href: "/getting-started" },
-      { label: "PMO Director Onboarding", href: "/pmo-onboarding" },
+      { label: "Preparation Architect Onboarding", href: "/pmo-onboarding" },
       { label: "30-Day Preparation Arc", href: "/preparation-arc" },
       { label: "Technical Onboarding", href: "/technical-onboarding" },
       { label: "Integration Setup Plan", href: "/integrations" },
@@ -235,7 +235,7 @@ export default function OnboardingHub() {
               <CheckCircle size={13} /> Open Setup Checklist
             </Link>
             <Link href="/pmo-onboarding" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 600, fontSize: 13, padding: "13px 20px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.2)" }}>
-              PMO Director Path <ArrowRight size={13} />
+              Preparation Architect Path <ArrowRight size={13} />
             </Link>
           </div>
         </div>
@@ -287,7 +287,7 @@ export default function OnboardingHub() {
           <GoldRule />
           <h2 style={{ ...DM, fontSize: 30, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Three ownership tiers. One coordinated launch.</h2>
           <p style={{ ...DM, fontSize: 14, color: MUTED, marginBottom: 40, maxWidth: 520 }}>
-            C-suite authorizes. PMO architects preparation. Functional leads execute. Each role has a clear path.
+            C-suite authorizes. Preparation Architect builds readiness. Functional leads execute. Each role has a clear path.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
             {ROLES.map(role => (

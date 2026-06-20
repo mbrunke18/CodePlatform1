@@ -1485,7 +1485,7 @@ export const scenarios: Scenario[] = [
       }
     ],
     
-    situation: 'Market research identifies $200M opportunity for AI-powered analytics platform. Competitors developing similar solutions. Window to establish market leadership: 90 days. Must coordinate product, engineering, marketing, sales, and customer success for flawless launch.',
+    situation: 'Market research identifies $200M opportunity for a next-generation analytics platform. Competitors developing similar solutions. Window to establish market leadership: 90 days. Must coordinate product, engineering, marketing, sales, and customer success for flawless launch.',
     
     traditionalApproach: {
       description: 'Sequential planning: product finalization → marketing campaign → sales training → launch. Manual coordination across teams, delayed decision-making, reactive adjustments.',
@@ -1523,7 +1523,7 @@ export const scenarioCategoryInfo = {
     color: 'blue'
   },
   'special-teams': {
-    name: 'Special Teams',
+    name: 'TRANSFORMATION',
     description: 'Game-changing moments and transformations',
     count: 5,
     color: 'purple'

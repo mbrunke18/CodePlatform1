@@ -7,7 +7,7 @@ import {
   CheckCircle2, Circle, ArrowRight, ChevronRight, AlertTriangle,
   Building2, Users, Shield, Rocket, Globe, Phone, Mail, Clock,
   DollarSign, Target, Zap, Radio, BookOpen, ClipboardList, Lock,
-  RotateCcw, Save,
+  RotateCcw, Save, Layers,
 } from 'lucide-react';
 
 const NAVY = "#0A0F2E";
@@ -367,7 +367,7 @@ export default function GettingStarted() {
 
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Decision Rights — IDEA Framework</div>
               <Item done={c.executiveSponsor} label="Executive sponsor named" sub={ideaConfig.executiveSponsor || 'The C-suite owner of Readiness OS outcomes'} href="/onboarding-wizard" />
-              <Item done={c.pmoContact} label="PMO / program lead named" sub={ideaConfig.pmoContact || 'The operational owner of day-to-day readiness'} href="/onboarding-wizard" />
+              <Item done={c.pmoContact} label="Preparation Architect named" sub={ideaConfig.pmoContact || 'The operational owner of preparation architecture — COO, Chief of Staff, VP Operations, or equivalent'} href="/onboarding-wizard" />
               <Item done={c.domainOwnersNamed} label={`Domain owners named — ${ownersWithName.length} of 6 domains`} sub="Who owns each response domain when a trigger fires" href="/onboarding-wizard" partial={ownersWithName.length > 0 && ownersWithName.length < 6} />
               <Item done={c.domainOwnerEmails} label={`Domain owner emails — ${ownersWithEmail.length} of 6`} sub="Required to reach owners within the 12-minute window" href="/onboarding-wizard" partial={ownersWithEmail.length > 0 && ownersWithEmail.length < 6} />
               <Item done={c.domainOwnerMobiles} label={`Domain owner mobile numbers — ${ownersWithMobile.length} of 6`} sub="Email alone is too slow — mobile is the 12-minute channel" href="/onboarding-wizard" partial={ownersWithMobile.length > 0 && ownersWithMobile.length < 6} />
@@ -396,6 +396,24 @@ export default function GettingStarted() {
             <PhaseCard num="03" title="Protocol Readiness" timing="Week 2 — ongoing" doing="Executive team + domain owners" score={p3} phaseRef={phaseRefs[2]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Signal Monitoring</div>
               <Item done={c.signalMonitoring} label="Signal monitoring active" sub="231 triggers scanned across 8 sources every 15 minutes — always on" />
+
+              {/* Readiness Architecture Studio callout */}
+              <div style={{ background: `rgba(201,168,76,0.06)`, border: `1px solid rgba(201,168,76,0.2)`, borderLeft: `3px solid ${GOLD}`, padding: '14px 16px', marginBottom: 12, marginTop: 16 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+                  <div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>Map your full readiness architecture</div>
+                    <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6 }}>
+                      Use the Readiness Architecture Studio to select protocols across all 3 strategic domains, assign authorization chains, and build domain coverage — all before any trigger fires.
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => nav('/preparation-diagnostic')}
+                    style={{ flexShrink: 0, padding: '8px 14px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' as const, borderRadius: '0.15rem' }}
+                  >
+                    Open Studio <ChevronRight size={12} />
+                  </button>
+                </div>
+              </div>
 
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Call Sheet Build — Situation Matrix Builder</div>
 
@@ -522,6 +540,7 @@ export default function GettingStarted() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Quick Actions</div>
               {[
                 { label: 'Setup Wizard', href: '/onboarding-wizard', icon: Target },
+                { label: 'Readiness Architecture Studio', href: '/preparation-diagnostic', icon: Layers },
                 { label: 'Organization Setup', href: '/organization-setup', icon: Building2 },
                 { label: 'Situation Matrix Builder', href: '/situation-matrix-builder', icon: Radio },
                 { label: 'Build a Protocol', href: '/build-protocol', icon: BookOpen },
@@ -571,7 +590,7 @@ export default function GettingStarted() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
                 { session: 'Session 1', title: 'Map Your Unintended Situations', desc: 'Identify the 10–15 strategic triggers most likely to fire in your industry this year that are not currently on your roadmap. Use the 231-trigger library as your starting point.', cta: 'Open Protocol Library →', href: '/playbooks', color: GOLD },
-                { session: 'Session 2', title: 'Select Your Priority Protocols', desc: 'From the 180 Readiness Protocols, select the 5–10 most critical for your organization. Configure them to your specific org structure, decision rights, and stakeholder roster.', cta: 'Browse 180 Protocols →', href: '/playbooks', color: TEAL },
+                { session: 'Session 2', title: 'Select Your Priority Protocols', desc: 'From the 180 Readiness Protocols, select the 5–10 most critical for your organization. Configure them to your specific org structure, decision rights, and stakeholder roster.', cta: 'Open Architecture Studio →', href: '/preparation-diagnostic', color: TEAL },
                 { session: 'Session 3', title: 'Run a Tabletop Simulation', desc: 'Activate your top protocol against a practice trigger. Full execution chain — stakeholder alerts, task assignments, executive authorization — before a real situation demands it.', cta: 'Schedule a Practice Drill →', href: '/practice-drills', color: GOLD },
                 { session: 'Session 4', title: 'Confirm Your Readiness Benchmark', desc: 'Document your confirmed response time, activation chain, and readiness score. This is your baseline — every future activation improves it.', cta: 'View Readiness Score →', href: '/mission-control', color: TEAL },
               ].map(({ session, title, desc, cta, href, color }) => (

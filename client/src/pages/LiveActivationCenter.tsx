@@ -202,7 +202,7 @@ const DEFAULT_STAKEHOLDERS: Record<string, Stakeholder[]> = {
 
 const DEFAULT_TASKS: Record<string, Task[]> = {
   'ma-day1': [
-    { id: 't1', name: 'Activate Integration War Room', owner: 'PMO Lead', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't1', name: 'Activate Integration War Room', owner: 'Preparation Architect', phase: 'IMMEDIATE', status: 'pending' },
     { id: 't2', name: 'Notify Tier 1 Stakeholders', owner: 'Comms Lead', phase: 'IMMEDIATE', status: 'pending' },
     { id: 't3', name: 'Lock Financial Systems Access', owner: 'CFO', phase: 'IMMEDIATE', status: 'pending' },
     { id: 't4', name: 'Deploy Day 1 Communications', owner: 'VP Comms', phase: 'IMMEDIATE', status: 'pending' },
@@ -212,7 +212,7 @@ const DEFAULT_TASKS: Record<string, Task[]> = {
     { id: 't8', name: 'Regulatory Filing Submission', owner: 'Legal', phase: 'SECONDARY', status: 'pending' },
     { id: 't9', name: 'Vendor Contract Review', owner: 'Procurement', phase: 'FOLLOW_UP', status: 'pending' },
     { id: 't10', name: 'Brand Alignment Assessment', owner: 'Marketing', phase: 'FOLLOW_UP', status: 'pending' },
-    { id: 't11', name: 'Cross-team Sync Cadence Setup', owner: 'PMO Lead', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't11', name: 'Cross-team Sync Cadence Setup', owner: 'Preparation Architect', phase: 'FOLLOW_UP', status: 'pending' },
     { id: 't12', name: 'Integration Dashboard Go-Live', owner: 'CTO', phase: 'FOLLOW_UP', status: 'pending' },
   ],
   'ransomware': [

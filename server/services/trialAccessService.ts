@@ -63,7 +63,7 @@ function buildTrialEmailHtml(data: {
         <tr>
           <td style="background:${NAVY};padding:20px 40px;">
             <p style="margin:0;color:rgba(255,255,255,0.5);font-size:11px;">
-              After your trial, apply for the full Pilot Program at vaughnmartin.com/pilot-program<br/>
+              After your trial, apply for the Founding Partner Program at vaughnmartin.com/founding-partner<br/>
               Reserved for startup to Fortune 500 organizations meeting deployment requirements.
             </p>
           </td>

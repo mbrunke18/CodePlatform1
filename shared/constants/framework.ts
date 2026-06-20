@@ -24,7 +24,7 @@ export const EXECUTION_OS_BRAND = {
   },
   modules: {
     identify: { name: 'VaughnMartin Playbook™', description: 'Build and customize strategic playbooks' },
-    detect: { name: 'VaughnMartin Signal™', description: 'AI-powered signal monitoring and detection' },
+    detect: { name: 'VaughnMartin Signal™', description: 'Continuous signal monitoring and detection' },
     execute: { name: 'VaughnMartin Compass™', description: 'Coordinated response and execution' },
     advance: { name: 'VaughnMartin Retrospect™', description: 'Institutional learning and improvement' },
     executive: { name: 'Readiness OS One™', description: 'Single-pane executive view' }
@@ -114,7 +114,7 @@ export const IDEA_PHASES = {
     name: 'DETECT',
     moduleName: 'VaughnMartin Signal™',
     subtitle: 'Monitor Signals',
-    description: 'AI-powered monitoring spots signals early. Real-time triggers across market, competitive, and regulatory landscapes. Intelligence reports, not surprises.',
+    description: 'Continuous monitoring spots signals early. Real-time triggers across market, competitive, and regulatory landscapes. Intelligence reports, not surprises.',
     icon: 'Radar',
     color: '#2B8A6E',
     bgColor: 'bg-[#2B8A6E]',
@@ -319,7 +319,7 @@ export const STRATEGIC_CATEGORIES = {
   },
   SPECIAL_TEAMS: {
     id: 'special_teams',
-    name: 'Special Teams',
+    name: 'TRANSFORMATION',
     description: 'Transform and change the game',
     icon: 'Zap',
     color: '#8B5CF6',

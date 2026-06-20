@@ -22,7 +22,7 @@ const WEEKS = [
     title: 'Install',
     tagline: 'Configure your foundation. Define who owns what when the trigger fires.',
     color: TEAL,
-    commitment: '4–6 hours total · Executive Sponsor + PMO lead',
+    commitment: '4–6 hours total · Executive Sponsor + Preparation Architect',
     outcome: 'Platform is configured for your organization. Decision rights are mapped. Signal monitoring is active.',
     milestone: 'Signal monitoring live · Decision rights defined · Stakeholder roster complete',
     tasks: [
@@ -38,11 +38,11 @@ const WEEKS = [
       {
         day: 'Day 2–3',
         title: 'Decision Rights & Domain Owners',
-        description: 'Name the executive sponsor and PMO lead. Assign a named owner, backup, email, and mobile number to each of the 6 response domains. This is the most critical setup step — without it, the system cannot route execution to the right person in 12 minutes.',
+        description: 'Name the executive sponsor and Preparation Architect. Assign a named owner, backup, email, and mobile number to each of the 6 response domains. This is the most critical setup step — without it, the system cannot route execution to the right person in 12 minutes.',
         actions: [
           { label: 'Configure Domain Owners', href: '/onboarding-wizard', primary: true },
         ],
-        fields: ['Executive sponsor', 'PMO / program lead', '6 domain owners', 'Backup owners', 'Mobile + email for each'],
+        fields: ['Executive sponsor', 'Preparation Architect', '6 domain owners', 'Backup owners', 'Mobile + email for each'],
       },
       {
         day: 'Day 3–4',

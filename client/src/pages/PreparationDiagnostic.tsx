@@ -1364,7 +1364,7 @@ export default function PreparationDiagnostic() {
               </div>
 
               <div style={{ marginBottom: 36 }}>
-                <FieldLabel>Preparation Architect (PMO lead)</FieldLabel>
+                <FieldLabel>Preparation Architect</FieldLabel>
                 <input type="text" value={pmoLead} onChange={e => setPmoLead(e.target.value)} placeholder="Name of your Preparation Architect" style={{ width: "100%", maxWidth: 440, padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
               </div>
 
@@ -1420,7 +1420,7 @@ export default function PreparationDiagnostic() {
                       `Industry: ${INDUSTRIES.find(i => i.key === industry)?.label ?? industry}`,
                       `Size: ${SIZES.find(s => s.key === size)?.label ?? size}`,
                       execSponsor ? `Sponsor: ${execSponsor}${execRole ? ` (${execRole})` : ""}` : "Executive sponsor not set",
-                      pmoLead ? `Preparation Architect: ${pmoLead}` : "PMO lead not set",
+                      pmoLead ? `Preparation Architect: ${pmoLead}` : "Preparation Architect not set",
                     ],
                   },
                   {

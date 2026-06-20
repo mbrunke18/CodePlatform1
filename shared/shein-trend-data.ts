@@ -9,7 +9,7 @@ export const sheinTrendDemoData = {
       products: "600,000+ SKUs, 6,000 new styles daily",
       delivery: "Design to delivery in 7 days (industry: 6-12 months)"
     },
-    background: "SHEIN revolutionized fashion by building an AI-powered supply chain that detects trends instantly and coordinates massive manufacturing networks in days. But even SHEIN faces bottlenecks: when a viral TikTok trend emerges, coordinating 5,000 suppliers, design teams, logistics, and marketing still takes 48-72 hours. In fast fashion, whoever coordinates fastest captures 80% of the trend revenue—competitors launch knockoffs within 5 days."
+    background: "SHEIN revolutionized fashion by building a system-coordinated supply chain that detects trends instantly and coordinates massive manufacturing networks in days. But even SHEIN faces bottlenecks: when a viral TikTok trend emerges, coordinating 5,000 suppliers, design teams, logistics, and marketing still takes 48-72 hours. In fast fashion, whoever coordinates fastest captures 80% of the trend revenue—competitors launch knockoffs within 5 days."
   },
 
   crisis: {
@@ -220,7 +220,7 @@ export const sheinTrendDemoData = {
     {
       time: "1:30",
       title: "Executive Briefing: $180M Opportunity Window",
-      description: "42 executives (CEO, COO, Chief Design Officer, 12 Category Directors) receive AI-powered trend analysis: 47M TikTok views, 850% search spike, 21-day lifecycle, $180M revenue if launched within 7 days. Competitive window: 48-72 hours before Zara/H&M respond.",
+      description: "42 executives (CEO, COO, Chief Design Officer, 12 Category Directors) receive system-analyzed trend data: 47M TikTok views, 850% search spike, 21-day lifecycle, $180M revenue if launched within 7 days. Competitive window: 48-72 hours before Zara/H&M respond.",
       status: "coordinating",
       icon: "Target",
       stakeholderCount: 42

@@ -9,7 +9,7 @@ export const retailDemoData = {
       stores: "10,500 stores in 19 countries",
       aiInvestment: "$20M+ saved via AI supply chain optimization"
     },
-    background: "World's largest retailer with industry-leading AI-powered supply chain optimization analyzing 5,000+ daily shipments. But when food safety crises emerge, coordination still moves at email speed while contamination spreads at viral speed."
+    background: "World's largest retailer with industry-leading system-analyzed supply chain optimization across 5,000+ daily shipments. But when food safety crises emerge, coordination still moves at email speed while contamination spreads at viral speed."
   },
 
   crisis: {
