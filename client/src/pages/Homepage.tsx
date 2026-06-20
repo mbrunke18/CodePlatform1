@@ -994,7 +994,7 @@ function HeroSection() {
                 Most organizations spend 30 days mobilizing after a trigger fires. Business analysts scope the response. Operations leaders map who needs to be in the room — whoever owns coordination in that organization. Functional leads confirm their roles. Tasks get assigned, briefs get drafted, budgets get estimated — all from scratch, under pressure, while the window closes. That is the Mobilization Tax.
               </p>
               <p style={{ ...DM, color: GOLD, fontSize: "clamp(17px,1.4vw,19px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 28px" }}>
-                The Mobilization Tax doesn't get reduced. It gets compressed — from 30 days to 12 minutes.
+                The Mobilization Tax doesn't get reduced. It gets eliminated. 30 days of real-time coordination — replaced by 12 minutes of pre-staged execution.
               </p>
 
               {/* CTAs — one primary experience path, one conversion path */}

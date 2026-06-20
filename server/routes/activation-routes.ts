@@ -98,9 +98,9 @@ export function registerActivationRoutes(app: Express): void {
         organizationName: 'Readiness OS',
         triggeredBy: 'Readiness OS Platform',
         appUrl,
-      }).catch(() => {});
+      }).catch((err) => { console.error('[Activation] Teams notification failed (non-blocking):', err); });
 
-      notifyPlaybookActivation(playbookName, stakeholderCount, deadline).catch(() => {});
+      notifyPlaybookActivation(playbookName, stakeholderCount, deadline).catch((err) => { console.error('[Activation] Stakeholder email notification failed (non-blocking):', err); });
 
       // Notify all active stakeholder contacts via their preferred channel
       (async () => {

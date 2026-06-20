@@ -377,7 +377,7 @@ export class NotificationManager {
     console.log(`🔔 Push notification emitted to ${stakeholder.name} (user-${stakeholder.id})`);
 
     // Also send email in parallel for push — push is best-effort (requires active browser session)
-    await this.sendEmail(stakeholder, message, severity, metadata).catch(() => {});
+    await this.sendEmail(stakeholder, message, severity, metadata).catch((err) => { console.error(`[NotificationManager] Email fallback failed for ${stakeholder.name} (non-blocking):`, err); });
   }
 
   // ─── Public helpers ───────────────────────────────────────────────────────
