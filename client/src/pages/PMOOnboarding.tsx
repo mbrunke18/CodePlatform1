@@ -172,11 +172,11 @@ export default function PMOOnboarding() {
               Right now, when a trigger fires, the 30-day mobilization begins — and you are at the center of it. Mapping stakeholders, assigning tasks, drafting briefs, aligning functional leads. All from scratch, under pressure, while the window closes. Readiness OS changes the sequence. You do that work once, in advance, in a calm room. When the trigger fires, the preparation is already done — the executive authorizes in real time, but that is 12 minutes of confirmation, not 30 days of coordination. Your role shifts from reactive mobilizer to preparation architect — and that is a different job entirely.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <Link href="/getting-started" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", textDecoration: "none", borderRadius: "0.15rem" }}>
-                Start Configuration <ArrowRight size={14} />
+              <Link href="/preparation-diagnostic" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", textDecoration: "none", borderRadius: "0.15rem" }}>
+                Map Your Architecture <ArrowRight size={14} />
               </Link>
-              <Link href="/playbook-library" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(255,255,255,0.8)", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "0.15rem" }}>
-                Open Protocol Library <ChevronRight size={14} />
+              <Link href="/getting-started" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(255,255,255,0.8)", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "0.15rem" }}>
+                Start Configuration <ChevronRight size={14} />
               </Link>
             </div>
           </div>

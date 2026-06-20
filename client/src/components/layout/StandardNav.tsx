@@ -44,6 +44,7 @@ function useNavLogoHeight() {
 
 const SEARCH_ITEMS = [
   { label: 'Getting Started — Go-Live Checklist', path: '/getting-started', category: 'Setup', icon: Rocket },
+  { label: 'Preparation Diagnostic — Map Your Readiness Architecture', path: '/preparation-diagnostic', category: 'Setup', icon: Target },
   { label: 'Preparation Architect Guide — Readiness Architecture Setup', path: '/pmo-onboarding', category: 'Setup', icon: Layers },
   { label: 'Mission Control', path: '/mission-control', category: 'Platform', icon: Compass },
   { label: 'Command Tower', path: '/command-tower', category: 'Platform', icon: Radio },
@@ -176,6 +177,7 @@ export default function StandardNav() {
       heading: "Inside the Platform",
       links: [
         { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
+        { label: "Preparation Diagnostic", path: "/preparation-diagnostic", icon: Target, description: "3-question diagnostic — system matches your org profile to your readiness architecture from 180 protocols", featured: true },
         { label: "Preparation Architect Guide", path: "/pmo-onboarding", icon: Layers, description: "Preparation architecture ownership — your role, your 4-phase go-live path, your governance rhythm", featured: true },
         { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible.", featured: true },
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
