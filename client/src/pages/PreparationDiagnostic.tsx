@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
@@ -8,7 +8,7 @@ import {
   ArrowRight, ChevronRight, ChevronLeft, CheckCircle2, AlertTriangle,
   Shield, Zap, TrendingUp, Building2, Target, Layers, BarChart3,
   Users, Plus, X, Edit3, Lock, Radio, Rocket, RotateCcw,
-  ExternalLink, Settings, MapPin,
+  ExternalLink, Settings, MapPin, LayoutGrid, List, RotateCw,
 } from "lucide-react";
 
 /* ─── Style tokens ───────────────────────────────────────────── */
@@ -20,11 +20,13 @@ const IVORY   = "#F0EDE4";
 const MUTED   = "#6B7280";
 const BORDER  = "#E8E4DC";
 const RED     = "#DC2626";
+const BLUE    = "#1E3A5F";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 
 /* ─── Types ─────────────────────────────────────────────────── */
 type StudioMode = "landing" | "setup" | "customize";
+type ViewMode   = "architecture" | "list";
 
 interface Protocol {
   id?: number | string;
@@ -46,6 +48,74 @@ interface ProtocolCustomization {
   customTrigger?: string;
   executionOwner?: string;
 }
+
+interface DraftState {
+  mode: StudioMode;
+  step: number;
+  industry: string;
+  size: string;
+  triggerCategories: string[];
+  customTriggers: string[];
+  priorityDomains: string[];
+  urgency: string;
+  selectedProtocols: (string | number)[];
+  customizations: Record<string, ProtocolCustomization>;
+  orgName: string;
+  execSponsor: string;
+  execRole: string;
+  pmoLead: string;
+  domainOwners: { domain: string; owner: string; role: string; email: string; mobile: string }[];
+  isDemoMode: boolean;
+}
+
+/* ─── Draft persistence ──────────────────────────────────────── */
+const DRAFT_KEY = "vm_studio_draft";
+function saveDraft(data: DraftState) {
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify(data)); } catch {}
+}
+function loadDraft(): DraftState | null {
+  try {
+    const d = localStorage.getItem(DRAFT_KEY);
+    return d ? JSON.parse(d) : null;
+  } catch { return null; }
+}
+function clearDraft() {
+  try { localStorage.removeItem(DRAFT_KEY); } catch {}
+}
+
+/* ─── Demo presets ───────────────────────────────────────────── */
+const DEMO_PRESETS: Record<string, { triggers: string[]; domains: string[]; size: string; urgency: string }> = {
+  "Financial Services": {
+    triggers: ["cyber", "regulatory", "ma", "financial"],
+    domains:  ["defense", "offense"],
+    size:     "5000_25000",
+    urgency:  "trigger_imminent",
+  },
+  "Healthcare": {
+    triggers: ["regulatory", "cyber", "supply_chain", "reputational"],
+    domains:  ["defense", "special_teams"],
+    size:     "5000_25000",
+    urgency:  "building_posture",
+  },
+  "Technology": {
+    triggers: ["competitive", "cyber", "workforce", "ma"],
+    domains:  ["offense", "defense"],
+    size:     "500_5000",
+    urgency:  "trigger_imminent",
+  },
+  "Manufacturing": {
+    triggers: ["supply_chain", "regulatory", "workforce", "financial"],
+    domains:  ["defense", "special_teams"],
+    size:     "5000_25000",
+    urgency:  "building_posture",
+  },
+  "Energy": {
+    triggers: ["geopolitical", "regulatory", "cyber", "supply_chain"],
+    domains:  ["defense"],
+    size:     "25000_plus",
+    urgency:  "board_request",
+  },
+};
 
 /* ─── Data constants ─────────────────────────────────────────── */
 const INDUSTRIES = [
@@ -79,9 +149,9 @@ const TRIGGER_CATEGORIES = [
 ];
 
 const DOMAIN_OPTIONS = [
-  { key: "offense",       label: "GROWTH & POSITIONING", color: TEAL,       sub: "Market entry, competitive response, M&A, product launch" },
-  { key: "defense",       label: "RISK & RESILIENCE",    color: RED,        sub: "Cyber, regulatory, supply chain, financial, reputational" },
-  { key: "special_teams", label: "TRANSFORMATION",       color: "#7C3AED",  sub: "Workforce, culture, restructuring, go-to-market pivots" },
+  { key: "offense",       label: "GROWTH & POSITIONING", color: TEAL, sub: "Market entry, competitive response, M&A, product launch" },
+  { key: "defense",       label: "RISK & RESILIENCE",    color: RED,  sub: "Cyber, regulatory, supply chain, financial, reputational" },
+  { key: "special_teams", label: "TRANSFORMATION",       color: BLUE, sub: "Workforce, culture, restructuring, go-to-market pivots" },
 ];
 
 const URGENCY_OPTIONS = [
@@ -130,6 +200,17 @@ function scoreProtocols(
     .slice(0, 30);
 }
 
+/* ─── Readiness score ────────────────────────────────────────── */
+function computeReadinessScore(selected: Set<string | number>, scored: ScoredProtocol[]): number {
+  if (scored.length === 0 || selected.size === 0) return 0;
+  const critical = scored.filter(p => (p.severityScore ?? 0) >= 75);
+  const critSel  = critical.filter(p => selected.has(p.id ?? p.name)).length;
+  const regSel   = scored.filter(p => (p.severityScore ?? 0) < 75 && selected.has(p.id ?? p.name)).length;
+  const totalPossible = critical.length * 2 + (scored.length - critical.length);
+  if (totalPossible === 0) return 0;
+  return Math.min(95, Math.round((critSel * 2 + regSel) / totalPossible * 100));
+}
+
 /* ─── Shared sub-components ──────────────────────────────────── */
 function EyebrowLabel({ children }: { children: string }) {
   return (
@@ -145,8 +226,189 @@ function FieldLabel({ children }: { children: string }) {
   );
 }
 
+/* ─── Architecture View ──────────────────────────────────────── */
+function ArchitectureView({
+  scored, byDomain, domainLabel, domainColor,
+  selectedProtocols, toggleProtocol, customizations, readinessScore,
+}: {
+  scored: ScoredProtocol[];
+  byDomain: Record<string, ScoredProtocol[]>;
+  domainLabel: Record<string, string>;
+  domainColor: Record<string, string>;
+  selectedProtocols: Set<string | number>;
+  toggleProtocol: (id: string | number) => void;
+  customizations: Record<string, ProtocolCustomization>;
+  readinessScore: number;
+}) {
+  const domains = ["defense", "offense", "special_teams"];
+  const criticalCount = scored.filter(p => (p.severityScore ?? 0) >= 75).length;
+  const scoreColor = readinessScore > 60 ? TEAL : readinessScore > 30 ? GOLD : "#FCA5A5";
+
+  return (
+    <div>
+      {/* Architecture Score Bar */}
+      <div style={{ background: NAVY, padding: "22px 28px", marginBottom: 20, display: "flex", alignItems: "center", gap: 28, flexWrap: "wrap" }}>
+        {/* Score */}
+        <div style={{ flex: "none" }}>
+          <div style={{ ...CG, fontSize: 52, fontWeight: 700, color: readinessScore === 0 ? "rgba(255,255,255,0.25)" : scoreColor, lineHeight: 1 }}>
+            {readinessScore === 0 ? "—" : `${readinessScore}%`}
+          </div>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginTop: 4 }}>
+            Architecture Coverage
+          </div>
+        </div>
+
+        <div style={{ width: 1, height: 52, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
+
+        {/* Stats */}
+        {[
+          { v: scored.length,         l: "Protocols Matched",  alert: false },
+          { v: criticalCount,         l: "Critical Gaps",      alert: criticalCount > 0 },
+          { v: selectedProtocols.size, l: "Configured",         alert: false },
+        ].map(({ v, l, alert }) => (
+          <div key={l}>
+            <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: alert ? "#FCA5A5" : GOLD, lineHeight: 1 }}>{v}</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginTop: 3 }}>{l}</div>
+          </div>
+        ))}
+
+        <div style={{ flex: 1 }} />
+
+        {/* Progress guidance */}
+        <div style={{ textAlign: "right" }}>
+          {readinessScore === 0 ? (
+            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>
+              Select protocols below<br />to configure your architecture
+            </div>
+          ) : readinessScore < 87 ? (
+            <div style={{ fontSize: 12, color: TEAL, lineHeight: 1.5 }}>
+              <strong style={{ color: GOLD }}>{87 - readinessScore}%</strong> remaining to reach target coverage<br />
+              <span style={{ color: "rgba(255,255,255,0.4)" }}>Target: 87% architecture coverage</span>
+            </div>
+          ) : (
+            <div style={{ fontSize: 12, color: TEAL }}>
+              <CheckCircle2 size={12} style={{ display: "inline", marginRight: 4 }} />
+              Target coverage reached
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* 3-column domain layout */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }}>
+        {domains.map(domain => {
+          const protocols = byDomain[domain] ?? [];
+          const selInDomain = protocols.filter(p => selectedProtocols.has(p.id ?? p.name));
+          const critInDomain = protocols.filter(p => (p.severityScore ?? 0) >= 75);
+          const color = domainColor[domain];
+          const label = domainLabel[domain];
+          const coverage = protocols.length > 0 ? Math.round(selInDomain.length / protocols.length * 100) : 0;
+
+          return (
+            <div key={domain} style={{ border: `1px solid ${BORDER}`, borderTop: `4px solid ${color}`, background: "#fff" }}>
+              {/* Domain header */}
+              <div style={{ padding: "14px 16px 12px", borderBottom: `1px solid ${BORDER}`, background: "#FAFAF8" }}>
+                <div style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color, marginBottom: 6 }}>{label}</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 8 }}>
+                  <span style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY }}>{selInDomain.length}</span>
+                  <span style={{ fontSize: 11, color: MUTED }}>of {protocols.length} configured</span>
+                  {critInDomain.length > 0 && (
+                    <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: RED, marginLeft: 4 }}>
+                      {critInDomain.length} critical
+                    </span>
+                  )}
+                </div>
+                {/* Coverage bar */}
+                <div style={{ height: 3, background: BORDER, borderRadius: 2 }}>
+                  <div style={{ height: "100%", background: color, width: `${coverage}%`, borderRadius: 2, transition: "width 0.4s ease" }} />
+                </div>
+              </div>
+
+              {/* Protocol rows */}
+              <div style={{ padding: "8px 10px", display: "flex", flexDirection: "column", gap: 3, minHeight: 160 }}>
+                {protocols.length === 0 ? (
+                  <div style={{ padding: "24px 8px", textAlign: "center" }}>
+                    <div style={{ fontSize: 11, color: MUTED, marginBottom: 8 }}>No protocols matched</div>
+                    <a href="/protocol-builder" style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, textDecoration: "none" }}>
+                      Build custom protocol →
+                    </a>
+                  </div>
+                ) : (
+                  protocols.slice(0, 7).map(p => {
+                    const pid  = String(p.id ?? p.name);
+                    const sel  = selectedProtocols.has(p.id ?? p.name);
+                    const crit = (p.severityScore ?? 0) >= 75;
+                    const custom = customizations[pid] ?? {};
+
+                    return (
+                      <button
+                        key={pid}
+                        onClick={() => toggleProtocol(p.id ?? p.name)}
+                        style={{
+                          display: "flex", alignItems: "center", gap: 8, padding: "7px 8px",
+                          background: sel ? `rgba(${domain === "defense" ? "220,38,38" : domain === "offense" ? "43,138,110" : "30,58,95"},0.06)` : "#fff",
+                          border: `1px solid ${sel ? color : BORDER}`,
+                          borderLeft: `3px solid ${sel ? color : crit ? RED : "transparent"}`,
+                          cursor: "pointer", textAlign: "left", borderRadius: "0.15rem",
+                          transition: "all 0.15s",
+                        }}
+                      >
+                        <div style={{
+                          width: 15, height: 15, borderRadius: 2, flexShrink: 0,
+                          background: sel ? color : "#fff", border: `2px solid ${sel ? color : BORDER}`,
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                        }}>
+                          {sel && <CheckCircle2 size={9} color="#fff" />}
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 11, fontWeight: sel ? 600 : 400, color: NAVY, lineHeight: 1.3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                            {custom.customName || p.name}
+                          </div>
+                          {crit && (
+                            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: RED, lineHeight: 1 }}>Critical</div>
+                          )}
+                        </div>
+                        {p.timeSensitivity && (
+                          <span style={{ ...BC, fontSize: 8, fontWeight: 600, color: MUTED, flexShrink: 0 }}>{p.timeSensitivity}h</span>
+                        )}
+                      </button>
+                    );
+                  })
+                )}
+                {protocols.length > 7 && (
+                  <div style={{ padding: "5px 8px", fontSize: 10, color: MUTED, textAlign: "center", fontStyle: "italic" }}>
+                    +{protocols.length - 7} more — switch to List View
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {selectedProtocols.size > 0 && (
+        <div style={{ margin: "16px 0 0", padding: "12px 18px", background: "rgba(43,138,110,0.06)", border: `1px solid ${TEAL}`, display: "flex", alignItems: "center", gap: 10 }}>
+          <CheckCircle2 size={14} color={TEAL} />
+          <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>
+            {selectedProtocols.size} protocol{selectedProtocols.size !== 1 ? "s" : ""} configured across{" "}
+            {domains.filter(d => (byDomain[d] ?? []).some(p => selectedProtocols.has(p.id ?? p.name))).length} domains — use List View to customize names, owners, and trigger conditions
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ─── Studio Landing ─────────────────────────────────────────── */
-function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; onDemo: (industry: string) => void }) {
+function StudioLanding({
+  onMode, onDemo, draft, onResume, onClearDraft,
+}: {
+  onMode: (m: StudioMode) => void;
+  onDemo: (industry: string) => void;
+  draft: DraftState | null;
+  onResume: () => void;
+  onClearDraft: () => void;
+}) {
   const [, nav] = useLocation();
   return (
     <PageLayout>
@@ -163,6 +425,33 @@ function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; on
           </p>
         </div>
       </div>
+
+      {/* Resume banner */}
+      {draft && draft.mode !== "landing" && (
+        <div style={{ background: "rgba(201,168,76,0.08)", borderBottom: `1px solid rgba(201,168,76,0.25)`, padding: "14px 48px" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
+            <RotateCw size={14} color={GOLD} style={{ flexShrink: 0 }} />
+            <div style={{ flex: 1 }}>
+              <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>You have an in-progress setup. </span>
+              <span style={{ fontSize: 13, color: MUTED }}>
+                {draft.industry && `${draft.industry} · `}Step {draft.step + 1} of {draft.mode === "customize" ? 4 : 6}
+              </span>
+            </div>
+            <button
+              onClick={onResume}
+              style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "7px 16px", background: GOLD, color: NAVY, border: "none", cursor: "pointer", borderRadius: "0.15rem" }}
+            >
+              Resume
+            </button>
+            <button
+              onClick={onClearDraft}
+              style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", padding: "7px 14px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, cursor: "pointer", borderRadius: "0.15rem" }}
+            >
+              Start Over
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Mode cards */}
       <div style={{ background: "#fff", padding: "56px 48px" }}>
@@ -198,11 +487,7 @@ function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; on
               </div>
               <button
                 onClick={() => onMode("setup")}
-                style={{
-                  marginTop: 20, display: "flex", alignItems: "center", gap: 8, padding: "11px 22px",
-                  background: NAVY, color: "#fff", border: "none", cursor: "pointer",
-                  ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", borderRadius: "0.15rem",
-                }}
+                style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8, padding: "11px 22px", background: NAVY, color: "#fff", border: "none", cursor: "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", borderRadius: "0.15rem" }}
               >
                 Configure Architecture <ArrowRight size={13} />
               </button>
@@ -228,11 +513,7 @@ function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; on
               </div>
               <button
                 onClick={() => nav("/protocol-builder")}
-                style={{
-                  marginTop: 20, display: "flex", alignItems: "center", gap: 8, padding: "11px 22px",
-                  background: TEAL, color: "#fff", border: "none", cursor: "pointer",
-                  ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", borderRadius: "0.15rem",
-                }}
+                style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8, padding: "11px 22px", background: TEAL, color: "#fff", border: "none", cursor: "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", borderRadius: "0.15rem" }}
               >
                 Open Protocol Builder <ExternalLink size={13} />
               </button>
@@ -258,11 +539,7 @@ function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; on
               </div>
               <button
                 onClick={() => onMode("customize")}
-                style={{
-                  marginTop: 20, display: "flex", alignItems: "center", gap: 8, padding: "11px 22px",
-                  background: "transparent", color: NAVY, border: `2px solid ${NAVY}`, cursor: "pointer",
-                  ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", borderRadius: "0.15rem",
-                }}
+                style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8, padding: "11px 22px", background: "transparent", color: NAVY, border: `2px solid ${NAVY}`, cursor: "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", borderRadius: "0.15rem" }}
               >
                 Customize Protocols <ChevronRight size={13} />
               </button>
@@ -271,25 +548,24 @@ function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; on
 
           {/* Demo quick-start */}
           <div style={{ background: IVORY, border: `1px solid ${BORDER}`, padding: "28px 32px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
               <Radio size={16} color={TEAL} />
               <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL }}>Demo Quick-Start</div>
             </div>
-            <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, marginBottom: 12 }}>
-              Running a demo? Select an industry to see a live architecture preview instantly.
+            <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, marginBottom: 4 }}>
+              Running a demo? Select an industry to see a live readiness architecture instantly — no setup steps.
+            </p>
+            <p style={{ fontSize: 12, color: MUTED, marginBottom: 16, lineHeight: 1.5 }}>
+              Pre-fills a realistic trigger profile and jumps directly to the visual architecture view. The matched protocols appear in under 10 seconds.
             </p>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              {["Financial Services", "Healthcare", "Technology", "Manufacturing", "Energy"].map(ind => (
+              {Object.keys(DEMO_PRESETS).map(ind => (
                 <button
                   key={ind}
                   onClick={() => onDemo(ind)}
-                  style={{
-                    ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
-                    padding: "7px 14px", background: "#fff", border: `1px solid ${BORDER}`,
-                    color: NAVY, cursor: "pointer", borderRadius: "0.15rem",
-                  }}
+                  style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "7px 16px", background: NAVY, border: `1px solid ${NAVY}`, color: "#fff", cursor: "pointer", borderRadius: "0.15rem", display: "flex", alignItems: "center", gap: 6 }}
                 >
-                  {ind}
+                  {ind} <ArrowRight size={11} />
                 </button>
               ))}
             </div>
@@ -302,11 +578,12 @@ function StudioLanding({ onMode, onDemo }: { onMode: (m: StudioMode) => void; on
 
 /* ─── Complete screen ─────────────────────────────────────────── */
 function CompleteScreen({
-  mode, orgName, execSponsor, selectedCount, customizationCount, customTriggerCount,
+  mode, orgName, execSponsor, selectedCount, customizationCount, customTriggerCount, stakeholderCount,
   onReset,
 }: {
   mode: StudioMode; orgName: string; execSponsor: string;
   selectedCount: number; customizationCount: number; customTriggerCount: number;
+  stakeholderCount: number;
   onReset: () => void;
 }) {
   const [, nav] = useLocation();
@@ -328,11 +605,12 @@ function CompleteScreen({
           </h1>
 
           {/* Stats */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, margin: "36px 0 40px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: `repeat(${isSetup && stakeholderCount > 0 ? 4 : 3}, 1fr)`, gap: 16, margin: "36px 0 40px" }}>
             {[
-              { stat: String(selectedCount), label: "Protocols Staged", sub: "matched and configured" },
-              { stat: String(customizationCount), label: "Customized", sub: "tailored to your org" },
+              { stat: String(selectedCount),      label: "Protocols Staged",   sub: "matched and configured" },
+              { stat: String(customizationCount), label: "Customized",          sub: "tailored to your org" },
               { stat: customTriggerCount > 0 ? String(customTriggerCount) : "231", label: customTriggerCount > 0 ? "Custom Triggers" : "Triggers Monitored", sub: customTriggerCount > 0 ? "organization-specific" : "continuously" },
+              ...(isSetup && stakeholderCount > 0 ? [{ stat: String(stakeholderCount), label: "Contacts Created", sub: "ready for notifications" }] : []),
             ].map(({ stat, label, sub }) => (
               <div key={label} style={{ borderTop: `3px solid ${GOLD}`, paddingTop: 14, textAlign: "left" }}>
                 <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{stat}</div>
@@ -352,30 +630,15 @@ function CompleteScreen({
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             {isSetup && (
-              <button onClick={() => nav("/command-tower")} style={{
-                ...BC, display: "inline-flex", alignItems: "center", gap: 8,
-                background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700,
-                letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px",
-                border: "none", cursor: "pointer", borderRadius: "0.15rem",
-              }}>
+              <button onClick={() => nav("/command-tower")} style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", border: "none", cursor: "pointer", borderRadius: "0.15rem" }}>
                 Enter Command Tower <ArrowRight size={14} />
               </button>
             )}
-            <button onClick={() => nav("/playbook-library")} style={{
-              ...BC, display: "inline-flex", alignItems: "center", gap: 8,
-              background: "transparent", color: "rgba(255,255,255,0.8)", fontSize: 12, fontWeight: 700,
-              letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px",
-              border: "1px solid rgba(255,255,255,0.25)", cursor: "pointer", borderRadius: "0.15rem",
-            }}>
+            <button onClick={() => nav("/playbook-library")} style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(255,255,255,0.8)", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", border: "1px solid rgba(255,255,255,0.25)", cursor: "pointer", borderRadius: "0.15rem" }}>
               View Protocol Library <ChevronRight size={14} />
             </button>
             {isSetup && (
-              <button onClick={() => nav("/practice-drills")} style={{
-                ...BC, display: "inline-flex", alignItems: "center", gap: 8,
-                background: "transparent", color: "rgba(255,255,255,0.8)", fontSize: 12, fontWeight: 700,
-                letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px",
-                border: "1px solid rgba(255,255,255,0.25)", cursor: "pointer", borderRadius: "0.15rem",
-              }}>
+              <button onClick={() => nav("/practice-drills")} style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(255,255,255,0.8)", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "13px 28px", border: "1px solid rgba(255,255,255,0.25)", cursor: "pointer", borderRadius: "0.15rem" }}>
                 Run First Drill <ChevronRight size={14} />
               </button>
             )}
@@ -398,9 +661,11 @@ export default function PreparationDiagnostic() {
   const [, nav] = useLocation();
 
   /* ── Mode / step ── */
-  const [mode, setMode] = useState<StudioMode>("landing");
-  const [step, setStep] = useState(0);
+  const [mode, setMode]         = useState<StudioMode>("landing");
+  const [step, setStep]         = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [isDemoMode, setIsDemoMode] = useState(false);
+  const [protocolViewMode, setProtocolViewMode] = useState<ViewMode>("architecture");
 
   /* ── Step 0: Profile ── */
   const [industry, setIndustry] = useState("");
@@ -422,13 +687,17 @@ export default function PreparationDiagnostic() {
   const [protocolTab, setProtocolTab]             = useState<"all" | "defense" | "offense" | "special_teams">("all");
 
   /* ── Step 4: Auth Chain + Org ── */
-  const [orgName, setOrgName]     = useState("");
+  const [orgName, setOrgName]         = useState("");
   const [execSponsor, setExecSponsor] = useState("");
-  const [execRole, setExecRole]   = useState("");
-  const [pmoLead, setPmoLead]     = useState("");
+  const [execRole, setExecRole]       = useState("");
+  const [pmoLead, setPmoLead]         = useState("");
   const [domainOwners, setDomainOwners] = useState(
     AUTH_SLOTS.map(s => ({ domain: s.domain, owner: "", role: "", email: "", mobile: "" }))
   );
+  const [stakeholderCount, setStakeholderCount] = useState(0);
+
+  /* ── Draft ── */
+  const [draft, setDraft] = useState<DraftState | null>(() => loadDraft());
 
   /* ── Data ── */
   const { data: rawPlaybooks = [] } = useQuery<Protocol[]>({ queryKey: ["/api/playbook-library"] });
@@ -449,15 +718,21 @@ export default function PreparationDiagnostic() {
   };
   const displayed = protocolTab === "all" ? scored : byDomain[protocolTab] ?? [];
 
-  const domainLabel: Record<string, string>  = { offense: "GROWTH & POSITIONING", defense: "RISK & RESILIENCE", special_teams: "TRANSFORMATION" };
-  const domainColor: Record<string, string>  = { offense: TEAL, defense: RED, special_teams: "#7C3AED" };
+  const domainLabel: Record<string, string> = { offense: "GROWTH & POSITIONING", defense: "RISK & RESILIENCE", special_teams: "TRANSFORMATION" };
+  const domainColor: Record<string, string> = { offense: TEAL, defense: RED, special_teams: BLUE };
+
+  const readinessScore = useMemo(
+    () => computeReadinessScore(selectedProtocols, scored),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedProtocols.size, scored.length],
+  );
 
   /* ── Step config ── */
-  const SETUP_LABELS    = ["Profile", "Risk & Triggers", "Priorities", "Protocols", "Authorization", "Activate"];
+  const SETUP_LABELS     = ["Profile", "Risk & Triggers", "Priorities", "Protocols", "Authorization", "Activate"];
   const CUSTOMIZE_LABELS = ["Profile", "Risk & Triggers", "Priorities", "Protocols"];
-  const stepLabels      = mode === "customize" ? CUSTOMIZE_LABELS : SETUP_LABELS;
-  const totalSteps      = stepLabels.length;
-  const isLastStep      = step === totalSteps - 1;
+  const stepLabels       = mode === "customize" ? CUSTOMIZE_LABELS : SETUP_LABELS;
+  const totalSteps       = stepLabels.length;
+  const isLastStep       = step === totalSteps - 1;
 
   const canAdvance = (() => {
     if (step === 0) return !!industry && !!size;
@@ -467,6 +742,43 @@ export default function PreparationDiagnostic() {
     if (step === 4) return !!execSponsor;
     return true;
   })();
+
+  /* ── Auto-save draft ── */
+  useEffect(() => {
+    if (mode === "landing") return;
+    const data: DraftState = {
+      mode, step, industry, size,
+      triggerCategories, customTriggers,
+      priorityDomains, urgency,
+      selectedProtocols: [...selectedProtocols],
+      customizations, orgName, execSponsor, execRole, pmoLead,
+      domainOwners, isDemoMode,
+    };
+    saveDraft(data);
+    setDraft(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, step, industry, size, triggerCategories.join(","), customTriggers.join(","), priorityDomains.join(","), urgency, selectedProtocols.size, JSON.stringify(customizations), orgName, execSponsor, execRole, pmoLead, JSON.stringify(domainOwners)]);
+
+  /* ── Resume draft ── */
+  const resumeDraft = (d: DraftState) => {
+    setMode(d.mode);
+    setStep(d.step);
+    setIndustry(d.industry);
+    setSize(d.size);
+    setTriggerCategories(d.triggerCategories);
+    setCustomTriggers(d.customTriggers);
+    setPriorityDomains(d.priorityDomains);
+    setUrgency(d.urgency);
+    setSelectedProtocols(new Set(d.selectedProtocols));
+    setCustomizations(d.customizations);
+    setOrgName(d.orgName);
+    setExecSponsor(d.execSponsor);
+    setExecRole(d.execRole);
+    setPmoLead(d.pmoLead);
+    setDomainOwners(d.domainOwners);
+    setIsDemoMode(d.isDemoMode);
+    setProtocolViewMode(d.isDemoMode ? "architecture" : "architecture");
+  };
 
   /* ── Mutations ── */
   const buildPayload = () => {
@@ -500,10 +812,33 @@ export default function PreparationDiagnostic() {
     mutationFn: async () => {
       await apiRequest("PATCH", "/api/organizations/current", buildPayload()).catch(() => {});
       await apiRequest("POST", "/api/onboarding/complete", {}).catch(() => {});
-      return { success: true };
+      /* Create stakeholder contacts for domain owners who have email addresses */
+      let created = 0;
+      for (const owner of domainOwners) {
+        if (owner.email && owner.owner) {
+          const res = await apiRequest("POST", "/api/stakeholder-contacts", {
+            name: owner.owner,
+            role: owner.role || owner.domain,
+            email: owner.email,
+            phone: owner.mobile || "",
+            triggerDomains: [owner.domain],
+            preferredChannel: owner.mobile ? "sms" : "email",
+            isActive: true,
+          }).catch(() => null);
+          if (res) created++;
+        }
+      }
+      return { success: true, contactsCreated: created };
     },
-    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ["/api/organizations"] }); setIsComplete(true); },
-    onError:   () => setIsComplete(true),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["/api/organizations"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/stakeholder-contacts"] });
+      setStakeholderCount((data as any).contactsCreated ?? 0);
+      clearDraft();
+      setDraft(null);
+      setIsComplete(true);
+    },
+    onError: () => { clearDraft(); setDraft(null); setIsComplete(true); },
   });
 
   const customizeMutation = useMutation({
@@ -521,8 +856,8 @@ export default function PreparationDiagnostic() {
       }).catch(() => {});
       return { success: true };
     },
-    onSuccess: () => setIsComplete(true),
-    onError:   () => setIsComplete(true),
+    onSuccess: () => { clearDraft(); setDraft(null); setIsComplete(true); },
+    onError:   () => { clearDraft(); setDraft(null); setIsComplete(true); },
   });
 
   /* ── Handlers ── */
@@ -557,9 +892,32 @@ export default function PreparationDiagnostic() {
   };
 
   const handleDemoQuickStart = (ind: string) => {
+    const preset = DEMO_PRESETS[ind] ?? { triggers: ["cyber", "regulatory"], domains: ["defense"], size: "5000_25000", urgency: "trigger_imminent" };
     setIndustry(ind);
+    setTriggerCategories(preset.triggers);
+    setPriorityDomains(preset.domains);
+    setSize(preset.size);
+    setUrgency(preset.urgency);
+    setIsDemoMode(true);
+    setProtocolViewMode("architecture");
     setMode("setup");
+    setStep(3); // Jump directly to visual architecture
+  };
+
+  const resetAll = () => {
+    clearDraft();
+    setDraft(null);
+    setIsComplete(false);
+    setMode("landing");
     setStep(0);
+    setIsDemoMode(false);
+    setIndustry(""); setSize("");
+    setTriggerCategories([]); setCustomTriggers([]); setCustomTriggerInput("");
+    setPriorityDomains([]); setUrgency("");
+    setSelectedProtocols(new Set()); setCustomizations({});
+    setOrgName(""); setExecSponsor(""); setExecRole(""); setPmoLead("");
+    setDomainOwners(AUTH_SLOTS.map(s => ({ domain: s.domain, owner: "", role: "", email: "", mobile: "" })));
+    setStakeholderCount(0);
   };
 
   /* ── Complete ── */
@@ -572,19 +930,27 @@ export default function PreparationDiagnostic() {
         selectedCount={selectedProtocols.size}
         customizationCount={Object.keys(customizations).length}
         customTriggerCount={customTriggers.length}
-        onReset={() => { setIsComplete(false); setMode("landing"); setStep(0); }}
+        stakeholderCount={stakeholderCount}
+        onReset={resetAll}
       />
     );
   }
 
   /* ── Landing ── */
   if (mode === "landing") {
-    return <StudioLanding onMode={m => { setMode(m); setStep(0); }} onDemo={handleDemoQuickStart} />;
+    return (
+      <StudioLanding
+        onMode={m => { setMode(m); setStep(0); }}
+        onDemo={handleDemoQuickStart}
+        draft={draft}
+        onResume={() => draft && resumeDraft(draft)}
+        onClearDraft={() => { clearDraft(); setDraft(null); }}
+      />
+    );
   }
 
   /* ── Wizard ── */
   const isMutating = activateMutation.isPending || customizeMutation.isPending;
-  const stepSize = INDUSTRIES.find(i => i.key === size)?.label ?? "";
 
   return (
     <PageLayout>
@@ -597,23 +963,39 @@ export default function PreparationDiagnostic() {
           >
             <ChevronLeft size={14} /> {step === 0 ? "Back to Studio" : "Back"}
           </button>
-          <EyebrowLabel>{mode === "setup" ? "Readiness Architecture Studio · Full Setup" : "Readiness Architecture Studio · Customization"}</EyebrowLabel>
-          <h1 style={{ ...CG, fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "14px 0 14px" }}>
-            {step === 0 && "Map your readiness architecture"}
-            {step === 1 && "Define your risk exposure and triggers."}
-            {step === 2 && "Set your strategic priorities."}
-            {step === 3 && "Select and customize your protocols."}
-            {step === 4 && "Configure your authorization chain."}
-            {step === 5 && "Review and activate."}
-            {step < 3 && <><br /><em style={{ color: GOLD }}>before the trigger fires.</em></>}
-          </h1>
-          {step < 3 && (
-            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
-              {step === 0 && "The system matches your organization's profile against 180 Readiness Protocols and returns a prioritized architecture for your Preparation Architect to configure."}
-              {step === 1 && "Select every trigger category relevant to your organization. Add custom triggers unique to your situation."}
-              {step === 2 && "Identify where preparation is most urgent. The architecture will front-load these in your setup path."}
-            </p>
-          )}
+
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
+            <div style={{ flex: 1 }}>
+              <EyebrowLabel>
+                {mode === "setup"
+                  ? isDemoMode ? "Readiness Architecture Studio · Demo View" : "Readiness Architecture Studio · Full Setup"
+                  : "Readiness Architecture Studio · Customization"}
+              </EyebrowLabel>
+              <h1 style={{ ...CG, fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "14px 0 14px" }}>
+                {step === 0 && "Map your readiness architecture"}
+                {step === 1 && "Define your risk exposure and triggers."}
+                {step === 2 && "Set your strategic priorities."}
+                {step === 3 && "Select and configure your protocols."}
+                {step === 4 && "Configure your authorization chain."}
+                {step === 5 && "Review and activate."}
+                {step < 3 && <><br /><em style={{ color: GOLD }}>before the trigger fires.</em></>}
+              </h1>
+              {step < 3 && (
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
+                  {step === 0 && "The system matches your organization's profile against 180 Readiness Protocols and returns a prioritized architecture for your Preparation Architect to configure."}
+                  {step === 1 && "Select every trigger category relevant to your organization. Add custom triggers unique to your situation."}
+                  {step === 2 && "Identify where preparation is most urgent. The architecture will front-load these in your setup path."}
+                </p>
+              )}
+            </div>
+            {isDemoMode && (
+              <div style={{ padding: "8px 14px", background: "rgba(43,138,110,0.2)", border: "1px solid rgba(43,138,110,0.35)", display: "flex", alignItems: "center", gap: 8 }}>
+                <Radio size={12} color={TEAL} />
+                <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: TEAL }}>Demo Mode · {industry}</span>
+              </div>
+            )}
+          </div>
+
           {!isAuthenticated && step >= 3 && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 14px", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.3)", marginTop: 12 }}>
               <Lock size={12} color={GOLD} />
@@ -778,170 +1160,177 @@ export default function PreparationDiagnostic() {
           {/* ── STEP 3: Protocol Selection + Customization ── */}
           {step === 3 && (
             <div>
-              {/* Stats bar */}
-              <div style={{ background: NAVY, padding: "20px 28px", marginBottom: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-                <div style={{ display: "flex", gap: 28 }}>
-                  {[
-                    { v: scored.length, l: "Protocols Matched" },
-                    { v: critical.length, l: "Critical Gaps", alert: true },
-                    { v: selectedProtocols.size, l: "Selected" },
-                  ].map(({ v, l, alert }) => (
-                    <div key={l}>
-                      <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: alert && v > 0 ? "#FCA5A5" : GOLD, lineHeight: 1 }}>{v}</div>
-                      <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginTop: 2 }}>{l}</div>
-                    </div>
-                  ))}
-                </div>
-                <a href="/protocol-builder" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, textDecoration: "none" }}>
-                  <Plus size={12} /> Build Custom Protocol
-                </a>
-              </div>
-
+              {/* Critical gap alert */}
               {critical.length > 0 && (
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "14px 18px", background: "rgba(220,38,38,0.05)", border: `1px solid rgba(220,38,38,0.2)`, borderLeft: `4px solid ${RED}`, marginBottom: 20 }}>
                   <AlertTriangle size={15} color={RED} style={{ flexShrink: 0, marginTop: 1 }} />
                   <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>
-                    <strong style={{ color: RED }}>{critical.length} critical gap{critical.length !== 1 ? "s" : ""} detected.</strong> These protocols have a severity score of 75+ and should be configured in Phase 1 of your setup path.
+                    <strong style={{ color: RED }}>{critical.length} critical gap{critical.length !== 1 ? "s" : ""} detected.</strong> These protocols have a severity score of 75+ — configure them in Phase 1 of your setup path.
                   </span>
                 </div>
               )}
 
-              <p style={{ fontSize: 14, color: MUTED, marginBottom: 20, lineHeight: 1.6 }}>
-                Select the protocols to configure first. Expand any protocol to customize the name, description, trigger condition, or execution owner for your organization.
-              </p>
-
-              {/* Domain tabs */}
-              <div style={{ display: "flex", gap: 0, borderBottom: `1px solid ${BORDER}`, marginBottom: 24 }}>
-                {[
-                  { key: "all",          label: `All (${scored.length})` },
-                  { key: "defense",      label: `Risk & Resilience (${byDomain.defense.length})` },
-                  { key: "offense",      label: `Growth & Positioning (${byDomain.offense.length})` },
-                  { key: "special_teams", label: `Transformation (${byDomain.special_teams.length})` },
-                ].map(({ key, label }) => (
-                  <button key={key} onClick={() => setProtocolTab(key as typeof protocolTab)} style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "10px 16px", background: "none", border: "none", borderBottom: `3px solid ${protocolTab === key ? GOLD : "transparent"}`, color: protocolTab === key ? NAVY : MUTED, cursor: "pointer", marginBottom: -1, whiteSpace: "nowrap" }}>
-                    {label}
+              {/* View mode toggle + actions */}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                <p style={{ fontSize: 13, color: MUTED, margin: 0, flex: 1, lineHeight: 1.5 }}>
+                  {protocolViewMode === "architecture"
+                    ? "Select protocols to configure your architecture. Switch to List View to customize names, owners, and trigger conditions."
+                    : "Select and expand protocols to customize names, trigger conditions, and execution owners."}
+                </p>
+                <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                  <button
+                    onClick={() => setProtocolViewMode("architecture")}
+                    style={{ ...BC, display: "flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "7px 12px", cursor: "pointer", borderRadius: "0.15rem", background: protocolViewMode === "architecture" ? NAVY : "transparent", color: protocolViewMode === "architecture" ? "#fff" : MUTED, border: `1px solid ${protocolViewMode === "architecture" ? NAVY : BORDER}`, transition: "all 0.15s" }}
+                  >
+                    <LayoutGrid size={11} /> Architecture
                   </button>
-                ))}
-              </div>
-
-              {/* Protocol cards */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                {displayed.map((p, i) => {
-                  const pid    = String(p.id ?? p.name);
-                  const sel    = selectedProtocols.has(p.id ?? p.name);
-                  const expand = expandedProtocol === pid;
-                  const custom = customizations[pid] ?? {};
-                  const isCrit = (p.severityScore ?? 0) >= 75;
-                  const domain = p.strategicCategory ?? "defense";
-                  const dColor = domainColor[domain] ?? TEAL;
-                  const dLabel = domainLabel[domain] ?? domain;
-                  const hasCustom = !!(custom.customName || custom.customDescription || custom.customTrigger || custom.executionOwner);
-
-                  return (
-                    <div key={pid} style={{ border: `1px solid ${sel ? GOLD : isCrit ? "rgba(220,38,38,0.2)" : BORDER}`, borderLeft: `4px solid ${sel ? GOLD : isCrit ? RED : dColor}`, background: sel ? "#FEFDF9" : "#fff", transition: "all 0.15s" }}>
-                      {/* Card header row */}
-                      <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 18px" }}>
-                        {/* Checkbox */}
-                        <button
-                          onClick={() => toggleProtocol(p.id ?? p.name)}
-                          style={{ width: 22, height: 22, borderRadius: 3, flexShrink: 0, background: sel ? NAVY : "#fff", border: `2px solid ${sel ? NAVY : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
-                        >
-                          {sel && <CheckCircle2 size={14} color={GOLD} />}
-                        </button>
-
-                        {/* Protocol number */}
-                        <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: MUTED, minWidth: 26, textAlign: "center" }}>#{p.playbookNumber ?? i + 1}</div>
-
-                        {/* Name + meta */}
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 3 }}>
-                            <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{custom.customName || p.name}</span>
-                            {custom.customName && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, background: "rgba(201,168,76,0.1)", padding: "2px 6px" }}>Custom</span>}
-                            {isCrit && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", background: RED, color: "#fff", padding: "2px 6px" }}>Critical</span>}
-                            {hasCustom && !custom.customName && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: TEAL }}>Customized</span>}
-                          </div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: dColor }}>{dLabel}</span>
-                            {p.primaryExecutiveRole && <span style={{ fontSize: 11, color: MUTED }}>· {p.primaryExecutiveRole}</span>}
-                            {p.timeSensitivity && <span style={{ fontSize: 11, color: MUTED }}>· {p.timeSensitivity}h window</span>}
-                          </div>
-                        </div>
-
-                        {/* Customize toggle */}
-                        <button
-                          onClick={() => setExpandedProtocol(expand ? null : pid)}
-                          style={{ ...BC, display: "flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: expand ? NAVY : MUTED, background: expand ? "#F3F0E8" : "none", border: `1px solid ${expand ? GOLD : BORDER}`, padding: "5px 10px", cursor: "pointer", borderRadius: "0.15rem", flexShrink: 0 }}
-                        >
-                          <Edit3 size={11} /> Customize
-                        </button>
-                      </div>
-
-                      {/* Expand: customization panel */}
-                      {expand && (
-                        <div style={{ borderTop: `1px solid ${BORDER}`, background: "#FAFAF8", padding: "18px 20px 18px 56px" }}>
-                          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
-                            <div>
-                              <FieldLabel>Custom Protocol Name</FieldLabel>
-                              <input
-                                type="text"
-                                value={custom.customName ?? p.name}
-                                onChange={e => updateCustomization(pid, "customName", e.target.value)}
-                                placeholder={p.name}
-                                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                              />
-                            </div>
-                            <div>
-                              <FieldLabel>Execution Owner</FieldLabel>
-                              <input
-                                type="text"
-                                value={custom.executionOwner ?? ""}
-                                onChange={e => updateCustomization(pid, "executionOwner", e.target.value)}
-                                placeholder="e.g. CFO, VP Operations"
-                                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                              />
-                            </div>
-                          </div>
-                          <div style={{ marginBottom: 12 }}>
-                            <FieldLabel>Custom Description</FieldLabel>
-                            <textarea
-                              value={custom.customDescription ?? (p.description ?? "")}
-                              onChange={e => updateCustomization(pid, "customDescription", e.target.value)}
-                              placeholder={p.description || "Describe what this protocol covers for your organization..."}
-                              rows={2}
-                              style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", resize: "vertical", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                            />
-                          </div>
-                          <div>
-                            <FieldLabel>Custom Trigger Condition</FieldLabel>
-                            <input
-                              type="text"
-                              value={custom.customTrigger ?? ""}
-                              onChange={e => updateCustomization(pid, "customTrigger", e.target.value)}
-                              placeholder="e.g. Ransomware detection on ERP system — SIEM alert Level 3+"
-                              style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                            />
-                            <div style={{ fontSize: 11, color: MUTED, marginTop: 4 }}>The specific signal or condition that fires this protocol in your organization.</div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {displayed.length === 0 && (
-                <div style={{ padding: "40px 0", textAlign: "center" }}>
-                  <p style={{ fontSize: 14, color: MUTED, marginBottom: 16 }}>No protocols matched in this domain for your profile.</p>
-                  <a href="/protocol-builder" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: TEAL, textDecoration: "none" }}>
-                    <Plus size={13} /> Build a custom protocol for this domain
+                  <button
+                    onClick={() => setProtocolViewMode("list")}
+                    style={{ ...BC, display: "flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "7px 12px", cursor: "pointer", borderRadius: "0.15rem", background: protocolViewMode === "list" ? NAVY : "transparent", color: protocolViewMode === "list" ? "#fff" : MUTED, border: `1px solid ${protocolViewMode === "list" ? NAVY : BORDER}`, transition: "all 0.15s" }}
+                  >
+                    <List size={11} /> List
+                  </button>
+                  <a href="/protocol-builder" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "7px 12px", background: "transparent", border: `1px solid ${BORDER}`, color: TEAL, textDecoration: "none", borderRadius: "0.15rem" }}>
+                    <Plus size={11} /> Build Custom
                   </a>
                 </div>
+              </div>
+
+              {/* ── Architecture View ── */}
+              {protocolViewMode === "architecture" && (
+                <ArchitectureView
+                  scored={scored}
+                  byDomain={byDomain}
+                  domainLabel={domainLabel}
+                  domainColor={domainColor}
+                  selectedProtocols={selectedProtocols}
+                  toggleProtocol={toggleProtocol}
+                  customizations={customizations}
+                  readinessScore={readinessScore}
+                />
               )}
 
-              {selectedProtocols.size > 0 && (
-                <div style={{ margin: "20px 0 0", padding: "12px 18px", background: "rgba(43,138,110,0.06)", border: `1px solid ${TEAL}`, display: "flex", alignItems: "center", gap: 10 }}>
-                  <CheckCircle2 size={14} color={TEAL} />
-                  <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{selectedProtocols.size} protocol{selectedProtocols.size !== 1 ? "s" : ""} selected — {Object.keys(customizations).length > 0 ? `${Object.keys(customizations).length} customized` : "continue to configure"}</span>
+              {/* ── List View ── */}
+              {protocolViewMode === "list" && (
+                <div>
+                  {/* Stats bar */}
+                  <div style={{ background: NAVY, padding: "20px 28px", marginBottom: 20, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+                    <div style={{ display: "flex", gap: 28 }}>
+                      {[
+                        { v: scored.length,         l: "Protocols Matched",  alert: false },
+                        { v: critical.length,        l: "Critical Gaps",      alert: critical.length > 0 },
+                        { v: selectedProtocols.size, l: "Selected",           alert: false },
+                        { v: readinessScore,         l: "Coverage",           alert: false, suffix: "%" },
+                      ].map(({ v, l, alert, suffix }) => (
+                        <div key={l}>
+                          <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: alert ? "#FCA5A5" : GOLD, lineHeight: 1 }}>{v}{suffix ?? ""}</div>
+                          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginTop: 2 }}>{l}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Domain tabs */}
+                  <div style={{ display: "flex", gap: 0, borderBottom: `1px solid ${BORDER}`, marginBottom: 20 }}>
+                    {[
+                      { key: "all",          label: `All (${scored.length})` },
+                      { key: "defense",      label: `Risk & Resilience (${byDomain.defense.length})` },
+                      { key: "offense",      label: `Growth & Positioning (${byDomain.offense.length})` },
+                      { key: "special_teams", label: `Transformation (${byDomain.special_teams.length})` },
+                    ].map(({ key, label }) => (
+                      <button key={key} onClick={() => setProtocolTab(key as typeof protocolTab)} style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "10px 16px", background: "none", border: "none", borderBottom: `3px solid ${protocolTab === key ? GOLD : "transparent"}`, color: protocolTab === key ? NAVY : MUTED, cursor: "pointer", marginBottom: -1, whiteSpace: "nowrap" }}>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Protocol cards */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {displayed.map((p, i) => {
+                      const pid    = String(p.id ?? p.name);
+                      const sel    = selectedProtocols.has(p.id ?? p.name);
+                      const expand = expandedProtocol === pid;
+                      const custom = customizations[pid] ?? {};
+                      const isCrit = (p.severityScore ?? 0) >= 75;
+                      const domain = p.strategicCategory ?? "defense";
+                      const dColor = domainColor[domain] ?? TEAL;
+                      const dLabel = domainLabel[domain] ?? domain;
+                      const hasCustom = !!(custom.customName || custom.customDescription || custom.customTrigger || custom.executionOwner);
+
+                      return (
+                        <div key={pid} style={{ border: `1px solid ${sel ? GOLD : isCrit ? "rgba(220,38,38,0.2)" : BORDER}`, borderLeft: `4px solid ${sel ? GOLD : isCrit ? RED : dColor}`, background: sel ? "#FEFDF9" : "#fff", transition: "all 0.15s" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 18px" }}>
+                            <button
+                              onClick={() => toggleProtocol(p.id ?? p.name)}
+                              style={{ width: 22, height: 22, borderRadius: 3, flexShrink: 0, background: sel ? NAVY : "#fff", border: `2px solid ${sel ? NAVY : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
+                            >
+                              {sel && <CheckCircle2 size={14} color={GOLD} />}
+                            </button>
+                            <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: MUTED, minWidth: 26, textAlign: "center" }}>#{p.playbookNumber ?? i + 1}</div>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 3 }}>
+                                <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{custom.customName || p.name}</span>
+                                {custom.customName && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, background: "rgba(201,168,76,0.1)", padding: "2px 6px" }}>Custom</span>}
+                                {isCrit && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", background: RED, color: "#fff", padding: "2px 6px" }}>Critical</span>}
+                                {hasCustom && !custom.customName && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: TEAL }}>Customized</span>}
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                                <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: dColor }}>{dLabel}</span>
+                                {p.primaryExecutiveRole && <span style={{ fontSize: 11, color: MUTED }}>· {p.primaryExecutiveRole}</span>}
+                                {p.timeSensitivity && <span style={{ fontSize: 11, color: MUTED }}>· {p.timeSensitivity}h window</span>}
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => setExpandedProtocol(expand ? null : pid)}
+                              style={{ ...BC, display: "flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: expand ? NAVY : MUTED, background: expand ? "#F3F0E8" : "none", border: `1px solid ${expand ? GOLD : BORDER}`, padding: "5px 10px", cursor: "pointer", borderRadius: "0.15rem", flexShrink: 0 }}
+                            >
+                              <Edit3 size={11} /> Customize
+                            </button>
+                          </div>
+
+                          {expand && (
+                            <div style={{ borderTop: `1px solid ${BORDER}`, background: "#FAFAF8", padding: "18px 20px 18px 56px" }}>
+                              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+                                <div>
+                                  <FieldLabel>Custom Protocol Name</FieldLabel>
+                                  <input type="text" value={custom.customName ?? p.name} onChange={e => updateCustomization(pid, "customName", e.target.value)} placeholder={p.name} style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
+                                </div>
+                                <div>
+                                  <FieldLabel>Execution Owner</FieldLabel>
+                                  <input type="text" value={custom.executionOwner ?? ""} onChange={e => updateCustomization(pid, "executionOwner", e.target.value)} placeholder="e.g. CFO, VP Operations" style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
+                                </div>
+                              </div>
+                              <div style={{ marginBottom: 12 }}>
+                                <FieldLabel>Custom Description</FieldLabel>
+                                <textarea value={custom.customDescription ?? (p.description ?? "")} onChange={e => updateCustomization(pid, "customDescription", e.target.value)} placeholder={p.description || "Describe what this protocol covers for your organization..."} rows={2} style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", resize: "vertical", borderRadius: "0.15rem", boxSizing: "border-box" }} />
+                              </div>
+                              <div>
+                                <FieldLabel>Custom Trigger Condition</FieldLabel>
+                                <input type="text" value={custom.customTrigger ?? ""} onChange={e => updateCustomization(pid, "customTrigger", e.target.value)} placeholder="e.g. Ransomware detection on ERP system — SIEM alert Level 3+" style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
+                                <div style={{ fontSize: 11, color: MUTED, marginTop: 4 }}>The specific signal or condition that fires this protocol in your organization.</div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {displayed.length === 0 && (
+                    <div style={{ padding: "40px 0", textAlign: "center" }}>
+                      <p style={{ fontSize: 14, color: MUTED, marginBottom: 16 }}>No protocols matched in this domain for your profile.</p>
+                      <a href="/protocol-builder" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: TEAL, textDecoration: "none" }}>
+                        <Plus size={13} /> Build a custom protocol for this domain
+                      </a>
+                    </div>
+                  )}
+
+                  {selectedProtocols.size > 0 && (
+                    <div style={{ margin: "20px 0 0", padding: "12px 18px", background: "rgba(43,138,110,0.06)", border: `1px solid ${TEAL}`, display: "flex", alignItems: "center", gap: 10 }}>
+                      <CheckCircle2 size={14} color={TEAL} />
+                      <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{selectedProtocols.size} protocol{selectedProtocols.size !== 1 ? "s" : ""} selected — {Object.keys(customizations).length > 0 ? `${Object.keys(customizations).length} customized` : "continue to configure authorization chain"}</span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -954,53 +1343,29 @@ export default function PreparationDiagnostic() {
                 <MapPin size={15} color={GOLD} style={{ flexShrink: 0, marginTop: 1 }} />
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 2 }}>Why authorization chain matters</div>
-                  <div style={{ fontSize: 12, color: MUTED, lineHeight: 1.5 }}>No Readiness Protocol activates without executive sign-off. The authorization chain defines who in each domain has authority to activate. Mobile is required for the 12-minute window.</div>
+                  <div style={{ fontSize: 12, color: MUTED, lineHeight: 1.5 }}>No Readiness Protocol activates without executive sign-off. The authorization chain defines who in each domain has authority to activate. Mobile is required for the 12-minute window. Domain owners entered here will be created as live contacts in your notification system.</div>
                 </div>
               </div>
 
               <div style={{ marginBottom: 36 }}>
                 <FieldLabel>Organization name</FieldLabel>
-                <input
-                  type="text"
-                  value={orgName}
-                  onChange={e => setOrgName(e.target.value)}
-                  placeholder="Your organization's name"
-                  style={{ width: "100%", maxWidth: 440, padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                />
+                <input type="text" value={orgName} onChange={e => setOrgName(e.target.value)} placeholder="Your organization's name" style={{ width: "100%", maxWidth: 440, padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
               </div>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 36 }}>
                 <div>
                   <FieldLabel>Executive Sponsor *</FieldLabel>
-                  <input
-                    type="text"
-                    value={execSponsor}
-                    onChange={e => setExecSponsor(e.target.value)}
-                    placeholder="Name of sponsoring executive"
-                    style={{ width: "100%", padding: "10px 14px", border: `2px solid ${execSponsor ? TEAL : BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                  />
+                  <input type="text" value={execSponsor} onChange={e => setExecSponsor(e.target.value)} placeholder="Name of sponsoring executive" style={{ width: "100%", padding: "10px 14px", border: `2px solid ${execSponsor ? TEAL : BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
                 </div>
                 <div>
                   <FieldLabel>Title / Role</FieldLabel>
-                  <input
-                    type="text"
-                    value={execRole}
-                    onChange={e => setExecRole(e.target.value)}
-                    placeholder="e.g. CEO, President, COO"
-                    style={{ width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                  />
+                  <input type="text" value={execRole} onChange={e => setExecRole(e.target.value)} placeholder="e.g. CEO, President, COO" style={{ width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
                 </div>
               </div>
 
               <div style={{ marginBottom: 36 }}>
                 <FieldLabel>Preparation Architect (PMO lead)</FieldLabel>
-                <input
-                  type="text"
-                  value={pmoLead}
-                  onChange={e => setPmoLead(e.target.value)}
-                  placeholder="Name of your Preparation Architect"
-                  style={{ width: "100%", maxWidth: 440, padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
-                />
+                <input type="text" value={pmoLead} onChange={e => setPmoLead(e.target.value)} placeholder="Name of your Preparation Architect" style={{ width: "100%", maxWidth: 440, padding: "10px 14px", border: `1px solid ${BORDER}`, fontSize: 13, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
               </div>
 
               <FieldLabel>Domain Authorization Owners</FieldLabel>
@@ -1012,8 +1377,8 @@ export default function PreparationDiagnostic() {
                       {[
                         { field: "owner",  label: "Name",            ph: AUTH_SLOTS[i].placeholder },
                         { field: "role",   label: "Role / Title",    ph: "e.g. CFO" },
-                        { field: "email",  label: "Email",           ph: "name@company.com" },
-                        { field: "mobile", label: "Mobile ★",        ph: "+1 555 000 0000" },
+                        { field: "email",  label: "Email ★",         ph: "name@company.com" },
+                        { field: "mobile", label: "Mobile ★★",       ph: "+1 555 000 0000" },
                       ].map(({ field, label, ph }) => (
                         <div key={field}>
                           <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 5 }}>{label}</div>
@@ -1022,7 +1387,7 @@ export default function PreparationDiagnostic() {
                             value={(owner as any)[field]}
                             onChange={e => updateOwner(i, field, e.target.value)}
                             placeholder={ph}
-                            style={{ width: "100%", padding: "8px 12px", border: `1px solid ${field === "mobile" && owner.mobile ? TEAL : BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
+                            style={{ width: "100%", padding: "8px 12px", border: `1px solid ${field === "email" && owner.email ? TEAL : field === "mobile" && owner.mobile ? TEAL : BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }}
                           />
                         </div>
                       ))}
@@ -1030,9 +1395,15 @@ export default function PreparationDiagnostic() {
                   </div>
                 ))}
               </div>
-              <div style={{ fontSize: 11, color: MUTED, display: "flex", alignItems: "center", gap: 6 }}>
-                <Shield size={11} color={MUTED} />
-                ★ Mobile number required for 12-minute activation window — executives receive protocol authorization requests via mobile.
+              <div style={{ fontSize: 11, color: MUTED, display: "flex", flexDirection: "column", gap: 4 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <Shield size={11} color={MUTED} />
+                  ★ Email creates a live notification contact — domain owner will receive trigger alerts automatically.
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <Shield size={11} color={MUTED} />
+                  ★★ Mobile required for 12-minute activation window — executives receive protocol authorization requests via mobile.
+                </div>
               </div>
             </div>
           )}
@@ -1060,6 +1431,7 @@ export default function PreparationDiagnostic() {
                       `${critical.length} critical gap${critical.length !== 1 ? "s" : ""} identified`,
                       triggerCategories.length > 0 ? `${triggerCategories.length} trigger categories` : "",
                       customTriggers.length > 0 ? `${customTriggers.length} custom trigger${customTriggers.length !== 1 ? "s" : ""} defined` : "",
+                      `Architecture coverage: ${readinessScore}%`,
                     ].filter(Boolean),
                   },
                   {
@@ -1071,7 +1443,10 @@ export default function PreparationDiagnostic() {
                   },
                   {
                     title: "Authorization Chain",
-                    items: domainOwners.filter(d => d.owner).map(d => `${d.domain}: ${d.owner}${d.role ? ` (${d.role})` : ""}`),
+                    items: [
+                      ...domainOwners.filter(d => d.owner).map(d => `${d.domain}: ${d.owner}${d.role ? ` (${d.role})` : ""}${d.email ? " · contact ready" : ""}`),
+                      domainOwners.filter(d => d.email).length > 0 ? `${domainOwners.filter(d => d.email).length} stakeholder contact${domainOwners.filter(d => d.email).length !== 1 ? "s" : ""} will be created` : "",
+                    ].filter(Boolean),
                   },
                 ].map(({ title, items }) => (
                   <div key={title} style={{ border: `1px solid ${BORDER}`, padding: "20px 22px", background: "#fff" }}>
