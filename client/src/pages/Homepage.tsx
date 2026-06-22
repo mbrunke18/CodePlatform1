@@ -4353,31 +4353,46 @@ export default function Homepage() {
       {/* 1. CLAIM — The response is ready before the trigger fires */}
       <HeroSection />
 
-      {/* 2. CREDIBILITY — practitioner voices before the visitor scrolls */}
+      {/* 2. SITUATIONS — 4 live scenarios, immediately below the claim */}
+      <ScenarioCardsRow />
+
+      {/* 3. CREDIBILITY — practitioner voices before the visitor scrolls */}
       <SocialProofStrip />
 
-      {/* 3. PROBLEM — Detection + Mobilization gaps */}
+      {/* 4. PROBLEM — Detection + Mobilization gaps */}
       <ProblemSection />
 
-      {/* 4. DISTINCTION — Not a workflow tool. Readiness infrastructure. */}
+      {/* 5. DISTINCTION — Not a workflow tool. Readiness infrastructure. */}
       <WorkflowDistinctionSection />
 
-      {/* 5. HOW IT WORKS — IDEA Framework + Before/After */}
+      {/* 6. MICROSOFT — You have the stack; none have the operating model */}
+      <MicrosoftHookStrip />
+
+      {/* 7. HOW IT WORKS — IDEA Framework + Before/After */}
       <IDEASection />
 
-      {/* 6. CONTRAST — 30 days → 12 minutes */}
+      {/* 8. MECHANISM — Animated 12-minute execution chain */}
+      <ExecChainSection />
+
+      {/* 9. PLATFORM — What it looks like in action */}
+      <PlatformScreenshotSection />
+
+      {/* 10. ANATOMY — What's inside every Readiness Protocol */}
+      <AnatomySection />
+
+      {/* 11. CONTRAST — 30 days → 12 minutes */}
       <ContrastMomentSection />
 
-      {/* 7. PROOF — 15 research organizations + Dr. Kerry Huang */}
+      {/* 12. PROOF — 15 research organizations + Dr. Kerry Huang */}
       <CredibilitySection />
 
-      {/* 8. Q&A — Executive questions, including the workflow distinction */}
+      {/* 13. Q&A — Executive questions, including the workflow distinction */}
       <ExecutiveQASection />
 
-      {/* 9. FEARLESS — Preparation → Readiness → Fearless */}
+      {/* 14. FEARLESS — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
 
-      {/* 10. CTA */}
+      {/* 15. CTA */}
       <CTASection />
       <HomepageFooter />
     </div>
