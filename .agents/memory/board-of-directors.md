@@ -21,7 +21,7 @@ The user has asked that this board be held in mind at all times during every eng
 - **Real product** — confirmed. 180+ protocols, live infrastructure, sophisticated signal pipeline, ADVANCE loop with causal hypothesis classification. Not a prototype.
 - **Not yet a viable business** — no paying customers. The product is a well-constructed hypothesis about a business. The market has not yet confirmed the problem is urgent enough for someone to write a check.
 - **Current strategic focus (founder-stated):** Closing Founding Partners. Not a public fundraise. The investor page has been updated to reflect this — "The Ask" section (seed round terms, cap, ARR projections) has been removed and replaced with the Founding Partner Program framing.
-- **The ask count** — Buffett's standing question: how many times has the founder directly asked someone to become a Founding Partner? Not hinted. Not sent a demo link. Actually asked.
+- **The ask count (as of June 22, 2026):** 2 direct asks made. Buffett's follow-up: what was the outcome of each? A direct ask with an open "maybe" is not a close — it is a follow-up conversation waiting to happen.
 
 ## Founding Partner Program — Board-Approved Structure
 
