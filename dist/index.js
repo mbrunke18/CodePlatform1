@@ -27578,7 +27578,7 @@ var init_scenarios = __esm({
             recommendation: "Monitor competitive intel daily during product development phases"
           }
         ],
-        situation: "Market research identifies $200M opportunity for AI-powered analytics platform. Competitors developing similar solutions. Window to establish market leadership: 90 days. Must coordinate product, engineering, marketing, sales, and customer success for flawless launch.",
+        situation: "Market research identifies $200M opportunity for a next-generation analytics platform. Competitors developing similar solutions. Window to establish market leadership: 90 days. Must coordinate product, engineering, marketing, sales, and customer success for flawless launch.",
         traditionalApproach: {
           description: "Sequential planning: product finalization \u2192 marketing campaign \u2192 sales training \u2192 launch. Manual coordination across teams, delayed decision-making, reactive adjustments.",
           timeline: "6-month launch preparation, missed market window",
@@ -27605,7 +27605,7 @@ var init_scenarios = __esm({
         color: "blue"
       },
       "special-teams": {
-        name: "Special Teams",
+        name: "TRANSFORMATION",
         description: "Game-changing moments and transformations",
         count: 5,
         color: "purple"
@@ -27882,7 +27882,8 @@ var init_NotificationManager = __esm({
         };
         wsService.sendToUser(stakeholder.id, "readiness-alert", payload);
         console.log(`\u{1F514} Push notification emitted to ${stakeholder.name} (user-${stakeholder.id})`);
-        await this.sendEmail(stakeholder, message, severity, metadata).catch(() => {
+        await this.sendEmail(stakeholder, message, severity, metadata).catch((err) => {
+          console.error(`[NotificationManager] Email fallback failed for ${stakeholder.name} (non-blocking):`, err);
         });
       }
       // ─── Public helpers ───────────────────────────────────────────────────────
@@ -47983,9 +47984,11 @@ function registerActivationRoutes(app2) {
         organizationName: "Readiness OS",
         triggeredBy: "Readiness OS Platform",
         appUrl
-      }).catch(() => {
+      }).catch((err) => {
+        console.error("[Activation] Teams notification failed (non-blocking):", err);
       });
-      notifyPlaybookActivation(playbookName, stakeholderCount, deadline).catch(() => {
+      notifyPlaybookActivation(playbookName, stakeholderCount, deadline).catch((err) => {
+        console.error("[Activation] Stakeholder email notification failed (non-blocking):", err);
       });
       (async () => {
         try {
@@ -53287,7 +53290,7 @@ function buildTrialEmailHtml(data, activationUrl) {
         <tr>
           <td style="background:${NAVY5};padding:20px 40px;">
             <p style="margin:0;color:rgba(255,255,255,0.5);font-size:11px;">
-              After your trial, apply for the full Pilot Program at vaughnmartin.com/pilot-program<br/>
+              After your trial, apply for the Founding Partner Program at vaughnmartin.com/founding-partner<br/>
               Reserved for startup to Fortune 500 organizations meeting deployment requirements.
             </p>
           </td>

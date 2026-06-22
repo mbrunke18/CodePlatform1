@@ -214,6 +214,41 @@ export default function CompetitivePositioning() {
           </div>
         </section>
 
+        {/* Workflow Distinction */}
+        <section style={{ background: "#fff", borderTop: "1px solid #E8E4DC", padding: "64px 48px" }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-0" style={{ border: `1px solid ${BORDER}`, maxWidth: 820, margin: "0 auto" }}>
+              <div style={{ padding: "36px 36px", background: "#F8F7F4", borderRight: `1px solid ${BORDER}`, opacity: 0.78 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 14, fontFamily: "'Barlow', sans-serif" }}>
+                  Workflow Tools — Jira · Monday · Asana
+                </div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#9CA3AF", marginBottom: 10, fontFamily: "'Barlow', sans-serif" }}>
+                  Trigger fires.
+                </div>
+                <p style={{ fontSize: 13, color: "#9CA3AF", lineHeight: 1.65, fontFamily: "'Barlow', sans-serif", margin: 0 }}>
+                  Someone opens a project tool and begins figuring out who owns what, what the scope is, and what the tasks should be. That process takes 20–50 hours. The mobilization problem is assumed to already be solved. It isn't.
+                </p>
+              </div>
+              <div style={{ padding: "36px 36px", background: NAVY }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14, fontFamily: "'Barlow', sans-serif" }}>
+                  Readiness Infrastructure — Readiness OS
+                </div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: GOLD, marginBottom: 10, fontFamily: "'Barlow', sans-serif" }}>
+                  Before the trigger fires.
+                </div>
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.82)", lineHeight: 1.65, fontFamily: "'Barlow', sans-serif", margin: 0 }}>
+                  Owners, tasks, budget authority, and communication chains are already staged. When the trigger fires, the executive authorizes and execution begins in 12 minutes — not 30 days later.
+                </p>
+              </div>
+            </div>
+            <div style={{ textAlign: "center", marginTop: 28 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(17px,1.8vw,22px)", fontWeight: 700, color: NAVY, margin: 0 }}>
+                This is not a workflow tool. It is readiness infrastructure.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* The Gap We Fill — Timeline */}
         <section style={{ padding: "80px 48px", background: "#fff" }}>
           <div className="max-w-6xl mx-auto">

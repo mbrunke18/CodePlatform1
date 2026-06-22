@@ -4214,6 +4214,77 @@ function StartHereSection() {
   );
 }
 
+// ─── WORKFLOW DISTINCTION ─────────────────────────────────────────────────────
+function WorkflowDistinctionSection() {
+  return (
+    <section style={{ background: "#fff", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "80px 0" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>The Distinction</span>
+            <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: 12 }}>
+            Every workflow tool assumes mobilization is solved.
+          </h2>
+          <p style={{ ...DM, fontSize: 17, color: "#6B7280", maxWidth: 560, margin: "0 auto" }}>
+            It isn't. That assumption is where organizations lose 30 days.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, border: "1px solid #E8E4DC", maxWidth: 900, margin: "0 auto 40px" }}>
+          <div style={{ padding: "40px 40px", background: "#F8F7F4", borderRight: "1px solid #E8E4DC", opacity: 0.8 }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 20 }}>
+              Workflow Tools — Jira · Monday · ServiceNow
+            </div>
+            <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 16 }}>Trigger fires.</div>
+            {[
+              "Someone opens a project tool",
+              "Team asks: who owns this? What is the scope?",
+              "Tasks are created from scratch under pressure",
+              "Budget approval starts from zero",
+              "Stakeholders align over 2–4 weeks of meetings",
+              "Execution finally begins — 30 days later",
+            ].map((step, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, marginBottom: 11, alignItems: "flex-start" }}>
+                <span style={{ color: "#D1D5DB", fontSize: 13, flexShrink: 0, marginTop: 1 }}>→</span>
+                <span style={{ ...DM, fontSize: 13, color: "#9CA3AF", lineHeight: 1.5 }}>{step}</span>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ padding: "40px 40px", background: NAVY }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>
+              Readiness Infrastructure — Readiness OS
+            </div>
+            <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: GOLD, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 16 }}>Before the trigger fires.</div>
+            {[
+              "180 Readiness Protocols already staged to your triggers",
+              "Named owners, pre-assigned tasks, decision authority mapped",
+              "Budget envelope pre-authorized — zero approval delay",
+              "Communication chain pre-drafted and ready to deploy",
+              "Executive authorizes once — the org moves in 12 minutes",
+              "Executing before competitors hold their first meeting",
+            ].map((step, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, marginBottom: 11, alignItems: "flex-start" }}>
+                <span style={{ color: GOLD, fontSize: 13, flexShrink: 0, marginTop: 1 }}>✓</span>
+                <span style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ textAlign: "center" }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, color: NAVY, margin: 0 }}>
+            This is not a workflow tool. It is readiness infrastructure.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── SOCIAL PROOF STRIP — surfaces near top per board recommendation ──────────
 function SocialProofStrip() {
   const quotes = [
@@ -4278,351 +4349,38 @@ export default function Homepage() {
       <FirstVisitAdModal />
       <HomepageNav />
       <GuestPreviewBanner />
-      <StickyJumpNav />
 
-      {/* 1. CLAIM */}
+      {/* 1. CLAIM — The response is ready before the trigger fires */}
       <HeroSection />
 
-      {/* 2. SOCIAL PROOF — surfaces practitioner validation before visitor scrolls away */}
+      {/* 2. CREDIBILITY — practitioner voices before the visitor scrolls */}
       <SocialProofStrip />
 
-      {/* CINEMATIC BRIEF ENTRY — thin strip linking to /readiness-ad */}
-      <section style={{ background: "#080D26", borderTop: "1px solid rgba(201,168,76,0.12)", borderBottom: "1px solid rgba(201,168,76,0.10)", padding: "18px 32px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#C9A84C", flexShrink: 0, animation: "pulse 2s infinite" }} />
-            <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(248,247,244,0.6)", letterSpacing: "0.02em" }}>
-              Not sure what Readiness OS does in practice?
-            </span>
-          </div>
-          <Link
-            href="/readiness-ad"
-            style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontSize: 13,
-              fontWeight: 600,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase" as const,
-              color: "#C9A84C",
-              textDecoration: "none",
-              border: "1px solid rgba(201,168,76,0.35)",
-              padding: "8px 20px",
-              borderRadius: "0.15rem",
-              whiteSpace: "nowrap" as const,
-              transition: "all 0.2s ease",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(201,168,76,0.08)"; (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C9A84C"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.35)"; }}
-          >
-            Watch the 60-Second Brief →
-          </Link>
-        </div>
-      </section>
-
-      {/* START HERE — guided sequence for first-time visitors */}
-      <StartHereSection />
-
-      {/* VALUE RAMP — what you get and when, plus the compounding permanent value */}
-      <div style={{ background: "#0D1435", borderTop: "1px solid rgba(201,168,76,0.18)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{ ...CONTAINER, width: "100%" }}>
-          {/* Three time-bound milestones */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
-            {[
-              {
-                marker: "Week 1",
-                headline: "180 protocols staged to your triggers",
-                body: "Your strategic trigger map is configured. Every Readiness Protocol is armed to your industry, your org, and your priorities. No blank-slate setup.",
-                accent: TEAL,
-              },
-              {
-                marker: "Day 30",
-                headline: "First live activation complete",
-                body: "Your team runs a full signal-to-execution cycle — real stakeholders, real tasks, real authorization chain. The 12-minute execution is proven against your actual operations.",
-                accent: GOLD,
-              },
-              {
-                marker: "Day 90",
-                headline: "Documented ROI business case — your baseline, not your ceiling",
-                body: "Three activation cycles logged. Institutional memory built. A board-ready ROI report generated from real execution data — not a demo. The setup work is now done permanently.",
-                accent: GOLD_LIGHT,
-              },
-            ].map((step, i) => (
-              <div key={i} style={{
-                padding: "36px 40px",
-                borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                display: "flex", flexDirection: "column" as const, gap: 10,
-              }}>
-                <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.accent }}>
-                  {step.marker}
-                </div>
-                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>
-                  {step.headline}
-                </div>
-                <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.52)", lineHeight: 1.65 }}>
-                  {step.body}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Compounding value strip — the permanent ROI argument */}
-          <div style={{
-            borderTop: `2px solid ${TEAL}`,
-            background: "rgba(43,138,110,0.06)",
-            padding: "24px 40px",
-            display: "flex", alignItems: "flex-start", gap: 48,
-          }}>
-            <div style={{ flexShrink: 0 }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>
-                After Day 90 — Ongoing
-              </div>
-              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: "#fff", lineHeight: 1.2, maxWidth: 320 }}>
-                The setup work is done. Permanently.
-              </div>
-            </div>
-            <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.60)", lineHeight: 1.7, maxWidth: 680 }}>
-              Every trigger after Day 90 fires against a protocol you've already refined — not one rebuilt from scratch. New situations get staged as new protocols; existing ones sharpen with each activation. The Week 1 investment pays forward indefinitely. No organization that has built its readiness infrastructure ever rebuilds it — they only improve it. <span style={{ color: TEAL, fontWeight: 600 }}>That is the ROI that compounds across every customer, every year.</span>
-            </div>
-          </div>
-
-          {/* One-situation ROI callout */}
-          <div style={{
-            borderTop: `1px solid rgba(201,168,76,0.22)`,
-            background: "rgba(201,168,76,0.04)",
-            padding: "22px 40px",
-            display: "flex", alignItems: "center", gap: 40,
-          }}>
-            <div style={{ flexShrink: 0, borderRight: `1px solid rgba(201,168,76,0.2)`, paddingRight: 40 }}>
-              <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 4 }}>
-                ROI threshold
-              </div>
-              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1.1 }}>
-                One situation.
-              </div>
-              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 26, fontWeight: 700, color: "#fff", lineHeight: 1.1 }}>
-                Full-year ROI.
-              </div>
-            </div>
-            <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 720 }}>
-              The annual platform cost is recovered the moment a single crisis is handled in 12 minutes rather than 30 days of emergency mobilization. Ransomware. Activist pressure. Supply chain collapse. Regulatory action. Any one of those — handled right, once — justifies the entire year. <span style={{ color: "rgba(201,168,76,0.85)", fontWeight: 600 }}>Most organizations face several each year. The ROI case writes itself.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* PRACTITIONER PULL QUOTE — William Milne */}
-      <div style={{ background: "#0A0F2E", borderLeft: "3px solid #C9A84C", padding: "32px 48px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(18px,2.2vw,26px)", fontWeight: 500, color: "#F0EDE4", lineHeight: 1.6, fontStyle: "italic", margin: 0 }}>
-            "The twelve minutes happens because the other 29 days and 23 hours of work were done before the trigger ever fired."
-          </p>
-          <p style={{ fontSize: 11, color: "rgba(201,168,76,0.7)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 16, fontWeight: 600 }}>
-            William Milne — Managing Director, Racanaa Energy
-          </p>
-        </div>
-      </div>
-
-      {/* TRACK FORK — Buyer / Investor disambiguation */}
-      <div style={{ background: "#F0EDE4", padding: "64px 0" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
-          <Reveal>
-            <div style={{ textAlign: "center", marginBottom: 40 }}>
-              <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>
-                Find Your Path
-              </div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(26px,3vw,36px)", fontWeight: 700, color: NAVY, margin: 0 }}>
-                Two conversations. One platform.
-              </h2>
-            </div>
-          </Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
-            {[
-              {
-                audience: "Enterprise Executive",
-                headline: "You need your organization ready before the situation arrives.",
-                body: "Readiness OS compresses your mobilization cycle from 30 days to 12 minutes — pre-staged before the situation presents itself, not assembled after.",
-                proof: ["90-day Founding Partner program", "180 Readiness Protocols — pre-staged", "100% investment credited to contract", "12-minute coordination from signal to war room"],
-                cta: "See What You Get in 90 Days",
-                ctaPath: "/founding-partner-brief",
-                accent: GOLD,
-              },
-              {
-                audience: "Investor",
-                headline: "First-mover in a new enterprise software category.",
-                body: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the orchestration layer above the $300B Microsoft investment.",
-                proof: ["$42B TAM — no incumbent owns this layer", "3,600× execution head start", "$750K raise · 18 months · 3 milestones", "Live product — no login required"],
-                cta: "View the Investor Overview",
-                ctaPath: "/investor-landing",
-                accent: TEAL,
-              },
-            ].map((track, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{
-                  background: "#fff",
-                  borderTop: `4px solid ${track.accent}`,
-                  padding: "40px 40px 36px",
-                  display: "flex", flexDirection: "column" as const, gap: 0, height: "100%", boxSizing: "border-box" as const,
-                }}>
-                  <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: track.accent, marginBottom: 14 }}>
-                    {track.audience}
-                  </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px,2vw,24px)", fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
-                    {track.headline}
-                  </h3>
-                  <p style={{ ...DM, fontSize: 14, color: "#374151", lineHeight: 1.7, marginBottom: 24 }}>
-                    {track.body}
-                  </p>
-                  <ul style={{ margin: "0 0 32px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column" as const, gap: 9 }}>
-                    {track.proof.map((p, j) => (
-                      <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                        <span style={{ color: track.accent, fontWeight: 700, fontSize: 13, lineHeight: 1.5, flexShrink: 0 }}>→</span>
-                        <span style={{ ...DM, fontSize: 13, color: "#374151", lineHeight: 1.45 }}>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div style={{ marginTop: "auto" }}>
-                    <Link href={track.ctaPath} onClick={() => trackCTA(`track_fork_${i}`)}>
-                      <button style={{
-                        width: "100%", padding: "14px 24px", background: NAVY,
-                        border: "none", cursor: "pointer",
-                        ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const,
-                        color: track.accent,
-                      }}>
-                        {track.cta} →
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.2}>
-            <div style={{ textAlign: "center", marginTop: 28 }}>
-              <Link href="/entry" style={{ ...DM, fontSize: 12, fontWeight: 600, color: "#6B7280", textDecoration: "none", letterSpacing: "0.06em", borderBottom: "1px solid rgba(107,114,128,0.3)", paddingBottom: 2 }}>
-                Not sure where to start? Begin here →
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* 2. EXECUTION CHAIN — full demo visible immediately */}
-      <ExecChainSection />
-
-      {/* 3. HOOK — The readiness question */}
-      <ScenarioHookSection />
-
-      {/* 3. SCENARIOS — Breadth before explanation */}
-      <ScenarioCardsRow />
-
-      {/* 3b. THE STAKES — Binary proof: before vs. after */}
-      <BinaryStakesSection />
-
-      <ThreeStepSection />
-
-      {/* PLATFORM SCREENSHOT GALLERY — Product visuals */}
-      <PlatformScreenshotSection />
-
-      {/* BENCHMARK — Lead magnet strip */}
-      <div style={{ background: "#F0EDE4", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "20px 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" as const }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ width: 3, height: 32, background: GOLD, flexShrink: 0 }} />
-            <div>
-              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>Free · 3 Minutes</div>
-              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(15px,1.6vw,19px)", fontWeight: 600, color: NAVY, lineHeight: 1.3 }}>
-                Where does your organization stand? Take the Readiness Benchmark.
-              </div>
-            </div>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, color: "#6B7280", letterSpacing: "0.04em" }}>Typical enterprise scores 22 · Founding Partners score 87</span>
-            <a href="/readiness-benchmark" style={{ fontFamily: "'Barlow Condensed', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: GOLD, fontWeight: 800, fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "10px 20px", textDecoration: "none", whiteSpace: "nowrap" as const }}>
-              See Your Score →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <MicrosoftHookStrip />
-
-      {/* PAIN — Cost of the old model */}
+      {/* 3. PROBLEM — Detection + Mobilization gaps */}
       <ProblemSection />
 
-      {/* CONTRAST — 30 days → 12 minutes */}
+      {/* 4. DISTINCTION — Not a workflow tool. Readiness infrastructure. */}
+      <WorkflowDistinctionSection />
+
+      {/* 5. HOW IT WORKS — IDEA Framework + Before/After */}
+      <IDEASection />
+
+      {/* 6. CONTRAST — 30 days → 12 minutes */}
       <ContrastMomentSection />
 
-      {/* THE POSITIONING — The entire decision lifecycle (not just one moment) */}
-      <PositioningSection />
-
-      {/* PRACTITIONERS — Independent convergence on the same structural gap */}
-      <PractitionerObservationsSection />
-
-      {/* THESIS — The missing operating model */}
-      <WhyNowStrip />
-      <MissingLayerSection />
-
-      {/* LIFECYCLE — The full advantage system */}
-      <LifecycleAdvantageSection />
-
-      {/* MICROSOFT — The stack you already own */}
-      <MicrosoftEcosystemBanner />
-
-      {/* SOLUTION DEPTH */}
-      <AnatomySection />
-
-      {/* PLATFORM ARCHITECTURE — Three-tier model */}
-      <PlatformArchitectureSection />
-
-      {/* DUE DILIGENCE — Surface the buried depth */}
-      <SalesDepthStrip />
-
-      {/* RESEARCH — Credibility and moat */}
+      {/* 7. PROOF — 15 research organizations + Dr. Kerry Huang */}
       <CredibilitySection />
 
-      {/* Q&A */}
+      {/* 8. Q&A — Executive questions, including the workflow distinction */}
       <ExecutiveQASection />
 
-      {/* THE COMPETITIVE CLOSE — Show us your timestamp */}
-      <TimestampCloseSection />
-
-      {/* FEARLESS — Emotional finale */}
+      {/* 9. FEARLESS — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
 
-      {/* THE CASE — Final buying argument before the decision */}
-      <div style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "48px 0" }}>
-        <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const }}>
-          <div style={{ flex: 1, minWidth: 260 }}>
-            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>The Complete Buying Argument</div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, margin: "0 0 12px" }}>
-              Everything in sequence. Problem cost → proof → moat → ROI → decision.
-            </h2>
-            <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
-              One page that assembles the complete case for Readiness OS — built for the CFO, CMO, or CIO who needs to take it to the board.
-            </p>
-          </div>
-          <div style={{ flexShrink: 0, display: "flex", flexDirection: "column" as const, alignItems: "flex-end", gap: 12 }}>
-            <Link
-              href="/the-case"
-              style={{
-                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
-                padding: "16px 40px", textDecoration: "none", letterSpacing: "0.05em",
-                display: "inline-block", whiteSpace: "nowrap" as const,
-                transition: "background 0.15s",
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#DFC178"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
-            >
-              Read The Case →
-            </Link>
-            <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>No login · 8-minute read</span>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA */}
+      {/* 10. CTA */}
       <CTASection />
       <HomepageFooter />
     </div>
   );
 }
+
