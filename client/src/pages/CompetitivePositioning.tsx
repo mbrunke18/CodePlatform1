@@ -600,6 +600,76 @@ export default function CompetitivePositioning() {
           </div>
         </section>
 
+        {/* McKinsey Validation — What the Market is Saying */}
+        <section style={{ background: "#fff", padding: "80px 48px", borderTop: `1px solid ${BORDER}` }}>
+          <div className="max-w-5xl mx-auto">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 52 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>What the Market is Saying</span>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-16 items-start">
+              {/* Left — quote + implication */}
+              <div>
+                <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, marginBottom: 36 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: MUTED, marginBottom: 14 }}>McKinsey & Company · 2026</div>
+                  <blockquote style={{ ...CG, fontSize: "clamp(20px,2.2vw,26px)", fontWeight: 600, lineHeight: 1.4, color: NAVY, marginBottom: 16 }}>
+                    "Be relentlessly protocol-focused for interoperability. Enterprises need a composable glue layer linking internal systems, data, and workflows with AI agent ecosystems."
+                  </blockquote>
+                  <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.6 }}>QuantumBlack AI by McKinsey — Proposed Enterprise Agentic Platform Architecture</div>
+                </div>
+
+                <div style={{ borderLeft: `3px solid ${TEAL}`, paddingLeft: 28 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: MUTED, marginBottom: 12 }}>The Implication</div>
+                  <p style={{ fontSize: 16, color: "#374151", lineHeight: 1.75 }}>
+                    McKinsey is walking into enterprise boardrooms right now telling every CEO they need this architecture. While McKinsey charges $2–3M to design a custom version over 18 months, Readiness OS delivers 180 production-ready Readiness Protocols on day one — pre-staged, pre-validated, and activatable in 12 minutes.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right — 3 principles + callout */}
+              <div>
+                <div style={{ background: OFF, border: `1px solid ${BORDER}`, padding: "32px 36px", marginBottom: 16 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: MUTED, marginBottom: 24 }}>McKinsey's 3 Design Principles — Already Built Into Readiness OS</div>
+                  {[
+                    {
+                      num: "01",
+                      title: "Protocol-focused interoperability",
+                      note: "Readiness OS is organized around exactly this unit — 180 Readiness Protocols as the composable building blocks of strategic execution.",
+                    },
+                    {
+                      num: "02",
+                      title: "Design for production from the start",
+                      note: "Every protocol includes evaluation gates, stakeholder ownership, and outcome memory. Production-grade on day one — not after months of configuration.",
+                    },
+                    {
+                      num: "03",
+                      title: "Continuously integrate emerging capabilities",
+                      note: "ADVANCE 2.0 closes the loop on every activation. Evidence-backed protocol improvements accumulate continuously — turning execution history into a compounding moat.",
+                    },
+                  ].map((p, i) => (
+                    <div key={p.num} style={{ display: "flex", gap: 18, paddingBottom: 20, marginBottom: i < 2 ? 20 : 0, borderBottom: i < 2 ? `1px solid ${BORDER}` : "none" }}>
+                      <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD, flexShrink: 0, width: 30, lineHeight: 1, paddingTop: 2 }}>{p.num}</div>
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 14, color: NAVY, marginBottom: 6 }}>{p.title}</div>
+                        <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.65 }}>{p.note}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ background: NAVY, padding: "20px 28px", display: "flex", alignItems: "center", gap: 14 }}>
+                  <div style={{ width: 2, height: 44, background: GOLD, flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", marginBottom: 5, letterSpacing: "0.05em" }}>Bottom line</div>
+                    <div style={{ fontSize: 15, color: "#fff", fontWeight: 600, lineHeight: 1.4 }}>McKinsey is creating demand for what Readiness OS already built.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section style={{ background: OFF, padding: "80px 48px" }}>
           <div className="max-w-3xl mx-auto text-center">
