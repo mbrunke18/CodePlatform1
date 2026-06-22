@@ -1389,43 +1389,81 @@ function ScenarioHookSection() {
 
 // ─── SCENARIO CARDS ROW ───────────────────────────────────────────────────────
 function ScenarioCardsRow() {
+  const SCENARIOS = [
+    {
+      domain: "GROWTH & POSITIONING",
+      label: "Competitor Cuts Price 20%",
+      sub: "It hit the news 11 minutes ago. Your sales team is already getting calls. Three deals in final negotiation just went silent.",
+      accent: GOLD,
+      href: "/demo/market-entry",
+    },
+    {
+      domain: "RISK & RESILIENCE",
+      label: "Systems Down at 3am",
+      sub: "Transactions failing. Customers locked out. Six hours until your largest enterprise customers start their business day.",
+      accent: TEAL,
+      href: "/industry-demo/financial-services?autostart=1",
+    },
+    {
+      domain: "RISK & RESILIENCE",
+      label: "Federal Agency Opens Inquiry",
+      sub: "Formal inquiry into your pricing practices. 48 hours to respond. Finance, Legal, Operations, and Communications must align before anyone speaks publicly.",
+      accent: TEAL,
+      href: "/demo/regulatory",
+    },
+    {
+      domain: "RISK & RESILIENCE",
+      label: "Activist Investor 13D Filing",
+      sub: "An activist just disclosed an 8.7% stake. Demanding two board seats and a strategic review. Stock is moving. Board wants a call tonight.",
+      accent: TEAL,
+      href: "/master-demo",
+    },
+    {
+      domain: "GROWTH & POSITIONING",
+      label: "Your Second Largest Customer",
+      sub: "Just asked for a meeting with no agenda. Contract renews in 60 days. Usage declining. Account team says they have been talking to your competitor.",
+      accent: GOLD,
+      href: "/industry-demo/growth-market-expansion?autostart=1",
+    },
+  ];
+
   return (
     <div style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+      <style>{`
+        .hp-scenario-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+        .hp-scenario-footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+        @media (max-width: 960px) {
+          .hp-scenario-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 520px) {
+          .hp-scenario-grid { grid-template-columns: 1fr !important; }
+          .hp-scenario-footer { flex-direction: column; }
+        }
+      `}</style>
+
       <div style={{ ...CONTAINER }}>
-        <div className="hp-scenario-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
-          {[
-            {
-              domain: "RISK & RESILIENCE",
-              label: "Hospital Ransomware Attack",
-              sub: "EHR systems encrypted. 312 patients in active care. ER diversion imminent in 45 minutes.",
-              accent: TEAL,
-              href: "/industry-demo/healthcare?autostart=1",
-            },
-            {
-              domain: "GROWTH & POSITIONING",
-              label: "Market Entry Sprint",
-              sub: "Competitor displacing your accounts in a key vertical. 72-hour window to respond or lose the category.",
-              accent: GOLD,
-              href: "/industry-demo/growth-market-expansion?autostart=1",
-            },
-            {
-              domain: "RISK & RESILIENCE",
-              label: "Payment Infrastructure Failure",
-              sub: "$4.7B in scheduled settlements at risk. Federal Reserve notified. Market opens in 2 hours.",
-              accent: TEAL,
-              href: "/industry-demo/financial-services?autostart=1",
-            },
-            {
-              domain: "TRANSFORMATION",
-              label: "FDA Class I Recall",
-              sub: "2.3M units distributed across 14,000 pharmacies. 24-hour mandatory window. Criminal liability if missed.",
-              accent: GOLD,
-              href: "/industry-demo/pharmaceutical?autostart=1",
-            },
-          ].map((item, i) => (
+
+        {/* Campaign framing header */}
+        <div style={{ padding: "32px 0 20px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap" as const, gap: 16 }}>
+          <div>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.22em", textTransform: "uppercase" as const, marginBottom: 8 }}>
+              5 Situations · Happening at companies right now
+            </div>
+            <div style={{ ...GEO, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, color: "#fff", lineHeight: 1.25 }}>
+              If any of these happened today — how would your company respond?
+            </div>
+          </div>
+          <Link href="/demo-hub" style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.38)", textDecoration: "none", letterSpacing: "0.06em", whiteSpace: "nowrap" as const, flexShrink: 0 }}>
+            See all 19 simulations →
+          </Link>
+        </div>
+
+        {/* 5 scenario cards */}
+        <div className="hp-scenario-grid" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+          {SCENARIOS.map((item, i) => (
             <Link key={i} href={item.href} style={{
-              display: "block", padding: "24px 28px 22px",
-              borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none",
+              display: "block", padding: "22px 20px 20px",
+              borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none",
               borderTop: `2px solid ${item.accent}`,
               textDecoration: "none",
               transition: "background 0.2s",
@@ -1433,19 +1471,36 @@ function ScenarioCardsRow() {
             onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
             onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
             >
-              <div style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
+              <div style={{ ...DM, color: item.accent, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
               <div style={{ ...DM, color: "#fff", fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>{item.label}</div>
-              <div style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: 11.5, lineHeight: 1.6, marginBottom: 14 }}>{item.sub}</div>
-              <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>Run live simulation →</span>
+              <div style={{ ...DM, color: "rgba(255,255,255,0.62)", fontSize: 11, lineHeight: 1.6, marginBottom: 14 }}>{item.sub}</div>
+              <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>See the response →</span>
             </Link>
           ))}
         </div>
-        {/* See all link */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "16px 0", textAlign: "center" }}>
-          <Link href="/industry-demo-library" style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.4)", textDecoration: "none", letterSpacing: "0.06em" }}>
-            See all 19 industry simulations →
+
+        {/* 30 days → 12 minutes + demo CTA */}
+        <div className="hp-scenario-footer" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "22px 0 28px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" as const }}>
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.28)", textDecoration: "line-through", lineHeight: 1 }}>30 days</div>
+              <div style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 3 }}>Traditional mobilization</div>
+            </div>
+            <div style={{ ...DM, fontSize: 20, color: GOLD, fontWeight: 700, lineHeight: 1 }}>→</div>
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: GOLD, lineHeight: 1 }}>12 minutes</div>
+              <div style={{ ...DM, fontSize: 9, color: GOLD, opacity: 0.65, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 3 }}>Readiness OS</div>
+            </div>
+            <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.1)", margin: "0 6px" }} />
+            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)", lineHeight: 1.55, maxWidth: 220 }}>
+              The response for every one of these is pre-staged and ready.
+            </div>
+          </div>
+          <Link href="/demo-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 10, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12, padding: "13px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, flexShrink: 0 }}>
+            Watch a Full Activation →
           </Link>
         </div>
+
       </div>
     </div>
   );
