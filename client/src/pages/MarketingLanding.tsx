@@ -35,10 +35,10 @@ export default function MarketingLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Readiness OS - Situational Readiness Platform | Transform Strategy into 12-Minute Execution",
+      title: "Readiness OS - Readiness Infrastructure | Transform Strategy into 12-Minute Execution",
       description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 180 Readiness Protocols, 5 intelligence modules, 24/7 monitoring, institutional memory—built for startup to Fortune 500 strategic dominance.",
       ogTitle: "Readiness OS - When Your Competitor Moves, Will You Be Ready?",
-      ogDescription: "The category-defining Situational Readiness Platform. Founding Partner Program now open. Identify → Detect → Execute → Advance.",
+      ogDescription: "The category-defining Readiness Infrastructure. Founding Partner Program now open. Identify → Detect → Execute → Advance.",
     });
   }, []);
 
@@ -131,7 +131,7 @@ export default function MarketingLanding() {
           <div className="max-w-5xl mx-auto mb-12 text-center">
             <div className="flex justify-center mb-6">
               <Badge className="bg-[#0A0F2E] text-white border-0 text-[10px] tracking-[0.2em] font-bold px-6 py-2 rounded-none uppercase">
-                The Situational Readiness Platform
+                The Readiness Infrastructure
               </Badge>
             </div>
             <h2 className="font-serif text-3xl md:text-6xl text-[#0A0F2E] mb-8">
@@ -335,7 +335,7 @@ export default function MarketingLanding() {
       {/* Footer */}
       <footer className="py-12 px-6 bg-[#0A0F2E] border-t border-white/10 text-center">
         <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.3em]">
-          Readiness OS — Situational Readiness Platform by VaughnMartin
+          Readiness OS — Readiness Infrastructure by VaughnMartin
         </p>
       </footer>
     </PageLayout>

@@ -25,10 +25,10 @@ export default function VideoLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Readiness OS - Situational Readiness Platform | 30 Days → 12 Minutes",
+      title: "Readiness OS - Readiness Infrastructure | 30 Days → 12 Minutes",
       description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged Readiness Protocols, coordinated stakeholders, instant activation for enterprise organizations.",
       ogTitle: "Readiness OS - The Speed to Execute",
-      ogDescription: "180 Readiness Protocols. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Situational Readiness Platform.",
+      ogDescription: "180 Readiness Protocols. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Readiness Infrastructure.",
     });
   }, []);
 
@@ -231,7 +231,7 @@ export default function VideoLanding() {
       <footer className="py-12 px-6 bg-white border-t border-[#E8E4DC]">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.3em]">
-            Readiness OS — Situational Readiness Platform by VaughnMartin
+            Readiness OS — Readiness Infrastructure by VaughnMartin
           </p>
         </div>
       </footer>

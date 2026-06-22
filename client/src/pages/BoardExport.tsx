@@ -41,7 +41,7 @@ const SAMPLE_DATA = {
   organization: 'Meridian Industries',
   reportDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
   quarter: 'Q4 2026',
-  preparedBy: 'Readiness OS — Situational Readiness Platform',
+  preparedBy: 'Readiness OS — Readiness Infrastructure',
   
   executiveSummary: {
     overallReadiness: 87,

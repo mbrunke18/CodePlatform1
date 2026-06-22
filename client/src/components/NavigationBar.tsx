@@ -99,7 +99,7 @@ export default function NavigationBar() {
             </div>
             <div>
               <span className="text-xl font-bold text-slate-900 dark:text-white">Readiness OS</span>
-              <span className="text-xs block text-gray-600 dark:text-slate-300">Situational Readiness Platform</span>
+              <span className="text-xs block text-gray-600 dark:text-slate-300">Readiness Infrastructure</span>
             </div>
           </div>
 

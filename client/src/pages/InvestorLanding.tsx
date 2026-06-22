@@ -33,7 +33,7 @@ export default function InvestorLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Investor Overview | Readiness OS — Situational Readiness Platform",
+      title: "Investor Overview | Readiness OS — Readiness Infrastructure",
       description: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the operating model layer. First-mover in a new enterprise software category.",
       ogTitle: "Invest in Readiness OS — The Operating Model Layer for startup to Fortune 500",
       ogDescription: "Enterprises spend 30 days mobilizing for events they could have pre-staged. Readiness OS changes the model. 180 protocols. 12-minute execution. First-mover opportunity.",
@@ -648,7 +648,7 @@ export default function InvestorLanding() {
               Let's Build This Together
             </h2>
             <p data-testid="text-cta-description" style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: 10 }}>
-              Readiness OS is defining the Situational Readiness Platform category — a $5B+ addressable market with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              Readiness OS is defining the Readiness Infrastructure category — a $5B+ addressable market with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", lineHeight: 1.7, marginBottom: 40 }}>
               Schedule a conversation with the VaughnMartin founding team to review our full investment deck, pipeline metrics, and strategic roadmap.
@@ -668,7 +668,7 @@ export default function InvestorLanding() {
               ↓ Product Overview
             </a>
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.25)", marginTop: 32 }}>
-              VaughnMartin · Situational Readiness Platform · <span style={{ color: "rgba(201,168,76,0.6)" }}>info@vaughnmartin.com</span>
+              VaughnMartin · Readiness Infrastructure · <span style={{ color: "rgba(201,168,76,0.6)" }}>info@vaughnmartin.com</span>
             </p>
           </div>
         </div>

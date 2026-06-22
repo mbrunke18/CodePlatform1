@@ -330,7 +330,7 @@ function FuturePositioningDiagram() {
             { label: "Platform Built", sub: "180 Readiness Protocols, IDEA Framework", color: NAVY },
             { label: "Founding Partner Contracts", sub: "Design partners, real activation history", color: NAVY },
             { label: "Institutional Memory Layer", sub: "Every activation deepens protocol precision", color: TEAL },
-            { label: "Category Leader", sub: "Situational Readiness Platform standard", color: GOLD },
+            { label: "Category Leader", sub: "Readiness Infrastructure standard", color: GOLD },
           ].map((stage, i) => (
             <div key={i} className="flex items-center flex-1">
               <div className="flex-1">
@@ -360,7 +360,7 @@ export default function Investors() {
   useEffect(() => {
     updatePageMetadata({
       title: "Investor Overview — VaughnMartin Readiness OS",
-      description: "The Situational Readiness Platform for startup to Fortune 500. 3,600× Execution Head Start. 30 days compressed to 12 minutes. Category-defining opportunity in enterprise operating infrastructure.",
+      description: "The Readiness Infrastructure for startup to Fortune 500. 3,600× Execution Head Start. 30 days compressed to 12 minutes. Category-defining opportunity in enterprise operating infrastructure.",
       ogTitle: "Investor Overview — VaughnMartin Readiness OS",
       ogDescription: "The operating model layer startup to Fortune 500s are missing. Pre-staged execution replaces 30-day mobilization cycles. 180 Readiness Protocols. 12-minute response.",
     });

@@ -156,7 +156,7 @@ export default function ChannelPartners() {
               Ready to bring this to your clients?
             </h3>
             <p style={{ ...DM, fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: "0 0 40px" }}>
-              We're currently onboarding a small cohort of Founding Partners — consulting firms, systems integrators, and advisory practices who want to be first to deploy the Situational Readiness Platform in their enterprise engagements.
+              We're currently onboarding a small cohort of Founding Partners — consulting firms, systems integrators, and advisory practices who want to be first to deploy the Readiness Infrastructure in their enterprise engagements.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
               <button

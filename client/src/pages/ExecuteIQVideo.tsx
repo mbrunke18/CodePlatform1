@@ -132,7 +132,7 @@ export default function ExecutionOSVideo() {
                   </div>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Readiness OS</h2>
-                <p className="text-gray-900/60">Situational Readiness Platform</p>
+                <p className="text-gray-900/60">Readiness Infrastructure</p>
               </motion.div>
               
               <Button

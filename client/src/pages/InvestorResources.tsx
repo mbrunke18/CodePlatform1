@@ -215,7 +215,7 @@ function McKinseyResearchSection() {
 export default function InvestorResources() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Investor Resources | Readiness OS — Situational Readiness Platform",
+      title: "Investor Resources | Readiness OS — Readiness Infrastructure",
       description: "Investment overview for Readiness OS, the enterprise readiness infrastructure platform. Creating a new $5B+ software category for startup to Fortune 500 strategic execution.",
       ogTitle: "Invest in Readiness OS - Category-Defining Opportunity",
       ogDescription: "Transform 30-day alignment cycles into 12-minute execution. First-mover in the Coordination Infrastructure category — the operating model layer no one has built.",
