@@ -1817,66 +1817,82 @@ export default function InvestorLanding() {
           </div>
         </section>
 
-        {/* Investment Ask Section */}
+        {/* Founding Partner Program Section */}
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <div className="vm-section-label justify-center mb-6"><span>The Ask</span></div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(32px,5vw,52px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.1 }}>
-                $2.5M Seed Round
+              <div className="vm-section-label justify-center mb-6"><span>Founding Partner Program</span></div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(32px,5vw,52px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 16, lineHeight: 1.1 }}>
+                Two Organizations.<br />90-Day Validation Partnership.
               </h2>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 560, margin: '0 auto' }}>
-                18-month target: three startup to Fortune 500 Founding Partner engagements closed and converting to annual contracts, reaching $3.75M ARR.
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 580, margin: '0 auto', lineHeight: 1.7 }}>
+                We are selecting two organizations to deploy Readiness OS as Founding Partners. This is not a free trial. It is a structured commercial validation with defined milestones, executive involvement, and a conversion conversation at day 90.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-10">
               {[
-                { label: 'Seed Round', value: '$2.5M', sub: 'SAFE at $12M cap', accent: '#0A0F2E' },
-                { label: 'ARR Target', value: '$3.75M', sub: '18-month milestone', accent: '#C9A84C' },
-                { label: 'Runway', value: '18 mo', sub: 'To Series A inflection', accent: '#2B8A6E' },
+                { label: 'Day 30', value: 'Deployed', sub: 'Protocols live · Stakeholders mapped · First trigger monitored', accent: '#0A0F2E' },
+                { label: 'Day 60', value: 'Validated', sub: 'Structured progress review · Execution data on the table', accent: '#C9A84C' },
+                { label: 'Day 90', value: 'Decision', sub: 'Conversion conversation · Reference commitment regardless of outcome', accent: '#2B8A6E' },
               ].map(m => (
                 <div key={m.label} className="text-center py-10 px-6 border border-[#E8E4DC] bg-white" style={{ borderTopColor: m.accent, borderTopWidth: 3 }}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,6vw,64px)', fontWeight: 700, color: m.accent, lineHeight: 1, marginBottom: 8 }}>{m.value}</div>
-                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 4 }}>{m.label}</div>
-                  <div style={{ fontSize: 13, color: '#6B7280' }}>{m.sub}</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px,4vw,48px)', fontWeight: 700, color: m.accent, lineHeight: 1, marginBottom: 8 }}>{m.value}</div>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#0A0F2E', marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.5 }}>{m.sub}</div>
                 </div>
               ))}
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
               <div className="bg-white border border-[#E8E4DC] p-6">
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>Use of Proceeds</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#0A0F2E', marginBottom: 16 }}>What the Partner Gets</div>
                 {[
-                  { label: 'Founding Partner Execution & Customer Success', pct: '40%', color: '#2B8A6E' },
-                  { label: 'Product & Engineering', pct: '30%', color: '#0A0F2E' },
-                  { label: 'Sales & GTM Infrastructure', pct: '20%', color: '#C9A84C' },
-                  { label: 'Operations & Legal', pct: '10%', color: '#6B7280' },
-                ].map(u => (
-                  <div key={u.label} className="flex items-center justify-between py-3 border-b border-[#F0EDE4] last:border-0">
-                    <div className="flex items-center gap-3">
-                      <div className="w-1 h-8" style={{ background: u.color }} />
-                      <span style={{ fontSize: 14, color: '#0A0F2E', fontWeight: 500 }}>{u.label}</span>
-                    </div>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: u.color, fontFamily: "'Barlow Condensed', sans-serif" }}>{u.pct}</span>
+                  { item: 'Full platform deployment across your highest-priority triggers', color: '#2B8A6E' },
+                  { item: 'Readiness Protocols mapped to your strategic domain and org structure', color: '#2B8A6E' },
+                  { item: 'Direct access to the founder throughout the 90-day engagement', color: '#2B8A6E' },
+                  { item: 'Founding Partner pricing locked for the life of the contract', color: '#C9A84C' },
+                  { item: 'Co-authorship of the category narrative — your activation becomes the proof', color: '#C9A84C' },
+                ].map((u, i) => (
+                  <div key={i} className="flex items-start gap-3 py-3 border-b border-[#F0EDE4] last:border-0">
+                    <div style={{ width: 3, minHeight: 20, marginTop: 2, background: u.color, flexShrink: 0 }} />
+                    <span style={{ fontSize: 14, color: '#0A0F2E', fontWeight: 500, lineHeight: 1.5 }}>{u.item}</span>
                   </div>
                 ))}
               </div>
 
               <div className="bg-white border border-[#E8E4DC] p-6">
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>18-Month Milestones</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#0A0F2E', marginBottom: 16 }}>What We Ask in Return</div>
                 {[
-                  { mo: 'M1–3', label: '3 Founding Partners signed · $225K ARR · Commercial co-founder on board', color: '#2B8A6E' },
-                  { mo: 'M4–6', label: 'First 3 Founding Partners convert to $250K+ annual contracts', color: '#2B8A6E' },
-                  { mo: 'M6–12', label: 'Expand to 8 enterprise accounts — $1.5M ARR', color: '#C9A84C' },
-                  { mo: 'M12–18', label: '$3.75M ARR — Series A raise initiated', color: '#0A0F2E' },
+                  { mo: '30 days', label: 'Defined onboarding with protocol deployment milestones completed', color: '#2B8A6E' },
+                  { mo: '60 days', label: 'Structured progress conversation with executive sponsor present', color: '#C9A84C' },
+                  { mo: '90 days', label: 'Conversion conversation — and a reference regardless of outcome', color: '#0A0F2E' },
                 ].map(m => (
-                  <div key={m.mo} className="flex items-start gap-4 py-3 border-b border-[#F0EDE4] last:border-0">
-                    <div style={{ fontSize: 11, fontWeight: 700, color: m.color, letterSpacing: '0.08em', minWidth: 44, paddingTop: 1 }}>{m.mo}</div>
+                  <div key={m.mo} className="flex items-start gap-4 py-4 border-b border-[#F0EDE4] last:border-0">
+                    <div style={{ fontSize: 11, fontWeight: 700, color: m.color, letterSpacing: '0.06em', minWidth: 52, paddingTop: 1 }}>{m.mo}</div>
                     <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.5 }}>{m.label}</p>
                   </div>
                 ))}
+                <div style={{ marginTop: 20, padding: '14px 16px', background: '#F0EDE4', borderLeft: '3px solid #C9A84C' }}>
+                  <p style={{ fontSize: 13, color: '#0A0F2E', lineHeight: 1.6, margin: 0 }}>
+                    This is not free. It is a structured commercial validation with deferred payment — designed so both sides know exactly what success looks like before the contract is signed.
+                  </p>
+                </div>
               </div>
+            </div>
+
+            <div style={{ background: '#0A0F2E', padding: '36px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' as const }}>
+              <div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(20px,2.5vw,28px)', fontWeight: 700, color: '#fff', lineHeight: 1.3, marginBottom: 6 }}>
+                  Two seats. One conversation.
+                </div>
+                <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', maxWidth: 480, lineHeight: 1.6 }}>
+                  If your organization faces the kind of strategic triggers Readiness OS was built for — and you want to be the organization that proves the category — this is the conversation to have.
+                </div>
+              </div>
+              <a href="/contact" style={{ flexShrink: 0, display: 'inline-block', fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, padding: '18px 40px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
+                Apply for Founding Partner Access
+              </a>
             </div>
           </div>
         </section>
