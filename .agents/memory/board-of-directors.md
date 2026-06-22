@@ -21,7 +21,7 @@ The user has asked that this board be held in mind at all times during every eng
 - **Real product** — confirmed. 180+ protocols, live infrastructure, sophisticated signal pipeline, ADVANCE loop with causal hypothesis classification. Not a prototype.
 - **Not yet a viable business** — no paying customers. The product is a well-constructed hypothesis about a business. The market has not yet confirmed the problem is urgent enough for someone to write a check.
 - **Current strategic focus (founder-stated):** Closing Founding Partners. Not a public fundraise. The investor page has been updated to reflect this — "The Ask" section (seed round terms, cap, ARR projections) has been removed and replaced with the Founding Partner Program framing.
-- **The ask count (as of June 22, 2026):** 2 direct asks made. Both prospects confirmed they see the product's value. Both asked for a follow-up meeting to determine fit. Neither rejected. Board status: active pipeline — not closed, not dead. Critical open question: are the follow-up meetings on the calendar with a specific date?
+- **The ask count (as of June 22, 2026):** 2 direct asks made. Both prospects confirmed they see the product's value. Both proactively said "let's get something on the calendar." Neither rejected. Board status: hot pipeline. Both are in motion. The only remaining variable is whether specific dates are now booked.
 
 ## Founding Partner Program — Board-Approved Structure
 
