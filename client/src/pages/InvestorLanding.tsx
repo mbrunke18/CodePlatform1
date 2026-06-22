@@ -30,8 +30,6 @@ import {
 import { useLocation } from "wouter";
 import PageLayout from '@/components/layout/PageLayout';
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
-const productArchitectureImg = "/images/product-architecture.png";
-const futurePositioningImg = "/images/future-positioning.png";
 import { 
   BarChart, 
   Bar, 
@@ -792,13 +790,79 @@ export default function InvestorLanding() {
                 From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 30-day mobilization scrambles
               </p>
             </div>
-            <div className="overflow-hidden border border-[#E8E4DC]">
-              <img
-                src={productArchitectureImg}
-                alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 180 Readiness Protocols, Execution Outputs, Command Center, and Integration Layer"
-                className="w-full h-auto"
-                loading="eager"
-              />
+            <div style={{ background: '#0A0F2E', borderRadius: '0.15rem', padding: '36px 28px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 40px 1fr 40px 1fr', gap: 0, alignItems: 'stretch', marginBottom: 24 }}>
+                <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: '0.15rem', padding: 20 }}>
+                  <div style={{ color: '#C9A84C', fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.12em', fontSize: 11, marginBottom: 14 }}>SIGNAL SOURCES · 231 TRIGGERS</div>
+                  {['External Data Feeds & RSS Velocity', 'SEC / Regulatory Filings', 'arXiv Research & Academic Signals', 'Internal Performance Indicators', 'Competitive Intelligence Feeds'].map(s => (
+                    <div key={s} style={{ color: 'rgba(255,255,255,0.78)', fontSize: 12, padding: '5px 0', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', gap: 8 }}>
+                      <span style={{ color: '#C9A84C' }}>→</span>{s}
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#C9A84C', fontSize: 22, fontWeight: 700 }}>→</div>
+                <div style={{ background: 'rgba(43,138,110,0.12)', border: '1px solid #2B8A6E', borderRadius: '0.15rem', padding: 20 }}>
+                  <div style={{ color: '#C9A84C', fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.12em', fontSize: 11, marginBottom: 14 }}>IDEA FRAMEWORK™ ENGINE</div>
+                  {[
+                    ['I', 'IDENTIFY', 'Pattern recognition · severity scoring'],
+                    ['D', 'DETECT', 'Protocol matching · trigger classification'],
+                    ['E', 'EXECUTE', 'Pre-staged task orchestration'],
+                    ['A', 'ADVANCE', 'Continuous protocol refinement'],
+                  ].map(([letter, title, desc]) => (
+                    <div key={letter} style={{ display: 'flex', gap: 10, padding: '7px 0', borderBottom: '1px solid rgba(43,138,110,0.2)' }}>
+                      <span style={{ color: '#C9A84C', fontWeight: 700, fontSize: 14, minWidth: 16 }}>{letter}</span>
+                      <div>
+                        <div style={{ color: '#fff', fontSize: 12, fontWeight: 700 }}>{title}</div>
+                        <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 11 }}>{desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#C9A84C', fontSize: 22, fontWeight: 700 }}>→</div>
+                <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: '0.15rem', padding: 20 }}>
+                  <div style={{ color: '#C9A84C', fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.12em', fontSize: 11, marginBottom: 14 }}>180 READINESS PROTOCOLS · 3 DOMAINS</div>
+                  {[
+                    ['GROWTH & POSITIONING', 'M&A, Competitor displacement, Market entry'],
+                    ['RISK & RESILIENCE', 'Ransomware, Regulatory, Supply chain, Breach'],
+                    ['TRANSFORMATION', 'Workforce, Go-to-market, Restructuring'],
+                  ].map(([domain, desc]) => (
+                    <div key={domain} style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <div style={{ color: '#2B8A6E', fontSize: 11, fontWeight: 700 }}>{domain}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginTop: 2 }}>{desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.5)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.12em', fontSize: 10, fontWeight: 700, marginBottom: 12 }}>EXECUTION OUTPUTS — PRE-STAGED BEFORE THE TRIGGER FIRES</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10 }}>
+                  {[
+                    ['Task Assignment', 'RACI matrix pre-built, zero scramble'],
+                    ['Stakeholder Alerts', 'All contacts notified in seconds'],
+                    ['Executive Brief', 'Board-ready documentation staged'],
+                    ['Budget Framework', 'Pre-authorized spend estimates ready'],
+                    ['War Room', 'Live coordination hub activated'],
+                  ].map(([title, desc]) => (
+                    <div key={title} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '0.15rem', padding: '12px 10px', textAlign: 'center' }}>
+                      <div style={{ color: '#fff', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>{title}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11 }}>{desc}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, borderTop: '1px solid rgba(201,168,76,0.25)', paddingTop: 24 }}>
+                {[
+                  ['12 Minutes', 'Trigger to authorized execution', '#C9A84C'],
+                  ['3,600×', 'Execution head start vs. 30-day cycle', '#2B8A6E'],
+                  ['180', 'Pre-staged Readiness Protocols', '#C9A84C'],
+                  ['231', 'Triggers monitored continuously', '#2B8A6E'],
+                ].map(([stat, label, color]) => (
+                  <div key={stat} style={{ textAlign: 'center' }}>
+                    <div style={{ color, fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 700, lineHeight: 1 }}>{stat}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, marginTop: 6 }}>{label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -1389,13 +1453,57 @@ export default function InvestorLanding() {
                 Selling pain relief today while building the operating layer for the AI era — infrastructure that evolves with every customer
               </p>
             </div>
-            <div className="overflow-hidden border border-[#E8E4DC]">
-              <img
-                src={futurePositioningImg}
-                alt="Readiness OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
-                className="w-full h-auto"
-                loading="lazy"
-              />
+            <div style={{ background: '#0A0F2E', borderRadius: '0.15rem', padding: '36px 28px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 56px 1fr', alignItems: 'stretch', marginBottom: 28 }}>
+                <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.35)', borderRadius: '0.15rem 0 0 0.15rem', padding: 24 }}>
+                  <div style={{ background: '#C9A84C', color: '#0A0F2E', fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.12em', fontSize: 11, padding: '4px 12px', display: 'inline-block', marginBottom: 20 }}>PHASE 1: TODAY</div>
+                  {[
+                    ['The Pain:', '30-day mobilization scramble after every strategic trigger'],
+                    ['The Solution:', 'Pre-staged Readiness Protocols — response ready before the trigger fires'],
+                    ['The Value:', '12-minute execution. No mobilization cycle. No coordination delay.'],
+                    ['The Proof:', '180 protocols · 231 triggers monitored continuously · Executive-authorized'],
+                  ].map(([label, value]) => (
+                    <div key={label as string} style={{ marginBottom: 16 }}>
+                      <div style={{ color: '#C9A84C', fontWeight: 700, fontSize: 13 }}>{label}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.85)', fontSize: 14, lineHeight: 1.5 }}>{value}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2B8A6E', fontSize: 30 }}>▶</div>
+                <div style={{ background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.4)', borderRadius: '0 0.15rem 0.15rem 0', padding: 24 }}>
+                  <div style={{ background: '#2B8A6E', color: '#fff', fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.12em', fontSize: 11, padding: '4px 12px', display: 'inline-block', marginBottom: 20 }}>PHASE 2: AS AI TRANSFORMS WORK</div>
+                  {[
+                    ['The Shift:', 'Every enterprise has Microsoft\'s AI stack. None have the operating model to use it.'],
+                    ['The Need:', 'Operating model layer above every AI investment — not a tool, the orchestrator'],
+                    ['Our Position:', 'Already embedded in executive governance before competitors recognize the category'],
+                    ['The Moat:', 'Every activation deepens institutional memory — competitors start from zero'],
+                  ].map(([label, value]) => (
+                    <div key={label as string} style={{ marginBottom: 16 }}>
+                      <div style={{ color: '#2B8A6E', fontWeight: 700, fontSize: 13 }}>{label}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.85)', fontSize: 14, lineHeight: 1.5 }}>{value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div style={{ color: 'rgba(255,255,255,0.45)', fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.12em', fontSize: 10, marginBottom: 12, borderBottom: '1px solid rgba(201,168,76,0.2)', paddingBottom: 10 }}>THE INFRASTRUCTURE BUILT TODAY BECOMES THE OPERATING LAYER TOMORROW</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'rgba(255,255,255,0.08)', borderRadius: '0.15rem', overflow: 'hidden' }}>
+                  <div style={{ background: '#0A0F2E', padding: '8px 16px', fontWeight: 700, fontSize: 12, color: '#C9A84C' }}>Building Now</div>
+                  <div style={{ background: '#0A0F2E', padding: '8px 16px', fontWeight: 700, fontSize: 12, color: '#2B8A6E' }}>Becomes Later</div>
+                  {[
+                    ['Pre-staged Readiness Protocols', 'Institutional knowledge layer — every activation teaches the next'],
+                    ['Executive authorization workflow', 'Autonomous signal-to-execution with full human override'],
+                    ['180 cross-industry protocols', 'Continuously refined adaptive protocol library'],
+                    ['Pattern detection across 231 triggers', 'Predictive readiness — threats anticipated before they materialize'],
+                  ].flatMap(([now, later], i) => [
+                    <div key={`now-${i}`} style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 16px', fontSize: 13, color: 'rgba(255,255,255,0.8)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>{now}</div>,
+                    <div key={`later-${i}`} style={{ background: 'rgba(43,138,110,0.06)', padding: '10px 16px', fontSize: 13, color: 'rgba(255,255,255,0.8)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>{later}</div>,
+                  ])}
+                </div>
+                <div style={{ textAlign: 'center', marginTop: 24, color: '#C9A84C', fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontStyle: 'italic', fontWeight: 600 }}>
+                  "The response is ready before the trigger fires."
+                </div>
+              </div>
             </div>
           </div>
         </section>
