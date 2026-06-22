@@ -955,6 +955,60 @@ function ColdOpen({ onBegin }: { onBegin: () => void }) {
           </div>
         </div>
 
+        {/* ── 4 Featured Situations ── */}
+        <div style={{ marginBottom: 40 }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.18em", textTransform: "uppercase" as const, marginBottom: 16, textAlign: "center" as const }}>
+            4 complete situations · select to watch the full response
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }}>
+            {COLD_SCENARIOS.map((s, i) => {
+              const href = i === 1 ? "/master-demo" : i === 2 ? "/demo/regulatory" : i === 3 ? "/demo/supply-chain" : null;
+              const innerCard = (
+                <div
+                  style={{
+                    background: s.active ? `${s.color}12` : "rgba(255,255,255,0.025)",
+                    border: `1px solid ${s.active ? s.color + "55" : BORDER}`,
+                    borderTop: `3px solid ${s.active ? s.color : "rgba(255,255,255,0.1)"}`,
+                    padding: "18px 20px",
+                    cursor: "pointer",
+                    position: "relative" as const,
+                    transition: "border-color 0.2s",
+                  }}
+                >
+                  {s.active && (
+                    <div style={{ position: "absolute" as const, top: 10, right: 12, ...BC, fontSize: 8, fontWeight: 700, color: s.color, letterSpacing: "0.14em", textTransform: "uppercase" as const, background: `${s.color}1a`, padding: "2px 8px" }}>
+                      Live Walkthrough
+                    </div>
+                  )}
+                  <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: s.active ? s.color : "rgba(255,255,255,0.45)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 6 }}>
+                    {s.who.split(" · ")[0]}
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: s.active ? "#fff" : "rgba(255,255,255,0.72)", marginBottom: 6, lineHeight: 1.35 }}>{s.trigger}</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", lineHeight: 1.5, marginBottom: 12 }}>{s.moment}</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ ...BC, fontSize: 9, color: s.active ? s.color : MUTED, fontWeight: 700, letterSpacing: "0.08em" }}>Protocol {s.protocol}</span>
+                    <span style={{ ...BC, fontSize: 10, color: s.active ? s.color : "rgba(255,255,255,0.45)", fontWeight: 700 }}>
+                      {s.active ? "Watch now →" : "View scenario →"}
+                    </span>
+                  </div>
+                </div>
+              );
+              if (href) {
+                return (
+                  <a key={s.trigger} href={href} style={{ textDecoration: "none", display: "block" }}>
+                    {innerCard}
+                  </a>
+                );
+              }
+              return (
+                <div key={s.trigger} onClick={onBegin} style={{ display: "block" }}>
+                  {innerCard}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Three domain showcase */}
         <div style={{ marginBottom: 20 }}>
           <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 14, textAlign: "center" as const }}>180 protocols across 3 strategic domains — every one pre-staged and ready</div>

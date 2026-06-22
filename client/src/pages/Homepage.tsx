@@ -1000,7 +1000,7 @@ function HeroSection() {
               {/* CTAs — one primary experience path, one conversion path */}
               <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 32, flexWrap: "wrap" as const }}>
                 <Link
-                  href="/demo-hub"
+                  href="/demo-experience"
                   onClick={() => trackCTA("hero_scanner")}
                   style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 32px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
                 >
