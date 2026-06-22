@@ -31,8 +31,6 @@ import { useLocation } from "wouter";
 import PageLayout from '@/components/layout/PageLayout';
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { 
-  BarChart, 
-  Bar, 
   XAxis, 
   YAxis, 
   CartesianGrid, 
@@ -45,13 +43,6 @@ import {
   Cell,
   Legend
 } from "recharts";
-
-// Market funnel data
-const marketFunnelData = [
-  { name: 'TAM', value: 5, label: '$5B+', color: '#0A0F2E' },
-  { name: 'SAM', value: 0.4, label: '~$400M', color: '#C9A84C' },
-  { name: 'SOM', value: 0.02, label: '~$20M', color: '#2B8A6E' }
-];
 
 // LTV:CAC trend over 5 years
 const ltvCacTrendData = [
@@ -932,23 +923,23 @@ export default function InvestorLanding() {
                 <CardTitle className="text-[#0A0F2E]">Market Opportunity Funnel</CardTitle>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={marketFunnelData} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-[#E8E4DC]" />
-                    <XAxis type="number" />
-                    <YAxis dataKey="name" type="category" />
-                    <Tooltip 
-                      formatter={(value: number) => value >= 1 ? `$${value}B+` : value >= 0.1 ? `~$${Math.round(value * 1000)}M` : `~$${Math.round(value * 1000)}M`}
-                      contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: 'none', borderRadius: '8px', color: 'white' }}
-                    />
-                    <Bar dataKey="value" radius={[0, 8, 8, 0]}>
-                      {marketFunnelData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-                <div className="mt-4 text-center text-sm text-[#0A0F2E]">
+                <div className="py-4 space-y-5">
+                  {[
+                    { name: 'TAM — Total Addressable Market', label: '$5B+', barWidth: '100%', color: '#0A0F2E', sub: '~20,000 enterprises globally × $150K–$200K ACV' },
+                    { name: 'SAM — Serviceable Addressable', label: '~$400M', barWidth: '62%', color: '#C9A84C', sub: 'Fortune 500 US + Forbes Global 2000 — 2,000 enterprises' },
+                    { name: 'SOM — Year 5 Target', label: '~$20M', barWidth: '32%', color: '#2B8A6E', sub: '50 Founding Partners → full enterprise contracts at $200K+ ACV' },
+                  ].map(({ name, label, barWidth, color, sub }) => (
+                    <div key={name}>
+                      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
+                        <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#0A0F2E' }}>{name}</span>
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color, lineHeight: 1 }}>{label}</span>
+                      </div>
+                      <div style={{ width: barWidth, height: 28, background: color, borderRadius: '0 0.15rem 0.15rem 0' }} />
+                      <div style={{ fontSize: 11, color: '#6B7280', marginTop: 5, lineHeight: 1.4 }}>{sub}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-2 text-center text-sm text-[#0A0F2E]">
                   Bottom-up market sizing: $5B+ TAM · ~$400M SAM · ~$20M SOM (Year 5 target)
                 </div>
               </CardContent>
@@ -1077,19 +1068,16 @@ export default function InvestorLanding() {
             </div>
 
             {/* The investor-framing callout */}
-            <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', padding: '28px 36px', display: 'grid', gridTemplateColumns: '1fr 1px 1fr 1px 1fr', gap: 0 }}>
+            <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', padding: '28px 36px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
               {[
                 { stat: '$13B+', label: "Microsoft's AI infrastructure investment", sub: 'Proving enterprises will spend on execution governance' },
                 { stat: '0', label: 'Vendors with a strategic response layer', sub: 'The floor is built. The layer above it is empty.' },
                 { stat: '1', label: 'First mover in the unclaimed layer', sub: 'VaughnMartin — the operating model above the stack' },
               ].map(({ stat, label, sub }, i) => (
-                <div key={stat}>
-                  {i > 0 && <div style={{ width: 1, background: 'rgba(201,168,76,0.15)', height: '100%' }} />}
-                  <div style={{ padding: '0 32px', textAlign: 'center' as const }}>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: '#C9A84C', lineHeight: 1, marginBottom: 8 }}>{stat}</div>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{label}</div>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, fontStyle: 'italic' }}>{sub}</div>
-                  </div>
+                <div key={stat} style={{ padding: '0 32px', textAlign: 'center' as const, borderLeft: i > 0 ? '1px solid rgba(201,168,76,0.15)' : 'none' }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: '#C9A84C', lineHeight: 1, marginBottom: 8 }}>{stat}</div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{label}</div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, fontStyle: 'italic' }}>{sub}</div>
                 </div>
               ))}
             </div>
