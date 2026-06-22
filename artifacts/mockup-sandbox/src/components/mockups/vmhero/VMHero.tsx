@@ -54,7 +54,7 @@ export default function VMHero() {
             </h1>
 
             <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, lineHeight: 1.65, marginBottom: 38, maxWidth: 360 }}>
-              180 Readiness Protocols. Pre-staged before the trigger fires.<br />12 minutes from signal to full execution.
+              180 Readiness Protocols. Pre-staged before the trigger fires.<br />30 days of mobilization, compressed to 12 minutes.
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
