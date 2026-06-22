@@ -192,6 +192,34 @@ export default function InvestorLanding() {
             ))}
           </div>
 
+          {/* Workflow Distinction Block */}
+          <div style={{ margin: "2px 0", background: NAVY, padding: "44px 48px", display: "grid", gridTemplateColumns: "1fr 1px 1fr", gap: 0 }}>
+            <div style={{ paddingRight: 48 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(200,70,50,0.85)", marginBottom: 16 }}>What workflow tools do</div>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, color: "rgba(255,255,255,0.6)", lineHeight: 1.35, marginBottom: 16 }}>
+                The trigger fires. Someone opens Monday.com. Tasks get created. Owners get assigned. The sprint gets built.
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: 0 }}>
+                By the time the workflow is configured, you are already 2–3 days into the mobilization window. The board is asking questions. The competitor is moving. The regulator has a head start. Workflow tools assume the mobilization is done — they only manage what comes after.
+              </p>
+            </div>
+            <div style={{ background: "rgba(201,168,76,0.2)", margin: "0 48px" }} />
+            <div style={{ paddingLeft: 0 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>What Readiness OS does</div>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, color: "#fff", lineHeight: 1.35, marginBottom: 16 }}>
+                The trigger fires. The response is already staged. Tasks exist. Owners are named. Authority is established. Budget is pre-authorized.
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.72)", lineHeight: 1.8, marginBottom: 16 }}>
+                The response doesn't begin when the trigger fires — it <em style={{ color: GOLD }}>continues</em>. Readiness OS solves the mobilization problem that workflow tools assume is already solved.
+              </p>
+              <div style={{ borderTop: "1px solid rgba(201,168,76,0.25)", paddingTop: 16 }}>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: GOLD, lineHeight: 1.6, margin: 0, letterSpacing: "0.03em" }}>
+                  This is not a workflow tool. It is readiness infrastructure — the layer that makes the workflow ready before the trigger fires.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* CEO / CFO Value Frame */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, background: "rgba(10,15,46,0.08)" }}>
             <div style={{ background: "#fff", padding: "36px 32px", borderTop: "3px solid " + GOLD }}>
