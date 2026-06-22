@@ -21,7 +21,14 @@ The user has asked that this board be held in mind at all times during every eng
 - **Real product** — confirmed. 180+ protocols, live infrastructure, sophisticated signal pipeline, ADVANCE loop with causal hypothesis classification. Not a prototype.
 - **Not yet a viable business** — no paying customers. The product is a well-constructed hypothesis about a business. The market has not yet confirmed the problem is urgent enough for someone to write a check.
 - **Current strategic focus (founder-stated):** Closing Founding Partners. Not a public fundraise. The investor page has been updated to reflect this — "The Ask" section (seed round terms, cap, ARR projections) has been removed and replaced with the Founding Partner Program framing.
-- **The ask count (as of June 22, 2026):** 2 direct asks made. Both prospects confirmed they see the product's value. Both proactively said "let's get something on the calendar." Neither rejected. Board status: hot pipeline. Both are in motion. The only remaining variable is whether specific dates are now booked.
+- **The ask count (as of June 22, 2026):** 2 direct asks made. Both are channel partners (not direct enterprise end-customers). Both saw the value, both proactively requested scheduling, founder has sent proposed dates. Board status: hot pipeline — but board flags the channel partner distinction as a critical strategic question (see below).
+
+## Channel Partner Pipeline — Board Flag (June 22, 2026)
+
+Both current Founding Partner prospects are channel partners. The board's standing challenge on this:
+- A channel partner sees the value but is not the end user. Their "yes" is a promise to find customers — not a deployment commitment.
+- The Founding Partner Program was designed around an organization deploying Readiness OS in their own operations (their own triggers, their own protocols, their own executive authorization). Channel partners require a different structure.
+- Key question for the next meetings: are they being asked to deploy it in their own org, or to resell/refer it to clients? The answer changes the entire structure of the agreement.
 
 ## Founding Partner Program — Board-Approved Structure
 
