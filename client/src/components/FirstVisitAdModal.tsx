@@ -83,14 +83,14 @@ function AdContent({ onClose }: Props) {
       id: "fv-s4",
       onEnter: () => {
         setTimeout(() => show("fv-s4-l1"), 200);
-        setTimeout(() => show("fv-s4-l2"), 2200);
-        setTimeout(() => show("fv-s4-l3"), 4200);
-        setTimeout(() => show("fv-s4-logo"), 5600);
-        setTimeout(() => show("fv-s4-rule"), 6200);
-        setTimeout(() => show("fv-s4-tl"), 6800);
-        setTimeout(() => show("fv-s4-cta"), 7800);
-        setTimeout(() => show("fv-s4-ghost"), 8600);
-        setTimeout(() => show("fv-s4-skip"), 9400);
+        setTimeout(() => show("fv-s4-logo"), 500);
+        setTimeout(() => show("fv-s4-rule"), 700);
+        setTimeout(() => show("fv-s4-l2"), 900);
+        setTimeout(() => show("fv-s4-tl"), 1100);
+        setTimeout(() => show("fv-s4-l3"), 1300);
+        setTimeout(() => show("fv-s4-cta"), 1600);
+        setTimeout(() => show("fv-s4-ghost"), 1900);
+        setTimeout(() => show("fv-s4-skip"), 2300);
       },
       onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost","fv-s4-skip"]),
     },
