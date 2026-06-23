@@ -71,6 +71,7 @@ const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
 const ProductOverview = lazy(() => import("./pages/ProductOverview"));
 const AuthorizationPrecedentRegistry = lazy(() => import("./pages/AuthorizationPrecedentRegistry"));
 const MobilizationBrief = lazy(() => import("./pages/MobilizationBrief"));
+const MobilizationCost = lazy(() => import("./pages/MobilizationCost"));
 const ExecutiveScenarioSuite = lazy(() => import("./pages/ExecutiveScenarioSuite"));
 const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
 const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
@@ -665,6 +666,7 @@ function Router() {
         <Route path="/institutional-memory-engine" component={lazy(() => import("./pages/InstitutionalMemoryEngine"))} />
         <Route path="/platform-integrations" component={lazy(() => import("./pages/PlatformIntegrations"))} />
         <Route path="/proof-story" component={ProofStory} />
+        <Route path="/mobilization-cost" component={MobilizationCost} />
         <Route path="/case-study/rochester-pm" component={BrunkeSistersCaseStudy} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
         <Route path="/future-readiness" component={FutureReadinessDashboard} />
