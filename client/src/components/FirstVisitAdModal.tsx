@@ -526,8 +526,9 @@ export function FirstVisitAdModal() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const forceShow = new URLSearchParams(window.location.search).get("cinematic") === "1";
     const visits = parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
-    if (visits < MAX_VISITS) {
+    if (forceShow || visits < MAX_VISITS) {
       const t = setTimeout(() => setVisible(true), 3500);
       return () => clearTimeout(t);
     }
