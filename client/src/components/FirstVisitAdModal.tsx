@@ -344,14 +344,14 @@ function AdContent({ onClose }: Props) {
         #fv-s4-rule {
           width: 44px; height: 2px;
           background: ${GOLD};
-          margin: clamp(18px, 2.5vw, 28px) auto;
+          margin: clamp(10px, 1.5vw, 16px) auto;
         }
         #fv-s4-tl {
           font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(30px, 5vw, 54px);
+          font-size: clamp(26px, 4vw, 46px);
           font-weight: 700; font-style: italic;
           color: ${OFF}; line-height: 1.2;
-          margin-bottom: clamp(32px, 4vw, 48px);
+          margin-bottom: clamp(20px, 2.5vw, 28px);
         }
         #fv-s4-tl em { color: ${GOLD}; font-style: italic; }
 
@@ -499,8 +499,8 @@ function AdContent({ onClose }: Props) {
           <div className="fv-fearless-line" id="fv-s4-l3">
             the organization stops being afraid of what comes next.
           </div>
-          <div id="fv-s4-logo" style={{ width: "100%", padding: "clamp(28px,4vw,52px) 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <VaughnMartinLogo variant="icon-only" height={220} color="light" noLink animated />
+          <div id="fv-s4-logo" style={{ width: "100%", padding: "clamp(12px,1.5vw,20px) 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <VaughnMartinLogo variant="icon-only" height={100} color="light" noLink animated />
           </div>
           <div id="fv-s4-rule" />
           <div id="fv-s4-tl">
@@ -509,10 +509,10 @@ function AdContent({ onClose }: Props) {
           <button id="fv-s4-cta" onClick={handleTryIt}>
             See It Execute — No Login Required →
           </button>
-          <button id="fv-s4-ghost" onClick={() => { onClose(); setLocation('/mobilization-cost'); }} style={{ display: 'block', margin: '0 auto 10px', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, letterSpacing: '2.5px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.35)', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.25s' }}>
+          <button id="fv-s4-ghost" onClick={() => { onClose(); setLocation('/mobilization-cost'); }} style={{ display: 'block', margin: '0 auto 12px', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, letterSpacing: '2.5px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.6)', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.25s' }}>
             See what one trigger costs your organization →
           </button>
-          <button id="fv-s4-skip" onClick={onClose} style={{ display: 'block', margin: '0 auto', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.18)', cursor: 'pointer', transition: 'color 0.25s' }}>
+          <button id="fv-s4-skip" onClick={onClose} style={{ display: 'block', margin: '0 auto', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, letterSpacing: '3px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.38)', cursor: 'pointer', transition: 'color 0.25s' }}>
             Continue to site ×
           </button>
         </div>
