@@ -78,21 +78,11 @@ function AdContent({ onClose }: Props) {
       },
       onExit: () => hideAll(["fv-s3-hd","fv-s3-st1","fv-s3-cn1","fv-s3-st2","fv-s3-cn2","fv-s3-st3","fv-s3-cn3","fv-s3-st4"]),
     },
-    // ── SCENE 4 — FEARLESS
+    // ── SCENE 4 — FEARLESS (no content timers — scene container fade-in handles everything)
     {
       id: "fv-s4",
-      onEnter: () => {
-        setTimeout(() => show("fv-s4-l1"), 200);
-        setTimeout(() => show("fv-s4-logo"), 500);
-        setTimeout(() => show("fv-s4-rule"), 700);
-        setTimeout(() => show("fv-s4-l2"), 900);
-        setTimeout(() => show("fv-s4-tl"), 1100);
-        setTimeout(() => show("fv-s4-l3"), 1300);
-        setTimeout(() => show("fv-s4-cta"), 1600);
-        setTimeout(() => show("fv-s4-ghost"), 1900);
-        setTimeout(() => show("fv-s4-skip"), 2300);
-      },
-      onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost","fv-s4-skip"]),
+      onEnter: () => {},
+      onExit: () => {},
     },
   ];
 
@@ -500,29 +490,29 @@ function AdContent({ onClose }: Props) {
 
         {/* ══ SCENE 4 — FEARLESS ══ */}
         <div className="fv-scene" id="fv-s4">
-          <div className="fv-fearless-line fv-rise" id="fv-s4-l1">
+          <div className="fv-fearless-line" id="fv-s4-l1">
             When every trigger has a response already staged —
           </div>
-          <div className="fv-fearless-line fv-rise" id="fv-s4-l2">
+          <div className="fv-fearless-line" id="fv-s4-l2">
             when the protocol matches before the phone rings —
           </div>
-          <div className="fv-fearless-line fv-rise" id="fv-s4-l3">
+          <div className="fv-fearless-line" id="fv-s4-l3">
             the organization stops being afraid of what comes next.
           </div>
-          <div className="fv-fade" id="fv-s4-logo" style={{ width: "100%", padding: "clamp(28px,4vw,52px) 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <div id="fv-s4-logo" style={{ width: "100%", padding: "clamp(28px,4vw,52px) 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
             <VaughnMartinLogo variant="icon-only" height={220} color="light" noLink animated />
           </div>
-          <div className="fv-fade" id="fv-s4-rule" />
-          <div className="fv-rise" id="fv-s4-tl">
+          <div id="fv-s4-rule" />
+          <div id="fv-s4-tl">
             The response is ready<br />before the <em>trigger fires.</em>
           </div>
-          <button id="fv-s4-cta" className="fv-rise" onClick={handleTryIt}>
+          <button id="fv-s4-cta" onClick={handleTryIt}>
             See It Execute — No Login Required →
           </button>
-          <button id="fv-s4-ghost" className="fv-fade" onClick={() => { onClose(); setLocation('/mobilization-cost'); }} style={{ display: 'block', margin: '0 auto 10px', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, letterSpacing: '2.5px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.35)', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.25s' }}>
+          <button id="fv-s4-ghost" onClick={() => { onClose(); setLocation('/mobilization-cost'); }} style={{ display: 'block', margin: '0 auto 10px', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, letterSpacing: '2.5px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.35)', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.25s' }}>
             See what one trigger costs your organization →
           </button>
-          <button id="fv-s4-skip" className="fv-fade" onClick={onClose} style={{ display: 'block', margin: '0 auto', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.18)', cursor: 'pointer', transition: 'color 0.25s' }}>
+          <button id="fv-s4-skip" onClick={onClose} style={{ display: 'block', margin: '0 auto', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.18)', cursor: 'pointer', transition: 'color 0.25s' }}>
             Continue to site ×
           </button>
         </div>
