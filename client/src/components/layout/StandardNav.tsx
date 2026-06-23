@@ -254,7 +254,7 @@ export default function StandardNav() {
     { label: "How It Works", path: "/how-it-executes", icon: FileText, description: "From trigger detection to full coordination in 12 minutes — the complete execution sequence", featured: true },
     { label: "Why Readiness OS?", path: "/the-proof", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
     { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "Board-ready one-pager — thesis, 3,600× metric, ROI case", featured: true },
-    { label: "The Mobilization Tax", path: "/mobilization-tax", icon: DollarSign, description: "What the 30-day mobilization gap actually costs — by trigger. Print-ready one-pager.", featured: true },
+    { label: "What One Trigger Costs", path: "/mobilization-cost", icon: DollarSign, description: "Ransomware: $4.5M. Activist investor: $3.2M. Regulatory: $5.8M. The cost isn't the event — it's the mobilization.", featured: true },
     { label: "Readiness Benchmark — Free", path: "/readiness-benchmark", icon: ClipboardCheck, description: "3-minute score. Typical enterprise: 22. Founding Partners: 87. See where you stand.", featured: true },
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open", featured: true },
@@ -516,6 +516,7 @@ export default function StandardNav() {
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
               { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
               { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
+              { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M — before any platform conversation', featured: true },
               { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
               { path: '/vs-bcp', icon: Scale, label: 'Readiness OS vs. BCP', sub: 'Your BCP covers catastrophe. We cover the triggers that happen every year.' },
             ].map(l => megaItem(l))}

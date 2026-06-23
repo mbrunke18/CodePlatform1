@@ -1025,8 +1025,8 @@ function HeroSection() {
               </div>
 
               <div style={{ margin: "0 0 12px" }}>
-                <Link href="/mobilization-tax" style={{ ...DM, fontSize: 12, color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.25)", paddingBottom: 1, letterSpacing: "0.04em" }}>
-                  What the 30-day mobilization gap actually costs — read the brief →
+                <Link href="/mobilization-cost" style={{ ...DM, fontSize: 12, color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.25)", paddingBottom: 1, letterSpacing: "0.04em" }}>
+                  What one unprepared trigger costs your organization — see the breakdown →
                 </Link>
               </div>
               <div style={{ margin: "0 0 20px" }}>
