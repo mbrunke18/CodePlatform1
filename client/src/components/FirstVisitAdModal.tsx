@@ -12,7 +12,7 @@ const TEAL = "#2B8A6E";
 const OFF = "#F8F7F4";
 
 // Scene durations in ms
-const SCENE_DURATIONS = [11000, 9000, 10000, 11000];
+const SCENE_DURATIONS = [11000, 9000, 10000, 20000];
 const TOTAL_DURATION = SCENE_DURATIONS.reduce((a, b) => a + b, 0);
 
 type Props = { onClose: () => void };
@@ -88,9 +88,9 @@ function AdContent({ onClose }: Props) {
         setTimeout(() => show("fv-s4-logo"), 5600);
         setTimeout(() => show("fv-s4-rule"), 6200);
         setTimeout(() => show("fv-s4-tl"), 6800);
-        setTimeout(() => show("fv-s4-cta"), 8500);
-        setTimeout(() => show("fv-s4-ghost"), 9200);
-        setTimeout(() => show("fv-s4-skip"), 9800);
+        setTimeout(() => show("fv-s4-cta"), 7800);
+        setTimeout(() => show("fv-s4-ghost"), 8600);
+        setTimeout(() => show("fv-s4-skip"), 9400);
       },
       onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost","fv-s4-skip"]),
     },
