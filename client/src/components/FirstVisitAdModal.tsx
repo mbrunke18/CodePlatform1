@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const STORAGE_KEY = "vm_seen_brief";
-const MAX_VISITS = 1;
+const MAX_VISITS = 3;
 
 const NAVY = "#0A0F2E";
 const NAVY_MID = "#0E1538";
@@ -90,8 +90,9 @@ function AdContent({ onClose }: Props) {
         setTimeout(() => show("fv-s4-tl"), 6800);
         setTimeout(() => show("fv-s4-cta"), 8500);
         setTimeout(() => show("fv-s4-ghost"), 9200);
+        setTimeout(() => show("fv-s4-skip"), 9800);
       },
-      onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost"]),
+      onExit: () => hideAll(["fv-s4-l1","fv-s4-l2","fv-s4-l3","fv-s4-logo","fv-s4-rule","fv-s4-tl","fv-s4-cta","fv-s4-ghost","fv-s4-skip"]),
     },
   ];
 
@@ -518,7 +519,10 @@ function AdContent({ onClose }: Props) {
           <button id="fv-s4-cta" className="fv-rise" onClick={handleTryIt}>
             See It Execute — No Login Required →
           </button>
-          <button id="fv-s4-ghost" className="fv-fade" onClick={onClose}>
+          <button id="fv-s4-ghost" className="fv-fade" onClick={() => { onClose(); setLocation('/mobilization-cost'); }} style={{ display: 'block', margin: '0 auto 10px', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, letterSpacing: '2.5px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.35)', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.25s' }}>
+            See what one trigger costs your organization →
+          </button>
+          <button id="fv-s4-skip" className="fv-fade" onClick={onClose} style={{ display: 'block', margin: '0 auto', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.18)', cursor: 'pointer', transition: 'color 0.25s' }}>
             Continue to site ×
           </button>
         </div>
