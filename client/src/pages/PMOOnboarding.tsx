@@ -182,6 +182,85 @@ export default function PMOOnboarding() {
           </div>
         </div>
 
+        {/* The Coordinator Insight */}
+        <div style={{ background: "#fff", padding: "72px 48px", borderBottom: `1px solid ${BORDER}` }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+              <div style={{ width: 28, height: 1, background: GOLD }} />
+              <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>
+                The Insight Behind This Platform
+              </span>
+            </div>
+
+            <h2 style={{ ...CG, fontSize: "clamp(30px,4vw,48px)", fontWeight: 700, color: NAVY, lineHeight: 1.1, marginBottom: 28 }}>
+              You are the coordinator.<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>You just don't have a coordinator's playbook.</em>
+            </h2>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginBottom: 48, alignItems: "start" }}>
+              <div>
+                <p style={{ fontSize: 16, color: "#374151", lineHeight: 1.8, marginBottom: 20 }}>
+                  In football, the offensive coordinator, the defensive coordinator, and the special teams coordinator each run one unit of the organization. Three distinct domains. Dozens of players. Hundreds of possible situations. And before the game starts — <strong style={{ color: NAVY }}>before the opposing team lines up, before the trigger fires</strong> — every coordinator has already prepared the response. Not all possible responses. Every response. Because they know that what separates a championship organization from an ordinary one isn't talent. It's preparation infrastructure.
+                </p>
+                <p style={{ fontSize: 16, color: "#374151", lineHeight: 1.8 }}>
+                  When the defense shifts at the line, nobody calls a meeting. Nobody asks for alignment. The quarterback reads the situation and executes the pre-staged response. Forty seconds, start to finish.
+                </p>
+              </div>
+              <div>
+                <p style={{ fontSize: 16, color: "#374151", lineHeight: 1.8, marginBottom: 20 }}>
+                  You run the same three units in your organization. Growth &amp; positioning. Risk &amp; resilience. Transformation. You orchestrate the cross-functional work across every domain — and when a strategic trigger fires, the mobilization falls to you. Stakeholders mapped. Tasks assigned. Briefs drafted. Authorization paths clarified. All from scratch, under pressure, while the window closes.
+                </p>
+                <p style={{ fontSize: 16, color: "#374151", lineHeight: 1.8 }}>
+                  The offensive coordinator doesn't build the play in the huddle. That's what this platform gives you — <strong style={{ color: NAVY }}>the infrastructure to build every response in advance</strong>, so that when the trigger fires, you've already done the work.
+                </p>
+              </div>
+            </div>
+
+            {/* The three-domain coordinator map */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: BORDER, border: `1px solid ${BORDER}` }}>
+              {[
+                {
+                  domain: "GROWTH & POSITIONING",
+                  role: "Offensive Coordinator",
+                  color: TEAL,
+                  desc: "Market entries. Competitive responses. M&A mobilization. The plays that create position.",
+                },
+                {
+                  domain: "RISK & RESILIENCE",
+                  role: "Defensive Coordinator",
+                  color: "#C0392B",
+                  desc: "Ransomware. Regulatory action. Supply chain disruption. The plays that protect position.",
+                },
+                {
+                  domain: "TRANSFORMATION",
+                  role: "Special Teams Coordinator",
+                  color: GOLD,
+                  desc: "Workforce shifts. Technology transitions. Operating model changes. The plays that change field position.",
+                },
+              ].map(({ domain, role, color, desc }) => (
+                <div key={domain} style={{ background: "#fff", padding: "28px 24px" }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color, marginBottom: 8, ...BC }}>
+                    {domain}
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 10, ...BC, letterSpacing: "0.05em" }}>
+                    {role}
+                  </div>
+                  <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.65, margin: 0 }}>{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: NAVY, padding: "32px 36px", marginTop: 40, borderLeft: `3px solid ${GOLD}` }}>
+              <p style={{ ...CG, fontSize: "clamp(18px,2.2vw,24px)", fontStyle: "italic", color: "#fff", lineHeight: 1.6, margin: "0 0 12px" }}>
+                "Every coordinator's job is the same: make sure the response is ready before the situation presents itself. That is your job. Readiness OS is the infrastructure that finally makes it possible."
+              </p>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, ...BC }}>
+                Martin Brunke · Founder, VaughnMartin
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* The 3-Tier Ownership Architecture */}
         <div style={{ background: IVORY, padding: "72px 48px", borderBottom: `1px solid ${BORDER}` }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
