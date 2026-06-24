@@ -44,6 +44,7 @@ function useNavLogoHeight() {
 
 const SEARCH_ITEMS = [
   { label: 'Getting Started — Go-Live Checklist', path: '/getting-started', category: 'Setup', icon: Rocket },
+  { label: 'Quarterly Readiness Planning — Stage Both Planned and Unplanned Work', path: '/quarterly-planning', category: 'Setup', icon: BarChart3 },
   { label: 'Readiness Architecture Studio — Configure Your Response Architecture', path: '/preparation-diagnostic', category: 'Setup', icon: Target },
   { label: 'Preparation Architect Guide — Readiness Architecture Setup', path: '/pmo-onboarding', category: 'Setup', icon: Layers },
   { label: 'Mission Control', path: '/mission-control', category: 'Platform', icon: Compass },
@@ -177,6 +178,7 @@ export default function StandardNav() {
       heading: "Inside the Platform",
       links: [
         { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
+        { label: "Quarterly Readiness Planning", path: "/quarterly-planning", icon: BarChart3, description: "Stage both planned initiatives and unplanned scenarios before the quarter starts — one system, both sides of the game plan", featured: true },
         { label: "Readiness Architecture Studio", path: "/preparation-diagnostic", icon: Target, description: "Configure your full readiness architecture — select protocols by domain, assign authorization chains, and build coverage across all 3 strategic areas", featured: true },
         { label: "Preparation Architect Guide", path: "/pmo-onboarding", icon: Layers, description: "Preparation architecture ownership — your role, your 4-phase go-live path, your governance rhythm", featured: true },
         { label: "30-Day Preparation Arc", path: "/preparation-arc", icon: Target, description: "Week-by-week preparation journey — Install, Build, Drill, Go-Live. The 30 days that make 12-minute execution possible.", featured: true },

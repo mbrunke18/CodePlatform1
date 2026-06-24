@@ -248,6 +248,7 @@ const CostOfDelay = lazy(() => import("./pages/CostOfDelay"));
 const BrunkeSistersCaseStudy = lazy(() => import("./pages/BrunkeSistersCaseStudy"));
 const UserGuide = lazy(() => import("./pages/UserGuide"));
 const MobilizationTax = lazy(() => import("./pages/MobilizationTax"));
+const QuarterlyReadinessPlanning = lazy(() => import("./pages/QuarterlyReadinessPlanning"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
 const FutureReadinessDashboard = lazy(() => import("./pages/FutureReadinessDashboard"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
@@ -614,6 +615,7 @@ function Router() {
         <Route path="/getting-started" component={GettingStarted} />
         <Route path="/start" component={lazy(() => import("./pages/OnboardingHub"))} />
         <Route path="/pmo-onboarding" component={PMOOnboarding} />
+        <Route path="/quarterly-planning" component={QuarterlyReadinessPlanning} />
         <Route path="/user-guide" component={UserGuide} />
         <Route path="/mobilization-tax" component={MobilizationTax} />
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
