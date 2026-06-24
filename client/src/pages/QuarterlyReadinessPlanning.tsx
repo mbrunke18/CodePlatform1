@@ -585,7 +585,7 @@ export default function QuarterlyReadinessPlanning() {
                           </div>
                           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                             <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.25)", padding: "3px 8px", ...BR }}>✓ Protocol Staged</span>
-                            {init.defensiveCoverage.length > 0 && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C0392B", background: "rgba(192,57,43,0.07)", border: "1px solid rgba(192,57,43,0.2)", padding: "3px 8px", ...BR }}>{init.defensiveCoverage.length} Defense{init.defensiveCoverage.length > 1 ? "s" : ""}</span>}
+                            {init.defensiveCoverage.length > 0 && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C0392B", background: "rgba(192,57,43,0.07)", border: "1px solid rgba(192,57,43,0.2)", padding: "3px 8px", ...BR }}>{init.defensiveCoverage.length} Risk Protocol{init.defensiveCoverage.length > 1 ? "s" : ""}</span>}
                             {init.drillScheduled && <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)", padding: "3px 8px", ...BR }}>✓ Drill Set</span>}
                           </div>
                         </div>
