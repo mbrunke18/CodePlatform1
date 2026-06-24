@@ -423,9 +423,9 @@ export default function ExecutiveBrief() {
             {/* Three P&L outcome chips */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, marginBottom: 36 }}>
               {[
-                { label: "Improved Profitability", detail: "30-day mobilization overhead eliminated. $4.2M–$9.2M in reactive consulting and operational cost avoided per activation cycle.", color: GOLD },
-                { label: "Accelerated Delivery", detail: "Strategic execution compressed from 30 days to 12 minutes. Every trigger that fires prepared is a 3,600× head start over every competitor that doesn't.", color: TEAL },
-                { label: "Reduced Costs", detail: "Pre-staged protocols replace reactive coordination. Zero consultant retainer at trigger point. Readiness built in — not billed in.", color: "#4A90C4" },
+                { label: "Improved Profitability", detail: "30-day mobilization overhead eliminated. Illustrative modeled outcomes: $4.5M in costs avoided per cyber event; $9.2M in revenue protected per supply chain collapse. Scenarios are illustrative — full methodology in Modeled Scenarios below.", color: GOLD },
+                { label: "Accelerated Delivery", detail: "Strategic execution compressed from 30 days to 12 minutes — a 3,600× execution head start. Every trigger that fires prepared is a window your unprepared competitors cannot close.", color: TEAL },
+                { label: "Reduced Costs", detail: "Pre-staged protocols replace reactive coordination. No consultant retainer at trigger point. Stack displacement modeled at $300K–$900K annually vs. crisis comms + GRC + project management tools.", color: "#4A90C4" },
               ].map(({ label, detail, color }) => (
                 <div key={label} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `2px solid ${color}`, padding: "20px 20px" }}>
                   <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase", color, marginBottom: 8 }}>{label}</div>
