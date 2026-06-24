@@ -156,7 +156,19 @@ function PhaseTrigger({ sc, onNext }: { sc: DemoScenario; onNext: () => void }) 
         </div>
       </div>
 
-      <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.7, marginBottom: 32 }}>{sc.triggerContext}</p>
+      <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.7, marginBottom: 20 }}>{sc.triggerContext}</p>
+
+      {/* Cost of inaction banner */}
+      <div style={{ display: "flex", gap: 0, marginBottom: 32 }}>
+        <div style={{ flex: 1, padding: "14px 20px", background: "rgba(192,57,43,0.07)", border: "1px solid rgba(192,57,43,0.25)", borderRight: "none" }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", color: "#E05A4A", textTransform: "uppercase", marginBottom: 5 }}>Traditional Model — T+0:00</div>
+          <div style={{ ...BAR, fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.55 }}>Ownership undefined. No brief exists. 30-day mobilization cycle begins now.</div>
+        </div>
+        <div style={{ flex: 1, padding: "14px 20px", background: `${TEAL}08`, border: `1px solid ${TEAL}35` }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", color: TEAL, textTransform: "uppercase", marginBottom: 5 }}>Readiness OS — T+0:00</div>
+          <div style={{ ...BAR, fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.55 }}>Protocol #{sc.protocolNumber} matched. {sc.stakeholders.length} stakeholders notified. Executive authorization queued.</div>
+        </div>
+      </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 32 }}>
         {[
@@ -712,6 +724,21 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
         <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: W50 }}>Preparation &nbsp;→&nbsp; Readiness &nbsp;→&nbsp; Fearless</div>
       </div>
 
+      {/* Moat panel — institutional memory and competitor gap */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 28 }}>
+        {[
+          { label: "Institutional Memory", value: "Permanent", sub: "Every decision from this activation is documented — not reconstructed from email next time.", color: TEAL },
+          { label: "Preparation Compounds", value: "Every Activation", sub: "Each close-out makes the next response faster. The protocol just improved itself.", color: GOLD },
+          { label: "Competitor Gap Today", value: "12–24 Months", sub: "A competitor starting this infrastructure today cannot rebuild this institutional readiness for 1–2 years.", color: GOLD },
+        ].map(({ label, value, sub, color }, i) => (
+          <div key={i} style={{ background: GBG, border: `1px solid ${BD}`, padding: "20px 18px", borderTop: `3px solid ${color}` }}>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
+            <div style={{ ...BC, fontSize: 18, fontWeight: 900, color, lineHeight: 1.1, marginBottom: 8 }}>{value}</div>
+            <div style={{ ...BAR, fontSize: 11, color: W50, lineHeight: 1.55 }}>{sub}</div>
+          </div>
+        ))}
+      </div>
+
       {/* CTA */}
       <div style={{ background: GBG, border: `1px solid ${GOLD}50`, padding: "36px 32px" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 14 }}>Founding Partner Program — Now Forming</div>
@@ -722,7 +749,7 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
           The Founding Partner Program is a 90-day validation partnership with large enterprises. The first cohort is forming now. The only difference between this simulation and a live deployment: the protocols carry your organization's name, your stakeholders, and your pre-approved advisors.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
-          <a href="/request-access" style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 15, fontWeight: 800, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>
+          <a href="/founding-partner-program" style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 15, fontWeight: 800, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>
             Apply for Founding Partner Access →
           </a>
           <button onClick={onRestart} style={{ ...BC, background: "transparent", border: `1px solid ${W25}`, color: W70, fontSize: 13, fontWeight: 600, letterSpacing: "0.1em", padding: "16px 24px", cursor: "pointer", textTransform: "uppercase" }}>
@@ -791,7 +818,7 @@ export default function MasterDemo() {
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <a href="/demo-hub" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: W50, textDecoration: "none", padding: "6px 14px", border: `1px solid ${W25}` }}>← All Scenarios</a>
-          <a href="/request-access" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, background: GOLD, textDecoration: "none", padding: "6px 14px" }}>Request Access</a>
+          <a href="/founding-partner-program" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, background: GOLD, textDecoration: "none", padding: "6px 14px" }}>Apply for Founding Partner Access</a>
         </div>
       </div>
 

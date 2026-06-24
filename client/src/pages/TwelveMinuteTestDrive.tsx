@@ -352,9 +352,12 @@ export default function TwelveMinuteTestDrive() {
             </div>
           ))}
         </div>
-        <Link href="/request-access">
-          <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Founding Partner Access</button>
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: '0.08em' }}>Founding Partner cohort open</span>
+          <Link href="/founding-partner-program">
+            <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Apply for Founding Partner Access</button>
+          </Link>
+        </div>
       </div>
 
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
@@ -365,10 +368,16 @@ export default function TwelveMinuteTestDrive() {
             {/* Challenge question — the emotional hook */}
             <div style={{ marginBottom: 40, padding: '32px 40px', background: 'rgba(255,255,255,0.03)', borderLeft: `4px solid ${GOLD}`, borderTop: '1px solid rgba(201,168,76,0.2)', borderRight: '1px solid rgba(201,168,76,0.2)', borderBottom: '1px solid rgba(201,168,76,0.2)', maxWidth: 720, margin: '0 auto 40px' }}>
               <p style={{ ...GEO, fontSize: 'clamp(20px,2.8vw,30px)', fontWeight: 700, color: '#fff', lineHeight: 1.4, marginBottom: 16 }}>
-                If any of these scenarios hit your organization today — what would you do?
+                This trigger fires at 2:47 AM. Your competitor's protocol is already running.
               </p>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, margin: 0 }}>
-                Who calls who? Where's the brief? Who owns it? Who authorizes? Most startup to Fortune 500s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, marginBottom: 12 }}>
+                Not who you'd hope handles it — who actually calls. Not the plan you'd draft — the one improvised under pressure. Without preparation, the average enterprise spends 30 days mobilizing before execution begins: who owns this, who authorizes, who advises, what's the narrative.
+              </p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, marginBottom: 12 }}>
+                The window closes. The stock drops. The regulator moves first. IBM estimates ransomware mobilization delay at $4.5M. Lazard estimates activist response delay at $3.2M in avoidable concessions.
+              </p>
+              <p style={{ fontSize: 13, color: GOLD, lineHeight: 1.6, margin: 0, fontWeight: 600 }}>
+                The question is not if these scenarios will hit your organization. The question is whether your response is pre-staged or improvised.
               </p>
             </div>
 
@@ -702,8 +711,23 @@ export default function TwelveMinuteTestDrive() {
             </div>
 
             {/* Progress bar */}
-            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 0 }}>
               <div style={{ height: '100%', background: GOLD, width: `${Math.min(100, pct)}%`, transition: `width ${TICK_MS}ms linear` }} />
+            </div>
+
+            {/* Parallel reality strip — what the traditional model is doing right now */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 28px', background: 'rgba(192,57,43,0.06)', borderBottom: '1px solid rgba(192,57,43,0.2)', marginBottom: 32 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#E05A4A' }}>Traditional model — same moment:</span>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', fontStyle: 'italic' }}>
+                  {elapsed < 60 ? 'First calls being made — ownership still unclear' :
+                   elapsed < 180 ? 'Day 1: Leadership still assembling. No brief. No advisors.' :
+                   elapsed < 360 ? 'Day 2–3: Emergency consultants engaged at $25K/day. No response yet.' :
+                   elapsed < 540 ? 'Day 7: First draft strategy circulated. Stakeholders still misaligned.' :
+                   'Day 14+: Advisors still aligning. Competitor already positioned. Window closing.'}
+                </span>
+              </div>
+              <span style={{ fontSize: 10, fontWeight: 700, color: '#E05A4A', letterSpacing: '0.08em', whiteSpace: 'nowrap' as const }}>Your org: {fmtSecs(elapsed)} complete</span>
             </div>
 
             {/* Status legend */}
@@ -1038,8 +1062,8 @@ export default function TwelveMinuteTestDrive() {
                 Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real Readiness Protocols?
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
-                  Request Founding Partner Access →
+                <a href="/founding-partner-program" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
+                  Apply for Founding Partner Access →
                 </a>
                 <a href="/growth" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none' }}>
                   See Pricing →
