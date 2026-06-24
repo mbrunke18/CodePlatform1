@@ -68,6 +68,16 @@ const SCENARIOS = [
     outcome: "Investment bank engaged within the hour. Board authorization secured same day. Market entry team assembled and operating within 48 hours — 6 weeks ahead of next closest competitor.",
   },
   {
+    id: "planned-unplanned", label: "Complete Operating Model", subtitle: "Q3 planned work + ransomware trigger — both run simultaneously",
+    signal: "Week 6, Q3: 3 planned initiatives active. Ransomware detected — 23 servers encrypted at 4:23 AM. Not on any roadmap.",
+    signalSource: "SIEM Alert · Endpoint Detection · Quarterly Planning Dashboard",
+    protocol: "Ransomware Response (Protocol #31) + Q3 Planned Initiatives", protocolNum: "#31",
+    tasks: 11, stakeholders: ["CEO", "CISO", "CFO", "General Counsel", "Board Chair", "CRO", "Chief Revenue Officer"],
+    budget: "$4.5M pre-approved (unplanned) + $6.6M pre-staged (planned)", domain: "COMPLETE OPERATING MODEL", riskScore: 94,
+    dualTrack: true,
+    outcome: "Ransomware contained in 12 minutes. Q3 GTM Launch and M&A Integration continued on schedule. Neither track stalled. The CEO made one authorization decision.",
+  },
+  {
     id: "compound", label: "Compound Crisis", subtitle: "Activist stake + DOJ inquiry — simultaneous triggers",
     signal: "SEC 13D: activist discloses 9.2% stake — board seat demanded. SIMULTANEOUS: DOJ Civil Investigative Demand received across 3 jurisdictions. Two response clocks running at once.",
     signalSource: "SEC EDGAR Monitor · DOJ Federal Register · Activist Intelligence Feed",
@@ -270,7 +280,10 @@ export default function HowItExecutes() {
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, flexShrink: 0 }}>Choose Trigger:</span>
             {SCENARIOS.map((s, i) => {
               const isCompound = (s as any).compound;
+              const isDualTrack = (s as any).dualTrack;
               const isActive = selectedIdx === i;
+              const activeBg = isDualTrack ? "#1a4a3a" : isCompound ? TEAL : GOLD;
+              const activeColor = isDualTrack ? TEAL : isCompound ? "#fff" : NAVY;
               return (
                 <button
                   key={s.id}
@@ -278,14 +291,24 @@ export default function HowItExecutes() {
                   style={{
                     fontSize: 12, fontWeight: 600, padding: "8px 18px", cursor: "pointer",
                     display: "flex", alignItems: "center", gap: 6,
-                    background: isActive ? (isCompound ? TEAL : GOLD) : "rgba(255,255,255,0.06)",
-                    color: isActive ? (isCompound ? "#fff" : NAVY) : "rgba(255,255,255,0.75)",
-                    border: `1px solid ${isActive ? (isCompound ? TEAL : GOLD) : "rgba(255,255,255,0.12)"}`,
+                    background: isActive ? activeBg : "rgba(255,255,255,0.06)",
+                    color: isActive ? activeColor : "rgba(255,255,255,0.75)",
+                    border: `1px solid ${isActive ? (isDualTrack ? TEAL : isCompound ? TEAL : GOLD) : "rgba(255,255,255,0.12)"}`,
                     transition: "all 0.18s ease",
                   }}
                 >
                   {s.label}
-                  {isCompound && (
+                  {isDualTrack && (
+                    <span style={{
+                      fontSize: 7, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase",
+                      padding: "2px 5px",
+                      background: isActive ? "rgba(59,175,138,0.3)" : "rgba(59,175,138,0.15)",
+                      color: TEAL,
+                    }}>
+                      PLANNED+UNPLANNED
+                    </span>
+                  )}
+                  {isCompound && !isDualTrack && (
                     <span style={{
                       fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
                       padding: "2px 5px",
@@ -395,11 +418,19 @@ export default function HowItExecutes() {
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 4 }}>Response Complete — 12:00</div>
                   <p style={{ fontSize: 13, color: "rgba(255,255,255,0.82)", margin: 0, fontWeight: 500 }}>{scenario.outcome}</p>
                 </div>
-                <Link href="/12-minute-experience">
-                  <button style={{ flexShrink: 0, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", background: GOLD, color: NAVY, border: "none", cursor: "pointer" }}>
-                    Experience It →
-                  </button>
-                </Link>
+                {(scenario as any).dualTrack ? (
+                  <Link href="/demo/planned-unplanned">
+                    <button style={{ flexShrink: 0, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", background: TEAL, color: "#fff", border: "none", cursor: "pointer", whiteSpace: "nowrap" }}>
+                      Full Simulation →
+                    </button>
+                  </Link>
+                ) : (
+                  <Link href="/12-minute-experience">
+                    <button style={{ flexShrink: 0, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", background: GOLD, color: NAVY, border: "none", cursor: "pointer" }}>
+                      Experience It →
+                    </button>
+                  </Link>
+                )}
               </div>
             )}
           </div>

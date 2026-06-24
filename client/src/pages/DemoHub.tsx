@@ -301,6 +301,63 @@ export default function DemoHub() {
             </div>
           </a>
 
+          {/* Complete Operating Model — Planned + Unplanned */}
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+              <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL_LT, flexShrink: 0 }}/>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: TEAL_LT, textTransform: "uppercase" }}>Answer the Objection · "We Already Do Quarterly Planning"</span>
+            </div>
+            <a
+              href="/demo/planned-unplanned"
+              style={{
+                display: "block", textDecoration: "none",
+                background: `linear-gradient(135deg, rgba(43,138,110,0.14) 0%, rgba(10,15,46,0.65) 50%, rgba(201,168,76,0.10) 100%)`,
+                border: `1px solid rgba(43,138,110,0.4)`,
+                borderLeft: `4px solid ${TEAL_LT}`,
+                padding: "32px 36px",
+                position: "relative", overflow: "hidden",
+                transition: "border-color 0.2s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.7)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.4)"; }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(43,138,110,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43,138,110,0.03) 1px, transparent 1px)`, backgroundSize: "32px 32px", pointerEvents: "none" }} />
+              <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
+                <div style={{ flex: 1, minWidth: 280 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                    <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: TEAL_LT, background: "rgba(59,175,138,0.12)", border: "1px solid rgba(59,175,138,0.3)", padding: "3px 10px" }}>PLANNED</span>
+                    <span style={{ ...BC, fontSize: 11, color: "rgba(255,255,255,0.4)" }}>+</span>
+                    <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "#f87171", background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)", padding: "3px 10px" }}>UNPLANNED</span>
+                    <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>· 4 Protocols Active · 1 System</span>
+                  </div>
+                  <div style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 12 }}>
+                    The Complete Operating Model
+                  </div>
+                  <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
+                    Q3 roadmap running — GTM Launch, M&A Integration, Product Rollout all staged. Then ransomware fires at 4:23 AM. The CEO makes one authorization. Both tracks execute simultaneously. Neither stalls. This is the only demo that shows planned and unplanned work running at the same time.
+                  </p>
+                  <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+                    {[
+                      { v: "3", l: "Planned initiatives running" },
+                      { v: "12 min", l: "Unplanned response activated" },
+                      { v: "0", l: "Q3 initiatives disrupted" },
+                    ].map(({ v, l }) => (
+                      <div key={v}>
+                        <div style={{ ...BC, fontSize: 20, fontWeight: 700, color: TEAL_LT, letterSpacing: "0.04em", lineHeight: 1 }}>{v}</div>
+                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginTop: 3 }}>{l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ flexShrink: 0, alignSelf: "center" }}>
+                  <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", color: NAVY, background: TEAL_LT, padding: "13px 28px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+                    See the Complete Model →
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
           {/* Master Demo — featured */}
           <div style={{ marginBottom: 64 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>

@@ -59,6 +59,7 @@ const SCENARIOS = [
   { id: 'competitor', title: 'Competitor Launch', subtitle: 'Competitor announces flagship product — sales calls inbound now', domain: 'Growth & Positioning', urgency: 'high' },
   { id: 'market-entry', title: 'Market Entry Window', subtitle: 'Regulatory change opens new segment — 90-day window closing', domain: 'Growth & Positioning', urgency: 'high' },
   { id: 'compound', title: 'Compound Crisis', subtitle: 'Activist stake + DOJ inquiry — simultaneous triggers', domain: 'MULTI-DOMAIN', urgency: 'critical', compound: true },
+  { id: 'planned-unplanned', title: 'Complete Operating Model', subtitle: 'Q3 roadmap running. Ransomware fires mid-quarter. Both tracks execute simultaneously — neither stalls.', domain: 'PLANNED + UNPLANNED', urgency: 'critical', compound: true, href: '/demo/planned-unplanned' },
 ];
 
 function scenarioMode(id: string | null): ValueGainMode {

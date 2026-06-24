@@ -737,6 +737,24 @@ function HeroSimPanel() {
       outcome: "6-market simultaneous launch activated",
       stat: "$280M revenue pipeline staged",
     },
+    {
+      domain: "COMPLETE OPERATING MODEL" as const,
+      industry: "Enterprise",
+      trigger: "Q3 Roadmap Running + Ransomware — Both Tracks Active",
+      protocol: "Protocol #31: Ransomware Response · 3 Planned Initiatives",
+      tasks: 11,
+      executive: "Chief Executive Officer",
+      steps: [
+        { t: "0:00", action: "Ransomware — 23 servers encrypted. 3 Q3 initiatives already staged.", owner: "System" },
+        { t: "1:10", action: "CEO authorizes unplanned response — Q3 roadmap untouched", owner: "CEO" },
+        { t: "2:00", action: "Protocol #31 activated. FBI notified. GTM Launch: on track.", owner: "CISO / FBI" },
+        { t: "4:30", action: "Board briefed. M&A Integration: Week 3, on schedule.", owner: "Board" },
+        { t: "8:00", action: "Ransomware contained. Product Rollout: staging complete.", owner: "CTO" },
+        { t: "12:00", action: "Both tracks complete. Zero Q3 disruption.", owner: "All Leads" },
+      ],
+      outcome: "Unplanned response + Q3 roadmap: neither stalled",
+      stat: "4 protocols active simultaneously",
+    },
   ];
 
   const [scenarioIdx, setScenarioIdx] = useState(0);

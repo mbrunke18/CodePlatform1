@@ -157,6 +157,7 @@ const PharmaceuticalRecallDemo = lazy(() => import("./pages/PharmaceuticalRecall
 const ManufacturingSupplierDemo = lazy(() => import("./pages/ManufacturingSupplierDemo"));
 const RetailFoodSafetyDemo = lazy(() => import("./pages/RetailFoodSafetyDemo"));
 const EnergyGridFailureDemo = lazy(() => import("./pages/EnergyGridFailureDemo"));
+const PlannedUnplannedDemo = lazy(() => import("./pages/demos/PlannedUnplannedDemo"));
 const RoleSelector = lazy(() => import("./pages/RoleSelector"));
 const McKinseyIntelligenceCenter = lazy(() => import("./pages/mckinsey/McKinseyIntelligenceCenter"));
 const StrategyExecutionDashboard = lazy(() => import("./pages/StrategyExecutionDashboard"));
@@ -776,6 +777,7 @@ function Router() {
         {renderRoutes(["/manufacturing-demo", "/manufacturing-supplier-demo", "/demo/hvacr-supplier"], ManufacturingSupplierDemo)}
         {renderRoutes(["/retail-demo", "/retail-food-demo", "/retail-food-safety-demo"], RetailFoodSafetyDemo)}
         {renderRoutes(["/energy-demo", "/energy-grid-demo", "/energy-grid-failure-demo"], EnergyGridFailureDemo)}
+        {renderRoutes(["/demo/planned-unplanned", "/planned-unplanned-demo", "/complete-operating-model"], PlannedUnplannedDemo)}
         <Route path="/lvmh-demo" component={LVMHMarketEntryDemo} />
         <Route path="/shein-demo" component={SHEINTrendDemo} />
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
