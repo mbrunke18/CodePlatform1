@@ -45,7 +45,6 @@ interface Initiative {
 const DOMAIN_CONFIG = {
   growth: {
     label: "GROWTH & POSITIONING",
-    role: "Offensive Coordinator",
     color: TEAL,
     bg: "rgba(43,138,110,0.08)",
     border: "rgba(43,138,110,0.3)",
@@ -64,7 +63,6 @@ const DOMAIN_CONFIG = {
   },
   resilience: {
     label: "RISK & RESILIENCE",
-    role: "Defensive Coordinator",
     color: "#C0392B",
     bg: "rgba(192,57,43,0.07)",
     border: "rgba(192,57,43,0.25)",
@@ -83,7 +81,6 @@ const DOMAIN_CONFIG = {
   },
   transformation: {
     label: "TRANSFORMATION",
-    role: "Special Teams Coordinator",
     color: GOLD,
     bg: "rgba(201,168,76,0.08)",
     border: "rgba(201,168,76,0.3)",
@@ -231,7 +228,7 @@ export default function QuarterlyReadinessPlanning() {
               <em style={{ color: GOLD }}>and what's not.</em>
             </h1>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, maxWidth: 640, marginBottom: 36 }}>
-              The coordinator doesn't build plays during the game. Every initiative — planned or triggered — gets a pre-staged protocol, defensive coverage, and a drill before the quarter starts. That is what a prepared organization looks like.
+              A prepared organization does not improvise. Every initiative — planned or triggered — gets a pre-staged protocol, protective coverage, and a situational drill before the quarter starts. That is what readiness looks like.
             </p>
             {/* Step Progress */}
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
@@ -304,11 +301,11 @@ export default function QuarterlyReadinessPlanning() {
                 ))}
               </div>
 
-              {/* Coordinator framing callout */}
+              {/* Preparation mandate callout */}
               <div style={{ background: IVORY, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, padding: "24px 28px", marginBottom: 48 }}>
-                <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>The Coordinator's Mandate</div>
+                <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>Your Preparation Mandate</div>
                 <p style={{ fontSize: 14, color: NAVY, lineHeight: 1.7, margin: 0, fontWeight: 500 }}>
-                  In the next three steps you will stage every initiative this quarter — planned and unplanned. For each planned initiative, you will select the activation protocol and pre-stage the defensive coverage for what could disrupt it. Then schedule the drills. At the end, your <strong>{quarter} {year}</strong> is fully staged — both sides of the game plan, ready before the quarter starts.
+                  In the next three steps you will stage every initiative this quarter — planned and unplanned. For each planned initiative, you will select the activation protocol and pre-stage the protective coverage for what could disrupt it. Then schedule the drills. At the end, your <strong>{quarter} {year}</strong> is fully staged — planned initiatives and unplanned scenarios — ready before the quarter starts.
                 </p>
               </div>
 
@@ -429,7 +426,7 @@ export default function QuarterlyReadinessPlanning() {
                 Pre-stage your defensive coverage.
               </h2>
               <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.7, marginBottom: 16, maxWidth: 640 }}>
-                For each planned initiative, identify what could disrupt it and pre-stage the protective protocol. The offensive coordinator doesn't just call the play — they prepare for the blitz that could stop it.
+                For each planned initiative, identify what could disrupt it and pre-stage the protective protocol. Disruptions do not announce themselves — they are pre-empted by organizations that prepare before the trigger fires.
               </p>
               <div style={{ background: IVORY, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, padding: "16px 20px", marginBottom: 40, ...BR }}>
                 <span style={{ fontSize: 13, color: NAVY, lineHeight: 1.6, fontWeight: 500 }}>
