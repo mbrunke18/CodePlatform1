@@ -427,6 +427,30 @@ export default function DemoHub() {
             ]}
           />
 
+          {/* Fix #1 — What is a Readiness Protocol? */}
+          <div style={{ marginBottom: 56, padding: "28px 32px", background: "rgba(201,168,76,0.05)", border: `1px solid rgba(201,168,76,0.18)`, borderLeft: `3px solid ${GOLD}` }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 12 }}>What is a Readiness Protocol?</div>
+            <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 720, margin: "0 0 16px" }}>
+              A Readiness Protocol is a pre-built execution package. Before any trigger fires, every protocol already contains: <strong style={{ color: W }}>tasks defined and assigned</strong> to named owners, <strong style={{ color: W }}>budget pre-allocated</strong>, <strong style={{ color: W }}>stakeholders mapped</strong>, and an <strong style={{ color: W }}>execution brief written</strong>. When a trigger fires — or an executive decides to launch a planned initiative — the protocol activates in 12 minutes, not 30 days.
+            </p>
+            <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+              {[
+                { v: "Tasks", l: "Pre-assigned to named owners" },
+                { v: "Budget", l: "Pre-allocated, unlocks at authorization" },
+                { v: "Stakeholders", l: "Mapped and notified automatically" },
+                { v: "Brief", l: "Written before the trigger fires" },
+              ].map(({ v, l }) => (
+                <div key={v} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: GOLD, background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)", padding: "2px 8px", letterSpacing: "0.12em" }}>{v}</span>
+                  <span style={{ ...BAR, fontSize: 11, color: W50 }}>{l}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 14 }}>
+              <a href="/how-it-executes" style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textDecoration: "none", textTransform: "uppercase", opacity: 0.8 }}>See the full execution chain →</a>
+            </div>
+          </div>
+
           {/* Growth & Positioning */}
           <div id="domain-growth">
             <DomainSection domainKey="growth" scenarios={SCENARIO_GROUPS.growth} />

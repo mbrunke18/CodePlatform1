@@ -1016,7 +1016,7 @@ function HeroSection() {
               </p>
 
               {/* CTAs — one primary experience path, one conversion path */}
-              <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 32, flexWrap: "wrap" as const }}>
+              <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 20, flexWrap: "wrap" as const }}>
                 <Link
                   href="/demo-experience"
                   onClick={() => trackCTA("hero_scanner")}
@@ -1031,6 +1031,22 @@ function HeroSection() {
                 >
                   Apply for Founding Partner Access →
                 </Link>
+              </div>
+
+              {/* Fix #3 — Role-based entry points */}
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, alignItems: "center", marginBottom: 28 }}>
+                <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase" as const, marginRight: 4, whiteSpace: "nowrap" as const }}>See it for:</span>
+                {([
+                  { role: "CEO", href: "/master-demo", hint: "Activist Investor" },
+                  { role: "COO / PMO", href: "/pmo-onboarding", hint: "Operating Architecture" },
+                  { role: "CFO", href: "/roi-calculator", hint: "Execution ROI" },
+                  { role: "General Counsel", href: "/demo/doj-investigation", hint: "Regulatory Response" },
+                ] as const).map(({ role, href, hint }) => (
+                  <a key={role} href={href} style={{ textDecoration: "none", display: "flex", flexDirection: "column" as const, padding: "5px 11px", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.03)" }}>
+                    <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.06em" }}>{role}</span>
+                    <span style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.36)", letterSpacing: "0.04em" }}>{hint}</span>
+                  </a>
+                ))}
               </div>
 
               {/* Social proof — VaughnMartin runs on its own platform */}
@@ -1122,6 +1138,13 @@ function HeroSection() {
                     <div style={{ ...DM, color: "rgba(255,255,255,0.68)", fontSize: 11, marginTop: 6, letterSpacing: "0.04em", fontWeight: 500 }}>{s.l}</div>
                   </div>
                 ))}
+              </div>
+              {/* Fix #1 — What is a Readiness Protocol? */}
+              <div style={{ marginTop: 12, padding: "10px 14px", borderLeft: "2px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.04)" }}>
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.42)", fontStyle: "italic" as const }}>
+                  A Readiness Protocol is a pre-built execution package — tasks assigned, owners named, budget allocated, brief written — staged before any trigger fires.{" "}
+                </span>
+                <a href="/how-it-executes" style={{ ...DM, fontSize: 11, color: GOLD, textDecoration: "none", fontStyle: "italic" as const, opacity: 0.8 }}>See how it executes →</a>
               </div>
 
               {/* All three strategic domains */}

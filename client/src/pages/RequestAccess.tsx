@@ -151,7 +151,35 @@ export default function RequestAccess() {
             </div>
           </div>
 
-          <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.45)", letterSpacing: "0.04em", position: "relative", zIndex: 1 }}>
+          {/* Fix #4 — What happens after you apply */}
+          <div style={{ position: "relative", zIndex: 1, marginTop: 28, borderTop: "1px solid rgba(240,237,228,0.08)", paddingTop: 20 }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.32em", color: TEAL, textTransform: "uppercase", marginBottom: 14 }}>What happens after you apply</div>
+            {[
+              { n: "48h", label: "Founder review", detail: "We review your application and reach out within 48 hours — directly from the founder, not a sales team." },
+              { n: "60m", label: "Fit conversation", detail: "One call to confirm your organization's strategic triggers and identify which of the 180 protocols apply first." },
+              { n: "Day 1", label: "Partnership begins", detail: "Your protocols are configured, your PMO lead is onboarded, and your system is live — not a pilot, a full deployment." },
+            ].map(({ n, label, detail }) => (
+              <div key={n} style={{ display: "flex", gap: 12, marginBottom: 12 }}>
+                <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: GOLD, flexShrink: 0, minWidth: 36, lineHeight: 1.2 }}>{n}</div>
+                <div>
+                  <div style={{ ...BC, fontSize: 12, fontWeight: 700, color: "rgba(240,237,228,0.82)", letterSpacing: "0.04em", marginBottom: 2 }}>{label}</div>
+                  <div style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.45)", lineHeight: 1.5, letterSpacing: "0.01em" }}>{detail}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Fix #5 — Company size anchors */}
+          <div style={{ position: "relative", zIndex: 1, marginTop: 16, paddingTop: 14, borderTop: "1px solid rgba(240,237,228,0.06)" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(240,237,228,0.3)", textTransform: "uppercase", marginBottom: 8 }}>Built for organizations of every size</div>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {["Pre-IPO Startup", "Growth Stage", "Mid-Market", "Enterprise", "Fortune 500"].map(size => (
+                <span key={size} style={{ ...BC, fontSize: 9, fontWeight: 600, color: "rgba(240,237,228,0.4)", background: "rgba(240,237,228,0.04)", border: "1px solid rgba(240,237,228,0.1)", padding: "3px 10px", letterSpacing: "0.06em" }}>{size}</span>
+              ))}
+            </div>
+          </div>
+
+          <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.45)", letterSpacing: "0.04em", position: "relative", zIndex: 1, marginTop: 20 }}>
             © VaughnMartin · vaughnmartin.com
           </p>
         </div>
