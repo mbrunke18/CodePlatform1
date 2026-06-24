@@ -510,7 +510,7 @@ function AdContent({ onClose }: Props) {
             See It Execute — No Login Required →
           </button>
           <button id="fv-s4-ghost" onClick={() => { onClose(); setLocation('/mobilization-cost'); }} style={{ display: 'block', margin: '0 auto 12px', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, letterSpacing: '2.5px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.6)', cursor: 'pointer', textDecoration: 'none', transition: 'color 0.25s' }}>
-            See what one trigger costs your organization →
+            See what the mobilization tax costs your organization →
           </button>
           <button id="fv-s4-skip" onClick={onClose} style={{ display: 'block', margin: '0 auto', background: 'none', border: 'none', padding: 0, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, letterSpacing: '3px', textTransform: 'uppercase' as const, color: 'rgba(248,247,244,0.38)', cursor: 'pointer', transition: 'color 0.25s' }}>
             Continue to site ×
