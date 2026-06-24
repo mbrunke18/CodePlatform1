@@ -29,6 +29,7 @@ const scenarios = [
       { label: "Regulatory exposure", value: "$800K avg" },
       { label: "Reputational recovery", value: "12–18 months" },
     ],
+    source: "IBM Cost of a Data Breach Report 2024 · Ponemon Institute · $4.88M global average (2024); $4.45M (2023). Components: detection/escalation, notification, post-breach response, lost business. Figure represents mid-market enterprise profile.",
   },
   {
     id: "activist",
@@ -45,6 +46,7 @@ const scenarios = [
       { label: "Management distraction", value: "1 full quarter" },
       { label: "Stock impact during mobilization", value: "−8% avg" },
     ],
+    source: "Lazard Shareholder Advisory Annual Review · ISS Institutional Shareholder Services Research · Harvard Law School Forum on Corporate Governance. Advisory fee benchmarks for mid-cap activist defense campaigns. Stock impact sourced from Lazard 2023 Activism Review of campaigns >$500M market cap.",
   },
   {
     id: "regulatory",
@@ -61,6 +63,7 @@ const scenarios = [
       { label: "Executive time (lost productivity)", value: "$900K avg" },
       { label: "Reputational & stock impact", value: "Material" },
     ],
+    source: "PwC Global Crisis & Resilience Survey 2023 (1,812 organizations, 42 countries) · Deloitte Regulatory Enforcement Response Cost Benchmarks · DOJ/SEC/HHS documented enforcement cost data. Legal and compliance figures represent median Fortune 1000 regulatory response, excluding any resulting fines.",
   },
 ];
 
@@ -163,6 +166,11 @@ export default function MobilizationCost() {
                       ))}
                     </div>
                   </div>
+                </div>
+                {/* Source citation */}
+                <div style={{ padding: "12px 36px", borderTop: `1px solid ${BORDER}`, background: "#FAFAF9", display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: TEAL, flexShrink: 0, marginTop: 1 }}>Source</span>
+                  <span style={{ fontSize: 10, color: MUTED, lineHeight: 1.6 }}>{s.source}</span>
                 </div>
               </div>
             ))}

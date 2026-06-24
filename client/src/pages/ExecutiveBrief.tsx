@@ -92,10 +92,30 @@ const pilotIncludes = [
 ];
 
 const roiCase = [
-  { metric: "Revenue protected per major event", value: "$500K–$2M", basis: "Faster response compresses the revenue loss window" },
-  { metric: "Regulatory penalty avoided", value: "$5M–$50M", basis: "Projected based on regulatory penalty frameworks (HHS, SEC, FTC) — not documented customer activations" },
-  { metric: "Executive time reclaimed per event", value: "$45K–$100K", basis: "45–100 hrs × $1,000/hr C-suite rate — eliminated" },
-  { metric: "Vendor stack displaced annually", value: "$300K–$900K", basis: "Crisis comms + GRC + consulting retainer + project mgmt tools" },
+  {
+    metric: "Revenue protected per major event",
+    value: "$500K–$2M",
+    basis: "Faster response compresses the revenue exposure window before operational impact spreads",
+    source: "IBM Cost of a Data Breach Report 2024 — revenue loss component of breach cost; Gartner Supply Chain Disruption Revenue Impact Research",
+  },
+  {
+    metric: "Regulatory penalty avoided",
+    value: "$5M–$50M",
+    basis: "Projected based on documented enforcement action ranges — not modeled customer activations",
+    source: "HHS HIPAA enforcement actions ($100K–$5M per violation tier); SEC enforcement releases; FTC penalty records. Range reflects mid-market to Fortune 500 profile.",
+  },
+  {
+    metric: "Executive time reclaimed per event",
+    value: "$45K–$100K",
+    basis: "45–100 hrs of C-suite mobilization time eliminated per unplanned trigger",
+    source: "Spencer Stuart / Korn Ferry CEO & C-suite compensation benchmarks — all-in cost rate $800–$1,200/hr including opportunity cost. Hours sourced from PwC Global Crisis Survey 2023.",
+  },
+  {
+    metric: "Vendor stack displaced annually",
+    value: "$300K–$900K",
+    basis: "Crisis comms platform + GRC tool + consulting retainer + project management licensing",
+    source: "Gartner Magic Quadrant Total Cost of Ownership analysis; Forrester Total Economic Impact studies for GRC, crisis comms, and PM tool categories.",
+  },
 ];
 
 export default function ExecutiveBrief() {
@@ -460,11 +480,15 @@ export default function ExecutiveBrief() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>The ROI Case</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              {roiCase.map(({ metric, value, basis }) => (
+              {roiCase.map(({ metric, value, basis, source }) => (
                 <div key={metric} style={{ background: "#fff", border: "1px solid #E8E4DC", padding: "24px 20px" }}>
                   <div style={{ fontSize: 12, color: "#6B7280", marginBottom: 8 }}>{metric}</div>
                   <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: TEAL, marginBottom: 6 }}>{value}</div>
-                  <div style={{ fontSize: 11, color: "#9CA3AF", fontStyle: "italic" }}>{basis}</div>
+                  <div style={{ fontSize: 11, color: "#9CA3AF", fontStyle: "italic", marginBottom: 8 }}>{basis}</div>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 5, borderTop: "1px solid #F0EDE4", paddingTop: 8 }}>
+                    <span style={{ fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: TEAL, flexShrink: 0, marginTop: 1 }}>Source</span>
+                    <span style={{ fontSize: 9, color: "#9CA3AF", lineHeight: 1.55 }}>{source}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -701,6 +725,62 @@ export default function ExecutiveBrief() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Sources & Methodology */}
+        <section style={{ background: "#FAFAF9", padding: "40px 48px", borderTop: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+              <div style={{ width: 20, height: 1.5, background: TEAL }} />
+              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: TEAL }}>Sources & Methodology</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+              {[
+                {
+                  figure: "$4.5M — Cyber / Ransomware incident cost",
+                  source: "IBM Cost of a Data Breach Report 2024 · Ponemon Institute · Global average $4.88M (2024). Figure represents mid-market enterprise profile. Components: incident remediation, business disruption, regulatory exposure, reputational recovery.",
+                },
+                {
+                  figure: "$3.2M — Activist investor response cost",
+                  source: "Lazard Shareholder Advisory Annual Review · ISS Institutional Shareholder Services Research · Harvard Law School Forum on Corporate Governance. Reflects advisory fee benchmarks for mid-cap activist defense campaigns.",
+                },
+                {
+                  figure: "$5.8M — Regulatory / DOJ response cost",
+                  source: "PwC Global Crisis & Resilience Survey 2023 (1,812 orgs, 42 countries) · Deloitte Regulatory Response Benchmarks · DOJ/SEC enforcement cost records. Excludes resulting fines — legal, compliance, and executive time only.",
+                },
+                {
+                  figure: "$9.2M — Supply chain revenue at risk",
+                  source: "Gartner Supply Chain Risk Management Research · APICS/ASCM Supply Chain Disruption Impact Studies. Represents mid-market revenue exposure over a 31-day uncoordinated response window.",
+                },
+                {
+                  figure: "30-day mobilization baseline",
+                  source: "McKinsey & Company Organizational Speed Research · Gartner Executive Study (77% of executives cite mobilization speed as primary execution barrier). Conservative baseline for cross-functional alignment before execution begins.",
+                },
+                {
+                  figure: "3,600× Execution Head Start",
+                  source: "Mathematical derivation: 30 days × 1,440 minutes/day = 43,200 minutes ÷ 12 minutes = 3,600. Not an estimation — calculated from the 30-day mobilization baseline and 12-minute Readiness OS activation arc.",
+                },
+                {
+                  figure: "$5M–$50M — Regulatory penalty range",
+                  source: "HHS HIPAA enforcement actions (documented $100K–$5M per violation tier) · SEC enforcement releases · FTC civil penalty records. Range reflects mid-market to Fortune 500 enforcement profile.",
+                },
+                {
+                  figure: "$300K–$900K — Vendor stack displacement",
+                  source: "Gartner Magic Quadrant Total Cost of Ownership analysis · Forrester Total Economic Impact studies. Reflects annual licensing + retainer cost for crisis comms, GRC, consulting retainer, and project management tools.",
+                },
+              ].map(({ figure, source }) => (
+                <div key={figure} style={{ padding: "14px 16px", background: "#fff", border: "1px solid #E8E4DC" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 5, lineHeight: 1.4 }}>{figure}</div>
+                  <div style={{ fontSize: 10, color: "#6B7280", lineHeight: 1.65 }}>{source}</div>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: 10, color: "#9CA3AF", marginTop: 16, lineHeight: 1.7 }}>
+              All scenario figures are illustrative — modeled on the research sources listed above and platform architecture benchmarks. They are not documented customer activations or guaranteed outcomes. 
+              Financial projections are provided for directional ROI framing only. Actual results vary by organization size, industry, and operational configuration.
+              Full research foundation available at <a href="/research" style={{ color: TEAL, fontWeight: 600 }}>vaughnmartin.com/research</a>.
+            </p>
           </div>
         </section>
 
