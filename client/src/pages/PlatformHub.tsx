@@ -50,6 +50,8 @@ const PHASES = [
     buttons: [
       { label: "Protocol Library — 180", href: "/playbooks" },
       { label: "Mission Control", href: "/mission-control" },
+      { label: "Quarterly Readiness Planning", href: "/quarterly-planning" },
+      { label: "Preparation Architect Guide", href: "/pmo-onboarding" },
       { label: "Workspace", href: "/workspace" },
       { label: "Situation Intents", href: "/identify/situation-intents" },
       { label: "Protocol Builder", href: "/protocol-builder" },
