@@ -763,8 +763,8 @@ export default function MasterDemo() {
 
   const [phase, setPhase] = useState(0);
   const TOTAL = 7;
-  const next = () => setPhase(p => Math.min(p + 1, TOTAL - 1));
-  const back = () => setPhase(p => Math.max(p - 1, 0));
+  const next = () => { setPhase(p => Math.min(p + 1, TOTAL - 1)); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); };
+  const back = () => { setPhase(p => Math.max(p - 1, 0)); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); };
 
   // Scroll to top before paint on initial arrival — fires once on mount
   useLayoutEffect(() => {

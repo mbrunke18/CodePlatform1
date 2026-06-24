@@ -144,10 +144,12 @@ export default function KeynoteDemo() {
 
   const next = useCallback(() => {
     setStage(prev => Math.min(prev + 1, STAGES.length - 1));
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, []);
 
   const prev = useCallback(() => {
     setStage(prev => Math.max(prev - 1, 0));
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, []);
 
   useEffect(() => {

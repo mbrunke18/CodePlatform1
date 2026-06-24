@@ -1642,7 +1642,7 @@ export default function DemoExperience() {
 
             {/* Bottom nav */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 24, paddingTop: 18, borderTop: `1px solid ${BORDER}` }}>
-              <button onClick={() => setStep(s => Math.max(0, s - 1))} disabled={step === 0} style={{ display: "flex", alignItems: "center", gap: 7, background: "transparent", border: `1px solid ${BORDER}`, padding: "10px 18px", color: step === 0 ? MUTED : "#fff", cursor: step === 0 ? "default" : "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
+              <button onClick={() => { setStep(s => Math.max(0, s - 1)); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }} disabled={step === 0} style={{ display: "flex", alignItems: "center", gap: 7, background: "transparent", border: `1px solid ${BORDER}`, padding: "10px 18px", color: step === 0 ? MUTED : "#fff", cursor: step === 0 ? "default" : "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
                 <ChevronLeft size={13} /> Back
               </button>
 
@@ -1658,7 +1658,7 @@ export default function DemoExperience() {
               ) : step === 6 ? (
                 <div style={{ fontSize: 12, color: MUTED, fontStyle: "italic" }}>Click "Authorize and Deploy" above to continue</div>
               ) : (
-                <button onClick={() => setStep(s => Math.min(STEP_DEFS.length - 1, s + 1))} style={{ display: "flex", alignItems: "center", gap: 9, background: phaseColor, border: "none", padding: "12px 24px", color: "#fff", cursor: "pointer", ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
+                <button onClick={() => { setStep(s => Math.min(STEP_DEFS.length - 1, s + 1)); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }} style={{ display: "flex", alignItems: "center", gap: 9, background: phaseColor, border: "none", padding: "12px 24px", color: "#fff", cursor: "pointer", ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
                   Continue <ArrowRight size={15} />
                 </button>
               )}
