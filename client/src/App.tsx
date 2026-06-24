@@ -376,7 +376,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/sitemap', '/user-guide', '/access-denied', '/situation-scanner', '/getting-started',
   '/readiness-rhythm', '/onboarding-guide', '/ecosystems', '/idea-framework',
   '/protocol-browser', '/industry-demo-library', '/security-compliance',
-  '/planning-gap', '/making-the-case',
+  '/planning-gap', '/making-the-case', '/quarterly-planning', '/pmo-onboarding',
 ];
 
 function WelcomeBriefRedirect() {
