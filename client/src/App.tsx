@@ -365,18 +365,52 @@ function OnboardingGuard({ children }: { children: React.ReactNode }) {
 
 const WELCOME_SEEN_KEY = 'vm_welcome_brief_seen';
 const PUBLIC_PATH_PREFIXES = [
-  '/welcome-brief', '/home', '/demo', '/master-demo', '/the-proof',
+  // Core marketing & homepage variants
+  '/welcome-brief', '/home', '/the-proof', '/entry', '/new-user-journey',
+  '/what-to-expect', '/platform', '/sitemap', '/access-denied', '/terms',
+
+  // How the product works — always open
   '/how-it-works', '/how-it-executes', '/readiness-infrastructure', '/platform-overview',
-  '/12-minute-experience', '/roi-calculator', '/cost-of-delay', '/sector-briefing',
+  '/idea-framework', '/why-execution-os', '/why-readiness-os', '/readiness-oracle',
+  '/technical-', '/universal-connector', '/ai-stack', '/ecosystems', '/ecosystem',
+  '/platform-integrations', '/execution-data-fabric', '/institutional-memory',
+
+  // Demo & experience — always open
+  '/demo', '/master-demo', '/try-demo', '/12-minute-experience', '/situation-scanner',
+  '/industry-demo-library', '/industry', '/experience', '/role-selector',
+  '/lvmh-demo', '/shein-demo', '/spacex-demo', '/executive-departure',
+  '/demo-hub', '/demo-experience', '/demo-router',
+
+  // Protocol library & builders — open (no org data required)
+  '/playbooks', '/protocols', '/business-scenarios', '/protocol-browser',
+  '/protocol-builder', '/compound-protocol', '/situation-matrix-builder',
+  '/preparation-', '/the-case', '/readiness-assessment', '/agility-assessment',
+  '/incident-analyzer', '/financial-exposure', '/crisis-communications',
+  '/coordination-intelligence', '/simulation-studio', '/foresight-radar',
+  '/living-playbooks', '/deviation-metric',
+
+  // Sales, proof & investor pages — always open
   '/executive-brief', '/founding-partner', '/contact', '/request-access',
   '/trial-access', '/demo-access', '/proof-story', '/research', '/vs-',
   '/ms-project', '/platform-reality', '/investor', '/pitch-deck', '/capabilities',
-  '/founder-story', '/about', '/team', '/roadmap', '/entry', '/new-user-journey',
-  '/readiness-benchmark', '/mobilization-tax', '/pricing', '/growth', '/industry',
-  '/sitemap', '/user-guide', '/access-denied', '/situation-scanner', '/getting-started',
-  '/readiness-rhythm', '/onboarding-guide', '/ecosystems', '/idea-framework',
-  '/protocol-browser', '/industry-demo-library', '/security-compliance',
-  '/planning-gap', '/making-the-case', '/quarterly-planning', '/pmo-onboarding',
+  '/founder-story', '/about', '/team', '/roadmap', '/security-compliance',
+  '/competitive-positioning', '/channel-partners', '/partner-brief',
+  '/prospect-', '/explore', '/brand-kit', '/tier-comparison',
+  '/cost-of-inaction', '/cost-of-delay', '/first-90-days',
+  '/board-memo', '/design-logic', '/buyer-decision-packet',
+  '/mobilization-tax', '/mobilization-cost', '/mobilization-brief',
+  '/case-study', '/vc-presentations', '/marketing-infographic',
+  '/product-overview', '/executive-scenarios', '/request-evaluation',
+  '/readiness-ad', '/north-star', '/customer-journey', '/video',
+
+  // Tools & calculators — open
+  '/roi-calculator', '/sector-briefing', '/readiness-benchmark',
+  '/planning-gap', '/making-the-case', '/integration-hub', '/integrations',
+
+  // Onboarding & setup guides — open
+  '/getting-started', '/quarterly-planning', '/pmo-onboarding',
+  '/readiness-rhythm', '/onboarding-guide', '/user-guide',
+  '/growth', '/pricing', '/industry-demo-library',
 ];
 
 function WelcomeBriefRedirect() {
