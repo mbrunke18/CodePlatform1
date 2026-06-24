@@ -852,8 +852,8 @@ export default function TwelveMinuteTestDrive() {
                 {scenario.title} Response:<br />
                 <em style={{ fontStyle: 'italic', color: TEAL_LT }}>Contained in {fmtSecs(elapsed)}</em>
               </h2>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>
-                Your organization executed a structured, coordinated response in under 12 minutes. Here is what that means in real terms.
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.82)', maxWidth: 540, margin: '0 auto', lineHeight: 1.7, fontWeight: 500 }}>
+                Your competitor just started their 30-day mobilization cycle.<br />You just finished yours.
               </p>
             </div>
 
