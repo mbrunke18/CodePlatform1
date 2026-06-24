@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, createContext, useContext } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, createContext, useContext } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight, ChevronLeft, Shield, Zap, Clock, Users, Database,
@@ -1476,6 +1476,8 @@ export default function DemoExperience() {
   const [intro, setIntro] = useState(true);
   const [step, setStep] = useState(0);
   const [authorizing, setAuthorizing] = useState(false);
+  const contentPanelRef = useRef<HTMLDivElement>(null);
+  const scrollPanelToTop = () => { if (contentPanelRef.current) contentPanelRef.current.scrollTop = 0; };
 
   const sc = DEMO_SCENARIOS[scenarioId];
 
@@ -1597,7 +1599,7 @@ export default function DemoExperience() {
                   const isActive = i === step;
                   const isDone = i < step;
                   return (
-                    <div key={i} onClick={() => isDone && setStep(i)} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 20px", cursor: isDone ? "pointer" : "default", background: isActive ? `${phase.color}0c` : "transparent", borderLeft: `2px solid ${isActive ? phase.color : isDone ? phase.color + "50" : "transparent"}`, marginBottom: 1 }}>
+                    <div key={i} onClick={() => { if (isDone) { setStep(i); scrollPanelToTop(); } }} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 20px", cursor: isDone ? "pointer" : "default", background: isActive ? `${phase.color}0c` : "transparent", borderLeft: `2px solid ${isActive ? phase.color : isDone ? phase.color + "50" : "transparent"}`, marginBottom: 1 }}>
                       <div style={{ width: 18, height: 18, borderRadius: "50%", background: isActive ? phase.color : isDone ? phase.color + "30" : "transparent", border: `1px solid ${isActive ? phase.color : isDone ? phase.color + "60" : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
                         {isDone ? <CheckCircle size={10} color={phase.color} /> : <span style={{ ...BC, fontSize: 8, fontWeight: 700, color: isActive ? NAVY : MUTED }}>{i + 1}</span>}
                       </div>
@@ -1623,7 +1625,7 @@ export default function DemoExperience() {
           </div>
 
           {/* Content panel */}
-          <div style={{ flex: 1, padding: "24px 28px", overflowY: "auto" as const }}>
+          <div ref={contentPanelRef} style={{ flex: 1, padding: "24px 28px", overflowY: "auto" as const }}>
             {/* Step header */}
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <Pill color={phaseColor} bg={`${phaseColor}12`}>{PHASES.find(p => p.steps.includes(step))?.label}</Pill>
@@ -1642,7 +1644,7 @@ export default function DemoExperience() {
 
             {/* Bottom nav */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 24, paddingTop: 18, borderTop: `1px solid ${BORDER}` }}>
-              <button onClick={() => { setStep(s => Math.max(0, s - 1)); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }} disabled={step === 0} style={{ display: "flex", alignItems: "center", gap: 7, background: "transparent", border: `1px solid ${BORDER}`, padding: "10px 18px", color: step === 0 ? MUTED : "#fff", cursor: step === 0 ? "default" : "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
+              <button onClick={() => { setStep(s => Math.max(0, s - 1)); scrollPanelToTop(); }} disabled={step === 0} style={{ display: "flex", alignItems: "center", gap: 7, background: "transparent", border: `1px solid ${BORDER}`, padding: "10px 18px", color: step === 0 ? MUTED : "#fff", cursor: step === 0 ? "default" : "pointer", ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
                 <ChevronLeft size={13} /> Back
               </button>
 
@@ -1658,7 +1660,7 @@ export default function DemoExperience() {
               ) : step === 6 ? (
                 <div style={{ fontSize: 12, color: MUTED, fontStyle: "italic" }}>Click "Authorize and Deploy" above to continue</div>
               ) : (
-                <button onClick={() => { setStep(s => Math.min(STEP_DEFS.length - 1, s + 1)); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }} style={{ display: "flex", alignItems: "center", gap: 9, background: phaseColor, border: "none", padding: "12px 24px", color: "#fff", cursor: "pointer", ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
+                <button onClick={() => { setStep(s => Math.min(STEP_DEFS.length - 1, s + 1)); scrollPanelToTop(); }} style={{ display: "flex", alignItems: "center", gap: 9, background: phaseColor, border: "none", padding: "12px 24px", color: "#fff", cursor: "pointer", ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
                   Continue <ArrowRight size={15} />
                 </button>
               )}
