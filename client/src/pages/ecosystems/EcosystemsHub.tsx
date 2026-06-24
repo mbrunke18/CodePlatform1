@@ -2,7 +2,6 @@ import PageLayout from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { useLocation } from "wouter";
 import EnterpriseAIFrameworkDiagram from "@/components/EnterpriseAIFrameworkDiagram";
-import HofmannFrameworkDiagram from "@/components/HofmannFrameworkDiagram";
 
 const NAVY  = "#0A0F2E";
 const GOLD  = "#C9A84C";
@@ -277,20 +276,6 @@ export default function EcosystemsHub() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Hofmann Framework Diagram */}
-      <section style={{ background: "#F8F7F4", padding: "56px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{
-            textAlign: "center", marginBottom: 28,
-            fontFamily: "'DM Mono',monospace", fontSize: 10,
-            letterSpacing: "0.22em", color: GOLD, textTransform: "uppercase",
-          }}>
-            The build stack — and the one missing layer
-          </div>
-          <HofmannFrameworkDiagram />
         </div>
       </section>
 
