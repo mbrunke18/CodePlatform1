@@ -249,6 +249,35 @@ export default function DemoHub() {
 
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "56px 28px 80px" }}>
 
+          {/* Recommended Path navigator */}
+          <div style={{ marginBottom: 48, background: "rgba(201,168,76,0.06)", border: `1px solid rgba(201,168,76,0.18)`, padding: "20px 28px" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 14 }}>Recommended Path — New Here? Start in Order</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 0, flexWrap: "wrap" }}>
+              {[
+                { step: "01", label: "Why It Exists", sub: "Full Platform Demo", q: "What does this replace?", href: "/demo-experience" },
+                { step: "02", label: "The Full Scope", sub: "Complete Operating Model", q: "Does it cover planned work too?", href: "/demo/planned-unplanned" },
+                { step: "03", label: "How It Executes", sub: "Master Demo — Activist Investor", q: "What does it look like in practice?", href: "/master-demo" },
+                { step: "04", label: "Your ROI", sub: "ROI Calculator", q: "What is the value to my organization?", href: "/roi-calculator" },
+              ].map(({ step, label, sub, q, href }, i, arr) => (
+                <div key={step} style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 180 }}>
+                  <a href={href} style={{ textDecoration: "none", flex: 1 }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "8px 12px" }}>
+                      <div style={{ ...BC, fontSize: 18, fontWeight: 700, color: GOLD, opacity: 0.5, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{step}</div>
+                      <div>
+                        <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: W, letterSpacing: "0.06em", lineHeight: 1.2 }}>{label}</div>
+                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 2 }}>{sub}</div>
+                        <div style={{ ...BAR, fontSize: 11, color: W50, marginTop: 4, fontStyle: "italic" }}>{q}</div>
+                      </div>
+                    </div>
+                  </a>
+                  {i < arr.length - 1 && (
+                    <div style={{ ...BC, fontSize: 14, color: "rgba(255,255,255,0.2)", flexShrink: 0, padding: "0 4px" }}>→</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Full Platform Demo — start here banner */}
           <a
             href="/demo-experience"
@@ -267,17 +296,20 @@ export default function DemoHub() {
             <div style={{ position: "relative", zIndex: 1 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
                 <div style={{ flex: 1, minWidth: 280 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                     <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL_LT, flexShrink: 0 }}/>
                     <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL_LT, textTransform: "uppercase" }}>
-                      Start Here · Full Platform Journey · 9 Steps · No Login Required
+                      Step 01 · What Does This Replace? · 9 Steps · No Login Required
                     </span>
                   </div>
-                  <div style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 12 }}>
+                  <div style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 6 }}>
                     Full Platform Demo
                   </div>
+                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 14, opacity: 0.8 }}>
+                    Best for: First conversation · C-suite · Category introduction
+                  </div>
                   <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
-                    The complete journey — from why the old model fails to how Readiness OS replaces it. Cold open → PREPARATION (how the platform works day-to-day) → RESPONSE (live activation with real-time contrast vs. 30 days traditional) → ADVANCE (the system learns). Every phase. Every capability. One walkthrough.
+                    Answers the foundational question: why does the old operating model fail, and what does Readiness OS replace? Walks through the full platform — PREPARATION (how it works day-to-day) → RESPONSE (live 12-minute activation vs. 30-day old model) → ADVANCE (continuous learning). Every capability. One walkthrough.
                   </p>
                   <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
                     {[
@@ -305,7 +337,7 @@ export default function DemoHub() {
           <div style={{ marginBottom: 48 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL_LT, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: TEAL_LT, textTransform: "uppercase" }}>Answer the Objection · "We Already Do Quarterly Planning"</span>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: TEAL_LT, textTransform: "uppercase" }}>Step 02 · Does It Cover Planned Work Too? · The Scope of the Platform</span>
             </div>
             <a
               href="/demo/planned-unplanned"
@@ -330,11 +362,14 @@ export default function DemoHub() {
                     <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "#f87171", background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)", padding: "3px 10px" }}>UNPLANNED</span>
                     <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>· 4 Protocols Active · 1 System</span>
                   </div>
-                  <div style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 12 }}>
+                  <div style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 6 }}>
                     The Complete Operating Model
                   </div>
+                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 14, opacity: 0.8 }}>
+                    Best for: Prospects who already use quarterly planning tools · Dissolves the "we already plan" objection
+                  </div>
                   <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
-                    Q3 roadmap running — GTM Launch, M&A Integration, Product Rollout all staged. Then ransomware fires at 4:23 AM. The CEO makes one authorization. Both tracks execute simultaneously. Neither stalls. This is the only demo that shows planned and unplanned work running at the same time.
+                    The same pre-staged infrastructure that responds to unplanned triggers also runs your planned quarterly initiatives — no mode-switching, no second tool. Q3 roadmap running. Ransomware fires at 4:23 AM. CEO makes one authorization. Both tracks execute. Neither stalls. The only demo in the industry that shows planned and unplanned work running simultaneously in one system.
                   </p>
                   <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
                     {[
@@ -360,15 +395,18 @@ export default function DemoHub() {
 
           {/* Master Demo — featured */}
           <div style={{ marginBottom: 64 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
               <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Featured — Master Scenario · The Complete Situation Walkthrough</span>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Step 03 · How Does It Execute? · Single Scenario · Every Phase · Full Depth</span>
+            </div>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: "rgba(201,168,76,0.65)", textTransform: "uppercase", marginBottom: 20, paddingLeft: 32 }}>
+              Best for: Evaluation stage · PMO directors · COOs · Anyone who needs to see every step before deciding
             </div>
             <ScenarioCard
               id="activist"
               label="CEO · Board · Investor Relations"
               icon="📋"
-              tagline="Elliott Management files a 13D at 2:47 AM demanding 3 board seats. In the old model: 30 days to mobilize. With Readiness OS: full activation in 12 minutes. Every phase of the platform — signals, protocol match, war room, stakeholder notification, CEO authorization, outcome — in one definitive walkthrough."
+              tagline="Elliott Management files a 13D at 2:47 AM demanding 3 board seats. In the old model: 30 days to mobilize. With Readiness OS: full activation in 12 minutes. Every phase — signals detected, protocol matched, war room opened, stakeholders notified, CEO authorizes, execution complete. The definitive proof of how the platform works."
               featured
             />
           </div>
