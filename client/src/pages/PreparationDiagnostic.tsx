@@ -867,6 +867,7 @@ export default function PreparationDiagnostic() {
       mode === "customize" ? customizeMutation.mutate() : activateMutation.mutate();
     } else {
       setStep(s => s + 1);
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     }
   };
 
@@ -902,6 +903,7 @@ export default function PreparationDiagnostic() {
     setProtocolViewMode("architecture");
     setMode("setup");
     setStep(3); // Jump directly to visual architecture
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   };
 
   const resetAll = () => {

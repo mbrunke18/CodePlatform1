@@ -1485,11 +1485,13 @@ export default function DemoExperience() {
     setScenarioId(id);
     setStep(0);
     setIntro(false);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    scrollPanelToTop();
   };
 
   const handleAuthorize = () => {
     setAuthorizing(true);
-    setTimeout(() => { setStep(7); setAuthorizing(false); }, 1400);
+    setTimeout(() => { setStep(7); setAuthorizing(false); scrollPanelToTop(); }, 1400);
   };
 
   const panels = [

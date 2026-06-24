@@ -182,6 +182,7 @@ export default function IncidentAnalyzer() {
       setAnalysis(normalized);
       setIncidentId(data.incidentId || data.id || "inc-" + Date.now());
       setCurrentStep(2);
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     } catch (e: any) {
       setError(e.message || "Failed to analyze situation");
     } finally {
@@ -209,6 +210,7 @@ export default function IncidentAnalyzer() {
       setPlaybook(pb);
       setEditablePlaybook(JSON.parse(JSON.stringify(pb)));
       setCurrentStep(3);
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     } catch (e: any) {
       setError(e.message || "Failed to generate Readiness Protocol");
     } finally {
@@ -231,6 +233,7 @@ export default function IncidentAnalyzer() {
       const data = await res.json();
       setSimulationId(data.simulationId || data.id || "sim-" + Date.now());
       setCurrentStep(4);
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
 
       timerRef.current = setInterval(() => {
         setElapsedSeconds((p) => p + 1);
@@ -262,6 +265,7 @@ export default function IncidentAnalyzer() {
     if (timerRef.current) clearInterval(timerRef.current);
     if (pollingRef.current) clearInterval(pollingRef.current);
     setCurrentStep(5);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   };
 
   const handleReset = () => {

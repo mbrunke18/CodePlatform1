@@ -284,7 +284,7 @@ export default function SituationIntentWizard() {
             return (
               <button
                 key={s.id}
-                onClick={() => isDone && setStep(s.id)}
+                onClick={() => { if (isDone) { setStep(s.id); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); } }}
                 style={{
                   display: "flex", alignItems: "center", gap: 8, padding: "16px 20px",
                   background: "none", border: "none", borderBottom: isActive ? `2px solid ${GOLD}` : "2px solid transparent",
@@ -962,7 +962,7 @@ export default function SituationIntentWizard() {
         {/* Navigation buttons */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 40, paddingTop: 24, borderTop: `1px solid ${BORDER}` }}>
           <button
-            onClick={() => step > 1 ? setStep(step - 1) : setLocation("/identify/situation-intents")}
+            onClick={() => { if (step > 1) { setStep(step - 1); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); } else { setLocation("/identify/situation-intents"); } }}
             style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 24px", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 14, fontWeight: 600, color: NAVY, cursor: "pointer" }}
           >
             <ChevronLeft size={16} />
@@ -977,7 +977,7 @@ export default function SituationIntentWizard() {
 
           {step < 6 ? (
             <button
-              onClick={() => canProceed() && setStep(step + 1)}
+              onClick={() => { if (canProceed()) { setStep(step + 1); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); } }}
               disabled={!canProceed()}
               style={{
                 display: "flex", alignItems: "center", gap: 8, padding: "12px 28px",

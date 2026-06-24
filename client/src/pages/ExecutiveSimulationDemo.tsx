@@ -179,6 +179,7 @@ export default function ExecutiveSimulationDemo() {
     clearAllTimers();
     setPhase('dashboard');
     setIsRunning(true);
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     setSignals(INITIAL_SIGNALS);
     setNotifications([]);
     setSelectedPlaybook(null);
@@ -249,6 +250,7 @@ export default function ExecutiveSimulationDemo() {
     setShowCriticalAlert(false);
     setPhase('analyzing');
     setActiveTab('signals');
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
 
     const timer = setTimeout(() => {
       setPhase('playbook_selection');
@@ -259,6 +261,7 @@ export default function ExecutiveSimulationDemo() {
   const handleSelectPlaybook = useCallback((playbookId: string) => {
     setSelectedPlaybook(playbookId);
     setPhase('team_coordination');
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
 
     const actions: PlaybookAction[] = [
       { id: 'a1', name: 'Convene executive response team', assignee: 'Sarah Chen', department: 'Strategy', status: 'pending', duration: '5 min' },
@@ -274,6 +277,7 @@ export default function ExecutiveSimulationDemo() {
   const handleLaunchExecution = useCallback(() => {
     setPhase('execution');
     setActiveTab('command');
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     
     playbookActions.forEach((action, index) => {
       const startDelay = index * 1500;

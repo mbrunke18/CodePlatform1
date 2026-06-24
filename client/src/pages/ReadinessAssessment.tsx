@@ -244,6 +244,7 @@ export default function ReadinessAssessment() {
     setAnswers({});
     setCurrentQuestion(0);
     setPhase("questions");
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   };
 
   const updateAnswer = (key: string, value: string) => {
@@ -271,6 +272,7 @@ export default function ReadinessAssessment() {
       const data = await res.json();
       setResult(data);
       setPhase("results");
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
@@ -557,6 +559,7 @@ export default function ReadinessAssessment() {
                       handleReset();
                     } else {
                       setCurrentQuestion(currentQuestion - 1);
+                      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
                     }
                   }}
                   className="border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
@@ -576,7 +579,7 @@ export default function ReadinessAssessment() {
                 ) : (
                   <Button
                     size="lg"
-                    onClick={() => setCurrentQuestion(currentQuestion + 1)}
+                    onClick={() => { setCurrentQuestion(currentQuestion + 1); window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }}
                     disabled={!hasAnswer}
                     className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white ${domainConfig.shadow}`}
                   >
