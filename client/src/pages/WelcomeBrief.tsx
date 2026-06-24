@@ -191,10 +191,10 @@ export default function WelcomeBrief() {
           opacity: statsVisible ? 1 : 0, transform: statsVisible ? 'translateY(0)' : 'translateY(12px)',
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}>
-          <AnimatedStat target={d.triggersArmed} label="Triggers Armed" color={GOLD} delay={0} />
-          <AnimatedStat target={d.domainsMonitored} label="Domains Monitored" color={TEAL} delay={120} />
-          <AnimatedStat target={d.playbooksReady} label="Readiness Protocols Pre-Staged" color={TEAL} delay={240} />
-          <AnimatedStat target={d.signalsTracked} label="Signals Tracked" suffix="+" color={GOLD} delay={360} />
+          <AnimatedStat target={d.triggersArmed} label="Triggers Armed & Watching" color={GOLD} delay={0} />
+          <AnimatedStat target={d.domainsMonitored} label="Strategic Domains Protected" color={TEAL} delay={120} />
+          <AnimatedStat target={d.playbooksReady} label="Responses Ready Before You Need Them" color={TEAL} delay={240} />
+          <AnimatedStat target={d.signalsTracked} label="Data Points Working For You" suffix="+" color={GOLD} delay={360} />
           {d.stakeholdersEnrolled > 0 && (
             <AnimatedStat target={d.stakeholdersEnrolled} label="Stakeholders Enrolled" color={TEAL} delay={480} />
           )}
@@ -236,16 +236,16 @@ export default function WelcomeBrief() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               <div style={{ background: 'rgba(43,138,110,0.09)', border: '1px solid rgba(43,138,110,0.25)', borderLeft: `3px solid ${TEAL}`, padding: '24px 24px' }}>
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Signal Status</div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Market has been quiet</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Market has been quiet — your advantage is compounding</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
-                  No triggers have fired in the past 30 days. Your {d.triggersArmed} armed triggers remain active and scanning every 15 minutes across all 9 strategic domains.
+                  No triggers have fired in the past 30 days. Your {d.triggersArmed} armed triggers remain active and scanning every 15 minutes. Every quiet day is another day your competitors are unprepared and you are not.
                 </div>
               </div>
               <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.22)', borderLeft: `3px solid ${GOLD}`, padding: '24px 24px' }}>
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Active Coverage</div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 8 }}>What's being watched</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Your Coverage</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Everything that could cost you — watched</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
-                  248+ signals across market dynamics, regulatory change, geopolitical risk, technology disruption, supply chain, talent, ESG, financial performance, and operational risk.
+                  248+ signals across market dynamics, regulatory change, geopolitical risk, supply chain, talent, financial performance, and operational risk — every one matched to a pre-staged response.
                 </div>
               </div>
             </div>
@@ -264,25 +264,25 @@ export default function WelcomeBrief() {
               {
                 day: 'Day 1',
                 title: 'Platform Armed',
-                desc: '231 triggers active. 248+ signals scanning. Your organization is already being monitored.',
+                desc: '231 triggers active. 248+ signals scanning. While every competitor waits for a situation to materialize, you are already watching for it.',
                 color: TEAL,
               },
               {
                 day: 'Week 1',
                 title: 'First Alert',
-                desc: 'Your first trigger fires. You built the response. You activate it — not because it was handed to you, but because you constructed it.',
+                desc: 'Your first trigger fires. The protocol is pre-staged. You authorize in minutes — not after 30 days of figuring out who needs to be in the room.',
                 color: GOLD,
               },
               {
                 day: 'Week 2',
                 title: 'Shadow Simulation',
-                desc: 'Run a dry-run through your top 3 strategic scenarios. Board-ready confidence scores generated.',
+                desc: 'Dry-run your top 3 strategic scenarios. Walk your board through the 12-minute window they didn\'t know was possible.',
                 color: TEAL,
               },
               {
                 day: 'Day 30',
-                title: 'Execution Benchmark',
-                desc: '30-day debrief: activation count, response time vs. industry baseline, institutional memory built.',
+                title: 'Execution Dividend',
+                desc: '30-day debrief: activation count, mobilization overhead eliminated, response time vs. industry baseline. The numbers you take to the board.',
                 color: GOLD,
               },
             ].map(({ day, title, desc, color }, i) => (
@@ -318,10 +318,10 @@ export default function WelcomeBrief() {
           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 20 }}>Your Readiness Infrastructure — Live Now</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 0 }}>
             {[
-              { label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
-              { label: 'Real-Time Alerts', desc: 'Email notifications to enrolled stakeholders within minutes of a trigger firing at ≥72% confidence.', color: TEAL },
-              { label: '12-Minute Activation', desc: '180 Readiness Protocols are pre-staged. Response begins before competitors know the trigger fired.', color: GOLD },
-              { label: 'Readiness Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: TEAL },
+              { label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7. Every threat and opportunity surfaced before the cost of unpreparedness appears.', color: GOLD },
+              { label: 'Real-Time Alerts', desc: 'Stakeholders notified within minutes of a trigger firing. The mobilization overhead that used to cost 30 days now costs nothing.', color: TEAL },
+              { label: '12-Minute Activation', desc: '180 Readiness Protocols pre-staged. Your response begins before your competitors\' committee has its first call.', color: GOLD },
+              { label: 'Readiness Dividend', desc: 'Every activation builds a live record of mobilization overhead eliminated, costs avoided, and value recovered.', color: TEAL },
             ].map(({ label, desc, color }, i) => (
               <div key={i} style={{ padding: '16px 20px 16px 16px', borderLeft: `2px solid ${color}30`, marginLeft: i === 0 ? 0 : 0 }}>
                 <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color, marginBottom: 6 }}>{label}</div>

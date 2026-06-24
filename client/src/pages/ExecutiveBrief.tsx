@@ -419,10 +419,23 @@ export default function ExecutiveBrief() {
         {/* What You're Actually Buying */}
         <section style={{ background: NAVY, padding: "48px 48px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 24 }}>What You're Actually Buying</div>
+            {/* Three P&L outcome chips */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, marginBottom: 36 }}>
+              {[
+                { label: "Improved Profitability", detail: "30-day mobilization overhead eliminated. $4.2M–$9.2M in reactive consulting and operational cost avoided per activation cycle.", color: GOLD },
+                { label: "Accelerated Delivery", detail: "Strategic execution compressed from 30 days to 12 minutes. Every trigger that fires prepared is a 3,600× head start over every competitor that doesn't.", color: TEAL },
+                { label: "Reduced Costs", detail: "Pre-staged protocols replace reactive coordination. Zero consultant retainer at trigger point. Readiness built in — not billed in.", color: "#4A90C4" },
+              ].map(({ label, detail, color }) => (
+                <div key={label} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `2px solid ${color}`, padding: "20px 20px" }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase", color, marginBottom: 8 }}>{label}</div>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.62)", lineHeight: 1.65 }}>{detail}</div>
+                </div>
+              ))}
+            </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>What You're Actually Buying</div>
-                <p style={{ ...CG, fontSize: "clamp(22px,2.8vw,30px)", fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.45, margin: 0 }}>
+                <p style={{ ...CG, fontSize: "clamp(20px,2.6vw,28px)", fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.45, margin: 0 }}>
                   "Decision-speed. Coordination certainty. Governance traceability — at the exact moment stakes are highest."
                 </p>
               </div>
@@ -432,7 +445,7 @@ export default function ExecutiveBrief() {
                   Preparedness as infrastructure, not consulting.
                 </p>
                 <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.75, margin: 0 }}>
-                  Every alternative shows up after the trigger fires. Readiness OS is the infrastructure that makes the response ready before the trigger arrives — 180 protocols pre-staged, no consultant engagement required.
+                  Every alternative shows up after the trigger fires — and charges for the privilege. Readiness OS is the infrastructure that makes the response ready before the trigger arrives. 180 protocols pre-staged. No retainer. No scramble.
                 </p>
               </div>
             </div>

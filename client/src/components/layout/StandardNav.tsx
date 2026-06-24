@@ -156,7 +156,7 @@ export default function StandardNav() {
         { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
         { label: "How It Executes", path: "/how-it-executes", icon: Zap, description: "Watch the signal → protocol → execution chain in real time", featured: true },
         { label: "Strategic Foresight Engine", path: "/readiness-oracle", icon: Brain, description: "Digital Twin simulation, autonomous war gaming, predictive foresight — the future of readiness", featured: true },
-        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability connected — from signal detection to authorized execution, protecting profitability at every stage." },
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Map · Monitor · Decide · Execute · Learn — the full advantage lifecycle" },
         { label: "Why Readiness OS", path: "/the-proof", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
@@ -164,11 +164,11 @@ export default function StandardNav() {
     {
       heading: "Core Capabilities",
       links: [
-        { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "180 pre-staged Readiness Protocols across 9 strategic domains" },
-        { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Target, description: "See the exact 12-minute execution for your industry — signals, authorization chain, and full task sequence.", featured: true },
-        { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built vertical stacks", featured: true },
-        { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "231 triggers — monitored every 15 minutes" },
+        { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "180 Readiness Protocols pre-staged — every strategic situation mapped, budgeted, and authorized. Zero mobilization cost when the trigger fires." },
+        { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Target, description: "See exactly what 12-minute execution looks like in your sector — every signal, authorization step, and task. Then ask what 30 days would have cost.", featured: true },
+        { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built stacks that eliminate sector-specific mobilization gaps.", featured: true },
+        { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "248+ data points monitored continuously — every threat and opportunity surfaced before the 30-day mobilization gap opens and costs compound." },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "231 triggers monitored every 15 minutes — every unprepared trigger costs 30 days of overhead. Every prepared one costs 12 minutes." },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
         { label: "Universal Connector", path: "/universal-connector", icon: Globe, description: "Any stack. 55+ pre-built connectors. Live in 15 minutes.", featured: true },
         { label: "Integration Setup Plan", path: "/technical-onboarding", icon: Rocket, description: "Phased technical guide for connecting Readiness OS into your tech environment", featured: true },
@@ -185,7 +185,7 @@ export default function StandardNav() {
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
-        { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark" },
+        { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark — the gap is what preparation eliminates and what every unprepared competitor pays for." },
       ],
     },
     {
@@ -201,8 +201,8 @@ export default function StandardNav() {
       links: [
         { label: "Strategic Monitoring", path: "/strategic-monitoring", icon: AlertCircle, description: "Active trigger monitoring — 15+ pre-staged response protocols, real-time coordination", featured: true },
         { label: "Concurrent Situation Board", path: "/concurrent-situations", icon: LayoutGrid, description: "Command view when multiple triggers compete for C-suite bandwidth", featured: true },
-        { label: "Crisis Communications", path: "/crisis-communications", icon: MessageSquare, description: "5 audience-specific communications generated in 18 seconds" },
-        { label: "Financial Exposure Estimator", path: "/financial-exposure", icon: DollarSign, description: "Instant dollar-range exposure when a situation presents itself — CFO's first question answered" },
+        { label: "Crisis Communications", path: "/crisis-communications", icon: MessageSquare, description: "5 audience communications in 18 seconds — reputational and regulatory costs contained before stakeholder escalation compounds the damage." },
+        { label: "Financial Exposure Estimator", path: "/financial-exposure", icon: DollarSign, description: "Instant dollar exposure at trigger point — the CFO's first question answered before the first committee call is even scheduled." },
       ],
     },
   ];

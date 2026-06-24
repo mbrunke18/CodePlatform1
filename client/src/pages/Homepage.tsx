@@ -3265,6 +3265,74 @@ function FearlessFinaleSection() {
   );
 }
 
+function OperatingModelOutcomesSection() {
+  return (
+    <section style={{ background: IVORY, padding: "100px 0", position: "relative" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>
+            The Operating Model Return
+          </div>
+          <h2 style={{ ...GEO, fontSize: "clamp(32px,4.5vw,52px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: 20 }}>
+            This is not a technology purchase.
+          </h2>
+          <p style={{ ...DM, fontSize: 17, color: MUTED_LIGHT, maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
+            It is an operating model redesign — with three measurable returns that appear on your P&L, not just your execution metrics.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, marginBottom: 56 }}>
+          {[
+            {
+              num: "01",
+              label: "Improved Profitability",
+              body: "Every strategic situation you're prepared for is one that doesn't bleed runway before action starts. Captured competitive windows, avoided losses, protected revenue — preparation is a profit lever, not an overhead cost.",
+              accent: TEAL,
+            },
+            {
+              num: "02",
+              label: "Accelerated Delivery",
+              body: "Strategic decisions that consumed 30 days of alignment now execute in 12 minutes. Unplanned situations no longer consume planned capacity. Your roadmap moves faster because your operating model handles the unplanned.",
+              accent: GOLD,
+            },
+            {
+              num: "03",
+              label: "Reduced Costs",
+              body: "Eliminate mobilization overhead — executive bandwidth, emergency coordination, reactive vendor engagements — across all 231 strategic situations. The 30-day alignment cycle has a cost. Readiness OS removes it.",
+              accent: NAVY_BG,
+            },
+          ].map(({ num, label, body, accent }) => (
+            <div key={num} style={{ background: "#fff", borderTop: `3px solid ${accent}`, padding: "40px 36px" }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", color: accent === NAVY_BG ? NAVY : accent, textTransform: "uppercase" as const, marginBottom: 12 }}>
+                {num}
+              </div>
+              <h3 style={{ ...GEO, fontSize: 22, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+                {label}
+              </h3>
+              <p style={{ ...DM, fontSize: 14, color: "#4B5563", lineHeight: 1.75, margin: 0 }}>
+                {body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ background: NAVY, padding: "32px 48px", display: "flex", alignItems: "center", gap: 32 }}>
+          <div style={{ width: 3, height: 52, background: GOLD, flexShrink: 0 }} />
+          <div>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>
+              The Fundamental Difference
+            </div>
+            <p style={{ ...GEO, fontSize: "clamp(16px,1.8vw,20px)", fontStyle: "italic", color: IVORY, lineHeight: 1.55, margin: 0 }}>
+              "Every alternative redesigns your operating model after the trigger fires. Readiness OS{" "}
+              <em style={{ color: GOLD, fontStyle: "normal" }}>is</em> the operating model — pre-staged, continuously monitored, ready before any situation presents itself."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTASection() {
   return (
     <section id="hp-cta" className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
@@ -4447,7 +4515,10 @@ export default function Homepage() {
       {/* 14. FEARLESS — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
 
-      {/* 15. CTA */}
+      {/* 15. OPERATING MODEL RETURN — Profitability / Delivery / Cost */}
+      <OperatingModelOutcomesSection />
+
+      {/* 16. CTA */}
       <CTASection />
       <HomepageFooter />
     </div>
