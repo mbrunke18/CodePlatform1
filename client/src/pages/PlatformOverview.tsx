@@ -247,6 +247,70 @@ export default function PlatformOverview() {
           </div>
         </section>
 
+        {/* Planned + Unplanned — one system */}
+        <section style={{ background: "#0A0F2E", padding: "72px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" }} />
+          <div style={{ maxWidth: "900px", margin: "0 auto", position: "relative", zIndex: 2 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>The Operating Model Difference</span>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(28px,4vw,46px)", lineHeight: 1.1, color: "#fff", textAlign: "center", marginBottom: 16 }}>
+              One operating model.<br />
+              <em style={{ color: "#C9A84C" }}>Both sides of every quarter.</em>
+            </h2>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", lineHeight: 1.75, textAlign: "center", maxWidth: 600, margin: "0 auto 56px", fontFamily: "'Barlow', sans-serif" }}>
+              Every other platform handles one type of work. Readiness OS is the first operating model that handles both — through the same pre-staged protocol infrastructure.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 0, alignItems: "stretch" }}>
+              {/* Traditional */}
+              <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "0.15rem", padding: "36px 32px" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 20 }}>Traditional Model</div>
+                <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+                  {[
+                    { label: "Planned initiatives", tool: "Planview · Smartsheet · Jira", note: "Separate project tool. No protocol. No pre-staged execution." },
+                    { label: "Unplanned triggers", tool: "Crisis response · Consulting retainer", note: "Built from scratch under pressure. 30-day mobilization cycle." },
+                    { label: "Connection between them", tool: "None", note: "Two separate systems with no preparation bridge." },
+                  ].map(({ label, tool, note }) => (
+                    <div key={label} style={{ borderLeft: "2px solid rgba(255,255,255,0.1)", paddingLeft: 16 }}>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>{label}</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.55)", marginBottom: 3 }}>{tool}</div>
+                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", lineHeight: 1.5 }}>{note}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Divider */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "0 28px" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", color: "#C9A84C", textAlign: "center", writingMode: "vertical-rl" as const, transform: "rotate(180deg)" }}>vs.</div>
+              </div>
+              {/* Readiness OS */}
+              <div style={{ background: "linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))", border: "1px solid rgba(201,168,76,0.35)", borderRadius: "0.15rem", padding: "36px 32px" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 20 }}>Readiness OS</div>
+                <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+                  {[
+                    { label: "Planned initiatives", tool: "Same 180 Readiness Protocols", note: "Every quarterly initiative pre-staged — stakeholders mapped, tasks assigned, authorization chain set." },
+                    { label: "Unplanned triggers", tool: "Same 180 Readiness Protocols", note: "System-detected trigger fires → protocol activates → 12-minute execution. No mobilization cycle." },
+                    { label: "Connection between them", tool: "One operating model", note: "Q planning sessions load both. Drills validate both. ADVANCE loop learns from both." },
+                  ].map(({ label, tool, note }) => (
+                    <div key={label} style={{ borderLeft: "2px solid #C9A84C", paddingLeft: 16 }}>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 4 }}>{label}</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 3 }}>{tool}</div>
+                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>{note}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div style={{ textAlign: "center", marginTop: 44 }}>
+              <a href="/quarterly-planning" style={{ fontFamily: "'Barlow Condensed', sans-serif", display: "inline-flex", alignItems: "center", gap: 10, background: "#C9A84C", color: "#0A0F2E", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, padding: "13px 32px", borderRadius: "0.15rem", textDecoration: "none" }}>
+                See Quarterly Readiness Planning →
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* 8 Platform Components */}
         <section className="py-16 px-12 bg-white">
           <div className="max-w-5xl mx-auto">

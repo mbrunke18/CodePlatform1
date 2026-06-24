@@ -39,6 +39,11 @@ const comparisonRows = [
     executionOS: "Pre-staged — 180 Readiness Protocols ready before the trigger fires. No consultant needed.",
   },
   {
+    category: "Planned vs. Unplanned Work",
+    traditional: "Two disconnected systems — project tools for planned initiatives, separate crisis response for unplanned triggers. No preparation bridge between them.",
+    executionOS: "One protocol infrastructure for both. Every quarterly initiative and every unplanned trigger activates through the same pre-staged system. The preparation gap closes across all strategic work.",
+  },
+  {
     category: "Risk Tracking",
     traditional: "GRC platform (ServiceNow, Riskonnect) logs the risk. Committee reviews on Tuesday.",
     executionOS: "Risk detected → protocol matched → response activated. Seconds, not days.",
