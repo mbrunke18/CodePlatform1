@@ -235,7 +235,7 @@ export default function QuarterlyReadinessPlanning() {
               {[
                 { n: 1, label: "Quarter Setup" },
                 { n: 2, label: "Stage Initiatives" },
-                { n: 3, label: "Defensive Coverage" },
+                { n: 3, label: "Risk Coverage" },
                 { n: 4, label: "Q Readiness Brief" },
               ].map(({ n, label }, idx) => (
                 <div key={n} style={{ display: "flex", alignItems: "center" }}>
@@ -412,7 +412,7 @@ export default function QuarterlyReadinessPlanning() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 40 }}>
                 <button onClick={() => setStep(1)} style={{ ...BC, ...BR, background: "none", border: `1px solid ${BORDER}`, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "11px 24px", cursor: "pointer" }}>← Back</button>
                 <button onClick={() => { if (initiatives.length > 0) setStep(3); }} disabled={initiatives.length === 0} style={{ ...BC, ...BR, display: "inline-flex", alignItems: "center", gap: 10, background: initiatives.length > 0 ? GOLD : BORDER, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "14px 32px", border: "none", cursor: initiatives.length > 0 ? "pointer" : "not-allowed" }}>
-                  Add Defensive Coverage <ChevronRight size={14} />
+                  Add Risk Coverage <ChevronRight size={14} />
                 </button>
               </div>
             </div>
@@ -423,7 +423,7 @@ export default function QuarterlyReadinessPlanning() {
             <div>
               <SL>Step 3 of 4 — {quarter} {year}</SL>
               <h2 style={{ ...CG, fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 700, color: NAVY, marginBottom: 8, lineHeight: 1.1 }}>
-                Pre-stage your defensive coverage.
+                Pre-stage your risk coverage.
               </h2>
               <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.7, marginBottom: 16, maxWidth: 640 }}>
                 For each planned initiative, identify what could disrupt it and pre-stage the protective protocol. Disruptions do not announce themselves — they are pre-empted by organizations that prepare before the trigger fires.
@@ -521,7 +521,7 @@ export default function QuarterlyReadinessPlanning() {
                 Your quarter is staged.
               </h2>
               <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.7, marginBottom: 40, maxWidth: 600 }}>
-                Both planned and unplanned. Protocols assigned. Defensive coverage pre-staged. The response is ready before the trigger fires.
+                Both planned and unplanned. Protocols assigned. Risk coverage pre-staged. The response is ready before the trigger fires.
               </p>
 
               {/* Coverage score */}
@@ -532,9 +532,9 @@ export default function QuarterlyReadinessPlanning() {
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
                     {[
                       { v: initiatives.length, l: "Initiatives Staged", s: "planned + unplanned" },
-                      { v: totalDefensive, l: "Defensive Protocols", s: "pre-staged" },
+                      { v: totalDefensive, l: "Risk Protocols", s: "pre-staged" },
                       { v: totalDrills, l: "Drills Scheduled", s: "before Q starts" },
-                      { v: `${coverageScore}%`, l: "Full Coverage", s: "protocol + defense + drill" },
+                      { v: `${coverageScore}%`, l: "Full Coverage", s: "protocol + risk coverage + drill" },
                     ].map(({ v, l, s }) => (
                       <div key={l}>
                         <div style={{ ...CG, fontSize: "clamp(32px,4vw,48px)", fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 6 }}>{v}</div>
