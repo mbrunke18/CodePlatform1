@@ -23,7 +23,7 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, se
 const PHASES = [
   { label: "PREPARATION", color: TEAL, steps: [0, 1, 2], desc: "Normal operations" },
   { label: "RESPONSE", color: GOLD, steps: [3, 4, 5, 6], desc: "Trigger fires" },
-  { label: "ADVANCE", color: "#A78BFA", steps: [7, 8], desc: "After the activation" },
+  { label: "ADVANCE", color: TEAL, steps: [7, 8], desc: "After the activation" },
 ];
 
 const STEP_DEFS = [
@@ -52,54 +52,90 @@ function getStepTag(i: number, sc: ScenarioData): string {
 // ─── Step context banners ─────────────────────────────────────────────────────
 const STEP_CONTEXT = [
   {
-    headline: "You're looking at a normal Monday morning.",
-    plain: "This is the main dashboard — your organization's readiness state at a glance. Three signals came in overnight. The system caught them, scored them, and flagged them as low-risk. Nobody had to check. No meeting was called. This is what prepared looks like.",
+    headline: "Your competitors are hoping for a quiet week. You already know what to do if it isn't.",
+    plain: "This is the Command Center — your organization's readiness state right now. Three signals detected overnight. Scored automatically. Flagged low-risk. Nobody had to check. No meeting was called. The difference between this and a traditional Monday morning: your peers are reactive. You are already positioned. That gap compounds every single week.",
   },
   {
-    headline: "These are your organization's 'what if' monitors.",
-    plain: "You've told the platform to watch for 47 specific situations. Each one is already connected to a complete response plan. When any of these thresholds is crossed, the right response deploys automatically — no scrambling to figure out who owns it.",
+    headline: "Every unmonitored trigger is a 30-day surprise waiting to happen.",
+    plain: "You've activated 47 of 231 available trigger patterns. Each one is already mapped to a complete response plan. When a threshold is crossed, the right response is already connected — no scrambling, no 'who owns this?' emergency call. The triggers you're NOT watching are the ones that become 30-day mobilization events. This is how you stop that from happening.",
   },
   {
-    headline: "Think of this as your organization's playbook shelf.",
-    plain: "Each card here is a complete response plan for a real scenario — tasks already written, people already assigned, decision gates already mapped. You're not building a response when a crisis hits. You've already built it. You're just waiting to activate it.",
+    headline: "Your competitors build their response after the crisis fires. You built yours before.",
+    plain: "Every card on this shelf is a complete response plan — tasks written, people assigned, decision gates mapped — before any trigger fired. Building one of these during an active event costs 3–4 weeks and $800K–$2M in reactive consulting fees. You've built 180 of them, pre-staged, ready to activate in seconds. That is not a feature. That is a categorically different operating model.",
   },
   {
-    headline: "A trigger just fired. The response was already waiting.",
-    plain: "The platform detected it automatically, matched it to a pattern, and surfaced the right response plan — before a single human was aware. This is the moment the preparation pays off.",
+    headline: "The clock started. Your competitors don't know it yet.",
+    plain: "The platform detected the signal and surfaced the right response before a single human was aware. A traditional organization won't notice this for hours — sometimes days. By then, the exposure window has widened. Decisions are made under pressure with incomplete information. The system eliminated detection lag entirely. The response was already waiting.",
   },
   {
-    headline: "The response plan was built before this moment.",
-    plain: "The protocol was created during a preparedness session — not during this event. Every task written. Every person assigned. Nothing is being invented right now — it's being pulled off the shelf. This is the entire point: the work happens before the event, not during it.",
+    headline: "Right now, a peer organization is building from scratch what this shelf already has.",
+    plain: "This protocol was created during a preparedness session before any trigger fired. Every task written. Every person assigned. Nothing is being invented right now — it's being pulled off the shelf. Your competitor hit the same trigger this week. They assembled an emergency call. Negotiated consulting scope. Figured out who owns the response. That takes 3–4 weeks minimum. You're already executing.",
   },
   {
-    headline: "It's been minutes. Your team is already executing.",
-    plain: "Executives were notified in under 90 seconds. Tasks are live across multiple departments. In a traditional response, at this exact moment you would still be figuring out who owns the problem and assembling a call. The platform skipped all of that.",
+    headline: "Day 2 for them. Minutes for you. The exposure window is the cost.",
+    plain: "Executives notified in under 90 seconds. Tasks live across departments. Immediate actions already in motion. In a traditional response at this exact moment, you would still be on the first bridge call — figuring out who owns the problem, which consultants to engage, what the response scope looks like. Every hour of that is exposure. The platform eliminated it.",
   },
   {
-    headline: "The preparation is done. One person makes the final call.",
-    plain: "The platform compressed weeks of alignment — but the decision stays human. You can see exactly how other executives decided in the same situation, and review three readiness questions. Then you authorize. Click 'Authorize and Deploy' below to see what happens next.",
+    headline: "Weeks of alignment compressed to one decision. Authority stays human.",
+    plain: "The preparation eliminates the mobilization delay — but the final decision remains with the executive who owns it. See how peer executives decided in identical situations. Review three pre-flight questions confirming authority and readiness. Then authorize. One click. Everything deploys. Without this: 14-person alignment call, 3 days, $50K+ in emergency consulting before a single task starts. Click 'Authorize and Deploy' below.",
   },
   {
-    headline: "12 minutes. From signal to contained.",
-    plain: "Traditional response: 30 days just to mobilize a team. This activation: under 12 minutes from first signal to full response. The table below shows metric by metric where those days used to go — and why they're eliminated.",
+    headline: "12 minutes closed what would have been a 30-day exposure window.",
+    plain: "Traditional response: 30 days just to mobilize — before execution even begins. This activation: under 12 minutes from first signal to full response. The table below shows exactly where those 30 days used to go — and why each one is now eliminated. 3,600× is not a speed metric. It is the difference between reacting to a crisis and having already solved it.",
   },
   {
-    headline: "The platform just got smarter from this activation.",
-    plain: "Three things were learned: a task was reordered, a new standard step was added, the detection threshold was lowered. The protocol is now faster. The next time this happens — and it will — the response will be quicker. The platform improves automatically. Nobody has to run a lessons-learned meeting.",
+    headline: "The platform just got harder to compete with.",
+    plain: "Three things improved automatically: a task reordered, a new standard step added, the detection threshold lowered. The protocol is now faster. The institutional knowledge from this activation is permanently embedded. A competitor starting Readiness OS today would need 18 months of live activations to reach this point. Every close-out adds to a moat they cannot buy or copy.",
   },
 ];
 
 // ─── Narration ────────────────────────────────────────────────────────────────
 const NARRATION = [
-  { headline: "This is what Monday morning looks like.", body: "Your Command Center shows the state of your organization's readiness in real time. Three signals detected today, all low-risk. 180 protocols standing by. No meetings required to know you're prepared.", callout: "Preparation is ongoing, not reactive." },
-  { headline: "You choose what to watch. The system does the watching.", body: "From 231 available trigger patterns, your organization has activated 47. Each trigger is mapped to a Readiness Protocol. When a threshold is exceeded, the right response deploys — the connection is already made.", callout: "Triggers aren't created during a crisis. They're configured before one." },
-  { headline: "The response exists before the situation does.", body: "180 Readiness Protocols span every strategic domain your organization will face. Each one is complete: tasks written, stakeholders assigned, decision gates mapped. You browse them like a library, not a to-do list.", callout: "\"The response is ready before the trigger fires.\"" },
-  { headline: "The system detects it before you do.", body: "The monitoring matched the pattern and surfaced the right protocol — before a single human knew it happened. This is what continuous monitoring means: no human dependency on detection.", callout: "231 trigger patterns monitored continuously." },
-  { headline: "The response existed before this moment.", body: "The protocol was designed before any of this happened. Every task written. Every stakeholder identified. Every decision gate mapped. When the signal fired, nothing had to be built — only activated.", callout: "Months of preparation. 12 minutes of execution." },
-  { headline: "Execution begins. No meeting required.", body: "Executives notified in under 90 seconds. Tasks assigned across multiple departments. The first immediate actions are already in motion. In a traditional response, you'd still be assembling the call.", callout: "Industry average mobilization time at this point: Day 2." },
-  { headline: "One executive. One decision.", body: "The preparation compresses the mobilization cycle — but the decision remains human. You see how peer executives decided in identical situations. Three pre-flight questions confirm readiness. Then you authorize.", callout: "No Readiness Protocol activates without executive sign-off." },
-  { headline: "12 minutes.", body: "Not 30 days. The exposure window closes. The outcome is classified. The debrief is auto-generated. Every stakeholder receives a close-out summary. One activation, completely documented.", callout: "3,600× Execution Head Start vs. traditional mobilization." },
-  { headline: "Every activation makes the next one faster.", body: "The ADVANCE loop closes automatically. The protocol is updated with what was learned. The platform gets smarter — and that institutional knowledge is yours, not anyone else's.", callout: "The moat grows with every activation." },
+  {
+    headline: "Your competitors' Monday morning: zero protocols staged.",
+    body: "This is what YOURS looks like with Readiness OS. Three signals caught overnight — automatically. 180 responses standing by. No meetings required. Your competitors are hoping nothing fires today. You already know your answer if it does.",
+    callout: "Every day without this is a day you're hoping, not preparing.",
+  },
+  {
+    headline: "Every trigger you're not watching is an open exposure window.",
+    body: "231 trigger patterns exist. The average unprepared enterprise monitors 0 of them systematically. Each one that fires undetected adds 2–3 weeks of reactive scrambling and $800K–$2M in emergency spend. You've chosen 47 to watch. The system watches them 24/7 — so you don't have to hope you notice.",
+    callout: "Unmonitored triggers don't disappear. They just cost more when they fire.",
+  },
+  {
+    headline: "Building this during a crisis costs $2M+ and 30 days you don't have.",
+    body: "Every response plan on this shelf was built before any trigger fired. Without this library, your team builds each response from scratch — under pressure, with incomplete context, at emergency consulting rates. The difference between browsing a shelf and building a response under fire is measured in weeks and millions of dollars.",
+    callout: "The preparation cost is fixed. The reactive cost is unlimited.",
+  },
+  {
+    headline: "Without this, nobody woke up yet. And the clock is running.",
+    body: "The monitoring matched the pattern before a single human was aware. In a traditional response, this signal wouldn't surface until someone noticed — hours later, after the exposure window had widened. Every minute of detection delay is compounding cost. The system eliminated detection lag entirely.",
+    callout: "Detection delay is the most expensive part of every crisis.",
+  },
+  {
+    headline: "Right now, a traditional response team is building what this shelf already has.",
+    body: "Somewhere in your industry, a peer organization hit the same trigger today. They're assembling a call. Negotiating scope with consultants. Figuring out who owns what. That takes 3–4 weeks minimum. This protocol was built in a preparedness session. It's been on the shelf since October. Nothing is being invented right now — only activated.",
+    callout: "They're on Day 1. You're already executing.",
+  },
+  {
+    headline: "Traditional response: Day 2, still assembling the call.",
+    body: "Executives notified in under 90 seconds. Tasks live across departments. The first actions already in motion. In a traditional response at this exact moment — Day 2 — you'd still be figuring out who owns the problem, scheduling a bridge call, and negotiating which consultants to engage. The platform skipped all of that.",
+    callout: "Every hour of mobilization delay is exposure. This eliminated it.",
+  },
+  {
+    headline: "The alternative: 14 people, 3 with context, 3 days to alignment.",
+    body: "The preparation compressed the mobilization cycle — but the final decision stays human. You see how peer executives decided in identical situations. Three pre-flight questions confirm authority and readiness. Then one authorization deploys everything. Without this: 14-person call, 3 days of alignment, $50K+ in emergency consulting before a single task starts.",
+    callout: "Executive authority preserved. Mobilization cost eliminated.",
+  },
+  {
+    headline: "12 minutes. Your competitor just started Day 14.",
+    body: "The exposure window is closed. The outcome classified. Every stakeholder has a close-out summary. Your competitor hit the same trigger today. They mobilized for 30 days. You responded in 12 minutes. That gap — 3,600× — is not a speed advantage. It is a categorically different operating model. One that compounds with every activation.",
+    callout: "3,600× Execution Head Start. The gap widens every quarter.",
+  },
+  {
+    headline: "Competitors can copy a feature. They cannot copy 18 months of activation intelligence.",
+    body: "The ADVANCE loop just closed. The protocol is updated. The next activation will be faster — automatically. No lessons-learned meeting. No follow-up consulting engagement. This institutional knowledge belongs to your organization, permanently. A competitor starting today needs 18 months of live activations to reach this point. That gap is the moat.",
+    callout: "The moat grows with every activation. It is now permanently yours.",
+  },
 ];
 
 // ─── Shared static data ───────────────────────────────────────────────────────
@@ -170,7 +206,7 @@ const PROTOCOL_DOMAINS = [
     ],
   },
   {
-    name: "TRANSFORMATION", color: "#A78BFA", count: 40,
+    name: "TRANSFORMATION", color: TEAL, count: 40,
     protocols: [
       { id: "#112", name: "Workforce Transformation", tag: "6,720 roles" },
       { id: "#127", name: "Digital Infrastructure Migration", tag: "Zero-downtime" },
@@ -1246,7 +1282,7 @@ function ColdOpen({ selectedId, onBegin }: { selectedId: number; onBegin: (id: n
       ],
     },
     {
-      name: "Transformation", color: "#A78BFA",
+      name: "Transformation", color: TEAL,
       desc: "Execute organizational change without the drag.",
       protocols: [
         { id: "#112", name: "Workforce Transformation", tag: "6,720 roles" },
@@ -1285,7 +1321,10 @@ function ColdOpen({ selectedId, onBegin }: { selectedId: number; onBegin: (id: n
       {/* Nav */}
       <div style={{ background: "#06091e", borderBottom: `1px solid ${BORDER}`, padding: "0 28px", height: 50, display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
         <VaughnMartinLogo size={26} variant="icon-only" />
-        <Link href="/request-access" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>Apply for Access</Link>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ ...BC, fontSize: 10, color: GOLD, fontWeight: 700 }}>Founding Partner cohort open</span>
+          <Link href="/founding-partner-program" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>Apply for Founding Partner Access</Link>
+        </div>
       </div>
 
       <div className="de-page-pad" style={{ flex: 1, maxWidth: 1040, margin: "0 auto", width: "100%" }}>
@@ -1294,12 +1333,29 @@ function ColdOpen({ selectedId, onBegin }: { selectedId: number; onBegin: (id: n
         <div style={{ textAlign: "center" as const, marginBottom: 44 }}>
           <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.22em", textTransform: "uppercase" as const, marginBottom: 16 }}>Readiness OS · Readiness Infrastructure</div>
           <div className="de-hero-h" style={{ ...CG, fontWeight: 700, color: "#fff", lineHeight: 1.12, marginBottom: 20 }}>
-            Whatever your organization faces next,<br />
-            <span style={{ color: GOLD }}>the response is already waiting.</span>
+            Right now, your organization is one trigger away<br />
+            from a <span style={{ color: "#EF4444" }}>30-day mobilization</span> — or a <span style={{ color: GOLD }}>12-minute response.</span>
           </div>
-          <div className="de-hero-body" style={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.75, maxWidth: 600, margin: "0 auto" }}>
-            180 pre-staged protocols across every strategic domain — growth moves, risk events, and transformation initiatives. When a trigger fires, execution begins in 12 minutes. The mobilization already happened.
+          <div className="de-hero-body" style={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.75, maxWidth: 640, margin: "0 auto 28px" }}>
+            Every enterprise will face a ransomware attack, a regulatory inquiry, an activist investor, or a supply chain collapse. The difference between organizations that absorb these in 12 minutes and those that spend 30 days recovering is not resources. It is <strong style={{ color: "#fff" }}>preparation architecture</strong> — and whether it existed before the trigger fired.
           </div>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 32, padding: "16px 32px", background: "rgba(220,38,38,0.08)", border: "1px solid rgba(220,38,38,0.22)", borderRadius: "0.15rem", marginBottom: 8 }}>
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#EF4444", lineHeight: 1 }}>30 days</div>
+              <div style={{ ...BC, fontSize: 9, color: "rgba(255,255,255,0.5)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 4 }}>Traditional mobilization</div>
+            </div>
+            <div style={{ ...CG, fontSize: 22, color: MUTED }}>vs.</div>
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1 }}>12 minutes</div>
+              <div style={{ ...BC, fontSize: 9, color: "rgba(255,255,255,0.5)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 4 }}>Readiness OS response</div>
+            </div>
+            <div style={{ width: 1, height: 40, background: BORDER }} />
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1 }}>3,600×</div>
+              <div style={{ ...BC, fontSize: 9, color: "rgba(255,255,255,0.5)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 4 }}>Execution head start</div>
+            </div>
+          </div>
+          <div style={{ ...BC, fontSize: 11, color: MUTED, marginTop: 8 }}>Choose a scenario below — watch the complete platform activation, step by step.</div>
         </div>
 
         {/* 5 scenario cards */}
@@ -1438,6 +1494,59 @@ function ColdOpen({ selectedId, onBegin }: { selectedId: number; onBegin: (id: n
   );
 }
 
+// ─── Preparation cost bar (steps 0-2 only) ────────────────────────────────────
+const PREP_COST_BARS = [
+  {
+    label: "Right now, across the industry:",
+    items: [
+      { icon: "⚠", color: "#EF4444", text: "Competitors monitoring 0 of 231 trigger patterns systematically" },
+      { icon: "💸", color: "#EF4444", text: "$1.3M average emergency consulting cost when a trigger fires undetected" },
+      { icon: "⏱", color: "#EF4444", text: "30 days average mobilization before execution even begins" },
+    ],
+    contrast: "Your organization: 47 triggers monitored. 180 responses staged. Cost of the next trigger: 12 minutes.",
+  },
+  {
+    label: "The cost of an unmonitored trigger:",
+    items: [
+      { icon: "📉", color: "#EF4444", text: "$4.5M average cost of a ransomware event (IBM Security, 2024)" },
+      { icon: "📋", color: "#EF4444", text: "$3.2M average activist investor defense — reactive (Lazard/ISS)" },
+      { icon: "⚖", color: "#EF4444", text: "$5.8M average regulatory response cost — uncoordinated (PwC 2024)" },
+    ],
+    contrast: "Each of these is a protocol on the shelf. Pre-staged. Waiting. Zero scrambling required.",
+  },
+  {
+    label: "Building a response during a crisis vs. before one:",
+    items: [
+      { icon: "🔥", color: "#EF4444", text: "3–4 weeks to write a response plan from scratch under pressure" },
+      { icon: "💰", color: "#EF4444", text: "$800–$1,200/hr emergency consulting rates for reactive work" },
+      { icon: "🎲", color: "#EF4444", text: "Decisions made with incomplete context, under pressure, in real time" },
+    ],
+    contrast: "Every card on this shelf was built before any trigger fired. The pressure is already gone.",
+  },
+];
+
+function PreparationCostBar({ step }: { step: number }) {
+  const bar = PREP_COST_BARS[step];
+  if (!bar) return null;
+  return (
+    <div style={{ marginBottom: 20, background: "rgba(220,38,38,0.05)", border: "1px solid rgba(220,38,38,0.18)", borderRadius: "0.15rem", padding: "16px 20px" }}>
+      <div style={{ ...BC, fontSize: 9, fontWeight: 700, color: "#EF4444", letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 12 }}>{bar.label}</div>
+      <div style={{ display: "flex", gap: 20, flexWrap: "wrap" as const, marginBottom: 12 }}>
+        {bar.items.map((item, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, flex: "1 1 200px" }}>
+            <span style={{ fontSize: 14 }}>{item.icon}</span>
+            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.4 }}>{item.text}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ borderTop: "1px solid rgba(43,138,110,0.25)", paddingTop: 10, display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ width: 3, height: 24, background: TEAL, borderRadius: 2, flexShrink: 0 }} />
+        <span style={{ fontSize: 12, color: TEAL, fontWeight: 600, lineHeight: 1.5 }}>{bar.contrast}</span>
+      </div>
+    </div>
+  );
+}
+
 // ─── Comparison strip (Response phase only) ───────────────────────────────────
 function ComparisonStrip({ step }: { step: number }) {
   const sc = useContext(ScenarioCtx);
@@ -1561,8 +1670,8 @@ export default function DemoExperience() {
                 <span style={{ ...BC, fontSize: 9, color: MUTED }}>ELAPSED</span>
               </div>
             )}
-            <Link href="/request-access" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem", whiteSpace: "nowrap" as const }}>
-              Apply for Access
+            <Link href="/founding-partner-program" style={{ ...BC, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, padding: "7px 16px", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem", whiteSpace: "nowrap" as const }}>
+              Apply for Founding Partner Access
             </Link>
           </div>
         </div>
@@ -1641,6 +1750,7 @@ export default function DemoExperience() {
             </div>
 
             <ContextBanner step={step} phaseColor={phaseColor} />
+            <PreparationCostBar step={step} />
             <ComparisonStrip step={step} />
             {panels[step]}
 
@@ -1652,11 +1762,11 @@ export default function DemoExperience() {
 
               {step === STEP_DEFS.length - 1 ? (
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
-                  <Link href="/request-access" style={{ display: "flex", alignItems: "center", gap: 10, background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none", ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
+                  <Link href="/founding-partner-program" style={{ display: "flex", alignItems: "center", gap: 10, background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none", ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, borderRadius: "0.15rem" }}>
                     Apply for Founding Partner Access <ArrowRight size={16} />
                   </Link>
                   <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                    <span style={{ ...BC, fontSize: 10, color: MUTED }}>90-day validation partnership</span>
+                    <span style={{ ...BC, fontSize: 10, color: GOLD }}>Founding Partner cohort · 90-day validation partnership</span>
                   </div>
                 </div>
               ) : step === 6 ? (
