@@ -1010,26 +1010,59 @@ function HeroSection() {
                 Before the Trigger Fires.
               </h2>
 
-              <p style={{ ...DM, color: "rgba(255,255,255,0.96)", fontSize: "clamp(17px,1.4vw,19px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 16px" }}>
-                Most organizations spend 30 days mobilizing after a trigger fires. Business analysts scope the response. Operations leaders map who needs to be in the room — whoever owns coordination in that organization. Functional leads confirm their roles. Tasks get assigned, briefs get drafted, budgets get estimated — all from scratch, under pressure, while the window closes. That is the Mobilization Tax.
-              </p>
-              <p style={{ ...DM, color: GOLD, fontSize: "clamp(17px,1.4vw,19px)", fontWeight: 700, lineHeight: 1.5, maxWidth: 500, margin: "0 0 28px" }}>
-                The Mobilization Tax doesn't get reduced. It gets eliminated. 30 days of real-time coordination — replaced by 12 minutes of pre-staged execution.
+              {/* Lead — one decisive sentence, not a paragraph */}
+              <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 28px" }}>
+                Most organizations spend 30 days mobilizing after a trigger fires — scoping from scratch, under pressure, while the strategic window closes.{" "}
+                <span style={{ color: GOLD, fontWeight: 700 }}>Readiness OS eliminates that entirely. 30 days compressed to 12 minutes.</span>
               </p>
 
-              {/* CTAs — one primary experience path, one conversion path */}
-              <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 20, flexWrap: "wrap" as const }}>
+              {/* Canonical 4-beat narrative — the complete product story, visible above fold */}
+              <div style={{ maxWidth: 500, marginBottom: 28, display: "flex", flexDirection: "column" as const, gap: 10 }}>
+                {([
+                  { beat: "Pre-staged before the trigger.", accent: false },
+                  { beat: "Authorized in real time.", accent: false },
+                  { beat: "Teams mobilized in 12 minutes — and executing from a fully-staged position.", accent: true },
+                  { beat: "Every activation makes the next response faster.", accent: false, teal: true },
+                ] as { beat: string; accent: boolean; teal?: boolean }[]).map(({ beat, accent, teal }, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <div style={{
+                      width: 18, height: 18, flexShrink: 0, marginTop: 2,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      border: `1px solid ${teal ? TEAL : GOLD}`,
+                      background: teal ? "rgba(43,138,110,0.15)" : "rgba(201,168,76,0.12)",
+                    }}>
+                      <span style={{ fontSize: 9, fontWeight: 800, color: teal ? TEAL : GOLD }}>✓</span>
+                    </div>
+                    <span style={{
+                      ...DM, lineHeight: 1.55,
+                      fontSize: "clamp(13px,1.05vw,14.5px)",
+                      color: teal ? "rgba(43,138,110,0.95)" : accent ? "#fff" : "rgba(255,255,255,0.82)",
+                      fontWeight: accent ? 700 : 500,
+                    }}>{beat}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs — primary demo, execution explainer, conversion */}
+              <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 20, flexWrap: "wrap" as const }}>
                 <Link
                   href="/demo-experience"
                   onClick={() => trackCTA("hero_scanner")}
-                  style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 32px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
+                  style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "14px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
                 >
                   Full Platform Demo →
                 </Link>
                 <Link
+                  href="/how-it-executes"
+                  onClick={() => trackCTA("hero_how")}
+                  style={{ ...DM, display: "inline-block", background: "transparent", color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: 13, padding: "13px 22px", textDecoration: "none", letterSpacing: "0.04em", border: "1px solid rgba(255,255,255,0.25)", whiteSpace: "nowrap" as const }}
+                >
+                  How It Executes
+                </Link>
+                <Link
                   href="/request-access"
                   onClick={() => trackCTA("hero")}
-                  style={{ ...DM, color: "rgba(255,255,255,0.75)", fontSize: 12, fontWeight: 600, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.28)", paddingBottom: 1, letterSpacing: "0.02em", whiteSpace: "nowrap" as const }}
+                  style={{ ...DM, color: "rgba(255,255,255,0.6)", fontSize: 12, fontWeight: 600, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.22)", paddingBottom: 1, letterSpacing: "0.02em", whiteSpace: "nowrap" as const }}
                 >
                   Apply for Founding Partner Access →
                 </Link>
@@ -1071,20 +1104,6 @@ function HeroSection() {
                   <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.45 }}>Calculate your specific number →</div>
                 </Link>
               </div>
-              <p style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 20px" }}>
-                Pre-staged before the trigger. Authorized in real time. Teams mobilized in 12 minutes — and executing from a fully-staged position. Every activation makes the next response faster.
-              </p>
-
-              {/* Readiness posture callout */}
-              <div style={{ maxWidth: 500, margin: "0 0 24px", padding: "14px 18px", borderLeft: "2px solid rgba(201,168,76,0.5)", background: "rgba(201,168,76,0.05)" }}>
-                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: "0 0 6px" }}>
-                  Having 180 protocols pre-staged changes how leadership operates <em style={{ color: "rgba(255,255,255,0.88)" }}>before</em> any trigger fires — not just the moment one does.
-                </p>
-                <p style={{ ...DM, fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: "0.06em", margin: 0 }}>
-                  READINESS ISN'T A MOMENT. IT'S A POSTURE.
-                </p>
-              </div>
-
               {/* Detect → Coordinate → Execute → Learn chain */}
               <div style={{ display: "flex", alignItems: "stretch", gap: 0, marginBottom: 28, maxWidth: 500, border: "1px solid rgba(201,168,76,0.18)" }}>
                 {[

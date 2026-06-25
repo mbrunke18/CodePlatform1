@@ -43,6 +43,7 @@ export default function Footer() {
         { label: "ROI Dashboard", path: "/roi-dashboard" },
         { label: "Executive Analytics", path: "/analytics" },
         { label: "Institutional Memory", path: "/institutional-memory" },
+        { label: "Learning Velocity — ADVANCE 2.0", path: "/advance-intelligence" },
       ]
     },
     {
@@ -51,6 +52,7 @@ export default function Footer() {
         { label: "12-Minute Experience — No Login", path: "/12-minute-experience" },
         { label: "Scenario Experience Center", path: "/demo-hub" },
         { label: "Master Demo — Activist Investor", path: "/master-demo" },
+        { label: "Proof Story — Side-by-Side Outcomes", path: "/proof-story" },
         { label: "Industry Demo Library — 19 Scenarios", path: "/industry-demo-library" },
         { label: "Full Platform Demo", path: "/demo-experience" },
         { label: "How It Executes", path: "/how-it-executes" },
@@ -65,6 +67,8 @@ export default function Footer() {
         { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Readiness OS", path: "/the-proof" },
         { label: "Why Not Consulting?", path: "/vs-consulting" },
+        { label: "Security & Compliance", path: "/security-compliance" },
+        { label: "Executive Brief", path: "/executive-brief" },
         { label: "Channel Partners", path: "/channel-partners" },
         { label: "User Guide", path: "/user-guide" },
         { label: "About the Founder", path: "/about" },
