@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 24, 2026 (rev 64) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 25, 2026 (rev 65) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1228,6 +1228,72 @@ Linked from: `WorkspaceAdvance` (featured first card), `OrganizationalIntelligen
 
 ---
 
+## 22b. Protocol #0 Universal Response Infrastructure (June 2026, rev 65)
+
+**Purpose:** Every org faces situations that match no specific protocol. Protocol #0 is the universal fallback — pre-staged authority, budget, and execution chain for any uncharted trigger. The response is ready before the situation is named.
+
+### Two Architectural Gaps — Now Closed
+
+**Gap 1 was:** Protocol #0 copy described pre-staged authority and budget, but nothing was actually stored. A trigger could fire with no configured authority chain, no budget envelope, no retainer contacts.
+
+**Gap 1 is now:** A `protocol_zero_configs` table holds one record per org — primary + backup authority, emergency budget amount and currency, named retainers array, and a notification list. Configured once, valid for every future P0 activation. The `/protocol-zero-launch` page reads live config data and shows teal checkmarks when armed or gold "NEEDS SETUP" warnings when empty.
+
+**Gap 2 was:** After every Protocol #0 close-out, the platform described learning from unknown triggers. Nothing actually happened — no draft protocol was created, no record kept.
+
+**Gap 2 is now:** Every Protocol #0 close-out automatically generates a draft named protocol in `p0_generated_protocols`. `generateDraftFromP0Activation()` fires via `setImmediate` on the close-out route. `/protocol-zero-launch` shows the pending draft queue with Promote/Dismiss buttons. Promoted drafts move permanently into the Readiness Library.
+
+### New DB Tables
+
+| Table | Purpose |
+|---|---|
+| `protocol_zero_configs` | One record per org. Stores: `primaryAuthorityName`, `primaryAuthorityEmail`, `primaryAuthorityRole`, `backupAuthorityName`, `backupAuthorityEmail`, `backupAuthorityRole`, `emergencyBudgetAmount`, `emergencyBudgetCurrency`, `retainers` (JSONB array), `notificationList` (JSONB array), `configuredAt` |
+| `p0_generated_protocols` | One record per P0 close-out. Stores: `activationId`, `orgId`, `situationTitle`, `domain`, `urgency`, `context`, `status` (`pending_review` / `promoted` / `dismissed`), `promotedAt`, `dismissedAt`, `createdAt` |
+
+> **Schema note:** Both tables were created via direct SQL (not `npm run db:push`) because the interactive migration prompt blocked the normal flow on the unrelated `compliance_reports` table. Drizzle schema definitions are in `shared/schema.ts`. Run `npm run db:push` if re-creating the DB from scratch.
+
+### New API Routes (all require `requireOrgAccess`)
+
+```
+GET   /api/protocol-zero/config              ← Returns current org config (or null if unconfigured)
+POST  /api/protocol-zero/config              ← Upsert: insert-or-update for the org
+GET   /api/protocol-zero/generated           ← All generated draft protocols for the org
+PATCH /api/protocol-zero/generated/:id/status ← Promote or dismiss a draft (body: { status })
+```
+
+### New Storage Methods (`server/storage.ts`)
+
+| Method | What It Does |
+|---|---|
+| `getProtocolZeroConfig(orgId)` | Returns config record or undefined |
+| `upsertProtocolZeroConfig(orgId, data)` | Insert-or-update (ON CONFLICT DO UPDATE) |
+| `getGeneratedProtocols(orgId)` | Returns all draft protocols for the org |
+| `updateGeneratedProtocolStatus(id, status, timestamp)` | Promotes or dismisses a draft |
+
+### AdvanceLoopService — New Method
+
+`generateDraftFromP0Activation(outcomeId, orgId)` — called via `setImmediate` after every activation close-out (alongside the existing `measureHypothesesForActivation` call). Logic:
+
+1. Loads the activation outcome; checks `playbookName` for "universal response" / "unknown trigger" / "uncharted" patterns — skips silently if not a P0 activation.
+2. Checks for an existing pending draft for the same activationId — prevents duplicates.
+3. Derives `situationTitle` from `activationReason` or `context`; sets domain to "Universal" and urgency based on signal strength.
+4. Inserts a `p0_generated_protocols` record with `status: 'pending_review'`.
+
+### Pages
+
+| Component | Route | Notes |
+|---|---|---|
+| `ProtocolZeroLaunch.tsx` | `/protocol-zero-launch` | Manual trigger page — hero with stats, pre-staging panel (live from API, teal/gold per arm status), ADVANCE draft queue with Promote/Dismiss. StandardNav "Uncharted Trigger" button routes here. |
+| `ProtocolZeroConfig.tsx` | `/protocol-zero-config` | 4-section configuration form — Authority Chain (primary + backup, 3-column grid), Emergency Budget, External Retainers (add/remove rows), Notification List (add/remove rows). Gold banner when unconfigured; teal success on save. Linked from pre-staging panel on `/protocol-zero-launch`. |
+
+### Entry Points
+
+- **StandardNav** — "Uncharted Trigger" button in the navigation (routes to `/protocol-zero-launch`)
+- **ProtocolLibrary** — zero-results fallback shows Protocol #0 card when no protocols match a search
+- **CommandTower** — P0 fallback panel in the live signal dashboard
+- **ProtocolZeroLaunch** — "Configure now" / "Edit configuration" CTA routes to `/protocol-zero-config`
+
+---
+
 ## 23. Environment Variables
 
 | Variable | Required | Purpose |
@@ -1527,6 +1593,7 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 | `§15` | Late-Added Tables | `testDriveLeads`, `customProtocols`, `allowedEmails`, signal calibration tables |
 | `§16` | Founding Partner & ADVANCE 2.0 | `foundingPartnerApplications`, `preparationUpdates`, `protocolVersionDeltas` |
 | `§17` | Microsoft & Certs | `microsoftConnectors`, `certificationRecords`, `boardFeedback` |
+| `§18` | Protocol #0 Infrastructure (rev 65) | `protocol_zero_configs`, `p0_generated_protocols` |
 
 ### Registration Pattern
 Each module exports a `register[Domain]Routes(app: Express)` function (sync or async). `server/routes.ts` imports and calls each at the correct position in registration order. Async registrars (`registerExecutionSyncRoutes`, `registerDecisionCoordinationRoutes`) are called with `await` since they contain top-level `await import()` calls.
