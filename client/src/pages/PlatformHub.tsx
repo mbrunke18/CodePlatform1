@@ -65,6 +65,7 @@ const PHASES = [
     tagline: "From trigger to full coordination in 12 minutes.",
     buttons: [
       { label: "Live Activation Center", href: "/live-activation-center" },
+      { label: "Protocol #0 — Uncharted Response", href: "/protocol-zero-launch" },
       { label: "War Room", href: "/war-room" },
       { label: "Coordination Intelligence", href: "/coordination-intelligence" },
       { label: "Crisis Communications", href: "/crisis-communications" },
