@@ -13,7 +13,6 @@ import { Shield, TrendingUp, Layers, AlertTriangle, BarChart3, Users, Briefcase,
 import heroImg from "@/assets/images/executive-floor-night.png";
 import aerialImg from "@/assets/images/aerial-city-grid.png";
 import boardroomImg from "@/assets/images/investors-boardroom.png";
-import execDecisionImg from "@/assets/images/executive-decision.png";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";

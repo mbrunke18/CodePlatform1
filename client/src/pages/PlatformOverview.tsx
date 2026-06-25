@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import commandCenterImg from "@/assets/images/hero-command-center.png";
+import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 import ProductShowcase from "@/components/marketing/ProductShowcase";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
@@ -116,7 +116,7 @@ export default function PlatformOverview() {
     <PageLayout>
       <div>
         {/* Hero — white */}
-        <section style={{ background: "#0A0F2E", padding: "88px 48px 72px", position: "relative", overflow: "hidden", backgroundImage: `url(${commandCenterImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <section style={{ background: "#0A0F2E", padding: "88px 48px 72px", position: "relative", overflow: "hidden", backgroundImage: `url(${aerialCityImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
           <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.87)" }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
           <div className="max-w-5xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
