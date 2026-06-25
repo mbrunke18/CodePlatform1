@@ -28,6 +28,19 @@ export interface PlaybooksDataset {
 export const playbooksData: PlaybooksDataset = {
   "playbooks": [
     {
+      "number": 0,
+      "protocol_code": "P0-000",
+      "name": "Universal Response Protocol",
+      "trigger": "A strategic trigger fires that matches no existing Readiness Protocol — a first-in-class event with no institutional precedent and no pre-staged response in the library",
+      "stakeholders": ["CEO", "COO", "General Counsel", "CFO", "Chief of Staff", "PMO Director"],
+      "response": "Protocol #0 stages the universal response infrastructure before any pattern is matched: authority chain locked, emergency budget envelope unlocked, external resource roster activated, and a Situation Assessment Framework deployed within 12 minutes of trigger detection — so the organization executes a structured first response rather than improvising. Without Protocol #0, a first-in-class trigger finds the enterprise in full improvisation mode — no authority chain, no budget clarity, no external contacts on call — and the 30-day mobilization cycle begins from zero.",
+      "response_window": "12 minutes",
+      "financial_exposure": "Unbounded — first-in-class events carry no institutional precedent; exposure ranges from $5M to $5B+ depending on trigger type, industry, and regulatory environment",
+      "domain": 9,
+      "frequency": "rare",
+      "budget": 5000000
+    },
+    {
       "number": 1,
       "protocol_code": "MD-001",
       "name": "New Market Entrant (Funded Startup)",
