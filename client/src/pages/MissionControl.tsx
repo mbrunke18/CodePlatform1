@@ -445,6 +445,15 @@ export default function MissionControl() {
   const recentDetections = detections.slice(0, 6);
   const recentActivations = activations.slice(0, 5);
 
+  const [orientationDismissed, setOrientationDismissed] = useState(() =>
+    localStorage.getItem('mc-orientation-v1') === 'true'
+  );
+  const isNewUser = activations.length === 0 && !orientationDismissed;
+  const dismissOrientation = () => {
+    localStorage.setItem('mc-orientation-v1', 'true');
+    setOrientationDismissed(true);
+  };
+
   const handleRefresh = async () => {
     await Promise.all([refetchDetections(), refetchActivations(), refetchStatus()]);
   };
@@ -545,6 +554,62 @@ export default function MissionControl() {
               </Link>
             </div>
           </div>
+
+          {/* ── NEW USER START STRIP ─────────────────────────────────────────────── */}
+          {isNewUser && (
+            <div style={{ marginBottom: 20, border: `1px solid ${TEAL}44`, borderLeft: `4px solid ${TEAL}`, background: 'rgba(43,138,110,0.07)', padding: '18px 24px', position: 'relative' }}>
+              <button
+                onClick={dismissOrientation}
+                style={{ position: 'absolute', top: 12, right: 14, background: 'none', border: 'none', color: 'rgba(255,255,255,0.35)', cursor: 'pointer', fontSize: 18, lineHeight: 1, padding: '2px 6px' }}
+                title="Dismiss"
+              >×</button>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>
+                Your system is live — here's where to start
+              </div>
+              <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: 12, marginBottom: 16, lineHeight: 1.5 }}>
+                The monitoring is already running. Your job is to prepare your protocols, run a drill, and authorize when a trigger fires. Three actions get you ready.
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+                {[
+                  {
+                    n: '01',
+                    label: 'Explore your Protocol Library',
+                    desc: '180 pre-staged responses are ready. Browse them to understand what is already built for your organization.',
+                    href: '/playbook-library',
+                    cta: 'Open Protocol Library →',
+                    color: GOLD,
+                  },
+                  {
+                    n: '02',
+                    label: 'Run a Practice Drill',
+                    desc: 'Walk through an activation in a safe environment — no real consequences, real experience.',
+                    href: '/practice-drills',
+                    cta: 'Start a Practice Drill →',
+                    color: TEAL,
+                  },
+                  {
+                    n: '03',
+                    label: 'Complete your go-live setup',
+                    desc: 'Track your readiness across 4 setup phases. See exactly what is configured and what is still pending.',
+                    href: '/getting-started',
+                    cta: 'View Setup Progress →',
+                    color: 'rgba(255,255,255,0.6)',
+                  },
+                ].map(({ n, label, desc, href, cta, color }) => (
+                  <Link
+                    key={n}
+                    href={href}
+                    style={{ display: 'block', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', padding: '14px 16px', textDecoration: 'none', transition: 'background 0.15s' }}
+                  >
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', color: color, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 5 }}>STEP {n}</div>
+                    <div style={{ color: '#fff', fontWeight: 700, fontSize: 13, marginBottom: 6, lineHeight: 1.3, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{label}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, lineHeight: 1.5, marginBottom: 10 }}>{desc}</div>
+                    <div style={{ color: color, fontSize: 11, fontWeight: 700, fontFamily: "'Barlow Condensed', sans-serif" }}>{cta}</div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* ── CxO ORIENTATION STRIP — answers "what do I control" + "what's the outcome" ── */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, marginBottom: 24, border: '1px solid rgba(201,168,76,0.18)', background: 'rgba(10,15,46,0.7)' }}>
