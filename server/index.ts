@@ -24,6 +24,7 @@ import { seedPlaybookLibrary } from "./seeds/playbookLibrarySeed";
 import { seedTriggers, getTriggerStats } from "./seeds/triggersSeed";
 import { seedDemoScenarios } from "./seeds/demoScenariosSeed";
 import { seedEnrichedPlaybooks } from "./seeds/enrichPlaybooksStartupSeed";
+import { seedProtocolZeroFamily } from "./seeds/protocolZeroSeed";
 import { db } from "./db";
 import { playbookLibrary, executiveTriggers, stakeholderContacts } from "@shared/schema";
 import { count, eq, sql } from "drizzle-orm";
@@ -680,6 +681,9 @@ server.listen(
 
           // Seed enriched playbook content (phases, why it matters, signal sources)
           await seedEnrichedPlaybooks();
+
+          // Seed Protocol #0 family — master Universal Response Protocol + 9 domain-level fallbacks
+          await seedProtocolZeroFamily();
 
           // Ensure playbooks table has all required columns (production migration)
           try {

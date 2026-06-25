@@ -2621,6 +2621,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         const industryVertical = t.industryVertical || PROTOCOL_INDUSTRY_MAP[t.playbookNumber] || null;
         return {
           id: t.id,
+          playbookNumber: t.playbookNumber,
           name: t.name,
           description: t.description,
           domain: t.domainName || 'Strategic Response',

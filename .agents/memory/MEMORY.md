@@ -7,3 +7,4 @@
 - [Vite tsx ESM fix](vite-tsx-esm-fix.md) — tsx zeroes vite's namespace via CJS resolve; use direct file:// URLs in a .mjs shim to load vite's ESM entry
 - [E2E Test Infrastructure](e2e-test-infra.md) — helper locations, data-testid canonical map, zero-sleep rule, playwright.config, and npm scripts to add
 - [VaughnMartin custom domain](domain-status.md) — custom domain has been connected for months; never suggest they "need to" set one up
+- [Protocol #0 Architecture](protocol-zero-architecture.md) — 3-tier fallback chain; reserved numbers 0 + 10001-10009; not counted in the 180; seeded via protocolZeroSeed.ts

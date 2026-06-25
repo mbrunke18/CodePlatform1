@@ -567,6 +567,27 @@ export default function ProtocolDetail() {
                 </div>
               </div>
 
+              {/* Protocol #0 simulation banner — master Universal Response Protocol only */}
+              {playbook.playbookNumber === 0 && (
+                <div style={{ background: "#2B8A6E", padding: "20px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                      <div style={{ width: 20, height: 1.5, background: "rgba(255,255,255,0.5)" }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", fontFamily: "'Barlow Condensed', sans-serif" }}>Interactive Simulation Available</span>
+                    </div>
+                    <p style={{ color: "#fff", fontSize: 14, fontWeight: 600, margin: 0, lineHeight: 1.5 }}>
+                      See Protocol #0 activate in real time — a Federal AI Liability EO fires with no protocol match. Watch the full IDEA Framework execute in 12 minutes.
+                    </p>
+                  </div>
+                  <a
+                    href="/protocol-zero"
+                    style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#2B8A6E", fontSize: 10, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", padding: "10px 20px", textDecoration: "none", whiteSpace: "nowrap", borderRadius: "0.15rem", fontFamily: "'Barlow Condensed', sans-serif" }}
+                  >
+                    Run Simulation →
+                  </a>
+                </div>
+              )}
+
               <Tabs defaultValue="overview" className="w-full" onValueChange={setActiveTab}>
                 <TabsList className="bg-transparent border-b border-[#E8E4DC] w-full justify-start rounded-none h-auto p-0 mb-8">
                   <TabsTrigger

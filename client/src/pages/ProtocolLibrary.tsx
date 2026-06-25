@@ -17,6 +17,7 @@ import WhyThisMatters from "@/components/onboarding/WhyThisMatters";
 
 interface LibraryPlaybook {
   id: string;
+  playbookNumber?: number;
   name: string;
   description?: string;
   domain: string;
@@ -34,6 +35,12 @@ interface LibraryPlaybook {
   isTemplate: boolean;
   industryVertical?: string | null; // null = general; 'financial_services' | 'healthcare' | 'technology' | 'manufacturing' | 'retail' | 'energy'
 }
+
+const isUniversalFallback = (p: LibraryPlaybook) =>
+  p.playbookNumber === 0 ||
+  (p.playbookNumber !== undefined && p.playbookNumber >= 10001 && p.playbookNumber <= 10009) ||
+  p.name === "Universal Response Protocol" ||
+  p.name?.startsWith("Unknown Trigger —");
 
 const DOMAINS = [
   { id: "all",         label: "All Domains",               icon: null },
@@ -101,6 +108,17 @@ const SAMPLE_PLAYBOOK_NAMES = new Set([
   "Aggressive Pricing Disruption",
   "Compound: Geopolitical + Supply Chain Disruption",
   "AI Competitive Disruption",
+  // Protocol #0 family — always accessible, meta-infrastructure
+  "Universal Response Protocol",
+  "Unknown Trigger — Market Dynamics",
+  "Unknown Trigger — Operational Excellence",
+  "Unknown Trigger — Financial Strategy",
+  "Unknown Trigger — Regulatory & Compliance",
+  "Unknown Trigger — Technology & Innovation",
+  "Unknown Trigger — Talent & Leadership",
+  "Unknown Trigger — Brand & Reputation",
+  "Unknown Trigger — Market Opportunities",
+  "Unknown Trigger — AI Governance",
 ]);
 
 const DOMAIN_DB_MAP: Record<string, string[]> = {
@@ -518,7 +536,8 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
       ]
     : searchFiltered;
 
-  const coreProtos = sortedFiltered.filter(t => !isCompound(t.name));
+  const fallbackProtos = sortedFiltered.filter(t => isUniversalFallback(t));
+  const coreProtos = sortedFiltered.filter(t => !isCompound(t.name) && !isUniversalFallback(t));
   const compoundProtos = sortedFiltered.filter(t => isCompound(t.name));
 
   return (
@@ -875,6 +894,59 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                 </span>
               </div>
               <p style={{ color: MUTED, fontSize: 11 }}>See the full depth of what a deployed Readiness Protocol contains — trigger logic, stakeholders, tasks, and budget authority.</p>
+            </div>
+          )}
+
+          {/* ── Universal Response Protocols — Protocol #0 family ── */}
+          {fallbackProtos.length > 0 && (
+            <div style={{ marginBottom: 28 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <div style={{ width: 24, height: 1.5, background: "#2B8A6E" }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                  Universal Response Infrastructure · Protocol #0
+                </span>
+              </div>
+              <p style={{ fontSize: 12, color: "#6B7280", marginBottom: 14, lineHeight: 1.5 }}>
+                Pre-staged fallbacks that activate when no specific protocol matches. The organization is never unprotected.
+              </p>
+              <div className="grid md:grid-cols-3 gap-3">
+                {fallbackProtos.map((playbook) => {
+                  const isMaster = playbook.playbookNumber === 0 || playbook.name === "Universal Response Protocol";
+                  return (
+                    <div
+                      key={playbook.id}
+                      style={{ background: "#F0FAF7", border: "1px solid #2B8A6E33", borderLeft: `3px solid #2B8A6E`, padding: "18px 20px", display: "flex", flexDirection: "column", gap: 10, cursor: "pointer" }}
+                      onClick={() => setLocation(`/playbooks/${playbook.id}`)}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                        <div style={{ width: 16, height: 1.5, background: "#2B8A6E" }} />
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                          {isMaster ? "Universal Fallback · All Domains" : `Domain Fallback · ${playbook.domain}`}
+                        </span>
+                      </div>
+                      <div>
+                        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.25, marginBottom: 3 }}>{playbook.name}</div>
+                        {playbook.description && (
+                          <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>{playbook.description.substring(0, 100)}{playbook.description.length > 100 ? '…' : ''}</div>
+                        )}
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #2B8A6E22", paddingTop: 10, marginTop: "auto" }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>12 min response · {isMaster ? "All 9 domains" : "Domain-scoped"}</span>
+                        {isMaster && (
+                          <a
+                            href="/protocol-zero"
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ fontSize: 9, fontWeight: 700, color: "#2B8A6E", textDecoration: "underline", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
+                          >
+                            Simulation →
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div style={{ marginTop: 14, borderBottom: `1px solid #E8E4DC`, paddingBottom: 24 }} />
             </div>
           )}
 
