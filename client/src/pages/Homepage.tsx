@@ -4883,6 +4883,101 @@ function SocialProofStrip() {
   );
 }
 
+// ─── THIRTY-SECOND BRIEF ──────────────────────────────────────────────────────
+// First white section after the hero. Four questions every visitor needs to be
+// able to answer and repeat. One sentence each. No jargon. No abstractions.
+function ThirtySecondBrief() {
+  const panels = [
+    {
+      q:    "What is it?",
+      stat: "180 Protocols",
+      body: "Readiness OS pre-stages your organization's response to every strategic situation — 180 protocols, tasks assigned, owners named, budget allocated, executive brief written — all ready before any trigger fires.",
+      accent: GOLD,
+      statColor: GOLD,
+    },
+    {
+      q:    "Why do you need it?",
+      stat: "30 Days Lost",
+      body: "When a trigger fires — ransomware, activist investor, supply chain collapse, regulatory inquiry — organizations without preparation spend 30 days figuring out who to call while the regulator moves first and the competitor capitalizes.",
+      accent: "#C0392B",
+      statColor: "#C0392B",
+    },
+    {
+      q:    "What do you gain?",
+      stat: "3,600× Head Start",
+      body: "12 minutes from trigger detection to full team executing. 3,600× execution head start over every competitor still improvising. Every activation makes the next response faster — the advantage compounds.",
+      accent: TEAL,
+      statColor: TEAL,
+    },
+    {
+      q:    "What do you lose without it?",
+      stat: "$47M+ Exposure",
+      body: "$47M in regulatory exposure per unplanned ransomware event. $3.2M in avoidable activist concessions. Every strategic window that closes while your organization is still scheduling its first alignment call.",
+      accent: "#C0392B",
+      statColor: "#C0392B",
+    },
+  ] as { q: string; stat: string; body: string; accent: string; statColor: string }[];
+
+  return (
+    <section style={{ background: "#ffffff", borderTop: `4px solid ${GOLD}` }}>
+      {/* Label row */}
+      <div style={{ borderBottom: "1px solid #E8E4DC", padding: "20px 0" }}>
+        <div style={{ ...CONTAINER, display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ width: 28, height: 1.5, background: GOLD, flexShrink: 0 }} />
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase" as const, color: GOLD }}>
+            In 30 Seconds — Everything You Need to Know
+          </div>
+          <div style={{ flex: 1, height: 1, background: "#E8E4DC" }} />
+          <Link href="/proof-story" style={{ ...DM, fontSize: 11, fontWeight: 600, color: NAVY, textDecoration: "none", letterSpacing: "0.06em", borderBottom: `1px solid ${NAVY}`, paddingBottom: 1, whiteSpace: "nowrap" as const }}>
+            See the Full Proof →
+          </Link>
+        </div>
+      </div>
+
+      {/* Four-panel grid */}
+      <div style={{ ...CONTAINER }}>
+        <style>{`
+          @media (max-width: 860px) {
+            .hp-30s-grid { grid-template-columns: 1fr 1fr !important; }
+          }
+          @media (max-width: 540px) {
+            .hp-30s-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+        <div className="hp-30s-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
+          {panels.map((p, i) => (
+            <div key={i} style={{ padding: "40px 32px 40px", borderRight: i < 3 ? "1px solid #E8E4DC" : "none", borderBottom: i < 4 ? "none" : "1px solid #E8E4DC" }}>
+              {/* Question label */}
+              <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: p.accent, marginBottom: 14 }}>{p.q}</div>
+              {/* Stat */}
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(20px,2vw,28px)", fontWeight: 700, color: p.statColor, lineHeight: 1, marginBottom: 16 }}>{p.stat}</div>
+              {/* Answer */}
+              <div style={{ ...DM, fontSize: 14, color: "#1A202C", lineHeight: 1.7, fontWeight: 500 }}>{p.body}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom strip */}
+      <div style={{ background: NAVY, padding: "20px 0" }}>
+        <div style={{ ...CONTAINER, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 16 }}>
+          <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.72)", fontWeight: 500, fontStyle: "italic" }}>
+            "Pre-staged before the trigger. Authorized in real time. Teams mobilized in 12 minutes — and executing from a fully-staged position."
+          </div>
+          <div style={{ display: "flex", gap: 10, flexShrink: 0 }}>
+            <Link href="/how-it-executes" style={{ ...DM, fontSize: 12, fontWeight: 700, color: "#fff", textDecoration: "none", letterSpacing: "0.08em", background: "rgba(255,255,255,0.1)", padding: "10px 22px", whiteSpace: "nowrap" as const }}>
+              Watch It Execute →
+            </Link>
+            <Link href="/request-access" style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, textDecoration: "none", letterSpacing: "0.08em", background: GOLD, padding: "10px 22px", whiteSpace: "nowrap" as const }}>
+              Apply for Founding Partner Access →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── VALUE IMPACT SECTION ─────────────────────────────────────────────────────
 // Shows the cost of NOT having Readiness OS alongside the value of having it.
 // Specific dollar amounts, real timelines, no abstractions.
@@ -5067,6 +5162,241 @@ function PlainEnglishExplainer() {
   );
 }
 
+// ─── THE STORY SECTION ────────────────────────────────────────────────────────
+// Pure narrative prose — no bullets, no tables.
+// Emotional pull before the interactive simulator.
+function TheStorySection() {
+  const [hovered, setHovered] = useState<"without" | "with" | null>(null);
+  return (
+    <section style={{ background: NAVY, padding: "0 0 0" }}>
+      {/* Label bar */}
+      <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "22px 0" }}>
+        <div style={{ ...CONTAINER, display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ width: 28, height: 1.5, background: GOLD, flexShrink: 0 }} />
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase" as const, color: GOLD }}>
+            Read This — Then Decide If You're Ready
+          </div>
+          <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.06)" }} />
+        </div>
+      </div>
+
+      {/* Headline */}
+      <div style={{ ...CONTAINER, paddingTop: 64, paddingBottom: 20 }}>
+        <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,3vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.18, maxWidth: 820, marginBottom: 16 }}>
+          Tuesday, 3:12 AM. Your CISO's phone vibrates.
+          <span style={{ color: GOLD }}> Two different stories follow.</span>
+        </div>
+        <div style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.62)", maxWidth: 680, lineHeight: 1.7, marginBottom: 52 }}>
+          The situation is identical. The trigger is the same. The only difference is whether the response was built before the trigger fired.
+        </div>
+      </div>
+
+      {/* Two-panel narrative */}
+      <div style={{ ...CONTAINER, paddingBottom: 64 }}>
+        <style>{`
+          @media (max-width: 860px) { .hp-story-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
+        <div className="hp-story-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "rgba(255,255,255,0.05)" }}>
+
+          {/* WITHOUT */}
+          <div
+            onMouseEnter={() => setHovered("without")}
+            onMouseLeave={() => setHovered(null)}
+            style={{ padding: "44px 40px 48px", background: hovered === "without" ? "rgba(192,57,43,0.1)" : "rgba(192,57,43,0.04)", transition: "background 0.35s", borderTop: `3px solid ${RED_CRISIS}`, cursor: "default" }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+              <div style={{ width: 20, height: 20, background: RED_CRISIS, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, color: "#fff", fontWeight: 900, flexShrink: 0 }}>✕</div>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: RED_CRISIS }}>Story One — No Preparation</span>
+            </div>
+
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.88)", lineHeight: 1.85, marginBottom: 22, fontWeight: 500 }}>
+              The CISO dials the CEO's personal cell. No answer. He tries the backup number — voicemail. He searches his email for "outside counsel" and finds three different law firms with no indication of which one handles cyber incidents.
+            </p>
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.82)", lineHeight: 1.85, marginBottom: 22, fontWeight: 500 }}>
+              By 6:00 AM, the right people are on a call. Nobody agrees on who notifies the board. Nobody has the FBI cyber liaison's number. The PR firm isn't on retainer for this kind of incident — a new one needs to be briefed from scratch.
+            </p>
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.82)", lineHeight: 1.85, marginBottom: 22, fontWeight: 500 }}>
+              The media runs the story at 7:48 AM, two hours before the company has an official statement. The board chair reads it on his phone at breakfast. The regulatory notification window — 72 hours — has been missed before anyone confirmed who owns that obligation.
+            </p>
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.85, fontWeight: 500 }}>
+              Day 30: the regulatory penalty is $47 million. The CISO resigns. The board wants answers about why no crisis protocol existed. The CEO spends the next quarter explaining the response to investors rather than executing the growth strategy.
+            </p>
+
+            <div style={{ marginTop: 32, padding: "18px 22px", background: "rgba(192,57,43,0.18)", borderLeft: `3px solid ${RED_CRISIS}` }}>
+              <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: RED_CRISIS, letterSpacing: "0.04em", marginBottom: 6 }}>Final cost: $47M in penalties + $3.2M brand remediation</div>
+              <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>Plus 30 days of your executive team working on the incident instead of the business. Plus the competitor who capitalized on the distraction.</div>
+            </div>
+          </div>
+
+          {/* WITH */}
+          <div
+            onMouseEnter={() => setHovered("with")}
+            onMouseLeave={() => setHovered(null)}
+            style={{ padding: "44px 40px 48px", background: hovered === "with" ? "rgba(43,138,110,0.12)" : "rgba(43,138,110,0.05)", transition: "background 0.35s", borderTop: `3px solid ${TEAL}`, cursor: "default" }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+              <div style={{ width: 20, height: 20, background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, color: "#fff", fontWeight: 900, flexShrink: 0 }}>✓</div>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: TEAL }}>Story Two — Response Pre-Staged</span>
+            </div>
+
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.88)", lineHeight: 1.85, marginBottom: 22, fontWeight: 500 }}>
+              At 3:12 AM, the system detects the ransomware indicators. Protocol #31 — Ransomware Response — matches at 97% confidence. Within 90 seconds, six people receive a simultaneous notification: CEO, CISO, General Counsel, Board Chair, CFO, COO. Each notification includes their specific role brief, pre-approved decision authority, and the first three actions they're authorized to take immediately.
+            </p>
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.82)", lineHeight: 1.85, marginBottom: 22, fontWeight: 500 }}>
+              The CEO reads the four-page executive brief in four minutes. It contains: the confirmed scope, the outside counsel already on retainer, the PR firm already briefed on crisis protocol, the FBI cyber liaison's direct line, and the board communication template pre-approved by the General Counsel.
+            </p>
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.82)", lineHeight: 1.85, marginBottom: 22, fontWeight: 500 }}>
+              One authorization. The response begins. By 3:26 AM, all 14 task owners are executing from their pre-staged position. By 6:00 AM, the board is fully briefed with complete audit documentation. The regulatory notification is filed at 9:12 AM — 63 hours inside the deadline.
+            </p>
+            <p style={{ ...DM, fontSize: 15.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.85, fontWeight: 500 }}>
+              The media never runs the story. The ransom is never paid. The customers never find out. The organization emerges better prepared than before the trigger fired — because the close-out automatically updates the protocol for the next time.
+            </p>
+
+            <div style={{ marginTop: 32, padding: "18px 22px", background: "rgba(43,138,110,0.2)", borderLeft: `3px solid ${TEAL}` }}>
+              <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: TEAL, letterSpacing: "0.04em", marginBottom: 6 }}>$0 in penalties. Zero brand damage. Full audit trail.</div>
+              <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>Executive team back on the growth strategy by Wednesday. Every activation makes the next response faster — the advantage compounds.</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Closing line + CTA */}
+        <div style={{ marginTop: 1, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", borderTop: "none", padding: "36px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 28 }}>
+          <div style={{ maxWidth: 620 }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, color: "#fff", lineHeight: 1.25, marginBottom: 10 }}>
+              The only difference between those two stories is <span style={{ color: GOLD, fontStyle: "italic" }}>whether the response was built before 3:12 AM.</span>
+            </div>
+            <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+              Your organization's 3:12 AM moment is coming. The question is whether you'll be in Story One or Story Two when it arrives.
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 10, flexShrink: 0, flexWrap: "wrap" as const }}>
+            <Link href="/proof-story" style={{ ...DM, display: "inline-block", padding: "14px 28px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.88)", fontWeight: 700, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" as const, textDecoration: "none", whiteSpace: "nowrap" as const }}>
+              Read the Full Proof →
+            </Link>
+            <Link href="/request-access" style={{ ...DM, display: "inline-block", padding: "14px 28px", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" as const, textDecoration: "none", whiteSpace: "nowrap" as const }}>
+              Build the Response Before 3:12 AM →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── EXPLORE DEEP SECTION ─────────────────────────────────────────────────────
+// Discovery path explorer at the end of the homepage.
+// "Choose your own depth" — 4 paths with enough description to create curiosity pull.
+function ExploreDeepSection() {
+  const paths = [
+    {
+      num: "01",
+      title: "Watch It Execute in Real Time",
+      body: "See the exact chain from trigger detection to executive authorization to full team executing — animated, step by step. You'll watch 12 minutes unfold in 90 seconds and see exactly who does what, in what order, with what authority.",
+      cta: "See the Execution Chain →",
+      href: "/how-it-executes",
+      accent: GOLD,
+    },
+    {
+      num: "02",
+      title: "Read Three Real Activation Stories",
+      body: "Ransomware at 3 AM. An activist investor filing a 13D. A supply chain collapse across 6 continents. Side-by-side timelines showing exactly what happens — with and without Readiness OS — and the specific financial outcomes that follow.",
+      cta: "Read the Proof Stories →",
+      href: "/proof-story",
+      accent: GOLD,
+    },
+    {
+      num: "03",
+      title: "Run Your Own 12-Minute Scenario",
+      body: "You play the executive. Pick a trigger — ransomware, activist investor, regulatory inquiry, supply chain failure — and run a live 4-step simulation. No commitment. No sign-in. See what your first 12 minutes look like when the response is pre-staged.",
+      cta: "Start the 12-Minute Experience →",
+      href: "/12-minute-experience",
+      accent: TEAL,
+    },
+    {
+      num: "04",
+      title: "Calculate Your Readiness ROI",
+      body: "Input your organization's revenue, risk exposure, and headcount. See the break-even calculation, 3-year net value, and the consulting retainer comparison. Most organizations break even in the first activation — often the first week.",
+      cta: "Run the ROI Calculator →",
+      href: "/roi-calculator",
+      accent: TEAL,
+    },
+  ];
+
+  return (
+    <section style={{ background: "#ffffff", borderTop: `4px solid ${GOLD}` }}>
+      {/* Header */}
+      <div style={{ borderBottom: "1px solid #E8E4DC", padding: "22px 0" }}>
+        <div style={{ ...CONTAINER, display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" as const, justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD, flexShrink: 0 }} />
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.32em", textTransform: "uppercase" as const, color: GOLD }}>
+              Go Deeper — Four Ways to Explore
+            </div>
+          </div>
+          <div style={{ ...DM, fontSize: 12, color: MUTED_LIGHT, fontWeight: 500, fontStyle: "italic" }}>
+            Each path takes 4–8 minutes. All four together: everything you need to make the decision.
+          </div>
+        </div>
+      </div>
+
+      {/* 4-column grid */}
+      <div style={{ ...CONTAINER }}>
+        <style>{`
+          @media (max-width: 900px) { .hp-explore-grid { grid-template-columns: 1fr 1fr !important; } }
+          @media (max-width: 540px) { .hp-explore-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
+        <div className="hp-explore-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
+          {paths.map((p, i) => (
+            <Link
+              key={i}
+              href={p.href}
+              style={{
+                display: "block",
+                padding: "44px 32px 40px",
+                borderRight: i < 3 ? "1px solid #E8E4DC" : "none",
+                textDecoration: "none",
+                transition: "background 0.25s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#FAFAF8"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
+            >
+              {/* Number */}
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 52, fontWeight: 700, color: "rgba(10,15,46,0.08)", lineHeight: 1, marginBottom: 20, letterSpacing: "-0.02em" }}>{p.num}</div>
+              {/* Accent rule */}
+              <div style={{ width: 32, height: 2, background: p.accent, marginBottom: 20 }} />
+              {/* Title */}
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,1.5vw,22px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 18 }}>{p.title}</div>
+              {/* Body */}
+              <div style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.75, marginBottom: 28, fontWeight: 500 }}>{p.body}</div>
+              {/* CTA */}
+              <div style={{ ...DM, fontSize: 12, fontWeight: 800, color: p.accent === TEAL ? TEAL : NAVY, letterSpacing: "0.06em", borderBottom: `1.5px solid ${p.accent}`, paddingBottom: 2, display: "inline-block" }}>
+                {p.cta}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom NAVY strip — scarcity + urgency */}
+      <div style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.07)", padding: "28px 0" }}>
+        <div style={{ ...CONTAINER, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" as const }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ width: 8, height: 8, background: GOLD, borderRadius: "50%", flexShrink: 0 }} />
+              <span style={{ ...DM, fontSize: 12, fontWeight: 700, color: GOLD, letterSpacing: "0.06em" }}>Founding Partner Program — 90-Day Validation Partnership</span>
+            </div>
+            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+            <span style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.52)", fontWeight: 500 }}>First-mover pricing · Pre-launch terms locked for partners</span>
+          </div>
+          <Link href="/request-access" style={{ ...DM, display: "inline-block", padding: "12px 28px", background: GOLD, color: NAVY, fontWeight: 800, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase" as const, textDecoration: "none", whiteSpace: "nowrap" as const, flexShrink: 0 }}>
+            Apply for Founding Partner Access →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -5092,10 +5422,16 @@ export default function Homepage() {
       {/* 1. CLAIM — The response is ready before the trigger fires */}
       <HeroSection />
 
-      {/* 1a. EXPLAINER — Plain English: what is Readiness OS, who needs it, why it exists */}
+      {/* 1a. BRIEF — 4 questions every visitor must be able to answer and repeat */}
+      <ThirtySecondBrief />
+
+      {/* 1b. EXPLAINER — Cost of inaction: WITH/WITHOUT timelines + scenario grid */}
       <PlainEnglishExplainer />
 
-      {/* 1b. FEEL IT — Reality Gap Simulator: 30 days vs 12 minutes, animated */}
+      {/* 1c. THE STORY — Pure narrative prose: 3:12 AM, two stories, emotional pull */}
+      <TheStorySection />
+
+      {/* 1d. FEEL IT — Reality Gap Simulator: 30 days vs 12 minutes, animated */}
       <RealityGapSimulator />
 
       {/* 1c. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
@@ -5145,6 +5481,10 @@ export default function Homepage() {
 
       {/* 16. CTA */}
       <CTASection />
+
+      {/* 17. EXPLORE DEEP — 4 discovery paths: "choose your depth" pull to more pages */}
+      <ExploreDeepSection />
+
       <HomepageFooter />
     </div>
   );
