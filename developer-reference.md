@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 25, 2026 (rev 65) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: June 25, 2026 (rev 66) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3923,6 +3923,32 @@ These were console errors, not visible rendering bugs — but they appear in pro
 ---
 
 ## 62. Homepage Hero — Live Simulation Panel + 5 Conversion Improvements — May 23, 2026 (rev 45)
+
+### 62b. RealityGapSimulator — Homepage Mobilization Gap Animation (rev 66)
+
+**File:** `client/src/pages/Homepage.tsx` — `RealityGapSimulator` function
+
+**Placement:** Inserted immediately after `<HeroSection />` and before `<ScenarioCardsRow />` in the render order (section 1b). Visitors encounter it on first scroll — no user action required.
+
+**What it does:** 10-second auto-playing animation that makes the 30-day vs. 12-minute contrast visceral and emotional rather than abstract. Three phases driven by `useState<0 | 1 | 2>` + `setTimeout`:
+
+| Phase | Timing | Visual |
+|---|---|---|
+| 0 — Without Readiness OS | 0–4.2s | Red-tinted panel; day counter ticks 0→30 via `setInterval`; chaos list items reveal progressively |
+| 1 — With Readiness OS | 4.2–8.4s | Teal panel activates; 12:00 countdown ticks to 0:00; readiness items reveal as steps complete |
+| 2 — Result | 8.4s+ | Gold result strip: "30 days → 12 minutes · 3,600× Execution Head Start"; gold CTA "Make This Real →" links to `/founding-partner-program` |
+
+**Replay button:** Top-right "↺ Replay" resets all state and reruns `runSim()`.
+
+**Messaging compliance:**
+- "3,600× Execution Head Start" — canonical framing (never "speed advantage")
+- "30 days" → "12 minutes" — locked comparison
+- CTA: "Make This Real →" → `/founding-partner-program` (Founding Partner language)
+- No AI-powered/driven language anywhere in the component
+
+**Do NOT remove or replace** — this is the first-scroll emotional proof point for the product thesis (Preparation → Readiness → Fearless). The ExecChainSection immediately below shows HOW it executes; this simulator shows WHY the gap matters.
+
+---
 
 ### 62a. HeroSimPanel — Live Auto-Cycling Execution Simulation
 

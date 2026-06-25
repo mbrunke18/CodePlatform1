@@ -438,7 +438,7 @@ function PhaseExecute({ onNext }: { onNext: () => void }) {
           </div>
           <button
             onClick={() => setAuthorized(true)}
-            style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, background: GOLD, border: "none", padding: "16px 40px", cursor: "pointer", fontSize: "13px" }}>
+            style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, background: GOLD, border: "none", padding: "16px 40px", cursor: "pointer" }}>
             ⚡ CEO AUTHORIZES — ACTIVATE PROTOCOL #31
           </button>
         </div>

@@ -1206,6 +1206,154 @@ function HeroSection() {
   );
 }
 
+// ─── REALITY GAP SIMULATOR ────────────────────────────────────────────────────
+function RealityGapSimulator() {
+  const [phase, setPhase] = useState<0 | 1 | 2>(0);
+  const [dayCount, setDayCount] = useState(0);
+  const [minSecs, setMinSecs] = useState(720);
+
+  const runSim = () => {
+    setPhase(0);
+    setDayCount(0);
+    setMinSecs(720);
+
+    let d = 0;
+    const di = setInterval(() => {
+      d += 1;
+      setDayCount(d);
+      if (d >= 30) clearInterval(di);
+    }, 3500 / 30);
+
+    setTimeout(() => {
+      setPhase(1);
+      let s = 720;
+      const si = setInterval(() => {
+        s = Math.max(0, s - 6);
+        setMinSecs(s);
+        if (s <= 0) clearInterval(si);
+      }, 3500 / 120);
+    }, 4200);
+
+    setTimeout(() => setPhase(2), 8400);
+  };
+
+  useEffect(() => {
+    const t = setTimeout(runSim, 900);
+    return () => clearTimeout(t);
+  }, []);
+
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, "0")}`;
+
+  const BC = { fontFamily: "'Barlow Condensed', sans-serif" } as const;
+  const CG = { fontFamily: "'Cormorant Garamond', Georgia, serif" } as const;
+
+  const BEFORE = [
+    "Analysts scoping the situation from scratch",
+    "Leadership debating who owns the response",
+    "Stakeholders scheduled for alignment calls",
+    "Briefs drafted under live pressure",
+    "Budgets estimated without pre-approval",
+    "30 days — before execution even begins",
+  ];
+  const AFTER = [
+    "Protocol matched — 11 tasks pre-staged",
+    "Authority chain configured — CEO notified",
+    "Budget envelope pre-approved — $2.4M ready",
+    "Stakeholders notified with full context",
+    "Executive authorizes in a single decision",
+    "12 minutes — full response underway",
+  ];
+
+  return (
+    <section style={{ background: "#040716", borderBottom: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "56px 40px" }}>
+
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 36, flexWrap: "wrap" as const, gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD }} />
+            <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Mobilization Gap</span>
+            <span style={{ ...BC, fontSize: 10, color: "rgba(255,255,255,0.28)", letterSpacing: "0.08em" }}>— feel it in 10 seconds</span>
+          </div>
+          <button
+            onClick={runSim}
+            style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, padding: "6px 16px", background: "transparent", border: "1px solid rgba(255,255,255,0.16)", color: "rgba(255,255,255,0.38)", cursor: "pointer" }}
+          >
+            ↺ Replay
+          </button>
+        </div>
+
+        {/* Two-panel simulator */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 2 }}>
+
+          {/* BEFORE */}
+          <div style={{ padding: "32px 28px", background: phase === 0 ? "rgba(192,57,43,0.11)" : "rgba(255,255,255,0.015)", border: `1px solid ${phase === 0 ? "rgba(192,57,43,0.45)" : "rgba(255,255,255,0.06)"}`, transition: "all 0.6s ease", position: "relative" as const }}>
+            {phase === 0 && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(to right,#C0392B,transparent)" }} />}
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: phase === 0 ? "#E74C3C" : "rgba(255,255,255,0.18)", marginBottom: 18, transition: "color 0.6s" }}>Without Readiness OS</div>
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ ...CG, fontSize: 68, fontWeight: 700, lineHeight: 1, color: phase === 0 ? "#E74C3C" : "rgba(255,255,255,0.12)", transition: "color 0.6s" }}>{dayCount}</div>
+              <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: phase === 0 ? "rgba(231,76,60,0.65)" : "rgba(255,255,255,0.12)", transition: "color 0.6s" }}>Days — mobilization still in progress</div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 7 }}>
+              {BEFORE.map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, opacity: phase === 0 ? (i < Math.ceil(dayCount / 5) ? 1 : 0.07) : 0.1, transition: "opacity 0.35s" }}>
+                  <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#E74C3C", flexShrink: 0, marginTop: 6, opacity: 0.65 }} />
+                  <span style={{ ...BC, fontSize: 13, color: "rgba(231,76,60,0.8)", lineHeight: 1.45 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AFTER */}
+          <div style={{ padding: "32px 28px", background: phase >= 1 ? "rgba(43,138,110,0.09)" : "rgba(255,255,255,0.015)", border: `1px solid ${phase >= 1 ? "rgba(43,138,110,0.42)" : "rgba(255,255,255,0.06)"}`, transition: "all 0.6s ease", position: "relative" as const }}>
+            {phase >= 1 && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(to right,${TEAL},transparent)` }} />}
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: phase >= 1 ? TEAL : "rgba(255,255,255,0.18)", marginBottom: 18, transition: "color 0.6s" }}>With Readiness OS</div>
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ ...CG, fontSize: 68, fontWeight: 700, lineHeight: 1, color: phase >= 1 ? TEAL : "rgba(255,255,255,0.12)", transition: "color 0.6s" }}>{fmt(minSecs)}</div>
+              <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: phase >= 1 ? "rgba(43,138,110,0.65)" : "rgba(255,255,255,0.12)", transition: "color 0.6s" }}>Minutes — response fully underway</div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 7 }}>
+              {AFTER.map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, opacity: phase >= 1 ? (i < Math.ceil((720 - minSecs) / 120) ? 1 : 0.07) : 0.07, transition: "opacity 0.35s" }}>
+                  <div style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 6, opacity: 0.7 }} />
+                  <span style={{ ...BC, fontSize: 13, color: "rgba(43,138,110,0.88)", lineHeight: 1.45 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Result strip */}
+        <div style={{ padding: "26px 32px", background: phase === 2 ? "rgba(201,168,76,0.07)" : "rgba(255,255,255,0.015)", border: `1px solid ${phase === 2 ? "rgba(201,168,76,0.32)" : "rgba(255,255,255,0.05)"}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 20, transition: "all 0.6s ease" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" as const }}>
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...CG, fontSize: 34, fontWeight: 700, lineHeight: 1, color: phase === 2 ? "#E74C3C" : "rgba(255,255,255,0.12)", transition: "color 0.6s" }}>30 days</div>
+              <div style={{ ...BC, fontSize: 9, letterSpacing: "0.18em", color: "rgba(255,255,255,0.22)", textTransform: "uppercase" as const }}>Old model</div>
+            </div>
+            <div style={{ ...BC, fontSize: 24, color: GOLD, fontWeight: 700, opacity: phase === 2 ? 1 : 0.08, transition: "opacity 0.6s" }}>→</div>
+            <div style={{ textAlign: "center" as const }}>
+              <div style={{ ...CG, fontSize: 34, fontWeight: 700, lineHeight: 1, color: phase === 2 ? TEAL : "rgba(255,255,255,0.12)", transition: "color 0.6s" }}>12 minutes</div>
+              <div style={{ ...BC, fontSize: 9, letterSpacing: "0.18em", color: "rgba(255,255,255,0.22)", textTransform: "uppercase" as const }}>Readiness OS</div>
+            </div>
+            <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.09)", flexShrink: 0 }} />
+            <div>
+              <div style={{ ...CG, fontSize: 40, fontWeight: 700, lineHeight: 1, color: phase === 2 ? GOLD : "rgba(255,255,255,0.1)", transition: "color 0.6s" }}>3,600×</div>
+              <div style={{ ...BC, fontSize: 9, letterSpacing: "0.18em", color: "rgba(255,255,255,0.22)", textTransform: "uppercase" as const }}>Execution Head Start</div>
+            </div>
+          </div>
+          <a
+            href="/founding-partner-program"
+            style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "13px 26px", background: phase === 2 ? GOLD : "transparent", color: phase === 2 ? NAVY : "rgba(255,255,255,0.18)", textDecoration: "none", border: `1px solid ${phase === 2 ? GOLD : "rgba(255,255,255,0.09)"}`, transition: "all 0.6s ease", display: "inline-block", whiteSpace: "nowrap" as const }}
+          >
+            Make This Real →
+          </a>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 // ─── EXECUTION CHAIN ──────────────────────────────────────────────────────────
 function ExecChainSection() {
   const BC2: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
@@ -4516,6 +4664,9 @@ export default function Homepage() {
 
       {/* 1. CLAIM — The response is ready before the trigger fires */}
       <HeroSection />
+
+      {/* 1b. FEEL IT — Reality Gap Simulator: 30 days vs 12 minutes, animated */}
+      <RealityGapSimulator />
 
       {/* 2. SITUATIONS — 4 live scenarios, immediately below the claim */}
       <ScenarioCardsRow />

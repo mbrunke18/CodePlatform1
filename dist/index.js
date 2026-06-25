@@ -238,6 +238,7 @@ __export(schema_exports, {
   insertOrganizationOnboardingSchema: () => insertOrganizationOnboardingSchema,
   insertOrganizationSchema: () => insertOrganizationSchema,
   insertOutcomeExecutionLogSchema: () => insertOutcomeExecutionLogSchema,
+  insertP0GeneratedProtocolSchema: () => insertP0GeneratedProtocolSchema,
   insertPeerBenchmarkSchema: () => insertPeerBenchmarkSchema,
   insertPeerReviewActionSchema: () => insertPeerReviewActionSchema,
   insertPeerReviewSchema: () => insertPeerReviewSchema,
@@ -265,6 +266,7 @@ __export(schema_exports, {
   insertProjectSchema: () => insertProjectSchema,
   insertProtocolSignalProfileSchema: () => insertProtocolSignalProfileSchema,
   insertProtocolVersionDeltaSchema: () => insertProtocolVersionDeltaSchema,
+  insertProtocolZeroConfigSchema: () => insertProtocolZeroConfigSchema,
   insertPulseMetricSchema: () => insertPulseMetricSchema,
   insertQuickStartTemplateSchema: () => insertQuickStartTemplateSchema,
   insertReadinessAssessmentSchema: () => insertReadinessAssessmentSchema,
@@ -368,6 +370,7 @@ __export(schema_exports, {
   organizationsRelations: () => organizationsRelations,
   outcomeExecutionLog: () => outcomeExecutionLog,
   outcomeTypeEnum: () => outcomeTypeEnum,
+  p0GeneratedProtocols: () => p0GeneratedProtocols,
   peerBenchmarks: () => peerBenchmarks,
   peerComparisons: () => peerComparisons,
   peerReviewActions: () => peerReviewActions,
@@ -409,6 +412,7 @@ __export(schema_exports, {
   prospectBriefsSent: () => prospectBriefsSent,
   protocolSignalProfiles: () => protocolSignalProfiles,
   protocolVersionDeltas: () => protocolVersionDeltas,
+  protocolZeroConfigs: () => protocolZeroConfigs,
   pulseMetrics: () => pulseMetrics,
   pulseMetricsRelations: () => pulseMetricsRelations,
   quickStartTemplates: () => quickStartTemplates,
@@ -509,7 +513,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, signalBriefProspects, prospectBriefsSent, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema, boardFeedback, insertBoardFeedbackSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, signalBriefProspects, prospectBriefsSent, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema, boardFeedback, insertBoardFeedbackSchema, protocolZeroConfigs, insertProtocolZeroConfigSchema, p0GeneratedProtocols, insertP0GeneratedProtocolSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6796,6 +6800,41 @@ var init_schema = __esm({
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertBoardFeedbackSchema = createInsertSchema2(boardFeedback).omit({ id: true, createdAt: true });
+    protocolZeroConfigs = pgTable2("protocol_zero_configs", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: uuid("organization_id").notNull().references(() => organizations.id, { onDelete: "cascade" }).unique(),
+      primaryAuthorityName: varchar("primary_authority_name", { length: 200 }),
+      primaryAuthorityEmail: varchar("primary_authority_email", { length: 200 }),
+      primaryAuthorityRole: varchar("primary_authority_role", { length: 100 }).default("CEO"),
+      backupAuthorityName: varchar("backup_authority_name", { length: 200 }),
+      backupAuthorityEmail: varchar("backup_authority_email", { length: 200 }),
+      backupAuthorityRole: varchar("backup_authority_role", { length: 100 }).default("COO"),
+      emergencyBudgetAmount: integer2("emergency_budget_amount"),
+      emergencyBudgetCurrency: varchar("emergency_budget_currency", { length: 10 }).default("USD"),
+      retainers: jsonb("retainers").$type().default([]),
+      notificationList: jsonb("notification_list").$type().default([]),
+      configuredBy: varchar("configured_by", { length: 255 }),
+      configuredAt: timestamp2("configured_at").defaultNow(),
+      updatedAt: timestamp2("updated_at").defaultNow()
+    });
+    insertProtocolZeroConfigSchema = createInsertSchema2(protocolZeroConfigs).omit({ id: true, configuredAt: true, updatedAt: true });
+    p0GeneratedProtocols = pgTable2("p0_generated_protocols", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: uuid("organization_id").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+      activationId: uuid("activation_id"),
+      situationTitle: varchar("situation_title", { length: 300 }).notNull(),
+      domain: varchar("domain", { length: 100 }),
+      urgency: varchar("urgency", { length: 30 }).default("high"),
+      context: text2("context"),
+      status: varchar("status", { length: 30 }).default("pending_review"),
+      // pending_review | promoted | dismissed
+      assignedProtocolNumber: integer2("assigned_protocol_number"),
+      promotedAt: timestamp2("promoted_at"),
+      dismissedAt: timestamp2("dismissed_at"),
+      reviewNote: text2("review_note"),
+      generatedAt: timestamp2("generated_at").defaultNow()
+    });
+    insertP0GeneratedProtocolSchema = createInsertSchema2(p0GeneratedProtocols).omit({ id: true, generatedAt: true });
   }
 });
 
@@ -12256,6 +12295,42 @@ var init_storage = __esm({
       }
       async updateCustomProtocol(id, data) {
         const [row] = await db.update(customProtocols).set({ ...data, updatedAt: /* @__PURE__ */ new Date() }).where(eq(customProtocols.id, id)).returning();
+        return row;
+      }
+      // ── Protocol #0 Pre-staging Configuration ─────────────────────────────────
+      async getProtocolZeroConfig(orgId) {
+        const { protocolZeroConfigs: protocolZeroConfigs2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const [row] = await db.select().from(protocolZeroConfigs2).where(eq(protocolZeroConfigs2.organizationId, orgId));
+        return row ?? null;
+      }
+      async upsertProtocolZeroConfig(orgId, data, userId) {
+        const { protocolZeroConfigs: protocolZeroConfigs2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const existing = await this.getProtocolZeroConfig(orgId);
+        if (existing) {
+          const [row2] = await db.update(protocolZeroConfigs2).set({ ...data, updatedAt: /* @__PURE__ */ new Date() }).where(eq(protocolZeroConfigs2.organizationId, orgId)).returning();
+          return row2;
+        }
+        const [row] = await db.insert(protocolZeroConfigs2).values({ organizationId: orgId, configuredBy: userId, ...data }).returning();
+        return row;
+      }
+      // ── Protocol #0 Generated Protocols ───────────────────────────────────────
+      async createP0GeneratedProtocol(data) {
+        const { p0GeneratedProtocols: p0GeneratedProtocols2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const [row] = await db.insert(p0GeneratedProtocols2).values(data).returning();
+        return row;
+      }
+      async getP0GeneratedProtocols(orgId) {
+        const { p0GeneratedProtocols: p0GeneratedProtocols2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { desc: desc32 } = await import("drizzle-orm");
+        return db.select().from(p0GeneratedProtocols2).where(eq(p0GeneratedProtocols2.organizationId, orgId)).orderBy(desc32(p0GeneratedProtocols2.generatedAt));
+      }
+      async updateP0GeneratedProtocolStatus(id, status, note) {
+        const { p0GeneratedProtocols: p0GeneratedProtocols2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const updateData = { status };
+        if (note) updateData.reviewNote = note;
+        if (status === "promoted") updateData.promotedAt = /* @__PURE__ */ new Date();
+        if (status === "dismissed") updateData.dismissedAt = /* @__PURE__ */ new Date();
+        const [row] = await db.update(p0GeneratedProtocols2).set(updateData).where(eq(p0GeneratedProtocols2.id, id)).returning();
         return row;
       }
     };
@@ -26041,7 +26116,7 @@ var init_LiveSignalIngestionService = __esm({
         console.log(`   \u2705 Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
         try {
           const { signalMonitoringConfig: signalMonitoringConfig2, users: users6, organizations: organizations6 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { ne: ne3, isNotNull: isNotNull2, inArray: inArray8 } = await import("drizzle-orm");
+          const { ne: ne3, isNotNull: isNotNull2, inArray: inArray9 } = await import("drizzle-orm");
           const configuredOrgs = await db.select({ orgId: signalMonitoringConfig2.organizationId }).from(signalMonitoringConfig2).where(ne3(signalMonitoringConfig2.organizationId, organizationId));
           const userOrgs = await db.selectDistinct({ orgId: users6.organizationId }).from(users6).where(isNotNull2(users6.organizationId));
           const allOrgIds = /* @__PURE__ */ new Set([
@@ -26050,7 +26125,7 @@ var init_LiveSignalIngestionService = __esm({
           ]);
           allOrgIds.delete(organizationId);
           const DEMO_ORG_NAMES = ["Innovate Dynamics"];
-          const demoOrgRows = await db.select({ id: organizations6.id }).from(organizations6).where(inArray8(organizations6.name, DEMO_ORG_NAMES));
+          const demoOrgRows = await db.select({ id: organizations6.id }).from(organizations6).where(inArray9(organizations6.name, DEMO_ORG_NAMES));
           for (const { id } of demoOrgRows) allOrgIds.delete(id);
           for (const orgId of allOrgIds) {
             try {
@@ -34750,6 +34825,136 @@ var init_playbooksData = __esm({
     playbooksData = {
       "playbooks": [
         {
+          "number": 0,
+          "protocol_code": "P0-000",
+          "name": "Universal Response Protocol",
+          "trigger": "A strategic trigger fires that matches no existing Readiness Protocol \u2014 a first-in-class event with no institutional precedent and no pre-staged response in the library",
+          "stakeholders": ["CEO", "COO", "General Counsel", "CFO", "Chief of Staff", "PMO Director"],
+          "response": "Protocol #0 stages the universal response infrastructure before any pattern is matched: authority chain locked, emergency budget envelope unlocked, external resource roster activated, and a Situation Assessment Framework deployed within 12 minutes of trigger detection \u2014 so the organization executes a structured first response rather than improvising. Without Protocol #0, a first-in-class trigger finds the enterprise in full improvisation mode \u2014 no authority chain, no budget clarity, no external contacts on call \u2014 and the 30-day mobilization cycle begins from zero.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Unbounded \u2014 first-in-class events carry no institutional precedent; exposure ranges from $5M to $5B+ depending on trigger type, industry, and regulatory environment",
+          "domain": 9,
+          "frequency": "rare",
+          "budget": 5e6
+        },
+        {
+          "number": 10001,
+          "protocol_code": "P0-D1",
+          "name": "Unknown Trigger \u2014 Market Dynamics",
+          "trigger": "A competitive or market trigger fires that matches no existing Market Dynamics Readiness Protocol \u2014 novel competitive action, unclassified market event, or first-in-class commercial threat with no institutional precedent",
+          "stakeholders": ["CEO", "CMO", "Chief Strategy Officer", "Chief Revenue Officer", "General Counsel"],
+          "response": "CEO activates Market Dynamics #0 \u2014 competitive intelligence sweep initiated, CMO stages market positioning response, Chief Strategy Officer deploys domain assessment framework, and emergency budget envelope unlocked for first-response within 12 minutes of trigger detection. Without a pre-staged market domain fallback, a novel competitive event finds the organization in improvisation mode \u2014 no authority chain, no positioning framework, no spend authorization \u2014 and the 30-day mobilization cycle begins from zero while the market shifts.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 unclassified market events in this domain have historically ranged from $5M in contained competitive incidents to $500M+ in market-defining shifts where response speed determined long-term positioning",
+          "domain": 1,
+          "frequency": "rare",
+          "budget": 25e5
+        },
+        {
+          "number": 10002,
+          "protocol_code": "P0-D2",
+          "name": "Unknown Trigger \u2014 Operational Excellence",
+          "trigger": "An operational disruption fires that matches no existing Operational Excellence Readiness Protocol \u2014 novel supply chain failure, unclassified process breakdown, or first-in-class operational crisis with no institutional precedent",
+          "stakeholders": ["COO", "VP Supply Chain", "VP Operations", "CFO", "General Counsel"],
+          "response": "COO activates Operational Excellence #0 \u2014 operational triage framework deployed across all functional areas, VP Supply Chain initiates alternative sourcing assessment, CFO unlocks emergency operational budget, and all critical process owners notified simultaneously within 12 minutes. Without a pre-staged operational domain fallback, a novel disruption cascades unchecked across interdependent systems before any coordinated response can be assembled.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel operational events in this domain have ranged from $2M in contained process failures to $1B+ in cascading supply chain disruptions where 24-hour response windows were missed",
+          "domain": 2,
+          "frequency": "rare",
+          "budget": 25e5
+        },
+        {
+          "number": 10003,
+          "protocol_code": "P0-D3",
+          "name": "Unknown Trigger \u2014 Financial Strategy",
+          "trigger": "A financial trigger fires that matches no existing Financial Strategy Readiness Protocol \u2014 novel capital event, unclassified market condition, or first-in-class financial exposure with no institutional precedent",
+          "stakeholders": ["CFO", "CEO", "General Counsel", "Board Chair", "Chief Risk Officer"],
+          "response": "CFO activates Financial Strategy #0 \u2014 financial exposure assessment initiated across all instruments and counterparties, Board Chair notified per pre-staged governance protocol, General Counsel assesses disclosure obligations, and emergency financial response framework deployed within 12 minutes. Without a pre-staged financial domain fallback, novel financial triggers create disclosure timing gaps and authority chain confusion that convert manageable exposure into regulatory violations.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 unclassified financial events in this domain carry disclosure obligations and market-moving exposure; historical range spans $1M in contained treasury events to $5B+ in systemic financial shocks",
+          "domain": 3,
+          "frequency": "rare",
+          "budget": 25e5
+        },
+        {
+          "number": 10004,
+          "protocol_code": "P0-D4",
+          "name": "Unknown Trigger \u2014 Regulatory & Compliance",
+          "trigger": "A regulatory or legal trigger fires that matches no existing Regulatory & Compliance Readiness Protocol \u2014 novel enforcement action, unclassified mandate, or first-in-class compliance requirement with no institutional precedent",
+          "stakeholders": ["General Counsel", "Chief Compliance Officer", "CEO", "CFO", "Board Chair"],
+          "response": "General Counsel activates Regulatory & Compliance #0 \u2014 outside counsel engaged via pre-negotiated retainer, Chief Compliance Officer deploys domain assessment framework, disclosure obligation timeline established, and Board/Audit Committee notified per pre-staged governance protocol within 12 minutes. Without a pre-staged regulatory domain fallback, novel enforcement actions find the organization unable to determine response authority, disclosure timing, or privilege boundaries \u2014 converting a manageable regulatory event into a material violation.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel regulatory events in this domain carry both financial and reputational exposure; historical range spans $500K in contained compliance gaps to $10B+ in systemic enforcement actions",
+          "domain": 4,
+          "frequency": "rare",
+          "budget": 2e6
+        },
+        {
+          "number": 10005,
+          "protocol_code": "P0-D5",
+          "name": "Unknown Trigger \u2014 Technology & Innovation",
+          "trigger": "A technology or cyber trigger fires that matches no existing Technology & Innovation Readiness Protocol \u2014 novel threat vector, unclassified system event, or first-in-class technology disruption with no institutional precedent",
+          "stakeholders": ["CTO", "CISO", "COO", "General Counsel", "CFO"],
+          "response": "CTO and CISO activate Technology & Innovation #0 \u2014 threat containment and triage framework deployed simultaneously, incident response retainer engaged, regulatory notification obligations assessed, and cross-functional technology response team convened within 12 minutes of detection. Without a pre-staged technology domain fallback, novel threats propagate through systems while the organization spends its first hours determining who has authority to act \u2014 every hour of delay compounds the exposure.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel technology events in this domain range from $1M in contained system incidents to $500M+ in cascading cyber or platform failures where the first 12 minutes determine the recovery trajectory",
+          "domain": 5,
+          "frequency": "rare",
+          "budget": 25e5
+        },
+        {
+          "number": 10006,
+          "protocol_code": "P0-D6",
+          "name": "Unknown Trigger \u2014 Talent & Leadership",
+          "trigger": "A talent or leadership trigger fires that matches no existing Talent & Leadership Readiness Protocol \u2014 novel workforce crisis, unclassified leadership event, or first-in-class organizational disruption with no institutional precedent",
+          "stakeholders": ["CHRO", "CEO", "General Counsel", "COO", "Board Chair"],
+          "response": "CHRO activates Talent & Leadership #0 \u2014 executive continuity framework invoked, General Counsel assesses employment and disclosure obligations, CEO determines board notification threshold, and workforce stabilization response staged within 12 minutes. Without a pre-staged talent domain fallback, novel leadership events create power vacuums and communication uncertainty that compound the disruption before any structured response can be assembled.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel talent and leadership events in this domain carry both operational and reputational exposure; historical range spans $2M in contained executive transitions to $1B+ in leadership crises that destabilized enterprise value",
+          "domain": 6,
+          "frequency": "rare",
+          "budget": 15e5
+        },
+        {
+          "number": 10007,
+          "protocol_code": "P0-D7",
+          "name": "Unknown Trigger \u2014 Brand & Reputation",
+          "trigger": "A reputational or communications trigger fires that matches no existing Brand & Reputation Readiness Protocol \u2014 novel media event, unclassified public crisis, or first-in-class reputational threat with no institutional precedent",
+          "stakeholders": ["CMO", "CEO", "General Counsel", "VP Communications", "Chief Revenue Officer"],
+          "response": "CMO activates Brand & Reputation #0 \u2014 crisis communications framework deployed, media monitoring escalated to real-time, General Counsel establishes permissible messaging perimeter, and customer and partner communications staged before the narrative solidifies. Without a pre-staged brand domain fallback, novel reputational events define themselves in the media before the organization has assembled anyone with authority to respond \u2014 the first 12 minutes of silence become the story.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel reputational events in this domain compound by the hour; historical range spans $500K in contained media incidents to $5B+ in brand crises where the first-12-minute response window was missed",
+          "domain": 7,
+          "frequency": "rare",
+          "budget": 15e5
+        },
+        {
+          "number": 10008,
+          "protocol_code": "P0-D8",
+          "name": "Unknown Trigger \u2014 Market Opportunities",
+          "trigger": "A strategic opportunity fires that matches no existing Market Opportunities Readiness Protocol \u2014 novel partnership signal, unclassified acquisition target, or first-in-class market opening requiring immediate response with no institutional precedent",
+          "stakeholders": ["CEO", "CFO", "Chief Strategy Officer", "General Counsel", "Board Chair"],
+          "response": "CEO activates Market Opportunities #0 \u2014 opportunity assessment framework deployed, CFO models financial parameters, General Counsel initiates pre-NDA engagement protocol, and Board Chair notified per pre-staged governance threshold within 12 minutes of signal detection. Without a pre-staged opportunity domain fallback, novel market openings close before the organization can assemble the authority and information needed to act \u2014 speed is the constraint, not capability.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel market opportunities in this domain represent upside exposure; missed windows have historically cost $10M\u2013$2B+ in value creation that accrued to organizations that could move faster",
+          "domain": 8,
+          "frequency": "rare",
+          "budget": 25e5
+        },
+        {
+          "number": 10009,
+          "protocol_code": "P0-D9",
+          "name": "Unknown Trigger \u2014 AI Governance",
+          "trigger": "An AI governance or ethics trigger fires that matches no existing AI Governance Readiness Protocol \u2014 novel regulatory action, unclassified algorithmic event, or first-in-class AI liability exposure with no institutional precedent",
+          "stakeholders": ["CTO", "Chief AI Officer", "General Counsel", "CEO", "Chief Compliance Officer"],
+          "response": "CTO and Chief AI Officer activate AI Governance #0 \u2014 affected AI systems assessed for suspension or containment, General Counsel initiates regulatory engagement posture, Chief Compliance Officer deploys domain assessment framework, and enterprise customer notification protocol staged within 12 minutes. Without a pre-staged AI governance domain fallback, novel algorithmic events compound in real time \u2014 each hour of system operation adds to the regulatory harm record while the organization debates who has authority to act.",
+          "response_window": "12 minutes",
+          "financial_exposure": "Variable \u2014 novel AI governance events carry regulatory, enterprise customer, and reputational exposure simultaneously; historical range spans $1M in contained model incidents to $500M+ in systemic AI failures where the response window was missed",
+          "domain": 9,
+          "frequency": "rare",
+          "budget": 2e6
+        },
+        {
           "number": 1,
           "protocol_code": "MD-001",
           "name": "New Market Entrant (Funded Startup)",
@@ -41273,6 +41478,7 @@ var init_PreparationUpdateEngine = __esm({
 var AdvanceLoopService_exports = {};
 __export(AdvanceLoopService_exports, {
   applyUpdateWithDelta: () => applyUpdateWithDelta,
+  generateDraftFromP0Activation: () => generateDraftFromP0Activation,
   getLearningVelocityIndex: () => getLearningVelocityIndex,
   getPendingUpdateQueue: () => getPendingUpdateQueue,
   getProtocolVersionTimeline: () => getProtocolVersionTimeline,
@@ -41528,6 +41734,37 @@ async function getProtocolVersionTimeline(playbookId, orgId) {
     )
   ).orderBy(desc26(protocolVersionDeltas.appliedAt));
   return deltas;
+}
+async function generateDraftFromP0Activation(outcomeId, orgId) {
+  try {
+    const { activationOutcomes: activationOutcomes3, playbookActivations: playbookActivations3, p0GeneratedProtocols: p0GeneratedProtocols2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq64 } = await import("drizzle-orm");
+    const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const [outcome] = await db2.select().from(activationOutcomes3).where(eq64(activationOutcomes3.id, outcomeId));
+    if (!outcome) return;
+    const [activation] = await db2.select().from(playbookActivations3).where(eq64(playbookActivations3.id, outcome.activationId));
+    if (!activation) return;
+    const playbookName = activation.playbookName ?? "";
+    const isP0 = playbookName.toLowerCase().includes("universal response") || playbookName.toLowerCase().includes("unknown trigger") || playbookName.startsWith("P0-") || activation.playbookId?.toString().startsWith("1000");
+    if (!isP0) return;
+    const existing = await db2.select().from(p0GeneratedProtocols2).where(eq64(p0GeneratedProtocols2.activationId, outcome.activationId));
+    if (existing.length > 0) return;
+    const context = activation.activationReason ?? activation.context ?? "";
+    const domain = activation.domain ?? "";
+    const situationTitle = context && context.length > 10 ? context.length > 120 ? context.slice(0, 120) + "\u2026" : context : playbookName.replace("Unknown Trigger \u2014 ", "").replace(" Domain", "") + " Response Protocol";
+    await db2.insert(p0GeneratedProtocols2).values({
+      organizationId: orgId,
+      activationId: outcome.activationId,
+      situationTitle,
+      domain: domain || "General",
+      urgency: activation.urgency ?? "high",
+      context: context || null,
+      status: "pending_review"
+    });
+    console.log(`[ADVANCE] Protocol #0 draft generated from activation ${outcome.activationId}: "${situationTitle}"`);
+  } catch (err) {
+    console.error("[ADVANCE] generateDraftFromP0Activation failed (non-critical):", err);
+  }
 }
 async function getPendingUpdateQueue(orgId) {
   const pending = await db.select().from(preparationUpdates).where(
@@ -57387,6 +57624,7 @@ async function registerRoutes(app2, existingServer) {
         const industryVertical = t.industryVertical || PROTOCOL_INDUSTRY_MAP[t.playbookNumber] || null;
         return {
           id: t.id,
+          playbookNumber: t.playbookNumber,
           name: t.name,
           description: t.description,
           domain: t.domainName || "Strategic Response",
@@ -62112,6 +62350,11 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         setImmediate(() => measureHypothesesForActivation2(req.params.id, req.orgId));
       } catch {
       }
+      try {
+        const { generateDraftFromP0Activation: generateDraftFromP0Activation2 } = await Promise.resolve().then(() => (init_AdvanceLoopService(), AdvanceLoopService_exports));
+        setImmediate(() => generateDraftFromP0Activation2(req.params.id, req.orgId));
+      } catch {
+      }
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: "Failed to save close-out data" });
@@ -64257,6 +64500,63 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
+  app2.get("/api/protocol-zero/config", requireOrgAccess2, async (req, res) => {
+    try {
+      const config = await storage.getProtocolZeroConfig(req.orgId);
+      res.json(config ?? null);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/protocol-zero/config", requireOrgAccess2, async (req, res) => {
+    try {
+      const {
+        primaryAuthorityName,
+        primaryAuthorityEmail,
+        primaryAuthorityRole,
+        backupAuthorityName,
+        backupAuthorityEmail,
+        backupAuthorityRole,
+        emergencyBudgetAmount,
+        emergencyBudgetCurrency,
+        retainers,
+        notificationList
+      } = req.body;
+      const config = await storage.upsertProtocolZeroConfig(req.orgId, {
+        primaryAuthorityName,
+        primaryAuthorityEmail,
+        primaryAuthorityRole,
+        backupAuthorityName,
+        backupAuthorityEmail,
+        backupAuthorityRole,
+        emergencyBudgetAmount: emergencyBudgetAmount ? parseInt(emergencyBudgetAmount) : null,
+        emergencyBudgetCurrency: emergencyBudgetCurrency ?? "USD",
+        retainers: retainers ?? [],
+        notificationList: notificationList ?? []
+      }, req.user?.id);
+      res.json(config);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/protocol-zero/generated", requireOrgAccess2, async (req, res) => {
+    try {
+      const protocols = await storage.getP0GeneratedProtocols(req.orgId);
+      res.json(protocols);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.patch("/api/protocol-zero/generated/:id/status", requireOrgAccess2, async (req, res) => {
+    try {
+      const { status, note } = req.body;
+      if (!status) return res.status(400).json({ error: "status required" });
+      const updated = await storage.updateP0GeneratedProtocolStatus(req.params.id, status, note);
+      res.json(updated);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
   app2.post("/api/certification/reset", requireOrgAccess2, async (req, res) => {
     try {
       const { certificationRecords: certificationRecords2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
@@ -64855,6 +65155,567 @@ async function seedEnrichedPlaybooks() {
   }
 }
 
+// server/seeds/protocolZeroSeed.ts
+init_db();
+init_schema();
+import { inArray as inArray8 } from "drizzle-orm";
+var MASTER_PHASES = [
+  {
+    id: "phase-1",
+    name: "IDENTIFY: Unknown Trigger Recognition",
+    timeWindow: "T+0:00 to T+0:12",
+    objective: "Confirm no existing Readiness Protocol matches the detected trigger. Characterize the event type, scope, and domain proximity. Activate Protocol #0 routing.",
+    tasks: [
+      {
+        role: "CEO",
+        priority: "lead",
+        deadline: "within 5 minutes",
+        items: [
+          "Receive Protocol #0 activation brief from Chief of Staff",
+          "Confirm trigger source and preliminary characterization",
+          "Authorize Protocol #0 routing \u2014 universal response infrastructure activates",
+          "Convene C-suite situation room"
+        ]
+      },
+      {
+        role: "Chief of Staff",
+        priority: "lead",
+        deadline: "within 3 minutes",
+        items: [
+          "Confirm system scan of all 180 Readiness Protocols \u2014 NO MATCH confirmed",
+          "Characterize trigger: source, estimated scope, initial domain proximity",
+          "Activate authority chain \u2014 all Tier 1 stakeholders notified simultaneously",
+          "Open situation log \u2014 every decision and action timestamped from T+0"
+        ]
+      },
+      {
+        role: "General Counsel",
+        priority: "required",
+        deadline: "within 8 minutes",
+        items: [
+          "Initial legal exposure assessment \u2014 regulatory, contractual, and liability dimensions",
+          "Confirm privilege protection for all situation room communications",
+          "Identify external counsel to activate if legal complexity confirmed"
+        ]
+      }
+    ],
+    restrictions: [
+      "No external communications of any kind",
+      "No resource commitments or spending authorizations",
+      "No field execution until DETECT phase complete",
+      "All situation room communications under privilege"
+    ],
+    decisionGate: {
+      title: "IDENTIFY \u2192 DETECT Gate",
+      criteria: [
+        "No protocol match confirmed \u2014 all 180 Readiness Protocols scanned",
+        "Trigger source identified and characterized",
+        "Protocol #0 routing authorized by CEO",
+        "All Tier 1 stakeholders confirmed in situation room"
+      ],
+      escalation: "If CEO is unavailable, COO has full Protocol #0 authority. Document the authorization chain in the situation log."
+    }
+  },
+  {
+    id: "phase-2",
+    name: "DETECT: Situation Assessment Framework",
+    timeWindow: "T+0:12 to T+1:00",
+    objective: "Deploy all 6 Protocol #0 components. Map the unknown trigger across all known risk dimensions. Surface the critical unknowns before full execution.",
+    tasks: [
+      {
+        role: "CEO + C-suite",
+        priority: "lead",
+        deadline: "within 15 minutes",
+        items: [
+          "Structured situation assessment: What do we know? What don't we know? What could make this worse?",
+          "Map the trigger to the closest known risk dimensions across all 9 domains",
+          "Assign domain owners for each risk dimension identified",
+          "Set the 12-minute execution standard and first 24-hour objectives"
+        ]
+      },
+      {
+        role: "CFO",
+        priority: "lead",
+        deadline: "within 20 minutes",
+        items: [
+          "Unlock emergency budget envelope \u2014 pre-approved Protocol #0 authorization",
+          "Establish spend authorization hierarchy for the situation",
+          "Model financial exposure range: floor / base case / ceiling",
+          "Identify board notification triggers (dollar threshold, regulatory exposure)"
+        ]
+      },
+      {
+        role: "General Counsel",
+        priority: "lead",
+        deadline: "within 20 minutes",
+        items: [
+          "Activate external counsel retainer \u2014 pre-negotiated Protocol #0 engagement",
+          "Assess regulatory notification obligations and timeline",
+          "Establish communication protocol: what can be said, to whom, when",
+          "Prepare board/audit committee notification if regulatory exposure confirmed"
+        ]
+      },
+      {
+        role: "PMO Director",
+        priority: "required",
+        deadline: "within 30 minutes",
+        items: [
+          "Initiate Rapid Protocol Build \u2014 structured framework for capturing the new protocol",
+          "Begin encoding all decisions, stakeholders, and workstreams in real time",
+          "Identify the closest existing protocol as structural template for the new permanent protocol",
+          "Set debrief and close-out timeline"
+        ]
+      }
+    ],
+    restrictions: [
+      "No public statements or media engagement",
+      "All spend requires CFO co-authorization",
+      "No field execution until situation assessment is complete",
+      "External counsel communications under privilege"
+    ],
+    decisionGate: {
+      title: "DETECT \u2192 EXECUTE Gate",
+      criteria: [
+        "All 6 Protocol #0 components active and staffed",
+        "Situation assessment complete \u2014 known, unknown, and escalation dimensions mapped",
+        "Emergency budget envelope unlocked and spend authorization hierarchy confirmed",
+        "Rapid Protocol Build initiated \u2014 PMO Director encoding the new protocol",
+        "Board/Audit Committee notified if regulatory threshold confirmed"
+      ],
+      escalation: "If situation assessment reveals cross-domain exposure (3+ domains affected), escalate to full board notification and engage Protocol #0 external advisory roster."
+    }
+  },
+  {
+    id: "phase-3",
+    name: "EXECUTE: Pre-Staged Universal Response",
+    timeWindow: "T+1:00 to T+12:00",
+    objective: "Execute a coordinated first response using Protocol #0 infrastructure. Every decision, workstream, and outcome is encoded as raw material for the new permanent protocol.",
+    tasks: [
+      {
+        role: "CEO",
+        priority: "lead",
+        deadline: "ongoing \u2014 30-minute check-ins",
+        items: [
+          "Authorize each workstream as confirmed by domain owners",
+          "Hold the 12-minute execution standard \u2014 no coordination delays",
+          "Maintain decision authority: no workstream executes without explicit authorization",
+          "Drive toward the first publicly communicable position within 4 hours"
+        ]
+      },
+      {
+        role: "COO",
+        priority: "lead",
+        deadline: "within 2 hours of EXECUTE activation",
+        items: [
+          "Coordinate all operational workstreams across functional teams",
+          "Ensure no workstream is waiting on another without explicit sequencing",
+          "Manage the situation room cadence \u2014 status every 30 minutes",
+          "Escalate resource conflicts to CEO immediately"
+        ]
+      },
+      {
+        role: "Domain Owners (assigned in DETECT)",
+        priority: "required",
+        deadline: "per workstream authorization",
+        items: [
+          "Execute assigned workstream with pre-approved budget envelope",
+          "Report status every 30 minutes to COO",
+          "Escalate any decision requiring authority beyond their level immediately",
+          "Capture every decision and action in the situation log \u2014 this becomes the new protocol"
+        ]
+      },
+      {
+        role: "PMO Director",
+        priority: "required",
+        deadline: "continuous throughout EXECUTE",
+        items: [
+          "Encode every decision, action, stakeholder, and outcome in real time",
+          "Draft new protocol structure as execution unfolds \u2014 this is the live build",
+          "Identify the trigger criteria, authority chain, and decision gates for the new protocol",
+          "Prepare close-out package for ADVANCE phase"
+        ]
+      }
+    ],
+    restrictions: [
+      "All workstreams require explicit CEO/COO authorization before launch",
+      "Every decision must be logged \u2014 no verbal-only decisions",
+      "All external communications require General Counsel sign-off",
+      "No off-protocol spending \u2014 all spend through approved CFO envelope"
+    ],
+    decisionGate: {
+      title: "EXECUTE \u2192 ADVANCE Gate",
+      criteria: [
+        "First response fully coordinated and executing across all active workstreams",
+        "Board/Audit Committee briefed with situation summary and response posture",
+        "External communications posture confirmed by CEO and General Counsel",
+        "New protocol draft structure complete \u2014 trigger, stakeholders, phases captured",
+        "Situation stable enough for structured close-out planning to begin"
+      ],
+      escalation: "If situation is not stabilizing by T+8 hours, escalate to board emergency session and engage full external advisory roster."
+    }
+  },
+  {
+    id: "phase-4",
+    name: "ADVANCE: New Protocol Build & Library Update",
+    timeWindow: "T+12:00 onward",
+    objective: "Close out the activation. Formalize the new protocol with full IDEA Framework structure. Feed all learnings back into the library so the organization is permanently stronger after every unknown.",
+    tasks: [
+      {
+        role: "PMO Director",
+        priority: "lead",
+        deadline: "within 5 business days of close-out",
+        items: [
+          "Finalize the new protocol with complete IDEA Framework phases, stakeholders, decision gates, and budget envelope",
+          "Document the trigger criteria and signal patterns that would have detected this event earlier",
+          "Identify cross-domain dependencies and update affected existing protocols",
+          "Submit for CEO and General Counsel review"
+        ]
+      },
+      {
+        role: "CEO",
+        priority: "lead",
+        deadline: "within 10 business days of close-out",
+        items: [
+          "Review and authorize the new protocol for permanent library inclusion",
+          "Conduct post-activation debrief with full C-suite",
+          "Identify what preparation would have accelerated the response",
+          "Direct PMO to update existing protocols with new cross-domain signals"
+        ]
+      },
+      {
+        role: "ADVANCE Loop",
+        priority: "required",
+        deadline: "automated on close-out completion",
+        items: [
+          "Distribute activation learnings across all 180 existing protocols \u2014 update signal patterns",
+          "Register new trigger pattern in the detection library",
+          "Update authority chain precedent records for future executive reference",
+          "Generate causal hypothesis: what preparation changes would have compressed response by how many minutes"
+        ]
+      },
+      {
+        role: "Board / Governance",
+        priority: "required",
+        deadline: "next board meeting",
+        items: [
+          "Present new protocol to board for awareness",
+          "Update organizational risk registry with new trigger category",
+          "Confirm readiness investment if recurrence is likely",
+          "Annual review: Protocol #0 activation history \u2014 is the library keeping pace with emerging threats?"
+        ]
+      }
+    ],
+    restrictions: [
+      "New protocol cannot be added to library without CEO authorization",
+      "All close-out materials under legal hold until General Counsel releases"
+    ],
+    decisionGate: {
+      title: "ADVANCE Close-Out Gate",
+      criteria: [
+        "New protocol fully documented with complete IDEA Framework structure",
+        "CEO has authorized new protocol for permanent library inclusion",
+        "ADVANCE loop has distributed learnings across affected existing protocols",
+        "New trigger pattern registered in detection library",
+        "Board notified and organizational risk registry updated"
+      ],
+      escalation: "If new protocol documentation reveals systemic gaps in the existing library (5+ protocols affected), initiate a full library review before close-out."
+    }
+  }
+];
+function buildDomainPhases(domainName, lead, stakeholders) {
+  return [
+    {
+      id: "phase-1",
+      name: "IDENTIFY: Unknown Trigger Recognition",
+      timeWindow: "T+0:00 to T+0:12",
+      objective: `Confirm no existing ${domainName} Readiness Protocol matches the detected trigger. Characterize the event and activate domain-level Protocol #0 routing.`,
+      tasks: [
+        {
+          role: lead,
+          priority: "lead",
+          deadline: "within 5 minutes",
+          items: [
+            `Receive ${domainName} #0 activation brief`,
+            "Confirm trigger source and preliminary characterization",
+            `Authorize ${domainName} #0 routing \u2014 domain response infrastructure activates`,
+            "Convene domain situation room with all assigned stakeholders"
+          ]
+        },
+        {
+          role: "General Counsel",
+          priority: "required",
+          deadline: "within 8 minutes",
+          items: [
+            "Initial legal exposure assessment for this domain",
+            "Confirm privilege protection for situation room communications",
+            "Identify external counsel if legal complexity confirmed"
+          ]
+        }
+      ],
+      restrictions: [
+        "No external communications",
+        "No resource commitments until DETECT complete",
+        "All communications under privilege"
+      ],
+      decisionGate: {
+        title: "IDENTIFY \u2192 DETECT Gate",
+        criteria: [
+          `No ${domainName} protocol match confirmed`,
+          "Trigger source characterized",
+          `${domainName} #0 routing authorized by ${lead}`,
+          "All domain stakeholders notified"
+        ],
+        escalation: `If trigger spans multiple domains, escalate to master Protocol #0 immediately.`
+      }
+    },
+    {
+      id: "phase-2",
+      name: "DETECT: Domain Assessment Framework",
+      timeWindow: "T+0:12 to T+1:00",
+      objective: `Deploy ${domainName} domain assessment framework. Map the unknown trigger against all known ${domainName} risk dimensions and surface critical unknowns.`,
+      tasks: [
+        {
+          role: lead,
+          priority: "lead",
+          deadline: "within 20 minutes",
+          items: [
+            "Structured domain situation assessment \u2014 known, unknown, escalation dimensions",
+            "Map trigger to closest known risk patterns in this domain",
+            "Assign workstream owners for each identified risk dimension",
+            "Set first 24-hour objectives and 12-minute execution target"
+          ]
+        },
+        {
+          role: "CFO",
+          priority: "lead",
+          deadline: "within 20 minutes",
+          items: [
+            "Unlock domain emergency budget envelope",
+            "Model financial exposure range for this domain event",
+            "Confirm board notification threshold"
+          ]
+        },
+        {
+          role: "PMO Director",
+          priority: "required",
+          deadline: "within 30 minutes",
+          items: [
+            "Initiate Rapid Protocol Build for this domain",
+            "Begin encoding all decisions in real time",
+            "Identify closest existing protocol as structural template"
+          ]
+        }
+      ],
+      restrictions: [
+        "No public statements",
+        "All spend requires CFO co-authorization",
+        "No execution until domain assessment complete"
+      ],
+      decisionGate: {
+        title: "DETECT \u2192 EXECUTE Gate",
+        criteria: [
+          "Domain assessment complete",
+          "Budget envelope unlocked",
+          "Rapid Protocol Build initiated",
+          "Board notified if regulatory threshold met"
+        ],
+        escalation: "If trigger reveals cross-domain exposure, escalate to master Protocol #0."
+      }
+    },
+    {
+      id: "phase-3",
+      name: "EXECUTE: Domain-Scoped Response",
+      timeWindow: "T+1:00 to T+12:00",
+      objective: `Execute a coordinated first response within the ${domainName} domain. Every decision and outcome is encoded as raw material for the new permanent protocol.`,
+      tasks: [
+        {
+          role: lead,
+          priority: "lead",
+          deadline: "ongoing \u2014 30-minute check-ins",
+          items: [
+            "Authorize each workstream as confirmed by domain leads",
+            "Hold 12-minute execution standard",
+            "Maintain decision authority across all domain workstreams",
+            "Drive toward first communicable position within 4 hours"
+          ]
+        },
+        {
+          role: "Domain Workstream Owners",
+          priority: "required",
+          deadline: "per workstream authorization",
+          items: [
+            "Execute assigned workstream with pre-approved budget",
+            "Report status every 30 minutes",
+            "Capture every decision in the situation log \u2014 this becomes the new protocol",
+            "Escalate cross-domain dependencies immediately"
+          ]
+        },
+        {
+          role: "PMO Director",
+          priority: "required",
+          deadline: "continuous throughout EXECUTE",
+          items: [
+            "Encode all decisions, actions, and outcomes in real time",
+            "Draft new domain protocol as execution unfolds",
+            "Identify trigger criteria and decision gates for the new protocol"
+          ]
+        }
+      ],
+      restrictions: [
+        "All workstreams require explicit authorization",
+        "Every decision logged \u2014 no verbal-only decisions",
+        "External communications require General Counsel sign-off"
+      ],
+      decisionGate: {
+        title: "EXECUTE \u2192 ADVANCE Gate",
+        criteria: [
+          "Domain response coordinated and executing",
+          "Board briefed on situation and response posture",
+          "New protocol draft structure complete",
+          "Situation stable enough for close-out planning"
+        ],
+        escalation: "If situation is not stabilizing by T+8 hours, escalate to master Protocol #0 and full board session."
+      }
+    },
+    {
+      id: "phase-4",
+      name: "ADVANCE: New Protocol Build & Library Update",
+      timeWindow: "T+12:00 onward",
+      objective: `Formalize the new ${domainName} protocol. Feed learnings back into the full library so every future unknown in this domain is met with stronger infrastructure.`,
+      tasks: [
+        {
+          role: "PMO Director",
+          priority: "lead",
+          deadline: "within 5 business days",
+          items: [
+            `Finalize new ${domainName} protocol with complete IDEA Framework structure`,
+            "Document trigger criteria and signal patterns for earlier detection",
+            "Update affected existing protocols with new cross-domain signals",
+            `Submit to ${lead} and General Counsel for review`
+          ]
+        },
+        {
+          role: lead,
+          priority: "lead",
+          deadline: "within 10 business days",
+          items: [
+            `Authorize new ${domainName} protocol for permanent library inclusion`,
+            "Conduct post-activation debrief with domain stakeholders",
+            "Identify preparation changes that would have accelerated response"
+          ]
+        },
+        {
+          role: "ADVANCE Loop",
+          priority: "required",
+          deadline: "automated on close-out",
+          items: [
+            "Distribute learnings across all 180 protocols \u2014 update signal patterns",
+            "Register new trigger pattern in detection library",
+            "Generate causal hypothesis on response time compression"
+          ]
+        }
+      ],
+      restrictions: [
+        "New protocol requires lead executive authorization before library inclusion"
+      ],
+      decisionGate: {
+        title: "ADVANCE Close-Out Gate",
+        criteria: [
+          "New protocol fully documented",
+          `${lead} has authorized library inclusion`,
+          "ADVANCE loop has distributed learnings",
+          "New trigger pattern registered",
+          "Board notified"
+        ],
+        escalation: "If new protocol reveals systemic gaps (5+ protocols affected), initiate full domain library review."
+      }
+    }
+  ];
+}
+var DOMAIN_ZERO_CONFIGS = [
+  { number: 0, code: "P0-000", domainName: "AI Governance", lead: "CEO", name: "Universal Response Protocol", budget: "5000000", severity: 95, stakeholders: ["CEO", "COO", "General Counsel", "CFO", "Chief of Staff", "PMO Director"] },
+  { number: 10001, code: "P0-D1", domainName: "Market Dynamics", lead: "CEO", name: "Unknown Trigger \u2014 Market Dynamics", budget: "2500000", severity: 75, stakeholders: ["CEO", "CMO", "Chief Strategy Officer", "Chief Revenue Officer", "General Counsel"] },
+  { number: 10002, code: "P0-D2", domainName: "Operational Excellence", lead: "COO", name: "Unknown Trigger \u2014 Operational Excellence", budget: "2500000", severity: 80, stakeholders: ["COO", "VP Supply Chain", "VP Operations", "CFO", "General Counsel"] },
+  { number: 10003, code: "P0-D3", domainName: "Financial Strategy", lead: "CFO", name: "Unknown Trigger \u2014 Financial Strategy", budget: "2500000", severity: 85, stakeholders: ["CFO", "CEO", "General Counsel", "Board Chair", "Chief Risk Officer"] },
+  { number: 10004, code: "P0-D4", domainName: "Regulatory & Compliance", lead: "General Counsel", name: "Unknown Trigger \u2014 Regulatory & Compliance", budget: "2000000", severity: 85, stakeholders: ["General Counsel", "Chief Compliance Officer", "CEO", "CFO", "Board Chair"] },
+  { number: 10005, code: "P0-D5", domainName: "Technology & Innovation", lead: "CTO", name: "Unknown Trigger \u2014 Technology & Innovation", budget: "2500000", severity: 80, stakeholders: ["CTO", "CISO", "COO", "General Counsel", "CFO"] },
+  { number: 10006, code: "P0-D6", domainName: "Talent & Leadership", lead: "CHRO", name: "Unknown Trigger \u2014 Talent & Leadership", budget: "1500000", severity: 75, stakeholders: ["CHRO", "CEO", "General Counsel", "COO", "Board Chair"] },
+  { number: 10007, code: "P0-D7", domainName: "Brand & Reputation", lead: "CMO", name: "Unknown Trigger \u2014 Brand & Reputation", budget: "1500000", severity: 75, stakeholders: ["CMO", "CEO", "General Counsel", "VP Communications", "Chief Revenue Officer"] },
+  { number: 10008, code: "P0-D8", domainName: "Market Opportunities", lead: "CEO", name: "Unknown Trigger \u2014 Market Opportunities", budget: "2500000", severity: 70, stakeholders: ["CEO", "CFO", "Chief Strategy Officer", "General Counsel", "Board Chair"] },
+  { number: 10009, code: "P0-D9", domainName: "AI Governance", lead: "CTO", name: "Unknown Trigger \u2014 AI Governance", budget: "2000000", severity: 80, stakeholders: ["CTO", "Chief AI Officer", "General Counsel", "CEO", "Chief Compliance Officer"] }
+];
+async function seedProtocolZeroFamily() {
+  try {
+    const allNumbers = DOMAIN_ZERO_CONFIGS.map((c) => c.number);
+    const existing = await db.select({ playbookNumber: playbookLibrary.playbookNumber }).from(playbookLibrary).where(inArray8(playbookLibrary.playbookNumber, allNumbers));
+    const existingSet = new Set(existing.map((e) => e.playbookNumber));
+    const toInsert = DOMAIN_ZERO_CONFIGS.filter((c) => !existingSet.has(c.number));
+    if (toInsert.length === 0) {
+      console.log("[Protocol #0 Family] All 10 Universal Response Protocols already seeded");
+      return;
+    }
+    const domains = await db.select().from(playbookDomains);
+    const domainMap = new Map(domains.map((d) => [d.name, d.id]));
+    const categories = await db.select().from(playbookCategories);
+    const categoryByDomain = /* @__PURE__ */ new Map();
+    for (const cat of categories) {
+      if (!categoryByDomain.has(cat.domainId)) {
+        categoryByDomain.set(cat.domainId, cat.id);
+      }
+    }
+    let inserted = 0;
+    for (const cfg of toInsert) {
+      const domainId = domainMap.get(cfg.domainName);
+      if (!domainId) {
+        console.warn(`[Protocol #0 Family] Domain not found: ${cfg.domainName} \u2014 skipping ${cfg.name}`);
+        continue;
+      }
+      const categoryId = categoryByDomain.get(domainId);
+      if (!categoryId) {
+        console.warn(`[Protocol #0 Family] No category for domain ${cfg.domainName} \u2014 skipping ${cfg.name}`);
+        continue;
+      }
+      const phases = cfg.number === 0 ? MASTER_PHASES : buildDomainPhases(cfg.domainName, cfg.lead, cfg.stakeholders);
+      const isUniversalMaster = cfg.number === 0;
+      const description = isUniversalMaster ? "Activates when no existing Readiness Protocol matches the detected trigger. Stages authority chain, budget envelope, external resources, and situation assessment framework within 12 minutes for any first-in-class event." : `Activates when a ${cfg.domainName} trigger fires with no matching Readiness Protocol. Stages domain-scoped authority chain, budget envelope, and assessment framework within 12 minutes.`;
+      const whyItMatters = isUniversalMaster ? "The 180 Readiness Protocols cover every known strategic scenario. Protocol #0 covers everything else. Organizations that have never faced a situation before still face it \u2014 the difference is whether their first 12 minutes are structured preparation or improvised chaos." : `Protocol #0 for ${cfg.domainName} ensures that even novel, unclassified events in this domain are met with pre-staged infrastructure. The domain is known; the exact situation is not. That distinction compresses the response from 30 days to 12 minutes.`;
+      await db.insert(playbookLibrary).values({
+        playbookNumber: cfg.number,
+        domainId,
+        categoryId,
+        name: cfg.name,
+        description,
+        strategicCategory: "defense",
+        triggerCriteria: `Trigger fires with no match in the ${cfg.domainName} Readiness Protocol library`,
+        primaryExecutiveRole: cfg.lead,
+        severityScore: cfg.severity,
+        timeSensitivity: 12,
+        activationFrequencyTier: "RARE",
+        tier1Stakeholders: cfg.stakeholders.slice(0, 3),
+        tier2Stakeholders: cfg.stakeholders.slice(3),
+        tier1Count: 3,
+        tier2Count: cfg.stakeholders.length - 3,
+        preApprovedBudget: cfg.budget,
+        primaryResponseStrategy: `${cfg.lead} activates ${cfg.name} \u2014 domain assessment framework deployed, authority chain staged, budget envelope unlocked, and external resources activated within 12 minutes of trigger detection.`,
+        targetExecutionTime: 12,
+        targetResponseSpeed: 12,
+        enrichedPhases: phases,
+        whyItMatters,
+        signalSources: [
+          "All 180 Readiness Protocol trigger patterns (no-match confirmation)",
+          "Real-time signal feed \u2014 unclassified pattern detection",
+          "Executive escalation from domain monitoring systems"
+        ],
+        isActive: true
+      });
+      inserted++;
+    }
+    console.log(`[Protocol #0 Family] Seeded ${inserted} Universal Response Protocol(s)`);
+  } catch (error) {
+    console.error("[Protocol #0 Family] Seed failed (non-fatal):", error);
+  }
+}
+
 // server/index.ts
 init_db();
 init_schema();
@@ -65438,6 +66299,7 @@ server.listen(
         );
       }
       await seedEnrichedPlaybooks();
+      await seedProtocolZeroFamily();
       try {
         await db.execute(sql26`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS strategic_objectives jsonb`);
         await db.execute(sql26`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS execution_progress_toward_goal integer DEFAULT 0`);
