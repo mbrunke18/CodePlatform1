@@ -21,7 +21,7 @@ const TEAL = "#2B8A6E";
 const scenarioComparisons = [
   {
     title: "Strategic Market Entry",
-    icon: "🌏",
+    iconKey: "trending",
     industry: "Luxury & Fashion",
     type: "offense" as const,
     traditional: { time: "6-9 months", cost: "€280M opportunity lost" },
@@ -31,7 +31,7 @@ const scenarioComparisons = [
   },
   {
     title: "Ransomware Attack",
-    icon: "🔒",
+    iconKey: "shield",
     industry: "Financial Services",
     type: "defense" as const,
     traditional: { time: "30 days", cost: "$36.7M average impact" },
@@ -41,7 +41,7 @@ const scenarioComparisons = [
   },
   {
     title: "Critical Supplier Failure",
-    icon: "🏭",
+    iconKey: "building",
     industry: "Manufacturing",
     type: "defense" as const,
     traditional: { time: "4-5 days", cost: "$96M+ production impact" },
@@ -51,7 +51,7 @@ const scenarioComparisons = [
   },
   {
     title: "M&A Day 1 Integration",
-    icon: "🤝",
+    iconKey: "target",
     industry: "Corporate Strategy",
     type: "offense" as const,
     traditional: { time: "90+ days", cost: "$180M synergy delay" },
@@ -838,6 +838,11 @@ export default function Investors() {
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
                   className="bg-white border border-[#E8E4DC] p-6 hover:border-[#C9A84C]/50 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
+                    {(() => {
+                      const Ic = scenario.iconKey === "shield" ? Shield : scenario.iconKey === "building" ? Building : scenario.iconKey === "target" ? Target : TrendingUp;
+                      const col = scenario.type === "offense" ? TEAL : NAVY;
+                      return <div style={{ width: 36, height: 36, background: `${col}12`, border: `1px solid ${col}25`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><Ic size={16} color={col} strokeWidth={2} /></div>;
+                    })()}
                     <div>
                       <h3 className="text-[#0A0F2E] font-bold">{scenario.title}</h3>
                       <p className="text-[#6B7280] text-xs font-bold">{scenario.industry}</p>

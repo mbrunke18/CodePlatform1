@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { updatePageMetadata } from "@/lib/seo";
 import { ArrowRight, CheckCircle2, Clock, Shield, Users, BookOpen, TrendingUp, Zap, Globe, Mail, Phone, Link2, Send } from "lucide-react";
+import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -152,6 +153,7 @@ export default function ExecutiveBrief() {
 
         {/* Print-friendly header */}
         <section style={{ background: NAVY, padding: "56px 48px 48px", position: "relative", overflow: "hidden" }}>
+          <img src={aerialCityImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.08, pointerEvents: "none" }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
           <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 32, flexWrap: "wrap", marginBottom: 40 }}>

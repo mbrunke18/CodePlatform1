@@ -1,6 +1,7 @@
 import PageLayout from "@/components/layout/PageLayout";
 import ProductShowcase from "@/components/marketing/ProductShowcase";
 import { SCENARIO_GROUPS, SCENARIOS } from "./demos/scenarioData";
+import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 
 const NAVY    = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -180,6 +181,7 @@ export default function DemoHub() {
 
         {/* Hero */}
         <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}`, position: "relative", overflow: "hidden" }}>
+          <img src={aerialCityImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.09, pointerEvents: "none" }} />
           <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
           <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 600, height: 600, background: `radial-gradient(circle, rgba(43,138,110,0.12) 0%, transparent 65%)`, pointerEvents: "none" }} />
           <div style={{ maxWidth: 960, margin: "0 auto", padding: "72px 28px 56px", position: "relative", zIndex: 1 }}>

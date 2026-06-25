@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, type CSSProperties } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
+import { Radio, Clock, Users, Zap, CheckCircle2 } from "lucide-react";
+import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 
 const NAVY    = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -193,8 +195,9 @@ export default function HowItExecutes() {
       <div style={{ background: NAVY, minHeight: "100vh", ...DM }}>
 
         {/* Hero */}
-        <div style={{ background: NAVY_BG, borderBottom: `1px solid rgba(201,168,76,0.15)`, padding: "80px 48px 56px" }}>
-          <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ background: NAVY_BG, borderBottom: `1px solid rgba(201,168,76,0.15)`, padding: "80px 48px 56px", position: "relative", overflow: "hidden" }}>
+          <img src={aerialCityImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.09, pointerEvents: "none" }} />
+          <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 18 }}>
               <div style={{ width: 28, height: 1, background: GOLD }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The 12-Minute Execution Chain</span>
@@ -231,12 +234,17 @@ export default function HowItExecutes() {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
                 {[
-                  { window: "< 60 sec", phase: "01", label: "Signal detected & protocol matched", detail: "Continuous monitoring fires. 231 patterns checked. Readiness Protocol identified. Risk score assigned.", color: GOLD },
-                  { window: "< 3 min",  phase: "02", label: "All stakeholders notified", detail: "Every executive receives a role-specific brief simultaneously — not a generic alert. No one has to find the contact list.", color: TEAL },
-                  { window: "< 5 min",  phase: "03", label: "Executive reviews & authorizes", detail: "Pre-staged brief reviewed. One authorization. Budget unlocked. Authority chain confirmed. No committee.", color: GOLD },
-                  { window: "< 12 min", phase: "04", label: "Full team executing", detail: "Tasks deployed. Integrations triggered. Jira updated. Teams notified. Audit trail open. Response underway.", color: TEAL },
+                  { window: "< 60 sec", phase: "01", label: "Signal detected & protocol matched", detail: "Continuous monitoring fires. 231 patterns checked. Readiness Protocol identified. Risk score assigned.", color: GOLD, Icon: Radio },
+                  { window: "< 3 min",  phase: "02", label: "All stakeholders notified", detail: "Every executive receives a role-specific brief simultaneously — not a generic alert. No one has to find the contact list.", color: TEAL, Icon: Users },
+                  { window: "< 5 min",  phase: "03", label: "Executive reviews & authorizes", detail: "Pre-staged brief reviewed. One authorization. Budget unlocked. Authority chain confirmed. No committee.", color: GOLD, Icon: CheckCircle2 },
+                  { window: "< 12 min", phase: "04", label: "Full team executing", detail: "Tasks deployed. Integrations triggered. Jira updated. Teams notified. Audit trail open. Response underway.", color: TEAL, Icon: Zap },
                 ].map((item, i) => (
                   <div key={item.phase} style={{ padding: "18px 16px", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none", textAlign: "center" }}>
+                    <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}>
+                      <div style={{ width: 28, height: 28, background: `${item.color}18`, border: `1px solid ${item.color}35`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <item.Icon size={13} color={item.color} strokeWidth={2} />
+                      </div>
+                    </div>
                     <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: item.color, marginBottom: 4 }}>{item.window}</div>
                     <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: 6 }}>Phase {item.phase}</div>
                     <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.75)", marginBottom: 6, lineHeight: 1.4 }}>{item.label}</div>

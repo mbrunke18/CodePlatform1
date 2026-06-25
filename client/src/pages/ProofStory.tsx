@@ -2,6 +2,8 @@ import { useState, Fragment, type CSSProperties } from "react";
 import { Link } from "wouter";
 import ProductShowcase from "@/components/marketing/ProductShowcase";
 import PageLayout from "@/components/layout/PageLayout";
+import { Shield, TrendingUp, Layers } from "lucide-react";
+import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 
 const NAVY    = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -210,8 +212,9 @@ export default function ProofStory() {
       <div className="ps-body" style={{ background: "#fff", ...DM }}>
 
         {/* Hero */}
-        <div style={{ background: NAVY, padding: "80px 48px 56px" }}>
-          <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ background: NAVY, padding: "80px 48px 56px", position: "relative", overflow: "hidden" }}>
+          <img src={aerialCityImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.09, pointerEvents: "none" }} />
+          <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 18 }}>
               <div style={{ width: 28, height: 1, background: GOLD }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Proof — What 12 Minutes Actually Looks Like</span>
@@ -227,12 +230,15 @@ export default function ProofStory() {
             {/* Domain coverage strip */}
             <div style={{ display: "flex", justifyContent: "center", gap: 0, maxWidth: 720, margin: "0 auto 24px", border: "1px solid rgba(201,168,76,0.18)" }}>
               {[
-                { domain: "GROWTH & POSITIONING", situations: "Market windows · Competitor moves · M&A execution · Product launches", color: TEAL },
-                { domain: "RISK & RESILIENCE", situations: "Ransomware · Regulatory filings · Supply disruptions · Activist investors", color: GOLD },
-                { domain: "TRANSFORMATION", situations: "Workforce changes · Digital rollouts · Go-to-market pivots · Integrations", color: "rgba(255,255,255,0.55)" },
+                { domain: "GROWTH & POSITIONING", situations: "Market windows · Competitor moves · M&A execution · Product launches", color: TEAL,   Icon: TrendingUp },
+                { domain: "RISK & RESILIENCE",    situations: "Ransomware · Regulatory filings · Supply disruptions · Activist investors", color: GOLD,  Icon: Shield },
+                { domain: "TRANSFORMATION",       situations: "Workforce changes · Digital rollouts · Go-to-market pivots · Integrations", color: "rgba(255,255,255,0.55)", Icon: Layers },
               ].map((d, i) => (
                 <div key={d.domain} style={{ flex: 1, padding: "16px 18px", background: "rgba(255,255,255,0.03)", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none", textAlign: "left" }}>
-                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: d.color, marginBottom: 6 }}>{d.domain}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                    <d.Icon size={11} color={d.color} strokeWidth={2.5} />
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: d.color }}>{d.domain}</div>
+                  </div>
                   <div style={{ fontSize: 11, color: "rgba(255,255,255,0.42)", lineHeight: 1.6 }}>{d.situations}</div>
                 </div>
               ))}
