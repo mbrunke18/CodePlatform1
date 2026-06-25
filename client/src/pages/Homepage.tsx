@@ -9,8 +9,11 @@ import { TechCrest } from "@/components/TechCrest";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import ExecutionOSMicrosoftDiagram from "@/components/ExecutionOSMicrosoftDiagram";
 import EcosystemIntegrationDiagram from "@/components/EcosystemIntegrationDiagram";
+import { Shield, TrendingUp, Layers, AlertTriangle, BarChart3, Users, Briefcase, Zap, Target, Clock, CheckCircle2, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/images/executive-floor-night.png";
 import aerialImg from "@/assets/images/aerial-city-grid.png";
+import boardroomImg from "@/assets/images/investors-boardroom.png";
+import execDecisionImg from "@/assets/images/executive-decision.png";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -1151,15 +1154,22 @@ function HeroSection() {
               {/* All three strategic domains */}
               <div className="hp-domain-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 1, marginTop: 28 }}>
                 {[
-                  { domain: "RISK & RESILIENCE", examples: "Ransomware · Activist investor · Regulatory inquiry · Supply chain collapse · Data breach", color: "#C0392B22", border: "#C0392B55", label: "rgba(192,57,43,0.8)" },
-                  { domain: "GROWTH & POSITIONING", examples: "Market entry · Competitor displacement · M&A timing · Go-to-market sprint · Product launch", color: "rgba(201,168,76,0.08)", border: "rgba(201,168,76,0.35)", label: GOLD },
-                  { domain: "TRANSFORMATION", examples: "Digital transformation · AI governance · Workforce restructuring · Regulatory overhaul · Platform migration", color: "rgba(43,138,110,0.08)", border: "rgba(43,138,110,0.35)", label: TEAL },
-                ].map(d => (
-                  <div key={d.domain} style={{ background: d.color, border: `1px solid ${d.border}`, padding: "12px 16px" }}>
-                    <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: d.label, marginBottom: 5 }}>{d.domain}</div>
-                    <div style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.52)", lineHeight: 1.6 }}>{d.examples}</div>
-                  </div>
-                ))}
+                  { domain: "RISK & RESILIENCE",    icon: "shield",   count: "64", examples: "Ransomware · Activist investor · Regulatory inquiry · Supply chain · Data breach", color: "#C0392B22", border: "#C0392B55", label: "rgba(192,57,43,0.85)" },
+                  { domain: "GROWTH & POSITIONING", icon: "trending",  count: "72", examples: "Market entry · Competitor displacement · M&A timing · Go-to-market sprint · Product launch", color: "rgba(201,168,76,0.08)", border: "rgba(201,168,76,0.35)", label: GOLD },
+                  { domain: "TRANSFORMATION",       icon: "layers",   count: "44", examples: "Digital transformation · AI governance · Workforce restructuring · Platform migration", color: "rgba(43,138,110,0.08)", border: "rgba(43,138,110,0.35)", label: TEAL },
+                ].map(d => {
+                  const DIcon = d.icon === "shield" ? Shield : d.icon === "trending" ? TrendingUp : Layers;
+                  return (
+                    <div key={d.domain} style={{ background: d.color, border: `1px solid ${d.border}`, padding: "14px 16px" }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                        <DIcon size={14} color={d.label} strokeWidth={2} />
+                        <span style={{ ...DM, fontSize: 8, fontWeight: 700, color: d.label, opacity: 0.7, letterSpacing: "0.06em" }}>{d.count} protocols</span>
+                      </div>
+                      <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: d.label, marginBottom: 6 }}>{d.domain}</div>
+                      <div style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.52)", lineHeight: 1.6 }}>{d.examples}</div>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Outcome proof — what actually moves */}
@@ -1734,6 +1744,58 @@ function ScenarioHookSection() {
 }
 
 // ─── SCENARIO CARDS ROW ───────────────────────────────────────────────────────
+// ─── PHOTO BREAK — boardroom image with stat overlay ─────────────────────────
+function PhotoBreakSection() {
+  const BC = { fontFamily: "'Barlow Condensed', sans-serif" } as const;
+  const CG = { fontFamily: "'Cormorant Garamond', Georgia, serif" } as const;
+  return (
+    <section style={{ position: "relative", overflow: "hidden", minHeight: 340 }}>
+      {/* Background photo */}
+      <img
+        src={boardroomImg}
+        alt=""
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 35%" }}
+      />
+      {/* Dark gradient overlay — heavier on the left where text lives */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,15,46,0.96) 0%, rgba(10,15,46,0.88) 45%, rgba(10,15,46,0.55) 75%, rgba(10,15,46,0.25) 100%)" }} />
+      {/* Content */}
+      <div style={{ position: "relative", maxWidth: 1280, margin: "0 auto", padding: "64px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 40 }}>
+        {/* Left — quote */}
+        <div style={{ maxWidth: 560 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD }} />
+            <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", color: GOLD }}>THE READINESS PREMISE</span>
+          </div>
+          <blockquote style={{ ...CG, fontSize: "clamp(22px,2.6vw,34px)", fontWeight: 700, color: "#fff", lineHeight: 1.25, margin: "0 0 20px", letterSpacing: "-0.01em" }}>
+            "Every enterprise situation you'll face has already been faced by someone else.
+            <span style={{ color: GOLD }}> The response doesn't have to be built under pressure."</span>
+          </blockquote>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 1, height: 28, background: "rgba(201,168,76,0.4)" }} />
+            <span style={{ ...BC, fontSize: 11, color: "rgba(255,255,255,0.62)", letterSpacing: "0.08em" }}>Martin Brunke · Founder, VaughnMartin · Built on 20 years of Fortune 500 observation</span>
+          </div>
+        </div>
+        {/* Right — 3 proof stats */}
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: 20, minWidth: 220 }}>
+          {[
+            { n: "180",   label: "Readiness Protocols",    sub: "Pre-staged before any trigger fires" },
+            { n: "231",   label: "Triggers Monitored",     sub: "Continuously, every 15 minutes" },
+            { n: "12 min", label: "Execution Head Start",  sub: "30 days compressed to 12 minutes" },
+          ].map(s => (
+            <div key={s.n} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1, minWidth: 72, textAlign: "right" as const }}>{s.n}</div>
+              <div>
+                <div style={{ ...BC, fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.06em" }}>{s.label}</div>
+                <div style={{ ...BC, fontSize: 10, color: "rgba(255,255,255,0.52)", marginTop: 2 }}>{s.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ScenarioCardsRow() {
   const SCENARIOS = [
     {
@@ -1806,23 +1868,29 @@ function ScenarioCardsRow() {
 
         {/* 5 scenario cards */}
         <div className="hp-scenario-grid" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-          {SCENARIOS.map((item, i) => (
-            <Link key={i} href={item.href} style={{
-              display: "block", padding: "22px 20px 20px",
-              borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none",
-              borderTop: `2px solid ${item.accent}`,
-              textDecoration: "none",
-              transition: "background 0.2s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-            >
-              <div style={{ ...DM, color: item.accent, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
-              <div style={{ ...DM, color: "#fff", fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>{item.label}</div>
-              <div style={{ ...DM, color: "rgba(255,255,255,0.62)", fontSize: 11, lineHeight: 1.6, marginBottom: 14 }}>{item.sub}</div>
-              <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>See the response →</span>
-            </Link>
-          ))}
+          {SCENARIOS.map((item, i) => {
+            const DomainIcon = item.domain === "GROWTH & POSITIONING" ? TrendingUp : item.domain === "TRANSFORMATION" ? Layers : Shield;
+            return (
+              <Link key={i} href={item.href} style={{
+                display: "block", padding: "22px 20px 20px",
+                borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none",
+                borderTop: `2px solid ${item.accent}`,
+                textDecoration: "none",
+                transition: "background 0.2s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                  <DomainIcon size={11} color={item.accent} strokeWidth={2.5} />
+                  <div style={{ ...DM, color: item.accent, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const }}>{item.domain}</div>
+                </div>
+                <div style={{ ...DM, color: "#fff", fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>{item.label}</div>
+                <div style={{ ...DM, color: "rgba(255,255,255,0.62)", fontSize: 11, lineHeight: 1.6, marginBottom: 14 }}>{item.sub}</div>
+                <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>See the response →</span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* 30 days → 12 minutes + demo CTA */}
@@ -4824,6 +4892,9 @@ export default function Homepage() {
 
       {/* 1b. FEEL IT — Reality Gap Simulator: 30 days vs 12 minutes, animated */}
       <RealityGapSimulator />
+
+      {/* 1c. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
+      <PhotoBreakSection />
 
       {/* 2. SITUATIONS — 4 live scenarios, immediately below the claim */}
       <ScenarioCardsRow />
