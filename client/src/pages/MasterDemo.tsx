@@ -756,9 +756,15 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
             ↺ Run Again
           </button>
         </div>
-        <a href="/demo-hub" style={{ ...BC, fontSize: 11, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.12em", display: "inline-block" }}>
-          ← Try a Different Scenario
-        </a>
+        <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
+          <a href="/demo-hub" style={{ ...BC, fontSize: 11, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.12em" }}>
+            ← Try a Different Scenario
+          </a>
+          <span style={{ color: W25, fontSize: 11 }}>·</span>
+          <a href="/protocol-zero" style={{ ...BC, fontSize: 11, fontWeight: 700, color: TEAL_LT, textDecoration: "none", letterSpacing: "0.12em", borderBottom: `1px solid ${TEAL}60`, paddingBottom: 1 }}>
+            See Protocol #0 — What happens when no protocol matches →
+          </a>
+        </div>
       </div>
     </div>
   );
