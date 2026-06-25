@@ -10,7 +10,7 @@ const NAVY_BG = "#132558";
 const GOLD    = "#C9A84C";
 const TEAL    = "#2B8A6E";
 const IVORY   = "#F0EDE4";
-const MUTED   = "rgba(240,237,228,0.55)";
+const MUTED   = "rgba(240,237,228,0.90)";
 const GEO: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const DM: CSSProperties  = { fontFamily: "'Barlow', system-ui, sans-serif" };
 
@@ -252,6 +252,29 @@ export default function HowItExecutes() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Page Orientation — white strip: tells visitors what this page does */}
+        <div style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", padding: "36px 48px", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap" as const }}>
+            <div style={{ flex: 1, minWidth: 280 }}>
+              <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>On This Page</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>
+                The exact chain from signal detected to team executing — choose a trigger and watch it run
+              </div>
+              <p style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 15, color: "#2D3748", lineHeight: 1.6, margin: 0 }}>
+                Signal detected → Protocol matched → Stakeholders notified → Executive authorizes → Full team executing. Each step shows exactly what happens and when. Select any scenario below to run it on your trigger.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, flexShrink: 0 }}>
+              <a href="/12-minute-experience" style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, textDecoration: "none", background: GOLD, color: NAVY, padding: "13px 28px", whiteSpace: "nowrap" as const, display: "inline-block" }}>
+                Run It Yourself →
+              </a>
+              <a href="/request-access" style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textDecoration: "none", color: NAVY, textAlign: "center" as const, borderBottom: `1px solid ${NAVY}`, paddingBottom: 2 }}>
+                Apply for Founding Partner Access →
+              </a>
             </div>
           </div>
         </div>

@@ -360,6 +360,26 @@ export default function TwelveMinuteTestDrive() {
         </div>
       </div>
 
+      {/* Page Orientation — white strip above the interactive experience */}
+      <div style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', padding: '32px 24px', display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap' as const }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 8 }}>12-Minute Test Drive</div>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 24, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 8 }}>
+              Run a live scenario. See exactly how 30 days compresses to 12 minutes.
+            </div>
+            <p style={{ ...DM, fontSize: 14, color: '#2D3748', lineHeight: 1.6, margin: 0 }}>
+              Choose any trigger — ransomware, activist investor, supply chain collapse, regulatory inquiry. Walk through the 4-step execution chain. This is what your team would experience when a real trigger fires.
+            </p>
+          </div>
+          <div style={{ flexShrink: 0 }}>
+            <Link href="/request-access" style={{ ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, textDecoration: 'none', background: GOLD, color: NAVY, padding: '12px 24px', whiteSpace: 'nowrap' as const, display: 'inline-block' }}>
+              Apply for Founding Partner Access →
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
         {/* ── STEP 1: Scenario Selection ─────────────────────────────────── */}

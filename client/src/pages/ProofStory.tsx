@@ -211,6 +211,29 @@ export default function ProofStory() {
     <PageLayout className="vm-page-ps">
       <div className="ps-body" style={{ background: "#fff", ...DM }}>
 
+        {/* Page Orientation — white strip before the hero */}
+        <div style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC", padding: "36px 48px" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" as const }}>
+            <div style={{ flex: 1, minWidth: 280 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Proof — What 12 Minutes Looks Like</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>
+                Three real activation narratives — with and without Readiness OS
+              </div>
+              <p style={{ ...DM, fontSize: 15, color: "#2D3748", lineHeight: 1.6, margin: 0 }}>
+                Ransomware, activist investor, supply chain collapse. Side-by-side timelines: the 30-day drift without Readiness OS vs. the 12-minute response with it. Same situation. The only variable is whether the response was pre-staged before the trigger fired.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, flexShrink: 0 }}>
+              <Link href="/request-access" style={{ ...DM, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, textDecoration: "none", background: GOLD, color: NAVY, padding: "13px 28px", whiteSpace: "nowrap" as const, display: "inline-block" }}>
+                Apply for Founding Partner Access →
+              </Link>
+              <Link href="/how-it-executes" style={{ ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textDecoration: "none", color: NAVY, textAlign: "center" as const, borderBottom: `1px solid ${NAVY}`, paddingBottom: 2 }}>
+                See the 12-Minute Execution Chain →
+              </Link>
+            </div>
+          </div>
+        </div>
+
         {/* Hero */}
         <div style={{ background: NAVY, padding: "80px 48px 56px", position: "relative", overflow: "hidden" }}>
           <img src={aerialCityImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.09, pointerEvents: "none" }} />

@@ -4883,6 +4883,85 @@ function SocialProofStrip() {
   );
 }
 
+// ─── PLAIN ENGLISH EXPLAINER ─────────────────────────────────────────────────
+function PlainEnglishExplainer() {
+  return (
+    <section style={{ background: "#ffffff", borderTop: `4px solid ${GOLD}`, padding: "72px 0 80px", position: "relative" }}>
+      <style>{`
+        @media (max-width: 860px) {
+          .hp-explainer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        }
+      `}</style>
+      <div style={{ ...CONTAINER }}>
+        <div className="hp-explainer-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+          {/* Left: Plain English explanation */}
+          <div>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>
+              In Plain English
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(30px,3vw,46px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, margin: "0 0 24px", letterSpacing: "-0.01em" }}>
+              Most companies spend 30 days figuring out how to respond.{" "}
+              <span style={{ color: GOLD }}>We eliminate that entirely.</span>
+            </h2>
+            <p style={{ ...DM, fontSize: 17, color: "#1A202C", lineHeight: 1.75, margin: "0 0 20px", fontWeight: 500 }}>
+              Readiness OS pre-stages your organization's response to every strategic situation — before it happens. Activist investor, ransomware attack, supply chain collapse, regulatory inquiry, market opportunity.
+            </p>
+            <p style={{ ...DM, fontSize: 16, color: "#4A5568", lineHeight: 1.7, margin: "0 0 32px" }}>
+              When the trigger fires, your team executes in <strong style={{ color: NAVY }}>12 minutes</strong> instead of 30 days. Not because you move faster — because the response was <strong style={{ color: NAVY }}>already built</strong> before you needed it.
+            </p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
+              <Link href="/how-it-executes" style={{ ...DM, display: "inline-block", background: NAVY, color: "#fff", fontWeight: 700, fontSize: 13, padding: "14px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}>
+                Watch It Execute →
+              </Link>
+              <Link href="/12-minute-experience" style={{ ...DM, display: "inline-block", background: "transparent", color: NAVY, fontWeight: 700, fontSize: 13, padding: "13px 24px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, border: `1.5px solid ${NAVY}` }}>
+                Try the 12-Minute Test Drive
+              </Link>
+            </div>
+          </div>
+
+          {/* Right: How it works — 3-step arc */}
+          <div>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 24 }}>
+              How It Works
+            </div>
+            {([
+              {
+                n: "01",
+                title: "Pre-staged before the trigger",
+                body: "180 Readiness Protocols — one for every situation your organization will face. Tasks assigned, owners named, budget allocated, executive brief written. All staged before any trigger fires.",
+                color: GOLD,
+                last: false,
+              },
+              {
+                n: "02",
+                title: "Executive authorizes in real time",
+                body: "System detects the trigger, matches the protocol, and notifies every stakeholder simultaneously with their specific role. CEO reviews a pre-staged brief and authorizes. One decision. No committee.",
+                color: GOLD,
+                last: false,
+              },
+              {
+                n: "03",
+                title: "Teams executing in 12 minutes",
+                body: "Full response team mobilized, budget unlocked, communications staged. Every activation makes the next response faster. The organization compounds its readiness over time.",
+                color: TEAL,
+                last: true,
+              },
+            ] as { n: string; title: string; body: string; color: string; last: boolean }[]).map((item) => (
+              <div key={item.n} style={{ display: "flex", gap: 20, padding: "24px 0", borderBottom: !item.last ? "1px solid #E8E4DC" : "none" }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 700, color: item.color, lineHeight: 1, flexShrink: 0, minWidth: 32 }}>{item.n}</div>
+                <div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: NAVY, marginBottom: 8, lineHeight: 1.2 }}>{item.title}</div>
+                  <div style={{ ...DM, fontSize: 14, color: "#4A5568", lineHeight: 1.65 }}>{item.body}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -4907,6 +4986,9 @@ export default function Homepage() {
 
       {/* 1. CLAIM — The response is ready before the trigger fires */}
       <HeroSection />
+
+      {/* 1a. EXPLAINER — Plain English: what is Readiness OS, who needs it, why it exists */}
+      <PlainEnglishExplainer />
 
       {/* 1b. FEEL IT — Reality Gap Simulator: 30 days vs 12 minutes, animated */}
       <RealityGapSimulator />
