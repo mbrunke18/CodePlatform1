@@ -1072,7 +1072,7 @@ function HeroSection() {
                 </Link>
               </div>
               <p style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: "clamp(14px,1.1vw,15px)", lineHeight: 1.75, maxWidth: 500, margin: "0 0 20px" }}>
-                Pre-staged before the trigger. Authorized in real time. Executed in 12 minutes. And every activation makes the next response faster.
+                Pre-staged before the trigger. Authorized in real time. Teams mobilized in 12 minutes — and executing from a fully-staged position. Every activation makes the next response faster.
               </p>
 
               {/* Readiness posture callout */}
@@ -1090,7 +1090,7 @@ function HeroSection() {
                 {[
                   { verb: "Detect", desc: "231 trigger patterns", color: GOLD },
                   { verb: "Coordinate", desc: "Pre-staged stakeholders", color: GOLD },
-                  { verb: "Execute", desc: "12 minutes to full response", color: GOLD },
+                  { verb: "Execute", desc: "12 minutes to mobilize", color: GOLD },
                   { verb: "Learn", desc: "ADVANCE loop compounds", color: TEAL },
                 ].map(({ verb, desc, color }, i, arr) => (
                   <div key={verb} style={{ flex: 1, padding: "10px 12px", borderRight: i < arr.length - 1 ? "1px solid rgba(201,168,76,0.12)" : "none", background: i === arr.length - 1 ? "rgba(43,138,110,0.08)" : "rgba(201,168,76,0.04)" }}>
@@ -2799,7 +2799,7 @@ function IDEASection() {
   const cards = [
     { letter: "I", title: "Identify", subtitle: "180 Pre-Staged Readiness Protocols",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "Continuous monitoring scans 248+ signals around the clock and knows exactly which Readiness Protocol matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
-    { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing. The executive at the decision moment has four real choices: run the staged response as built, audible to a different staged response, customize the response on the fly, or choose to do nothing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "E", title: "Execute",  subtitle: "12-Minute Mobilization",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing. The 12 minutes is mobilization time — your teams then execute from a fully-staged position. The executive at the decision moment has four real choices: run the staged response as built, audible to a different staged response, customize the response on the fly, or choose to do nothing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];
 
@@ -2812,9 +2812,9 @@ function IDEASection() {
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <SectionLabel>HOW IT WORKS</SectionLabel>
             <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 48 }}>
-              Trigger fires. Organization deploys.
+              Trigger fires. Teams mobilize.
               <br />
-              In 12 minutes.
+              In 12 minutes. Execution begins immediately.
             </h2>
 
             {/* Before / After comparison strip */}
@@ -4496,7 +4496,7 @@ function BinaryStakesSection() {
                 </div>
               ))}
               <div style={{ marginTop: 24, padding: "14px 20px", background: `rgba(43,138,110,0.07)`, border: `1px solid rgba(43,138,110,0.2)` }}>
-                <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: TEAL }}>12 minutes. Full response. The window stays open.</span>
+                <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: TEAL }}>12 minutes to mobilize. Execution begins immediately — from a fully-staged position.</span>
               </div>
             </div>
           </Reveal>
