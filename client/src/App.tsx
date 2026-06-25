@@ -821,6 +821,7 @@ function Router() {
         <Route path="/master-demo" component={lazy(() => import("./pages/MasterDemo"))} />
         <Route path="/demo/:scenarioId" component={lazy(() => import("./pages/MasterDemo"))} />
         <Route path="/protocol-zero" component={lazy(() => import("./pages/ProtocolZero"))} />
+        <Route path="/protocol-zero-launch" component={lazy(() => import("./pages/ProtocolZeroLaunch"))} />
         <Route path="/protocol-browser" component={lazy(() => import("./pages/ProtocolCoverageBrowser"))} />
         <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
         <Route path="/demo-experience" component={DemoExperience} />

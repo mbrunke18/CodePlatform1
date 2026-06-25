@@ -950,6 +950,49 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
             </div>
           )}
 
+          {/* ── Protocol #0 Zero-Results Fallback ───────────────────────────── */}
+          {coreProtos.length === 0 && !!(search || activeDomain !== 'all' || activeSector !== 'all' || activePillar !== 'all' || activeUrgency !== 'all') && (
+            <div style={{ background: "#F0FAF7", border: "2px solid #2B8A6E", borderLeft: "4px solid #2B8A6E", padding: "28px 28px 24px", marginBottom: 24 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <Shield size={16} color={TEAL} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: TEAL, fontFamily: "'Barlow Condensed', sans-serif" }}>
+                  No Specific Protocol Found
+                </span>
+              </div>
+              <p style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 8 }}>
+                {search ? `No protocol found for "${search}"` : "No protocols match the selected filters"}
+              </p>
+              <p style={{ fontSize: 13, color: MUTED, marginBottom: 20, lineHeight: 1.65 }}>
+                When a situation doesn't match any specific protocol, the Universal Response Protocol activates immediately — 12-minute execution chain, pre-staged authority, and emergency budget ready. The organization is never unprotected.
+              </p>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" as const, marginBottom: 16 }}>
+                <a
+                  href={`/protocol-zero-launch${search ? `?context=${encodeURIComponent(search)}` : ''}`}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 7, background: TEAL, color: "#fff", padding: "12px 22px", fontWeight: 800, fontSize: 13, textDecoration: "none", letterSpacing: "0.03em", fontFamily: "'Barlow Condensed', sans-serif" }}
+                >
+                  <Zap size={14} /> Activate Protocol #0 — Universal Response
+                </a>
+                <a
+                  href="/protocol-zero"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 6, border: `1px solid ${TEAL}`, color: TEAL, padding: "12px 18px", fontWeight: 700, fontSize: 12, textDecoration: "none" }}
+                >
+                  View Protocol #0 Detail <ArrowRight size={13} />
+                </a>
+                {search && (
+                  <button
+                    onClick={() => setSearch('')}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #E8E4DC", color: MUTED, padding: "12px 18px", fontWeight: 600, fontSize: 12, background: "#fff", cursor: "pointer" }}
+                  >
+                    Clear search
+                  </button>
+                )}
+              </div>
+              <p style={{ fontSize: 11, color: "#9CA3AF", lineHeight: 1.55 }}>
+                Every Protocol #0 activation permanently generates a named protocol for this situation — the gap closes after first use.
+              </p>
+            </div>
+          )}
+
           <div className="grid md:grid-cols-3 gap-4">
             {coreProtos.map((playbook) => {
               const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_NAMES.has(playbook.name);

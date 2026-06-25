@@ -1035,6 +1035,18 @@ export default function StandardNav() {
               <div className="h-9 w-48 bg-gray-100 animate-pulse" />
             ) : isAuthenticated && user ? (
               <>
+                {/* Uncharted Trigger — Protocol #0 manual launch */}
+                <button
+                  onClick={() => navigateTo("/protocol-zero-launch")}
+                  className="h-9 px-3 text-sm font-bold flex items-center gap-1.5"
+                  style={{ background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.32)', color: TEAL, borderRadius: '0.15rem', whiteSpace: 'nowrap', transition: 'all 0.15s' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.22)'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.12)'; }}
+                  title="Manually activate Protocol #0 — Universal Response for any unknown situation"
+                >
+                  <AlertTriangle className="h-3.5 w-3.5" />
+                  Uncharted Trigger
+                </button>
                 <Button
                   onClick={() => navigateTo("/mission-control")}
                   className="h-9 px-4 text-sm font-bold text-white"

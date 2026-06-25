@@ -259,20 +259,40 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
         </div>
       </div>
 
-      {/* Recommended Readiness Protocol */}
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: 8,
-        background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)',
-        borderRadius: 0, padding: '9px 14px', marginBottom: 14,
-      }}>
-        <Target size={13} color={GOLD} />
-        <div style={{ flex: 1 }}>
-          <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
-            SYSTEM-RECOMMENDED Readiness Protocol
+      {/* Recommended Readiness Protocol — or Protocol #0 if no match */}
+      {(() => {
+        const isUnknown = !d.recommendedPlaybook || d.recommendedPlaybook.trim() === '' || d.recommendedPlaybook === 'Unknown';
+        return isUnknown ? (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.28)',
+            borderLeft: '3px solid #2B8A6E',
+            borderRadius: 0, padding: '9px 14px', marginBottom: 14,
+          }}>
+            <Shield size={13} color={TEAL} />
+            <div style={{ flex: 1 }}>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
+                NO SPECIFIC PROTOCOL MATCHED — FALLBACK READY
+              </div>
+              <div style={{ color: TEAL, fontSize: 13, fontWeight: 700 }}>Universal Response Protocol — Protocol #0</div>
+            </div>
           </div>
-          <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
-        </div>
-      </div>
+        ) : (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)',
+            borderRadius: 0, padding: '9px 14px', marginBottom: 14,
+          }}>
+            <Target size={13} color={GOLD} />
+            <div style={{ flex: 1 }}>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
+                SYSTEM-RECOMMENDED Readiness Protocol
+              </div>
+              <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Recorded Decision State — shown if no action was logged */}
       {noActionLogged ? (
@@ -296,16 +316,28 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
       ) : (
         <div style={{ display: 'flex', gap: 8 }}>
           <a
-            href={`/live-activation-center?playbookName=${encodeURIComponent(d.recommendedPlaybook)}&domain=${encodeURIComponent(d.triggerDomain)}`}
+            href={(() => {
+              const isUnknown = !d.recommendedPlaybook || d.recommendedPlaybook.trim() === '' || d.recommendedPlaybook === 'Unknown';
+              return isUnknown
+                ? `/protocol-zero-launch?domain=${encodeURIComponent(d.triggerDomain)}`
+                : `/live-activation-center?playbookName=${encodeURIComponent(d.recommendedPlaybook)}&domain=${encodeURIComponent(d.triggerDomain)}`;
+            })()}
             style={{
               flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
-              background: GOLD, color: NAVY,
+              background: (() => {
+                const isUnknown = !d.recommendedPlaybook || d.recommendedPlaybook.trim() === '' || d.recommendedPlaybook === 'Unknown';
+                return isUnknown ? TEAL : GOLD;
+              })(),
+              color: NAVY,
               borderRadius: 0, padding: '12px 0',
               fontWeight: 800, fontSize: 13, letterSpacing: '0.05em',
               textDecoration: 'none',
             }}
           >
-            <Zap size={14} /> ACTIVATE Readiness Protocol
+            <Zap size={14} /> {(() => {
+              const isUnknown = !d.recommendedPlaybook || d.recommendedPlaybook.trim() === '' || d.recommendedPlaybook === 'Unknown';
+              return isUnknown ? 'ACTIVATE PROTOCOL #0' : 'ACTIVATE Readiness Protocol';
+            })()}
           </a>
           <a
             href="/live-detection-feed"
@@ -827,6 +859,41 @@ export default function CommandTower() {
                   })}
                 </div>
               )}
+            </div>
+
+            {/* ── Manual Protocol #0 Trigger ─────────────────────────── */}
+            <div style={{
+              background: 'rgba(43,138,110,0.06)',
+              border: '1px solid rgba(43,138,110,0.22)',
+              borderLeft: '3px solid #2B8A6E',
+              borderRadius: 0, padding: '18px 20px',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <Shield size={13} color={TEAL} />
+                <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
+                  MANUAL PROTOCOL #0
+                </span>
+              </div>
+              <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, lineHeight: 1.55, marginBottom: 14 }}>
+                No system detection required. If you've identified a situation before the platform has — activate Universal Response immediately.
+              </div>
+              <a
+                href="/protocol-zero-launch"
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+                  background: TEAL, color: '#fff',
+                  borderRadius: 0, padding: '11px 0',
+                  fontWeight: 800, fontSize: 12, letterSpacing: '0.06em',
+                  textDecoration: 'none',
+                }}
+              >
+                <Zap size={13} /> ACTIVATE PROTOCOL #0
+              </a>
+              <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <a href="/protocol-zero" style={{ color: 'rgba(43,138,110,0.8)', fontSize: 10, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em' }}>
+                  View Protocol #0 detail →
+                </a>
+              </div>
             </div>
 
             {/* Scan Timing + 3600x Metric */}
