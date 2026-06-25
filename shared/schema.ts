@@ -7236,3 +7236,55 @@ export const boardFeedback = pgTable('board_feedback', {
 export const insertBoardFeedbackSchema = createInsertSchema(boardFeedback).omit({ id: true, createdAt: true });
 export type InsertBoardFeedback = z.infer<typeof insertBoardFeedbackSchema>;
 export type BoardFeedback = typeof boardFeedback.$inferSelect;
+
+// ─── Protocol #0 Pre-staging Configuration ────────────────────────────────────
+// Stores the four pre-staged elements required for Protocol #0 activation:
+// primary authority, backup authority, emergency budget, retainers, and
+// notification list. One record per organization — upserted on save.
+
+export const protocolZeroConfigs = pgTable('protocol_zero_configs', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id, { onDelete: 'cascade' }).unique(),
+  primaryAuthorityName: varchar('primary_authority_name', { length: 200 }),
+  primaryAuthorityEmail: varchar('primary_authority_email', { length: 200 }),
+  primaryAuthorityRole: varchar('primary_authority_role', { length: 100 }).default('CEO'),
+  backupAuthorityName: varchar('backup_authority_name', { length: 200 }),
+  backupAuthorityEmail: varchar('backup_authority_email', { length: 200 }),
+  backupAuthorityRole: varchar('backup_authority_role', { length: 100 }).default('COO'),
+  emergencyBudgetAmount: integer('emergency_budget_amount'),
+  emergencyBudgetCurrency: varchar('emergency_budget_currency', { length: 10 }).default('USD'),
+  retainers: jsonb('retainers').$type<Array<{ name: string; role: string; firm: string; contact: string }>>().default([]),
+  notificationList: jsonb('notification_list').$type<Array<{ name: string; role: string; email: string }>>().default([]),
+  configuredBy: varchar('configured_by', { length: 255 }),
+  configuredAt: timestamp('configured_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const insertProtocolZeroConfigSchema = createInsertSchema(protocolZeroConfigs).omit({ id: true, configuredAt: true, updatedAt: true });
+export type InsertProtocolZeroConfig = z.infer<typeof insertProtocolZeroConfigSchema>;
+export type ProtocolZeroConfig = typeof protocolZeroConfigs.$inferSelect;
+
+// ─── Protocol #0 Generated Protocols — ADVANCE Loop Output ────────────────────
+// Every Protocol #0 close-out generates a draft named protocol automatically.
+// Executives review and promote these to permanent numbered protocols.
+
+export const p0GeneratedProtocols = pgTable('p0_generated_protocols', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id, { onDelete: 'cascade' }),
+  activationId: uuid('activation_id'),
+  situationTitle: varchar('situation_title', { length: 300 }).notNull(),
+  domain: varchar('domain', { length: 100 }),
+  urgency: varchar('urgency', { length: 30 }).default('high'),
+  context: text('context'),
+  status: varchar('status', { length: 30 }).default('pending_review'),
+  // pending_review | promoted | dismissed
+  assignedProtocolNumber: integer('assigned_protocol_number'),
+  promotedAt: timestamp('promoted_at'),
+  dismissedAt: timestamp('dismissed_at'),
+  reviewNote: text('review_note'),
+  generatedAt: timestamp('generated_at').defaultNow(),
+});
+
+export const insertP0GeneratedProtocolSchema = createInsertSchema(p0GeneratedProtocols).omit({ id: true, generatedAt: true });
+export type InsertP0GeneratedProtocol = z.infer<typeof insertP0GeneratedProtocolSchema>;
+export type P0GeneratedProtocol = typeof p0GeneratedProtocols.$inferSelect;

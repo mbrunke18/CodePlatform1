@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import PageLayout from "@/components/layout/PageLayout";
 import {
-  Shield, AlertTriangle, Zap, ArrowRight, CheckCircle2, Target, Clock
+  Shield, AlertTriangle, Zap, ArrowRight, CheckCircle2, Target, Clock,
+  Settings, ChevronRight, BookOpen, XCircle,
 } from "lucide-react";
 import { updatePageMetadata } from "@/lib/seo";
+import { queryClient, apiRequest } from "@/lib/queryClient";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -29,6 +32,11 @@ const URGENCY_OPTIONS = [
   { value: "standard", label: "Standard", sub: "Developing situation, 48+ hour window" },
 ];
 
+function formatBudget(amount: number, currency: string): string {
+  if (!amount) return "";
+  return new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
+}
+
 export default function ProtocolZeroLaunch() {
   const [description, setDescription] = useState("");
   const [selectedDomain, setSelectedDomain] = useState("");
@@ -44,6 +52,23 @@ export default function ProtocolZeroLaunch() {
     if (d) setSelectedDomain(d);
   }, []);
 
+  const { data: p0Config } = useQuery<any>({
+    queryKey: ["/api/protocol-zero/config"],
+  });
+
+  const { data: generatedRaw } = useQuery<any[]>({
+    queryKey: ["/api/protocol-zero/generated"],
+  });
+  const generated = generatedRaw ?? [];
+
+  const statusMutation = useMutation({
+    mutationFn: async ({ id, status }: { id: string; status: string }) => {
+      const res = await apiRequest("PATCH", `/api/protocol-zero/generated/${id}/status`, { status });
+      return res.json();
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/protocol-zero/generated"] }),
+  });
+
   const domainMatch = DOMAIN_FALLBACKS.find(d => d.key === selectedDomain);
 
   const activationHref = (() => {
@@ -54,6 +79,10 @@ export default function ProtocolZeroLaunch() {
     if (urgency !== "high") p.set("urgency", urgency);
     return `/live-activation-center?${p.toString()}`;
   })();
+
+  const isConfigured = !!(p0Config as any)?.primaryAuthorityName;
+  const pendingGenerated = generated.filter((g: any) => g.status === "pending_review");
+  const promotedGenerated = generated.filter((g: any) => g.status === "promoted");
 
   return (
     <PageLayout>
@@ -96,7 +125,7 @@ export default function ProtocolZeroLaunch() {
 
       <div className="max-w-4xl mx-auto px-6 py-12">
 
-        {/* ── HOW THIS WORKS (3 steps, fast read) ──────────────────── */}
+        {/* ── HOW THIS WORKS (3 steps) ──────────────────────────────── */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "#E8E4DC", marginBottom: 28 }}>
           {[
             { n: "01", h: "Identify the situation",  b: "Something is happening. You know it. The system may or may not have detected it yet." },
@@ -212,7 +241,7 @@ export default function ProtocolZeroLaunch() {
             </span>
           </div>
           <p style={{ fontSize: 12, color: "#6B7280", marginBottom: 18, lineHeight: 1.55 }}>
-            Select the domain tile that best matches the situation — activates the domain-scoped Universal Response with its pre-configured authority chain and stakeholder set. Click a tile to select it, then use the activation button above.
+            Select the domain tile that best matches the situation — activates the domain-scoped Universal Response with its pre-configured authority chain and stakeholder set.
           </p>
           <div className="grid md:grid-cols-3 gap-3">
             {DOMAIN_FALLBACKS.map(domain => {
@@ -255,36 +284,170 @@ export default function ProtocolZeroLaunch() {
           </div>
         </div>
 
-        {/* ── PRE-STAGING REMINDER ─────────────────────────────────── */}
-        <div style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, marginBottom: 24, marginTop: 28 }}>
-          {[
-            { icon: Shield,        c: NAVY, label: "Authority chain",      body: "CEO / COO authority pre-configured during onboarding. Protocol #0 always has an authorized executive." },
-            { icon: Target,        c: GOLD, label: "Emergency budget",     body: "A pre-approved envelope the CFO sets once. No committee required. Unlocked at activation." },
-            { icon: CheckCircle2,  c: TEAL, label: "External retainers",   body: "Legal counsel, PR firm, and crisis advisors engaged on retainer — available in 12 minutes." },
-            { icon: Clock,         c: NAVY, label: "Notification list",    body: "C-suite + board chair notified automatically at activation. Pre-configured in org setup." },
-          ].map(({ icon: Icon, c, label, body }) => (
-            <div key={label} style={{ background: "#fff", padding: "18px 20px", borderTop: "1px solid #E8E4DC" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 7 }}>
-                <Icon size={13} color={c} />
-                <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: c }}>{label}</span>
-              </div>
-              <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.55 }}>{body}</p>
+        {/* ── PRE-STAGING STATUS ────────────────────────────────────── */}
+        <div style={{ marginTop: 32, marginBottom: 24 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 20, height: 1.5, background: isConfigured ? TEAL : GOLD }} />
+              <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: isConfigured ? TEAL : GOLD }}>
+                Pre-Staging Status
+              </span>
+              <span style={{
+                ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
+                padding: "2px 8px",
+                background: isConfigured ? "rgba(43,138,110,0.08)" : "rgba(201,168,76,0.1)",
+                color: isConfigured ? TEAL : GOLD,
+                border: `1px solid ${isConfigured ? "rgba(43,138,110,0.25)" : "rgba(201,168,76,0.35)"}`,
+              }}>
+                {isConfigured ? "CONFIGURED" : "SETUP REQUIRED"}
+              </span>
             </div>
-          ))}
+            <a href="/protocol-zero-config" style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, fontWeight: 700, color: NAVY, textDecoration: "none", ...BC, letterSpacing: "0.06em" }}>
+              <Settings size={12} /> {isConfigured ? "Edit configuration" : "Configure now"}
+              <ChevronRight size={11} />
+            </a>
+          </div>
+
+          <div style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1 }}>
+            {[
+              {
+                icon: Shield, color: NAVY, label: "Authority chain",
+                configured: isConfigured && !!(p0Config as any)?.primaryAuthorityName,
+                body: isConfigured && (p0Config as any)?.primaryAuthorityName
+                  ? `${(p0Config as any).primaryAuthorityName} (${(p0Config as any).primaryAuthorityRole ?? "Primary"}) · ${(p0Config as any).backupAuthorityName ? (p0Config as any).backupAuthorityName + " (backup)" : "No backup configured"}`
+                  : "Not configured — set CEO / COO authority to arm this element.",
+              },
+              {
+                icon: Target, color: GOLD, label: "Emergency budget",
+                configured: isConfigured && !!(p0Config as any)?.emergencyBudgetAmount,
+                body: isConfigured && (p0Config as any)?.emergencyBudgetAmount
+                  ? `${formatBudget((p0Config as any).emergencyBudgetAmount, (p0Config as any).emergencyBudgetCurrency ?? "USD")} pre-approved — unlocks at activation with no committee required.`
+                  : "Not configured — set a pre-approved budget envelope.",
+              },
+              {
+                icon: CheckCircle2, color: TEAL, label: "External retainers",
+                configured: isConfigured && ((p0Config as any)?.retainers ?? []).length > 0,
+                body: isConfigured && ((p0Config as any)?.retainers ?? []).length > 0
+                  ? `${(p0Config as any).retainers.length} retainer${(p0Config as any).retainers.length > 1 ? "s" : ""} configured — ${(p0Config as any).retainers.map((r: any) => r.role).filter(Boolean).join(", ") || "available at activation"}.`
+                  : "Not configured — add legal, PR, and crisis advisors.",
+              },
+              {
+                icon: Clock, color: NAVY, label: "Notification list",
+                configured: isConfigured && ((p0Config as any)?.notificationList ?? []).length > 0,
+                body: isConfigured && ((p0Config as any)?.notificationList ?? []).length > 0
+                  ? `${(p0Config as any).notificationList.length} executive${(p0Config as any).notificationList.length > 1 ? "s" : ""} on auto-notify — ${(p0Config as any).notificationList.map((n: any) => n.role).filter(Boolean).join(", ") || "notified at activation"}.`
+                  : "Not configured — add C-suite and board chair to auto-notify list.",
+              },
+            ].map(({ icon: Icon, color, label, configured, body }) => (
+              <div key={label} style={{ background: "#fff", padding: "18px 20px", borderTop: "1px solid #E8E4DC" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 7 }}>
+                  <Icon size={13} color={configured ? color : "#D1D5DB"} />
+                  <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: configured ? color : "#9CA3AF" }}>{label}</span>
+                  {configured
+                    ? <CheckCircle2 size={11} color={TEAL} />
+                    : <span style={{ fontSize: 9, color: GOLD, ...BC, fontWeight: 700, letterSpacing: "0.1em" }}>NEEDS SETUP</span>
+                  }
+                </div>
+                <p style={{ fontSize: 12, color: configured ? "#374151" : "#9CA3AF", lineHeight: 1.55 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+
+          {!isConfigured && (
+            <div style={{ marginTop: 12 }}>
+              <a href="/protocol-zero-config" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: NAVY, color: "#fff", padding: "12px 24px",
+                fontWeight: 800, fontSize: 12, textDecoration: "none",
+                ...BC, letterSpacing: "0.08em",
+              }}>
+                <Settings size={13} /> CONFIGURE PRE-STAGING NOW <ChevronRight size={12} />
+              </a>
+            </div>
+          )}
         </div>
 
-        {/* ── ADVANCE LOOP NOTE ────────────────────────────────────── */}
-        <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: "18px 22px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 7 }}>
-            <Target size={14} color={GOLD} />
-            <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>ADVANCE Learning Loop</span>
+        {/* ── ADVANCE LOOP: GENERATED PROTOCOLS ────────────────────── */}
+        <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: "22px 24px", marginBottom: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+              <Target size={14} color={GOLD} />
+              <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>ADVANCE Learning Loop</span>
+            </div>
+            {generated.length > 0 && (
+              <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.08em" }}>
+                {promotedGenerated.length} protocol{promotedGenerated.length !== 1 ? "s" : ""} promoted · {pendingGenerated.length} pending review
+              </span>
+            )}
           </div>
+
           <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, marginBottom: 5, lineHeight: 1.5 }}>
             Every Protocol #0 activation permanently generates a named protocol.
           </p>
-          <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65 }}>
-            After close-out, the system captures this situation as a permanent named Readiness Protocol. The next time a similar trigger fires, a specific protocol is ready — not Protocol #0. The gap closes after first use. The protocol library grows with every activation.
+          <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65, marginBottom: pendingGenerated.length > 0 ? 18 : 0 }}>
+            After close-out, the system captures this situation as a draft Readiness Protocol. Review and promote to add it permanently to your library — closing the gap so the next similar trigger has a named protocol, not Protocol #0.
           </p>
+
+          {pendingGenerated.length > 0 && (
+            <div>
+              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, marginBottom: 10 }}>
+                Pending Executive Review — {pendingGenerated.length} draft{pendingGenerated.length > 1 ? "s" : ""}
+              </div>
+              {pendingGenerated.map((g: any) => (
+                <div key={g.id} style={{ border: "1px solid #E8E4DC", padding: "14px 16px", marginBottom: 8, background: "#FAFAF9" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ ...CG, fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 4, lineHeight: 1.2 }}>
+                        {g.situationTitle}
+                      </div>
+                      <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                        {g.domain && <span style={{ fontSize: 11, color: "#6B7280" }}>Domain: {g.domain}</span>}
+                        {g.urgency && <span style={{ fontSize: 11, color: "#6B7280" }}>Urgency: {g.urgency}</span>}
+                        <span style={{ fontSize: 11, color: "#6B7280" }}>
+                          {g.generatedAt ? new Date(g.generatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""}
+                        </span>
+                      </div>
+                    </div>
+                    <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
+                      <button
+                        onClick={() => statusMutation.mutate({ id: g.id, status: "promoted" })}
+                        disabled={statusMutation.isPending}
+                        style={{
+                          display: "inline-flex", alignItems: "center", gap: 5,
+                          background: TEAL, color: "#fff", border: "none",
+                          padding: "7px 14px", cursor: "pointer",
+                          fontSize: 10, fontWeight: 700, ...BC, letterSpacing: "0.08em",
+                        }}
+                      >
+                        <BookOpen size={11} /> PROMOTE TO LIBRARY
+                      </button>
+                      <button
+                        onClick={() => statusMutation.mutate({ id: g.id, status: "dismissed" })}
+                        disabled={statusMutation.isPending}
+                        style={{
+                          display: "inline-flex", alignItems: "center", gap: 5,
+                          background: "none", color: "#9CA3AF", border: "1px solid #E8E4DC",
+                          padding: "7px 12px", cursor: "pointer",
+                          fontSize: 10, fontWeight: 700, ...BC, letterSpacing: "0.08em",
+                        }}
+                      >
+                        <XCircle size={11} /> Dismiss
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {promotedGenerated.length > 0 && pendingGenerated.length === 0 && (
+            <div style={{ display: "flex", alignItems: "center", gap: 7, marginTop: 4 }}>
+              <CheckCircle2 size={13} color={TEAL} />
+              <span style={{ fontSize: 12, color: TEAL, fontWeight: 600 }}>
+                {promotedGenerated.length} protocol{promotedGenerated.length > 1 ? "s" : ""} promoted to your Readiness Library. The gap is closed.
+              </span>
+            </div>
+          )}
         </div>
 
       </div>

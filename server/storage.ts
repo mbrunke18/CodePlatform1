@@ -457,6 +457,15 @@ export interface IStorage {
   // Phase 3: Protocol Signal Profiles
   getProtocolSignalProfile(playbookId: string): Promise<any | null>;
   upsertProtocolSignalProfile(data: any): Promise<any>;
+
+  // Protocol #0 Pre-staging Configuration
+  getProtocolZeroConfig(orgId: string): Promise<any | null>;
+  upsertProtocolZeroConfig(orgId: string, data: any, userId?: string): Promise<any>;
+
+  // Protocol #0 Generated Protocols (ADVANCE Loop Output)
+  createP0GeneratedProtocol(data: any): Promise<any>;
+  getP0GeneratedProtocols(orgId: string): Promise<any[]>;
+  updateP0GeneratedProtocolStatus(id: string, status: string, note?: string): Promise<any>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -3671,6 +3680,58 @@ export class DatabaseStorage implements IStorage {
     const [row] = await db.update(customProtocols)
       .set({ ...data, updatedAt: new Date() })
       .where(eq(customProtocols.id, id))
+      .returning();
+    return row;
+  }
+
+  // ── Protocol #0 Pre-staging Configuration ─────────────────────────────────
+  async getProtocolZeroConfig(orgId: string): Promise<any | null> {
+    const { protocolZeroConfigs } = await import('@shared/schema');
+    const [row] = await db.select().from(protocolZeroConfigs)
+      .where(eq(protocolZeroConfigs.organizationId, orgId));
+    return row ?? null;
+  }
+
+  async upsertProtocolZeroConfig(orgId: string, data: any, userId?: string): Promise<any> {
+    const { protocolZeroConfigs } = await import('@shared/schema');
+    const existing = await this.getProtocolZeroConfig(orgId);
+    if (existing) {
+      const [row] = await db.update(protocolZeroConfigs)
+        .set({ ...data, updatedAt: new Date() })
+        .where(eq(protocolZeroConfigs.organizationId, orgId))
+        .returning();
+      return row;
+    }
+    const [row] = await db.insert(protocolZeroConfigs)
+      .values({ organizationId: orgId, configuredBy: userId, ...data })
+      .returning();
+    return row;
+  }
+
+  // ── Protocol #0 Generated Protocols ───────────────────────────────────────
+  async createP0GeneratedProtocol(data: any): Promise<any> {
+    const { p0GeneratedProtocols } = await import('@shared/schema');
+    const [row] = await db.insert(p0GeneratedProtocols).values(data).returning();
+    return row;
+  }
+
+  async getP0GeneratedProtocols(orgId: string): Promise<any[]> {
+    const { p0GeneratedProtocols } = await import('@shared/schema');
+    const { desc } = await import('drizzle-orm');
+    return db.select().from(p0GeneratedProtocols)
+      .where(eq(p0GeneratedProtocols.organizationId, orgId))
+      .orderBy(desc(p0GeneratedProtocols.generatedAt));
+  }
+
+  async updateP0GeneratedProtocolStatus(id: string, status: string, note?: string): Promise<any> {
+    const { p0GeneratedProtocols } = await import('@shared/schema');
+    const updateData: any = { status };
+    if (note) updateData.reviewNote = note;
+    if (status === 'promoted') updateData.promotedAt = new Date();
+    if (status === 'dismissed') updateData.dismissedAt = new Date();
+    const [row] = await db.update(p0GeneratedProtocols)
+      .set(updateData)
+      .where(eq(p0GeneratedProtocols.id, id))
       .returning();
     return row;
   }

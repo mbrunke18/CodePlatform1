@@ -490,6 +490,64 @@ export async function getProtocolVersionTimeline(
   return deltas;
 }
 
+// ─── Protocol #0 ADVANCE Hook: Generate draft named protocol from P0 close-out ─
+// Fires after every activation close-out. Checks if the activation was a Protocol #0
+// variant (Universal Response Protocol or Unknown Trigger — * Domain). If so, creates
+// a draft p0_generated_protocols record so executives can review and promote it to a
+// permanent numbered protocol. Non-critical — failure is logged and swallowed.
+export async function generateDraftFromP0Activation(outcomeId: string, orgId: string): Promise<void> {
+  try {
+    const { activationOutcomes, playbookActivations, p0GeneratedProtocols } = await import('@shared/schema');
+    const { eq } = await import('drizzle-orm');
+    const { db } = await import('../db.js');
+
+    // Fetch the close-out outcome to get the activationId
+    const [outcome] = await db.select().from(activationOutcomes).where(eq(activationOutcomes.id, outcomeId));
+    if (!outcome) return;
+
+    // Fetch the activation to read playbookName and context
+    const [activation] = await db.select().from(playbookActivations)
+      .where(eq(playbookActivations.id, outcome.activationId));
+    if (!activation) return;
+
+    const playbookName: string = (activation as any).playbookName ?? '';
+    const isP0 = playbookName.toLowerCase().includes('universal response') ||
+                 playbookName.toLowerCase().includes('unknown trigger') ||
+                 playbookName.startsWith('P0-') ||
+                 (activation as any).playbookId?.toString().startsWith('1000');
+
+    if (!isP0) return; // Not a Protocol #0 activation — nothing to do
+
+    // Check if we already generated a draft for this activation
+    const existing = await db.select().from(p0GeneratedProtocols)
+      .where(eq(p0GeneratedProtocols.activationId, outcome.activationId));
+    if (existing.length > 0) return;
+
+    // Derive a situation title from available data
+    const context: string = (activation as any).activationReason ?? (activation as any).context ?? '';
+    const domain: string = (activation as any).domain ?? '';
+
+    const situationTitle = context && context.length > 10
+      ? context.length > 120 ? context.slice(0, 120) + '…' : context
+      : playbookName.replace('Unknown Trigger — ', '').replace(' Domain', '') + ' Response Protocol';
+
+    // Create the draft
+    await db.insert(p0GeneratedProtocols).values({
+      organizationId: orgId,
+      activationId: outcome.activationId,
+      situationTitle,
+      domain: domain || 'General',
+      urgency: (activation as any).urgency ?? 'high',
+      context: context || null,
+      status: 'pending_review',
+    });
+
+    console.log(`[ADVANCE] Protocol #0 draft generated from activation ${outcome.activationId}: "${situationTitle}"`);
+  } catch (err) {
+    console.error('[ADVANCE] generateDraftFromP0Activation failed (non-critical):', err);
+  }
+}
+
 // ─── Get pending updates classified by risk level ─────────────────────────────
 export async function getPendingUpdateQueue(orgId: string): Promise<{
   autoApply: any[];

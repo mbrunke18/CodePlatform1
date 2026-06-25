@@ -8602,6 +8602,11 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         const { measureHypothesesForActivation } = await import('./services/AdvanceLoopService.js');
         setImmediate(() => measureHypothesesForActivation(req.params.id, req.orgId));
       } catch { /* non-critical */ }
+      // ── Protocol #0: Generate draft named protocol on close-out ───────────
+      try {
+        const { generateDraftFromP0Activation } = await import('./services/AdvanceLoopService.js');
+        setImmediate(() => generateDraftFromP0Activation(req.params.id, req.orgId));
+      } catch { /* non-critical */ }
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: 'Failed to save close-out data' });
@@ -11035,6 +11040,51 @@ Respond ONLY as JSON with this exact structure:
         ORDER BY count DESC
       `);
       res.json(rows.rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // ── Protocol #0 Pre-staging Configuration ─────────────────────────────────
+
+  app.get('/api/protocol-zero/config', requireOrgAccess, async (req: any, res) => {
+    try {
+      const config = await storage.getProtocolZeroConfig(req.orgId);
+      res.json(config ?? null);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.post('/api/protocol-zero/config', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { primaryAuthorityName, primaryAuthorityEmail, primaryAuthorityRole,
+              backupAuthorityName, backupAuthorityEmail, backupAuthorityRole,
+              emergencyBudgetAmount, emergencyBudgetCurrency,
+              retainers, notificationList } = req.body;
+      const config = await storage.upsertProtocolZeroConfig(req.orgId, {
+        primaryAuthorityName, primaryAuthorityEmail, primaryAuthorityRole,
+        backupAuthorityName, backupAuthorityEmail, backupAuthorityRole,
+        emergencyBudgetAmount: emergencyBudgetAmount ? parseInt(emergencyBudgetAmount) : null,
+        emergencyBudgetCurrency: emergencyBudgetCurrency ?? 'USD',
+        retainers: retainers ?? [],
+        notificationList: notificationList ?? [],
+      }, req.user?.id);
+      res.json(config);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // ── Protocol #0 Generated Protocols (ADVANCE Loop) ─────────────────────────
+
+  app.get('/api/protocol-zero/generated', requireOrgAccess, async (req: any, res) => {
+    try {
+      const protocols = await storage.getP0GeneratedProtocols(req.orgId);
+      res.json(protocols);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.patch('/api/protocol-zero/generated/:id/status', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { status, note } = req.body;
+      if (!status) return res.status(400).json({ error: 'status required' });
+      const updated = await storage.updateP0GeneratedProtocolStatus(req.params.id, status, note);
+      res.json(updated);
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
 
