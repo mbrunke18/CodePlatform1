@@ -720,14 +720,49 @@ export default function HowItExecutes() {
           </div>
         </div>
 
+        {/* ── What This Eliminates — cost of inaction panel ── */}
+        <div style={{ padding: "0 48px 64px" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto", borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 56 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD }}>What This Eliminates</span>
+            </div>
+            <h3 style={{ ...GEO, fontSize: "clamp(24px,2.8vw,36px)", fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.15, maxWidth: 700 }}>
+              The value isn't speed. It's the elimination of improvised chaos under pressure — and the cost that chaos creates.
+            </h3>
+            <p style={{ ...DM, fontSize: 13, color: MUTED, maxWidth: 660, lineHeight: 1.7, marginBottom: 36 }}>
+              Every enterprise spends weeks mobilizing after a trigger fires — not because they're slow, but because the response was never pre-staged. Readiness OS eliminates that mobilization cycle entirely. Here is what that means in dollar terms.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "rgba(255,255,255,0.08)" }}>
+              {([
+                { n: "$47M",   label: "Regulatory exposure",      sub: "Per unplanned ransomware event — eliminated when disclosure is pre-staged and filed on time", accent: GOLD },
+                { n: "$3.2M",  label: "Activist concessions",     sub: "Avoidable when institutional holders are contacted before the activist's first press statement", accent: GOLD },
+                { n: "30→12",  label: "Days to minutes",          sub: "Entire mobilization cycle compressed — not faster, but pre-staged before the trigger fires", accent: TEAL },
+                { n: "3,600×", label: "Execution head start",     sub: "Every competitor without Readiness OS begins mobilizing when your team is already executing", accent: TEAL },
+              ] as { n: string; label: string; sub: string; accent: string }[]).map((s, i) => (
+                <div key={i} style={{ padding: "24px 20px", background: "rgba(10,15,46,0.85)" }}>
+                  <div style={{ ...GEO, fontSize: 30, fontWeight: 700, color: s.accent, marginBottom: 6, lineHeight: 1 }}>{s.n}</div>
+                  <div style={{ ...DM, fontSize: 10, fontWeight: 700, color: "#fff", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 8 }}>{s.label}</div>
+                  <div style={{ ...DM, fontSize: 11, color: MUTED, lineHeight: 1.55 }}>{s.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 1, padding: "18px 24px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderTop: `2px solid ${GOLD}` }}>
+              <p style={{ ...GEO, fontSize: 15, fontStyle: "italic", color: "rgba(255,255,255,0.72)", margin: 0, lineHeight: 1.65 }}>
+                "The response is ready before the trigger fires." — That sentence means your organization will never again spend 30 days figuring out who to call after a situation presents itself. The preparation happens before you need it. The decision remains human. The 12 minutes is the outcome of that preparation — not a reaction to the crisis.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* CTA */}
         <div style={{ padding: "64px 48px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <h2 style={{ ...GEO, fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
-              Ready to experience it yourself?
+              Every trigger your organization will face — pre-staged before it arrives.
             </h2>
             <p style={{ fontSize: 15, color: MUTED, marginBottom: 36, lineHeight: 1.7 }}>
-              The 12-Minute Test Drive puts you in the role of an executive responding to a live trigger. Choose your scenario — watch the chain execute.
+              The 12-Minute Test Drive puts you in the role of an executive responding to a live trigger. Choose your scenario, watch the chain execute, and feel the difference between prepared and improvised.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 28 }}>
               <Link href="/12-minute-experience">

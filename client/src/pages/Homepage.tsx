@@ -4883,80 +4883,185 @@ function SocialProofStrip() {
   );
 }
 
-// ─── PLAIN ENGLISH EXPLAINER ─────────────────────────────────────────────────
+// ─── VALUE IMPACT SECTION ─────────────────────────────────────────────────────
+// Shows the cost of NOT having Readiness OS alongside the value of having it.
+// Specific dollar amounts, real timelines, no abstractions.
 function PlainEnglishExplainer() {
+  const RED = "#C0392B";
+
+  const withoutSteps = [
+    { time: "Day 1–3",   event: "Figuring out who needs to be in the room. No contact list. No protocol. Executive bandwidth consumed before a single task is assigned." },
+    { time: "Day 4–7",   event: "Scheduling alignment meetings across time zones. The regulator has already opened an inquiry. The competitor is already acting." },
+    { time: "Day 8–14",  event: "Stakeholders finally aligned on a plan. Ownership assigned. The strategic window is more than half closed." },
+    { time: "Day 7",     event: "Board briefed for the first time — media has already run the story. Narrative has been set without you." },
+    { time: "Day 30",    event: "Response structure stabilized. Execution finally begins — 30 days after the trigger fired.", cost: "$47M average regulatory exposure (ransomware) · $3.2M in avoidable concessions (activist investor)" },
+  ] as { time: string; event: string; cost?: string }[];
+
+  const withSteps = [
+    { time: "0:00",  event: "System detects the trigger. Protocol matched. 97% pattern confidence. Risk score assigned.", accent: GOLD },
+    { time: "0:01",  event: "Execution brief staged — situation summary, authority chain, pre-approved communications — complete.", accent: GOLD },
+    { time: "0:03",  event: "CEO, CISO, General Counsel, Board Chair, CFO, COO — all notified simultaneously, each with their specific role.", accent: TEAL },
+    { time: "0:05",  event: "CEO reviews pre-staged brief. One authorization. Budget unlocked. No committee. No alignment call.", accent: TEAL },
+    { time: "0:12",  event: "Full team executing. FBI pre-notified. Regulatory disclosure filed on time. Board briefed before markets open.", accent: TEAL },
+  ] as { time: string; event: string; accent: string }[];
+
+  const scenarios = [
+    {
+      domain: "RISK & RESILIENCE",
+      title: "Ransomware Attack",
+      without: "$47M in regulatory penalties · 30 days of managed chaos · Customer notifications 14 days late · Brand damage ongoing",
+      with: "$0 in regulatory penalties · 12 minutes to full team executing · Board notified before markets opened · Customer trust maintained",
+      withAccent: TEAL,
+      withBg: "#F0FAF6",
+      withText: "#1a6b52",
+    },
+    {
+      domain: "GROWTH & POSITIONING",
+      title: "Activist Investor 13D",
+      without: "$3.2M in avoidable concessions (Lazard estimate) · 30 days reactive · Activist narrative wins the institutional holder conversation",
+      with: "Top 10 institutional holders contacted before activist's first press statement · Board defense strategy fully staged before market open",
+      withAccent: GOLD,
+      withBg: "#FFFDF0",
+      withText: "#7A5C10",
+    },
+    {
+      domain: "RISK & RESILIENCE",
+      title: "Supply Chain Collapse",
+      without: "Production gap exposed · Customers notified after the gap emerges · 6 weeks behind competitors who had pre-staged supplier contingencies",
+      with: "6 alternate suppliers contacted simultaneously within 12 minutes · Top 10 customers called before production gap emerged · 6 weeks ahead",
+      withAccent: TEAL,
+      withBg: "#F0FAF6",
+      withText: "#1a6b52",
+    },
+  ] as { domain: string; title: string; without: string; with: string; withAccent: string; withBg: string; withText: string }[];
+
   return (
-    <section style={{ background: "#ffffff", borderTop: `4px solid ${GOLD}`, padding: "72px 0 80px", position: "relative" }}>
+    <section style={{ background: "#ffffff", borderTop: `4px solid ${GOLD}`, padding: "80px 0 96px" }}>
       <style>{`
-        @media (max-width: 860px) {
-          .hp-explainer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        @media (max-width: 900px) {
+          .hp-vi-compare { grid-template-columns: 1fr !important; }
+          .hp-vi-scenarios { grid-template-columns: 1fr !important; }
         }
       `}</style>
       <div style={{ ...CONTAINER }}>
-        <div className="hp-explainer-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
-          {/* Left: Plain English explanation */}
-          <div>
-            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>
-              In Plain English
-            </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(30px,3vw,46px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, margin: "0 0 24px", letterSpacing: "-0.01em" }}>
-              Most companies spend 30 days figuring out how to respond.{" "}
-              <span style={{ color: GOLD }}>We eliminate that entirely.</span>
-            </h2>
-            <p style={{ ...DM, fontSize: 17, color: "#1A202C", lineHeight: 1.75, margin: "0 0 20px", fontWeight: 500 }}>
-              Readiness OS pre-stages your organization's response to every strategic situation — before it happens. Activist investor, ransomware attack, supply chain collapse, regulatory inquiry, market opportunity.
-            </p>
-            <p style={{ ...DM, fontSize: 16, color: "#4A5568", lineHeight: 1.7, margin: "0 0 32px" }}>
-              When the trigger fires, your team executes in <strong style={{ color: NAVY }}>12 minutes</strong> instead of 30 days. Not because you move faster — because the response was <strong style={{ color: NAVY }}>already built</strong> before you needed it.
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-              <Link href="/how-it-executes" style={{ ...DM, display: "inline-block", background: NAVY, color: "#fff", fontWeight: 700, fontSize: 13, padding: "14px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}>
-                Watch It Execute →
-              </Link>
-              <Link href="/12-minute-experience" style={{ ...DM, display: "inline-block", background: "transparent", color: NAVY, fontWeight: 700, fontSize: 13, padding: "13px 24px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, border: `1.5px solid ${NAVY}` }}>
-                Try the 12-Minute Test Drive
-              </Link>
-            </div>
-          </div>
 
-          {/* Right: How it works — 3-step arc */}
-          <div>
-            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 24 }}>
-              How It Works
+        {/* Section header */}
+        <div style={{ marginBottom: 56 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>
+            The Cost of One Unplanned Trigger
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(32px,3.5vw,52px)", fontWeight: 700, color: NAVY, lineHeight: 1.1, margin: "0 0 20px", letterSpacing: "-0.01em", maxWidth: 820 }}>
+            Every organization faces these situations. The only variable is whether the response was built before it arrived.
+          </h2>
+          <p style={{ ...DM, fontSize: 17, color: "#2D3748", lineHeight: 1.7, margin: 0, fontWeight: 500, maxWidth: 760 }}>
+            Without Readiness OS: 30 days figuring out who to call, while the regulator moves first, the strategic window closes, and the competitor capitalizes.{" "}
+            <strong style={{ color: NAVY }}>With Readiness OS: 12 minutes — pre-staged, authorized, executing.</strong>
+          </p>
+        </div>
+
+        {/* WITHOUT / WITH comparison columns */}
+        <div className="hp-vi-compare" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 2, background: "#E8E4DC" }}>
+
+          {/* WITHOUT */}
+          <div style={{ background: "#FEF9F9", padding: "32px 32px 28px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+              <div style={{ width: 22, height: 22, background: RED, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: "#fff", fontWeight: 800 }}>✕</div>
+              <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: RED }}>Without Readiness OS</span>
             </div>
-            {([
-              {
-                n: "01",
-                title: "Pre-staged before the trigger",
-                body: "180 Readiness Protocols — one for every situation your organization will face. Tasks assigned, owners named, budget allocated, executive brief written. All staged before any trigger fires.",
-                color: GOLD,
-                last: false,
-              },
-              {
-                n: "02",
-                title: "Executive authorizes in real time",
-                body: "System detects the trigger, matches the protocol, and notifies every stakeholder simultaneously with their specific role. CEO reviews a pre-staged brief and authorizes. One decision. No committee.",
-                color: GOLD,
-                last: false,
-              },
-              {
-                n: "03",
-                title: "Teams executing in 12 minutes",
-                body: "Full response team mobilized, budget unlocked, communications staged. Every activation makes the next response faster. The organization compounds its readiness over time.",
-                color: TEAL,
-                last: true,
-              },
-            ] as { n: string; title: string; body: string; color: string; last: boolean }[]).map((item) => (
-              <div key={item.n} style={{ display: "flex", gap: 20, padding: "24px 0", borderBottom: !item.last ? "1px solid #E8E4DC" : "none" }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 700, color: item.color, lineHeight: 1, flexShrink: 0, minWidth: 32 }}>{item.n}</div>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: NAVY, marginBottom: 24, lineHeight: 1.25 }}>
+              Ransomware hits at 3 AM. 30 days of managed chaos begins.
+            </div>
+            {withoutSteps.map((s, i) => (
+              <div key={i} style={{ display: "flex", gap: 16, paddingBottom: 14, marginBottom: 14, borderBottom: i < withoutSteps.length - 1 ? "1px solid rgba(192,57,43,0.12)" : "none" }}>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 800, color: RED, letterSpacing: "0.06em", minWidth: 64, flexShrink: 0, paddingTop: 1 }}>{s.time}</div>
                 <div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: NAVY, marginBottom: 8, lineHeight: 1.2 }}>{item.title}</div>
-                  <div style={{ ...DM, fontSize: 14, color: "#4A5568", lineHeight: 1.65 }}>{item.body}</div>
+                  <div style={{ ...DM, fontSize: 13, color: "#1A202C", lineHeight: 1.6, fontWeight: 500 }}>{s.event}</div>
+                  {s.cost && (
+                    <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: RED, marginTop: 10, padding: "8px 12px", background: "rgba(192,57,43,0.07)", borderLeft: `2px solid ${RED}` }}>
+                      {s.cost}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
+
+          {/* WITH */}
+          <div style={{ background: "#F2FBF7", padding: "32px 32px 28px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+              <div style={{ width: 22, height: 22, background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, color: "#fff", fontWeight: 800 }}>✓</div>
+              <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL }}>With Readiness OS</span>
+            </div>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 700, color: NAVY, marginBottom: 24, lineHeight: 1.25 }}>
+              Same 3 AM trigger. The response was already built.
+            </div>
+            {withSteps.map((s, i) => (
+              <div key={i} style={{ display: "flex", gap: 16, paddingBottom: 14, marginBottom: 14, borderBottom: i < withSteps.length - 1 ? "1px solid rgba(43,138,110,0.15)" : "none" }}>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 800, color: s.accent, letterSpacing: "0.06em", minWidth: 64, flexShrink: 0, paddingTop: 1 }}>{s.time}</div>
+                <div style={{ ...DM, fontSize: 13, color: "#1A202C", lineHeight: 1.6, fontWeight: 500 }}>{s.event}</div>
+              </div>
+            ))}
+            <div style={{ marginTop: 8, padding: "14px 16px", background: TEAL }}>
+              <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 4 }}>$0 in regulatory penalties. Zero brand damage.</div>
+              <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.88)", lineHeight: 1.5 }}>Board notified before markets opened. Regulatory disclosure filed on time. Customer trust maintained. The organization is now better prepared than before the trigger fired.</div>
+            </div>
+          </div>
         </div>
+
+        {/* 3-scenario cost proof grid */}
+        <div className="hp-vi-scenarios" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, background: "#E8E4DC", marginBottom: 56 }}>
+          {scenarios.map((s, i) => (
+            <div key={i} style={{ background: "#ffffff", padding: "28px 24px" }}>
+              <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: MUTED_LIGHT, marginBottom: 8 }}>{s.domain}</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 19, fontWeight: 700, color: NAVY, marginBottom: 18, lineHeight: 1.2 }}>{s.title}</div>
+              <div style={{ ...DM, fontSize: 12, color: RED, lineHeight: 1.65, marginBottom: 12, padding: "12px 14px", background: "#FEF9F9", borderLeft: `2px solid ${RED}` }}>
+                <span style={{ fontWeight: 700, display: "block", marginBottom: 3 }}>Without:</span>
+                {s.without}
+              </div>
+              <div style={{ ...DM, fontSize: 12, color: s.withText, lineHeight: 1.65, padding: "12px 14px", background: s.withBg, borderLeft: `2px solid ${s.withAccent}` }}>
+                <span style={{ fontWeight: 700, display: "block", marginBottom: 3 }}>With Readiness OS:</span>
+                {s.with}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Stat row */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#E8E4DC", marginBottom: 48 }}>
+          {[
+            { n: "3,600×", label: "Execution Head Start", sub: "30 days compressed to 12 minutes — every trigger, every domain" },
+            { n: "180",    label: "Readiness Protocols",  sub: "Pre-staged before any trigger fires — startup to Fortune 500" },
+            { n: "$0",     label: "Penalty Exposure",     sub: "When every response is pre-staged, approved, and executing in 12 minutes" },
+            { n: "231",    label: "Triggers Monitored",   sub: "Continuous signal monitoring — system detects before you hear it elsewhere" },
+          ].map((s, i) => (
+            <div key={i} style={{ background: NAVY, padding: "28px 24px" }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,2.5vw,36px)", fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 8 }}>{s.n}</div>
+              <div style={{ ...DM, fontSize: 11, fontWeight: 700, color: "#fff", letterSpacing: "0.06em", marginBottom: 6 }}>{s.label}</div>
+              <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.62)", lineHeight: 1.5 }}>{s.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 24, paddingTop: 40, borderTop: `2px solid ${GOLD}` }}>
+          <div style={{ maxWidth: 580 }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(22px,2.2vw,30px)", fontWeight: 700, color: NAVY, marginBottom: 10, lineHeight: 1.2 }}>
+              The response is ready before the trigger fires. That is the only competitive advantage that cannot be replicated under pressure.
+            </div>
+            <div style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.6 }}>
+              180 Readiness Protocols. Pre-staged for every situation your organization will face. Startup to Fortune 500.
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const, flexShrink: 0 }}>
+            <Link href="/how-it-executes" style={{ ...DM, display: "inline-block", background: NAVY, color: "#fff", fontWeight: 700, fontSize: 13, padding: "15px 32px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}>
+              Watch It Execute →
+            </Link>
+            <Link href="/request-access" style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "15px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}>
+              Apply for Founding Partner Access →
+            </Link>
+          </div>
+        </div>
+
       </div>
     </section>
   );

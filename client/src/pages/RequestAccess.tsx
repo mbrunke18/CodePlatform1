@@ -151,6 +151,24 @@ export default function RequestAccess() {
             </div>
           </div>
 
+          {/* Cost of one unplanned trigger */}
+          <div style={{ position: "relative", zIndex: 1, marginTop: 24, padding: "16px 18px", background: "rgba(192,57,43,0.07)", borderLeft: "2px solid rgba(192,57,43,0.5)" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(220,100,90,0.85)", textTransform: "uppercase" as const, marginBottom: 12 }}>The cost of one unplanned trigger</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 16px" }}>
+              {[
+                { n: "$47M",   label: "Regulatory exposure — ransomware, unprepared" },
+                { n: "$3.2M",  label: "Activist concessions, avoidable with pre-staging" },
+                { n: "30 days", label: "Mobilization lag every time a trigger fires" },
+                { n: "$0",     label: "Penalty exposure — pre-staged, on-time disclosure", teal: true },
+              ].map((s, i) => (
+                <div key={i}>
+                  <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: s.teal ? TEAL : "rgba(220,100,90,0.9)", lineHeight: 1, marginBottom: 3 }}>{s.n}</div>
+                  <div style={{ ...BC, fontSize: 10, color: "rgba(240,237,228,0.4)", lineHeight: 1.4 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Fix #4 — What happens after you apply */}
           <div style={{ position: "relative", zIndex: 1, marginTop: 28, borderTop: "1px solid rgba(240,237,228,0.08)", paddingTop: 20 }}>
             <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.32em", color: TEAL, textTransform: "uppercase", marginBottom: 14 }}>What happens after you apply</div>

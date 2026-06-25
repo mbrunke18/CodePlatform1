@@ -211,16 +211,32 @@ export default function ProofStory() {
     <PageLayout className="vm-page-ps">
       <div className="ps-body" style={{ background: "#fff", ...DM }}>
 
-        {/* Page Orientation — white strip before the hero */}
-        <div style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC", padding: "36px 48px" }}>
-          <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" as const }}>
-            <div style={{ flex: 1, minWidth: 280 }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Proof — What 12 Minutes Looks Like</div>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>
-                Three real activation narratives — with and without Readiness OS
+        {/* Page Orientation — cost-of-inaction strip before the hero */}
+        <div style={{ background: "#ffffff", borderBottom: "1px solid #E8E4DC" }}>
+          {/* Cost numbers — tight 4-column row */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, borderBottom: "1px solid #E8E4DC" }}>
+            {([
+              { n: "$47M",    label: "Regulatory penalties",  sub: "Per unplanned ransomware event", color: "#C0392B", bg: "#FEF9F9" },
+              { n: "$3.2M",   label: "Activist concessions",  sub: "Avoidable with pre-staged board defense", color: "#C0392B", bg: "#FEF9F9" },
+              { n: "30 days", label: "Without Readiness OS",  sub: "Average mobilization lag per trigger", color: "#C0392B", bg: "#FEF9F9" },
+              { n: "12 min",  label: "With Readiness OS",     sub: "Pre-staged. Authorized. Executing.", color: TEAL, bg: "#F0FAF6" },
+            ] as { n: string; label: string; sub: string; color: string; bg: string }[]).map((s, i) => (
+              <div key={i} style={{ background: s.bg, padding: "20px 28px", borderRight: i < 3 ? "1px solid #E8E4DC" : "none" }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: s.color, lineHeight: 1, marginBottom: 5 }}>{s.n}</div>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: "0.06em", marginBottom: 3 }}>{s.label}</div>
+                <div style={{ ...DM, fontSize: 11, color: MUTED, lineHeight: 1.4 }}>{s.sub}</div>
               </div>
-              <p style={{ ...DM, fontSize: 15, color: "#2D3748", lineHeight: 1.6, margin: 0 }}>
-                Ransomware, activist investor, supply chain collapse. Side-by-side timelines: the 30-day drift without Readiness OS vs. the 12-minute response with it. Same situation. The only variable is whether the response was pre-staged before the trigger fired.
+            ))}
+          </div>
+          {/* Headline + CTAs row */}
+          <div style={{ padding: "32px 48px", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" as const }}>
+            <div style={{ flex: 1, minWidth: 280 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Proof — Same Trigger. Two Outcomes.</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>
+                The numbers above are the cost of improvising. Read what the difference looks like minute by minute.
+              </div>
+              <p style={{ ...DM, fontSize: 14, color: "#4A5568", lineHeight: 1.65, margin: 0 }}>
+                Ransomware, activist investor, supply chain collapse. The same situation — two versions. The only variable: whether the response was built before the trigger fired. Toggle between WITH and WITHOUT to see exactly what changes.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, flexShrink: 0 }}>
@@ -228,7 +244,7 @@ export default function ProofStory() {
                 Apply for Founding Partner Access →
               </Link>
               <Link href="/how-it-executes" style={{ ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textDecoration: "none", color: NAVY, textAlign: "center" as const, borderBottom: `1px solid ${NAVY}`, paddingBottom: 2 }}>
-                See the 12-Minute Execution Chain →
+                Watch the 12-Minute Execution Chain →
               </Link>
             </div>
           </div>
