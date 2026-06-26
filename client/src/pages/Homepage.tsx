@@ -1150,14 +1150,15 @@ function HeroSection() {
               {/* Inline metric row */}
               <div className="hp-metric-row" style={{ display: "flex", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}>
                 {[
-                  { n: "12 min",  l: "Trigger to execution" },
-                  { n: "3,600×", l: "Execution head start" },
-                  { n: "180",    l: "Readiness Protocols" },
-                  { n: "231",    l: "Trigger patterns" },
+                  { n: "15–20/yr", l: "Situations annually", highlight: true },
+                  { n: "12 min",   l: "Per situation → execution" },
+                  { n: "3,600×",   l: "Execution head start" },
+                  { n: "180",      l: "Readiness Protocols" },
+                  { n: "231",      l: "Trigger patterns" },
                 ].map((s, i) => (
-                  <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
-                    <div style={{ ...GEO, color: GOLD, fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, lineHeight: 1 }}>{s.n}</div>
-                    <div style={{ ...DM, color: "rgba(255,255,255,0.68)", fontSize: 11, marginTop: 6, letterSpacing: "0.04em", fontWeight: 500 }}>{s.l}</div>
+                  <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
+                    <div style={{ ...GEO, color: (s as any).highlight ? "#fff" : GOLD, fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, lineHeight: 1 }}>{s.n}</div>
+                    <div style={{ ...DM, color: (s as any).highlight ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.68)", fontSize: 11, marginTop: 6, letterSpacing: "0.04em", fontWeight: (s as any).highlight ? 700 : 500 }}>{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -1823,6 +1824,53 @@ function PhotoBreakSection() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── FREQUENCY REFRAME STRIP ─────────────────────────────────────────────────
+function FrequencyReframeStrip() {
+  return (
+    <section style={{ background: IVORY, borderTop: `3px solid ${GOLD}`, padding: "64px 0 60px" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "0 64px", alignItems: "center" }}>
+
+          {/* Big number — the visual anchor */}
+          <div style={{ textAlign: "center", padding: "0 40px 0 0", borderRight: `1px solid rgba(10,15,46,0.12)` }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(72px,8vw,112px)", fontWeight: 700, color: NAVY, lineHeight: 1, letterSpacing: "-0.02em" }}>
+              15–20
+            </div>
+            <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginTop: 8 }}>
+              Situations · Every Year
+            </div>
+          </div>
+
+          {/* Reframe copy */}
+          <div>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(20px,2.2vw,28px)", fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
+              This isn't insurance for a catastrophe.<br />
+              <em style={{ color: GOLD }}>It's infrastructure for every year.</em>
+            </p>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: "rgba(10,15,46,0.72)", lineHeight: 1.75, maxWidth: 620, marginBottom: 20 }}>
+              Competitor cuts price. Federal inquiry opens. Key executive departs. Supply chain disrupts. Activist files. Most aren't catastrophes — they're the operational situations every organization faces year after year. Each one currently costs <strong style={{ color: NAVY }}>30 days of mobilization</strong> before execution begins.
+            </p>
+            {/* Before / After row */}
+            <div style={{ display: "flex", gap: 2, maxWidth: 560 }}>
+              <div style={{ flex: 1, padding: "14px 18px", background: "rgba(192,57,43,0.07)", borderLeft: "3px solid rgba(192,57,43,0.5)" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(192,57,43,0.75)", marginBottom: 6 }}>Without Readiness OS</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(10,15,46,0.7)" }}>30 days × 15–20 situations</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.45)", marginTop: 3 }}>300–600 days/year lost to mobilization</div>
+              </div>
+              <div style={{ flex: 1, padding: "14px 18px", background: "rgba(43,138,110,0.08)", borderLeft: `3px solid ${TEAL}` }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>With Readiness OS</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: NAVY }}>12 minutes × 15–20 situations</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.55)", marginTop: 3 }}>Response pre-staged before each one arrives</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -5452,7 +5500,10 @@ export default function Homepage() {
       {/* 1c. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
       <PhotoBreakSection />
 
-      {/* 2. SITUATIONS — 4 live scenarios, immediately below the claim */}
+      {/* 2. FREQUENCY — 15–20 situations/year reframe before the demos */}
+      <FrequencyReframeStrip />
+
+      {/* 3. SITUATIONS — 4 live scenarios, now understood as 4 of the 15–20 */}
       <ScenarioCardsRow />
 
       {/* 3. CREDIBILITY — practitioner voices before the visitor scrolls */}
