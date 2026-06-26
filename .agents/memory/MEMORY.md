@@ -9,3 +9,4 @@
 - [VaughnMartin custom domain](domain-status.md) — custom domain has been connected for months; never suggest they "need to" set one up
 - [Protocol #0 Architecture](protocol-zero-architecture.md) — 3-tier fallback chain; reserved numbers 0 + 10001-10009; not counted in the 180; seeded via protocolZeroSeed.ts
 - [Canonical Product Narrative](canonical-product-narrative.md) — locked 4-sentence story arc; test all copy against it before writing
+- [Situations vs Triggers Messaging](situations-vs-triggers-messaging.md) — "situation" in customer copy, "trigger" internal only; 15–20 situations/year reframe changes insurance→subscription

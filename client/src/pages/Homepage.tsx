@@ -1012,7 +1012,7 @@ function HeroSection() {
 
               {/* Lead — one decisive sentence, not a paragraph */}
               <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 28px" }}>
-                Most organizations spend 30 days mobilizing after a trigger fires — scoping from scratch, under pressure, while the strategic window closes.{" "}
+                Most organizations spend 30 days mobilizing after a situation presents itself — scoping from scratch, under pressure, while the strategic window closes.{" "}
                 <span style={{ color: GOLD, fontWeight: 700 }}>Readiness OS eliminates that entirely. 30 days compressed to 12 minutes.</span>
               </p>
 
@@ -1729,9 +1729,29 @@ function ScenarioHookSection() {
 
           {/* Lead statement */}
           <p style={{ ...GEO, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 28 }}>
-            One of these scenarios will hit your organization.<br />
-            <em style={{ fontStyle: "italic", color: GOLD }}>The question is whether the response is already staged.</em>
+            These aren't the only four situations your organization will face.<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>Most organizations face 15–20 every year.</em>
           </p>
+
+          {/* Frequency reframe — the key gap in how this was being sold */}
+          <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.88)", lineHeight: 1.75, maxWidth: 680, marginBottom: 24, fontWeight: 500 }}>
+            The 3 AM ransomware call. The activist investor filing. The federal inquiry. The competitor cutting price while your pipeline goes quiet. These are real — but they are not rare. Most organizations face 15 to 20 situations every year that demand a coordinated response. Some are high-stakes. Most are operational. <strong style={{ color: "#fff" }}>All of them currently cost 30 days of mobilization time every single time they present themselves.</strong>
+          </p>
+
+          {/* The question — personal, not accusatory */}
+          <p style={{ ...GEO, fontSize: "clamp(16px,1.8vw,22px)", fontWeight: 600, color: GOLD, lineHeight: 1.35, maxWidth: 620, marginBottom: 28, fontStyle: "italic" }}>
+            Think about the last time a situation hit your organization before you were ready for it. How long did mobilization actually take? What did it cost?
+          </p>
+
+          {/* Subscription reframe */}
+          <div style={{ padding: "18px 24px", background: "rgba(201,168,76,0.08)", borderLeft: `3px solid ${GOLD}`, marginBottom: 32, maxWidth: 640 }}>
+            <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: GOLD, letterSpacing: "0.04em", marginBottom: 6 }}>
+              Readiness OS closes that gap to 12 minutes — for every situation, every time.
+            </div>
+            <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.72)", lineHeight: 1.65 }}>
+              180 situations covered across 9 domains. When one presents itself, your response is already built. That's not a one-time win — it's compounding value every time a situation presents itself throughout the year.
+            </div>
+          </div>
 
           {/* Four questions — the gut punch */}
           <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "6px 0", marginBottom: 24 }}>
@@ -1742,16 +1762,11 @@ function ScenarioHookSection() {
             ))}
           </div>
 
-          {/* Context */}
-          <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.78)", lineHeight: 1.7, maxWidth: 660, marginBottom: 32 }}>
-            Most organizations — startup to Fortune 500 — spend 30 days figuring that out. While the window closes, the regulator moves, the competitor acts. Below is what having the response pre-staged looks like instead.
-          </p>
-
           {/* Bridge line */}
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ width: 1, height: 32, background: `linear-gradient(to bottom, ${GOLD}, transparent)` }} />
             <span style={{ ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.65)", textTransform: "uppercase" as const }}>
-              Select a scenario to see the full 12-minute execution
+              Four of those situations — see the full 12-minute response for each
             </span>
           </div>
 
@@ -4898,7 +4913,7 @@ function ThirtySecondBrief() {
     {
       q:    "Why do you need it?",
       stat: "30 Days Lost",
-      body: "When a trigger fires — ransomware, activist investor, supply chain collapse, regulatory inquiry — organizations without preparation spend 30 days figuring out who to call while the regulator moves first and the competitor capitalizes.",
+      body: "When a situation presents itself — ransomware, activist investor, supply chain collapse, regulatory inquiry — organizations without preparation spend 30 days figuring out who to call while the regulator moves first and the competitor capitalizes.",
       accent: "#C0392B",
       statColor: "#C0392B",
     },
