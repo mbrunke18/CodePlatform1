@@ -1,0 +1,37 @@
+Significant improvement from v1. You addressed four of the six priority issues I flagged. Here's the honest scorecard.
+
+---
+
+## What V2 Fixed
+
+**Slide 9 (Early Momentum) — the biggest win.** This was the most critical missing piece in v1. Four quadrants, clean structure, concrete claims: platform live, 2 Founding Partner discussions active, Dr. Kerry Huang's validation elevated with her own slide real estate, and the Microsoft $13B as category confirmation. This does exactly what a traction slide needs to do at pre-seed — it tells an investor this is a real system with real signals, not a pitch deck for a concept.
+
+**Slide 10 (Founder) — dramatically improved.** "Martin Brunke" is now the 200pt anchor. The Stanford story is in the deck. "Then I walked into corporate America and watched the same trigger take 30 days" is the exact sentence that makes this founder credible and memorable. The company names are named — Ford, Lockheed, Toyota, Schwab. This now earns its position in the narrative.
+
+**Slide 8 (Validation) — correctly isolated.** Giving Dr. Kerry Huang her own slide at scale was the right call. The full-slide quote treatment with the two-sentence explanation at the bottom ("That is not a customer quote. That is external validation of the thesis.") is strong — it pre-empts the inevitable VC question about the source's independence.
+
+**Slide 3 (Market) — the 15–20 situations number is now consistent.** The upgrade from "4–6 situations" to "15–20" as the lead stat is a meaningful market size argument, and the parenthetical "(conservative: 4–6)" handles the skeptic's objection cleanly.
+
+---
+
+## What Still Needs Attention
+
+**Slide 11 — critical rendering failure.** The amount displays as "$750,00" with the "0" orphaned to a second line, and "SAFE · $8M post-money cap" has a large zero overlapping it on the left side. This is the most important number in the deck. An investor's first impression of the Ask slide cannot be a broken number. This needs to be fixed before this deck goes to anyone.
+
+**Slide 11 — the title also clips.** "Pre-Seed Round · Closing Q3 202" gets cut off — the "6" is hidden. The header is overflowing its text box.
+
+**Slides 8, 9, 10, 11 — the design system switches.** The first seven slides use the immersive dark-navy full-bleed treatment with Cormorant Garamond at large scale. Slides 8–11 shift to a white background with a narrow navy header bar and gold rule — a completely different visual register. It's not wrong on its own, but inside a single deck it reads as two different decks assembled together. The separation is jarring, especially going from the striking full-bleed slide 7 (Moat) directly into the white slide 8 (Validation).
+
+**Slide 4 — the protocol number inconsistency persists.** Still showing 180 Protocols in the hero stats and "180 protocols · 9 domains · 210 total" in Step 01. Your canonical count across other materials is 170. This will still get flagged in a serious meeting.
+
+**Slide 9 — "2 Founding Partner discussions active" needs one more beat.** Saying "inbound-initiated conversations" is good. If either of these is a named company (even "a Fortune 500 retailer" or "a regional financial institution"), that specificity converts a signal into proof. Investors know the difference between "discussions active" and "they came to us."
+
+---
+
+## Priority Fixes Before Sending
+
+1. Fix the $750,000 rendering on slide 11 — the clipped title and broken number are the first things an investor sees on the Ask slide
+2. Decide on 170 or 180 Protocols and lock it everywhere — slide 4 still says 180
+3. Consider whether the design break at slide 8 is intentional or can be unified
+
+The narrative arc is now complete and the deck tells a legitimate story. The two broken elements on slide 11 are the only things that would make me pause before sending it out.
