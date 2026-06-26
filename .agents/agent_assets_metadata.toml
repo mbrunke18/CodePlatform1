@@ -677,3 +677,9 @@ id = "ol8twpR4kVyYOIEx8oQN7"
 uri = "file://screenshots/hq_command_tower.jpg"
 type = "image"
 title = "Backup — High-res Command Tower (use if the earlier version needs replacing)"
+
+[[outputs]]
+id = "Wx5AcFxshJvHd4LvYxVhx"
+uri = "file://attached_assets/readiness_os_vc_pitch_updated.pptx"
+type = "slides"
+title = "Readiness OS — VC Pitch Deck (Updated)"
