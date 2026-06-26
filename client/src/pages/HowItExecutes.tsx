@@ -731,7 +731,7 @@ export default function HowItExecutes() {
               The value isn't speed. It's the elimination of improvised chaos under pressure — and the cost that chaos creates.
             </h3>
             <p style={{ ...DM, fontSize: 13, color: MUTED, maxWidth: 660, lineHeight: 1.7, marginBottom: 36 }}>
-              Every enterprise spends weeks mobilizing after a trigger fires — not because they're slow, but because the response was never pre-staged. Readiness OS eliminates that mobilization cycle entirely. Here is what that means in dollar terms.
+              Every enterprise spends weeks mobilizing after a situation presents itself — not because they're slow, but because the response was never pre-staged. Most organizations face 15–20 situations every year that demand a coordinated response. Readiness OS eliminates that mobilization cycle for every single one. Here is what that means in dollar terms.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "rgba(255,255,255,0.08)" }}>
               {([

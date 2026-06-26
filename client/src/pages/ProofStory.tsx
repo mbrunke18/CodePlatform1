@@ -231,7 +231,7 @@ export default function ProofStory() {
           {/* Headline + CTAs row */}
           <div style={{ padding: "32px 48px", display: "flex", alignItems: "center", gap: 40, flexWrap: "wrap" as const }}>
             <div style={{ flex: 1, minWidth: 280 }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Proof — Same Trigger. Two Outcomes.</div>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Proof — Same Situation. Two Outcomes.</div>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>
                 The numbers above are the cost of improvising. Read what the difference looks like minute by minute.
               </div>

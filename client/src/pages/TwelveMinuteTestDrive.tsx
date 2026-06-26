@@ -369,7 +369,7 @@ export default function TwelveMinuteTestDrive() {
               Run a live scenario. See exactly how 30 days compresses to 12 minutes.
             </div>
             <p style={{ ...DM, fontSize: 14, color: '#2D3748', lineHeight: 1.6, margin: 0 }}>
-              Choose any trigger — ransomware, activist investor, supply chain collapse, regulatory inquiry. Walk through the 4-step execution chain. This is what your team would experience when a real trigger fires.
+              Choose any situation — ransomware, activist investor, supply chain collapse, regulatory inquiry. Walk through the 4-step execution chain. This is what your team would experience when a situation presents itself and the response is already staged.
             </p>
           </div>
           <div style={{ flexShrink: 0 }}>
@@ -388,7 +388,7 @@ export default function TwelveMinuteTestDrive() {
             {/* Challenge question — the emotional hook */}
             <div style={{ marginBottom: 40, padding: '32px 40px', background: 'rgba(255,255,255,0.03)', borderLeft: `4px solid ${GOLD}`, borderTop: '1px solid rgba(201,168,76,0.2)', borderRight: '1px solid rgba(201,168,76,0.2)', borderBottom: '1px solid rgba(201,168,76,0.2)', maxWidth: 720, margin: '0 auto 40px' }}>
               <p style={{ ...GEO, fontSize: 'clamp(20px,2.8vw,30px)', fontWeight: 700, color: '#fff', lineHeight: 1.4, marginBottom: 16 }}>
-                This trigger fires at 2:47 AM. Your competitor's protocol is already running.
+                This situation hits at 2:47 AM. Your competitor's response is already staged.
               </p>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, marginBottom: 12 }}>
                 Not who you'd hope handles it — who actually calls. Not the plan you'd draft — the one improvised under pressure. Without preparation, the average enterprise spends 30 days mobilizing before execution begins: who owns this, who authorizes, who advises, what's the narrative.

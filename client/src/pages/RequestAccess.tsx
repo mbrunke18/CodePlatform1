@@ -153,12 +153,12 @@ export default function RequestAccess() {
 
           {/* Cost of one unplanned trigger */}
           <div style={{ position: "relative", zIndex: 1, marginTop: 24, padding: "16px 18px", background: "rgba(192,57,43,0.07)", borderLeft: "2px solid rgba(192,57,43,0.5)" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(220,100,90,0.85)", textTransform: "uppercase" as const, marginBottom: 12 }}>The cost of one unplanned trigger</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(220,100,90,0.85)", textTransform: "uppercase" as const, marginBottom: 12 }}>The cost of one unplanned situation</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 16px" }}>
               {[
                 { n: "$47M",   label: "Regulatory exposure — ransomware, unprepared" },
                 { n: "$3.2M",  label: "Activist concessions, avoidable with pre-staging" },
-                { n: "30 days", label: "Mobilization lag every time a trigger fires" },
+                { n: "30 days", label: "Mobilization lag every time a situation presents itself" },
                 { n: "$0",     label: "Penalty exposure — pre-staged, on-time disclosure", teal: true },
               ].map((s, i) => (
                 <div key={i}>
@@ -302,7 +302,7 @@ export default function RequestAccess() {
                             <textarea
                               {...field}
                               rows={3}
-                              placeholder="Describe the coordination gap your organization faces when a major trigger fires…"
+                              placeholder="Describe the coordination gap your organization faces when a major situation presents itself…"
                               className="request-field"
                               style={{ ...fieldStyle, resize: "none", lineHeight: 1.55, paddingTop: 8 }}
                             />

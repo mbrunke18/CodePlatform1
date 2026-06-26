@@ -53,7 +53,7 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 4,
-    text: "When a strategic trigger fires, how long does it take to get the right decision-makers aligned and actively executing?",
+    text: "When a situation demands a coordinated response, how long does it take to get the right decision-makers aligned and actively executing?",
     subtext: "Not just informed — actually coordinated and moving.",
     options: [
       { label: "Under 30 minutes", sub: "Authority is pre-assigned, everyone knows their role", points: 20 },
@@ -90,14 +90,14 @@ const TIER_DATA: Record<ScoreTier, { label: string; color: string; icon: React.R
     color: "#DC2626",
     icon: <AlertCircle className="w-6 h-6" />,
     headline: "Your organization is mobilizing reactively.",
-    body: "When a strategic trigger fires, you're spending weeks on coordination before execution begins. The first 30 days of any major situation is consumed by alignment — figuring out who owns what, who decides, what sequence activates. That window is where value is lost and damage compounds.",
+    body: "When a situation presents itself, you're spending weeks on coordination before execution begins. The first 30 days of any situation that demands a response is consumed by alignment — figuring out who owns what, who decides, what sequence activates. That window is where value is lost and damage compounds.",
   },
   developing: {
     label: "Developing Readiness",
     color: "#D97706",
     icon: <AlertTriangle className="w-6 h-6" />,
     headline: "You have some readiness infrastructure — but significant gaps remain.",
-    body: "Monitoring and basic plans exist, but pre-staging and automated coordination are missing. When a trigger fires, you're faster than average but still spending days on mobilization before execution begins. The 12-minute execution window requires every element pre-staged before the situation arrives.",
+    body: "Monitoring and basic plans exist, but pre-staging and automated coordination are missing. When a situation presents itself, you're faster than average but still spending days on mobilization before execution begins. The 12-minute execution window requires every element pre-staged before the situation arrives.",
   },
   capable: {
     label: "Capable — Execution Gaps Remain",
@@ -137,7 +137,7 @@ export default function ReadinessBenchmark() {
   return (
     <PageLayout
       title="Organizational Readiness Benchmark | VaughnMartin Readiness OS"
-      description="5 questions. Immediate score. See exactly where your organization's strategic readiness stands — and what the gap costs when a trigger fires."
+      description="5 questions. Immediate score. See exactly where your organization's strategic readiness stands — and what the gap costs when a situation presents itself."
     >
       <div style={{ background: "#fff", minHeight: "100vh" }}>
 
@@ -151,7 +151,7 @@ export default function ReadinessBenchmark() {
               <div style={{ width: 24, height: 1, background: GOLD }} />
             </div>
             <h1 style={{ ...CG, fontSize: "clamp(30px,4.5vw,52px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
-              How ready is your organization<br /><em style={{ color: GOLD }}>before the next trigger fires?</em>
+              How ready is your organization<br /><em style={{ color: GOLD }}>before the next situation presents itself?</em>
             </h1>
             <p style={{ ...BW, fontSize: 14, color: "rgba(240,237,228,0.65)", lineHeight: 1.75, maxWidth: 520, margin: "0 auto" }}>
               Most organizations discover their readiness gap in the middle of a situation. This benchmark takes 3 minutes and shows you exactly where you stand — before it matters.
