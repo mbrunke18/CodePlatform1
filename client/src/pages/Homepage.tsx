@@ -1860,12 +1860,12 @@ function FrequencyReframeStrip() {
             <div style={{ display: "flex", gap: 2, maxWidth: 560 }}>
               <div style={{ flex: 1, padding: "14px 18px", background: "rgba(192,57,43,0.07)", borderLeft: "3px solid rgba(192,57,43,0.5)" }}>
                 <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(192,57,43,0.75)", marginBottom: 6 }}>Without Readiness OS</div>
-                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(10,15,46,0.7)" }}>30 days × 15–20 situations</div>
-                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.45)", marginTop: 3 }}>300–600 days/year lost to mobilization</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: "rgba(10,15,46,0.7)" }}>30 days of mobilization</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.45)", marginTop: 3 }}>Every single time a situation presents itself</div>
               </div>
               <div style={{ flex: 1, padding: "14px 18px", background: "rgba(43,138,110,0.08)", borderLeft: `3px solid ${TEAL}` }}>
                 <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>With Readiness OS</div>
-                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: NAVY }}>12 minutes × 15–20 situations</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: NAVY }}>12 minutes to execution</div>
                 <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.55)", marginTop: 3 }}>Response pre-staged before each one arrives</div>
               </div>
             </div>
