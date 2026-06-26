@@ -135,6 +135,22 @@ export default function FounderStory() {
           <PullQuote>
             "That is coordination infrastructure performing under the highest pressure I have ever witnessed."
           </PullQuote>
+
+          {/* Stanford coaching photo */}
+          <div style={{ margin: "40px -8px 40px", position: "relative" }}>
+            <img
+              src="/founder-coaching.png"
+              alt="Martin Brunke coaching on the Stanford Cardinal sideline"
+              style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: 420, objectPosition: "center top" }}
+            />
+            <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: MUTED, fontStyle: "italic", lineHeight: 1.5 }}>
+                Martin Brunke on the Stanford Cardinal sideline — five years coaching major college football, watching pre-staged preparation collapse the distance between signal and response.
+              </span>
+            </div>
+          </div>
+
           <Body>
             Not because the players were exceptional — though many were. Because the system was built before the game started. The prepared response wasn't assembled on the sideline. Every scenario had already been prepared for. Every role had already been defined. Every pivot had already been rehearsed. When the situation changed at the line of scrimmage, nobody panicked. They already knew what to do next.
           </Body>
