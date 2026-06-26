@@ -464,7 +464,7 @@ export default function ProofStory() {
                 The 12 minutes aren't execution speed.<br /><em style={{ color: GOLD }}>They're the absence of mobilization.</em>
               </h2>
               <p style={{ fontSize: 16, color: MUTED, maxWidth: 680, margin: "0 auto", lineHeight: 1.7 }}>
-                Every tool in the stories above — the FBI contact, outside counsel, the proxy solicitor, the forensic team, the alternate suppliers — was pre-identified, pre-briefed, and pre-authorized before the trigger fired. Readiness OS doesn't accelerate the response. It eliminates the mobilization cycle that makes the response slow.
+                Every tool in the stories above — the FBI contact, outside counsel, the proxy solicitor, the forensic team, the alternate suppliers — was pre-identified, pre-briefed, and pre-authorized before the situation arrived. Readiness OS doesn't accelerate the response. It eliminates the mobilization cycle that makes the response slow. And that cycle repeats <strong>15–20 times every year</strong> — every single time a situation presents itself. This isn't insurance for the big one. It's infrastructure that pays off every time.
               </p>
             </div>
 

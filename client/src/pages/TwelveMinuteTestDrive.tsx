@@ -396,8 +396,11 @@ export default function TwelveMinuteTestDrive() {
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, marginBottom: 12 }}>
                 The window closes. The stock drops. The regulator moves first. IBM estimates ransomware mobilization delay at $4.5M. Lazard estimates activist response delay at $3.2M in avoidable concessions.
               </p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, marginBottom: 12 }}>
+                These aren't rare events. Most organizations face <strong style={{ color: '#fff' }}>15–20 situations like this every year</strong> — some high-stakes, most operational. Every single one currently costs 30 days of mobilization before execution begins.
+              </p>
               <p style={{ fontSize: 13, color: GOLD, lineHeight: 1.6, margin: 0, fontWeight: 600 }}>
-                The question is not if these scenarios will hit your organization. The question is whether your response is pre-staged or improvised.
+                Readiness OS doesn't solve one crisis. It eliminates the mobilization cycle on all 15–20 situations, every year.
               </p>
             </div>
 

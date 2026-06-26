@@ -153,7 +153,8 @@ export default function RequestAccess() {
 
           {/* Cost of one unplanned trigger */}
           <div style={{ position: "relative", zIndex: 1, marginTop: 24, padding: "16px 18px", background: "rgba(192,57,43,0.07)", borderLeft: "2px solid rgba(192,57,43,0.5)" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(220,100,90,0.85)", textTransform: "uppercase" as const, marginBottom: 12 }}>The cost of one unplanned situation</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.28em", color: "rgba(220,100,90,0.85)", textTransform: "uppercase" as const, marginBottom: 6 }}>The cost of one unplanned situation</div>
+            <div style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.55)", marginBottom: 12, lineHeight: 1.5 }}>Your organization will face 15–20 this year.</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 16px" }}>
               {[
                 { n: "$47M",   label: "Regulatory exposure — ransomware, unprepared" },
