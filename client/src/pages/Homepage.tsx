@@ -997,9 +997,22 @@ function HeroSection() {
               </div>
 
               {/* Category declaration */}
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 16, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
                 <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
                 <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Readiness Infrastructure · Startup to Fortune 500</span>
+              </div>
+
+              {/* Kerry Huang — credibility badge above tagline (mirrors YC badge placement) */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, padding: "10px 14px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.18)", maxWidth: 520 }}>
+                <div style={{ width: 3, height: 36, background: GOLD, flexShrink: 0, opacity: 0.7 }} />
+                <div>
+                  <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.85)", lineHeight: 1.5, fontStyle: "italic" as const }}>
+                    "Martin is building the architecture that makes clarity possible before pressure arrives."
+                  </div>
+                  <div style={{ ...DM, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase" as const }}>
+                    Dr. Kerry Huang · Fortune 50 AVP · ESI Top 1% Researcher · 408-firm study
+                  </div>
+                </div>
               </div>
 
               {/* Headline */}
@@ -1171,6 +1184,23 @@ function HeroSection() {
                   A Readiness Protocol is a pre-built execution package — tasks assigned, owners named, budget allocated, brief written — staged before any trigger fires.{" "}
                 </span>
                 <a href="/how-it-executes" style={{ ...DM, fontSize: 11, color: GOLD, textDecoration: "none", fontStyle: "italic" as const, opacity: 0.8 }}>See how it executes →</a>
+              </div>
+
+              {/* Founder strip */}
+              <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 24, padding: "14px 16px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <img
+                  src="/founder-headshot.jpg"
+                  alt="Martin Brunke"
+                  style={{ width: 48, height: 48, borderRadius: "50%", objectFit: "cover", objectPosition: "top", flexShrink: 0, border: `2px solid ${GOLD}` }}
+                />
+                <div>
+                  <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: "#fff", letterSpacing: "0.02em" }}>Martin Brunke</div>
+                  <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 2 }}>Founder & CEO · VaughnMartin</div>
+                  <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.38)", marginTop: 2, fontStyle: "italic" as const }}>Built from 20 years inside the mobilization problem.</div>
+                </div>
+                <a href="/founder-story" style={{ ...DM, fontSize: 11, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginLeft: "auto", whiteSpace: "nowrap" as const, opacity: 0.85 }}>
+                  The Story →
+                </a>
               </div>
 
               {/* All three strategic domains */}

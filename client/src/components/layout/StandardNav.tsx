@@ -989,7 +989,7 @@ export default function StandardNav() {
                   { label: 'What We Do', path: '/platform' },
                   { label: 'What to Expect', path: '/what-to-expect' },
                   { label: 'See It Work', path: '/demo-hub' },
-                  { label: 'The Proof', path: '/executive-brief' },
+                  { label: 'The Proof', path: '/proof-story' },
                   { label: 'Partners', path: '/channel-partners' },
                   { label: 'Pricing', path: '/pricing' },
                 ].map(item => (
