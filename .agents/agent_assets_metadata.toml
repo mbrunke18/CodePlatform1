@@ -689,3 +689,9 @@ id = "nQho2R4QM3Jwt4M49-ZcL"
 uri = "file://attached_assets/readiness_os_vc_pitch_investor.pptx"
 type = "slides"
 title = "Readiness OS — Pre-Seed Investor Deck"
+
+[[outputs]]
+id = "-dL-E0C84U5GSV7snSqLP"
+uri = "file://attached_assets/readiness_os_vc_pitch_v2.pptx"
+type = "slides"
+title = "Readiness OS — Pre-Seed Investor Deck v2"

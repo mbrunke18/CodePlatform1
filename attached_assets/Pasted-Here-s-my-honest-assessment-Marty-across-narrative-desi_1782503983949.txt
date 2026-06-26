@@ -1,0 +1,50 @@
+Here's my honest assessment, Marty — across narrative, design, and investor readiness.
+
+---
+
+## Overall Verdict
+
+The deck is genuinely strong in the first two-thirds. The problem framing, cost story, and Microsoft positioning are some of the tightest pre-seed storytelling I've seen at this stage. The back third has real gaps that a sharp VC will notice immediately, and two slides (9 and 10) have a design break that undermines the premium feel of everything that came before.
+
+---
+
+## What's Working
+
+**Slides 1–2: The open is exceptional.** Four situations, four time stamps, four dollar figures — and then a single timeline that shows the 30-day failure in real time. That is how you manufacture urgency. The $1.7M cost box on the right side of slide 2 is the right anchor. VCs understand cost-of-inaction better than almost any other hook.
+
+**Slide 3: The market math is clean.** 47,000 × $150K is a defensible number derived from a real dataset. The "$0 in this layer" box is the strongest single visual in the deck — it communicates white space without a word of explanation.
+
+**Slide 6: The Microsoft positioning is your best strategic argument.** "They left the response layer empty" is a category-definition move, and the three stat callouts ($13B, 47K, First) execute it correctly. This is the slide that separates this deck from most pre-seed decks.
+
+**Slide 7: The moat argument is intellectually sound.** Day 1 vs. Day 365 is a compelling framing. The ADVANCE loop diagram is simple and effective.
+
+---
+
+## What Needs Work
+
+**Slide 4 has a numbers inconsistency that will get flagged.** The deck says 180 Protocols in the hero stats, but then "180 protocols · 9 domains · 210 total" in Step 01 and "180 core · 30 compound cross-domain · 210 total" in the footer of slide 5. The canonical number across your other materials is 170 Protocols. You need to decide: 170 or 180, and make it consistent everywhere. A VC who notices this kills the meeting.
+
+**Slide 8 is overloaded.** You have a testimonial, a pricing table, a Founding Partner box, and LTV figures all on one slide. Each of those four elements deserves presence — right now they're fighting each other. The Dr. Kerry Huang quote is your strongest social proof; it's getting buried under a crowded pricing grid.
+
+**Slide 9 is a design failure.** It breaks completely from the established dark-navy brand system — white background, visible accent stripes, the name "Martin Brunke" is missing entirely (it's listed in the text extract but the visual slide is nearly empty). This slide looks unfinished next to slides 1–7. For an investor, this is the slide where they decide if you're someone who finishes things.
+
+**Slide 10 has the same design break.** White background, percentage values wrapping to a second line ("50 / %"), which looks like a rendering artifact. The "What This Unlocks" section on the right is clear, but the left side feels broken.
+
+**There is no traction slide.** This is the most significant gap. The deck goes Problem → Product → Market → Moat → Testimonial → Ask, and there is no slide between the moat and the ask that shows any signal of commercial momentum. Even at pre-seed, investors are looking for: LOIs, pilots in conversation, waitlist, LinkedIn engagement metrics, anything. The Dr. Kerry Huang quote is being asked to carry the entire proof burden. It can't.
+
+**The founder slide undersells the football angle.** "20 years inside enterprise mobilization" is accurate but generic. The Stanford coaching story — the 40-second decision architecture — is the thing that makes your narrative unforgettable. That story is absent from slide 9. VCs fund people as much as products.
+
+---
+
+## Priority Fix List
+
+In order of investor impact:
+
+1. Fix the protocol number inconsistency (170 vs. 180 vs. 210 — decide and lock it across all slides)
+2. Rebuild slides 9 and 10 in the dark-navy design system to match slides 1–8
+3. Fix the "50 %" wrapping artifact on slide 10
+4. Add a traction/momentum slide between slide 7 and the current slide 8 — even 3–4 signals of early commercial interest
+5. Add your name prominently to slide 9 — "Martin Brunke" in the display font, not buried in a subtitle
+6. Consider surfacing the football coaching angle on the founder slide as the story behind the insight
+
+The bones here are genuinely investment-grade. The opening sequence especially. The back three slides need to match what the first seven promise.
