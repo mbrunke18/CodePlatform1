@@ -1012,7 +1012,7 @@ function HeroSection() {
 
               {/* Lead — one decisive sentence, not a paragraph */}
               <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 28px" }}>
-                Most organizations spend 30 days mobilizing after a situation presents itself — scoping from scratch, under pressure, while the strategic window closes.{" "}
+                Most organizations spend 30 days mobilizing after a situation presents itself — scoping from scratch, under pressure, while the strategic window closes. It happens 15–20 times every year.{" "}
                 <span style={{ color: GOLD, fontWeight: 700 }}>Readiness OS eliminates that entirely. 30 days compressed to 12 minutes.</span>
               </p>
 
