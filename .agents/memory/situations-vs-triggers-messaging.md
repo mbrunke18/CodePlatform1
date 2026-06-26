@@ -13,9 +13,16 @@ description: The critical distinction between internal product vocabulary ("trig
 
 **Why:** When a CEO gets a call at 3 AM about ransomware, they do not think "a trigger just fired." They think "we have a situation." Using "trigger" in hook copy forces the reader to translate your vocabulary onto their experience before they can even feel the recognition. That translation kills the gut-punch.
 
-## The Locked Tagline Exception
+## The Locked Tagline
 
-**"The Response Is Ready Before the Trigger Fires"** is the canonical tagline — LOCKED. Do not change it. It works as a concept at the highest level. The rule applies to body/explanatory copy only.
+**"When the Situation Arrives — The Response Is Ready Before the Trigger Fires."** is the canonical tagline — LOCKED.
+
+Three-line visual display on Homepage hero:
+1. *"When the Situation Arrives —"* — italic, muted white (rgba 0.72), ~26px. Sets customer context.
+2. **"The Response Is Ready"** — white, bold, ~66px.
+3. **"Before the Trigger Fires."** — gold (#C9A84C), bold, ~66px.
+
+**Why this structure:** "Situation" is the customer's word (what they experience). "Trigger fires" is the product mechanism underneath. The two-layer tagline bridges both: customers recognize themselves in line 1, then lines 2–3 deliver the product promise. "Trigger" is preserved because it carries urgency and precision that "situation" cannot match at tagline scale.
 
 ## The Frequency Reframe (equally important)
 

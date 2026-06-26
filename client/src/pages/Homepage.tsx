@@ -1003,6 +1003,9 @@ function HeroSection() {
               </div>
 
               {/* Headline */}
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(20px,1.8vw,26px)", fontWeight: 400, lineHeight: 1.2, margin: "0 0 4px", color: "rgba(255,255,255,0.72)", letterSpacing: "0.01em", fontStyle: "italic" }}>
+                When the Situation Arrives —
+              </p>
               <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 6px", color: "#fff", letterSpacing: "-0.01em" }}>
                 The Response Is Ready
               </h1>
