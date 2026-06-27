@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import rateLimit from "express-rate-limit";
+import { registerSeoRoutes } from "./routes/seoRoutes";
 import { storage } from "./storage";
 import { enterpriseJobService } from "./services/EnterpriseJobService";
 import { wsService } from "./services/WebSocketService";
@@ -11109,6 +11110,8 @@ Respond ONLY as JSON with this exact structure:
       res.json({ ok: true });
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
+
+  registerSeoRoutes(app);
 
   return httpServer;
 }
