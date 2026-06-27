@@ -315,6 +315,15 @@ export default function WhyExecutionOS() {
                           <div style={{ padding: "16px", background: "rgba(201,168,76,0.04)", border: `1px solid ${GOLD}` }}>
                             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>The Readiness OS advantage</div>
                             <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.7 }}>{c.theGap}</p>
+                            {c.name.includes("Microsoft") && (
+                              <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(43,138,110,0.06)", borderLeft: "2px solid #2B8A6E" }}>
+                                <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.6, margin: 0 }}>
+                                  <strong style={{ color: "#2B8A6E" }}>Independently validated:</strong> Microsoft published its own enterprise AI readiness assessment framework
+                                  (<code style={{ fontSize: 10, background: "#F3F4F6", padding: "1px 4px" }}>microsoft/m365-copilot-automated-readiness-assessment</code>).
+                                  The gap Readiness OS closes is acknowledged at the source.
+                                </p>
+                              </div>
+                            )}
                           </div>
                         </div>
                         <div style={{ marginTop: 16, padding: "14px 20px", background: NAVY, display: "inline-block" }}>
