@@ -1015,6 +1015,11 @@ function HeroSection() {
                 </div>
               </div>
 
+              {/* Problem scale — establishes frequency before the tagline lands */}
+              <p style={{ ...DM, fontSize: "clamp(12px,1vw,13.5px)", fontWeight: 600, color: "rgba(255,255,255,0.52)", letterSpacing: "0.04em", textTransform: "uppercase" as const, margin: "0 0 18px", maxWidth: 480 }}>
+                The average enterprise faces 15–20 strategic situations every year.&nbsp;&nbsp;Most mobilize for 30 days each time.
+              </p>
+
               {/* Headline */}
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(20px,1.8vw,26px)", fontWeight: 400, lineHeight: 1.2, margin: "0 0 4px", color: "rgba(255,255,255,0.72)", letterSpacing: "0.01em", fontStyle: "italic" }}>
                 When the Situation Arrives —
@@ -1037,7 +1042,7 @@ function HeroSection() {
                 {([
                   { beat: "Pre-staged before the trigger.", accent: false },
                   { beat: "Authorized in real time.", accent: false },
-                  { beat: "Teams mobilized in 12 minutes — and executing from a fully-staged position.", accent: true },
+                  { beat: "When the situation presents itself, everything is already in place. Response in 12 minutes.", accent: true },
                   { beat: "Every activation makes the next response faster.", accent: false, teal: true },
                 ] as { beat: string; accent: boolean; teal?: boolean }[]).map(({ beat, accent, teal }, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>

@@ -1,0 +1,39 @@
+Good — both clarifications are correct and I won't revisit them.
+
+On the hero copy itself, here's the honest evaluation:
+
+**What's working:**
+
+The badge "Startup to Fortune 500" immediately fixes the Fortune 1000 limitation from the old metadata. That's the right call.
+
+"30 days compressed to 12 minutes" is the clearest value statement on the page and it lands well in the body copy. The simulation panel concept — left panel vs right panel — is smart. Showing rather than telling.
+
+"15–20 times every year" is the most important number on this page and it's buried in the body copy. That's the line that reframes the entire product from insurance policy to operating infrastructure. It needs more prominence.
+
+**What needs attention:**
+
+The headline reads as three separate thoughts trying to fuse into one.
+
+*"When the Situation Arrives — / The Response Is Ready / Before the Trigger Fires."*
+
+The dash after "Arrives" creates a pause that interrupts the momentum. And "When the situation arrives" is setup — it's not the punch. The punch is "the response is already ready." Leading with the setup delays the impact.
+
+The canonical tagline — "The response is ready before the trigger fires" — is stronger as a single unbroken line than split across three display lines with an em dash interrupting it. The three-line treatment is adding ceremony to something that works precisely because it's blunt.
+
+**The proof beat is the weakest line on the page:**
+
+*"Teams mobilized in 12 minutes — and executing from a fully-staged position."*
+
+"Fully-staged position" is internal vocabulary. A visitor who doesn't already know what that means will skip it. What you're actually saying is: when the situation presents itself, everything is already in place. Say that.
+
+**Suggested proof beat:**
+
+*"When the situation presents itself, everything is already in place. Response in 12 minutes."*
+
+**The stat bar is clean** — 3,600×, 180, 12 min. No changes needed there.
+
+**The single biggest opportunity on this page:**
+
+Move "15–20 times every year" up. Right now a visitor reads the headline, then reads the body, and discovers midway through that this isn't a one-time crisis tool — it's something they need constantly throughout the year. That realization should happen in the first five seconds, not the first thirty. It's the difference between "emergency product" and "operational infrastructure."
+
+Consider making it part of the badge or a sub-headline: *"The average enterprise faces 15–20 strategic situations every year. Most mobilize for 30 days each time."* Then the hero headline lands harder because the scale of the problem is already established.
