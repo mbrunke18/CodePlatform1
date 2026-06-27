@@ -1113,7 +1113,7 @@ function HeroSection() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, margin: "0 0 20px" }}>
                 <Link href="/mobilization-cost" style={{ textDecoration: "none", display: "block", padding: "11px 14px", border: "1px solid rgba(201,168,76,0.28)", background: "rgba(201,168,76,0.05)" }}>
                   <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase" as const, marginBottom: 4 }}>Cost Breakdown</div>
-                  <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.45 }}>What one unprepared trigger costs your org →</div>
+                  <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.45 }}>What one unprepared situation costs your org →</div>
                 </Link>
                 <Link href="/roi-calculator" style={{ textDecoration: "none", display: "block", padding: "11px 14px", border: "1px solid rgba(201,168,76,0.28)", background: "rgba(201,168,76,0.05)" }}>
                   <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase" as const, marginBottom: 4 }}>ROI Calculator</div>
@@ -1260,7 +1260,7 @@ function HeroSection() {
               <HeroSimPanel />
             </div>
             <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.35)", textAlign: "center", letterSpacing: "0.03em", fontStyle: "italic" }}>
-              Live execution simulation — click the dots to switch trigger scenarios
+              Live execution simulation — click the dots to switch situations
             </div>
           </div>
         </div>
@@ -1367,7 +1367,7 @@ function RealityGapSimulator() {
               </div>
             </div>
             <p style={{ ...BC, fontSize: 15, color: "rgba(255,255,255,0.72)", letterSpacing: "0.01em", margin: 0 }}>
-              Watch a strategic trigger fire. <span style={{ color: "rgba(255,255,255,0.48)" }}>The left panel shows the old model. The right shows Readiness OS. Runs automatically.</span>
+              Watch a strategic situation unfold. <span style={{ color: "rgba(255,255,255,0.48)" }}>The left panel shows the old model. The right shows Readiness OS. Runs automatically.</span>
             </p>
           </div>
           <button
@@ -1399,7 +1399,7 @@ function RealityGapSimulator() {
           {phase === 1 && (
             <>
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL }} />
-              <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", color: TEAL }}>NOW RUNNING — Readiness OS: same trigger, 12-minute response</span>
+              <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", color: TEAL }}>NOW RUNNING — Readiness OS: same situation, 12-minute response</span>
             </>
           )}
           {phase === 2 && (
@@ -2471,7 +2471,7 @@ function ProblemSection() {
             {/* Trigger category tags — condensed */}
             <div style={{ marginBottom: 32 }}>
               <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
-                Every trigger — risk or opportunity — same mobilization gap.
+                Every situation — risk or opportunity — same mobilization gap.
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {[
@@ -2505,7 +2505,7 @@ function ProblemSection() {
               <div style={{ background: "rgba(10,15,46,0.04)", borderLeft: `3px solid ${GOLD}`, padding: "14px 18px" }}>
                 <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, marginBottom: 5 }}>The Mobilization Gap</div>
                 <p style={{ ...DM, fontSize: 13, color: "#444", lineHeight: 1.6, margin: 0 }}>
-                  The space between <em>"we know"</em> and <em>"we are executing."</em> Weeks of alignment meetings before a single coordinated action — while the window closes. <strong>$50M–$500M per trigger event.</strong>
+                  The space between <em>"we know"</em> and <em>"we are executing."</em> Weeks of alignment meetings before a single coordinated action — while the window closes. <strong>$50M–$500M per situation.</strong>
                 </p>
               </div>
             </div>

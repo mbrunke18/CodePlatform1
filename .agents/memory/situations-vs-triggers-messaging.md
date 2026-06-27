@@ -1,40 +1,53 @@
 ---
 name: Situations vs Triggers — Messaging Rule
-description: The critical distinction between internal product vocabulary ("trigger") and customer-facing language ("situation") — and the frequency reframe that changes the value proposition from insurance to subscription.
+description: The exact product architecture distinction between "situation" (the strategic event organizations face) and "trigger" (the customer-defined detection threshold that fires when a situation arrives).
 ---
 
 # Situations vs Triggers — Locked Messaging Rule
 
-## The Rule
+## Precise Product Architecture Definition
 
-**"Trigger"** = internal product vocabulary. It is the detection mechanism — the system watching for signals that a situation has presented itself. Use in: protocol documentation, technical descriptions, investor materials, the locked tagline.
+**"Situation"** = the strategic event itself — what organizations face, what Readiness Protocols are named for, what leaders experience. Examples: "Ransomware Attack," "Activist Investor," "Supply Chain Collapse." The protocol library covers 180 situations across 9 domains.
 
-**"Situation"** = customer language. This is what leaders experience when something arrives. Use in: all body copy hooks where the goal is reader recognition, social content, sales copy, explanatory text.
+**"Trigger"** = the customer-defined detection threshold. Customers configure specific data points to be continuously monitored; when those data points cross the defined threshold, the system fires an alert that a situation has arrived. The 231 trigger patterns are 231 pre-built configurable detection thresholds. The customer owns the definition of when their trigger fires.
 
-**Why:** When a CEO gets a call at 3 AM about ransomware, they do not think "a trigger just fired." They think "we have a situation." Using "trigger" in hook copy forces the reader to translate your vocabulary onto their experience before they can even feel the recognition. That translation kills the gut-punch.
+**The architecture flow:** Customer defines a trigger (data points + threshold) → system monitors continuously → threshold is crossed → trigger fires → situation is detected → Readiness Protocol activates → 12-minute execution begins.
+
+**Why this distinction matters in copy:** When choosing a scenario on a product page, users are choosing a *situation* (the event type) — not configuring a *trigger* (the detection threshold). "Choose your trigger" is architecturally wrong — they're choosing a situation. "231 trigger patterns monitored" is architecturally correct — those are the 231 configurable thresholds.
 
 ## The Locked Tagline
 
-**"When the Situation Arrives — The Response Is Ready Before the Trigger Fires."** is the canonical tagline — LOCKED.
+**"When the Situation Arrives — The Response Is Ready Before the Trigger Fires."** — LOCKED.
 
 Three-line visual display on Homepage hero:
 1. *"When the Situation Arrives —"* — italic, muted white (rgba 0.72), ~26px. Sets customer context.
 2. **"The Response Is Ready"** — white, bold, ~66px.
 3. **"Before the Trigger Fires."** — gold (#C9A84C), bold, ~66px.
 
-**Why this structure:** "Situation" is the customer's word (what they experience). "Trigger fires" is the product mechanism underneath. The two-layer tagline bridges both: customers recognize themselves in line 1, then lines 2–3 deliver the product promise. "Trigger" is preserved because it carries urgency and precision that "situation" cannot match at tagline scale.
+**Why this structure:** "Situation" = what the customer experiences. "Trigger fires" = the product's detection mechanism at work. "Before the trigger fires" means the response is staged before the customer's own detection threshold is even crossed — the ultimate readiness claim.
 
-## The Frequency Reframe (equally important)
+## Usage Rules
 
-**Old framing (wrong):** "One of these scenarios will hit your organization." — accidentally teaches readers these are rare, once-a-year catastrophes.
+### Always "situation":
+- What organizations *face* — "every situation your organization will face"
+- What protocols are built *for* — "Readiness Protocol for this situation"
+- What leaders *experience* — "when a situation presents itself"
+- Cost of unpreparedness — "what one unprepared situation costs"
+- Choosing scenarios in product demos — "choose your situation"
+- Breadth of coverage — "180 situations across 9 domains"
 
-**Correct framing:** Most organizations face **15–20 situations annually** that demand a coordinated response. Some are high-stakes (ransomware, activist investor). Most are operational. All of them currently cost 30 days of mobilization every single time they present themselves.
+### Always "trigger":
+- The 231 monitored patterns — "231 trigger patterns continuously monitored"
+- The detection mechanism firing — "before the trigger fires," "when the trigger fires"
+- Customer configuration context — "customers define their own trigger thresholds"
+- The three-column preparation breakdown — "Before the Trigger" column (tagline echo)
+- Technical/product documentation
 
-**Why this matters:** The old framing positions Readiness OS as insurance for the big one. The correct framing positions it as a **subscription** — compounding value every time a situation presents itself throughout the year. "Insurance" is a one-time purchase rationalization. "Subscription" is recurring justified value. Dramatically different sales conversation.
+### Never mix:
+- "Choose your trigger" — WRONG (they're choosing a situation)
+- "Trigger Detected" — WRONG (what was detected is a situation)
+- "Every trigger your org will face" — WRONG (orgs face situations)
 
-## How to Apply
+## The Frequency Reframe
 
-- Hook copy, social posts, sales emails: "when a situation presents itself" not "when a trigger fires"
-- Frequency always included when introducing scenarios: "not just these four — most organizations face 15–20 situations annually"
-- The close: "That's not a one-time win. That's compounding value every time a situation presents itself throughout the year."
-- The product covers 180 situations across 9 domains — use "situations" not "triggers" when describing the breadth of coverage to a prospect
+Most organizations face **15–20 situations annually** that demand a coordinated response — not just rare catastrophes. This frames Readiness OS as a subscription (compounding value across 15–20 activations/year), not insurance (one-time catastrophe hedge). Always include frequency when introducing scenarios to prospects.

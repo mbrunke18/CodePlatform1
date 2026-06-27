@@ -218,7 +218,7 @@ export default function ProofStory() {
             {([
               { n: "$47M",    label: "Regulatory penalties",  sub: "Per unplanned ransomware event", color: "#C0392B", bg: "#FEF9F9" },
               { n: "$3.2M",   label: "Activist concessions",  sub: "Avoidable with pre-staged board defense", color: "#C0392B", bg: "#FEF9F9" },
-              { n: "30 days", label: "Without Readiness OS",  sub: "Average mobilization lag per trigger", color: "#C0392B", bg: "#FEF9F9" },
+              { n: "30 days", label: "Without Readiness OS",  sub: "Average mobilization lag per situation", color: "#C0392B", bg: "#FEF9F9" },
               { n: "12 min",  label: "With Readiness OS",     sub: "Pre-staged. Authorized. Executing.", color: TEAL, bg: "#F0FAF6" },
             ] as { n: string; label: string; sub: string; color: string; bg: string }[]).map((s, i) => (
               <div key={i} style={{ background: s.bg, padding: "20px 28px", borderRight: i < 3 ? "1px solid #E8E4DC" : "none" }}>
@@ -289,7 +289,7 @@ export default function ProofStory() {
         {/* ── Platform Showcase ── */}
         <ProductShowcase
           eyebrow="Proof in Action"
-          headline="Three triggers. Three organizations. All 12 minutes."
+          headline="Three situations. Three organizations. All 12 minutes."
           subheadline="Real activation patterns. Documented outcomes."
           image="/screenshots/deck_activation.jpg"
           imageAlt="Readiness OS Activation Console — Live Execution Chain"
@@ -350,12 +350,12 @@ export default function ProofStory() {
             </div>
             <div style={{ height: 40, width: 1, background: "#E8E4DC" }} />
             <div>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 4 }}>Trigger Detected</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 4 }}>Situation Detected</div>
               <div style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{story.date}</div>
             </div>
             <div style={{ height: 40, width: 1, background: "#E8E4DC" }} />
             <div style={{ flex: 1, minWidth: 260 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 4 }}>Trigger</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 4 }}>The Situation</div>
               <div style={{ fontSize: 13, color: NAVY, lineHeight: 1.5 }}>{story.trigger}</div>
             </div>
             <div style={{ display: "flex", gap: 12, flexShrink: 0 }}>
@@ -576,7 +576,7 @@ export default function ProofStory() {
         <div style={{ background: NAVY, padding: "64px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <h2 style={{ ...GEO, fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
-              Your organization will face these triggers.<br /><em style={{ color: GOLD }}>The question is whether the response is ready.</em>
+              Your organization will face these situations.<br /><em style={{ color: GOLD }}>The question is whether the response is ready.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 28, lineHeight: 1.7 }}>
               Founding Partners receive the full platform — 180 Readiness Protocols across 9 strategic domains, continuous signal monitoring across 231 trigger patterns, executive authorization workflows, pre-staged budget authority, compound threat detection, and institutional memory that compounds with every activation. 90 days of hands-on validation support included.

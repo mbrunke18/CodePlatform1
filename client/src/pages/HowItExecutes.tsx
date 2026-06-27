@@ -70,7 +70,7 @@ const SCENARIOS = [
     outcome: "Investment bank engaged within the hour. Board authorization secured same day. Market entry team assembled and operating within 48 hours — 6 weeks ahead of next closest competitor.",
   },
   {
-    id: "planned-unplanned", label: "Complete Operating Model", subtitle: "Q3 planned work + ransomware trigger — both run simultaneously",
+    id: "planned-unplanned", label: "Complete Operating Model", subtitle: "Q3 planned work + ransomware situation — both run simultaneously",
     signal: "Week 6, Q3: 3 planned initiatives active. Ransomware detected — 23 servers encrypted at 4:23 AM. Not on any roadmap.",
     signalSource: "SIEM Alert · Endpoint Detection · Quarterly Planning Dashboard",
     protocol: "Ransomware Response (Protocol #31) + Q3 Planned Initiatives", protocolNum: "#31",
@@ -80,7 +80,7 @@ const SCENARIOS = [
     outcome: "Ransomware contained in 12 minutes. Q3 GTM Launch and M&A Integration continued on schedule. Neither track stalled. The CEO made one authorization decision.",
   },
   {
-    id: "compound", label: "Compound Crisis", subtitle: "Activist stake + DOJ inquiry — simultaneous triggers",
+    id: "compound", label: "Compound Crisis", subtitle: "Activist stake + DOJ inquiry — simultaneous situations",
     signal: "SEC 13D: activist discloses 9.2% stake — board seat demanded. SIMULTANEOUS: DOJ Civil Investigative Demand received across 3 jurisdictions. Two response clocks running at once.",
     signalSource: "SEC EDGAR Monitor · DOJ Federal Register · Activist Intelligence Feed",
     protocol: "Activist Defense + Regulatory Response", protocolNum: "#185",
@@ -262,10 +262,10 @@ export default function HowItExecutes() {
             <div style={{ flex: 1, minWidth: 280 }}>
               <div style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>On This Page</div>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>
-                The exact chain from signal detected to team executing — choose a trigger and watch it run
+                The exact chain from signal detected to team executing — choose a situation and watch it run
               </div>
               <p style={{ fontFamily: "'Barlow', system-ui, sans-serif", fontSize: 15, color: "#2D3748", lineHeight: 1.6, margin: 0 }}>
-                Signal detected → Protocol matched → Stakeholders notified → Executive authorizes → Full team executing. Each step shows exactly what happens and when. Select any scenario below to run it on your trigger.
+                Signal detected → Protocol matched → Stakeholders notified → Executive authorizes → Full team executing. Each step shows exactly what happens and when. Select any situation below to watch it run.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, flexShrink: 0 }}>
@@ -284,7 +284,7 @@ export default function HowItExecutes() {
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
               <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Platform Execution Interface — Live View</span>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD }}>Choose your trigger scenario below ↓</span>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD }}>Choose your situation below ↓</span>
             </div>
             <div style={{ borderRadius: "5px 5px 0 0", overflow: "hidden", boxShadow: "0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.08)" }}>
               <div style={{ background: "rgba(255,255,255,0.05)", padding: "7px 12px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
@@ -308,7 +308,7 @@ export default function HowItExecutes() {
         {/* Scenario Selector */}
         <div style={{ borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "20px 48px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, flexShrink: 0 }}>Choose Trigger:</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, flexShrink: 0 }}>Choose Situation:</span>
             {SCENARIOS.map((s, i) => {
               const isCompound = (s as any).compound;
               const isDualTrack = (s as any).dualTrack;
@@ -370,7 +370,7 @@ export default function HowItExecutes() {
             <div style={{ marginBottom: 32, padding: "20px 24px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, borderLeft: `3px solid ${GOLD}` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                 <div style={{ width: 6, height: 6, background: GOLD, borderRadius: "50%", animation: "pulse 1.5s infinite" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Trigger Event Detected — {scenario.domain}</span>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Situation Detected — {scenario.domain}</span>
               </div>
               <p style={{ fontSize: 14, color: "#fff", fontWeight: 600, marginBottom: 4, lineHeight: 1.5 }}>{scenario.signal}</p>
               <p style={{ fontSize: 11, color: MUTED, margin: 0 }}>Source: {scenario.signalSource}</p>
@@ -537,7 +537,7 @@ export default function HowItExecutes() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, background: "rgba(255,255,255,0.06)" }}>
               {[
                 { step: "Before the Trigger", icon: "◎", color: GOLD, items: ["180 Readiness Protocols pre-built", "231 trigger patterns continuously monitored", "Every stakeholder role pre-assigned", "Budget authority pre-approved", "Communication templates pre-cleared"] },
-                { step: "At the Trigger", icon: "⚡", color: TEAL, items: ["Signal detected and scored in seconds", "Protocol matched automatically", "Execution brief staged instantly", "All stakeholders notified simultaneously", "CEO authorizes with full context"] },
+                { step: "Situation Arrives", icon: "⚡", color: TEAL, items: ["Signal detected and scored in seconds", "Protocol matched automatically", "Execution brief staged instantly", "All stakeholders notified simultaneously", "CEO authorizes with full context"] },
                 { step: "12 Minutes Later", icon: "★", color: GOLD, items: ["All tasks deployed and executing", "Board briefed with full documentation", "Regulators notified on schedule", "Customers informed proactively", "Debrief staged for institutional learning"] },
               ].map(col => (
                 <div key={col.step} style={{ background: NAVY, padding: "32px 28px" }}>
@@ -582,7 +582,7 @@ export default function HowItExecutes() {
                   label: "Without Readiness OS",
                   color: "#DC2626",
                   items: [
-                    "Every trigger requires building the response from scratch",
+                    "Every situation requires building the response from scratch",
                     "Every third down must convert — there is no safety net",
                     "Leadership decisions made under full panic pressure",
                     "Budget, stakeholders, and comms figured out mid-crisis",
@@ -759,10 +759,10 @@ export default function HowItExecutes() {
         <div style={{ padding: "64px 48px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <h2 style={{ ...GEO, fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
-              Every trigger your organization will face — pre-staged before it arrives.
+              Every situation your organization will face — pre-staged before it arrives.
             </h2>
             <p style={{ fontSize: 15, color: MUTED, marginBottom: 36, lineHeight: 1.7 }}>
-              The 12-Minute Test Drive puts you in the role of an executive responding to a live trigger. Choose your scenario, watch the chain execute, and feel the difference between prepared and improvised.
+              The 12-Minute Test Drive puts you in the role of an executive responding to a live situation. Choose your scenario, watch the chain execute, and feel the difference between prepared and improvised.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 28 }}>
               <Link href="/12-minute-experience">
