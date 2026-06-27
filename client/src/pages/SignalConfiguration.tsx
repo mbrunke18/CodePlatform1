@@ -1103,7 +1103,7 @@ export default function SignalConfiguration() {
         {showCalibration && (
           <div className="px-6 pb-6 bg-[#F8F7F4] border-t border-[#E8E4DC]">
             <p className="text-[10px] text-gray-500 pt-4 pb-3 max-w-xl">
-              Each time a Readiness Protocol is activated or a Close-Out verdict is recorded, the system learns how your organization responded to that trigger pattern. This history shapes urgency scoring for future detections.
+              Each time a Readiness Protocol is activated or a Close-Out verdict is recorded, the system learns how your organization responded to that detection threshold. This history shapes urgency scoring for future detections.
             </p>
             {(calibrations?.length ?? 0) === 0 ? (
               <div className="flex items-center gap-3 py-4 text-gray-400">

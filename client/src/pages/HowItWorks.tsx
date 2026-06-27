@@ -101,7 +101,7 @@ export default function HowItWorks() {
         tagColor="#C9A84C"
         features={[
           { color: "#C9A84C", label: "Identify", description: "Configure the 180 Readiness Protocols that match your organization's strategic exposure and industry profile." },
-          { color: "#2B8A6E", label: "Detect", description: "231 triggers monitored continuously — when a signal crosses the threshold, the matched protocol is instantly staged." },
+          { color: "#2B8A6E", label: "Detect", description: "231 detection thresholds monitored continuously — when a signal crosses the threshold, the matched protocol is instantly staged." },
           { color: "#4A90C4", label: "Execute", description: "Executive authorizes. Stakeholders notified. Tasks deployed. Full organizational response in 12 minutes." },
           { color: "#C9A84C", label: "Advance", description: "Every activation closes the loop — causal hypotheses proven, protocols updated, institutional memory compounded." },
         ]}
@@ -133,7 +133,7 @@ export default function HowItWorks() {
             <SectionLabel text="End-to-End Advantage" color={GOLD_LIGHT} />
             <h2 style={{ ...CG, fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 600, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
               The complete operating architecture —<br />
-              <em style={{ color: GOLD }}>before, during, and after every trigger.</em>
+              <em style={{ color: GOLD }}>before, during, and after every situation.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.62)", maxWidth: 580, margin: "0 auto", lineHeight: 1.75, fontWeight: 500 }}>
               Each stage of the advantage lifecycle is detailed below. The setup phases on this page map directly to how you activate all five.
@@ -141,7 +141,7 @@ export default function HowItWorks() {
           </div>
           <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
             {[
-              { num: "01", stage: "IDENTIFY", label: "Situation Universe", body: "You define what you're watching for — 231 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
+              { num: "01", stage: "IDENTIFY", label: "Situation Universe", body: "You define what you're watching for — 231 detection thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
               { num: "02", stage: "DETECT", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, act on your terms.", accent: TEAL },
               { num: "03", stage: "AUTHORIZE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives authorize from pre-staged options — not figure out ownership under pressure. Authority preserved at every gate.", accent: GOLD },
               { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "180 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },
@@ -618,7 +618,7 @@ export default function HowItWorks() {
                 icon: BookOpen,
                 color: TEAL,
                 title: "Smart Readiness Protocol Finder",
-                body: "Searching 180 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: protocol names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific protocol. Faster selection, less cognitive load on the team receiving the activation.",
+                body: "Searching 180 Readiness Protocols shouldn't feel like loading a database. The platform uses two-phase loading: protocol names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, detection thresholds, escalation paths — loads only when you select a specific protocol. Faster selection, less cognitive load on the team receiving the activation.",
                 items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 180"]
               },
               {

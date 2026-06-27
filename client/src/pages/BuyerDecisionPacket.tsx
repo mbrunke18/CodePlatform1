@@ -149,7 +149,7 @@ export default function BuyerDecisionPacket() {
         <div style={{ background: "#132558", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "0 1.5rem" }}>
           <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", overflowX: "auto" }}>
             {[
-              { num: "01", stage: "IDENTIFY", sub: "Situation Universe", detail: "231 triggers catalogued" },
+              { num: "01", stage: "IDENTIFY", sub: "Situation Universe", detail: "231 detection thresholds catalogued" },
               { num: "02", stage: "DETECT", sub: "Signal Detection", detail: "248+ data points / 15 min" },
               { num: "03", stage: "AUTHORIZE", sub: "Executive Authority", detail: "Pre-assigned decision rights" },
               { num: "04", stage: "EXECUTE", sub: "12-Min Deploy", detail: "180 Protocols pre-staged" },

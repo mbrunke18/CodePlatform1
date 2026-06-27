@@ -230,7 +230,7 @@ export default function About() {
               The response is ready before the trigger fires.
             </h2>
             <p style={{ ...DM, fontSize: 15, color: "#555", lineHeight: 1.7, maxWidth: 560, margin: 0 }}>
-              180 Readiness Protocols. 231 trigger patterns monitored. 12-minute execution. Live in production at vaughnmartin.com — run the simulation before the meeting ends.
+              180 Readiness Protocols. 231 detection thresholds monitored. 12-minute execution. Live in production at vaughnmartin.com — run the simulation before the meeting ends.
             </p>
           </div>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>

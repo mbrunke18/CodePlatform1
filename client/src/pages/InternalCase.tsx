@@ -31,7 +31,7 @@ const STAKEHOLDERS = [
     audience: "Board",
     color: NAVY,
     title: "Frame it as closing the governance gap the risk framework assumes is already closed",
-    body: "Your risk framework describes what the organization should do when strategic triggers fire. It assumes the response infrastructure exists. In almost every enterprise, that assumption is wrong. When a trigger fires the organization assembles its response during the mobilization cycle — 30 days before any execution begins. Readiness OS is the governance infrastructure your risk framework has assumed was in place. 180 pre-staged protocols, 231 monitored trigger configurations, continuous signal detection, and executive-authorized execution operating before the event, not after.",
+    body: "Your risk framework describes what the organization should do when strategic situations arise. It assumes the response infrastructure exists. In almost every enterprise, that assumption is wrong. When the trigger fires the organization assembles its response during the mobilization cycle — 30 days before any execution begins. Readiness OS is the governance infrastructure your risk framework has assumed was in place. 180 pre-staged protocols, 231 detection thresholds monitored continuously, continuous signal detection, and executive-authorized execution operating before the event, not after.",
     proof: "The authorization model preserves full executive decision rights. No protocol activates without explicit executive sign-off. Four options at the point of trigger: execute exactly as built, adjust before executing, choose a different protocol, or stand down with a governance record. AI monitors. Executives authorize.",
   },
   {

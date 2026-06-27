@@ -41,7 +41,7 @@ export default function Contact() {
       title: "Start the Conversation — Readiness OS | VaughnMartin",
       description: "Tell us what your organization is dealing with. Readiness OS compresses the 30-day mobilization cycle to 12 minutes — we'll show you exactly how it applies to your context.",
       ogTitle: "Start the Conversation — Readiness OS by VaughnMartin",
-      ogDescription: "Every serious conversation starts here. Tell us what strategic triggers your organization faces.",
+      ogDescription: "Every serious conversation starts here. Tell us what strategic situations your organization faces.",
     });
   }, []);
 
@@ -140,7 +140,7 @@ export default function Contact() {
           tagColor="#C9A84C"
           features={[
             { color: "#C9A84C", label: "180 Readiness Protocols", description: "Pre-staged execution packages covering every strategic situation your organization will face." },
-            { color: "#2B8A6E", label: "231 Triggers Monitored", description: "Continuous signal detection — threats and opportunities surface before the first committee call." },
+            { color: "#2B8A6E", label: "231 Detection Thresholds", description: "Continuous signal detection — threats and opportunities surface before the first committee call." },
             { color: "#4A90C4", label: "12-Minute Execution", description: "From trigger detection to full organizational response. The entire mobilization cycle in 12 minutes." },
           ]}
         />

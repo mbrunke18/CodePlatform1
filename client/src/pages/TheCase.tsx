@@ -214,7 +214,7 @@ export default function TheCase() {
             <div>
               <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "28px 24px", marginBottom: 16 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>The Mobilization Tax — What It Actually Costs</div>
-                <div style={{ fontSize: 11, color: MUTED, marginBottom: 20 }}>Every trigger event carries these costs — not from the response itself, but from the 30 days spent mobilizing before execution can begin.</div>
+                <div style={{ fontSize: 11, color: MUTED, marginBottom: 20 }}>Every situation carries these costs — not from the response itself, but from the 30 days spent mobilizing before execution can begin.</div>
                 {[
                   {
                     category: "Executive Time",
@@ -421,7 +421,7 @@ export default function TheCase() {
             {[
               { label: "McKinsey Crisis Response Retainer", cost: "$300K–$500K", outcome: "Static PDF. Manual activation. Stale in 18 months. No signal detection. No pre-staging.", verdict: "One-time" },
               { label: "ServiceNow / GRC Platform", cost: "$200K–$400K/yr", outcome: "Logs your risk. Routes tickets. Doesn't compress the mobilization cycle. Same 30-day gap — newer interface.", verdict: "Same lag" },
-              { label: "Readiness OS (Founding Partner Program)", cost: "$75K · 90-day validation", outcome: "180 protocols pre-staged. 231 triggers monitored. 12-minute execution. ADVANCE 2.0 compounding. Executive authority preserved. The $75K investment credits in full toward your annual license.", verdict: "Validation → License" },
+              { label: "Readiness OS (Founding Partner Program)", cost: "$75K · 90-day validation", outcome: "180 protocols pre-staged. 231 detection thresholds monitored. 12-minute execution. ADVANCE 2.0 compounding. Executive authority preserved. The $75K investment credits in full toward your annual license.", verdict: "Validation → License" },
             ].map((alt, i) => (
               <div key={i} style={{ background: i === 2 ? NAVY : "#fff", border: `1px solid ${i === 2 ? NAVY : BORDER}`, padding: "24px 20px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: i === 2 ? GOLD : MUTED, marginBottom: 6 }}>{alt.verdict}</div>

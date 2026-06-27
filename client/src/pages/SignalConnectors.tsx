@@ -585,7 +585,7 @@ export default function SignalConnectors() {
                     Trigger Portfolio Coverage Analysis
                   </h3>
                   <p style={{ fontSize: 13, color: '#6B7280', marginBottom: 20 }}>
-                    Your current trigger configuration measured against the recommended portfolio for enterprise organizations.
+                    Your current detection threshold configuration measured against the recommended portfolio for enterprise organizations.
                     Unconfigured domains represent blind spots — situations where a trigger could fire with no staged response ready.
                   </p>
 
@@ -694,7 +694,7 @@ export default function SignalConnectors() {
                       job: 'Domain Learning',
                       level: 'Domain',
                       input: 'All confirmed leading indicator detections (anonymized)',
-                      output: 'Improved leading indicator weights for each trigger type across the platform',
+                      output: 'Improved leading indicator weights for each situation type across the platform',
                       frequency: 'Weekly',
                       privacy: 'Anonymized aggregate',
                       action: () => domainLearningMutation.mutate(),

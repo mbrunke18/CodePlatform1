@@ -339,7 +339,7 @@ function Step1TriggerSelection({
     <div>
       <div className="mb-6">
         <div className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: GOLD }}>Step 1 of 6</div>
-        <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>Select the trigger scenario</h2>
+        <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>Select the situation</h2>
         <p className="text-sm text-gray-600">Choose the situation your organization needs to be ready for. The system will pre-populate your roles and protocol template.</p>
       </div>
 

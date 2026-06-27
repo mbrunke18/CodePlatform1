@@ -199,7 +199,7 @@ export default function PartnerBrief() {
                   {[
                     { role: "Chief Operating Officer", context: "Owns mobilization speed and cross-functional execution quality." },
                     { role: "Chief of Staff / Chief Strategy Officer", context: "Manages the coordination infrastructure around the CEO." },
-                    { role: "Chief Risk Officer", context: "Owns preparedness for the trigger scenarios Readiness OS is built around." },
+                    { role: "Chief Risk Officer", context: "Owns preparedness for the situations Readiness OS is built around." },
                     { role: "Head of Enterprise PMO", context: "Owns the preparation architecture and protocol governance." },
                   ].map(b => (
                     <div key={b.role} style={{ padding: "14px 18px", borderLeft: `2px solid ${GOLD}`, background: IVORY }}>
@@ -211,7 +211,7 @@ export default function PartnerBrief() {
               </div>
               <div>
                 <h2 style={{ ...CG, fontSize: "clamp(22px,2.5vw,32px)", fontWeight: 700, color: NAVY, marginBottom: 20, lineHeight: 1.2 }}>
-                  The trigger scenarios they face.
+                  The situations they face.
                 </h2>
                 <div style={{ display: "grid", gap: 8 }}>
                   {[

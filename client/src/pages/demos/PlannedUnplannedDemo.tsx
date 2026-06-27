@@ -146,7 +146,7 @@ function PhaseIdentify({ onNext }: { onNext: () => void }) {
         The system sees it before anyone wakes up.
       </h2>
       <p style={{ ...BAR, fontSize: 15, color: "#4B5563", lineHeight: 1.8, maxWidth: 680, marginBottom: 48 }}>
-        Continuous monitoring against 231 trigger patterns. When ransomware starts encrypting at 4:18 AM, no one calls an emergency committee. The system identifies the pattern, scores the risk, and matches the protocol — automatically.
+        Continuous monitoring against 231 detection thresholds. When ransomware starts encrypting at 4:18 AM, no one calls an emergency committee. The system identifies the pattern, scores the risk, and matches the protocol — automatically.
       </p>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
@@ -172,7 +172,7 @@ function PhaseIdentify({ onNext }: { onNext: () => void }) {
             </div>
           ))}
           <div style={{ padding: "14px 20px", background: "rgba(43,138,110,0.06)", border: `1px solid rgba(43,138,110,0.2)` }}>
-            <div style={{ ...BC, fontSize: 9, color: TEAL, fontWeight: 700, letterSpacing: "0.15em" }}>MONITORING ACTIVE · 231 TRIGGER PATTERNS · 15-MIN CADENCE</div>
+            <div style={{ ...BC, fontSize: 9, color: TEAL, fontWeight: 700, letterSpacing: "0.15em" }}>MONITORING ACTIVE · 231 DETECTION THRESHOLDS · 15-MIN CADENCE</div>
             <div style={{ ...BAR, fontSize: 11, color: "#374151", marginTop: 4 }}>System watches 8 signal feeds continuously while planned work executes.</div>
           </div>
         </div>
@@ -689,12 +689,12 @@ function PhaseAdvance() {
             Any system that only covers what you plan for covers half your strategic surface.
           </h3>
           <p style={{ ...BAR, fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, marginBottom: 32 }}>
-            180 Readiness Protocols. 231 trigger patterns. Planned work and unplanned triggers — one dashboard, one operating model, one system. Readiness OS is the only platform that prepares the enterprise for everything it will face, anticipated or not.
+            180 Readiness Protocols. 231 detection thresholds. Planned work and unplanned situations — one dashboard, one operating model, one system. Readiness OS is the only platform that prepares the enterprise for everything it will face, anticipated or not.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, marginBottom: 36 }}>
             {[
               { v: "180", l: "Readiness Protocols", s: "Planned + unplanned" },
-              { v: "231", l: "Trigger Patterns", s: "Monitored continuously" },
+              { v: "231", l: "Detection Thresholds", s: "Monitored continuously" },
               { v: "3,600×", l: "Execution Head Start", s: "30 days → 12 minutes" },
             ].map(({ v, l, s }) => (
               <div key={v} style={{ padding: "20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", textAlign: "center" }}>

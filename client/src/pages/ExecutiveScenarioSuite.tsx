@@ -588,7 +588,7 @@ function TriggerStage({ scenario }: { scenario: Scenario }) {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
             <AlertTriangle size={14} color="#EF4444" />
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#FF6B6B' }}>Trigger Event</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#FF6B6B' }}>Situation Detected</span>
             <span style={{ marginLeft: 'auto', fontSize: 12, color: 'rgba(240,237,228,0.55)', fontWeight: 700, letterSpacing: '0.08em' }}>{scenario.trigger.timestamp}</span>
           </div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 600, color: IVORY, lineHeight: 1.2, marginBottom: 20 }}>
@@ -690,7 +690,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
       <div style={{ background: NAVY, borderRadius: 0, padding: '22px 28px' }}>
         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>The Core Principle</div>
         <p style={{ fontSize: 15, color: 'rgba(240,237,228,0.90)', lineHeight: 1.75, margin: 0, fontWeight: 500 }}>
-          AI monitored 231 trigger patterns across 248+ data points. When {scenario.detection.signals.length} signals converged, the {scenario.playbook.name.split('—')[0].trim()} Readiness Protocol was automatically staged — before this trigger event ever occurred. The preparation happened before the pressure.
+          System monitored 231 detection thresholds across 248+ data points. When {scenario.detection.signals.length} signals converged, the {scenario.playbook.name.split('—')[0].trim()} Readiness Protocol was automatically staged — before this situation ever occurred. The preparation happened before the pressure.
         </p>
       </div>
     </div>
@@ -886,7 +886,7 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>This Is Running Now</div>
             <h3 style={{ fontSize: 20, fontWeight: 700, color: IVORY, marginBottom: 8 }}>The Platform Behind This Scenario Is Live</h3>
             <p style={{ fontSize: 13, color: 'rgba(240,237,228,0.75)', lineHeight: 1.7, margin: 0, fontWeight: 500 }}>
-              The playbooks, IDEA chain, and 12-minute clock shown above are the production platform — monitoring 231 triggers across 248+ data points for your organization right now.
+              The playbooks, IDEA chain, and 12-minute clock shown above are the production platform — monitoring 231 detection thresholds across 248+ data points for your organization right now.
             </p>
           </div>
           {live.prepScore !== null && (
@@ -1022,7 +1022,7 @@ export default function ExecutiveScenarioSuite() {
         {/* Footer note */}
         <div style={{ marginTop: 52, paddingTop: 28, borderTop: '1px solid #E2E8F0', textAlign: 'center' }}>
           <p style={{ fontSize: 12, color: '#94A3B8', fontWeight: 500 }}>
-            180 Readiness Protocols · 231 triggers · 9 strategic domains · 12-minute execution across all scenarios
+            180 Readiness Protocols · 231 detection thresholds · 9 strategic domains · 12-minute execution across all scenarios
           </p>
         </div>
 

@@ -282,7 +282,7 @@ export default function DealRiskDemo() {
                         <span className="font-medium">Readiness Protocol Configured</span>
                       </div>
                       <p className="text-sm text-white/80">
-                        {typedStatus.playbook.name} with {typedStatus.playbook.triggers.length} trigger conditions
+                        {typedStatus.playbook.name} with {typedStatus.playbook.triggers.length} detection thresholds
                       </p>
                     </div>
                   )}

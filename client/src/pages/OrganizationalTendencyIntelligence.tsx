@@ -79,7 +79,7 @@ const BOTTLENECKS: Bottleneck[] = [
     occurrenceRate: 44,
     activationsAffected: 7,
     rootCause: 'Brand review required before external communications. No pre-approved template library for common scenarios.',
-    recommendation: 'Pre-stage communications templates for top 20 trigger scenarios. Clearance becomes template selection.',
+    recommendation: 'Pre-stage communications templates for top 20 situations. Clearance becomes template selection.',
     severity: 'medium'
   },
   {

@@ -213,7 +213,7 @@ const PHASES: Phase[] = [
           "Copy the endpoint URL and secret key",
           "Configure your source system (ERP, SIEM, HR platform, financial system) to POST events to this endpoint",
           "Readiness OS validates HMAC signature on every inbound payload",
-          "Map incoming event types to Readiness OS trigger categories (e.g. 'budget-variance' → Financial Crisis Response)",
+          "Map incoming event types to Readiness OS detection threshold categories (e.g. 'budget-variance' → Financial Crisis Response)",
           "Test with a sample payload and confirm trigger detection in /mission-control",
         ],
         notes: "Supports 12 enterprise system categories. Each webhook is HMAC-signed — your IT team controls what signals enter the platform. Common sources: SAP/Oracle (financial alerts), Splunk/Sentinel (security events), Workday (org change events), Salesforce (revenue signals).",
@@ -226,8 +226,8 @@ const PHASES: Phase[] = [
         required: false,
         steps: [
           "In Settings → Signal Sources, add custom RSS feed URLs relevant to your industry",
-          "Tag each feed with relevant trigger categories for pattern matching",
-          "Readiness OS polls all feeds on a 15-minute cycle and scores against 231 trigger patterns",
+          "Tag each feed with relevant detection threshold categories for pattern matching",
+          "Readiness OS polls all feeds on a 15-minute cycle and scores against 231 detection thresholds",
         ],
         notes: "The platform already monitors 39 public feeds. Custom feeds let you add industry-specific sources (trade publications, regulatory bodies, competitor newsrooms).",
       },
@@ -240,7 +240,7 @@ const PHASES: Phase[] = [
         steps: [
           "Connect SharePoint via Microsoft Graph API credentials",
           "Designate a monitored document library for strategy documents and board materials",
-          "Readiness OS scans for keyword patterns that correlate with trigger conditions",
+          "Readiness OS scans for keyword patterns that correlate with detection thresholds",
         ],
       },
     ],

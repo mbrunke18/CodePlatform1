@@ -71,7 +71,7 @@ const SLIDES: SlideData[] = [
     title: "Readiness OS: The response is ready before the trigger fires.",
     bullets: [
       "180 Readiness Protocols pre-staged",
-      "231 trigger patterns mapped",
+      "231 detection thresholds mapped",
       "248+ data points monitored every 15 minutes",
       "AI monitors. Executives authorize.",
     ],

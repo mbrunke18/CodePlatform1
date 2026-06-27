@@ -67,7 +67,7 @@ const SCENARIO_DATA: ScenariosData = {
         headline: "Detected at trigger threshold",
         points: [
           "SEC EDGAR RSS feed scans every 15 minutes",
-          "13D filing matched against Activist Investor trigger pattern",
+          "13D filing matched against Activist Investor detection threshold",
           "Risk scored HIGH — escalated to dashboard immediately",
           "Protocol #31 surfaced as primary response",
         ],
@@ -559,7 +559,7 @@ export default function TierComparisonDemo() {
             <span style={{ color: GOLD }}>when the trigger fires.</span>
           </h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", margin: "0 0 2.5rem", lineHeight: 1.7, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}>
-            Same trigger. Same platform. Three different levels of preparation, warning, and intelligence. Pick a scenario and walk through every phase side by side.
+            Same situation. Same platform. Three different levels of preparation, warning, and intelligence. Pick a scenario and walk through every phase side by side.
           </p>
 
           {/* Scenario selector */}

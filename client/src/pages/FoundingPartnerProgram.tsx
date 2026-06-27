@@ -380,7 +380,7 @@ export default function FoundingPartnerProgram() {
 
             <div style={{ maxWidth: 640, marginBottom: 52 }}>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(240,237,228,0.78)', lineHeight: 1.85, marginBottom: 20, fontWeight: 400 }}>
-                180 Readiness Protocols pre-staged. 231 trigger patterns monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
+                180 Readiness Protocols pre-staged. 231 detection thresholds monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65 }}>
                 2 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
@@ -456,7 +456,7 @@ export default function FoundingPartnerProgram() {
           features={[
             { color: "#C9A84C", label: "180 Protocols Ready", description: "Your Founding Partner access includes the full library — 180 cross-industry Readiness Protocols, available from day one." },
             { color: "#2B8A6E", label: "5 Protocols Staged in 90 Days", description: "During the Founding Partner validation period, your team configures and stages 5 protocols matched to your highest-priority situations." },
-            { color: "#4A90C4", label: "Live Signal Monitoring", description: "231 triggers monitored continuously from your first day on platform — no setup delay, no manual configuration." },
+            { color: "#4A90C4", label: "Live Signal Monitoring", description: "231 detection thresholds monitored continuously from your first day on platform — no setup delay, no manual configuration." },
           ]}
         />
 
@@ -570,9 +570,9 @@ export default function FoundingPartnerProgram() {
                 <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#0A0F2E', opacity: 0.45, marginBottom: 6 }}>Tier 1 · Included</div>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.2 }}>Readiness OS Core</div>
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
-                  180 pre-staged protocols, 231 trigger monitors, 12-minute execution engine. The full platform — available from day one.
+                  180 pre-staged protocols, 231 detection thresholds monitored, 12-minute execution engine. The full platform — available from day one.
                 </p>
-                {['180 Readiness Protocols ready to deploy', '231 strategic triggers monitored continuously', '12-minute trigger-to-coordination engine', 'Executive authorization at every activation'].map((item, i) => (
+                {['180 Readiness Protocols ready to deploy', '231 detection thresholds monitored continuously', '12-minute signal-to-coordination engine', 'Executive authorization at every activation'].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
                     <div style={{ width: 3, height: 3, background: '#0A0F2E', flexShrink: 0, marginTop: 6 }} />
                     <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.55 }}>{item}</span>
@@ -588,7 +588,7 @@ export default function FoundingPartnerProgram() {
                 <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>Tier 2 · Included</div>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.2 }}>Industry Protocol Pack</div>
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
-                  Pre-configured for your vertical's specific trigger patterns. Reduces deployment time from weeks to days.
+                  Pre-configured for your vertical's specific detection thresholds. Reduces deployment time from weeks to days.
                 </p>
                 {['Financial Services — activist, regulatory, cyber', 'Healthcare — recall, FDA action, supply chain', 'Energy — grid, regulatory, infrastructure', 'Manufacturing, Pharma, Technology packs available'].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
@@ -608,7 +608,7 @@ export default function FoundingPartnerProgram() {
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
                   Build custom protocols from scratch for scenarios unique to your organization. Founding Partners shape how this gets built.
                 </p>
-                {['Custom trigger conditions and signal thresholds', 'Your org structure, task sequences, and owners', 'Approval workflows and decision authority mapping', 'Your operational logic defines the design'].map((item, i) => (
+                {['Custom detection thresholds and signal configuration', 'Your org structure, task sequences, and owners', 'Approval workflows and decision authority mapping', 'Your operational logic defines the design'].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
                     <div style={{ width: 3, height: 3, background: '#C9A84C', flexShrink: 0, marginTop: 6 }} />
                     <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.55 }}>{item}</span>

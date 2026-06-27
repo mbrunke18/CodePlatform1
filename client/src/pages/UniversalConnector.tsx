@@ -545,7 +545,7 @@ export default function UniversalConnector() {
             <CodeBlock label="cURL quicktest" code={CURL_SAMPLE} />
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginTop: 8 }}>
               {[
-                "event_type — maps to 1 of 231 trigger patterns",
+                "event_type — maps to 1 of 231 detection thresholds",
                 "severity — low / medium / high / critical",
                 "Any JSON body accepted — unknown fields ignored",
                 "HMAC secret generated per org in Integration Hub",

@@ -187,7 +187,7 @@ export default function SectorBriefing() {
             <em style={{ color: GOLD }}>What Readiness OS is detecting.</em>
           </h1>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.7 }}>
-            Select your sector below. See which trigger patterns are active today — and which Readiness Protocols are already staged for your response.
+            Select your sector below. See which detection thresholds are active today — and which Readiness Protocols are already staged for your response.
           </p>
           {live?.totalToday != null && (
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(43,138,110,0.15)", border: "1px solid rgba(43,138,110,0.3)", padding: "8px 16px", marginTop: 8 }}>
@@ -232,13 +232,13 @@ export default function SectorBriefing() {
           <div>
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, ...BC, marginBottom: 8 }}>
-                {selected.icon} {selected.label} — Active Trigger Patterns
+                {selected.icon} {selected.label} — Active Detection Thresholds
               </div>
               <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(22px,2.5vw,32px)", color: NAVY, marginBottom: 6 }}>
                 Readiness Protocols staged for your sector
               </h2>
               <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.6 }}>
-                These trigger patterns are actively monitored across your domain. Each has a pre-staged Readiness Protocol — response ready before the signal fires.
+                These detection thresholds are actively monitored across your domain. Each has a pre-staged Readiness Protocol — response ready before the signal fires.
               </p>
             </div>
 

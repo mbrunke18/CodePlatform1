@@ -749,7 +749,7 @@ export default function CommandTower() {
                     ALL SYSTEMS CLEAR
                   </div>
                   <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, maxWidth: 400, margin: '0 auto', lineHeight: 1.6 }}>
-                    No trigger events detected. {triggersArmed} triggers are armed and continuously monitoring across 9 strategic domains.
+                    No situations detected. {triggersArmed} detection thresholds are active and continuously monitoring across 9 strategic domains.
                   </div>
                   <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center', gap: 10 }}>
                     <a href="/live-activation-center" style={{

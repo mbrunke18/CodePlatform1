@@ -285,7 +285,7 @@ export default function InvestorResources() {
         urlTag="180 PROTOCOLS"
         tagColor="#C9A84C"
         features={[
-          { color: "#C9A84C", label: "180 Cross-Industry Protocols", description: "The full library covers startup to Fortune 500 — every trigger pattern across all 3 strategic domains." },
+          { color: "#C9A84C", label: "180 Cross-Industry Protocols", description: "The full library covers startup to Fortune 500 — every situation across all 3 strategic domains." },
           { color: "#2B8A6E", label: "Closed-Loop Learning Moat", description: "ADVANCE 2.0 generates causal hypotheses and proves them after every activation — compounding institutional memory." },
           { color: "#4A90C4", label: "3,600× Execution Head Start", description: "The category metric: 30 days of enterprise mobilization compressed to 12 minutes. Documented, repeatable, proven." },
         ]}

@@ -255,7 +255,7 @@ export default function CostOfInaction() {
         </div>
 
         <div style={{ marginBottom: 40 }}>
-          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, marginBottom: 16 }}>Step 1 — Select your trigger scenario</div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, marginBottom: 16 }}>Step 1 — Select your situation</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
             {SCENARIOS.map(s => (
               <ScenarioCard key={s.id} s={s} selected={scenarioId === s.id} onClick={() => setScenarioId(s.id)} />

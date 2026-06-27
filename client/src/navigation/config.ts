@@ -114,7 +114,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'AI Trigger Monitoring',
           path: '/triggers-management',
           icon: '⚡',
-          description: '231 triggers configured to your thresholds — every prepared trigger costs 12 minutes. Every unprepared one costs 30 days.'
+          description: '231 detection thresholds configured — every situation you\'ve prepared for costs 12 minutes. Every unprepared one costs 30 days.'
         },
         {
           id: 'alerts',
@@ -249,7 +249,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Execution Clock',
           path: '/mission-control#execution-clock',
           icon: '⏱️',
-          description: 'Live 12-minute execution clock — milestone tracker per trigger event'
+          description: 'Live 12-minute execution clock — milestone tracker per situation'
         },
         {
           id: 'activation',

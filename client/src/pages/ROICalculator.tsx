@@ -345,7 +345,7 @@ function FirstUsePaybackCalculator() {
         </div>
 
         <div style={{ fontSize: 10, color: "#D1D5DB", lineHeight: 1.5, textAlign: "center" as const }}>
-          Projected estimates modeled on executive productivity benchmarks and industry revenue-at-risk data. Conservative methodology applied throughout — actual mobilization costs are typically higher. Individual outcomes depend on organizational profile and trigger type.
+          Projected estimates modeled on executive productivity benchmarks and industry revenue-at-risk data. Conservative methodology applied throughout — actual mobilization costs are typically higher. Individual outcomes depend on organizational profile and situation type.
         </div>
       </div>
     </div>

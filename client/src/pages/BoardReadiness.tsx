@@ -132,7 +132,7 @@ export default function BoardReadiness() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 14 }}>
                 <div style={{ width: 8, height: 8, borderRadius: 0, background: statusColor }} />
                 <span style={{ fontSize: 12, fontWeight: 700, color: statusColor }}>{d.monitoringStatus}</span>
-                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)' }}>· 231 triggers armed · 248+ signals tracked</span>
+                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)' }}>· 231 detection thresholds armed · 248+ signals tracked</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10 }}>
                 <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>WEF AI Framework</span>
@@ -203,7 +203,7 @@ export default function BoardReadiness() {
         {/* Recent detections */}
         {d.recentDetections?.length > 0 && (
           <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 24, marginBottom: 28 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 16 }}>Recent Trigger Events (30 Days)</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 16 }}>Recent Situations (30 Days)</div>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
                 <tr style={{ borderBottom: `2px solid ${NAVY}` }}>
@@ -232,7 +232,7 @@ export default function BoardReadiness() {
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 6 }}>Executive Attestation</div>
             <div style={{ fontSize: 12, color: '#555', lineHeight: 1.7 }}>
-              This organization's strategic execution infrastructure is actively monitoring {d.triggersArmed || 231} trigger patterns across {d.totalDomains} domains.
+              This organization's strategic execution infrastructure is actively monitoring {d.triggersArmed || 231} detection thresholds across {d.totalDomains} domains.
               Stakeholder teams are enrolled to receive real-time alerts within minutes of a trigger detection. 180 pre-staged Readiness Protocols are available for immediate deployment.
               This report was generated automatically by Readiness OS and reflects live system state as of {generatedDate}.
             </div>

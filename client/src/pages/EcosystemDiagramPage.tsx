@@ -241,7 +241,7 @@ export default function EcosystemDiagramPage() {
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
             {[
-              { name: "Azure AI", role: "Runs the 4-agent IDEA Framework in parallel — IDENTIFY · DETECT · EXECUTE · ADVANCE", icon: "◈", color: "#0078D4" },
+              { name: "Azure AI", role: "Runs the IDEA Framework™ in parallel — IDENTIFY · DETECT · EXECUTE · ADVANCE", icon: "◈", color: "#0078D4" },
               { name: "Microsoft Teams", role: "Fires war room notifications to executives on Readiness Protocol activation — no separate tool required", icon: "⬡", color: "#6264A7" },
               { name: "Copilot Studio", role: "Custom connector lets execs query Readiness Protocols and briefings directly from Microsoft 365 Copilot", icon: "◉", color: "#5BA3E8" },
               { name: "Microsoft Entra", role: "Stamps every AI agent action with an identity audit trail — full governance and SSO", icon: "◎", color: "#107C10" },

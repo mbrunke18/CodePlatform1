@@ -2352,7 +2352,7 @@ function PlatformArchitectureSection() {
               <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Tier 2</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Industry Protocol Packs</h3>
               <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
-                Pre-configured protocol libraries built around the trigger patterns specific to your industry. Reduces deployment time from weeks to days — because the protocols already match your regulatory, competitive, and operational reality.
+                Pre-configured protocol libraries built around the detection thresholds specific to your industry. Reduces deployment time from weeks to days — because the protocols already match your regulatory, competitive, and operational reality.
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
@@ -2383,7 +2383,7 @@ function PlatformArchitectureSection() {
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
-                  "Custom trigger conditions and signal thresholds",
+                  "Custom detection thresholds and signal configuration",
                   "Organization-specific task sequences and owners",
                   "Approval workflows and decision authority mapping",
                   "Co-designed with Founding Partners in 2025",
@@ -4229,7 +4229,7 @@ function HowTriggersWorkSection() {
                 <em style={{ color: GOLD, fontStyle: "italic" }}>Executives decide.</em>
               </h2>
               <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 20 }}>
-                Readiness OS monitors <strong>248+ data points across 231 trigger types</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a potential trigger for executive review.
+                Readiness OS monitors <strong>248+ data points across 231 detection thresholds</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a detected situation for executive review.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 28 }}>
                 No Readiness Protocol activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
@@ -4376,7 +4376,7 @@ function HowPlaybooksWorkSection() {
             </div>
             <div>
               <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: 0 }}>
-                The entire platform IS the Readiness Protocol system — and it grows with every use. Each activation adds a real decision record. Each challenge-rights exchange embeds your organization's specific judgment. Each debrief updates the failure modes. After 12 months, your Readiness Protocol record contains irreplicable organizational intelligence: real trigger events, under real pressure, by your actual people, in your actual structure. A competitor can buy the same software on day one. They cannot buy your preparation history.
+                The entire platform IS the Readiness Protocol system — and it grows with every use. Each activation adds a real decision record. Each challenge-rights exchange embeds your organization's specific judgment. Each debrief updates the failure modes. After 12 months, your Readiness Protocol record contains irreplicable organizational intelligence: real situations, under real pressure, with your actual people, in your actual structure. A competitor can buy the same software on day one. They cannot buy your preparation history.
               </p>
               <div style={{ marginTop: 16, ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: TEAL }}>
                 The moat is capability, not software — and capability compounds.
@@ -5220,7 +5220,7 @@ function PlainEnglishExplainer() {
         {/* Stat row */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#E8E4DC", marginBottom: 48 }}>
           {[
-            { n: "3,600×", label: "Execution Head Start", sub: "30 days compressed to 12 minutes — every trigger, every domain" },
+            { n: "3,600×", label: "Execution Head Start", sub: "30 days compressed to 12 minutes — every situation, every domain" },
             { n: "180",    label: "Readiness Protocols",  sub: "Pre-staged before any trigger fires — startup to Fortune 500" },
             { n: "$0",     label: "Penalty Exposure",     sub: "When every response is pre-staged, approved, and executing in 12 minutes" },
             { n: "231",    label: "Triggers Monitored",   sub: "Continuous signal monitoring — system detects before you hear it elsewhere" },

@@ -23,7 +23,7 @@ Most organizations I talk to have the same pattern: when a strategic trigger fir
 
 That's not a people problem. It's an infrastructure problem. The response wasn't built before the trigger fired.
 
-I built Readiness OS after 20 years watching this play out at the intersection of governance and execution — in companies from startup to Fortune 500. The architecture is different: 180 Readiness Protocols pre-staged, 231 trigger patterns continuously monitored, full stakeholder and budget authority mapped before anything happens. When a trigger fires, execution begins in 12 minutes — not 30 days.
+I built Readiness OS after 20 years watching this play out at the intersection of governance and execution — in companies from startup to Fortune 500. The architecture is different: 180 Readiness Protocols pre-staged, 231 detection thresholds continuously monitored, full stakeholder and budget authority mapped before anything happens. When a trigger fires, execution begins in 12 minutes — not 30 days.
 
 Would it be useful to see how three organizations comparable to [Company] use this today?
 

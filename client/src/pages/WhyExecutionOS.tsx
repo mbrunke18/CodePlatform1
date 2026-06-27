@@ -80,7 +80,7 @@ const competitors: Competitor[] = [
     category: "Incident & Crisis Management Software",
     claim: "Coordinate responses, track actions, and document outcomes during incidents and crises.",
     whatTheyDo: "These platforms provide a structured digital workspace for crisis management — incident logging, task assignment, communication tracking, and post-incident reporting. They represent a meaningful improvement over spreadsheets and email chains as a coordination workspace.",
-    whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged Readiness Protocols tied to specific trigger signatures. No signal monitoring for trigger conditions. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
+    whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged Readiness Protocols tied to specific detection thresholds. No signal monitoring for detection thresholds. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
     theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for startup to Fortune 500 strategic triggers across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
     oneLiner: "That is a digital emergency binder. This is strategic execution infrastructure.",
   },
@@ -109,7 +109,7 @@ const fiveReasons = [
   {
     icon: BookOpen,
     title: "Pre-staged beats reactive — every time",
-    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 180 Readiness Protocols across 9 domains. 231 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
+    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 180 Readiness Protocols across 9 domains. 231 configured detection thresholds. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
     metric: "180 Readiness Protocols pre-staged",
   },
   {
@@ -204,7 +204,7 @@ export default function WhyExecutionOS() {
           urlTag="MONITORING"
           tagColor="#2B8A6E"
           features={[
-            { color: "#2B8A6E", label: "Continuous Signal Detection", description: "231 triggers monitored across competitive, regulatory, financial, and operational domains — before any human could act." },
+            { color: "#2B8A6E", label: "Continuous Signal Detection", description: "231 detection thresholds monitored across competitive, regulatory, financial, and operational domains — before any human could act." },
             { color: "#C9A84C", label: "Pre-Staged Protocols", description: "180 Readiness Protocols fully built, approved, and staged before any trigger fires. No assembly required." },
             { color: "#4A90C4", label: "Executive Authority Preserved", description: "No Readiness Protocol activates without executive sign-off. Preparation compresses mobilization; the decision remains human." },
           ]}

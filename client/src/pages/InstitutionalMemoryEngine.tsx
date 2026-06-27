@@ -35,7 +35,7 @@ const LAYERS = [
     desc: "Prior activation records are indexed and retrieved as context for future protocol recommendations. The system identifies which protocols performed best against which trigger profiles.",
     items: [
       "Prior decisions surfaced as context for new activations",
-      "Protocol performance indexed by trigger type and domain",
+      "Protocol performance indexed by situation type and domain",
       "Response time benchmarks updated with each cycle",
       "Stakeholder engagement patterns tracked over time",
     ],

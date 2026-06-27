@@ -77,8 +77,8 @@ const STRUCTURE = [
     phase: "Week 1",
     title: "Foundation",
     color: GOLD,
-    items: ["Scenario selection workshop", "Authority mapping", "Signal monitoring activated", "Trigger conditions configured"],
-    deliverable: "5 trigger scenarios mapped · Signal monitoring live",
+    items: ["Scenario selection workshop", "Authority mapping", "Signal monitoring activated", "Detection thresholds configured"],
+    deliverable: "5 situations mapped · Signal monitoring live",
   },
   {
     phase: "Weeks 2–4",
@@ -323,8 +323,8 @@ export default function FoundingPartnerPage() {
           <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD, marginBottom: 20 }}>Who the Founding Partner Program Is For</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
             {[
-              { label: "The right fit", items: ["startup to Fortune 500 or equivalent-scale organization", "Executive sponsor with authorization authority (CISO, CRO, COO, or equivalent)", "Preparation Architect (COO, Chief of Staff, VP Operations, or equivalent) to own the 90-day readiness architecture build", "At least 2 high-priority trigger scenarios (cyber, regulatory, supply chain, M&A)", "Appetite to move from reactive to pre-staged execution model"], color: TEAL },
-              { label: "Not the right fit", items: ["Organizations seeking a point tool or dashboard replacement", "Teams without executive sponsorship or authority to map authorization chains", "Organizations requiring customer references before engaging (this cohort is the reference group)", "Companies not currently facing any of the 231 trigger categories"], color: "#DC2626" },
+              { label: "The right fit", items: ["startup to Fortune 500 or equivalent-scale organization", "Executive sponsor with authorization authority (CISO, CRO, COO, or equivalent)", "Preparation Architect (COO, Chief of Staff, VP Operations, or equivalent) to own the 90-day readiness architecture build", "At least 2 high-priority situations to prepare for (cyber, regulatory, supply chain, M&A)", "Appetite to move from reactive to pre-staged execution model"], color: TEAL },
+              { label: "Not the right fit", items: ["Organizations seeking a point tool or dashboard replacement", "Teams without executive sponsorship or authority to map authorization chains", "Organizations requiring customer references before engaging (this cohort is the reference group)", "Companies not currently facing any of the 231 detection threshold categories"], color: "#DC2626" },
             ].map(col => (
               <div key={col.label}>
                 <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: col.color, marginBottom: 12 }}>{col.label}</div>

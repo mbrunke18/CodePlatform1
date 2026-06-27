@@ -305,7 +305,7 @@ export default function PlatformHub() {
           <SectionLabel>The Platform in Action</SectionLabel>
           <div className="ph-3col-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
             {([
-              { img: "/screenshots/deck_signals.jpg", label: "DETECT", title: "Signal Intelligence", sub: "231 triggers · live monitoring every 15 min", color: TEAL },
+              { img: "/screenshots/deck_signals.jpg", label: "DETECT", title: "Signal Intelligence", sub: "231 detection thresholds · live monitoring every 15 min", color: TEAL },
               { img: "/screenshots/protocol_library_v2.jpg", label: "PREPARE", title: "Protocol Library", sub: "180 responses pre-staged before the trigger fires", color: GOLD },
               { img: "/screenshots/deck_activation.jpg", label: "EXECUTE", title: "Activation Console", sub: "12-minute coordination chain from trigger to execution", color: NAVY },
             ] as const).map(item => (

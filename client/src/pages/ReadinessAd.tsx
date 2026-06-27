@@ -725,7 +725,7 @@ export default function ReadinessAd() {
           <div style={{ width: "100%" }}>
             <div className="ad-flow-step" id="ad-fs-1">
               <div className="ad-step-time">0:00</div>
-              <div><div className="ad-step-label">Signal Detected</div><div className="ad-step-desc">39 live data sources. 231 trigger patterns. Threshold crossed. Protocol matched.</div></div>
+              <div><div className="ad-step-label">Signal Detected</div><div className="ad-step-desc">39 live data sources. 231 detection thresholds. Threshold crossed. Protocol matched.</div></div>
             </div>
             <div className="ad-flow-step" id="ad-fs-2">
               <div className="ad-step-time">2:00</div>

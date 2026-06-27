@@ -308,7 +308,7 @@ export default function ProductOverview() {
           </Body>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 20, margin: "24px 0" }}>
             <StatBlock value="180" label="Readiness Protocols" sub="Core cross-industry library" />
-            <StatBlock value="231" label="Trigger Patterns" sub="Continuously monitored" />
+            <StatBlock value="231" label="Detection Thresholds" sub="Continuously monitored" />
             <StatBlock value="12 min" label="Execution Head Start" sub="vs. 30-day mobilization" />
             <StatBlock value="3,600×" label="Execution Advantage" sub="30 days → 12 minutes" />
           </div>
@@ -416,7 +416,7 @@ export default function ProductOverview() {
           </Body>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "rgba(10,15,46,0.08)", border: "1px solid rgba(10,15,46,0.08)", marginTop: 20 }}>
             {[
-              { letter: "I", phase: "Identify", detail: "Signal detection across 39 live sources. 231 trigger patterns scored in real time. Continuous monitoring — no manual triage." },
+              { letter: "I", phase: "Identify", detail: "Signal detection across 39 live sources. 231 detection thresholds scored in real time. Continuous monitoring — no manual triage." },
               { letter: "D", phase: "Design", detail: "Protocol recommendation engine maps detected triggers to pre-staged Readiness Protocols. Compound threat analysis for multi-domain triggers." },
               { letter: "E", phase: "Execute", detail: "Tasks pre-assigned to stakeholders. Documents pre-drafted. War Room staged. Executive authorization required before activation proceeds." },
               { letter: "A", phase: "Advance", detail: "ADVANCE 2.0 closes the loop: every activation generates preparation updates. Causal hypotheses proven or disproven after the next activation." },
@@ -465,7 +465,7 @@ export default function ProductOverview() {
           <Heading>From trigger detection to authorized execution in 12 minutes.</Heading>
           <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 1 }}>
             {[
-              { t: "T+0:00", label: "Signal Detected", body: "System-detected event matches a trigger pattern. Continuous monitoring against 231 patterns — no human triage required." },
+              { t: "T+0:00", label: "Signal Detected", body: "System-detected event matches a detection threshold. Continuous monitoring against 231 thresholds — no human triage required." },
               { t: "T+0:30", label: "Protocol Matched", body: "The relevant Readiness Protocol is identified and staged. All pre-built assets are surfaced: tasks, stakeholders, documents, escalation paths." },
               { t: "T+2:00", label: "Tasks Pre-Assigned", body: "Role-based task distribution to named stakeholders. Dependencies mapped. No coordination meeting needed — assignments are pre-staged." },
               { t: "T+5:00", label: "Stakeholders Notified", body: "Automated briefings dispatched. Each stakeholder receives context, their specific tasks, and escalation authority — before the executive authorizes." },
@@ -619,7 +619,7 @@ export default function ProductOverview() {
               </div>
               {[
                 "180 pre-staged Readiness Protocols",
-                "231 trigger pattern library",
+                "231 detection threshold library",
                 "Executive authorization layer",
                 "Closed-loop ADVANCE learning",
                 "12-minute execution sequence",

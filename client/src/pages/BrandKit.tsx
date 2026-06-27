@@ -696,7 +696,7 @@ export default function BrandKit() {
                   </h2>
                   <div style={{ width: 60, height: 2, background: `linear-gradient(to right, ${B.gold}, ${B.teal})`, marginBottom: 32 }}/>
                   <p style={{ fontFamily: EDITORIAL, fontSize: 20, color: "rgba(248,247,244,0.75)", lineHeight: 1.65, fontStyle: "italic", maxWidth: 560, marginBottom: 40 }}>
-                    180 Readiness Protocols. 231 triggers monitored. Signal monitoring. Executive authorization. Coordinated response in 12 minutes — whether the trigger is a threat or a market window.
+                    180 Readiness Protocols. 231 detection thresholds monitored. Signal monitoring. Executive authorization. Coordinated response in 12 minutes — whether the trigger is a threat or a market window.
                   </p>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32, marginBottom: 48 }}>
                     {[

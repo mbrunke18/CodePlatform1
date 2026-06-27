@@ -80,7 +80,7 @@ const phaseDetails = [
     objective: 'Activate Continuous monitoring and alerting',
     activities: [
       { name: 'Signal Ops Workspace', path: '/workspaces/detect', description: 'Central hub for signal monitoring' },
-      { name: 'Configure Triggers', path: '/triggers-management', description: 'Set up trigger conditions and thresholds' },
+      { name: 'Configure Triggers', path: '/triggers-management', description: 'Set up detection thresholds and signal configuration' },
       { name: 'Tune AI Detection', path: '/ai-radar', description: 'Calibrate AI signal recognition' },
       { name: 'Set Alert Routing', path: '/intelligence-control-center', description: 'Define notification channels and escalation paths' },
       { name: 'Connect Signal Sources', path: '/setup/integrations', description: 'Link news feeds, market data, and internal systems' }
@@ -95,7 +95,7 @@ const phaseDetails = [
     objective: 'Prove 12-minute coordinated response capability',
     activities: [
       { name: 'Compass Command', path: '/workspaces/execute', description: 'Execution coordination center' },
-      { name: 'Run Practice Drills', path: '/practice-drills', description: 'Simulate trigger scenarios with your team' },
+      { name: 'Run Practice Drills', path: '/practice-drills', description: 'Simulate situations with your team' },
       { name: 'Test Command Center', path: '/command-center', description: 'Verify real-time coordination capabilities' },
       { name: 'Execute Live Response', path: '/execute/war-room', description: 'Respond to first real trigger' }
     ],
@@ -186,7 +186,7 @@ export default function CustomerJourney() {
           urlTag="GO-LIVE TRACKER"
           tagColor="#2B8A6E"
           features={[
-            { color: "#C9A84C", label: "Days 1–30: Configure", description: "Set up your protocol library, map stakeholders, configure your top 5 trigger scenarios." },
+            { color: "#C9A84C", label: "Days 1–30: Configure", description: "Set up your protocol library, map stakeholders, configure your top 5 situations." },
             { color: "#2B8A6E", label: "Days 30–60: Deploy", description: "Run your first practice activations, validate execution chains, establish governance rhythms." },
             { color: "#4A90C4", label: "Days 60–90+: Master", description: "Live signal monitoring active, first real activations underway, ADVANCE 2.0 learning in motion." },
           ]}

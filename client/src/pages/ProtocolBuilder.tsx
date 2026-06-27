@@ -37,7 +37,7 @@ const TRIGGER_COMMON_MISTAKES = [
   'Vague triggers ("significant market change") create hesitation — be specific about the data point that fires the protocol.',
   'Skipping the industry field — the system uses it to pre-match signal sources.',
   'Setting riskThreshold too low — MEDIUM on a mission-critical protocol means it activates on noise.',
-  'Not referencing a specific system signal — pair every trigger condition with a named source (e.g., SIEM, ERP alert).',
+  'Not referencing a specific system signal — pair every detection threshold with a named source (e.g., SIEM, ERP alert).',
 ];
 
 const RISK_COLORS: Record<string, string> = {
@@ -229,7 +229,7 @@ const STEPS = [
     num: 4, id: 'comms', Icon: MessageSquare,
     title: 'Communication Chain',
     subtitle: 'Pre-draft every message before the pressure hits.',
-    guidance: 'In a real trigger event, drafting communications under pressure introduces errors and delays. The 180 protocols pre-stage every message — the only variable is the date.',
+    guidance: 'In a real situation, drafting communications under pressure introduces errors and delays. The 180 protocols pre-stage every message — the only variable is the date.',
     example: { label: 'From the 180', name: 'Board brief pre-drafted and updated quarterly', meta: 'Stakeholder alert fires at trigger detection — no drafting under pressure', detail: 'Public statement template reviewed by Legal & PR annually' },
   },
   {

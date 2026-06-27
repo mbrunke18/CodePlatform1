@@ -443,7 +443,7 @@ function AdContent({ onClose }: Props) {
               </div>
               <div className="fv-step-body">
                 <div className="fv-step-label">Signal Detected</div>
-                <div className="fv-step-desc">231 trigger patterns. Continuous monitoring. Threshold crossed. Readiness Protocol matched automatically.</div>
+                <div className="fv-step-desc">231 detection thresholds. Continuous monitoring. Threshold crossed. Readiness Protocol matched automatically.</div>
               </div>
             </div>
 

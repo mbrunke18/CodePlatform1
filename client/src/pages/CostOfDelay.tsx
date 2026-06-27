@@ -226,7 +226,7 @@ export default function CostOfDelay() {
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "20px 24px" }}>
               <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.15em", color: NAVY, ...BC, marginBottom: 14, textTransform: "uppercase" as const }}>Cost Breakdown</div>
               {[
-                { label: "Cost per trigger event", value: fmtFull(calc.costPerTrigger), color: RED },
+                { label: "Cost per situation", value: fmtFull(calc.costPerTrigger), color: RED },
                 { label: "Cost per mobilization day", value: fmtFull(calc.costPerDay), color: MUTED },
                 { label: "Annual mobilization tax", value: fmt(calc.annualMobilizationTax), color: RED },
               ].map((row, i) => (
@@ -378,7 +378,7 @@ export default function CostOfDelay() {
             <em style={{ color: GOLD }}>The cost of Readiness OS is fixed.</em>
           </h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", marginBottom: 32, lineHeight: 1.7 }}>
-            Every day you're evaluating, the counter runs. One trigger event during your evaluation window costs more than a full year of Core. The math ends the conversation.
+            Every day you're evaluating, the counter runs. One situation during your evaluation window costs more than a full year of Core. The math ends the conversation.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" as const }}>
             <Button

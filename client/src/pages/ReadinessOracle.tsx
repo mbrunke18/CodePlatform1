@@ -13,7 +13,7 @@ const FOUNDATION = [
   {
     icon: <Eye className="w-5 h-5" />,
     label: "Continuous Signal Detection",
-    desc: "248+ sources monitored every 15 minutes. 231 trigger patterns across 9 strategic domains.",
+    desc: "248+ sources monitored every 15 minutes. 231 detection thresholds across 9 strategic domains.",
     live: true,
   },
   {
@@ -50,7 +50,7 @@ const ORACLE_CAPABILITIES = [
     title: "Autonomous Strategic War Gaming",
     phase: "Phase 1 — Founding Partner Co-Development",
     color: GOLD,
-    desc: "Thousands of forward simulations run continuously using your organizational data and external signals. The system identifies converging risk patterns before they hit your 231 trigger signatures — and drafts new protocols before the trigger fully materializes.",
+    desc: "Thousands of forward simulations run continuously using your organizational data and external signals. The system identifies converging risk patterns before they hit your 231 detection thresholds — and drafts new protocols before the situation fully materializes.",
     example: "\"Three converging signals suggest a 72% probability of a tariff-related disruption in 60 days. A pre-staged Readiness Protocol has been drafted with owners, comms, and budget reallocations. Approve or modify?\"",
     distinction: "Shifts the value proposition from 'we respond in 12 minutes' to 'the response was ready before the trigger was even a pattern.'",
   },
@@ -59,7 +59,7 @@ const ORACLE_CAPABILITIES = [
     title: "Collective Readiness Intelligence",
     phase: "Phase 2 — Network Effect Module",
     color: TEAL,
-    desc: "Anonymized learning across the entire Readiness OS customer base. Protocols improve not just from your activations, but from lessons across industries, trigger types, and execution outcomes. Strict privacy controls — no organizational data is shared, only anonymized pattern intelligence.",
+    desc: "Anonymized learning across the entire Readiness OS customer base. Protocols improve not just from your activations, but from lessons across industries, situation types, and execution outcomes. Strict privacy controls — no organizational data is shared, only anonymized pattern intelligence.",
     distinction: "Network effect moat: the readiness intelligence compounds with every new organization. No competitor can replicate this without the same customer base.",
   },
   {

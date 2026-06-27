@@ -35,7 +35,7 @@ const TABS = [
 // ─── IDENTIFY DATA ───────────────────────────────────────────────────────────
 const identifyTools = [
   { title: "Readiness Protocol Library", description: "Browse 180 pre-built Readiness Protocols across 9 domains", path: "/playbook-library", icon: BookOpen, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "180 protocols", featured: true },
-  { title: "Scenario Planning Hub", description: "Design strategic scenarios and map potential trigger conditions", path: "/strategic", icon: Target, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Strategic planning" },
+  { title: "Scenario Planning Hub", description: "Design strategic scenarios and map potential detection thresholds", path: "/strategic", icon: Target, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Strategic planning" },
   { title: "What-If Analyzer", description: "Model different scenarios and their potential outcomes", path: "/what-if-analyzer", icon: Lightbulb, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Predictive modeling" },
   { title: "Board Briefings", description: "Generate executive-ready presentations and board materials", path: "/board-briefings", icon: FileText, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Executive reports" },
   { title: "Protocol Customization", description: "Tailor protocols to your organization's specific needs", path: "/playbook-customization", icon: ClipboardList, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Personalization" },

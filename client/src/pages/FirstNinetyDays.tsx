@@ -29,7 +29,7 @@ const PHASES = [
     ],
     activities: [
       { who: "VaughnMartin", what: "Dedicated onboarding session with your executive team — 3 hours total" },
-      { who: "VaughnMartin", what: "Protocol selection workshop: map your top 5 likely trigger scenarios" },
+      { who: "VaughnMartin", what: "Protocol selection workshop: map your top 5 likely situations" },
       { who: "Your Team", what: "Authority mapping: define who authorizes, who executes, who observes for each protocol" },
       { who: "Platform", what: "Signal monitoring goes live across your selected intelligence categories" },
     ],
@@ -71,8 +71,8 @@ const PHASES = [
     ],
     activities: [
       { who: "Platform", what: "Live signal monitoring runs continuously — 248+ data points across your configured categories" },
-      { who: "Platform", what: "Shadow mode: when a trigger condition is met, the system logs the activation without executing — you see exactly what would have fired" },
-      { who: "VaughnMartin", what: "Mid-point review call — walk through shadow activations, refine trigger conditions and protocols" },
+      { who: "Platform", what: "Shadow mode: when a detection threshold is crossed, the system logs the activation without executing — you see exactly what would have fired" },
+      { who: "VaughnMartin", what: "Mid-point review call — walk through shadow activations, refine detection thresholds and protocols" },
       { who: "Your Team", what: "Optional: expand to 10 staged protocols based on patterns observed in first 30 days" },
     ],
   },
@@ -104,7 +104,7 @@ const SUCCESS_CRITERIA = [
     checkpoint: "Day 7",
     color: GOLD,
     criteria: [
-      "5 trigger scenarios identified and mapped",
+      "5 situations identified and mapped",
       "Authorization chain documented for each",
       "Signal monitoring live — first detections visible",
     ],

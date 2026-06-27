@@ -56,8 +56,8 @@ const STEP_CONTEXT = [
     plain: "This is the Command Center — your organization's readiness state right now. Three signals detected overnight. Scored automatically. Flagged low-risk. Nobody had to check. No meeting was called. The difference between this and a traditional Monday morning: your peers are reactive. You are already positioned. That gap compounds every single week.",
   },
   {
-    headline: "Every unmonitored trigger is a 30-day surprise waiting to happen.",
-    plain: "You've activated 47 of 231 available trigger patterns. Each one is already mapped to a complete response plan. When a threshold is crossed, the right response is already connected — no scrambling, no 'who owns this?' emergency call. The triggers you're NOT watching are the ones that become 30-day mobilization events. This is how you stop that from happening.",
+    headline: "Every unmonitored situation is a 30-day surprise waiting to happen.",
+    plain: "You've activated 47 of 231 available detection thresholds. Each one is already mapped to a complete response plan. When a threshold is crossed, the right response is already connected — no scrambling, no 'who owns this?' emergency call. The situations you're NOT monitoring are the ones that become 30-day mobilization events. This is how you stop that from happening.",
   },
   {
     headline: "Your competitors build their response after the crisis fires. You built yours before.",
@@ -97,8 +97,8 @@ const NARRATION = [
     callout: "Every day without this is a day you're hoping, not preparing.",
   },
   {
-    headline: "Every trigger you're not watching is an open exposure window.",
-    body: "231 trigger patterns exist. The average unprepared enterprise monitors 0 of them systematically. Each one that fires undetected adds 2–3 weeks of reactive scrambling and $800K–$2M in emergency spend. You've chosen 47 to watch. The system watches them 24/7 — so you don't have to hope you notice.",
+    headline: "Every situation you're not monitoring is an open exposure window.",
+    body: "231 detection thresholds exist. The average unprepared enterprise monitors 0 of them systematically. Each one that crosses undetected adds 2–3 weeks of reactive scrambling and $800K–$2M in emergency spend. You've chosen 47 to watch. The system watches them 24/7 — so you don't have to hope you notice.",
     callout: "Unmonitored triggers don't disappear. They just cost more when they fire.",
   },
   {
@@ -783,7 +783,7 @@ function PanelTriggerPortfolio() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
           <div>
             <Label>Your Trigger Portfolio</Label>
-            <div style={{ fontSize: 12, color: MUTED }}>47 active monitors · 231 available trigger patterns</div>
+            <div style={{ fontSize: 12, color: MUTED }}>47 active monitors · 231 available detection thresholds</div>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}`, borderRadius: "0.15rem" }}>
@@ -926,7 +926,7 @@ function PanelSignal() {
       <Card>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
           <div>
-            <Label>Trigger Pattern Matched</Label>
+            <Label>Detection Threshold Matched</Label>
             <div style={{ ...CG, fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 4 }}>{sc.patternName}</div>
             <div style={{ fontSize: 12, color: MUTED }}>Detected: {sc.detectedAt}</div>
           </div>
@@ -1477,7 +1477,7 @@ function ColdOpen({ selectedId, onBegin }: { selectedId: number; onBegin: (id: n
           <div className="de-stat-row" style={{ marginTop: 40 }}>
             {[
               { val: "180", label: "Pre-staged protocols" },
-              { val: "231", label: "Trigger patterns" },
+              { val: "231", label: "Detection thresholds" },
               { val: "12 min", label: "Response target" },
               { val: "3,600×", label: "Execution head start" },
             ].map(s => (
@@ -1499,7 +1499,7 @@ const PREP_COST_BARS = [
   {
     label: "Right now, across the industry:",
     items: [
-      { icon: "⚠", color: "#EF4444", text: "Competitors monitoring 0 of 231 trigger patterns systematically" },
+      { icon: "⚠", color: "#EF4444", text: "Competitors monitoring 0 of 231 detection thresholds systematically" },
       { icon: "💸", color: "#EF4444", text: "$1.3M average emergency consulting cost when a trigger fires undetected" },
       { icon: "⏱", color: "#EF4444", text: "30 days average mobilization before execution even begins" },
     ],

@@ -264,7 +264,7 @@ export default function WelcomeBrief() {
               {
                 day: 'Day 1',
                 title: 'Platform Armed',
-                desc: '231 triggers active. 248+ signals scanning. While every competitor waits for a situation to materialize, you are already watching for it.',
+                desc: '231 detection thresholds active. 248+ signals scanning. While every competitor waits for a situation to materialize, you are already watching for it.',
                 color: TEAL,
               },
               {

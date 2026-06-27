@@ -31,7 +31,7 @@ const PHASE_DEFAULTS: Record<string, PhaseSLA> = {
   },
   detect: {
     name: 'Signal Detection SLA',
-    description: 'Time from trigger event to AI signal detection',
+    description: 'Time from situation to AI signal detection',
     unit: 'hours' as const,
     targetMinutes: 240,
     enabled: true,

@@ -185,7 +185,7 @@ export default function WhatToExpect() {
                   {
                     icon: TrendingUp,
                     title: "Continuous Signal Monitoring",
-                    body: "231 trigger patterns scanned every 15 minutes from live intelligence feeds. You know a threat is emerging before your stakeholders hear about it from the news.",
+                    body: "231 detection thresholds scanned every 15 minutes from live intelligence feeds. You know a threat is emerging before your stakeholders hear about it from the news.",
                   },
                   {
                     icon: Clock,

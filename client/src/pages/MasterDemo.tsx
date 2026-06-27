@@ -222,7 +222,7 @@ function PhaseSignals({ sc, phase, total, onNext, onBack }: { sc: DemoScenario; 
         {sc.signals.length} signals detected.<br/><em style={{ color: GOLD }}>Risk scored in seconds.</em>
       </h1>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 32 }}>
-        Readiness OS continuously monitors 231 strategic trigger patterns across regulatory feeds, newswires, financial intelligence, and social signals. The moment the trigger filed, {sc.signals.length} corroborating signals were detected and scored simultaneously.
+        Readiness OS continuously monitors 231 detection thresholds across regulatory feeds, newswires, financial intelligence, and social signals. The moment the situation was detected, {sc.signals.length} corroborating signals were detected and scored simultaneously.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}>

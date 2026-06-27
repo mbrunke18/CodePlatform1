@@ -126,7 +126,7 @@ export default function ChannelPartners() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 0, border: "1px solid rgba(201,168,76,0.18)", marginBottom: 48 }}>
               {[
                 { label: "Your expertise", desc: "Industry knowledge, client relationships, and change management capability." },
-                { label: "Our infrastructure", desc: "180 pre-staged protocols, 231 trigger patterns, 12-minute execution standard." },
+                { label: "Our infrastructure", desc: "180 pre-staged protocols, 231 detection thresholds, 12-minute execution standard." },
                 { label: "Client outcome", desc: "An enterprise that responds to any situation in 12 minutes — every time." },
               ].map((col, i, arr) => (
                 <div key={col.label} style={{ padding: "32px 28px", borderRight: i < arr.length - 1 ? "1px solid rgba(201,168,76,0.12)" : "none" }}>

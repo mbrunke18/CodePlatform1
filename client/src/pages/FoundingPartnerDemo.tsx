@@ -367,7 +367,7 @@ export default function FoundingPartnerDemo() {
                     <div className="bg-[#0A0F2E] p-4 border border-[#0A0F2E]">
                       <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
                       <ul className="text-sm text-white/90 space-y-1">
-                        <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
+                        <li>1. You'll pick a situation to respond to (competitor move, crisis, etc.)</li>
                         <li>2. You'll select a Readiness Protocol to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
                         <li>4. Receive an actual email notification as a stakeholder</li>

@@ -35,7 +35,7 @@ export const playbooksData: PlaybooksDataset = {
       "stakeholders": ["CEO", "COO", "General Counsel", "CFO", "Chief of Staff", "PMO Director"],
       "response": "Protocol #0 stages the universal response infrastructure before any pattern is matched: authority chain locked, emergency budget envelope unlocked, external resource roster activated, and a Situation Assessment Framework deployed within 12 minutes of trigger detection — so the organization executes a structured first response rather than improvising. Without Protocol #0, a first-in-class trigger finds the enterprise in full improvisation mode — no authority chain, no budget clarity, no external contacts on call — and the 30-day mobilization cycle begins from zero.",
       "response_window": "12 minutes",
-      "financial_exposure": "Unbounded — first-in-class events carry no institutional precedent; exposure ranges from $5M to $5B+ depending on trigger type, industry, and regulatory environment",
+      "financial_exposure": "Unbounded — first-in-class events carry no institutional precedent; exposure ranges from $5M to $5B+ depending on situation type, industry, and regulatory environment",
       "domain": 9,
       "frequency": "rare",
       "budget": 5000000

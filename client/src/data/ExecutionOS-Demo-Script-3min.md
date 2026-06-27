@@ -45,7 +45,7 @@ You're not showing software. You're showing **what becomes possible** when strat
 >
 > Right here, Readiness OS detected [describe the signal — e.g., "a ransomware attack pattern matching our client's infrastructure" or "a competitor filing a patent in our core market"].
 >
-> In a normal company, someone might see this tomorrow in a news alert. Maybe. Readiness OS saw it in real-time and immediately assessed: does this match any of our trigger conditions?"
+> In a normal company, someone might see this tomorrow in a news alert. Maybe. Readiness OS saw it in real-time and immediately assessed: does this match any of our detection thresholds?"
 
 ---
 

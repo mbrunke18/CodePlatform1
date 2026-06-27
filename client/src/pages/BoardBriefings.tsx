@@ -49,7 +49,7 @@ function SignalIntelligenceBoard({ sourceSummary }: { sourceSummary: any }) {
         <span style={{ fontSize: 10, color: '#9CA3AF' }}>— Board oversight summary</span>
       </div>
       <p style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.7, marginBottom: 24, maxWidth: 800 }}>
-        The platform monitors {totalSources} data sources across {totalTriggers} strategic trigger categories.
+        The platform monitors {totalSources} data sources across {totalTriggers} strategic detection threshold categories.
         {quantCovered} of {totalTriggers} triggers are backed by quantitative data with measurable thresholds —
         not keyword matching. The system scans continuously, every 15 minutes.
       </p>

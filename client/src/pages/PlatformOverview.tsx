@@ -19,7 +19,7 @@ const timelineSteps = [
     sub: "Preparation before the trigger fires",
     aiRole: [
       "180 Readiness Protocols built and staged across 9 strategic domains",
-      "231 triggers defined and mapped to response protocols",
+      "231 detection thresholds defined and mapped to response protocols",
       "Stakeholder roles, decision rights, and escalation paths configured",
       "Monitoring parameters set — continuous signal detection active",
     ],
@@ -37,7 +37,7 @@ const timelineSteps = [
     sub: "Signal fires — system responds instantly",
     aiRole: [
       "Ingests signal across 39 enterprise data sources",
-      "Pattern-matches against 231 trigger definitions",
+      "Pattern-matches against 231 detection thresholds",
       "Scores urgency and compound disruption risk",
       "Surfaces the right Readiness Protocol with rationale and stakeholder map",
     ],
@@ -160,7 +160,7 @@ export default function PlatformOverview() {
           tagColor="#C9A84C"
           features={[
             { color: "#C9A84C", label: "Identify", description: "Configure the 180 Readiness Protocols matched to your organization's strategic exposure." },
-            { color: "#2B8A6E", label: "Detect", description: "231 triggers monitored continuously across all domains — signals surface before any committee could convene." },
+            { color: "#2B8A6E", label: "Detect", description: "231 detection thresholds monitored continuously across all domains — signals surface before any committee could convene." },
             { color: "#4A90C4", label: "Execute & Advance", description: "Executive authorizes. 12-minute response. Every activation improves the next through closed-loop causal learning." },
           ]}
         />

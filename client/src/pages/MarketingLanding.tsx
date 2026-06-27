@@ -120,7 +120,7 @@ export default function MarketingLanding() {
         tagColor="#C9A84C"
         features={[
           { color: "#C9A84C", label: "Pre-Staged Responses", description: "180 Readiness Protocols fully built before any trigger fires — no assembly required at the moment of crisis." },
-          { color: "#2B8A6E", label: "Continuous Detection", description: "231 triggers monitored across every strategic domain — threats and opportunities surface before the first committee call." },
+          { color: "#2B8A6E", label: "Continuous Detection", description: "231 detection thresholds monitored across every strategic domain — threats and opportunities surface before the first committee call." },
           { color: "#4A90C4", label: "12-Minute Execution", description: "Signal detected. Executive authorizes. Full organizational response deployed. 3,600× execution head start, live." },
         ]}
       />

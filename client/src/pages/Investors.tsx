@@ -151,7 +151,7 @@ const competitiveAdvantages = [
 ];
 
 const milestones = [
-  { phase: "Completed", items: ["180 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 39 RSS sources, 231 triggers", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
+  { phase: "Completed", items: ["180 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 39 RSS sources, 231 detection thresholds", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
   { phase: "Current — Founding Partner", items: ["Founding Partner Program now enrolling (90-day validation)", "Protocol Builder — custom protocol co-design with partners", "Signal detection refinement across 248+ data points", "Industry Protocol Packs — 6 verticals in development", "Enterprise partnership discussions underway"] },
   { phase: "Phase 2 — Authorized Automation", items: ["Authorized Automation layer within EXECUTE phase", "Dual-track execution: human workstreams + approved automations run in parallel", "Task execution modes: Human-only · Automation-only · Dual-track", "Policy gates per action — who authorizes, what systems, what limits", "Connectors: Jira, Asana, ServiceNow, Teams, Slack — automated ticket creation, war room setup, briefing distribution", "Full audit trail: every authorized automation logged, every override captured"] },
 ];
@@ -347,7 +347,7 @@ function FuturePositioningDiagram() {
         <div className="mt-5 p-4 border-l-2 bg-[#EBF5F1]" style={{ borderColor: TEAL }}>
           <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-1" style={{ color: TEAL }}>The Institutional Memory Moat</p>
           <p className="text-xs font-medium leading-relaxed text-[#0A0F2E]/70">
-            Every activation writes a structured decision record into the Institutional Memory Engine — what triggered, who authorized, what executed, and what the outcome was. After 12 months of Founding Partner use, that dataset is irreplaceable: real trigger events, real executive judgment, in a real org structure. A competitor can license the same software on day one. They cannot buy 12 months of your preparation history.{' '}
+            Every activation writes a structured decision record into the Institutional Memory Engine — what triggered, who authorized, what executed, and what the outcome was. After 12 months of Founding Partner use, that dataset is irreplaceable: real situations, real executive judgment, in a real org structure. A competitor can license the same software on day one. They cannot buy 12 months of your preparation history.{' '}
             <a href="/institutional-memory-engine" className="font-bold underline" style={{ color: TEAL }}>See the architecture →</a>
           </p>
         </div>
@@ -1109,7 +1109,7 @@ export default function Investors() {
                 {
                   label: 'Execution Data Fabric',
                   sub: 'How signals become staged responses in under 12 minutes',
-                  detail: '5-stage pipeline · 8 ingestion sources · 248+ data points · 231 trigger patterns · 15-minute detection cycles',
+                  detail: '5-stage pipeline · 8 ingestion sources · 248+ data points · 231 detection thresholds · 15-minute detection cycles',
                   color: GOLD,
                   href: '/execution-data-fabric',
                 },
@@ -1180,7 +1180,7 @@ export default function Investors() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
                 {[
                   { stat: "180", label: "Readiness Protocols built and operational" },
-                  { stat: "231", label: "Trigger patterns continuously monitored" },
+                  { stat: "231", label: "Detection thresholds continuously monitored" },
                   { stat: "12 min", label: "Validated execution head start" },
                   { stat: "3,600×", label: "Execution Head Start vs. traditional mobilization" },
                 ].map(p => (

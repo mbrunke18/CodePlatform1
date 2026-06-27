@@ -70,7 +70,7 @@ export default function IndustryDemoLibrary() {
             <em style={{ color: GOLD }}>One response time: 12 minutes.</em>
           </h1>
           <p style={{ ...BAR, fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.8, maxWidth: 600, marginBottom: 40 }}>
-            Every industry faces strategic triggers. The question is whether the response is staged before they fire. Select your industry to see the exact execution sequence — signals monitored, executive authorization, tasks deployed, outcomes delivered.
+            Every industry faces strategic situations. The question is whether the response is staged before they fire. Select your industry to see the exact execution sequence — signals monitored, executive authorization, tasks deployed, outcomes delivered.
           </p>
 
           {/* Search */}

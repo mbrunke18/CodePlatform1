@@ -354,7 +354,7 @@ export default function PredictiveSignalIntelligence() {
             It releases it.
           </h2>
           <p className="text-base text-gray-600 max-w-2xl leading-relaxed">
-            Signal clusters are monitored continuously. When incoming patterns match historical trigger signatures, 
+            Signal clusters are monitored continuously. When incoming patterns match historical situations, 
             the system identifies the forming condition and recommends pre-staging the appropriate Readiness Protocol — 
             before the trigger fires.
           </p>
@@ -364,7 +364,7 @@ export default function PredictiveSignalIntelligence() {
         <div className="grid grid-cols-4 gap-4 mb-10">
           {[
             { label: 'Clusters Forming', value: '3', sub: 'Active pattern matches', icon: Activity, color: RED },
-            { label: 'Pattern Library', value: '231', sub: 'Historical trigger signatures', icon: Layers, color: NAVY },
+            { label: 'Pattern Library', value: '231', sub: 'Historical situation patterns', icon: Layers, color: NAVY },
             { label: 'Avg Lead Time', value: '51 hrs', sub: 'Before trigger confirmation', icon: Clock, color: TEAL },
             { label: 'Pre-Stage Rate', value: '89%', sub: 'Of pre-staged protocols execute ≤12 min', icon: Zap, color: GOLD }
           ].map(({ label, value, sub, icon: Icon, color }) => (
@@ -407,7 +407,7 @@ export default function PredictiveSignalIntelligence() {
               {
                 num: '01',
                 label: 'Signal Ingestion',
-                desc: '231 triggers monitored continuously across geopolitical, regulatory, financial, and operational domains.'
+                desc: '231 detection thresholds monitored continuously across geopolitical, regulatory, financial, and operational domains.'
               },
               {
                 num: '02',

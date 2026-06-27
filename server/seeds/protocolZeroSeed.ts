@@ -243,7 +243,7 @@ const MASTER_PHASES = [
         deadline: 'automated on close-out completion',
         items: [
           'Distribute activation learnings across all 180 existing protocols — update signal patterns',
-          'Register new trigger pattern in the detection library',
+          'Register new detection threshold in the detection library',
           'Update authority chain precedent records for future executive reference',
           'Generate causal hypothesis: what preparation changes would have compressed response by how many minutes'
         ]
@@ -270,7 +270,7 @@ const MASTER_PHASES = [
         'New protocol fully documented with complete IDEA Framework structure',
         'CEO has authorized new protocol for permanent library inclusion',
         'ADVANCE loop has distributed learnings across affected existing protocols',
-        'New trigger pattern registered in detection library',
+        'New detection threshold registered in detection library',
         'Board notified and organizational risk registry updated'
       ],
       escalation: 'If new protocol documentation reveals systemic gaps in the existing library (5+ protocols affected), initiate a full library review before close-out.'
@@ -466,7 +466,7 @@ function buildDomainPhases(domainName: string, lead: string, stakeholders: strin
           deadline: 'automated on close-out',
           items: [
             'Distribute learnings across all 180 protocols — update signal patterns',
-            'Register new trigger pattern in detection library',
+            'Register new detection threshold in detection library',
             'Generate causal hypothesis on response time compression'
           ]
         }
@@ -480,7 +480,7 @@ function buildDomainPhases(domainName: string, lead: string, stakeholders: strin
           'New protocol fully documented',
           `${lead} has authorized library inclusion`,
           'ADVANCE loop has distributed learnings',
-          'New trigger pattern registered',
+          'New detection threshold registered',
           'Board notified'
         ],
         escalation: 'If new protocol reveals systemic gaps (5+ protocols affected), initiate full domain library review.'
@@ -580,7 +580,7 @@ export async function seedProtocolZeroFamily(): Promise<void> {
         enrichedPhases: phases as any,
         whyItMatters,
         signalSources: [
-          'All 180 Readiness Protocol trigger patterns (no-match confirmation)',
+          'All 180 Readiness Protocol detection thresholds (no-match confirmation)',
           'Real-time signal feed — unclassified pattern detection',
           'Executive escalation from domain monitoring systems'
         ] as any,

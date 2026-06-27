@@ -322,7 +322,7 @@ export function TriggerBuilder({
                   <Zap className="w-4 h-4 text-amber-500" />
                   Quick Start Templates
                 </CardTitle>
-                <CardDescription>Pre-configured trigger patterns for common scenarios</CardDescription>
+                <CardDescription>Pre-configured detection thresholds for common scenarios</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-3">

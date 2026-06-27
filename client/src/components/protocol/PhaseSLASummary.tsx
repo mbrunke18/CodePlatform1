@@ -52,7 +52,7 @@ const DEFAULT_SLAS: Record<string, PhaseSLA> = {
   },
   detect: {
     name: 'Signal Detection SLA',
-    description: 'Time from trigger event to AI signal detection',
+    description: 'Time from situation to AI signal detection',
     unit: 'hours',
     targetMinutes: 240,
     enabled: true,

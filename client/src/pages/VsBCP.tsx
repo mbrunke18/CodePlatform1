@@ -25,7 +25,7 @@ const COMPARISON_ROWS = [
   {
     dimension: "Cadence",
     bcp: "Reviewed annually. Activated during a once-in-a-decade catastrophe.",
-    ros: "Runs continuously. Monitors 231 triggers every 15 minutes. Designed for the everyday strategic triggers that happen multiple times per year.",
+    ros: "Runs continuously. Monitors 231 detection thresholds every 15 minutes. Designed for the everyday strategic situations that occur multiple times per year.",
   },
   {
     dimension: "Trigger detection",

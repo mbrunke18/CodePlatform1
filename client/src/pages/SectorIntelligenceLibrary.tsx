@@ -347,7 +347,7 @@ export default function SectorIntelligenceLibrary() {
             </div>
 
             <div className="bg-white border border-gray-100 rounded-sm shadow-sm p-6">
-              <h3 className="text-sm font-bold mb-4" style={{ color: NAVY }}>Top Trigger Events — {activeSector.sector}</h3>
+              <h3 className="text-sm font-bold mb-4" style={{ color: NAVY }}>Top Situations — {activeSector.sector}</h3>
               <div className="space-y-3 mb-6">
                 {activeSector.topTriggers.map((trigger, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-sm" style={{ background: '#F9FAFB' }}>

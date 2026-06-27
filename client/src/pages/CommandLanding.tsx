@@ -638,7 +638,7 @@ export default function CommandLanding() {
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)' }}>
                         <span>Awaiting activation</span>
-                        <span>231 triggers ready</span>
+                        <span>231 detection thresholds ready</span>
                       </div>
                     </div>
 
@@ -709,9 +709,9 @@ export default function CommandLanding() {
         }}>
           {[
             { dot: TEAL, label: `${signalCount} signals monitored` },
-            { dot: GOLD, label: '231 executive triggers configured' },
+            { dot: GOLD, label: '231 detection thresholds configured' },
             { dot: 'rgba(240,237,228,0.3)', label: '180 Readiness Protocols ready' },
-            { dot: providerData?.multiAgentParallel ? TEAL : 'rgba(240,237,228,0.3)', label: providerData?.multiAgentParallel ? '4-agent IDEA framework active' : 'AI agents ready' },
+            { dot: providerData?.multiAgentParallel ? TEAL : 'rgba(240,237,228,0.3)', label: providerData?.multiAgentParallel ? 'IDEA Framework™ active' : 'AI agents ready' },
             { dot: providerData?.teamsConfigured ? TEAL : GOLD, label: providerData?.teamsConfigured ? 'Teams notifications active' : 'Teams webhook: configure in integrations' },
           ].map(({ dot, label }) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>

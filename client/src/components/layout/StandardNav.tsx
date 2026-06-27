@@ -168,7 +168,7 @@ export default function StandardNav() {
         { label: "Industry Demo Library — 19 Blueprints", path: "/industry-demo-library", icon: Target, description: "See exactly what 12-minute execution looks like in your sector — every signal, authorization step, and task. Then ask what 30 days would have cost.", featured: true },
         { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built stacks that eliminate sector-specific mobilization gaps.", featured: true },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "248+ data points monitored continuously — every threat and opportunity surfaced before the 30-day mobilization gap opens and costs compound." },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "231 triggers monitored every 15 minutes — every unprepared trigger costs 30 days of overhead. Every prepared one costs 12 minutes." },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "231 detection thresholds monitored every 15 minutes — every unprepared situation costs 30 days of overhead. Every prepared one costs 12 minutes." },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
         { label: "Universal Connector", path: "/universal-connector", icon: Globe, description: "Any stack. 55+ pre-built connectors. Live in 15 minutes.", featured: true },
         { label: "Integration Setup Plan", path: "/technical-onboarding", icon: Rocket, description: "Phased technical guide for connecting Readiness OS into your tech environment", featured: true },
@@ -261,7 +261,7 @@ export default function StandardNav() {
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open", featured: true },
     { label: "Cost of Delay", path: "/cost-of-delay", icon: DollarSign, description: "Real-time counter: what your current mobilization model costs while you evaluate", featured: true },
-    { label: "Sector Threat Briefing", path: "/sector-briefing", icon: AlertTriangle, description: "Live signal scan for your sector — trigger patterns active today, protocols already staged", featured: true },
+    { label: "Sector Threat Briefing", path: "/sector-briefing", icon: AlertTriangle, description: "Live signal scan for your sector — detection thresholds active today, protocols already staged", featured: true },
     { label: "Proof Story", path: "/proof-story", icon: Scale, description: "Same trigger — entirely different outcome. The numbers side by side." },
     { label: "Pricing & Plans", path: "/pricing", icon: TrendingUp, description: "Core · Foresight · Enterprise — three layers of readiness, transparent value-based pricing", featured: true },
     { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how enterprise teams onboard & scale" },
@@ -413,7 +413,7 @@ export default function StandardNav() {
             {[
               { path: '/playbooks', icon: ClipboardList, label: 'Readiness Protocol Library', sub: '180 pre-staged Readiness Protocols across 9 strategic domains', featured: true },
               { path: '/triggers-management', icon: Zap, label: 'Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
-              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '231 triggers — monitored every 15 minutes' },
+              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '231 detection thresholds — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
@@ -807,7 +807,7 @@ export default function StandardNav() {
 
     const workspaceLinks = [
       { path: '/workspace', icon: Target, label: 'Identify', sub: 'Situation intents, protocols, risk mapping' },
-      { path: '/signal-intelligence', icon: Radar, label: 'Detect', sub: 'Signal monitoring across 231 triggers' },
+      { path: '/signal-intelligence', icon: Radar, label: 'Detect', sub: 'Signal monitoring across 231 detection thresholds' },
       { path: '/live-activation-center', icon: Zap, label: 'Execute', sub: 'Activate, coordinate, authorize' },
       { path: '/advanced-analytics', icon: BarChart3, label: 'Advance', sub: 'Analytics, outcomes, board reporting' },
     ];

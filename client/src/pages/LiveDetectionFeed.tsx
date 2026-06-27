@@ -89,7 +89,7 @@ export default function LiveDetectionFeed() {
       title: 'Live Signal Detection — Readiness OS | VaughnMartin',
       description: 'Real-time strategic trigger detections across 9 domains. System-detected signals scored and matched to pre-staged Readiness Protocols within 12 minutes.',
       ogTitle: 'Live Signal Detection — VaughnMartin Readiness OS',
-      ogDescription: 'Continuous monitoring across 231 trigger patterns. Every signal matched to a pre-staged Readiness Protocol.',
+      ogDescription: 'Continuous monitoring across 231 detection thresholds. Every signal matched to a pre-staged Readiness Protocol.',
     });
   }, []);
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
@@ -225,12 +225,12 @@ export default function LiveDetectionFeed() {
               Signal Detection Feed
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 16, margin: '0 0 40px', lineHeight: 1.6, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
-              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Scored against 231 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
+              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Scored against 231 detection thresholds every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 48 }}>
               {[
                 { icon: Radio, label: '39 Pre-configured Sources', sub: 'Add your own enterprise feeds' },
-                { icon: Zap, label: '16 Trigger Patterns', sub: 'Evaluated every 15 minutes' },
+                { icon: Zap, label: '16 Detection Thresholds', sub: 'Evaluated every 15 minutes' },
                 { icon: Bell, label: 'Instant Alerts', sub: 'Email + Slack on threshold breach' },
               ].map(({ icon: Icon, label, sub }) => (
                 <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '20px 24px', minWidth: 160, textAlign: 'center' }}>
@@ -410,7 +410,7 @@ export default function LiveDetectionFeed() {
             Signal Detection Feed
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, margin: 0, maxWidth: 560 }}>
-              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Evaluated against 231 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
+              Real signals from 39 pre-configured sources — plus any enterprise feeds you connect. Evaluated against 231 detection thresholds every 15 minutes. When a threshold is crossed, your team is notified automatically.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
             <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '12px 20px', textAlign: 'center' }}>
@@ -775,8 +775,8 @@ export default function LiveDetectionFeed() {
               <div style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 12 }}>How It Works</div>
               {[
                 { step: '1', label: 'Signal Ingested', desc: '39 pre-configured feeds scanned every 15 minutes — news, SEC filings, government enforcement, cybersecurity, energy, economic data, international regulatory' },
-                { step: '2', label: 'Trigger Evaluated', desc: 'Signal scored against 16 trigger patterns with keyword + confidence analysis' },
-                { step: '3', label: 'Threshold Crossed', desc: 'When confidence ≥ 72%, detection is logged as a real trigger event' },
+                { step: '2', label: 'Threshold Evaluated', desc: 'Signal scored against 16 detection thresholds with keyword + confidence analysis' },
+                { step: '3', label: 'Threshold Crossed', desc: 'When confidence ≥ 72%, detection is logged as a confirmed situation' },
                 { step: '4', label: 'Team Notified', desc: 'Email + Slack fires to all alert recipients within seconds of detection' },
               ].map(item => (
                 <div key={item.step} style={{ display: 'flex', gap: 14, marginBottom: 16 }}>

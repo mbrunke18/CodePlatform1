@@ -49,7 +49,7 @@ const workspaceTools = [
   },
   {
     title: "Scenario Planning Hub",
-    description: "Design strategic scenarios and map potential trigger conditions",
+    description: "Design strategic scenarios and map potential detection thresholds",
     path: "/strategic",
     icon: Target,
     color: "text-[#2B8A6E]",

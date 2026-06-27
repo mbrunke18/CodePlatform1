@@ -182,7 +182,7 @@ export default function InvestorLanding() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, background: "rgba(10,15,46,0.08)", marginBottom: 48 }}>
             {[
               { n: "01", label: "Pre-Stage", body: "180 Readiness Protocols mapped to every strategic trigger the organization expects to encounter — tasks assigned, owners named, budgets pre-authorized. Before the trigger fires.", accent: NAVY },
-              { n: "02", label: "Detect", body: "231 trigger conditions monitored continuously across geopolitical, regulatory, competitive, and operational domains. 15-minute detection cycle. No committee required.", accent: TEAL },
+              { n: "02", label: "Detect", body: "231 detection thresholds monitored continuously across geopolitical, regulatory, competitive, and operational domains. 15-minute detection cycle. No committee required.", accent: TEAL },
               { n: "03", label: "Authorize & Execute", body: "AI monitors. Executives authorize. No protocol activates without executive sign-off. The preparation compresses the mobilization cycle. The decision remains human.", accent: GOLD },
             ].map(m => (
               <div key={m.n} style={{ background: "#fff", padding: "36px 32px" }}>
@@ -269,7 +269,7 @@ export default function InvestorLanding() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.25)", padding: "12px 16px" }}>
                 <div>
                   <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 2 }}>At $325K/yr Platform Investment</div>
-                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.55)" }}>Payback on first trigger event</div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.55)" }}>Payback on first situation</div>
                 </div>
                 <div style={{ fontFamily: "monospace", fontSize: 22, fontWeight: 700, color: TEAL }}>36× ROI</div>
               </div>
@@ -351,7 +351,7 @@ export default function InvestorLanding() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, background: "rgba(201,168,76,0.12)", marginBottom: 52 }}>
             {[
-              { n: "01", label: "Accumulated Decision Logic", accent: GOLD, body: "A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of enterprise operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 180 Readiness Protocols from two decades of real crisis response.", proof: "20 years of operational experience → not replicable with funding" },
+              { n: "01", label: "Accumulated Decision Logic", accent: GOLD, body: "A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of enterprise operational decision logic — the situation patterns, stakeholder sequences, and failure modes embedded in 180 Readiness Protocols from two decades of real crisis response.", proof: "20 years of operational experience → not replicable with funding" },
               { n: "02", label: "Organizational Intelligence That Compounds", accent: TEAL, body: "Every activation, every debrief, every stakeholder acknowledgment makes the platform more specific to that organization's actual failure modes and response patterns. That accumulated intelligence is non-transferable. A competitor starting from zero starts from zero — permanently.", proof: "Each use deepens specificity → value compounds, not depreciates" },
               { n: "03", label: "Embeddedness as Infrastructure", accent: GOLD, body: "When Readiness OS becomes the organizational rhythm for strategic readiness — not a tool they open, but the process by which preparation happens — it stops being a vendor. Infrastructure is not replaced at contract renewal. It is built upon.", proof: "Operating rhythm, not software → switching cost measured in years" },
             ].map(m => (

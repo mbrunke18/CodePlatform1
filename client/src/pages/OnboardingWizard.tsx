@@ -352,7 +352,7 @@ export default function OnboardingWizard() {
                     );
                   })}
                 </div>
-                <p style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Determines which regulatory bodies and trigger patterns apply</p>
+                <p style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Determines which regulatory bodies and detection thresholds apply</p>
               </div>
             </div>
 

@@ -117,7 +117,7 @@ const SETUP_PHASES = [
     timing: "Week 3–4",
     icon: BarChart3,
     tasks: [
-      "Activate live signal monitoring across your 231 trigger categories",
+      "Activate live signal monitoring across your 231 detection threshold categories",
       "Review your Readiness Score — resolve any protocols below threshold",
       "Brief your C-suite executives on authorization flow and mobile access",
       "Confirm the preparation governance rhythm — monthly protocol audit, quarterly drill",

@@ -245,7 +245,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
             <div>
               <div className="text-sm font-medium">Auto-Activate Readiness Protocol</div>
               <div className="text-xs text-muted-foreground">
-                Automatically activate when all trigger conditions are met (requires CISO approval)
+                Automatically activate when all detection thresholds are met (requires CISO approval)
               </div>
             </div>
             <Switch

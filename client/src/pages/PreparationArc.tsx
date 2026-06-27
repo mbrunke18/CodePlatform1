@@ -29,7 +29,7 @@ const WEEKS = [
       {
         day: 'Day 1–2',
         title: 'Organization Foundation',
-        description: 'Complete the Setup Wizard — company profile, industry vertical, employee count, public or private classification, and primary market regions. These fields determine which of the 231 triggers apply to your organization.',
+        description: 'Complete the Setup Wizard — company profile, industry vertical, employee count, public or private classification, and primary market regions. These fields determine which of the 231 detection thresholds apply to your organization.',
         actions: [
           { label: 'Open Setup Wizard', href: '/onboarding-wizard', primary: true },
         ],
@@ -82,7 +82,7 @@ const WEEKS = [
           { label: 'Open Situation Matrix Builder', href: '/situation-matrix-builder', primary: true },
           { label: 'Browse Protocol Library', href: '/playbooks', primary: false },
         ],
-        fields: ['Select trigger scenario', 'Confirm roles', 'Accept or customize matrix', 'Define authorization chain', 'Publish call sheet'],
+        fields: ['Select situation', 'Confirm roles', 'Accept or customize matrix', 'Define authorization chain', 'Publish call sheet'],
       },
       {
         day: 'Day 9–11',
@@ -97,7 +97,7 @@ const WEEKS = [
       {
         day: 'Day 11–12',
         title: 'Configure Signal Coverage',
-        description: 'For each published protocol, confirm which signal sources and trigger categories feed it. Signal coverage determines when the system automatically surfaces each protocol as the recommended response. The more precisely configured, the faster the surface time.',
+        description: 'For each published protocol, confirm which signal sources and detection threshold categories feed it. Signal coverage determines when the system automatically surfaces each protocol as the recommended response. The more precisely configured, the faster the surface time.',
         actions: [
           { label: 'Open Protocol Library', href: '/my-protocols', primary: true },
         ],
@@ -137,7 +137,7 @@ const WEEKS = [
       {
         day: 'Day 17–18',
         title: 'Full Activation Drill',
-        description: 'Run a full practice drill against your highest-priority protocol. Every domain owner participates. The system generates real stakeholder alerts, task assignments, and executive authorization requests — exactly as it will in a live trigger event. Observe what breaks.',
+        description: 'Run a full practice drill against your highest-priority protocol. Every domain owner participates. The system generates real stakeholder alerts, task assignments, and executive authorization requests — exactly as it will in a live situation. Observe what breaks.',
         actions: [
           { label: 'Schedule Practice Drill', href: '/practice-drills', primary: true },
         ],
@@ -196,7 +196,7 @@ const WEEKS = [
       {
         day: 'Day 26–27',
         title: 'Board Briefing',
-        description: 'Brief the board on the platform\'s readiness posture. Use the Executive Brief — a full printable one-pager covering your configuration, readiness score, protocols staged, and the 3,600× execution head start. Board awareness accelerates authorization during live trigger events.',
+        description: 'Brief the board on the platform\'s readiness posture. Use the Executive Brief — a full printable one-pager covering your configuration, readiness score, protocols staged, and the 3,600× execution head start. Board awareness accelerates authorization during live situations.',
         actions: [
           { label: 'Generate Executive Brief', href: '/executive-brief', primary: true },
         ],

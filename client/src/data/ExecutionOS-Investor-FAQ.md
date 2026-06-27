@@ -60,7 +60,7 @@ Pre-staged response frameworks across 9 strategic domains:
 | **Talent & Organization** | Executive transition, RIF coordination, restructuring |
 | **AI Governance** | AI ethics compliance, model governance, algorithmic risk management |
 
-Each Readiness Protocol includes: trigger conditions, stakeholder assignments, decision trees, communication templates, escalation paths, and success metrics.
+Each Readiness Protocol includes: detection thresholds, stakeholder assignments, decision trees, communication templates, escalation paths, and success metrics.
 
 ---
 
@@ -309,7 +309,7 @@ For rapid-fire Q&A, memorize these:
 | Competitors? | "The real competitor is the status quo — 30-day mobilization cycles, email chains, retainer consultants after the fact." |
 | Market size? | "$5B+ addressable. Readiness Infrastructure is a category that doesn't yet exist — we're defining it." |
 | Business model? | "$120K–$1.5M+ enterprise contracts, 80%+ gross margin." |
-| Traction? | "Platform live. 170 Readiness Protocols. 231 triggers. Founding Partner program open." |
+| Traction? | "Platform live. 170 Readiness Protocols. 231 detection thresholds. Founding Partner program open." |
 | How do prospects evaluate? | "48-hour guided evaluation workspace — pre-seeded with realistic data. Full Activist Investor or Ransomware scenario, signal to war room, in 12 minutes." |
 
 ---

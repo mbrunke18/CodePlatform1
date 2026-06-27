@@ -136,7 +136,7 @@ export default function ReadinessInfrastructure() {
                 {
                   phase: "01",
                   label: "Signal Intelligence",
-                  desc: "Continuous monitoring across 231 trigger patterns — news feeds, regulatory dockets, SEC filings, threat intelligence, competitive signals. The system detects before humans notice.",
+                  desc: "Continuous monitoring across 231 detection thresholds — news feeds, regulatory dockets, SEC filings, threat intelligence, competitive signals. The system detects before humans notice.",
                 },
                 {
                   phase: "02",
@@ -321,7 +321,7 @@ export default function ReadinessInfrastructure() {
                 {
                   phase: "D — DETECT",
                   color: TEAL,
-                  headline: "Continuous monitoring across 231 trigger patterns",
+                  headline: "Continuous monitoring across 231 detection thresholds",
                   body: "Real-time signal ingestion from news, regulatory dockets, SEC filings, threat intelligence, and competitive feeds. System-detected, not human-monitored. The signal arrives before the call does.",
                 },
                 {

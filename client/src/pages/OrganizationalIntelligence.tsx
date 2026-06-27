@@ -390,7 +390,7 @@ export default function OrganizationalIntelligence() {
                   The Compounding Advantage
                 </h2>
                 <p className="text-base leading-relaxed mb-4" style={{ color: IVORY, opacity: 0.85 }}>
-                  Your organization has encoded <strong style={{ color: GOLD }}>{compoundScore?.totalCloseOuts ?? 0} activation learnings</strong> into its preparation architecture. This intelligence — signal calibrations tuned to your exact trigger patterns, ownership assignments confirmed under live conditions, and protocol updates drawn from real execution — does not transfer to any other platform.
+                  Your organization has encoded <strong style={{ color: GOLD }}>{compoundScore?.totalCloseOuts ?? 0} activation learnings</strong> into its preparation architecture. This intelligence — signal calibrations tuned to your exact detection thresholds, ownership assignments confirmed under live conditions, and protocol updates drawn from real execution — does not transfer to any other platform.
                 </p>
                 <p className="text-base font-bold" style={{ color: "white", fontFamily: "Georgia, serif" }}>
                   Estimated time to rebuild this intelligence on a competitor platform:{" "}

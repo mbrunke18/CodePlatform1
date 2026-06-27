@@ -185,7 +185,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'tm-welcome',
         title: 'Executive Trigger Dashboard',
-        description: 'This is where YOU define what matters. Set up trigger conditions that AI monitors 24/7, automatically staging the matched response — ready for your authorization when thresholds are breached.',
+        description: 'This is where YOU define what matters. Set up detection thresholds that the system monitors 24/7, automatically staging the matched response — ready for your authorization when thresholds are breached.',
         phase: 'DETECT'
       },
       {
@@ -401,7 +401,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'pl-detail',
         title: 'Protocol Detail View',
-        description: 'Click any protocol to inspect its trigger conditions, decision chain, and execution blueprint. Confirm fitness for your organization before customizing.',
+        description: 'Click any protocol to inspect its detection thresholds, decision chain, and execution blueprint. Confirm fitness for your organization before customizing.',
         phase: 'IDENTIFY'
       },
       {
@@ -425,7 +425,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'pb-trigger',
         title: 'Define the Trigger',
-        description: 'Every protocol starts with a trigger condition — the specific signal or threshold that activates the response. Use the trigger sandbox to test your conditions before publishing.',
+        description: 'Every protocol starts with a detection threshold — the specific signal or threshold that activates the response. Use the trigger sandbox to test your configuration before publishing.',
         phase: 'DETECT'
       },
       {

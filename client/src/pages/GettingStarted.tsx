@@ -312,7 +312,7 @@ export default function GettingStarted() {
       <div style={{ background: '#F0EDE4', borderBottom: `1px solid ${BORDER}` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderLeft: `1px solid ${BORDER}` }}>
           {[
-            { step: 'DETECT', label: 'Signals monitored continuously', sub: '231 triggers · 248+ data points', color: TEAL },
+            { step: 'DETECT', label: 'Signals monitored continuously', sub: '231 detection thresholds · 248+ data points', color: TEAL },
             { step: 'COORDINATE', label: 'Stakeholders & tasks staged automatically', sub: 'Roles, budgets, comms — pre-staged', color: GOLD },
             { step: 'EXECUTE', label: 'Executive authorizes — response deploys', sub: '12-minute activation window', color: GOLD },
             { step: 'LEARN', label: 'Every activation improves the next', sub: 'ADVANCE phase closes the loop', color: TEAL },
@@ -395,7 +395,7 @@ export default function GettingStarted() {
             {/* PHASE 3 */}
             <PhaseCard num="03" title="Protocol Readiness" timing="Week 2 — ongoing" doing="Executive team + domain owners" score={p3} phaseRef={phaseRefs[2]}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Signal Monitoring</div>
-              <Item done={c.signalMonitoring} label="Signal monitoring active" sub="231 triggers scanned across 8 sources every 15 minutes — always on" />
+              <Item done={c.signalMonitoring} label="Signal monitoring active" sub="231 detection thresholds scanned across 8 sources every 15 minutes — always on" />
 
               {/* Readiness Architecture Studio callout */}
               <div style={{ background: `rgba(201,168,76,0.06)`, border: `1px solid rgba(201,168,76,0.2)`, borderLeft: `3px solid ${GOLD}`, padding: '14px 16px', marginBottom: 12, marginTop: 16 }}>
@@ -435,7 +435,7 @@ export default function GettingStarted() {
                 </div>
               </div>
 
-              <Item done={c.protocolReviewed} label={`Priority protocols selected — ${protocolsSelected.length} domains`} sub="Your top trigger scenarios have published call sheets ready" href="/situation-matrix-builder" />
+              <Item done={c.protocolReviewed} label={`Priority protocols selected — ${protocolsSelected.length} domains`} sub="Your top situations have published call sheets ready" href="/situation-matrix-builder" />
               <Item done={c.riskThresholdsSet} label="Budget authority defined per activation" sub="Eliminates the most common cause of execution delay — funding approval" href="/onboarding-wizard" />
 
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>30-Day Preparation Arc</div>
@@ -516,7 +516,7 @@ export default function GettingStarted() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Already Working</div>
               {[
                 { label: '180 Readiness Protocols', sub: 'Pre-staged, ready to activate', icon: ClipboardList },
-                { label: '231 triggers monitored', sub: 'Scanning every 15 minutes', icon: Radio },
+                { label: '231 detection thresholds monitored', sub: 'Scanning every 15 minutes', icon: Radio },
                 { label: 'Signal scoring active', sub: 'LOW / MEDIUM / HIGH risk levels', icon: Zap },
                 { label: 'Executive approval flow', sub: 'No protocol activates without sign-off', icon: Shield },
               ].map((item, i) => {

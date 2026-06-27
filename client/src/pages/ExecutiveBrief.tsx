@@ -222,7 +222,7 @@ export default function ExecutiveBrief() {
           urlTag="180 PROTOCOLS"
           tagColor="#C9A84C"
           features={[
-            { color: "#2B8A6E", label: "Signal Detection", description: "231 triggers monitored continuously — threats and opportunities surface before the first committee call." },
+            { color: "#2B8A6E", label: "Signal Detection", description: "231 detection thresholds monitored continuously — threats and opportunities surface before the first committee call." },
             { color: "#C9A84C", label: "Pre-Staged Execution", description: "180 protocols fully built, budgets pre-allocated, stakeholders pre-mapped — waiting for a single authorization." },
             { color: "#4A90C4", label: "3,600× Execution Head Start", description: "30 days of mobilization compressed to 12 minutes. The 3,600× metric is not speed — it's readiness." },
           ]}
@@ -302,7 +302,7 @@ export default function ExecutiveBrief() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 {[
-                  { label: "Anticipate", detail: "231 trigger conditions — signal-detected every 15 minutes across geopolitical, regulatory, operational, and financial domains. Including export controls, CFIUS, data localization, and operating model disruption." },
+                  { label: "Anticipate", detail: "231 detection thresholds monitored — signal-detected every 15 minutes across geopolitical, regulatory, operational, and financial domains. Including export controls, CFIUS, data localization, and operating model disruption." },
                   { label: "Prepare", detail: "180 Readiness Protocols pre-staged before any trigger fires — core, compound multi-threat, and extended geopolitical scenarios. Not built in response. Assembled before the trigger so execution is immediate." },
                   { label: "Pivot", detail: "12-minute full organizational coordination after trigger detection. The response is already assembled. The executive authorizes. Execution begins." },
                 ].map(({ label, detail }) => (
@@ -446,7 +446,7 @@ export default function ExecutiveBrief() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, marginBottom: 36 }}>
               {[
                 { label: "Improved Profitability", detail: "30-day mobilization overhead eliminated. Illustrative modeled outcomes: $4.5M in costs avoided per cyber event; $9.2M in revenue protected per supply chain collapse. Scenarios are illustrative — full methodology in Modeled Scenarios below.", color: GOLD },
-                { label: "Accelerated Delivery", detail: "Strategic execution compressed from 30 days to 12 minutes — a 3,600× execution head start. Every trigger that fires prepared is a window your unprepared competitors cannot close.", color: TEAL },
+                { label: "Accelerated Delivery", detail: "Strategic execution compressed from 30 days to 12 minutes — a 3,600× execution head start. Every situation you're prepared for is a window your unprepared competitors cannot close.", color: TEAL },
                 { label: "Reduced Costs", detail: "Pre-staged protocols replace reactive coordination. No consultant retainer at trigger point. Stack displacement modeled at $300K–$900K annually vs. crisis comms + GRC + project management tools.", color: "#4A90C4" },
               ].map(({ label, detail, color }) => (
                 <div key={label} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `2px solid ${color}`, padding: "20px 20px" }}>

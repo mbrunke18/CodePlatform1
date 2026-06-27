@@ -189,7 +189,7 @@ const STEPS = [
 
 const EXPECTED_RESULTS: Record<number, string> = {
   0: 'Your configuration wizard starts — Readiness OS personalises to your industry and role.',
-  1: '231 triggers are mapped to your organization\'s size and sector. Signals begin activating.',
+  1: '231 detection thresholds are mapped to your organization\'s size and sector. Signals begin activating.',
   2: 'Your strategic priorities align 180 protocols to your highest-risk areas.',
   3: 'Your first Readiness Protocols are staged and ready to activate on signal detection.',
   4: 'Continuous monitoring begins across 248+ signal data points, checked every 15 minutes.',

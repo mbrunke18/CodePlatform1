@@ -346,7 +346,7 @@ export default function UserGuide() {
               ["Mobilization", "30 days average (planning, alignment, approvals)", "12 minutes — pre-staged before the trigger fires"],
               ["Stakeholder alignment", "Multiple meetings over days or weeks", "Automated at trigger point"],
               ["Protocol readiness", "Created in response to each trigger", "Pre-staged — 180 Readiness Protocols ready"],
-              ["Signal monitoring", "Manual, ad-hoc", "Automatic — continuous monitoring, 231 triggers"],
+              ["Signal monitoring", "Manual, ad-hoc", "Automatic — continuous monitoring, 231 detection thresholds"],
               ["Execution head start", "0", "3,600× — 30 days compressed to 12 minutes"],
             ]}
           />
@@ -575,11 +575,11 @@ export default function UserGuide() {
 
           <H2>Live Signal Ingestion</H2>
           <P>
-            The platform ingests live signals from <strong>8 primary RSS and API sources</strong> every 15 minutes — these are the external data feeds (regulatory wires, financial services, news aggregators, industry-specific monitors). Each ingestion cycle scores incoming content against the 231 trigger patterns to determine whether a Readiness Protocol should be staged. Source count and trigger count are separate concepts: 8 is how many feeds are monitored; 231 is how many distinct trigger patterns are evaluated against each feed.
+            The platform ingests live signals from <strong>8 primary RSS and API sources</strong> every 15 minutes — these are the external data feeds (regulatory wires, financial services, news aggregators, industry-specific monitors). Each ingestion cycle scores incoming content against the 231 detection thresholds to determine whether a Readiness Protocol should be staged. Source count and threshold count are separate concepts: 8 is how many feeds are monitored; 231 is how many distinct detection thresholds are evaluated against each feed.
           </P>
           <BulletList items={[
             "Fetches new content from configured signal sources (regulatory feeds, financial wire services, news aggregators, industry-specific monitors)",
-            "Scores each signal against all 231 trigger patterns across 9 strategic domains",
+            "Scores each signal against all 231 detection thresholds across 9 strategic domains",
             "Persists matched signals and associated trigger detections",
             "Updates the organization's Risk Score and Readiness Score in real time",
           ]} />
@@ -597,7 +597,7 @@ export default function UserGuide() {
 
           <ScreenshotFigure
             src="/screenshots/deck_signals.jpg"
-            caption="Intelligence Hub — live signal detections scored against 231 trigger patterns across 8 data sources. Each signal shows domain classification, urgency level, matched protocol, and escalation recommendation."
+            caption="Intelligence Hub — live signal detections scored against 231 detection thresholds across 8 data sources. Each signal shows domain classification, urgency level, matched protocol, and escalation recommendation."
           />
 
           <H2>Foresight Radar (/foresight-radar)</H2>
@@ -653,7 +653,7 @@ export default function UserGuide() {
           <Table
             headers={["Tab", "Contents"]}
             rows={[
-              ["Overview", "Strategic rationale, trigger conditions, domain classification, protocol version, last activation date, average response time"],
+              ["Overview", "Strategic rationale, detection thresholds, domain classification, protocol version, last activation date, average response time"],
               ["Task Sequence", "All pre-staged tasks in order, with assigned owners, expected duration, decision gates, and dependency chain"],
               ["Stakeholders", "Full stakeholder tree: Tier 1 (direct call), Tier 2 (secure portal notification), Tier 3 (broadcast alert)"],
               ["Resources", "Pre-approved budget envelope, required tools, external contacts, vendor agreements"],
@@ -704,7 +704,7 @@ export default function UserGuide() {
 
           <H2>The Activation Flow (Step by Step)</H2>
           <StepList steps={[
-            { n: "1", title: "Trigger Detection", body: "The signal monitoring engine detects a trigger event. The Intelligence Hub creates a Trigger Detection record, scoring the signal against all 231 trigger patterns. If the signal matches a staged protocol, an escalation alert is generated." },
+            { n: "1", title: "Trigger Detection", body: "The signal monitoring engine detects a situation forming. The Intelligence Hub creates a Trigger Detection record, scoring the signal against all 231 detection thresholds. If the signal matches a staged protocol, an escalation alert is generated." },
             { n: "2", title: "Commander Brief Generation", body: "The platform generates a Commander Brief — a decision-ready executive summary that includes: signal source and classification, matched protocol recommendation, expected response window, pre-authorized budget envelope, key stakeholders on standby, and recommended decision: Stage / Activate / Monitor." },
             { n: "3", title: "Executive Authorization", body: "No activation proceeds without explicit executive sign-off. The designated executive receives the Commander Brief via their configured notification channel (in-app, Teams, Slack, or email). They review and authorize with a single action. Authorization is logged as an immutable governance record." },
             { n: "4", title: "War Room Launch", body: "Immediately on authorization, a War Room is instantiated. All Tier 1 stakeholders are notified simultaneously via their configured channels. The war room centralizes all communication, task tracking, and decision logging for the duration of the activation." },
@@ -896,7 +896,7 @@ export default function UserGuide() {
           </P>
           <BulletList items={[
             "Annual revenue and operating cost base",
-            "Number of anticipated strategic trigger events per year",
+            "Number of anticipated strategic situations per year",
             "Platform cost (slider: $60K–$240K/year, default $120K)",
             "Consulting retainer cost for comparison",
           ]} />
@@ -1275,8 +1275,8 @@ export default function UserGuide() {
               ["Protocol Version Delta", "An immutable record of a specific change to a Readiness Protocol. Stores versionBefore, versionAfter, change type, rationale, and applied date."],
               ["Readiness Protocol", "The fundamental unit of the platform. A pre-staged, fully configured response plan for a specific strategic situation. Contains task sequence, stakeholder tree, budget authorization, Commander Brief template, and decision gates."],
               ["Risk Score", "Derived from the formula √(signal count) × 8. Classified as LOW (<35), MEDIUM (35–74), or HIGH (75+). Drives escalation recommendations."],
-              ["Signal", "A single detectable event from an external source (news feed, regulatory API, CRM data, infrastructure monitor) that matches one of the 231 trigger patterns."],
-              ["Trigger", "A specific, classifiable pattern of signals that indicates a Readiness Protocol should be staged or activated. 231 active triggers across 9 strategic domains are monitored continuously."],
+              ["Signal", "A single detectable event from an external source (news feed, regulatory API, CRM data, infrastructure monitor) that matches one of the 231 detection thresholds."],
+              ["Trigger", "A specific, classifiable detection threshold that indicates a Readiness Protocol should be staged or activated. 231 active detection thresholds across 9 strategic domains are monitored continuously."],
               ["War Room", "The real-time coordination environment launched automatically on protocol activation. Centralizes task tracking, stakeholder coordination, decision logging, and crisis communications generation."],
               ["Weak Signal", "An early-stage signal that does not individually constitute a trigger but in combination with others suggests an emerging situation. Visible on the Foresight Radar and Signal Radar Dashboard."],
             ]}

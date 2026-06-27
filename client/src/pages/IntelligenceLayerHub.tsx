@@ -20,7 +20,7 @@ const LOOP = [
     color: TEAL,
     icon: Zap,
     headline: "Monitors continuously",
-    desc: "248+ data points. 231 trigger conditions. Scored every 15 minutes against 16 trigger patterns.",
+    desc: "248+ data points. 231 detection thresholds. Scored every 15 minutes against 16 detection thresholds.",
     links: [
       { label: "Signal Intelligence", href: "/signal-intelligence" },
       { label: "Trigger Monitoring", href: "/triggers-management" },
@@ -82,7 +82,7 @@ const CAPABILITIES = [
     group: "Signal Layer",
     color: TEAL,
     items: [
-      { icon: Zap, label: "Signal Intelligence", sub: "231 trigger conditions · 15-min detection cycle", href: "/signal-intelligence" },
+      { icon: Zap, label: "Signal Intelligence", sub: "231 detection thresholds · 15-min detection cycle", href: "/signal-intelligence" },
       { icon: Radio, label: "Trigger Monitoring", sub: "248+ data points across 8 RSS sources", href: "/triggers-management" },
       { icon: Eye, label: "Command Tower", sub: "Live executive wall display — auto-refreshing", href: "/command-tower" },
     ],

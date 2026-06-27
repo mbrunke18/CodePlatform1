@@ -525,7 +525,7 @@ export default function IDEAFramework() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               {[
                 { phase: "IDENTIFY", score: 98, status: "180 Readiness Protocols staged", icon: Eye },
-                { phase: "DETECT", score: 94, status: "231 triggers live", icon: Activity },
+                { phase: "DETECT", score: 94, status: "231 detection thresholds live", icon: Activity },
                 { phase: "EXECUTE", score: 99, status: "12-min deployment ready", icon: Zap },
                 { phase: "ADVANCE", score: 91, status: "Learning loop active", icon: TrendingUp },
               ].map(({ phase, score, status, icon: Icon }) => (

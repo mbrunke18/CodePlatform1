@@ -181,7 +181,7 @@ export default function OnboardingGuide() {
                 <h3 style={{ fontSize: 13, fontWeight: 800, color: NAVY, margin: "0 0 16px", textTransform: "uppercase" as const, letterSpacing: "1px" }}>What AI Does</h3>
                 {[
                   "Monitors 248+ data points across 9 strategic domains",
-                  "Detects patterns across 231 configured trigger scenarios",
+                  "Detects patterns across 231 configured detection thresholds",
                   "Scores signal confidence and fires alerts above 72% threshold",
                   "Pre-stages the right Readiness Protocol before you are asked to act",
                   "Logs every detection for audit and board reporting",
@@ -298,7 +298,7 @@ export default function OnboardingGuide() {
             <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
               <FlowStep icon={Globe} title="Signal Ingestion" detail={"39 pre-configured sources\nEvery 15 minutes\n248+ data points"} color={NAVY} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
-              <FlowStep icon={Activity} title="Pattern Scoring" detail={"16 trigger patterns\n3+ keyword match\n72%+ confidence"} color={TEAL} />
+              <FlowStep icon={Activity} title="Pattern Scoring" detail={"16 detection thresholds\n3+ keyword match\n72%+ confidence"} color={TEAL} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={AlertTriangle} title="Alert Fired" detail={"Email notification\nCommand Tower alert\n4-hr deduplication"} color={GOLD} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
@@ -381,7 +381,7 @@ export default function OnboardingGuide() {
             <FeatureRow icon={Users} color={NAVY} title="Stakeholder Registry" path="/stakeholders"
               description="Contact directory for rapid mobilization. Role-matched notification routing ensures the right people are reached at trigger activation." />
             <FeatureRow icon={Target} color={GOLD} title="Trigger Configuration" path="/triggers"
-              description="Configure which of the 231 triggers are active for your organization. Set sensitivity thresholds, evaluation modes, and notification recipients." />
+              description="Configure which of the 231 detection thresholds are active for your organization. Set sensitivity, evaluation modes, and notification recipients." />
             <FeatureRow icon={Globe} color={GREEN} title="Signal Activity Feed" path="/command-tower"
               description="Live log of every signal evaluation cycle: scanning status, partial matches, and confirmed detections. Full transparency into what the system is monitoring." />
             <FeatureRow icon={Layers} color={NAVY} title="IDEA Workspace" path="/workspace"
@@ -480,7 +480,7 @@ export default function OnboardingGuide() {
                   ["72%+", "Minimum confidence score before an alert fires"],
                   ["4 hours", "Signal deduplication window (prevents repeat alerts)"],
                   ["248+", "Data points monitored across signal categories"],
-                  ["231", "Configured trigger scenarios across 9 domains"],
+                  ["231", "Configured detection thresholds across 9 domains"],
                 ].map(([term, def]) => (
                   <div key={term} style={{ display: "flex", gap: 12, marginBottom: 10 }}>
                     <span style={{ fontSize: 12, fontWeight: 800, color: NAVY, flexShrink: 0, minWidth: 64 }}>{term}</span>

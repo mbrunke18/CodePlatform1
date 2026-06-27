@@ -173,7 +173,7 @@ export default function MobilizationTax() {
           {/* Event count */}
           <div style={{ marginBottom: 28 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
-              <label style={{ fontSize: 14, fontWeight: 600, color: NAVY }}>Strategic trigger events per year</label>
+              <label style={{ fontSize: 14, fontWeight: 600, color: NAVY }}>Strategic situations per year</label>
               <span style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD }}>{eventCount}</span>
             </div>
             <input type="range" min={1} max={12} step={1} value={eventCount} onChange={e => setEventCount(+e.target.value)}
@@ -203,7 +203,7 @@ export default function MobilizationTax() {
 
           {/* Event type */}
           <div style={{ marginBottom: 32 }}>
-            <label style={{ fontSize: 14, fontWeight: 600, color: NAVY, display: 'block', marginBottom: 10 }}>Most likely trigger type</label>
+            <label style={{ fontSize: 14, fontWeight: 600, color: NAVY, display: 'block', marginBottom: 10 }}>Most likely situation type</label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
               {EVENTS.map(ev => (
                 <button key={ev.id} onClick={() => setSelectedEvent(ev.id)}
@@ -270,7 +270,7 @@ export default function MobilizationTax() {
                   </div>
                   <div style={{ marginTop: 16, padding: '10px 14px', background: 'rgba(220,38,38,0.06)', borderRadius: 2 }}>
                     <div style={{ ...BC, fontSize: 20, fontWeight: 700, color: RED }}>{fmt$(totalCostPerEvent)}</div>
-                    <div style={{ fontSize: 11, color: '#9B2020' }}>cost per trigger event</div>
+                    <div style={{ fontSize: 11, color: '#9B2020' }}>cost per situation</div>
                   </div>
                 </div>
 
@@ -395,7 +395,7 @@ export default function MobilizationTax() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 28 }}>
                 {[
                   { n: '1', title: 'Pre-staged before the trigger', body: '180 Readiness Protocols are fully configured — tasks assigned, budgets authorized, stakeholders mapped — before any trigger fires.' },
-                  { n: '2', title: 'Pattern-detected, not meeting-detected', body: '231 triggers monitored continuously across 8 signal sources. The system detects the situation. Your executives authorize. No coordination meeting required.' },
+                  { n: '2', title: 'Pattern-detected, not meeting-detected', body: '231 detection thresholds monitored continuously across 8 signal sources. The system detects the situation. Your executives authorize. No coordination meeting required.' },
                   { n: '3', title: 'Execution in 12 minutes', body: 'The war room is live. Tasks are deployed to pre-assigned owners. Stakeholders are notified. The 30-day mobilization cycle is gone — permanently.' },
                 ].map(s => (
                   <div key={s.n} style={{ padding: '20px', background: '#F8F7F4', borderTop: `3px solid ${GOLD}` }}>

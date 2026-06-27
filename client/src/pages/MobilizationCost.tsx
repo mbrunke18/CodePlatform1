@@ -247,7 +247,7 @@ export default function MobilizationCost() {
             {[
               { stat: "180", label: "Readiness Protocols", sub: "Pre-staged across every strategic domain" },
               { stat: "3,600×", label: "Execution Head Start", sub: "30 days compressed to 12 minutes" },
-              { stat: "231", label: "Trigger Patterns", sub: "Monitored continuously, 24/7" },
+              { stat: "231", label: "Detection Thresholds", sub: "Monitored continuously, 24/7" },
             ].map((p) => (
               <div key={p.stat} style={{ background: "#fff", padding: "32px 28px", textAlign: "center" }}>
                 <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: 6 }}>{p.stat}</div>

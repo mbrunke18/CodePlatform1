@@ -29,7 +29,7 @@ const TIERS = [
     dark: false,
     features: [
       "Full 180-Protocol Library — every strategic domain",
-      "Continuous signal monitoring — 231 trigger patterns",
+      "Continuous signal monitoring — 231 detection thresholds",
       "12-minute response orchestration",
       "Standard integrations (Slack, Jira, Teams, Email)",
       "ADVANCE phase — institutional memory built every activation",
@@ -93,7 +93,7 @@ const TIERS = [
     },
     objections: [
       { q: "Core seems sufficient — why step up?", a: "Core responds in 12 minutes. Foresight means you've already begun responding 48–72 hours earlier via predictive alerts. That early window is where competitive advantages are built and protected." },
-      { q: "What's the ROI on the Digital Twin?", a: "In modeled scenarios using simulation rehearsal, protocol execution error rates are projected to decrease by 40–60%. In manufacturing contexts, pre-staged production disruption protocols project $3M+ in preserved output per trigger event. Each prevented mis-activation — estimated at $50K–$200K — covers a significant portion of the annual subscription." },
+      { q: "What's the ROI on the Digital Twin?", a: "In modeled scenarios using simulation rehearsal, protocol execution error rates are projected to decrease by 40–60%. In manufacturing contexts, pre-staged production disruption protocols project $3M+ in preserved output per situation. Each prevented mis-activation — estimated at $50K–$200K — covers a significant portion of the annual subscription." },
       { q: "The causal learning — what does that actually mean?", a: "Every activation generates a hypothesis: 'This protocol change should reduce response time by X minutes.' After the next activation, the system measures whether it was right. Over time, your protocols are tuned by evidence — not by opinion. No competitor can replicate that history." },
     ],
     cta: "Apply for Founding Partner Access",
@@ -152,7 +152,7 @@ const OBJECTIONS_GLOBAL = [
   },
   {
     q: "Can't we build this internally?",
-    a: "You could. The average cost to build and maintain a coordination infrastructure with 180 protocols, 231 trigger patterns, continuous signal monitoring, and an executive authorization layer is $2M–$4M in internal engineering, plus 18–24 months before it's operational. And you'd maintain it forever. Readiness OS is live in 90 days. The build-vs-buy math is not close.",
+    a: "You could. The average cost to build and maintain a coordination infrastructure with 180 protocols, 231 detection thresholds, continuous signal monitoring, and an executive authorization layer is $2M–$4M in internal engineering, plus 18–24 months before it's operational. And you'd maintain it forever. Readiness OS is live in 90 days. The build-vs-buy math is not close.",
   },
   {
     q: "We already have Microsoft. Why do we need Readiness OS?",
@@ -819,7 +819,7 @@ export default function Pricing() {
           <div style={{ marginTop: 20, padding: "16px 24px", background: NAVY, display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ width: 3, height: 40, background: GOLD, flexShrink: 0 }} />
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", margin: 0, lineHeight: 1.6 }}>
-              <span style={{ color: GOLD, fontWeight: 700 }}>The consulting retainer covers one crisis.</span> Readiness OS covers 231 trigger patterns, 180 protocols, and every future trigger your organization faces — for the same price or less. And unlike a consulting retainer, it's ready before the crisis starts.
+              <span style={{ color: GOLD, fontWeight: 700 }}>The consulting retainer covers one crisis.</span> Readiness OS covers 231 detection thresholds, 180 protocols, and every future situation your organization faces — for the same price or less. And unlike a consulting retainer, it's ready before the crisis starts.
             </p>
           </div>
         </div>
@@ -897,7 +897,7 @@ export default function Pricing() {
               ))}
               {[
                 { feature: "Full 180-Protocol Library", c: "✓", f: "✓", e: "✓" },
-                { feature: "231 trigger patterns monitored", c: "✓", f: "✓", e: "✓" },
+                { feature: "231 detection thresholds monitored", c: "✓", f: "✓", e: "✓" },
                 { feature: "12-minute response orchestration", c: "✓", f: "✓", e: "✓" },
                 { feature: "Standard integrations (Slack, Jira, Email)", c: "✓", f: "✓", e: "✓" },
                 { feature: "Advanced integrations (Salesforce, ServiceNow, SAP)", c: "—", f: "✓", e: "✓" },

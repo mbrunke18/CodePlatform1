@@ -391,7 +391,7 @@ function ArchitectureView({
           <CheckCircle2 size={14} color={TEAL} />
           <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>
             {selectedProtocols.size} protocol{selectedProtocols.size !== 1 ? "s" : ""} configured across{" "}
-            {domains.filter(d => (byDomain[d] ?? []).some(p => selectedProtocols.has(p.id ?? p.name))).length} domains — use List View to customize names, owners, and trigger conditions
+            {domains.filter(d => (byDomain[d] ?? []).some(p => selectedProtocols.has(p.id ?? p.name))).length} domains — use List View to customize names, owners, and detection thresholds
           </span>
         </div>
       )}
@@ -462,7 +462,7 @@ function StudioLanding({
               What do you want to do today?
             </h2>
             <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.6 }}>
-              The studio works for new setup, demo presentations, protocol customization, and trigger configuration.
+              The studio works for new setup, demo presentations, protocol customization, and detection threshold configuration.
             </p>
           </div>
 
@@ -504,7 +504,7 @@ function StudioLanding({
                 Design a protocol from scratch for your organization's unique scenarios. Define tasks, triggers, stakeholders, and response timelines — then add it to your library.
               </p>
               <div style={{ marginBottom: 8, display: "flex", flexDirection: "column", gap: 6 }}>
-                {["Custom trigger conditions", "Task sequencing with owners", "Stakeholder notification chain", "Severity and timeline configuration"].map(f => (
+                {["Custom detection thresholds", "Task sequencing with owners", "Stakeholder notification chain", "Severity and timeline configuration"].map(f => (
                   <div key={f} style={{ display: "flex", gap: 8, alignItems: "center" }}>
                     <CheckCircle2 size={12} color={TEAL} style={{ flexShrink: 0 }} />
                     <span style={{ fontSize: 12, color: "#374151" }}>{f}</span>
@@ -527,10 +527,10 @@ function StudioLanding({
               <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: NAVY, marginBottom: 8 }}>Customization</div>
               <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>Customize Existing Protocols</div>
               <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.6, marginBottom: 24 }}>
-                Profile your organization, see matched protocols from the 180-protocol library, and adapt them — custom names, descriptions, trigger conditions, and execution owners.
+                Profile your organization, see matched protocols from the 180-protocol library, and adapt them — custom names, descriptions, detection thresholds, and execution owners.
               </p>
               <div style={{ marginBottom: 8, display: "flex", flexDirection: "column", gap: 6 }}>
-                {["Organization-specific protocol names", "Custom trigger definitions", "Execution owner assignment", "Custom response conditions"].map(f => (
+                {["Organization-specific protocol names", "Custom detection thresholds", "Execution owner assignment", "Custom response conditions"].map(f => (
                   <div key={f} style={{ display: "flex", gap: 8, alignItems: "center" }}>
                     <CheckCircle2 size={12} color={TEAL} style={{ flexShrink: 0 }} />
                     <span style={{ fontSize: 12, color: "#374151" }}>{f}</span>
@@ -1065,7 +1065,7 @@ export default function PreparationDiagnostic() {
           {step === 1 && (
             <div>
               <div style={{ marginBottom: 40 }}>
-                <FieldLabel>Select all trigger categories that apply to your organization</FieldLabel>
+                <FieldLabel>Select all detection threshold categories that apply to your organization</FieldLabel>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 10, marginBottom: 32 }}>
                   {TRIGGER_CATEGORIES.map(({ key, label }) => {
                     const sel = triggerCategories.includes(key);
@@ -1176,8 +1176,8 @@ export default function PreparationDiagnostic() {
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                 <p style={{ fontSize: 13, color: MUTED, margin: 0, flex: 1, lineHeight: 1.5 }}>
                   {protocolViewMode === "architecture"
-                    ? "Select protocols to configure your architecture. Switch to List View to customize names, owners, and trigger conditions."
-                    : "Select and expand protocols to customize names, trigger conditions, and execution owners."}
+                    ? "Select protocols to configure your architecture. Switch to List View to customize names, owners, and detection thresholds."
+                    : "Select and expand protocols to customize names, detection thresholds, and execution owners."}
                 </p>
                 <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
                   <button
@@ -1431,7 +1431,7 @@ export default function PreparationDiagnostic() {
                       `${selectedProtocols.size} protocol${selectedProtocols.size !== 1 ? "s" : ""} selected`,
                       `${Object.keys(customizations).length} customized for your organization`,
                       `${critical.length} critical gap${critical.length !== 1 ? "s" : ""} identified`,
-                      triggerCategories.length > 0 ? `${triggerCategories.length} trigger categories` : "",
+                      triggerCategories.length > 0 ? `${triggerCategories.length} detection threshold categories` : "",
                       customTriggers.length > 0 ? `${customTriggers.length} custom trigger${customTriggers.length !== 1 ? "s" : ""} defined` : "",
                       `Architecture coverage: ${readinessScore}%`,
                     ].filter(Boolean),

@@ -53,7 +53,7 @@ const PHASES = [
     description: 'Monitor signals',
     weight: 20,
     steps: [
-      { id: 4, name: 'Situation Definition', component: SituationDefinitionStep, aiTip: 'Set severity, time sensitivity, and trigger conditions for automated activation', itemType: 'trigger' },
+      { id: 4, name: 'Situation Definition', component: SituationDefinitionStep, aiTip: 'Set severity, time sensitivity, and detection thresholds for automated activation', itemType: 'trigger' },
     ]
   },
   {

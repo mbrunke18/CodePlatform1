@@ -260,7 +260,7 @@ function InvestorPresentation() {
               org: "McKinsey Global Institute",
               report: "Skill Partnerships in the Age of AI · November 2025",
               quote: "\"The CEO who delegates AI to IT will lose this decade to the one who does not.\" 90% of enterprises invested in AI. <40% see measurable returns.",
-              bridge: "231 triggers make the CEO the signal, not the bottleneck.",
+              bridge: "231 detection thresholds make the CEO the signal, not the bottleneck.",
               color: "border-[#2B8A6E]/40 bg-[#2B8A6E]/5",
               dot: "bg-[#2B8A6E]",
             },
@@ -582,7 +582,7 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { tier: 'Core', price: '$150K', desc: 'Full 180-Protocol Library — every strategic domain', features: ['Full 180 Readiness Protocols', '231 triggers monitored', 'Standard integrations', 'Dedicated CSM'] },
+            { tier: 'Core', price: '$150K', desc: 'Full 180-Protocol Library — every strategic domain', features: ['Full 180 Readiness Protocols', '231 detection thresholds monitored', 'Standard integrations', 'Dedicated CSM'] },
             { tier: 'Foresight', price: '$250K', desc: 'Digital Twin + predictive foresight', features: ['Everything in Core', 'Digital Twin simulation', 'Predictive foresight alerts', 'Priority 2-hour SLA'], highlight: true },
             { tier: 'Enterprise', price: '$450K', desc: 'Autonomous evolution network · scales with scope', features: ['Everything in Foresight', 'Autonomous protocol evolution', 'Unlimited custom protocols', 'White-glove onboarding'] },
           ].map((t, i) => (

@@ -128,7 +128,7 @@ export default function ProtocolSettings() {
               <div className="space-y-0.5">
                 <Label htmlFor="autoActivate">Auto-Activate on Trigger</Label>
                 <p className="text-sm text-muted-foreground">
-                  Automatically activate when trigger conditions are met
+                  Automatically activate when detection thresholds are met
                 </p>
               </div>
               <Switch
@@ -214,7 +214,7 @@ export default function ProtocolSettings() {
               <div className="space-y-0.5">
                 <Label htmlFor="notifyOnTrigger">Notify on Trigger Detection</Label>
                 <p className="text-sm text-muted-foreground">
-                  Send alerts when trigger conditions are detected
+                  Send alerts when detection thresholds are crossed
                 </p>
               </div>
               <Switch

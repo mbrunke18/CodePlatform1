@@ -364,7 +364,7 @@ export default function UnifiedEnterprisePlatform() {
                   <div>
                     <h2 className="text-xl font-bold mb-2">Identify → Detect → Execute → Advance</h2>
                     <p className="text-sm text-white/70">
-                      Build Readiness Protocols from 80+ templates. AI monitors 231 triggers 24/7. When one fires: roles assigned, tasks staged, comms sent — execution live in 12 minutes.
+                      Build Readiness Protocols from 80+ templates. System monitors 231 detection thresholds 24/7. When one fires: roles assigned, tasks staged, comms sent — execution live in 12 minutes.
                     </p>
                   </div>
                   <div className="flex gap-2">
@@ -1738,7 +1738,7 @@ export default function UnifiedEnterprisePlatform() {
                           <span className="text-gray-900 font-medium text-sm">Pattern Recognition Model</span>
                           <Badge variant="outline" className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30 text-xs">LEARNING</Badge>
                         </div>
-                        <div className="text-xs text-gray-800 dark:text-slate-200">Analyzing 47,892 historical trigger events</div>
+                        <div className="text-xs text-gray-800 dark:text-slate-200">Analyzing 47,892 historical situations</div>
                         <Progress value={73} className="h-1 mt-2" />
                       </div>
                       <div className="p-3 bg-gray-50 rounded">

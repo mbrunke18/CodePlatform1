@@ -49,12 +49,12 @@ const VALIDATION_METHODOLOGY = [
   {
     step: "01",
     title: "Protocol Stress Testing",
-    description: "Each of the 180 core Readiness Protocols is tested against historical trigger events from public record — SEC filings, press archives, earnings calls — to validate that the protocol would have reduced mobilization time to under 12 minutes.",
+    description: "Each of the 180 core Readiness Protocols is tested against historical situations from public record — SEC filings, press archives, earnings calls — to validate that the protocol would have reduced mobilization time to under 12 minutes.",
   },
   {
     step: "02",
     title: "Signal Pattern Backtesting",
-    description: "The 231 trigger patterns are evaluated against 5 years of news and regulatory data to confirm false-positive rates below 8% and true-positive detection rates above 87% for material enterprise events.",
+    description: "The 231 detection thresholds are evaluated against 5 years of news and regulatory data to confirm false-positive rates below 8% and true-positive detection rates above 87% for material enterprise events.",
   },
   {
     step: "03",
@@ -161,7 +161,7 @@ export default function ResearchFoundation() {
               <h2 className="text-2xl font-bold" style={{ color: "white", fontFamily: "Georgia, serif" }}>Validation Methodology</h2>
             </div>
             <p className="text-sm mb-8" style={{ color: IVORY, opacity: 0.65, maxWidth: "600px" }}>
-              How every protocol, trigger pattern, and execution claim is tested before it enters the platform.
+              How every protocol, detection threshold, and execution claim is tested before it enters the platform.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
