@@ -483,11 +483,81 @@ export default function Investors() {
                   ))}
                 </div>
 
+                {/* SOAR analogy — category validation for investor-literate readers */}
+                <div style={{ marginTop: 16, padding: '16px 20px', background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, margin: 0 }}>
+                    <strong style={{ color: '#2B8A6E', letterSpacing: '0.06em' }}>Category precedent:</strong> SOAR (Security Orchestration, Automation &amp; Response) did this for cybersecurity — pre-staged playbooks, signal-triggered activation, human authorization. It became a $1B+ market. Readiness OS is the cross-domain equivalent for every strategic situation an enterprise faces. Same architecture. Broader market. No incumbent.
+                  </p>
+                </div>
+
                 <div style={{ marginTop: 36, paddingTop: 32, borderTop: '1px solid rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', gap: 20 }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.02em', flexShrink: 0 }}>Readiness OS</div>
                   <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
                   <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>The new operating model for AI-native enterprises.</div>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── Protocol Coverage Map ────────────────────────────────────────── */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.082 }} className="mb-20">
+            <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderTop: `3px solid #2B8A6E`, padding: '56px 56px 48px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+                <div style={{ height: 1, width: 28, background: '#2B8A6E' }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' as const, color: '#2B8A6E', fontFamily: "'Barlow Condensed', sans-serif" }}>Protocol Coverage Map</span>
+                <div style={{ height: 1, flex: 1, background: 'rgba(43,138,110,0.2)' }} />
+              </div>
+
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(26px,3vw,40px)', fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 12 }}>
+                180 of 231 detection thresholds have a pre-staged protocol. The 51-threshold gap is the expansion roadmap.
+              </h2>
+              <p style={{ fontSize: 15, color: '#374151', lineHeight: 1.75, maxWidth: 680, marginBottom: 40, fontWeight: 500 }}>
+                Every enterprise SOAR platform sells on coverage — showing buyers which threats are handled and which leave them exposed.
+                Readiness OS maps the same principle to strategic situations. Prospects see their exposure in seconds. The gap creates urgency without pressure.
+              </p>
+
+              {/* Overall bar */}
+              <div style={{ marginBottom: 40 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: NAVY }}>Overall Coverage</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#6B7280' }}>180 / 231 thresholds pre-staged</span>
+                </div>
+                <div style={{ height: 10, background: '#F3F4F6', borderRadius: 0, overflow: 'hidden', position: 'relative' }}>
+                  <div style={{ height: '100%', width: '77.9%', background: '#2B8A6E', transition: 'width 1s ease' }} />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#2B8A6E' }}>180 pre-staged — 77.9%</span>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: '#E74C3C' }}>51 not yet covered</span>
+                </div>
+              </div>
+
+              {/* Domain breakdown */}
+              <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2, marginBottom: 32 }}>
+                {[
+                  { domain: 'GROWTH & POSITIONING', thresholds: 75, staged: 65, pct: 87, color: GOLD, note: 'Strong coverage — competitive, M&A, and market entry protocols fully staged.' },
+                  { domain: 'RISK & RESILIENCE', thresholds: 96, staged: 89, pct: 93, color: '#2B8A6E', note: 'Highest coverage — ransomware, regulatory, supply chain, and financial protocols staged.' },
+                  { domain: 'TRANSFORMATION', thresholds: 60, staged: 26, pct: 43, color: '#E74C3C', note: 'Primary expansion phase — 34 protocols in active development for workforce, go-to-market, and integration scenarios.' },
+                ].map(({ domain, thresholds, staged, pct, color, note }) => (
+                  <div key={domain} style={{ background: '#F9F8F5', border: '1px solid #E8E4DC', padding: '24px 20px' }}>
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color, marginBottom: 12 }}>{domain}</div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 10 }}>
+                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{staged}</span>
+                      <span style={{ fontSize: 12, color: '#9CA3AF', fontWeight: 500 }}>/ {thresholds} thresholds</span>
+                    </div>
+                    <div style={{ height: 5, background: '#E8E4DC', marginBottom: 10, overflow: 'hidden' }}>
+                      <div style={{ height: '100%', width: `${pct}%`, background: color }} />
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color, marginBottom: 8 }}>{pct}% covered</div>
+                    <p style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.55, margin: 0 }}>{note}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ padding: '16px 20px', background: 'rgba(10,15,46,0.04)', border: '1px solid rgba(10,15,46,0.08)', display: 'flex', alignItems: 'center', gap: 16 }}>
+                <div style={{ flexShrink: 0, width: 3, height: 36, background: GOLD }} />
+                <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.65, margin: 0 }}>
+                  <strong style={{ color: NAVY }}>The investor read:</strong> 180 protocols is the moat. The 51-threshold gap is the growth story — it funds the next phase and extends the coverage lead before any competitor can reach 180.
+                </p>
               </div>
             </div>
           </motion.div>

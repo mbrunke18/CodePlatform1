@@ -328,8 +328,18 @@ export default function MicrosoftConnectors() {
               <p className="text-gray-500 max-w-xl leading-relaxed">
                 Every enterprise has Microsoft's AI stack. None have the operating model to use it.
                 Readiness OS is the orchestration layer above your Microsoft investment — not a replacement, a coordinator.
-                When a trigger fires, Teams notifies, SharePoint stages, Power Automate executes, Copilot guides.
+                When a situation presents itself, Teams notifies, SharePoint stages, Power Automate executes, Copilot guides.
               </p>
+              <div className="mt-4 max-w-xl flex items-start gap-3 p-4 border-l-2" style={{ borderColor: '#2B8A6E', background: 'rgba(43,138,110,0.05)' }}>
+                <div className="flex-shrink-0 mt-0.5">
+                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ background: '#2B8A6E' }} />
+                </div>
+                <p className="text-xs leading-relaxed" style={{ color: '#374151' }}>
+                  <strong style={{ color: '#0A0F2E' }}>Independently validated:</strong> Microsoft published its own readiness assessment framework for enterprise AI deployment
+                  (<code className="text-[10px] bg-gray-100 px-1 py-0.5 rounded">microsoft/m365-copilot-automated-readiness-assessment</code>).
+                  The technology is ready. The operating model to use it isn't. That gap is exactly what Readiness OS closes.
+                </p>
+              </div>
             </div>
 
             {/* Stat summary */}

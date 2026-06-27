@@ -236,7 +236,7 @@ export default function HowItExecutes() {
                 {[
                   { window: "< 60 sec", phase: "01", label: "Signal detected & protocol matched", detail: "Continuous monitoring fires. 231 patterns checked. Readiness Protocol identified. Risk score assigned.", color: GOLD, Icon: Radio },
                   { window: "< 3 min",  phase: "02", label: "All stakeholders notified", detail: "Every executive receives a role-specific brief simultaneously — not a generic alert. No one has to find the contact list.", color: TEAL, Icon: Users },
-                  { window: "< 5 min",  phase: "03", label: "Executive reviews & authorizes", detail: "Pre-staged brief reviewed. One authorization. Budget unlocked. Authority chain confirmed. No committee.", color: GOLD, Icon: CheckCircle2 },
+                  { window: "< 5 min",  phase: "03", label: "Executive reviews & authorizes", detail: "Context assembled before the brief opens — precedents, risk score, authority chain, budget parameters. One review. One authorization. No committee.", color: GOLD, Icon: CheckCircle2 },
                   { window: "< 12 min", phase: "04", label: "Full team executing", detail: "Tasks deployed. Integrations triggered. Jira updated. Teams notified. Audit trail open. Response underway.", color: TEAL, Icon: Zap },
                 ].map((item, i) => (
                   <div key={item.phase} style={{ padding: "18px 16px", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none", textAlign: "center" }}>
