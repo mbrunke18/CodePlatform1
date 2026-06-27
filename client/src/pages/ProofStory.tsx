@@ -579,12 +579,12 @@ export default function ProofStory() {
               Your organization will face these situations.<br /><em style={{ color: GOLD }}>The question is whether the response is ready.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 28, lineHeight: 1.7 }}>
-              Founding Partners receive the full platform — 180 Readiness Protocols across 9 strategic domains, continuous signal monitoring across 231 trigger patterns, executive authorization workflows, pre-staged budget authority, compound threat detection, and institutional memory that compounds with every activation. 90 days of hands-on validation support included.
+              Founding Partners receive the full platform — 180 Readiness Protocols across 9 strategic domains, continuous monitoring across 231 detection thresholds, executive authorization workflows, pre-staged budget authority, compound threat detection, and institutional memory that compounds with every activation. 90 days of hands-on validation support included.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, maxWidth: 640, margin: "0 auto 32px", textAlign: "center" }}>
               {[
                 { n: "180", l: "Readiness Protocols" },
-                { n: "231", l: "Trigger Patterns" },
+                { n: "231", l: "Detection Thresholds" },
                 { n: "12 min", l: "To Full Execution" },
                 { n: "3,600×", l: "Execution Head Start" },
               ].map(s => (
