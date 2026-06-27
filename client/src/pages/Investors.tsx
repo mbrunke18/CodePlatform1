@@ -704,6 +704,15 @@ export default function Investors() {
                     </div>
                   ))}
                 </div>
+                {/* Microsoft independent validation note */}
+                <div style={{ marginTop: 20, padding: '12px 16px', background: 'rgba(43,138,110,0.07)', border: '1px solid rgba(43,138,110,0.18)', display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                  <div style={{ width: 3, flexShrink: 0, height: 36, background: '#2B8A6E', marginTop: 2 }} />
+                  <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, margin: 0 }}>
+                    <strong style={{ color: '#2B8A6E' }}>Independently validated:</strong> Microsoft published its own enterprise AI readiness assessment framework
+                    (<code style={{ fontSize: 10, background: 'rgba(255,255,255,0.06)', padding: '1px 5px' }}>microsoft/m365-copilot-automated-readiness-assessment</code>).
+                    The technology is deployed. The operating model to use it isn't. That is the market Readiness OS owns.
+                  </p>
+                </div>
                 {/* CTA */}
                 <div style={{ marginTop: 32 }}>
                   <Link href="/ecosystem">

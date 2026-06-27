@@ -591,6 +591,13 @@ export default function ExecutiveBrief() {
                 <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8 }}>
                   Readiness OS is not a replacement for Copilot, Azure OpenAI, or Teams. It is the operating model layer that sits above your existing Microsoft investment. Your AI tools detect and summarize. Readiness OS deploys your people — the coordination infrastructure that makes detection actionable.
                 </p>
+                <div style={{ marginTop: 14, padding: '10px 14px', background: 'rgba(43,138,110,0.06)', borderLeft: '3px solid #2B8A6E' }}>
+                  <p style={{ fontSize: 11, color: '#374151', lineHeight: 1.65, margin: 0 }}>
+                    <strong style={{ color: '#2B8A6E' }}>Independently validated:</strong> Microsoft published its own enterprise AI readiness assessment framework
+                    (<code style={{ fontSize: 10, background: '#F3F4F6', padding: '1px 4px' }}>microsoft/m365-copilot-automated-readiness-assessment</code>).
+                    The technology is deployed. The operating model to use it isn't. That gap is exactly what Readiness OS closes.
+                  </p>
+                </div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {[
