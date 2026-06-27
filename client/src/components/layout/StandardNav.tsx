@@ -898,7 +898,7 @@ export default function StandardNav() {
     { text: "THE RESPONSE IS READY BEFORE THE TRIGGER FIRES", color: GOLD },
     { text: "180 READINESS PROTOCOLS · STAGED AND READY", color: "rgba(255,255,255,0.55)" },
     { text: "3,600× EXECUTION HEAD START · 30 DAYS COMPRESSED TO 12 MINUTES", color: GOLD },
-    { text: "231 TRIGGERS MONITORED · CONTINUOUSLY", color: "rgba(255,255,255,0.55)" },
+    { text: "231 detection thresholds MONITORED · CONTINUOUSLY", color: "rgba(255,255,255,0.55)" },
     { text: "FOUNDING PARTNER PROGRAM · 90-DAY VALIDATION PARTNERSHIP", color: TEAL },
     { text: "WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI", color: GOLD },
     { text: "AI MONITORS · EXECUTIVES AUTHORIZE · EXECUTION PRE-STAGED", color: "rgba(255,255,255,0.55)" },
@@ -1386,7 +1386,7 @@ export default function StandardNav() {
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
                 </div>
                 <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>
-                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>231 Triggers Active</span>
+                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>231 detection thresholds Active</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Radio style={{ width: 8, height: 8, color: 'rgba(201,168,76,0.45)' }} />

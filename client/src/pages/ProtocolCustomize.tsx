@@ -1159,7 +1159,7 @@ export default function ProtocolCustomize() {
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
                         <CardContent className="p-6 space-y-4">
                           <div className="grid md:grid-cols-2 gap-4">
-                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Trigger Condition</Label><Input {...register(`escalationPaths.${index}.triggerCondition`)} placeholder="e.g. No resolution within 2 hours" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Detection Threshold</Label><Input {...register(`escalationPaths.${index}.triggerCondition`)} placeholder="e.g. No resolution within 2 hours" /></div>
                             <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Escalate To</Label><Input {...register(`escalationPaths.${index}.escalateTo`)} placeholder="e.g. CEO, Board Chair, General Counsel" /></div>
                             <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Backup Contact</Label><Input {...register(`escalationPaths.${index}.backupContact`)} placeholder="Alternate if primary unavailable" /></div>
                             <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Time to Escalate (min)</Label><Input {...register(`escalationPaths.${index}.timeToEscalate`, { valueAsNumber: true })} type="number" placeholder="60" /></div>

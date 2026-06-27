@@ -659,7 +659,7 @@ function Step1({ data, update, onTemplate }: { data: Data; update: (f: string, v
           {DOMAINS.map(d => <option key={d} value={d}>{d}</option>)}
         </select>
       </Field>
-      <Field label="Trigger Condition *">
+      <Field label="Detection Threshold *">
         <textarea style={{ ...inputStyle, minHeight: 90, resize: 'vertical' }} placeholder="Describe exactly what fires this protocol — be specific. e.g., SIEM detects unauthorized file-system encryption across two or more production servers." value={data.triggerCondition} onChange={e => update('triggerCondition', e.target.value)} />
         <div style={{ fontSize: 11, color: MUTED, marginTop: 5 }}>More specific = faster, less ambiguous execution. Vague triggers create hesitation at the moment of pressure.</div>
       </Field>
@@ -1173,7 +1173,7 @@ function Step7({ data, update }: { data: Data; update: (f: string, v: any) => vo
               <input style={inputStyle} placeholder='What does this data point measure? Where does the data come from?' value={newDp.description} onChange={e => setNewDp(d => ({ ...d, description: e.target.value }))} />
             </div>
             <div style={{ marginBottom: 12 }}>
-              <label style={labelStyle}>Trigger Condition</label>
+              <label style={labelStyle}>Detection Threshold</label>
               <input style={inputStyle} placeholder='e.g. "Value drops below 30 for 2 consecutive readings"' value={newDp.condition} onChange={e => setNewDp(d => ({ ...d, condition: e.target.value }))} />
             </div>
             <div style={{ display: 'flex', gap: 10 }}>

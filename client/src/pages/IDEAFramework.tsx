@@ -162,7 +162,7 @@ export default function IDEAFramework() {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Four phases. One operating model. Built for the <em style={{ fontStyle: "italic", color: "#C9A84C" }}>12-minute window</em> between a strategic trigger and coordinated organizational response.
+              Four phases. One operating model. Built for the <em style={{ fontStyle: "italic", color: "#C9A84C" }}>12-minute window</em> between a strategic situation and coordinated organizational response.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-6 mt-12">

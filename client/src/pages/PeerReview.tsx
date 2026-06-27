@@ -411,7 +411,7 @@ export default function PeerReview() {
               <ScaleInput value={q1Scale} onChange={setQ1Scale} labels={["Not significant", "Highly significant"]} />
               <FollowUp label="What typically causes this gap in your experience?" value={q1Text} onChange={setQ1Text} />
             </QBlock>
-            <QBlock num="Q2" question="In your current or most recent organization, roughly how long did it typically take from a strategic trigger to having the right people aligned with a clear response plan?">
+            <QBlock num="Q2" question="In your current or most recent organization, roughly how long did it typically take from a strategic situation to having the right people aligned with a clear response plan?">
               <RadioGroup options={Q2_OPTIONS} selected={q2Selection} onChange={setQ2Selection} />
               <FollowUp label="What factors most influenced that timeline?" value={q2Text} onChange={setQ2Text} />
             </QBlock>
@@ -442,7 +442,7 @@ export default function PeerReview() {
             <QBlock num="Q6" question="In your own words, what does Readiness OS do?" note="Write this as if explaining it to a peer who has not seen it.">
               <TextArea value={q6Text} onChange={setQ6Text} rows={5} placeholder="Your description..." />
             </QBlock>
-            <QBlock num="Q7" question="How credible is the core claim that an organization can go from strategic trigger to coordinated execution in 12 minutes?"
+            <QBlock num="Q7" question="How credible is the core claim that an organization can go from strategic situation to coordinated execution in 12 minutes?"
               note="Specifically: the right Readiness Protocol is activated, roles assigned, documents staged, and execution begins — not that the full response is complete.">
               <ScaleInput value={q7Scale} onChange={setQ7Scale} labels={["Not credible", "Fully credible"]} />
               <FollowUp label="What would make this claim more credible to you?" value={q7Text} onChange={setQ7Text} />

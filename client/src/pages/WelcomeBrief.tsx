@@ -211,7 +211,7 @@ export default function WelcomeBrief() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
                 <div>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>
-                    Strategic Triggers Detected — Past 30 Days
+                    Strategic Situations Detected — Past 30 Days
                   </div>
                   <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>
                     These events fired while monitoring was active. You would have received real-time alerts for each.

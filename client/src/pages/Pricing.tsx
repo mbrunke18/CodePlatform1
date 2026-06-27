@@ -133,7 +133,7 @@ const TIERS = [
       punch: "Enterprise is where institutional memory becomes a moat. Every activation your organization survives is encoded into your protocols. When a key executive leaves, the knowledge stays. When the same trigger fires 18 months later, your response is already faster. No competitor can buy that history — they have to live it.",
     },
     objections: [
-      { q: "How do we justify this to the board?", a: "Frame it as infrastructure, not software. A Fortune 500 that faces one major strategic trigger per quarter — and each delayed response costs $5M–$50M in exposure — is spending $450K to protect $20M–$200M annually. The board-ready activation report documents this in real numbers after every event." },
+      { q: "How do we justify this to the board?", a: "Frame it as infrastructure, not software. A Fortune 500 that faces one major strategic situation per quarter — and each delayed response costs $5M–$50M in exposure — is spending $450K to protect $20M–$200M annually. The board-ready activation report documents this in real numbers after every event." },
       { q: "We have an internal team for coordination.", a: "Enterprise supplements your team — it doesn't replace it. Your executives still authorize every response. What changes is that the coordination is pre-staged before they walk into the room. Your people spend their time on decisions, not logistics." },
       { q: "What's the institutional memory value over time?", a: "In Year 1, the platform responds in 12 minutes. By Year 3, the ADVANCE phase has encoded evidence from every activation into your protocols. Your responses are 40–60% faster. Your stakeholder map is current. Your budget allocations are pre-approved. That infrastructure took 3 years to build — and no competitor can buy it tomorrow." },
     ],
@@ -393,7 +393,7 @@ export default function Pricing() {
         tagColor="#C9A84C"
         features={[
           { color: "#C9A84C", label: "180 Protocols Included", description: "Every protocol covers all 3 strategic domains — Growth & Positioning, Risk & Resilience, and Transformation." },
-          { color: "#2B8A6E", label: "231 Triggers Monitored", description: "Continuous signal detection across competitive, regulatory, financial, and operational domains — included in every tier." },
+          { color: "#2B8A6E", label: "231 detection thresholds Monitored", description: "Continuous signal detection across competitive, regulatory, financial, and operational domains — included in every tier." },
           { color: "#4A90C4", label: "Unlimited Activations", description: "No per-activation fees. No usage caps. Every trigger, every response, every domain — included." },
         ]}
       />
@@ -573,7 +573,7 @@ export default function Pricing() {
             {[
               {
                 tier: "Core", price: "$150K", color: NAVY,
-                starts: "Organizations running 3–6 strategic triggers per year across 1–2 domains.",
+                starts: "Organizations running 3–6 strategic situations per year across 1–2 domains.",
                 upgrades: [
                   "Trigger frequency exceeds 6/year across multiple domains",
                   "A high-stakes event reveals the value of early warning",
@@ -1040,7 +1040,7 @@ export default function Pricing() {
       <section style={{ background: NAVY, padding: "72px 48px", textAlign: "center" }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
           <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,4vw,42px)", color: "#fff", marginBottom: 16, lineHeight: 1.15 }}>
-            Fearless organizations don't get surprised by strategic triggers.<br />
+            Fearless organizations don't get surprised by strategic situations.<br />
             <em style={{ color: GOLD, fontStyle: "italic" }}>They're waiting for them.</em>
           </h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", marginBottom: 32, lineHeight: 1.7 }}>

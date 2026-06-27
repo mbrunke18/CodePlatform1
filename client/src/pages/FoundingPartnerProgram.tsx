@@ -137,7 +137,7 @@ const idealCandidates = [
   },
   {
     criteria: 'Trigger Plausibility',
-    description: 'A real strategic trigger plausible within the 90-day window. Not guaranteed — plausible. Financial, regulatory, competitive, or operational pressure already building.',
+    description: 'A real strategic situation plausible within the 90-day window. Not guaranteed — plausible. Financial, regulatory, competitive, or operational pressure already building.',
     importance: 'Required'
   },
   {
@@ -368,7 +368,7 @@ export default function FoundingPartnerProgram() {
             {/* Problem-first headline */}
             <div style={{ maxWidth: 800, marginBottom: 32 }}>
               <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', color: 'rgba(240,237,228,0.5)', marginBottom: 20, textTransform: 'uppercase' as const }}>
-                The last time a strategic trigger fired at your organization — how long did mobilization take?
+                The last time a strategic situation fired at your organization — how long did mobilization take?
               </p>
               <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,5.5vw,64px)', fontWeight: 700, color: '#fff', lineHeight: 1.06, marginBottom: 4 }} data-testid="heading-pilot-program">
                 The response was ready
@@ -1128,7 +1128,7 @@ export default function FoundingPartnerProgram() {
                 Apply for the Founding Partner Program.
               </h2>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(240,237,228,0.6)', lineHeight: 1.75, maxWidth: 540, margin: '0 auto 28px' }}>
-                We review every application personally. Priority given to enterprise organizations with a C-level sponsor, active Microsoft or enterprise stack, and a recent strategic trigger they weren't fully ready for.
+                We review every application personally. Priority given to enterprise organizations with a C-level sponsor, active Microsoft or enterprise stack, and a recent strategic situation they weren't fully ready for.
               </p>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 36, flexWrap: 'wrap' as const }}>
                 {[

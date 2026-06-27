@@ -118,8 +118,8 @@ export default function PartnerBrief() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
               {[
-                { label: "180 Readiness Protocols", sub: "Pre-built cross-functional response playbooks covering every major strategic trigger category", icon: "◎" },
-                { label: "231 Trigger Patterns", sub: "Continuously monitored signals across regulatory, competitive, financial, operational, and cyber domains", icon: "⚡" },
+                { label: "180 Readiness Protocols", sub: "Pre-built cross-functional response playbooks covering every major strategic detection threshold category", icon: "◎" },
+                { label: "231 Detection Thresholds", sub: "Continuously monitored signals across regulatory, competitive, financial, operational, and cyber domains", icon: "⚡" },
                 { label: "12-Minute Execution", sub: "From trigger detection to full stakeholder coordination, budget authorization, and board briefing", icon: "★" },
               ].map(f => (
                 <div key={f.label} style={{ background: "rgba(255,255,255,0.04)", padding: "28px 24px", border: "1px solid rgba(255,255,255,0.07)" }}>

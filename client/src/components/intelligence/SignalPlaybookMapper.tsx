@@ -241,7 +241,7 @@ export function SignalPlaybookMapper() {
                 <div className="space-y-3">
                   <h4 className="font-medium flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4" />
-                    Trigger Conditions
+                    Detection Thresholds
                   </h4>
                   <div className="grid grid-cols-2 gap-3">
                     {selectedCategoryData.dataPoints.slice(0, 4).map((dp) => (

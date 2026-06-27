@@ -190,7 +190,7 @@ const INTEGRATIONS = [
 
 const DATA_MODEL = [
   { entity: "Organization", summary: "Multi-tenant root. Every record — signals, protocols, activations, debriefs — is fully scoped to the organization. Cross-tenant reads are prevented at the query layer.", icon: "🏢" },
-  { entity: "Trigger Event", summary: "Every detected signal is recorded with its risk classification, domain, signal count, and timestamp. Immutable record — feeds protocol resolution and historical trend analysis.", icon: "⚡" },
+  { entity: "Situation", summary: "Every detected signal is recorded with its risk classification, domain, signal count, and timestamp. Immutable record — feeds protocol resolution and historical trend analysis.", icon: "⚡" },
   { entity: "Protocol Activation", summary: "Each activation captures the executive authorization event — who authorized, when, and what budget was unlocked. Once authorized, the activation record is immutable.", icon: "🔐" },
   { entity: "Task Record", summary: "Full audit trail per task: owner, priority, business value, and completion timestamp. Used for ROI calculation and debrief classification.", icon: "✅" },
   { entity: "Activation Debrief", summary: "Post-activation classification (Optimization, Mixed-Signal, or Recovery), elapsed time, actual cost, and outcome notes. Feeds the institutional memory layer — organizations improve with every activation.", icon: "📊" },

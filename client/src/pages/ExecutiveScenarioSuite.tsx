@@ -648,7 +648,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
             <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.6)', fontWeight: 600, marginTop: 2 }}>Active Detections</div>
           </div>
           <div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(240,237,228,0.85)', lineHeight: 1 }}>231 Triggers</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(240,237,228,0.85)', lineHeight: 1 }}>231 detection thresholds</div>
             <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.6)', fontWeight: 600, marginTop: 2 }}>Monitored Every 15 Min</div>
           </div>
         </div>

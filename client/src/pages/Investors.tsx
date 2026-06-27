@@ -427,7 +427,7 @@ export default function Investors() {
               urlTag="LIVE"
               tagColor="#C9A84C"
               features={[
-                { color: "#2B8A6E", label: "231 Triggers Monitored", description: "Continuous signal detection across financial, regulatory, competitive, and operational domains." },
+                { color: "#2B8A6E", label: "231 detection thresholds Monitored", description: "Continuous signal detection across financial, regulatory, competitive, and operational domains." },
                 { color: "#C9A84C", label: "180 Readiness Protocols", description: "Pre-staged execution packages covering every situation from startup to Fortune 500." },
                 { color: "#4A90C4", label: "12-Minute Execution", description: "From trigger detection to full organizational response — 30 days compressed to 12 minutes." },
               ]}
@@ -506,7 +506,7 @@ export default function Investors() {
               </h2>
 
               <p style={{ fontSize: 16, color: '#374151', lineHeight: 1.8, maxWidth: 720, marginBottom: 28, fontWeight: 500 }}>
-                A competitor can license enterprise software on Day 1. They cannot buy the institutional memory of 180 protocols tested against real strategic triggers, refined through real executive decisions, and proven through real outcomes. That history is the moat. Every activation deepens it.
+                A competitor can license enterprise software on Day 1. They cannot buy the institutional memory of 180 protocols tested against real strategic situations, refined through real executive decisions, and proven through real outcomes. That history is the moat. Every activation deepens it.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2, marginBottom: 36 }}>

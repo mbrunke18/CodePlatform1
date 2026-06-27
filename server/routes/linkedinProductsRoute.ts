@@ -102,7 +102,7 @@ export const LINKEDIN_PRODUCTS: LinkedInProduct[] = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "231 strategic triggers monitored in real time across 8 data sources",
+    tagline: "231 strategic situations monitored in real time across 8 data sources",
     accentColor: "#2B8A6E",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <circle cx="40" cy="40" r="6" fill="#C9A84C"/>
@@ -212,7 +212,7 @@ function buildProductIconHtml(product: LinkedInProduct): string {
 
     2: `
       <div class="idea-chain">
-        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">231 strategic triggers mapped across 3 domains</div></div></div>
+        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">231 strategic situations mapped across 3 domains</div></div></div>
         <div class="idea-phase gold-phase"><div class="phase-letter">D</div><div class="phase-content"><div class="phase-name">DETECT</div><div class="phase-desc">248+ data points · signal scored every 15 minutes</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">E</div><div class="phase-content"><div class="phase-name">EXECUTE</div><div class="phase-desc">Pre-staged protocols activate · executive authorized</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">A</div><div class="phase-content"><div class="phase-name">ADVANCE</div><div class="phase-desc">Post-activation debrief · readiness improves each cycle</div></div></div>
@@ -611,7 +611,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
     highlights: [
       {
         title: "Identify & Detect",
-        description: "231 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified.",
+        description: "231 strategic situations mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified.",
       },
       {
         title: "Execute",
@@ -628,7 +628,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
     id: 3,
     name: "12-Minute Execution",
     tagline: "30 days of mobilization. 12 minutes of execution.",
-    description: "The 12-Minute Execution capability is the core of Readiness OS. When a strategic trigger is detected, a pre-staged Readiness Protocol activates, tasks are assigned, stakeholders are notified, and the executive authorization chain begins — all within 12 minutes. The old model took 30 days just to mobilize.",
+    description: "The 12-Minute Execution capability is the core of Readiness OS. When a strategic situation is detected, a pre-staged Readiness Protocol activates, tasks are assigned, stakeholders are notified, and the executive authorization chain begins — all within 12 minutes. The old model took 30 days just to mobilize.",
     highlights: [
       {
         title: "Pre-Staged Before the Trigger Fires",

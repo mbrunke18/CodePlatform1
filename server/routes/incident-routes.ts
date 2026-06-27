@@ -524,10 +524,10 @@ Return ONLY raw JSON (no markdown, no code fences) with this structure:
   "domain": "Strategic domain (Crisis, Cyber, Regulatory, M&A, Market Entry, Product Launch, Digital Transformation, Competitive Response, AI Governance)",
   "category": "OFFENSE or DEFENSE or SPECIAL TEAMS",
   "triggers": [
-    {"condition": "Specific trigger condition 1", "threshold": "When this metric/event exceeds this threshold"},
-    {"condition": "Specific trigger condition 2", "threshold": "Measurement criteria"},
-    {"condition": "Specific trigger condition 3", "threshold": "Detection criteria"},
-    {"condition": "Specific trigger condition 4", "threshold": "Escalation criteria"}
+    {"condition": "Specific detection threshold 1", "threshold": "When this metric/event exceeds this threshold"},
+    {"condition": "Specific detection threshold 2", "threshold": "Measurement criteria"},
+    {"condition": "Specific detection threshold 3", "threshold": "Detection criteria"},
+    {"condition": "Specific detection threshold 4", "threshold": "Escalation criteria"}
   ],
   "stakeholders": [
     {"role": "Role title", "responsibility": "RACI designation (R/A/C/I)", "name": "[Assignee]", "department": "Department"},

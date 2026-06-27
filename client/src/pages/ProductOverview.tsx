@@ -323,7 +323,7 @@ export default function ProductOverview() {
         {/* §03 — Three Domains */}
         <div className="print-section" style={{ marginBottom: 44 }}>
           <SectionTag>§ 03 — Three Strategic Domains</SectionTag>
-          <Heading>Every strategic trigger maps to one of three domains.</Heading>
+          <Heading>Every strategic situation maps to one of three domains.</Heading>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 20 }}>
             {[
               {

@@ -73,7 +73,7 @@ export default function MobilizationCost() {
   useEffect(() => {
     updatePageMetadata({
       title: "The Cost of One Unprepared Trigger | VaughnMartin Readiness OS",
-      description: "What one strategic trigger costs an unprepared organization — in dollars, weeks, and windows that close while you're still mobilizing.",
+      description: "What one strategic situation costs an unprepared organization — in dollars, weeks, and windows that close while you're still mobilizing.",
     });
   }, []);
 

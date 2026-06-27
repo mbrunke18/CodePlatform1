@@ -139,7 +139,7 @@ export default function BrunkeSistersCaseStudy() {
           <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 24 }} />
           <p style={{ color: IVORY, fontSize: 18, lineHeight: 1.6, maxWidth: 680, opacity: 0.9, marginBottom: 32 }}>
             500-person project management firm. Founding Partner on Readiness OS since March 2026.
-            Four strategic triggers fired in 60 days. Four Readiness Protocols executed.
+            Four strategic situations fired in 60 days. Four Readiness Protocols executed.
             Average time from trigger detection to full response: <strong style={{ color: GOLD }}>10.8 minutes.</strong>
           </p>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(201,168,76,0.3)", borderRadius: "0.15rem", padding: "14px 20px" }}>
@@ -177,7 +177,7 @@ export default function BrunkeSistersCaseStudy() {
           <div>
             <div style={{ fontSize: 11, ...BC, letterSpacing: "0.16em", color: GOLD, fontWeight: 700, marginBottom: 8 }}>THE SITUATION</div>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: "#374151", margin: 0 }}>
-              Professional services is among the highest-exposure sectors for strategic triggers: regulatory sweeps,
+              Professional services is among the highest-exposure sectors for strategic situations: regulatory sweeps,
               cybersecurity incidents, talent raids, and employment litigation all fire without warning and demand
               immediate, coordinated response. For most firms, mobilization alone — reaching counsel, aligning leadership,
               executing holds — takes days. Rochester PM compressed that mobilization to minutes by staging
@@ -348,7 +348,7 @@ export default function BrunkeSistersCaseStudy() {
                 "The response was ready<br />before the trigger fired."
               </div>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.8, marginBottom: 0 }}>
-                Four strategic triggers across cybersecurity, regulatory, competitive, and legal domains —
+                Four strategic situations across cybersecurity, regulatory, competitive, and legal domains —
                 all contained, all under 12 minutes, all with zero regulatory penalty.
                 Not because the team reacted faster. Because the preparation was already done.
               </p>

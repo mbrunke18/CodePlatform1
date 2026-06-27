@@ -99,7 +99,7 @@ export default function PlanningGap() {
               <em style={{ color: GOLD }}>addresses the situations that weren't on the plan?</em>
             </h1>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 640, lineHeight: 1.75 }}>
-              Organizations spend weeks in annual planning. Almost none of that time pre-stages responses to strategic triggers that will fire regardless of the roadmap. Enter your numbers. See your gap.
+              Organizations spend weeks in annual planning. Almost none of that time pre-stages responses to strategic situations that will fire regardless of the roadmap. Enter your numbers. See your gap.
             </p>
           </div>
         </div>
@@ -202,7 +202,7 @@ export default function PlanningGap() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {[
-              { week: "Weeks 1–2", label: "Map Your Unintended Situations", desc: "Identify the 10–15 strategic triggers most likely to fire this fiscal year that are not on your roadmap. The 231-trigger library is your starting point." },
+              { week: "Weeks 1–2", label: "Map Your Unintended Situations", desc: "Identify the 10–15 strategic situations most likely to fire this fiscal year that are not on your roadmap. The 231-trigger library is your starting point." },
               { week: "Weeks 3–5", label: "Configure Priority Protocols", desc: "Select and configure the 5–10 most critical Readiness Protocols for your org structure, decision rights, and stakeholder roster." },
               { week: "Weeks 6–8", label: "Run and Certify", desc: "Activate each protocol against a practice trigger. Confirm your readiness score and baseline response time before the year begins." },
             ].map(({ week, label, desc }) => (

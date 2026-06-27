@@ -175,7 +175,7 @@ export default function RequestAccess() {
             <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.32em", color: TEAL, textTransform: "uppercase", marginBottom: 14 }}>What happens after you apply</div>
             {[
               { n: "48h", label: "Founder review", detail: "We review your application and reach out within 48 hours — directly from the founder, not a sales team." },
-              { n: "60m", label: "Fit conversation", detail: "One call to confirm your organization's strategic triggers and identify which of the 180 protocols apply first." },
+              { n: "60m", label: "Fit conversation", detail: "One call to confirm your organization's strategic situations and identify which of the 180 protocols apply first." },
               { n: "Day 1", label: "Partnership begins", detail: "Your protocols are configured, your PMO lead is onboarded, and your system is live — not a pilot, a full deployment." },
             ].map(({ n, label, detail }) => (
               <div key={n} style={{ display: "flex", gap: 12, marginBottom: 12 }}>

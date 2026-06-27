@@ -121,7 +121,7 @@ export function DemoActiveStrategicCard() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="bg-white dark:bg-gray-900/50 p-4 border border-red-200 dark:border-red-800">
-          <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Trigger Conditions Met</h4>
+          <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Detection Thresholds Met</h4>
           <div className="space-y-2 text-sm">
             <div className="flex items-start gap-2">
               <CheckCircle className="h-4 w-4 text-red-700 mt-0.5" />

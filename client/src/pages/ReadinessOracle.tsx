@@ -265,7 +265,7 @@ export default function ReadinessOracle() {
               The first cohort builds the infrastructure no one else can replicate.
             </h2>
             <p style={{ ...BW, fontSize: 14, color: "#6B7280", lineHeight: 1.8, marginBottom: 36 }}>
-              Priority given to enterprise organizations with a C-level sponsor, active Microsoft or enterprise stack, and at least one strategic trigger in the last 18 months they weren't fully ready for. $75,000 fully credited toward your enterprise agreement.
+              Priority given to enterprise organizations with a C-level sponsor, active Microsoft or enterprise stack, and at least one strategic situation in the last 18 months they weren't fully ready for. $75,000 fully credited toward your enterprise agreement.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
               <Link href="/request-access">

@@ -254,7 +254,7 @@ const MASTER_PHASES = [
         deadline: 'next board meeting',
         items: [
           'Present new protocol to board for awareness',
-          'Update organizational risk registry with new trigger category',
+          'Update organizational risk registry with new detection threshold category',
           'Confirm readiness investment if recurrence is likely',
           'Annual review: Protocol #0 activation history — is the library keeping pace with emerging threats?'
         ]

@@ -82,7 +82,7 @@ export function registerPeerReviewRoute(app: Express) {
 
         // Scale averages
         scales: {
-          q1: { avg: avg("q1Scale"), dist: dist("q1Scale"), label: "Problem significance (strategic trigger gap)" },
+          q1: { avg: avg("q1Scale"), dist: dist("q1Scale"), label: "Problem significance (strategic situation gap)" },
           q3: { avg: avg("q3Scale"), dist: dist("q3Scale"), label: "Frequency of missed strategic windows" },
           q4: { avg: avg("q4Scale"), dist: dist("q4Scale"), label: "Pre-staged response maturity" },
           q5: { avg: avg("q5Scale"), dist: dist("q5Scale"), label: "Product clarity" },

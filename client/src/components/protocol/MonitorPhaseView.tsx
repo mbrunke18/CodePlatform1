@@ -423,7 +423,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Trigger Type</Label>
+                  <Label>Situation Type</Label>
                   <Select
                     value={newItem.triggerType}
                     onValueChange={(v) => setNewItem({ ...newItem, triggerType: v as TriggerType })}

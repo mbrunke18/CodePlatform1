@@ -1593,7 +1593,7 @@ export default function SandboxDemo() {
           <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
             <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <Zap className="h-5 w-5 text-[#C9A84C]" />
-              Trigger Type
+              Situation Type
             </CardTitle>
             <CardDescription className="text-slate-500 font-medium">Activation mechanism for this Readiness Protocol</CardDescription>
           </CardHeader>

@@ -81,7 +81,7 @@ const competitors: Competitor[] = [
     claim: "Coordinate responses, track actions, and document outcomes during incidents and crises.",
     whatTheyDo: "These platforms provide a structured digital workspace for crisis management — incident logging, task assignment, communication tracking, and post-incident reporting. They represent a meaningful improvement over spreadsheets and email chains as a coordination workspace.",
     whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged Readiness Protocols tied to specific detection thresholds. No signal monitoring for detection thresholds. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
-    theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for startup to Fortune 500 strategic triggers across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
+    theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for startup to Fortune 500 strategic situations across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
     oneLiner: "That is a digital emergency binder. This is strategic execution infrastructure.",
   },
   {
@@ -381,7 +381,7 @@ export default function WhyExecutionOS() {
             </div>
 
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, maxWidth: 640, margin: "0 auto 40px" }}>
-              In the next 12 months, your organization will face at least 3–5 strategic triggers requiring cross-domain coordination. For each one, you currently spend weeks mobilizing before execution begins. Readiness OS pre-stages the response to each one before it fires. The question is not whether you can afford this infrastructure. The question is how many of those events you can afford to handle the old way.
+              In the next 12 months, your organization will face at least 3–5 strategic situations requiring cross-domain coordination. For each one, you currently spend weeks mobilizing before execution begins. Readiness OS pre-stages the response to each one before it fires. The question is not whether you can afford this infrastructure. The question is how many of those events you can afford to handle the old way.
             </p>
 
             {/* Proof bar */}

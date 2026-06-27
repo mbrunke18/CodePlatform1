@@ -135,7 +135,7 @@ const PMO_PROOF_POINTS = [
   },
   {
     stat: "231",
-    label: "Trigger Categories",
+    label: "Detection Threshold Categories",
     detail: "Live signal monitoring runs continuously — your job is to ensure the responses are staged before any of them fire.",
   },
   {
@@ -443,7 +443,7 @@ export default function PMOOnboarding() {
               The response is ready<br /><em style={{ color: GOLD }}>before the trigger fires.</em>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", maxWidth: 520, margin: "0 auto 36px", lineHeight: 1.7 }}>
-              Your role as Preparation Architect is to ensure that sentence is true — across every domain, every trigger category, every protocol in the library. Begin the configuration now.
+              Your role as Preparation Architect is to ensure that sentence is true — across every domain, every detection threshold category, every protocol in the library. Begin the configuration now.
             </p>
             <Link href="/getting-started" style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "14px 32px", textDecoration: "none", borderRadius: "0.15rem" }}>
               Begin Configuration <ArrowRight size={14} />

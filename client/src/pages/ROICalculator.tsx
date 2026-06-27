@@ -718,7 +718,7 @@ export default function ROICalculator() {
                       <AlertTriangle style={{ width: 16, height: 16, color: "#C9A84C" }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 4 }}>Trigger Event</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 4 }}>Situation</div>
                       <div style={{ fontWeight: 700, color: "#0A0F2E", fontSize: 15 }}>{s.title}</div>
                       <div style={{ color: "#6B7280", fontSize: 13, marginTop: 2 }}>{s.trigger}</div>
                     </div>
@@ -762,7 +762,7 @@ export default function ROICalculator() {
                 Does one activation pay for the<br /><em style={{ fontStyle: "italic", color: "#C9A84C" }}>entire annual subscription?</em>
               </h2>
               <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
-                Think about the last time a strategic trigger fired at your organization. How long did full mobilization actually take — and what did that delay cost? Configure your profile to find out.
+                Think about the last time a strategic situation fired at your organization. How long did full mobilization actually take — and what did that delay cost? Configure your profile to find out.
               </p>
             </div>
 

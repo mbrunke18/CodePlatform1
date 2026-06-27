@@ -91,7 +91,7 @@ Martin`,
 
 Direct ask: 20 minutes before your [Q3/Q4] planning cycle closes.
 
-I'm not going to walk you through a slide deck. I want to understand your current response infrastructure — specifically, which strategic triggers you expect to face in the next 12 months and whether the response architecture exists before those triggers fire.
+I'm not going to walk you through a slide deck. I want to understand your current response infrastructure — specifically, which strategic situations you expect to face in the next 12 months and whether the response architecture exists before those triggers fire.
 
 If the answer is that you're building responses in real time when situations present themselves, there's a structured path to change that. The Founding Partner Program is a 90-day validation partnership — three to five organizations that want to move from reactive coordination to pre-staged execution. The program is designed to produce measurable evidence: actual activation time, actual mobilization cycle compression, actual executive hours recovered.
 

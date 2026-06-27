@@ -11,7 +11,7 @@ const BORDER = "#E8E4DC";
 const MUTED = "#6B7280";
 
 const SCALE_QUESTIONS: Record<string, string> = {
-  q1: "Problem significance (strategic trigger gap)",
+  q1: "Problem significance (strategic situation gap)",
   q3: "Frequency of missed strategic windows",
   q4: "Pre-staged response maturity",
   q5: "Product clarity",

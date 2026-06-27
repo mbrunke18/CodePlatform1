@@ -41,7 +41,7 @@ export default function ReadinessInfrastructure() {
             </h1>
 
             <p style={{ ...GEO, fontSize: "clamp(18px,2.2vw,24px)", color: "rgba(255,255,255,0.88)", lineHeight: 1.65, maxWidth: 720, margin: "0 auto 48px", fontStyle: "italic" }}>
-              The preparation architecture that makes organizations fearless in the face of any strategic trigger.
+              The preparation architecture that makes organizations fearless in the face of any strategic situation.
               Built before the trigger fires. Deployed in 12 minutes when it does.
             </p>
 
@@ -100,7 +100,7 @@ export default function ReadinessInfrastructure() {
               {[
                 { stat: "30 days", color: RED, label: "Average startup to Fortune 500 mobilization cycle", sub: "From trigger detection to first coordinated response" },
                 { stat: "12 min", color: TEAL, label: "With Readiness Infrastructure deployed", sub: "From trigger detection to full team executing" },
-                { stat: "3,600×", color: GOLD, label: "Execution Head Start", sub: "30 days compressed to 12 minutes — every strategic trigger" },
+                { stat: "3,600×", color: GOLD, label: "Execution Head Start", sub: "30 days compressed to 12 minutes — every strategic situation" },
               ].map((item, i) => (
                 <div key={i} style={{ background: NAVY, padding: "40px 28px", textAlign: "center" }}>
                   <div style={{ ...GEO, fontSize: "clamp(36px,4vw,54px)", fontWeight: 700, color: item.color, lineHeight: 1, marginBottom: 14 }}>{item.stat}</div>
@@ -387,7 +387,7 @@ export default function ReadinessInfrastructure() {
                 {
                   quote: "The 30-day mobilization gap is not a failure of intelligence or intent. It is a structural consequence of organizations that were designed to deliberate, not to execute. The gap closes only when the deliberation is moved to the preparation phase — before the trigger, not after it.",
                   name: "Jayashree Venkataraman",
-                  title: "Strategic Trigger Response — Enterprise Coordination Research",
+                  title: "Strategic Situation Response — Enterprise Coordination Research",
                 },
                 {
                   quote: "McKinsey analysis of startup to Fortune 500 crisis responses consistently identifies the same failure mode: not the response itself, but the 72–168 hours spent mobilizing before the response could begin. The organizations that close this gap share a single structural characteristic — they had already decided what to do.",
@@ -445,7 +445,7 @@ export default function ReadinessInfrastructure() {
                 The Category
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>
-                Readiness Infrastructure · VaughnMartin Readiness OS · 180 Protocols · 231 Triggers · 3 Domains · 12 Minutes
+                Readiness Infrastructure · VaughnMartin Readiness OS · 180 Protocols · 231 detection thresholds · 3 Domains · 12 Minutes
               </p>
             </div>
           </div>

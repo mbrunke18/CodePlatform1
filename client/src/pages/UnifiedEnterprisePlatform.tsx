@@ -1632,7 +1632,7 @@ export default function UnifiedEnterprisePlatform() {
                 </Card>
               </div>
 
-              {/* Trigger Categories */}
+              {/* Detection Threshold Categories */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
@@ -1696,7 +1696,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
                       <Target className="h-5 w-5 text-[#0A0F2E]" />
-                      Strategic Triggers
+                      Strategic Situations
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">

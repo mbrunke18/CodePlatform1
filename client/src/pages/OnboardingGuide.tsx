@@ -246,7 +246,7 @@ export default function OnboardingGuide() {
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
             <FeatureCard icon={Target} title="IDENTIFY" path="/workspace?tab=identify" color={NAVY}
-              description="Configure your strategic triggers, risk thresholds, and monitoring scope. Define which signals matter to your organization and how sensitive the detection should be." />
+              description="Configure your strategic situations, risk thresholds, and monitoring scope. Define which signals matter to your organization and how sensitive the detection should be." />
             <FeatureCard icon={Radio} title="DETECT" path="/command-tower" color={TEAL}
               description="Live monitoring dashboard. Real-time signal ingestion from 39 pre-configured sources every 15 minutes — news, regulatory, SEC filings, cybersecurity, energy, economic indicators, and government enforcement feeds. Signal scoring, trigger detection, and automatic alerts." />
             <FeatureCard icon={Zap} title="EXECUTE" path="/mission-control" color={GOLD}

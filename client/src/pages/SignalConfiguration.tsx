@@ -993,7 +993,7 @@ export default function SignalConfiguration() {
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">Trigger Pattern Name</label>
+                    <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">Detection Threshold Name</label>
                     <Input
                       value={profileForm.triggerPattern}
                       onChange={e => setProfileForm((f: any) => ({ ...f, triggerPattern: e.target.value }))}

@@ -457,7 +457,7 @@ export default function PreparationArc() {
               "The trigger doesn't create the response. It releases it."
             </blockquote>
             <p className="text-sm text-gray-600 leading-relaxed max-w-xl">
-              Every enterprise that completes the 30-day preparation arc is no longer afraid of strategic triggers. They're fearless — not because the triggers are less serious, but because the response is already staged.
+              Every enterprise that completes the 30-day preparation arc is no longer afraid of strategic situations. They're fearless — not because the triggers are less serious, but because the response is already staged.
             </p>
           </div>
           <div className="flex-shrink-0 flex gap-3">

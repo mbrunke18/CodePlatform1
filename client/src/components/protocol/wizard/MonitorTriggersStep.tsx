@@ -110,7 +110,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
       <Card>
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-base">Trigger Conditions</CardTitle>
+            <CardTitle className="text-base">Detection Thresholds</CardTitle>
             <Badge variant="secondary">
               {triggers.filter(t => t.enabled).length} Active
             </Badge>
@@ -191,7 +191,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
                   </div>
                 </div>
                 <div>
-                  <Label className="text-xs">Trigger Condition</Label>
+                  <Label className="text-xs">Detection Threshold</Label>
                   <Textarea
                     value={newTrigger.condition || ''}
                     onChange={(e) => setNewTrigger({ ...newTrigger, condition: e.target.value })}
@@ -227,7 +227,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
               data-testid="button-show-add-trigger"
             >
               <Plus className="h-4 w-4 mr-2" />
-              Add Trigger Condition
+              Add Detection Threshold
             </Button>
           )}
         </CardContent>

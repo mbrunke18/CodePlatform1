@@ -1,0 +1,35 @@
+Got the metadata but the page content is JavaScript-rendered — the crawler sees the shell only, not what visitors see. Let me try to pull additional pages.
+
+That's as far as I can get — the site disallows crawler access beyond the homepage shell. But the metadata alone gives me enough to work with. Here's the honest read.
+
+**What I can see:**
+
+The page has two different titles depending on where you encounter it:
+
+Browser tab says: *"VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure"*
+
+Social share (when someone posts the link) says: *"VaughnMartin | Readiness OS — 30 Days Compressed to 12 Minutes"*
+
+Those are two different arguments. Pick one and make them consistent. The social share version is stronger.
+
+**The meta description has three problems:**
+
+*"Fortune 1000 enterprises take 30 days to mobilize around a strategic trigger. Readiness OS deploys your entire organization in 12 minutes. 180 Readiness Protocols, 248+ data points, zero improvisation."*
+
+First — "Fortune 1000" limits you. Canonical product language says Readiness OS serves all organization sizes. A mid-market company reading this thinks it's not for them.
+
+Second — "deploys your entire organization" doesn't make sense. You deploy a response. The organization executes. Wrong verb, wrong object.
+
+Third — "248+ data points" is a granular internal metric. It means nothing to someone reading a search result snippet. It belongs in a demo, not the homepage meta.
+
+**What's working:**
+
+The OG description is actually strong: *"The response is ready before the trigger fires. 180 Readiness Protocols pre-staged for Fortune 1000 strategic execution. 3,600× Execution Head Start."* — that's the canonical tagline leading, followed by a concrete number and a metric with impact. The problem is that's only seen when someone shares the link, not when they land on the page.
+
+**"Zero improvisation"** buried at the end of the meta description is genuinely interesting. That phrase captures the fear every executive has in a crisis — that the response is being made up in real time. It deserves to be higher, not a footnote.
+
+**Recommended meta description:**
+
+*"When a situation presents itself, most organizations spend 30 days figuring out who owns the call. Readiness OS deploys a coordinated response in 12 minutes. 210 protocols across 9 strategic domains. Zero improvisation."*
+
+The page content itself I can't evaluate — you'd need to walk me through it or screen-share what a visitor actually sees. But the metadata is the first impression for anyone arriving from search or a shared link, and it has real gaps worth closing before the investor conversations get serious.

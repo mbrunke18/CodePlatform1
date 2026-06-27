@@ -87,7 +87,7 @@ export default function LiveDetectionFeed() {
   useEffect(() => {
     updatePageMetadata({
       title: 'Live Signal Detection — Readiness OS | VaughnMartin',
-      description: 'Real-time strategic trigger detections across 9 domains. System-detected signals scored and matched to pre-staged Readiness Protocols within 12 minutes.',
+      description: 'Real-time strategic situation detections across 9 domains. System-detected signals scored and matched to pre-staged Readiness Protocols within 12 minutes.',
       ogTitle: 'Live Signal Detection — VaughnMartin Readiness OS',
       ogDescription: 'Continuous monitoring across 231 detection thresholds. Every signal matched to a pre-staged Readiness Protocol.',
     });

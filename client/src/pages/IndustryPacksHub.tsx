@@ -169,7 +169,7 @@ export default function IndustryPacksHub() {
       title: 'Industry Protocol Packs — Readiness OS | VaughnMartin',
       description: 'Six industry-specific Protocol Packs built on top of 180 core Readiness Protocols. Pre-staged responses for Financial Services, Healthcare, Manufacturing, Energy, Retail, and Technology.',
       ogTitle: 'Industry Protocol Packs — VaughnMartin Readiness OS',
-      ogDescription: '180 cross-industry protocols + 6 sector packs. Pre-staged execution for every strategic trigger your industry faces.',
+      ogDescription: '180 cross-industry protocols + 6 sector packs. Pre-staged execution for every strategic situation your industry faces.',
     });
   }, []);
 

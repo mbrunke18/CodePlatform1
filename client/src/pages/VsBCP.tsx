@@ -15,7 +15,7 @@ const COMPARISON_ROWS = [
   {
     dimension: "Scope",
     bcp: "Catastrophic operational failures — systems down, facilities inaccessible, regulatory shutdown.",
-    ros: "The full strategic trigger spectrum: competitive disruption, activist campaigns, M&A integration, leadership transitions, AI governance, market opportunity windows — and catastrophic events too.",
+    ros: "The full strategic situation spectrum: competitive disruption, activist campaigns, M&A integration, leadership transitions, AI governance, market opportunity windows — and catastrophic events too.",
   },
   {
     dimension: "Form",
@@ -50,7 +50,7 @@ export default function VsBCP() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS vs. Business Continuity Planning | VaughnMartin",
-      description: "Every startup to Fortune 500 has a BCP. None have what fires before the crisis does. See how Readiness OS covers the everyday strategic triggers your BCP doesn't.",
+      description: "Every startup to Fortune 500 has a BCP. None have what fires before the crisis does. See how Readiness OS covers the everyday strategic situations your BCP doesn't.",
       ogTitle: "Readiness OS vs. BCP — Built for What Happens Every Year",
       ogDescription: "BCP covers catastrophe. Readiness OS covers the competitive triggers, activist campaigns, and M&A events that happen every year — and activate in 12 minutes.",
     });
@@ -85,7 +85,7 @@ export default function VsBCP() {
 
           <p style={{ ...DM, fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 660, margin: "0 auto 40px", lineHeight: 1.65 }}>
             Business continuity planning is necessary. It covers the catastrophic failure your organization hopes never happens.
-            Readiness OS covers the strategic triggers that happen every year — the ones where 30 days of mobilization paralysis
+            Readiness OS covers the strategic situations that happen every year — the ones where 30 days of mobilization paralysis
             causes more damage than the trigger itself.
           </p>
 
@@ -244,7 +244,7 @@ export default function VsBCP() {
             <em style={{ color: GOLD, fontStyle: "italic" }}>before the trigger fires.</em>
           </h2>
           <p style={{ ...DM, fontSize: 16, color: "rgba(240,237,228,0.6)", marginBottom: 36, lineHeight: 1.65 }}>
-            See Readiness OS execute a live strategic trigger in 12 minutes — no login required.
+            See Readiness OS execute a live strategic situation in 12 minutes — no login required.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <button

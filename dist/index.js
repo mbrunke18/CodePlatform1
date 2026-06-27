@@ -34832,7 +34832,7 @@ var init_playbooksData = __esm({
           "stakeholders": ["CEO", "COO", "General Counsel", "CFO", "Chief of Staff", "PMO Director"],
           "response": "Protocol #0 stages the universal response infrastructure before any pattern is matched: authority chain locked, emergency budget envelope unlocked, external resource roster activated, and a Situation Assessment Framework deployed within 12 minutes of trigger detection \u2014 so the organization executes a structured first response rather than improvising. Without Protocol #0, a first-in-class trigger finds the enterprise in full improvisation mode \u2014 no authority chain, no budget clarity, no external contacts on call \u2014 and the 30-day mobilization cycle begins from zero.",
           "response_window": "12 minutes",
-          "financial_exposure": "Unbounded \u2014 first-in-class events carry no institutional precedent; exposure ranges from $5M to $5B+ depending on trigger type, industry, and regulatory environment",
+          "financial_exposure": "Unbounded \u2014 first-in-class events carry no institutional precedent; exposure ranges from $5M to $5B+ depending on situation type, industry, and regulatory environment",
           "domain": 9,
           "frequency": "rare",
           "budget": 5e6
@@ -43600,11 +43600,75 @@ import { createServer as createServer2 } from "http";
 import path2 from "path";
 
 // server/routes.ts
+import { createServer } from "http";
+import rateLimit from "express-rate-limit";
+
+// server/routes/seoRoutes.ts
+var BASE_URL = "https://vaughnmartin.com";
+var PUBLIC_PAGES = [
+  { path: "/", priority: "1.0", changefreq: "weekly" },
+  { path: "/about", priority: "0.9", changefreq: "monthly" },
+  { path: "/how-it-executes", priority: "0.9", changefreq: "monthly" },
+  { path: "/proof-story", priority: "0.8", changefreq: "monthly" },
+  { path: "/roi-calculator", priority: "0.8", changefreq: "monthly" },
+  { path: "/executive-brief", priority: "0.8", changefreq: "monthly" },
+  { path: "/12-minute-experience", priority: "0.8", changefreq: "monthly" },
+  { path: "/demo-hub", priority: "0.7", changefreq: "monthly" },
+  { path: "/master-demo", priority: "0.7", changefreq: "monthly" },
+  { path: "/founding-partner", priority: "0.8", changefreq: "monthly" },
+  { path: "/partner-brief", priority: "0.7", changefreq: "monthly" },
+  { path: "/request-access", priority: "0.8", changefreq: "monthly" },
+  { path: "/investors", priority: "0.8", changefreq: "monthly" },
+  { path: "/investor-landing", priority: "0.7", changefreq: "monthly" },
+  { path: "/security-compliance", priority: "0.7", changefreq: "monthly" },
+  { path: "/technical-architecture", priority: "0.6", changefreq: "monthly" },
+  { path: "/platform-reality", priority: "0.7", changefreq: "monthly" },
+  { path: "/ms-project", priority: "0.6", changefreq: "monthly" },
+  { path: "/vs-consulting", priority: "0.6", changefreq: "monthly" },
+  { path: "/research", priority: "0.6", changefreq: "monthly" },
+  { path: "/why-execution-os", priority: "0.7", changefreq: "monthly" },
+  { path: "/cost-of-inaction", priority: "0.7", changefreq: "monthly" },
+  { path: "/channel-partners", priority: "0.6", changefreq: "monthly" },
+  { path: "/pmo-onboarding", priority: "0.5", changefreq: "monthly" },
+  { path: "/getting-started", priority: "0.5", changefreq: "monthly" },
+  { path: "/sitemap", priority: "0.3", changefreq: "monthly" }
+];
+function registerSeoRoutes(app2) {
+  app2.get("/sitemap.xml", (_req, res) => {
+    const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+    const urls = PUBLIC_PAGES.map(
+      ({ path: path3, priority, changefreq }) => `
+  <url>
+    <loc>${BASE_URL}${path3}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
+    ).join("");
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
+    res.setHeader("Content-Type", "application/xml");
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.send(xml);
+  });
+  app2.get("/robots.txt", (_req, res) => {
+    const txt = `User-agent: *
+Allow: /
+
+Sitemap: ${BASE_URL}/sitemap.xml
+`;
+    res.setHeader("Content-Type", "text/plain");
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.send(txt);
+  });
+}
+
+// server/routes.ts
 init_storage();
 init_EnterpriseJobService();
 init_WebSocketService();
-import { createServer } from "http";
-import rateLimit from "express-rate-limit";
 
 // server/services/DemoOrchestrationService.ts
 init_WebSocketService();
@@ -47156,10 +47220,10 @@ Return ONLY raw JSON (no markdown, no code fences) with this structure:
   "domain": "Strategic domain (Crisis, Cyber, Regulatory, M&A, Market Entry, Product Launch, Digital Transformation, Competitive Response, AI Governance)",
   "category": "OFFENSE or DEFENSE or SPECIAL TEAMS",
   "triggers": [
-    {"condition": "Specific trigger condition 1", "threshold": "When this metric/event exceeds this threshold"},
-    {"condition": "Specific trigger condition 2", "threshold": "Measurement criteria"},
-    {"condition": "Specific trigger condition 3", "threshold": "Detection criteria"},
-    {"condition": "Specific trigger condition 4", "threshold": "Escalation criteria"}
+    {"condition": "Specific detection threshold 1", "threshold": "When this metric/event exceeds this threshold"},
+    {"condition": "Specific detection threshold 2", "threshold": "Measurement criteria"},
+    {"condition": "Specific detection threshold 3", "threshold": "Detection criteria"},
+    {"condition": "Specific detection threshold 4", "threshold": "Escalation criteria"}
   ],
   "stakeholders": [
     {"role": "Role title", "responsibility": "RACI designation (R/A/C/I)", "name": "[Assignee]", "department": "Department"},
@@ -49249,7 +49313,7 @@ function registerPeerReviewRoute(app2) {
         submittedAt: rows.map((r) => r.createdAt),
         // Scale averages
         scales: {
-          q1: { avg: avg4("q1Scale"), dist: dist("q1Scale"), label: "Problem significance (strategic trigger gap)" },
+          q1: { avg: avg4("q1Scale"), dist: dist("q1Scale"), label: "Problem significance (strategic situation gap)" },
           q3: { avg: avg4("q3Scale"), dist: dist("q3Scale"), label: "Frequency of missed strategic windows" },
           q4: { avg: avg4("q4Scale"), dist: dist("q4Scale"), label: "Pre-staged response maturity" },
           q5: { avg: avg4("q5Scale"), dist: dist("q5Scale"), label: "Product clarity" },
@@ -49526,7 +49590,7 @@ function buildHtml(cardWidth) {
   </div>
   <div class="metric">
     <span class="metric-num">231</span>
-    <div class="metric-title">Strategic Triggers</div>
+    <div class="metric-title">Strategic Situations</div>
     <div class="metric-sub">Continuously monitored</div>
   </div>
 </div>
@@ -49570,7 +49634,7 @@ function buildHtml(cardWidth) {
         <path d="M14 4l10 10-10 10L4 14z" stroke="#C9A84C" stroke-width="1.5"/>
       </svg>
       <div class="pcard-title">No Signal Layer</div>
-      <div class="pcard-desc">Blind to strategic triggers</div>
+      <div class="pcard-desc">Blind to strategic situations</div>
     </div>
     <div class="pcard">
       <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
@@ -49610,7 +49674,7 @@ function buildHtml(cardWidth) {
     </div>
     <ul class="sol-checks">
       <li>180 Readiness Protocols pre-staged</li>
-      <li>231 strategic triggers monitored</li>
+      <li>231 strategic situations monitored</li>
       <li>12-minute execution design target</li>
       <li>Executive authority at every stage</li>
       <li>Orchestrates your Microsoft AI stack</li>
@@ -49895,7 +49959,7 @@ function buildLinkedInBannerHtml() {
       <div class="rp-copy">
         <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;\xB7&nbsp; startup to Fortune 500</div>
         <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
-        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution \u2014 180 Protocols, 231 strategic triggers, 12-minute response.</div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution \u2014 180 Protocols, 231 strategic situations, 12-minute response.</div>
       </div>
 
       <!-- Proof stats -->
@@ -49906,7 +49970,7 @@ function buildLinkedInBannerHtml() {
         </div>
         <div class="rs">
           <div class="rs-num">231</div>
-          <div class="rs-lbl">Strategic Triggers</div>
+          <div class="rs-lbl">Strategic Situations</div>
         </div>
         <div class="rs">
           <div class="rs-num">12<span>min</span></div>
@@ -50111,7 +50175,7 @@ var LINKEDIN_PRODUCTS = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "231 strategic triggers monitored in real time across 8 data sources",
+    tagline: "231 strategic situations monitored in real time across 8 data sources",
     accentColor: "#2B8A6E",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <circle cx="40" cy="40" r="6" fill="#C9A84C"/>
@@ -50216,7 +50280,7 @@ function buildProductIconHtml(product) {
       </div>`,
     2: `
       <div class="idea-chain">
-        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">231 strategic triggers mapped across 3 domains</div></div></div>
+        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">231 strategic situations mapped across 3 domains</div></div></div>
         <div class="idea-phase gold-phase"><div class="phase-letter">D</div><div class="phase-content"><div class="phase-name">DETECT</div><div class="phase-desc">248+ data points \xB7 signal scored every 15 minutes</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">E</div><div class="phase-content"><div class="phase-name">EXECUTE</div><div class="phase-desc">Pre-staged protocols activate \xB7 executive authorized</div></div></div>
         <div class="idea-phase teal-phase"><div class="phase-letter">A</div><div class="phase-content"><div class="phase-name">ADVANCE</div><div class="phase-desc">Post-activation debrief \xB7 readiness improves each cycle</div></div></div>
@@ -50246,7 +50310,7 @@ function buildProductIconHtml(product) {
         <div class="alert-row critical"><div class="sev-dot red-dot"></div><div class="alert-info"><div class="alert-name">Activist Investor Disclosure</div><div class="alert-sub">8.3% stake \xB7 Protocol #47 matched</div></div><div class="score-block"><div class="score-num">97</div><div class="score-bar"><div class="score-fill red-fill" style="width:97%"></div></div></div></div>
         <div class="alert-row high"><div class="sev-dot amber-dot"></div><div class="alert-info"><div class="alert-name">Supply Chain Disruption</div><div class="alert-sub">Tier-1 supplier \xB7 Protocol #83 matched</div></div><div class="score-block"><div class="score-num">78</div><div class="score-bar"><div class="score-fill amber-fill" style="width:78%"></div></div></div></div>
         <div class="alert-row med"><div class="sev-dot teal-dot"></div><div class="alert-info"><div class="alert-name">Regulatory Filing Deadline</div><div class="alert-sub">SEC \xB7 14 days \xB7 Protocol #129 recommended</div></div><div class="score-block"><div class="score-num">52</div><div class="score-bar"><div class="score-fill teal-fill" style="width:52%"></div></div></div></div>
-        <div class="feed-footer">231 triggers monitored \xB7 248+ data points \xB7 Continuous</div>
+        <div class="feed-footer">231 detection thresholds monitored \xB7 248+ data points \xB7 Continuous</div>
       </div>`,
     6: `
       <div class="scan-panel">
@@ -50589,7 +50653,7 @@ var LINKEDIN_PRODUCTS_COPY = [
     highlights: [
       {
         title: "Identify & Detect",
-        description: "231 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified."
+        description: "231 strategic situations mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified."
       },
       {
         title: "Execute",
@@ -50606,7 +50670,7 @@ var LINKEDIN_PRODUCTS_COPY = [
     id: 3,
     name: "12-Minute Execution",
     tagline: "30 days of mobilization. 12 minutes of execution.",
-    description: "The 12-Minute Execution capability is the core of Readiness OS. When a strategic trigger is detected, a pre-staged Readiness Protocol activates, tasks are assigned, stakeholders are notified, and the executive authorization chain begins \u2014 all within 12 minutes. The old model took 30 days just to mobilize.",
+    description: "The 12-Minute Execution capability is the core of Readiness OS. When a strategic situation is detected, a pre-staged Readiness Protocol activates, tasks are assigned, stakeholders are notified, and the executive authorization chain begins \u2014 all within 12 minutes. The old model took 30 days just to mobilize.",
     highlights: [
       {
         title: "Pre-Staged Before the Trigger Fires",
@@ -50668,11 +50732,11 @@ var LINKEDIN_PRODUCTS_COPY = [
   {
     id: 6,
     name: "Signal Detection Engine",
-    tagline: "231 strategic triggers monitored in real time \u2014 before they become crises",
-    description: "VaughnMartin's Signal Detection Engine continuously monitors 231 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes \u2014 not weeks.",
+    tagline: "231 detection thresholds monitored in real time \u2014 before they become crises",
+    description: "VaughnMartin's Signal Detection Engine continuously monitors 231 detection thresholds across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and detection alignment. When a signal qualifies, executives are notified in minutes \u2014 not weeks.",
     highlights: [
       {
-        title: "231 Trigger Patterns",
+        title: "231 Detection Thresholds",
         description: "Mapped across geopolitical, cybersecurity, market valuation, regulatory, reputational, and financial distress domains. Continuously monitored."
       },
       {
@@ -50881,7 +50945,7 @@ var SLIDES = [
     label: "THE PROBLEM",
     title: "The trigger fires in seconds. Mobilization takes 30 days.",
     bullets: [
-      "startup to Fortune 500 organizations detect strategic triggers quickly",
+      "startup to Fortune 500 organizations detect strategic situations quickly",
       "Most still spend weeks aligning ownership, authority, and sequence",
       "The delay is not execution \u2014 it is mobilization"
     ],
@@ -50896,7 +50960,7 @@ var SLIDES = [
     title: "Readiness OS: The response is ready before the trigger fires.",
     bullets: [
       "180 Readiness Protocols pre-staged",
-      "231 trigger patterns mapped",
+      "231 detection thresholds mapped",
       "248+ data points monitored every 15 minutes",
       "AI monitors. Executives authorize."
     ],
@@ -64579,6 +64643,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
+  registerSeoRoutes(app2);
   return httpServer;
 }
 
@@ -65388,7 +65453,7 @@ var MASTER_PHASES = [
         deadline: "automated on close-out completion",
         items: [
           "Distribute activation learnings across all 180 existing protocols \u2014 update signal patterns",
-          "Register new trigger pattern in the detection library",
+          "Register new detection threshold in the detection library",
           "Update authority chain precedent records for future executive reference",
           "Generate causal hypothesis: what preparation changes would have compressed response by how many minutes"
         ]
@@ -65399,7 +65464,7 @@ var MASTER_PHASES = [
         deadline: "next board meeting",
         items: [
           "Present new protocol to board for awareness",
-          "Update organizational risk registry with new trigger category",
+          "Update organizational risk registry with new detection threshold category",
           "Confirm readiness investment if recurrence is likely",
           "Annual review: Protocol #0 activation history \u2014 is the library keeping pace with emerging threats?"
         ]
@@ -65415,7 +65480,7 @@ var MASTER_PHASES = [
         "New protocol fully documented with complete IDEA Framework structure",
         "CEO has authorized new protocol for permanent library inclusion",
         "ADVANCE loop has distributed learnings across affected existing protocols",
-        "New trigger pattern registered in detection library",
+        "New detection threshold registered in detection library",
         "Board notified and organizational risk registry updated"
       ],
       escalation: "If new protocol documentation reveals systemic gaps in the existing library (5+ protocols affected), initiate a full library review before close-out."
@@ -65610,7 +65675,7 @@ function buildDomainPhases(domainName, lead, stakeholders) {
           deadline: "automated on close-out",
           items: [
             "Distribute learnings across all 180 protocols \u2014 update signal patterns",
-            "Register new trigger pattern in detection library",
+            "Register new detection threshold in detection library",
             "Generate causal hypothesis on response time compression"
           ]
         }
@@ -65624,7 +65689,7 @@ function buildDomainPhases(domainName, lead, stakeholders) {
           "New protocol fully documented",
           `${lead} has authorized library inclusion`,
           "ADVANCE loop has distributed learnings",
-          "New trigger pattern registered",
+          "New detection threshold registered",
           "Board notified"
         ],
         escalation: "If new protocol reveals systemic gaps (5+ protocols affected), initiate full domain library review."
@@ -65702,7 +65767,7 @@ async function seedProtocolZeroFamily() {
         enrichedPhases: phases,
         whyItMatters,
         signalSources: [
-          "All 180 Readiness Protocol trigger patterns (no-match confirmation)",
+          "All 180 Readiness Protocol detection thresholds (no-match confirmation)",
           "Real-time signal feed \u2014 unclassified pattern detection",
           "Executive escalation from domain monitoring systems"
         ],

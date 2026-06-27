@@ -247,7 +247,7 @@ export default function CostOfInaction() {
             The Mobilization Tax doesn't get reduced.<br />It gets eliminated.
           </p>
           <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.7, maxWidth: 600, margin: '0 auto 24px' }}>
-            Every startup to Fortune 500 enterprise faces strategic triggers. The question is not whether — it's whether the response was staged before the trigger fired. Quantify what the delay costs your organization.
+            Every startup to Fortune 500 enterprise faces strategic situations. The question is not whether — it's whether the response was staged before the trigger fired. Quantify what the delay costs your organization.
           </p>
           <div style={{ display: 'inline-block', padding: '8px 18px', background: 'rgba(201,168,76,0.1)', border: `1px solid rgba(201,168,76,0.3)`, borderRadius: '0.15rem', fontSize: 13, color: '#92400E', fontStyle: 'italic' }}>
             Conservative estimates · Public benchmarks · Transparent assumptions

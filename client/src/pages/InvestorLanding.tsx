@@ -95,7 +95,7 @@ export default function InvestorLanding() {
                 { n: "3,600×", label: "Execution Head Start", sub: "30 days compressed to 12 minutes" },
                 { n: "$5B+", label: "Addressable Market", sub: "Coordination infrastructure category" },
                 { n: "180", label: "Readiness Protocols", sub: "Staged before any trigger fires" },
-                { n: "231", label: "Trigger Conditions Monitored", sub: "Continuous — 15-minute detection cycle" },
+                { n: "231", label: "Detection Thresholds Monitored", sub: "Continuous — 15-minute detection cycle" },
               ].map((s, i) => (
                 <div key={s.n} style={{ padding: "20px 0", borderBottom: i < 3 ? "1px solid rgba(201,168,76,0.12)" : "none", display: "flex", alignItems: "center", gap: 20 }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px,3.5vw,40px)", fontWeight: 700, color: i === 0 ? GOLD : i === 2 ? TEAL : "#fff", minWidth: 90, flexShrink: 0 }}>{s.n}</div>
@@ -296,7 +296,7 @@ export default function InvestorLanding() {
               {
                 co: "Microsoft",
                 role: "Infrastructure layer",
-                body: "Microsoft builds and sells the AI, compute, and collaboration stack. Readiness OS orchestrates it. Their business model requires customers to buy Microsoft infrastructure — they have no incentive to tell enterprises the infrastructure is insufficient without an operating model above it. Copilot Studio automates tasks; it has no concept of a strategic trigger, a pre-staged response, or executive authorization gates.",
+                body: "Microsoft builds and sells the AI, compute, and collaboration stack. Readiness OS orchestrates it. Their business model requires customers to buy Microsoft infrastructure — they have no incentive to tell enterprises the infrastructure is insufficient without an operating model above it. Copilot Studio automates tasks; it has no concept of a strategic situation, a pre-staged response, or executive authorization gates.",
                 verdict: "Microsoft is the platform. We are the operating model. They benefit from our existence.",
                 vc: TEAL,
               },
@@ -591,7 +591,7 @@ export default function InvestorLanding() {
             <div>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 8 }}>Two seats. One conversation.</div>
               <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)", maxWidth: 480, lineHeight: 1.65 }}>
-                If your organization faces the kind of strategic triggers Readiness OS was built for — and you want to be the organization that proves the category — this is the conversation to have.
+                If your organization faces the kind of strategic situations Readiness OS was built for — and you want to be the organization that proves the category — this is the conversation to have.
               </div>
             </div>
             <a href="/contact" style={{ flexShrink: 0, display: "inline-block", fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", padding: "18px 44px", background: GOLD, color: NAVY, textDecoration: "none", whiteSpace: "nowrap" }}>

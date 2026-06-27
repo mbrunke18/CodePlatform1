@@ -453,7 +453,7 @@ export default function FounderStory() {
               The offseason already exists. It is called annual planning. Budget cycles. Three-to-five year roadmaps. Dedicated executive time carved out specifically to prepare for what is coming. The calendar exists. The attention exists. The budget conversations happen.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.8, color: "#374151", marginBottom: 16 }}>
-              What they do with that time is define initiatives, allocate resources, and set targets. What they do not do is pre-stage the organizational response to the strategic triggers that will fire during the year regardless of the plan. The activist investor. The regulatory inquiry. The ransomware attack. The supply chain failure. Those situations do not appear in the annual planning cycle because nobody planned for them. But they arrive anyway.
+              What they do with that time is define initiatives, allocate resources, and set targets. What they do not do is pre-stage the organizational response to the strategic situations that will fire during the year regardless of the plan. The activist investor. The regulatory inquiry. The ransomware attack. The supply chain failure. Those situations do not appear in the annual planning cycle because nobody planned for them. But they arrive anyway.
             </p>
             <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 20, marginTop: 8 }}>
               <p style={{ fontSize: 15, fontWeight: 700, color: NAVY, margin: "0 0 6px" }}>The question that ends every "we don't have capacity" objection:</p>

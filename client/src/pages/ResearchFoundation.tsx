@@ -209,7 +209,7 @@ export default function ResearchFoundation() {
               Join the Founding Partner Program
             </h2>
             <p className="text-base mb-6 mx-auto" style={{ color: IVORY, opacity: 0.75, maxWidth: "520px" }}>
-              A 90-day validation partnership that turns your strategic triggers into pre-staged Readiness Protocols — and adds your organization's learnings to the compounding intelligence architecture.
+              A 90-day validation partnership that turns your strategic situations into pre-staged Readiness Protocols — and adds your organization's learnings to the compounding intelligence architecture.
             </p>
             <Link href="/request-access">
               <a className="inline-flex items-center gap-2 px-8 py-3 font-mono font-bold tracking-wider text-sm"

@@ -184,7 +184,7 @@ export default function Contact() {
                 <div className="mb-10">
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>Tell Us What You're Dealing With</h2>
                   <p className="text-slate-500">
-                    The more specific you are about your strategic triggers and execution challenges, the more useful our response will be.
+                    The more specific you are about your strategic situations and execution challenges, the more useful our response will be.
                   </p>
                 </div>
 

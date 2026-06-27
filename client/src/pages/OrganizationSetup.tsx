@@ -1209,7 +1209,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Trigger Type</Label>
+                  <Label>Situation Type</Label>
                   <Select
                     value={newEscalation.triggerType || 'time_elapsed'}
                     onValueChange={(value) => setNewEscalation({ ...newEscalation, triggerType: value })}

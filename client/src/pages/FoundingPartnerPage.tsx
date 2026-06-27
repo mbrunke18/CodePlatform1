@@ -181,7 +181,7 @@ export default function FoundingPartnerPage() {
           {/* Positioning statement */}
           <div style={{ maxWidth: 680, margin: '0 auto 40px', textAlign: 'center' }}>
             <p style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, lineHeight: 1.55, marginBottom: 16, fontStyle: 'italic' }}>
-              Most organizations pay $75K–$300K for a consulting engagement that produces organizational clarity about how to respond to strategic triggers.
+              Most organizations pay $75K–$300K for a consulting engagement that produces organizational clarity about how to respond to strategic situations.
             </p>
             <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75 }}>
               The clarity lives in a document. The document does not activate when the next trigger fires.

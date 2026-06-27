@@ -109,7 +109,7 @@ export default function MobilizationBrief() {
                 Mobilization Intelligence<br />Architecture
               </h1>
               <p style={{ ...BW, fontSize: 14, color: "rgba(255,255,255,0.6)", margin: 0, lineHeight: 1.6, maxWidth: 460 }}>
-                The algorithmic specification for how Readiness OS detects strategic triggers, scores risk, matches Readiness Protocols, and executes a coordinated response in 12 minutes.
+                The algorithmic specification for how Readiness OS detects strategic situations, scores risk, matches Readiness Protocols, and executes a coordinated response in 12 minutes.
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>
@@ -467,7 +467,7 @@ export default function MobilizationBrief() {
               </p>
               <p style={{ ...BW, fontSize: 13, color: "rgba(255,255,255,0.55)", margin: 0, lineHeight: 1.65 }}>
                 Speed is the evidence. Readiness is the promise. Fearlessness is the outcome.
-                Every enterprise that prepares for every situation it expects to encounter is no longer afraid of strategic triggers — it is fearless.
+                Every enterprise that prepares for every situation it expects to encounter is no longer afraid of strategic situations — it is fearless.
               </p>
             </div>
           </div>

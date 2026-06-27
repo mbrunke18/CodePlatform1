@@ -150,7 +150,7 @@ export default function IntelligenceLayerHub() {
           </p>
           <div style={{ display: "flex", gap: 0, flexWrap: "wrap", marginBottom: 40 }}>
             {[
-              { n: "231", label: "Trigger Conditions" },
+              { n: "231", label: "Detection Thresholds" },
               { n: "248+", label: "Data Points" },
               { n: "15 min", label: "Detection Cycle" },
               { n: "9", label: "Strategic Domains" },

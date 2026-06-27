@@ -355,7 +355,7 @@ export default function UserGuide() {
           <BulletList items={[
             "Preparation — Every situation the organization will face has a pre-staged protocol waiting.",
             "Readiness — The IDEA Framework ensures continuous monitoring, staged protocols, and pre-authorized resources.",
-            "Fearless — An organization that has prepared for every situation it will encounter is no longer afraid of strategic triggers.",
+            "Fearless — An organization that has prepared for every situation it will encounter is no longer afraid of strategic situations.",
           ]} />
 
           <H2>Microsoft Ecosystem Positioning</H2>
@@ -414,7 +414,7 @@ export default function UserGuide() {
             headers={["Phase", "What Happens", "Platform Features"]}
             rows={[
               ["I — Identify", "Define the organization's readiness posture. Map stakeholders, configure protocols, assign ownership, establish pre-approved budgets and communication channels.", "Organization Setup, Protocol Library, Protocol Builder, Getting Started Hub"],
-              ["D — Detect", "Continuous, automated monitoring of 231 strategic triggers across 8 signal sources. Pattern detection surfaces emerging situations before they escalate.", "Signal Detection, Intelligence Hub, Foresight Radar, Command Tower, Live Signal Feed"],
+              ["D — Detect", "Continuous, automated monitoring of 231 strategic situations across 8 signal sources. Pattern detection surfaces emerging situations before they escalate.", "Signal Detection, Intelligence Hub, Foresight Radar, Command Tower, Live Signal Feed"],
               ["E — Execute", "When a trigger fires, the pre-staged protocol activates in 12 minutes. Tasks deploy to pre-assigned owners. Executive authorization gate preserved.", "Protocol Activation, War Room, Live Activation Center, Stakeholder Notifications"],
               ["A — Advance", "Every activation generates institutional learning. Protocol version deltas, causal hypotheses, and the Learning Velocity Index compound organizational readiness over time.", "ADVANCE 2.0, Protocol Version History, Update Hypotheses, LVI Dashboard"],
             ]}
@@ -474,7 +474,7 @@ export default function UserGuide() {
             A <strong>Trigger</strong> is a specific, detectable event or signal pattern that indicates a Readiness Protocol should be staged or activated. Readiness OS monitors <strong>231 active triggers</strong> across 9 strategic domains.
           </P>
           <Table
-            headers={["Trigger Category", "Examples"]}
+            headers={["Detection Threshold Category", "Examples"]}
             rows={[
               ["Competitive Intelligence", "Competitor product launch, market share shift, executive departure"],
               ["Regulatory & Legal", "DOJ subpoena, FDA warning letter, SEC investigation, class action filing"],
@@ -590,7 +590,7 @@ export default function UserGuide() {
           </P>
           <BulletList items={[
             "Signal source and ingestion timestamp",
-            "Matched trigger category and confidence classification",
+            "Matched detection threshold category and confidence classification",
             "Associated Readiness Protocols (pre-staged and ready)",
             "Escalation recommendation (Monitor / Stage / Activate)",
           ]} />

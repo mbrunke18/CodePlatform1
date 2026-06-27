@@ -135,7 +135,7 @@ function MemoDocument({ form }: { form: FormState }) {
           03 — WHY NOW
         </div>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8 }}>
-          We do not face a shortage of strategic triggers — we face a shortage of pre-staged responses. The {scenario.label.toLowerCase()} scenario is not hypothetical; it is a documented risk category for organizations at our scale. {scenario.urgency}.
+          We do not face a shortage of strategic situations — we face a shortage of pre-staged responses. The {scenario.label.toLowerCase()} scenario is not hypothetical; it is a documented risk category for organizations at our scale. {scenario.urgency}.
         </p>
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8, marginTop: 10 }}>
           Every day we operate without pre-staged Readiness Protocols is a day we are betting that no trigger fires before we are ready. That is not a risk posture — it is an absence of one. The opportunity to prepare is now, before a trigger fires under pressure.
@@ -278,7 +278,7 @@ export default function BoardMemo() {
                 <input style={inputStyle} placeholder="Chief Risk Officer" value={form.championTitle} onChange={e => upd('championTitle', e.target.value)} />
               </div>
               <div>
-                <label style={labelStyle}>Primary Trigger Scenario</label>
+                <label style={labelStyle}>Primary Situation</label>
                 <select style={inputStyle} value={form.scenarioId} onChange={e => upd('scenarioId', e.target.value)}>
                   {SCENARIOS.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
                 </select>

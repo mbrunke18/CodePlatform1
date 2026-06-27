@@ -186,7 +186,7 @@ export default function CostOfDelay() {
                 onChange={set("execHourlyRate")}
               />
               <Slider
-                label="Significant strategic triggers per year"
+                label="Significant strategic situations per year"
                 value={inputs.triggersPerYear}
                 min={2} max={24} step={1}
                 format={v => `${v} per year`}
@@ -202,7 +202,7 @@ export default function CostOfDelay() {
 
               <div style={{ marginTop: 8, padding: "12px 16px", background: OFF, borderLeft: `3px solid ${TEAL}` }}>
                 <div style={{ fontSize: 11, color: MUTED, lineHeight: 1.5 }}>
-                  <strong style={{ color: NAVY }}>What counts as mobilization time?</strong> The days between when a strategic trigger is first detected and when your organization has a coordinated, authorized response in motion — including stakeholder alignment, brief preparation, and executive authorization.
+                  <strong style={{ color: NAVY }}>What counts as mobilization time?</strong> The days between when a strategic situation is first detected and when your organization has a coordinated, authorized response in motion — including stakeholder alignment, brief preparation, and executive authorization.
                 </div>
               </div>
             </div>

@@ -1129,12 +1129,12 @@ export default function IncidentAnalyzer() {
               </CardContent>
             </Card>
 
-            {/* Trigger Conditions */}
+            {/* Detection Thresholds */}
             {editablePlaybook?.triggerConditions?.length > 0 && (
               <Card className="bg-white border-[#E8E4DC]">
                 <CardHeader>
                   <CardTitle className="text-[#0A0F2E] text-lg flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-[#C9A84C]" /> Trigger Conditions
+                    <Zap className="w-5 h-5 text-[#C9A84C]" /> Detection Thresholds
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

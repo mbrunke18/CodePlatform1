@@ -131,7 +131,7 @@ export default function PlatformOverview() {
                   <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Readiness Infrastructure</em>
                 </h1>
                 <p className="text-lg max-w-xl leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                  Every component needed to move from strategic trigger to coordinated organizational response — in under 12 minutes.
+                  Every component needed to move from strategic situation to coordinated organizational response — in under 12 minutes.
                 </p>
               </div>
               <div className="flex flex-col gap-2 shrink-0">

@@ -71,7 +71,7 @@ export function Outro({ progress }: SceneProps) {
           transition={{ delay: 0.8 }}
           className="text-lg text-gray-700 mb-4"
         >
-          From strategic trigger to coordinated execution in 12 minutes.
+          From strategic situation to coordinated execution in 12 minutes.
         </motion.p>
 
         <motion.div

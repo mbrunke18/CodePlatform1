@@ -133,7 +133,7 @@ export function SignalDemo({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Real-Time Signal Detection"
-        description="AI continuously scans 50+ data sources to detect strategic triggers before your competitors even notice them."
+        description="AI continuously scans 50+ data sources to detect strategic situations before your competitors even notice them."
         delay={0.5}
       />
     </div>

@@ -617,7 +617,7 @@ export default function MissionControl() {
             <div style={{ padding: '20px 28px', borderRight: '1px solid rgba(201,168,76,0.12)' }}>
               <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>What you control</div>
               <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', marginBottom: 12, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
-                Four decisions at every strategic trigger — nothing more, nothing less.
+                Four decisions at every strategic situation — nothing more, nothing less.
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 7 }}>
                 {[

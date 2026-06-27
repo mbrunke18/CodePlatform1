@@ -135,7 +135,7 @@ function PhaseTrigger({ sc, onNext }: { sc: DemoScenario; onNext: () => void }) 
         {sc.triggerTime.split(" ")[0]}
       </div>
       <div style={{ ...CG, fontSize: 34, fontStyle: "italic", color: GOLD, lineHeight: 1.2, marginBottom: 28 }}>
-        A strategic trigger just fired.
+        A strategic situation just fired.
       </div>
 
       {/* Trigger alert */}
@@ -743,7 +743,7 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
       <div style={{ background: GBG, border: `1px solid ${GOLD}50`, padding: "36px 32px" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 14 }}>Founding Partner Program — Now Forming</div>
         <h2 style={{ ...CG, fontSize: 34, fontWeight: 600, color: W, lineHeight: 1.2, marginBottom: 10 }}>
-          Every organization prepared for every situation it'll face<br/>is no longer afraid of strategic triggers.<br/><em style={{ color: GOLD }}>It's fearless.</em>
+          Every organization prepared for every situation it'll face<br/>is no longer afraid of strategic situations.<br/><em style={{ color: GOLD }}>It's fearless.</em>
         </h2>
         <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 540, marginBottom: 24 }}>
           The Founding Partner Program is a 90-day validation partnership with large enterprises. The first cohort is forming now. The only difference between this simulation and a live deployment: the protocols carry your organization's name, your stakeholders, and your pre-approved advisors.

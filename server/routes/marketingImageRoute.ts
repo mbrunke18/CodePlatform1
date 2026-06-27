@@ -167,7 +167,7 @@ function buildHtml(cardWidth: number): string {
   </div>
   <div class="metric">
     <span class="metric-num">231</span>
-    <div class="metric-title">Strategic Triggers</div>
+    <div class="metric-title">Strategic Situations</div>
     <div class="metric-sub">Continuously monitored</div>
   </div>
 </div>
@@ -211,7 +211,7 @@ function buildHtml(cardWidth: number): string {
         <path d="M14 4l10 10-10 10L4 14z" stroke="#C9A84C" stroke-width="1.5"/>
       </svg>
       <div class="pcard-title">No Signal Layer</div>
-      <div class="pcard-desc">Blind to strategic triggers</div>
+      <div class="pcard-desc">Blind to strategic situations</div>
     </div>
     <div class="pcard">
       <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
@@ -251,7 +251,7 @@ function buildHtml(cardWidth: number): string {
     </div>
     <ul class="sol-checks">
       <li>180 Readiness Protocols pre-staged</li>
-      <li>231 strategic triggers monitored</li>
+      <li>231 strategic situations monitored</li>
       <li>12-minute execution design target</li>
       <li>Executive authority at every stage</li>
       <li>Orchestrates your Microsoft AI stack</li>
@@ -545,7 +545,7 @@ function buildLinkedInBannerHtml(): string {
       <div class="rp-copy">
         <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; startup to Fortune 500</div>
         <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
-        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 180 Protocols, 231 strategic triggers, 12-minute response.</div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 180 Protocols, 231 strategic situations, 12-minute response.</div>
       </div>
 
       <!-- Proof stats -->
@@ -556,7 +556,7 @@ function buildLinkedInBannerHtml(): string {
         </div>
         <div class="rs">
           <div class="rs-num">231</div>
-          <div class="rs-lbl">Strategic Triggers</div>
+          <div class="rs-lbl">Strategic Situations</div>
         </div>
         <div class="rs">
           <div class="rs-num">12<span>min</span></div>

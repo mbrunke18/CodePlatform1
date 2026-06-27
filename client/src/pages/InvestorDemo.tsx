@@ -117,7 +117,7 @@ const IDEA_STORY = [
     id: 4,
     beat: "PREDICT",
     title: "Predictive Intelligence. Before It Happens.",
-    subtitle: "Anaplan PlanIQ-style forecasting for strategic triggers",
+    subtitle: "Anaplan PlanIQ-style forecasting for strategic situations",
     phase: "PREDICT",
     phaseColor: "bg-[#C9A84C]",
     icon: LineChart,

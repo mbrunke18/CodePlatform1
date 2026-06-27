@@ -406,7 +406,7 @@ export default function BrandKit() {
                   { label: "Primary Tagline",    text: "The response is ready before the trigger fires.",                                        note: "Never change. Never paraphrase."            },
                   { label: "Primary Promise",    text: "We Make Enterprises Fearless.",                                                          note: "The emotional endpoint of the brand."       },
                   { label: "Secondary Tagline",  text: "Built on the Belief That Preparation Wins.",                                            note: "For investor and board contexts."           },
-                  { label: "Category Definition",text: "Readiness Infrastructure for Strategic Trigger Response.",                              note: "How we define the market we created."       },
+                  { label: "Category Definition",text: "Readiness Infrastructure for Strategic Situation Response.",                              note: "How we define the market we created."       },
                   { label: "Canonical Metric",   text: "3,600× Execution Head Start. 30 days compressed to 12 minutes.",                       note: "Always both parts together."                },
                   { label: "Platform Descriptor",text: "VaughnMartin builds Readiness OS — coordination infrastructure for enterprise organizations.", note: "First sentence in any product description." },
                 ].map((v, i) => (

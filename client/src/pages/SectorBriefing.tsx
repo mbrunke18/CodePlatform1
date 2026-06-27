@@ -228,7 +228,7 @@ export default function SectorBriefing() {
       <section style={{ background: OFF, padding: "56px 48px" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 380px", gap: 32, alignItems: "start" }}>
 
-          {/* Left: Active Trigger Patterns */}
+          {/* Left: Active Detection Thresholds */}
           <div>
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, ...BC, marginBottom: 8 }}>

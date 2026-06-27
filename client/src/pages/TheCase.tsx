@@ -85,7 +85,7 @@ function EmbeddedROI() {
         </div>
         {/* Events */}
         <div>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Strategic Triggers / Year</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Strategic Situations / Year</div>
           <input type="range" min={1} max={12} step={1} value={events} onChange={e => setEvents(+e.target.value)}
             style={{ width: "100%", accentColor: GOLD }} />
           <div style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginTop: 6 }}>{events} event{events !== 1 ? "s" : ""}</div>
@@ -497,7 +497,7 @@ export default function TheCase() {
             <span style={{ color: GOLD }}>before the trigger fires.</span>
           </h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.85, marginBottom: 40, maxWidth: 600, margin: "0 auto 40px" }}>
-            Every organization that prepares for every situation it will face is no longer afraid of strategic triggers. It's fearless. That's not a product feature. It's the outcome of 30 days of preparation and continuous improvement compounding over time.
+            Every organization that prepares for every situation it will face is no longer afraid of strategic situations. It's fearless. That's not a product feature. It's the outcome of 30 days of preparation and continuous improvement compounding over time.
           </p>
 
           {/* Three paths */}

@@ -366,7 +366,7 @@ export default function HowItExecutes() {
 
           {/* Left: Execution Chain */}
           <div>
-            {/* Trigger Event Banner */}
+            {/* Situation Banner */}
             <div style={{ marginBottom: 32, padding: "20px 24px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, borderLeft: `3px solid ${GOLD}` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                 <div style={{ width: 6, height: 6, background: GOLD, borderRadius: "50%", animation: "pulse 1.5s infinite" }} />

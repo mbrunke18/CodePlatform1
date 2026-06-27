@@ -2325,12 +2325,12 @@ function PlatformArchitectureSection() {
               <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: NAVY, opacity: 0.55, marginBottom: 6 }}>Tier 1</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Readiness OS Core</h3>
               <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
-                180 pre-staged Readiness Protocols, continuous signal monitoring across 231 strategic triggers, and the 12-minute execution engine. Available on day one — for every organization in every industry.
+                180 pre-staged Readiness Protocols, continuous signal monitoring across 231 strategic situations, and the 12-minute execution engine. Available on day one — for every organization in every industry.
               </p>
               <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
                 {[
                   "180 Readiness Protocols — ready before any trigger fires",
-                  "231 strategic triggers continuously monitored",
+                  "231 strategic situations continuously monitored",
                   "12-minute trigger-to-coordination execution",
                   "Executive authority preserved at every step",
                 ].map((item, i) => (
@@ -3252,7 +3252,7 @@ const RESEARCH_FIRMS = [
   { firm: "BCG Henderson Institute", finding: "Companies that can activate strategic responses within hours vs. days sustain 3× the competitive advantage over a 5-year horizon." },
   { firm: "Deloitte Insights", finding: "72% of C-suite leaders cite organizational responsiveness — not strategy quality — as their primary execution gap." },
   { firm: "Accenture Research", finding: "The difference between market leaders and laggards is execution velocity. Leaders respond to competitive triggers 8× faster." },
-  { firm: "Gartner", finding: "By 2026, 75% of organizations that can't respond to strategic triggers within 4 hours will lose measurable market share." },
+  { firm: "Gartner", finding: "By 2026, 75% of organizations that can't respond to strategic situations within 4 hours will lose measurable market share." },
   { firm: "Google Cloud / Alphabet", finding: "Enterprise AI adoption stalls not at the model layer but at the coordination layer — the infrastructure to act on AI insight is absent." },
   { firm: "Harvard Business Review", finding: "AI doesn't reduce work — it intensifies it. In a 200-person enterprise study, AI expanded task scope 47%, blurred role boundaries, and increased multitasking 32%. The gap is not the model. It is the operating model that governs it." },
 ];

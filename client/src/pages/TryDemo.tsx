@@ -594,7 +594,7 @@ export default function TryDemo() {
   useEffect(() => {
     updatePageMetadata({
       title: "Experience 12-Minute Execution | Readiness OS — Interactive Demo",
-      description: "See how Readiness OS deploys your organization around a strategic trigger in 12 minutes. Live simulation across 4 crisis scenarios — no login required.",
+      description: "See how Readiness OS deploys your organization around a strategic situation in 12 minutes. Live simulation across 4 crisis scenarios — no login required.",
       ogTitle: "Try the 12-Minute Execution Demo — Readiness OS",
       ogDescription: "Pick a crisis scenario. Signal detected → protocol staged → stakeholders notified → executive authorizes. All in 12 minutes. No login required.",
     });

@@ -96,7 +96,7 @@ export default function MobilizationTax() {
   };
 
   const handleShare = async () => {
-    const text = `Our organization loses ${fmt$(annualTax)}/year to strategic trigger mobilization delays — the time spent aligning before execution can even begin. That's the Mobilization Tax. @VaughnMartin Readiness OS compresses 30 days to 12 minutes. vaughnmartin.com/mobilization-tax`;
+    const text = `Our organization loses ${fmt$(annualTax)}/year to strategic situation mobilization delays — the time spent aligning before execution can even begin. That's the Mobilization Tax. @VaughnMartin Readiness OS compresses 30 days to 12 minutes. vaughnmartin.com/mobilization-tax`;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -383,7 +383,7 @@ export default function MobilizationTax() {
               <div style={{ borderTop: '1px solid #E2DDD4', paddingTop: 16 }}>
                 <div style={{ fontSize: 12, color: '#9CA3AF', lineHeight: 1.75 }}>
                   <strong style={{ color: '#6B7280' }}>What this model includes:</strong> Senior leadership time cost (salary + benefits + overhead) during the mobilization window, and direct revenue impact from operational disruption during that period.<br />
-                  <strong style={{ color: '#6B7280' }}>What this model excludes:</strong> External consultant/legal fees, regulatory fines, long-term brand damage, employee productivity loss below VP level, and post-mobilization recovery costs. The total enterprise cost of a strategic trigger is typically 3–5× the number shown here.<br />
+                  <strong style={{ color: '#6B7280' }}>What this model excludes:</strong> External consultant/legal fees, regulatory fines, long-term brand damage, employee productivity loss below VP level, and post-mobilization recovery costs. The total enterprise cost of a strategic situation is typically 3–5× the number shown here.<br />
                   <strong style={{ color: '#6B7280' }}>Important:</strong> These are illustrative estimates based on published industry benchmarks. Individual results depend on organizational structure, event severity, and existing response capabilities. This calculator is intended to frame the order of magnitude — not produce audited financial projections.
                 </div>
               </div>

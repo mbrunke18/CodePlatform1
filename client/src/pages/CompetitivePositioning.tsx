@@ -74,7 +74,7 @@ const differentiators = [
     stat: "9",
     unit: "Domains",
     label: "Signal Intelligence",
-    description: "AI monitors 500+ data points across competitive, market, operational, and macro signals — firing the right Readiness Protocol the moment a strategic trigger is detected.",
+    description: "AI monitors 500+ data points across competitive, market, operational, and macro signals — firing the right Readiness Protocol the moment a strategic situation is detected.",
     color: NAVY,
   },
   {

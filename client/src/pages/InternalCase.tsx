@@ -179,7 +179,7 @@ export default function InternalCase() {
                 "In our last planning cycle, how much time did we allocate specifically to preparing for situations that weren't on the roadmap — the ones that arrived anyway?"
               </p>
               <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
-                This question is the framing. Every executive who has lived through a strategic trigger that arrived off-roadmap knows the answer. Zero. And they know the cost of that zero — the mobilization delay, the coordination overhead, the decisions made under pressure that would have been made better with more time.
+                This question is the framing. Every executive who has lived through a strategic situation that arrived off-roadmap knows the answer. Zero. And they know the cost of that zero — the mobilization delay, the coordination overhead, the decisions made under pressure that would have been made better with more time.
               </p>
               <p style={{ fontSize: 14, fontWeight: 700, color: NAVY }}>
                 Readiness OS is how you ensure that answer changes — without asking for new budget to change it.

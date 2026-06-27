@@ -187,7 +187,7 @@ export default function FoundingPartnerDemo() {
         id: "3", 
         timestamp: new Date(), 
         type: "match", 
-        title: "Trigger Condition Matched", 
+        title: "Detection Threshold Matched", 
         description: `Pattern matched to "${triggerData?.name}" with 94% confidence`,
         valueCallout: "Pre-defined triggers eliminate decision paralysis",
         traditionalTime: "2-4 hours for leadership alignment",
@@ -402,7 +402,7 @@ export default function FoundingPartnerDemo() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                       <Radio className="w-5 h-5 text-[#C9A84C]" />
-                      Step 2: Choose a Trigger Scenario
+                      Step 2: Choose a Situation
                     </CardTitle>
                     <CardDescription>
                       What business event should activate your Readiness Protocol?
@@ -539,7 +539,7 @@ export default function FoundingPartnerDemo() {
                           {triggerData && <triggerData.icon className={`w-5 h-5 ${triggerData.color}`} />}
                         </div>
                         <div>
-                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Trigger Scenario</p>
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Situation</p>
                           <p className="font-medium text-[#0A0F2E] dark:text-white">{triggerData?.name}</p>
                           <p className="text-sm text-[#6B7280] mt-1">"{triggerData?.sampleSignal}"</p>
                         </div>

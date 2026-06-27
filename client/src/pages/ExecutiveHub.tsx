@@ -333,7 +333,7 @@ export default function ExecutiveHub() {
                     "Readiness OS delivered a <span style={{ color: GOLD }}>78% target-met rate</span> across{' '}
                     <span style={{ color: GOLD }}>47 activations</span> this period, with an average response time of{' '}
                     <span style={{ color: GOLD }}>11.4 minutes</span> — a <span style={{ color: GOLD }}>3,600× Execution Head Start</span>{' '}
-                    over the industry baseline. No strategic trigger went unaddressed."
+                    over the industry baseline. No strategic situation went unaddressed."
                   </p>
                   <div className="flex items-center gap-6 mt-6 pt-6 border-t border-white/10">
                     {[

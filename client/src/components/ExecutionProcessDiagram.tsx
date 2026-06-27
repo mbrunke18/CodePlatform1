@@ -14,7 +14,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     viewBox="0 0 1600 1440"
     xmlns="http://www.w3.org/2000/svg"
     className={`w-full ${className}`}
-    aria-label="Readiness OS: From Strategic Trigger to Live Execution in 12 Minutes"
+    aria-label="Readiness OS: From Strategic Situation to Live Execution in 12 Minutes"
   >
     <defs>
       <linearGradient id="epNavy" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -45,7 +45,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <line x1="0" y1="112" x2="1600" y2="112" stroke={BORDER} strokeWidth="1.5" />
     <text x="800" y="50" textAnchor="middle" fontSize="34" fontWeight="700" fill={NAVY}
       fontFamily="'Cormorant Garamond', Georgia, serif">
-      From Strategic Trigger to Live Execution — in 12 Minutes
+      From Strategic Situation to Live Execution — in 12 Minutes
     </text>
     <text x="800" y="82" textAnchor="middle" fontSize="14" fill={TEAL}
       fontFamily="'Barlow', Arial, sans-serif">

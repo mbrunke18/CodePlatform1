@@ -719,7 +719,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             teams: ['Operations Center', 'Executive Leadership', 'Quality Assurance', 'Supply Chain Management'],
           },
           strategic: {
-            alerts: [{ name: `${scenarioLabel} - Strategic Trigger`, severity: 'high' }, { name: 'Integration Readiness Alert', severity: 'medium' }],
+            alerts: [{ name: `${scenarioLabel} - Strategic Situation`, severity: 'high' }, { name: 'Integration Readiness Alert', severity: 'medium' }],
             playbooks: [{ name: 'M&A Integration Readiness Protocol', time: 14, coverage: 70 }, { name: 'Cultural Alignment Framework', time: 10, coverage: 68 }, { name: 'Systems Consolidation Sprint', time: 12, coverage: 74 }],
             teams: ['M&A Integration Office', 'Executive Leadership', 'HR & Culture', 'IT Infrastructure'],
           },

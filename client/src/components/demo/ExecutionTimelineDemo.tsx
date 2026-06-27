@@ -81,7 +81,7 @@ export default function ExecutionTimelineDemo({
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm text-gray-800 dark:text-gray-200 flex items-center gap-2">
                   <Zap className="h-4 w-4" />
-                  Trigger Condition
+                  Detection Threshold
                 </CardTitle>
               </CardHeader>
               <CardContent>

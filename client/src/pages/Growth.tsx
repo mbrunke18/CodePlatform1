@@ -522,7 +522,7 @@ export default function Growth() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: NAVY }}>Enterprise</span>
               </div>
               <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>
-                At startup to Fortune 500 scale, a single mishandled strategic trigger can cost $10M–$100M in lost value, market position, or regulatory exposure. The platform pays for itself within the first coordinated response.
+                At startup to Fortune 500 scale, a single mishandled strategic situation can cost $10M–$100M in lost value, market position, or regulatory exposure. The platform pays for itself within the first coordinated response.
               </p>
             </div>
           </div>

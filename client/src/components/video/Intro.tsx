@@ -86,7 +86,7 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="text-lg md:text-xl text-[#D4AF37] max-w-xl mx-auto mt-4"
         >
-          Trigger-to-Execution Orchestration: from strategic trigger to coordinated execution in 12 minutes.
+          Trigger-to-Execution Orchestration: from strategic situation to coordinated execution in 12 minutes.
         </motion.p>
 
         <motion.div

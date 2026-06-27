@@ -985,7 +985,7 @@ export default function PreparationDiagnostic() {
               {step < 3 && (
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
                   {step === 0 && "The system matches your organization's profile against 180 Readiness Protocols and returns a prioritized architecture for your Preparation Architect to configure."}
-                  {step === 1 && "Select every trigger category relevant to your organization. Add custom triggers unique to your situation."}
+                  {step === 1 && "Select every detection threshold category relevant to your organization. Add custom triggers unique to your situation."}
                   {step === 2 && "Identify where preparation is most urgent. The architecture will front-load these in your setup path."}
                 </p>
               )}
@@ -1307,7 +1307,7 @@ export default function PreparationDiagnostic() {
                                 <textarea value={custom.customDescription ?? (p.description ?? "")} onChange={e => updateCustomization(pid, "customDescription", e.target.value)} placeholder={p.description || "Describe what this protocol covers for your organization..."} rows={2} style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", resize: "vertical", borderRadius: "0.15rem", boxSizing: "border-box" }} />
                               </div>
                               <div>
-                                <FieldLabel>Custom Trigger Condition</FieldLabel>
+                                <FieldLabel>Custom Detection Threshold</FieldLabel>
                                 <input type="text" value={custom.customTrigger ?? ""} onChange={e => updateCustomization(pid, "customTrigger", e.target.value)} placeholder="e.g. Ransomware detection on ERP system — SIEM alert Level 3+" style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, fontSize: 12, color: NAVY, outline: "none", borderRadius: "0.15rem", boxSizing: "border-box" }} />
                                 <div style={{ fontSize: 11, color: MUTED, marginTop: 4 }}>The specific signal or condition that fires this protocol in your organization.</div>
                               </div>

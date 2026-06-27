@@ -291,7 +291,7 @@ export default function ExecutiveBrief() {
                   No organization should be caught flat-footed by a trigger it could have prepared for.
                 </p>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.85, marginBottom: 14 }}>
-                  Boards now hold management accountable for <em>anticipating</em> strategic triggers — not just responding to them. The standard is no longer crisis management. It is operating model resilience.
+                  Boards now hold management accountable for <em>anticipating</em> strategic situations — not just responding to them. The standard is no longer crisis management. It is operating model resilience.
                 </p>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.85, marginBottom: 14 }}>
                   Geopolitical triggers — export control changes, CFIUS reviews, data localization mandates, forced operating model restructuring — are slow-burn, high-consequence events that arrive regardless of the strategic plan. Most enterprise signal architectures miss them entirely.
@@ -710,7 +710,7 @@ export default function ExecutiveBrief() {
                 <div style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "28px", background: "rgba(255,255,255,0.04)" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Ideal Founding Partner Candidates</div>
                   {[
-                    "Startup through enterprise — any organization facing strategic triggers",
+                    "Startup through enterprise — any organization facing strategic situations",
                     "C-level or SVP executive sponsor with budget authority",
                     "Active Jira, Asana, or Monday.com deployment",
                     "Strategic events requiring 4+ departments to coordinate",

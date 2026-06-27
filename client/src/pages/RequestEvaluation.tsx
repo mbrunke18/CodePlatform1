@@ -262,7 +262,7 @@ export default function RequestEvaluation() {
                     </button>
 
                     <p style={{ fontSize: 11, color: '#9CA3AF', textAlign: 'center', lineHeight: 1.6 }}>
-                      Every request is reviewed personally. We prioritize organizations with a clear strategic trigger or initiative underway.
+                      Every request is reviewed personally. We prioritize organizations with a clear strategic situation or initiative underway.
                     </p>
                   </form>
                 </div>
