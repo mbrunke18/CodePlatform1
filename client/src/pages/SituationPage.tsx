@@ -7,6 +7,7 @@ const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const IVORY = "#F0EDE4";
+const RED = "#C0392B";
 
 const DM: React.CSSProperties = { fontFamily: "'DM Sans', 'Inter', sans-serif" };
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
@@ -72,7 +73,7 @@ const SITUATIONS: Record<string, SituationData> = {
   "ransomware": {
     id: "ransomware",
     domain: "RISK & RESILIENCE",
-    domainColor: "#C0392B",
+    domainColor: RED,
     protocolNumber: "#027",
     headline: "Ransomware detected across your environment.",
     subhead: "Every hour without a coordinated response compounds the exposure. Most organizations spend 72 hours assembling the right people before any coordinated action begins.",
@@ -111,7 +112,7 @@ const SITUATIONS: Record<string, SituationData> = {
   "regulatory-inquiry": {
     id: "regulatory-inquiry",
     domain: "RISK & RESILIENCE",
-    domainColor: "#C0392B",
+    domainColor: RED,
     protocolNumber: "#044",
     headline: "A regulatory inquiry letter arrived this morning.",
     subhead: "The agency has been building its case for months. Your organization has days to respond with a coordinated, legally defensible position. Most spend those days figuring out who's even in charge.",
@@ -146,22 +147,214 @@ const SITUATIONS: Record<string, SituationData> = {
     metaTitle: "Regulatory Inquiry Response | VaughnMartin Readiness OS",
     metaDescription: "When a regulatory inquiry arrives, speed and coordination determine outcome. Readiness OS Protocol #044 stages legal, compliance, and communications response in 12 minutes — before the agency sets the agenda.",
   },
+
+  "data-breach": {
+    id: "data-breach",
+    domain: "RISK & RESILIENCE",
+    domainColor: RED,
+    protocolNumber: "#033",
+    headline: "A data breach just surfaced. The clock is already running.",
+    subhead: "GDPR requires notification within 72 hours. SEC requires disclosure within 4 days. HIPAA within 60. The forensics will take weeks. The regulatory deadlines don't wait for forensics.",
+    moment: "A data breach is unique among crises because the organization must act before it has complete information. The regulatory notification clock runs from when you 'became aware' — not when the investigation concludes. Every hour spent assembling a response team is an hour closer to regulatory default.",
+    withoutSteps: [
+      { time: "Hour 1–8",   what: "Security team working to confirm scope. Legal unsure whether notification obligations triggered. No unified command established.", cost: "GDPR 72-hour clock running — threshold unclear" },
+      { time: "Hour 8–48",  what: "Forensics firm being retained. Privacy counsel identified. Board not yet briefed. Notification threshold still debated.", cost: "$290K+ in reactive advisory spend" },
+      { time: "Day 3–10",   what: "Notification decisions still pending forensics clarity. Regulatory agencies potentially notified late. Customer communications delayed.", cost: "$9.4M average regulatory fine for late GDPR notification" },
+      { time: "Day 10–30",  what: "Class action risk building. Media coverage without a coordinated statement. Remediation plan still being developed.", cost: "$4.8M average litigation exposure" },
+    ],
+    withSteps: [
+      { time: "Minute 1",   what: "Anomaly signal matched against breach pattern indicators. Protocol #033 activated. Notification framework pre-staged by jurisdiction." },
+      { time: "Minute 3",   what: "CISO, General Counsel, Privacy Counsel, and CEO notified simultaneously. Pre-authorized forensics firm engaged. Cyber insurer notified." },
+      { time: "Minute 8",   what: "Regulatory notification timelines calculated by jurisdiction (GDPR / HIPAA / SEC / state). Holding statement staged. Board brief pre-templated." },
+      { time: "Minute 12",  what: "Executive authorization received. Parallel streams executing: forensics, legal hold, regulatory notification, customer communications, board briefing." },
+    ],
+    tasks: [
+      "Confirm breach scope — pre-authorized forensics protocol initiated",
+      "Notify CISO, General Counsel, and Privacy Counsel simultaneously",
+      "Calculate regulatory notification deadlines by jurisdiction (GDPR 72h / SEC 4d / HIPAA 60d)",
+      "Engage pre-authorized privacy and breach counsel",
+      "Activate cyber insurance carrier — notification template pre-staged",
+      "Initiate legal hold across all relevant systems and communications",
+      "Stage customer notification templates pending legal review",
+      "Prepare board briefing — pre-built breach notification template",
+      "Activate pre-staged regulatory notification filing framework",
+      "Begin credit monitoring and remediation vendor engagement",
+      "Establish secure breach response command channel",
+      "Stage external communications holding statement — no detail, no speculation",
+    ],
+    demoHref: "/demo/data-breach",
+    demoLabel: "See Protocol #033 Execute — Data Breach Response Walkthrough",
+    metaTitle: "Data Breach Response Protocol | VaughnMartin Readiness OS",
+    metaDescription: "A data breach triggers simultaneous regulatory clocks across GDPR, SEC, and HIPAA. Readiness OS Protocol #033 pre-stages notification frameworks, legal holds, and board communications — coordinated in 12 minutes.",
+  },
+
+  "supply-chain": {
+    id: "supply-chain",
+    domain: "RISK & RESILIENCE",
+    domainColor: RED,
+    protocolNumber: "#067",
+    headline: "Your primary supplier just went offline.",
+    subhead: "Your production line stops in 72 hours. Customer commitments are at risk. Procurement is scrambling. Most organizations spend 30 days finding alternatives — after the line is already down.",
+    moment: "Supply chain disruptions do not announce themselves. A bankruptcy filing, a port closure, a geopolitical restriction, a natural disaster — the first signal is often a missed shipment notification. By the time the organization assembles a response, the production impact is already locked in. Preparation determines whether this is a 72-hour disruption or a 90-day crisis.",
+    withoutSteps: [
+      { time: "Day 1–3",   what: "Procurement team confirming disruption. Supplier alternatives being researched informally. No unified executive visibility.", cost: "$180K per day in production stoppage risk" },
+      { time: "Day 4–10",  what: "Alternative suppliers being contacted. No pre-qualified vendor list. Expedited shipping costs accumulating. Customer comms ad hoc.", cost: "$2.1M in expedited sourcing premium" },
+      { time: "Day 11–21", what: "Partial alternative supply secured. Customer commitments being renegotiated one by one. Reputational exposure with key accounts.", cost: "$4.8M in missed commitments and penalties" },
+      { time: "Day 22–30", what: "Supply chain partially stabilized — but not resilient. Root cause assessment hasn't started. Next disruption equally unplanned.", cost: "$12M total event cost (industry median)" },
+    ],
+    withSteps: [
+      { time: "Minute 1",   what: "Supply disruption signal detected — primary supplier monitoring active. Protocol #067 activated. Alternative supplier list pre-populated." },
+      { time: "Minute 3",   what: "CPO, COO, and key account managers notified simultaneously. Pre-qualified backup suppliers auto-ranked by capacity and lead time." },
+      { time: "Minute 8",   what: "Emergency procurement authority pre-authorized up to defined threshold. Customer commitment impact assessed against pre-built delivery model." },
+      { time: "Minute 12",  what: "Executive authorization received. Backup supplier activation, customer communications, and logistics re-routing executing in parallel." },
+    ],
+    tasks: [
+      "Confirm supplier disruption — primary contact and backup contact notified",
+      "Activate pre-qualified Tier 2 supplier list — ranked by capacity and lead time",
+      "Notify CPO, COO, and key account management team simultaneously",
+      "Assess customer commitment impact against current inventory and alternative supply",
+      "Issue pre-authorized emergency procurement order to backup suppliers",
+      "Initiate logistics re-routing — pre-staged carrier alternatives activated",
+      "Stage customer communication template — honest, specific, solution-forward",
+      "Activate financial exposure tracking — cost-of-disruption model pre-built",
+      "Brief executive team — pre-staged supply chain impact summary",
+      "Engage trade and customs counsel if geopolitical restriction involved",
+      "Initiate supplier relationship review — root cause and resilience assessment",
+    ],
+    demoHref: "/demo/supply-chain",
+    demoLabel: "See Protocol #067 Execute — Supply Chain Response Walkthrough",
+    metaTitle: "Supply Chain Disruption Response | VaughnMartin Readiness OS",
+    metaDescription: "When a primary supplier goes offline, every day without a coordinated response costs millions. Readiness OS Protocol #067 pre-stages backup suppliers, emergency procurement, and customer communications — activated in 12 minutes.",
+  },
+
+  "executive-departure": {
+    id: "executive-departure",
+    domain: "TRANSFORMATION",
+    domainColor: TEAL,
+    protocolNumber: "#019",
+    headline: "Your CEO just resigned. The board meets in 4 hours.",
+    subhead: "Investors are calling. Employees are checking LinkedIn. Every hour without a coordinated organizational voice creates a narrative vacuum — and someone else will fill it.",
+    moment: "An executive departure — planned or sudden — triggers simultaneous obligations that most organizations have never rehearsed. Board governance, investor communications, employee messaging, customer retention, and media management must all execute in parallel, with a single coordinated voice. Organizations that have pre-staged this protocol turn a potential crisis into a demonstration of institutional strength.",
+    withoutSteps: [
+      { time: "Hour 1–4",   what: "Board Chair on calls with directors individually. No unified message. Lead independent director calling advisors. IR fielding investor calls without guidance.", cost: "Narrative vacuum — external parties filling it" },
+      { time: "Day 1–3",    what: "Board deliberating on interim leadership. Communications firm being engaged. Employee communication drafted and re-drafted. Key customers hearing from sales, not leadership.", cost: "$420K+ in advisory fees; 7–12% stock decline typical" },
+      { time: "Day 4–14",   what: "Interim leadership announced without succession context. Board search underway. Employee anxiety elevated. Competitor sales teams actively moving on key accounts.", cost: "$3.1M in pipeline risk from customer uncertainty" },
+      { time: "Day 15–30",  what: "Search process consuming board attention. Business operations disrupted. Institutional investors pressing for timeline clarity.", cost: "Morale and retention impact not yet quantified" },
+    ],
+    withSteps: [
+      { time: "Minute 1",   what: "Executive departure event entered (or detected via public filing). Protocol #019 activated. Board notification and interim governance framework pre-staged." },
+      { time: "Minute 3",   what: "Board Chair, Lead Independent Director, General Counsel, and Chief HR Officer notified simultaneously. Pre-staged succession framework surfaced for board review." },
+      { time: "Minute 8",   what: "Employee communication drafted from pre-approved template. Investor notification pre-staged per disclosure obligations. Customer communication pre-built by account tier." },
+      { time: "Minute 12",  what: "Executive authorization received. Board governance, employee messaging, investor notification, and customer communication executing in parallel — unified voice from the first hour." },
+    ],
+    tasks: [
+      "Notify Board Chair, Lead Independent Director, and General Counsel immediately",
+      "Activate interim leadership framework — succession plan surfaced for board review",
+      "Stage employee communication — pre-approved template, consistent voice",
+      "Prepare investor notification — SEC disclosure obligations pre-calculated",
+      "Draft Tier 1 customer communication — proactive, solution-focused",
+      "Engage executive search firm via pre-authorized retainer",
+      "Stage media holding statement — board decision pending, no speculation",
+      "Brief executive leadership team on unified messaging",
+      "Activate retention protocols for direct reports and key talent",
+      "Initiate board governance timeline — interim appointment and search milestones",
+      "Monitor social and financial media for narrative — rapid response team on standby",
+    ],
+    demoHref: "/demo-hub",
+    demoLabel: "See Protocol #019 in the Demo Hub",
+    metaTitle: "Executive Departure Response Protocol | VaughnMartin Readiness OS",
+    metaDescription: "A sudden CEO or C-suite departure triggers simultaneous board, investor, employee, and customer obligations. Readiness OS Protocol #019 pre-stages the full coordinated response — unified voice in 12 minutes.",
+  },
+
+  "competitor-displacement": {
+    id: "competitor-displacement",
+    domain: "GROWTH & POSITIONING",
+    domainColor: GOLD,
+    protocolNumber: "#052",
+    headline: "A competitor just took your anchor customer.",
+    subhead: "This isn't a deal loss — it's a displacement signal. Your market position is being actively contested. Most organizations spend 30 days in post-mortems while the competitor builds momentum.",
+    moment: "Competitive displacement rarely happens in isolation. When a competitor wins your anchor customer, they have a case study, a reference, and a narrative advantage — and they will use all three immediately. The window to respond with a coordinated counter-positioning is measured in days, not weeks. Organizations with a pre-staged displacement protocol respond before the competitor's press release goes out.",
+    withoutSteps: [
+      { time: "Day 1–5",   what: "Sales team debriefing internally. Account team conducting loss review. No coordinated competitive response authorized.", cost: "Competitor building reference story" },
+      { time: "Day 6–15",  what: "Competitive intelligence being assembled ad hoc. Positioning response being debated across product, marketing, and sales. No unified response.", cost: "$1.4M in pipeline at elevated risk" },
+      { time: "Day 16–25", what: "Counter-messaging drafted. Leadership tours being planned. Competitor already has 3 additional deals influenced by the reference win.", cost: "$4.2M in competitive displacement pipeline loss" },
+      { time: "Day 26–30", what: "Coordinated response finally deployed — weeks after the competitor established narrative dominance.", cost: "Momentum deficit: 30 days of competitor advantage" },
+    ],
+    withSteps: [
+      { time: "Minute 1",   what: "Competitive displacement signal detected (deal loss or intelligence signal). Protocol #052 activated. Competitive response framework staged." },
+      { time: "Minute 3",   what: "Chief Revenue Officer, CMO, and Product leadership notified simultaneously. Competitive intelligence brief pre-populated from monitoring data." },
+      { time: "Minute 8",   what: "Counter-positioning message framework staged. At-risk accounts identified and ranked. Retention outreach templates pre-built by account tier." },
+      { time: "Minute 12",  what: "Executive authorization received. Sales retention outreach, competitive messaging, and at-risk account executive visits executing in coordinated sequence." },
+    ],
+    tasks: [
+      "Confirm displacement — account team debrief and competitive intelligence review",
+      "Notify CRO, CMO, and Product leadership simultaneously",
+      "Identify at-risk accounts — pre-built competitive exposure model",
+      "Activate retention protocol for Tier 1 accounts — executive outreach authorized",
+      "Stage competitive counter-positioning message framework",
+      "Deploy rapid win-back engagement for displaced account",
+      "Brief sales team — unified competitive narrative, pre-approved messaging",
+      "Activate competitive intelligence monitoring — track competitor's next moves",
+      "Prepare executive briefing on competitive landscape shift",
+      "Stage customer success outreach — proactive value reinforcement",
+      "Initiate product gap assessment — displacement root cause analysis",
+    ],
+    demoHref: "/demo/market-entry",
+    demoLabel: "See Protocol #052 Execute — Competitor Displacement Walkthrough",
+    metaTitle: "Competitor Displacement Response | VaughnMartin Readiness OS",
+    metaDescription: "When a competitor takes your anchor customer, the response window is days. Readiness OS Protocol #052 pre-stages competitive counter-positioning, at-risk account retention, and unified messaging — coordinated in 12 minutes.",
+  },
+
+  "ma-approach": {
+    id: "ma-approach",
+    domain: "GROWTH & POSITIONING",
+    domainColor: GOLD,
+    protocolNumber: "#058",
+    headline: "An unsolicited acquisition approach just arrived.",
+    subhead: "A strategic buyer or private equity firm wants a meeting. Your board has 72 hours to decide how to engage — and whether to engage. Most organizations walk into that meeting without a prepared position.",
+    moment: "Unsolicited M&A approaches are among the highest-stakes situations an executive team faces — because the other party has been preparing for months. They know your financials, your competitive position, and your likely pressure points. The organization that receives the approach must move from surprise to a coordinated, prepared board position within hours, not days. Preparation is the only defense against being negotiated from a position of disadvantage.",
+    withoutSteps: [
+      { time: "Hour 1–8",   what: "CEO and CFO on calls individually. Board Chair being briefed informally. No unified governance position. Investment bank not yet retained.", cost: "Negotiating from a position of surprise" },
+      { time: "Day 1–4",    what: "Investment bank being selected from among competing firms. Legal counsel engaged. Board being briefed director by director — no unified view.", cost: "$520K+ in initial advisory fees" },
+      { time: "Day 5–14",   what: "Preliminary response being developed. Acquirer has had 2 weeks to advance their narrative with shareholders and advisors.", cost: "Valuation framing being set by buyer" },
+      { time: "Day 15–30",  what: "Board position finally unified — but negotiating against a fully-prepared counterparty with a 30-day head start.", cost: "$18M+ in avoidable valuation discount" },
+    ],
+    withSteps: [
+      { time: "Minute 1",   what: "Approach signal entered (or detected via filing). Protocol #058 activated. M&A governance framework pre-staged for board review." },
+      { time: "Minute 3",   what: "Board Chair, Lead Independent Director, General Counsel, and CFO notified simultaneously. Pre-authorized investment bank and M&A counsel engaged." },
+      { time: "Minute 8",   what: "Preliminary valuation framework activated. Stakeholder analysis pre-staged. Board communication template prepared with fiduciary guidance." },
+      { time: "Minute 12",  what: "Executive authorization received. Board governance, advisor engagement, valuation defense, and shareholder communication executing in coordinated sequence." },
+    ],
+    tasks: [
+      "Notify Board Chair, Lead Independent Director, General Counsel, and CFO immediately",
+      "Engage pre-authorized M&A investment bank — retainer pre-staged",
+      "Engage pre-authorized M&A legal counsel — engagement pre-authorized",
+      "Activate board fiduciary governance protocol — Revlon duties pre-briefed",
+      "Prepare preliminary intrinsic valuation framework — pre-built model activated",
+      "Stage board communication — unified message, no speculation or premature disclosure",
+      "Identify acquirer profile — pre-built strategic and financial buyer analysis",
+      "Assess poison pill and defensive measure options — framework pre-staged",
+      "Brief management team on information control and confidentiality protocols",
+      "Initiate strategic alternatives review — pre-staged process framework",
+      "Monitor for public disclosure obligations — timeline and threshold tracked",
+    ],
+    demoHref: "/demo/acquisition",
+    demoLabel: "See Protocol #058 Execute — M&A Response Walkthrough",
+    metaTitle: "Unsolicited M&A Approach Response | VaughnMartin Readiness OS",
+    metaDescription: "When an unsolicited acquisition approach arrives, the other party has been preparing for months. Readiness OS Protocol #058 pre-stages board governance, advisor engagement, and valuation defense — coordinated in 12 minutes.",
+  },
 };
 
-const OTHER_SITUATIONS: Record<string, { label: string; href: string; domain: string; color: string }[]> = {
-  "activist-investor": [
-    { label: "Ransomware Attack",     href: "/situation/ransomware",          domain: "RISK & RESILIENCE",    color: "#C0392B" },
-    { label: "Regulatory Inquiry",    href: "/situation/regulatory-inquiry",   domain: "RISK & RESILIENCE",    color: "#C0392B" },
-  ],
-  "ransomware": [
-    { label: "Activist Investor",     href: "/situation/activist-investor",    domain: "GROWTH & POSITIONING", color: GOLD },
-    { label: "Regulatory Inquiry",    href: "/situation/regulatory-inquiry",   domain: "RISK & RESILIENCE",    color: "#C0392B" },
-  ],
-  "regulatory-inquiry": [
-    { label: "Activist Investor",     href: "/situation/activist-investor",    domain: "GROWTH & POSITIONING", color: GOLD },
-    { label: "Ransomware Attack",     href: "/situation/ransomware",           domain: "RISK & RESILIENCE",    color: "#C0392B" },
-  ],
-};
+const ALL_SITUATIONS = [
+  { id: "ransomware",            label: "Ransomware Attack",          domain: "RISK & RESILIENCE",    color: RED,  protocol: "#027" },
+  { id: "data-breach",           label: "Data Breach",                domain: "RISK & RESILIENCE",    color: RED,  protocol: "#033" },
+  { id: "supply-chain",          label: "Supply Chain Collapse",       domain: "RISK & RESILIENCE",    color: RED,  protocol: "#067" },
+  { id: "regulatory-inquiry",    label: "Regulatory Inquiry",          domain: "RISK & RESILIENCE",    color: RED,  protocol: "#044" },
+  { id: "activist-investor",     label: "Activist Investor",           domain: "GROWTH & POSITIONING", color: GOLD, protocol: "#031" },
+  { id: "competitor-displacement", label: "Competitor Displacement",   domain: "GROWTH & POSITIONING", color: GOLD, protocol: "#052" },
+  { id: "ma-approach",           label: "Unsolicited M&A Approach",    domain: "GROWTH & POSITIONING", color: GOLD, protocol: "#058" },
+  { id: "executive-departure",   label: "Executive Departure",         domain: "TRANSFORMATION",       color: TEAL, protocol: "#019" },
+];
 
 export default function SituationPage() {
   const params = useParams<{ id: string }>();
@@ -184,7 +377,7 @@ export default function SituationPage() {
         <div style={{ ...CONTAINER, paddingTop: 120, paddingBottom: 120, textAlign: "center" as const }}>
           <h1 style={{ ...CG, fontSize: 36, color: NAVY, marginBottom: 16 }}>Situation not found</h1>
           <p style={{ ...DM, color: "#4B5563", marginBottom: 32 }}>We don't have a page for that situation yet.</p>
-          <Link href="/demo-hub" style={{ ...DM, background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none", fontWeight: 700, fontSize: 13, letterSpacing: "0.07em", textTransform: "uppercase" as const }}>
+          <Link href="/demo-hub" style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, padding: "14px 32px", textDecoration: "none", fontWeight: 700, fontSize: 13, letterSpacing: "0.07em", textTransform: "uppercase" as const }}>
             Browse All Situations →
           </Link>
         </div>
@@ -192,7 +385,7 @@ export default function SituationPage() {
     );
   }
 
-  const others = OTHER_SITUATIONS[id] ?? [];
+  const others = ALL_SITUATIONS.filter(s => s.id !== id);
 
   return (
     <PageLayout>
@@ -356,43 +549,44 @@ export default function SituationPage() {
                 Apply for Founding Partner Access →
               </Link>
               <Link
-                href={situation.demoHref}
-                style={{ ...DM, display: "inline-block", background: "transparent", color: NAVY, fontWeight: 600, fontSize: 13, padding: "13px 36px", textDecoration: "none", border: `1px solid ${NAVY}30`, textAlign: "center" as const }}
+                href="/executive-brief"
+                style={{ ...DM, display: "inline-block", background: "transparent", color: NAVY, fontWeight: 600, fontSize: 13, padding: "12px 22px", textDecoration: "none", border: `1px solid ${NAVY}30`, textAlign: "center" as const }}
               >
-                {situation.demoLabel} →
+                Download the Executive Brief
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── OTHER SITUATIONS ───────────────────────────────────────────────── */}
-      {others.length > 0 && (
-        <section style={{ background: "#fff", borderTop: "1px solid #E8E4DC", padding: "48px 0" }}>
-          <div style={{ ...CONTAINER }}>
-            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 20 }}>Other situations with pre-staged protocols</div>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-              {others.map((o) => (
-                <Link
-                  key={o.href}
-                  href={o.href}
-                  style={{ textDecoration: "none", padding: "16px 24px", border: "1px solid #E8E4DC", background: "#FAFAFA", display: "flex", flexDirection: "column" as const, gap: 6, minWidth: 200 }}
-                >
-                  <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: NAVY }}>{o.label}</span>
-                  <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: o.color, letterSpacing: "0.14em", textTransform: "uppercase" as const }}>{o.domain} →</span>
-                </Link>
-              ))}
-              <Link
-                href="/demo-hub"
-                style={{ textDecoration: "none", padding: "16px 24px", border: `1px solid ${GOLD}44`, background: `${GOLD}06`, display: "flex", flexDirection: "column" as const, gap: 6, minWidth: 200 }}
-              >
-                <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: NAVY }}>Browse All Situations</span>
-                <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.14em", textTransform: "uppercase" as const }}>12 full simulations →</span>
-              </Link>
-            </div>
+      {/* ── ALL SITUATIONS ─────────────────────────────────────────────────── */}
+      <section style={{ background: "#fff", borderTop: "1px solid #E5E7EB", padding: "64px 0" }}>
+        <div style={{ ...CONTAINER }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 36 }}>
+            <div style={{ width: 28, height: 1.5, background: NAVY }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: NAVY }}>180 Readiness Protocols — Staged for Every Situation</span>
           </div>
-        </section>
-      )}
+          <p style={{ ...DM, fontSize: 14, color: "#6B7280", lineHeight: 1.7, margin: "0 0 36px", maxWidth: 560 }}>
+            Readiness OS pre-stages a coordinated response for every situation your organization expects to encounter — across all three strategic domains.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 12 }}>
+            {others.map(s => (
+              <Link
+                key={s.id}
+                href={`/situation/${s.id}`}
+                style={{ display: "block", padding: "20px 22px", border: "1px solid #E5E7EB", textDecoration: "none", transition: "border-color 0.15s" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 10 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: s.color, flexShrink: 0 }} />
+                  <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: s.color }}>{s.domain}</span>
+                </div>
+                <div style={{ ...DM, fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 6, lineHeight: 1.3 }}>{s.label}</div>
+                <div style={{ ...DM, fontSize: 11, color: "#9CA3AF" }}>Protocol {s.protocol}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </PageLayout>
   );
 }

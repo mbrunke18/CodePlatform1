@@ -1122,8 +1122,8 @@ function HeroSection() {
                     { label: "Ransomware Attack",       domain: "RISK & RESILIENCE",    protocol: "#027", href: "/situation/ransomware",          color: "#C0392B" },
                     { label: "Activist Investor",        domain: "GROWTH & POSITIONING", protocol: "#031", href: "/situation/activist-investor",    color: GOLD },
                     { label: "Regulatory Inquiry",       domain: "RISK & RESILIENCE",    protocol: "#044", href: "/situation/regulatory-inquiry",   color: "#C0392B" },
-                    { label: "Supply Chain Collapse",    domain: "RISK & RESILIENCE",    protocol: "#067", href: "/demo/supply-chain",              color: "#C0392B" },
-                    { label: "Competitor Displacement",  domain: "GROWTH & POSITIONING", protocol: "#031", href: "/demo/market-entry",              color: GOLD },
+                    { label: "Supply Chain Collapse",    domain: "RISK & RESILIENCE",    protocol: "#067", href: "/situation/supply-chain",         color: "#C0392B" },
+                    { label: "Competitor Displacement",  domain: "GROWTH & POSITIONING", protocol: "#052", href: "/situation/competitor-displacement", color: GOLD },
                   ] as const).map(({ label, domain, protocol, href, color }) => (
                     <Link
                       key={label}
