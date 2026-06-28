@@ -1064,21 +1064,21 @@ function HeroSection() {
                 ))}
               </div>
 
-              {/* CTAs — primary demo, execution explainer, conversion */}
+              {/* CTAs — 12-min test drive is the primary self-serve entry point */}
               <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 20, flexWrap: "wrap" as const }}>
                 <Link
-                  href="/demo-experience"
-                  onClick={() => trackCTA("hero_scanner")}
+                  href="/12-minute-experience"
+                  onClick={() => trackCTA("hero_testdrive")}
                   style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "14px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}
                 >
-                  Full Platform Demo →
+                  Run the 12-Minute Test Drive →
                 </Link>
                 <Link
-                  href="/how-it-executes"
-                  onClick={() => trackCTA("hero_how")}
+                  href="/demo-experience"
+                  onClick={() => trackCTA("hero_demo")}
                   style={{ ...DM, display: "inline-block", background: "transparent", color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: 13, padding: "13px 22px", textDecoration: "none", letterSpacing: "0.04em", border: "1px solid rgba(255,255,255,0.25)", whiteSpace: "nowrap" as const }}
                 >
-                  How It Executes
+                  Full Platform Demo
                 </Link>
                 <Link
                   href="/request-access"
@@ -4987,6 +4987,73 @@ function SocialProofStrip() {
 // ─── THIRTY-SECOND BRIEF ──────────────────────────────────────────────────────
 // First white section after the hero. Four questions every visitor needs to be
 // able to answer and repeat. One sentence each. No jargon. No abstractions.
+function EngagementBridge() {
+  return (
+    <section style={{ background: "#F8F7F4", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "0" }}>
+      <div style={{ ...CONTAINER, paddingTop: 0, paddingBottom: 0 }}>
+        <div style={{ display: "flex", alignItems: "stretch", borderLeft: "1px solid #E8E4DC", borderRight: "1px solid #E8E4DC" }}>
+          {/* Label column */}
+          <div style={{ flexShrink: 0, width: 200, padding: "28px 24px", borderRight: "1px solid #E8E4DC", display: "flex", flexDirection: "column" as const, justifyContent: "center", background: "#fff" }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Choose your path</div>
+            <div style={{ ...DM, fontSize: 12, color: "#6B7280", lineHeight: 1.5 }}>Three ways in — pick the one that matches where you are.</div>
+          </div>
+          {/* Three paths */}
+          <style>{`
+            .eng-bridge-grid { display: flex; flex: 1; }
+            @media (max-width: 760px) { .eng-bridge-grid { flex-direction: column; } .eng-bridge-label-col { display: none !important; } }
+          `}</style>
+          <div className="eng-bridge-grid">
+            {[
+              {
+                step: "01",
+                label: "Experience it yourself",
+                sub: "No demo call. No signup. Pick a scenario, watch the 12-minute response unfold, see every decision point.",
+                cta: "Run the 12-Minute Test Drive →",
+                href: "/12-minute-experience",
+                accentColor: GOLD,
+                bg: "rgba(201,168,76,0.03)",
+              },
+              {
+                step: "02",
+                label: "See your specific situation",
+                sub: "Have a scenario in mind? Ransomware, activist investor, supply chain, regulatory deadline — see the protocol that handles it.",
+                cta: "Browse All Scenarios →",
+                href: "/demo-hub",
+                accentColor: TEAL,
+                bg: "rgba(43,138,110,0.03)",
+              },
+              {
+                step: "03",
+                label: "Get the executive brief",
+                sub: "Need to show this to someone? The one-pager — comparison table, proof numbers, ROI case, Founding Partner terms.",
+                cta: "Open the Executive Brief →",
+                href: "/executive-brief",
+                accentColor: NAVY,
+                bg: "rgba(10,15,46,0.02)",
+              },
+            ].map(({ step, label, sub, cta, href, accentColor, bg }, i) => (
+              <Link
+                key={step}
+                href={href}
+                style={{ textDecoration: "none", flex: 1, display: "flex", flexDirection: "column" as const, padding: "28px 24px", borderRight: i < 2 ? "1px solid #E8E4DC" : "none", background: bg, transition: "background 0.15s" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <div style={{ width: 20, height: 20, background: accentColor, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontSize: 8, fontWeight: 800, color: accentColor === NAVY ? "#fff" : NAVY }}>{step}</span>
+                  </div>
+                  <span style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, lineHeight: 1.3 }}>{label}</span>
+                </div>
+                <p style={{ ...DM, fontSize: 11, color: "#4B5563", lineHeight: 1.6, margin: "0 0 14px", flex: 1 }}>{sub}</p>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: accentColor, letterSpacing: "0.04em", borderBottom: `1px solid ${accentColor}40`, paddingBottom: 1, alignSelf: "flex-start" as const }}>{cta}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ThirtySecondBrief() {
   const panels = [
     {
@@ -5523,7 +5590,13 @@ export default function Homepage() {
       {/* 1. CLAIM — The response is ready before the trigger fires */}
       <HeroSection />
 
-      {/* 1a. BRIEF — 4 questions every visitor must be able to answer and repeat */}
+      {/* 1a. ENGAGE — 3 clear paths: experience it / see a scenario / get the brief */}
+      <EngagementBridge />
+
+      {/* 1b. HOW — 3 steps, 12 minutes, no coordination meeting */}
+      <ThreeStepSection />
+
+      {/* 1c. BRIEF — 4 questions every visitor must be able to answer and repeat */}
       <ThirtySecondBrief />
 
       {/* 1b. EXPLAINER — Cost of inaction: WITH/WITHOUT timelines + scenario grid */}
