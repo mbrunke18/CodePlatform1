@@ -876,6 +876,7 @@ function Router() {
         <Route path="/channel-partners" component={lazy(() => import('./pages/ChannelPartners'))} />
         <Route path="/request-evaluation" component={lazy(() => import('./pages/RequestEvaluation'))} />
         <Route path="/readiness-ad" component={lazy(() => import('./pages/ReadinessAd'))} />
+        <Route path="/situation/:id" component={lazy(() => import('./pages/SituationPage'))} />
         <Route path="/commercial">{() => { window.location.replace('/commercial.html'); return null; }}</Route>
         <Route path="/comparison-view">{() => { window.location.replace('/comparison.html'); return null; }}</Route>
 
