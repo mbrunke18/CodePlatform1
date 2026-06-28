@@ -996,6 +996,12 @@ function HeroSection() {
                 </span>
               </div>
 
+              {/* Pain qualifier — executive self-identifies before the promise lands */}
+              <p style={{ ...DM, fontSize: "clamp(14px,1.1vw,16px)", color: "rgba(255,255,255,0.62)", lineHeight: 1.65, maxWidth: 460, margin: "0 0 22px", fontStyle: "italic" as const }}>
+                Think back to the last strategic situation that caught your organization mid-stride.
+                How long before your team had a coordinated response?
+              </p>
+
               {/* Category declaration */}
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 16, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
                 <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
@@ -5594,6 +5600,102 @@ function ExploreDeepSection() {
   );
 }
 
+function FoundingPartnerCloseSection() {
+  return (
+    <section style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "80px 0 72px" }}>
+      <div style={{ ...CONTAINER }}>
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 32, marginBottom: 56 }}>
+          <div style={{ maxWidth: 560 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+              <div style={{ width: 32, height: 1.5, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Founding Partner Program</span>
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(32px,3vw,48px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "0 0 20px" }}>
+              A 90-Day Validated Partnership.<br />
+              <span style={{ color: GOLD }}>Not a Trial. Not a Demo.</span>
+            </h2>
+            <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0, maxWidth: 500 }}>
+              Founding Partners work directly with VaughnMartin to configure Readiness OS against their actual situation library — then operate it live for 90 days with full executive support. The outcome is a measured, documented readiness baseline your board can see.
+            </p>
+          </div>
+          {/* Urgency signal */}
+          <div style={{ padding: "24px 28px", border: `1px solid ${GOLD}44`, background: "rgba(201,168,76,0.06)", minWidth: 220, flexShrink: 0 }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Program Availability</div>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1, marginBottom: 6 }}>12</div>
+            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>total Founding Partner slots<br />per cohort</div>
+            <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E", flexShrink: 0 }} />
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.72)", fontWeight: 600 }}>Applications open — Q3 cohort</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* What you get / What we need — two column */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
+          {/* What you get */}
+          <div style={{ padding: "32px 36px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 20 }}>What you receive</div>
+            {[
+              "Full Readiness OS configuration against your actual situation library",
+              "180 Readiness Protocols mapped to your organization's structure",
+              "Live 90-day operation with real signal monitoring and protocol activation",
+              "Executive readiness score and board-ready reporting at close",
+              "Priority access to ADVANCE 2.0 continuous learning loop",
+              "Direct access to VaughnMartin's founding team throughout the partnership",
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
+                <div style={{ width: 16, height: 16, flexShrink: 0, marginTop: 2, border: `1px solid ${TEAL}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontSize: 8, color: TEAL, fontWeight: 800 }}>✓</span>
+                </div>
+                <span style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+          {/* What we need */}
+          <div style={{ padding: "32px 36px", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.14)" }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>What we ask of you</div>
+            {[
+              "C-suite sponsorship — one named executive as the authorization authority",
+              "Identification of 8–12 strategic situations your organization faces annually",
+              "Access to 3–5 functional owners for protocol configuration (4 hours total)",
+              "One live activation during the 90-day window — real signal, real execution",
+              "A close-out debrief with VaughnMartin to document outcomes and validate ROI",
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
+                <div style={{ width: 16, height: 16, flexShrink: 0, marginTop: 2, border: `1px solid ${GOLD}88`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontSize: 8, color: GOLD, fontWeight: 800 }}>→</span>
+                </div>
+                <span style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Close — CTA + proof line */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 24, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div>
+            <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.5)", margin: "0 0 6px" }}>
+              Applications are reviewed within 48 hours. No sales call required to apply.
+            </p>
+            <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.32)", margin: 0 }}>
+              Founding Partner terms include preferred pricing locked for 36 months and co-development rights on the next two protocol library expansions.
+            </p>
+          </div>
+          <Link
+            href="/request-access"
+            style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14, padding: "18px 40px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, flexShrink: 0 }}
+          >
+            Apply for Founding Partner Access →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -5616,40 +5718,40 @@ export default function Homepage() {
       <HomepageNav />
       <GuestPreviewBanner />
 
-      {/* 1. CLAIM — The response is ready before the trigger fires */}
+      {/* 1. PAIN + PROMISE — qualify the buyer, then deliver the claim */}
       <HeroSection />
 
-      {/* 1a. ENGAGE — 3 clear paths: experience it / see a scenario / get the brief */}
-      <EngagementBridge />
-
-      {/* 1b. HOW — 3 steps, 12 minutes, no coordination meeting */}
-      <ThreeStepSection />
-
-      {/* 1c. BRIEF — 4 questions every visitor must be able to answer and repeat */}
-      <ThirtySecondBrief />
-
-      {/* 1b. EXPLAINER — Cost of inaction: WITH/WITHOUT timelines + scenario grid */}
-      <PlainEnglishExplainer />
-
-      {/* 1c. THE STORY — Pure narrative prose: 3:12 AM, two stories, emotional pull */}
-      <TheStorySection />
-
-      {/* 1d. FEEL IT — Reality Gap Simulator: 30 days vs 12 minutes, animated */}
-      <RealityGapSimulator />
-
-      {/* 1c. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
-      <PhotoBreakSection />
-
-      {/* 2. FREQUENCY — 15–20 situations/year reframe before the demos */}
-      <FrequencyReframeStrip />
-
-      {/* 3. SITUATIONS — 4 live scenarios, now understood as 4 of the 15–20 */}
-      <ScenarioCardsRow />
-
-      {/* 3. CREDIBILITY — practitioner voices before the visitor scrolls */}
+      {/* 2. CREDIBILITY — validate immediately; permission to keep reading */}
       <SocialProofStrip />
 
-      {/* 4. PROBLEM — Detection + Mobilization gaps */}
+      {/* 3. FEEL THE GAP — animated 30 days vs 12 minutes before explanation */}
+      <RealityGapSimulator />
+
+      {/* 4. ENGAGE — 3 clear paths: experience it / see a scenario / get the brief */}
+      <EngagementBridge />
+
+      {/* 5. HOW — 3 steps, 12 minutes, no coordination meeting */}
+      <ThreeStepSection />
+
+      {/* 6. THE STORY — emotional narrative: two organizations, same trigger */}
+      <TheStorySection />
+
+      {/* 7. BRIEF — 4 questions every visitor must be able to answer and repeat */}
+      <ThirtySecondBrief />
+
+      {/* 8. EXPLAINER — cost of inaction: WITH/WITHOUT timelines + scenario grid */}
+      <PlainEnglishExplainer />
+
+      {/* 9. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
+      <PhotoBreakSection />
+
+      {/* 10. FREQUENCY — 15–20 situations/year reframe before the demos */}
+      <FrequencyReframeStrip />
+
+      {/* 11. SITUATIONS — 4 live scenarios, now understood as 4 of the 15–20 */}
+      <ScenarioCardsRow />
+
+      {/* 12. PROBLEM — Detection + Mobilization gaps */}
       <ProblemSection />
 
       {/* 5. DISTINCTION — Not a workflow tool. Readiness infrastructure. */}
@@ -5685,7 +5787,10 @@ export default function Homepage() {
       {/* 15. OPERATING MODEL RETURN — Profitability / Delivery / Cost */}
       <OperatingModelOutcomesSection />
 
-      {/* 16. CTA */}
+      {/* 16. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
+      <FoundingPartnerCloseSection />
+
+      {/* 17. CTA */}
       <CTASection />
 
       {/* 17. EXPLORE DEEP — 4 discovery paths: "choose your depth" pull to more pages */}
