@@ -5600,6 +5600,166 @@ function ExploreDeepSection() {
   );
 }
 
+function ObjectionCrusherSection() {
+  const OBJECTIONS = [
+    {
+      tag: "Objection 01",
+      objection: "\"We already have incident response plans and business continuity documentation.\"",
+      pivot: "Plans describe what should happen. Protocols guarantee it does.",
+      rebuttal: "A plan tells your team who to call and what to consider. It is consulted in the moment, under pressure, by people who are simultaneously managing the situation. A Readiness Protocol has already named the owner, pre-authorized the budget, pre-built the template, and staged the execution sequence — before the situation arrives. When the trigger fires, there is nothing to build, nothing to debate, nothing to draft. There is only one decision: authorize. Your plans are documentation. This is execution infrastructure.",
+      proof: "Organizations with written BCPs still average 23 days to reach coordinated response. Protocol activation takes 12 minutes.",
+    },
+    {
+      tag: "Objection 02",
+      objection: "\"Our leadership team and legal counsel manage situations when they arise.\"",
+      pivot: "They make the judgment calls. Readiness OS handles the mobilization.",
+      rebuttal: "Your executives are excellent at deciding. The 30-day mobilization gap is not a capability problem — it is a coordination problem. Before they can decide anything, someone has to figure out who else needs to be in the room, who has authority to spend money, which advisors are on retainer, what the communication constraints are, and what the timeline obligations are. That assembly takes weeks. Readiness OS handles that entire mobilization layer, so your leadership team walks into a war room where 11 tasks are already staged, all owners are named, and the only thing left to do is authorize. Your team still decides. The response doesn't wait 30 days for them to mobilize.",
+      proof: "The 12 minutes is not about decision speed — it is about coordination speed. The decision belongs to your executives. The mobilization belongs to Readiness OS.",
+    },
+    {
+      tag: "Objection 03",
+      objection: "\"We need more time to evaluate this before we can make any commitment.\"",
+      pivot: "Every day without pre-staging is a day closer to the next unplanned situation.",
+      rebuttal: "The evaluation is fair. The cost of the evaluation window is not. Your organization will face 15–20 strategic situations this year. Each one that arrives while you are still evaluating will cost you in mobilization lag, reactive advisory spend, and avoidable exposure. The Founding Partner structure is specifically designed for this moment: 90 days, direct founder access, fully configured — and if the outcomes do not meet the baseline we document together, the terms include an exit path. You are not committing to a platform. You are committing to 90 days of measurable preparation. The only question is whether the next situation arrives before or after your response is staged.",
+      proof: "Founding Partners commit to 90 days. The measured outcome — protocols activated, response times, exposure avoided — is board-ready documentation at close.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "#fff", borderTop: "1px solid #E5E7EB", padding: "88px 0 80px" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ maxWidth: 720, marginBottom: 64 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <div style={{ width: 28, height: 1.5, background: NAVY }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: NAVY }}>Before You Decide</span>
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(30px,3vw,44px)", fontWeight: 700, color: NAVY, lineHeight: 1.1, margin: "0 0 16px" }}>
+            Your strategy team will raise one of these three objections.
+          </h2>
+          <p style={{ ...DM, fontSize: 16, color: "#4B5563", lineHeight: 1.7, margin: 0 }}>
+            They are not wrong to raise them. Here is the complete answer to each one.
+          </p>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: 2 }}>
+          {OBJECTIONS.map((obj, i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 0 }}>
+              {/* Left — objection */}
+              <div style={{ padding: "36px 32px 36px 0", borderRight: `3px solid ${GOLD}`, background: "#fff" }}>
+                <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>{obj.tag}</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 15, fontStyle: "italic", color: "#374151", lineHeight: 1.55, margin: 0 }}>
+                  {obj.objection}
+                </p>
+              </div>
+              {/* Right — rebuttal */}
+              <div style={{ padding: "36px 0 36px 40px", background: i % 2 === 0 ? "#FAFAFA" : "#fff", borderBottom: i < 2 ? "1px solid #F3F4F6" : "none" }}>
+                <div style={{ ...DM, fontSize: 13, fontWeight: 800, color: NAVY, marginBottom: 12, lineHeight: 1.4 }}>
+                  {obj.pivot}
+                </div>
+                <p style={{ ...DM, fontSize: 13, color: "#4B5563", lineHeight: 1.75, margin: "0 0 16px", maxWidth: 680 }}>
+                  {obj.rebuttal}
+                </p>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 14px", background: `${TEAL}0F`, border: `1px solid ${TEAL}33` }}>
+                  <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                  <span style={{ ...DM, fontSize: 11, color: TEAL, fontWeight: 600 }}>{obj.proof}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QualificationSection() {
+  const FIT = [
+    "Your organization faces 10 or more strategic situations per year — competitive events, regulatory actions, operational disruptions, executive changes, security incidents",
+    "You have experienced a mobilization gap — the period between 'we have a situation' and 'we have a coordinated response' — and you know what it costs",
+    "You have a C-suite executive who wants to be the authorization authority, not the person spending 30 days assembling one",
+    "You believe the next situation your organization faces should not be handled the way the last one was",
+    "You want a board-ready readiness baseline — documented, measurable, defensible — not just a capability assertion",
+  ];
+  const NOT_FIT = [
+    "You believe your current incident response plans and BCP documentation are operationally sufficient as-is",
+    "You are looking for a project management or workflow tool to add to your existing coordination process",
+    "You need a demo environment to explore before any organizational discussion — the 12-Minute Test Drive is the right starting point",
+    "You do not yet have a C-suite executive sponsor willing to serve as the authorization authority for a 90-day deployment",
+  ];
+
+  return (
+    <section style={{ background: IVORY, borderTop: "1px solid #E5E7EB", padding: "80px 0" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ maxWidth: 640, marginBottom: 52 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <div style={{ width: 28, height: 1.5, background: NAVY }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: NAVY }}>Is This Built For You?</span>
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px,2.8vw,42px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, margin: "0 0 16px" }}>
+            The most honest thing we can do is tell you exactly who this is — and is not — built for.
+          </h2>
+          <p style={{ ...DM, fontSize: 15, color: "#4B5563", lineHeight: 1.7, margin: 0 }}>
+            Readiness OS is not for every organization. Telling you who it is not for is how we earn the trust of the ones it is.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
+          {/* Built for */}
+          <div style={{ padding: "36px 40px", background: "#fff", borderTop: `3px solid ${TEAL}` }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 24 }}>This Is Built For You If —</div>
+            {FIT.map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 18 }}>
+                <div style={{ width: 18, height: 18, flexShrink: 0, marginTop: 2, background: `${TEAL}15`, border: `1px solid ${TEAL}55`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontSize: 9, color: TEAL, fontWeight: 900 }}>✓</span>
+                </div>
+                <span style={{ ...DM, fontSize: 13, color: "#1F2937", lineHeight: 1.65 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Not for */}
+          <div style={{ padding: "36px 40px", background: "#F9F9F7", borderTop: `3px solid #D1D5DB` }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 24 }}>Not The Right Fit If —</div>
+            {NOT_FIT.map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 18 }}>
+                <div style={{ width: 18, height: 18, flexShrink: 0, marginTop: 2, background: "rgba(107,114,128,0.08)", border: "1px solid rgba(107,114,128,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontSize: 9, color: "#9CA3AF", fontWeight: 900 }}>—</span>
+                </div>
+                <span style={{ ...DM, fontSize: 13, color: "#6B7280", lineHeight: 1.65 }}>{item}</span>
+              </div>
+            ))}
+            <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #E5E7EB" }}>
+              <p style={{ ...DM, fontSize: 12, color: "#9CA3AF", lineHeight: 1.6, margin: "0 0 12px" }}>
+                Not ready for a full deployment? Start here:
+              </p>
+              <Link href="/12-minute-experience" style={{ ...DM, fontSize: 12, fontWeight: 700, color: NAVY, textDecoration: "none", letterSpacing: "0.04em", display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Run the 12-Minute Test Drive →
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* The close — for those who qualify */}
+        <div style={{ padding: "32px 40px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 24 }}>
+          <div>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>If you recognized yourself above</div>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,1.8vw,26px)", fontWeight: 600, color: "#fff", lineHeight: 1.3, margin: 0 }}>
+              The next situation your organization faces is already on its way.<br />
+              <span style={{ color: GOLD }}>The only question is whether your response is staged before it arrives.</span>
+            </p>
+          </div>
+          <Link
+            href="/request-access"
+            style={{ ...DM, display: "inline-block", background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "16px 36px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, flexShrink: 0 }}
+          >
+            Apply for Founding Partner Access →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FoundingPartnerCloseSection() {
   return (
     <section style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "80px 0 72px" }}>
@@ -5787,7 +5947,13 @@ export default function Homepage() {
       {/* 15. OPERATING MODEL RETURN — Profitability / Delivery / Cost */}
       <OperatingModelOutcomesSection />
 
-      {/* 16. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
+      {/* 16. OBJECTION CRUSHER — answer the 3 strategy-team objections head-on */}
+      <ObjectionCrusherSection />
+
+      {/* 17. QUALIFICATION — honest qualify-in / qualify-out earns trust from buyers */}
+      <QualificationSection />
+
+      {/* 18. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
       <FoundingPartnerCloseSection />
 
       {/* 17. CTA */}
