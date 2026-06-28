@@ -1105,6 +1105,35 @@ function HeroSection() {
                 ))}
               </div>
 
+              {/* Situation quick-jump — skip the orientation, go straight to your scenario */}
+              <div style={{ marginBottom: 20 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                  <div style={{ ...DM, fontSize: 9, fontWeight: 800, color: "rgba(255,255,255,0.28)", letterSpacing: "0.22em", textTransform: "uppercase" as const }}>Jump to your situation</div>
+                  <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />
+                </div>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
+                  {([
+                    { label: "Ransomware Attack",       domain: "RISK & RESILIENCE",    protocol: "#027", href: "/demo/ransomware",        color: "#C0392B" },
+                    { label: "Activist Investor",        domain: "GROWTH & POSITIONING", protocol: "#031", href: "/master-demo",            color: GOLD },
+                    { label: "Regulatory Inquiry",       domain: "RISK & RESILIENCE",    protocol: "#044", href: "/demo/doj-investigation",  color: "#C0392B" },
+                    { label: "Supply Chain Collapse",    domain: "RISK & RESILIENCE",    protocol: "#067", href: "/demo/supply-chain",       color: "#C0392B" },
+                    { label: "Competitor Displacement",  domain: "GROWTH & POSITIONING", protocol: "#031", href: "/demo/market-entry",       color: GOLD },
+                  ] as const).map(({ label, domain, protocol, href, color }) => (
+                    <Link
+                      key={label}
+                      href={href}
+                      style={{ textDecoration: "none", padding: "8px 12px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)", display: "flex", flexDirection: "column" as const, gap: 3, minWidth: 0 }}
+                    >
+                      <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.88)", whiteSpace: "nowrap" as const }}>{label}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ ...DM, fontSize: 8, fontWeight: 700, color, letterSpacing: "0.12em" }}>{domain}</span>
+                        <span style={{ ...DM, fontSize: 8, color: "rgba(255,255,255,0.28)", letterSpacing: "0.06em" }}>{protocol} →</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               {/* Social proof — VaughnMartin runs on its own platform */}
               <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 20, padding: "12px 16px", background: "rgba(43,138,110,0.08)", borderLeft: `2px solid ${TEAL}` }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 5 }} />
