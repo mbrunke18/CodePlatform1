@@ -6599,6 +6599,89 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     }
   });
 
+  // Executive Brief request — warm-middle lead capture from homepage
+  app.post('/api/brief-request', async (req, res) => {
+    try {
+      const { name, email, sector } = req.body;
+      if (!name || !email) {
+        return res.status(400).json({ error: 'Name and email are required' });
+      }
+
+      // Store as a demo lead (reuse existing infra, source = 'brief-request')
+      try {
+        await storage.createDemoLead({
+          name,
+          email,
+          company: 'Not provided',
+          role: sector || 'Not specified',
+          source: 'brief-request',
+        });
+      } catch (_) {
+        // Non-fatal — still send emails even if DB write fails
+      }
+
+      // Send emails via Resend
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (apiKey) {
+        const { Resend } = await import('resend');
+        const resend = new Resend(apiKey);
+        const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+
+        // Notify admin of new lead
+        if (adminEmail) {
+          await resend.emails.send({
+            from: 'Readiness OS <onboarding@resend.dev>',
+            to: adminEmail,
+            subject: `New Brief Request — ${name} · ${sector || 'Sector not specified'}`,
+            html: `
+              <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#0A0F2E;color:#F0EDE4;">
+                <h2 style="color:#C9A84C;font-size:22px;margin-bottom:8px;">New Executive Brief Request</h2>
+                <p style="color:rgba(240,237,228,0.7);font-size:14px;margin-bottom:24px;">A visitor requested the Executive Brief from the homepage.</p>
+                <table style="width:100%;border-collapse:collapse;">
+                  <tr><td style="padding:8px 0;color:rgba(240,237,228,0.5);font-size:12px;width:120px;">Name</td><td style="padding:8px 0;color:#F0EDE4;font-size:14px;font-weight:600;">${name}</td></tr>
+                  <tr><td style="padding:8px 0;color:rgba(240,237,228,0.5);font-size:12px;">Email</td><td style="padding:8px 0;color:#C9A84C;font-size:14px;font-weight:600;">${email}</td></tr>
+                  <tr><td style="padding:8px 0;color:rgba(240,237,228,0.5);font-size:12px;">Sector</td><td style="padding:8px 0;color:#F0EDE4;font-size:14px;">${sector || 'Not specified'}</td></tr>
+                </table>
+                <p style="color:rgba(240,237,228,0.5);font-size:12px;margin-top:24px;">Follow up within 24 hours — this was a warm-middle capture, not a full application.</p>
+              </div>
+            `,
+          }).catch(() => {});
+        }
+
+        // Send prospect the brief link
+        await resend.emails.send({
+          from: 'Readiness OS <onboarding@resend.dev>',
+          to: email,
+          subject: 'The Executive Brief — VaughnMartin Readiness OS',
+          html: `
+            <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:40px 24px;background:#0A0F2E;color:#F0EDE4;">
+              <div style="margin-bottom:28px;">
+                <p style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#C9A84C;margin-bottom:0;">VaughnMartin · Readiness OS</p>
+              </div>
+              <h1 style="font-size:28px;font-weight:700;color:#F0EDE4;line-height:1.2;margin-bottom:12px;">Hi ${name} — here's the Executive Brief.</h1>
+              <p style="font-size:14px;color:rgba(240,237,228,0.7);line-height:1.7;margin-bottom:28px;">
+                The brief covers the complete value case: the 15–20 strategic situations your organization will face this year, the 3,600× execution head start, and exactly what the 90-day Founding Partner partnership delivers.
+              </p>
+              <a href="https://readiness-os.replit.app/executive-brief" style="display:inline-block;background:#C9A84C;color:#0A0F2E;font-weight:700;font-size:13px;padding:14px 32px;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;">View the Executive Brief →</a>
+              <div style="margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,237,228,0.1);">
+                <p style="font-size:13px;color:rgba(240,237,228,0.65);line-height:1.7;margin-bottom:16px;">
+                  When you're ready to talk, the Founding Partner Program is the right next step — 90 days, direct founder access, fully configured against your actual situation library.
+                </p>
+                <a href="https://readiness-os.replit.app/request-access" style="font-size:13px;color:#C9A84C;text-decoration:none;font-weight:600;">Apply for Founding Partner Access →</a>
+              </div>
+              <p style="font-size:11px;color:rgba(240,237,228,0.3);margin-top:32px;">VaughnMartin · Readiness OS · vaughnmartin.com</p>
+            </div>
+          `,
+        }).catch(() => {});
+      }
+
+      return res.json({ success: true });
+    } catch (error: any) {
+      console.error('Brief request error:', error);
+      return res.status(500).json({ error: 'Failed to process brief request' });
+    }
+  });
+
   // Demo Lead capture (no auth required for public trade show demos)
   app.post('/api/demo-leads', async (req, res) => {
     try {

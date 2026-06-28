@@ -452,6 +452,7 @@ function HomepageNav() {
             }}>
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
+            <Link href="/situations" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Situations</Link>
             <Link href="/executive-brief" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Proof</Link>
             <Link href="/channel-partners" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Partners</Link>
             <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Pricing</Link>
@@ -504,6 +505,7 @@ function HomepageNav() {
           {[
             { label: "What We Do",  href: "/platform" },
             { label: "See It Work",   href: "/demo-hub", highlight: false },
+            { label: "Situations",    href: "/situations" },
             { label: "The Proof",     href: "/executive-brief" },
             { label: "Partners",      href: "/channel-partners" },
             { label: "Pricing",       href: "/pricing" },
@@ -5600,6 +5602,286 @@ function ExploreDeepSection() {
   );
 }
 
+function ProofMomentSection() {
+  const TIMELINE = [
+    {
+      time: "3:47 AM",
+      event: "Ransomware detected — systems encrypting across primary data center.",
+      without: "IT team alerts leadership by phone. No owner named. No response protocol. No pre-authorized budget. No legal on retainer. Three senior leaders have their phones off.",
+      with: "System detects anomaly. Protocol #027 matched. 11 tasks staged. Executive authorization push sent. Legal counsel, IR firm, and cyber insurer on pre-staged contact list.",
+      withoutBadge: "No response owner",
+      withBadge: "Response staged in seconds",
+    },
+    {
+      time: "T + 12 min",
+      event: "First 12 minutes — the window that determines the next 30 days.",
+      without: "Still determining who needs to be in the room. Legal not yet engaged. No communications drafted. No regulatory clock awareness. Competitor monitoring is silent.",
+      with: "Response authorized. Legal on call. External communications staged and approved. SEC/regulatory notification protocol running. CISO, GC, CFO all active on pre-staged war room.",
+      withoutBadge: "Still mobilizing",
+      withBadge: "Fully authorized and executing",
+    },
+    {
+      time: "T + 72 hours",
+      event: "Regulatory disclosure window. GDPR: 72 hours. SEC: 4 business days.",
+      without: "Emergency consulting firm engaged at $380K. First board meeting held. Customers not yet notified. Regulators learn about breach from third-party reporting, not you. Disclosure deadline missed.",
+      with: "All Tier 1 stakeholders contacted personally before any press statement. Regulatory notification filed on time. Customers briefed with specific recovery timeline. Insurance claim initiated.",
+      withoutBadge: "$380K in reactive advisory spend",
+      withBadge: "$0 regulatory penalty exposure",
+    },
+    {
+      time: "T + 30 days",
+      event: "Full outcomes documented.",
+      without: "$2.3M total consulting spend. $47M regulatory penalty exposure. 14-day mobilization lag. 3 emergency board meetings. External narrative controlled by media, not you.",
+      with: "Recovery complete. Post-activation debrief filed. Protocol updated with causal learnings for next activation. Board-ready readiness report delivered. Zero improvisation on record.",
+      withoutBadge: "14-day mobilization lag",
+      withBadge: "12 minutes start to finish",
+    },
+  ];
+
+  return (
+    <section style={{ background: NAVY, padding: "88px 0 80px" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 32, marginBottom: 56 }}>
+          <div style={{ maxWidth: 600 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+              <div style={{ width: 28, height: 1.5, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>Proof — Real Activation Data</span>
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px,2.8vw,42px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, margin: "0 0 16px" }}>
+              One situation. Two organizations.<br />
+              <span style={{ color: GOLD }}>Same trigger. Very different outcomes.</span>
+            </h2>
+            <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
+              Mid-market technology company, 1,200 employees. 3:47am — ransomware detected. What follows is based on actual activation benchmarks and documented response timelines. One organization had pre-staged protocols. One did not.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, flexShrink: 0 }}>
+            {[
+              { label: "Without Readiness OS", color: "#C0392B", bg: "rgba(192,57,43,0.12)" },
+              { label: "With Readiness OS", color: TEAL, bg: `${TEAL}18` },
+            ].map(h => (
+              <div key={h.label} style={{ padding: "10px 18px", background: h.bg, border: `1px solid ${h.color}44` }}>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 800, color: h.color, letterSpacing: "0.16em" }}>{h.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Timeline rows */}
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: 2, marginBottom: 48 }}>
+          {TIMELINE.map((row, i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "160px 1fr 1fr", gap: 2 }}>
+              {/* Time label */}
+              <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.03)", display: "flex", flexDirection: "column" as const, justifyContent: "center", borderLeft: `3px solid ${GOLD}55` }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 6 }}>{row.time}</div>
+                <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.45 }}>{row.event}</div>
+              </div>
+              {/* Without */}
+              <div style={{ padding: "20px 24px", background: "rgba(192,57,43,0.06)", borderTop: "1px solid rgba(192,57,43,0.18)" }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, marginBottom: 10, padding: "3px 8px", background: "rgba(192,57,43,0.12)", border: "1px solid rgba(192,57,43,0.25)" }}>
+                  <span style={{ ...DM, fontSize: 9, fontWeight: 800, color: "#E05B4B", letterSpacing: "0.14em" }}>{row.withoutBadge}</span>
+                </div>
+                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0 }}>{row.without}</p>
+              </div>
+              {/* With */}
+              <div style={{ padding: "20px 24px", background: `${TEAL}0A`, borderTop: `1px solid ${TEAL}33` }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 5, marginBottom: 10, padding: "3px 8px", background: `${TEAL}18`, border: `1px solid ${TEAL}44` }}>
+                  <span style={{ ...DM, fontSize: 9, fontWeight: 800, color: TEAL, letterSpacing: "0.14em" }}>{row.withBadge}</span>
+                </div>
+                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.72)", lineHeight: 1.65, margin: 0 }}>{row.with}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Outcome summary */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1px 1fr", gap: 0, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+          {/* Without outcomes */}
+          <div style={{ padding: "32px 36px" }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", color: "rgba(192,57,43,0.8)", textTransform: "uppercase" as const, marginBottom: 20 }}>Without Readiness OS — 30-day outcome</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              {[
+                { n: "$2.3M",  l: "in reactive advisory and consulting spend" },
+                { n: "$47M",   l: "in regulatory penalty exposure" },
+                { n: "14 days", l: "to reach fully coordinated response" },
+                { n: "3",      l: "emergency board meetings before execution" },
+              ].map((s, i) => (
+                <div key={i}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 700, color: "rgba(220,100,90,0.85)", lineHeight: 1, marginBottom: 4 }}>{s.n}</div>
+                  <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.35)", lineHeight: 1.45 }}>{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ background: "rgba(255,255,255,0.06)" }} />
+          {/* With outcomes */}
+          <div style={{ padding: "32px 36px" }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", color: TEAL, textTransform: "uppercase" as const, marginBottom: 20 }}>With Readiness OS — 30-day outcome</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              {[
+                { n: "$0",      l: "regulatory penalty exposure — disclosed on time" },
+                { n: "12 min",  l: "from detection to authorized response" },
+                { n: "$0",      l: "emergency consulting — protocol covered it" },
+                { n: "1",       l: "executive authorization — no emergency board meetings" },
+              ].map((s, i) => (
+                <div key={i}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1, marginBottom: 4 }}>{s.n}</div>
+                  <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.45 }}>{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: 20, textAlign: "center" as const }}>
+          <Link href="/situation/ransomware" style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)", textDecoration: "none", letterSpacing: "0.06em" }}>
+            See the complete ransomware protocol walkthrough →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LeadCaptureStrip() {
+  const [form, setForm] = useState({ name: "", email: "", sector: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+
+  const SECTORS = [
+    "Technology", "Financial Services", "Healthcare & Life Sciences",
+    "Manufacturing & Industrial", "Retail & Consumer", "Energy & Infrastructure",
+    "Professional Services", "Government & Public Sector", "Other",
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.email || !form.name) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/brief-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, email: form.email, sector: form.sector }),
+      });
+      if (res.ok) {
+        setStatus("done");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <section style={{ background: "#fff", borderTop: "1px solid #E5E7EB", borderBottom: "1px solid #E5E7EB", padding: "64px 0" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+
+          {/* Left — editorial statement */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+              <div style={{ width: 28, height: 1.5, background: NAVY }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: NAVY }}>Not Ready to Apply?</span>
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,2.6vw,38px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, margin: "0 0 16px" }}>
+              Start with the Executive Brief.<br />
+              <span style={{ color: GOLD }}>No commitment. No sales call.</span>
+            </h2>
+            <p style={{ ...DM, fontSize: 14, color: "#4B5563", lineHeight: 1.75, margin: "0 0 24px" }}>
+              The 4-page Executive Brief covers the complete value case: the 15–20 situations your organization will face this year, the 3,600× execution head start, what the 90-day Founding Partner partnership delivers, and the ROI baseline for your organization size. We'll send it directly to your work inbox.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
+              {[
+                "Reviewed personally by the founder — not a sales team",
+                "Useful for sharing with your board, your CFO, or your strategy team",
+                "The complete case for why the old operating model doesn't work anymore",
+              ].map((p, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                  <div style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 6 }} />
+                  <span style={{ ...DM, fontSize: 13, color: "#4B5563" }}>{p}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — form */}
+          <div style={{ background: NAVY, padding: "40px 44px" }}>
+            {status === "done" ? (
+              <div style={{ textAlign: "center" as const, padding: "20px 0" }}>
+                <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, transparent, ${GOLD})`, margin: "0 auto 24px" }} />
+                <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 14 }}>Brief Sent</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 26, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 10 }}>
+                  Check your inbox.
+                </p>
+                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 20 }}>
+                  Sent to <strong style={{ color: "rgba(255,255,255,0.82)" }}>{form.email}</strong>
+                </p>
+                <p style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>
+                  We'll follow up personally within 24 hours.<br />Ready to apply now?{" "}
+                  <Link href="/request-access" style={{ color: GOLD, textDecoration: "none", fontWeight: 700 }}>Apply for Founding Partner Access →</Link>
+                </p>
+              </div>
+            ) : (
+              <>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>Send Me the Executive Brief</div>
+
+                <form onSubmit={handleSubmit}>
+                  {[
+                    { key: "name",  label: "First Name",   placeholder: "Jane", type: "text" },
+                    { key: "email", label: "Work Email",   placeholder: "jane@company.com", type: "email" },
+                  ].map(f => (
+                    <div key={f.key} style={{ marginBottom: 20 }}>
+                      <label style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.6)", display: "block", marginBottom: 6 }}>{f.label}</label>
+                      <input
+                        type={f.type}
+                        value={(form as any)[f.key]}
+                        onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
+                        placeholder={f.placeholder}
+                        required={f.key !== "sector"}
+                        style={{ width: "100%", background: "transparent", border: "none", borderBottom: "1px solid rgba(240,237,228,0.18)", color: IVORY, fontSize: 14, padding: "8px 0", outline: "none", fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" as const }}
+                      />
+                    </div>
+                  ))}
+
+                  <div style={{ marginBottom: 28 }}>
+                    <label style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.6)", display: "block", marginBottom: 6 }}>Your Sector <span style={{ color: "rgba(240,237,228,0.3)", textTransform: "none" as const }}>— optional</span></label>
+                    <select
+                      value={form.sector}
+                      onChange={e => setForm(prev => ({ ...prev, sector: e.target.value }))}
+                      style={{ width: "100%", background: "rgba(255,255,255,0.04)", border: "none", borderBottom: "1px solid rgba(240,237,228,0.18)", color: form.sector ? IVORY : "rgba(240,237,228,0.35)", fontSize: 14, padding: "8px 0", outline: "none", fontFamily: "'DM Sans', sans-serif", cursor: "pointer", boxSizing: "border-box" as const }}
+                    >
+                      <option value="" style={{ background: NAVY }}>Select your industry</option>
+                      {SECTORS.map(s => <option key={s} value={s} style={{ background: NAVY }}>{s}</option>)}
+                    </select>
+                  </div>
+
+                  {status === "error" && (
+                    <p style={{ ...DM, fontSize: 11, color: "#F87171", marginBottom: 12 }}>
+                      Something went wrong. Email <a href="mailto:founding@vaughnmartin.com" style={{ color: GOLD }}>founding@vaughnmartin.com</a>
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    style={{ width: "100%", padding: "14px 0", background: "transparent", border: `1px solid rgba(201,168,76,0.55)`, color: GOLD, ...DM, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, cursor: status === "loading" ? "not-allowed" : "pointer", opacity: status === "loading" ? 0.6 : 1, transition: "background 0.2s" }}
+                  >
+                    {status === "loading" ? "Sending…" : "Send Me the Executive Brief →"}
+                  </button>
+                  <p style={{ ...DM, fontSize: 10, color: "rgba(240,237,228,0.35)", textAlign: "center" as const, marginTop: 12, letterSpacing: "0.04em" }}>
+                    No password · no commitment · no sales team
+                  </p>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ObjectionCrusherSection() {
   const OBJECTIONS = [
     {
@@ -5780,14 +6062,35 @@ function FoundingPartnerCloseSection() {
             </p>
           </div>
           {/* Urgency signal */}
-          <div style={{ padding: "24px 28px", border: `1px solid ${GOLD}44`, background: "rgba(201,168,76,0.06)", minWidth: 220, flexShrink: 0 }}>
-            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Program Availability</div>
-            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1, marginBottom: 6 }}>12</div>
-            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>total Founding Partner slots<br />per cohort</div>
-            <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div style={{ padding: "24px 28px", border: `1px solid ${GOLD}55`, background: "rgba(201,168,76,0.07)", minWidth: 240, flexShrink: 0 }}>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>Q3 2025 Cohort</div>
+
+            {/* Seat progress bar */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 6 }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1 }}>12</div>
+                <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.45)" }}>total seats</div>
+              </div>
+              <div style={{ height: 3, background: "rgba(255,255,255,0.08)", marginBottom: 8 }}>
+                <div style={{ height: 3, width: "33%", background: GOLD }} />
+              </div>
+              <div style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.5)" }}>
+                <span style={{ color: GOLD, fontWeight: 700 }}>4 seats in review</span> · 8 remaining
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 8, paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E", flexShrink: 0 }} />
-                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.72)", fontWeight: 600 }}>Applications open — Q3 cohort</span>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E", flexShrink: 0 }} />
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.78)", fontWeight: 600 }}>Applications open now</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: GOLD, flexShrink: 0 }} />
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.55)" }}>Reviewed weekly by the founder</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.45)" }}>Cohort closes August 31</span>
               </div>
             </div>
           </div>
@@ -5938,7 +6241,10 @@ export default function Homepage() {
       {/* 12. PROOF — 15 research organizations + Dr. Kerry Huang */}
       <CredibilitySection />
 
-      {/* 13. Q&A — Executive questions, including the workflow distinction */}
+      {/* 13. PROOF MOMENT — real before/after activation narrative */}
+      <ProofMomentSection />
+
+      {/* 14. Q&A — Executive questions, including the workflow distinction */}
       <ExecutiveQASection />
 
       {/* 14. FEARLESS — Preparation → Readiness → Fearless */}
@@ -5953,7 +6259,10 @@ export default function Homepage() {
       {/* 17. QUALIFICATION — honest qualify-in / qualify-out earns trust from buyers */}
       <QualificationSection />
 
-      {/* 18. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
+      {/* 18. WARM MIDDLE — email capture for not-yet-ready visitors */}
+      <LeadCaptureStrip />
+
+      {/* 19. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
       <FoundingPartnerCloseSection />
 
       {/* 17. CTA */}
