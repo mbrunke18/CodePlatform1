@@ -338,6 +338,63 @@ export default function WhyExecutionOS() {
           </div>
         </section>
 
+        {/* ── FAMILIAR COMPARISONS ─────────────────────── */}
+        <section style={{ background: "#fff", padding: "72px 48px", borderTop: "2px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>When it reminds you of something</p>
+              <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,42px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: 16 }}>
+                If it sounds familiar — that's the point.
+              </h2>
+              <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, maxWidth: 620, margin: "0 auto", fontWeight: 500 }}>
+                The concepts Readiness OS is built on aren't new. Pre-staging, event detection, authorized execution — enterprises have proven these work in narrow domains for decades. Readiness OS is what happens when you apply that discipline to every strategic situation an organization will ever face.
+              </p>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
+              {[
+                {
+                  comparison: '"It sounds like a runbook."',
+                  badge: "You\'re right about the architecture",
+                  badgeColor: TEAL,
+                  body: "A runbook is a pre-staged procedure triggered by a detected event. That is exactly what a Readiness Protocol is. IT teams proved this model works — DevOps runbooks handle incidents in minutes because the response is written before the problem arrives.",
+                  reframe: "The difference is scope. An IT runbook covers system incidents for one team. Readiness OS is the strategic runbook for every situation across the entire enterprise — 231 situations, from M&A and activist investors to ransomware and supply chain collapse. Same discipline. Every domain.",
+                  icon: "📋",
+                },
+                {
+                  comparison: '"It\'s like disaster recovery with project management."',
+                  badge: "You\'re describing the thesis exactly",
+                  badgeColor: TEAL,
+                  body: "Disaster recovery planning is pre-staged, tested against known scenarios, triggered by events, and requires executive authorization. Every company that navigates catastrophic events well treats their response the way IT treats infrastructure failure — prepared before it happens.",
+                  reframe: "DR planning is budgeted for two or three categories of risk. Readiness OS applies that same discipline to all 231 strategic situations your organization will face — growth decisions, regulatory deadlines, competitive threats, workforce events. Not just disasters. Every situation.",
+                  icon: "🛡",
+                },
+              ].map(({ comparison, badge, badgeColor, body, reframe, icon }) => (
+                <div key={comparison} style={{ border: "1px solid #E8E4DC", borderTop: `3px solid ${badgeColor}`, padding: "32px 28px", background: "#FAFAF8" }}>
+                  <div style={{ fontSize: 28, marginBottom: 16 }}>{icon}</div>
+                  <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: NAVY, lineHeight: 1.3, marginBottom: 14, fontStyle: "italic" }}>{comparison}</div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 16, padding: "4px 10px", background: `${badgeColor}15`, border: `1px solid ${badgeColor}40` }}>
+                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: badgeColor, flexShrink: 0 }} />
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: badgeColor }}>{badge}</span>
+                  </div>
+                  <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 16 }}>{body}</p>
+                  <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 16 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>The full picture</div>
+                    <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, margin: 0 }}>{reframe}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ marginTop: 32, padding: "20px 28px", background: NAVY, display: "flex", alignItems: "center", gap: 20 }}>
+              <div style={{ flexShrink: 0, width: 3, height: 48, background: GOLD }} />
+              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.75)", lineHeight: 1.75, margin: 0 }}>
+                <strong style={{ color: "#fff" }}>The pattern:</strong> Every organization already invests in preparation for the situations it takes most seriously. Readiness OS extends that discipline — systematically, continuously, across every strategic situation — so the same preparation that protects the infrastructure protects the entire enterprise.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* ── THE 5 REASONS ────────────────────────────── */}
         <section style={{ background: NAVY, padding: "72px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 900px 700px at 20% 60%, rgba(43,138,110,0.1), transparent)", pointerEvents: "none" }} />

@@ -110,6 +110,57 @@ export default function PartnerBrief() {
           </div>
         </div>
 
+        {/* When Prospects Make the Comparison */}
+        <div style={{ padding: "56px 56px 52px", background: IVORY, borderBottom: `1px solid ${IVORY}` }}>
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+              <div style={{ width: 24, height: 2, background: GOLD }} />
+              <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Conversation Guide</span>
+            </div>
+            <h2 style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 8 }}>
+              When prospects make a familiar comparison
+            </h2>
+            <p style={{ ...DM, fontSize: 14, color: "#4B5563", lineHeight: 1.75, maxWidth: 680, marginBottom: 36 }}>
+              Two comparisons come up consistently in early conversations. Both are architecturally correct — and both are conversation openers, not objections. Here is the reframe for each.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
+              {[
+                {
+                  trigger: '"It sounds like a runbook."',
+                  signal: "They understand pre-staging",
+                  response: "Exactly right. A runbook is a pre-staged procedure triggered by a detected event — and that is the architecture. IT teams have proven this model works for decades. DevOps handles incidents in minutes because the response is written before the problem arrives.",
+                  pivot: "Readiness OS is the strategic runbook for the entire enterprise — not one team, not one category of incident. 231 situations, every domain, executive-authorized. Same discipline. Whole organization.",
+                },
+                {
+                  trigger: '"It\'s like disaster recovery but with project management."',
+                  signal: "They understand preparation discipline",
+                  response: "That's the thesis exactly. Every company that navigates catastrophic events well prepared before the event — pre-staged protocols, tested responses, authorized execution chains. Disaster recovery proved that preparation beats reaction every time.",
+                  pivot: "DR planning covers two or three categories of risk. Readiness OS applies that same discipline across all 231 strategic situations — M&A, competitive threats, regulatory deadlines, workforce transformation. Not just disasters. Every situation the organization will ever face.",
+                },
+              ].map(({ trigger, signal, response, pivot }) => (
+                <div key={trigger} style={{ background: "#fff", border: `1px solid ${IVORY}`, borderTop: `3px solid ${GOLD}`, padding: "28px 24px" }}>
+                  <div style={{ ...CG, fontSize: 16, fontWeight: 700, color: NAVY, fontStyle: "italic", marginBottom: 10, lineHeight: 1.35 }}>{trigger}</div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 16, padding: "3px 8px", background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.2)" }}>
+                    <div style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL }}>{signal}</span>
+                  </div>
+                  <p style={{ ...DM, fontSize: 12, color: "#374151", lineHeight: 1.7, marginBottom: 12 }}>{response}</p>
+                  <div style={{ borderTop: `1px solid ${IVORY}`, paddingTop: 12 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>The pivot</div>
+                    <p style={{ ...DM, fontSize: 12, color: "#374151", lineHeight: 1.7, margin: 0, fontWeight: 600 }}>{pivot}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 16, padding: "14px 20px", background: NAVY, display: "flex", gap: 16, alignItems: "flex-start" }}>
+              <div style={{ flexShrink: 0, width: 2, height: 36, background: GOLD, marginTop: 2 }} />
+              <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: 0 }}>
+                <strong style={{ color: "#fff" }}>The pattern to remember:</strong> When a prospect makes either comparison, they have already understood the architecture. The only thing left is scope. Every conversation that starts with "it sounds like..." is a prospect who is ready to hear the full story.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* What Readiness OS Does */}
         <div style={{ padding: "56px 56px 52px", background: NAVY, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div style={{ maxWidth: 1000, margin: "0 auto" }}>
