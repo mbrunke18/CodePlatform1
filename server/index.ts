@@ -333,6 +333,10 @@ app.get('/pitch-deck.html', (_req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
   res.sendFile(path.resolve(process.cwd(), 'public/pitch-deck.html'));
 });
+app.get('/logo-export.html', (_req, res) => {
+  res.setHeader('Cache-Control', 'no-cache');
+  res.sendFile(path.resolve(process.cwd(), 'public/logo-export.html'));
+});
 
 // PRODUCTION: Serve static files BEFORE server.listen() so GET / returns 200
 // from the very first healthcheck. API routes registered later take precedence

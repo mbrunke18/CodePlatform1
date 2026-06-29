@@ -695,3 +695,9 @@ id = "-dL-E0C84U5GSV7snSqLP"
 uri = "file://attached_assets/readiness_os_vc_pitch_v2.pptx"
 type = "slides"
 title = "Readiness OS — Pre-Seed Investor Deck (Ready to Send)"
+
+[[outputs]]
+id = "m_RAuWEs7mFEUglq2YpGL"
+uri = "file://public/vaughnmartin-logo.png"
+type = "image"
+title = "VaughnMartin Logo — 600×600 PNG (upload to RoundFunded)"
