@@ -547,7 +547,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-4"
                 >
                   <span className="text-xl md:text-2xl text-gray-800 tracking-wide">
-                    Readiness OS — Coordination Infrastructure for the Startup to Fortune 500
+                    Readiness OS — Readiness Infrastructure for the Startup to Fortune 500
                   </span>
                 </motion.div>
 

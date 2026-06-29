@@ -382,7 +382,7 @@ export default function Investors() {
             </div>
             <div className="flex items-center justify-center gap-3 mb-6">
               <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Coordination Infrastructure</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Readiness Infrastructure</span>
               <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>

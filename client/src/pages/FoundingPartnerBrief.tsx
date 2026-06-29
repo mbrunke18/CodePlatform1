@@ -117,13 +117,13 @@ export default function FoundingPartnerBrief() {
       <div style={{ background: IVORY, padding: "14px 40px", textAlign: "center", borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
         <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
           <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>
-            Founding Partner Program — 2 organizations · 90 days · no subscription fee
+            Founding Partner Program — 12 seats · 90 days · no subscription fee
           </span>
           <span style={{
             ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
             background: GOLD, color: NAVY, padding: "3px 10px", borderRadius: "0.15rem",
           }}>
-            Founding Partner #1 of 2
+            Founding Partner · Seat #1 of 12
           </span>
         </div>
       </div>

@@ -764,7 +764,7 @@ export default function ReadinessAd() {
             <div className="ad-proof-item" id="ad-pi-4"><div className="ad-proof-val">24/7</div><div className="ad-proof-lbl">Monitoring</div></div>
           </div>
           <div id="ad-du">vaughnmartin.com</div>
-          <div id="ad-db">VaughnMartin · Readiness OS · Coordination Infrastructure</div>
+          <div id="ad-db">VaughnMartin · Readiness OS · Readiness Infrastructure</div>
         </div>
 
         <button id="ad-replay-btn" onClick={startAd}>↺ REPLAY</button>

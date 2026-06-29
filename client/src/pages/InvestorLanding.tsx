@@ -56,7 +56,7 @@ export default function InvestorLanding() {
 
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28, padding: "5px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
             <div style={{ width: 5, height: 5, background: GOLD, flexShrink: 0 }} />
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: GOLD }}>Coordination Infrastructure</span>
+            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: GOLD }}>Readiness Infrastructure</span>
           </div>
 
           <h1 data-testid="heading-hero" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(40px,6vw,72px)", fontWeight: 700, lineHeight: 1.08, color: "#fff", marginBottom: 20, maxWidth: 860, marginLeft: "auto", marginRight: "auto" }}>

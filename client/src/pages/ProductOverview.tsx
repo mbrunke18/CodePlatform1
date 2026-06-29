@@ -233,7 +233,7 @@ export default function ProductOverview() {
                 color: "rgba(10,15,46,0.5)",
                 marginBottom: 20,
               }}>
-                Enterprise Coordination Infrastructure
+                Enterprise Readiness Infrastructure
               </div>
               <div style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",

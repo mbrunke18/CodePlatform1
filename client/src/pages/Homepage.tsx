@@ -2770,7 +2770,7 @@ function WhyNowStrip() {
           <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "11px 26px", border: `1px solid rgba(201,168,76,0.38)`, background: "rgba(201,168,76,0.07)" }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", textTransform: "uppercase" as const }}>
-              Coordination Infrastructure — the operating model layer the market is missing.
+              Readiness Infrastructure — the operating model layer the market is missing.
             </span>
           </div>
           <div style={{ fontSize: 11, color: "rgba(255,255,255,0.28)", fontFamily: "'Barlow', Arial, sans-serif", fontStyle: "italic" as const, textAlign: "right" as const }}>
@@ -6169,7 +6169,7 @@ export default function Homepage() {
   useScrollDepth();
   useEffect(() => {
     updatePageMetadata({
-      title: "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure",
+      title: "VaughnMartin | Readiness OS — Enterprise Readiness Infrastructure",
       description: "Readiness OS gives startup to Fortune 500 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 180 Readiness Protocols, 248+ data points, zero improvisation.",
       ogTitle: "VaughnMartin Readiness OS — End-to-End Organizational Advantage",
       ogDescription: "The response is ready before the trigger fires. Map · Monitor · Decide · Execute · Learn — the complete operating architecture for startup to Fortune 500 execution. 3,600× Execution Head Start.",
