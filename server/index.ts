@@ -328,14 +328,14 @@ app.use('/screenshots', express.static(path.join(process.cwd(), 'screenshots'), 
   setHeaders: (res) => { res.setHeader('Cache-Control', 'public, max-age=604800'); }
 }));
 
-// Serve standalone HTML files from public/ directly (bypasses SPA router in both dev + prod)
+// Serve standalone HTML files — must match the client/public/ pattern used by other working routes
 app.get('/pitch-deck.html', (_req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile(path.resolve(process.cwd(), 'public/pitch-deck.html'));
+  res.sendFile(path.resolve('client/public/pitch-deck.html'));
 });
 app.get('/logo-export.html', (_req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile(path.resolve(process.cwd(), 'public/logo-export.html'));
+  res.sendFile(path.resolve('client/public/logo-export.html'));
 });
 
 // PRODUCTION: Serve static files BEFORE server.listen() so GET / returns 200
