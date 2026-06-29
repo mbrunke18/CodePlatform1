@@ -328,6 +328,12 @@ app.use('/screenshots', express.static(path.join(process.cwd(), 'screenshots'), 
   setHeaders: (res) => { res.setHeader('Cache-Control', 'public, max-age=604800'); }
 }));
 
+// Serve standalone HTML files from public/ directly (bypasses SPA router in both dev + prod)
+app.get('/pitch-deck.html', (_req, res) => {
+  res.setHeader('Cache-Control', 'no-cache');
+  res.sendFile(path.resolve(process.cwd(), 'public/pitch-deck.html'));
+});
+
 // PRODUCTION: Serve static files BEFORE server.listen() so GET / returns 200
 // from the very first healthcheck. API routes registered later take precedence
 // for /api/* paths because express.static only matches real files.
