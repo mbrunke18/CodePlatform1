@@ -700,4 +700,10 @@ title = "Readiness OS — Pre-Seed Investor Deck (Ready to Send)"
 id = "m_RAuWEs7mFEUglq2YpGL"
 uri = "file://public/vaughnmartin-logo.png"
 type = "image"
-title = "VaughnMartin Logo — 600×600 PNG (upload to RoundFunded)"
+title = "VaughnMartin Logo — Full Lockup (seal + wordmark)"
+
+[[outputs]]
+id = "-qeOeZvyvouje1Hgme5A0"
+uri = "file://public/vaughnmartin-logo-square.png"
+type = "image"
+title = "VaughnMartin Logo — Square Seal (avatar/icon uploads)"
