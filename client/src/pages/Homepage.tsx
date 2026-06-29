@@ -6181,31 +6181,31 @@ export default function Homepage() {
       <HomepageNav />
       <GuestPreviewBanner />
 
-      {/* 1. PAIN + PROMISE — qualify the buyer, then deliver the claim */}
+      {/*  1. PAIN + PROMISE — qualify the buyer, then deliver the claim */}
       <HeroSection />
 
-      {/* 2. CREDIBILITY — validate immediately; permission to keep reading */}
+      {/*  2. CREDIBILITY — validate immediately; permission to keep reading */}
       <SocialProofStrip />
 
-      {/* 3. FEEL THE GAP — animated 30 days vs 12 minutes before explanation */}
+      {/*  3. FEEL THE GAP — animated 30 days vs 12 minutes before explanation */}
       <RealityGapSimulator />
 
-      {/* 4. ENGAGE — 3 clear paths: experience it / see a scenario / get the brief */}
+      {/*  4. ENGAGE — 3 clear paths: experience it / see a scenario / get the brief */}
       <EngagementBridge />
 
-      {/* 5. HOW — 3 steps, 12 minutes, no coordination meeting */}
+      {/*  5. HOW — 3 steps, 12 minutes, no coordination meeting */}
       <ThreeStepSection />
 
-      {/* 6. THE STORY — emotional narrative: two organizations, same trigger */}
+      {/*  6. THE STORY — emotional narrative: two organizations, same trigger */}
       <TheStorySection />
 
-      {/* 7. BRIEF — 4 questions every visitor must be able to answer and repeat */}
+      {/*  7. BRIEF — 4 questions every visitor must be able to answer and repeat */}
       <ThirtySecondBrief />
 
-      {/* 8. EXPLAINER — cost of inaction: WITH/WITHOUT timelines + scenario grid */}
+      {/*  8. EXPLAINER — cost of inaction: WITH/WITHOUT timelines + scenario grid */}
       <PlainEnglishExplainer />
 
-      {/* 9. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
+      {/*  9. VISUAL BREAK — boardroom photo with founder premise + 3 proof stats */}
       <PhotoBreakSection />
 
       {/* 10. FREQUENCY — 15–20 situations/year reframe before the demos */}
@@ -6217,52 +6217,52 @@ export default function Homepage() {
       {/* 12. PROBLEM — Detection + Mobilization gaps */}
       <ProblemSection />
 
-      {/* 5. DISTINCTION — Not a workflow tool. Readiness infrastructure. */}
+      {/* 13. DISTINCTION — Not a workflow tool. Readiness infrastructure. */}
       <WorkflowDistinctionSection />
 
-      {/* 6. MICROSOFT — You have the stack; none have the operating model */}
+      {/* 14. MICROSOFT — You have the stack; none have the operating model */}
       <MicrosoftHookStrip />
 
-      {/* 7. HOW IT WORKS — IDEA Framework + Before/After */}
+      {/* 15. HOW IT WORKS — IDEA Framework + Before/After */}
       <IDEASection />
 
-      {/* 8. MECHANISM — Animated 12-minute execution chain */}
+      {/* 16. MECHANISM — Animated 12-minute execution chain */}
       <ExecChainSection />
 
-      {/* 9. PLATFORM — What it looks like in action */}
+      {/* 17. PLATFORM — What it looks like in action */}
       <PlatformScreenshotSection />
 
-      {/* 10. ANATOMY — What's inside every Readiness Protocol */}
+      {/* 18. ANATOMY — What's inside every Readiness Protocol */}
       <AnatomySection />
 
-      {/* 11. PROOF — 15 research organizations + Dr. Kerry Huang */}
+      {/* 19. PROOF — 15 research organizations + Dr. Kerry Huang */}
       <CredibilitySection />
 
-      {/* 13. PROOF MOMENT — real before/after activation narrative */}
+      {/* 20. PROOF MOMENT — real before/after activation narrative */}
       <ProofMomentSection />
 
-      {/* 14. Q&A — Executive questions, including the workflow distinction */}
+      {/* 21. Q&A — Executive questions, including the workflow distinction */}
       <ExecutiveQASection />
 
-      {/* 14. OPERATING MODEL — Profitability / Delivery / Cost */}
+      {/* 22. OPERATING MODEL — Profitability / Delivery / Cost */}
       <OperatingModelOutcomesSection />
 
-      {/* 15. FEARLESS — Preparation → Readiness → Fearless */}
+      {/* 23. FEARLESS — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
 
-      {/* 16. OBJECTION CRUSHER — answer the 3 strategy-team objections head-on */}
+      {/* 24. OBJECTION CRUSHER — answer the 3 strategy-team objections head-on */}
       <ObjectionCrusherSection />
 
-      {/* 17. QUALIFICATION — honest qualify-in / qualify-out earns trust from buyers */}
+      {/* 25. QUALIFICATION — honest qualify-in / qualify-out earns trust from buyers */}
       <QualificationSection />
 
-      {/* 18. WARM MIDDLE — email capture for not-yet-ready visitors */}
+      {/* 26. WARM MIDDLE — email capture for not-yet-ready visitors */}
       <LeadCaptureStrip />
 
-      {/* 19. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
+      {/* 27. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
       <FoundingPartnerCloseSection />
 
-      {/* 17. EXPLORE DEEP — 4 discovery paths: "choose your depth" pull to more pages */}
+      {/* 28. EXPLORE DEEP — 4 discovery paths: "choose your depth" pull to more pages */}
       <ExploreDeepSection />
 
       <HomepageFooter />
