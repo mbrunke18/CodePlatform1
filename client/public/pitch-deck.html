@@ -4,106 +4,132 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>VaughnMartin — Investor Pitch Deck</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
-    :root{--navy:#0A0F2E;--navy2:#121D47;--navy3:#0d1540;--gold:#C9A84C;--gold-lt:#DFC178;--teal:#2B8A6E;--teal-lt:#3BAF8A;--ivory:#F0EDE4;--red:#C0392B;--muted:rgba(240,237,228,.72);--muted2:rgba(255,255,255,.58);--signal:#00E5C4}
+    :root{
+      --navy:#0A0F2E;--navy2:#131D4F;
+      --gold:#C9A84C;--gold-lt:#DFC178;--gold-pale:#F5EDDA;
+      --teal:#2B8A6E;--teal-lt:#3BAF8A;--teal-pale:#E8F5F0;
+      --red:#C0392B;--red-pale:#FBF0EE;
+      --bg:#FFFFFF;--bg2:#F7F6F2;--bg3:#F0EDE4;
+      --text:#0A0F2E;--text2:#2D3561;--muted:#6B7280;--muted2:#9CA3AF;
+      --border:rgba(10,15,46,.1);--border2:rgba(10,15,46,.06);
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{font-family:'Barlow Condensed',sans-serif;background:#06080f;-webkit-print-color-adjust:exact;print-color-adjust:exact;overflow-x:hidden}
+    html,body{font-family:'Barlow Condensed',sans-serif;background:#1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact;overflow-x:hidden}
     @page{size:1280px 720px;margin:0}
-
     #sw{margin:0 auto}
 
-    /* ─── SLIDE BASE ─────────────────────────────── */
-    .slide{width:1280px;height:720px;position:relative;overflow:hidden;display:flex;flex-direction:column;background:linear-gradient(150deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:52px 64px 44px;page-break-after:always;break-after:page;transform-origin:top left}
-    .slide.deep{background:linear-gradient(150deg,#040715 0%,#0a0f2e 100%)}
-    .slide.teal-bg{background:linear-gradient(150deg,#061e16 0%,#0a1e18 40%,var(--navy) 100%)}
-    .slide.ivory{background:var(--ivory);color:var(--navy)}
+    /* ── SLIDE BASE ── */
+    .slide{
+      width:1280px;height:720px;position:relative;overflow:hidden;
+      display:flex;flex-direction:column;
+      background:var(--bg);color:var(--text);
+      padding:52px 64px 44px;
+      page-break-after:always;break-after:page;
+      transform-origin:top left;
+    }
+    .slide.dark{background:linear-gradient(145deg,#04060f 0%,var(--navy) 100%);color:#fff}
+    .slide.dark-teal{background:linear-gradient(145deg,#030f0a 0%,#071e16 50%,#0a0f2e 100%);color:#fff}
+    .slide.warm{background:var(--bg3);color:var(--text)}
 
-    /* grid overlay */
-    .slide:not(.ivory)::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.02) 1px,transparent 1px);background-size:60px 60px;z-index:0}
+    /* Gold top rule */
+    .slide:not(.dark):not(.dark-teal)::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.08));z-index:10}
+    .slide.dark::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.12));z-index:10}
 
-    /* topbar */
-    .topbar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.08));z-index:20}
-    .topbar.teal{background:linear-gradient(90deg,var(--teal),rgba(43,138,110,.08))}
-    .topbar.red{background:linear-gradient(90deg,rgba(192,57,43,.9),rgba(192,57,43,.08))}
+    /* Left brand accent on light slides */
+    .slide:not(.dark):not(.dark-teal)::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.2));z-index:10}
 
     /* slide number */
-    .num{position:absolute;right:24px;bottom:18px;font-size:10px;letter-spacing:.28em;color:rgba(201,168,76,.3);font-weight:700;z-index:20}
+    .num{position:absolute;right:22px;bottom:16px;font-size:9px;letter-spacing:.28em;font-weight:700;z-index:20;opacity:.35}
+    .slide:not(.dark):not(.dark-teal) .num{color:var(--navy)}
+    .slide.dark .num,.slide.dark-teal .num{color:rgba(201,168,76,.6)}
 
     /* content layer */
     .z{position:relative;z-index:2;display:flex;flex-direction:column;height:100%}
 
-    /* ─── TYPE ───────────────────────────────────── */
-    .lbl{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
-    .lbl-t{color:var(--teal-lt)}
-    .lbl-r{color:rgba(220,80,80,.8)}
-    .h1{font-family:'Cormorant Garamond',serif;font-weight:700;line-height:1.03;letter-spacing:-.01em}
-    .h2{font-size:40px;font-weight:900;text-transform:uppercase;line-height:1.04;letter-spacing:-.01em}
-    .h3{font-size:26px;font-weight:900;text-transform:uppercase;line-height:1.1}
-    .body{font-size:15px;line-height:1.56;font-weight:500;letter-spacing:.02em}
-    .body-sm{font-size:13px;line-height:1.56;font-weight:500;letter-spacing:.02em}
+    /* ── TYPOGRAPHY ── */
+    .lbl{font-size:10px;letter-spacing:.38em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:6px}
+    .lbl-t{color:var(--teal)}
+    .lbl-muted{color:var(--muted2)}
+    .h1{font-family:'Cormorant Garamond',serif;font-weight:700;line-height:1.03;letter-spacing:-.01em;color:var(--navy)}
+    .h2{font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.04;letter-spacing:-.01em;color:var(--navy)}
+    .body{font-size:14px;line-height:1.6;font-weight:500;color:var(--text2)}
+    .body-sm{font-size:12.5px;line-height:1.58;font-weight:500;color:var(--text2)}
     .italic{font-family:'Cormorant Garamond',serif;font-style:italic}
-    .gold{color:var(--gold)}.teal{color:var(--teal-lt)}.red{color:#E05252}.muted{color:var(--muted)}.muted2{color:var(--muted2)}
+    .gold{color:var(--gold)}.teal{color:var(--teal)}.red{color:var(--red)}
+    .white{color:#fff}.muted{color:var(--muted)}.muted2{color:var(--muted2)}
 
-    /* ─── LAYOUT ─────────────────────────────────── */
-    .rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:14px 0}
-    .rule-t{height:1px;background:linear-gradient(90deg,var(--teal),transparent);margin:14px 0}
+    /* dark slide text overrides */
+    .dark .h1,.dark .h2{color:#fff}
+    .dark .body,.dark .body-sm{color:rgba(255,255,255,.75)}
+
+    /* ── LAYOUT ── */
+    .rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:12px 0}
+    .rule-sm{height:1px;background:var(--border);margin:10px 0}
     .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;min-height:0}
-    .split-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-    .split-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
-    .split-52{display:grid;grid-template-columns:5fr 2fr;gap:24px;flex:1;min-height:0}
+    .split-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+    .split-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+    .col{display:flex;flex-direction:column;gap:12px}
 
-    /* ─── CARDS ──────────────────────────────────── */
-    .panel{border:1px solid rgba(201,168,76,.18);background:rgba(201,168,76,.04);padding:20px 22px;border-radius:2px}
-    .panel-dark{border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.25);padding:20px 22px;border-radius:2px}
-    .panel-teal{border:1px solid rgba(43,138,110,.35);background:rgba(43,138,110,.07);padding:20px 22px;border-radius:2px}
-    .panel-red{border:1px solid rgba(192,57,43,.4);background:rgba(192,57,43,.06);padding:18px 20px;border-radius:2px}
-    .panel-hero{border:2px solid var(--gold);background:rgba(201,168,76,.07);padding:22px 24px;border-radius:2px}
+    /* ── CARDS (light) ── */
+    .card{border:1px solid var(--border);background:var(--bg2);padding:18px 20px;border-radius:3px}
+    .card-gold{border:1px solid rgba(201,168,76,.35);background:var(--gold-pale);padding:18px 20px;border-radius:3px}
+    .card-teal{border:1px solid rgba(43,138,110,.25);background:var(--teal-pale);padding:18px 20px;border-radius:3px}
+    .card-red{border:1px solid rgba(192,57,43,.2);background:var(--red-pale);padding:16px 18px;border-radius:3px}
+    .card-navy{border:1px solid var(--border);background:var(--navy);color:#fff;padding:18px 20px;border-radius:3px}
+    .card-hero{border:2px solid var(--gold);background:var(--gold-pale);padding:20px 22px;border-radius:3px}
 
-    /* ─── LISTS ──────────────────────────────────── */
-    .list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-    .li{display:flex;gap:12px;align-items:flex-start}
-    .bul{color:var(--gold);font-size:13px;font-weight:900;line-height:1.56;flex-shrink:0}
-    .bul-t{color:var(--teal-lt)}.bul-r{color:#E05252}
+    /* ── CARDS (dark slides) ── */
+    .dk-card{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);padding:18px 20px;border-radius:3px}
+    .dk-card-gold{border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.07);padding:18px 20px;border-radius:3px}
 
-    /* ─── STATS ──────────────────────────────────── */
-    .stat4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .stat-box{background:rgba(10,15,46,.65);border:1px solid rgba(201,168,76,.2);padding:14px 10px;text-align:center;border-radius:2px}
-    .stat-box .sn{font-size:36px;font-weight:900;color:var(--gold);line-height:1}
-    .stat-box .st{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+    /* ── STATS ── */
+    .stat-row{display:flex;gap:16px}
+    .stat-box{flex:1;text-align:center;padding:14px 10px;border:1px solid var(--border);border-radius:3px;background:var(--bg2)}
+    .stat-box .sn{font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+    .stat-box .st{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:3px;font-weight:700}
+    .stat-box-dk{flex:1;text-align:center;padding:14px 10px;border:1px solid rgba(201,168,76,.2);border-radius:3px;background:rgba(10,15,46,.6)}
+    .stat-box-dk .sn{font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+    .stat-box-dk .st{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,237,228,.5);margin-top:3px;font-weight:700}
 
-    /* ─── IMAGES ─────────────────────────────────── */
-    .img-frame{border:1px solid rgba(201,168,76,.22);border-radius:3px;overflow:hidden;box-shadow:0 14px 36px rgba(0,0,0,.5);height:100%}
-    .img-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+    /* ── IMAGES ── */
+    .img-frame{border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 8px 32px rgba(10,15,46,.12);height:100%}
+    .img-frame img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+    .img-frame-dk{border:1px solid rgba(255,255,255,.1);border-radius:6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.5);height:100%}
+    .img-frame-dk img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
 
-    /* ─── COMPARISON TABLE ───────────────────────── */
-    .comp-table{width:100%;border-collapse:collapse;margin-top:14px}
-    .comp-table th{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;padding:9px 14px;text-align:center;border-bottom:2px solid rgba(201,168,76,.25)}
-    .comp-table th:first-child{text-align:left}
-    .comp-table th.us{color:var(--teal-lt);border-bottom-color:var(--teal)}
-    .comp-table td{font-size:12.5px;font-weight:500;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;color:var(--muted);vertical-align:middle}
-    .comp-table td:first-child{text-align:left;color:#fff;font-weight:600;font-size:12px;letter-spacing:.04em}
-    .comp-table td.us{color:var(--teal-lt);font-weight:700;background:rgba(43,138,110,.08)}
-    .comp-table .ck{color:var(--teal-lt);font-size:15px;font-weight:900}
-    .comp-table .xk{color:rgba(220,80,80,.65);font-size:13px;font-weight:900}
-    .comp-table .pk{color:var(--gold);font-size:12px;font-weight:700}
+    /* ── LOGO ── */
+    .logo{display:inline-flex;align-items:center;gap:10px}
+    .seal{width:40px;height:40px;border-radius:50%;background:var(--navy);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;font-size:11px;color:var(--gold);flex-shrink:0}
+    .seal-lg{width:54px;height:54px;font-size:13px}
+    .wm-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;color:var(--navy);line-height:1}
+    .wm-sub{font-size:8.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:3px}
+    .dark .wm-name{color:#fff}
 
-    /* ─── LOGO ───────────────────────────────────── */
-    .logo{display:inline-flex;align-items:center;gap:11px}
-    .seal{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#1e2d6e,var(--navy));border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;font-size:11px;color:var(--gold);letter-spacing:.04em;flex-shrink:0}
-    .seal-lg{width:56px;height:56px;font-size:13px}
-    .wm-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;color:#fff;line-height:1}
-    .wm-sub{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+    /* ── COMPARISON TABLE ── */
+    .comp{width:100%;border-collapse:collapse}
+    .comp th{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:10px 14px;border-bottom:2px solid var(--border);color:var(--muted);text-align:center}
+    .comp th:first-child{text-align:left;width:28%}
+    .comp th.us{color:var(--teal);border-bottom-color:var(--teal)}
+    .comp td{font-size:12px;padding:9px 14px;border-bottom:1px solid var(--border2);text-align:center;color:var(--text2);vertical-align:middle}
+    .comp td:first-child{text-align:left;font-weight:600;color:var(--navy);font-size:11.5px}
+    .comp td.us{background:var(--teal-pale);color:var(--teal);font-weight:700;border-left:2px solid var(--teal);border-right:2px solid var(--teal)}
+    .comp th.us-h{background:var(--teal-pale);border-left:2px solid var(--teal);border-right:2px solid var(--teal)}
+    .ck{color:var(--teal);font-weight:900;font-size:14px}
+    .xk{color:var(--red);opacity:.5;font-size:13px}
+    .pk{color:var(--gold);font-weight:700}
 
-    /* ─── MISC ───────────────────────────────────── */
-    .chip{border:1px solid rgba(201,168,76,.4);padding:5px 14px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border-radius:1px;display:inline-block}
-    .chip-t{border-color:rgba(43,138,110,.5);color:var(--teal-lt)}
-    .bar{height:3px;border-radius:2px;margin-top:12px}
-    .micro{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.45);font-weight:700}
+    /* ── MISC ── */
+    .chip{display:inline-block;border:1.5px solid var(--border);padding:5px 14px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border-radius:30px;color:var(--navy);background:var(--bg2)}
+    .chip-gold{border-color:rgba(201,168,76,.5);color:var(--gold);background:var(--gold-pale)}
+    .chip-teal{border-color:rgba(43,138,110,.4);color:var(--teal);background:var(--teal-pale)}
+    .micro{font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--muted2)}
+    .pbar{height:4px;border-radius:2px;background:var(--border2);overflow:hidden;margin-top:6px}
+    .pbar-fill{height:100%;border-radius:2px;background:var(--gold)}
 
-    /* ─── PRINT ──────────────────────────────────── */
     @media print{
-      body{background:none}
+      body{background:#fff}
       #sw{width:1280px!important}
       .slide{transform:none!important;margin-bottom:0!important;page-break-after:always;break-after:page}
     }
@@ -112,174 +138,173 @@
 <body>
 <div id="sw">
 
-<!-- ═══════════════════════════════════════════
- S1 — COVER
-═══════════════════════════════════════════ -->
-<div class="slide deep">
-  <div class="topbar"></div>
-  <div style="position:absolute;top:-120px;right:-80px;width:580px;height:580px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none;z-index:1"></div>
-  <div class="z" style="justify-content:center;align-items:center;text-align:center;gap:20px">
-    <div class="logo" style="gap:14px;margin-bottom:4px">
+<!-- ═══ S1 — COVER (dark) ═══════════════════════════════════════════ -->
+<div class="slide dark" style="padding:0;display:grid;grid-template-columns:1fr 1fr">
+
+  <!-- left: brand + tagline -->
+  <div style="display:flex;flex-direction:column;justify-content:center;padding:64px 56px;position:relative;z-index:2">
+    <div class="logo" style="margin-bottom:28px">
       <div class="seal seal-lg">VM</div>
       <div>
-        <div class="wm-name" style="font-size:22px">VaughnMartin</div>
-        <div class="wm-sub" style="font-size:9px;margin-top:4px">Readiness OS</div>
+        <div class="wm-name" style="font-size:20px">VaughnMartin</div>
+        <div class="wm-sub">Readiness OS</div>
       </div>
     </div>
-    <div class="h1" style="font-size:62px;max-width:900px;margin-top:2px">
-      <span class="italic muted2">When the situation arrives —</span><br>
-      The response is ready<br>
-      <span class="gold">before the trigger fires.</span>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:10px;letter-spacing:.02em">When the situation arrives —</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;line-height:1.05;color:#fff;margin-bottom:6px">The response is ready<br><span style="color:var(--gold)">before the trigger fires.</span></div>
+    <div class="rule" style="margin:20px 0 18px;width:100%"></div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px">Readiness Infrastructure · Startup to Fortune 500</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <span style="border:1px solid rgba(201,168,76,.3);padding:5px 14px;font-size:9px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;color:rgba(201,168,76,.7);border-radius:30px">SaaS & Enterprise</span>
+      <span style="border:1px solid rgba(201,168,76,.3);padding:5px 14px;font-size:9px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;color:rgba(201,168,76,.7);border-radius:30px">GovTech & Defense</span>
     </div>
-    <div class="italic" style="font-size:20px;color:rgba(240,237,228,.55);margin-top:4px">Readiness Infrastructure · startup to Fortune 500</div>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px">
-      <div class="chip">SaaS &amp; Enterprise</div>
-      <div class="chip">Cybersecurity</div>
-      <div class="chip">GovTech &amp; Defense</div>
-    </div>
-    <div style="margin-top:8px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,168,76,.38);font-weight:700">Founding Partner Program · vaughnmartin.com · Louisville, KY</div>
+    <div style="position:absolute;bottom:28px;left:56px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);font-weight:700">vaughnmartin.com · Louisville, KY · Q3 2026</div>
   </div>
+
+  <!-- right: screenshot -->
+  <div style="position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,var(--navy) 0%,transparent 28%);z-index:3"></div>
+    <img src="/screenshots/new_command_tower.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block;opacity:.55">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--navy) 0%,transparent 30%);z-index:3"></div>
+  </div>
+
   <div class="num">01 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S2 — THE SITUATION (4 time-stamped scenarios)
-═══════════════════════════════════════════ -->
-<div class="slide deep">
-  <div class="topbar red"></div>
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(192,57,43,.08) 0%,transparent 60%);pointer-events:none;z-index:1"></div>
-  <div class="z" style="gap:0">
-    <div style="text-align:center;flex-shrink:0;margin-bottom:18px">
-      <div class="lbl" style="letter-spacing:.42em;color:rgba(220,80,80,.75)">The Situation</div>
-      <div class="h1" style="font-size:40px">Four situations. Every C-suite leader knows these moments.</div>
+<!-- ═══ S2 — THE SITUATION ═══════════════════════════════════════════ -->
+<div class="slide" style="padding:44px 68px 36px">
+  <div class="z">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;flex-shrink:0;margin-bottom:20px">
+      <div>
+        <div class="lbl" style="color:var(--red);letter-spacing:.42em">The Situation</div>
+        <div class="h2" style="font-size:26px">Four situations every C-suite leader knows.</div>
+      </div>
+      <div style="font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em">15–20 of these per enterprise, per year</div>
     </div>
-    <div class="split-4" style="flex:1;gap:12px">
+    <div class="split-4" style="flex:1;gap:14px">
+
       <!-- 3:17 AM -->
-      <div style="border:1px solid rgba(192,57,43,.45);background:rgba(192,57,43,.06);border-radius:2px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="border-left:4px solid var(--red);background:var(--red-pale);padding:18px 16px;border-radius:0 3px 3px 0;display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-size:28px;font-weight:900;color:rgba(220,80,80,.55);line-height:1;margin-bottom:6px">3:17 AM</div>
-          <div style="font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:10px">Ransomware</div>
-          <div style="font-size:11px;letter-spacing:.12em;color:rgba(220,80,80,.8);font-weight:700;margin-bottom:8px">$180K/hr exposure · 30-min window</div>
-          <div class="body-sm muted2">Systems encrypted. Clock running. Regulators watching. Disclosure window open.</div>
+          <div style="font-size:22px;font-weight:900;color:rgba(192,57,43,.4);line-height:1;margin-bottom:8px">3:17 <span style="font-size:14px">AM</span></div>
+          <div style="font-size:18px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;line-height:1.1">Ransomware</div>
+          <div style="font-size:10px;letter-spacing:.1em;color:var(--red);font-weight:700;margin-bottom:10px">$180K/hr exposure · 30-min window</div>
+          <div class="body-sm" style="font-size:11.5px">Systems encrypted. Clock running. Regulators watching. Disclosure window open.</div>
         </div>
-        <div style="margin-top:14px;padding:10px 12px;background:rgba(0,0,0,.3);border-radius:2px;text-align:center">
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.65);font-style:italic">What does your organization do?</div>
+        <div style="margin-top:12px;padding:9px 12px;background:rgba(192,57,43,.08);border-radius:2px;text-align:center;border-top:1px solid rgba(192,57,43,.15)">
+          <div style="font-size:11px;font-style:italic;color:var(--red);font-family:'Cormorant Garamond',serif;font-weight:600">What does your organization do?</div>
         </div>
       </div>
+
       <!-- 9:47 AM -->
-      <div style="border:1px solid rgba(201,168,76,.35);background:rgba(201,168,76,.05);border-radius:2px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="border-left:4px solid var(--gold);background:var(--gold-pale);padding:18px 16px;border-radius:0 3px 3px 0;display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-size:28px;font-weight:900;color:rgba(201,168,76,.5);line-height:1;margin-bottom:6px">9:47 AM</div>
-          <div style="font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:10px">Activist Investor</div>
-          <div style="font-size:11px;letter-spacing:.12em;color:rgba(201,168,76,.8);font-weight:700;margin-bottom:8px">$2.3B market cap · 4-hr window</div>
-          <div class="body-sm muted2">13D filing imminent. Board seat demand likely. Proxy posture unset. Stakeholders unaligned.</div>
+          <div style="font-size:22px;font-weight:900;color:rgba(201,168,76,.4);line-height:1;margin-bottom:8px">9:47 <span style="font-size:14px">AM</span></div>
+          <div style="font-size:18px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;line-height:1.1">Activist Investor</div>
+          <div style="font-size:10px;letter-spacing:.1em;color:var(--gold);font-weight:700;margin-bottom:10px">$2.3B market cap · 4-hr window</div>
+          <div class="body-sm" style="font-size:11.5px">13D filing imminent. Board seat demand likely. Proxy posture unset. Stakeholders unaligned.</div>
         </div>
-        <div style="margin-top:14px;padding:10px 12px;background:rgba(0,0,0,.3);border-radius:2px;text-align:center">
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.65);font-style:italic">What does your organization do?</div>
+        <div style="margin-top:12px;padding:9px 12px;background:rgba(201,168,76,.1);border-radius:2px;text-align:center;border-top:1px solid rgba(201,168,76,.2)">
+          <div style="font-size:11px;font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:600">What does your organization do?</div>
         </div>
       </div>
+
       <!-- 11:22 AM -->
-      <div style="border:1px solid rgba(43,138,110,.35);background:rgba(43,138,110,.05);border-radius:2px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="border-left:4px solid var(--teal);background:var(--teal-pale);padding:18px 16px;border-radius:0 3px 3px 0;display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-size:28px;font-weight:900;color:rgba(43,138,110,.6);line-height:1;margin-bottom:6px">11:22 AM</div>
-          <div style="font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:10px">Federal Inquiry</div>
-          <div style="font-size:11px;letter-spacing:.12em;color:rgba(43,138,110,.85);font-weight:700;margin-bottom:8px">$847M penalty risk · 48-hr window</div>
-          <div class="body-sm muted2">DOJ contact made. Response window open. Counsel fees accumulating. No unified position.</div>
+          <div style="font-size:22px;font-weight:900;color:rgba(43,138,110,.35);line-height:1;margin-bottom:8px">11:22 <span style="font-size:14px">AM</span></div>
+          <div style="font-size:18px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;line-height:1.1">Federal Inquiry</div>
+          <div style="font-size:10px;letter-spacing:.1em;color:var(--teal);font-weight:700;margin-bottom:10px">$847M penalty risk · 48-hr window</div>
+          <div class="body-sm" style="font-size:11.5px">DOJ contact made. Response window open. Counsel fees accumulating. No unified position.</div>
         </div>
-        <div style="margin-top:14px;padding:10px 12px;background:rgba(0,0,0,.3);border-radius:2px;text-align:center">
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.65);font-style:italic">What does your organization do?</div>
+        <div style="margin-top:12px;padding:9px 12px;background:rgba(43,138,110,.08);border-radius:2px;text-align:center;border-top:1px solid rgba(43,138,110,.15)">
+          <div style="font-size:11px;font-style:italic;color:var(--teal);font-family:'Cormorant Garamond',serif;font-weight:600">What does your organization do?</div>
         </div>
       </div>
+
       <!-- 2:05 PM -->
-      <div style="border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);border-radius:2px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="border-left:4px solid var(--border);background:var(--bg2);padding:18px 16px;border-radius:0 3px 3px 0;display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div style="font-size:28px;font-weight:900;color:rgba(255,255,255,.3);line-height:1;margin-bottom:6px">2:05 PM</div>
-          <div style="font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:10px">Price War</div>
-          <div style="font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.5);font-weight:700;margin-bottom:8px">$12M pipeline at risk · 2-hr window</div>
-          <div class="body-sm muted2">Competitor moved pricing. Sales team waiting for guidance. Pipeline exposed. No playbook.</div>
+          <div style="font-size:22px;font-weight:900;color:rgba(10,15,46,.2);line-height:1;margin-bottom:8px">2:05 <span style="font-size:14px">PM</span></div>
+          <div style="font-size:18px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:6px;line-height:1.1">Price War</div>
+          <div style="font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:10px">$12M pipeline at risk · 2-hr window</div>
+          <div class="body-sm" style="font-size:11.5px">Competitor moved pricing. Sales team waiting for guidance. Pipeline exposed. No playbook ready.</div>
         </div>
-        <div style="margin-top:14px;padding:10px 12px;background:rgba(0,0,0,.3);border-radius:2px;text-align:center">
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.65);font-style:italic">What does your organization do?</div>
+        <div style="margin-top:12px;padding:9px 12px;background:rgba(10,15,46,.04);border-radius:2px;text-align:center;border-top:1px solid var(--border2)">
+          <div style="font-size:11px;font-style:italic;color:var(--muted);font-family:'Cormorant Garamond',serif;font-weight:600">What does your organization do?</div>
         </div>
       </div>
-    </div>
-    <div style="flex-shrink:0;margin-top:14px;text-align:center">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.38)">Every enterprise faces <span class="gold">15–20 of these annually.</span> Most have no pre-staged response.</div>
+
     </div>
   </div>
   <div class="num">02 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S3 — THE CURRENT REALITY (Day 1–30 cost)
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar red"></div>
+<!-- ═══ S3 — THE CURRENT REALITY ═══════════════════════════════════ -->
+<div class="slide" style="padding:44px 68px 36px">
   <div class="z">
-    <div style="flex-shrink:0;margin-bottom:14px">
-      <div class="lbl-r" style="font-size:10px;letter-spacing:.34em;font-weight:700;text-transform:uppercase;margin-bottom:6px">The Current Reality</div>
-      <div class="h2" style="font-size:28px">The same thing. Every time.</div>
+    <div style="flex-shrink:0;margin-bottom:16px">
+      <div class="lbl" style="color:var(--red)">The Current Reality</div>
+      <div class="h2" style="font-size:28px">The same improvised response. <span class="gold">Every time.</span></div>
     </div>
-    <div class="split" style="gap:20px">
-      <!-- left: timeline -->
+    <div class="split" style="gap:28px">
+      <!-- timeline -->
       <div style="display:flex;flex-direction:column;gap:0">
-        <div style="padding:10px 14px;border-left:3px solid rgba(255,255,255,.12);margin-left:8px">
-          <div style="font-size:9px;letter-spacing:.22em;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:3px">A Situation Arrives</div>
-          <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.5)">Nobody knows who owns the decision.</div>
-          <div style="font-size:12px;color:rgba(220,80,80,.6);font-weight:700;margin-top:2px">$0 productive response</div>
+        <div style="padding:8px 12px 10px;border:1px solid var(--border2);background:var(--bg2);border-radius:3px;margin-bottom:8px">
+          <div style="font-size:9px;letter-spacing:.24em;font-weight:700;text-transform:uppercase;color:var(--muted2);margin-bottom:2px">A Situation Arrives</div>
+          <div class="body-sm">Nobody knows who owns the decision. <strong style="color:var(--red)">$0 productive response.</strong></div>
         </div>
-        <div style="display:flex;align-items:stretch;gap:14px;padding:8px 0;margin-left:8px">
-          <div style="width:3px;background:rgba(220,80,80,.15);flex-shrink:0;border-radius:2px;position:relative">
-            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(220,80,80,.7),rgba(220,80,80,.15));border-radius:2px"></div>
+        <div style="display:flex;gap:16px;flex:1">
+          <div style="display:flex;flex-direction:column;align-items:center;padding-top:4px">
+            <div style="width:2px;flex:1;background:linear-gradient(to bottom,var(--red),rgba(192,57,43,.15));border-radius:1px"></div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:0;flex:1">
-            <div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)">
-              <div style="font-size:10px;font-weight:900;letter-spacing:.1em;color:rgba(220,80,80,.7);width:38px;flex-shrink:0;text-transform:uppercase">Day 1</div>
-              <div style="flex:1;font-size:12px;color:var(--muted2)">Emergency meeting. Room still being decided.</div>
-              <div style="font-size:12px;font-weight:700;color:rgba(220,80,80,.75);flex-shrink:0">+$50K</div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border2)">
+              <div style="font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--red);width:40px;flex-shrink:0;text-transform:uppercase">Day 1</div>
+              <div style="flex:1;font-size:12px;color:var(--text2)">Emergency meeting. Room still being decided.</div>
+              <div style="font-size:12px;font-weight:700;color:var(--red);flex-shrink:0">+$50K</div>
             </div>
-            <div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)">
-              <div style="font-size:10px;font-weight:900;letter-spacing:.1em;color:rgba(220,80,80,.7);width:38px;flex-shrink:0;text-transform:uppercase">Day 3</div>
-              <div style="flex:1;font-size:12px;color:var(--muted2)">Outside counsel engaged at emergency rates.</div>
-              <div style="font-size:12px;font-weight:700;color:rgba(220,80,80,.75);flex-shrink:0">+$75K</div>
+            <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border2)">
+              <div style="font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--red);width:40px;flex-shrink:0;text-transform:uppercase">Day 3</div>
+              <div style="flex:1;font-size:12px;color:var(--text2)">Outside counsel engaged at emergency rates.</div>
+              <div style="font-size:12px;font-weight:700;color:var(--red);flex-shrink:0">+$75K</div>
             </div>
-            <div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)">
-              <div style="font-size:10px;font-weight:900;letter-spacing:.1em;color:rgba(220,80,80,.75);width:38px;flex-shrink:0;text-transform:uppercase">Day 7</div>
-              <div style="flex:1;font-size:12px;color:var(--muted2)">First draft. Three teams disagree on it.</div>
-              <div style="font-size:12px;font-weight:700;color:rgba(220,80,80,.8);flex-shrink:0">+$120K</div>
+            <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border2)">
+              <div style="font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--red);width:40px;flex-shrink:0;text-transform:uppercase">Day 7</div>
+              <div style="flex:1;font-size:12px;color:var(--text2)">First draft. Three teams disagree on it.</div>
+              <div style="font-size:12px;font-weight:700;color:var(--red);flex-shrink:0">+$120K</div>
             </div>
-            <div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)">
-              <div style="font-size:10px;font-weight:900;letter-spacing:.1em;color:rgba(220,80,80,.85);width:38px;flex-shrink:0;text-transform:uppercase">Day 14</div>
-              <div style="flex:1;font-size:12px;color:var(--muted2)">Board briefed. IR fielding unapproved calls.</div>
-              <div style="font-size:12px;font-weight:700;color:rgba(220,80,80,.85);flex-shrink:0">+$300K</div>
+            <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border2)">
+              <div style="font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--red);width:40px;flex-shrink:0;text-transform:uppercase">Day 14</div>
+              <div style="flex:1;font-size:12px;color:var(--text2)">Board briefed. IR fielding unapproved calls.</div>
+              <div style="font-size:12px;font-weight:700;color:var(--red);flex-shrink:0">+$300K</div>
             </div>
-            <div style="display:flex;gap:10px;padding:9px 0;background:rgba(192,57,43,.08);border-radius:2px;padding:9px 10px;margin-top:4px;border:1px solid rgba(192,57,43,.3)">
-              <div style="font-size:10px;font-weight:900;letter-spacing:.1em;color:#E05252;width:38px;flex-shrink:0;text-transform:uppercase">Day 30</div>
-              <div style="flex:1;font-size:12px;color:rgba(255,255,255,.75)">Coordinated response finally achieved.</div>
-              <div style="font-size:14px;font-weight:900;color:#E05252;flex-shrink:0">$1.7M+</div>
+            <div style="display:flex;gap:10px;padding:11px 12px;background:var(--red-pale);border:1px solid rgba(192,57,43,.2);border-radius:3px;margin-top:6px">
+              <div style="font-size:10px;font-weight:900;letter-spacing:.08em;color:var(--red);width:40px;flex-shrink:0;text-transform:uppercase">Day 30</div>
+              <div style="flex:1;font-size:12px;color:var(--navy)">Coordinated response finally achieved.</div>
+              <div style="font-size:15px;font-weight:900;color:var(--red);flex-shrink:0">$1.7M+</div>
             </div>
           </div>
         </div>
       </div>
-      <!-- right: cost breakdown + bottom line -->
-      <div style="display:flex;flex-direction:column;gap:14px;justify-content:center">
-        <div style="padding:20px 22px;border:2px solid rgba(192,57,43,.4);background:rgba(192,57,43,.07);border-radius:2px">
-          <div style="font-size:60px;font-weight:900;color:#E05252;line-height:1">$1.7M+</div>
-          <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(220,80,80,.6);font-weight:700;margin-top:5px">per strategic event</div>
-          <div class="rule" style="border-color:rgba(192,57,43,.25);margin:12px 0"></div>
-          <div style="display:flex;flex-direction:column;gap:7px">
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted2)">Executive time</span><span style="font-size:12px;font-weight:700;color:#E05252">$50K–$200K</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted2)">Outside counsel</span><span style="font-size:12px;font-weight:700;color:#E05252">$25K–$150K</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted2)">Revenue at risk</span><span style="font-size:12px;font-weight:700;color:#E05252">$50K–$500K</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted2)">Deals / penalties</span><span style="font-size:12px;font-weight:700;color:#E05252">Uncapped</span></div>
+      <!-- right panel -->
+      <div class="col" style="justify-content:center">
+        <div style="border:2px solid rgba(192,57,43,.3);background:var(--red-pale);border-radius:3px;padding:20px 22px;text-align:center">
+          <div style="font-size:72px;font-weight:900;color:var(--red);line-height:1;letter-spacing:-.02em">$1.7M+</div>
+          <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(192,57,43,.6);font-weight:700;margin-top:6px">per strategic event</div>
+          <div style="height:1px;background:rgba(192,57,43,.2);margin:14px 0"></div>
+          <div style="display:flex;flex-direction:column;gap:7px;text-align:left">
+            <div style="display:flex;justify-content:space-between"><span class="body-sm muted">Executive time</span><span style="font-size:12.5px;font-weight:700;color:var(--red)">$50K–$200K</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="body-sm muted">Outside counsel</span><span style="font-size:12.5px;font-weight:700;color:var(--red)">$25K–$150K</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="body-sm muted">Revenue at risk</span><span style="font-size:12.5px;font-weight:700;color:var(--red)">$50K–$500K</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="body-sm muted">Deals / penalties</span><span style="font-size:12.5px;font-weight:700;color:var(--red)">Uncapped</span></div>
           </div>
         </div>
-        <div style="padding:16px 18px;border-left:3px solid rgba(201,168,76,.5);background:rgba(201,168,76,.05)">
-          <div style="font-size:12px;line-height:1.65;color:rgba(255,255,255,.72)">This cycle repeats <strong style="color:#fff">15–20 times every year</strong> in any enterprise — across 180 documented strategic situations. Every single one an unscripted improvisation.</div>
+        <div style="border-left:3px solid var(--gold);padding:12px 14px;background:var(--bg2);border-radius:0 3px 3px 0">
+          <div class="body-sm">This cycle repeats <strong>15–20 times every year</strong> in any enterprise — 180 documented strategic situations. Every one an unscripted improvisation.</div>
         </div>
-        <div style="padding:12px 16px;background:rgba(10,15,46,.6);border:1px solid rgba(255,255,255,.07);border-radius:2px;text-align:center">
-          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32)">This is not a talent problem.</div>
-          <div style="font-size:18px;font-weight:900;color:#fff;margin-top:4px">It's a readiness problem.</div>
+        <div style="padding:12px 16px;border:1px solid var(--border);background:var(--bg);text-align:center;border-radius:3px">
+          <div style="font-size:13px;font-weight:900;text-transform:uppercase;color:var(--navy);letter-spacing:.06em">This is not a talent problem.<br><span class="gold">It's a readiness problem.</span></div>
         </div>
       </div>
     </div>
@@ -287,348 +312,294 @@
   <div class="num">03 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S4 — THE 3,600× MOMENT
-═══════════════════════════════════════════ -->
-<div class="slide deep">
-  <div class="topbar"></div>
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none;z-index:1"></div>
-  <div class="z" style="justify-content:center;align-items:center;text-align:center;gap:0">
-    <div class="lbl" style="letter-spacing:.42em">The Execution Gap</div>
-    <div style="font-size:180px;font-weight:900;color:var(--gold);line-height:.88;letter-spacing:-.04em;margin-top:8px">
-      3,600<span style="font-size:100px;color:rgba(201,168,76,.7)">×</span>
+<!-- ═══ S4 — THE 3,600× (dark) ══════════════════════════════════════ -->
+<div class="slide dark" style="display:grid;place-items:center;text-align:center">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0">
+    <div class="lbl" style="letter-spacing:.44em;margin-bottom:8px">The Execution Gap</div>
+    <div style="font-size:200px;font-weight:900;color:var(--gold);line-height:.85;letter-spacing:-.04em">
+      3,600<span style="font-size:110px;color:rgba(201,168,76,.6)">×</span>
     </div>
-    <div style="font-size:16px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:14px">Execution Head Start</div>
-    <div class="rule" style="width:380px;margin:18px auto"></div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-top:2px">
-      <div style="text-align:right;padding-right:32px">
-        <div style="font-size:60px;font-weight:900;color:rgba(220,80,80,.75);line-height:1">30</div>
-        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(220,80,80,.55);margin-top:2px;font-weight:700">Days to mobilize<br>Old model</div>
+    <div style="font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:16px">Execution Head Start</div>
+    <div style="height:1px;width:440px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto"></div>
+    <div style="display:flex;align-items:center;gap:48px">
+      <div style="text-align:right">
+        <div style="font-size:64px;font-weight:900;color:rgba(192,57,43,.7);line-height:1">30</div>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(192,57,43,.5);margin-top:4px;font-weight:700">Days · Old model<br>just to mobilize</div>
       </div>
-      <div style="font-size:42px;color:rgba(255,255,255,.18);font-weight:900;padding:0 18px">→</div>
-      <div style="text-align:left;padding-left:32px">
-        <div style="font-size:60px;font-weight:900;color:var(--teal-lt);line-height:1">12</div>
-        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(43,138,110,.7);margin-top:2px;font-weight:700">Minutes to execute<br>Readiness OS</div>
+      <div style="font-size:48px;color:rgba(255,255,255,.15);font-weight:300">→</div>
+      <div style="text-align:left">
+        <div style="font-size:64px;font-weight:900;color:var(--teal-lt);line-height:1">12</div>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(43,138,110,.6);margin-top:4px;font-weight:700">Minutes · Readiness OS<br>full execution</div>
       </div>
     </div>
-    <div style="margin-top:18px;font-size:13px;letter-spacing:.06em;color:rgba(255,255,255,.35);font-weight:600">
-      30 days compressed to 12 minutes · Not faster meetings · A different model
-    </div>
+    <div style="margin-top:20px;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.25);font-weight:600">30 days compressed to 12 minutes · Not faster meetings · An entirely different operating model</div>
   </div>
   <div class="num">04 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S5 — READINESS OS (the solution)
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
-  <div class="z">
-    <div class="lbl">Readiness OS</div>
-    <div class="h2" style="font-size:26px;margin-bottom:14px">What if the response was already built<br><span class="gold">before the situation arrived?</span></div>
-    <div class="split" style="gap:22px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="panel-hero">
-          <div class="lbl" style="margin-bottom:8px">What we built</div>
-          <div class="body-sm" style="font-size:13px;line-height:1.65;color:rgba(255,255,255,.85)">180 Readiness Protocols across 9 strategic domains, mapped against 231 continuously monitored triggers and 39 live data sources. When a signal crosses threshold, the protocol is already staged: tasks assigned, stakeholders notified, brief written, budget allocated. Executive authorizes in one click. Teams execute in 12 minutes.</div>
+<!-- ═══ S5 — READINESS OS (solution + screenshot) ═══════════════════ -->
+<div class="slide" style="padding:44px 0 36px 68px">
+  <div class="z" style="display:grid;grid-template-columns:1fr 1fr;gap:0;height:100%">
+    <!-- left: content -->
+    <div class="col" style="padding-right:28px;justify-content:center">
+      <div class="lbl">Readiness OS</div>
+      <div class="h2" style="font-size:24px;margin-bottom:4px">The response is already built<br><span class="gold">before the situation arrives.</span></div>
+      <div class="rule" style="width:80%;margin:10px 0"></div>
+      <div class="stat-row" style="margin-bottom:12px">
+        <div class="stat-box"><div class="sn">180</div><div class="st">Protocols</div></div>
+        <div class="stat-box"><div class="sn">231</div><div class="st">Triggers</div></div>
+        <div class="stat-box"><div class="sn">55+</div><div class="st">Connectors</div></div>
+        <div class="stat-box"><div class="sn">12m</div><div class="st">Activation</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;gap:12px;align-items:center;padding:8px 12px;border:1px solid var(--border2);border-radius:2px;background:var(--bg2)">
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">1</div>
+          <div style="font-size:11.5px;font-weight:600;color:var(--navy)">Name every situation <span class="muted2">— 180 protocols · 9 domains</span></div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
-          <div class="stat-box"><div class="sn">180</div><div class="st">Protocols</div></div>
-          <div class="stat-box"><div class="sn">231</div><div class="st">Triggers</div></div>
-          <div class="stat-box"><div class="sn">55+</div><div class="st">Connectors</div></div>
-          <div class="stat-box"><div class="sn">12m</div><div class="st">Activation</div></div>
+        <div style="display:flex;gap:12px;align-items:center;padding:8px 12px;border:1px solid var(--border2);border-radius:2px;background:var(--bg2)">
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">2</div>
+          <div style="font-size:11.5px;font-weight:600;color:var(--navy)">Define the threshold <span class="muted2">— 231 triggers · 39 live sources · 15-min cycles</span></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:8px 12px;border:1px solid var(--border2);border-radius:2px;background:var(--bg2)">
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">3</div>
+          <div style="font-size:11.5px;font-weight:600;color:var(--navy)">Four executive choices <span class="muted2">— Execute · Adjust · Switch · Stand down</span></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:8px 12px;border:1px solid rgba(43,138,110,.2);border-radius:2px;background:var(--teal-pale)">
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">4</div>
+          <div style="font-size:11.5px;font-weight:600;color:var(--navy)">Coordinate through your stack <span class="muted2">— Microsoft, Salesforce, ServiceNow</span></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:8px 12px;border:1px solid rgba(43,138,110,.2);border-radius:2px;background:var(--teal-pale)">
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0">5</div>
+          <div style="font-size:11.5px;font-weight:600;color:var(--navy)">Encode every learning <span class="muted2">— ADVANCE loop · smarter after every activation</span></div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div class="lbl" style="margin-bottom:2px">The five-step process</div>
-        <div style="padding:10px 14px;border-left:3px solid var(--gold);background:rgba(201,168,76,.04)">
-          <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.5);font-weight:700;margin-bottom:3px">01 — Name every situation</div>
-          <div class="body-sm muted2" style="font-size:12px">180 protocols · 9 domains · 210 total including compound</div>
-        </div>
-        <div style="padding:10px 14px;border-left:3px solid var(--gold);background:rgba(201,168,76,.04)">
-          <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.5);font-weight:700;margin-bottom:3px">02 — Define the threshold</div>
-          <div class="body-sm muted2" style="font-size:12px">231 triggers · 39 live sources · 15-minute detection cycles</div>
-        </div>
-        <div style="padding:10px 14px;border-left:3px solid rgba(255,255,255,.15);background:rgba(255,255,255,.02)">
-          <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:700;margin-bottom:3px">03 — Four executive choices</div>
-          <div class="body-sm muted2" style="font-size:12px">Execute · Adjust · Switch · Stand down — one click, not a committee</div>
-        </div>
-        <div style="padding:10px 14px;border-left:3px solid var(--teal);background:rgba(43,138,110,.05)">
-          <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(43,138,110,.5);font-weight:700;margin-bottom:3px">04 — Coordinate through your stack</div>
-          <div class="body-sm muted2" style="font-size:12px">55+ connectors · Microsoft, Salesforce, ServiceNow and more</div>
-        </div>
-        <div style="padding:10px 14px;border-left:3px solid var(--teal);background:rgba(43,138,110,.05)">
-          <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(43,138,110,.5);font-weight:700;margin-bottom:3px">05 — Encode every learning</div>
-          <div class="body-sm muted2" style="font-size:12px">ADVANCE loop — the system gets smarter after every activation</div>
-        </div>
-        <div style="margin-top:4px;padding:10px 16px;border:1px solid rgba(201,168,76,.3);text-align:center">
-          <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700">Continuous monitoring · Executive authorization · Pre-staged execution</div>
-        </div>
-      </div>
+    </div>
+    <!-- right: screenshot flush -->
+    <div style="overflow:hidden;border-left:1px solid var(--border)">
+      <img src="/screenshots/new_protocol_library.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
     </div>
   </div>
   <div class="num">05 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S6 — THE BREADTH (9 domains)
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
+<!-- ═══ S6 — THE BREADTH ══════════════════════════════════════════════ -->
+<div class="slide warm" style="padding:44px 68px 36px">
   <div class="z">
-    <div style="text-align:center;flex-shrink:0;margin-bottom:14px">
-      <div class="lbl" style="letter-spacing:.38em">The Breadth</div>
-      <div class="h3" style="font-size:20px">Not a point solution. The operating model for <span class="gold">every strategic situation.</span></div>
+    <div style="text-align:center;flex-shrink:0;margin-bottom:16px">
+      <div class="lbl" style="letter-spacing:.4em">The Breadth</div>
+      <div class="h2" style="font-size:24px">Not a point solution. The operating model for <span class="gold">every strategic situation.</span></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1;min-height:0">
-      <div style="border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Financial Strategy</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">M&amp;A · activist defense · distressed asset</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;margin-left:12px">24</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;flex:1;min-height:0">
+      <div style="border-left:3px solid var(--gold);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Financial Strategy</div><div style="font-size:10px;color:var(--muted)">M&A · activist defense · distressed asset</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--gold);margin-left:12px">24</div>
       </div>
-      <div style="border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Market Dynamics</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">competitor disruption · pricing · market entry</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;margin-left:12px">22</div>
+      <div style="border-left:3px solid var(--gold);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Market Dynamics</div><div style="font-size:10px;color:var(--muted)">competitor disruption · pricing · market entry</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--gold);margin-left:12px">22</div>
       </div>
-      <div style="border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Operational Excellence</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">supply chain collapse · ERP failure · capacity</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;margin-left:12px">21</div>
+      <div style="border-left:3px solid var(--gold);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Operational Excellence</div><div style="font-size:10px;color:var(--muted)">supply chain collapse · ERP failure · capacity</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--gold);margin-left:12px">21</div>
       </div>
-      <div style="border:1px solid rgba(43,138,110,.25);background:rgba(43,138,110,.05);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Technology &amp; Innovation</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">ransomware · cyber breach · AI disruption</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--teal-lt);line-height:1;flex-shrink:0;margin-left:12px">20</div>
+      <div style="border-left:3px solid var(--teal);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Technology & Innovation</div><div style="font-size:10px;color:var(--muted)">ransomware · cyber breach · AI disruption</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--teal);margin-left:12px">20</div>
       </div>
-      <div style="border:1px solid rgba(43,138,110,.25);background:rgba(43,138,110,.05);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">AI Governance</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">AI incident · algorithmic failure · bias event</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--teal-lt);line-height:1;flex-shrink:0;margin-left:12px">19</div>
+      <div style="border-left:3px solid var(--teal);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">AI Governance</div><div style="font-size:10px;color:var(--muted)">AI incident · algorithmic failure · bias event</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--teal);margin-left:12px">19</div>
       </div>
-      <div style="border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Market Opportunities</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">rapid entry · partnership · acquisition sprint</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;margin-left:12px">18</div>
+      <div style="border-left:3px solid var(--gold);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Market Opportunities</div><div style="font-size:10px;color:var(--muted)">rapid entry · partnership · acquisition sprint</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--gold);margin-left:12px">18</div>
       </div>
-      <div style="border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Brand &amp; Reputation</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">public crisis · product recall · misconduct</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;margin-left:12px">17</div>
+      <div style="border-left:3px solid var(--gold);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Brand & Reputation</div><div style="font-size:10px;color:var(--muted)">public crisis · product recall · misconduct</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--gold);margin-left:12px">17</div>
       </div>
-      <div style="border:1px solid rgba(43,138,110,.25);background:rgba(43,138,110,.05);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Regulatory &amp; Compliance</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">SEC · FDA · DOJ · GDPR enforcement</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:var(--teal-lt);line-height:1;flex-shrink:0;margin-left:12px">22</div>
+      <div style="border-left:3px solid var(--teal);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Regulatory & Compliance</div><div style="font-size:10px;color:var(--muted)">SEC · FDA · DOJ · GDPR enforcement</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--teal);margin-left:12px">22</div>
       </div>
-      <div style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);border-radius:2px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-size:13px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:5px">Workforce &amp; Culture</div>
-          <div style="font-size:10px;color:var(--muted);letter-spacing:.04em">talent crisis · leadership gap · union event</div>
-        </div>
-        <div style="font-size:36px;font-weight:900;color:rgba(255,255,255,.35);line-height:1;flex-shrink:0;margin-left:12px">17</div>
+      <div style="border-left:3px solid var(--border);background:var(--bg);padding:14px 16px;border-radius:0 3px 3px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 4px rgba(10,15,46,.06)">
+        <div><div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:3px">Workforce & Culture</div><div style="font-size:10px;color:var(--muted)">talent crisis · leadership gap · union event</div></div>
+        <div style="font-size:34px;font-weight:900;color:var(--muted2);margin-left:12px">17</div>
       </div>
     </div>
     <div style="flex-shrink:0;margin-top:10px;text-align:center">
-      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.4);font-weight:700">9 domains · 180 core protocols · 210 total including compound · Live at vaughnmartin.com</div>
+      <div class="micro">9 domains · 180 core protocols · 210 total including compound · Live at vaughnmartin.com</div>
     </div>
   </div>
   <div class="num">06 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S7 — IDEA FRAMEWORK
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
-  <div class="z">
-    <div style="text-align:center;flex-shrink:0;margin-bottom:18px">
-      <div class="lbl" style="letter-spacing:.38em">The IDEA Framework™ — Proprietary Architecture</div>
-      <div class="h3" style="font-size:20px">Signal to authorized, executing team in 12 minutes</div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;flex:1;min-height:0">
-      <div style="border:1px solid rgba(201,168,76,.25);border-right:none;padding:22px 20px;background:rgba(201,168,76,.04);display:flex;flex-direction:column">
-        <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px">I — Identify</div>
-        <div style="font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Signal<br>Detection</div>
-        <div class="body-sm muted2" style="flex:1">231 triggers monitored across 39 live sources. Refreshed every 15 minutes. Signals scored and classified by severity and strategic domain.</div>
-        <div><div style="height:3px;background:var(--gold);width:100%;border-radius:2px;margin-top:16px"></div><div class="micro" style="margin-top:6px">15-minute refresh cycle</div></div>
-      </div>
-      <div style="border:1px solid rgba(43,138,110,.28);border-right:none;padding:22px 20px;background:rgba(43,138,110,.06);display:flex;flex-direction:column">
-        <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal-lt);font-weight:700;margin-bottom:10px">D — Detect</div>
-        <div style="font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Protocol<br>Match</div>
-        <div class="body-sm muted2" style="flex:1">Signal cross-references all 180 protocols. Exact match surfaces the pre-staged brief: tasks, stakeholders, authority chain, and budget — all already set.</div>
-        <div><div style="height:3px;background:var(--teal);width:100%;border-radius:2px;margin-top:16px"></div><div class="micro" style="margin-top:6px;color:rgba(43,138,110,.55)">180 protocols ready</div></div>
-      </div>
-      <div style="border:1px solid rgba(201,168,76,.25);border-right:none;padding:22px 20px;background:rgba(201,168,76,.04);display:flex;flex-direction:column">
-        <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px">E — Execute</div>
-        <div style="font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Executive<br>Authorization</div>
-        <div class="body-sm muted2" style="flex:1">One decision. Four choices. The executive reviews the staged protocol, the authorization precedent, and approves. Teams mobilize immediately from a fully-staged position.</div>
-        <div><div style="height:3px;background:var(--gold);width:40%;border-radius:2px;margin-top:16px"></div><div class="micro" style="margin-top:6px">Human authority preserved</div></div>
-      </div>
-      <div style="border:1px solid rgba(43,138,110,.28);padding:22px 20px;background:rgba(43,138,110,.06);display:flex;flex-direction:column">
-        <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal-lt);font-weight:700;margin-bottom:10px">A — Advance</div>
-        <div style="font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:14px;line-height:1.05">Causal<br>Learning</div>
-        <div class="body-sm muted2" style="flex:1">Every close-out generates protocol updates. The system measures whether each change improved the next response. The moat compounds after every activation.</div>
-        <div><div style="height:3px;background:var(--teal);width:28%;border-radius:2px;margin-top:16px"></div><div class="micro" style="margin-top:6px;color:rgba(43,138,110,.55)">Month 18: uncatchable</div></div>
+<!-- ═══ S7 — IDEA FRAMEWORK ══════════════════════════════════════════ -->
+<div class="slide" style="padding:0">
+  <div class="z" style="padding:44px 0 0 68px;display:grid;grid-template-columns:5fr 4fr;height:100%;gap:0">
+    <!-- left: framework -->
+    <div style="display:flex;flex-direction:column;padding-right:32px;padding-bottom:36px">
+      <div class="lbl" style="margin-bottom:4px">The IDEA Framework™</div>
+      <div class="h2" style="font-size:24px;margin-bottom:16px">Signal to authorized execution.<br><span class="gold">In 12 minutes.</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1">
+        <div style="border-top:3px solid var(--gold);padding:14px 16px;background:var(--gold-pale);border-radius:0 0 3px 3px">
+          <div class="lbl" style="font-size:9px;letter-spacing:.3em;margin-bottom:6px">I — Identify</div>
+          <div style="font-size:16px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:8px">Signal Detection</div>
+          <div class="body-sm" style="font-size:11px">231 triggers across 39 live sources. Refreshed every 15 minutes. Scored by severity and domain.</div>
+          <div class="micro" style="margin-top:10px">15-min refresh cycle</div>
+        </div>
+        <div style="border-top:3px solid var(--teal);padding:14px 16px;background:var(--teal-pale);border-radius:0 0 3px 3px">
+          <div class="lbl lbl-t" style="font-size:9px;letter-spacing:.3em;margin-bottom:6px">D — Detect</div>
+          <div style="font-size:16px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:8px">Protocol Match</div>
+          <div class="body-sm" style="font-size:11px">Signal cross-references 180 protocols. Brief, tasks, stakeholders, budget — all pre-staged.</div>
+          <div class="micro" style="margin-top:10px">180 protocols ready</div>
+        </div>
+        <div style="border-top:3px solid var(--gold);padding:14px 16px;background:var(--gold-pale);border-radius:0 0 3px 3px">
+          <div class="lbl" style="font-size:9px;letter-spacing:.3em;margin-bottom:6px">E — Execute</div>
+          <div style="font-size:16px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:8px">Authorization</div>
+          <div class="body-sm" style="font-size:11px">One executive. One click. Four choices. Teams mobilize from a fully-staged position.</div>
+          <div class="micro" style="margin-top:10px">Human authority preserved</div>
+        </div>
+        <div style="border-top:3px solid var(--teal);padding:14px 16px;background:var(--teal-pale);border-radius:0 0 3px 3px">
+          <div class="lbl lbl-t" style="font-size:9px;letter-spacing:.3em;margin-bottom:6px">A — Advance</div>
+          <div style="font-size:16px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:8px">Causal Learning</div>
+          <div class="body-sm" style="font-size:11px">Every activation improves the next response. The moat compounds with each close-out.</div>
+          <div class="micro" style="margin-top:10px">Month 18: uncatchable</div>
+        </div>
       </div>
     </div>
-    <div style="text-align:center;flex-shrink:0;margin-top:14px">
-      <div class="micro" style="letter-spacing:.24em">Three years to build · Proprietary architecture · In production at vaughnmartin.com</div>
+    <!-- right: screenshot flush -->
+    <div style="overflow:hidden;border-left:1px solid var(--border)">
+      <img src="/screenshots/new_how_it_executes.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
     </div>
   </div>
   <div class="num">07 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S8 — LIVE PRODUCT (screenshots)
-═══════════════════════════════════════════ -->
-<div class="slide" style="padding:40px 52px 36px">
-  <div class="topbar"></div>
-  <div class="z">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0;margin-bottom:12px">
+<!-- ═══ S8 — LIVE PRODUCT ════════════════════════════════════════════ -->
+<div class="slide" style="padding:0">
+  <div class="z" style="height:100%">
+    <!-- header bar -->
+    <div style="padding:20px 68px 16px;flex-shrink:0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
       <div>
-        <div class="lbl">Built. Live. In Production.</div>
-        <div class="h3" style="font-size:20px">Not a roadmap. Operating at vaughnmartin.com right now.</div>
+        <div class="lbl" style="margin-bottom:2px">Built. Live. In Production.</div>
+        <div style="font-size:16px;font-weight:900;text-transform:uppercase;color:var(--navy);letter-spacing:.02em">Not a roadmap — operating at vaughnmartin.com right now.</div>
       </div>
-      <div class="stat4" style="width:420px;flex-shrink:0">
-        <div class="stat-box"><div class="sn">180</div><div class="st">Protocols</div></div>
-        <div class="stat-box"><div class="sn">231</div><div class="st">Triggers</div></div>
-        <div class="stat-box"><div class="sn">55+</div><div class="st">Connectors</div></div>
-        <div class="stat-box"><div class="sn">15m</div><div class="st">Refresh</div></div>
+      <div class="stat-row" style="gap:10px">
+        <div class="stat-box" style="min-width:72px"><div class="sn" style="font-size:24px">180</div><div class="st">Protocols</div></div>
+        <div class="stat-box" style="min-width:72px"><div class="sn" style="font-size:24px">231</div><div class="st">Triggers</div></div>
+        <div class="stat-box" style="min-width:72px"><div class="sn" style="font-size:24px">55+</div><div class="st">Connectors</div></div>
+        <div class="stat-box" style="min-width:72px"><div class="sn" style="font-size:24px">15m</div><div class="st">Refresh</div></div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;flex:1;min-height:0">
-      <div style="display:flex;flex-direction:column;gap:5px;min-height:0">
-        <div class="img-frame" style="flex:1;min-height:0"><img src="/screenshots/deck_signals.jpg" alt="Live signal detection"></div>
-        <div class="micro" style="text-align:center">Live trigger detection · 231 signals · confidence scoring</div>
+    <!-- screenshots -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;gap:0">
+      <div style="overflow:hidden;border-right:1px solid var(--border);display:flex;flex-direction:column">
+        <img src="/screenshots/deck_signals.jpg" style="width:100%;flex:1;object-fit:cover;object-position:top;display:block">
+        <div style="padding:8px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0">
+          <div class="micro">Live signal detection · 231 triggers · confidence scoring</div>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:5px;min-height:0">
-        <div class="img-frame" style="flex:1;min-height:0"><img src="/screenshots/slide_protocol_library.jpg" alt="Protocol library"></div>
-        <div class="micro" style="text-align:center">180 Readiness Protocols · pre-staged · available now</div>
+      <div style="overflow:hidden;border-right:1px solid var(--border);display:flex;flex-direction:column">
+        <img src="/screenshots/new_protocol_library.jpg" style="width:100%;flex:1;object-fit:cover;object-position:top;display:block">
+        <div style="padding:8px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0">
+          <div class="micro">Protocol library · 180 pre-staged responses · 9 domains</div>
+        </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:5px;min-height:0">
-        <div class="img-frame" style="flex:1;min-height:0"><img src="/screenshots/deck_activation.jpg" alt="Activation console"></div>
-        <div class="micro" style="text-align:center">Pre-staged execution · stakeholders · executive authorization</div>
+      <div style="overflow:hidden;display:flex;flex-direction:column">
+        <img src="/screenshots/deck_activation.jpg" style="width:100%;flex:1;object-fit:cover;object-position:top;display:block">
+        <div style="padding:8px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0">
+          <div class="micro">Execution console · stakeholders · executive authorization</div>
+        </div>
       </div>
     </div>
   </div>
   <div class="num">08 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S9 — THE MOAT (ADVANCE 2.0)
-═══════════════════════════════════════════ -->
-<div class="slide teal-bg">
-  <div class="topbar teal"></div>
-  <div class="z">
-    <div class="lbl">Unfair Advantage — ADVANCE 2.0</div>
-    <div class="h2" style="font-size:28px;margin-bottom:16px">Every activation makes the next response faster.<br><span class="teal">The moat compounds. Month 18 is uncatchable.</span></div>
-    <div class="split" style="gap:22px">
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <div class="panel-teal">
-          <div class="lbl-t" style="margin-bottom:8px">How the loop works</div>
-          <div class="body-sm muted2" style="line-height:1.65">Every activation close-out generates protocol updates — calibrating response times, refining stakeholder sequences, improving preparation for the next occurrence. The system measures whether each update produced the expected improvement and classifies it as proven or disproven. The Learning Velocity Index tracks it all.</div>
+<!-- ═══ S9 — THE MOAT ════════════════════════════════════════════════ -->
+<div class="slide" style="padding:0">
+  <div class="z" style="display:grid;grid-template-columns:4fr 5fr;height:100%">
+    <!-- left: content -->
+    <div style="padding:44px 32px 36px 68px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:14px">
+      <div>
+        <div class="lbl lbl-t">ADVANCE 2.0 — Unfair Advantage</div>
+        <div class="h2" style="font-size:24px">Every activation makes the next response faster.<br><span class="teal">The moat compounds.</span></div>
+      </div>
+      <div class="rule" style="width:80%;margin:0"></div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="border-left:3px solid var(--gold);padding:10px 14px;background:var(--bg2);border-radius:0 3px 3px 0">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.08em;margin-bottom:3px">Pre-Staged Protocol Library</div>
+          <div class="body-sm" style="font-size:11px">3 years of architecture. No competitor builds this in a sprint.</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <div style="padding:16px;background:rgba(10,15,46,.5);border:1px solid rgba(43,138,110,.25);border-radius:2px;text-align:center">
-            <div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--gold);letter-spacing:.08em;margin-bottom:5px">Month 1</div>
-            <div class="body-sm muted2" style="font-size:12px">Protocols staged.<br>Signals monitored.<br>Baseline established.</div>
-          </div>
-          <div style="padding:16px;background:rgba(43,138,110,.12);border:2px solid var(--teal);border-radius:2px;text-align:center">
-            <div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--teal-lt);letter-spacing:.08em;margin-bottom:5px">Month 18</div>
-            <div class="body-sm muted2" style="font-size:12px;">Evidence-backed updates.<br>Proven improvements.<br>Uncatchable data moat.</div>
-          </div>
+        <div style="border-left:3px solid var(--gold);padding:10px 14px;background:var(--bg2);border-radius:0 3px 3px 0">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.08em;margin-bottom:3px">Trigger-to-Protocol Mapping</div>
+          <div class="body-sm" style="font-size:11px">231 triggers mapped to exact protocols and stakeholders. Detection becomes execution.</div>
+        </div>
+        <div style="border-left:3px solid var(--teal);padding:10px 14px;background:var(--teal-pale);border-radius:0 3px 3px 0">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.08em;margin-bottom:3px">Causal Learning Engine</div>
+          <div class="body-sm" style="font-size:11px">Proven/disproven classification per update. Month 18 instance is not what new customers start with.</div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="lbl" style="margin-bottom:4px">The four moat pillars</div>
-        <div class="panel" style="padding:14px 16px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--gold);letter-spacing:.1em;margin-bottom:4px">Pre-Staged Protocol Library</div>
-          <div class="body-sm muted2" style="font-size:12px">180 protocols built before any trigger fires. Three years of proprietary architecture. No competitor can build this in a sprint.</div>
-        </div>
-        <div class="panel" style="padding:14px 16px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--gold);letter-spacing:.1em;margin-bottom:4px">Trigger-to-Protocol Mapping</div>
-          <div class="body-sm muted2" style="font-size:12px">231 triggers mapped to exact protocols, stakeholders, tasks. Detection becomes execution — no translation layer required.</div>
-        </div>
-        <div class="panel-teal" style="padding:14px 16px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--teal-lt);letter-spacing:.1em;margin-bottom:4px">Causal Learning Engine</div>
-          <div class="body-sm muted2" style="font-size:12px">Activation history + causal improvement classification + proven impact tracking. The instance running 18 months is not the same product a new customer starts with.</div>
-        </div>
+      <div style="border:1px solid rgba(43,138,110,.3);background:var(--teal-pale);border-radius:3px;padding:12px 16px;text-align:center">
+        <div style="font-size:13px;font-weight:900;text-transform:uppercase;color:var(--teal);letter-spacing:.06em">Month 18 is uncatchable.</div>
+        <div class="body-sm muted" style="font-size:11px;margin-top:3px">The instance running on activation #40 is categorically different product than Day 1.</div>
       </div>
+    </div>
+    <!-- right: screenshot -->
+    <div style="overflow:hidden">
+      <img src="/screenshots/new_advance_intelligence.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
     </div>
   </div>
   <div class="num">09 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S10 — MARKET SIZE
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
+<!-- ═══ S10 — MARKET SIZE ════════════════════════════════════════════ -->
+<div class="slide warm" style="padding:44px 68px 36px">
   <div class="z">
-    <div style="text-align:center;flex-shrink:0;margin-bottom:14px">
+    <div style="text-align:center;flex-shrink:0;margin-bottom:16px">
       <div class="lbl">Market Opportunity</div>
       <div class="h2" style="font-size:28px">Every enterprise. Every year. <span class="gold">No exceptions.</span></div>
     </div>
-    <div class="split" style="gap:22px">
-      <div style="display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center">
-        <!-- Big number + circles -->
-        <div style="text-align:center">
-          <div style="font-size:90px;font-weight:900;color:var(--gold);line-height:1">$7B+</div>
-          <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.5);font-weight:700;margin-top:4px">Total Addressable Market · Core pricing alone</div>
+    <div class="split" style="gap:28px">
+      <!-- left: TAM visual -->
+      <div class="col" style="align-items:center;justify-content:center">
+        <div style="text-align:center;padding:28px 36px;background:var(--bg);border:1px solid var(--border);border-radius:6px;box-shadow:0 4px 24px rgba(10,15,46,.08)">
+          <div style="font-size:100px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.02em">$7B+</div>
+          <div style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:6px">Total Addressable Market · Core pricing only</div>
+          <div style="height:1px;background:var(--border);margin:16px auto;width:80%"></div>
+          <div style="font-size:13px;font-weight:700;color:var(--navy)">47,000 enterprises ($100M+ revenue)</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:2px">× $150K average annual contract</div>
         </div>
-        <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <div style="padding:14px;background:rgba(10,15,46,.5);border:1px solid rgba(201,168,76,.15);border-radius:2px;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:var(--gold);line-height:1">47,000</div>
-            <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px">Enterprises $100M+ revenue</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%">
+          <div style="text-align:center;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:3px;box-shadow:0 2px 8px rgba(10,15,46,.05)">
+            <div style="font-size:28px;font-weight:900;color:var(--gold)">15–20</div>
+            <div class="micro" style="margin-top:3px">Strategic situations<br>per enterprise/year</div>
           </div>
-          <div style="padding:14px;background:rgba(10,15,46,.5);border:1px solid rgba(201,168,76,.15);border-radius:2px;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:var(--gold);line-height:1">$150K</div>
-            <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px">Average annual contract</div>
-          </div>
-          <div style="padding:14px;background:rgba(10,15,46,.5);border:1px solid rgba(43,138,110,.2);border-radius:2px;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:var(--teal-lt);line-height:1">15–20</div>
-            <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px">Strategic situations per year</div>
-          </div>
-          <div style="padding:14px;background:rgba(10,15,46,.5);border:1px solid rgba(43,138,110,.2);border-radius:2px;text-align:center">
-            <div style="font-size:28px;font-weight:900;color:var(--teal-lt);line-height:1">$10.2M</div>
-            <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px">Annual exposure per enterprise</div>
+          <div style="text-align:center;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:3px;box-shadow:0 2px 8px rgba(10,15,46,.05)">
+            <div style="font-size:28px;font-weight:900;color:var(--teal)">$10.2M</div>
+            <div class="micro" style="margin-top:3px">Annual exposure<br>per enterprise</div>
           </div>
         </div>
-        <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center">$0 in this layer — no vendor owns it yet</div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:13px;justify-content:center">
+      <!-- right: why now -->
+      <div class="col" style="justify-content:center">
         <div class="lbl" style="margin-bottom:4px">Why this market opens now</div>
-        <div class="panel" style="padding:14px 16px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--gold);letter-spacing:.1em;margin-bottom:5px">AI Removed the Old Bottleneck</div>
-          <div class="body-sm muted2" style="font-size:12px">Information processing is no longer the constraint. The coordination model is. Every enterprise now has AI — none have the operating model to use it in a crisis.</div>
+        <div style="border-left:3px solid var(--gold);padding:12px 14px;background:var(--bg);border-radius:0 3px 3px 0;margin-bottom:8px">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.08em;margin-bottom:4px">AI Removed the Old Bottleneck</div>
+          <div class="body-sm" style="font-size:11.5px">Information processing is no longer the constraint. The coordination model is. Every enterprise now has AI — none have the operating model to use it under pressure.</div>
         </div>
-        <div class="panel" style="padding:14px 16px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--gold);letter-spacing:.1em;margin-bottom:5px">Regulatory Complexity Rising</div>
-          <div class="body-sm muted2" style="font-size:12px">SEC, GDPR, FDA, DOJ — the cost of late, improvised response increases annually. Pre-staged compliance protocols are now being demanded by regulators themselves.</div>
+        <div style="border-left:3px solid var(--gold);padding:12px 14px;background:var(--bg);border-radius:0 3px 3px 0;margin-bottom:8px">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.08em;margin-bottom:4px">Regulatory Complexity Rising</div>
+          <div class="body-sm" style="font-size:11.5px">SEC, GDPR, FDA, DOJ — the cost of late improvised response grows annually. Pre-staged protocols are now demanded by regulators themselves.</div>
         </div>
-        <div class="panel-teal" style="padding:14px 16px">
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--teal-lt);letter-spacing:.1em;margin-bottom:5px">The Microsoft Distribution Layer</div>
-          <div class="body-sm muted2" style="font-size:12px">"Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the missing layer above that investment — not a replacement, an orchestrator.</div>
+        <div style="border-left:3px solid var(--teal);padding:12px 14px;background:var(--teal-pale);border-radius:0 3px 3px 0;margin-bottom:12px">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--navy);letter-spacing:.08em;margin-bottom:4px">The Microsoft Distribution Layer</div>
+          <div class="body-sm" style="font-size:11.5px">"Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the missing layer above that investment.</div>
         </div>
-        <div style="padding:11px 16px;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.05);border-radius:2px;text-align:center">
-          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700">First-mover in a new category. No direct competitor has pre-staged protocol-level readiness infrastructure.</div>
+        <div style="padding:11px 16px;border:1px solid rgba(201,168,76,.3);background:var(--gold-pale);border-radius:3px;text-align:center">
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800">$0 in this layer today — no vendor owns it yet</div>
         </div>
       </div>
     </div>
@@ -636,126 +607,119 @@
   <div class="num">10 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S11 — COMPETITION
-═══════════════════════════════════════════ -->
-<div class="slide" style="padding:44px 56px 38px">
-  <div class="topbar"></div>
+<!-- ═══ S11 — COMPETITION ════════════════════════════════════════════ -->
+<div class="slide" style="padding:44px 68px 36px">
   <div class="z">
     <div class="lbl">Competitive Landscape</div>
-    <div class="h2" style="font-size:24px;margin-bottom:14px">We don't compete with software. <span class="gold">We compete with the 40-year-old operating model itself.</span></div>
-    <table class="comp-table" style="flex:1">
+    <div class="h2" style="font-size:22px;margin-bottom:14px">We don't compete with software tools. <span class="gold">We replace the 40-year-old meeting-heavy operating model.</span></div>
+    <table class="comp" style="flex:1">
       <thead>
         <tr>
           <th></th>
-          <th style="color:rgba(220,80,80,.6)">McKinsey / Big 4</th>
-          <th style="color:rgba(220,80,80,.6)">ServiceNow</th>
-          <th style="color:rgba(220,80,80,.6)">MS Copilot</th>
-          <th style="color:rgba(220,80,80,.6)">BCP / Crisis Plans</th>
-          <th class="us">VaughnMartin<br>Readiness OS</th>
+          <th>McKinsey / Big 4</th>
+          <th>ServiceNow</th>
+          <th>MS Copilot</th>
+          <th>BCP / Crisis Plans</th>
+          <th class="us us-h">VaughnMartin</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Pre-staged before the trigger</td>
+          <td>Pre-staged before the trigger fires</td>
           <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td>
           <td class="us"><span class="ck">✓</span> 180 protocols</td>
         </tr>
         <tr>
           <td>Continuous signal monitoring</td>
           <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td>
-          <td class="us"><span class="ck">✓</span> 231 triggers / 15 min</td>
+          <td class="us"><span class="ck">✓</span> 231 triggers · 15 min</td>
         </tr>
         <tr>
           <td>12-minute execution window</td>
           <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td>
-          <td class="us"><span class="ck">✓</span> After trigger detection</td>
+          <td class="us"><span class="ck">✓</span> Proven in production</td>
         </tr>
         <tr>
           <td>Human authorization gate</td>
-          <td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td>
+          <td><span class="pk">Slow</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td>
           <td class="us"><span class="ck">✓</span> Every activation</td>
         </tr>
         <tr>
-          <td>Causal learning / moat</td>
+          <td>Causal learning / compound moat</td>
           <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td>
           <td class="us"><span class="ck">✓</span> ADVANCE 2.0</td>
         </tr>
         <tr>
           <td>Annual cost</td>
-          <td><span style="color:rgba(220,80,80,.7)">$400K–$800K</span></td>
-          <td><span style="color:rgba(220,80,80,.7)">$150K–$400K</span></td>
-          <td style="color:rgba(255,255,255,.5)">$30–80/user</td>
-          <td style="color:rgba(255,255,255,.5)">One-time + stale</td>
+          <td><span style="color:var(--red)">$400K–$800K</span></td>
+          <td><span style="color:var(--muted)">$150K–$400K</span></td>
+          <td class="muted">$30–80/user</td>
+          <td class="muted">One-time + stale</td>
           <td class="us">$75K–$250K</td>
         </tr>
       </tbody>
     </table>
-    <div style="margin-top:12px;padding:11px 18px;background:rgba(43,138,110,.08);border:1px solid rgba(43,138,110,.25);border-radius:2px;text-align:center;flex-shrink:0">
-      <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-lt);font-weight:700">Replaces the $400K–$800K consulting retainer · Break-even before the second activation</div>
+    <div style="margin-top:12px;flex-shrink:0;padding:10px 18px;background:var(--teal-pale);border:1px solid rgba(43,138,110,.25);border-radius:3px;text-align:center">
+      <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:800">Replaces the $400K–$800K consulting retainer · Breaks even before the second activation</div>
     </div>
   </div>
   <div class="num">11 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S12 — GO-TO-MARKET
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
+<!-- ═══ S12 — GO-TO-MARKET ═══════════════════════════════════════════ -->
+<div class="slide" style="padding:44px 68px 36px">
   <div class="z">
     <div class="lbl">Go-to-Market</div>
-    <div class="h2" style="font-size:26px;margin-bottom:14px">Founding Partner → Reference Account → Enterprise Scale</div>
-    <div class="split" style="gap:22px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="panel-hero">
-          <div class="lbl" style="margin-bottom:6px;letter-spacing:.28em">Phase 1 — Now</div>
-          <div style="font-size:16px;font-weight:800;text-transform:uppercase;margin-bottom:8px;color:var(--gold)">Founding Partner Program</div>
-          <div class="body-sm muted2" style="font-size:12px;line-height:1.65">12 total seats. 90-day validated partnership with direct founder involvement. Each Founding Partner becomes a reference account and named case study in a new enterprise software category.</div>
+    <div class="h2" style="font-size:24px;margin-bottom:16px">Founding Partner → Reference Account → Enterprise Scale</div>
+    <div class="split" style="gap:28px">
+      <div class="col">
+        <div class="card-hero">
+          <div class="lbl" style="letter-spacing:.28em;margin-bottom:6px">Phase 1 — Now</div>
+          <div style="font-size:18px;font-weight:900;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Founding Partner Program</div>
+          <div class="body-sm">12 total seats. 90-day validated partnership with direct founder involvement. Each Founding Partner becomes a reference account and named case study in a new enterprise software category.</div>
           <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-            <div class="chip" style="font-size:9px">$75K · 90 days</div>
-            <div class="chip" style="font-size:9px;border-color:rgba(43,138,110,.5);color:var(--teal-lt)">100% credited at close</div>
-            <div class="chip" style="font-size:9px">Direct founder access</div>
+            <span class="chip chip-gold" style="font-size:8.5px">$75K · 90 days</span>
+            <span class="chip chip-teal" style="font-size:8.5px">100% credited at close</span>
+            <span class="chip" style="font-size:8.5px">Direct founder access</span>
           </div>
         </div>
-        <div class="panel">
-          <div class="lbl" style="margin-bottom:5px">Phase 2 — Year 1–2</div>
-          <div style="font-size:14px;font-weight:800;text-transform:uppercase;margin-bottom:6px">Reference-Led Enterprise Sales</div>
-          <div class="body-sm muted2" style="font-size:12px">Case studies fuel direct enterprise sales. COO/CSO intro via network → proof walk → PMO champion → contract. ACV $75K–$250K.</div>
+        <div class="card">
+          <div class="lbl" style="margin-bottom:4px">Phase 2 — Year 1–2</div>
+          <div style="font-size:15px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:6px">Reference-Led Enterprise Sales</div>
+          <div class="body-sm">Case studies fuel direct enterprise sales. COO/CSO intro → proof walk → PMO champion → contract. ACV $75K–$250K.</div>
         </div>
-        <div class="panel-teal">
-          <div class="lbl-t" style="margin-bottom:5px">Phase 3 — Year 2+</div>
-          <div style="font-size:14px;font-weight:800;text-transform:uppercase;margin-bottom:6px">Microsoft Ecosystem Partner</div>
-          <div class="body-sm muted2" style="font-size:12px">Microsoft partner program + SI channel. Every enterprise Microsoft account is a qualified prospect. Readiness OS is the missing operating model layer above their AI stack.</div>
+        <div class="card-teal">
+          <div class="lbl lbl-t" style="margin-bottom:4px">Phase 3 — Year 2+</div>
+          <div style="font-size:15px;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:6px">Microsoft Ecosystem Partner</div>
+          <div class="body-sm">Every Microsoft enterprise account is a qualified prospect. Readiness OS is the missing operating model layer above their AI stack.</div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px;justify-content:center">
-        <div class="lbl" style="margin-bottom:4px">Commercial Model</div>
-        <div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(201,168,76,.1)">
-            <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Founding Partner</span>
+      <div class="col" style="justify-content:center">
+        <div class="lbl" style="margin-bottom:8px">Commercial Model</div>
+        <div style="border:1px solid var(--border);border-radius:3px;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border2);background:var(--bg2)">
+            <span class="micro" style="color:var(--navy)">Founding Partner</span>
             <span style="font-size:18px;font-weight:900;color:var(--gold)">$75K / 90 days</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(201,168,76,.1)">
-            <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Growth Tier</span>
-            <span class="body-sm">$75K–$250K annually</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border2)">
+            <span class="micro">Growth Tier</span><span class="body-sm" style="font-weight:700">$75K–$250K annually</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(201,168,76,.1)">
-            <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Enterprise ACV target</span>
-            <span class="body-sm">$200K</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border2)">
+            <span class="micro">Enterprise ACV target</span><span class="body-sm" style="font-weight:700">$200K</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(201,168,76,.1)">
-            <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Break-even</span>
-            <span class="body-sm teal">Before 2nd activation</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border2)">
+            <span class="micro">Break-even</span><span style="font-size:12px;font-weight:700;color:var(--teal)">Before 2nd activation</span>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0">
-            <span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Target accounts</span>
-            <span class="body-sm">25,000 enterprises</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px">
+            <span class="micro">Target accounts</span><span class="body-sm" style="font-weight:700">25,000 enterprises</span>
           </div>
         </div>
-        <div style="padding:12px 16px;background:rgba(10,15,46,.6);border:1px solid rgba(255,255,255,.07);border-radius:2px;text-align:center">
-          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)">First account targets</div>
-          <div style="font-size:14px;font-weight:700;color:#fff;margin-top:4px">Financial Services · Healthcare · Energy · Manufacturing</div>
+        <div style="padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:3px;text-align:center">
+          <div class="micro" style="margin-bottom:4px">Priority Sectors</div>
+          <div style="font-size:13px;font-weight:700;color:var(--navy)">Financial Services · Healthcare · Energy · Manufacturing</div>
+        </div>
+        <div style="padding:10px 14px;background:var(--bg2);border-radius:3px;font-size:11.5px;color:var(--text2);border:1px solid var(--border)">
+          <strong style="color:var(--navy)">Channel partnerships:</strong> 2 active conversations with enterprise consultants — adding distribution at zero additional CAC.
         </div>
       </div>
     </div>
@@ -763,42 +727,46 @@
   <div class="num">12 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S13 — TARGET CUSTOMER
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
+<!-- ═══ S13 — TARGET CUSTOMER ════════════════════════════════════════ -->
+<div class="slide warm" style="padding:44px 68px 36px">
   <div class="z">
     <div class="lbl">Target Customer</div>
-    <div class="h2" style="font-size:28px;margin-bottom:16px">C-suite and PMO at organizations that cannot afford to improvise.</div>
-    <div class="split" style="gap:22px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="panel" style="border-color:rgba(43,138,110,.35);background:rgba(43,138,110,.05)">
-          <div class="lbl-t" style="margin-bottom:6px">Economic Buyer</div>
-          <div style="font-size:18px;font-weight:800;text-transform:uppercase;margin-bottom:8px;line-height:1.1">COO · CSO · CFO · General Counsel</div>
-          <div class="body-sm muted2">Accountable when mobilization fails. They've paid the cost of being unprepared — regulatory fine, proxy fight concession, customer breach penalty. They understand the ROI without a spreadsheet.</div>
+    <div class="h2" style="font-size:26px;margin-bottom:16px">C-suite and PMO at organizations that cannot afford to improvise.</div>
+    <div class="split" style="gap:28px">
+      <div class="col">
+        <div class="card-teal">
+          <div class="lbl lbl-t" style="margin-bottom:6px">Economic Buyer</div>
+          <div style="font-size:20px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:8px;line-height:1.1">COO · CSO · CFO<br>General Counsel</div>
+          <div class="body-sm">Accountable when mobilization fails. They've paid the cost of being unprepared — regulatory fine, proxy fight concession, breach penalty. They understand the ROI without a spreadsheet.</div>
         </div>
-        <div class="panel">
+        <div class="card">
           <div class="lbl" style="margin-bottom:6px">Operational Champion</div>
-          <div style="font-size:18px;font-weight:800;text-transform:uppercase;margin-bottom:8px;line-height:1.1">PMO Director · Chief of Staff</div>
-          <div class="body-sm muted2">The preparation architecture owner. Directly reduces the coordination burden they carry today. Owns the go-live path and the ongoing protocol maintenance rhythm.</div>
+          <div style="font-size:18px;font-weight:900;text-transform:uppercase;color:var(--navy);margin-bottom:8px;line-height:1.1">PMO Director · Chief of Staff</div>
+          <div class="body-sm">The preparation architecture owner. Directly reduces the coordination burden they carry today. Owns the go-live path and ongoing protocol maintenance rhythm.</div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <div>
-          <div class="lbl" style="margin-bottom:8px">Firmographic ICP</div>
-          <div class="list" style="gap:8px">
-            <div class="li"><span class="bul">→</span><span class="body" style="font-size:14px">500–50,000 employees</span></div>
-            <div class="li"><span class="bul">→</span><span class="body" style="font-size:14px">Regulatory, competitive, or operational exposure as a material risk factor</span></div>
-            <div class="li"><span class="bul">→</span><span class="body" style="font-size:14px">Already invested in Microsoft's AI stack — no operating model to use it</span></div>
-            <div class="li"><span class="bul">→</span><span class="body" style="font-size:14px">Experienced at least one mobilization failure in the last 24 months</span></div>
+      <div class="col" style="justify-content:center">
+        <div class="lbl" style="margin-bottom:8px">Firmographic ICP</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:3px">
+            <div style="color:var(--gold);font-weight:900;font-size:14px;flex-shrink:0">→</div>
+            <div class="body-sm">500–50,000 employees</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:3px">
+            <div style="color:var(--gold);font-weight:900;font-size:14px;flex-shrink:0">→</div>
+            <div class="body-sm">Regulatory, competitive, or operational exposure as a material risk factor</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:3px">
+            <div style="color:var(--gold);font-weight:900;font-size:14px;flex-shrink:0">→</div>
+            <div class="body-sm">Already invested in Microsoft's AI stack — no operating model to use it under pressure</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:3px">
+            <div style="color:var(--gold);font-weight:900;font-size:14px;flex-shrink:0">→</div>
+            <div class="body-sm">Experienced at least one mobilization failure in the last 24 months</div>
           </div>
         </div>
-        <div style="padding:14px 16px;border-left:3px solid var(--gold);background:rgba(201,168,76,.05);border-radius:0 2px 2px 0;font-size:13px;line-height:1.6;color:var(--muted)">
+        <div style="border-left:3px solid var(--gold);padding:12px 14px;background:var(--bg);border-radius:0 3px 3px 0;font-size:12.5px;font-style:italic;font-family:'Cormorant Garamond',serif;color:var(--text2);line-height:1.6">
           "The economic buyer has already paid for a mobilization failure. They're not evaluating Readiness OS against doing nothing — they're evaluating it against the last 30 days they'll never get back."
-        </div>
-        <div style="padding:12px 16px;background:rgba(10,15,46,.6);border:1px solid rgba(255,255,255,.07);border-radius:2px;text-align:center">
-          <div class="micro">25,000 target accounts · $200K average ACV · $5B serviceable market</div>
         </div>
       </div>
     </div>
@@ -806,135 +774,133 @@
   <div class="num">13 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S14 — THE FOUNDER
-═══════════════════════════════════════════ -->
-<div class="slide">
-  <div class="topbar"></div>
-  <div class="z">
-    <div class="lbl">The Founder</div>
-    <div style="display:flex;gap:28px;flex:1;min-height:0">
-      <!-- left: bio -->
-      <div style="display:flex;flex-direction:column;gap:14px;flex:1.2">
-        <div>
-          <div style="font-size:32px;font-weight:900;color:#fff;line-height:1;margin-bottom:4px">Martin Brunke</div>
-          <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700">Founder &amp; CEO · VaughnMartin · Readiness OS</div>
+<!-- ═══ S14 — THE FOUNDER ════════════════════════════════════════════ -->
+<div class="slide" style="padding:0">
+  <div class="z" style="display:grid;grid-template-columns:5fr 4fr;height:100%">
+    <!-- left: bio -->
+    <div style="padding:44px 36px 36px 68px;display:flex;flex-direction:column;justify-content:center;gap:14px;border-right:1px solid var(--border)">
+      <div>
+        <div class="lbl">The Founder</div>
+        <div style="font-size:34px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px">Martin Brunke</div>
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700">Founder & CEO · VaughnMartin · Readiness OS</div>
+      </div>
+      <div class="rule" style="width:80%;margin:0"></div>
+      <div style="border-left:3px solid var(--gold);padding:14px 16px;background:var(--gold-pale);border-radius:0 3px 3px 0">
+        <div class="micro" style="margin-bottom:8px">The Origin of the Insight</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;line-height:1.7;color:var(--text2)">Five years on the Stanford Cardinal sideline. 60–80 decisions in 3 hours. Every response pre-staged before the game started. When the situation changed at the line of scrimmage — no timeout, no alignment cycle. Eleven people pivoted in 40 seconds because the system was built before the pressure arrived. Then I walked into corporate America and watched the same trigger take 30 days.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="text-align:center;padding:12px;background:var(--bg2);border:1px solid var(--border);border-radius:3px">
+          <div style="font-size:20px;font-weight:900;color:var(--gold)">20 yrs</div>
+          <div class="micro" style="margin-top:3px;font-size:8px">Enterprise mobilization<br>Ford · Lockheed · Toyota · Schwab</div>
         </div>
-        <div class="rule" style="margin:0"></div>
-        <div style="padding:16px 18px;border-left:3px solid var(--gold);background:rgba(201,168,76,.05)">
-          <div style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(201,168,76,.6);font-weight:700;margin-bottom:8px">The Origin of the Insight</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.65;color:rgba(255,255,255,.85);font-style:italic">Five years on the Stanford Cardinal sideline. 60–80 decisions in 3 hours. Every response pre-staged before the game started. When the situation changed at the line of scrimmage — no timeout, no alignment cycle. Eleven people pivoted in 40 seconds because the system was built before the pressure arrived. Then I walked into corporate America and watched the same trigger take 30 days.</div>
+        <div style="text-align:center;padding:12px;background:var(--bg2);border:1px solid var(--border);border-radius:3px">
+          <div style="font-size:20px;font-weight:900;color:var(--navy)">Built</div>
+          <div class="micro" style="margin-top:3px;font-size:8px">180 protocols · 231 triggers<br>production-grade · live now</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-          <div style="padding:12px;background:rgba(10,15,46,.5);border:1px solid rgba(201,168,76,.15);border-radius:2px;text-align:center">
-            <div style="font-size:22px;font-weight:900;color:var(--gold);line-height:1">20 yrs</div>
-            <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px">Enterprise mobilization at Ford, Lockheed, Toyota, Schwab</div>
-          </div>
-          <div style="padding:12px;background:rgba(10,15,46,.5);border:1px solid rgba(201,168,76,.15);border-radius:2px;text-align:center">
-            <div style="font-size:22px;font-weight:900;color:var(--gold);line-height:1">Built</div>
-            <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px">180 protocols · 231 triggers · production-grade · live now</div>
-          </div>
-          <div style="padding:12px;background:rgba(10,15,46,.5);border:1px solid rgba(43,138,110,.2);border-radius:2px;text-align:center">
-            <div style="font-size:22px;font-weight:900;color:var(--teal-lt);line-height:1">Category</div>
-            <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px">Readiness Infrastructure — operating model layer above Microsoft</div>
-          </div>
+        <div style="text-align:center;padding:12px;background:var(--teal-pale);border:1px solid rgba(43,138,110,.2);border-radius:3px">
+          <div style="font-size:20px;font-weight:900;color:var(--teal)">Category</div>
+          <div class="micro" style="margin-top:3px;font-size:8px;color:var(--teal)">Readiness Infrastructure<br>above Microsoft stack</div>
         </div>
       </div>
-      <!-- right: validation -->
-      <div style="display:flex;flex-direction:column;gap:14px;width:340px;flex-shrink:0;justify-content:center">
-        <div class="lbl" style="margin-bottom:4px">Third-Party Validation</div>
-        <div style="padding:20px 22px;border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.04);border-radius:2px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;line-height:1.6;color:rgba(255,255,255,.85);margin-bottom:14px">"Martin is building the architecture that makes clarity possible before pressure arrives."</div>
-          <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase">Dr. Kerry Huang</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:3px">Fortune 50 AVP · ESI Top 1% Researcher</div>
-          <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:2px">Forbes Business Council · 408-firm study</div>
-          <div style="font-size:10px;color:rgba(255,255,255,.4)">Public repost · April 2026 · 4 weeks direct review</div>
-        </div>
-        <div style="padding:14px 16px;background:rgba(10,15,46,.6);border:1px solid rgba(255,255,255,.07);border-radius:2px;text-align:center">
-          <div class="micro">vaughnmartin.com · founding@vaughnmartin.com</div>
-        </div>
+    </div>
+    <!-- right: validation -->
+    <div style="padding:44px 40px;display:flex;flex-direction:column;justify-content:center;gap:16px;background:var(--bg2)">
+      <div class="lbl" style="margin-bottom:4px">Third-Party Validation</div>
+      <div style="border:1px solid rgba(201,168,76,.3);background:var(--bg);padding:22px 22px;border-radius:6px;box-shadow:0 4px 20px rgba(10,15,46,.07)">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;line-height:1.65;color:var(--navy);margin-bottom:16px">"Martin is building the architecture that makes clarity possible before pressure arrives."</div>
+        <div style="height:1px;background:var(--border);margin-bottom:12px"></div>
+        <div style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:.1em;text-transform:uppercase">Dr. Kerry Huang</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:3px">Fortune 50 AVP · ESI Top 1% Researcher</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">Forbes Business Council · 408-firm study</div>
+        <div style="font-size:10px;color:var(--muted)">Public repost · April 2026 · 4 weeks direct review</div>
+      </div>
+      <div style="padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:3px;text-align:center">
+        <div class="micro" style="margin-bottom:2px">Contact</div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy)">vaughnmartin.com</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:1px">founding@vaughnmartin.com</div>
       </div>
     </div>
   </div>
   <div class="num">14 / 15</div>
 </div>
 
-<!-- ═══════════════════════════════════════════
- S15 — THE ASK ($500K · $5M SAFE · Q3 2026)
-═══════════════════════════════════════════ -->
-<div class="slide deep">
-  <div class="topbar"></div>
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(201,168,76,.05) 0%,transparent 70%);pointer-events:none;z-index:1"></div>
-  <div class="z">
-    <div style="text-align:center;flex-shrink:0;margin-bottom:20px">
-      <div class="lbl" style="letter-spacing:.42em">The Ask</div>
-      <div style="font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.38);font-weight:700">Pre-Seed Round · Closing Q3 2026</div>
+<!-- ═══ S15 — THE ASK (dark) ═════════════════════════════════════════ -->
+<div class="slide dark" style="padding:0;display:grid;grid-template-columns:1fr 1fr">
+
+  <!-- left: the numbers -->
+  <div style="padding:56px 48px 48px 68px;display:flex;flex-direction:column;justify-content:center;gap:0;border-right:1px solid rgba(255,255,255,.08)">
+    <div class="lbl" style="letter-spacing:.4em;margin-bottom:8px">The Ask</div>
+    <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:700;margin-bottom:24px">Pre-Seed Round · Closing Q3 2026</div>
+    <div style="border:2px solid var(--gold);border-radius:4px;padding:24px 28px;background:rgba(201,168,76,.06);margin-bottom:22px;text-align:center">
+      <div style="font-size:90px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.02em">$500K</div>
+      <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.55);font-weight:700;margin-top:10px">Post-Money SAFE · $5M Valuation Cap</div>
     </div>
-    <div style="display:flex;justify-content:center;margin-bottom:18px">
-      <div style="text-align:center;padding:20px 48px;border:2px solid var(--gold);background:rgba(201,168,76,.07);border-radius:2px">
-        <div style="font-size:80px;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.02em">$500K</div>
-        <div style="font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.6);font-weight:700;margin-top:8px">Post-Money SAFE · $5M Valuation Cap</div>
+    <!-- SAFE terms -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="padding:12px 14px;border:1px solid rgba(255,255,255,.08);border-radius:3px;background:rgba(255,255,255,.04)">
+        <div class="micro" style="color:rgba(255,255,255,.3);margin-bottom:3px">Instrument</div>
+        <div style="font-size:13px;font-weight:700;color:#fff">Post-Money SAFE</div>
       </div>
-    </div>
-    <div class="split-3" style="gap:16px;flex:1;max-height:240px">
-      <!-- use of funds -->
-      <div style="border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);border-radius:2px;padding:18px 20px">
-        <div class="lbl" style="margin-bottom:12px;letter-spacing:.28em">Use of Funds</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-              <span style="font-size:12px;font-weight:700;color:#fff">Enterprise Sales Hire</span>
-              <span style="font-size:12px;font-weight:900;color:var(--gold)">50% · $250K</span>
-            </div>
-            <div style="height:4px;background:rgba(201,168,76,.12);border-radius:2px;overflow:hidden"><div style="height:100%;width:50%;background:var(--gold);border-radius:2px"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-              <span style="font-size:12px;font-weight:700;color:#fff">GTM &amp; Demo Infrastructure</span>
-              <span style="font-size:12px;font-weight:900;color:var(--gold)">25% · $125K</span>
-            </div>
-            <div style="height:4px;background:rgba(201,168,76,.12);border-radius:2px;overflow:hidden"><div style="height:100%;width:25%;background:var(--gold);border-radius:2px"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-              <span style="font-size:12px;font-weight:700;color:#fff">Runway &amp; Operations</span>
-              <span style="font-size:12px;font-weight:900;color:rgba(201,168,76,.7)">25% · $125K</span>
-            </div>
-            <div style="height:4px;background:rgba(201,168,76,.12);border-radius:2px;overflow:hidden"><div style="height:100%;width:25%;background:rgba(201,168,76,.5);border-radius:2px"></div></div>
-          </div>
-        </div>
+      <div style="padding:12px 14px;border:1px solid rgba(201,168,76,.25);border-radius:3px;background:rgba(201,168,76,.06)">
+        <div class="micro" style="color:rgba(201,168,76,.4);margin-bottom:3px">Valuation Cap</div>
+        <div style="font-size:13px;font-weight:700;color:var(--gold)">$5M</div>
       </div>
-      <!-- what this unlocks -->
-      <div style="border:1px solid rgba(43,138,110,.3);background:rgba(43,138,110,.06);border-radius:2px;padding:18px 20px">
-        <div class="lbl-t" style="font-size:10px;letter-spacing:.28em;font-weight:700;text-transform:uppercase;color:var(--teal-lt);margin-bottom:12px">What This Unlocks</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div><div style="font-size:11px;font-weight:700;color:#fff">18-month runway</div><div style="font-size:11px;color:var(--muted)">Close Founding Partners · reach ARR milestone</div></div>
-          <div><div style="font-size:11px;font-weight:700;color:#fff">Dedicated sales hire</div><div style="font-size:11px;color:var(--muted)">The one missing piece for enterprise motion</div></div>
-          <div><div style="font-size:11px;font-weight:700;color:#fff">GTM budget</div><div style="font-size:11px;color:var(--muted)">Events, travel, executive briefings at $150K–$450K ACV</div></div>
-          <div><div style="font-size:11px;font-weight:700;color:#fff">3–5 Founding Partners</div><div style="font-size:11px;color:var(--muted)">Defensible ARR and reference case studies by Q4 2026</div></div>
-        </div>
+      <div style="padding:12px 14px;border:1px solid rgba(43,138,110,.25);border-radius:3px;background:rgba(43,138,110,.06)">
+        <div class="micro" style="color:rgba(43,138,110,.5);margin-bottom:3px">Implied Dilution</div>
+        <div style="font-size:13px;font-weight:700;color:var(--teal-lt)">10%</div>
       </div>
-      <!-- dilution + cta -->
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div style="border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:2px;padding:16px 18px;flex:1">
-          <div class="lbl" style="margin-bottom:10px">SAFE Terms</div>
-          <div style="display:flex;flex-direction:column;gap:7px">
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted)">Instrument</span><span style="font-size:12px;font-weight:700;color:#fff">Post-Money SAFE</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted)">Valuation cap</span><span style="font-size:12px;font-weight:700;color:var(--gold)">$5M</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted)">Raise target</span><span style="font-size:12px;font-weight:700;color:var(--gold)">$500K</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted)">Implied dilution</span><span style="font-size:12px;font-weight:700;color:var(--teal-lt)">10%</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--muted)">Closing</span><span style="font-size:12px;font-weight:700;color:#fff">Q3 2026</span></div>
-          </div>
-        </div>
-        <div style="padding:14px 16px;border:1px solid rgba(201,168,76,.4);background:rgba(201,168,76,.08);border-radius:2px;text-align:center">
-          <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:4px">Apply for Access</div>
-          <div style="font-size:13px;font-weight:700;color:var(--gold)">vaughnmartin.com</div>
-          <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">founding@vaughnmartin.com</div>
-          <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:5px">Deck reviewed by appointment</div>
-        </div>
+      <div style="padding:12px 14px;border:1px solid rgba(255,255,255,.08);border-radius:3px;background:rgba(255,255,255,.04)">
+        <div class="micro" style="color:rgba(255,255,255,.3);margin-bottom:3px">Closing</div>
+        <div style="font-size:13px;font-weight:700;color:#fff">Q3 2026</div>
       </div>
     </div>
   </div>
+
+  <!-- right: use of funds + what it unlocks -->
+  <div style="padding:56px 60px 48px 48px;display:flex;flex-direction:column;justify-content:center;gap:20px">
+    <div>
+      <div class="lbl" style="letter-spacing:.28em;margin-bottom:14px">Use of Funds</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:12.5px;font-weight:700;color:#fff">Enterprise Sales Hire</span>
+            <span style="font-size:12.5px;font-weight:900;color:var(--gold)">50% · $250K</span>
+          </div>
+          <div class="pbar"><div class="pbar-fill" style="width:50%"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:12.5px;font-weight:700;color:#fff">GTM & Demo Infrastructure</span>
+            <span style="font-size:12.5px;font-weight:900;color:var(--gold)">25% · $125K</span>
+          </div>
+          <div class="pbar"><div class="pbar-fill" style="width:25%;opacity:.7"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:12.5px;font-weight:700;color:rgba(255,255,255,.75)">Runway & Operations</span>
+            <span style="font-size:12.5px;font-weight:900;color:rgba(201,168,76,.6)">25% · $125K</span>
+          </div>
+          <div class="pbar"><div class="pbar-fill" style="width:25%;opacity:.45"></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(43,138,110,.3);border-radius:3px;padding:16px 18px;background:rgba(43,138,110,.07)">
+      <div class="lbl lbl-t" style="margin-bottom:10px;font-size:9px;letter-spacing:.28em">What This Unlocks</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="font-size:12px;color:rgba(255,255,255,.75)"><strong style="color:#fff">18-month runway</strong> — close Founding Partners, reach ARR milestone</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.75)"><strong style="color:#fff">Dedicated sales hire</strong> — the one missing piece for enterprise motion</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.75)"><strong style="color:#fff">3–5 Founding Partners</strong> — defensible ARR and reference case studies by Q4 2026</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.75)"><strong style="color:#fff">Moat velocity</strong> — ADVANCE loop compounds with every activation</div>
+      </div>
+    </div>
+    <div style="text-align:center;padding:14px 16px;border:1px solid rgba(201,168,76,.3);border-radius:3px">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.55);font-weight:700;margin-bottom:4px">Apply for Founding Partner Access</div>
+      <div style="font-size:16px;font-weight:700;color:var(--gold)">vaughnmartin.com</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:3px">founding@vaughnmartin.com · Deck reviewed by appointment</div>
+    </div>
+  </div>
+
   <div class="num">15 / 15</div>
 </div>
 
@@ -942,18 +908,17 @@
 
 <script>
 (function(){
-  var SLIDE_W = 1280, SLIDE_H = 720;
+  var W=1280,H=720;
   function layout(){
-    var vw = window.innerWidth || document.documentElement.clientWidth;
-    var scale = Math.min(vw / SLIDE_W, 1);
-    var slides = document.querySelectorAll('.slide');
-    slides.forEach(function(s){
-      s.style.transform = 'scale('+scale+')';
-      s.style.marginBottom = (SLIDE_H*(scale-1))+'px';
+    var vw=window.innerWidth||document.documentElement.clientWidth;
+    var scale=Math.min(vw/W,1);
+    document.querySelectorAll('.slide').forEach(function(s){
+      s.style.transform='scale('+scale+')';
+      s.style.marginBottom=(H*(scale-1))+'px';
     });
-    document.getElementById('sw').style.width = (SLIDE_W*scale)+'px';
+    document.getElementById('sw').style.width=(W*scale)+'px';
   }
-  window.addEventListener('resize', layout);
+  window.addEventListener('resize',layout);
   layout();
 })();
 </script>
