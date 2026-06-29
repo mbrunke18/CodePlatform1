@@ -6235,10 +6235,7 @@ export default function Homepage() {
       {/* 10. ANATOMY — What's inside every Readiness Protocol */}
       <AnatomySection />
 
-      {/* 11. CONTRAST — 30 days → 12 minutes */}
-      <ContrastMomentSection />
-
-      {/* 12. PROOF — 15 research organizations + Dr. Kerry Huang */}
+      {/* 11. PROOF — 15 research organizations + Dr. Kerry Huang */}
       <CredibilitySection />
 
       {/* 13. PROOF MOMENT — real before/after activation narrative */}
@@ -6247,11 +6244,11 @@ export default function Homepage() {
       {/* 14. Q&A — Executive questions, including the workflow distinction */}
       <ExecutiveQASection />
 
-      {/* 14. FEARLESS — Preparation → Readiness → Fearless */}
-      <FearlessFinaleSection />
-
-      {/* 15. OPERATING MODEL RETURN — Profitability / Delivery / Cost */}
+      {/* 14. OPERATING MODEL — Profitability / Delivery / Cost */}
       <OperatingModelOutcomesSection />
+
+      {/* 15. FEARLESS — Preparation → Readiness → Fearless */}
+      <FearlessFinaleSection />
 
       {/* 16. OBJECTION CRUSHER — answer the 3 strategy-team objections head-on */}
       <ObjectionCrusherSection />
@@ -6264,9 +6261,6 @@ export default function Homepage() {
 
       {/* 19. FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
       <FoundingPartnerCloseSection />
-
-      {/* 17. CTA */}
-      <CTASection />
 
       {/* 17. EXPLORE DEEP — 4 discovery paths: "choose your depth" pull to more pages */}
       <ExploreDeepSection />
