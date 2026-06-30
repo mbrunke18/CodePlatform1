@@ -478,9 +478,9 @@
 </div>
 
 <!-- ═══ S8 — LIVE PRODUCT ════════════════════════════════════════════ -->
-<div class="slide" style="padding:0">
+<div class="slide" style="padding:0;display:grid;grid-template-rows:auto 1fr">
     <!-- header bar -->
-    <div style="padding:20px 68px 16px;flex-shrink:0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+    <div style="padding:20px 68px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
       <div>
         <div class="lbl" style="margin-bottom:2px">Built. Live. In Production.</div>
         <div style="font-size:16px;font-weight:900;text-transform:uppercase;color:var(--navy);letter-spacing:.02em">Not a roadmap — operating at vaughnmartin.com right now.</div>
@@ -493,21 +493,27 @@
       </div>
     </div>
     <!-- screenshots -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr;flex:1;min-height:0;gap:0">
-      <div style="overflow:hidden;border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0">
-        <img src="/screenshots/deck_signals.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:top;display:block">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;overflow:hidden">
+      <div style="overflow:hidden;border-right:1px solid var(--border);display:flex;flex-direction:column">
+        <div style="flex:1 1 0;overflow:hidden;position:relative">
+          <img src="/screenshots/deck_signals.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+        </div>
         <div style="padding:8px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0">
           <div class="micro">Live signal detection · 231 triggers · confidence scoring</div>
         </div>
       </div>
-      <div style="overflow:hidden;border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0">
-        <img src="/screenshots/new_protocol_library.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:top;display:block">
+      <div style="overflow:hidden;border-right:1px solid var(--border);display:flex;flex-direction:column">
+        <div style="flex:1 1 0;overflow:hidden;position:relative">
+          <img src="/screenshots/new_protocol_library.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+        </div>
         <div style="padding:8px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0">
           <div class="micro">Protocol library · 180 pre-staged responses · 9 domains</div>
         </div>
       </div>
-      <div style="overflow:hidden;display:flex;flex-direction:column;min-height:0">
-        <img src="/screenshots/deck_activation.jpg" style="width:100%;flex:1 1 0;min-height:0;object-fit:cover;object-position:top;display:block">
+      <div style="overflow:hidden;display:flex;flex-direction:column">
+        <div style="flex:1 1 0;overflow:hidden;position:relative">
+          <img src="/screenshots/deck_activation.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+        </div>
         <div style="padding:8px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0">
           <div class="micro">Execution console · stakeholders · executive authorization</div>
         </div>
@@ -926,9 +932,10 @@
       s.style.transform='scale('+scale+')';
       s.style.transformOrigin='top left';
       s.style.marginBottom='';
-      /* Force the inner content layer to the slide's exact pixel height so
-         grid-template-rows:1fr and position:absolute children resolve correctly
-         regardless of how browsers handle percentage heights in flex children */
+      /* Force every slide to exactly 720px so grid-template-rows:1fr and
+         position:absolute children always have a definite container height */
+      s.style.height=H+'px';
+      /* Legacy: also force any .z content layer */
       var z=s.querySelector('.z');
       if(z) z.style.height=H+'px';
     });
