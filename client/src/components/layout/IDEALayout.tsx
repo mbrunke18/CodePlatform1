@@ -8,7 +8,7 @@ import { BackButton } from '@/components/ui/back-button';
 import { GuestPreviewBanner } from '@/components/GuestPreviewBanner';
 import { useAuth } from '@/hooks/useAuth';
 import { useTrial } from '@/hooks/useTrial';
-import { Lock, LogIn, ArrowRight } from 'lucide-react';
+import { Lock } from 'lucide-react';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -43,47 +43,19 @@ function AccessGate() {
           Access Required
         </h2>
         <p style={{ color: '#6B7280', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 28px' }}>
-          This section of the platform is available to approved participants. Request access or start a 48-hour trial to explore the full Readiness OS.
+          This section is available to Founding Partners and approved participants. Apply to get full access.
         </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <button
-            onClick={() => setLocation('/request-access')}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              background: NAVY, color: '#fff', border: 'none',
-              borderRadius: 0, padding: '12px 24px',
-              fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer',
-            }}
-          >
-            <LogIn size={15} /> Request Access
-          </button>
-          <button
-            onClick={() => setLocation('/trial-access')}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              background: GOLD, color: NAVY, border: 'none',
-              borderRadius: 0, padding: '12px 24px',
-              fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer',
-            }}
-          >
-            Get 48-Hour Trial Access <ArrowRight size={14} />
-          </button>
-          <button
-            onClick={() => setLocation('/request-access')}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              background: 'transparent', color: TEAL,
-              border: `1px solid ${TEAL}`,
-              borderRadius: 0, padding: '11px 24px',
-              fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer',
-            }}
-          >
-            Apply for Founding Partner Access
-          </button>
-        </div>
-        <p style={{ color: '#9CA3AF', fontSize: '0.75rem', marginTop: 20 }}>
-          Already have trial access? Activate your link from the email we sent.
-        </p>
+        <button
+          onClick={() => setLocation('/request-access')}
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            width: '100%', background: GOLD, color: NAVY, border: 'none',
+            borderRadius: 0, padding: '13px 24px',
+            fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.04em',
+          }}
+        >
+          Apply for Founding Partner Access
+        </button>
       </div>
     </div>
   );

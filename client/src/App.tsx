@@ -226,7 +226,6 @@ const PlatformReality = lazy(() => import("./pages/PlatformReality"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
 const DemoAccess = lazy(() => import("./pages/DemoAccess"));
 const RequestAccess = lazy(() => import("./pages/RequestAccess"));
-const TrialAccess = lazy(() => import("./pages/TrialAccess"));
 const MagicLogin = lazy(() => import("./pages/MagicLogin"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
 const AdminQuickLink = lazy(() => import("./pages/AdminQuickLink"));
@@ -643,7 +642,7 @@ function Router() {
         <Route path="/get-started">{() => <GetStarted />}</Route>
         <Route path="/demo-access" component={DemoAccess} />
         <Route path="/request-access" component={RequestAccess} />
-        <Route path="/trial-access" component={TrialAccess} />
+        <Route path="/trial-access">{() => <Redirect to="/request-access" />}</Route>
         <Route path="/magic-login" component={MagicLogin} />
         <Route path="/peer-review" component={PeerReview} />
         <Route path="/peer-review-report" component={PeerReviewReport} />
