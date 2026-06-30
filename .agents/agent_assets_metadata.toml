@@ -707,3 +707,9 @@ id = "-qeOeZvyvouje1Hgme5A0"
 uri = "file://public/vaughnmartin-logo-square.png"
 type = "image"
 title = "VaughnMartin Logo — Full Lockup, Square (750×750)"
+
+[[outputs]]
+id = "u0Rc_q315rgOrQxmp6LpM"
+uri = "file://VaughnMartin_ReadinessOS_PitchDeck.pdf"
+type = "pdf"
+title = "VaughnMartin Readiness OS — Pitch Deck (15 slides)"
