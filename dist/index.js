@@ -9712,6 +9712,14 @@ var init_db = __esm({
     }
     pool = new Pool({ connectionString });
     db = drizzle({ client: pool, schema: schema_exports });
+    if (process.env.NODE_ENV === "production") {
+      setInterval(async () => {
+        try {
+          await pool.query("SELECT 1");
+        } catch {
+        }
+      }, 4 * 60 * 1e3);
+    }
   }
 });
 
@@ -65963,6 +65971,20 @@ app.get("/_health", (_req, res) => {
 app.head("/", (_req, res) => {
   res.status(200).end();
 });
+if (process.env.NODE_ENV === "production") {
+  const _distPublicPath = path2.resolve(process.cwd(), "dist/public");
+  const _indexHtmlPath = path2.resolve(_distPublicPath, "index.html");
+  app.get("/", (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+    res.sendFile(_indexHtmlPath, (err) => {
+      if (err) {
+        res.status(200).send("<!DOCTYPE html><html><head><meta http-equiv='refresh' content='2'></head><body></body></html>");
+      }
+    });
+  });
+}
 app.get("/ultimate-demo", (_req, res) => {
   res.sendFile(path2.resolve("client/public/ultimate-demo.html"));
 });
@@ -66147,13 +66169,6 @@ if (app.get("env") !== "development") {
       }
     }
   }));
-  const indexHtmlPath = path2.resolve(distPublicPath, "index.html");
-  app.get("/", (_req, res) => {
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.setHeader("Pragma", "no-cache");
-    res.setHeader("Expires", "0");
-    res.sendFile(indexHtmlPath);
-  });
 }
 var port = parseInt(process.env.PORT || "5000", 10);
 var server = createServer2(app);
