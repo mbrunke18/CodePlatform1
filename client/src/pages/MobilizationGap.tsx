@@ -109,9 +109,9 @@ const competitors: Competitor[] = [
   },
   {
     label: "IBP / Planning Frameworks",
-    examples: "S&OP · Integrated Business Planning · Value Centric IBP",
+    examples: "S&OP · IBP · Governance Frameworks · Scenario Planning",
     gaps: ['partial','partial','partial','no','no','no','partial','partial','no','partial','partial','partial'],
-    verdict: "Define decision rights and governance structures on paper. Coherent in design. The execution layer — pre-staged protocols, automatic assembly, pre-authorized budget — does not exist."
+    verdict: "Define decision rights and governance structures in frameworks and planning cadences. Coherent on paper. The execution layer — pre-staged protocols, automatic team assembly, pre-authorized budget — does not exist under pressure."
   },
   {
     label: "Workflow & Orchestration Platforms",
@@ -129,13 +129,13 @@ const competitors: Competitor[] = [
     label: "GRC / Risk Platforms",
     examples: "Archer · OneTrust · Riskonnect · ServiceNow GRC",
     gaps: ['partial','partial','partial','no','partial','no','no','partial','no','yes','yes','partial'],
-    verdict: "Risk mapping, compliance tracking, governance documentation. Strong on compliance record (gaps 10–11). Gaps 1–9 and 12 remain open when the risk materializes."
+    verdict: "Risk mapping and governance documentation. Genuinely strong on compliance tracking and governance record — the right tool for those two gaps. Doesn't activate the coordinated response when the risk materializes. Gaps 1–9 and 12 remain open."
   },
   {
     label: "BCP / Incident Response Tools",
     examples: "Everbridge · Fusion Risk Management · Castellan",
     gaps: ['partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial'],
-    verdict: "IT continuity and operational incident response. Partial coverage across most gaps — but narrow scope. Doesn't cover activist investor, M&A, federal inquiry, or any strategic situation outside IT/ops recovery."
+    verdict: "Designed for continuity and operational incidents — and solid within that scope. Doesn't cover activist investor, M&A, regulatory inquiry, or competitive disruption. The strategic mobilization problem sits outside the design boundary."
   },
   {
     label: "Tabletop Exercise Facilitators",
