@@ -801,7 +801,7 @@ export default function PlannedUnplannedDemo() {
           <p style={{ ...BAR, fontSize: 13, color: MUTED, margin: 0 }}>The response is ready before the trigger fires — whether you expected it or not.</p>
           <Link href="/founding-partner-program">
             <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: NAVY, background: GOLD, padding: "10px 22px", cursor: "pointer" }}>
-              Apply for Access →
+              Apply for Founding Partner Access →
             </div>
           </Link>
         </div>

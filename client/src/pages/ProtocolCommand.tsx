@@ -204,9 +204,9 @@ export default function ProtocolCommand() {
               {!isAuthenticated ? (
                 <div className="text-center py-4">
                   <p className="text-[#0A0F2E] mb-1">Access required to execute this Readiness Protocol</p>
-                  <p className="text-sm text-[#6B7280] mb-4">Request access or start a 48-hour trial to activate Readiness Protocols</p>
+                  <p className="text-sm text-[#6B7280] mb-4">Apply for Founding Partner access to activate Readiness Protocols</p>
                   <Button onClick={() => setLocation('/request-access')} data-testid="button-login">
-                    Request Access
+                    Apply for Founding Partner Access
                   </Button>
                 </div>
               ) : !organization?.id ? (

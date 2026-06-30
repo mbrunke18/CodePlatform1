@@ -1344,7 +1344,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                 </a>
               </div>
               <div style={{ padding: "28px 24px", borderTop: "3px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.1)", borderTopWidth: 3 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Get Access</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Founding Partner Access</div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 6, lineHeight: 1.4 }}>Pre-stage 180+ protocols for your organization</div>
                 <div style={{ fontSize: 11, color: "rgba(201,168,76,0.8)", marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>180 Core · 30 Compound · 2+ Extended — and growing</div>
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>

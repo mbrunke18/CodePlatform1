@@ -4,6 +4,7 @@ import { FirstVisitAdModal } from "@/components/FirstVisitAdModal";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { Link, useLocation } from "wouter";
+import StandardNav from "@/components/layout/StandardNav";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { TechCrest } from "@/components/TechCrest";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
@@ -417,173 +418,56 @@ function LiveSignalFeedSection() {
 }
 
 // ─── SECTION 1: Navigation ────────────────────────────────────────────────────
-function HomepageNav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const scrollTo = (id: string) => {
-    setMenuOpen(false);
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 50);
-  };
-
+function HomepageStyles() {
   return (
-    <>
-      <nav style={{
-        position: "sticky", top: 0, zIndex: 100,
-        background: "#fff",
-        borderBottom: "1px solid rgba(10,15,46,0.10)",
-        boxShadow: "0 1px 12px rgba(10,15,46,0.07)",
-        height: 68,
-        display: "flex", alignItems: "center",
-      }}>
-        <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <VaughnMartinLogo variant="full" height={68} color="dark" animated={true} />
-
-          {/* Desktop nav — 4 hub links, no dropdowns */}
-          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
-            <Link href="/platform" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>What We Do</Link>
-            <Link href="/demo-hub" style={{
-              ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
-              padding: "6px 14px",
-              background: "rgba(201,168,76,0.10)",
-              border: "1px solid rgba(201,168,76,0.35)",
-              display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap",
-            }}>
-              <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
-            </Link>
-            <Link href="/situations" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Situations</Link>
-            <Link href="/executive-brief" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>The Proof</Link>
-            <Link href="/channel-partners" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Partners</Link>
-            <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75, whiteSpace: "nowrap" }}>Pricing</Link>
-            <Link
-              href="/request-access"
-              onClick={() => trackCTA("nav")}
-              data-testid="nav-founding-partner-cta"
-              style={{
-                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
-                padding: "10px 20px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
-              }}
-            >
-              Apply for Founding Partner Access
-            </Link>
-          </div>
-
-          {/* Hamburger — shown below 768px via CSS */}
-          <button
-            className="hp-hamburger"
-            onClick={() => setMenuOpen(v => !v)}
-            style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 8, flexDirection: "column", gap: 5 }}
-            aria-label="Open menu"
-          >
-            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 0 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 0 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 0 }} />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile full-screen overlay */}
-      {menuOpen && (
-        <div style={{
-          position: "fixed", inset: 0, zIndex: 200,
-          background: NAVY_BG,
-          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0,
-        }}>
-          <button
-            onClick={() => setMenuOpen(false)}
-            style={{ position: "absolute", top: 20, right: 24, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 28, lineHeight: 1 }}
-            aria-label="Close menu"
-          >
-            ✕
-          </button>
-          <Link href="/demo-experience" onClick={() => setMenuOpen(false)} style={{
-            ...DM, display: "block", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.35)",
-            color: GOLD, fontSize: 16, fontWeight: 700, padding: "16px 24px", textDecoration: "none",
-            letterSpacing: "0.04em", textAlign: "center", marginBottom: 8,
-          }}>▶ Watch the Full Platform Demo</Link>
-          {[
-            { label: "What We Do",  href: "/platform" },
-            { label: "See It Work",   href: "/demo-hub", highlight: false },
-            { label: "Situations",    href: "/situations" },
-            { label: "The Proof",     href: "/executive-brief" },
-            { label: "Partners",      href: "/channel-partners" },
-            { label: "Pricing",       href: "/pricing" },
-          ].map(item =>
-            <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{
-              ...DM, color: (item as any).highlight ? GOLD : "#fff",
-              fontSize: 22, fontWeight: (item as any).highlight ? 700 : 500,
-              padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em",
-            }}>{(item as any).highlight ? `▶ ${item.label}` : item.label}</Link>
-          )}
-          <Link
-            href="/request-access"
-            onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
-            style={{
-              ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
-              padding: "18px 24px", borderRadius: 0, textDecoration: "none",
-              textAlign: "center", marginTop: 24, width: "calc(100% - 48px)", display: "block",
-            }}
-          >
-            Apply for Founding Partner Access
-          </Link>
-        </div>
-      )}
-
-      <style>{`
-        .hp-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-        @media (max-width: 900px) {
-          .hp-hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-          .hp-chain-diagram { display: none !important; }
-        }
-        .hp-jump-btn:hover .hp-jump-label { opacity: 1 !important; }
-        .hp-jump-btn:hover > div { background: ${GOLD} !important; border-color: ${GOLD} !important; }
-        @media (max-width: 1024px) { .hp-jump-nav { display: none !important; } }
-        @media (max-width: 768px) {
-          .hp-desktop-nav    { display: none !important; }
-          .hp-hamburger      { display: flex !important; }
-          .hp-hero-left      { padding: 56px 0 40px !important; }
-          .hp-stat-row       { flex-direction: column !important; gap: 24px !important; }
-          .hp-stat-div       { display: none !important; }
-          .hp-prob-grid      { flex-direction: column !important; }
-          .hp-idea-grid      { grid-template-columns: 1fr !important; }
-          .hp-footer-cols    { flex-direction: column !important; gap: 40px !important; text-align: center; }
-          .hp-hero-h1        { font-size: 36px !important; }
-          .hp-missing-h2     { font-size: 30px !important; }
-          .hp-cta-h2         { font-size: 30px !important; }
-          .hp-cta-btn        { display: block !important; width: calc(100% - 48px) !important; text-align: center; }
-          .hp-sec            { padding: 64px 0 !important; }
-          .hp-section-marker { display: none !important; }
-          #contrast-moment   { height: 80vh !important; min-height: 480px !important; }
-          .hp-ba-grid        { grid-template-columns: 1fr !important; }
-          .hp-console-body   { grid-template-columns: 1fr !important; }
-          /* Hero content cleanup — hide dense secondary blocks, fix grids */
-          .hp-integration-strip { display: none !important; }
-          .hp-outcome-table  { display: none !important; }
-          .hp-domain-grid    { grid-template-columns: 1fr !important; gap: 8px !important; }
-          .hp-metric-row     { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px 0 !important; }
-          .hp-metric-row > div { border-right: none !important; padding-right: 0 !important; margin-right: 0 !important; }
-          /* Three-step section: stack vertically, hide arrows */
-          .hp-three-step-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-          .hp-step-arrow     { display: none !important; }
-          /* Section padding reduction for non-hp-sec sections */
-          .hp-section-reduce { padding-top: 56px !important; padding-bottom: 48px !important; }
-        }
-        @media (max-width: 375px) {
-          .hp-hero-h1 { font-size: 28px !important; }
-        }
-        @media (min-width: 1440px) {
-          .hp-hero-h1    { font-size: 56px !important; }
-          .hp-missing-h2 { font-size: 52px !important; }
-          .hp-cta-h2     { font-size: 52px !important; }
-        }
-        @media (min-width: 1920px) {
-          .hp-hero-h1    { font-size: 68px !important; }
-          .hp-missing-h2 { font-size: 62px !important; }
-          .hp-cta-h2     { font-size: 62px !important; }
-        }
-      `}</style>
-    </>
+    <style>{`
+      .hp-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+      @media (max-width: 900px) {
+        .hp-hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        .hp-chain-diagram { display: none !important; }
+      }
+      .hp-jump-btn:hover .hp-jump-label { opacity: 1 !important; }
+      .hp-jump-btn:hover > div { background: ${GOLD} !important; border-color: ${GOLD} !important; }
+      @media (max-width: 1024px) { .hp-jump-nav { display: none !important; } }
+      @media (max-width: 768px) {
+        .hp-hero-left      { padding: 56px 0 40px !important; }
+        .hp-stat-row       { flex-direction: column !important; gap: 24px !important; }
+        .hp-stat-div       { display: none !important; }
+        .hp-prob-grid      { flex-direction: column !important; }
+        .hp-idea-grid      { grid-template-columns: 1fr !important; }
+        .hp-footer-cols    { flex-direction: column !important; gap: 40px !important; text-align: center; }
+        .hp-hero-h1        { font-size: 36px !important; }
+        .hp-missing-h2     { font-size: 30px !important; }
+        .hp-cta-h2         { font-size: 30px !important; }
+        .hp-cta-btn        { display: block !important; width: calc(100% - 48px) !important; text-align: center; }
+        .hp-sec            { padding: 64px 0 !important; }
+        .hp-section-marker { display: none !important; }
+        #contrast-moment   { height: 80vh !important; min-height: 480px !important; }
+        .hp-ba-grid        { grid-template-columns: 1fr !important; }
+        .hp-console-body   { grid-template-columns: 1fr !important; }
+        .hp-integration-strip { display: none !important; }
+        .hp-outcome-table  { display: none !important; }
+        .hp-domain-grid    { grid-template-columns: 1fr !important; gap: 8px !important; }
+        .hp-metric-row     { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px 0 !important; }
+        .hp-metric-row > div { border-right: none !important; padding-right: 0 !important; margin-right: 0 !important; }
+        .hp-three-step-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+        .hp-step-arrow     { display: none !important; }
+        .hp-section-reduce { padding-top: 56px !important; padding-bottom: 48px !important; }
+      }
+      @media (max-width: 375px) {
+        .hp-hero-h1 { font-size: 28px !important; }
+      }
+      @media (min-width: 1440px) {
+        .hp-hero-h1    { font-size: 56px !important; }
+        .hp-missing-h2 { font-size: 52px !important; }
+        .hp-cta-h2     { font-size: 52px !important; }
+      }
+      @media (min-width: 1920px) {
+        .hp-hero-h1    { font-size: 68px !important; }
+        .hp-missing-h2 { font-size: 62px !important; }
+        .hp-cta-h2     { font-size: 62px !important; }
+      }
+    `}</style>
   );
 }
 
@@ -6234,8 +6118,9 @@ export default function Homepage() {
   }, []);
   return (
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>
+      <HomepageStyles />
       <FirstVisitAdModal />
-      <HomepageNav />
+      <StandardNav />
       <GuestPreviewBanner />
 
       {/*  1. PAIN + PROMISE — qualify the buyer, then deliver the claim */}

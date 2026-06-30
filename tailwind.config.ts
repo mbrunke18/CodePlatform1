@@ -5,6 +5,11 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        xs:   ['0.8125rem', { lineHeight: '1.45' }],
+        sm:   ['0.9375rem', { lineHeight: '1.55' }],
+        base: ['1rem',      { lineHeight: '1.6'  }],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

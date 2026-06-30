@@ -291,11 +291,20 @@ html {
 .vm-overline {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: #C9A84C;
 }
+
+/* ── Global Readability Floor ──────────────────────────────────────────────── */
+/* Raises inline sub-14px font sizes to legible minimums without touching   */
+/* intentional display text (headings, icons, diagrams use different props). */
+[style*="font-size: 10px"] { font-size: 13px !important; }
+[style*="font-size: 11px"] { font-size: 13px !important; }
+[style*="font-size: 12px"] { font-size: 14px !important; }
+[style*="font-size: 9px"]  { font-size: 12px !important; }
+[style*="font-size: 8px"]  { font-size: 12px !important; }
 
 /* Condensed campaign headline — Barlow Condensed heavy, for impact statements */
 .vm-campaign-headline {

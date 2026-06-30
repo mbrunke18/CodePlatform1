@@ -112,7 +112,7 @@ const JOURNEY = [
   { step: "01", label: "Understand the Problem", sub: "Cost of delay", href: "/cost-of-delay", color: NAVY },
   { step: "02", label: "See It Work", sub: "12-minute test drive", href: "/12-minute-experience", color: TEAL },
   { step: "03", label: "Build the Business Case", sub: "ROI calculator", href: "/roi-calculator", color: GOLD },
-  { step: "04", label: "Apply for Access", sub: "Founding Partner Program", href: "/request-access", color: RUST },
+  { step: "04", label: "Apply for Founding Partner Access", sub: "Founding Partner Program", href: "/request-access", color: RUST },
   { step: "05", label: "Go Live in 30 Days", sub: "Setup + first activation", href: "/getting-started", color: NAVY },
   { step: "06", label: "Run Protocols", sub: "180 pre-staged responses", href: "/playbooks", color: TEAL },
   { step: "07", label: "Improve Continuously", sub: "ADVANCE 2.0 closed loop", href: "/advance-intelligence", color: VIOLET },
@@ -247,10 +247,10 @@ export default function PlatformHub() {
             <div style={{ width: 1, height: 28, background: "rgba(10,15,46,0.12)", flexShrink: 0 }} />
             <div style={{ display: "flex", gap: 8 }}>
               <Link href="/12-minute-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: GOLD, color: NAVY, fontWeight: 900, fontSize: 11, padding: "8px 16px", textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase", borderRadius: "0.15rem" }}>
-                <Play size={10} fill={NAVY} /> Try It Now
+                <Play size={10} fill={NAVY} /> 12-Minute Test Drive
               </Link>
               <Link href="/request-access" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 11, padding: "7px 14px", textDecoration: "none", border: "1px solid rgba(10,15,46,0.2)", borderRadius: "0.15rem" }}>
-                Apply for Access <ArrowRight size={10} />
+                Apply for Founding Partner Access <ArrowRight size={10} />
               </Link>
             </div>
           </div>

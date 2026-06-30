@@ -505,7 +505,7 @@ export default function TheCase() {
             {[
               { path: "See It Work", desc: "12-Minute Test Drive — no login required. Watch a full protocol activate.", href: "/12-minute-experience", cta: "Start Test Drive" },
               { path: "Measure Your Gap", desc: "3-minute Readiness Benchmark. Typical enterprise: 22/100. See where you stand.", href: "/readiness-benchmark", cta: "Take the Benchmark" },
-              { path: "Apply for Access", desc: "90-day Founding Partner validation. One question determines your fit.", href: "/request-access", cta: "Apply for Founding Partner Access", primary: true },
+              { path: "Apply for Founding Partner Access", desc: "90-day Founding Partner validation. One question determines your fit.", href: "/request-access", cta: "Apply for Founding Partner Access", primary: true },
             ].map((p, i) => (
               <div key={i} style={{ background: p.primary ? GOLD : "rgba(255,255,255,0.06)", border: `1px solid ${p.primary ? GOLD : "rgba(255,255,255,0.12)"}`, padding: "24px 20px", textAlign: "left" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: p.primary ? NAVY : GOLD, marginBottom: 6 }}>{p.path}</div>

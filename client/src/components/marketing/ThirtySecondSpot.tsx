@@ -218,10 +218,9 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.7 }}
             >
-              <Link href="/sandbox">
+              <Link href="/request-access">
                 <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-30s">
-                  <Play className="mr-2 h-5 w-5" />
-                  Try It Now
+                  Apply for Founding Partner Access
                 </Button>
               </Link>
             </motion.div>
@@ -345,10 +344,9 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.7 }}
             >
-              <Link href="/sandbox">
+              <Link href="/request-access">
                 <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-first-mover">
-                  <Play className="mr-2 h-5 w-5" />
-                  Try It Now
+                  Apply for Founding Partner Access
                 </Button>
               </Link>
             </motion.div>
@@ -474,10 +472,9 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.8 }}
             >
-              <Link href="/sandbox">
+              <Link href="/request-access">
                 <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-360x">
-                  <Play className="mr-2 h-5 w-5" />
-                  Try It Now
+                  Apply for Founding Partner Access
                 </Button>
               </Link>
             </motion.div>

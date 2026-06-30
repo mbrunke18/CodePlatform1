@@ -1089,7 +1089,7 @@ export default function CommandTower() {
               color: NAVY, fontSize: 11, fontWeight: 800,
               textDecoration: 'none', letterSpacing: '0.04em',
             }}>
-              Get Full Access <ArrowRight size={10} />
+              Apply for Founding Partner Access <ArrowRight size={10} />
             </Link>
           </div>
         </div>

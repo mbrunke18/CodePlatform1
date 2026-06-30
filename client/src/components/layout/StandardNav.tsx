@@ -1206,21 +1206,21 @@ export default function StandardNav() {
                   </Button>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => navigateTo("/founding-partner")}
+                      onClick={() => navigateTo("/12-minute-experience")}
                       variant="outline"
                       className="flex-1 justify-center h-10 text-sm font-semibold"
                       style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                       data-testid="nav-mobile-try-demo"
                     >
-                      Request Access
+                      12-Minute Test Drive
                     </Button>
                     <Button
-                      onClick={() => navigateTo("/founding-partner")}
+                      onClick={() => navigateTo("/request-access")}
                       className="flex-1 justify-center h-10 text-sm font-bold"
                       style={{ background: GOLD, color: NAVY }}
                       data-testid="nav-mobile-request-pilot"
                     >
-                      Request Founding Partner Access
+                      Apply for Founding Partner Access
                     </Button>
                   </div>
                 </div>
@@ -1236,14 +1236,14 @@ export default function StandardNav() {
                     Watch the Full Platform Demo
                   </Button>
                   <Button
-                    onClick={() => navigateTo("/founding-partner")}
+                    onClick={() => navigateTo("/request-access")}
                     variant="outline"
                     className="w-full justify-center h-11 text-sm font-semibold"
                     style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                     data-testid="nav-mobile-try-demo"
                   >
                     <Rocket className="h-4 w-4 mr-2" />
-                    Request Access
+                    Apply for Founding Partner Access
                   </Button>
                   <Button
                     onClick={() => navigateTo("/founding-partner")}
