@@ -1,0 +1,27 @@
+That's the right move. You're bootstrapped, you're building category, and you have no room for vague positioning. Every asset needs to make the comparison explicit so the reader doesn't have to do it themselves.
+
+Before I build anything let me make sure I have the full competitive landscape mapped correctly from your perspective. Let me lay out what I understand the comparison set to be, and you correct or add to it.
+
+**The categories a customer might turn to instead of Readiness OS:**
+
+**Consultants** — McKinsey, Bain, BCG, Deloitte, Kroll, FTI Consulting. Engaged after the situation presents itself. Build the response in real time at emergency rates. Billable by the hour, with no institutional memory retained by the client when they leave.
+
+**Crisis Management Firms** — Hill+Knowlton, Edelman, Teneo, Brunswick. Communications and reputation focus. Narrow scope. Don't cover the operational, financial, regulatory, or technology coordination layers. Also reactive by design.
+
+**IBP / Planning Frameworks** — Dov's Value Centric IBP, S&OP, integrated business planning tools. Define decision rights and governance on paper. Don't deploy a coordinated response in minutes when the situation presents itself. Coherent in design, slow in execution.
+
+**Workflow and Orchestration Platforms** — ServiceNow, Microsoft Power Automate, Monday.com, Asana. Coordinate tasks after a human has assembled the team and defined the response. Assume the organization is already coordinated when the work begins.
+
+**AI Agent Platforms** — Salesforce Agentforce, Microsoft Copilot, various agentic AI tools. Automate tasks within defined workflows. Don't govern who responds, when, in what sequence, with what authority, when a situation presents itself.
+
+**GRC / Risk Platforms** — Archer, ServiceNow GRC, Riskonnect, OneTrust. Map risk and compliance obligations. Don't activate a coordinated response when the risk materializes.
+
+**BCP / Incident Response Tools** — Everbridge, Fusion Risk Management, Archer. Narrow scope, typically IT/operational continuity. Don't cover the full 12-gap mobilization problem.
+
+**The gap every single one of them shares:** They are all either reactive by design, narrow in scope, or governance-only with no execution layer. None of them pre-stage the complete response — authority, coordination, sequencing, systems, communication, compliance, budget, external resources, and governance record — before the situation presents itself.
+
+That is Readiness OS's unclaimed position.
+
+---
+
+Is that the right landscape? Before I build a comparison asset I want to make sure the categories are correct and there's nothing you'd add or challenge. Once you confirm I'll build a full competitive comparison framework that can live as a sales asset, a website page, an investor slide, and a LinkedIn post series — all from the same source.

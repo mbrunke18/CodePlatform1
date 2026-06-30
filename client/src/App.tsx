@@ -72,6 +72,7 @@ const ProductOverview = lazy(() => import("./pages/ProductOverview"));
 const AuthorizationPrecedentRegistry = lazy(() => import("./pages/AuthorizationPrecedentRegistry"));
 const MobilizationBrief = lazy(() => import("./pages/MobilizationBrief"));
 const MobilizationCost = lazy(() => import("./pages/MobilizationCost"));
+const MobilizationGap = lazy(() => import("./pages/MobilizationGap"));
 const ExecutiveScenarioSuite = lazy(() => import("./pages/ExecutiveScenarioSuite"));
 const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
 const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
@@ -851,6 +852,7 @@ function Router() {
         <Route path="/product-overview" component={ProductOverview} />
         <Route path="/authorization-precedents" component={AuthorizationPrecedentRegistry} />
         <Route path="/mobilization-brief" component={MobilizationBrief} />
+        <Route path="/mobilization-gap" component={MobilizationGap} />
         <Route path="/founding-partner-brief" component={FoundingPartnerBrief} />
         <Route path="/readiness-rhythm" component={ReadinessRhythm} />
         <Route path="/entry" component={StartHere} />
