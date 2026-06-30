@@ -988,8 +988,8 @@ export default function StandardNav() {
               <>
                 {/* Clean hub links — no dropdowns. Each goes to its hub page. */}
                 {[
-                  { label: 'What We Do', path: '/platform' },
-                  { label: 'What to Expect', path: '/what-to-expect' },
+                  { label: 'How It Works', path: '/how-it-works' },
+                  { label: 'Situations', path: '/situations-hub' },
                   { label: 'See It Work', path: '/demo-hub' },
                   { label: 'The Proof', path: '/proof-story' },
                   { label: 'Partners', path: '/channel-partners' },
