@@ -670,6 +670,55 @@ export default function CompetitivePositioning() {
           </div>
         </section>
 
+        {/* The Full Competitive Landscape — 12 categories */}
+        <section style={{ background: NAVY, padding: "80px 48px", borderTop: `1px solid rgba(255,255,255,0.06)` }}>
+          <div className="max-w-6xl mx-auto">
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Full Landscape</span>
+              </div>
+              <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,3vw,38px)", color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>
+                12 categories of alternatives. Zero that close all 12 mobilization gaps.
+              </h2>
+              <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", maxWidth: 680, lineHeight: 1.7 }}>
+                Every existing category is either reactive by design, narrow in scope, or governance-only with no execution layer.
+                The unclaimed position — pre-staged across all 12 gaps before the trigger fires — belongs to Readiness OS.
+              </p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 1, background: "rgba(255,255,255,0.06)", marginBottom: 24 }}>
+              {[
+                { label: "Consultants", ex: "McKinsey · Bain · Kroll", verdict: "Engaged after the situation. Build the response in real time at emergency rates." },
+                { label: "Crisis Management", ex: "Edelman · Brunswick · H+K", verdict: "Communications only. Reactive by design. Don't cover operational or financial layers." },
+                { label: "IBP / Planning Frameworks", ex: "S&OP · Integrated Business Planning", verdict: "Coherent in design. Don't deploy a coordinated response when the situation arrives." },
+                { label: "Workflow Platforms", ex: "ServiceNow · Monday.com · Asana", verdict: "Coordinate tasks after a human assembles the team. Assume coordination is already solved." },
+                { label: "AI Agent Platforms", ex: "Copilot · Agentforce · Agentic tools", verdict: "Automate tasks within workflows. Don't govern who responds, when, with what authority." },
+                { label: "GRC / Risk Platforms", ex: "Archer · OneTrust · Riskonnect", verdict: "Map risk obligations. Don't activate a coordinated response when the risk materializes." },
+                { label: "BCP / Incident Response", ex: "Everbridge · Fusion · Archer IRM", verdict: "Narrow scope — IT continuity only. Don't cover the full mobilization problem." },
+                { label: "Tabletop Facilitators", ex: "Mandiant · CrowdStrike · Booz Allen", verdict: "Test readiness on a schedule. Knowledge lives in a report. Next situation starts from zero." },
+                { label: "Legal Outside Counsel", ex: "Skadden · Latham · Sullivan & Cromwell", verdict: "Legal lane only. Reactive even when on retainer. No operational coordination." },
+                { label: "ERM Consultants", ex: "Protiviti · Guidehouse · Ankura", verdict: "Deliverable is a document. The document doesn't activate when the situation presents itself." },
+                { label: "War Room Software", ex: "Palantir · Resolver · D2iQ", verdict: "Government/defense infrastructure. Not built for 15–20 annual commercial situations." },
+                { label: "Internal PMO", ex: "Existing internal capability", verdict: "Capable people. Not a system. The capability leaves when those people do." },
+              ].map((c) => (
+                <div key={c.label} style={{ background: "rgba(255,255,255,0.03)", padding: "22px 24px" }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.06em", marginBottom: 3 }}>{c.label}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginBottom: 10, letterSpacing: "0.04em" }}>{c.ex}</div>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{c.verdict}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: "20px 28px", border: `1px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+              <div style={{ fontSize: 14, color: "#fff", fontWeight: 600, lineHeight: 1.5 }}>
+                <span style={{ color: GOLD }}>Readiness OS</span> — the only platform that closes all 12 mobilization gaps before the trigger fires.
+              </div>
+              <button onClick={() => setLocation('/mobilization-gap')} style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, background: "transparent", border: "none", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: 3, flexShrink: 0 }}>
+                See the full 12-gap matrix →
+              </button>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section style={{ background: OFF, padding: "80px 48px" }}>
           <div className="max-w-3xl mx-auto text-center">

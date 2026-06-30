@@ -611,61 +611,74 @@
 </div>
 
 <!-- ═══ S11 — COMPETITION ════════════════════════════════════════════ -->
-<div class="slide" style="padding:44px 68px 36px">
+<div class="slide" style="padding:40px 68px 32px">
   <div class="z">
     <div class="lbl">Competitive Landscape</div>
-    <div class="h2" style="font-size:22px;margin-bottom:14px">We don't compete with software tools. <span class="gold">We replace the 40-year-old meeting-heavy operating model.</span></div>
-    <table class="comp" style="flex:1">
+    <div class="h2" style="font-size:20px;margin-bottom:6px">We don't compete with software tools. <span class="gold">We replace the 40-year-old meeting-heavy operating model.</span></div>
+    <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:700">12 distinct mobilization gaps · Every alternative closes 1–3 at most · Readiness OS closes all 12</div>
+    <table class="comp" style="flex:1;font-size:10.5px">
       <thead>
         <tr>
-          <th></th>
-          <th>McKinsey / Big 4</th>
-          <th>ServiceNow</th>
-          <th>MS Copilot</th>
-          <th>BCP / Crisis Plans</th>
-          <th class="us us-h">VaughnMartin</th>
+          <th style="font-size:9px">Gap closed</th>
+          <th style="font-size:9px">Consultants<br><span style="font-weight:400;color:var(--muted)">McKinsey·Kroll</span></th>
+          <th style="font-size:9px">Crisis Mgmt<br><span style="font-weight:400;color:var(--muted)">Edelman·H+K</span></th>
+          <th style="font-size:9px">Workflow Platforms<br><span style="font-weight:400;color:var(--muted)">ServiceNow·Asana</span></th>
+          <th style="font-size:9px">GRC / BCP<br><span style="font-weight:400;color:var(--muted)">Archer·Everbridge</span></th>
+          <th style="font-size:9px">Tabletop / ERM<br><span style="font-weight:400;color:var(--muted)">Mandiant·Protiviti</span></th>
+          <th class="us us-h" style="font-size:9px">VaughnMartin<br><span style="font-weight:400;color:rgba(201,168,76,.7)">Readiness OS</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Pre-staged before the trigger fires</td>
-          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td>
-          <td class="us"><span class="ck">✓</span> 180 protocols</td>
-        </tr>
-        <tr>
-          <td>Continuous signal monitoring</td>
-          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td>
+          <td>Detection &amp; Recognition</td>
+          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td>
           <td class="us"><span class="ck">✓</span> 231 triggers · 15 min</td>
         </tr>
         <tr>
-          <td>12-minute execution window</td>
-          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td>
-          <td class="us"><span class="ck">✓</span> Proven in production</td>
+          <td>Authority &amp; Team Assembly</td>
+          <td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td>
+          <td class="us"><span class="ck">✓</span> Pre-defined cold</td>
         </tr>
         <tr>
-          <td>Human authorization gate</td>
-          <td><span class="pk">Slow</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td>
-          <td class="us"><span class="ck">✓</span> Every activation</td>
+          <td>Budget &amp; External Resources</td>
+          <td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td>
+          <td class="us"><span class="ck">✓</span> Pre-authorized · Protocol #0</td>
         </tr>
         <tr>
-          <td>Causal learning / compound moat</td>
-          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td>
-          <td class="us"><span class="ck">✓</span> ADVANCE 2.0</td>
+          <td>Sequencing &amp; Systems Coord.</td>
+          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td>
+          <td class="us"><span class="ck">✓</span> 55+ connectors · auto-deploy</td>
+        </tr>
+        <tr>
+          <td>Communication &amp; Compliance</td>
+          <td><span class="pk">Partial</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="xk">✗</span></td>
+          <td class="us"><span class="ck">✓</span> Pre-staged · approved</td>
+        </tr>
+        <tr>
+          <td>Governance Record &amp; Learning</td>
+          <td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="xk">✗</span></td><td><span class="pk">Partial</span></td><td><span class="pk">Report only</span></td>
+          <td class="us"><span class="ck">✓</span> ADVANCE 2.0 · compounds</td>
         </tr>
         <tr>
           <td>Annual cost</td>
           <td><span style="color:var(--red)">$400K–$800K</span></td>
-          <td><span style="color:var(--muted)">$150K–$400K</span></td>
-          <td class="muted">$30–80/user</td>
-          <td class="muted">One-time + stale</td>
+          <td><span style="color:var(--red)">$200K–$500K</span></td>
+          <td class="muted">$150K–$400K</td>
+          <td class="muted">$80K–$250K</td>
+          <td class="muted">$150K–$400K</td>
           <td class="us">$75K–$250K</td>
         </tr>
       </tbody>
     </table>
-    <div style="margin-top:12px;flex-shrink:0;padding:10px 18px;background:var(--teal-pale);border:1px solid rgba(43,138,110,.25);border-radius:3px;text-align:center">
-      <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:800">Replaces the $400K–$800K consulting retainer · Breaks even before the second activation</div>
+    <div style="margin-top:10px;flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="padding:8px 14px;background:var(--teal-pale);border:1px solid rgba(43,138,110,.25);border-radius:3px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:800">Unclaimed position — no vendor owns all 12 gaps</div>
+      </div>
+      <div style="padding:8px 14px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:3px">
+        <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800">Replaces $400K–$800K consulting retainer · Breaks even before activation #2</div>
+      </div>
     </div>
-    <div style="flex-shrink:0;margin-top:8px;font-size:8px;letter-spacing:.1em;color:var(--muted2);line-height:1.5">⁵ Consulting fee ranges: McKinsey, BCG, Bain, and Big 4 published engagement models; Harvard Law School Forum on Corporate Governance crisis retainer benchmarks. ServiceNow & Microsoft pricing: public pricing pages. VaughnMartin pricing: Founding Partner Program published terms. Breakeven analysis: VaughnMartin internal model.</div>
+    <div style="flex-shrink:0;margin-top:6px;font-size:7.5px;letter-spacing:.1em;color:var(--muted2);line-height:1.5">⁵ Fee ranges: McKinsey, BCG, Bain, Big 4 published models; Harvard Law School Forum crisis benchmarks; Edelman/Brunswick published retainer ranges; ServiceNow & Microsoft public pricing; Everbridge/Archer published terms. VaughnMartin: Founding Partner Program terms. Breakeven: VaughnMartin internal model.</div>
   </div>
   <div class="num">11 / 15</div>
 </div>

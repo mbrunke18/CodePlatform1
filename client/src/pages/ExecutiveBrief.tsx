@@ -336,6 +336,49 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* 12 Mobilization Gaps */}
+        <section style={{ background: "#F8F7F4", padding: "52px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+              <div style={{ width: 24, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>The Full Mobilization Gap</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+              <div>
+                <h3 style={{ ...CG, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 14 }}>
+                  12 distinct gaps. Every enterprise faces all of them. Every time a situation fires.
+                </h3>
+                <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
+                  The comparison table above captures the platform differences. But the underlying problem runs deeper — there are 12 specific points of failure in how organizations mobilize, from Detection all the way to Learning & Encoding.
+                </p>
+                <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
+                  Consultants, crisis firms, GRC platforms, workflow tools, AI agents, tabletop facilitators, legal counsel, and internal PMO teams each close 1–3 of these gaps at most — always reactively.
+                  Readiness OS closes all 12 before the trigger fires.
+                </p>
+                <a href="/mobilization-gap" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY, textDecoration: "none", borderBottom: `1px solid ${GOLD}`, paddingBottom: 2 }}>
+                  See the full 12-gap competitive matrix →
+                </a>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "#E8E4DC" }}>
+                {[
+                  { n: "01", name: "Detection" }, { n: "02", name: "Recognition" },
+                  { n: "03", name: "Authority" }, { n: "04", name: "Team Assembly" },
+                  { n: "05", name: "Budget Auth." }, { n: "06", name: "Ext. Resources" },
+                  { n: "07", name: "Sequencing" }, { n: "08", name: "Systems Coord." },
+                  { n: "09", name: "Communication" }, { n: "10", name: "Compliance" },
+                  { n: "11", name: "Gov. Record" }, { n: "12", name: "Learning" },
+                ].map((g) => (
+                  <div key={g.n} style={{ background: "#fff", padding: "12px 14px", display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.12em", flexShrink: 0 }}>{g.n}</span>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: NAVY }}>{g.name}</span>
+                    <CheckCircle2 style={{ width: 12, height: 12, color: TEAL, marginLeft: "auto", flexShrink: 0 }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* The COO Question — Buffett */}
         <section style={{ background: "#fff", padding: "48px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
