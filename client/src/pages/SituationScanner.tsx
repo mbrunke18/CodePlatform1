@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { updatePageMetadata } from "@/lib/seo";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -441,21 +442,7 @@ export default function SituationScanner() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh", ...DM }}>
 
-      {/* ── HEADER ──────────────────────────────────────────────────────────── */}
-      <div style={{ background: NAVY, padding: "16px 40px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <VaughnMartinLogo variant="full" height={40} color="light" animated={false} />
-          <Link href="/request-access">
-            <button style={{
-              ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 11,
-              fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase",
-              padding: "9px 20px", cursor: "pointer", borderRadius: "0.15rem",
-            }}>
-              Apply for Founding Partner Access →
-            </button>
-          </Link>
-        </div>
-      </div>
+      <StandardNav />
 
       {/* ── HERO ────────────────────────────────────────────────────────────── */}
       <div style={{ background: NAVY, padding: "56px 40px 48px" }}>

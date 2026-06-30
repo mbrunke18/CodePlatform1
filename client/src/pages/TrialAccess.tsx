@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { CheckCircle, Clock, Loader2, Lock, Zap } from "lucide-react";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -108,6 +109,8 @@ export default function TrialAccess() {
   }
 
   return (
+    <>
+    <StandardNav />
     <div className="min-h-screen flex" style={{ background: "#F8F7F4" }}>
       {/* Left — branding */}
       <div className="hidden lg:flex flex-col justify-between w-[420px] flex-shrink-0 p-12" style={{ background: NAVY }}>
@@ -217,5 +220,6 @@ export default function TrialAccess() {
         </div>
       </div>
     </div>
+    </>
   );
 }

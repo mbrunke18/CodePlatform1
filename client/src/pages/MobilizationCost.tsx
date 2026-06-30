@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowRight } from "lucide-react";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -80,27 +81,7 @@ export default function MobilizationCost() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
 
-      {/* MINIMAL NAV */}
-      <nav style={{ background: NAVY, padding: "18px 48px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <button
-          onClick={() => setLocation("/")}
-          style={{ display: "flex", alignItems: "center", gap: 10, background: "none", border: "none", cursor: "pointer" }}
-        >
-          <div style={{ width: 34, height: 34, borderRadius: "50%", border: "1px solid #C9A84C", background: "radial-gradient(circle at 40% 40%, #1a2860 0%, #0A0F2E 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#C9A84C", fontFamily: "Georgia, serif", fontWeight: 700, fontSize: 10 }}>VM</span>
-          </div>
-          <div style={{ textAlign: "left" }}>
-            <div style={{ color: "#fff", fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: 13, lineHeight: 1 }}>VaughnMartin</div>
-            <div style={{ color: GOLD, fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" }}>READINESS OS</div>
-          </div>
-        </button>
-        <Button
-          onClick={() => setLocation("/request-access")}
-          style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12, letterSpacing: "0.06em" }}
-        >
-          Apply for Founding Partner Access
-        </Button>
-      </nav>
+      <StandardNav />
 
       {/* HERO — consequence first, no product */}
       <section style={{ background: NAVY, padding: "80px 48px 72px", position: "relative", overflow: "hidden" }}>

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { useLocation } from 'wouter';
 import { ArrowRight, Share2, RefreshCw, AlertTriangle, Clock, DollarSign, TrendingDown, Zap } from 'lucide-react';
+import StandardNav from '@/components/layout/StandardNav';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -109,20 +110,7 @@ export default function MobilizationTax() {
   return (
     <div style={{ minHeight: '100vh', background: '#F8F7F4', fontFamily: 'system-ui, sans-serif' }}>
 
-      {/* Sticky Nav */}
-      <div style={{ position: 'sticky', top: 0, zIndex: 50, background: NAVY, borderBottom: `1px solid rgba(201,168,76,0.3)`, padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56 }}>
-        <button onClick={() => nav('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ ...BC, fontSize: 15, fontWeight: 700, color: '#fff', letterSpacing: '0.05em' }}>VaughnMartin</div>
-          <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.2)' }} />
-          <div style={{ ...BC, fontSize: 11, fontWeight: 600, color: GOLD, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Readiness OS</div>
-        </button>
-        <button
-          onClick={() => nav('/request-access')}
-          style={{ ...BC, background: GOLD, color: NAVY, border: 'none', padding: '8px 20px', fontWeight: 700, fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: 2 }}
-        >
-          Apply for Founding Partner Access →
-        </button>
-      </div>
+      <StandardNav />
 
       {/* Hero */}
       <div style={{ background: NAVY, padding: '72px 32px 64px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>

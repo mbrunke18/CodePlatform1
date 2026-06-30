@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
+import StandardNav from "@/components/layout/StandardNav";
 
 export default function DemoAccess() {
   const [status, setStatus] = useState<"loading" | "error">("loading");
@@ -56,6 +57,8 @@ export default function DemoAccess() {
   }
 
   return (
+    <>
+    <StandardNav />
     <div style={{
       background: NAVY, minHeight: "100vh", display: "flex",
       alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center",
@@ -103,5 +106,6 @@ export default function DemoAccess() {
         `}</style>
       </div>
     </div>
+    </>
   );
 }

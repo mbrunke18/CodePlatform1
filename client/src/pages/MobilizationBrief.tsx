@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -81,6 +82,7 @@ export default function MobilizationBrief() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#fff", fontFamily: "'Barlow', Arial, sans-serif" }}>
+      <StandardNav />
 
       {/* Print styles */}
       <style>{`

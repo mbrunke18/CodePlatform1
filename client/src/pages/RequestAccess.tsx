@@ -9,6 +9,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { Loader2, Zap, Lock, Clock } from "lucide-react";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -138,6 +139,7 @@ export default function RequestAccess() {
         .mode-btn:hover { opacity: 0.9; }
       `}</style>
 
+      <StandardNav />
       <div style={{ minHeight: "100vh", background: NAVY, display: "flex", position: "relative", overflow: "hidden" }}>
 
         {/* Background texture */}

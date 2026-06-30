@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'wouter';
 import { useEffect, useRef, useState } from 'react';
 import { Shield, Zap, Eye, BookOpen, Users, ArrowRight, CheckCircle, Clock, TrendingUp, Radio, AlertTriangle } from 'lucide-react';
+import StandardNav from '@/components/layout/StandardNav';
 
 const WELCOME_SEEN_KEY = 'vm_welcome_brief_seen';
 const NAVY = '#0A0F2E';
@@ -133,15 +134,7 @@ export default function WelcomeBrief() {
       <div style={{ position: 'fixed', top: -200, right: -200, width: 700, height: 700, borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.12) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'fixed', bottom: -300, left: -200, width: 800, height: 800, borderRadius: 0, background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
 
-      {/* Top navigation escape */}
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 10, padding: '14px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'none' }}>
-        <a href="/" style={{ pointerEvents: 'all', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.25)', padding: '6px 12px', borderRadius: 0, border: '1px solid rgba(255,255,255,0.1)' }}>
-          ← Homepage
-        </a>
-        <a href="/mission-control" style={{ pointerEvents: 'all', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.25)', padding: '6px 12px', borderRadius: 0, border: '1px solid rgba(255,255,255,0.1)' }}>
-          Skip to Mission Control →
-        </a>
-      </div>
+      <StandardNav />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 880, margin: '0 auto', padding: '64px 24px 96px' }}>
 

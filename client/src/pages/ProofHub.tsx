@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { ArrowRight, BarChart3, FileText, Calculator, ClipboardCheck, BookOpen, DollarSign, TrendingUp, Users, Shield, Play, CheckCircle } from "lucide-react";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -177,6 +178,7 @@ const AUDIENCES = [
 export default function ProofHub() {
   return (
     <div style={{ background: "#fff", minHeight: "100vh" }}>
+      <StandardNav />
 
       {/* HERO */}
       <section style={{ background: NAVY, position: "relative", overflow: "hidden" }}>

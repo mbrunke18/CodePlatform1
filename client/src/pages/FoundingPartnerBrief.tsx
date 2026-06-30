@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { updatePageMetadata } from "@/lib/seo";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -49,6 +50,7 @@ export default function FoundingPartnerBrief() {
 
   return (
     <div style={{ background: "#fff", minHeight: "100vh", ...DM }}>
+      <StandardNav />
 
       <style>{`
         @media print {
