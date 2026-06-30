@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react
 import { Link } from "wouter";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import StandardNav from "@/components/layout/StandardNav";
 import { Radio } from "lucide-react";
 import { ValueGainCallout, type ValueGainMode } from "@/components/ValueGainCallout";
 import ConsequencePreview from "@/components/ConsequencePreview";
@@ -332,7 +333,8 @@ export default function TwelveMinuteTestDrive() {
 
   return (
     <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
-      {/* Nav */}
+      <StandardNav />
+      {/* Wizard step tracker */}
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <VaughnMartinLogo height={32} variant="full" color="light" />
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>

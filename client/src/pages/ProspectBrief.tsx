@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Printer, ChevronRight, Zap, Shield, TrendingUp, Eye, Activity, BarChart3, ArrowLeft } from "lucide-react";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -200,6 +201,7 @@ export default function ProspectBrief() {
   // Brief view
   return (
     <div style={{ background: OFF, minHeight: "100vh" }}>
+      <StandardNav />
       {/* Screen-only toolbar */}
       <div className="no-print" style={{ background: NAVY, padding: "12px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 100 }}>
         <button

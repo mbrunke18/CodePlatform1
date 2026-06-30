@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 import VaughnMartinLogo from "@/components/VaughnMartinLogo";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -132,7 +133,7 @@ export default function ProductOverview() {
 
   return (
     <div className="print-page" style={{ minHeight: "100vh", background: IVORY, fontFamily: "'Barlow', sans-serif" }}>
-
+      <StandardNav />
       {/* Top nav bar — hidden on print */}
       <div className="no-print" style={{
         background: NAVY,

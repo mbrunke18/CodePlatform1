@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { AlertTriangle, Zap, CheckCircle2, Clock, Activity, ChevronRight, ArrowRight } from "lucide-react";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -332,6 +333,7 @@ export default function ProspectDemo() {
   const displayName = company.trim() || "Your Organization";
   return (
     <div style={{ minHeight: "100vh", background: NAVY, display: "flex", flexDirection: "column" }}>
+      <StandardNav />
       <div style={{
         position: "absolute", inset: 0,
         backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)",

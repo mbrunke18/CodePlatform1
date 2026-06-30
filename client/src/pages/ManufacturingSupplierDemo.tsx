@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { ExecutiveDecisionPanel } from "@/components/ExecutiveDecisionPanel";
+import StandardNav from "@/components/layout/StandardNav";
 
 const NAVY    = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -145,6 +146,7 @@ export default function ManufacturingSupplierDemo() {
 
   return (
     <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <StandardNav />
       <Nav />
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 

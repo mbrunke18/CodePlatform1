@@ -5,6 +5,7 @@ import {
   TrendingDown, Shield, Users, Zap, ChevronRight,
   Radio, Activity, AlertTriangle, CheckCircle2, ArrowRight, Lock, Package
 } from 'lucide-react';
+import StandardNav from '@/components/layout/StandardNav';
 
 const NAVY_BG  = "#132558";
 const MID_NAVY = "#141B45";
@@ -291,6 +292,7 @@ export default function GuidedStart() {
   if (phase === 'select') {
     return (
       <div style={{ minHeight: '100vh', background: NAVY_BG, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
+        <StandardNav />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: '48px 48px', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', top: '5%', left: '50%', transform: 'translateX(-50%)', width: 900, height: 900, borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
 
@@ -414,6 +416,7 @@ export default function GuidedStart() {
     const Icon = selected.icon;
     return (
       <div style={{ minHeight: '100vh', background: MID_NAVY, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
+        <StandardNav />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
         {/* Scan beam */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, transparent, ${TEAL}, transparent)`, animation: 'scanBeam 2s linear infinite', opacity: 0.6 }} />
@@ -542,6 +545,7 @@ export default function GuidedStart() {
     const Icon = selected.icon;
     return (
       <div style={{ minHeight: '100vh', background: NAVY_BG, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
+        <StandardNav />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
         <div style={{ position: 'absolute', bottom: '-5%', left: '50%', transform: 'translateX(-50%)', width: 1000, height: 600, borderRadius: '50% 50% 0 0', background: 'radial-gradient(ellipse, rgba(201,168,76,0.1) 0%, transparent 68%)' }} />
 
