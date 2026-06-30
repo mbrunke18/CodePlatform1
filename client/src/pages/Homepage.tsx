@@ -2681,7 +2681,7 @@ function MobilizationGapTeaserSection() {
         </div>
         <div style={{ marginTop: 24, padding: "18px 24px", background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 12 }}>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontFamily: "'Barlow', sans-serif", lineHeight: 1.5 }}>
-            <strong style={{ color: "#C9A84C" }}>12 categories of alternatives.</strong> Each closes 1–3 gaps at most. Always reactively. Readiness OS closes all 12 proactively.
+            <strong style={{ color: "#C9A84C" }}>9 categories of alternatives.</strong> Each closes 1–3 gaps at most. Always reactively. Readiness OS closes all 12 proactively.
           </div>
           <a href="/mobilization-gap" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#C9A84C", textDecoration: "none", whiteSpace: "nowrap" as const, fontFamily: "'Barlow', sans-serif", flexShrink: 0 }}>
             Full competitive matrix →

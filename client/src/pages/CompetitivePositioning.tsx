@@ -670,7 +670,7 @@ export default function CompetitivePositioning() {
           </div>
         </section>
 
-        {/* The Full Competitive Landscape — 12 categories */}
+        {/* The Full Competitive Landscape — 9 categories */}
         <section style={{ background: NAVY, padding: "80px 48px", borderTop: `1px solid rgba(255,255,255,0.06)` }}>
           <div className="max-w-6xl mx-auto">
             <div style={{ marginBottom: 40 }}>
@@ -679,7 +679,7 @@ export default function CompetitivePositioning() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Full Landscape</span>
               </div>
               <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,3vw,38px)", color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>
-                12 categories of alternatives. Zero that close all 12 mobilization gaps.
+                9 categories of alternatives. Zero that close all 12 mobilization gaps.
               </h2>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", maxWidth: 680, lineHeight: 1.7 }}>
                 Every existing category is either reactive by design, narrow in scope, or governance-only with no execution layer.
@@ -688,22 +688,20 @@ export default function CompetitivePositioning() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 1, background: "rgba(255,255,255,0.06)", marginBottom: 24 }}>
               {[
-                { label: "Consultants", ex: "McKinsey · Bain · Kroll", verdict: "Engaged after the situation. Build the response in real time at emergency rates." },
-                { label: "Crisis Management", ex: "Edelman · Brunswick · H+K", verdict: "Communications only. Reactive by design. Don't cover operational or financial layers." },
-                { label: "IBP / Planning Frameworks", ex: "S&OP · Integrated Business Planning", verdict: "Coherent in design. Don't deploy a coordinated response when the situation arrives." },
-                { label: "Workflow Platforms", ex: "ServiceNow · Monday.com · Asana", verdict: "Coordinate tasks after a human assembles the team. Assume coordination is already solved." },
-                { label: "AI Agent Platforms", ex: "Copilot · Agentforce · Agentic tools", verdict: "Automate tasks within workflows. Don't govern who responds, when, with what authority." },
-                { label: "GRC / Risk Platforms", ex: "Archer · OneTrust · Riskonnect", verdict: "Map risk obligations. Don't activate a coordinated response when the risk materializes." },
-                { label: "BCP / Incident Response", ex: "Everbridge · Fusion · Archer IRM", verdict: "Narrow scope — IT continuity only. Don't cover the full mobilization problem." },
-                { label: "Tabletop Facilitators", ex: "Mandiant · CrowdStrike · Booz Allen", verdict: "Test readiness on a schedule. Knowledge lives in a report. Next situation starts from zero." },
-                { label: "Legal Outside Counsel", ex: "Skadden · Latham · Sullivan & Cromwell", verdict: "Legal lane only. Reactive even when on retainer. No operational coordination." },
-                { label: "ERM Consultants", ex: "Protiviti · Guidehouse · Ankura", verdict: "Deliverable is a document. The document doesn't activate when the situation presents itself." },
-                { label: "War Room Software", ex: "Palantir · Resolver · D2iQ", verdict: "Government/defense infrastructure. Not built for 15–20 annual commercial situations." },
-                { label: "Internal PMO", ex: "Existing internal capability", verdict: "Capable people. Not a system. The capability leaves when those people do." },
+                { label: "Strategy Consultants", ex: "McKinsey · Bain · BCG · Kroll · FTI", gap: "0 of 12 proactively", verdict: "Engaged after the situation. Build the response in real time at emergency rates. Institutional knowledge leaves with the engagement." },
+                { label: "Crisis Communications", ex: "Edelman · Hill+Knowlton · Teneo · Brunswick", gap: "1 of 12 partially", verdict: "Reputation and media relations once the situation is already public. Closes Communication well. Gaps 1–8, 10–12 remain open." },
+                { label: "IBP / Planning Frameworks", ex: "S&OP · Integrated Business Planning", gap: "2 of 12 partially (on paper)", verdict: "Define decision rights and governance on paper. Coherent in design. The execution layer — pre-staged protocols, automatic assembly — does not exist." },
+                { label: "Workflow & Orchestration Platforms", ex: "ServiceNow · Power Automate · Monday.com", gap: "2 of 12", verdict: "Strong sequencing and systems coordination once someone has defined the workflow. Assumes coordination already exists when the situation arrives." },
+                { label: "AI Agent Platforms", ex: "Copilot · Agentforce · Agentic tools", gap: "2 of 12 partially", verdict: "Automate tasks within defined workflows. Don't govern who responds, with what authority, in what sequence when a situation presents itself." },
+                { label: "GRC / Risk Platforms", ex: "Archer · OneTrust · Riskonnect", gap: "2 of 12", verdict: "Risk mapping and compliance documentation. Strong on governance record. Doesn't activate a coordinated response when the risk materializes." },
+                { label: "BCP / Incident Response Tools", ex: "Everbridge · Fusion · Castellan", gap: "2–3 of 12 (IT/ops only)", verdict: "IT continuity and operational incident response. Partial coverage — but narrow scope. Doesn't cover activist investor, M&A, or federal inquiry." },
+                { label: "Tabletop Exercise Facilitators", ex: "Mandiant · CrowdStrike · Booz Allen", gap: "0 of 12 proactively", verdict: "Periodic simulations that test readiness on a schedule. Knowledge lives in a report. The next real situation still starts from zero." },
+                { label: "Internal PMO / Transformation", ex: "Chief of Staff · Internal PMO", gap: "6–8 of 12 reactively", verdict: "Effective people carrying an invisible load. People-dependent, not system-dependent. When those individuals leave, the capability leaves with them." },
               ].map((c) => (
                 <div key={c.label} style={{ background: "rgba(255,255,255,0.03)", padding: "22px 24px" }}>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.06em", marginBottom: 3 }}>{c.label}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginBottom: 10, letterSpacing: "0.04em" }}>{c.ex}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginBottom: 6, letterSpacing: "0.04em" }}>{c.ex}</div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(201,168,76,0.7)", letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 8 }}>Closes {c.gap}</div>
                   <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{c.verdict}</div>
                 </div>
               ))}

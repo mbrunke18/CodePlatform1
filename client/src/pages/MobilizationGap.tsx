@@ -96,76 +96,58 @@ interface Competitor {
 
 const competitors: Competitor[] = [
   {
-    label: "Consultants",
-    examples: "McKinsey · Bain · BCG · Kroll · FTI",
-    gaps: ['no','no','no','no','no','partial','no','no','no','partial','partial','no'],
-    verdict: "Engaged after the situation. Build the response in real time at emergency rates. No institutional memory retained by the client."
+    label: "Strategy Consultants",
+    examples: "McKinsey · Bain · BCG · Kroll · FTI Consulting",
+    gaps: ['no','partial','partial','partial','no','yes','partial','no','partial','partial','partial','no'],
+    verdict: "Engaged after the situation. Build the response in real time at emergency rates. 0 of 12 gaps closed proactively. Institutional knowledge leaves with the engagement."
   },
   {
-    label: "Crisis Management",
-    examples: "Edelman · Brunswick · Teneo · H+K",
-    gaps: ['no','no','no','partial','no','partial','no','no','partial','partial','no','no'],
-    verdict: "Communications and reputation only. Reactive by design. Don't cover operational, financial, regulatory, or technology layers."
+    label: "Crisis Communications",
+    examples: "Edelman · Hill+Knowlton · Teneo · Brunswick",
+    gaps: ['no','partial','no','partial','no','yes','partial','no','yes','no','partial','no'],
+    verdict: "Reputation management and media relations once the situation is already public. Closes gap 9 (Communication) well. Gaps 1–8, 10–12 remain open."
   },
   {
     label: "IBP / Planning Frameworks",
-    examples: "S&OP · Integrated Business Planning",
-    gaps: ['no','partial','partial','no','no','no','partial','no','no','no','partial','no'],
-    verdict: "Define decision rights on paper. Coherent in design. Don't deploy a coordinated response in minutes when the situation presents itself."
+    examples: "S&OP · Integrated Business Planning · Value Centric IBP",
+    gaps: ['partial','partial','partial','no','no','no','partial','partial','no','partial','partial','partial'],
+    verdict: "Define decision rights and governance structures on paper. Coherent in design. The execution layer — pre-staged protocols, automatic assembly, pre-authorized budget — does not exist."
   },
   {
-    label: "Workflow Platforms",
-    examples: "ServiceNow · Monday.com · Asana",
-    gaps: ['no','no','no','partial','no','no','partial','partial','no','no','partial','no'],
-    verdict: "Coordinate tasks after a human has assembled the team and defined the response. Assume the organization is already coordinated."
+    label: "Workflow & Orchestration Platforms",
+    examples: "ServiceNow · Microsoft Power Automate · Monday.com · Asana",
+    gaps: ['no','no','partial','partial','no','no','yes','yes','partial','no','partial','partial'],
+    verdict: "Strong sequencing and system coordination once someone has defined the workflow. Assumes the organization is already coordinated when the situation arrives."
   },
   {
     label: "AI Agent Platforms",
-    examples: "Copilot · Agentforce · Agentic tools",
-    gaps: ['no','no','no','no','no','no','partial','partial','no','no','no','no'],
-    verdict: "Automate tasks within defined workflows. Don't govern who responds, when, in what sequence, with what authority."
+    examples: "Salesforce Agentforce · Microsoft Copilot · Agentic tools",
+    gaps: ['partial','partial','partial','partial','no','no','partial','partial','partial','no','partial','partial'],
+    verdict: "Automate tasks within defined workflows. Don't govern who responds, with what authority, in what sequence, when a strategic situation presents itself."
   },
   {
     label: "GRC / Risk Platforms",
-    examples: "Archer · OneTrust · Riskonnect",
-    gaps: ['partial','partial','partial','no','no','no','no','no','no','partial','partial','no'],
-    verdict: "Map risk and compliance obligations. Don't activate a coordinated response when the risk materializes."
+    examples: "Archer · OneTrust · Riskonnect · ServiceNow GRC",
+    gaps: ['partial','partial','partial','no','partial','no','no','partial','no','yes','yes','partial'],
+    verdict: "Risk mapping, compliance tracking, governance documentation. Strong on compliance record (gaps 10–11). Gaps 1–9 and 12 remain open when the risk materializes."
   },
   {
-    label: "BCP / Incident Response",
-    examples: "Everbridge · Fusion · Archer IRM",
-    gaps: ['partial','no','partial','partial','no','no','partial','no','no','partial','partial','no'],
-    verdict: "Narrow scope — IT and operational continuity only. Don't cover the full 12-gap mobilization problem."
+    label: "BCP / Incident Response Tools",
+    examples: "Everbridge · Fusion Risk Management · Castellan",
+    gaps: ['partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial'],
+    verdict: "IT continuity and operational incident response. Partial coverage across most gaps — but narrow scope. Doesn't cover activist investor, M&A, federal inquiry, or any strategic situation outside IT/ops recovery."
   },
   {
     label: "Tabletop Exercise Facilitators",
-    examples: "Mandiant · CrowdStrike · Booz Allen",
-    gaps: ['no','partial','partial','partial','no','no','partial','no','partial','no','partial','partial'],
-    verdict: "Test readiness on a schedule, not in real time. Knowledge lives in a report, not a deployed system. The next real situation still starts from zero."
-  },
-  {
-    label: "Legal Outside Counsel",
-    examples: "Skadden · Latham · Sullivan & Cromwell",
-    gaps: ['no','partial','partial','no','no','partial','no','no','partial','partial','partial','no'],
-    verdict: "Cover the legal and regulatory lane only. No operational, financial, communications, or systems coordination. Reactive even when on retainer."
-  },
-  {
-    label: "ERM Consultants",
-    examples: "Protiviti · Guidehouse · Ankura",
-    gaps: ['no','partial','partial','no','no','no','no','no','no','partial','partial','no'],
-    verdict: "Build risk frameworks, heat maps, and playbooks. Deliverable is a document. The document doesn't activate when the situation presents itself."
-  },
-  {
-    label: "War Room Software",
-    examples: "Palantir · Resolver · D2iQ",
-    gaps: ['partial','partial','partial','partial','no','no','partial','partial','partial','no','partial','no'],
-    verdict: "Heavy infrastructure, government and defense oriented. Not designed for enterprise commercial use across 15–20 annual situations at varying stakes levels."
+    examples: "Mandiant · CrowdStrike · Booz Allen Hamilton",
+    gaps: ['no','partial','partial','no','no','no','partial','no','partial','no','partial','partial'],
+    verdict: "Periodic simulations that test organizational readiness. Test readiness on a schedule — not in real time. The next situation still starts from zero."
   },
   {
     label: "Internal PMO / Transformation",
-    examples: "Existing internal capability",
-    gaps: ['no','partial','partial','partial','no','partial','partial','partial','partial','partial','partial','no'],
-    verdict: "Effective people carrying an invisible load. Dependent on specific individuals, not a system. When those people leave, the capability leaves with them."
+    examples: "Chief of Staff · Internal PMO · Enterprise Transformation Office",
+    gaps: ['no','no','partial','partial','partial','partial','partial','no','partial','partial','partial','partial'],
+    verdict: "6–8 of 12 gaps covered reactively by capable people. People-dependent, not system-dependent. When those individuals leave, the capability leaves with them."
   },
 ];
 
@@ -272,7 +254,7 @@ export default function MobilizationGap() {
               Who Closes Which Gaps
             </p>
             <h2 style={{ ...CG, color: NAVY, fontSize: 'clamp(26px,3vw,40px)', fontWeight: 600, lineHeight: 1.2, maxWidth: 640 }}>
-              Seven categories. Zero alternatives that close all 12.
+              Nine categories. Zero alternatives that close all 12.
             </h2>
           </div>
 
