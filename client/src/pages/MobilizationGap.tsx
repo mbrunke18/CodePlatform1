@@ -137,6 +137,36 @@ const competitors: Competitor[] = [
     gaps: ['partial','no','partial','partial','no','no','partial','no','no','partial','partial','no'],
     verdict: "Narrow scope — IT and operational continuity only. Don't cover the full 12-gap mobilization problem."
   },
+  {
+    label: "Tabletop Exercise Facilitators",
+    examples: "Mandiant · CrowdStrike · Booz Allen",
+    gaps: ['no','partial','partial','partial','no','no','partial','no','partial','no','partial','partial'],
+    verdict: "Test readiness on a schedule, not in real time. Knowledge lives in a report, not a deployed system. The next real situation still starts from zero."
+  },
+  {
+    label: "Legal Outside Counsel",
+    examples: "Skadden · Latham · Sullivan & Cromwell",
+    gaps: ['no','partial','partial','no','no','partial','no','no','partial','partial','partial','no'],
+    verdict: "Cover the legal and regulatory lane only. No operational, financial, communications, or systems coordination. Reactive even when on retainer."
+  },
+  {
+    label: "ERM Consultants",
+    examples: "Protiviti · Guidehouse · Ankura",
+    gaps: ['no','partial','partial','no','no','no','no','no','no','partial','partial','no'],
+    verdict: "Build risk frameworks, heat maps, and playbooks. Deliverable is a document. The document doesn't activate when the situation presents itself."
+  },
+  {
+    label: "War Room Software",
+    examples: "Palantir · Resolver · D2iQ",
+    gaps: ['partial','partial','partial','partial','no','no','partial','partial','partial','no','partial','no'],
+    verdict: "Heavy infrastructure, government and defense oriented. Not designed for enterprise commercial use across 15–20 annual situations at varying stakes levels."
+  },
+  {
+    label: "Internal PMO / Transformation",
+    examples: "Existing internal capability",
+    gaps: ['no','partial','partial','partial','no','partial','partial','partial','partial','partial','partial','no'],
+    verdict: "Effective people carrying an invisible load. Dependent on specific individuals, not a system. When those people leave, the capability leaves with them."
+  },
 ];
 
 const gapLabels = gaps.map(g => g.name);

@@ -1,0 +1,33 @@
+A few more worth adding before we lock it.
+
+**Tabletop Exercise Facilitators** — firms like Mandiant, CrowdStrike, Booz Allen, and independent consultants who run periodic crisis simulations. They test readiness on a schedule, not in real time. The organization learns something from the exercise, but the institutional knowledge lives in a report, not in a deployed system. The next real situation still starts from zero.
+
+**Legal Outside Counsel on Retainer** — Skadden, Latham, Sullivan & Cromwell, and similar firms retained for crisis response. Cover the legal and regulatory lane only. No operational, financial, communications, or systems coordination. Expensive by the hour and still reactive even when on retainer.
+
+**Enterprise Risk Management Consultants** — Protiviti, Guidehouse, Ankura. Build risk frameworks, heat maps, and playbooks. Deliverable is a document. Document doesn't activate when the situation presents itself.
+
+**War Room / Situation Room Software** — Palantir, Resolver, D2iQ in some configurations. Heavy infrastructure, government and defense oriented, expensive implementation, not designed for enterprise commercial use across 15-20 annual situations at varying stakes levels.
+
+**Internal PMO and Transformation Offices** — the existing internal capability most enterprises already have. The team that gets pulled into every crisis to coordinate across functions. Effective people carrying an invisible load, but dependent on specific individuals, not a system. When those people leave, the capability leaves with them.
+
+That brings the full landscape to roughly nine categories. Nothing else worth adding — the remaining adjacent tools (ITSM, HRMS, ERP) are systems of record, not coordination systems, and aren't genuine alternatives a buyer would consider.
+
+Here's my recommendation for how to build this out.
+
+**One master source document** that defines the full competitive landscape, with Readiness OS positioned against each category across the 12 mobilization gaps. Everything else — the sales one-pager, the website comparison page, the investor slide, the LinkedIn posts — derives from this one source so the positioning stays consistent everywhere it appears.
+
+The structure for the master document:
+
+The 12 gaps as the rows. The nine competitor categories plus Readiness OS as the columns. Each cell gets a one-line description of what that category does or doesn't do for that specific gap. The pattern that emerges — that every category closes one or two gaps at most, always reactively, while Readiness OS closes all twelve proactively — becomes the visual argument that sells itself without needing a salesperson in the room.
+
+Then from that matrix we pull:
+
+A LinkedIn post for each competitor category — not attacking them by name, but naming the gap their approach leaves open. Nine posts, nine weeks, each one making the same comparison from a different angle.
+
+A website comparison page structured around the buyer's existing options, not around product features.
+
+An investor slide that shows the white space visually — every category mapped, every gap exposed, Readiness OS in the unclaimed position above all of them.
+
+A sales conversation guide for when a prospect says "we already use ServiceNow" or "we have a crisis communications firm on retainer" — the exact response that names what that covers and what it doesn't.
+
+Want me to build the master matrix first so everything else derives from it, or is there a specific asset you need most urgently right now?
