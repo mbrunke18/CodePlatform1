@@ -343,8 +343,7 @@
 </div>
 
 <!-- ═══ S5 — READINESS OS (solution + screenshot) ═══════════════════ -->
-<div class="slide" style="padding:0">
-  <div class="z" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr;gap:0;height:100%">
+<div class="slide" style="padding:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr;gap:0">
     <!-- left: content -->
     <div class="col" style="padding:44px 28px 36px 68px;justify-content:center">
       <div class="lbl">Readiness OS</div>
@@ -383,7 +382,6 @@
     <div style="overflow:hidden;border-left:1px solid var(--border);position:relative">
       <img src="/screenshots/new_protocol_library.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
     </div>
-  </div>
   <div class="num">05 / 15</div>
 </div>
 
@@ -440,8 +438,7 @@
 </div>
 
 <!-- ═══ S7 — IDEA FRAMEWORK ══════════════════════════════════════════ -->
-<div class="slide" style="padding:0">
-  <div class="z" style="display:grid;grid-template-columns:5fr 4fr;grid-template-rows:1fr;height:100%;gap:0">
+<div class="slide" style="padding:0;display:grid;grid-template-columns:5fr 4fr;grid-template-rows:1fr;gap:0">
     <!-- left: framework -->
     <div style="display:flex;flex-direction:column;padding:44px 32px 36px 68px">
       <div class="lbl" style="margin-bottom:4px">The IDEA Framework™</div>
@@ -477,13 +474,11 @@
     <div style="overflow:hidden;border-left:1px solid var(--border);position:relative">
       <img src="/screenshots/new_how_it_executes.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
     </div>
-  </div>
   <div class="num">07 / 15</div>
 </div>
 
 <!-- ═══ S8 — LIVE PRODUCT ════════════════════════════════════════════ -->
 <div class="slide" style="padding:0">
-  <div class="z" style="height:100%">
     <!-- header bar -->
     <div style="padding:20px 68px 16px;flex-shrink:0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
       <div>
@@ -518,13 +513,11 @@
         </div>
       </div>
     </div>
-  </div>
   <div class="num">08 / 15</div>
 </div>
 
 <!-- ═══ S9 — THE MOAT ════════════════════════════════════════════════ -->
-<div class="slide" style="padding:0">
-  <div class="z" style="display:grid;grid-template-columns:4fr 5fr;grid-template-rows:1fr;height:100%">
+<div class="slide" style="padding:0;display:grid;grid-template-columns:4fr 5fr;grid-template-rows:1fr">
     <!-- left: content -->
     <div style="padding:44px 32px 36px 68px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;gap:14px">
       <div>
@@ -555,7 +548,6 @@
     <div style="overflow:hidden;position:relative">
       <img src="/screenshots/new_advance_intelligence.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
     </div>
-  </div>
   <div class="num">09 / 15</div>
 </div>
 
@@ -934,6 +926,11 @@
       s.style.transform='scale('+scale+')';
       s.style.transformOrigin='top left';
       s.style.marginBottom='';
+      /* Force the inner content layer to the slide's exact pixel height so
+         grid-template-rows:1fr and position:absolute children resolve correctly
+         regardless of how browsers handle percentage heights in flex children */
+      var z=s.querySelector('.z');
+      if(z) z.style.height=H+'px';
     });
   }
   window.addEventListener('resize',layout);
