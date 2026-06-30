@@ -102,9 +102,28 @@ app.get("/_health", (_req, res) => {
 });
 
 // HEAD and GET on root for fast health checks (used by load balancers and Autoscale)
+// CRITICAL: These are registered BEFORE all middleware so a DB drop or middleware
+// error can never cause GET / to return 500 and trigger a Replit process kill.
 app.head("/", (_req, res) => {
   res.status(200).end();
 });
+
+// GET / must NEVER go through middleware — registered here, not after helmet/audit/DB middleware
+if (process.env.NODE_ENV === "production") {
+  const _distPublicPath = path.resolve(process.cwd(), "dist/public");
+  const _indexHtmlPath = path.resolve(_distPublicPath, "index.html");
+  app.get("/", (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+    res.sendFile(_indexHtmlPath, (err) => {
+      if (err) {
+        // File missing during cold start — return minimal 200 so Replit doesn't kill the process
+        res.status(200).send("<!DOCTYPE html><html><head><meta http-equiv='refresh' content='2'></head><body></body></html>");
+      }
+    });
+  });
+}
 
 app.get("/ultimate-demo", (_req, res) => {
   res.sendFile(path.resolve("client/public/ultimate-demo.html"));
@@ -338,9 +357,8 @@ app.get('/logo-export.html', (_req, res) => {
   res.sendFile(path.resolve('client/public/logo-export.html'));
 });
 
-// PRODUCTION: Serve static files BEFORE server.listen() so GET / returns 200
-// from the very first healthcheck. API routes registered later take precedence
-// for /api/* paths because express.static only matches real files.
+// PRODUCTION: Serve static files for all non-root paths.
+// GET / is already registered above, before all middleware, so it never hits here.
 if (app.get("env") !== "development") {
   const distPublicPath = path.resolve(process.cwd(), "dist/public");
   app.use(express.static(distPublicPath, {
@@ -352,14 +370,6 @@ if (app.get("env") !== "development") {
       }
     }
   }));
-  const indexHtmlPath = path.resolve(distPublicPath, "index.html");
-  // Handle GET / immediately — this is what Replit's healthcheck hits
-  app.get("/", (_req, res) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-    res.sendFile(indexHtmlPath);
-  });
 }
 
 // Create HTTP server and start listening IMMEDIATELY

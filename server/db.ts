@@ -37,3 +37,15 @@ if (isProduction) {
 
 export const pool = new Pool({ connectionString });
 export const db = drizzle({ client: pool, schema });
+
+// Keep the Neon connection alive — ping every 4 minutes to prevent idle connection drops
+// that cascade into 500 errors on all DB-touching middleware and bring down the server.
+if (process.env.NODE_ENV === "production") {
+  setInterval(async () => {
+    try {
+      await pool.query("SELECT 1");
+    } catch {
+      // Silently swallow — the pool will reconnect on the next real query
+    }
+  }, 4 * 60 * 1000);
+}
