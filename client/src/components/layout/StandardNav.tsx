@@ -1049,16 +1049,17 @@ export default function StandardNav() {
                   title="Manually activate Protocol #0 — Universal Response for any unknown situation"
                 >
                   <AlertTriangle className="h-3.5 w-3.5" />
-                  Uncharted Trigger
+                  <span className="hidden 2xl:inline">Uncharted Trigger</span>
                 </button>
                 <Button
                   onClick={() => navigateTo("/mission-control")}
-                  className="h-9 px-4 text-sm font-bold text-white"
+                  className="h-9 px-3 xl:px-4 text-sm font-bold text-white flex items-center gap-1.5"
                   style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)`, border: 'none' }}
                   data-testid="nav-open-platform"
+                  title="Open Platform"
                 >
-                  <Compass className="h-4 w-4 mr-1.5" />
-                  Open Platform
+                  <Compass className="h-4 w-4" />
+                  <span className="hidden xl:inline">Open Platform</span>
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -1144,7 +1145,7 @@ export default function StandardNav() {
                   onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.animationPlayState = 'running'; }}
                   data-testid="nav-request-access"
                 >
-                  Apply for Founding Partner Access
+                  <span className="hidden 2xl:inline">Apply for </span>Founding Partner Access
                 </Button>
                 <Button
                   variant="ghost"

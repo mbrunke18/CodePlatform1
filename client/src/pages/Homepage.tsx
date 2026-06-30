@@ -6100,6 +6100,99 @@ function FoundingPartnerCloseSection() {
   );
 }
 
+function StartHereStrip() {
+  const paths = [
+    {
+      icon: "▶",
+      label: "See It In Action",
+      sub: "12-Minute Test Drive",
+      href: "/12-minute-experience",
+      primary: true,
+    },
+    {
+      icon: "⬡",
+      label: "Watch 12 Scenarios",
+      sub: "Full Demo Center",
+      href: "/demo-hub",
+      primary: false,
+    },
+    {
+      icon: "≡",
+      label: "Understand the Problem",
+      sub: "The Cost of Delay",
+      href: "/cost-of-delay",
+      primary: false,
+    },
+    {
+      icon: "→",
+      label: "Apply for Founding Partner Access",
+      sub: "90-Day Validation Partnership",
+      href: "/request-access",
+      primary: false,
+      accent: true,
+    },
+  ];
+
+  return (
+    <div style={{
+      background: IVORY,
+      borderBottom: `3px solid ${GOLD}`,
+      padding: "0",
+      position: "relative",
+      zIndex: 10,
+    }}>
+      <div style={{ ...CONTAINER, display: "flex", alignItems: "stretch", gap: 0 }}>
+        {/* Label */}
+        <div style={{
+          display: "flex", alignItems: "center", padding: "14px 24px 14px 0",
+          borderRight: "1px solid rgba(10,15,46,0.12)", marginRight: 8, flexShrink: 0,
+        }}>
+          <span style={{
+            ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em",
+            textTransform: "uppercase" as const, color: "rgba(10,15,46,0.38)",
+          }}>Start Here</span>
+        </div>
+
+        {/* Path buttons */}
+        <div style={{ display: "flex", alignItems: "stretch", gap: 0, flex: 1, flexWrap: "wrap" as const }}>
+          {paths.map((p, i) => (
+            <Link key={i} href={p.href} style={{ textDecoration: "none", display: "flex" }}>
+              <div style={{
+                display: "flex", alignItems: "center", gap: 10,
+                padding: "12px 20px",
+                background: p.primary ? NAVY : "transparent",
+                borderRight: i < paths.length - 1 ? "1px solid rgba(10,15,46,0.1)" : "none",
+                cursor: "pointer",
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = p.primary ? "#141B45" : "rgba(10,15,46,0.06)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = p.primary ? NAVY : "transparent"; }}
+              >
+                <span style={{
+                  fontSize: 14, color: p.primary ? GOLD : p.accent ? NAVY : "rgba(10,15,46,0.45)",
+                  fontWeight: 700, lineHeight: 1, flexShrink: 0,
+                }}>{p.icon}</span>
+                <div style={{ display: "flex", flexDirection: "column" as const, gap: 1 }}>
+                  <span style={{
+                    ...DM, fontSize: 11, fontWeight: 700,
+                    color: p.primary ? "#fff" : p.accent ? NAVY : NAVY,
+                    letterSpacing: "0.03em", whiteSpace: "nowrap" as const,
+                  }}>{p.label}</span>
+                  <span style={{
+                    ...DM, fontSize: 9.5, fontWeight: 500,
+                    color: p.primary ? "rgba(255,255,255,0.55)" : "rgba(10,15,46,0.45)",
+                    letterSpacing: "0.04em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const,
+                  }}>{p.sub}</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Homepage() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -6121,6 +6214,7 @@ export default function Homepage() {
       <HomepageStyles />
       <FirstVisitAdModal />
       <StandardNav />
+      <StartHereStrip />
       <GuestPreviewBanner />
 
       {/*  1. PAIN + PROMISE — qualify the buyer, then deliver the claim */}
