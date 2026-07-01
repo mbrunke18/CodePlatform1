@@ -14,369 +14,251 @@ const TEAL = "#2B8A6E";
 const IVORY = "#F0EDE4";
 const BORDER = "#E8E4DC";
 const MUTED = "#6B7280";
-const PROBLEM = "#C0392B";
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 
-const YES = () => <CheckCircle className="w-5 h-5 mx-auto" style={{ color: TEAL }} />;
-const NO  = () => <XCircle    className="w-5 h-5 mx-auto" style={{ color: "#D1D5DB" }} />;
-const PT  = () => <Minus      className="w-5 h-5 mx-auto" style={{ color: GOLD }} />;
-
 const gaps = [
-  {
-    n: "01", icon: Radio, name: "Detection",
-    today: "Someone notices something. Maybe. By the time it's escalated, the window is already moving.",
-    os: "231 triggers monitored 24/7 across 39 live sources, 248+ data points, 15-min cycles. The system detects before the humans do."
-  },
-  {
-    n: "02", icon: Tag, name: "Recognition",
-    today: "What kind of situation is this? Legal? Operational? Reputational? The classification debate consumes the first hours.",
-    os: "180 pre-staged protocols across 9 strategic domains. The situation is already named and matched the moment the signal fires."
-  },
-  {
-    n: "03", icon: Shield, name: "Authority",
-    today: "Who owns this? A meeting is called to decide who should be in charge of deciding. The authority chain was never settled in advance.",
-    os: "Decision rights pre-defined cold. The authority chain is already established before the situation presents itself. No debate under pressure."
-  },
-  {
-    n: "04", icon: Users, name: "Team Assembly",
-    today: "A meeting to plan who should be in the meeting. The right people identified reactively, notified manually, assembled slowly.",
-    os: "Named stakeholders, notification sequences, and team composition pre-built for every protocol. Assembly is automatic, not improvised."
-  },
-  {
-    n: "05", icon: DollarSign, name: "Budget Authorization",
-    today: "Emergency spend requires an emergency committee. Approvals that normally take days are needed in hours. Financial response lags.",
-    os: "Emergency budget pre-authorized per protocol. Protocol #0 covers first-in-class unknowns with pre-authorized spend already in place."
-  },
-  {
-    n: "06", icon: PhoneCall, name: "External Resources",
-    today: "Outside counsel, PR firms, incident responders — called cold, briefed from scratch, engaged at emergency rates under pressure.",
-    os: "Named retainers on standby, already briefed on your protocols, already contracted before the situation arrives."
-  },
-  {
-    n: "07", icon: List, name: "Sequencing",
-    today: "What happens first, second, third? Three teams argue the order of operations while the window closes.",
-    os: "Execution sequence pre-defined for every protocol. 22+ tasks deploy in the right order automatically."
-  },
-  {
-    n: "08", icon: Plug, name: "Systems Coordination",
-    today: "Manual handoffs, chasing access, disconnected platforms, data that can't move without a human in the middle.",
-    os: "55+ connectors pre-integrated. Microsoft, Salesforce, ServiceNow, Slack, Jira. Systems coordinate automatically."
-  },
-  {
-    n: "09", icon: MessageSquare, name: "Communication",
-    today: "What do we say to the board, employees, customers, regulators? Drafted from scratch under pressure, usually wrong the first time.",
-    os: "Communication protocols pre-staged per situation. Approved messaging frameworks ready before the situation arrives."
-  },
-  {
-    n: "10", icon: FileCheck, name: "Compliance & Disclosure",
-    today: "What are the legal obligations? What timelines apply? Counsel is asked this question during the crisis, not before it.",
-    os: "Disclosure requirements mapped, compliance obligations defined, response timelines pre-built per situation type."
-  },
-  {
-    n: "11", icon: BookMarked, name: "Governance Record",
-    today: "Decisions made verbally, documentation incomplete, audit trail missing. Creates board liability and legal exposure.",
-    os: "Close-out gate creates the complete governance record automatically — who authorized, when, what rationale. The record exists before anyone asks."
-  },
-  {
-    n: "12", icon: RefreshCw, name: "Learning & Encoding",
-    today: "The debrief that never happens. Or happens once, produces a document nobody reads, and knowledge walks out the door.",
-    os: "ADVANCE loop. After 3 activations, each protocol is classified proven or disproven and updated. The organization compounds with every situation."
-  },
+  { n: "01", icon: Radio,       name: "Detection"    },
+  { n: "02", icon: Tag,         name: "Recognition"  },
+  { n: "03", icon: Shield,      name: "Authority"    },
+  { n: "04", icon: Users,       name: "Team Assembly"},
+  { n: "05", icon: DollarSign,  name: "Budget Auth." },
+  { n: "06", icon: PhoneCall,   name: "Ext. Resources"},
+  { n: "07", icon: List,        name: "Sequencing"   },
+  { n: "08", icon: Plug,        name: "Systems Coord."},
+  { n: "09", icon: MessageSquare, name: "Comms"      },
+  { n: "10", icon: FileCheck,   name: "Compliance"   },
+  { n: "11", icon: BookMarked,  name: "Gov. Record"  },
+  { n: "12", icon: RefreshCw,   name: "Learning"     },
 ];
 
 type Coverage = 'no' | 'partial' | 'yes';
-interface Competitor {
-  label: string;
-  examples: string;
-  gaps: Coverage[];
-  verdict: string;
-}
+interface Competitor { label: string; sub: string; gaps: Coverage[]; }
 
 const competitors: Competitor[] = [
-  {
-    label: "Strategy Consultants",
-    examples: "McKinsey · Bain · BCG · Kroll · FTI Consulting",
-    gaps: ['no','partial','partial','partial','no','yes','partial','no','partial','partial','partial','no'],
-    verdict: "Engaged after the situation. Build the response in real time at emergency rates. 0 of 12 gaps closed proactively. Institutional knowledge leaves with the engagement."
-  },
-  {
-    label: "Crisis Communications",
-    examples: "Edelman · Hill+Knowlton · Teneo · Brunswick",
-    gaps: ['no','partial','no','partial','no','yes','partial','no','yes','no','partial','no'],
-    verdict: "Reputation management and media relations once the situation is already public. Closes gap 9 (Communication) well. Gaps 1–8, 10–12 remain open."
-  },
-  {
-    label: "IBP / Planning Frameworks",
-    examples: "S&OP · IBP · Governance Frameworks · Scenario Planning",
-    gaps: ['partial','partial','partial','no','no','no','partial','partial','no','partial','partial','partial'],
-    verdict: "Define decision rights and governance structures in frameworks and planning cadences. Coherent on paper. The execution layer — pre-staged protocols, automatic team assembly, pre-authorized budget — does not exist under pressure."
-  },
-  {
-    label: "Workflow & Orchestration Platforms",
-    examples: "ServiceNow · Microsoft Power Automate · Monday.com · Asana",
-    gaps: ['no','no','partial','partial','no','no','yes','yes','partial','no','partial','partial'],
-    verdict: "Strong sequencing and system coordination once someone has defined the workflow. Assumes the organization is already coordinated when the situation arrives."
-  },
-  {
-    label: "AI Agent Platforms",
-    examples: "Salesforce Agentforce · Microsoft Copilot · Agentic tools",
-    gaps: ['partial','partial','partial','partial','no','no','partial','partial','partial','no','partial','partial'],
-    verdict: "Automate tasks within defined workflows. Don't govern who responds, with what authority, in what sequence, when a strategic situation presents itself."
-  },
-  {
-    label: "GRC / Risk Platforms",
-    examples: "Archer · OneTrust · Riskonnect · ServiceNow GRC",
-    gaps: ['partial','partial','partial','no','partial','no','no','partial','no','yes','yes','partial'],
-    verdict: "Risk mapping and governance documentation. Genuinely strong on compliance tracking and governance record — the right tool for those two gaps. Doesn't activate the coordinated response when the risk materializes. Gaps 1–9 and 12 remain open."
-  },
-  {
-    label: "BCP / Incident Response Tools",
-    examples: "Everbridge · Fusion Risk Management · Castellan",
-    gaps: ['partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial'],
-    verdict: "Designed for continuity and operational incidents — and solid within that scope. Doesn't cover activist investor, M&A, regulatory inquiry, or competitive disruption. The strategic mobilization problem sits outside the design boundary."
-  },
-  {
-    label: "Tabletop Exercise Facilitators",
-    examples: "Mandiant · CrowdStrike · Booz Allen Hamilton",
-    gaps: ['no','partial','partial','no','no','no','partial','no','partial','no','partial','partial'],
-    verdict: "Periodic simulations that test organizational readiness. Test readiness on a schedule — not in real time. The next situation still starts from zero."
-  },
-  {
-    label: "Internal PMO / Transformation",
-    examples: "Chief of Staff · Internal PMO · Enterprise Transformation Office",
-    gaps: ['no','no','partial','partial','partial','partial','partial','no','partial','partial','partial','partial'],
-    verdict: "6–8 of 12 gaps covered reactively by capable people. People-dependent, not system-dependent. When those individuals leave, the capability leaves with them."
-  },
+  { label: "Strategy Consultants",          sub: "McKinsey · Bain · BCG · Kroll · FTI",          gaps: ['no','partial','partial','partial','no','yes','partial','no','partial','partial','partial','no']  },
+  { label: "Crisis Communications",         sub: "Edelman · Hill+Knowlton · Teneo · Brunswick",   gaps: ['no','partial','no','partial','no','yes','partial','no','yes','no','partial','no']                },
+  { label: "IBP / Planning Frameworks",     sub: "S&OP · IBP · Governance · Scenario Planning",   gaps: ['partial','partial','partial','no','no','no','partial','partial','no','partial','partial','partial']},
+  { label: "Workflow & Orchestration",      sub: "ServiceNow · Power Automate · Monday · Asana",  gaps: ['no','no','partial','partial','no','no','yes','yes','partial','no','partial','partial']            },
+  { label: "AI Agent Platforms",            sub: "Salesforce Agentforce · Copilot · Agentic tools",gaps: ['partial','partial','partial','partial','no','no','partial','partial','partial','no','partial','partial']},
+  { label: "GRC / Risk Platforms",          sub: "Archer · OneTrust · Riskonnect · ServiceNow GRC",gaps: ['partial','partial','partial','no','partial','no','no','partial','no','yes','yes','partial']       },
+  { label: "BCP / Incident Response",       sub: "Everbridge · Fusion · Castellan",               gaps: ['partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial']},
+  { label: "Tabletop Facilitators",         sub: "Mandiant · CrowdStrike · Booz Allen",           gaps: ['no','partial','partial','no','no','no','partial','no','partial','no','partial','partial']         },
+  { label: "Internal PMO / Transformation", sub: "Chief of Staff · PMO · Enterprise Transformation",gaps: ['no','no','partial','partial','partial','partial','partial','no','partial','partial','partial','partial']},
 ];
 
-const gapLabels = gaps.map(g => g.name);
+function Cell({ v }: { v: Coverage }) {
+  if (v === 'yes')     return <CheckCircle className="w-4 h-4 mx-auto" style={{ color: TEAL }} />;
+  if (v === 'partial') return <Minus       className="w-4 h-4 mx-auto" style={{ color: GOLD }} />;
+  return                      <XCircle     className="w-4 h-4 mx-auto" style={{ color: "#D1D5DB" }} />;
+}
 
 export default function MobilizationGap() {
   const [, nav] = useLocation();
 
   useEffect(() => {
     updatePageMetadata(
-      'The 12-Gap Mobilization Problem | VaughnMartin Readiness OS',
-      'Every organization improvises through 12 distinct mobilization failures every time a strategic situation fires. Readiness OS closes all 12 before the trigger arrives.'
+      'The 12-Gap Matrix | VaughnMartin Readiness OS',
+      'Nine categories, twelve mobilization gaps, zero alternatives that close all 12. Readiness OS closes every gap before the trigger fires.'
     );
   }, []);
 
   return (
     <PageLayout>
+
       {/* ── HERO ── */}
-      <section style={{ background: NAVY, padding: '96px 0 72px' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto', padding: '0 48px' }}>
-          <p style={{ ...BC, color: GOLD, fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 16 }}>
-            The Mobilization Gap
+      <section style={{ background: NAVY, padding: '80px 0 56px' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 48px' }}>
+          <p style={{ ...BC, color: GOLD, fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: 14 }}>
+            The Mobilization Gap Matrix
           </p>
-          <h1 style={{ ...CG, color: '#FFFFFF', fontSize: 'clamp(38px,5vw,64px)', fontWeight: 600, lineHeight: 1.1, marginBottom: 24, maxWidth: 780 }}>
-            Every enterprise improvises through<br />
-            <span style={{ color: GOLD }}>12 distinct failures</span> every time<br />a situation fires.
+          <h1 style={{ ...CG, color: '#FFFFFF', fontSize: 'clamp(36px,4.5vw,58px)', fontWeight: 600, lineHeight: 1.1, marginBottom: 18, maxWidth: 820 }}>
+            Nine categories. Twelve mobilization gaps.<br />
+            <span style={{ color: GOLD }}>Zero alternatives close all 12.</span>
           </h1>
-          <p style={{ color: '#CBD5E1', fontSize: 18, lineHeight: 1.7, maxWidth: 640, marginBottom: 40 }}>
-            Not because the people are wrong. Because the response was never built before the trigger arrived.
-            Every alternative on the market — consultants, platforms, frameworks, AI tools — shares one gap:
-            they are reactive by design. Readiness OS closes all 12 before the trigger fires.
+          <p style={{ color: '#94A3B8', fontSize: 16, lineHeight: 1.7, maxWidth: 620, marginBottom: 36 }}>
+            Every alternative is reactive by design. Readiness OS closes all 12 gaps before the trigger fires — 
+            the only platform built that way from the ground up.
           </p>
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            {[['12', 'Mobilization Gaps Closed'], ['180', 'Protocols Pre-Staged'], ['12 min', 'To Full Execution']].map(([n, l]) => (
-              <div key={n} style={{ textAlign: 'center' }}>
-                <div style={{ ...BC, color: GOLD, fontSize: 36, fontWeight: 700, lineHeight: 1 }}>{n}</div>
-                <div style={{ ...BC, color: '#94A3B8', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>{l}</div>
+          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+            {[['12', 'Gaps Closed'], ['9', 'Alternatives Compared'], ['0', 'Others Close All 12'], ['12 min', 'To Full Execution']].map(([n, l]) => (
+              <div key={n}>
+                <div style={{ ...BC, color: GOLD, fontSize: 32, fontWeight: 700, lineHeight: 1 }}>{n}</div>
+                <div style={{ ...BC, color: '#64748B', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', marginTop: 4 }}>{l}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SECTION LABEL ── */}
-      <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '20px 48px' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ ...BC, color: NAVY, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
-            The 12 Gaps — Today vs. Readiness OS
-          </p>
-          <p style={{ ...BC, color: MUTED, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            15–20 of these situations per enterprise, per year
-          </p>
-        </div>
-      </section>
+      {/* ── THE MATRIX ── */}
+      <section style={{ background: '#FFFFFF', padding: '0 0 72px' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 48px' }}>
 
-      {/* ── 12 GAP CARDS ── */}
-      <section style={{ background: '#FFFFFF', padding: '64px 48px' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(320px,1fr))', gap: 24 }}>
-          {gaps.map((g) => {
-            const Icon = g.icon;
-            return (
-              <div key={g.n} style={{ border: `1px solid ${BORDER}`, borderRadius: '0.15rem', overflow: 'hidden', background: '#FAFAF9' }}>
-                {/* card header */}
-                <div style={{ padding: '18px 24px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ ...BC, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', minWidth: 28 }}>{g.n}</span>
-                  <Icon className="w-4 h-4" style={{ color: NAVY, flexShrink: 0 }} />
-                  <span style={{ ...BC, color: NAVY, fontSize: 15, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{g.name}</span>
-                </div>
-                {/* today */}
-                <div style={{ padding: '14px 24px', borderBottom: `1px solid ${BORDER}`, background: '#FEF9F9' }}>
-                  <p style={{ ...BC, color: PROBLEM, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 6 }}>Today</p>
-                  <p style={{ color: '#374151', fontSize: 13.5, lineHeight: 1.6 }}>{g.today}</p>
-                </div>
-                {/* readiness os */}
-                <div style={{ padding: '14px 24px' }}>
-                  <p style={{ ...BC, color: TEAL, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 6 }}>Readiness OS</p>
-                  <p style={{ color: '#1F2937', fontSize: 13.5, lineHeight: 1.6 }}>{g.os}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ── DIVIDER STATEMENT ── */}
-      <section style={{ background: NAVY, padding: '56px 48px', textAlign: 'center' }}>
-        <div style={{ maxWidth: 860, margin: '0 auto' }}>
-          <p style={{ ...BC, color: GOLD, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 18 }}>The Unclaimed Position</p>
-          <p style={{ ...CG, color: '#FFFFFF', fontSize: 'clamp(22px,3vw,34px)', fontWeight: 600, lineHeight: 1.45 }}>
-            Every alternative is either reactive by design, narrow in scope, or governance-only with no execution layer.
-            None of them pre-stage the complete response —{' '}
-            <span style={{ color: GOLD }}>authority, coordination, sequencing, systems, communication, compliance, budget, external resources, and governance record</span>
-            {' '}— before the situation presents itself.
-          </p>
-          <div style={{ width: 48, height: 2, background: GOLD, margin: '28px auto 0' }} />
-        </div>
-      </section>
-
-      {/* ── COMPETITOR MATRIX ── */}
-      <section style={{ background: '#FFFFFF', padding: '72px 48px' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ marginBottom: 40 }}>
-            <p style={{ ...BC, color: GOLD, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 10 }}>
-              Who Closes Which Gaps
-            </p>
-            <h2 style={{ ...CG, color: NAVY, fontSize: 'clamp(26px,3vw,40px)', fontWeight: 600, lineHeight: 1.2, maxWidth: 640 }}>
-              Nine categories. Zero alternatives that close all 12.
-            </h2>
-          </div>
-
-          {/* Legend */}
-          <div style={{ display: 'flex', gap: 24, marginBottom: 32, flexWrap: 'wrap' }}>
+          {/* Legend strip */}
+          <div style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '14px 24px', display: 'flex', alignItems: 'center', gap: 32, marginBottom: 0 }}>
+            <span style={{ ...BC, color: NAVY, fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginRight: 8 }}>Legend</span>
             {[
-              { el: <YES />, label: 'Closes this gap' },
-              { el: <PT />, label: 'Partial / narrow' },
-              { el: <NO />, label: 'Does not close' },
+              { el: <CheckCircle className="w-4 h-4" style={{ color: TEAL }} />, label: 'Closes this gap' },
+              { el: <Minus       className="w-4 h-4" style={{ color: GOLD }} />, label: 'Partial / narrow' },
+              { el: <XCircle     className="w-4 h-4" style={{ color: '#D1D5DB' }} />, label: 'Does not close' },
             ].map(({ el, label }) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 {el}
-                <span style={{ color: MUTED, fontSize: 13 }}>{label}</span>
+                <span style={{ color: MUTED, fontSize: 12 }}>{label}</span>
               </div>
             ))}
           </div>
 
-          {/* Scrollable matrix */}
-          <div style={{ overflowX: 'auto', border: `1px solid ${BORDER}`, borderRadius: '0.15rem' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 900 }}>
+          {/* Matrix table */}
+          <div style={{ overflowX: 'auto', border: `1px solid ${BORDER}`, borderTop: 'none' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 1040 }}>
+
+              {/* Column headers — gap numbers + icons */}
               <thead>
                 <tr style={{ background: NAVY }}>
-                  <th style={{ ...BC, color: '#94A3B8', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '14px 20px', textAlign: 'left', minWidth: 200, fontWeight: 600 }}>
+                  {/* row label column */}
+                  <th style={{ ...BC, color: '#64748B', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '18px 24px', textAlign: 'left', width: 210, fontWeight: 600, verticalAlign: 'bottom', borderRight: `1px solid rgba(255,255,255,0.08)` }}>
                     Category
                   </th>
-                  {gapLabels.map((label, i) => (
-                    <th key={label} style={{ ...BC, color: '#94A3B8', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '10px 8px', textAlign: 'center', fontWeight: 600, minWidth: 68 }}>
-                      <span style={{ color: GOLD, display: 'block', fontSize: 9 }}>{String(i+1).padStart(2,'0')}</span>
-                      {label.split(' ')[0]}
-                    </th>
-                  ))}
+                  {gaps.map((g) => {
+                    const Icon = g.icon;
+                    return (
+                      <th key={g.n} style={{ padding: '14px 6px', textAlign: 'center', minWidth: 72, verticalAlign: 'bottom', borderRight: `1px solid rgba(255,255,255,0.06)` }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                          <span style={{ ...BC, color: GOLD, fontSize: 8, letterSpacing: '0.16em', fontWeight: 700 }}>{g.n}</span>
+                          <Icon className="w-3.5 h-3.5" style={{ color: 'rgba(255,255,255,0.5)' }} />
+                          <span style={{ ...BC, color: 'rgba(255,255,255,0.7)', fontSize: 8.5, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600, lineHeight: 1.2, maxWidth: 60, display: 'block' }}>
+                            {g.name}
+                          </span>
+                        </div>
+                      </th>
+                    );
+                  })}
+                  {/* score column */}
+                  <th style={{ ...BC, color: '#64748B', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '14px 12px', textAlign: 'center', fontWeight: 600, minWidth: 60, borderLeft: `1px solid rgba(255,255,255,0.08)`, verticalAlign: 'bottom' }}>
+                    Score
+                  </th>
                 </tr>
               </thead>
-              <tbody>
-                {competitors.map((c, ci) => (
-                  <tr key={c.label} style={{ borderBottom: `1px solid ${BORDER}`, background: ci % 2 === 0 ? '#FAFAF9' : '#FFFFFF' }}>
-                    <td style={{ padding: '16px 20px', verticalAlign: 'top' }}>
-                      <div style={{ ...BC, color: NAVY, fontSize: 14, fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>{c.label}</div>
-                      <div style={{ color: MUTED, fontSize: 11 }}>{c.examples}</div>
-                    </td>
-                    {c.gaps.map((v, gi) => (
-                      <td key={gi} style={{ padding: '12px 8px', textAlign: 'center', verticalAlign: 'middle' }}>
-                        {v === 'yes' ? <YES /> : v === 'partial' ? <PT /> : <NO />}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
 
-                {/* Readiness OS row */}
-                <tr style={{ background: NAVY, borderTop: '2px solid ' + GOLD }}>
-                  <td style={{ padding: '18px 20px', verticalAlign: 'top' }}>
-                    <div style={{ ...BC, color: GOLD, fontSize: 14, fontWeight: 700, letterSpacing: '0.06em', marginBottom: 2 }}>Readiness OS</div>
-                    <div style={{ color: '#94A3B8', fontSize: 11 }}>VaughnMartin · Readiness Infrastructure</div>
+              <tbody>
+                {competitors.map((c, ci) => {
+                  const score = c.gaps.filter(v => v === 'yes').length;
+                  const partial = c.gaps.filter(v => v === 'partial').length;
+                  return (
+                    <tr key={c.label} style={{
+                      borderBottom: `1px solid ${BORDER}`,
+                      background: ci % 2 === 0 ? '#FAFAF9' : '#FFFFFF',
+                    }}>
+                      <td style={{ padding: '13px 24px', verticalAlign: 'middle', borderRight: `1px solid ${BORDER}` }}>
+                        <div style={{ ...BC, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>{c.label}</div>
+                        <div style={{ color: MUTED, fontSize: 10, lineHeight: 1.4 }}>{c.sub}</div>
+                      </td>
+                      {c.gaps.map((v, gi) => (
+                        <td key={gi} style={{ padding: '10px 4px', textAlign: 'center', verticalAlign: 'middle', borderRight: `1px solid ${BORDER}` }}>
+                          <Cell v={v} />
+                        </td>
+                      ))}
+                      {/* score */}
+                      <td style={{ padding: '10px 12px', textAlign: 'center', verticalAlign: 'middle', borderLeft: `1px solid ${BORDER}` }}>
+                        <div style={{ ...BC, fontSize: 13, fontWeight: 700, color: score >= 4 ? TEAL : MUTED }}>
+                          {score}<span style={{ color: MUTED, fontWeight: 400 }}>/{gaps.length}</span>
+                        </div>
+                        {partial > 0 && <div style={{ ...BC, fontSize: 9, color: GOLD, marginTop: 2 }}>{partial} partial</div>}
+                      </td>
+                    </tr>
+                  );
+                })}
+
+                {/* ── READINESS OS ROW ── */}
+                <tr style={{ borderTop: `2px solid ${GOLD}` }}>
+                  <td style={{ padding: '16px 24px', verticalAlign: 'middle', background: NAVY, borderRight: `1px solid rgba(255,255,255,0.1)` }}>
+                    <div style={{ ...BC, color: GOLD, fontSize: 13, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 2 }}>Readiness OS</div>
+                    <div style={{ color: '#64748B', fontSize: 10 }}>VaughnMartin · Readiness Infrastructure</div>
                   </td>
                   {gaps.map((_, gi) => (
-                    <td key={gi} style={{ padding: '12px 8px', textAlign: 'center', verticalAlign: 'middle' }}>
-                      <CheckCircle className="w-5 h-5 mx-auto" style={{ color: TEAL }} />
+                    <td key={gi} style={{ padding: '12px 4px', textAlign: 'center', verticalAlign: 'middle', background: NAVY, borderRight: `1px solid rgba(255,255,255,0.07)` }}>
+                      <CheckCircle className="w-4 h-4 mx-auto" style={{ color: TEAL }} />
                     </td>
                   ))}
+                  <td style={{ padding: '12px', textAlign: 'center', background: NAVY, borderLeft: `1px solid rgba(255,255,255,0.1)` }}>
+                    <div style={{ ...BC, fontSize: 16, fontWeight: 800, color: GOLD }}>12<span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400 }}>/{gaps.length}</span></div>
+                    <div style={{ ...BC, fontSize: 8, color: TEAL, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 2 }}>All closed</div>
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          {/* Verdict rows */}
-          <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 16 }}>
-            {competitors.map((c) => (
-              <div key={c.label} style={{ padding: '20px 24px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem', background: '#FAFAF9' }}>
-                <div style={{ ...BC, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>{c.label}</div>
-                <p style={{ color: '#4B5563', fontSize: 13, lineHeight: 1.6 }}>{c.verdict}</p>
-              </div>
-            ))}
-            <div style={{ padding: '20px 24px', border: `2px solid ${GOLD}`, borderRadius: '0.15rem', background: '#FFFDF5' }}>
-              <div style={{ ...BC, color: GOLD, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8 }}>Readiness OS</div>
-              <p style={{ color: NAVY, fontSize: 13, lineHeight: 1.6, fontWeight: 500 }}>
-                The only platform that closes all 12 gaps before the trigger fires.
-                Pre-staged. Executive-authorized. Continuously improving.
-              </p>
-            </div>
+          {/* Gap name key — full labels below the matrix */}
+          <div style={{ marginTop: 24, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px 24px' }}>
+            {gaps.map((g) => {
+              const Icon = g.icon;
+              return (
+                <div key={g.n} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                  <span style={{ ...BC, color: GOLD, fontSize: 10, fontWeight: 700, flexShrink: 0, paddingTop: 1 }}>{g.n}</span>
+                  <Icon className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: NAVY }} />
+                  <span style={{ color: MUTED, fontSize: 12, lineHeight: 1.4 }}>
+                    <strong style={{ color: NAVY, fontSize: 12 }}>{g.name.replace('.', '')}</strong>
+                    {g.n === '01' && ' — continuous monitoring, 231 thresholds'}
+                    {g.n === '02' && ' — 180 protocols pre-matched to situation types'}
+                    {g.n === '03' && ' — decision rights defined cold, before the trigger'}
+                    {g.n === '04' && ' — stakeholders pre-assigned, assembly automatic'}
+                    {g.n === '05' && ' — budget pre-authorized per protocol'}
+                    {g.n === '06' && ' — retainers on standby, briefed before arrival'}
+                    {g.n === '07' && ' — 22+ tasks in correct sequence, automatic'}
+                    {g.n === '08' && ' — 55+ connectors, systems coordinate automatically'}
+                    {g.n === '09' && ' — approved messaging frameworks pre-staged'}
+                    {g.n === '10' && ' — disclosure requirements mapped per situation'}
+                    {g.n === '11' && ' — complete governance record auto-generated'}
+                    {g.n === '12' && ' — ADVANCE loop: knowledge compounds every activation'}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── ONE-LINE SUMMARY ── */}
-      <section style={{ background: IVORY, padding: '40px 48px', borderTop: `1px solid ${BORDER}` }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto' }}>
-          <p style={{ color: NAVY, fontSize: 16, lineHeight: 1.7, fontWeight: 500, maxWidth: 860 }}>
-            <strong style={{ color: GOLD }}>Every other approach</strong> — IBP frameworks, governance designs, AI workflow tools, coordination platforms —
-            assumes the organization will build the response when the situation arrives.
-            Readiness OS is the only product built on the assumption that{' '}
-            <strong>the response needs to already exist before the situation does.</strong>
+      {/* ── SUMMARY STATEMENT ── */}
+      <section style={{ background: NAVY, padding: '52px 48px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 840, margin: '0 auto' }}>
+          <p style={{ ...CG, color: '#FFFFFF', fontSize: 'clamp(20px,2.5vw,30px)', fontWeight: 600, lineHeight: 1.5 }}>
+            Every alternative is either reactive by design, narrow in scope, or governance-only with no execution layer.{' '}
+            <span style={{ color: GOLD }}>None pre-stage the complete response before the situation presents itself.</span>
           </p>
         </div>
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: NAVY, padding: '72px 48px', textAlign: 'center' }}>
-        <div style={{ maxWidth: 640, margin: '0 auto' }}>
-          <p style={{ ...BC, color: GOLD, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 16 }}>Founding Partner Program</p>
-          <h3 style={{ ...CG, color: '#FFFFFF', fontSize: 'clamp(26px,3vw,38px)', fontWeight: 600, lineHeight: 1.3, marginBottom: 20 }}>
+      <section style={{ background: IVORY, padding: '56px 48px', borderTop: `1px solid ${BORDER}`, textAlign: 'center' }}>
+        <div style={{ maxWidth: 560, margin: '0 auto' }}>
+          <p style={{ ...BC, color: NAVY, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 14, fontWeight: 700 }}>Founding Partner Program</p>
+          <h3 style={{ ...CG, color: NAVY, fontSize: 'clamp(24px,3vw,36px)', fontWeight: 600, lineHeight: 1.3, marginBottom: 16 }}>
             Close all 12 gaps before your next situation fires.
           </h3>
-          <p style={{ color: '#94A3B8', fontSize: 16, lineHeight: 1.7, marginBottom: 36 }}>
-            12 total seats. 90-day validated partnership with direct founder involvement.
-            $75K · 100% credited at close.
+          <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7, marginBottom: 32 }}>
+            90-day validated partnership. Direct founder involvement. 12 total seats.
           </p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
               onClick={() => nav('/request-access')}
-              style={{ ...BC, background: GOLD, color: NAVY, border: 'none', padding: '14px 32px', fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '0.15rem', display: 'flex', alignItems: 'center', gap: 8 }}
+              style={{ ...BC, background: NAVY, color: '#FFFFFF', border: 'none', padding: '14px 32px', fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '0.15rem', display: 'flex', alignItems: 'center', gap: 8 }}
             >
               Apply for Founding Partner Access <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={() => nav('/executive-brief')}
-              style={{ ...BC, background: 'transparent', color: '#CBD5E1', border: '1px solid #334155', padding: '14px 32px', fontSize: 13, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '0.15rem' }}
+              style={{ ...BC, background: 'transparent', color: NAVY, border: `1px solid ${BORDER}`, padding: '14px 32px', fontSize: 13, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '0.15rem' }}
             >
-              Download Executive Brief
+              Executive Brief
             </button>
           </div>
         </div>
       </section>
+
     </PageLayout>
   );
 }
