@@ -492,6 +492,7 @@ export default function StandardNav() {
             {megaColHeading("Tools & Calculators")}
             {[
               { path: '/the-gap', icon: Grid3X3, label: 'The Gap — Live Cost + 12-Gap Matrix', sub: 'Real-time mobilization cost counter + full competitor gap matrix in one view', featured: true },
+              { path: '/the-cost-of-waiting', icon: DollarSign, label: 'The Cost of Waiting', sub: 'Live dual counter + 6-situation timelines — see exactly what not being ready is costing', featured: true },
               { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate', featured: true },
               { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector right now. Protocols already staged.', featured: true },
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
@@ -1377,6 +1378,7 @@ export default function StandardNav() {
                   <p className="px-4 pb-1 text-[10px] uppercase tracking-widest font-bold" style={{ color: 'rgba(10,15,46,0.35)', letterSpacing: '0.12em' }}>Tools & Calculators</p>
                   {[
                     { path: '/the-gap', label: 'The Gap — Live Cost + 12-Gap Matrix', icon: Grid3X3 },
+                    { path: '/the-cost-of-waiting', label: 'The Cost of Waiting', icon: DollarSign },
                     { path: '/cost-of-delay', label: 'Cost of Delay', icon: DollarSign },
                     { path: '/sector-briefing', label: 'Sector Threat Briefing', icon: AlertTriangle },
                     { path: '/roi-calculator', label: 'ROI Calculator', icon: Calculator },

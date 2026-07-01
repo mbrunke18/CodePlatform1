@@ -74,6 +74,7 @@ const MobilizationBrief = lazy(() => import("./pages/MobilizationBrief"));
 const MobilizationCost = lazy(() => import("./pages/MobilizationCost"));
 const MobilizationGap = lazy(() => import("./pages/MobilizationGap"));
 const TheGap = lazy(() => import("./pages/TheGap"));
+const TheCostOfWaiting = lazy(() => import("./pages/TheCostOfWaiting"));
 const ExecutiveScenarioSuite = lazy(() => import("./pages/ExecutiveScenarioSuite"));
 const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
 const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
@@ -854,6 +855,7 @@ function Router() {
         <Route path="/mobilization-brief" component={MobilizationBrief} />
         <Route path="/mobilization-gap" component={MobilizationGap} />
         <Route path="/the-gap" component={TheGap} />
+        <Route path="/the-cost-of-waiting" component={TheCostOfWaiting} />
         <Route path="/founding-partner-brief" component={FoundingPartnerBrief} />
         <Route path="/readiness-rhythm" component={ReadinessRhythm} />
         <Route path="/entry" component={StartHere} />
