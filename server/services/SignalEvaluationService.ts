@@ -900,11 +900,18 @@ export async function evaluateAndPersistSignals(
   // Process all detections (configured or default) through the same persistence + notification path
   for (const { detection, signal, engine } of allDetectionsFlat) {
     try {
-      // Check for duplicate detection in last 4 hours to avoid alert fatigue
+      // Check for duplicate detection in last 24 hours to avoid alert fatigue
+      // IMPORTANT: filter by organizationId — without it, the system org's detections
+      // silently block every real org's alerts for a full 24-hour window.
       const recent = await db
         .select()
         .from(triggerDetections)
-        .where(eq(triggerDetections.triggerName, detection.triggerName))
+        .where(
+          and(
+            eq(triggerDetections.organizationId, organizationId as any),
+            eq(triggerDetections.triggerName, detection.triggerName)
+          )
+        )
         .orderBy(desc(triggerDetections.detectedAt))
         .limit(1);
 
