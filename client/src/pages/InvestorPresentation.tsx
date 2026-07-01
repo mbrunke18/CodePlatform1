@@ -854,23 +854,23 @@ function InvestorPresentation() {
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">The Ask</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-12 text-center">
-          Raising $2M Pre-Seed
+        <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4 text-center">
+          Raising $500,000 Seed Round
         </h2>
+        <p className="text-[#6B7280] text-sm mb-10 text-center max-w-xl">12-month runway to sign 3 Founding Partners, prove the model, and position for Series A.</p>
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full">
           <div>
             <h3 className="text-[#0A0F2E] font-bold text-lg mb-6">Use of Funds</h3>
             <div className="space-y-4">
               {[
-                { label: 'Engineering', pct: 50, color: 'bg-[#2B8A6E]' },
-                { label: 'Sales', pct: 25, color: 'bg-[#0A0F2E]' },
-                { label: 'Infrastructure', pct: 15, color: 'bg-[#0A0F2E]' },
-                { label: 'Marketing', pct: 10, color: 'bg-[#C9A84C]' },
+                { label: 'Product & Infrastructure', amount: '$200K', pct: 40, color: 'bg-[#2B8A6E]' },
+                { label: 'GTM / Founding Partner Acquisition', amount: '$175K', pct: 35, color: 'bg-[#C9A84C]' },
+                { label: 'Operations & Runway', amount: '$125K', pct: 25, color: 'bg-[#0A0F2E]' },
               ].map((f, i) => (
                 <div key={i}>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-[#6B7280]">{f.label}</span>
-                    <span className="text-[#0A0F2E] font-bold">{f.pct}%</span>
+                    <span className="text-[#0A0F2E] font-bold">{f.amount} · {f.pct}%</span>
                   </div>
                   <div className="w-full bg-[#F8F7F4] h-3">
                     <div className={`${f.color} h-3`} style={{ width: `${f.pct}%` }} />
@@ -880,19 +880,24 @@ function InvestorPresentation() {
             </div>
           </div>
           <div>
-            <h3 className="text-[#0A0F2E] font-bold text-lg mb-6">18-Month Milestones</h3>
+            <h3 className="text-[#0A0F2E] font-bold text-lg mb-6">Round Achieves</h3>
             <div className="space-y-4">
               {[
-                { month: 'Month 1-6', milestone: 'Hire core engineering team. Ship v2 with enterprise SSO and advanced AI.' },
-                { month: 'Month 4-9', milestone: 'Close 3-5 design partners. First paid pilots. Build case studies.' },
-                { month: 'Month 9-12', milestone: 'First $1M in ARR. Prove expansion motion. Hire sales team.' },
-                { month: 'Month 12-18', milestone: '$2-3M ARR run rate. Raise Series A ($10-15M). Scale GTM.' },
+                { num: '01', milestone: '3 signed Founding Partners — validated, paid, and live on the platform.' },
+                { num: '02', milestone: '$450K–$750K ARR — 12-month roadmap fully funded.' },
+                { num: '03', milestone: 'Series A ready — proven PMF, expansion metrics established.' },
+                { num: '04', milestone: 'Microsoft co-sell motion activated. Partner ecosystem engaged.' },
               ].map((m, i) => (
                 <div key={i} className="flex gap-4">
-                  <div className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap w-24 shrink-0">{m.month}</div>
+                  <div className="text-[#C9A84C] font-bold text-sm whitespace-nowrap w-6 shrink-0">{m.num}</div>
                   <p className="text-[#0A0F2E] text-sm">{m.milestone}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 bg-[#0A0F2E] p-4">
+              <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Series A Target</div>
+              <div className="text-white font-bold text-lg">$10–15M · 12–18 months post-Seed</div>
+              <div className="text-white/50 text-xs mt-1">$2–3M ARR milestone · proven land-and-expand motion</div>
             </div>
           </div>
         </div>

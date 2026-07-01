@@ -64,14 +64,14 @@ export default function VCPresentations() {
   const pitchMaterials = [
     {
       title: "Seed Round Executive Deck",
-      description: "Comprehensive pitch presentation for Seed funding round — current as of June 30, 2026",
-      slides: 24,
+      description: "Comprehensive pitch presentation for Seed funding round — $500K · July 2026 · 16 slides with live platform screenshots",
+      slides: 16,
       duration: "18 min",
       status: "Ready",
       type: "Primary Deck",
       icon: <Presentation className="w-6 h-6 text-[#C9A84C]" />,
-      href: "/VaughnMartin_ReadinessOS_PitchDeck.pdf",
-      download: true,
+      href: "/vc-pitch-deck-seed-2026.html",
+      download: false,
     },
     {
       title: "Financial Projections Model",
