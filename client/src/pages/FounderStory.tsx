@@ -573,9 +573,15 @@ export default function FounderStory() {
             <div>
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: NAVY, marginBottom: 4 }}>Martin Brunke</h3>
               <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Founder & CEO, VaughnMartin</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+                {/* Current role — highlighted */}
+                <span style={{ background: NAVY, color: GOLD, padding: "5px 14px", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2B8A6E", display: "inline-block", flexShrink: 0 }} />
+                  Founder · VaughnMartin
+                </span>
+                <span style={{ color: "#CBD5E1", fontSize: 11, fontWeight: 400, letterSpacing: "0.06em" }}>Prior:</span>
                 {["Ford", "Lockheed Martin", "Toyota", "Charles Schwab", "Vantiv", "Boyd Gaming", "Churchill Downs"].map(c => (
-                  <span key={c} style={{ border: `1px solid ${BORDER}`, padding: "5px 12px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>{c}</span>
+                  <span key={c} style={{ border: `1px solid ${BORDER}`, padding: "5px 12px", fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>{c}</span>
                 ))}
               </div>
             </div>
