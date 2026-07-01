@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: June 25, 2026 (rev 66) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: July 1, 2026 (rev 67) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -4507,3 +4507,217 @@ At activation (step 6), for each domain owner in the authorization config that h
 - Critical public pages verified via screenshot: `/`, `/preparation-diagnostic`, `/playbook-library`, `/12-minute-experience`, `/executive-brief`, `/investors`, `/how-it-executes`
 - Zero browser console errors on any public page
 - TRANSFORMATION domain color: ✅ `#1E3A5F` (deep navy) — no purple anywhere on the platform
+
+---
+
+## 75. June–July 2026 — Revs 63–67 Change Log
+
+### New Pages Since Rev 62 (June 20, 2026)
+
+All routes are registered in `client/src/App.tsx`. All pages use `PageLayout` and follow the standard brand system (NAVY/GOLD/TEAL, Cormorant Garamond + Barlow Condensed).
+
+#### `/the-gap` — `TheGap.tsx`
+
+**The 12 Mobilization Gaps** — the primary competitive positioning asset and definitive answer to "what does Readiness OS actually solve?"
+
+**Purpose:** Names and quantifies the 12 specific coordination gaps that every organization hits between trigger detection and actual execution. Each gap has a "Today" narrative (the broken model) and a "Readiness OS" response. This is the canonical competitive moat visualization — used in sales, investor, and competitive positioning contexts.
+
+**The 12 Gaps (exact names — do not paraphrase):**
+| # | Name | Today's failure | Readiness OS answer |
+|---|---|---|---|
+| 01 | Detection | Someone notices something. Maybe. | 231 triggers monitored 24/7 across 39 live sources |
+| 02 | Recognition | Classification debate consumes the first hours | 180 pre-staged protocols — situation named and matched at signal time |
+| 03 | Authority | A meeting to decide who should decide | Decision rights pre-defined before the situation presents itself |
+| 04 | Team Assembly | A meeting to plan who should be in the meeting | Named stakeholders, notification sequences, team composition pre-built |
+| 05 | Budget Authorization | Emergency spend requires an emergency committee | Emergency budget pre-authorized per protocol; Protocol #0 for unknowns |
+| 06 | External Resources | Outside counsel, PR firms called cold at emergency rates | Named retainers on standby, already briefed, already contracted |
+| 07 | Sequencing | Three teams argue the order while the window closes | Execution sequence pre-defined; 22+ tasks deploy in correct order automatically |
+| 08 | Systems Coordination | Manual handoffs, chasing access, disconnected platforms | 55+ connectors pre-integrated (Microsoft, Salesforce, ServiceNow, Slack, Jira) |
+| 09 | Communication | Board/employee/customer/regulator messaging drafted from scratch under pressure | Communication protocols pre-staged; approved messaging frameworks ready before arrival |
+| 10 | Compliance & Disclosure | Counsel asked about disclosure obligations during the crisis | Disclosure requirements mapped, compliance obligations defined, response timelines pre-built per situation type |
+| 11 | Governance Record | Decisions made verbally, audit trail missing, board liability created | Close-out gate creates complete governance record automatically |
+| 12 | Learning & Encoding | The debrief that never happens | ADVANCE loop — after 3 activations each protocol classified proven or disproven and updated |
+
+**Competitor Coverage Matrix:** 9 competitor categories × 12 gaps, showing ✅/partial/✗ for each gap. Categories: Strategy Consultants (McKinsey/Bain/BCG), Crisis Communications (Edelman/Hill+Knowlton), IBP/Planning Frameworks (S&OP/IBP), Workflow & Orchestration (ServiceNow/Monday), AI Agent Platforms (Salesforce Agentforce/Copilot), GRC/Risk Platforms (Archer/OneTrust), BCP/Incident Response (Everbridge/Fusion), Tabletop Facilitators (Mandiant/CrowdStrike), Internal PMO/Transformation. Each row has a "verdict" line — do not alter these without founder approval.
+
+**ROI Calculator:** Navy sidebar panel with input sliders for revenue, mobilization cost exposure, and recovery time. Outputs: Total Protected Value and Annual Mobilization Tax.
+
+**CTA:** "Apply for Founding Partner Access" → `/founding-partner-program`
+
+**File:** `client/src/pages/TheGap.tsx`
+
+---
+
+#### `/mobilization-gap` — `MobilizationGap.tsx`
+
+Simplified standalone version of the 12-gap competitor matrix — same gap names and 9-competitor coverage matrix as `/the-gap` but without the interactive ROI calculator. Serves as a standalone reference or linked asset. The interactive full version (with sliders and cost quantification) lives at `/the-gap`.
+
+**File:** `client/src/pages/MobilizationGap.tsx`
+
+---
+
+#### `/the-cost-of-waiting` — `TheCostOfWaiting.tsx`
+
+**"The Cost of Waiting"** — scenario-based mobilization tax visualization.
+
+**Purpose:** Proves that the 30-day mobilization cycle has a concrete dollar cost — not just a speed disadvantage — by walking through 5 scenarios side by side. "Without Readiness OS" shows accumulated costs at each delay point. "With Readiness OS" shows the same situation coordinated in 12 minutes.
+
+**5 Scenarios:**
+1. Ransomware Detection — Protocol #47, $504K mobilization cost
+2. Activist Investor — Protocol #58
+3. Supply Chain Collapse — Protocol #74
+4. Regulatory Investigation — Protocol #91
+5. Competitive Displacement — Protocol #31
+
+Each scenario shows: timestamped timeline steps, accumulated dollar cost at each step, total mobilization cost, and a verdict line. The verdict line in every scenario distinguishes the fixed cost of the event itself from the preventable mobilization cost.
+
+**Live counter:** Real-time cumulative cost accumulation shown at page load — the "personal" cost since page open + industry baseline running total. Reinforces the urgency of the mobilization tax.
+
+**Key messaging rule:** "The breach cost is fixed. The mobilization cost — $504K — is entirely preventable." This is the canonical framing for every scenario. The event cost is not our claim; the mobilization cost is.
+
+**CTA:** → `/founding-partner-program`
+
+**File:** `client/src/pages/TheCostOfWaiting.tsx`
+
+---
+
+#### `/video-brief` — `VideoBrief.tsx`
+
+**"The Cost of Waiting"** — video production storyboard and creative brief.
+
+**Purpose:** Internal sales and production asset — an 8-scene storyboard for the platform's primary marketing video. Cold open with a ticking cost counter (no music, no logo), then scenes naming the problem, showing the contrast, and landing on fearlessness. Printable page.
+
+**Not a public marketing page** — serves as a production brief. Do not link from nav or public-facing CTAs.
+
+**8 Scenes:**
+1. Cold Open — The Counter (0:00–0:08): Pure black, monospace red cost counter ticking from $0
+2. The Question (0:08–0:15): Counter freezes. "This is what the last 8 seconds cost you."
+3. (Scenes 3–8 continue the sequence through problem statement, product reveal, execution demonstration, fearless landing)
+
+**Design mandate:** Mirror the FirstVisitAdModal emotional arc: Recognition → Dismissal of false solutions → Revelation → Fearlessness. Never open with crisis imagery.
+
+**File:** `client/src/pages/VideoBrief.tsx`
+
+---
+
+#### `/situations-hub` — `SituationalHub.tsx`
+
+**Situations Hub** — tabbed dashboard for organizational situation awareness.
+
+**Tabs:** Overview · Exposure · Drills · Coordination
+
+**Overview tab:** High-level readiness summary across domains. Domain cards show Exposure %, playbook count, last drill date, and risk level (high/medium/low). Default domains shown: M&A & Integration, Competitive Response, Regulatory Compliance, plus others.
+
+**Exposure tab:** Domain-by-domain exposure scoring.
+
+**Drills tab:** Drill history and scheduling.
+
+**Coordination tab:** Stakeholder coordination readiness.
+
+**File:** `client/src/pages/SituationalHub.tsx`
+**Route:** `/situations-hub`
+
+---
+
+### Situations vs. Triggers — LOCKED MESSAGING RULE (July 2026)
+
+This is a mandatory terminology distinction for all developers, agents, and copywriters. Violating it creates messaging confusion at the point of sale and contradicts the canonical tagline.
+
+**Precise Architecture Definition:**
+
+**"Situation"** = the strategic event itself — what organizations face, what Readiness Protocols are named for, what leaders experience. Examples: "Ransomware Attack," "Activist Investor," "Supply Chain Collapse." The protocol library covers **180 situations** across 9 domains. Always use "situation" in customer-facing copy.
+
+**"Trigger"** = the customer-defined detection threshold. Customers configure specific data points to be continuously monitored; when those data points cross the defined threshold, the system fires an alert that a situation has arrived. The **231 trigger patterns** are 231 pre-built configurable detection thresholds. The customer owns the definition of when their trigger fires.
+
+**The architecture flow:**
+`Customer defines a trigger` → `system monitors continuously` → `threshold crossed` → `trigger fires` → `situation detected` → `Readiness Protocol activates` → `12-minute execution begins`
+
+**Usage rules — LOCKED:**
+
+| Copy | Status | Reason |
+|---|---|---|
+| "every situation your organization will face" | ✅ | Organizations face situations |
+| "180 situations across 9 domains" | ✅ | Situations = protocol coverage |
+| "231 trigger patterns monitored" | ✅ | Triggers = detection thresholds |
+| "before the trigger fires" | ✅ | Tagline canonical use |
+| "Same situation. Same 12 minutes." | ✅ | Slide 7 of pitch deck — confirmed |
+| "choose your trigger" | ✗ RETIRED | They're choosing a situation |
+| "Trigger Detected" (headline facing prospects) | ✗ RETIRED | What was detected is a situation |
+| "every trigger your org will face" | ✗ RETIRED | Orgs face situations, not triggers |
+| "Same trigger." | ✗ RETIRED | Replaced with "Same situation." June 2026 |
+
+**The frequency reframe:** Most organizations face **15–20 situations annually** that demand a coordinated response — not just rare catastrophes. This frames Readiness OS as a subscription (compounding value across 15–20 activations/year), not insurance (one-time catastrophe hedge). Always include frequency when introducing scenarios to prospects.
+
+**The canonical tagline with situations/triggers used correctly:**
+> *"When the Situation Arrives —* **The Response Is Ready** **Before the Trigger Fires."**
+
+Line 1 = "situation" (what the customer faces). Line 3 = "trigger fires" (the product's detection mechanism). "Before the trigger fires" means the response is staged before the customer's own detection threshold is even crossed — the ultimate readiness claim. This is structurally correct and must never be rewritten.
+
+---
+
+### Seed Round — $500,000 (July 2026)
+
+**Seed Round Details (LOCKED):**
+- Amount: $500,000
+- Round type: Seed
+- Close target: July 2026
+- Where documented: Investor pages (`/investors`, `/investor-landing`, `/investor-presentation`), pitch deck
+
+**Do not change the seed round amount or target date in any public-facing copy without explicit founder approval.**
+
+---
+
+### VC Pitch Deck — `client/public/vc-pitch-deck-seed-2026.html`
+
+**File:** `client/public/vc-pitch-deck-seed-2026.html`
+**URL:** `/vc-pitch-deck-seed-2026.html` (served as static file from `client/public/` — no auth, no React)
+**Purpose:** Investor pitch deck for the $500K seed round. Standalone HTML — no framework dependencies. Used for Round Funded profile and direct investor sharing.
+
+**Slide structure (18 slides, cover unnumbered, footers numbered 2–18):**
+| Slide | Title | Key content |
+|---|---|---|
+| 1 (cover) | We redesign how work flows in the age of AI. | TechSeal SVG logo · headshot · SEED ROUND · $500,000 · July 2026 |
+| 2 | The Problem | 30-day mobilization cycle vs. 12-minute response |
+| 3 | The Solution | Readiness Infrastructure — 180 protocols pre-staged |
+| 4 | Why Now | Microsoft AI stack without operating model; 3,600× head start |
+| 5 | What It Includes | 5 platform capabilities |
+| 6 | How It Works | Execution chain visualization |
+| 7 | Same Situation | "Same situation. Same 12 minutes. Completely different outcome." |
+| 8 | The 12 Mobilization Gaps | Competition coverage matrix |
+| 9 | Market Size | TAM/SAM/SOM |
+| 10 | Competitive Positioning | Category-of-one framing |
+| 11 | Business Model | Core/Foresight/Enterprise tiers + Growth segment |
+| 12 | Founding Partner Program | Three-column: What You Receive / 90-Day Arc / Terms. Stats bar: 3 spots · Q3 2026 · 90-day arc |
+| 13 | Team | Martin Brunke — two-column: bio+quote left (58%), Stanford Cardinal coaching photo right (42%) |
+| 14 | Financials | Revenue projections |
+| 15 | The Ask | $500,000 seed round — use of funds breakdown |
+| 16 | Platform Screenshots | Live screenshots from deployed platform |
+| 17 | Sources & Methodology | All footnoted claims with sources |
+| 18 (close) | The Response Is Ready Before the Trigger Fires. | TechSeal SVG logo · CTA email |
+
+**Critical design specs:**
+- Each slide: 1280×720px, scrolling HTML document (not a slideshow)
+- TechSeal SVG rendered inline at cover (Slide 1) and close (Slide 18). **The cover instance uses SVG def IDs `vmgrad/vmgold/vmglow/vmta/vmba`. The close instance uses `vmgrad2/vmgold2/vmglow2/vmta2/vmba2`.** These must remain distinct — duplicate SVG `<defs>` IDs in the same document cause the second logo to render broken.
+- Brand: NAVY `#0A0F2E`, GOLD `#C9A84C`, TEAL `#2B8A6E`. Zero purple. Zero retired language.
+- Founding Partner language throughout — zero "pilot program" or "pilot access."
+- Founder photos: `client/public/mb-headshot.jpg` (circular, 2px gold ring border — used at 44px cover, 96px Team slide), `client/public/mb-stanford.png` (Stanford Cardinal coaching staff — fills right 42% of Team slide with navy gradient caption overlay)
+
+**Audit checklist before any deck edit:**
+- [ ] Zero retired language: no "AI-powered," "AI-driven," "AI-detected," "speed advantage," "340×," "360×," "72 hours," "pilot program"
+- [ ] "Same situation" (not "Same trigger") on Slide 7
+- [ ] Founding Partner throughout (not "pilot")
+- [ ] TechSeal SVG def IDs are unique per instance (vmgrad vs vmgrad2)
+- [ ] Slide footers numbered 2–18 in sequence
+
+---
+
+### Production Verification — July 1, 2026 (Rev 67)
+
+- Build: ✅ clean
+- Pitch deck: ✅ 18 slides, clean numbering, zero retired language, "Same situation" confirmed on Slide 7
+- Founding Partner language: ✅ zero "pilot program" references in deck or public pages
+- Photos: ✅ `client/public/mb-headshot.jpg` (47KB) and `client/public/mb-stanford.png` (1.6MB) present
+- Situations vs Triggers rule: ✅ locked in memory and this document
+- Seed round: ✅ $500,000, July 2026
+- New pages registered: ✅ `/the-gap`, `/the-cost-of-waiting`, `/video-brief`, `/mobilization-gap`, `/situations-hub`
+- Competitor analysis: ✅ aangine.com confirmed NOT a direct competitor (algorithmic portfolio planning vs. readiness infrastructure — different problem, different buyer)
