@@ -1,27 +1,11 @@
-import { useEffect, useLayoutEffect, useCallback, useRef } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "wouter";
 
-// Disable browser native scroll restoration — must happen once at module load
 if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
-function clearScrollLock() {
-  try {
-    [document.body, document.documentElement].forEach((el) => {
-      if (!el) return;
-      el.removeAttribute('data-scroll-locked');
-      el.style.overflow = '';
-      el.style.overflowX = '';
-      el.style.overflowY = '';
-      el.style.paddingRight = '';
-      el.style.position = '';
-    });
-  } catch (_) {}
-}
-
-function resetAllScrollContainers() {
-  clearScrollLock();
+function resetScroll() {
   try {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
   } catch (_) {
@@ -29,80 +13,44 @@ function resetAllScrollContainers() {
   }
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
-
-  const root = document.getElementById('root');
+  const root = document.getElementById("root");
   if (root) root.scrollTop = 0;
 
-  document.querySelectorAll('*').forEach(el => {
-    if (el instanceof HTMLElement && el.scrollTop > 0) {
-      el.scrollTop = 0;
-    }
-  });
-}
-
-export function scrollToTop() {
-  resetAllScrollContainers();
-
-  requestAnimationFrame(() => {
-    resetAllScrollContainers();
-  });
-
-  // Staggered resets to catch both fast-cached and slower lazy-loaded pages
-  const timers = [
-    setTimeout(resetAllScrollContainers, 80),
-    setTimeout(resetAllScrollContainers, 220),
-    setTimeout(resetAllScrollContainers, 450),
-    setTimeout(resetAllScrollContainers, 700),
-    setTimeout(resetAllScrollContainers, 1100),
-  ];
-
-  return () => timers.forEach(clearTimeout);
+  try {
+    [document.body, document.documentElement].forEach((el) => {
+      el.removeAttribute("data-scroll-locked");
+      el.style.overflow = "";
+      el.style.paddingRight = "";
+      el.style.position = "";
+    });
+  } catch (_) {}
 }
 
 export function ScrollToTop() {
   const [location] = useLocation();
-  const prevLocation = useRef(location);
-  const cleanupRef = useRef<(() => void) | null>(null);
 
-  // SYNCHRONOUS — fires before the browser paints the new page, so the user
-  // never sees the wrong scroll position even for a single frame.
   useLayoutEffect(() => {
-    if (prevLocation.current !== location) {
-      try {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-      } catch (_) {
-        window.scrollTo(0, 0);
-      }
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      const root = document.getElementById('root');
-      if (root) root.scrollTop = 0;
-    }
-  }, [location]);
-
-  // DEFERRED — staggered resets catch lazy-loaded pages whose content renders
-  // after the layout effect has already run. Also clears any scroll locks left
-  // by modals/sheets on the previous page.
-  useEffect(() => {
-    if (prevLocation.current !== location) {
-      prevLocation.current = location;
-      if (cleanupRef.current) cleanupRef.current();
-      cleanupRef.current = scrollToTop();
-    }
+    resetScroll();
   }, [location]);
 
   useEffect(() => {
-    cleanupRef.current = scrollToTop();
+    resetScroll();
+    const t1 = setTimeout(resetScroll, 80);
+    const t2 = setTimeout(resetScroll, 300);
     return () => {
-      if (cleanupRef.current) cleanupRef.current();
+      clearTimeout(t1);
+      clearTimeout(t2);
     };
-  }, []);
+  }, [location]);
 
   return null;
 }
 
+export function scrollToTop() {
+  resetScroll();
+  setTimeout(resetScroll, 80);
+}
+
 export function useScrollToTop() {
-  return useCallback(() => {
-    scrollToTop();
-  }, []);
+  return scrollToTop;
 }

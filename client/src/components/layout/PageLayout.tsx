@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useLayoutEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useLocation, Link } from 'wouter';
 import StandardNav from './StandardNav';
 import Footer from './Footer';
@@ -103,7 +103,8 @@ export default function PageLayout({
   const [location] = useLocation();
   const { isAuthenticated } = useAuth();
 
-  // Scroll lock cleanup on location change
+  // ScrollToTop (in App.tsx Router) handles scroll reset on navigation.
+  // PageLayout only needs to clear any scroll locks left by modals on the previous page.
   useEffect(() => {
     try {
       [document.body, document.documentElement].forEach((el) => {
@@ -113,36 +114,6 @@ export default function PageLayout({
         el.style.paddingRight = '';
       });
     } catch (_) {}
-  }, [location]);
-
-  // Scroll to top BEFORE paint on every mount and location change.
-  // useLayoutEffect fires synchronously after DOM mutations but before the
-  // browser paints — the user never sees the new page at the wrong position.
-  useLayoutEffect(() => {
-    try {
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-    } catch (_) {
-      window.scrollTo(0, 0);
-    }
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    const root = document.getElementById('root');
-    if (root) root.scrollTop = 0;
-  }, [location]);
-
-  // Second pass after paint — catches any content that shifts scroll position
-  // during initial render (e.g. sticky headers, dynamic content height).
-  useEffect(() => {
-    const t = setTimeout(() => {
-      try {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-      } catch (_) {
-        window.scrollTo(0, 0);
-      }
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 60);
-    return () => clearTimeout(t);
   }, [location]);
 
   if (embedded) {
