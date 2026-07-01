@@ -897,29 +897,27 @@ function Router() {
   );
 }
 
-const COMPARISON_PAGES = ['/platform', '/pricing', '/the-proof', '/proof-story', '/executive-brief', '/vs-consulting', '/platform-reality'];
-
 function ComparisonButton() {
   const [location] = useLocation();
-  const show = COMPARISON_PAGES.some(p => location === p || location.startsWith(p + '/'));
-  if (!show) return null;
+  if (location === '/mobilization-gap') return null;
   return (
     <a
-      href="/comparison.html"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="/mobilization-gap"
       style={{
         position: 'fixed', bottom: 24, left: 20, zIndex: 9998,
-        background: '#C9A84C', color: '#0A0F2E',
-        fontFamily: 'system-ui, sans-serif',
-        fontWeight: 800, fontSize: 12, letterSpacing: '0.06em',
+        background: '#0A0F2E', color: '#C9A84C',
+        border: '1px solid #C9A84C',
+        fontFamily: "'Barlow Condensed', sans-serif",
+        fontWeight: 700, fontSize: 11, letterSpacing: '0.12em',
         textTransform: 'uppercase', textDecoration: 'none',
-        padding: '10px 18px', borderRadius: 3,
-        boxShadow: '0 3px 14px rgba(0,0,0,0.30)',
+        padding: '9px 16px', borderRadius: 3,
+        boxShadow: '0 3px 14px rgba(0,0,0,0.40)',
         whiteSpace: 'nowrap',
+        display: 'flex', alignItems: 'center', gap: 7,
       }}
     >
-      View Comparison
+      <span style={{ fontSize: 14, lineHeight: 1 }}>⬡</span>
+      12 Gap Matrix
     </a>
   );
 }
