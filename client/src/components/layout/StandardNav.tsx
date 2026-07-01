@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3, CheckCircle } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
@@ -119,6 +119,16 @@ export default function StandardNav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { user, isAuthenticated, isLoading, login, loginWithMicrosoft, logout } = useAuth();
+  const navRef = useRef<HTMLElement>(null);
+  const [navHeight, setNavHeight] = useState(95);
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => setNavHeight(entry.contentRect.height));
+    ro.observe(el);
+    setNavHeight(el.getBoundingClientRect().height);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -909,8 +919,10 @@ export default function StandardNav() {
   ];
 
   return (
+    <>
     <nav
-      className="sticky top-0 z-50"
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 z-50 w-full"
       style={{
         background: NAVY,
         borderBottom: `2px solid ${GOLD}`,
@@ -1553,5 +1565,7 @@ export default function StandardNav() {
         </div>
       )}
     </nav>
+    <div aria-hidden="true" style={{ height: navHeight, flexShrink: 0 }} />
+    </>
   );
 }
