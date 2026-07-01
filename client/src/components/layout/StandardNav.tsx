@@ -1284,94 +1284,159 @@ export default function StandardNav() {
 
               <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '12px 0' }} />
 
-              {platformSections.map((section) => (
-                <div key={section.heading}>
-                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{section.heading}</p>
-                  {section.links.map((link) => (
-                    <button
-                      key={link.path + link.label}
-                      onClick={() => navigateTo(link.path)}
-                      className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
-                      style={{
-                        color: isActivePath(link.path) ? NAVY : '#374151',
-                        fontWeight: isActivePath(link.path) ? 600 : 500,
-                        background: isActivePath(link.path) ? 'rgba(10,15,46,0.05)' : 'transparent',
-                      }}
-                    >
-                      <link.icon className="h-4 w-4" style={{ color: TEAL }} />
-                      {link.label}
+              {isAuthenticated && user ? (
+                /* ── Authenticated: full platform sections ── */
+                <>
+                  {platformSections.map((section) => (
+                    <div key={section.heading}>
+                      <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{section.heading}</p>
+                      {section.links.map((link) => (
+                        <button
+                          key={link.path + link.label}
+                          onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                          className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
+                          style={{
+                            color: isActivePath(link.path) ? NAVY : '#374151',
+                            fontWeight: isActivePath(link.path) ? 600 : 500,
+                            background: isActivePath(link.path) ? 'rgba(10,15,46,0.05)' : 'transparent',
+                          }}
+                        >
+                          <link.icon className="h-4 w-4" style={{ color: TEAL }} />
+                          {link.label}
+                        </button>
+                      ))}
+                    </div>
+                  ))}
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
+                  {experienceSections.map((section, sIdx) => (
+                    <div key={section.heading}>
+                      <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{sIdx === 0 ? 'See It Work' : section.heading}</p>
+                      {section.links.map((link) => (
+                        <button
+                          key={link.path + link.label}
+                          onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                          className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
+                          style={{ color: '#374151', fontWeight: 500 }}
+                        >
+                          <link.icon className="h-4 w-4" style={{ color: GOLD }} />
+                          {link.label}
+                        </button>
+                      ))}
+                    </div>
+                  ))}
+                </>
+              ) : (
+                /* ── Guest: same 6 sections as the desktop nav ── */
+                <>
+                  {/* HOW IT WORKS */}
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>How It Works</p>
+                  {[
+                    { path: '/how-it-works', label: 'How It Works', icon: Play },
+                    { path: '/how-it-executes', label: 'How It Executes', icon: Zap },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: TEAL }} />{link.label}
                     </button>
                   ))}
-                </div>
-              ))}
 
-              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              {experienceSections.map((section, sIdx) => (
-                <div key={section.heading}>
-                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{sIdx === 0 ? 'See It Work' : section.heading}</p>
-                  {section.links.map((link) => (
-                    <button
-                      key={link.path + link.label}
-                      onClick={() => navigateTo(link.path)}
-                      className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
-                      style={{ color: '#374151', fontWeight: 500 }}
-                    >
-                      <link.icon className="h-4 w-4" style={{ color: GOLD }} />
-                      {link.label}
+                  {/* SITUATIONS */}
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>Situations</p>
+                  {[
+                    { path: '/situations-hub', label: '9-Domain Coverage Board', icon: Shield },
+                    { path: '/12-minute-experience', label: '12-Minute Test Drive', icon: Rocket },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: TEAL }} />{link.label}
                     </button>
                   ))}
-                </div>
-              ))}
 
-              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>The Proof</p>
-              {evidenceLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
-                  style={{ color: '#374151', fontWeight: 500 }}
-                >
-                  <link.icon className="h-4 w-4" style={{ color: TEAL }} />
-                  {link.label}
-                </button>
-              ))}
+                  {/* SEE IT WORK */}
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>See It Work</p>
+                  {[
+                    { path: '/demo-hub', label: 'Full Scenario Center', icon: LayoutGrid },
+                    { path: '/master-demo', label: 'Master Demo — Activist Investor', icon: Play },
+                    { path: '/industry-demo-library', label: 'Industry Demo Library', icon: Globe },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: GOLD }} />{link.label}
+                    </button>
+                  ))}
 
-              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>Company</p>
-              {[
-                { path: '/about', label: 'About the Founder', icon: Users },
-                { path: '/team', label: 'Team', icon: Users },
-                { path: '/founder-story', label: "Founder's Story", icon: Video },
-              ].map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
-                  style={{ color: '#374151', fontWeight: 500 }}
-                >
-                  <link.icon className="h-4 w-4" style={{ color: TEAL }} />
-                  {link.label}
-                </button>
-              ))}
+                  {/* THE PROOF — same items as the desktop mega-menu */}
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>The Proof</p>
+                  <p className="px-4 pb-1 text-[10px] uppercase tracking-widest font-bold" style={{ color: 'rgba(10,15,46,0.35)', letterSpacing: '0.12em' }}>Tools & Calculators</p>
+                  {[
+                    { path: '/cost-of-delay', label: 'Cost of Delay', icon: DollarSign },
+                    { path: '/sector-briefing', label: 'Sector Threat Briefing', icon: AlertTriangle },
+                    { path: '/roi-calculator', label: 'ROI Calculator', icon: Calculator },
+                    { path: '/readiness-assessment', label: 'Readiness Score', icon: ClipboardCheck },
+                    { path: '/pricing', label: 'Pricing & Plans', icon: TrendingUp },
+                    { path: '/customer-journey', label: 'Customer Journey', icon: Users },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: TEAL }} />{link.label}
+                    </button>
+                  ))}
+                  <p className="px-4 pt-2 pb-1 text-[10px] uppercase tracking-widest font-bold" style={{ color: 'rgba(10,15,46,0.35)', letterSpacing: '0.12em' }}>The Case for Readiness OS</p>
+                  {[
+                    { path: '/mobilization-gap', label: 'The 12-Gap Matrix', icon: Grid3X3 },
+                    { path: '/the-case', label: 'The Case', icon: Scale },
+                    { path: '/the-proof', label: 'Why Readiness OS?', icon: Shield },
+                    { path: '/executive-brief', label: 'Executive Brief', icon: FileText },
+                    { path: '/founding-partner-brief', label: 'Founding Partner Brief', icon: FileText },
+                    { path: '/research', label: 'Research & Validation', icon: FileText },
+                    { path: '/mobilization-cost', label: 'What One Trigger Costs', icon: DollarSign },
+                    { path: '/proof-story', label: 'Proof Story', icon: Scale },
+                    { path: '/competitive-positioning', label: 'Competitive Landscape', icon: BarChart3 },
+                    { path: '/security-compliance', label: 'Security & Compliance', icon: Shield },
+                    { path: '/vs-consulting', label: 'Why Not Consulting?', icon: Scale },
+                    { path: '/vs-bcp', label: 'Readiness OS vs. BCP', icon: Scale },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: TEAL }} />{link.label}
+                    </button>
+                  ))}
 
-              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>Investors</p>
-              {investorsLinks.map((link) => (
-                <button
-                  key={link.path}
-                  onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
-                  style={{ color: '#374151', fontWeight: 500 }}
-                >
-                  <link.icon className="h-4 w-4" style={{ color: GOLD }} />
-                  {link.label}
-                </button>
-              ))}
+                  {/* PARTNERS */}
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>Partners</p>
+                  {[
+                    { path: '/channel-partners', label: 'Channel Partners', icon: Users },
+                    { path: '/investors', label: 'Investor Resources', icon: TrendingUp },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: GOLD }} />{link.label}
+                    </button>
+                  ))}
+
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
+
+                  {/* PRICING */}
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>Pricing</p>
+                  {[
+                    { path: '/pricing', label: 'Pricing & Plans', icon: TrendingUp },
+                    { path: '/growth', label: 'Core · Foresight · Enterprise', icon: BarChart3 },
+                  ].map(link => (
+                    <button key={link.path} onClick={() => { navigateTo(link.path); setMobileMenuOpen(false); }}
+                      className="w-full text-left py-2.5 px-4 flex items-center gap-3" style={{ color: '#374151', fontWeight: 500 }}>
+                      <link.icon className="h-4 w-4" style={{ color: GOLD }} />{link.label}
+                    </button>
+                  ))}
+                </>
+              )}
 
               {isAuthenticated && user && (
                 <>
