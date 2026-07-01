@@ -1006,7 +1006,7 @@ export default function StandardNav() {
               <>
                 {/* Clean hub links — flat buttons except "The Proof" which uses the mega-menu */}
                 {[
-                  { label: 'How It Works', path: '/how-it-executes' },
+                  { label: 'How It Works', path: '/how-it-works' },
                   { label: 'Situations', path: '/situations-hub' },
                   { label: 'See It Work', path: '/demo-hub' },
                 ].map(item => (
