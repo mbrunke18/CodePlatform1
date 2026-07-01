@@ -2522,53 +2522,108 @@ function ExecutionGapSection() {
 // ─── MOBILIZATION GAP TEASER ─────────────────────────────────────────────────
 function MobilizationGapTeaserSection() {
   const gaps = [
-    { n: "01", name: "Detection", today: "Someone notices. Maybe. The window is already moving.", os: "231 triggers monitored 24/7. The system detects before the humans do." },
-    { n: "03", name: "Authority", today: "A meeting to decide who should be in charge of deciding.", os: "Decision rights pre-defined cold. No debate under pressure." },
-    { n: "07", name: "Sequencing", today: "Three teams argue the order while the window closes.", os: "22+ tasks deploy in the right order automatically." },
-    { n: "12", name: "Learning & Encoding", today: "The debrief that never happens. Knowledge lives in one person's head.", os: "ADVANCE loop. The organization compounds with every activation." },
+    { n: "01", name: "Detection",         today: "Someone notices. Maybe. The window is already moving.",          os: "231 triggers monitored 24/7. The system detects before the humans do." },
+    { n: "03", name: "Authority",          today: "A meeting to decide who should be in charge of deciding.",       os: "Decision rights pre-defined cold. No debate under pressure." },
+    { n: "07", name: "Sequencing",         today: "Three teams argue the order while the window closes.",           os: "22+ tasks deploy in the right order automatically." },
+    { n: "12", name: "Learning & Encoding",today: "The debrief that never happens. Knowledge lives in one head.",   os: "ADVANCE loop. The organization compounds with every activation." },
   ];
+
+  // Live ticking counter — default enterprise profile
+  const EXEC = 6, RATE = 500, TRIGGERS = 8, DAYS = 21;
+  const annualTax = EXEC * RATE * (DAYS * 8) * TRIGGERS;
+  const costPerSecond = annualTax / (365 * 24 * 3600);
+  const [secs, setSecs] = useState(0);
+  const t0 = useRef(Date.now());
+  useEffect(() => {
+    const iv = setInterval(() => setSecs(Math.round((Date.now() - t0.current) / 1000)), 1000);
+    return () => clearInterval(iv);
+  }, []);
+  const liveCost = Math.round(costPerSecond * secs);
+  const fmtLive = (n: number) => '$' + n.toLocaleString();
+  const mins = Math.floor(secs / 60);
+  const rem  = secs % 60;
+
   return (
     <section style={{ background: "#fff", borderTop: "1px solid #E8E4DC", padding: "80px 0 64px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
+
+        {/* Header row */}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 40, flexWrap: "wrap" as const, gap: 16 }}>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10, fontFamily: "'Barlow', sans-serif" }}>The Mobilization Gap</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>The Mobilization Gap</div>
             <div style={{ fontSize: "clamp(24px,3vw,38px)", fontWeight: 700, color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.15 }}>
               12 distinct failures. Every situation. Every time.
             </div>
             <div style={{ fontSize: 14, color: "#6B7280", marginTop: 10, maxWidth: 560, fontFamily: "'Barlow', sans-serif", lineHeight: 1.6 }}>
               Not because the people are wrong — because the response was never built before the trigger arrived.
-              Every alternative — consultants, platforms, AI tools — shares one gap: reactive by design.
             </div>
           </div>
-          <a href="/mobilization-gap" style={{ flexShrink: 0, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#0A0F2E", textDecoration: "none", borderBottom: "1px solid #C9A84C", paddingBottom: 2, fontFamily: "'Barlow', sans-serif" }}>
-            See all 12 gaps →
+          <a href="/the-gap" style={{ flexShrink: 0, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#0A0F2E", textDecoration: "none", borderBottom: "1px solid #C9A84C", paddingBottom: 2, fontFamily: "'Barlow Condensed', sans-serif" }}>
+            See all 12 gaps + cost calculator →
           </a>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 1, background: "#E8E4DC" }}>
-          {gaps.map((g) => (
-            <div key={g.n} style={{ background: "#fff", padding: "28px 24px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", color: "#C9A84C", fontFamily: "'Barlow', sans-serif" }}>{g.n}</span>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#0A0F2E", textTransform: "uppercase" as const, letterSpacing: "0.08em", fontFamily: "'Barlow', sans-serif" }}>{g.name}</span>
+
+        {/* Split: counter left, gap cards right */}
+        <div style={{ display: "grid", gridTemplateColumns: "300px 1fr", gap: 24, alignItems: "start" }}>
+
+          {/* Left: live counter */}
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: 0 }}>
+            <div style={{ background: "#0A0F2E", padding: "28px 24px" }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#EF4444", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 10 }}>
+                Your mobilization cost<br />while you read this page
               </div>
-              <div style={{ marginBottom: 10 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C0392B", marginBottom: 4, fontFamily: "'Barlow', sans-serif" }}>Today</div>
-                <div style={{ fontSize: 13, color: "#4B5563", lineHeight: 1.55, fontFamily: "'Barlow', sans-serif" }}>{g.today}</div>
+              <div style={{ fontSize: "clamp(28px,3.5vw,40px)", fontWeight: 700, color: "#EF4444", fontFamily: "monospace", lineHeight: 1, marginBottom: 8 }}>
+                {fmtLive(liveCost)}
               </div>
-              <div style={{ borderTop: "1px solid #F0EDE4", paddingTop: 10 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 4, fontFamily: "'Barlow', sans-serif" }}>Readiness OS</div>
-                <div style={{ fontSize: 13, color: "#1F2937", lineHeight: 1.55, fontFamily: "'Barlow', sans-serif" }}>{g.os}</div>
+              <div style={{ fontSize: 11, color: "rgba(239,68,68,0.6)" }}>
+                {mins > 0 ? `${mins}m ${rem}s` : `${rem}s`} elapsed
               </div>
             </div>
-          ))}
+            <div style={{ background: "#0f1a3a", padding: "18px 24px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#94A3B8", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 6 }}>Annual mobilization tax</div>
+              <div style={{ fontSize: 22, fontWeight: 800, color: "#EF4444", fontFamily: "monospace" }}>
+                ${Math.round(annualTax / 1_000_000 * 10) / 10}M
+              </div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 4, lineHeight: 1.4 }}>
+                6 executives · $500/hr<br />8 situations/yr · 21-day mobilization
+              </div>
+            </div>
+            <div style={{ background: "#0f1a3a", padding: "16px 24px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.5, fontFamily: "'Barlow', sans-serif" }}>
+                Based on a mid-market enterprise profile. Adjust yours at{' '}
+                <a href="/the-gap" style={{ color: "#C9A84C", textDecoration: "none" }}>/the-gap →</a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: gap preview cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 1, background: "#E8E4DC" }}>
+            {gaps.map((g) => (
+              <div key={g.n} style={{ background: "#fff", padding: "24px 20px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>{g.n}</span>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: "#0A0F2E", textTransform: "uppercase" as const, letterSpacing: "0.08em", fontFamily: "'Barlow Condensed', sans-serif" }}>{g.name}</span>
+                </div>
+                <div style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C0392B", marginBottom: 4, fontFamily: "'Barlow Condensed', sans-serif" }}>Today</div>
+                  <div style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.55, fontFamily: "'Barlow', sans-serif" }}>{g.today}</div>
+                </div>
+                <div style={{ borderTop: "1px solid #F0EDE4", paddingTop: 10 }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 4, fontFamily: "'Barlow Condensed', sans-serif" }}>Readiness OS</div>
+                  <div style={{ fontSize: 12, color: "#1F2937", lineHeight: 1.55, fontFamily: "'Barlow', sans-serif" }}>{g.os}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Bottom bar */}
         <div style={{ marginTop: 24, padding: "18px 24px", background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 12 }}>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontFamily: "'Barlow', sans-serif", lineHeight: 1.5 }}>
             <strong style={{ color: "#C9A84C" }}>9 categories of alternatives.</strong> Each closes 1–3 gaps at most. Always reactively. Readiness OS closes all 12 proactively.
           </div>
-          <a href="/mobilization-gap" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#C9A84C", textDecoration: "none", whiteSpace: "nowrap" as const, fontFamily: "'Barlow', sans-serif", flexShrink: 0 }}>
-            Full competitive matrix →
+          <a href="/the-gap" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#C9A84C", textDecoration: "none", whiteSpace: "nowrap" as const, fontFamily: "'Barlow Condensed', sans-serif", flexShrink: 0 }}>
+            Full 12-gap analysis + live cost calculator →
           </a>
         </div>
       </div>
