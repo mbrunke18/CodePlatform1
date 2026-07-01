@@ -4,7 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Loader2, RefreshCw, Home, X, Radio, Tag, Shield, Users, DollarSign, PhoneCall, List, Plug, MessageSquare, FileCheck, BookMarked, ArrowRight } from "lucide-react";
+import { Loader2, RefreshCw, Home, X, Radio, Tag, Shield, Users, DollarSign, PhoneCall, List, Plug, MessageSquare, FileCheck, BookMarked, ArrowRight, CheckCircle, Minus, XCircle } from "lucide-react";
 import RoleIndustryCaptureModal from "@/components/RoleIndustryCaptureModal";
 import QuickActions from "@/components/QuickActions";
 import EvalBanner from "@/components/EvalBanner";
@@ -898,24 +898,49 @@ function Router() {
 }
 
 const GAP_ITEMS = [
-  { n:"01", Icon: Radio,       name:"Detection",           today:"Someone notices something. Maybe. By the time it's escalated, the window is already moving." },
-  { n:"02", Icon: Tag,         name:"Recognition",         today:"What kind of situation is this? The classification debate consumes the first hours." },
-  { n:"03", Icon: Shield,      name:"Authority",           today:"Who owns this? A meeting is called to decide who should be in charge of deciding." },
-  { n:"04", Icon: Users,       name:"Team Assembly",       today:"A meeting to plan who should be in the meeting. The right people assembled slowly." },
-  { n:"05", Icon: DollarSign,  name:"Budget Authorization",today:"Emergency spend requires an emergency committee. Financial response lags by days." },
-  { n:"06", Icon: PhoneCall,   name:"External Resources",  today:"Outside counsel, PR firms called cold, briefed from scratch at emergency rates." },
-  { n:"07", Icon: List,        name:"Sequencing",          today:"Three teams argue the order of operations while the window closes." },
-  { n:"08", Icon: Plug,        name:"Systems Coordination",today:"Manual handoffs, chasing access, disconnected platforms." },
-  { n:"09", Icon: MessageSquare,name:"Communication",      today:"Drafted from scratch under pressure, usually wrong the first time." },
-  { n:"10", Icon: FileCheck,   name:"Compliance & Disclosure",today:"Counsel is asked about legal obligations during the crisis, not before it." },
-  { n:"11", Icon: BookMarked,  name:"Governance Record",   today:"Decisions made verbally, documentation incomplete, audit trail missing." },
-  { n:"12", Icon: RefreshCw,   name:"Learning & Encoding", today:"The debrief that never happens. Knowledge walks out the door." },
+  { n:"01", Icon: Radio,        name:"Detection"    },
+  { n:"02", Icon: Tag,          name:"Recognition"  },
+  { n:"03", Icon: Shield,       name:"Authority"    },
+  { n:"04", Icon: Users,        name:"Team Assembly"},
+  { n:"05", Icon: DollarSign,   name:"Budget"       },
+  { n:"06", Icon: PhoneCall,    name:"Ext. Resources"},
+  { n:"07", Icon: List,         name:"Sequencing"   },
+  { n:"08", Icon: Plug,         name:"Systems"      },
+  { n:"09", Icon: MessageSquare,name:"Comms"        },
+  { n:"10", Icon: FileCheck,    name:"Compliance"   },
+  { n:"11", Icon: BookMarked,   name:"Gov. Record"  },
+  { n:"12", Icon: RefreshCw,    name:"Learning"     },
 ];
+
+type GapCoverage = 'no' | 'partial' | 'yes';
+const MATRIX_ROWS: { label: string; sub: string; gaps: GapCoverage[] }[] = [
+  { label: "Strategy Consultants",      sub: "McKinsey · Bain · BCG · Kroll",        gaps: ['no','partial','partial','partial','no','yes','partial','no','partial','partial','partial','no'] },
+  { label: "Crisis Communications",     sub: "Edelman · Hill+Knowlton · Teneo",       gaps: ['no','partial','no','partial','no','yes','partial','no','yes','no','partial','no'] },
+  { label: "IBP / Planning Frameworks", sub: "S&OP · IBP · Scenario Planning",        gaps: ['partial','partial','partial','no','no','no','partial','partial','no','partial','partial','partial'] },
+  { label: "Workflow & Orchestration",  sub: "ServiceNow · Power Automate · Asana",   gaps: ['no','no','partial','partial','no','no','yes','yes','partial','no','partial','partial'] },
+  { label: "AI Agent Platforms",        sub: "Agentforce · Copilot · Agentic tools",  gaps: ['partial','partial','partial','partial','no','no','partial','partial','partial','no','partial','partial'] },
+  { label: "GRC / Risk Platforms",      sub: "Archer · OneTrust · Riskonnect",        gaps: ['partial','partial','partial','no','partial','no','no','partial','no','yes','yes','partial'] },
+  { label: "BCP / Incident Response",   sub: "Everbridge · Fusion · Castellan",       gaps: ['partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial','partial'] },
+  { label: "Tabletop Facilitators",     sub: "Mandiant · CrowdStrike · Booz Allen",   gaps: ['no','partial','partial','no','no','no','partial','no','partial','no','partial','partial'] },
+  { label: "Internal PMO",              sub: "Chief of Staff · PMO · Transformation", gaps: ['no','no','partial','partial','partial','partial','partial','no','partial','partial','partial','partial'] },
+];
+
+const BC_STYLE: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
+const NAVY_COL = '#0A0F2E';
+const GOLD_COL = '#C9A84C';
+const TEAL_COL = '#2B8A6E';
+
+function MatrixCell({ v }: { v: GapCoverage }) {
+  if (v === 'yes')     return <CheckCircle size={13} style={{ color: TEAL_COL, display: 'block', margin: '0 auto' }} />;
+  if (v === 'partial') return <Minus       size={13} style={{ color: GOLD_COL, display: 'block', margin: '0 auto' }} />;
+  return                      <XCircle     size={13} style={{ color: 'rgba(255,255,255,0.15)', display: 'block', margin: '0 auto' }} />;
+}
 
 function ComparisonButton() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
   if (location === '/mobilization-gap') return null;
+
   return (
     <>
       {/* Trigger button */}
@@ -923,9 +948,9 @@ function ComparisonButton() {
         onClick={() => setOpen(true)}
         style={{
           position: 'fixed', bottom: 24, left: 20, zIndex: 9998,
-          background: '#0A0F2E', color: '#C9A84C',
-          border: '1px solid #C9A84C',
-          fontFamily: "'Barlow Condensed', sans-serif",
+          background: NAVY_COL, color: GOLD_COL,
+          border: `1px solid ${GOLD_COL}`,
+          ...BC_STYLE,
           fontWeight: 700, fontSize: 11, letterSpacing: '0.12em',
           textTransform: 'uppercase',
           padding: '9px 16px', borderRadius: 3,
@@ -943,24 +968,18 @@ function ComparisonButton() {
       {open && (
         <div
           onClick={() => setOpen(false)}
-          style={{
-            position: 'fixed', inset: 0, zIndex: 9998,
-            background: 'rgba(0,0,0,0.45)',
-          }}
+          style={{ position: 'fixed', inset: 0, zIndex: 9998, background: 'rgba(0,0,0,0.55)' }}
         />
       )}
 
-      {/* Slide-up panel */}
+      {/* Slide-up panel — full width, matrix inside */}
       <div
         style={{
-          position: 'fixed', bottom: 0, left: 0, zIndex: 9999,
-          width: 440, maxWidth: '100vw',
-          maxHeight: '82vh',
-          background: '#0A0F2E',
-          border: '1px solid #C9A84C',
-          borderBottom: 'none',
-          borderRadius: '4px 4px 0 0',
-          boxShadow: '0 -8px 40px rgba(0,0,0,0.6)',
+          position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 9999,
+          maxHeight: '78vh',
+          background: NAVY_COL,
+          borderTop: `2px solid ${GOLD_COL}`,
+          boxShadow: '0 -12px 48px rgba(0,0,0,0.7)',
           display: 'flex', flexDirection: 'column',
           transform: open ? 'translateY(0)' : 'translateY(110%)',
           transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
@@ -970,83 +989,130 @@ function ComparisonButton() {
         {/* Header */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '14px 20px 12px',
-          borderBottom: '1px solid rgba(201,168,76,0.25)',
+          padding: '12px 24px 10px',
+          borderBottom: '1px solid rgba(201,168,76,0.2)',
           flexShrink: 0,
         }}>
-          <div>
-            <div style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 700, fontSize: 13, letterSpacing: '0.14em',
-              textTransform: 'uppercase', color: '#C9A84C',
-            }}>12 Mobilization Gaps</div>
-            <div style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontSize: 11, color: 'rgba(255,255,255,0.45)',
-              letterSpacing: '0.08em', marginTop: 2,
-            }}>Every organization improvises these 12 failures when a situation fires</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <div>
+              <div style={{ ...BC_STYLE, fontWeight: 700, fontSize: 13, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD_COL }}>
+                12 Gap Matrix
+              </div>
+              <div style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em', marginTop: 1 }}>
+                9 categories · 12 mobilization gaps · zero alternatives close all 12
+              </div>
+            </div>
+            {/* Legend */}
+            <div style={{ display: 'flex', gap: 16, marginLeft: 12 }}>
+              {[
+                { el: <CheckCircle size={12} style={{ color: TEAL_COL }} />, label: 'Closes gap' },
+                { el: <Minus       size={12} style={{ color: GOLD_COL }} />, label: 'Partial' },
+                { el: <XCircle     size={12} style={{ color: 'rgba(255,255,255,0.2)' }} />, label: 'Does not close' },
+              ].map(({ el, label }) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                  {el}
+                  <span style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.06em' }}>{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', padding: 4 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', padding: 4, flexShrink: 0 }}
           >
             <X size={16} />
           </button>
         </div>
 
-        {/* Scrollable gap list */}
-        <div style={{ overflowY: 'auto', flex: 1, padding: '8px 0' }}>
-          {GAP_ITEMS.map(({ n, Icon, name, today }) => (
-            <div key={n} style={{
-              display: 'flex', gap: 14, padding: '11px 20px',
-              borderBottom: '1px solid rgba(255,255,255,0.05)',
-            }}>
-              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-start', gap: 8, paddingTop: 1 }}>
-                <span style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontWeight: 700, fontSize: 11, color: '#C9A84C',
-                  letterSpacing: '0.06em', minWidth: 22,
-                }}>{n}</span>
-                <Icon size={13} style={{ color: '#C9A84C', marginTop: 2 }} />
-              </div>
-              <div>
-                <div style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontWeight: 700, fontSize: 13, color: 'white',
-                  letterSpacing: '0.06em', marginBottom: 3,
-                }}>{name}</div>
-                <div style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontSize: 11, color: 'rgba(255,255,255,0.50)',
-                  lineHeight: 1.45,
-                }}>{today}</div>
-              </div>
-            </div>
-          ))}
+        {/* Matrix — scrollable horizontally & vertically */}
+        <div style={{ overflowX: 'auto', overflowY: 'auto', flex: 1 }}>
+          <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: 900 }}>
+            <thead>
+              <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
+                {/* Category column */}
+                <th style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.35)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '10px 16px', textAlign: 'left', fontWeight: 600, minWidth: 180, position: 'sticky', left: 0, background: '#0d1235', borderRight: '1px solid rgba(255,255,255,0.08)', zIndex: 2 }}>
+                  Category
+                </th>
+                {GAP_ITEMS.map((g) => {
+                  const Icon = g.Icon;
+                  return (
+                    <th key={g.n} style={{ padding: '8px 4px', textAlign: 'center', minWidth: 58, borderRight: '1px solid rgba(255,255,255,0.05)', verticalAlign: 'bottom' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+                        <span style={{ ...BC_STYLE, color: GOLD_COL, fontSize: 8, fontWeight: 700, letterSpacing: '0.1em' }}>{g.n}</span>
+                        <Icon size={11} style={{ color: 'rgba(255,255,255,0.4)' }} />
+                        <span style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.55)', fontSize: 8, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600, lineHeight: 1.2, maxWidth: 52, display: 'block' }}>{g.name}</span>
+                      </div>
+                    </th>
+                  );
+                })}
+                <th style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.35)', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '10px 12px', textAlign: 'center', fontWeight: 600, minWidth: 52, borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
+                  Score
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {MATRIX_ROWS.map((row, ri) => {
+                const score = row.gaps.filter(v => v === 'yes').length;
+                const partial = row.gaps.filter(v => v === 'partial').length;
+                return (
+                  <tr key={row.label} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: ri % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                    <td style={{ padding: '9px 16px', verticalAlign: 'middle', position: 'sticky', left: 0, background: ri % 2 === 0 ? '#0e1438' : '#0A0F2E', borderRight: '1px solid rgba(255,255,255,0.08)', zIndex: 1 }}>
+                      <div style={{ ...BC_STYLE, color: '#FFFFFF', fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', marginBottom: 1 }}>{row.label}</div>
+                      <div style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.35)', fontSize: 9, lineHeight: 1.3 }}>{row.sub}</div>
+                    </td>
+                    {row.gaps.map((v, gi) => (
+                      <td key={gi} style={{ padding: '8px 4px', textAlign: 'center', verticalAlign: 'middle', borderRight: '1px solid rgba(255,255,255,0.04)' }}>
+                        <MatrixCell v={v} />
+                      </td>
+                    ))}
+                    <td style={{ padding: '8px 12px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div style={{ ...BC_STYLE, fontSize: 12, fontWeight: 700, color: score >= 4 ? TEAL_COL : 'rgba(255,255,255,0.3)' }}>
+                        {score}<span style={{ color: 'rgba(255,255,255,0.2)', fontWeight: 400 }}>/{GAP_ITEMS.length}</span>
+                      </div>
+                      {partial > 0 && <div style={{ ...BC_STYLE, fontSize: 8, color: GOLD_COL, marginTop: 1 }}>{partial}p</div>}
+                    </td>
+                  </tr>
+                );
+              })}
+
+              {/* Readiness OS row */}
+              <tr style={{ borderTop: `1px solid ${GOLD_COL}` }}>
+                <td style={{ padding: '11px 16px', verticalAlign: 'middle', position: 'sticky', left: 0, background: '#0d1a14', borderRight: `1px solid rgba(201,168,76,0.2)`, zIndex: 1 }}>
+                  <div style={{ ...BC_STYLE, color: GOLD_COL, fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 1 }}>Readiness OS</div>
+                  <div style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.3)', fontSize: 9 }}>VaughnMartin · Readiness Infrastructure</div>
+                </td>
+                {GAP_ITEMS.map((_, gi) => (
+                  <td key={gi} style={{ padding: '8px 4px', textAlign: 'center', background: 'rgba(43,138,110,0.08)', borderRight: '1px solid rgba(255,255,255,0.04)' }}>
+                    <CheckCircle size={13} style={{ color: TEAL_COL, display: 'block', margin: '0 auto' }} />
+                  </td>
+                ))}
+                <td style={{ padding: '8px 12px', textAlign: 'center', background: 'rgba(43,138,110,0.08)', borderLeft: `1px solid rgba(201,168,76,0.2)` }}>
+                  <div style={{ ...BC_STYLE, fontSize: 13, fontWeight: 800, color: GOLD_COL }}>12<span style={{ color: 'rgba(255,255,255,0.25)', fontWeight: 400 }}>/{GAP_ITEMS.length}</span></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        {/* Footer CTA */}
+        {/* Footer */}
         <div style={{
-          padding: '12px 20px', borderTop: '1px solid rgba(201,168,76,0.25)',
+          padding: '10px 24px', borderTop: '1px solid rgba(201,168,76,0.15)',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexShrink: 0,
         }}>
-          <span style={{
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontSize: 11, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em',
-          }}>Readiness OS closes all 12 before the trigger fires</span>
+          <span style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>
+            Readiness OS closes all 12 before the trigger fires
+          </span>
           <a
             href="/mobilization-gap"
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', gap: 5,
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 700, fontSize: 11, letterSpacing: '0.1em',
-              textTransform: 'uppercase', color: '#C9A84C',
-              textDecoration: 'none',
+              ...BC_STYLE, fontWeight: 700, fontSize: 11, letterSpacing: '0.1em',
+              textTransform: 'uppercase', color: GOLD_COL, textDecoration: 'none',
             }}
           >
-            Full Matrix <ArrowRight size={12} />
+            Full Page <ArrowRight size={12} />
           </a>
         </div>
       </div>
