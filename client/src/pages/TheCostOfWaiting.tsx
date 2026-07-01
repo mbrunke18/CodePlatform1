@@ -24,6 +24,17 @@ function fmtM(n: number) {
   if (n >= 1_000)     return `$${Math.round(n / 1_000)}K`;
   return `$${Math.round(n)}`;
 }
+function fmtB(n: number) {
+  if (n >= 1_000_000_000) return `$${(n / 1_000_000_000).toFixed(1)}B`;
+  if (n >= 1_000_000)     return `$${(n / 1_000_000).toFixed(1)}M`;
+  return fmtM(n);
+}
+function daysLabel(days: number): string {
+  if (days < 1 / 24) return 'moments ago';
+  if (days < 1)      return 'earlier today';
+  if (days < 2)      return '1 day ago';
+  return `${Math.floor(days)} days ago`;
+}
 
 // ─── Scenario data ────────────────────────────────────────────────────────────
 interface TimelineStep { time: string; event: string; cost?: string; }
@@ -197,10 +208,18 @@ const NET_SAVING     = ANNUAL_TAX - READINESS_COST;
 const DAILY_COST     = ANNUAL_TAX / 365;
 const COST_PER_EVENT = ANNUAL_TAX / TRIGGERS;
 
+// ─── Industry baseline (Fortune 1000 + mid-market) ───────────────────────────
+const INDUSTRY_ANNUAL  = 200_000_000_000;
+const INDUSTRY_PER_SEC = INDUSTRY_ANNUAL / (365 * 24 * 3600);
+const YEAR_START_MS    = new Date(new Date().getFullYear(), 0, 1).getTime();
+const FIRST_VISIT_KEY  = 'vm_first_visit';
+
 export default function TheCostOfWaiting() {
   const [, nav] = useLocation();
   const [selected, setSelected] = useState(0);
   const [secs, setSecs] = useState(0);
+  const [nowMs, setNowMs] = useState(Date.now());
+  const [firstVisitMs, setFirstVisitMs] = useState<number | null>(null);
   const t0 = useRef(Date.now());
 
   useEffect(() => {
@@ -213,7 +232,24 @@ export default function TheCostOfWaiting() {
   }, []);
 
   useEffect(() => {
-    const iv = setInterval(() => setSecs(Math.round((Date.now() - t0.current) / 1000)), 1000);
+    try {
+      const stored = localStorage.getItem(FIRST_VISIT_KEY);
+      if (stored) {
+        setFirstVisitMs(parseInt(stored, 10));
+      } else {
+        const ts = Date.now();
+        localStorage.setItem(FIRST_VISIT_KEY, String(ts));
+        setFirstVisitMs(ts);
+      }
+    } catch (_) {}
+  }, []);
+
+  useEffect(() => {
+    const iv = setInterval(() => {
+      const now = Date.now();
+      setSecs(Math.round((now - t0.current) / 1000));
+      setNowMs(now);
+    }, 1000);
     return () => clearInterval(iv);
   }, []);
 
@@ -221,6 +257,12 @@ export default function TheCostOfWaiting() {
   const mins = Math.floor(secs / 60);
   const rem  = secs % 60;
   const sc   = scenarios[selected];
+
+  const industryYTD = Math.round(INDUSTRY_PER_SEC * (nowMs - YEAR_START_MS) / 1000);
+  const daysSinceFirst = firstVisitMs ? (nowMs - firstVisitMs) / (1000 * 60 * 60 * 24) : 0;
+  const isReturnVisitor = daysSinceFirst > 0.04;
+  const personalCumulativeCost = Math.round(DAILY_COST * daysSinceFirst);
+  const thirtyDayBenchmark = Math.round(DAILY_COST * 30);
 
   return (
     <PageLayout>
@@ -245,21 +287,74 @@ export default function TheCostOfWaiting() {
           </p>
         </div>
 
-        {/* ── DUAL TICKERS ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-
-          {/* Without */}
-          <div style={{ background: DARK_RED, padding: '40px 48px 44px', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
-            <p style={{ ...BC, color: 'rgba(239,68,68,0.7)', fontSize: 10, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 14 }}>
-              Without Readiness OS — right now
+        {/* ── INDUSTRY BASELINE — full width ── */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.45)', padding: '24px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ ...BC, color: 'rgba(239,68,68,0.6)', fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 6 }}>
+              Since January 1, {new Date().getFullYear()} — enterprise market without Readiness OS
             </p>
-            <div style={{ fontSize: 'clamp(36px,4.5vw,58px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1, marginBottom: 10 }}>
-              {fmtD(liveCost)}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
+              <span style={{ fontSize: 'clamp(28px,3.5vw,46px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1 }}>
+                {fmtB(industryYTD)}
+              </span>
+              <span style={{ color: 'rgba(239,68,68,0.45)', fontSize: 13 }}>and climbing every second</span>
             </div>
-            <p style={{ color: 'rgba(239,68,68,0.55)', fontSize: 13, lineHeight: 1.5 }}>
-              {mins > 0 ? `${mins}m ${rem}s` : `${rem}s`} of mobilization cost accumulated since you opened this page.<br />
-              <span style={{ fontSize: 11 }}>{fmtM(Math.round(DAILY_COST))}/day · {fmtM(Math.round(ANNUAL_TAX))}/year — at the default enterprise profile</span>
+            <p style={{ color: 'rgba(255,255,255,0.28)', fontSize: 11, marginTop: 5 }}>
+              Estimated avoidable mobilization cost across Fortune 1000 + mid-market enterprises this year alone.
             </p>
+          </div>
+          <div style={{ textAlign: 'right', flexShrink: 0 }}>
+            <p style={{ ...BC, color: 'rgba(239,68,68,0.45)', fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: 4 }}>Industry rate</p>
+            <p style={{ color: RED, fontFamily: 'monospace', fontSize: 20, fontWeight: 700, margin: 0 }}>{fmtM(Math.round(INDUSTRY_PER_SEC * 3600))}/hr</p>
+            <p style={{ color: 'rgba(255,255,255,0.18)', fontSize: 10, marginTop: 3 }}>across all enterprises · continuously</p>
+          </div>
+        </div>
+
+        {/* ── DUAL PANELS ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+
+          {/* Without — personal cumulative on return visits, session + benchmark on first visit */}
+          <div style={{ background: DARK_RED, padding: '40px 48px 44px', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
+            {isReturnVisitor ? (
+              <>
+                <p style={{ ...BC, color: 'rgba(239,68,68,0.7)', fontSize: 10, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 6 }}>
+                  Your organization's accumulated gap
+                </p>
+                <p style={{ color: 'rgba(239,68,68,0.45)', fontSize: 12, marginBottom: 14 }}>
+                  Since you first discovered Readiness OS —{' '}
+                  <strong style={{ color: 'rgba(239,68,68,0.75)' }}>{daysLabel(daysSinceFirst)}</strong>
+                </p>
+                <div style={{ fontSize: 'clamp(36px,4.5vw,58px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1, marginBottom: 10 }}>
+                  {fmtM(personalCumulativeCost)}
+                </div>
+                <p style={{ color: 'rgba(239,68,68,0.55)', fontSize: 13, lineHeight: 1.5 }}>
+                  Estimated mobilization cost accrued since you first became aware of this problem.<br />
+                  <span style={{ fontSize: 11 }}>{fmtM(Math.round(DAILY_COST))}/day · {fmtM(Math.round(ANNUAL_TAX))}/year — default enterprise profile</span>
+                </p>
+                <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid rgba(239,68,68,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <p style={{ ...BC, color: 'rgba(239,68,68,0.4)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', margin: 0 }}>On this page today</p>
+                  <p style={{ color: 'rgba(239,68,68,0.65)', fontFamily: 'monospace', fontSize: 18, fontWeight: 700, margin: 0 }}>{fmtD(liveCost)}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <p style={{ ...BC, color: 'rgba(239,68,68,0.7)', fontSize: 10, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 14 }}>
+                  Without Readiness OS — right now
+                </p>
+                <div style={{ fontSize: 'clamp(36px,4.5vw,58px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1, marginBottom: 10 }}>
+                  {fmtD(liveCost)}
+                </div>
+                <p style={{ color: 'rgba(239,68,68,0.55)', fontSize: 13, lineHeight: 1.5 }}>
+                  {mins > 0 ? `${mins}m ${rem}s` : `${rem}s`} of mobilization cost since you opened this page.<br />
+                  <span style={{ fontSize: 11 }}>{fmtM(Math.round(DAILY_COST))}/day · {fmtM(Math.round(ANNUAL_TAX))}/year — default enterprise profile</span>
+                </p>
+                <div style={{ marginTop: 20, padding: '14px 16px', background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '0.15rem' }}>
+                  <p style={{ ...BC, color: 'rgba(239,68,68,0.6)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 6px' }}>30-Day Inaction Benchmark</p>
+                  <p style={{ color: RED, fontFamily: 'monospace', fontSize: 24, fontWeight: 700, margin: '0 0 4px' }}>{fmtM(thirtyDayBenchmark)}</p>
+                  <p style={{ color: 'rgba(239,68,68,0.4)', fontSize: 11, margin: 0 }}>If you've been aware of this gap for 30 days, that's already accrued.</p>
+                </div>
+              </>
+            )}
           </div>
 
           {/* With */}
@@ -509,10 +604,21 @@ export default function TheCostOfWaiting() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 680, margin: '0 auto', padding: '0 32px', position: 'relative' }}>
 
-          {/* Live counter in CTA */}
-          <div style={{ display: 'inline-block', padding: '12px 24px', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', marginBottom: 32 }}>
-            <p style={{ ...BC, color: 'rgba(239,68,68,0.7)', fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 4px' }}>Your cost since opening this page</p>
-            <p style={{ color: RED, fontFamily: 'monospace', fontSize: 24, fontWeight: 700, margin: 0 }}>{fmtD(liveCost)}</p>
+          {/* Live counter in CTA — personal cumulative for return visitors */}
+          <div style={{ display: 'inline-block', padding: '12px 28px', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', marginBottom: 32 }}>
+            {isReturnVisitor ? (
+              <>
+                <p style={{ ...BC, color: 'rgba(239,68,68,0.7)', fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 4px' }}>
+                  Accumulated since you first found us — {daysLabel(daysSinceFirst)}
+                </p>
+                <p style={{ color: RED, fontFamily: 'monospace', fontSize: 28, fontWeight: 700, margin: 0 }}>{fmtM(personalCumulativeCost)}</p>
+              </>
+            ) : (
+              <>
+                <p style={{ ...BC, color: 'rgba(239,68,68,0.7)', fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 4px' }}>Your cost since opening this page</p>
+                <p style={{ color: RED, fontFamily: 'monospace', fontSize: 28, fontWeight: 700, margin: 0 }}>{fmtD(liveCost)}</p>
+              </>
+            )}
           </div>
 
           <h2 style={{ ...CG, color: '#fff', fontSize: 'clamp(28px,4vw,48px)', fontWeight: 600, lineHeight: 1.15, marginBottom: 16 }}>
