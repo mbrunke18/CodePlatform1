@@ -50,7 +50,7 @@ function InvestorPresentation() {
   const [, setLocation] = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const totalSlides = 18;
+  const totalSlides = 19;
 
   const goToNext = useCallback(() => {
     setCurrentSlide(prev => Math.min(prev + 1, totalSlides - 1));
