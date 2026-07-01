@@ -254,6 +254,51 @@ export default function VCPresentations() {
                     ))}
                   </div>
                   
+                  {/* Seed Round — $500K */}
+                  <div className="mb-8 border-2 border-[#C9A84C] bg-[#FBF8F0]">
+                    <div className="flex items-center gap-3 px-6 pt-5 pb-3 border-b border-[#E8E4DC]">
+                      <div style={{ width: 4, height: 4, background: '#C9A84C', flexShrink: 0 }} />
+                      <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A84C]">Current Raise — Seed Round</span>
+                    </div>
+                    <div className="grid grid-cols-3 divide-x divide-[#E8E4DC]">
+                      <div className="px-6 py-5">
+                        <div className="text-[42px] font-bold leading-none text-[#0A0F2E] mb-1" style={CG}>$500K</div>
+                        <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Seed Round</div>
+                        <div className="text-[10px] text-[#6B7280] mt-2">Pre-revenue · Founding Partner stage</div>
+                      </div>
+                      <div className="px-6 py-5">
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-[#0A0F2E] mb-3">Use of Funds</div>
+                        <div className="space-y-2">
+                          {[
+                            { label: "Product & Infrastructure", amount: "$200K", pct: "40%" },
+                            { label: "GTM / Founding Partner Acquisition", amount: "$175K", pct: "35%" },
+                            { label: "Operations & Runway", amount: "$125K", pct: "25%" },
+                          ].map(row => (
+                            <div key={row.label} className="flex justify-between items-center text-[11px]">
+                              <span className="text-[#6B7280]">{row.label}</span>
+                              <span className="font-bold text-[#0A0F2E] ml-2 shrink-0">{row.amount}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="px-6 py-5">
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-[#0A0F2E] mb-3">Round Achieves</div>
+                        <div className="space-y-2">
+                          {[
+                            "3 signed Founding Partners",
+                            "First $450K–$750K ARR",
+                            "12-month product roadmap funded",
+                          ].map(item => (
+                            <div key={item} className="flex items-start gap-2 text-[11px] text-[#374151]">
+                              <span className="text-[#2B8A6E] font-bold mt-0.5 shrink-0">✓</span>
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <a href="/VaughnMartin_ReadinessOS_PitchDeck.pdf" download="VaughnMartin_ReadinessOS_PitchDeck.pdf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
                       <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none h-12 w-full" data-testid="button-full-investor-package">

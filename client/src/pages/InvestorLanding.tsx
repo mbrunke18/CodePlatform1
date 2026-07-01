@@ -601,6 +601,99 @@ export default function InvestorLanding() {
         </div>
       </section>
 
+      {/* ── 7b. THE ASK ──────────────────────────────────────────────────── */}
+      <section style={{ background: "#fff", padding: "80px 32px", borderTop: "3px solid " + GOLD }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <Label>The Ask</Label>
+            <SectionH2 style={{ marginBottom: 12 }}>Seed Round — $500,000</SectionH2>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: "rgba(10,15,46,0.6)", maxWidth: 540, margin: "0 auto", lineHeight: 1.8 }}>
+              Pre-revenue. Founding Partner stage. This round converts three early design partners into paying contracts and funds 12 months of platform and GTM execution.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, background: "rgba(10,15,46,0.06)", marginBottom: 32 }}>
+            {[
+              {
+                pct: "40%", amount: "$200K", label: "Product & Infrastructure",
+                items: ["Protocol coverage expansion to 231", "ADVANCE 2.0 causal learning layer", "Enterprise integration depth (SSO, audit, API)"],
+                accent: TEAL,
+              },
+              {
+                pct: "35%", amount: "$175K", label: "GTM / Founding Partner Acquisition",
+                items: ["Outbound and executive network activation", "3 signed Founding Partner contracts", "First $450K–$750K ARR on contract"],
+                accent: GOLD,
+              },
+              {
+                pct: "25%", amount: "$125K", label: "Operations & Runway",
+                items: ["12-month cash runway through first ARR", "Legal, compliance, and infrastructure ops", "Founder salary through commercial milestone"],
+                accent: NAVY,
+              },
+            ].map(b => (
+              <div key={b.label} style={{ background: "#fff", padding: "36px 28px", borderTop: "3px solid " + b.accent }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: b.accent, lineHeight: 1, marginBottom: 4 }}>{b.pct}</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600, color: NAVY, marginBottom: 6 }}>{b.amount}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: b.accent, marginBottom: 20 }}>{b.label}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {b.items.map(item => (
+                    <div key={item} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                      <span style={{ color: b.accent, fontSize: 10, marginTop: 3, flexShrink: 0 }}>◆</span>
+                      <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: "rgba(10,15,46,0.72)", lineHeight: 1.5 }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, background: "rgba(10,15,46,0.06)" }}>
+            <div style={{ background: NAVY, padding: "32px 36px" }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>What This Round Produces</div>
+              {[
+                { label: "3 Founding Partners signed", sub: "90-day validation → commercial contract" },
+                { label: "$450K–$750K ARR", sub: "First revenue from Founding Partner conversions" },
+                { label: "Series A setup", sub: "Revenue, institutional memory, protocol coverage data" },
+              ].map(r => (
+                <div key={r.label} style={{ display: "flex", gap: 14, paddingBottom: 16, marginBottom: 16, borderBottom: "1px solid rgba(201,168,76,0.1)" }}>
+                  <span style={{ color: GOLD, fontSize: 10, marginTop: 4, flexShrink: 0 }}>◆</span>
+                  <div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 3 }}>{r.label}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.45)" }}>{r.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: IVORY, padding: "32px 36px" }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 16 }}>Founding Partner Pricing Terms</div>
+              {[
+                { label: "Core", price: "$150K/yr", note: "Full platform · 180 protocols" },
+                { label: "Foresight", price: "$250K/yr", note: "Digital Twin + predictive alerts" },
+                { label: "Enterprise", price: "$450K/yr", note: "Fortune 500 scale · multi-region" },
+              ].map(t => (
+                <div key={t.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", paddingBottom: 14, marginBottom: 14, borderBottom: "1px solid rgba(10,15,46,0.08)" }}>
+                  <div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: NAVY }}>{t.label}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(10,15,46,0.45)" }}>{t.note}</div>
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: TEAL, flexShrink: 0, marginLeft: 12 }}>{t.price}</div>
+                </div>
+              ))}
+              <div style={{ marginTop: 4, padding: "12px 14px", background: "rgba(43,138,110,0.08)", borderLeft: "3px solid " + TEAL }}>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: "rgba(10,15,46,0.65)", lineHeight: 1.6, margin: 0 }}>
+                  Founding Partner pricing locked for the life of the contract. Year 2+ escalators apply to standard contracts only.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 32, textAlign: "center" }}>
+            <a href="mailto:mbrunke@vaughnmartin.com" style={{ display: "inline-block", fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, padding: "18px 52px", background: NAVY, color: "#fff", textDecoration: "none" }}>
+              Talk to the Founder About the Round →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── 8. CATEGORY WINDOW + CTA ─────────────────────────────────────── */}
       <section style={{ background: NAVY, borderTop: "1px solid rgba(201,168,76,0.15)", padding: "88px 32px 0" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>

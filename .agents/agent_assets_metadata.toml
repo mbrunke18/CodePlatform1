@@ -713,3 +713,9 @@ id = "u0Rc_q315rgOrQxmp6LpM"
 uri = "file://VaughnMartin_ReadinessOS_PitchDeck.pdf"
 type = "pdf"
 title = "VaughnMartin Readiness OS — Pitch Deck (15 slides)"
+
+[[outputs]]
+id = "h83NpC7bt5YZvf1-5r_n7"
+uri = "file://client/public/VaughnMartin_ReadinessOS_PitchDeck.pdf"
+type = "pdf"
+title = "VaughnMartin Readiness OS — Pitch Deck (June 30, 2026)"

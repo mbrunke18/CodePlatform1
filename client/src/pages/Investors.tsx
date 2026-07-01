@@ -1142,6 +1142,63 @@ export default function Investors() {
             </div>
           </motion.div>
 
+          {/* ── The Ask — $500K Seed Round ──────────────────────────────────── */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }} className="mb-20">
+            <div style={{ borderTop: `3px solid ${GOLD}`, background: '#fff', border: '1px solid #E8E4DC', borderTopColor: GOLD }}>
+              <div style={{ padding: '44px 52px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', borderBottom: '1px solid #E8E4DC', paddingBottom: 32, marginBottom: 0 }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 10 }}>The Ask</div>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 700, color: NAVY, lineHeight: 1.1, margin: 0 }}>
+                    Seed Round — $500,000
+                  </h2>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(10,15,46,0.55)', lineHeight: 1.7 }}>
+                    Pre-revenue · Founding Partner stage<br />
+                    <strong style={{ color: NAVY }}>Converts 3 design partners into paying contracts</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2, background: 'rgba(10,15,46,0.05)', margin: '2px' }}>
+                {[
+                  { pct: '40%', amount: '$200K', label: 'Product & Infrastructure', accent: TEAL,
+                    items: ['Protocol coverage expansion to 231 thresholds', 'ADVANCE 2.0 causal learning layer', 'Enterprise integration depth (SSO, audit, API)'] },
+                  { pct: '35%', amount: '$175K', label: 'GTM / Founding Partner Acquisition', accent: GOLD,
+                    items: ['Outbound and executive network activation', '3 signed Founding Partner contracts', 'First $450K–$750K ARR on contract'] },
+                  { pct: '25%', amount: '$125K', label: 'Operations & Runway', accent: NAVY,
+                    items: ['12-month cash runway through first ARR', 'Legal, compliance, and infrastructure ops', 'Founder salary through commercial milestone'] },
+                ].map(b => (
+                  <div key={b.label} style={{ background: '#fff', padding: '32px 28px', borderTop: `3px solid ${b.accent}` }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: b.accent, lineHeight: 1, marginBottom: 4 }}>{b.pct}</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: NAVY, marginBottom: 6 }}>{b.amount}</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: b.accent, marginBottom: 18 }}>{b.label}</div>
+                    <div className="space-y-2">
+                      {b.items.map(item => (
+                        <div key={item} className="flex items-start gap-2 text-xs text-[#374151]">
+                          <CheckCircle className="w-3 h-3 flex-shrink-0 mt-0.5" style={{ color: b.accent }} />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ padding: '28px 52px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', background: NAVY }}>
+                <div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 4 }}>This round funds the path to Series A.</div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>3 Founding Partners · $450K–$750K ARR · Proven institutional memory dataset</div>
+                </div>
+                <Link href="/investor-landing">
+                  <button style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, padding: '14px 36px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' as const }}>
+                    Full Funding Overview →
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Target Market */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
             className="mb-20 bg-[#0A0F2E] border border-[#E8E4DC] p-8 text-white relative overflow-hidden">
