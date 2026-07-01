@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3, CheckCircle } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
@@ -920,10 +921,12 @@ export default function StandardNav() {
 
   return (
     <>
+    {createPortal(
     <nav
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 w-full"
+      className="fixed top-0 left-0 right-0 w-full"
       style={{
+        zIndex: 9999,
         background: NAVY,
         borderBottom: `2px solid ${GOLD}`,
         boxShadow: '0 4px 32px rgba(0,0,0,0.55)',
@@ -1565,6 +1568,7 @@ export default function StandardNav() {
         </div>
       )}
     </nav>
+    , document.body)}
     <div aria-hidden="true" style={{ height: navHeight, flexShrink: 0 }} />
     </>
   );
