@@ -683,7 +683,7 @@ function ContextBanner({ step, phaseColor }: { step: number; phaseColor: string 
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
           <StatusDot color={cc} pulse />
           <span style={{ ...BC, fontSize: 9, fontWeight: 700, color: cc, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>
-            {sc.crisisIsRed ? "Crisis In Progress" : "Protocol Active"} · Protocol {sc.protocolId} · {sc.patternName}
+            {sc.crisisIsRed ? "Situation In Progress" : "Protocol Active"} · Protocol {sc.protocolId} · {sc.patternName}
           </span>
         </div>
         <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#fff", lineHeight: 1.25, marginBottom: 12 }}>{headline}</div>
@@ -1647,7 +1647,7 @@ export default function DemoExperience() {
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <StatusDot color={sc.crisisColor} pulse />
                 <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: sc.crisisColor, letterSpacing: "0.14em", textTransform: "uppercase" as const, animation: "crisis-blink 2s ease-in-out infinite" }}>
-                  {sc.crisisIsRed ? "Crisis In Progress" : "Protocol Active"} — Protocol {sc.protocolId}
+                  {sc.crisisIsRed ? "Situation In Progress" : "Protocol Active"} — Protocol {sc.protocolId}
                 </span>
               </div>
             ) : isCompleteStep ? (
