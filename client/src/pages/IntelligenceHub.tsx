@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useRequireAuth } from '@/hooks/useRequireAuth';
+import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import PageLayout from '@/components/layout/PageLayout';
@@ -45,7 +45,7 @@ const COMPOUND_THREATS = [
 ];
 
 export default function IntelligenceHub() {
-  const { isReady } = useRequireAuth();
+  const { isLoading: authLoading } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
 
   const { data: dynamicStatus } = useQuery<any>({ queryKey: ['/api/dynamic-strategy/status'] });
@@ -58,7 +58,7 @@ export default function IntelligenceHub() {
   const oraclePatterns = dynamicStatus?.oraclePatternsActive || 7;
   const readinessScore = dynamicStatus?.readinessScore || 84;
 
-  if (!isReady) return null;
+  if (authLoading) return null;
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4]">
