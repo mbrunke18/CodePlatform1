@@ -117,8 +117,14 @@ export default function TheGap() {
 
   return (
     <PageLayout>
+      {/* ── BACK NAV ── */}
+      <div style={{ background: NAVY, borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '10px 48px' }}>
+        <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', gap: 6, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: 0 }}>
+          ← Back
+        </button>
+      </div>
       {/* ── HERO ── */}
-      <section style={{ background: NAVY, padding: '88px 0 72px' }}>
+      <section style={{ background: NAVY, padding: '56px 0 72px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px' }}>
           <p style={{ ...BC, color: GOLD, fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', marginBottom: 16 }}>The Mobilization Gap</p>
           <h1 style={{ ...CG, color: '#fff', fontSize: 'clamp(36px,5vw,60px)', fontWeight: 600, lineHeight: 1.1, marginBottom: 20, maxWidth: 820 }}>
@@ -140,7 +146,7 @@ export default function TheGap() {
       </section>
 
       {/* ── LIVE COUNTER + CALCULATOR ── */}
-      <section style={{ background: '#0d1322', padding: '72px 0 64px', borderBottom: `1px solid rgba(239,68,68,0.15)` }}>
+      <section style={{ background: '#0F1629', padding: '72px 0 64px', borderBottom: `1px solid rgba(239,68,68,0.2)` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
@@ -151,7 +157,7 @@ export default function TheGap() {
             <h2 style={{ ...CG, color: '#fff', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 600, lineHeight: 1.15, marginBottom: 10 }}>
               What is your current mobilization model<br /><em style={{ color: GOLD }}>costing you right now?</em>
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, maxWidth: 520, margin: '0 auto' }}>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14, maxWidth: 520, margin: '0 auto' }}>
               Adjust the inputs to your organization. The counter started when you opened this page.
             </p>
           </div>
@@ -180,7 +186,7 @@ export default function TheGap() {
                 <div style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1 }}>
                   {fmtFull(evaluationCost)}
                 </div>
-                <div style={{ fontSize: 11, color: 'rgba(239,68,68,0.6)', marginTop: 6 }}>
+                <div style={{ fontSize: 11, color: 'rgba(239,68,68,0.85)', marginTop: 6 }}>
                   {mins > 0 ? `${mins}m ${secs}s` : `${secs}s`} elapsed · {fmtFull(Math.round(costPerDay / 24))}/hr at your current model
                 </div>
               </div>
@@ -188,7 +194,7 @@ export default function TheGap() {
               <div style={{ background: NAVY, padding: '22px 24px', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', color: TEAL, textTransform: 'uppercase', marginBottom: 12 }}>Your Annual Mobilization Tax</div>
                 <div style={{ fontSize: 'clamp(30px,4vw,46px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1, marginBottom: 6 }}>{fmt(annualTax)}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>{inputs.execCount} exec × ${inputs.execHourlyRate}/hr × {hoursPerMob} hrs × {inputs.triggersPerYear} situations/yr</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)' }}>{inputs.execCount} exec × ${inputs.execHourlyRate}/hr × {hoursPerMob} hrs × {inputs.triggersPerYear} situations/yr</div>
               </div>
               {/* vs Readiness OS */}
               <div style={{ background: 'rgba(43,138,110,0.08)', border: `1.5px solid ${TEAL}`, padding: '20px 24px' }}>
@@ -210,7 +216,7 @@ export default function TheGap() {
                 </div>
               </div>
               <button
-                onClick={() => nav('/request-access')}
+                onClick={() => nav('/founding-partner-program')}
                 style={{ ...BC, background: GOLD, color: NAVY, border: 'none', padding: '16px', fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
               >
                 Apply for Founding Partner Access <ArrowRight style={{ width: 13, height: 13 }} />
@@ -357,7 +363,7 @@ export default function TheGap() {
             12 total seats. 90-day validated partnership. $75K — 100% credited at close.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button onClick={() => nav('/request-access')}
+            <button onClick={() => nav('/founding-partner-program')}
               style={{ ...BC, background: GOLD, color: NAVY, border: 'none', padding: '14px 32px', fontSize: 12, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '0.15rem', display: 'flex', alignItems: 'center', gap: 8 }}>
               Apply for Founding Partner Access <ArrowRight className="w-4 h-4" />
             </button>

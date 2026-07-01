@@ -66,9 +66,15 @@ export default function MobilizationGap() {
 
   return (
     <PageLayout>
+      {/* ── BACK NAV ── */}
+      <div style={{ background: NAVY, borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '10px 48px' }}>
+        <button onClick={() => window.history.back()} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', display: 'flex', alignItems: 'center', gap: 6, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: 0 }}>
+          ← Back
+        </button>
+      </div>
 
       {/* ── HERO ── */}
-      <section style={{ background: NAVY, padding: '80px 0 56px' }}>
+      <section style={{ background: NAVY, padding: '60px 0 56px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 48px' }}>
           <p style={{ ...BC, color: GOLD, fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: 14 }}>
             The Mobilization Gap Matrix
@@ -244,7 +250,7 @@ export default function MobilizationGap() {
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
-              onClick={() => nav('/request-access')}
+              onClick={() => nav('/founding-partner-program')}
               style={{ ...BC, background: NAVY, color: '#FFFFFF', border: 'none', padding: '14px 32px', fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', borderRadius: '0.15rem', display: 'flex', alignItems: 'center', gap: 8 }}
             >
               Apply for Founding Partner Access <ArrowRight className="w-4 h-4" />

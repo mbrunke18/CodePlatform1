@@ -933,7 +933,7 @@ const TEAL_COL = '#2B8A6E';
 function MatrixCell({ v }: { v: GapCoverage }) {
   if (v === 'yes')     return <CheckCircle size={13} style={{ color: TEAL_COL, display: 'block', margin: '0 auto' }} />;
   if (v === 'partial') return <Minus       size={13} style={{ color: GOLD_COL, display: 'block', margin: '0 auto' }} />;
-  return                      <XCircle     size={13} style={{ color: 'rgba(255,255,255,0.15)', display: 'block', margin: '0 auto' }} />;
+  return                      <XCircle     size={13} style={{ color: 'rgba(255,255,255,0.4)', display: 'block', margin: '0 auto' }} />;
 }
 
 function ComparisonButton() {
@@ -1011,16 +1011,16 @@ function ComparisonButton() {
               ].map(({ el, label }) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                   {el}
-                  <span style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.06em' }}>{label}</span>
+                  <span style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.06em' }}>{label}</span>
                 </div>
               ))}
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', padding: 4, flexShrink: 0 }}
+            style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 3, cursor: 'pointer', color: '#fff', padding: '5px 12px', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, ...BC_STYLE, fontSize: 11, fontWeight: 600, letterSpacing: '0.08em' }}
           >
-            <X size={16} />
+            <X size={13} /> Close
           </button>
         </div>
 
@@ -1030,7 +1030,7 @@ function ComparisonButton() {
             <thead>
               <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
                 {/* Category column */}
-                <th style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.35)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '10px 16px', textAlign: 'left', fontWeight: 600, minWidth: 180, position: 'sticky', left: 0, background: '#0d1235', borderRight: '1px solid rgba(255,255,255,0.08)', zIndex: 2 }}>
+                <th style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.7)', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', padding: '10px 16px', textAlign: 'left', fontWeight: 600, minWidth: 180, position: 'sticky', left: 0, background: '#0d1235', borderRight: '1px solid rgba(255,255,255,0.08)', zIndex: 2 }}>
                   Category
                 </th>
                 {GAP_ITEMS.map((g) => {
@@ -1040,12 +1040,12 @@ function ComparisonButton() {
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
                         <span style={{ ...BC_STYLE, color: GOLD_COL, fontSize: 8, fontWeight: 700, letterSpacing: '0.1em' }}>{g.n}</span>
                         <Icon size={11} style={{ color: 'rgba(255,255,255,0.4)' }} />
-                        <span style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.55)', fontSize: 8, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600, lineHeight: 1.2, maxWidth: 52, display: 'block' }}>{g.name}</span>
+                        <span style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.8)', fontSize: 8, letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600, lineHeight: 1.2, maxWidth: 52, display: 'block' }}>{g.name}</span>
                       </div>
                     </th>
                   );
                 })}
-                <th style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.35)', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '10px 12px', textAlign: 'center', fontWeight: 600, minWidth: 52, borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
+                <th style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.7)', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '10px 12px', textAlign: 'center', fontWeight: 600, minWidth: 52, borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
                   Score
                 </th>
               </tr>
@@ -1058,7 +1058,7 @@ function ComparisonButton() {
                   <tr key={row.label} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: ri % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
                     <td style={{ padding: '9px 16px', verticalAlign: 'middle', position: 'sticky', left: 0, background: ri % 2 === 0 ? '#0e1438' : '#0A0F2E', borderRight: '1px solid rgba(255,255,255,0.08)', zIndex: 1 }}>
                       <div style={{ ...BC_STYLE, color: '#FFFFFF', fontSize: 11, fontWeight: 700, letterSpacing: '0.04em', marginBottom: 1 }}>{row.label}</div>
-                      <div style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.35)', fontSize: 9, lineHeight: 1.3 }}>{row.sub}</div>
+                      <div style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.6)', fontSize: 9, lineHeight: 1.3 }}>{row.sub}</div>
                     </td>
                     {row.gaps.map((v, gi) => (
                       <td key={gi} style={{ padding: '8px 4px', textAlign: 'center', verticalAlign: 'middle', borderRight: '1px solid rgba(255,255,255,0.04)' }}>
@@ -1066,8 +1066,8 @@ function ComparisonButton() {
                       </td>
                     ))}
                     <td style={{ padding: '8px 12px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
-                      <div style={{ ...BC_STYLE, fontSize: 12, fontWeight: 700, color: score >= 4 ? TEAL_COL : 'rgba(255,255,255,0.3)' }}>
-                        {score}<span style={{ color: 'rgba(255,255,255,0.2)', fontWeight: 400 }}>/{GAP_ITEMS.length}</span>
+                      <div style={{ ...BC_STYLE, fontSize: 12, fontWeight: 700, color: score >= 4 ? TEAL_COL : 'rgba(255,255,255,0.65)' }}>
+                        {score}<span style={{ color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>/{GAP_ITEMS.length}</span>
                       </div>
                       {partial > 0 && <div style={{ ...BC_STYLE, fontSize: 8, color: GOLD_COL, marginTop: 1 }}>{partial}p</div>}
                     </td>
@@ -1079,7 +1079,7 @@ function ComparisonButton() {
               <tr style={{ borderTop: `1px solid ${GOLD_COL}` }}>
                 <td style={{ padding: '11px 16px', verticalAlign: 'middle', position: 'sticky', left: 0, background: '#0d1a14', borderRight: `1px solid rgba(201,168,76,0.2)`, zIndex: 1 }}>
                   <div style={{ ...BC_STYLE, color: GOLD_COL, fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 1 }}>Readiness OS</div>
-                  <div style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.3)', fontSize: 9 }}>VaughnMartin · Readiness Infrastructure</div>
+                  <div style={{ ...BC_STYLE, color: 'rgba(255,255,255,0.6)', fontSize: 9 }}>VaughnMartin · Readiness Infrastructure</div>
                 </td>
                 {GAP_ITEMS.map((_, gi) => (
                   <td key={gi} style={{ padding: '8px 4px', textAlign: 'center', background: 'rgba(43,138,110,0.08)', borderRight: '1px solid rgba(255,255,255,0.04)' }}>
@@ -1100,7 +1100,7 @@ function ComparisonButton() {
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           flexShrink: 0,
         }}>
-          <span style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>
+          <span style={{ ...BC_STYLE, fontSize: 10, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.08em' }}>
             Readiness OS closes all 12 before the trigger fires
           </span>
           <a
