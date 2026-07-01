@@ -21894,7 +21894,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
             gte4(triggerDetections.detectedAt, todayStart)
           )
         );
-        if (emailsSentToday.length >= 3) {
+        if (emailsSentToday.length >= 10) {
           console.log(`\u{1F4F5} Daily email cap reached for org ${organizationId} (${emailsSentToday.length} sent today) \u2014 suppressing "${detection.triggerName}"`);
           continue;
         }
@@ -22104,9 +22104,9 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       } catch {
       }
       if (emailDelivered) {
-        await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq22(triggerDetections.triggerName, detection.triggerName));
+        await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq22(triggerDetections.id, savedDetection.id));
       } else {
-        await db.update(triggerDetections).set({ status: timelineStatus }).where(eq22(triggerDetections.triggerName, detection.triggerName));
+        await db.update(triggerDetections).set({ status: timelineStatus }).where(eq22(triggerDetections.id, savedDetection.id));
       }
       detectionsCreated++;
       prospectBriefQueue.push({

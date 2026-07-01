@@ -915,6 +915,7 @@ export default function StandardNav() {
         background: NAVY,
         borderBottom: `2px solid ${GOLD}`,
         boxShadow: '0 4px 32px rgba(0,0,0,0.55)',
+        color: 'white',
       }}
     >
       {/* Gold-to-teal accent line — 3px */}
