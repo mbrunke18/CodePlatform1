@@ -64,57 +64,69 @@ export default function VCPresentations() {
   const pitchMaterials = [
     {
       title: "Seed Round Executive Deck",
-      description: "Comprehensive pitch presentation for Seed funding round",
+      description: "Comprehensive pitch presentation for Seed funding round — current as of June 30, 2026",
       slides: 24,
       duration: "18 min",
       status: "Ready",
       type: "Primary Deck",
-      icon: <Presentation className="w-6 h-6 text-[#C9A84C]" />
+      icon: <Presentation className="w-6 h-6 text-[#C9A84C]" />,
+      href: "/VaughnMartin_ReadinessOS_PitchDeck.pdf",
+      download: true,
     },
     {
       title: "Financial Projections Model",
-      description: "5-year financial model with revenue projections and market analysis",
+      description: "ROI calculator — quantify exactly what the 30-day → 12-minute compression means for your enterprise",
       slides: 12,
-      duration: "8 min", 
-      status: "Updated",
+      duration: "8 min",
+      status: "Live",
       type: "Financial",
-      icon: <BarChart3 className="w-6 h-6 text-[#2B8A6E]" />
+      icon: <BarChart3 className="w-6 h-6 text-[#2B8A6E]" />,
+      href: "/roi-calculator",
+      download: false,
     },
     {
-      title: "Product Demo Presentation",
-      description: "Live platform demonstration showcasing continuous signal monitoring and strategic execution",
+      title: "Product Demo — 12-Minute Execution Chain",
+      description: "Live platform walkthrough — Activist Investor scenario, 7-phase complete execution",
       slides: 16,
       duration: "12 min",
       status: "Live Demo",
       type: "Product",
-      icon: <Play className="w-6 h-6 text-[#C9A84C]" />
+      icon: <Play className="w-6 h-6 text-[#C9A84C]" />,
+      href: "/master-demo",
+      download: false,
     },
     {
-      title: "Competitive Analysis Deep Dive",
-      description: "Comprehensive competitive landscape and differentiation strategy",
+      title: "Competitive Analysis — 12 Gap Matrix",
+      description: "The 12 mobilization failures every alternative leaves open. Readiness OS closes all 12 before the trigger fires.",
       slides: 20,
       duration: "15 min",
       status: "Ready",
       type: "Market Analysis",
-      icon: <Target className="w-6 h-6 text-[#0A0F2E]" />
+      icon: <Target className="w-6 h-6 text-[#0A0F2E]" />,
+      href: "/mobilization-gap",
+      download: false,
     },
     {
-      title: "Technology Architecture Overview",
-      description: "Platform scalability, security architecture, and technical roadmap",
+      title: "Platform Architecture — How It Executes",
+      description: "Animated signal → protocol → authorization → 12-minute execution chain with compound scenario support",
       slides: 18,
       duration: "14 min",
       status: "Ready",
       type: "Technical",
-      icon: <Building2 className="w-6 h-6 text-[#2B8A6E]" />
+      icon: <Building2 className="w-6 h-6 text-[#2B8A6E]" />,
+      href: "/how-it-executes",
+      download: false,
     },
     {
-      title: "Market Expansion Strategy",
-      description: "Go-to-market strategy and international expansion plans",
+      title: "Proof Story — Same Situation. Two Outcomes.",
+      description: "Ransomware, Activist Investor, Supply Chain Collapse — side-by-side timelines with specific financial outcomes",
       slides: 14,
       duration: "10 min",
-      status: "In Review",
-      type: "Growth Strategy",
-      icon: <Globe className="w-6 h-6 text-[#C9A84C]" />
+      status: "Ready",
+      type: "Proof",
+      icon: <Globe className="w-6 h-6 text-[#C9A84C]" />,
+      href: "/proof-story",
+      download: false,
     }
   ];
 
@@ -185,30 +197,38 @@ export default function VCPresentations() {
               
               <div className="space-y-4">
                 {pitchMaterials.map((material, index) => (
-                  <div key={index} className="flex items-center justify-between p-5 bg-white border border-[#E8E4DC] group hover:border-[#C9A84C] transition-colors">
-                    <div className="flex items-center space-x-4">
-                      <div style={{ width: 4, alignSelf: 'stretch', background: material.status === 'Ready' ? '#2B8A6E' : '#C9A84C', flexShrink: 0 }} />
-                      <div>
-                        <h4 className="font-bold text-[#0A0F2E]">{material.title}</h4>
-                        <p className="text-sm text-[#6B7280]">{material.description}</p>
-                        <div className="flex items-center space-x-4 text-[10px] uppercase tracking-wider text-[#6B7280] mt-2 font-bold">
-                          <span>{material.slides} SLIDES</span>
-                          <span className="w-1 h-1 bg-[#E8E4DC]"></span>
-                          <span>{material.duration}</span>
-                          <span className="w-1 h-1 bg-[#E8E4DC]"></span>
-                          <span className="text-[#C9A84C]">{material.type}</span>
+                  <a
+                    key={index}
+                    href={material.href}
+                    target={material.download ? '_blank' : '_self'}
+                    download={material.download ? 'VaughnMartin_ReadinessOS_PitchDeck.pdf' : undefined}
+                    rel="noreferrer"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div className="flex items-center justify-between p-5 bg-white border border-[#E8E4DC] group hover:border-[#C9A84C] transition-colors cursor-pointer">
+                      <div className="flex items-center space-x-4">
+                        <div style={{ width: 4, alignSelf: 'stretch', background: material.status === 'Ready' || material.status === 'Live' ? '#2B8A6E' : '#C9A84C', flexShrink: 0 }} />
+                        <div>
+                          <h4 className="font-bold text-[#0A0F2E]">{material.title}</h4>
+                          <p className="text-sm text-[#6B7280]">{material.description}</p>
+                          <div className="flex items-center space-x-4 text-[10px] uppercase tracking-wider text-[#6B7280] mt-2 font-bold">
+                            <span>{material.duration}</span>
+                            <span className="w-1 h-1 bg-[#E8E4DC] rounded-full inline-block"></span>
+                            <span className="text-[#C9A84C]">{material.type}</span>
+                          </div>
                         </div>
                       </div>
+                      <div className="flex items-center space-x-3">
+                        <Badge variant="outline" className={`rounded-none px-3 border-[#E8E4DC] ${material.status === 'Ready' || material.status === 'Live' ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'}`}>
+                          {material.status}
+                        </Badge>
+                        {material.download
+                          ? <Download className="w-4 h-4 text-[#0A0F2E]" />
+                          : <ArrowRight className="w-4 h-4 text-[#C9A84C]" />
+                        }
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Badge variant="outline" className={`rounded-none px-3 border-[#E8E4DC] ${material.status === 'Ready' ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'}`}>
-                        {material.status}
-                      </Badge>
-                      <Button size="icon" variant="ghost" className="text-[#0A0F2E] hover:bg-[#F8F7F4]" data-testid={`button-download-${material.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                        <Download className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -235,23 +255,30 @@ export default function VCPresentations() {
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none h-12" data-testid="button-full-investor-package">
-                      <Crown className="w-4 h-4 mr-2" />
-                      Download Package
-                    </Button>
-                    <Button variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none h-12" data-testid="button-schedule-presentation">
-                      <Clock className="w-4 h-4 mr-2" />
-                      Schedule Presentation
-                    </Button>
+                    <a href="/VaughnMartin_ReadinessOS_PitchDeck.pdf" download="VaughnMartin_ReadinessOS_PitchDeck.pdf" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+                      <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none h-12 w-full" data-testid="button-full-investor-package">
+                        <Crown className="w-4 h-4 mr-2" />
+                        Download Pitch Deck
+                      </Button>
+                    </a>
+                    <a href="/request-access" style={{ textDecoration: 'none' }}>
+                      <Button variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none h-12 w-full" data-testid="button-schedule-presentation">
+                        <Clock className="w-4 h-4 mr-2" />
+                        Request a Conversation
+                      </Button>
+                    </a>
                   </div>
 
-                  <div className="mt-10 p-6 bg-[#2B8A6E]/5 border-l-4 border-[#2B8A6E]">
-                    <div className="flex items-center text-[#2B8A6E] mb-2">
-                      <TrendingUp className="w-5 h-5 mr-3" />
-                      <span className="text-lg font-bold" style={CG}>Investment Readiness: 96/100</span>
+                  <div className="mt-10 p-6 bg-[#0A0F2E]/4 border-l-4 border-[#C9A84C]">
+                    <div className="flex items-center text-[#0A0F2E] mb-3">
+                      <TrendingUp className="w-5 h-5 mr-3 text-[#C9A84C]" />
+                      <span className="text-sm font-bold tracking-widest uppercase" style={{ letterSpacing: '0.14em', color: '#0A0F2E' }}>The Moat — ADVANCE 2.0</span>
                     </div>
-                    <p className="text-sm text-[#141B45] italic opacity-80 leading-relaxed">
-                      "Platform demonstrates clear market leadership with unprecedented competitive advantages in continuous signal monitoring and strategic execution velocity."
+                    <p className="text-sm text-[#141B45] leading-relaxed mb-3">
+                      Every activation close-out generates preparation updates. Each protocol is refined with evidence-backed changes. After 3 activations, improvements are classified as proven or disproven.
+                    </p>
+                    <p className="text-sm font-bold text-[#0A0F2E]">
+                      The system gets harder to compete with after every deployment. The longer a customer runs it, the further ahead they are — and the further behind any competitor who starts later.
                     </p>
                   </div>
                 </CardContent>
