@@ -92,6 +92,15 @@ const ASSETS = [
   },
   {
     icon: BarChart3,
+    label: "The 12-Gap Matrix",
+    tag: "Category of One",
+    tagColor: GOLD,
+    desc: "9 competitor categories. 12 mobilization gaps. Zero alternatives that close all 12. The definitive competitive proof.",
+    href: "/mobilization-gap",
+    audience: ["CEO", "Board", "Sales"],
+  },
+  {
+    icon: BarChart3,
     label: "Platform Reality",
     tag: "Competitive Proof",
     tagColor: NAVY,
@@ -196,7 +205,7 @@ export default function ProofHub() {
           </p>
           <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
             {[
-              { n: "9", label: "Proof Assets" },
+              { n: String(ASSETS.length), label: "Proof Assets" },
               { n: "4", label: "Buyer Audiences" },
               { n: "3,600×", label: "Documented Head Start" },
               { n: "$7.2M", label: "Avg. Mobilization Gap" },

@@ -513,6 +513,7 @@ export default function StandardNav() {
           <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("The Case for Readiness OS")}
             {[
+              { path: '/mobilization-gap', icon: Grid3X3, label: 'The 12-Gap Matrix', sub: '9 competitor categories. 12 mobilization gaps. Zero alternatives that close all 12.', featured: true },
               { path: '/the-case', icon: Scale, label: 'The Case', sub: 'The complete buying argument — problem cost → proof → moat → ROI → decision', featured: true },
               { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
@@ -520,7 +521,6 @@ export default function StandardNav() {
               { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
               { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M — before any platform conversation', featured: true },
               { path: '/proof-story', icon: Scale, label: 'Proof Story', sub: 'Same trigger. Two organizations. The only variable: whether the response was pre-staged.', featured: true },
-              { path: '/mobilization-gap', icon: Grid3X3, label: 'The 12-Gap Matrix', sub: '9 competitor categories. 12 mobilization gaps. Zero alternatives that close all 12.', featured: true },
               { path: '/competitive-positioning', icon: BarChart3, label: 'Competitive Landscape', sub: 'Category of one — the coordination layer every alternative assumes already exists.' },
               { path: '/security-compliance', icon: Shield, label: 'Security & Compliance', sub: 'Procurement-ready — auth, data governance, compliance readiness, AI safety controls' },
               { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
@@ -991,7 +991,7 @@ export default function StandardNav() {
                   { label: 'How It Works', path: '/how-it-works' },
                   { label: 'Situations', path: '/situations-hub' },
                   { label: 'See It Work', path: '/demo-hub' },
-                  { label: 'The Proof', path: '/proof-story' },
+                  { label: 'The Proof', path: '/proof' },
                   { label: 'Partners', path: '/channel-partners' },
                   { label: 'Pricing', path: '/pricing' },
                 ].map(item => (
