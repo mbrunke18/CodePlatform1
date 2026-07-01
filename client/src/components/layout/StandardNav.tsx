@@ -1176,8 +1176,8 @@ export default function StandardNav() {
             )}
             <button
               className="p-2 transition-colors"
-              style={{ color: NAVY }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
+              style={{ color: 'white' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="nav-mobile-menu-toggle"
