@@ -1,10 +1,10 @@
-import { useEffect, useRef, lazy, Suspense, Component, ReactNode } from "react";
+import { useEffect, useRef, lazy, Suspense, Component, ReactNode, useState } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Loader2, RefreshCw, Home } from "lucide-react";
+import { Loader2, RefreshCw, Home, X, Radio, Tag, Shield, Users, DollarSign, PhoneCall, List, Plug, MessageSquare, FileCheck, BookMarked, ArrowRight } from "lucide-react";
 import RoleIndustryCaptureModal from "@/components/RoleIndustryCaptureModal";
 import QuickActions from "@/components/QuickActions";
 import EvalBanner from "@/components/EvalBanner";
@@ -897,28 +897,160 @@ function Router() {
   );
 }
 
+const GAP_ITEMS = [
+  { n:"01", Icon: Radio,       name:"Detection",           today:"Someone notices something. Maybe. By the time it's escalated, the window is already moving." },
+  { n:"02", Icon: Tag,         name:"Recognition",         today:"What kind of situation is this? The classification debate consumes the first hours." },
+  { n:"03", Icon: Shield,      name:"Authority",           today:"Who owns this? A meeting is called to decide who should be in charge of deciding." },
+  { n:"04", Icon: Users,       name:"Team Assembly",       today:"A meeting to plan who should be in the meeting. The right people assembled slowly." },
+  { n:"05", Icon: DollarSign,  name:"Budget Authorization",today:"Emergency spend requires an emergency committee. Financial response lags by days." },
+  { n:"06", Icon: PhoneCall,   name:"External Resources",  today:"Outside counsel, PR firms called cold, briefed from scratch at emergency rates." },
+  { n:"07", Icon: List,        name:"Sequencing",          today:"Three teams argue the order of operations while the window closes." },
+  { n:"08", Icon: Plug,        name:"Systems Coordination",today:"Manual handoffs, chasing access, disconnected platforms." },
+  { n:"09", Icon: MessageSquare,name:"Communication",      today:"Drafted from scratch under pressure, usually wrong the first time." },
+  { n:"10", Icon: FileCheck,   name:"Compliance & Disclosure",today:"Counsel is asked about legal obligations during the crisis, not before it." },
+  { n:"11", Icon: BookMarked,  name:"Governance Record",   today:"Decisions made verbally, documentation incomplete, audit trail missing." },
+  { n:"12", Icon: RefreshCw,   name:"Learning & Encoding", today:"The debrief that never happens. Knowledge walks out the door." },
+];
+
 function ComparisonButton() {
   const [location] = useLocation();
+  const [open, setOpen] = useState(false);
   if (location === '/mobilization-gap') return null;
   return (
-    <a
-      href="/mobilization-gap"
-      style={{
-        position: 'fixed', bottom: 24, left: 20, zIndex: 9998,
-        background: '#0A0F2E', color: '#C9A84C',
-        border: '1px solid #C9A84C',
-        fontFamily: "'Barlow Condensed', sans-serif",
-        fontWeight: 700, fontSize: 11, letterSpacing: '0.12em',
-        textTransform: 'uppercase', textDecoration: 'none',
-        padding: '9px 16px', borderRadius: 3,
-        boxShadow: '0 3px 14px rgba(0,0,0,0.40)',
-        whiteSpace: 'nowrap',
-        display: 'flex', alignItems: 'center', gap: 7,
-      }}
-    >
-      <span style={{ fontSize: 14, lineHeight: 1 }}>⬡</span>
-      12 Gap Matrix
-    </a>
+    <>
+      {/* Trigger button */}
+      <button
+        onClick={() => setOpen(true)}
+        style={{
+          position: 'fixed', bottom: 24, left: 20, zIndex: 9998,
+          background: '#0A0F2E', color: '#C9A84C',
+          border: '1px solid #C9A84C',
+          fontFamily: "'Barlow Condensed', sans-serif",
+          fontWeight: 700, fontSize: 11, letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          padding: '9px 16px', borderRadius: 3,
+          boxShadow: '0 3px 14px rgba(0,0,0,0.40)',
+          whiteSpace: 'nowrap',
+          display: 'flex', alignItems: 'center', gap: 7,
+          cursor: 'pointer',
+        }}
+      >
+        <span style={{ fontSize: 14, lineHeight: 1 }}>⬡</span>
+        12 Gap Matrix
+      </button>
+
+      {/* Backdrop */}
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 9998,
+            background: 'rgba(0,0,0,0.45)',
+          }}
+        />
+      )}
+
+      {/* Slide-up panel */}
+      <div
+        style={{
+          position: 'fixed', bottom: 0, left: 0, zIndex: 9999,
+          width: 440, maxWidth: '100vw',
+          maxHeight: '82vh',
+          background: '#0A0F2E',
+          border: '1px solid #C9A84C',
+          borderBottom: 'none',
+          borderRadius: '4px 4px 0 0',
+          boxShadow: '0 -8px 40px rgba(0,0,0,0.6)',
+          display: 'flex', flexDirection: 'column',
+          transform: open ? 'translateY(0)' : 'translateY(110%)',
+          transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
+          pointerEvents: open ? 'auto' : 'none',
+        }}
+      >
+        {/* Header */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '14px 20px 12px',
+          borderBottom: '1px solid rgba(201,168,76,0.25)',
+          flexShrink: 0,
+        }}>
+          <div>
+            <div style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 700, fontSize: 13, letterSpacing: '0.14em',
+              textTransform: 'uppercase', color: '#C9A84C',
+            }}>12 Mobilization Gaps</div>
+            <div style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontSize: 11, color: 'rgba(255,255,255,0.45)',
+              letterSpacing: '0.08em', marginTop: 2,
+            }}>Every organization improvises these 12 failures when a situation fires</div>
+          </div>
+          <button
+            onClick={() => setOpen(false)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', padding: 4 }}
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Scrollable gap list */}
+        <div style={{ overflowY: 'auto', flex: 1, padding: '8px 0' }}>
+          {GAP_ITEMS.map(({ n, Icon, name, today }) => (
+            <div key={n} style={{
+              display: 'flex', gap: 14, padding: '11px 20px',
+              borderBottom: '1px solid rgba(255,255,255,0.05)',
+            }}>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-start', gap: 8, paddingTop: 1 }}>
+                <span style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 700, fontSize: 11, color: '#C9A84C',
+                  letterSpacing: '0.06em', minWidth: 22,
+                }}>{n}</span>
+                <Icon size={13} style={{ color: '#C9A84C', marginTop: 2 }} />
+              </div>
+              <div>
+                <div style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 700, fontSize: 13, color: 'white',
+                  letterSpacing: '0.06em', marginBottom: 3,
+                }}>{name}</div>
+                <div style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontSize: 11, color: 'rgba(255,255,255,0.50)',
+                  lineHeight: 1.45,
+                }}>{today}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer CTA */}
+        <div style={{
+          padding: '12px 20px', borderTop: '1px solid rgba(201,168,76,0.25)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          flexShrink: 0,
+        }}>
+          <span style={{
+            fontFamily: "'Barlow Condensed', sans-serif",
+            fontSize: 11, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em',
+          }}>Readiness OS closes all 12 before the trigger fires</span>
+          <a
+            href="/mobilization-gap"
+            onClick={() => setOpen(false)}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 5,
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 700, fontSize: 11, letterSpacing: '0.1em',
+              textTransform: 'uppercase', color: '#C9A84C',
+              textDecoration: 'none',
+            }}
+          >
+            Full Matrix <ArrowRight size={12} />
+          </a>
+        </div>
+      </div>
+    </>
   );
 }
 
