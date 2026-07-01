@@ -915,9 +915,9 @@ export async function evaluateAndPersistSignals(
 
       if (hoursSince < 24) continue; // Suppress duplicate within 24 hours — prevents same trigger spamming on sustained news cycles
 
-      // ── Daily email cap: max 3 alert emails per org per calendar day ───────
+      // ── Daily email cap: max 10 alert emails per org per calendar day ──────
       // Counts detections where a notification was already sent today.
-      // Protects executives from alert fatigue on high-signal days.
+      // Protects executives from alert fatigue on very high-signal days.
       try {
         const todayStart = new Date();
         todayStart.setHours(0, 0, 0, 0);
@@ -931,7 +931,7 @@ export async function evaluateAndPersistSignals(
               gte(triggerDetections.detectedAt, todayStart)
             )
           );
-        if (emailsSentToday.length >= 3) {
+        if (emailsSentToday.length >= 10) {
           console.log(`📵 Daily email cap reached for org ${organizationId} (${emailsSentToday.length} sent today) — suppressing "${detection.triggerName}"`);
           continue;
         }
@@ -1188,17 +1188,19 @@ export async function evaluateAndPersistSignals(
         }
       } catch { /* non-critical */ }
 
-      // Only mark as sent when the email actually delivered — preserves daily cap accuracy
+      // Only mark as sent when the email actually delivered — preserves daily cap accuracy.
+      // Use the specific detection ID (not triggerName) to avoid inflating the cap count
+      // by accidentally marking older detections of the same trigger type as sent.
       if (emailDelivered) {
         await db
           .update(triggerDetections)
           .set({ notificationSent: true, status: timelineStatus })
-          .where(eq(triggerDetections.triggerName, detection.triggerName));
+          .where(eq(triggerDetections.id, savedDetection.id));
       } else {
         await db
           .update(triggerDetections)
           .set({ status: timelineStatus })
-          .where(eq(triggerDetections.triggerName, detection.triggerName));
+          .where(eq(triggerDetections.id, savedDetection.id));
       }
 
       detectionsCreated++;
