@@ -6642,28 +6642,28 @@ export const triggerDetections = pgTable('trigger_detections', {
   regulatorAgency: varchar('regulator_agency', { length: 100 }),
   // SEC | FTC | DOJ | EEOC | NLRB | FDIC | OCC | FERC | OSHA | EPA | FINRA | CFPB | Treasury | UK FCA
   // ── P3: Cyber Threat Intelligence ────────────────────────────────────────────
-  threatSeverity: varchar('threat_severity', { length: 20 }),
+  threatSeverity: varchar('threat_severity', { length: 100 }),
   // critical | high | medium | low — CVSS-aligned, extracted from CISA/SANS content
-  exploitStatus: varchar('exploit_status', { length: 50 }),
+  exploitStatus: varchar('exploit_status', { length: 100 }),
   // known_exploited | proof_of_concept | theoretical
   affectedVendor: varchar('affected_vendor', { length: 200 }),
   // Microsoft | Cisco | Fortinet | etc. — named in advisory
   // ── P4: Economic Indicator Detail ────────────────────────────────────────────
-  economicIndicatorType: varchar('economic_indicator_type', { length: 50 }),
+  economicIndicatorType: varchar('economic_indicator_type', { length: 100 }),
   // interest_rate | jobs_report | CPI | GDP | energy_price | monetary_policy
-  indicatorDirection: varchar('indicator_direction', { length: 20 }),
+  indicatorDirection: varchar('indicator_direction', { length: 100 }),
   // rising | falling | stable | unexpected — routes to correct protocol severity
   // ── P5: Trade & Geopolitical Action ──────────────────────────────────────────
-  tradeActionType: varchar('trade_action_type', { length: 50 }),
+  tradeActionType: varchar('trade_action_type', { length: 100 }),
   // tariff | sanction | export_control | embargo | executive_order
-  effectiveTimeline: varchar('effective_timeline', { length: 20 }),
+  effectiveTimeline: varchar('effective_timeline', { length: 100 }),
   // immediate | 30_days | 90_days | proposed — determines protocol urgency
   // ── P6: Health & Safety Recall ───────────────────────────────────────────────
-  recallClass: varchar('recall_class', { length: 20 }),
+  recallClass: varchar('recall_class', { length: 100 }),
   // Class_I | Class_II | Class_III — FDA classification (Class I = highest risk)
-  affectedProductType: varchar('affected_product_type', { length: 50 }),
+  affectedProductType: varchar('affected_product_type', { length: 100 }),
   // food | pharma | medical_device | vehicle | consumer
-  recallScope: varchar('recall_scope', { length: 20 }),
+  recallScope: varchar('recall_scope', { length: 100 }),
   // regional | national | international
   // ── Market Signal Detail ──────────────────────────────────────────────────────
   signalEventType: varchar('signal_event_type', { length: 50 }),
@@ -6674,13 +6674,13 @@ export const triggerDetections = pgTable('trigger_detections', {
   namedSector: varchar('named_sector', { length: 100 }),
   // sector named in regulatory enforcement action
   // ── Enhanced Enforcement ─────────────────────────────────────────────────────
-  penaltyAmountRange: varchar('penalty_amount_range', { length: 20 }),
+  penaltyAmountRange: varchar('penalty_amount_range', { length: 100 }),
   // <1M | 1M-10M | 10M-100M | 100M+ — parsed from article text
   // ── Enhanced Cyber ───────────────────────────────────────────────────────────
   cveId: varchar('cve_id', { length: 30 }),
   // CVE-YYYY-NNNNN — extracted via regex from CISA/SANS feeds
   // ── Enhanced Economic ────────────────────────────────────────────────────────
-  indicatorMagnitude: varchar('indicator_magnitude', { length: 20 }),
+  indicatorMagnitude: varchar('indicator_magnitude', { length: 100 }),
   // minor | moderate | significant | shock — routing key for recession-level protocols
   centralBank: varchar('central_bank', { length: 50 }),
   // Federal Reserve | ECB — jurisdiction of monetary policy signal

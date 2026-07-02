@@ -139,10 +139,11 @@ class NotificationService {
 
       const htmlContent = this.renderEmailTemplate(notification);
 
-      // Use Resend's verified domain first; fall back to branded domain once DNS is configured
+      // Use verified branded domain first — pilot@vaughnmartin.com is verified in Resend.
+      // onboarding@resend.dev only delivers to the Resend account owner's address.
       const fromAddresses = [
+        'Readiness OS <pilot@vaughnmartin.com>',
         'Readiness OS <onboarding@resend.dev>',
-        'Readiness OS <noreply@vaughnmartin.com>',
       ];
       let sent = false;
       for (const from of fromAddresses) {

@@ -438,10 +438,11 @@ async function sendDetectionEmail(
     </div>
   `;
 
-  // Try reliable sender first (Resend's own verified domain), fall back to branded domain
+  // Use verified branded domain first — pilot@vaughnmartin.com is verified in Resend.
+  // onboarding@resend.dev is Resend's test sender and only delivers to the Resend account owner.
   const fromAddresses = [
-    'Readiness OS <onboarding@resend.dev>',
     'Readiness OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
   ];
 
   let anySent = false;
@@ -555,8 +556,8 @@ async function sendWatchEmail(
   `;
 
   const fromAddresses = [
-    'Readiness OS <onboarding@resend.dev>',
     'Readiness OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
   ];
 
   let anySent = false;
@@ -670,8 +671,8 @@ async function sendAwareEmail(
   `;
 
   const fromAddresses = [
-    'Readiness OS <onboarding@resend.dev>',
     'Readiness OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
   ];
 
   let anySent = false;
@@ -1005,66 +1006,79 @@ export async function evaluateAndPersistSignals(
         }
       } catch { /* non-critical — default urgency stands */ }
 
-      // Persist the detection with full evidence trail
+      // Helper: safely truncate any string field to a max length — prevents varchar overflow
+      // from external signal data that doesn't conform to expected enum values.
+      const trunc = (val: string | null | undefined, max: number): string | null =>
+        val ? String(val).substring(0, max) : null;
+
+      // Persist the detection with full evidence trail.
+      // IMPORTANT: wrapped in its own try/catch so a DB failure never blocks email delivery.
       const sig = signal as any;
-      const [savedDetection] = await db.insert(triggerDetections).values({
-        organizationId: organizationId,
-        triggerName: detection.triggerName,
-        triggerDomain: detection.triggerDomain,
-        signalDescription: signal.description,
-        signalSource: signal.source,
-        signalSourceUrl: signal.sourceUrl || null,
-        confidenceScore: detection.confidenceScore,
-        signalCategory: sig.category || null,
-        jurisdiction: sig.jurisdiction || 'US',
-        recommendedPlaybook: detection.recommendedPlaybook,
-        alternatePlaybooks: detection.alternatePlaybooks,
-        // P2: Regulatory enforcement
-        enforcementActionType: sig.enforcementActionType || null,
-        regulatorAgency: sig.regulatorAgency || null,
-        // P3: Cyber threat intelligence
-        threatSeverity: sig.threatSeverity || null,
-        exploitStatus: sig.exploitStatus || null,
-        affectedVendor: sig.affectedVendor || null,
-        // P4: Economic indicator
-        economicIndicatorType: sig.economicIndicatorType || null,
-        indicatorDirection: sig.indicatorDirection || null,
-        // P5: Trade & geopolitical
-        tradeActionType: sig.tradeActionType || null,
-        effectiveTimeline: sig.effectiveTimeline || null,
-        // P6: Health & safety recall
-        recallClass: sig.recallClass || null,
-        affectedProductType: sig.affectedProductType || null,
-        recallScope: sig.recallScope || null,
-        // Market signal
-        signalEventType: sig.signalEventType || null,
-        // Sector intelligence
-        affectedSector: sig.affectedSector || null,
-        namedSector: sig.namedSector || null,
-        // Enhanced enforcement
-        penaltyAmountRange: sig.penaltyAmountRange || null,
-        // Enhanced cyber
-        cveId: sig.cveId || null,
-        // Enhanced economic
-        indicatorMagnitude: sig.indicatorMagnitude || null,
-        centralBank: sig.centralBank || null,
-        // Enhanced trade
-        tradePartner: sig.tradePartner || null,
-        affectedHsCodes: sig.affectedHsCodes || null,
-        // Trigger graph linkage — populated here, then protocol ID lookup runs post-insert
-        triggerIdsMatched: [detection.triggerName],
-        status: 'detected',
-        notificationSent: false,
-        urgencyLevel,
-        orgReadiness,
-        matchedEvidence: {
-          engine: engine,
-          conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
-          totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
-          dataPoints: detection.dataPoints ?? detection.matchedKeywords.map(kw => `Signal matched: "${kw}"`),
-          matchedKeywords: detection.matchedKeywords,
-        },
-      } as any).returning();
+      let savedDetection: { id: number } | undefined;
+      try {
+        const [row] = await db.insert(triggerDetections).values({
+          organizationId: organizationId,
+          triggerName: detection.triggerName,
+          triggerDomain: detection.triggerDomain,
+          signalDescription: signal.description,
+          signalSource: signal.source,
+          signalSourceUrl: sig.sourceUrl || null,
+          confidenceScore: detection.confidenceScore,
+          signalCategory: trunc(sig.category, 50),
+          jurisdiction: trunc(sig.jurisdiction || 'US', 50),
+          recommendedPlaybook: detection.recommendedPlaybook,
+          alternatePlaybooks: detection.alternatePlaybooks,
+          // P2: Regulatory enforcement
+          enforcementActionType: trunc(sig.enforcementActionType, 50),
+          regulatorAgency: trunc(sig.regulatorAgency, 100),
+          // P3: Cyber threat intelligence
+          threatSeverity: trunc(sig.threatSeverity, 100),
+          exploitStatus: trunc(sig.exploitStatus, 100),
+          affectedVendor: trunc(sig.affectedVendor, 200),
+          // P4: Economic indicator
+          economicIndicatorType: trunc(sig.economicIndicatorType, 100),
+          indicatorDirection: trunc(sig.indicatorDirection, 100),
+          // P5: Trade & geopolitical
+          tradeActionType: trunc(sig.tradeActionType, 100),
+          effectiveTimeline: trunc(sig.effectiveTimeline, 100),
+          // P6: Health & safety recall
+          recallClass: trunc(sig.recallClass, 100),
+          affectedProductType: trunc(sig.affectedProductType, 100),
+          recallScope: trunc(sig.recallScope, 100),
+          // Market signal
+          signalEventType: trunc(sig.signalEventType, 50),
+          // Sector intelligence
+          affectedSector: trunc(sig.affectedSector, 100),
+          namedSector: trunc(sig.namedSector, 100),
+          // Enhanced enforcement
+          penaltyAmountRange: trunc(sig.penaltyAmountRange, 100),
+          // Enhanced cyber
+          cveId: trunc(sig.cveId, 30),
+          // Enhanced economic
+          indicatorMagnitude: trunc(sig.indicatorMagnitude, 100),
+          centralBank: trunc(sig.centralBank, 50),
+          // Enhanced trade
+          tradePartner: trunc(sig.tradePartner, 200),
+          affectedHsCodes: trunc(sig.affectedHsCodes, 200),
+          // Trigger graph linkage — populated here, then protocol ID lookup runs post-insert
+          triggerIdsMatched: [detection.triggerName],
+          status: 'detected',
+          notificationSent: false,
+          urgencyLevel,
+          orgReadiness,
+          matchedEvidence: {
+            engine: engine,
+            conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
+            totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
+            dataPoints: detection.dataPoints ?? detection.matchedKeywords.map(kw => `Signal matched: "${kw}"`),
+            matchedKeywords: detection.matchedKeywords,
+          },
+        } as any).returning();
+        savedDetection = row;
+      } catch (dbErr: any) {
+        // DB failure must NEVER suppress email delivery. Log and continue.
+        console.error(`⚠ Detection DB persist failed for "${detection.triggerName}" — email will still fire: ${dbErr?.message}`);
+      }
 
       // ── P1: Protocol Graph Linkage — look up playbook_library ID by name ──────
       // Runs post-insert so it never blocks the main detection path.

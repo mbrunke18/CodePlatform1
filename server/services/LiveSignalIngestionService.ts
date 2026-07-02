@@ -811,14 +811,13 @@ class LiveSignalIngestionService {
         .where(inArray(organizations.name, DEMO_ORG_NAMES));
       for (const { id } of demoOrgRows) allOrgIds.delete(id);
 
+      console.log(`   📡 Multi-org evaluation: ${allOrgIds.size} additional org(s) to evaluate`);
       for (const orgId of allOrgIds) {
         try {
           const extraDetections = await evaluateAndPersistSignals(signals, orgId!);
-          if (extraDetections > 0) {
-            console.log(`   🎯 ${extraDetections} trigger detection(s) for org ${orgId}`);
-          }
-        } catch {
-          // Never let one org's evaluation block others
+          console.log(`   🏢 Org ${orgId}: ${extraDetections} trigger detection(s)`);
+        } catch (err: any) {
+          console.error(`   ✗ Org ${orgId} evaluation failed: ${err?.message}`);
         }
       }
     } catch {
