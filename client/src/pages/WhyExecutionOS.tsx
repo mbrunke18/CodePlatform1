@@ -121,7 +121,7 @@ const fiveReasons = [
   {
     icon: Zap,
     title: "The operating model layer no one else provides",
-    body: "Microsoft sells intelligence. ServiceNow sells process automation. Palantir sells data integration. Everbridge sells notification. None of them sell the operating model that sits above all of these and coordinates humans at AI speed. Readiness OS is that layer — and it works with every tool your organization already has.",
+    body: "Microsoft sells intelligence. ServiceNow sells process automation. Palantir sells data integration. Everbridge sells notification. None of them sell the operating model that sits above all of these and coordinates humans at AI speed. Readiness OS is that layer — and it works with every tool your organization already has. Microsoft itself confirmed the gap in 2026, launching Frontier Company — a $2.5B services business built to close it by the hour. Readiness OS closes it as software, always-on.",
     metric: "Works with your existing stack",
   },
   {

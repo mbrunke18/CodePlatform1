@@ -177,6 +177,11 @@ export default function InvestorLanding() {
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: "rgba(10,15,46,0.65)", maxWidth: 640, margin: "0 auto", lineHeight: 1.75 }}>
               Every enterprise already bought the detection stack. Every enterprise already bought the AI stack. None have the operating model that acts on them. Readiness OS is that layer.
             </p>
+            <div style={{ marginTop: 24, display: "inline-flex", alignItems: "flex-start", gap: 10, padding: "10px 16px", background: "rgba(43,138,110,0.08)", borderLeft: `3px solid ${TEAL}`, maxWidth: 640, textAlign: "left" }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: "rgba(10,15,46,0.7)", lineHeight: 1.65, margin: 0 }}>
+                <strong style={{ color: TEAL }}>Since we wrote this thesis:</strong> Microsoft launched Frontier Company — a $2.5B operating business built to close "the gap between technical possibility and measurable value." That is the exact gap Readiness OS already productized, as software, not a services engagement.
+              </p>
+            </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, background: "rgba(10,15,46,0.08)", marginBottom: 48 }}>

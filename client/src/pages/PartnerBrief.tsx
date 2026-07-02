@@ -67,8 +67,9 @@ export default function PartnerBrief() {
             <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'flex-start', gap: 10, padding: '10px 14px', background: 'rgba(43,138,110,0.12)', borderLeft: '3px solid #2B8A6E', maxWidth: 580 }}>
               <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
                 <strong style={{ color: '#2B8A6E' }}>Independently validated:</strong> Microsoft published its own enterprise AI readiness assessment framework
-                (<code style={{ fontSize: 10, background: 'rgba(255,255,255,0.08)', padding: '1px 5px' }}>microsoft/m365-copilot-automated-readiness-assessment</code>).
-                The technology is deployed across your customers. The operating model to use it isn't. That is the conversation Readiness OS opens.
+                (<code style={{ fontSize: 10, background: 'rgba(255,255,255,0.08)', padding: '1px 5px' }}>microsoft/m365-copilot-automated-readiness-assessment</code>)
+                — then launched Frontier Company, a $2.5B operating business built to close "the gap between technical possibility and measurable value."
+                The technology is deployed across your customers. The operating model to use it isn't. That is the conversation Readiness OS already productized.
               </p>
             </div>
           </div>

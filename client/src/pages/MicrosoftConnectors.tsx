@@ -336,7 +336,8 @@ export default function MicrosoftConnectors() {
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: '#374151' }}>
                   <strong style={{ color: '#0A0F2E' }}>Independently validated:</strong> Microsoft published its own readiness assessment framework for enterprise AI deployment
-                  (<code className="text-[10px] bg-gray-100 px-1 py-0.5 rounded">microsoft/m365-copilot-automated-readiness-assessment</code>).
+                  (<code className="text-[10px] bg-gray-100 px-1 py-0.5 rounded">microsoft/m365-copilot-automated-readiness-assessment</code>)
+                  — then launched Frontier Company, a $2.5B operating business built to close "the gap between technical possibility and measurable value."
                   The technology is ready. The operating model to use it isn't. That gap is exactly what Readiness OS closes.
                 </p>
               </div>

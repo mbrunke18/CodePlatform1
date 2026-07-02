@@ -294,6 +294,17 @@ function InvestorPresentation() {
             </div>
           ))}
         </div>
+        <div className="max-w-5xl w-full border border-[#C9A84C]/40 bg-[#C9A84C]/5 p-5 flex items-center gap-6 mb-4">
+          <div className="flex-1">
+            <div className="text-[#0A0F2E] text-xs font-bold uppercase tracking-widest mb-1">Then Microsoft Confirmed It Themselves</div>
+            <div className="text-[#0A0F2E] font-semibold text-sm leading-snug mb-1">Frontier Company — a new $2.5B Microsoft operating business — launched to close "the gap between technical possibility and measurable value" for enterprise AI customers.</div>
+            <div className="text-[#374151] text-xs leading-relaxed">Already engaged: LSEG, Land O'Lakes, Unilever, Novo Nordisk. Microsoft's own words: "AI as the operating layer for how companies transform." That is the operating model layer Readiness OS already productized — as software, not a services engagement.</div>
+          </div>
+          <div className="text-right shrink-0">
+            <div className="text-[#0A0F2E] font-black text-2xl">$2.5B</div>
+            <div className="text-[#6B7280] text-xs">Microsoft's own admission</div>
+          </div>
+        </div>
         <div className="max-w-5xl w-full bg-[#0A0F2E] p-5 flex items-center gap-6">
           <div className="flex-1">
             <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">The Unified Thesis</div>
