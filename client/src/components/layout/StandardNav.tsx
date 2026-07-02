@@ -526,11 +526,13 @@ export default function StandardNav() {
           <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("The Case for Readiness OS")}
             {[
+              { path: '/investor-tour', icon: Play, label: 'Investor Tour — Start Here', sub: 'The complete investment thesis in 5 guided chapters — problem, platform, proof, opportunity, ask', featured: true },
               { path: '/mobilization-gap', icon: Grid3X3, label: 'The 12-Gap Matrix', sub: '9 competitor categories. 12 mobilization gaps. Zero alternatives that close all 12.', featured: true },
               { path: '/the-case', icon: Scale, label: 'The Case', sub: 'The complete buying argument — problem cost → proof → moat → ROI → decision', featured: true },
               { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
               { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
+              { path: '/founding-partner-tour', icon: Play, label: 'Founding Partner Tour — Start Here', sub: '5-chapter guided journey — what it feels like, what you get, and how to apply', featured: true },
               { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
               { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M — before any platform conversation', featured: true },
               { path: '/proof-story', icon: Scale, label: 'Proof Story', sub: 'Same trigger. Two organizations. The only variable: whether the response was pre-staged.', featured: true },
