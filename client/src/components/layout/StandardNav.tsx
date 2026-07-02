@@ -465,6 +465,7 @@ export default function StandardNav() {
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Grow With VaughnMartin")}
             {[
+              { path: '/founding-partner-tour', icon: Play, label: 'Founding Partner Tour — Start Here', sub: '5-chapter guided journey — what it feels like, what you get, and how to apply', featured: true },
               { path: '/channel-partners', icon: Users, label: 'Channel Partner Program', sub: 'Consulting firms, SIs & advisory practices — deliver 12-minute execution to your enterprise clients', featured: true },
             ].map(l => megaItem(l))}
           </div>
@@ -568,6 +569,7 @@ export default function StandardNav() {
           <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
             {megaColHeading("Investor Materials")}
             {[
+              { path: '/investor-tour', icon: Play, label: 'Investor Tour — Start Here', sub: 'The complete investment thesis in 5 guided chapters — problem, platform, proof, opportunity, ask', featured: true },
               { path: '/investor-resources', icon: FileText, label: 'Investor Resources', sub: 'Full materials — frameworks, thesis & deck', featured: true },
               { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — product depth for buyers & investors' },
               { path: '/investors', icon: TrendingUp, label: 'Investment Thesis', sub: 'Market opportunity, research validation & ROI case' },
