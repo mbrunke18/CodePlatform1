@@ -503,13 +503,10 @@ export default function StandardNav() {
             {megaColHeading("Tools & Calculators")}
             {[
               { path: '/the-gap', icon: Grid3X3, label: 'The Gap — Live Cost + 12-Gap Matrix', sub: 'Real-time mobilization cost counter + full competitor gap matrix in one view', featured: true },
-              { path: '/the-cost-of-waiting', icon: DollarSign, label: 'The Cost of Waiting', sub: 'Live dual counter + 6-situation timelines — see exactly what not being ready is costing', featured: true },
               { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate', featured: true },
               { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector right now. Protocols already staged.', featured: true },
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
-              { path: '/growth', icon: TrendingUp, label: 'Pricing & Plans', sub: 'Core · Foresight · Enterprise — transparent value-based pricing', featured: true },
-              { path: '/customer-journey', icon: Users, label: 'Customer Journey', sub: 'See how enterprise teams onboard & scale' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
@@ -531,15 +528,10 @@ export default function StandardNav() {
               { path: '/the-case', icon: Scale, label: 'The Case', sub: 'The complete buying argument — problem cost → proof → moat → ROI → decision', featured: true },
               { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
+              { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M', featured: true },
+              { path: '/proof-story', icon: Scale, label: 'Proof Story', sub: 'Same trigger. Two organizations. One had it pre-staged.', featured: true },
               { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
               { path: '/founding-partner-tour', icon: Play, label: 'Founding Partner Tour — Start Here', sub: '5-chapter guided journey — what it feels like, what you get, and how to apply', featured: true },
-              { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
-              { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M — before any platform conversation', featured: true },
-              { path: '/proof-story', icon: Scale, label: 'Proof Story', sub: 'Same trigger. Two organizations. The only variable: whether the response was pre-staged.', featured: true },
-              { path: '/competitive-positioning', icon: BarChart3, label: 'Competitive Landscape', sub: 'Category of one — the coordination layer every alternative assumes already exists.' },
-              { path: '/security-compliance', icon: Shield, label: 'Security & Compliance', sub: 'Procurement-ready — auth, data governance, compliance readiness, AI safety controls' },
-              { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
-              { path: '/vs-bcp', icon: Scale, label: 'Readiness OS vs. BCP', sub: 'Your BCP covers catastrophe. We cover the triggers that happen every year.' },
             ].map(l => megaItem(l))}
           </div>
         </div>
@@ -650,18 +642,12 @@ export default function StandardNav() {
       },
     ];
     const deeperDemos = [
-      { path: '/demo/market-entry', icon: TrendingUp, label: 'Growth — Competitor Displacement Sprint', sub: 'LegacyPoint files Chapter 11. 1,400 enterprise accounts in-play. Salesforce deploys overnight. 72-hour window.', domain: 'GROWTH' },
-      { path: '/demo/acquisition', icon: Target, label: 'Growth — M&A Rapid Response', sub: 'Waypoint Analytics authorizes a sale. Three buyers in conversations. LOI required in 48 hours.', domain: 'GROWTH' },
-      { path: '/demo/product-launch', icon: Rocket, label: 'Transformation — Go-to-Market Acceleration', sub: 'Cascade announces June 30 launch. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.', domain: 'TRANSFORMATION' },
-      { path: '/demo/workforce', icon: Users, label: 'Transformation — Workforce Realignment', sub: 'Board approves system-staged realignment — 6,720 roles, 12 countries. WARN Act. Must begin in 48 hours.', domain: 'TRANSFORMATION' },
       { path: '/demo/ransomware', icon: Zap, label: 'Risk — Financial Services Ransomware', sub: 'Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours.', domain: 'RISK' },
+      { path: '/demo/market-entry', icon: TrendingUp, label: 'Growth — Competitor Displacement Sprint', sub: 'LegacyPoint files Chapter 11. 1,400 enterprise accounts in-play. 72-hour window.', domain: 'GROWTH' },
+      { path: '/demo/acquisition', icon: Target, label: 'Growth — M&A Rapid Response', sub: 'Waypoint Analytics authorizes a sale. LOI required in 48 hours.', domain: 'GROWTH' },
       { path: '/demo/pharma', icon: AlertCircle, label: 'Risk — Pharma FDA Class I Recall', sub: 'Contaminated batch. 340,000 units distributed. 72-hour regulatory window.', domain: 'RISK' },
-      { path: '/demo/supply-chain', icon: Globe, label: 'Risk — Manufacturing Supplier Failure', sub: 'Primary supplier files Chapter 11. 60% of Q3 production at risk overnight.', domain: 'RISK' },
-      { path: '/manufacturing-supplier-demo', icon: Globe, label: 'Industrial HVACR — Supplier Force Majeure', sub: 'Primary compressor supplier declares force majeure. 14 facilities exposed at peak season. CFO + COO authorization in 12 minutes.', domain: 'RISK' },
-      { path: '/demo/energy', icon: Zap, label: 'Risk — Energy Grid Failure', sub: 'Substation offline. 280K customers. NERC CIP clock started at 3:15 AM.', domain: 'RISK' },
-      { path: '/demo/food-safety', icon: AlertCircle, label: 'Risk — Retail Food Safety Crisis', sub: 'E.coli outbreak. 3 hospitalized. CNN has 45 minutes.', domain: 'RISK' },
-      { path: '/demo/data-breach', icon: Target, label: 'Risk — Technology Data Breach', sub: '2.3M customer records on dark web. GDPR 72-hour notification clock running.', domain: 'RISK' },
-      { path: '/demo/regulatory', icon: Scale, label: 'Risk — General Counsel DOJ Investigation', sub: 'Civil Investigative Demand received. Litigation hold must issue today.', domain: 'RISK' },
+      { path: '/demo/product-launch', icon: Rocket, label: 'Transformation — Go-to-Market Sprint', sub: 'Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.', domain: 'TRANSFORMATION' },
+      { path: '/demo/regulatory', icon: Scale, label: 'Risk — DOJ Investigation', sub: 'Civil Investigative Demand received. Litigation hold must issue today.', domain: 'RISK' },
     ];
     return (
       <DropdownMenu>
@@ -756,33 +742,41 @@ export default function StandardNav() {
 
             {/* Right column: deeper experiences */}
             <div style={{ padding: '18px 18px 18px 14px', background: 'rgba(248,247,244,0.55)' }}>
-              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 12px 2px' }}>Go Deeper</p>
+              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 10px 2px' }}>Go Deeper — By Scenario</p>
               {deeperDemos.map(({ path, icon: Icon, label, sub }) => (
                 <div
                   key={path}
                   onClick={() => navigateTo(path)}
-                  style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '8px 10px', marginBottom: 4, borderRadius: 0, cursor: 'pointer', transition: 'background 0.12s' }}
+                  style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '7px 10px', marginBottom: 3, borderRadius: 0, cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.06)'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 >
-                  <div style={{ width: 28, height: 28, background: 'rgba(10,15,46,0.07)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Icon size={13} style={{ color: NAVY }} />
+                  <div style={{ width: 26, height: 26, background: 'rgba(10,15,46,0.07)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon size={12} style={{ color: NAVY }} />
                   </div>
                   <div>
                     <p style={{ fontSize: 11, fontWeight: 700, color: NAVY, margin: '0 0 1px', lineHeight: 1.3 }}>{label}</p>
-                    <p style={{ fontSize: 10, color: '#6B7280', margin: 0, lineHeight: 1.4 }}>{sub}</p>
+                    <p style={{ fontSize: 10, color: '#6B7280', margin: 0, lineHeight: 1.35 }}>{sub}</p>
                   </div>
                 </div>
               ))}
+              <div
+                onClick={() => navigateTo('/demo-hub')}
+                style={{ margin: '8px 0 10px', padding: '6px 10px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+              >
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: TEAL, letterSpacing: '0.06em' }}>View all 12 full scenarios →</span>
+              </div>
               {/* Bottom CTA */}
-              <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
+              <div style={{ paddingTop: 10, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
                 <div
                   onClick={() => navigateTo('/founding-partner')}
-                  style={{ background: NAVY, borderRadius: 0, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
+                  style={{ background: NAVY, borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
                 >
-                  <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 3px' }}>Ready to Run It Inside Your Org?</p>
+                  <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Ready to Run It Inside Your Org?</p>
                   <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Apply for Founding Partner Access →</p>
                 </div>
               </div>
