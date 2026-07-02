@@ -1006,11 +1006,10 @@ export default function StandardNav() {
           <div className="hidden lg:flex items-center gap-0.5">
             {isAuthenticated && user ? renderProductNavCenter() : (
               <>
-                {/* Clean hub links — flat buttons except "The Proof" which uses the mega-menu */}
+                {/* Flat links */}
                 {[
                   { label: 'How It Works', path: '/how-it-works' },
                   { label: 'Situations', path: '/situations-hub' },
-                  { label: 'See It Work', path: '/demo-hub' },
                 ].map(item => (
                   <button
                     key={item.path}
@@ -1023,23 +1022,32 @@ export default function StandardNav() {
                     {item.label}
                   </button>
                 ))}
-                {/* "The Proof" — mega-menu with 12-Gap Matrix, Cost of Delay, ROI Calculator, etc. */}
+                {/* See It Work — full demo dropdown */}
+                {renderExperienceDropdown()}
+                {/* The Proof — mega-menu */}
                 {renderEvidenceDropdown()}
-                {[
-                  { label: 'Partners', path: '/channel-partners' },
-                  { label: 'Pricing', path: '/pricing' },
-                ].map(item => (
-                  <button
-                    key={item.path}
-                    onClick={() => navigateTo(item.path)}
-                    className="px-3 py-2 text-sm font-semibold transition-all duration-150"
-                    style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap', border: 'none' }}
-                    onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
-                    onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+                {/* Partners — flat link */}
+                <button
+                  onClick={() => navigateTo('/channel-partners')}
+                  className="px-3 py-2 text-sm font-semibold transition-all duration-150"
+                  style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap', border: 'none' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
+                >
+                  Partners
+                </button>
+                {/* Investors — full mega-menu */}
+                {renderInvestorsDropdown()}
+                {/* Pricing — flat link */}
+                <button
+                  onClick={() => navigateTo('/pricing')}
+                  className="px-3 py-2 text-sm font-semibold transition-all duration-150"
+                  style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap', border: 'none' }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
+                >
+                  Pricing
+                </button>
               </>
             )}
           </div>
