@@ -482,11 +482,11 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 overflow-hidden"
-        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
+        className="p-0"
+        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'var(--radix-dropdown-menu-content-available-height)', overflowY: 'auto' }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 1 }}>
           <div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>McKinsey · Gartner · IBM · PwC · Forrester</p>
@@ -547,11 +547,11 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 overflow-hidden"
-        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
+        className="p-0"
+        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'var(--radix-dropdown-menu-content-available-height)', overflowY: 'auto' }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 1 }}>
           <div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Readiness Infrastructure Enterprises Are Missing</p>
@@ -676,16 +676,18 @@ export default function StandardNav() {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="p-0 overflow-hidden"
+          className="p-0"
           style={{
             width: 660,
             background: '#fff',
             border: '1px solid rgba(10,15,46,0.14)',
             boxShadow: '0 24px 64px rgba(10,15,46,0.22), 0 4px 20px rgba(10,15,46,0.10)',
+            maxHeight: 'var(--radix-dropdown-menu-content-available-height)',
+            overflowY: 'auto',
           }}
         >
           {/* Top bar — the core contrast */}
-          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between' }}>
+          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
               <div>
                 <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 2px' }}>Traditional Enterprise</p>
