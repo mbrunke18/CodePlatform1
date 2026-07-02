@@ -68,6 +68,7 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Investors = lazy(() => import("./pages/Investors"));
 const InvestorLanding = lazy(() => import("./pages/InvestorLanding"));
 const InvestorTour = lazy(() => import("./pages/InvestorTour"));
+const FoundingPartnerTour = lazy(() => import("./pages/FoundingPartnerTour"));
 const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
 const ProductOverview = lazy(() => import("./pages/ProductOverview"));
 const AuthorizationPrecedentRegistry = lazy(() => import("./pages/AuthorizationPrecedentRegistry"));
@@ -395,7 +396,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/living-playbooks', '/deviation-metric',
 
   // Sales, proof & investor pages — always open
-  '/executive-brief', '/founding-partner', '/contact', '/request-access',
+  '/executive-brief', '/founding-partner', '/founding-partner-tour', '/contact', '/request-access',
   '/trial-access', '/demo-access', '/proof-story', '/research', '/vs-',
   '/ms-project', '/platform-reality', '/investor', '/investor-tour', '/pitch-deck', '/capabilities',
   '/founder-story', '/about', '/team', '/roadmap', '/security-compliance',
@@ -792,6 +793,7 @@ function Router() {
         {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
         <Route path="/investor-presentation" component={InvestorPresentation} />
         <Route path="/investor-tour" component={InvestorTour} />
+        <Route path="/founding-partner-tour" component={FoundingPartnerTour} />
         {renderRedirects(["/pitch-deck"], "/investor-presentation")}
         <Route path="/podcast-prep" component={PodcastPrep} />
         {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/industry-demos")}
