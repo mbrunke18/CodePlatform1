@@ -574,8 +574,8 @@ export default function StandardNav() {
             {megaColHeading("Company")}
             {[
               { path: '/about', icon: Users, label: 'About the Founder', sub: 'Martin Brunke — background, credentials & origin story', featured: true },
+              { path: '/founder-story', icon: Video, label: "Founder's Story — Start Here", sub: 'The vision behind Readiness OS, in Martin\'s own words', featured: true },
               { path: '/team', icon: Users, label: 'Team', sub: 'Founder, research partners, open roles' },
-              { path: '/founder-story', icon: Video, label: "Founder's Story", sub: 'The vision behind Readiness OS' },
               { path: '/board-briefings', icon: FileText, label: 'Board Briefings', sub: 'Executive-ready board reporting' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
