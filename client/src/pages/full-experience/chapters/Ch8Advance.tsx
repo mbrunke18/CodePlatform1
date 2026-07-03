@@ -1,6 +1,6 @@
 import type { DemoScenario } from "@/pages/demos/scenarioData";
 import { getAdvanceDataForCategory } from "../advanceData";
-import { GOLD, TEAL, TEAL_LT, W, W70, W50, BD, GBG, NAVY_BG, BC, CG, BAR, SLabel, ChapterNav } from "../shared";
+import { GOLD, TEAL, TEAL_LT, W, W70, W50, BD, GBG, NAVY_BG, BC, CG, BAR, SLabel, ChapterNav, ProductScreenPanel } from "../shared";
 
 export default function Ch8Advance({ sc, chapter, onNext, onBack }: { sc: DemoScenario; chapter: number; onNext: () => void; onBack: () => void }) {
   const data = getAdvanceDataForCategory(sc.category);
@@ -58,6 +58,17 @@ export default function Ch8Advance({ sc, chapter, onNext, onBack }: { sc: DemoSc
           </div>
         ))}
       </div>
+
+      <ProductScreenPanel
+        eyebrow="See It In The Platform — ADVANCE 2.0"
+        image="/screenshots/fresh_advance_intelligence.jpg"
+        alt="ADVANCE 2.0 Learning Velocity Index dashboard"
+        route="/advance-intelligence"
+        callouts={[
+          { title: "Every update tracked and measured", text: "The hypothesis you just saw measured is one of hundreds — proven or disproven, never just assumed." },
+          { title: "The moat metric", text: "How many months it would take a competitor to rebuild this library from scratch — the number keeps growing with every activation." },
+        ]}
+      />
 
       <ChapterNav chapter={chapter} onNext={onNext} onBack={onBack} nextLabel="See the Full Platform →" />
     </div>

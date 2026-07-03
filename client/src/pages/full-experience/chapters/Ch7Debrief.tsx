@@ -1,5 +1,5 @@
 import type { DemoScenario } from "@/pages/demos/scenarioData";
-import { GOLD, TEAL, TEAL_LT, RED, W, W70, W50, BD, GBG, BC, CG, BAR, SLabel, ChapterNav, useSequential } from "../shared";
+import { GOLD, TEAL, TEAL_LT, RED, W, W70, W50, BD, GBG, BC, CG, BAR, SLabel, ChapterNav, useSequential, ProductScreenPanel } from "../shared";
 
 export default function Ch7Debrief({ sc, chapter, onNext, onBack }: { sc: DemoScenario; chapter: number; onNext: () => void; onBack: () => void }) {
   const delivCount = useSequential(sc.outcome.deliverables.length, 450, true);
@@ -59,11 +59,24 @@ export default function Ch7Debrief({ sc, chapter, onNext, onBack }: { sc: DemoSc
         </div>
       </div>
 
-      <div style={{ background: `${GOLD}0a`, border: `1px solid ${GOLD}35`, padding: "18px 22px", marginBottom: 8 }}>
+      <div style={{ background: `${GOLD}0a`, border: `1px solid ${GOLD}35`, padding: "18px 22px", marginBottom: 26 }}>
         <div style={{ ...BAR, fontSize: 12, color: W70, lineHeight: 1.6 }}>
           Every task completed was a decision made before the pressure arrived — that's the ROI Dashboard's job in the real platform: it logs actual cost avoided against every activation, not estimated.
         </div>
       </div>
+
+      {allShown && (
+        <ProductScreenPanel
+          eyebrow="See It In The Platform — ROI Dashboard"
+          image="/screenshots/roi_calculator_walkthrough.jpg"
+          alt="ROI Dashboard showing cost avoided and financial impact across activations"
+          route="/roi-calculator"
+          callouts={[
+            { title: "Actual cost avoided, not estimated", text: "Every activation logs real dollars, real hours, and real risk avoided — compounding into the number your board sees quarterly." },
+            { title: "Every activation compared side by side", text: "See this activation stacked against every other one — proving the pattern isn't a one-time win." },
+          ]}
+        />
+      )}
 
       <ChapterNav chapter={chapter} onNext={onNext} onBack={onBack} nextLabel="See ADVANCE 2.0 →" disabled={!allShown} />
     </div>

@@ -113,6 +113,37 @@ export function severityColorForRisk(riskScore: number) {
   return riskScore >= 90 ? RED : riskScore >= 75 ? AMB : GOLD;
 }
 
+/* ─── Real product screen panel (breadth/depth proof) ─────────────────────── */
+export function ProductScreenPanel({ eyebrow, image, alt, route, callouts }: {
+  eyebrow: string; image: string; alt: string; route: string; callouts: { title: string; text: string }[];
+}) {
+  return (
+    <div style={{ marginBottom: 28 }} data-testid="panel-product-screen">
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, marginBottom: 12 }}>
+        <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: GOLD, textTransform: "uppercase" }}>{eyebrow}</span>
+        <span style={{ ...MONO, fontSize: 9, color: W50 }}>In the platform: {route}</span>
+      </div>
+      <div style={{ border: `1px solid ${BD}`, overflow: "hidden", marginBottom: 14, lineHeight: 0 }}>
+        <img src={image} alt={alt} loading="lazy" style={{ width: "100%", display: "block" }} />
+      </div>
+      <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginBottom: 10 }}>
+        What to look for as a customer
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+        {callouts.map((c, i) => (
+          <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+            <span style={{ ...BC, fontSize: 11, fontWeight: 900, color: GOLD, flexShrink: 0, width: 14 }}>{i + 1}</span>
+            <div>
+              <div style={{ ...BC, fontSize: 11, fontWeight: 800, color: W, letterSpacing: "0.02em", marginBottom: 2 }}>{c.title}</div>
+              <div style={{ ...BAR, fontSize: 11, color: W70, lineHeight: 1.45 }}>{c.text}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ─── Chapter footer nav ──────────────────────────────────────────────────── */
 export function ChapterNav({ chapter, onNext, onBack, nextLabel = "Continue →", disabled = false, hideNext = false }:
   { chapter: number; onNext: () => void; onBack: () => void; nextLabel?: string; disabled?: boolean; hideNext?: boolean }) {

@@ -1,5 +1,11 @@
 import type { DemoScenario } from "@/pages/demos/scenarioData";
-import { GOLD, TEAL, TEAL_LT, W, W70, W50, W25, BD, GBG, BC, CG, BAR } from "../shared";
+import { GOLD, TEAL, TEAL_LT, RED, W, W70, W50, W25, BD, GBG, BC, CG, BAR, ProductScreenPanel } from "../shared";
+
+const ALTERNATIVES = [
+  { label: "Wait and hope", text: "The next situation still takes a 30-day mobilization cycle. Nothing about the old model changed." },
+  { label: "Buy another system-detected copilot", text: "Every enterprise already has Microsoft's AI stack. None have the operating model to use it. A copilot answers questions — it doesn't pre-stage a 12-minute mobilization." },
+  { label: "Hire consultants", text: "A consulting engagement rebuilds the plan from scratch every time a situation fires. Readiness OS builds it once and gets faster with every activation." },
+];
 
 const PLATFORM_MAP = [
   { label: "Command Tower", href: "/command-tower", sub: "Live signal detections & system-wide readiness score, in real time." },
@@ -37,6 +43,35 @@ export default function Ch9Recap({ sc, onRestart }: { sc: DemoScenario; onRestar
         <div style={{ ...CG, fontSize: 26, color: W, lineHeight: 1.3, marginBottom: 4 }}>The Response Is Ready</div>
         <div style={{ ...CG, fontSize: 26, color: GOLD, lineHeight: 1.3, marginBottom: 14 }}>Before the Trigger Fires.</div>
         <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: W50 }}>Preparation &nbsp;→&nbsp; Readiness &nbsp;→&nbsp; Fearless</div>
+      </div>
+
+      <ProductScreenPanel
+        eyebrow="See It In The Platform — Your First 90 Days"
+        image="/screenshots/fresh_getting_started.jpg"
+        alt="Getting Started hub showing go-live readiness phases and completion score"
+        route="/getting-started"
+        callouts={[
+          { title: "Four setup phases, one completion score", text: "This is what stands between today and your protocols carrying your organization's own name — not months, days." },
+          { title: "Nothing you saw above is hypothetical", text: "The screens in this walkthrough are the actual platform. What you configure here is what your team activates from on day one." },
+        ]}
+      />
+
+      <div style={{ marginBottom: 32 }}>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", color: RED, textTransform: "uppercase", marginBottom: 14, textAlign: "center" }}>
+          The Real Choice Isn't Readiness OS vs. Doing Nothing
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 16 }}>
+          {ALTERNATIVES.map(({ label, text }, i) => (
+            <div key={i} style={{ background: "rgba(192,57,43,0.05)", border: "1px solid rgba(192,57,43,0.25)", padding: "16px 18px" }}>
+              <div style={{ ...BC, fontSize: 11, fontWeight: 800, color: "#E05A4A", letterSpacing: "0.02em", marginBottom: 6, textTransform: "uppercase" }}>{label}</div>
+              <div style={{ ...BAR, fontSize: 11.5, color: W70, lineHeight: 1.5 }}>{text}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <span style={{ ...BC, fontSize: 13, fontWeight: 800, color: RED }}>{sc.oldModelCost}</span>
+          <span style={{ ...BAR, fontSize: 13, color: W50 }}> — that's what happens the next time, for every day this stays a slide deck instead of a live protocol.</span>
+        </div>
       </div>
 
       <div style={{ background: GBG, border: `1px solid ${GOLD}50`, padding: "34px 30px" }}>

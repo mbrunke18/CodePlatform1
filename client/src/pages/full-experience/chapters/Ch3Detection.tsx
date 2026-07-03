@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { DemoScenario } from "@/pages/demos/scenarioData";
-import { GOLD, TEAL, TEAL_LT, RED, AMB, W, W70, W50, W25, W10, BD, GBG, NAVY_BG, BC, CG, BAR, MONO, SLabel, LiveDot, SeverityColor, ChapterNav, useSequential, useCountUp } from "../shared";
+import { GOLD, TEAL, TEAL_LT, RED, AMB, W, W70, W50, W25, W10, BD, GBG, NAVY_BG, BC, CG, BAR, MONO, SLabel, LiveDot, SeverityColor, ChapterNav, useSequential, useCountUp, ProductScreenPanel } from "../shared";
 
 export default function Ch3Detection({ sc, chapter, onNext, onBack }: { sc: DemoScenario; chapter: number; onNext: () => void; onBack: () => void }) {
   const revealed = useSequential(sc.signals.length, 1200, true);
@@ -88,6 +88,19 @@ export default function Ch3Detection({ sc, chapter, onNext, onBack }: { sc: Demo
             </div>
           )}
         </div>
+      )}
+
+      {locked && (
+        <ProductScreenPanel
+          eyebrow="See It In The Platform — Command Tower"
+          image="/screenshots/new_command_tower.jpg"
+          alt="Command Tower showing live signal detections and system-wide readiness score"
+          route="/command-tower"
+          callouts={[
+            { title: "Live signal feed, not a static dashboard", text: "Every source above streams here continuously — 8 live sources, 231 detection thresholds, refreshed every 15 minutes." },
+            { title: "Executive Readiness Score, always visible", text: "The composite risk score you just watched form stays on screen for whoever needs to see it, in real time." },
+          ]}
+        />
       )}
 
       <ChapterNav chapter={chapter} onNext={onNext} onBack={onBack} nextLabel="Deliver Executive Brief →" disabled={!locked} />

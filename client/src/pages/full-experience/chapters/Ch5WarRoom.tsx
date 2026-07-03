@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { DemoScenario } from "@/pages/demos/scenarioData";
-import { GOLD, TEAL, TEAL_LT, W, W70, W50, W25, W10, BD, GBG, BC, CG, BAR, LiveDot, CatColor, ChapterNav, useSequential } from "../shared";
+import { GOLD, TEAL, TEAL_LT, W, W70, W50, W25, W10, BD, GBG, BC, CG, BAR, LiveDot, CatColor, ChapterNav, useSequential, ProductScreenPanel } from "../shared";
 
 const STAKEHOLDER_STATUSES = ["STANDBY", "NOTIFYING", "SENT", "DELIVERED", "ACKNOWLEDGED"] as const;
 
@@ -103,6 +103,17 @@ export default function Ch5WarRoom({ sc, chapter, onNext, onBack }: { sc: DemoSc
           ))}
         </div>
       </div>
+
+      <ProductScreenPanel
+        eyebrow="See It In The Platform — Live Activation Center"
+        image="/screenshots/deck_activation.jpg"
+        alt="Live Activation Center showing task and stakeholder tracking during an activation"
+        route="/live-activation-center"
+        callouts={[
+          { title: "Every task and owner in one console", text: "The task list and stakeholder grid above are what your team works from during a real activation — not a spreadsheet." },
+          { title: "Status updates in real time", text: "STANDBY → NOTIFYING → DELIVERED → ACKNOWLEDGED, tracked automatically — no status-update meetings required." },
+        ]}
+      />
 
       <ChapterNav chapter={chapter} onNext={onNext} onBack={onBack} nextLabel="Run the 12-Minute Clock →" disabled={!allDone} />
     </div>

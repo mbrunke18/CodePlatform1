@@ -1,5 +1,5 @@
 import type { DemoScenario } from "@/pages/demos/scenarioData";
-import { NAVY_BG, GOLD, TEAL, TEAL_LT, W, W70, W50, W25, W10, BD, GBG, BC, CG, BAR, MONO, SLabel, LiveDot, ChapterNav } from "../shared";
+import { NAVY_BG, GOLD, TEAL, TEAL_LT, W, W70, W50, W25, W10, BD, GBG, BC, CG, BAR, MONO, SLabel, LiveDot, ChapterNav, ProductScreenPanel } from "../shared";
 
 export default function Ch1BeforeTrigger({ sc, chapter, onNext, onBack }: { sc: DemoScenario; chapter: number; onNext: () => void; onBack: () => void }) {
   return (
@@ -56,6 +56,28 @@ export default function Ch1BeforeTrigger({ sc, chapter, onNext, onBack }: { sc: 
           <div style={{ ...BAR, fontSize: 12, color: W70, lineHeight: 1.6 }}>Protocol #{sc.protocolNumber} is written, tested, and waiting. {sc.preAuthorized[0]}</div>
         </div>
       </div>
+
+      <ProductScreenPanel
+        eyebrow="See It In The Platform — Mission Control"
+        image="/screenshots/new_mission_control.jpg"
+        alt="Mission Control dashboard showing readiness score and staged protocols"
+        route="/mission-control"
+        callouts={[
+          { title: "Every protocol status at a glance", text: "See which of the 180 Readiness Protocols are staged, tested, or need attention — before anything fires." },
+          { title: "One readiness score, always current", text: "A single number tells executives exactly how prepared the organization is right now, not last quarter." },
+        ]}
+      />
+
+      <ProductScreenPanel
+        eyebrow="See It In The Platform — Protocol Library"
+        image="/screenshots/protocol_library_v2.jpg"
+        alt="Protocol Library showing 180 pre-staged Readiness Protocols"
+        route="/protocol-library"
+        callouts={[
+          { title: "180 protocols across 3 domains", text: "GROWTH & POSITIONING, RISK & RESILIENCE, TRANSFORMATION — organized so any executive finds theirs in seconds." },
+          { title: "Tasks, owners, resources pre-built", text: "Every protocol ships with the exact stakeholders and pre-authorized resources you saw above — not a blank template." },
+        ]}
+      />
 
       <div style={{ background: GBG, border: `1px solid ${GOLD}40`, padding: "20px 24px", marginBottom: 8, textAlign: "center" }}>
         <div style={{ ...CG, fontSize: 20, fontStyle: "italic", color: GOLD, lineHeight: 1.4 }}>
