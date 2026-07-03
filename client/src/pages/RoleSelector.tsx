@@ -5,7 +5,7 @@ import {
   Briefcase, DollarSign, Settings, TrendingUp, Server, Shield,
   Users, Scale, Database, FileCheck, Target, ArrowRight, Zap,
   ChevronRight, AlertTriangle, Clock, Play, Radio, Brain,
-  CheckCircle2, Layers, BookOpen
+  CheckCircle2, Layers, BookOpen, Cloud
 } from 'lucide-react';
 
 interface RoleConfig {
@@ -60,6 +60,18 @@ const roleConfigs: RoleConfig[] = [
     metricBefore: '8 hours',
     metricAfter: '47 min',
     playbook: 'Ransomware Response',
+    category: 'DEFENSE',
+  },
+  {
+    id: 'cio',
+    title: 'Chief Information Officer',
+    icon: Cloud,
+    hookQuestion: 'Your primary cloud region goes down at 3 AM. How long until every dependent system has failed over?',
+    situationLine: "Multi-region outage live. Core systems degraded. Customers can't transact.",
+    keyMetric: '$3.4M in transactions protected · Zero data loss',
+    metricBefore: '4 hours',
+    metricAfter: '12 min',
+    playbook: 'Infrastructure Failover & Business Continuity',
     category: 'DEFENSE',
   },
   {
@@ -133,6 +145,18 @@ const roleConfigs: RoleConfig[] = [
     metricAfter: '95% delivery',
     playbook: 'Strategic Alignment Readiness Protocol',
     category: 'OFFENSE',
+  },
+  {
+    id: 'vppmo',
+    title: 'VP, Program Management Office',
+    icon: Layers,
+    hookQuestion: 'A new enterprise initiative launches this morning. How long until every workstream lead has their charter, budget, and team?',
+    situationLine: 'Board-approved program has 8 workstreams and zero assignments. The clock started at kickoff.',
+    keyMetric: '8 workstreams launched in 12 minutes',
+    metricBefore: '3 weeks',
+    metricAfter: '12 min',
+    playbook: 'Program Launch Readiness Protocol',
+    category: 'SPECIAL TEAMS',
   },
   {
     id: 'cro',
