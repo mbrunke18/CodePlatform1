@@ -1106,6 +1106,15 @@ export default function TwelveMinuteTestDrive() {
               <a href="/situation-scanner" style={{ fontSize: 12, color: `${TEAL}`, fontWeight: 700, textDecoration: 'none', borderBottom: `1px solid ${TEAL}60`, paddingBottom: 1, letterSpacing: '0.04em' }}>
                 Try the Situation Scanner — pick any trigger, see the response →
               </a>
+              <div id="full-experience-cta" style={{ padding: '20px 28px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.25)', maxWidth: 560, width: '100%' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Want the Complete Picture?</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: '0 0 12px' }}>
+                  This was one 12-minute activation. The Full Platform Experience walks the entire operating model — before, during, and after the trigger — personalized to your industry, in about 30 minutes.
+                </p>
+                <a href="/full-experience" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: TEAL, textDecoration: 'none' }}>
+                  Explore the Full Platform Experience →
+                </a>
+              </div>
             </div>
           </div>
         )}

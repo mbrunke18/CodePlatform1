@@ -280,6 +280,62 @@ export default function DemoHub() {
             </div>
           </div>
 
+          {/* Full Platform Experience — personalized flagship walkthrough */}
+          <a
+            href="/full-experience"
+            id="full-experience-entry"
+            style={{
+              display: "block", textDecoration: "none", marginBottom: 24,
+              background: `linear-gradient(135deg, rgba(201,168,76,0.18) 0%, rgba(10,15,46,0.6) 60%, rgba(43,138,110,0.10) 100%)`,
+              border: `1px solid rgba(201,168,76,0.5)`,
+              padding: "36px 36px 32px",
+              position: "relative", overflow: "hidden",
+              transition: "border-color 0.2s",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.85)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.5)"; }}
+          >
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px)`, backgroundSize: "32px 32px", pointerEvents: "none" }} />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+                <div style={{ flex: 1, minWidth: 280 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+                    <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
+                    <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase" }}>
+                      New · Personalized to Your Industry · ~30 Minutes · No Sign-Up Required
+                    </span>
+                  </div>
+                  <div style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 6 }}>
+                    The Full Platform Experience
+                  </div>
+                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: TEAL_LT, textTransform: "uppercase", marginBottom: 14, opacity: 0.9 }}>
+                    Best for: The deepest, most complete walkthrough of the entire platform
+                  </div>
+                  <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
+                    Pick your industry and situation, then live the entire operating model end to end — before the trigger, the moment it fires, the 12-minute mobilization, and what the platform learns afterward. Every capability, in one continuous narrative built around your world.
+                  </p>
+                  <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+                    {[
+                      { v: "10 Chapters", l: "Before → During → After → Advance" },
+                      { v: "6 Industries", l: "Personalized situation at the start" },
+                      { v: "3,600×", l: "Execution head start, shown live" },
+                    ].map(({ v, l }) => (
+                      <div key={v}>
+                        <div style={{ ...BC, fontSize: 18, fontWeight: 700, color: GOLD, letterSpacing: "0.04em", lineHeight: 1 }}>{v}</div>
+                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginTop: 3 }}>{l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ flexShrink: 0 }}>
+                  <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", color: NAVY, background: GOLD, padding: "14px 32px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+                    Begin Full Experience →
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+
           {/* Full Platform Demo — start here banner */}
           <a
             href="/demo-experience"

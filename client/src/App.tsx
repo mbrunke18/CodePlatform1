@@ -385,7 +385,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/demo', '/master-demo', '/try-demo', '/12-minute-experience', '/situation-scanner',
   '/industry-demo-library', '/industry', '/experience', '/role-selector',
   '/lvmh-demo', '/shein-demo', '/spacex-demo', '/executive-departure',
-  '/demo-hub', '/demo-experience', '/demo-router',
+  '/demo-hub', '/demo-experience', '/demo-router', '/full-experience',
 
   // Protocol library & builders — open (no org data required)
   '/playbooks', '/protocols', '/business-scenarios', '/protocol-browser',
@@ -832,6 +832,7 @@ function Router() {
         <Route path="/protocol-zero-config" component={lazy(() => import("./pages/ProtocolZeroConfig"))} />
         <Route path="/protocol-browser" component={lazy(() => import("./pages/ProtocolCoverageBrowser"))} />
         <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
+        <Route path="/full-experience/:scenarioId?" component={lazy(() => import("./pages/full-experience/FullPlatformExperience"))} />
         <Route path="/demo-experience" component={DemoExperience} />
         {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo"], "/master-demo")}
         {renderRedirects(["/demos", "/scenario-hub", "/demo-center", "/experience-center"], "/demo-hub")}
