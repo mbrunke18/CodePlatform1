@@ -517,6 +517,35 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* The Execution Clock — Three Clocks admissibility check */}
+        <section style={{ background: "#fff", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+              <div style={{ width: 24, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Governance Without Slowing Down</span>
+            </div>
+            <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: 16, maxWidth: 700 }}>
+              The Execution Clock — authorization is re-verified the moment each task fires, not just at sign-off.
+            </h2>
+            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.8, marginBottom: 28, maxWidth: 700 }}>
+              Executive authorization isn't a single moment that's trusted forever. Readiness OS runs three distinct checks — the First Clock at executive sign-off, the Second Clock when tasks are staged and stakeholders notified, and the Third Clock at the exact instant a pre-staged task actually executes. If the protocol has changed, the authorization has lapsed, or the task fires outside its authorized window, it holds automatically for executive re-authorization — instead of running on stale authority.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2 }}>
+              {[
+                { clock: "First Clock", title: "Executive Authorization", detail: "The signed-off decision — who authorized, when, and under what conditions." },
+                { clock: "Second Clock", title: "Staging & Notification", detail: "Tasks assigned, stakeholders notified, execution pre-staged and ready." },
+                { clock: "Third Clock", title: "Execution Admissibility", detail: "Re-verified at the moment each task fires — still authorized, protocol unchanged, within window." },
+              ].map(({ clock, title, detail }, i) => (
+                <div key={clock} style={{ background: i === 2 ? "rgba(201,168,76,0.05)" : "#F8F7F4", border: `1px solid ${i === 2 ? GOLD + "40" : "#E8E4DC"}`, padding: "20px 18px" }}>
+                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: i === 2 ? GOLD : TEAL, marginBottom: 8 }}>{clock}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{title}</div>
+                  <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6 }}>{detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ROI Case */}
         <section style={{ background: "#F8F7F4", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>

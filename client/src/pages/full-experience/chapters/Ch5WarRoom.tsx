@@ -23,6 +23,7 @@ export default function Ch5WarRoom({ sc, chapter, onNext, onBack }: { sc: DemoSc
   }, []);
 
   const allDone = taskCount >= sc.tasks.length && stStatuses.every(s => s >= 4);
+  const verifiedCount = useSequential(sc.tasks.length, 340, taskCount >= sc.tasks.length);
 
   return (
     <div style={{ maxWidth: 960, margin: "0 auto", padding: "52px 28px 40px" }}>
@@ -61,11 +62,21 @@ export default function Ch5WarRoom({ sc, chapter, onNext, onBack }: { sc: DemoSc
                 </div>
                 <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", color, opacity: 0.85 }}>{t.category}</span>
                 {visible && <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: TEAL, background: `${TEAL}12`, border: `1px solid ${TEAL}30`, padding: "2px 8px" }}>STAGED</span>}
+                {visible && i < verifiedCount && <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, background: `${GOLD}14`, border: `1px solid ${GOLD}35`, padding: "2px 8px" }}>✓ ADMISSIBLE AT EXECUTION</span>}
               </div>
             );
           })}
         </div>
       )}
+
+      <div style={{ background: "rgba(201,168,76,0.04)", border: `1px solid ${GOLD}30`, padding: "16px 20px", marginBottom: 22 }}>
+        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: GOLD, textTransform: "uppercase", marginBottom: 8 }}>
+          The Execution Clock — A Third Check, Not Just The First
+        </div>
+        <p style={{ ...BAR, fontSize: 12.5, color: W70, lineHeight: 1.6, maxWidth: 700 }}>
+          Authorization isn't a single moment that's trusted forever. The moment each task above actually fires, Readiness OS re-verifies that the conditions the executive signed off on still hold — the authorization is still active, the protocol hasn't changed since sign-off, and the task is firing within its authorized execution window. If conditions have shifted, the task holds for executive re-authorization instead of executing on stale authority.
+        </p>
+      </div>
 
       {tab === "stakeholders" && (
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 22 }}>

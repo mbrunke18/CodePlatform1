@@ -340,6 +340,7 @@ export default function ProtocolActivationConsole() {
   const [executionStatus, setExecutionStatus] = useState<'pending' | 'active' | 'paused' | 'completed'>('pending');
   const [executionId] = useState(`exec-${Date.now()}`);
   const [activationDbId, setActivationDbId] = useState<string | null>(null);
+  const [admissibilityMap, setAdmissibilityMap] = useState<Record<string, { checkId: string; verdict: string; conditions: { label: string; holds: boolean; detail: string }[] }>>({});
   const [localDemoTasks, setLocalDemoTasks] = useState<DemoTask[]>([]);
   const [liveEvents, setLiveEvents] = useState<{ time: string; text: string; type: 'start' | 'complete' | 'notify' | 'init' }[]>([]);
   const [stakeholderStatuses, setStakeholderStatuses] = useState<{ name: string; title: string; method: string; status: 'pending' | 'notified' | 'acknowledged' }[]>([]);
@@ -526,6 +527,14 @@ export default function ProtocolActivationConsole() {
           { time: formatEventTime(), text: `[${actionType}] ${task.description}`, type: 'start' as const },
           ...ev,
         ].slice(0, 20));
+        // Third Clock — re-verify admissibility conditions the instant this
+        // pre-staged task actually fires (not just at initial authorization).
+        admissibilityCheckMutation.mutate({
+          id: task.id,
+          description: task.description,
+          assignedRole: (task as any).assignedRole || null,
+          phase: (task as any).phase || null,
+        });
       }
       if (prevTask.status !== 'completed' && task.status === 'completed') {
         setLiveEvents(ev => [
@@ -571,6 +580,7 @@ export default function ProtocolActivationConsole() {
     const timelineMinutes = timeline === 'accelerated' ? 8 : timeline === 'extended' ? 20 : 12;
 
     setActivationConfirmed(true);
+    authorizeActivationMutation.mutate(params);
     enqueueInsight(INSIGHTS.playbookActivated(playbook?.title || playbook?.name));
     setShowInitiatedScreen(true);
     setInitiatedProgress(0);
@@ -635,6 +645,63 @@ export default function ProtocolActivationConsole() {
     window.history.back();
   };
 
+  // First Clock — records real executive authorization at the moment of sign-off,
+  // capturing the exact conditions (scope/timeline/departments) approved.
+  const authorizeActivationMutation = useMutation({
+    mutationFn: async (activationParams?: { scope?: string; timeline?: string; notifyDepartments?: string[] }) => {
+      const res = await apiRequest('POST', '/api/playbook-activations/authorize', {
+        playbookId: params?.playbookId,
+        activationReason: brief?.executiveSummary || null,
+        situationSummary: playbook?.description || playbook?.name || null,
+        triggerEventId: !isManualExecution && params?.triggerId !== 'guided' ? params?.triggerId : null,
+        authorizationSnapshot: activationParams || null,
+      });
+      return res.json();
+    },
+    onSuccess: (activation: any) => {
+      if (activation?.id) setActivationDbId(activation.id);
+    },
+    onError: () => {},
+  });
+
+  // Third Clock — re-verifies admissibility conditions at the exact moment a
+  // pre-staged task fires, not just at initial authorization.
+  const admissibilityCheckMutation = useMutation({
+    mutationFn: async (task: { id: string; description: string; assignedRole?: string | null; phase?: string | null }) => {
+      if (!activationDbId) return null;
+      const res = await apiRequest('POST', `/api/playbook-activations/${activationDbId}/admissibility-check`, {
+        taskDescription: task.description,
+        ownerRole: task.assignedRole || null,
+        phase: task.phase || null,
+      });
+      return { taskId: task.id, result: await res.json() };
+    },
+    onSuccess: (data: any) => {
+      if (!data) return;
+      setAdmissibilityMap(prev => ({
+        ...prev,
+        [data.taskId]: { checkId: data.result.id, verdict: data.result.verdict, conditions: data.result.conditions || [] },
+      }));
+    },
+    onError: () => {},
+  });
+
+  const reauthorizeMutation = useMutation({
+    mutationFn: async ({ checkId, taskId }: { checkId: string; taskId: string }) => {
+      const res = await apiRequest('POST', `/api/admissibility-checks/${checkId}/reauthorize`, {
+        resolutionNote: 'Executive re-authorized after review of held admissibility check.',
+      });
+      return { taskId, result: await res.json() };
+    },
+    onSuccess: (data: any) => {
+      setAdmissibilityMap(prev => ({
+        ...prev,
+        [data.taskId]: { ...prev[data.taskId], verdict: data.result.verdict },
+      }));
+      toast({ title: 'Task re-authorized', description: 'Executive override recorded — execution resumed.' });
+    },
+  });
+
   // Complete execution mutation
   const completeExecutionMutation = useMutation({
     mutationFn: async () => {
@@ -681,28 +748,44 @@ export default function ProtocolActivationConsole() {
       try {
         const executionTime = Math.floor(elapsedSeconds / 60);
         const targetMet = executionTime <= 12;
-        const actRes = await fetch('/api/playbook-activations', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            playbookId: params?.playbookId,
-            actualExecutionTime: executionTime,
-            targetMet,
-            triggerEventId: !isManualExecution && params?.triggerId !== 'guided' ? params?.triggerId : null,
-            playbookName: playbook?.name || null,
-            playbookDomain: playbook?.domain || playbook?.triggerCriteria || null,
-            taskCount: displayTasks.length || 7,
-            stakeholderCount: stakeholderStatuses.length || 5,
-          }),
-        });
-        if (actRes.ok) {
-          const act = await actRes.json();
-          setActivationDbId(act.id);
-          await fetch('/api/activation-outcomes', {
+        if (activationDbId) {
+          // Activation was already authorized (First Clock) — complete that same record.
+          const completeRes = await fetch(`/api/playbook-activations/${activationDbId}/complete`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ actualExecutionTime: executionTime, targetMet }),
+          });
+          if (completeRes.ok) {
+            await fetch('/api/activation-outcomes', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ activationId: activationDbId, playbookId: params?.playbookId }),
+            });
+          }
+        } else {
+          const actRes = await fetch('/api/playbook-activations', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ activationId: act.id, playbookId: params?.playbookId }),
+            body: JSON.stringify({
+              playbookId: params?.playbookId,
+              actualExecutionTime: executionTime,
+              targetMet,
+              triggerEventId: !isManualExecution && params?.triggerId !== 'guided' ? params?.triggerId : null,
+              playbookName: playbook?.name || null,
+              playbookDomain: playbook?.domain || playbook?.triggerCriteria || null,
+              taskCount: displayTasks.length || 7,
+              stakeholderCount: stakeholderStatuses.length || 5,
+            }),
           });
+          if (actRes.ok) {
+            const act = await actRes.json();
+            setActivationDbId(act.id);
+            await fetch('/api/activation-outcomes', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ activationId: act.id, playbookId: params?.playbookId }),
+            });
+          }
         }
       } catch (_) {}
     },
@@ -1405,7 +1488,43 @@ export default function ProtocolActivationConsole() {
                             ● IN PROGRESS
                           </div>
                         )}
+                        {/* Third Clock — admissibility verdict re-verified the instant this task fired */}
+                        {admissibilityMap[task.id] && (
+                          <div
+                            title="Execution Clock: authorization conditions re-verified at the moment this task fired"
+                            style={{
+                              fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" as const,
+                              padding: "2px 8px", borderRadius: 0, display: "flex", alignItems: "center", gap: 5,
+                              background: admissibilityMap[task.id].verdict === 'held' ? "rgba(201,168,76,0.15)" : "rgba(43,138,110,0.1)",
+                              color: admissibilityMap[task.id].verdict === 'held' ? GOLD : TEAL,
+                              border: `1px solid ${admissibilityMap[task.id].verdict === 'held' ? 'rgba(201,168,76,0.4)' : 'rgba(43,138,110,0.3)'}`,
+                            }}
+                          >
+                            {admissibilityMap[task.id].verdict === 'held'
+                              ? '⚠ Held — Re-verify'
+                              : admissibilityMap[task.id].verdict === 'reauthorized'
+                                ? '✓ Re-Authorized'
+                                : '✓ Admissible'}
+                          </div>
+                        )}
                       </div>
+                      {admissibilityMap[task.id]?.verdict === 'held' && (
+                        <div style={{ marginTop: 6, marginBottom: 6, padding: "8px 12px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.3)", borderRadius: 0 }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 4 }}>
+                            Execution Clock — authorization conditions changed since sign-off
+                          </div>
+                          {admissibilityMap[task.id].conditions.filter(c => !c.holds).map((c, ci) => (
+                            <div key={ci} style={{ fontSize: 11, color: "rgba(10,15,46,0.65)", marginBottom: 2 }}>• {c.detail}</div>
+                          ))}
+                          <button
+                            onClick={() => reauthorizeMutation.mutate({ checkId: admissibilityMap[task.id].checkId, taskId: task.id })}
+                            disabled={reauthorizeMutation.isPending}
+                            style={{ marginTop: 6, fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.12)", border: `1px solid ${GOLD}`, color: GOLD, borderRadius: 0, cursor: "pointer" }}
+                          >
+                            {reauthorizeMutation.isPending ? 'Re-authorizing…' : '↻ Executive Re-Authorization'}
+                          </button>
+                        </div>
+                      )}
                       <div style={{ fontWeight: 600, color: isDone ? "#666" : NAVY, fontSize: 14, textDecoration: isDone ? "line-through" : "none", opacity: isDone ? 0.7 : 1 }}>
                         {task.description}
                       </div>

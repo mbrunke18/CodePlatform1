@@ -1,6 +1,7 @@
 import PageLayout from "@/components/layout/PageLayout";
 import ProductShowcase from "@/components/marketing/ProductShowcase";
 import { SCENARIO_GROUPS, SCENARIOS } from "./demos/scenarioData";
+import { roleConfigs, CATEGORY_LABELS, type RoleCategory } from "@/data/roleConfigs";
 import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 
 const NAVY    = "#0A0F2E";
@@ -135,6 +136,70 @@ function ScenarioCard({ id, label, icon, tagline, featured = false, accentColor 
             {sc.tasks.length} tasks · {sc.stakeholders.length} stakeholders · 12 min
           </span>
         </div>
+        <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: accent, letterSpacing: "0.1em" }}>
+          Launch →
+        </span>
+      </div>
+    </a>
+  );
+}
+
+const ROLE_CATEGORY_ACCENT: Record<RoleCategory, string> = {
+  OFFENSE: GOLD_LT,
+  DEFENSE: "#e05252",
+  "SPECIAL TEAMS": TEAL_LT,
+};
+
+const FEATURED_ROLE_IDS = ["ceo", "cfo", "ciso", "cio", "cto", "gc"];
+
+function RoleCard({ id }: { id: string }) {
+  const role = roleConfigs.find(r => r.id === id);
+  if (!role) return null;
+  const Icon = role.icon;
+  const accent = ROLE_CATEGORY_ACCENT[role.category];
+
+  return (
+    <a
+      href={`/experience/${role.id}`}
+      style={{
+        display: "block", textDecoration: "none",
+        background: GBG,
+        border: `1px solid ${BD}`,
+        padding: "24px 22px",
+        transition: "border-color 0.2s, background 0.2s",
+        position: "relative", overflow: "hidden",
+      }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLAnchorElement).style.borderColor = accent + "70";
+        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}10`;
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.22)";
+        (e.currentTarget as HTMLAnchorElement).style.background = GBG;
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 14 }}>
+        <div style={{ width: 40, height: 40, flexShrink: 0, background: `${accent}18`, border: `1px solid ${accent}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Icon size={18} style={{ color: accent }} />
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: accent, textTransform: "uppercase", marginBottom: 4 }}>
+            {CATEGORY_LABELS[role.category]}
+          </div>
+          <div style={{ ...CG, fontSize: 20, fontWeight: 600, color: W, lineHeight: 1.2 }}>
+            {role.title}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ ...BAR, fontSize: 13, color: W70, lineHeight: 1.6, marginBottom: 14, fontStyle: "italic" }}>
+        "{role.hookQuestion}"
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 14, borderTop: `1px solid rgba(255,255,255,0.07)` }}>
+        <span style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", color: W25 }}>
+          {role.metricBefore} → {role.metricAfter}
+        </span>
         <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: accent, letterSpacing: "0.1em" }}>
           Launch →
         </span>
@@ -525,7 +590,7 @@ export default function DemoHub() {
           </div>
 
           {/* By Role */}
-          <div style={{ marginBottom: 56 }}>
+          <div id="by-role" style={{ marginBottom: 56 }}>
             <div style={{ borderLeft: `3px solid ${TEAL_LT}`, paddingLeft: 16, marginBottom: 20 }}>
               <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL_LT, textTransform: "uppercase", marginBottom: 6 }}>
                 By Executive Role
@@ -537,9 +602,9 @@ export default function DemoHub() {
                 Role-specific simulations show exactly what each executive experiences during an activation — their brief, their tasks, their decision moment, their authority.
               </p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
-              {SCENARIO_GROUPS.roles.map(({ id, label, icon, tagline }) => (
-                <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline} accentColor={TEAL_LT} />
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, marginBottom: 14 }}>
+              {FEATURED_ROLE_IDS.map(id => (
+                <RoleCard key={id} id={id} />
               ))}
             </div>
             <a

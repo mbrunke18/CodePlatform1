@@ -2984,11 +2984,33 @@ export const playbookActivations = pgTable('playbook_activations', {
   // Learning
   lessonsLearned: text('lessons_learned'),
   playbookImprovements: jsonb('playbook_improvements'), // Suggested improvements
-  
+
+  // Authorization — the "First Clock": when the executive signed off, and on what conditions
+  authorizedBy: varchar('authorized_by').references(() => users.id),
+  authorizedAt: timestamp('authorized_at'),
+  authorizationSnapshot: jsonb('authorization_snapshot'), // Governance answers + protocol state captured at the moment of sign-off
+  status: varchar('status', { length: 20 }).default('active'), // active | completed
+
   // Timestamps
   activatedAt: timestamp('activated_at').defaultNow().notNull(),
   completedAt: timestamp('completed_at'),
   createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Admissibility Checks — the "Third Clock": re-verifies authorization conditions at the moment
+// a pre-staged task actually fires, not just once at initial sign-off.
+export const admissibilityChecks = pgTable('admissibility_checks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activationId: uuid('activation_id').notNull(), // References playbookActivations.id
+  taskDescription: text('task_description').notNull(),
+  ownerRole: varchar('owner_role', { length: 100 }),
+  phase: varchar('phase', { length: 50 }),
+  verdict: varchar('verdict', { length: 20 }).notNull(), // admissible | held | reauthorized
+  conditions: jsonb('conditions'), // Array of { label, holds, detail }
+  checkedAt: timestamp('checked_at').defaultNow(),
+  resolvedBy: varchar('resolved_by').references(() => users.id),
+  resolvedAt: timestamp('resolved_at'),
+  resolutionNote: text('resolution_note'),
 });
 
 // Activation Outcomes — Post-execution ADVANCE phase closure record
@@ -3805,6 +3827,22 @@ export const insertPlaybookActivationSchema = createInsertSchema(playbookActivat
   targetMet: true,
   lessonsLearned: true,
   playbookImprovements: true,
+  authorizedBy: true,
+  authorizedAt: true,
+  authorizationSnapshot: true,
+  status: true,
+});
+
+export type AdmissibilityCheck = typeof admissibilityChecks.$inferSelect;
+export type InsertAdmissibilityCheck = typeof admissibilityChecks.$inferInsert;
+
+export const insertAdmissibilityCheckSchema = createInsertSchema(admissibilityChecks).pick({
+  activationId: true,
+  taskDescription: true,
+  ownerRole: true,
+  phase: true,
+  verdict: true,
+  conditions: true,
 });
 
 // Decision Confidence Types

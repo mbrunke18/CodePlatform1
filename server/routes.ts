@@ -4,6 +4,7 @@ import rateLimit from "express-rate-limit";
 import { registerSeoRoutes } from "./routes/seoRoutes";
 import { storage } from "./storage";
 import { enterpriseJobService } from "./services/EnterpriseJobService";
+import { AdmissibilityService } from "./services/AdmissibilityService";
 import { wsService } from "./services/WebSocketService";
 import { demoOrchestrationService } from "./services/DemoOrchestrationService";
 import { nlqService, type NLQRequest } from "./nlq-service";
@@ -79,6 +80,7 @@ import {
   notifications,
   tasks,
   playbookActivations,
+  admissibilityChecks,
   activationOutcomes,
   activationTasks,
   taskAcknowledgments,
@@ -8382,6 +8384,114 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     } catch (error) {
       console.error('Error creating playbook activation:', error);
       res.status(500).json({ error: 'Failed to create activation record' });
+    }
+  });
+
+  // Authorize a playbook activation — the "First Clock": records executive sign-off
+  // and the governance conditions in effect at that moment.
+  app.post('/api/playbook-activations/authorize', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { playbookId, activationReason, situationSummary, triggerEventId, authorizationSnapshot } = req.body;
+      if (!playbookId) return res.status(400).json({ error: 'playbookId required' });
+      const [activation] = await db.insert(playbookActivations).values({
+        organizationId: req.user.organizationId,
+        playbookId,
+        activatedBy: req.user.id,
+        activationReason: activationReason || null,
+        situationSummary: situationSummary || null,
+        triggerEventId: triggerEventId || null,
+        authorizedBy: req.user.id,
+        authorizedAt: new Date(),
+        authorizationSnapshot: authorizationSnapshot || null,
+        status: 'active',
+      }).returning();
+      res.json(activation);
+    } catch (error) {
+      console.error('Error authorizing playbook activation:', error);
+      res.status(500).json({ error: 'Failed to authorize activation' });
+    }
+  });
+
+  // Run an admissibility check — the "Third Clock": re-verifies authorization
+  // conditions at the moment a pre-staged task actually fires.
+  app.post('/api/playbook-activations/:id/admissibility-check', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { taskDescription, ownerRole, phase } = req.body;
+      if (!taskDescription) return res.status(400).json({ error: 'taskDescription required' });
+      const [activation] = await db.select().from(playbookActivations).where(eq(playbookActivations.id, id)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: 'Activation not found' });
+      }
+      const { check, conditions } = await AdmissibilityService.evaluate(id, { taskDescription, ownerRole, phase });
+      res.json({ ...check, conditions });
+    } catch (error) {
+      console.error('Error running admissibility check:', error);
+      res.status(500).json({ error: 'Failed to run admissibility check' });
+    }
+  });
+
+  // Reauthorize a held task — executive override after re-review of a held admissibility check.
+  app.post('/api/admissibility-checks/:id/reauthorize', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { resolutionNote } = req.body;
+      const [check] = await db.select().from(admissibilityChecks).where(eq(admissibilityChecks.id, id)).limit(1);
+      if (!check) return res.status(404).json({ error: 'Admissibility check not found' });
+      const [activation] = await db.select().from(playbookActivations).where(eq(playbookActivations.id, check.activationId)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: 'Admissibility check not found' });
+      }
+      const updated = await AdmissibilityService.reauthorize(id, req.user.id, resolutionNote);
+      res.json(updated);
+    } catch (error) {
+      console.error('Error reauthorizing admissibility check:', error);
+      res.status(500).json({ error: 'Failed to reauthorize admissibility check' });
+    }
+  });
+
+  // Complete a playbook activation — records final execution outcome.
+  app.patch('/api/playbook-activations/:id/complete', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { actualExecutionTime, targetMet, successRating, lessonsLearned } = req.body;
+      const [activation] = await db.select().from(playbookActivations).where(eq(playbookActivations.id, id)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: 'Activation not found' });
+      }
+      const [updated] = await db.update(playbookActivations)
+        .set({
+          actualExecutionTime: actualExecutionTime ?? activation.actualExecutionTime,
+          targetMet: targetMet ?? activation.targetMet,
+          successRating: successRating ?? activation.successRating,
+          lessonsLearned: lessonsLearned ?? activation.lessonsLearned,
+          status: 'completed',
+          completedAt: new Date(),
+        })
+        .where(eq(playbookActivations.id, id))
+        .returning();
+      res.json(updated);
+    } catch (error) {
+      console.error('Error completing playbook activation:', error);
+      res.status(500).json({ error: 'Failed to complete playbook activation' });
+    }
+  });
+
+  // Get all admissibility checks for an activation (audit trail / Live War Room feed)
+  app.get('/api/playbook-activations/:id/admissibility-checks', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const [activation] = await db.select().from(playbookActivations).where(eq(playbookActivations.id, id)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: 'Activation not found' });
+      }
+      const checks = await db.select().from(admissibilityChecks)
+        .where(eq(admissibilityChecks.activationId, id))
+        .orderBy(desc(admissibilityChecks.checkedAt));
+      res.json(checks);
+    } catch (error) {
+      console.error('Error fetching admissibility checks:', error);
+      res.status(500).json({ error: 'Failed to fetch admissibility checks' });
     }
   });
 
