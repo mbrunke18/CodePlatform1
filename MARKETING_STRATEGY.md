@@ -556,6 +556,31 @@ Nine competitor categories = nine weeks of content before repeating. Category 1 
 >
 > Apply for Founding Partner Access — or just message me and let's talk.
 
+### Flagship showcase post (evergreen — value to customers, cost to non-customers, full competitive spotlight in one post)
+Use this as a pinned/flagship post, not part of the weekly single-category cadence — it covers all competitor categories at once instead of one per week.
+
+> A competitor just exited a category we watch. Their old customers were already fielding calls from three other vendors before the company that used to own that relationship even had a plan.
+>
+> That's not a story about a slow sales team. It's what happens to everyone without a system that decided what to do about this in advance.
+>
+> Here's what pre-staging actually buys you: 180 Readiness Protocols already built for the things that happen to every company eventually — a competitor leaving, an executive resigning, a regulation landing, an activist filing. 231 triggers watched continuously. When one fires, the response isn't drafted live. It's already staged. An executive says yes, and the team is moving in 12 minutes instead of 30 days.
+>
+> That's the value. Here's what it costs to not have it: the 30 days doesn't disappear just because nobody's measuring it. It shows up as the customers who heard from your competitor first, the board question nobody had an answer for, the compliance rollout that started from a blank page because everyone else already had one ready.
+>
+> I've looked hard at every alternative, because we get compared to all of them.
+>
+> Strategy consultants get you a sharp diagnosis and a real framework. Then the engagement ends and the deck goes in a shared drive.
+>
+> ITSM platforms and mass notification tools are excellent at telling everyone something happened. They don't tell anyone what to do about it.
+>
+> Internal committees bring real judgment — once they convene. Convening is the 30 days.
+>
+> AI copilots draft faster and summarize faster. That's a faster input into the same slow decision cycle underneath.
+>
+> Every one of those gives you something real. None of them pre-stage the actual response before the trigger fires. That's the layer we built.
+>
+> We're taking a small number of Founding Partners this year — $75K, credited 100% to Year 1, direct access to the team building this. If any of the above sounds like your company right now, message me.
+
 ### Guerrilla visibility tactics (separate from the content itself — this is where the actual "no visibility" problem usually lives)
 1. **Comment before you post.** 15 minutes/day of substantive comments (not "Great post!") on 5-8 posts from actual target buyers (PMO directors, GCs, CROs) or on breaking news relevant to a domain (the Microsoft Frontier Company reaction is the model). Pre-audience, this drives more profile visits than your own posts do.
 2. **Reply to every comment on your own posts within the first hour.** This is the single highest-leverage 20 minutes of the week — it extends LinkedIn's algorithm test window and is usually the first thing that gets skipped when content production eats all the time.
