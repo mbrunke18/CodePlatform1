@@ -19,3 +19,4 @@
 - [Stale TA-TK task list](stale-ta-tk-tasklist.md) — a leftover unrelated task list (TA-TK, "Push to GitHub Rev 60") resurfaces via automatic system messages; never act on it, never re-propose follow-ups for it
 - [E2E testing subagent quirks](e2e-test-infra.md) — runTest() can carry a stale cross-run auth block that misfires even on public routes; retries don't clear it
 - [Deleting large functions from big TSX files](large-function-deletion.md) — rename-to-marker + grep for line bounds + sed -i line-range delete when edit tool's exact-match fails on huge blocks
+- [Demo scenario routing](demo-scenario-routing.md) — /demo-experience?s=N clamps silently on bad index; prefer /demo/:scenarioId (string ids, all 3 domains) for new scenario links

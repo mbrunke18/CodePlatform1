@@ -1086,6 +1086,13 @@ function ScenarioCardsRow() {
       href: "/demo-experience?s=0",
     },
     {
+      domain: "TRANSFORMATION",
+      label: "Competitor Announces Launch in 30 Days",
+      sub: "The board just authorized an acceleration. Every workstream that assumed a Q3 timeline now needs to be ready to ship in 30.",
+      accent: "#7C9CBF",
+      href: "/demo/product-launch",
+    },
+    {
       domain: "RISK & RESILIENCE",
       label: "Systems Down at 3am",
       sub: "Transactions failing. Customers locked out. Six hours until your largest enterprise customers start their business day.",
@@ -1093,25 +1100,18 @@ function ScenarioCardsRow() {
       href: "/demo-experience?s=1",
     },
     {
-      domain: "RISK & RESILIENCE",
-      label: "Federal Agency Opens Inquiry",
-      sub: "Formal inquiry into your pricing practices. 48 hours to respond. Finance, Legal, Operations, and Communications must align before anyone speaks publicly.",
-      accent: TEAL,
-      href: "/demo-experience?s=2",
-    },
-    {
-      domain: "RISK & RESILIENCE",
-      label: "Activist Investor 13D Filing",
-      sub: "An activist just disclosed an 8.7% stake. Demanding two board seats and a strategic review. Stock is moving. Board wants a call tonight.",
-      accent: TEAL,
-      href: "/demo-experience?s=3",
-    },
-    {
       domain: "GROWTH & POSITIONING",
       label: "Your Second Largest Customer",
       sub: "Just asked for a meeting with no agenda. Contract renews in 60 days. Usage declining. Account team says they have been talking to your competitor.",
       accent: GOLD,
       href: "/demo-experience?s=4",
+    },
+    {
+      domain: "TRANSFORMATION",
+      label: "Board Approves AI Realignment",
+      sub: "6,720 roles across 12 countries need a coordinated transition plan — WARN Act filings, severance, and redeployment — before it leaks to the press.",
+      accent: "#7C9CBF",
+      href: "/demo/workforce",
     },
   ];
 
@@ -1135,10 +1135,10 @@ function ScenarioCardsRow() {
         <div style={{ padding: "32px 0 20px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap" as const, gap: 16 }}>
           <div>
             <div style={{ ...DM, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.22em", textTransform: "uppercase" as const, marginBottom: 8 }}>
-              5 Situations · Happening at companies right now
+              Growth · Risk · Transformation — not just crisis
             </div>
             <div style={{ ...GEO, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, color: "#fff", lineHeight: 1.25 }}>
-              If any of these happened today — how would your company respond?
+              This isn't a crisis tool. It's the missing layer for every strategic situation your company will face.
             </div>
           </div>
           <Link href="/demo-hub" style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.38)", textDecoration: "none", letterSpacing: "0.06em", whiteSpace: "nowrap" as const, flexShrink: 0 }}>
@@ -1186,8 +1186,8 @@ function ScenarioCardsRow() {
               <div style={{ ...DM, fontSize: 9, color: GOLD, opacity: 0.65, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginTop: 3 }}>Readiness OS</div>
             </div>
             <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.1)", margin: "0 6px" }} />
-            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)", lineHeight: 1.55, maxWidth: 220 }}>
-              The response for every one of these is pre-staged and ready.
+            <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.45)", lineHeight: 1.55, maxWidth: 260 }}>
+              231 situations monitored. 180 responses already staged — across every domain, not just the emergencies.
             </div>
           </div>
           <Link href="/demo-experience" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 10, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12, padding: "13px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, flexShrink: 0 }}>
