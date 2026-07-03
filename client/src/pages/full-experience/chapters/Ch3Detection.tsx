@@ -92,6 +92,7 @@ export default function Ch3Detection({ sc, chapter, onNext, onBack }: { sc: Demo
 
       {locked && (
         <ProductScreenPanel
+          collapsible
           eyebrow="See It In The Platform — Command Tower"
           image="/screenshots/new_command_tower.jpg"
           alt="Command Tower showing live signal detections and system-wide readiness score"

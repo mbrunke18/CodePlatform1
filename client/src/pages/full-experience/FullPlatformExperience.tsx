@@ -13,6 +13,7 @@ import Ch5WarRoom from "./chapters/Ch5WarRoom";
 import Ch6Timeline from "./chapters/Ch6Timeline";
 import Ch7Debrief from "./chapters/Ch7Debrief";
 import Ch8Advance from "./chapters/Ch8Advance";
+import Ch85Organization from "./chapters/Ch85Organization";
 import Ch9Recap from "./chapters/Ch9Recap";
 
 export default function FullPlatformExperience() {
@@ -86,7 +87,8 @@ export default function FullPlatformExperience() {
       {chapter === 6 && industryId && <Ch6Timeline sc={sc} chapter={chapter} onNext={next} onBack={back} />}
       {chapter === 7 && industryId && <Ch7Debrief sc={sc} chapter={chapter} onNext={next} onBack={back} />}
       {chapter === 8 && industryId && <Ch8Advance sc={sc} chapter={chapter} onNext={next} onBack={back} />}
-      {chapter === 9 && industryId && <Ch9Recap sc={sc} onRestart={restart} />}
+      {chapter === 9 && industryId && <Ch85Organization sc={sc} chapter={chapter} onNext={next} onBack={back} />}
+      {chapter === 10 && industryId && <Ch9Recap sc={sc} onRestart={restart} />}
     </div>
   );
 }

@@ -966,11 +966,11 @@ function HeroSection() {
                   Run the 12-Minute Test Drive →
                 </Link>
                 <Link
-                  href="/demo-experience"
+                  href="/full-experience"
                   onClick={() => trackCTA("hero_demo")}
                   style={{ ...DM, display: "inline-block", background: "transparent", color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: 13, padding: "13px 22px", textDecoration: "none", letterSpacing: "0.04em", border: "1px solid rgba(255,255,255,0.25)", whiteSpace: "nowrap" as const }}
                 >
-                  Full Platform Demo
+                  Full Platform Experience
                 </Link>
                 <Link
                   href="/request-access"

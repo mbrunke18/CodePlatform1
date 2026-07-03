@@ -36,7 +36,11 @@ export default function Ch2Trigger({ sc, chapter, onNext, onBack }: { sc: DemoSc
         </div>
       </div>
 
-      <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, marginBottom: 24 }}>{sc.triggerContext}</p>
+      <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, marginBottom: 14 }}>{sc.triggerContext}</p>
+
+      <div style={{ ...CG, fontSize: 15, fontStyle: "italic", color: W70, lineHeight: 1.6, marginBottom: 24, maxWidth: 620 }}>
+        Somewhere in your building, right now, a version of this is already possible. The only open question is whether anyone owns it yet.
+      </div>
 
       <div style={{ display: "flex", gap: 0, marginBottom: 26 }}>
         <div style={{ flex: 1, padding: "14px 20px", background: "rgba(192,57,43,0.07)", border: "1px solid rgba(192,57,43,0.25)", borderRight: "none" }}>
@@ -54,7 +58,7 @@ export default function Ch2Trigger({ sc, chapter, onNext, onBack }: { sc: DemoSc
           { label: "Company", value: sc.company, sub: `${sc.ticker} · ${sc.industry}` },
           { label: "Threat Classification", value: sc.category, sub: `Readiness Protocol #${sc.protocolNumber}` },
           { label: "Primary Audience", value: sc.audience, sub: "Roles activated in this protocol" },
-          { label: "Without Readiness OS", value: "30-Day Mobilization", sub: sc.oldModelCost },
+          { label: "Cost of the Next 30 Days", value: sc.oldModelCost, sub: "The number that grows every day this stays unowned." },
         ].map(({ label, value, sub }, i) => (
           <div key={i} style={{ background: GBG, border: `1px solid ${BD}`, padding: "18px 20px" }}>
             <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", color: GOLD, textTransform: "uppercase", marginBottom: 5 }}>{label}</div>

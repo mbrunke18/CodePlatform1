@@ -1,0 +1,22 @@
+RAVI SHANKAR NRK
+
+  • 2nd
+
+COO · Head of Operations & Strategy · P&L Leader | Scaled SBU 2.5x to ₹108 Cr ($13M) in 12 months | Target Operating Model · Lean Six Sigma · Cross-Functional Leadership | ex-Commander, Indian Navy
+
+11h • 
+
+
+Follow
+
+𝐓𝐇𝐑𝐄𝐄 𝐂𝐋𝐎𝐂𝐊𝐒 
+Two signatures. Both valid. The system still failed.
+Six weeks after a hospital delegation was properly re-attested — Structural Change Trigger fired, both signatures produced — a routine retraining pull executed under conditions nobody had attested to. Nothing in the architecture failed. It just never had a clock for that gap.
+That gap is what "Three Clocks" is about.
+It started as one precise question from a reader: do the two triggers fire at delegation time, or execution time? The honest answer was neither — and answering it exposed a third clock the whole two-signature model had been silently assuming away.
+What the thread produced next: two competing candidates for what runs on that clock (a deterministic verifier vs. a first-principles admissibility law), a public concession from a vendor about his own tool's ceiling, a seven-link chain that places all three clocks on one ordered route, and a readiness question exposing that the "legitimacy" signature has been certifying intent while quietly ignoring capability.
+A signature is a statement about the moment it was signed. Execution is always later. No number of signatures closes that distance. Only a third clock does.
+With thanks to Akhilesh Warik, for the question that added the clock, and for drawing his own verifier’s ceiling in public; to Timothy Gough, for the boundary condition, and for the distinction between verification and authority that keeps the third clock honest; to Margaret Stokes, for lawful continuation and the signature-shaped shadow; to Greggory Don Butler, for the chain that gives all three clocks a single route to live on; to Dana Louw MBA , for the readiness question the legitimacy signature was undersampling; to Nick Vejle, for sighting the same shape in a different domain; and to Dr M Maruf Hossain, PhD, GAICD Hossain, for confirming the split held — and for having started all of this with a correction. As ever, I’d rather have the disagreement than the applause.
+Full piece below 👇
+
+Three Clocks

@@ -54,7 +54,6 @@ import NotFound from "@/pages/not-found";
 const Homepage = lazy(() => import("./pages/Homepage"));
 const HowItWorks = lazy(() => import("./pages/HowItWorks"));
 const TryDemo = lazy(() => import("./pages/TryDemo"));
-const DemoExperience = lazy(() => import("./pages/DemoExperience"));
 const TwelveMinuteTestDrive = lazy(() => import("./pages/TwelveMinuteTestDrive"));
 const SituationScanner = lazy(() => import("./pages/SituationScanner"));
 const IncidentAnalyzer = lazy(() => import("./pages/IncidentAnalyzer"));
@@ -790,7 +789,7 @@ function Router() {
         <Route path="/executive-departure" component={lazy(() => import('./pages/ExecutiveDepartureBrief'))} />
         <Route path="/platform-overview" component={PlatformOverview} />
         <Route path="/capabilities" component={PlatformCapabilities} />
-        {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
+        {renderRedirects(["/product-tour", "/video-tour"], "/full-experience")}
         <Route path="/investor-presentation" component={InvestorPresentation} />
         <Route path="/investor-tour" component={InvestorTour} />
         <Route path="/founding-partner-tour" component={FoundingPartnerTour} />
@@ -825,7 +824,7 @@ function Router() {
         <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
         <Route path="/marketing-infographic" component={lazy(() => import("./pages/MarketingInfographic"))} />
-        <Route path="/master-demo" component={lazy(() => import("./pages/MasterDemo"))} />
+        {renderRedirects(["/master-demo"], "/full-experience/activist")}
         <Route path="/demo/:scenarioId" component={lazy(() => import("./pages/MasterDemo"))} />
         <Route path="/protocol-zero" component={lazy(() => import("./pages/ProtocolZero"))} />
         <Route path="/protocol-zero-launch" component={lazy(() => import("./pages/ProtocolZeroLaunch"))} />
@@ -833,8 +832,7 @@ function Router() {
         <Route path="/protocol-browser" component={lazy(() => import("./pages/ProtocolCoverageBrowser"))} />
         <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
         <Route path="/full-experience/:scenarioId?" component={lazy(() => import("./pages/full-experience/FullPlatformExperience"))} />
-        <Route path="/demo-experience" component={DemoExperience} />
-        {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo"], "/master-demo")}
+        {renderRedirects(["/demo-experience", "/full-demo", "/platform-demo", "/guided-demo"], "/full-experience")}
         {renderRedirects(["/demos", "/scenario-hub", "/demo-center", "/experience-center"], "/demo-hub")}
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 

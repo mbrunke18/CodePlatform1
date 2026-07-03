@@ -12,5 +12,6 @@
 - [Situations vs Triggers Messaging](situations-vs-triggers-messaging.md) — "situation" in customer copy, "trigger" internal only; 15–20 situations/year reframe changes insurance→subscription
 - [Nav deployment lesson](nav-deployment-lesson.md) — StandardNav is position:fixed (not sticky); always verify built artifact after deploy, not just dev preview
 - [Locked nav links](locked-nav-links.md) — "How It Works" MUST link to /how-it-works (never /how-it-executes); documented in developer-reference.md line 754 as CRITICAL; Replit files are source of truth, not git
+- [Demo entry consolidation](demo-entry-consolidation.md) — /full-experience is the canonical "see the platform" front door; /master-demo, /demo-experience, /product-tour now redirect into it, never link to them directly
 - [Full Platform Experience walkthrough](full-experience-walkthrough.md) — founder's solo sales-demo page; reuse sc.oldModelCost/oldModel + ProductScreenPanel pattern when extending it
 - [Role persona pattern](role-persona-pattern.md) — new C-suite personas need lockstep edits in RoleSelector.tsx + RoleExperience.tsx; shared stakeholder roster; category/domainCategory mapping

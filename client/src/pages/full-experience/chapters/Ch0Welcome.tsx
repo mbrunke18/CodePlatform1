@@ -19,16 +19,19 @@ export default function Ch0Welcome({ onSelect }: { onSelect: (industryId: string
   return (
     <div style={{ maxWidth: 1040, margin: "0 auto", padding: "56px 28px 60px" }}>
       <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 18 }}>
-        The Full Platform Experience · ~30 Minutes · No Sign-Up Required
+        The Full Platform Experience · 10 Chapters · Skim in 10, Immerse in 30 · No Sign-Up Required
       </div>
       <h1 style={{ ...CG, fontSize: 50, fontWeight: 600, color: W, lineHeight: 1.08, letterSpacing: "-0.01em", marginBottom: 16, maxWidth: 780 }}>
-        Readiness Infrastructure, <em style={{ color: GOLD }}>end to end.</em>
+        It's 2:47 AM. <em style={{ color: GOLD }}>Your phone just lit up.</em>
       </h1>
       <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 680, marginBottom: 20 }}>
-        Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act decisively. Readiness OS rebuilds from first principles: pre-staged Readiness Protocols replace real-time coordination, system-detected patterns replace committee deliberation, and 12-minute execution replaces 30-day alignment cycles.
+        Somewhere in your organization, a situation just crossed the line — a competitor move, a breach, a regulator's letter, a resignation nobody saw coming. In the next fifteen minutes, someone will ask who owns this. In most enterprises, the honest answer is: nobody yet. That's the gap this walkthrough closes.
+      </p>
+      <p style={{ ...BAR, fontSize: 14, color: W50, lineHeight: 1.7, maxWidth: 680, marginBottom: 20 }}>
+        Readiness OS replaces that gap with 180 pre-staged Readiness Protocols and a 12-minute mobilization clock — system-detected patterns instead of committee deliberation, executive authorization instead of a 30-day alignment cycle.
       </p>
       <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 680, marginBottom: 40 }}>
-        This walkthrough shows the entire platform — before, during, and after a strategic trigger — personalized to a situation close to your world. Pick one below to begin.
+        Pick the situation closest to your world below. You'll live through the whole loop — the quiet before it fires, the moment it does, and the compounding advantage after — from the seat of the executive who has to decide.
       </p>
 
       {grouped.map(({ pillar, label, options }) => (

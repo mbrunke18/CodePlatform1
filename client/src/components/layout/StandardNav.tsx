@@ -603,31 +603,10 @@ export default function StandardNav() {
   const renderExperienceDropdown = () => {
     const primaryDemos = [
       {
-        path: '/demo-experience',
+        path: '/full-experience',
         icon: Play,
-        label: 'Full Platform Demo — Complete Walkthrough',
-        sub: 'The full journey: cold open → PREPARATION → RESPONSE (with live contrast vs. 30-day traditional) → ADVANCE. 9 steps. No login required.',
-        featured: true,
-      },
-      {
-        path: '/entry',
-        icon: Rocket,
-        label: 'New Here? Start Here',
-        sub: 'First visit? Get oriented in 60 seconds — pick your path: Enterprise Executive or Investor.',
-        featured: true,
-      },
-      {
-        path: '/demo-hub',
-        icon: LayoutGrid,
-        label: 'Full Scenario Experience Center',
-        sub: '12 complete simulations — pick your industry or role. Ransomware · FDA Recall · Activist Investor · DOJ Investigation · Data Breach · Grid Failure · and more.',
-        featured: true,
-      },
-      {
-        path: '/master-demo',
-        icon: Play,
-        label: 'Master Demo — Activist Investor',
-        sub: 'Elliott Management files 13D at 2:47 AM. The definitive 7-step walkthrough: signals → protocol → war room → CEO authorizes → 12 minutes complete.',
+        label: 'Full Platform Experience — Start Here',
+        sub: 'The complete 11-chapter walkthrough: cold open → trigger → detection → authorization → war room → outcomes → all 14 roles as one organization → recap. No login required.',
         featured: true,
       },
       {
@@ -638,10 +617,10 @@ export default function StandardNav() {
         featured: true,
       },
       {
-        path: '/role-selector',
-        icon: Users,
-        label: 'Role Experience — Find Your Seat',
-        sub: '14 executive roles — CEO, CFO, CIO, CISO, CTO, VP PMO and more. See exactly what your seat experiences during an activation.',
+        path: '/protocol-browser',
+        icon: LayoutGrid,
+        label: 'Protocol Browser',
+        sub: 'Browse all 180 Readiness Protocols by strategic domain, industry, and trigger type.',
         featured: true,
       },
     ];

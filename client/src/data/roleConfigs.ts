@@ -1,0 +1,197 @@
+import type { LucideIcon } from 'lucide-react';
+import {
+  Briefcase, DollarSign, Settings, TrendingUp, Server, Shield,
+  Users, Scale, Database, FileCheck, Target, Layers, Cloud,
+} from 'lucide-react';
+
+export type RoleCategory = 'OFFENSE' | 'DEFENSE' | 'SPECIAL TEAMS';
+
+export interface RoleConfig {
+  id: string;
+  title: string;
+  icon: LucideIcon;
+  hookQuestion: string;
+  situationLine: string;
+  keyMetric: string;
+  metricBefore: string;
+  metricAfter: string;
+  playbook: string;
+  category: RoleCategory;
+}
+
+export const CATEGORY_LABELS: Record<RoleCategory, string> = {
+  OFFENSE: 'Growth & Positioning',
+  DEFENSE: 'Risk & Resilience',
+  'SPECIAL TEAMS': 'Transformation',
+};
+
+export const roleConfigs: RoleConfig[] = [
+  {
+    id: 'ceo',
+    title: 'Chief Executive Officer',
+    icon: Briefcase,
+    hookQuestion: 'What percentage of your strategic initiatives actually deliver on time and on budget?',
+    situationLine: 'Board calls at 7 AM. Activist investor filed. You have no Readiness Protocol staged.',
+    keyMetric: '$144M execution gap closed',
+    metricBefore: '30+ days',
+    metricAfter: '12 min',
+    playbook: 'M&A Day 1 Integration',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'cfo',
+    title: 'Chief Financial Officer',
+    icon: DollarSign,
+    hookQuestion: "What's your company's biggest untracked expense that doesn't appear on any line item?",
+    situationLine: 'Coordinated response delays. Every week without a plan costs millions.',
+    keyMetric: '$114M Year 1 ROI · 6.3 week payback',
+    metricBefore: '3–5 weeks',
+    metricAfter: '12 min',
+    playbook: 'Financial Crisis Response',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'ciso',
+    title: 'Chief Information Security Officer',
+    icon: Shield,
+    hookQuestion: 'Breach detected at 2 AM. How long until 6 teams have roles, tasks, and execution already live?',
+    situationLine: 'The clock starts the moment the breach is detected. Every minute is exposure.',
+    keyMetric: 'Breach contained in 47 min',
+    metricBefore: '8 hours',
+    metricAfter: '47 min',
+    playbook: 'Ransomware Response',
+    category: 'DEFENSE',
+  },
+  {
+    id: 'cio',
+    title: 'Chief Information Officer',
+    icon: Cloud,
+    hookQuestion: 'Your primary cloud region goes down at 3 AM. How long until every dependent system has failed over?',
+    situationLine: "Multi-region outage live. Core systems degraded. Customers can't transact.",
+    keyMetric: '$3.4M in transactions protected · Zero data loss',
+    metricBefore: '4 hours',
+    metricAfter: '12 min',
+    playbook: 'Infrastructure Failover & Business Continuity',
+    category: 'DEFENSE',
+  },
+  {
+    id: 'coo',
+    title: 'Chief Operating Officer',
+    icon: Settings,
+    hookQuestion: 'When was the last time you executed your continuity plan at the speed it assumes?',
+    situationLine: 'Supply chain disruption live. Operations halting. You need coordinated response NOW.',
+    keyMetric: '$2.1M saved · Full coordination',
+    metricBefore: '30 days',
+    metricAfter: '12 min',
+    playbook: 'Operational Continuity',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'cmo',
+    title: 'Chief Marketing Officer',
+    icon: TrendingUp,
+    hookQuestion: 'Competitor launches a product tomorrow. How long until your counter-campaign is in market?',
+    situationLine: 'Competitor announcement live. Media is covering it. Your team is still in Slack.',
+    keyMetric: '$12M market share defended',
+    metricBefore: '21 days',
+    metricAfter: '3 days',
+    playbook: 'Competitive Response Readiness Protocol',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'cto',
+    title: 'Chief Technology Officer',
+    icon: Server,
+    hookQuestion: 'CEO announces digital transformation Monday. How long until 6 teams are coordinating?',
+    situationLine: 'Transformation announcement made. Engineering, Product, Data, Security — all waiting.',
+    keyMetric: '$12M ROI · 82% adoption rate',
+    metricBefore: '36 months',
+    metricAfter: '22 months',
+    playbook: 'AI Governance Framework',
+    category: 'SPECIAL TEAMS',
+  },
+  {
+    id: 'chro',
+    title: 'Chief Human Resources Officer',
+    icon: Users,
+    hookQuestion: "What's the #1 reason your top performers give in exit interviews?",
+    situationLine: 'Key talent departing. Culture score dropping. Nobody has a retention Readiness Protocol staged.',
+    keyMetric: '85% engagement · $2.1M saved',
+    metricBefore: '6 weeks',
+    metricAfter: '12 min',
+    playbook: 'M&A Day 1 Integration',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'gc',
+    title: 'General Counsel',
+    icon: Scale,
+    hookQuestion: 'Regulatory change Friday afternoon. How long until your organization executes compliance?',
+    situationLine: 'Friday 5 PM regulatory filing. Six teams need to move. No one has a mandate.',
+    keyMetric: 'Deadline met with 12 days to spare',
+    metricBefore: '5 weeks',
+    metricAfter: '10 days',
+    playbook: 'Regulatory Response',
+    category: 'SPECIAL TEAMS',
+  },
+  {
+    id: 'cso',
+    title: 'Chief Strategy Officer',
+    icon: Target,
+    hookQuestion: 'Six months later, how much of your strategy is actually executing as planned?',
+    situationLine: 'Q3 board review reveals 30% execution gap. Strategy is not translating to action.',
+    keyMetric: '70% → 95% strategy delivery',
+    metricBefore: '70% delivery',
+    metricAfter: '95% delivery',
+    playbook: 'Strategic Alignment Readiness Protocol',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'vppmo',
+    title: 'VP, Program Management Office',
+    icon: Layers,
+    hookQuestion: 'A new enterprise initiative launches this morning. How long until every workstream lead has their charter, budget, and team?',
+    situationLine: 'Board-approved program has 8 workstreams and zero assignments. The clock started at kickoff.',
+    keyMetric: '8 workstreams launched in 12 minutes',
+    metricBefore: '3 weeks',
+    metricAfter: '12 min',
+    playbook: 'Program Launch Readiness Protocol',
+    category: 'SPECIAL TEAMS',
+  },
+  {
+    id: 'cro',
+    title: 'Chief Revenue Officer',
+    icon: TrendingUp,
+    hookQuestion: "What's your average time from 'customer at risk' to 'retention plan in market'?",
+    situationLine: 'Your #2 account signals churn. Competitive displacement happening in real time.',
+    keyMetric: '+5% win rate · $44M revenue added',
+    metricBefore: '21 days',
+    metricAfter: '5 days',
+    playbook: 'Customer Retention Response',
+    category: 'OFFENSE',
+  },
+  {
+    id: 'cdo',
+    title: 'Chief Data Officer',
+    icon: Database,
+    hookQuestion: 'Your data signals churn risk. How long until the organization acts on that insight?',
+    situationLine: 'Signal fired 14 days ago. Three teams still haven\'t moved. Insight without execution.',
+    keyMetric: '92% customer save rate',
+    metricBefore: '14 days',
+    metricAfter: '2 hours',
+    playbook: 'AI Governance Framework',
+    category: 'SPECIAL TEAMS',
+  },
+  {
+    id: 'cco',
+    title: 'Chief Compliance Officer',
+    icon: FileCheck,
+    hookQuestion: 'Audit notification arrives Monday. How long before 6 teams have tasks staged and ready?',
+    situationLine: 'Audit in 10 days. Six departments. No pre-staged compliance Readiness Protocol. Starting from scratch.',
+    keyMetric: 'Audit stress eliminated',
+    metricBefore: '10 days scrambling',
+    metricAfter: '2 days ready',
+    playbook: 'Compliance Audit Response',
+    category: 'SPECIAL TEAMS',
+  },
+];

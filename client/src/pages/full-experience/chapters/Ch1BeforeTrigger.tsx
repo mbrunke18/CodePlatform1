@@ -58,6 +58,7 @@ export default function Ch1BeforeTrigger({ sc, chapter, onNext, onBack }: { sc: 
       </div>
 
       <ProductScreenPanel
+        collapsible
         eyebrow="See It In The Platform — Mission Control"
         image="/screenshots/new_mission_control.jpg"
         alt="Mission Control dashboard showing readiness score and staged protocols"
@@ -69,6 +70,7 @@ export default function Ch1BeforeTrigger({ sc, chapter, onNext, onBack }: { sc: 
       />
 
       <ProductScreenPanel
+        collapsible
         eyebrow="See It In The Platform — Protocol Library"
         image="/screenshots/protocol_library_v2.jpg"
         alt="Protocol Library showing 180 pre-staged Readiness Protocols"

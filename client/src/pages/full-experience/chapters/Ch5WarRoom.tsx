@@ -105,6 +105,7 @@ export default function Ch5WarRoom({ sc, chapter, onNext, onBack }: { sc: DemoSc
       </div>
 
       <ProductScreenPanel
+        collapsible
         eyebrow="See It In The Platform — Live Activation Center"
         image="/screenshots/deck_activation.jpg"
         alt="Live Activation Center showing task and stakeholder tracking during an activation"

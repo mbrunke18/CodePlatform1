@@ -2,7 +2,7 @@ import type { DemoScenario } from "@/pages/demos/scenarioData";
 import { GOLD, TEAL, TEAL_LT, RED, W, W70, W50, W25, BD, GBG, BC, CG, BAR, ProductScreenPanel } from "../shared";
 
 const ALTERNATIVES = [
-  { label: "Wait and hope", text: "The next situation still takes a 30-day mobilization cycle. Nothing about the old model changed." },
+  { label: "Wait and hope", text: "The next situation fires on its own schedule, not yours. While your team is still figuring out who owns it, your most prepared competitor has already made the calls you're about to start debating." },
   { label: "Buy another system-detected copilot", text: "Every enterprise already has Microsoft's AI stack. None have the operating model to use it. A copilot answers questions — it doesn't pre-stage a 12-minute mobilization." },
   { label: "Hire consultants", text: "A consulting engagement rebuilds the plan from scratch every time a situation fires. Readiness OS builds it once and gets faster with every activation." },
 ];
@@ -20,7 +20,7 @@ export default function Ch9Recap({ sc, onRestart }: { sc: DemoScenario; onRestar
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: "52px 28px 64px" }}>
       <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL, textTransform: "uppercase", marginBottom: 16 }}>
-        Chapter 9 — Recap: The Full Platform
+        Chapter 10 — Recap: The Full Platform
       </div>
       <h2 style={{ ...CG, fontSize: 42, fontWeight: 600, color: W, lineHeight: 1.12, letterSpacing: "-0.01em", marginBottom: 16 }}>
         You just walked the whole loop —<br/><em style={{ color: GOLD }}>preparation, authorization, mobilization, compounding.</em>
@@ -93,7 +93,7 @@ export default function Ch9Recap({ sc, onRestart }: { sc: DemoScenario; onRestar
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", alignItems: "center" }}>
           <a href="/demo-hub" style={{ ...BC, fontSize: 11, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.12em" }}>← Try a Focused Scenario Instead</a>
           <span style={{ color: W25, fontSize: 11 }}>·</span>
-          <a href="/master-demo" style={{ ...BC, fontSize: 11, fontWeight: 700, color: TEAL_LT, textDecoration: "none", letterSpacing: "0.12em" }}>See the 7-Step Activist Investor Walkthrough →</a>
+          <a href="/full-experience/activist" style={{ ...BC, fontSize: 11, fontWeight: 700, color: TEAL_LT, textDecoration: "none", letterSpacing: "0.12em" }}>Walk the Activist Investor Scenario →</a>
         </div>
       </div>
     </div>

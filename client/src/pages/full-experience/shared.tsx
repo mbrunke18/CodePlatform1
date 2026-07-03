@@ -33,6 +33,7 @@ export const CHAPTER_TITLES = [
   "12 Minutes vs. 30 Days",
   "Debrief & ROI",
   "ADVANCE 2.0",
+  "One Organization",
   "Recap & Founding Partner",
 ];
 export const TOTAL_CHAPTERS = CHAPTER_TITLES.length;
@@ -114,9 +115,28 @@ export function severityColorForRisk(riskScore: number) {
 }
 
 /* ─── Real product screen panel (breadth/depth proof) ─────────────────────── */
-export function ProductScreenPanel({ eyebrow, image, alt, route, callouts }: {
-  eyebrow: string; image: string; alt: string; route: string; callouts: { title: string; text: string }[];
+export function ProductScreenPanel({ eyebrow, image, alt, route, callouts, collapsible = false }: {
+  eyebrow: string; image: string; alt: string; route: string; callouts: { title: string; text: string }[]; collapsible?: boolean;
 }) {
+  const [open, setOpen] = useState(!collapsible);
+
+  if (collapsible && !open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        data-testid="button-expand-product-screen"
+        style={{
+          width: "100%", textAlign: "left", background: GBG, border: `1px solid ${BD}`, padding: "14px 18px",
+          marginBottom: 28, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between",
+          gap: 12, flexWrap: "wrap",
+        }}
+      >
+        <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", color: GOLD, textTransform: "uppercase" }}>{eyebrow}</span>
+        <span style={{ ...BC, fontSize: 11, fontWeight: 700, color: W70, letterSpacing: "0.08em" }}>See the real screen →</span>
+      </button>
+    );
+  }
+
   return (
     <div style={{ marginBottom: 28 }} data-testid="panel-product-screen">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, marginBottom: 12 }}>
