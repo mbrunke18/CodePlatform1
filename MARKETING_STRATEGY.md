@@ -581,6 +581,20 @@ Use this as a pinned/flagship post, not part of the weekly single-category caden
 >
 > We're taking a small number of Founding Partners this year — $75K, credited 100% to Year 1, direct access to the team building this. If any of the above sounds like your company right now, message me.
 
+**First comment (post immediately after, keeps the link out of the post body):**
+> If you want to see how the 12-minute mobilization actually works end to end: vaughnmartin.com/12-minute-experience
+
+### Single-image quick posts (pull one spotlight out of the carousel for a lighter posting day)
+Use `carousel/spotlight-strategy-consultants-single.html` — same design system, one slide, no need to open the full 10-slide deck. Save as PDF or screenshot the slide directly. Good for a day when a full carousel is too much but you still want a visual post instead of plain text.
+
+**Suggested caption to pair with it:**
+> Consultants get you a diagnosis. Then the engagement ends and the deck goes in a drive.
+>
+> We charge about what one week of that costs — for a system that pre-stages the response permanently and keeps getting sharper.
+
+**First comment for this post:**
+> Founding Partner details here: vaughnmartin.com/executive-brief
+
 ### Guerrilla visibility tactics (separate from the content itself — this is where the actual "no visibility" problem usually lives)
 1. **Comment before you post.** 15 minutes/day of substantive comments (not "Great post!") on 5-8 posts from actual target buyers (PMO directors, GCs, CROs) or on breaking news relevant to a domain (the Microsoft Frontier Company reaction is the model). Pre-audience, this drives more profile visits than your own posts do.
 2. **Reply to every comment on your own posts within the first hour.** This is the single highest-leverage 20 minutes of the week — it extends LinkedIn's algorithm test window and is usually the first thing that gets skipped when content production eats all the time.

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spotlight — Strategy Consultants | Single LinkedIn Image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #12112a;
+    color: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page-header {
+    text-align: center;
+    padding: 52px 40px 36px;
+    background: #0a0f2e;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .page-header h1 { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .page-header p { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 22px; }
+  .print-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #C9A84C, #DFC178);
+    color: #0A0F2E; font-size: 14px; font-weight: 800;
+    padding: 13px 36px; border-radius: 6px; border: none;
+    cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+  }
+  .print-btn:hover { opacity: 0.9; }
+  .slides-wrapper { display: flex; justify-content: center; padding: 48px 40px 80px; }
+  .slide { width: 1080px; height: 1080px; position: relative; overflow: hidden; }
+  .slide-inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .bg-navy { background: #0A0F2E; }
+  .orb-teal-left {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 900px 700px at 30% 60%, rgba(43,138,110,0.15) 0%, transparent 65%);
+  }
+  .watermark {
+    position: absolute; bottom: 28px; right: 36px;
+    display: flex; align-items: center; gap: 8px; opacity: 0.55; z-index: 2;
+  }
+  .wm-ring { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #C9A84C; display: flex; align-items: center; justify-content: center; }
+  .wm-ring span { font-size: 9px; font-weight: 900; color: #C9A84C; letter-spacing: 0.05em; }
+  .wm-url { font-size: 10px; font-weight: 700; color: #C9A84C; letter-spacing: 0.12em; text-transform: uppercase; }
+  .badge {
+    display: inline-flex; align-items: center;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.45);
+    border-radius: 4px; padding: 5px 14px;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #C9A84C;
+  }
+  .grad-gold {
+    background: linear-gradient(135deg, #C9A84C, #DFC178);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  @media print {
+    .page-header, .slides-wrapper > style { display: none !important; }
+    body { background: transparent !important; }
+    .slides-wrapper { padding: 0 !important; }
+    @page { margin: 0; size: 1080px 1080px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Spotlight — Strategy Consultants (Single Image)</h1>
+  <p>1080×1080 · Click "Save as PDF" or screenshot the slide below for a quick single-image LinkedIn post</p>
+  <button class="print-btn" onclick="window.print()">↓ Save as PDF</button>
+</div>
+
+<div class="slides-wrapper">
+<div class="slide bg-navy">
+  <div class="orb-teal-left"></div>
+  <div class="slide-inner" style="justify-content:center;padding:0 80px;">
+    <div class="badge">Spotlight — Strategy Consultants</div>
+    <div style="margin-top:40px;font-size:52px;font-weight:900;color:#fff;line-height:1.12;letter-spacing:-0.02em;">
+      They diagnose the gap.<br /><span class="grad-gold">They don't close it.</span>
+    </div>
+    <div style="margin-top:36px;font-size:18px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:760px;">
+      A strategy engagement gets you a sharp read on the problem and a framework to describe it — real value most companies never even reach.
+      Then the engagement ends. The deck goes in a shared drive. The next situation still starts with a meeting about who should be in the room.
+    </div>
+    <div style="margin-top:40px;padding:20px 26px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:8px;max-width:760px;">
+      <span style="font-size:16px;color:#DFC178;font-weight:600;">Readiness OS charges about the same as one week of that engagement — for a system that pre-stages the response permanently, and gets sharper every time it runs.</span>
+    </div>
+  </div>
+  <div class="watermark"><div class="wm-ring"><span>VM</span></div><span class="wm-url">vaughnmartin.com</span></div>
+</div>
+</div>
+
+</body>
+</html>
