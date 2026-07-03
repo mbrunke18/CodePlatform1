@@ -585,7 +585,7 @@ Use this as a pinned/flagship post, not part of the weekly single-category caden
 > If you want to see how the 12-minute mobilization actually works end to end: vaughnmartin.com/12-minute-experience
 
 ### Single-image quick posts (pull one spotlight out of the carousel for a lighter posting day)
-Use `carousel/spotlight-strategy-consultants-single.html` — same design system, one slide, no need to open the full 10-slide deck. Save as PDF or screenshot the slide directly. Good for a day when a full carousel is too much but you still want a visual post instead of plain text.
+Live at `/spotlight-strategy-consultants-single.html` on the app preview — same design system, one slide, no need to open the full 10-slide deck. Save as PDF or screenshot the slide directly. Good for a day when a full carousel is too much but you still want a visual post instead of plain text.
 
 **Suggested caption to pair with it:**
 > Consultants get you a diagnosis. Then the engagement ends and the deck goes in a drive.
