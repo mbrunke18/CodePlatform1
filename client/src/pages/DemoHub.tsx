@@ -537,11 +537,42 @@ export default function DemoHub() {
                 Role-specific simulations show exactly what each executive experiences during an activation — their brief, their tasks, their decision moment, their authority.
               </p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
               {SCENARIO_GROUPS.roles.map(({ id, label, icon, tagline }) => (
                 <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline} accentColor={TEAL_LT} />
               ))}
             </div>
+            <a
+              href="/role-selector"
+              style={{
+                display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16,
+                textDecoration: "none",
+                background: `linear-gradient(135deg, ${TEAL_LT}12 0%, ${TEAL_LT}04 100%)`,
+                border: `1px solid ${TEAL_LT}50`,
+                padding: "22px 26px",
+                transition: "border-color 0.2s, background 0.2s",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = `${TEAL_LT}80`;
+                (e.currentTarget as HTMLAnchorElement).style.background = `${TEAL_LT}18`;
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = `${TEAL_LT}50`;
+                (e.currentTarget as HTMLAnchorElement).style.background = `linear-gradient(135deg, ${TEAL_LT}12 0%, ${TEAL_LT}04 100%)`;
+              }}
+            >
+              <div>
+                <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: TEAL_LT, textTransform: "uppercase", marginBottom: 4 }}>
+                  Find Your Own Seat
+                </div>
+                <div style={{ ...BAR, fontSize: 15, fontWeight: 700, color: W }}>
+                  Explore all 14 executive roles — CEO, CFO, CIO, CISO, CTO, VP PMO and more
+                </div>
+              </div>
+              <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: TEAL_LT, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>
+                View Role Experience Hub →
+              </span>
+            </a>
           </div>
 
           {/* What every simulation shows */}

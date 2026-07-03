@@ -637,6 +637,13 @@ export default function StandardNav() {
         sub: 'A situation presents itself. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. No login required.',
         featured: true,
       },
+      {
+        path: '/role-selector',
+        icon: Users,
+        label: 'Role Experience — Find Your Seat',
+        sub: '14 executive roles — CEO, CFO, CIO, CISO, CTO, VP PMO and more. See exactly what your seat experiences during an activation.',
+        featured: true,
+      },
     ];
     const deeperDemos = [
       { path: '/demo/ransomware', icon: Zap, label: 'Risk — Financial Services Ransomware', sub: 'Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours.', domain: 'RISK' },
