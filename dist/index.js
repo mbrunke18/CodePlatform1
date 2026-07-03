@@ -68,6 +68,7 @@ __export(schema_exports, {
   activeDecisions: () => activeDecisions,
   activities: () => activities,
   activityFeedEvents: () => activityFeedEvents,
+  admissibilityChecks: () => admissibilityChecks,
   aiConfidenceScores: () => aiConfidenceScores,
   aiOptimizationSuggestions: () => aiOptimizationSuggestions,
   alertTypeEnum: () => alertTypeEnum,
@@ -155,6 +156,7 @@ __export(schema_exports, {
   insertActivationOutcomeSchema: () => insertActivationOutcomeSchema,
   insertActiveDecisionSchema: () => insertActiveDecisionSchema,
   insertActivityFeedEventSchema: () => insertActivityFeedEventSchema,
+  insertAdmissibilityCheckSchema: () => insertAdmissibilityCheckSchema,
   insertAiOptimizationSuggestionSchema: () => insertAiOptimizationSuggestionSchema,
   insertAllowedEmailSchema: () => insertAllowedEmailSchema,
   insertBackgroundJobSchema: () => insertBackgroundJobSchema,
@@ -513,7 +515,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, signalBriefProspects, prospectBriefsSent, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema, boardFeedback, insertBoardFeedbackSchema, protocolZeroConfigs, insertProtocolZeroConfigSchema, p0GeneratedProtocols, insertP0GeneratedProtocolSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, evalInviteTokens, insertEvalInviteTokenSchema, evalAccessRequests, insertEvalAccessRequestSchema, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, admissibilityChecks, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertAdmissibilityCheckSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, signalBriefProspects, prospectBriefsSent, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, orgMemberships, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema, preparationUpdates, insertPreparationUpdateSchema, preparationCompoundScores, insertPreparationCompoundScoreSchema, protocolVersionDeltas, insertProtocolVersionDeltaSchema, updateHypotheses, insertUpdateHypothesisSchema, microsoftConnectors, insertMicrosoftConnectorSchema, microsoftEvents, insertMicrosoftEventSchema, certificationRecords, insertCertificationRecordSchema, boardFeedback, insertBoardFeedbackSchema, protocolZeroConfigs, insertProtocolZeroConfigSchema, p0GeneratedProtocols, insertP0GeneratedProtocolSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -3387,10 +3389,33 @@ var init_schema = __esm({
       lessonsLearned: text2("lessons_learned"),
       playbookImprovements: jsonb("playbook_improvements"),
       // Suggested improvements
+      // Authorization — the "First Clock": when the executive signed off, and on what conditions
+      authorizedBy: varchar("authorized_by").references(() => users.id),
+      authorizedAt: timestamp2("authorized_at"),
+      authorizationSnapshot: jsonb("authorization_snapshot"),
+      // Governance answers + protocol state captured at the moment of sign-off
+      status: varchar("status", { length: 20 }).default("active"),
+      // active | completed
       // Timestamps
       activatedAt: timestamp2("activated_at").defaultNow().notNull(),
       completedAt: timestamp2("completed_at"),
       createdAt: timestamp2("created_at").defaultNow()
+    });
+    admissibilityChecks = pgTable2("admissibility_checks", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      activationId: uuid("activation_id").notNull(),
+      // References playbookActivations.id
+      taskDescription: text2("task_description").notNull(),
+      ownerRole: varchar("owner_role", { length: 100 }),
+      phase: varchar("phase", { length: 50 }),
+      verdict: varchar("verdict", { length: 20 }).notNull(),
+      // admissible | held | reauthorized
+      conditions: jsonb("conditions"),
+      // Array of { label, holds, detail }
+      checkedAt: timestamp2("checked_at").defaultNow(),
+      resolvedBy: varchar("resolved_by").references(() => users.id),
+      resolvedAt: timestamp2("resolved_at"),
+      resolutionNote: text2("resolution_note")
     });
     activationOutcomes = pgTable2("activation_outcomes", {
       id: uuid("id").primaryKey().defaultRandom(),
@@ -4099,7 +4124,19 @@ var init_schema = __esm({
       actualExecutionTime: true,
       targetMet: true,
       lessonsLearned: true,
-      playbookImprovements: true
+      playbookImprovements: true,
+      authorizedBy: true,
+      authorizedAt: true,
+      authorizationSnapshot: true,
+      status: true
+    });
+    insertAdmissibilityCheckSchema = createInsertSchema2(admissibilityChecks).pick({
+      activationId: true,
+      taskDescription: true,
+      ownerRole: true,
+      phase: true,
+      verdict: true,
+      conditions: true
     });
     insertDecisionConfidenceSchema = createInsertSchema2(decisionConfidence).pick({
       scenarioId: true,
@@ -6309,28 +6346,28 @@ var init_schema = __esm({
       regulatorAgency: varchar("regulator_agency", { length: 100 }),
       // SEC | FTC | DOJ | EEOC | NLRB | FDIC | OCC | FERC | OSHA | EPA | FINRA | CFPB | Treasury | UK FCA
       // ── P3: Cyber Threat Intelligence ────────────────────────────────────────────
-      threatSeverity: varchar("threat_severity", { length: 20 }),
+      threatSeverity: varchar("threat_severity", { length: 100 }),
       // critical | high | medium | low — CVSS-aligned, extracted from CISA/SANS content
-      exploitStatus: varchar("exploit_status", { length: 50 }),
+      exploitStatus: varchar("exploit_status", { length: 100 }),
       // known_exploited | proof_of_concept | theoretical
       affectedVendor: varchar("affected_vendor", { length: 200 }),
       // Microsoft | Cisco | Fortinet | etc. — named in advisory
       // ── P4: Economic Indicator Detail ────────────────────────────────────────────
-      economicIndicatorType: varchar("economic_indicator_type", { length: 50 }),
+      economicIndicatorType: varchar("economic_indicator_type", { length: 100 }),
       // interest_rate | jobs_report | CPI | GDP | energy_price | monetary_policy
-      indicatorDirection: varchar("indicator_direction", { length: 20 }),
+      indicatorDirection: varchar("indicator_direction", { length: 100 }),
       // rising | falling | stable | unexpected — routes to correct protocol severity
       // ── P5: Trade & Geopolitical Action ──────────────────────────────────────────
-      tradeActionType: varchar("trade_action_type", { length: 50 }),
+      tradeActionType: varchar("trade_action_type", { length: 100 }),
       // tariff | sanction | export_control | embargo | executive_order
-      effectiveTimeline: varchar("effective_timeline", { length: 20 }),
+      effectiveTimeline: varchar("effective_timeline", { length: 100 }),
       // immediate | 30_days | 90_days | proposed — determines protocol urgency
       // ── P6: Health & Safety Recall ───────────────────────────────────────────────
-      recallClass: varchar("recall_class", { length: 20 }),
+      recallClass: varchar("recall_class", { length: 100 }),
       // Class_I | Class_II | Class_III — FDA classification (Class I = highest risk)
-      affectedProductType: varchar("affected_product_type", { length: 50 }),
+      affectedProductType: varchar("affected_product_type", { length: 100 }),
       // food | pharma | medical_device | vehicle | consumer
-      recallScope: varchar("recall_scope", { length: 20 }),
+      recallScope: varchar("recall_scope", { length: 100 }),
       // regional | national | international
       // ── Market Signal Detail ──────────────────────────────────────────────────────
       signalEventType: varchar("signal_event_type", { length: 50 }),
@@ -6341,13 +6378,13 @@ var init_schema = __esm({
       namedSector: varchar("named_sector", { length: 100 }),
       // sector named in regulatory enforcement action
       // ── Enhanced Enforcement ─────────────────────────────────────────────────────
-      penaltyAmountRange: varchar("penalty_amount_range", { length: 20 }),
+      penaltyAmountRange: varchar("penalty_amount_range", { length: 100 }),
       // <1M | 1M-10M | 10M-100M | 100M+ — parsed from article text
       // ── Enhanced Cyber ───────────────────────────────────────────────────────────
       cveId: varchar("cve_id", { length: 30 }),
       // CVE-YYYY-NNNNN — extracted via regex from CISA/SANS feeds
       // ── Enhanced Economic ────────────────────────────────────────────────────────
-      indicatorMagnitude: varchar("indicator_magnitude", { length: 20 }),
+      indicatorMagnitude: varchar("indicator_magnitude", { length: 100 }),
       // minor | moderate | significant | shock — routing key for recession-level protocols
       centralBank: varchar("central_bank", { length: 50 }),
       // Federal Reserve | ECB — jurisdiction of monetary policy signal
@@ -11911,10 +11948,10 @@ var init_storage = __esm({
       async getSignalCalibration(organizationId, triggerPattern) {
         try {
           const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq64, and: and41 } = await import("drizzle-orm");
+          const { eq: eq65, and: and41 } = await import("drizzle-orm");
           const [row] = await db.select().from(signalCalibrationConfig2).where(and41(
-            eq64(signalCalibrationConfig2.organizationId, organizationId),
-            eq64(signalCalibrationConfig2.triggerPattern, triggerPattern)
+            eq65(signalCalibrationConfig2.organizationId, organizationId),
+            eq65(signalCalibrationConfig2.triggerPattern, triggerPattern)
           ));
           return row ?? null;
         } catch {
@@ -11923,7 +11960,7 @@ var init_storage = __esm({
       }
       async upsertSignalCalibration(data) {
         const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-        const { eq: eq64, and: and41 } = await import("drizzle-orm");
+        const { eq: eq65, and: and41 } = await import("drizzle-orm");
         const existing = await this.getSignalCalibration(data.organizationId, data.triggerPattern);
         if (existing) {
           const [updated] = await db.update(signalCalibrationConfig2).set({
@@ -11934,8 +11971,8 @@ var init_storage = __esm({
             lastCalibrated: /* @__PURE__ */ new Date(),
             updatedAt: /* @__PURE__ */ new Date()
           }).where(and41(
-            eq64(signalCalibrationConfig2.organizationId, data.organizationId),
-            eq64(signalCalibrationConfig2.triggerPattern, data.triggerPattern)
+            eq65(signalCalibrationConfig2.organizationId, data.organizationId),
+            eq65(signalCalibrationConfig2.triggerPattern, data.triggerPattern)
           )).returning();
           return updated;
         }
@@ -11953,8 +11990,8 @@ var init_storage = __esm({
       async getSignalCalibrations(organizationId) {
         try {
           const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq64 } = await import("drizzle-orm");
-          return await db.select().from(signalCalibrationConfig2).where(eq64(signalCalibrationConfig2.organizationId, organizationId)).orderBy(desc(signalCalibrationConfig2.lastCalibrated));
+          const { eq: eq65 } = await import("drizzle-orm");
+          return await db.select().from(signalCalibrationConfig2).where(eq65(signalCalibrationConfig2.organizationId, organizationId)).orderBy(desc(signalCalibrationConfig2.lastCalibrated));
         } catch {
           return [];
         }
@@ -11963,9 +12000,9 @@ var init_storage = __esm({
       async getLeadingIndicators(triggerPattern) {
         try {
           const { leadingIndicators: leadingIndicators2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq64 } = await import("drizzle-orm");
+          const { eq: eq65 } = await import("drizzle-orm");
           if (triggerPattern) {
-            return await db.select().from(leadingIndicators2).where(eq64(leadingIndicators2.triggerPattern, triggerPattern));
+            return await db.select().from(leadingIndicators2).where(eq65(leadingIndicators2.triggerPattern, triggerPattern));
           }
           return await db.select().from(leadingIndicators2);
         } catch {
@@ -11980,13 +12017,13 @@ var init_storage = __esm({
       async getLeadingIndicatorDetections(organizationId, includeAcknowledged = false) {
         try {
           const { leadingIndicatorDetections: leadingIndicatorDetections2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq64, and: and41 } = await import("drizzle-orm");
+          const { eq: eq65, and: and41 } = await import("drizzle-orm");
           if (includeAcknowledged) {
-            return await db.select().from(leadingIndicatorDetections2).where(eq64(leadingIndicatorDetections2.organizationId, organizationId)).orderBy(desc(leadingIndicatorDetections2.detectedAt));
+            return await db.select().from(leadingIndicatorDetections2).where(eq65(leadingIndicatorDetections2.organizationId, organizationId)).orderBy(desc(leadingIndicatorDetections2.detectedAt));
           }
           return await db.select().from(leadingIndicatorDetections2).where(and41(
-            eq64(leadingIndicatorDetections2.organizationId, organizationId),
-            eq64(leadingIndicatorDetections2.acknowledged, false)
+            eq65(leadingIndicatorDetections2.organizationId, organizationId),
+            eq65(leadingIndicatorDetections2.acknowledged, false)
           )).orderBy(desc(leadingIndicatorDetections2.detectedAt));
         } catch {
           return [];
@@ -11994,16 +12031,16 @@ var init_storage = __esm({
       }
       async acknowledgeLeadingIndicatorDetection(id) {
         const { leadingIndicatorDetections: leadingIndicatorDetections2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-        const { eq: eq64 } = await import("drizzle-orm");
-        await db.update(leadingIndicatorDetections2).set({ acknowledged: true }).where(eq64(leadingIndicatorDetections2.id, id));
+        const { eq: eq65 } = await import("drizzle-orm");
+        await db.update(leadingIndicatorDetections2).set({ acknowledged: true }).where(eq65(leadingIndicatorDetections2.id, id));
       }
       // ─── Phase 3: Signal Connectors ───────────────────────────────────────────────
       async getSignalConnectors(organizationId) {
         try {
           const { signalConnectors: signalConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq64, or: or3, isNull: isNull5 } = await import("drizzle-orm");
+          const { eq: eq65, or: or3, isNull: isNull5 } = await import("drizzle-orm");
           if (organizationId) {
-            return await db.select().from(signalConnectors2).where(or3(isNull5(signalConnectors2.organizationId), eq64(signalConnectors2.organizationId, organizationId)));
+            return await db.select().from(signalConnectors2).where(or3(isNull5(signalConnectors2.organizationId), eq65(signalConnectors2.organizationId, organizationId)));
           }
           return await db.select().from(signalConnectors2).orderBy(signalConnectors2.name);
         } catch {
@@ -12017,16 +12054,16 @@ var init_storage = __esm({
       }
       async updateSignalConnector(id, data) {
         const { signalConnectors: signalConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-        const { eq: eq64 } = await import("drizzle-orm");
-        const [row] = await db.update(signalConnectors2).set(data).where(eq64(signalConnectors2.id, id)).returning();
+        const { eq: eq65 } = await import("drizzle-orm");
+        const [row] = await db.update(signalConnectors2).set(data).where(eq65(signalConnectors2.id, id)).returning();
         return row;
       }
       // ─── Phase 3: Protocol Signal Profiles ──────────────────────────────────────
       async getProtocolSignalProfile(playbookId) {
         try {
           const { protocolSignalProfiles: protocolSignalProfiles2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-          const { eq: eq64 } = await import("drizzle-orm");
-          const [row] = await db.select().from(protocolSignalProfiles2).where(eq64(protocolSignalProfiles2.playbookId, playbookId));
+          const { eq: eq65 } = await import("drizzle-orm");
+          const [row] = await db.select().from(protocolSignalProfiles2).where(eq65(protocolSignalProfiles2.playbookId, playbookId));
           return row ?? null;
         } catch {
           return null;
@@ -12034,10 +12071,10 @@ var init_storage = __esm({
       }
       async upsertProtocolSignalProfile(data) {
         const { protocolSignalProfiles: protocolSignalProfiles2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-        const { eq: eq64 } = await import("drizzle-orm");
+        const { eq: eq65 } = await import("drizzle-orm");
         const existing = data.playbookId ? await this.getProtocolSignalProfile(data.playbookId) : null;
         if (existing) {
-          const [updated] = await db.update(protocolSignalProfiles2).set({ ...data, updatedAt: /* @__PURE__ */ new Date() }).where(eq64(protocolSignalProfiles2.id, existing.id)).returning();
+          const [updated] = await db.update(protocolSignalProfiles2).set({ ...data, updatedAt: /* @__PURE__ */ new Date() }).where(eq65(protocolSignalProfiles2.id, existing.id)).returning();
           return updated;
         }
         const [created] = await db.insert(protocolSignalProfiles2).values(data).returning();
@@ -16008,7 +16045,7 @@ __export(prospectEnrollment_exports, {
   notifyMatchingProspects: () => notifyMatchingProspects,
   sendRequestAccessWelcome: () => sendRequestAccessWelcome
 });
-import { eq as eq5, and as and5, gte as gte2, sql as sql7 } from "drizzle-orm";
+import { eq as eq6, and as and5, gte as gte2, sql as sql7 } from "drizzle-orm";
 import { Resend } from "resend";
 function getPlatformUrl() {
   if (process.env.REPLIT_DEPLOYMENT_URL) return process.env.REPLIT_DEPLOYMENT_URL;
@@ -16025,13 +16062,13 @@ async function enrollProspectForAlerts(prospect) {
       try {
         const existing = await db.select({ id: stakeholderContacts.id, isActive: stakeholderContacts.isActive }).from(stakeholderContacts).where(
           and5(
-            eq5(stakeholderContacts.organizationId, org.id),
-            eq5(stakeholderContacts.email, prospect.email)
+            eq6(stakeholderContacts.organizationId, org.id),
+            eq6(stakeholderContacts.email, prospect.email)
           )
         ).limit(1);
         if (existing.length > 0) {
           if (!existing[0].isActive) {
-            await db.update(stakeholderContacts).set({ isActive: true }).where(eq5(stakeholderContacts.id, existing[0].id));
+            await db.update(stakeholderContacts).set({ isActive: true }).where(eq6(stakeholderContacts.id, existing[0].id));
             console.log(`[ProspectEnrollment] Reactivated ${prospect.email} in org ${org.id}`);
           } else {
             console.log(`[ProspectEnrollment] ${prospect.email} already enrolled in org ${org.id}`);
@@ -16093,7 +16130,7 @@ async function notifyMatchingProspects(detections) {
       company: signalBriefProspects.company,
       role: signalBriefProspects.role,
       briefCount: signalBriefProspects.briefCount
-    }).from(signalBriefProspects).where(eq5(signalBriefProspects.isActive, true));
+    }).from(signalBriefProspects).where(eq6(signalBriefProspects.isActive, true));
   } catch {
     return;
   }
@@ -16106,13 +16143,13 @@ async function notifyMatchingProspects(detections) {
     for (const prospect of prospects) {
       try {
         const weeklyBriefs = await db.select({ id: prospectBriefsSent.id }).from(prospectBriefsSent).where(and5(
-          eq5(prospectBriefsSent.prospectId, prospect.id),
+          eq6(prospectBriefsSent.prospectId, prospect.id),
           gte2(prospectBriefsSent.sentAt, weekAgo)
         ));
         if (weeklyBriefs.length >= MAX_BRIEFS_PER_WEEK) continue;
         const recentSame = await db.select({ id: prospectBriefsSent.id }).from(prospectBriefsSent).where(and5(
-          eq5(prospectBriefsSent.prospectId, prospect.id),
-          eq5(prospectBriefsSent.triggerName, detection.triggerName),
+          eq6(prospectBriefsSent.prospectId, prospect.id),
+          eq6(prospectBriefsSent.triggerName, detection.triggerName),
           gte2(prospectBriefsSent.sentAt, dupWindow)
         )).limit(1);
         if (recentSame.length > 0) continue;
@@ -16134,7 +16171,7 @@ async function notifyMatchingProspects(detections) {
         await db.update(signalBriefProspects).set({
           briefCount: sql7`${signalBriefProspects.briefCount} + 1`,
           lastBriefAt: /* @__PURE__ */ new Date()
-        }).where(eq5(signalBriefProspects.id, prospect.id));
+        }).where(eq6(signalBriefProspects.id, prospect.id));
         console.log(`[SignalBrief] Sent \u2192 ${prospect.email} | ${detection.triggerName} (${detection.confidenceScore}%)`);
       } catch (err) {
         console.warn(`[SignalBrief] Send error (${prospect.email}):`, err.message);
@@ -17406,7 +17443,7 @@ __export(dynamicStrategyService_exports, {
   DynamicStrategyService: () => DynamicStrategyService,
   dynamicStrategyService: () => dynamicStrategyService
 });
-import { eq as eq12, desc as desc6, and as and7, gte as gte3 } from "drizzle-orm";
+import { eq as eq13, desc as desc6, and as and7, gte as gte3 } from "drizzle-orm";
 import OpenAI3 from "openai";
 var openai, DynamicStrategyService, dynamicStrategyService;
 var init_dynamicStrategyService = __esm({
@@ -17422,19 +17459,19 @@ var init_dynamicStrategyService = __esm({
        * Calculate and update Future Readiness Index for an organization
        */
       async calculateReadinessScore(organizationId) {
-        const playbooks2 = await db.select().from(strategicScenarios).where(eq12(strategicScenarios.organizationId, organizationId));
+        const playbooks2 = await db.select().from(strategicScenarios).where(eq13(strategicScenarios.organizationId, organizationId));
         const playbooksReady = playbooks2.filter((p) => p.readinessState === "green").length;
         const playbooksTotal = playbooks2.length;
         const recentExecutions = await db.select().from(executionInstances).where(
           and7(
-            eq12(executionInstances.organizationId, organizationId),
+            eq13(executionInstances.organizationId, organizationId),
             gte3(executionInstances.createdAt, new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3))
           )
         );
         const activeWeakSignals = await db.select().from(weakSignals).where(
           and7(
-            eq12(weakSignals.organizationId, organizationId),
-            eq12(weakSignals.status, "active")
+            eq13(weakSignals.organizationId, organizationId),
+            eq13(weakSignals.status, "active")
           )
         );
         const completedExecutions = recentExecutions.filter((e) => e.actualExecutionTime);
@@ -17449,7 +17486,7 @@ var init_dynamicStrategyService = __esm({
         const overallScore = Number(
           (foresightScore * 0.2 + velocityScore * 0.25 + agilityScore * 0.25 + learningScore * 0.15 + adaptabilityScore * 0.15).toFixed(1)
         );
-        const previousMetric = await db.select().from(readinessMetrics).where(eq12(readinessMetrics.organizationId, organizationId)).orderBy(desc6(readinessMetrics.measurementDate)).limit(1);
+        const previousMetric = await db.select().from(readinessMetrics).where(eq13(readinessMetrics.organizationId, organizationId)).orderBy(desc6(readinessMetrics.measurementDate)).limit(1);
         let trend = "stable";
         if (previousMetric.length > 0) {
           const previousScore = Number(previousMetric[0].overallScore);
@@ -17493,11 +17530,11 @@ var init_dynamicStrategyService = __esm({
       }
       async calculateLearningScore(organizationId) {
         const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-        const scenarios3 = await db.select().from(strategicScenarios).where(eq12(strategicScenarios.organizationId, organizationId));
+        const scenarios3 = await db.select().from(strategicScenarios).where(eq13(strategicScenarios.organizationId, organizationId));
         if (scenarios3.length === 0) return 0;
         const recentLearnings = await db.select().from(playbookLearnings).where(
           and7(
-            eq12(playbookLearnings.scenarioId, scenarios3[0].id),
+            eq13(playbookLearnings.scenarioId, scenarios3[0].id),
             gte3(playbookLearnings.extractedAt, thirtyDaysAgo)
           )
         );
@@ -17527,7 +17564,7 @@ var init_dynamicStrategyService = __esm({
         ];
         const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1e3);
         const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and7(
-          eq12(weakSignals.organizationId, organizationId),
+          eq13(weakSignals.organizationId, organizationId),
           gte3(weakSignals.detectedAt, twelveHoursAgo)
         )).limit(1);
         if (recentSignals.length > 0) {
@@ -17561,14 +17598,14 @@ var init_dynamicStrategyService = __esm({
       async detectOraclePatterns(organizationId) {
         const activeSignals = await db.select().from(weakSignals).where(
           and7(
-            eq12(weakSignals.organizationId, organizationId),
-            eq12(weakSignals.status, "active")
+            eq13(weakSignals.organizationId, organizationId),
+            eq13(weakSignals.status, "active")
           )
         ).orderBy(desc6(weakSignals.detectedAt)).limit(10);
         if (activeSignals.length < 3) return [];
         const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1e3);
         const recentPatterns = await db.select({ id: oraclePatterns.id }).from(oraclePatterns).where(and7(
-          eq12(oraclePatterns.organizationId, organizationId),
+          eq13(oraclePatterns.organizationId, organizationId),
           gte3(oraclePatterns.detectedAt, twentyFourHoursAgo)
         )).limit(1);
         if (recentPatterns.length > 0) {
@@ -17631,7 +17668,7 @@ var init_dynamicStrategyService = __esm({
        * Extract learnings from execution instance using AI
        */
       async extractLearnings(executionInstanceId, scenarioId) {
-        const execution = await db.select().from(executionInstances).where(eq12(executionInstances.id, executionInstanceId)).limit(1);
+        const execution = await db.select().from(executionInstances).where(eq13(executionInstances.id, executionInstanceId)).limit(1);
         if (execution.length === 0 || !execution[0].lessonsLearned) {
           return [];
         }
@@ -17712,7 +17749,7 @@ Format each learning as a concise action statement.`;
        * Get latest readiness metrics
        */
       async getLatestReadinessMetric(organizationId) {
-        const metrics = await db.select().from(readinessMetrics).where(eq12(readinessMetrics.organizationId, organizationId)).orderBy(desc6(readinessMetrics.measurementDate)).limit(1);
+        const metrics = await db.select().from(readinessMetrics).where(eq13(readinessMetrics.organizationId, organizationId)).orderBy(desc6(readinessMetrics.measurementDate)).limit(1);
         const metric = metrics[0];
         if (!metric) return null;
         return this.parseReadinessMetricNumbers(metric);
@@ -17735,7 +17772,7 @@ Format each learning as a concise action statement.`;
        * Get recent activity feed
        */
       async getActivityFeed(organizationId, limit = 20) {
-        return db.select().from(activityFeedEvents).where(eq12(activityFeedEvents.organizationId, organizationId)).orderBy(desc6(activityFeedEvents.createdAt)).limit(limit);
+        return db.select().from(activityFeedEvents).where(eq13(activityFeedEvents.organizationId, organizationId)).orderBy(desc6(activityFeedEvents.createdAt)).limit(limit);
       }
       /**
        * Get consolidated system status for Command Center
@@ -17744,20 +17781,20 @@ Format each learning as a concise action statement.`;
         const latestMetric = await this.getLatestReadinessMetric(organizationId);
         const activeScenarios = await db.select().from(strategicScenarios).where(
           and7(
-            eq12(strategicScenarios.organizationId, organizationId),
-            eq12(strategicScenarios.readinessState, "green")
+            eq13(strategicScenarios.organizationId, organizationId),
+            eq13(strategicScenarios.readinessState, "green")
           )
         );
         const activeWeakSignals = await db.select().from(weakSignals).where(
           and7(
-            eq12(weakSignals.organizationId, organizationId),
-            eq12(weakSignals.status, "active")
+            eq13(weakSignals.organizationId, organizationId),
+            eq13(weakSignals.status, "active")
           )
         );
         const activeOraclePatterns = await db.select().from(oraclePatterns).where(
           and7(
-            eq12(oraclePatterns.organizationId, organizationId),
-            eq12(oraclePatterns.status, "detected")
+            eq13(oraclePatterns.organizationId, organizationId),
+            eq13(oraclePatterns.status, "detected")
           )
         );
         let systemStatus = "operational";
@@ -19746,7 +19783,7 @@ __export(PreFlightCheckService_exports, {
   PreFlightCheckService: () => PreFlightCheckService,
   preFlightCheckService: () => preFlightCheckService
 });
-import { eq as eq15, and as and9, inArray as inArray3 } from "drizzle-orm";
+import { eq as eq16, and as and9, inArray as inArray3 } from "drizzle-orm";
 import pino8 from "pino";
 var logger6, PreFlightCheckService, preFlightCheckService;
 var init_PreFlightCheckService = __esm({
@@ -19811,9 +19848,9 @@ var init_PreFlightCheckService = __esm({
        * Get execution plan and associated tasks
        */
       async getExecutionPlan(executionPlanId) {
-        const plan = await db.select().from(scenarioExecutionPlans).where(eq15(scenarioExecutionPlans.id, executionPlanId)).limit(1);
-        const tasks4 = await db.select().from(executionPlanTasks).where(eq15(executionPlanTasks.executionPlanId, executionPlanId));
-        const phases = await db.select().from(executionPlanPhases).where(eq15(executionPlanPhases.executionPlanId, executionPlanId));
+        const plan = await db.select().from(scenarioExecutionPlans).where(eq16(scenarioExecutionPlans.id, executionPlanId)).limit(1);
+        const tasks4 = await db.select().from(executionPlanTasks).where(eq16(executionPlanTasks.executionPlanId, executionPlanId));
+        const phases = await db.select().from(executionPlanPhases).where(eq16(executionPlanPhases.executionPlanId, executionPlanId));
         return { plan: plan[0], tasks: tasks4, phases };
       }
       /**
@@ -19828,14 +19865,14 @@ var init_PreFlightCheckService = __esm({
         }
         const usersWithRoles = await db.select().from(users).where(
           and9(
-            eq15(users.organizationId, organizationId),
+            eq16(users.organizationId, organizationId),
             inArray3(users.roleId, requiredRoleIds)
           )
         );
         for (const roleId of requiredRoleIds) {
           const usersForRole = usersWithRoles.filter((u) => u.roleId === roleId);
           const tasksForRole = tasks4.filter((t) => t.requiredRoleId === roleId);
-          const roleData = await db.select().from(roles).where(eq15(roles.id, roleId)).limit(1);
+          const roleData = await db.select().from(roles).where(eq16(roles.id, roleId)).limit(1);
           const roleName = roleData[0]?.name || "Unknown Role";
           if (usersForRole.length === 0) {
             warnings.push({
@@ -19971,7 +20008,7 @@ var init_PreFlightCheckService = __esm({
         const requiredRoleIds = Array.from(requiredRoleIdsSet);
         const usersWithRoles = await db.select().from(users).where(
           and9(
-            eq15(users.organizationId, organizationId),
+            eq16(users.organizationId, organizationId),
             inArray3(users.roleId, requiredRoleIds)
           )
         );
@@ -19993,7 +20030,7 @@ __export(ExecutionOrchestrator_exports, {
   ExecutionOrchestrator: () => ExecutionOrchestrator,
   executionOrchestrator: () => executionOrchestrator
 });
-import { eq as eq16 } from "drizzle-orm";
+import { eq as eq17 } from "drizzle-orm";
 import pino9 from "pino";
 var logger7, ExecutionOrchestrator, executionOrchestrator;
 var init_ExecutionOrchestrator = __esm({
@@ -20178,8 +20215,8 @@ var init_ExecutionOrchestrator = __esm({
         return result;
       }
       async syncToExternalPlatform(executionInstanceId, request) {
-        const [playbook] = await db.select().from(playbookLibrary).where(eq16(playbookLibrary.id, request.playbookId));
-        const tasks4 = await db.select().from(executionPlanTasks).where(eq16(executionPlanTasks.executionPlanId, request.executionPlanId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq17(playbookLibrary.id, request.playbookId));
+        const tasks4 = await db.select().from(executionPlanTasks).where(eq17(executionPlanTasks.executionPlanId, request.executionPlanId));
         const projectName = playbook ? `M: ${playbook.name}` : "M Strategic Response";
         const projectKey = `M${Date.now().toString(36).toUpperCase().slice(-6)}`;
         const [syncRecord] = await db.insert(externalProjectSyncs).values({
@@ -20204,7 +20241,7 @@ var init_ExecutionOrchestrator = __esm({
         };
       }
       async generateDocuments(executionInstanceId, request) {
-        const [playbook] = await db.select().from(playbookLibrary).where(eq16(playbookLibrary.id, request.playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq17(playbookLibrary.id, request.playbookId));
         if (!playbook) return 0;
         const documentsToGenerate = [
           { name: "Executive Briefing", type: "briefing" },
@@ -20238,7 +20275,7 @@ var init_ExecutionOrchestrator = __esm({
         return generatedCount;
       }
       async notifyStakeholders(executionInstanceId, request, deadline) {
-        const stakeholders = await db.select().from(scenarioStakeholders).where(eq16(scenarioStakeholders.scenarioId, request.scenarioId));
+        const stakeholders = await db.select().from(scenarioStakeholders).where(eq17(scenarioStakeholders.scenarioId, request.scenarioId));
         let notifiedCount = 0;
         for (const stakeholder of stakeholders) {
           try {
@@ -20269,7 +20306,7 @@ var init_ExecutionOrchestrator = __esm({
         return notifiedCount;
       }
       async unlockBudgets(executionInstanceId, request) {
-        const [playbook] = await db.select().from(playbookLibrary).where(eq16(playbookLibrary.id, request.playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq17(playbookLibrary.id, request.playbookId));
         if (!playbook?.preApprovedBudget) return null;
         const budgetAmount = Number(playbook.preApprovedBudget) || 0;
         if (budgetAmount === 0) return null;
@@ -20363,14 +20400,14 @@ A strategic playbook has been activated requiring immediate attention.
 Document generated at ${vars.activationTime}`;
       }
       async getActivationStatus(executionInstanceId) {
-        const [instance] = await db.select().from(executionInstances).where(eq16(executionInstances.id, executionInstanceId));
+        const [instance] = await db.select().from(executionInstances).where(eq17(executionInstances.id, executionInstanceId));
         if (!instance) return null;
         const [events, stakeholderAcks, documents, projectSyncs, budgets] = await Promise.all([
-          db.select().from(activationEvents).where(eq16(activationEvents.executionInstanceId, executionInstanceId)),
-          db.select().from(stakeholderAcknowledgments).where(eq16(stakeholderAcknowledgments.executionInstanceId, executionInstanceId)),
-          db.select().from(generatedDocuments).where(eq16(generatedDocuments.executionInstanceId, executionInstanceId)),
-          db.select().from(externalProjectSyncs).where(eq16(externalProjectSyncs.executionInstanceId, executionInstanceId)),
-          db.select().from(budgetUnlocks).where(eq16(budgetUnlocks.executionInstanceId, executionInstanceId))
+          db.select().from(activationEvents).where(eq17(activationEvents.executionInstanceId, executionInstanceId)),
+          db.select().from(stakeholderAcknowledgments).where(eq17(stakeholderAcknowledgments.executionInstanceId, executionInstanceId)),
+          db.select().from(generatedDocuments).where(eq17(generatedDocuments.executionInstanceId, executionInstanceId)),
+          db.select().from(externalProjectSyncs).where(eq17(externalProjectSyncs.executionInstanceId, executionInstanceId)),
+          db.select().from(budgetUnlocks).where(eq17(budgetUnlocks.executionInstanceId, executionInstanceId))
         ]);
         return {
           instance,
@@ -20396,7 +20433,7 @@ __export(magicLinkService_exports, {
 });
 import { Resend as Resend6 } from "resend";
 import crypto3 from "crypto";
-import { eq as eq19 } from "drizzle-orm";
+import { eq as eq20 } from "drizzle-orm";
 function generateToken() {
   return crypto3.randomBytes(48).toString("hex");
 }
@@ -20727,7 +20764,7 @@ async function sendWelcomeTriggerDemo(email, firstName) {
   console.warn(`[WelcomeTrigger] All senders failed for ${email}`);
 }
 async function validateMagicLinkToken(token) {
-  const rows = await db.select().from(magicLinkTokens).where(eq19(magicLinkTokens.token, token)).limit(1);
+  const rows = await db.select().from(magicLinkTokens).where(eq20(magicLinkTokens.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
   const row = rows[0];
   if (row.usedAt) return { valid: false, reason: "already_used" };
@@ -20744,12 +20781,12 @@ async function validateMagicLinkToken(token) {
   };
 }
 async function verifyMagicLinkToken(token) {
-  const rows = await db.select().from(magicLinkTokens).where(eq19(magicLinkTokens.token, token)).limit(1);
+  const rows = await db.select().from(magicLinkTokens).where(eq20(magicLinkTokens.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
   const row = rows[0];
   if (row.usedAt) return { valid: false, reason: "already_used" };
   if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
-  await db.update(magicLinkTokens).set({ usedAt: /* @__PURE__ */ new Date() }).where(eq19(magicLinkTokens.token, token));
+  await db.update(magicLinkTokens).set({ usedAt: /* @__PURE__ */ new Date() }).where(eq20(magicLinkTokens.token, token));
   return {
     valid: true,
     data: {
@@ -20782,7 +20819,7 @@ __export(TriggerEvaluationEngine_exports, {
   getOrgTriggerSummary: () => getOrgTriggerSummary,
   loadConfiguredTriggers: () => loadConfiguredTriggers
 });
-import { eq as eq21, and as and13 } from "drizzle-orm";
+import { eq as eq22, and as and13 } from "drizzle-orm";
 function findDataPointById(dpId) {
   for (const cat of SIGNAL_CATEGORIES) {
     const dp = cat.dataPoints.find((d) => d.id === dpId);
@@ -20800,8 +20837,8 @@ async function loadConfiguredTriggers(organizationId) {
   }
   try {
     const execTriggers = await db.select().from(executiveTriggers).where(and13(
-      eq21(executiveTriggers.organizationId, organizationId),
-      eq21(executiveTriggers.isActive, true)
+      eq22(executiveTriggers.organizationId, organizationId),
+      eq22(executiveTriggers.isActive, true)
     ));
     for (const t of execTriggers) {
       const playbooks2 = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
@@ -20823,8 +20860,8 @@ async function loadConfiguredTriggers(organizationId) {
       });
     }
     const custom = await db.select().from(customTriggers).where(and13(
-      eq21(customTriggers.organizationId, organizationId),
-      eq21(customTriggers.isActive, true)
+      eq22(customTriggers.organizationId, organizationId),
+      eq22(customTriggers.isActive, true)
     ));
     for (const t of custom) {
       const playbooks2 = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
@@ -21330,7 +21367,7 @@ __export(SignalEvaluationService_exports, {
   evaluateSignal: () => evaluateSignal,
   getRecentDetections: () => getRecentDetections
 });
-import { eq as eq22, desc as desc10, and as and14, gte as gte4 } from "drizzle-orm";
+import { eq as eq23, desc as desc10, and as and14, gte as gte4 } from "drizzle-orm";
 import { Resend as Resend8 } from "resend";
 async function getOrgConfig(organizationId) {
   const defaults = { mode: "both", watchPct: 50, awarePct: 70, actionPct: 80 };
@@ -21338,7 +21375,7 @@ async function getOrgConfig(organizationId) {
     return { ...defaults, mode: "default" };
   }
   try {
-    const [config] = await db.select().from(signalMonitoringConfig).where(eq22(signalMonitoringConfig.organizationId, organizationId)).limit(1);
+    const [config] = await db.select().from(signalMonitoringConfig).where(eq23(signalMonitoringConfig.organizationId, organizationId)).limit(1);
     const rawMode = config?.evaluationMode || "both";
     return {
       mode: ["configured", "default", "both"].includes(rawMode) ? rawMode : "both",
@@ -21484,8 +21521,8 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
     </div>
   `;
   const fromAddresses = [
-    "Readiness OS <onboarding@resend.dev>",
-    "Readiness OS <pilot@vaughnmartin.com>"
+    "Readiness OS <pilot@vaughnmartin.com>",
+    "Readiness OS <onboarding@resend.dev>"
   ];
   let anySent = false;
   for (const recipientEmail of emails) {
@@ -21589,8 +21626,8 @@ async function sendWatchEmail(detection, signal, emails, orgId) {
     </div>
   `;
   const fromAddresses = [
-    "Readiness OS <onboarding@resend.dev>",
-    "Readiness OS <pilot@vaughnmartin.com>"
+    "Readiness OS <pilot@vaughnmartin.com>",
+    "Readiness OS <onboarding@resend.dev>"
   ];
   let anySent = false;
   for (const recipientEmail of emails) {
@@ -21694,8 +21731,8 @@ async function sendAwareEmail(detection, signal, emails, orgId) {
     </div>
   `;
   const fromAddresses = [
-    "Readiness OS <onboarding@resend.dev>",
-    "Readiness OS <pilot@vaughnmartin.com>"
+    "Readiness OS <pilot@vaughnmartin.com>",
+    "Readiness OS <onboarding@resend.dev>"
   ];
   let anySent = false;
   for (const recipientEmail of emails) {
@@ -21789,7 +21826,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   const prospectBriefQueue = [];
   let allContacts = [];
   try {
-    allContacts = await db.select().from(stakeholderContacts).where(eq22(stakeholderContacts.organizationId, organizationId));
+    allContacts = await db.select().from(stakeholderContacts).where(eq23(stakeholderContacts.organizationId, organizationId));
   } catch {
   }
   if (allContacts.length === 0) {
@@ -21880,7 +21917,12 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   console.log(`[SignalEvaluationService] Total detections to process: ${allDetectionsFlat.length} (mode: ${evaluationMode})`);
   for (const { detection, signal, engine } of allDetectionsFlat) {
     try {
-      const recent = await db.select().from(triggerDetections).where(eq22(triggerDetections.triggerName, detection.triggerName)).orderBy(desc10(triggerDetections.detectedAt)).limit(1);
+      const recent = await db.select().from(triggerDetections).where(
+        and14(
+          eq23(triggerDetections.organizationId, organizationId),
+          eq23(triggerDetections.triggerName, detection.triggerName)
+        )
+      ).orderBy(desc10(triggerDetections.detectedAt)).limit(1);
       const lastDetected = recent[0]?.detectedAt;
       const hoursSince = lastDetected ? (Date.now() - new Date(lastDetected).getTime()) / 36e5 : 999;
       if (hoursSince < 24) continue;
@@ -21889,8 +21931,8 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         todayStart.setHours(0, 0, 0, 0);
         const emailsSentToday = await db.select().from(triggerDetections).where(
           and14(
-            eq22(triggerDetections.organizationId, organizationId),
-            eq22(triggerDetections.notificationSent, true),
+            eq23(triggerDetections.organizationId, organizationId),
+            eq23(triggerDetections.notificationSent, true),
             gte4(triggerDetections.detectedAt, todayStart)
           )
         );
@@ -21921,11 +21963,11 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       let orgReadiness = null;
       try {
         const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-        const { eq: eq64, and: and41 } = await import("drizzle-orm");
+        const { eq: eq65, and: and41 } = await import("drizzle-orm");
         const [cal] = await db.select().from(signalCalibrationConfig2).where(
           and41(
-            eq64(signalCalibrationConfig2.organizationId, organizationId),
-            eq64(signalCalibrationConfig2.triggerPattern, detection.triggerName)
+            eq65(signalCalibrationConfig2.organizationId, organizationId),
+            eq65(signalCalibrationConfig2.triggerPattern, detection.triggerName)
           )
         );
         if (cal) {
@@ -21944,65 +21986,72 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         }
       } catch {
       }
+      const trunc = (val, max) => val ? String(val).substring(0, max) : null;
       const sig = signal;
-      const [savedDetection] = await db.insert(triggerDetections).values({
-        organizationId,
-        triggerName: detection.triggerName,
-        triggerDomain: detection.triggerDomain,
-        signalDescription: signal.description,
-        signalSource: signal.source,
-        signalSourceUrl: signal.sourceUrl || null,
-        confidenceScore: detection.confidenceScore,
-        signalCategory: sig.category || null,
-        jurisdiction: sig.jurisdiction || "US",
-        recommendedPlaybook: detection.recommendedPlaybook,
-        alternatePlaybooks: detection.alternatePlaybooks,
-        // P2: Regulatory enforcement
-        enforcementActionType: sig.enforcementActionType || null,
-        regulatorAgency: sig.regulatorAgency || null,
-        // P3: Cyber threat intelligence
-        threatSeverity: sig.threatSeverity || null,
-        exploitStatus: sig.exploitStatus || null,
-        affectedVendor: sig.affectedVendor || null,
-        // P4: Economic indicator
-        economicIndicatorType: sig.economicIndicatorType || null,
-        indicatorDirection: sig.indicatorDirection || null,
-        // P5: Trade & geopolitical
-        tradeActionType: sig.tradeActionType || null,
-        effectiveTimeline: sig.effectiveTimeline || null,
-        // P6: Health & safety recall
-        recallClass: sig.recallClass || null,
-        affectedProductType: sig.affectedProductType || null,
-        recallScope: sig.recallScope || null,
-        // Market signal
-        signalEventType: sig.signalEventType || null,
-        // Sector intelligence
-        affectedSector: sig.affectedSector || null,
-        namedSector: sig.namedSector || null,
-        // Enhanced enforcement
-        penaltyAmountRange: sig.penaltyAmountRange || null,
-        // Enhanced cyber
-        cveId: sig.cveId || null,
-        // Enhanced economic
-        indicatorMagnitude: sig.indicatorMagnitude || null,
-        centralBank: sig.centralBank || null,
-        // Enhanced trade
-        tradePartner: sig.tradePartner || null,
-        affectedHsCodes: sig.affectedHsCodes || null,
-        // Trigger graph linkage — populated here, then protocol ID lookup runs post-insert
-        triggerIdsMatched: [detection.triggerName],
-        status: "detected",
-        notificationSent: false,
-        urgencyLevel,
-        orgReadiness,
-        matchedEvidence: {
-          engine,
-          conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
-          totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
-          dataPoints: detection.dataPoints ?? detection.matchedKeywords.map((kw) => `Signal matched: "${kw}"`),
-          matchedKeywords: detection.matchedKeywords
-        }
-      }).returning();
+      let savedDetection;
+      try {
+        const [row] = await db.insert(triggerDetections).values({
+          organizationId,
+          triggerName: detection.triggerName,
+          triggerDomain: detection.triggerDomain,
+          signalDescription: signal.description,
+          signalSource: signal.source,
+          signalSourceUrl: sig.sourceUrl || null,
+          confidenceScore: detection.confidenceScore,
+          signalCategory: trunc(sig.category, 50),
+          jurisdiction: trunc(sig.jurisdiction || "US", 50),
+          recommendedPlaybook: detection.recommendedPlaybook,
+          alternatePlaybooks: detection.alternatePlaybooks,
+          // P2: Regulatory enforcement
+          enforcementActionType: trunc(sig.enforcementActionType, 50),
+          regulatorAgency: trunc(sig.regulatorAgency, 100),
+          // P3: Cyber threat intelligence
+          threatSeverity: trunc(sig.threatSeverity, 100),
+          exploitStatus: trunc(sig.exploitStatus, 100),
+          affectedVendor: trunc(sig.affectedVendor, 200),
+          // P4: Economic indicator
+          economicIndicatorType: trunc(sig.economicIndicatorType, 100),
+          indicatorDirection: trunc(sig.indicatorDirection, 100),
+          // P5: Trade & geopolitical
+          tradeActionType: trunc(sig.tradeActionType, 100),
+          effectiveTimeline: trunc(sig.effectiveTimeline, 100),
+          // P6: Health & safety recall
+          recallClass: trunc(sig.recallClass, 100),
+          affectedProductType: trunc(sig.affectedProductType, 100),
+          recallScope: trunc(sig.recallScope, 100),
+          // Market signal
+          signalEventType: trunc(sig.signalEventType, 50),
+          // Sector intelligence
+          affectedSector: trunc(sig.affectedSector, 100),
+          namedSector: trunc(sig.namedSector, 100),
+          // Enhanced enforcement
+          penaltyAmountRange: trunc(sig.penaltyAmountRange, 100),
+          // Enhanced cyber
+          cveId: trunc(sig.cveId, 30),
+          // Enhanced economic
+          indicatorMagnitude: trunc(sig.indicatorMagnitude, 100),
+          centralBank: trunc(sig.centralBank, 50),
+          // Enhanced trade
+          tradePartner: trunc(sig.tradePartner, 200),
+          affectedHsCodes: trunc(sig.affectedHsCodes, 200),
+          // Trigger graph linkage — populated here, then protocol ID lookup runs post-insert
+          triggerIdsMatched: [detection.triggerName],
+          status: "detected",
+          notificationSent: false,
+          urgencyLevel,
+          orgReadiness,
+          matchedEvidence: {
+            engine,
+            conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
+            totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
+            dataPoints: detection.dataPoints ?? detection.matchedKeywords.map((kw) => `Signal matched: "${kw}"`),
+            matchedKeywords: detection.matchedKeywords
+          }
+        }).returning();
+        savedDetection = row;
+      } catch (dbErr) {
+        console.error(`\u26A0 Detection DB persist failed for "${detection.triggerName}" \u2014 email will still fire: ${dbErr?.message}`);
+      }
       try {
         const { playbookLibrary: playbookLibrary2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
         const { ilike } = await import("drizzle-orm");
@@ -22010,7 +22059,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         if (playbookName && savedDetection?.id) {
           const [matched] = await db.select({ id: playbookLibrary2.id, num: playbookLibrary2.playbookNumber }).from(playbookLibrary2).where(ilike(playbookLibrary2.name, `%${playbookName}%`)).limit(1);
           if (matched) {
-            await db.update(triggerDetections).set({ protocolIdMatched: matched.id, protocolNumberMatched: matched.num }).where(eq22(triggerDetections.id, savedDetection.id));
+            await db.update(triggerDetections).set({ protocolIdMatched: matched.id, protocolNumberMatched: matched.num }).where(eq23(triggerDetections.id, savedDetection.id));
             console.log(`\u{1F517} Linked detection to Protocol #${matched.num} (${playbookName})`);
           }
         }
@@ -22024,7 +22073,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
             const { scoreSignalSemantically: scoreSignalSemantically2 } = await Promise.resolve().then(() => (init_SemanticScoringService(), SemanticScoringService_exports));
             const result = await scoreSignalSemantically2(signalText);
             if (result) {
-              await db.update(triggerDetections).set({ semanticSimilarityScore: result.score }).where(eq22(triggerDetections.id, detectionId));
+              await db.update(triggerDetections).set({ semanticSimilarityScore: result.score }).where(eq23(triggerDetections.id, detectionId));
             }
           } catch {
           }
@@ -22099,14 +22148,14 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       const timelineStatus = isActionTier ? "notified" : isAwareTier ? "aware" : "watch";
       try {
         if (executionTimelineId) {
-          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: timelineStatus }).where(eq22(executionTimelines.id, executionTimelineId));
+          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: timelineStatus }).where(eq23(executionTimelines.id, executionTimelineId));
         }
       } catch {
       }
       if (emailDelivered) {
-        await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq22(triggerDetections.id, savedDetection.id));
+        await db.update(triggerDetections).set({ notificationSent: true, status: timelineStatus }).where(eq23(triggerDetections.id, savedDetection.id));
       } else {
-        await db.update(triggerDetections).set({ status: timelineStatus }).where(eq22(triggerDetections.id, savedDetection.id));
+        await db.update(triggerDetections).set({ status: timelineStatus }).where(eq23(triggerDetections.id, savedDetection.id));
       }
       detectionsCreated++;
       prospectBriefQueue.push({
@@ -22135,7 +22184,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   return detectionsCreated;
 }
 async function getRecentDetections(organizationId, limit = 20) {
-  return db.select().from(triggerDetections).where(eq22(triggerDetections.organizationId, organizationId)).orderBy(desc10(triggerDetections.detectedAt)).limit(limit);
+  return db.select().from(triggerDetections).where(eq23(triggerDetections.organizationId, organizationId)).orderBy(desc10(triggerDetections.detectedAt)).limit(limit);
 }
 async function evaluateLeadingIndicators(signals, organizationId) {
   try {
@@ -22167,9 +22216,9 @@ async function evaluateLeadingIndicators(signals, organizationId) {
         const cutoff = new Date(Date.now() - 4 * 36e5);
         const recent = await db.select().from(leadingIndicatorDetections2).where(
           and41(
-            eq22(leadingIndicatorDetections2.organizationId, organizationId),
-            eq22(leadingIndicatorDetections2.triggerPattern, pattern),
-            eq22(leadingIndicatorDetections2.acknowledged, false)
+            eq23(leadingIndicatorDetections2.organizationId, organizationId),
+            eq23(leadingIndicatorDetections2.triggerPattern, pattern),
+            eq23(leadingIndicatorDetections2.acknowledged, false)
           )
         ).limit(1);
         if (recent.length > 0) continue;
@@ -22225,7 +22274,7 @@ async function evaluateCompoundPatterns(signals, organizationId) {
     const compoundScore = Math.min(95, Math.round(avgPeak * (1 + (activeDomains.length - 1) * 0.08)));
     if (compoundScore < 45) return;
     const sortedDomains = [...activeDomains].sort();
-    const recentAlerts = await db.select().from(compoundThreatAlerts2).where(eq22(compoundThreatAlerts2.organizationId, organizationId)).orderBy(desc10(compoundThreatAlerts2.detectedAt)).limit(10);
+    const recentAlerts = await db.select().from(compoundThreatAlerts2).where(eq23(compoundThreatAlerts2.organizationId, organizationId)).orderBy(desc10(compoundThreatAlerts2.detectedAt)).limit(10);
     const alreadyExists = recentAlerts.some((r) => {
       const rDomains = [...Array.isArray(r.domains) ? r.domains : []].sort();
       return JSON.stringify(rDomains) === JSON.stringify(sortedDomains) && Date.now() - new Date(r.detectedAt).getTime() < 6 * 36e5;
@@ -23343,7 +23392,7 @@ async function fetchInternalReadinessSignals(organizationId) {
   const signals = [];
   try {
     const { playbookLibrary: playbookLibrary2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { lt: lt3, and: and41, eq: eq64, sql: sql27 } = await import("drizzle-orm");
+    const { lt: lt3, and: and41, eq: eq65, sql: sql27 } = await import("drizzle-orm");
     const warnCutoff = new Date(Date.now() - STALE_DAYS_WARN * 864e5);
     const critCutoff = new Date(Date.now() - STALE_DAYS_CRITICAL * 864e5);
     const staleProtocols = await db.select({
@@ -23440,8 +23489,8 @@ async function fetchInternalReadinessSignals(organizationId) {
   }
   try {
     const { stakeholderContacts: stakeholderContacts2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq64, isNull: isNull5, or: or3 } = await import("drizzle-orm");
-    const contacts = await db.select({ email: stakeholderContacts2.email, name: stakeholderContacts2.name, role: stakeholderContacts2.role, isActive: stakeholderContacts2.isActive }).from(stakeholderContacts2).where(eq64(stakeholderContacts2.organizationId, organizationId));
+    const { eq: eq65, isNull: isNull5, or: or3 } = await import("drizzle-orm");
+    const contacts = await db.select({ email: stakeholderContacts2.email, name: stakeholderContacts2.name, role: stakeholderContacts2.role, isActive: stakeholderContacts2.isActive }).from(stakeholderContacts2).where(eq65(stakeholderContacts2.organizationId, organizationId));
     const missingEmail = contacts.filter((c) => c.isActive && (!c.email || c.email.trim() === ""));
     const total = contacts.filter((c) => c.isActive).length;
     if (total === 0) {
@@ -25282,12 +25331,12 @@ __export(PreparationSignalService_exports, {
   checkPreparationSignals: () => checkPreparationSignals,
   getRecentPreparationTriggers: () => getRecentPreparationTriggers
 });
-import { eq as eq23, desc as desc11, and as and15, gte as gte5 } from "drizzle-orm";
+import { eq as eq24, desc as desc11, and as and15, gte as gte5 } from "drizzle-orm";
 async function checkPreparationSignals(organizationId) {
   if (!organizationId || !UUID_REGEX.test(organizationId)) return [];
   const results = [];
   try {
-    const recent = await db.select().from(preparednessScores).where(eq23(preparednessScores.organizationId, organizationId)).orderBy(desc11(preparednessScores.calculatedAt)).limit(1);
+    const recent = await db.select().from(preparednessScores).where(eq24(preparednessScores.organizationId, organizationId)).orderBy(desc11(preparednessScores.calculatedAt)).limit(1);
     if (!recent.length) return [];
     const latestScore = recent[0];
     const overallScore = latestScore.score ?? 100;
@@ -25318,8 +25367,8 @@ async function checkPreparationSignals(organizationId) {
       const triggerName = `Preparation Gap: ${domain}`;
       const recentTrigger = await db.select().from(triggerDetections).where(
         and15(
-          eq23(triggerDetections.triggerName, triggerName),
-          eq23(triggerDetections.organizationId, organizationId),
+          eq24(triggerDetections.triggerName, triggerName),
+          eq24(triggerDetections.organizationId, organizationId),
           gte5(triggerDetections.detectedAt, cooloffCutoff)
         )
       ).limit(1);
@@ -25375,8 +25424,8 @@ async function getRecentPreparationTriggers(organizationId, limitHours = 72) {
     const cutoff = new Date(Date.now() - limitHours * 36e5);
     return await db.select().from(triggerDetections).where(
       and15(
-        eq23(triggerDetections.organizationId, organizationId),
-        eq23(triggerDetections.signalSource, "preparation-monitor"),
+        eq24(triggerDetections.organizationId, organizationId),
+        eq24(triggerDetections.signalSource, "preparation-monitor"),
         gte5(triggerDetections.detectedAt, cutoff)
       )
     ).orderBy(desc11(triggerDetections.detectedAt)).limit(20);
@@ -26135,13 +26184,13 @@ var init_LiveSignalIngestionService = __esm({
           const DEMO_ORG_NAMES = ["Innovate Dynamics"];
           const demoOrgRows = await db.select({ id: organizations6.id }).from(organizations6).where(inArray9(organizations6.name, DEMO_ORG_NAMES));
           for (const { id } of demoOrgRows) allOrgIds.delete(id);
+          console.log(`   \u{1F4E1} Multi-org evaluation: ${allOrgIds.size} additional org(s) to evaluate`);
           for (const orgId of allOrgIds) {
             try {
               const extraDetections = await evaluateAndPersistSignals(signals, orgId);
-              if (extraDetections > 0) {
-                console.log(`   \u{1F3AF} ${extraDetections} trigger detection(s) for org ${orgId}`);
-              }
-            } catch {
+              console.log(`   \u{1F3E2} Org ${orgId}: ${extraDetections} trigger detection(s)`);
+            } catch (err) {
+              console.error(`   \u2717 Org ${orgId} evaluation failed: ${err?.message}`);
             }
           }
         } catch {
@@ -26188,7 +26237,7 @@ __export(PreparednessEngine_exports, {
   PreparednessEngine: () => PreparednessEngine,
   preparednessEngine: () => preparednessEngine
 });
-import { eq as eq27, and as and16, desc as desc15 } from "drizzle-orm";
+import { eq as eq28, and as and16, desc as desc15 } from "drizzle-orm";
 var PreparednessEngine, preparednessEngine;
 var init_PreparednessEngine = __esm({
   "server/services/PreparednessEngine.ts"() {
@@ -26202,12 +26251,12 @@ var init_PreparednessEngine = __esm({
       async calculateScore(organizationId) {
         try {
           const [scenarios3, activations, alignment, simulations] = await Promise.all([
-            db.select().from(strategicScenarios).where(eq27(strategicScenarios.organizationId, organizationId)),
-            db.select().from(warRoomSessions).where(eq27(warRoomSessions.organizationId, organizationId)),
-            db.select().from(stakeholderAlignment).where(eq27(stakeholderAlignment.organizationId, organizationId)).orderBy(desc15(stakeholderAlignment.createdAt)).limit(1),
+            db.select().from(strategicScenarios).where(eq28(strategicScenarios.organizationId, organizationId)),
+            db.select().from(warRoomSessions).where(eq28(warRoomSessions.organizationId, organizationId)),
+            db.select().from(stakeholderAlignment).where(eq28(stakeholderAlignment.organizationId, organizationId)).orderBy(desc15(stakeholderAlignment.createdAt)).limit(1),
             db.select().from(crisisSimulations).where(and16(
-              eq27(crisisSimulations.organizationId, organizationId),
-              eq27(crisisSimulations.status, "completed")
+              eq28(crisisSimulations.organizationId, organizationId),
+              eq28(crisisSimulations.status, "completed")
             ))
           ]);
           const weights = {
@@ -26310,7 +26359,7 @@ var init_PreparednessEngine = __esm({
        */
       async getPreparednessTimeline(organizationId, months = 6) {
         const currentScore = await this.calculateScore(organizationId);
-        const activations = await db.select().from(warRoomSessions).where(eq27(warRoomSessions.organizationId, organizationId)).orderBy(warRoomSessions.createdAt);
+        const activations = await db.select().from(warRoomSessions).where(eq28(warRoomSessions.organizationId, organizationId)).orderBy(warRoomSessions.createdAt);
         const timeline = [];
         const now = /* @__PURE__ */ new Date();
         for (let i = months; i >= 0; i--) {
@@ -27991,7 +28040,7 @@ var init_NotificationManager = __esm({
 });
 
 // server/services/DatabaseNotificationService.ts
-import { eq as eq28, and as and17, desc as desc16, isNull as isNull2, sql as sql14 } from "drizzle-orm";
+import { eq as eq29, and as and17, desc as desc16, isNull as isNull2, sql as sql14 } from "drizzle-orm";
 var DatabaseNotificationService, databaseNotificationService;
 var init_DatabaseNotificationService = __esm({
   "server/services/DatabaseNotificationService.ts"() {
@@ -28047,7 +28096,7 @@ var init_DatabaseNotificationService = __esm({
             notification: notifications,
             user: users,
             organization: organizations
-          }).from(notifications).leftJoin(users, eq28(notifications.userId, users.id)).leftJoin(organizations, eq28(notifications.organizationId, organizations.id)).where(eq28(notifications.id, notificationId));
+          }).from(notifications).leftJoin(users, eq29(notifications.userId, users.id)).leftJoin(organizations, eq29(notifications.organizationId, organizations.id)).where(eq29(notifications.id, notificationId));
           if (!notification) {
             throw new Error(`Notification ${notificationId} not found`);
           }
@@ -28066,7 +28115,7 @@ ${notification.notification.message}`,
             severity,
             metadata
           );
-          await db.update(notifications).set({ sentAt: /* @__PURE__ */ new Date() }).where(eq28(notifications.id, notificationId));
+          await db.update(notifications).set({ sentAt: /* @__PURE__ */ new Date() }).where(eq29(notifications.id, notificationId));
           console.log(`\u2705 Notification ${notificationId} delivered successfully`);
         } catch (error) {
           console.error(`\u274C Failed to deliver notification ${notificationId}:`, error);
@@ -28077,9 +28126,9 @@ ${notification.notification.message}`,
        * Get notifications for a user with pagination
        */
       async getUserNotifications(userId, organizationId, limit = 50, offset = 0) {
-        const whereConditions = [eq28(notifications.userId, userId)];
+        const whereConditions = [eq29(notifications.userId, userId)];
         if (organizationId) {
-          whereConditions.push(eq28(notifications.organizationId, organizationId));
+          whereConditions.push(eq29(notifications.organizationId, organizationId));
         }
         return await db.select().from(notifications).where(and17(...whereConditions)).orderBy(desc16(notifications.createdAt)).limit(limit).offset(offset);
       }
@@ -28093,8 +28142,8 @@ ${notification.notification.message}`,
             readAt: /* @__PURE__ */ new Date()
           }).where(
             and17(
-              eq28(notifications.id, notificationId),
-              eq28(notifications.userId, userId)
+              eq29(notifications.id, notificationId),
+              eq29(notifications.userId, userId)
             )
           ).returning();
           return !!updated;
@@ -28108,11 +28157,11 @@ ${notification.notification.message}`,
        */
       async getUnreadCount(userId, organizationId) {
         const whereConditions = [
-          eq28(notifications.userId, userId),
-          eq28(notifications.isRead, false)
+          eq29(notifications.userId, userId),
+          eq29(notifications.isRead, false)
         ];
         if (organizationId) {
-          whereConditions.push(eq28(notifications.organizationId, organizationId));
+          whereConditions.push(eq29(notifications.organizationId, organizationId));
         }
         const result = await db.select({ count: notifications.id }).from(notifications).where(and17(...whereConditions));
         return result.length;
@@ -28159,8 +28208,8 @@ ${notification.notification.message}`,
         try {
           const executiveUsers = await db.select().from(users).where(
             and17(
-              eq28(users.organizationId, organizationId),
-              eq28(users.department, "Executive")
+              eq29(users.organizationId, organizationId),
+              eq29(users.department, "Executive")
               // Or check role-based access
             )
           );
@@ -28211,7 +28260,7 @@ ${notification.notification.message}`,
           cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
           await db.delete(notifications).where(
             and17(
-              eq28(notifications.isRead, true),
+              eq29(notifications.isRead, true),
               sql14`${notifications.createdAt} <= ${cutoffDate}`
             )
           );
@@ -28233,7 +28282,7 @@ __export(ROIMeasurementService_exports, {
   ROIMeasurementService: () => ROIMeasurementService,
   roiMeasurementService: () => roiMeasurementService
 });
-import { eq as eq29, and as and18, desc as desc17, gte as gte7, lte } from "drizzle-orm";
+import { eq as eq30, and as and18, desc as desc17, gte as gte7, lte } from "drizzle-orm";
 import pino10 from "pino";
 var logger8, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
@@ -28601,7 +28650,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async updateMetricsFromEvent(event) {
         try {
-          const relevantMetrics = await db.select().from(roiMetrics).where(eq29(roiMetrics.organizationId, event.organizationId));
+          const relevantMetrics = await db.select().from(roiMetrics).where(eq30(roiMetrics.organizationId, event.organizationId));
           for (const metric of relevantMetrics) {
             let shouldUpdate = false;
             let newValue = parseFloat(metric.currentValue || "0");
@@ -28660,7 +28709,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
                 dataPoints: updatedDataPoints,
                 lastCalculated: /* @__PURE__ */ new Date(),
                 updatedAt: /* @__PURE__ */ new Date()
-              }).where(eq29(roiMetrics.id, metric.id));
+              }).where(eq30(roiMetrics.id, metric.id));
             }
           }
         } catch (error) {
@@ -28672,7 +28721,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async calculateMetricROI(metricId) {
         try {
-          const [metric] = await db.select().from(roiMetrics).where(eq29(roiMetrics.id, metricId));
+          const [metric] = await db.select().from(roiMetrics).where(eq30(roiMetrics.id, metricId));
           if (!metric) {
             throw new Error(`Metric ${metricId} not found`);
           }
@@ -28726,13 +28775,13 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async generateExecutiveROIReport(organizationId, startDate, endDate) {
         try {
-          const metrics = await db.select().from(roiMetrics).where(eq29(roiMetrics.organizationId, organizationId));
+          const metrics = await db.select().from(roiMetrics).where(eq30(roiMetrics.organizationId, organizationId));
           const keyMetrics = await Promise.all(
             metrics.map((metric) => this.calculateMetricROI(metric.id))
           );
           const valueEvents = await db.select().from(valueTrackingEvents).where(
             and18(
-              eq29(valueTrackingEvents.organizationId, organizationId),
+              eq30(valueTrackingEvents.organizationId, organizationId),
               gte7(valueTrackingEvents.createdAt, startDate),
               lte(valueTrackingEvents.createdAt, endDate)
             )
@@ -28848,7 +28897,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async checkROIAlerts(organizationId) {
         try {
-          const metrics = await db.select().from(roiMetrics).where(eq29(roiMetrics.organizationId, organizationId));
+          const metrics = await db.select().from(roiMetrics).where(eq30(roiMetrics.organizationId, organizationId));
           for (const metric of metrics) {
             const calculation = await this.calculateMetricROI(metric.id);
             if (calculation.improvementPercentage > 25 && calculation.confidenceLevel > 0.7) {
@@ -29440,7 +29489,7 @@ __export(ROITracker_exports, {
   ROITracker: () => ROITracker,
   roiTracker: () => roiTracker
 });
-import { eq as eq30, and as and19, desc as desc18 } from "drizzle-orm";
+import { eq as eq31, and as and19, desc as desc18 } from "drizzle-orm";
 var ROITracker, roiTracker;
 var init_ROITracker = __esm({
   "server/services/ROITracker.ts"() {
@@ -29454,8 +29503,8 @@ var init_ROITracker = __esm({
       async calculateRealROI(organizationId) {
         try {
           const activations = await db.select().from(warRoomSessions).where(and19(
-            eq30(warRoomSessions.organizationId, organizationId),
-            eq30(warRoomSessions.status, "completed")
+            eq31(warRoomSessions.organizationId, organizationId),
+            eq31(warRoomSessions.status, "completed")
           )).orderBy(desc18(warRoomSessions.createdAt));
           let totalSavings = 0;
           let totalHoursSaved = 0;
@@ -29514,7 +29563,7 @@ var init_ROITracker = __esm({
         try {
           await db.update(warRoomSessions).set({
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq30(warRoomSessions.id, activationId));
+          }).where(eq31(warRoomSessions.id, activationId));
         } catch (error) {
           console.error("Error tracking business impact:", error);
           throw error;
@@ -29553,7 +29602,7 @@ var init_ROITracker = __esm({
         for (const activation of activations) {
           let category = "Other";
           if (activation.scenarioId) {
-            const scenario = await db.select().from(strategicScenarios).where(eq30(strategicScenarios.id, activation.scenarioId)).limit(1);
+            const scenario = await db.select().from(strategicScenarios).where(eq31(strategicScenarios.id, activation.scenarioId)).limit(1);
             category = scenario[0]?.templateCategory || "Other";
           }
           const value = await this.calculateActivationValue(activation);
@@ -29606,12 +29655,12 @@ var init_ROITracker = __esm({
        * Calculate value per scenario type
        */
       async getValueByScenarioType(organizationId) {
-        const activations = await db.select().from(warRoomSessions).where(eq30(warRoomSessions.organizationId, organizationId));
+        const activations = await db.select().from(warRoomSessions).where(eq31(warRoomSessions.organizationId, organizationId));
         const typeMap = /* @__PURE__ */ new Map();
         for (const activation of activations) {
           let type = "Unknown";
           if (activation.scenarioId) {
-            const scenario = await db.select().from(strategicScenarios).where(eq30(strategicScenarios.id, activation.scenarioId)).limit(1);
+            const scenario = await db.select().from(strategicScenarios).where(eq31(strategicScenarios.id, activation.scenarioId)).limit(1);
             type = scenario[0]?.type || "Unknown";
           }
           const value = await this.calculateActivationValue(activation);
@@ -29641,7 +29690,7 @@ __export(TriggerIntelligenceService_exports, {
   triggerIntelligence: () => triggerIntelligence
 });
 import OpenAI6 from "openai";
-import { eq as eq31, and as and20, gte as gte9, desc as desc19 } from "drizzle-orm";
+import { eq as eq32, and as and20, gte as gte9, desc as desc19 } from "drizzle-orm";
 var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
@@ -29709,8 +29758,8 @@ Be specific and strategic. Focus on business impact.`;
       async matchTriggers(organizationId, analysis, eventMetadata) {
         try {
           const triggers = await db.select().from(executiveTriggers).where(and20(
-            eq31(executiveTriggers.organizationId, organizationId),
-            eq31(executiveTriggers.isActive, true)
+            eq32(executiveTriggers.organizationId, organizationId),
+            eq32(executiveTriggers.isActive, true)
           ));
           const matches = [];
           for (const trigger of triggers) {
@@ -29797,7 +29846,7 @@ Be specific and strategic. Focus on business impact.`;
       async getIntelligenceMetrics(organizationId, timeWindowHours = 24) {
         const cutoffTime = new Date(Date.now() - timeWindowHours * 60 * 60 * 1e3);
         const alerts = await db.select().from(strategicAlerts).where(and20(
-          eq31(strategicAlerts.organizationId, organizationId),
+          eq32(strategicAlerts.organizationId, organizationId),
           gte9(strategicAlerts.createdAt, cutoffTime)
         )).orderBy(desc19(strategicAlerts.createdAt));
         const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + Number(a.aiConfidence || 0), 0) / alerts.length) : 0;
@@ -29867,7 +29916,7 @@ __export(ExecutiveBriefingService_exports, {
   executiveBriefing: () => executiveBriefing
 });
 import OpenAI7 from "openai";
-import { eq as eq32, and as and21, gte as gte10, desc as desc20 } from "drizzle-orm";
+import { eq as eq33, and as and21, gte as gte10, desc as desc20 } from "drizzle-orm";
 var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
@@ -29994,21 +30043,21 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
         const [alerts, scenarios3, metrics, preparedness, recentActivations] = await Promise.all([
           // Recent alerts
           db.select().from(strategicAlerts).where(and21(
-            eq32(strategicAlerts.organizationId, organizationId),
+            eq33(strategicAlerts.organizationId, organizationId),
             gte10(strategicAlerts.createdAt, cutoffTime)
           )).orderBy(desc20(strategicAlerts.createdAt)),
           // Active scenarios
-          db.select().from(strategicScenarios).where(eq32(strategicScenarios.organizationId, organizationId)).limit(20),
+          db.select().from(strategicScenarios).where(eq33(strategicScenarios.organizationId, organizationId)).limit(20),
           // Key metrics
           db.select().from(kpis).where(and21(
-            eq32(kpis.organizationId, organizationId),
-            eq32(kpis.isActive, true)
+            eq33(kpis.organizationId, organizationId),
+            eq33(kpis.isActive, true)
           )).limit(10),
           // Preparedness score
           preparednessEngine.calculateScore(organizationId),
           // Recent war room sessions (playbook activations)
           db.select().from(warRoomSessions).where(and21(
-            eq32(warRoomSessions.organizationId, organizationId),
+            eq33(warRoomSessions.organizationId, organizationId),
             gte10(warRoomSessions.createdAt, cutoffTime)
           )).orderBy(desc20(warRoomSessions.createdAt)).limit(5)
         ]);
@@ -30155,7 +30204,7 @@ __export(eventIngestion_exports, {
   pollNewsFeeds: () => pollNewsFeeds,
   startEventIngestion: () => startEventIngestion
 });
-import { eq as eq33 } from "drizzle-orm";
+import { eq as eq34 } from "drizzle-orm";
 async function pollNewsFeeds() {
   try {
     const newsApiKey = process.env.NEWS_API_KEY;
@@ -30175,7 +30224,7 @@ async function pollNewsFeeds() {
     console.log(`Fetched ${articles.length} news articles for analysis`);
     const organizations6 = await db.selectDistinct({
       organizationId: executiveTriggers.organizationId
-    }).from(executiveTriggers).where(eq33(executiveTriggers.isActive, true));
+    }).from(executiveTriggers).where(eq34(executiveTriggers.isActive, true));
     for (const article of articles.slice(0, 10)) {
       try {
         const analysis = await triggerIntelligence.analyzeEvent({
@@ -30246,7 +30295,7 @@ __export(NotificationService_exports, {
   notificationService: () => notificationService
 });
 import { Resend as Resend10 } from "resend";
-import { eq as eq34 } from "drizzle-orm";
+import { eq as eq35 } from "drizzle-orm";
 var NotificationService, notificationService;
 var init_NotificationService = __esm({
   "server/services/NotificationService.ts"() {
@@ -30274,7 +30323,7 @@ var init_NotificationService = __esm({
       async deliverNotification(notificationId) {
         try {
           const notification = await db.query.notifications.findFirst({
-            where: eq34(notifications.id, notificationId),
+            where: eq35(notifications.id, notificationId),
             with: {
               user: true
             }
@@ -30320,7 +30369,7 @@ var init_NotificationService = __esm({
           if (anySuccess) {
             await db.update(notifications).set({
               sentAt: /* @__PURE__ */ new Date()
-            }).where(eq34(notifications.id, notificationId));
+            }).where(eq35(notifications.id, notificationId));
           } else {
             console.error(`All delivery channels failed for notification ${notificationId}:`, deliveryResults);
           }
@@ -30351,8 +30400,8 @@ var init_NotificationService = __esm({
           }
           const htmlContent = this.renderEmailTemplate(notification);
           const fromAddresses = [
-            "Readiness OS <onboarding@resend.dev>",
-            "Readiness OS <noreply@vaughnmartin.com>"
+            "Readiness OS <pilot@vaughnmartin.com>",
+            "Readiness OS <onboarding@resend.dev>"
           ];
           let sent = false;
           for (const from of fromAddresses) {
@@ -30607,12 +30656,12 @@ __export(PlaybookLearningService_exports, {
   default: () => PlaybookLearningService_default,
   playbookLearningService: () => playbookLearningService
 });
-import { eq as eq35 } from "drizzle-orm";
+import { eq as eq36 } from "drizzle-orm";
 import pino11 from "pino";
 async function analyzeExecution(metrics) {
   try {
     log3.info({ metrics }, "Analyzing execution for learning opportunities");
-    const playbook = await db.select().from(playbookLibrary).where(eq35(playbookLibrary.id, metrics.playbookId)).limit(1);
+    const playbook = await db.select().from(playbookLibrary).where(eq36(playbookLibrary.id, metrics.playbookId)).limit(1);
     if (!playbook.length) {
       throw new Error("Playbook not found");
     }
@@ -30695,10 +30744,10 @@ async function getSuggestions(playbookId, organizationId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq64, and: and41 } = await import("drizzle-orm");
+    const { eq: eq65, and: and41 } = await import("drizzle-orm");
     const suggestions = await db2.select().from(aiOptimizationSuggestions2).where(and41(
-      eq64(aiOptimizationSuggestions2.playbookId, playbookId),
-      eq64(aiOptimizationSuggestions2.organizationId, organizationId)
+      eq65(aiOptimizationSuggestions2.playbookId, playbookId),
+      eq65(aiOptimizationSuggestions2.organizationId, organizationId)
     ));
     return suggestions;
   } catch (error) {
@@ -30710,8 +30759,8 @@ async function acceptSuggestion(suggestionId, userId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq64 } = await import("drizzle-orm");
-    await db2.update(aiOptimizationSuggestions2).set({ status: "accepted", reviewedBy: userId, reviewedAt: /* @__PURE__ */ new Date() }).where(eq64(aiOptimizationSuggestions2.id, suggestionId));
+    const { eq: eq65 } = await import("drizzle-orm");
+    await db2.update(aiOptimizationSuggestions2).set({ status: "accepted", reviewedBy: userId, reviewedAt: /* @__PURE__ */ new Date() }).where(eq65(aiOptimizationSuggestions2.id, suggestionId));
   } catch (error) {
     console.error("Error accepting suggestion:", error);
     throw error;
@@ -30735,7 +30784,7 @@ __export(ComplianceCheckService_exports, {
   ComplianceCheckService: () => ComplianceCheckService,
   complianceCheckService: () => complianceCheckService
 });
-import { eq as eq36, and as and22 } from "drizzle-orm";
+import { eq as eq37, and as and22 } from "drizzle-orm";
 import pino12 from "pino";
 var logger9, ComplianceCheckService, complianceCheckService;
 var init_ComplianceCheckService = __esm({
@@ -30774,7 +30823,7 @@ var init_ComplianceCheckService = __esm({
             };
           }
           totalControls = allControlIds.size;
-          const frameworks = await db.select().from(complianceFrameworks).where(eq36(complianceFrameworks.organizationId, organizationId));
+          const frameworks = await db.select().from(complianceFrameworks).where(eq37(complianceFrameworks.organizationId, organizationId));
           for (const framework of frameworks) {
             let frameworkControls = framework.controls;
             if (frameworkControls && typeof frameworkControls === "object" && !Array.isArray(frameworkControls)) {
@@ -30865,8 +30914,8 @@ var init_ComplianceCheckService = __esm({
       async getFrameworkStatus(frameworkId, organizationId) {
         const framework = await db.select().from(complianceFrameworks).where(
           and22(
-            eq36(complianceFrameworks.id, frameworkId),
-            eq36(complianceFrameworks.organizationId, organizationId)
+            eq37(complianceFrameworks.id, frameworkId),
+            eq37(complianceFrameworks.organizationId, organizationId)
           )
         ).limit(1);
         if (framework.length === 0) {
@@ -30886,7 +30935,7 @@ var init_ComplianceCheckService = __esm({
        */
       async createAuditTrail(params) {
         const { organizationId, executionPlanId, decision, complianceCheck, approvedBy, notes } = params;
-        const frameworks = await db.select().from(complianceFrameworks).where(eq36(complianceFrameworks.organizationId, organizationId)).limit(1);
+        const frameworks = await db.select().from(complianceFrameworks).where(eq37(complianceFrameworks.organizationId, organizationId)).limit(1);
         if (frameworks.length > 0) {
           await db.insert(complianceReports).values({
             organizationId: frameworks[0].organizationId,
@@ -30914,14 +30963,14 @@ var init_ComplianceCheckService = __esm({
       async mapControlToTask(taskId, controlIds) {
         await db.update(executionPlanTasks).set({
           complianceControlIds: controlIds
-        }).where(eq36(executionPlanTasks.id, taskId));
+        }).where(eq37(executionPlanTasks.id, taskId));
         this.log.info({ taskId, controlCount: controlIds.length }, "Compliance controls mapped to task");
       }
       /**
        * Get compliance framework details
        */
       async getFrameworkDetails(frameworkId) {
-        return await db.select().from(complianceFrameworks).where(eq36(complianceFrameworks.id, frameworkId)).limit(1);
+        return await db.select().from(complianceFrameworks).where(eq37(complianceFrameworks.id, frameworkId)).limit(1);
       }
     };
     complianceCheckService = new ComplianceCheckService();
@@ -30934,7 +30983,7 @@ __export(ApprovalTokenService_exports, {
   ApprovalTokenService: () => ApprovalTokenService,
   approvalTokenService: () => approvalTokenService
 });
-import { eq as eq37, and as and23, isNull as isNull3 } from "drizzle-orm";
+import { eq as eq38, and as and23, isNull as isNull3 } from "drizzle-orm";
 import { nanoid as nanoid2 } from "nanoid";
 import bcrypt from "bcryptjs";
 import pino13 from "pino";
@@ -31046,7 +31095,7 @@ var init_ApprovalTokenService = __esm({
             usedBy: userId,
             ipAddress,
             userAgent
-          }).where(eq37(approvalTokens.id, record.id));
+          }).where(eq38(approvalTokens.id, record.id));
           if (record.action === "approve") {
             await this.approveExecution(record.executionInstanceId, userId);
           } else if (record.action === "reject") {
@@ -31071,7 +31120,7 @@ var init_ApprovalTokenService = __esm({
       async approveExecution(executionInstanceId, userId) {
         await db.update(executionInstances).set({
           status: "running"
-        }).where(eq37(executionInstances.id, executionInstanceId));
+        }).where(eq38(executionInstances.id, executionInstanceId));
         this.log.info({ executionInstanceId, userId }, "Execution approved via email");
       }
       /**
@@ -31080,7 +31129,7 @@ var init_ApprovalTokenService = __esm({
       async rejectExecution(executionInstanceId, userId) {
         await db.update(executionInstances).set({
           status: "cancelled"
-        }).where(eq37(executionInstances.id, executionInstanceId));
+        }).where(eq38(executionInstances.id, executionInstanceId));
         this.log.info({ executionInstanceId, userId }, "Execution rejected via email");
       }
       /**
@@ -31090,8 +31139,8 @@ var init_ApprovalTokenService = __esm({
         const now = /* @__PURE__ */ new Date();
         return await db.select().from(approvalTokens).where(
           and23(
-            eq37(approvalTokens.userId, userId),
-            eq37(approvalTokens.usedAt, null)
+            eq38(approvalTokens.userId, userId),
+            eq38(approvalTokens.usedAt, null)
           )
         );
       }
@@ -31102,14 +31151,14 @@ var init_ApprovalTokenService = __esm({
         await db.update(approvalTokens).set({
           usedAt: /* @__PURE__ */ new Date(),
           usedBy: userId
-        }).where(eq37(approvalTokens.id, tokenId));
+        }).where(eq38(approvalTokens.id, tokenId));
         this.log.info({ tokenId, userId }, "Token revoked");
       }
       /**
        * Get token audit trail
        */
       async getAuditTrail(executionInstanceId) {
-        const tokens = await db.select().from(approvalTokens).where(eq37(approvalTokens.executionInstanceId, executionInstanceId));
+        const tokens = await db.select().from(approvalTokens).where(eq38(approvalTokens.executionInstanceId, executionInstanceId));
         return tokens.map((token) => ({
           action: token.action,
           createdAt: token.createdAt,
@@ -31133,7 +31182,7 @@ __export(JobProcessors_exports, {
   processPulseAnalysis: () => processPulseAnalysis,
   processRiskAssessment: () => processRiskAssessment
 });
-import { eq as eq38, and as and24, desc as desc21, gte as gte11, count as count6 } from "drizzle-orm";
+import { eq as eq39, and as and24, desc as desc21, gte as gte11, count as count6 } from "drizzle-orm";
 async function processPulseAnalysis(jobData) {
   console.log("Processing pulse_analysis job...");
   const isValidUUID2 = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -31143,7 +31192,7 @@ async function processPulseAnalysis(jobData) {
     return { status: "skipped", reason: "Invalid or missing organizationId" };
   }
   const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1e3);
-  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and24(eq38(weakSignals.organizationId, orgId), gte11(weakSignals.detectedAt, sixHoursAgo))).limit(1);
+  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and24(eq39(weakSignals.organizationId, orgId), gte11(weakSignals.detectedAt, sixHoursAgo))).limit(1);
   if (recentSignals.length > 0) {
     console.log("\u23ED\uFE0F Pulse analysis skipped \u2014 signal already created in last 6 hours");
     return { status: "skipped", reason: "Signal already created recently" };
@@ -31189,8 +31238,8 @@ async function processRiskAssessment(jobData) {
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
   const [{ value: signalCount }] = await db.select({ value: count6() }).from(weakSignals).where(and24(
-    eq38(weakSignals.organizationId, orgId),
-    eq38(weakSignals.status, "active"),
+    eq39(weakSignals.organizationId, orgId),
+    eq39(weakSignals.status, "active"),
     gte11(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
@@ -31209,8 +31258,8 @@ async function processOpportunityDetection(jobData) {
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
   const [{ value: signalCount }] = await db.select({ value: count6() }).from(weakSignals).where(and24(
-    eq38(weakSignals.organizationId, orgId),
-    eq38(weakSignals.status, "active"),
+    eq39(weakSignals.organizationId, orgId),
+    eq39(weakSignals.status, "active"),
     gte11(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
@@ -31219,8 +31268,8 @@ async function processOpportunityDetection(jobData) {
     return { status: "skipped", reason: `Insufficient signals (${signals}/3)` };
   }
   const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and24(
-    eq38(weakSignals.organizationId, orgId),
-    eq38(weakSignals.status, "active"),
+    eq39(weakSignals.organizationId, orgId),
+    eq39(weakSignals.status, "active"),
     gte11(weakSignals.detectedAt, thirtyDaysAgo)
   )).orderBy(desc21(weakSignals.detectedAt)).limit(10);
   const highImpactCount = recentSignals.filter((s) => s.impact === "high").length;
@@ -31262,12 +31311,12 @@ async function processExecutiveSummary(jobData) {
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
   const [{ value: tasksCompleted }] = await db.select({ value: count6() }).from(continuousOperationsTasks).where(and24(
-    eq38(continuousOperationsTasks.organizationId, orgId),
-    eq38(continuousOperationsTasks.status, "completed"),
+    eq39(continuousOperationsTasks.organizationId, orgId),
+    eq39(continuousOperationsTasks.status, "completed"),
     gte11(continuousOperationsTasks.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
   const [{ value: execCount }] = await db.select({ value: count6() }).from(executionInstances).where(and24(
-    eq38(executionInstances.organizationId, orgId),
+    eq39(executionInstances.organizationId, orgId),
     gte11(executionInstances.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
   const tasks4 = Number(tasksCompleted) || 0;
@@ -31309,7 +31358,7 @@ __export(BackgroundJobService_exports, {
   BackgroundJobService: () => BackgroundJobService,
   backgroundJobService: () => backgroundJobService
 });
-import { eq as eq39 } from "drizzle-orm";
+import { eq as eq40 } from "drizzle-orm";
 import pino14 from "pino";
 var logger11, BackgroundJobService, backgroundJobService;
 var init_BackgroundJobService = __esm({
@@ -31374,7 +31423,7 @@ var init_BackgroundJobService = __esm({
        */
       async processNextJob() {
         try {
-          const pendingJobs = await db.select().from(backgroundJobs).where(eq39(backgroundJobs.status, "pending")).orderBy(backgroundJobs.priority).limit(1);
+          const pendingJobs = await db.select().from(backgroundJobs).where(eq40(backgroundJobs.status, "pending")).orderBy(backgroundJobs.priority).limit(1);
           if (pendingJobs.length === 0) {
             return;
           }
@@ -31384,13 +31433,13 @@ var init_BackgroundJobService = __esm({
             status: "processing",
             startedAt: /* @__PURE__ */ new Date(),
             attempts: (job.attempts || 0) + 1
-          }).where(eq39(backgroundJobs.id, job.id));
+          }).where(eq40(backgroundJobs.id, job.id));
           try {
             await this.executeJob(job);
             await db.update(backgroundJobs).set({
               status: "completed",
               completedAt: /* @__PURE__ */ new Date()
-            }).where(eq39(backgroundJobs.id, job.id));
+            }).where(eq40(backgroundJobs.id, job.id));
             this.log.info({ jobId: job.id, jobType: job.jobType }, "Job completed successfully");
           } catch (error) {
             this.log.error({ error, jobId: job.id, jobType: job.jobType }, "Job failed");
@@ -31400,14 +31449,14 @@ var init_BackgroundJobService = __esm({
               await db.update(backgroundJobs).set({
                 status: "pending",
                 error: error.message
-              }).where(eq39(backgroundJobs.id, job.id));
+              }).where(eq40(backgroundJobs.id, job.id));
               this.log.info({ jobId: job.id, attempts: currentAttempts + 1 }, "Job will be retried");
             } else {
               await db.update(backgroundJobs).set({
                 status: "failed",
                 error: error.message,
                 completedAt: /* @__PURE__ */ new Date()
-              }).where(eq39(backgroundJobs.id, job.id));
+              }).where(eq40(backgroundJobs.id, job.id));
               this.log.warn({ jobId: job.id, error: error.message }, "Job failed after max retries \u2014 fallback active");
             }
           }
@@ -31717,7 +31766,7 @@ var init_DataIntegrationManager = __esm({
 });
 
 // server/services/integrationManager.ts
-import { eq as eq40 } from "drizzle-orm";
+import { eq as eq41 } from "drizzle-orm";
 import crypto6 from "crypto";
 var ENCRYPTION_KEY, ALGORITHM2, IntegrationManager, integrationManager;
 var init_integrationManager = __esm({
@@ -31794,13 +31843,13 @@ var init_integrationManager = __esm({
               status: "active",
               lastSyncAt: /* @__PURE__ */ new Date(),
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq40(enterpriseIntegrations.id, integration.id));
+            }).where(eq41(enterpriseIntegrations.id, integration.id));
           } else {
             await db.update(enterpriseIntegrations).set({
               status: "error",
               errorLog: { message: "Connection test failed" },
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq40(enterpriseIntegrations.id, integration.id));
+            }).where(eq41(enterpriseIntegrations.id, integration.id));
           }
           return {
             ...integration,
@@ -31819,7 +31868,7 @@ var init_integrationManager = __esm({
           await db.update(enterpriseIntegrations).set({
             status: "inactive",
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq40(enterpriseIntegrations.id, integrationId));
+          }).where(eq41(enterpriseIntegrations.id, integrationId));
           return { success: true };
         } catch (error) {
           console.error("Failed to disconnect integration:", error);
@@ -31831,7 +31880,7 @@ var init_integrationManager = __esm({
        */
       async testConnection(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq40(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             return false;
           }
@@ -31949,7 +31998,7 @@ var init_integrationManager = __esm({
             status: enterpriseIntegrations.status,
             lastSyncAt: enterpriseIntegrations.lastSyncAt,
             createdAt: enterpriseIntegrations.createdAt
-          }).from(enterpriseIntegrations).where(eq40(enterpriseIntegrations.organizationId, organizationId));
+          }).from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.organizationId, organizationId));
           return integrations;
         } catch (error) {
           console.error("Failed to get integrations:", error);
@@ -31961,7 +32010,7 @@ var init_integrationManager = __esm({
        */
       async getCredentials(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq40(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.id, integrationId)).limit(1);
           const config = integration?.configuration;
           if (!integration || !config?.encryptedCredentials) {
             return null;
@@ -31996,7 +32045,7 @@ var init_integrationManager = __esm({
        */
       async getIntegrationHealth(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq40(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             return { healthy: false, message: "Integration not found" };
           }
@@ -32020,7 +32069,7 @@ var init_integrationManager = __esm({
 });
 
 // server/services/dataSourceService.ts
-import { eq as eq41 } from "drizzle-orm";
+import { eq as eq42 } from "drizzle-orm";
 var DataSourceService, dataSourceService;
 var init_dataSourceService = __esm({
   "server/services/dataSourceService.ts"() {
@@ -32038,7 +32087,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq42(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -32064,7 +32113,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq42(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -32090,7 +32139,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq41(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq42(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -32395,7 +32444,7 @@ var init_dataSourceService = __esm({
 });
 
 // server/services/syncEngine.ts
-import { eq as eq42 } from "drizzle-orm";
+import { eq as eq43 } from "drizzle-orm";
 var SyncEngine, syncEngine;
 var init_syncEngine = __esm({
   "server/services/syncEngine.ts"() {
@@ -32703,11 +32752,11 @@ var init_syncEngine = __esm({
           calendar: null
         };
         try {
-          const [scenario] = await db.select().from(strategicScenarios).where(eq42(strategicScenarios.id, scenarioId)).limit(1);
+          const [scenario] = await db.select().from(strategicScenarios).where(eq43(strategicScenarios.id, scenarioId)).limit(1);
           if (!scenario) {
             return { success: false, results, errors: ["Scenario not found"] };
           }
-          const scenarioTasks = await db.select().from(tasks).where(eq42(tasks.scenarioId, scenarioId));
+          const scenarioTasks = await db.select().from(tasks).where(eq43(tasks.scenarioId, scenarioId));
           if (integrations.slack) {
             const slackResult = await this.createSlackChannel(integrations.slack, {
               name: `crisis-${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}`,
@@ -33518,7 +33567,7 @@ __export(oauth_routes_exports, {
 });
 import { Router as Router6 } from "express";
 import crypto7 from "crypto";
-import { eq as eq43 } from "drizzle-orm";
+import { eq as eq44 } from "drizzle-orm";
 function getBaseUrl3(req) {
   const proto = req.headers["x-forwarded-proto"] || req.protocol || "https";
   const host = req.headers["x-forwarded-host"] || req.headers.host;
@@ -33640,7 +33689,7 @@ var init_oauth_routes = __esm({
       const { integrationId } = req.body;
       if (!integrationId) return res.status(400).json({ error: "integrationId required" });
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.refreshToken) return res.status(400).json({ error: "No refresh token available" });
@@ -33655,7 +33704,7 @@ var init_oauth_routes = __esm({
           })
         });
         if (!tokenRes.ok) {
-          await db.update(enterpriseIntegrations).set({ status: "error", errorLog: { error: "Token refresh failed", at: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq43(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", errorLog: { error: "Token refresh failed", at: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq44(enterpriseIntegrations.id, integrationId));
           return res.status(500).json({ error: "Token refresh failed" });
         }
         const tokens = await tokenRes.json();
@@ -33668,7 +33717,7 @@ var init_oauth_routes = __esm({
             expiresAt: Date.now() + tokens.expires_in * 1e3
           },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq43(enterpriseIntegrations.id, integrationId));
+        }).where(eq44(enterpriseIntegrations.id, integrationId));
         res.json({ success: true });
       } catch (err) {
         console.error("Jira token refresh error:", err);
@@ -33775,7 +33824,7 @@ var init_oauth_routes = __esm({
           lastSyncAt: enterpriseIntegrations.lastSyncAt,
           createdAt: enterpriseIntegrations.createdAt,
           configuration: enterpriseIntegrations.configuration
-        }).from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.organizationId, organizationId));
+        }).from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.organizationId, organizationId));
         const available = {
           jira: { configured: !!JIRA_CLIENT_ID2, provider: "Atlassian Jira" },
           slack: { configured: !!SLACK_CLIENT_ID, provider: "Slack" }
@@ -33792,7 +33841,7 @@ var init_oauth_routes = __esm({
       const { integrationId } = req.body;
       if (!integrationId) return res.status(400).json({ error: "integrationId required" });
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         if (integration.vendor === "slack") {
           const metadata = integration.metadata;
@@ -33811,7 +33860,7 @@ var init_oauth_routes = __esm({
           status: "inactive",
           metadata: { disconnectedAt: (/* @__PURE__ */ new Date()).toISOString(), disconnectedBy: userId },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq43(enterpriseIntegrations.id, integrationId));
+        }).where(eq44(enterpriseIntegrations.id, integrationId));
         res.json({ success: true });
       } catch (err) {
         console.error("Failed to disconnect:", err);
@@ -33823,7 +33872,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -33833,10 +33882,10 @@ var init_oauth_routes = __esm({
         });
         if (testRes.ok) {
           const user = await testRes.json();
-          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq43(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq44(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: true, user: { displayName: user.displayName, email: user.emailAddress } });
         } else {
-          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq43(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq44(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: false, error: `API returned ${testRes.status}` });
         }
       } catch (err) {
@@ -33848,7 +33897,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.json({ healthy: false, error: "Missing credentials" });
@@ -33858,10 +33907,10 @@ var init_oauth_routes = __esm({
         });
         const data = await testRes.json();
         if (data.ok) {
-          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq43(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq44(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: true, team: data.team, user: data.user });
         } else {
-          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq43(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq44(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: false, error: data.error });
         }
       } catch (err) {
@@ -33873,7 +33922,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId, channel, text: text3, blocks } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.status(400).json({ error: "Not connected" });
@@ -33893,7 +33942,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId, projectKey, summary, description, issueType, priority, assignee } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -33943,7 +33992,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.query;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -33969,7 +34018,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.query;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq43(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq44(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.status(400).json({ error: "Not connected" });
@@ -34001,7 +34050,7 @@ __export(SignalOntologyService_exports, {
   getOntologyGraph: () => getOntologyGraph,
   seedSignalOntology: () => seedSignalOntology
 });
-import { eq as eq44, and as and27 } from "drizzle-orm";
+import { eq as eq45, and as and27 } from "drizzle-orm";
 async function seedSignalOntology() {
   const existing = await db.select().from(signalOntologyNodes).limit(1);
   if (existing.length > 0) {
@@ -34104,14 +34153,14 @@ async function getOntologyGraph() {
 }
 async function enrichOntologyEdge(fromKey, toKey, edgeType) {
   try {
-    const [fromNode] = await db.select().from(signalOntologyNodes).where(eq44(signalOntologyNodes.nodeKey, fromKey)).limit(1);
-    const [toNode] = await db.select().from(signalOntologyNodes).where(eq44(signalOntologyNodes.nodeKey, toKey)).limit(1);
+    const [fromNode] = await db.select().from(signalOntologyNodes).where(eq45(signalOntologyNodes.nodeKey, fromKey)).limit(1);
+    const [toNode] = await db.select().from(signalOntologyNodes).where(eq45(signalOntologyNodes.nodeKey, toKey)).limit(1);
     if (!fromNode || !toNode) return;
     const [existing] = await db.select().from(signalOntologyEdges).where(
       and27(
-        eq44(signalOntologyEdges.fromNodeId, fromNode.id),
-        eq44(signalOntologyEdges.toNodeId, toNode.id),
-        eq44(signalOntologyEdges.edgeType, edgeType)
+        eq45(signalOntologyEdges.fromNodeId, fromNode.id),
+        eq45(signalOntologyEdges.toNodeId, toNode.id),
+        eq45(signalOntologyEdges.edgeType, edgeType)
       )
     ).limit(1);
     if (existing) {
@@ -34121,7 +34170,7 @@ async function enrichOntologyEdge(fromKey, toKey, edgeType) {
         evidenceCount: newCount,
         weight: String(newWeight.toFixed(2)),
         lastUpdated: /* @__PURE__ */ new Date()
-      }).where(eq44(signalOntologyEdges.id, existing.id));
+      }).where(eq45(signalOntologyEdges.id, existing.id));
     } else {
       await db.insert(signalOntologyEdges).values({
         fromNodeId: fromNode.id,
@@ -34138,17 +34187,17 @@ async function getOntologyContext(triggerName) {
   try {
     const [triggerNode] = await db.select().from(signalOntologyNodes).where(
       and27(
-        eq44(signalOntologyNodes.nodeKey, triggerName),
-        eq44(signalOntologyNodes.nodeType, "trigger")
+        eq45(signalOntologyNodes.nodeKey, triggerName),
+        eq45(signalOntologyNodes.nodeType, "trigger")
       )
     ).limit(1);
     if (!triggerNode) return { amplifiedBy: [], precedes: [], confirmedBy: [] };
-    const edges = await db.select().from(signalOntologyEdges).where(eq44(signalOntologyEdges.fromNodeId, triggerNode.id));
+    const edges = await db.select().from(signalOntologyEdges).where(eq45(signalOntologyEdges.fromNodeId, triggerNode.id));
     const amplifiedBy = [];
     const precedesList = [];
     const confirmedBy = [];
     for (const edge of edges) {
-      const [toNode] = await db.select().from(signalOntologyNodes).where(eq44(signalOntologyNodes.id, edge.toNodeId)).limit(1);
+      const [toNode] = await db.select().from(signalOntologyNodes).where(eq45(signalOntologyNodes.id, edge.toNodeId)).limit(1);
       if (!toNode) continue;
       if (edge.edgeType === "amplifies") amplifiedBy.push(toNode.nodeKey);
       if (edge.edgeType === "precedes") precedesList.push(toNode.nodeKey);
@@ -34315,7 +34364,7 @@ __export(SignalLearningService_exports, {
   SignalLearningService: () => SignalLearningService,
   signalLearningService: () => signalLearningService
 });
-import { eq as eq45, desc as desc22, and as and28, gte as gte12 } from "drizzle-orm";
+import { eq as eq46, desc as desc22, and as and28, gte as gte12 } from "drizzle-orm";
 async function logLearningAudit(scope, jobType, data) {
   try {
     if (scope !== "platform") {
@@ -34350,8 +34399,8 @@ var init_SignalLearningService = __esm({
           console.log(`[SignalLearning] Organization calibration starting for ${organizationId}`);
           const outcomes = await db.select().from(activationOutcomes).where(
             and28(
-              eq45(activationOutcomes.organizationId, organizationId),
-              eq45(activationOutcomes.closeOutCompleted, true)
+              eq46(activationOutcomes.organizationId, organizationId),
+              eq46(activationOutcomes.closeOutCompleted, true)
             )
           ).orderBy(desc22(activationOutcomes.createdAt)).limit(20);
           if (!outcomes.length) {
@@ -34359,7 +34408,7 @@ var init_SignalLearningService = __esm({
             return;
           }
           const activationIds = outcomes.map((o) => o.activationId);
-          const activations = await db.select().from(playbookActivations).where(eq45(playbookActivations.organizationId, organizationId)).limit(50);
+          const activations = await db.select().from(playbookActivations).where(eq46(playbookActivations.organizationId, organizationId)).limit(50);
           for (const outcome of outcomes) {
             const linkedActivation = activations.find((a) => a.id === outcome.activationId);
             if (!linkedActivation) continue;
@@ -34382,8 +34431,8 @@ var init_SignalLearningService = __esm({
             }
             const [existing] = await db.select().from(signalCalibrationConfig).where(
               and28(
-                eq45(signalCalibrationConfig.organizationId, organizationId),
-                eq45(signalCalibrationConfig.triggerPattern, triggerName)
+                eq46(signalCalibrationConfig.organizationId, organizationId),
+                eq46(signalCalibrationConfig.triggerPattern, triggerName)
               )
             ).limit(1);
             if (existing) {
@@ -34393,7 +34442,7 @@ var init_SignalLearningService = __esm({
                 sensitivityLevel,
                 calibrationCount: (existing.calibrationCount ?? 0) + 1,
                 lastCalibrated: /* @__PURE__ */ new Date()
-              }).where(eq45(signalCalibrationConfig.id, existing.id));
+              }).where(eq46(signalCalibrationConfig.id, existing.id));
             } else {
               await db.insert(signalCalibrationConfig).values({
                 organizationId,
@@ -34424,7 +34473,7 @@ var init_SignalLearningService = __esm({
       async runDomainLearning() {
         try {
           console.log("[SignalLearning] Domain learning job starting");
-          const confirmed = await db.select().from(leadingIndicatorDetections).where(eq45(leadingIndicatorDetections.acknowledged, true)).orderBy(desc22(leadingIndicatorDetections.detectedAt)).limit(200);
+          const confirmed = await db.select().from(leadingIndicatorDetections).where(eq46(leadingIndicatorDetections.acknowledged, true)).orderBy(desc22(leadingIndicatorDetections.detectedAt)).limit(200);
           if (!confirmed.length) {
             console.log("[SignalLearning] No confirmed leading indicator detections yet");
             await logLearningAudit("platform", "domain_learning", { patternsUpdated: 0, note: "no data yet" });
@@ -34438,11 +34487,11 @@ var init_SignalLearningService = __esm({
           let patternsUpdated = 0;
           for (const [pattern, count13] of Object.entries(patternCounts)) {
             if (count13 < 2) continue;
-            const indicators = await db.select().from(leadingIndicators).where(eq45(leadingIndicators.triggerPattern, pattern));
+            const indicators = await db.select().from(leadingIndicators).where(eq46(leadingIndicators.triggerPattern, pattern));
             for (const ind of indicators) {
               const increment = Math.log10(count13 + 1) * 0.1;
               const newWeight = Math.min(3, Number(ind.weight ?? 1) + increment);
-              await db.update(leadingIndicators).set({ weight: String(newWeight.toFixed(2)) }).where(eq45(leadingIndicators.id, ind.id));
+              await db.update(leadingIndicators).set({ weight: String(newWeight.toFixed(2)) }).where(eq46(leadingIndicators.id, ind.id));
               patternsUpdated++;
             }
           }
@@ -34522,7 +34571,7 @@ var init_SignalLearningService = __esm({
               contextModifiers: [...currentModifiers.filter((m) => m.condition !== "activation_frequency"), freqEntry],
               profileVersion: (profile.profileVersion ?? 1) + 1,
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq45(protocolSignalProfiles.id, profile.id));
+            }).where(eq46(protocolSignalProfiles.id, profile.id));
             profilesUpdated++;
           }
           const topDomains = Object.entries(domainCounts).sort(([, a], [, b]) => b - a).slice(0, 5).map(([d, c]) => `${d}: ${c}`);
@@ -38997,7 +39046,7 @@ Metric: ${Trigger?.MetricName} (${Trigger?.Namespace})`,
 });
 
 // server/services/preparedness-scoring.ts
-import { eq as eq47, desc as desc23 } from "drizzle-orm";
+import { eq as eq48, desc as desc23 } from "drizzle-orm";
 function calculatePreparednessScore(customization, playbook) {
   if (!customization) {
     return 80;
@@ -39014,12 +39063,12 @@ function calculatePreparednessScore(customization, playbook) {
   return Math.round(score);
 }
 async function getPlaybookInsights(playbookId) {
-  const [playbook] = await db.select().from(playbookLibrary).where(eq47(playbookLibrary.id, playbookId)).limit(1);
+  const [playbook] = await db.select().from(playbookLibrary).where(eq48(playbookLibrary.id, playbookId)).limit(1);
   if (!playbook) {
     throw new Error(`Playbook ${playbookId} not found`);
   }
-  const [customization] = await db.select().from(playbookCustomizations).where(eq47(playbookCustomizations.playbookId, playbookId)).limit(1);
-  const activations = await db.select().from(playbookActivations).where(eq47(playbookActivations.playbookId, playbookId)).orderBy(desc23(playbookActivations.activatedAt)).limit(10);
+  const [customization] = await db.select().from(playbookCustomizations).where(eq48(playbookCustomizations.playbookId, playbookId)).limit(1);
+  const activations = await db.select().from(playbookActivations).where(eq48(playbookActivations.playbookId, playbookId)).orderBy(desc23(playbookActivations.activatedAt)).limit(10);
   const preparednessScore = calculatePreparednessScore(customization, playbook);
   let readinessStatus = "not_started";
   if (preparednessScore >= 95) readinessStatus = "ready";
@@ -39098,7 +39147,7 @@ __export(playbookLibraryRoutes_exports, {
   playbookLibraryRouter: () => playbookLibraryRouter
 });
 import { Router as Router8 } from "express";
-import { eq as eq48, desc as desc24, sql as sql18, and as and30 } from "drizzle-orm";
+import { eq as eq49, desc as desc24, sql as sql18, and as and30 } from "drizzle-orm";
 function getFallbackLibraryData() {
   const domains = DOMAIN_CONFIG.map((d, i) => ({
     id: `fallback-domain-${d.id}`,
@@ -39185,19 +39234,19 @@ function isValidUUID(str) {
 async function recalculateReadinessScore(playbookId, organizationId) {
   try {
     const prepareItems = await db.select().from(playbookPrepareItems).where(and30(
-      eq48(playbookPrepareItems.playbookId, playbookId),
-      eq48(playbookPrepareItems.organizationId, organizationId)
+      eq49(playbookPrepareItems.playbookId, playbookId),
+      eq49(playbookPrepareItems.organizationId, organizationId)
     ));
     const monitorItems = await db.select().from(playbookMonitorItems).where(and30(
-      eq48(playbookMonitorItems.playbookId, playbookId),
-      eq48(playbookMonitorItems.organizationId, organizationId)
+      eq49(playbookMonitorItems.playbookId, playbookId),
+      eq49(playbookMonitorItems.organizationId, organizationId)
     ));
     const learnItems = await db.select().from(playbookLearnItems).where(and30(
-      eq48(playbookLearnItems.playbookId, playbookId),
-      eq48(playbookLearnItems.organizationId, organizationId)
+      eq49(playbookLearnItems.playbookId, playbookId),
+      eq49(playbookLearnItems.organizationId, organizationId)
     ));
-    const tasks4 = await db.select().from(playbookTaskSequences).where(eq48(playbookTaskSequences.playbookId, playbookId));
-    const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq48(playbookDecisionTrees.playbookId, playbookId));
+    const tasks4 = await db.select().from(playbookTaskSequences).where(eq49(playbookTaskSequences.playbookId, playbookId));
+    const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq49(playbookDecisionTrees.playbookId, playbookId));
     const prepareCompleted = prepareItems.filter((i) => i.status === "completed").length;
     const prepareTotal = prepareItems.length || 1;
     const prepareScore = Math.round(prepareCompleted / prepareTotal * 100);
@@ -39206,8 +39255,8 @@ async function recalculateReadinessScore(playbookId, organizationId) {
     const executeScore = tasks4.length > 0 ? 100 : decisionTrees2.length > 0 ? 50 : 0;
     const learnScore = learnItems.length > 0 ? 100 : 0;
     const [existingScore] = await db.select().from(playbookReadinessScores).where(and30(
-      eq48(playbookReadinessScores.playbookId, playbookId),
-      eq48(playbookReadinessScores.organizationId, organizationId)
+      eq49(playbookReadinessScores.playbookId, playbookId),
+      eq49(playbookReadinessScores.organizationId, organizationId)
     ));
     const prepareWeight = existingScore?.prepareWeight ?? 40;
     const monitorWeight = existingScore?.monitorWeight ?? 20;
@@ -39249,7 +39298,7 @@ async function recalculateReadinessScore(playbookId, organizationId) {
       updatedAt: /* @__PURE__ */ new Date()
     };
     if (existingScore) {
-      const [updated] = await db.update(playbookReadinessScores).set(scoreData).where(eq48(playbookReadinessScores.id, existingScore.id)).returning();
+      const [updated] = await db.update(playbookReadinessScores).set(scoreData).where(eq49(playbookReadinessScores.id, existingScore.id)).returning();
       return updated;
     } else {
       const [created] = await db.insert(playbookReadinessScores).values(scoreData).returning();
@@ -39477,7 +39526,7 @@ var init_playbookLibraryRoutes = __esm({
         const exact = await db.select().from(playbookLibrary).where(sql18`lower(${playbookLibrary.name}) = lower(${name})`).limit(1);
         const row = exact[0] ?? null;
         if (!row) return res.json(null);
-        const domains = await db.select().from(playbookDomains).where(eq48(playbookDomains.id, row.domainId)).limit(1);
+        const domains = await db.select().from(playbookDomains).where(eq49(playbookDomains.id, row.domainId)).limit(1);
         return res.json({ ...row, domainName: domains[0]?.name || "" });
       } catch (err) {
         console.error("Error searching playbook library:", err);
@@ -39506,7 +39555,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/domains/:domainId/categories", async (req, res) => {
       try {
         const { domainId } = req.params;
-        const categories = await db.select().from(playbookCategories).where(eq48(playbookCategories.domainId, domainId)).orderBy(playbookCategories.sequence);
+        const categories = await db.select().from(playbookCategories).where(eq49(playbookCategories.domainId, domainId)).orderBy(playbookCategories.sequence);
         res.json(categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -39526,7 +39575,7 @@ var init_playbookLibraryRoutes = __esm({
         }
         let playbooks2 = rawPlaybooks;
         if (organizationId) {
-          const readinessScores = await db.select().from(playbookReadinessScores).where(eq48(playbookReadinessScores.organizationId, organizationId));
+          const readinessScores = await db.select().from(playbookReadinessScores).where(eq49(playbookReadinessScores.organizationId, organizationId));
           const scoreMap = new Map(
             readinessScores.map((score) => [score.playbookId, score])
           );
@@ -39579,7 +39628,7 @@ var init_playbookLibraryRoutes = __esm({
         const featuredPlaybooks = await db.select().from(playbookLibrary).where(sql18`${playbookLibrary.playbookNumber} BETWEEN 6 AND 18`).orderBy(playbookLibrary.playbookNumber);
         const playbooksWithDomains = await Promise.all(
           featuredPlaybooks.map(async (playbook) => {
-            const [domain] = await db.select().from(playbookDomains).where(eq48(playbookDomains.id, playbook.domainId));
+            const [domain] = await db.select().from(playbookDomains).where(eq49(playbookDomains.id, playbook.domainId));
             return {
               ...playbook,
               domain: domain || null
@@ -39595,11 +39644,11 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/by-number/:playbookNumber", async (req, res) => {
       try {
         const { playbookNumber } = req.params;
-        const [playbook] = await db.select().from(playbookLibrary).where(eq48(playbookLibrary.playbookNumber, parseInt(playbookNumber)));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq49(playbookLibrary.playbookNumber, parseInt(playbookNumber)));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const [domain] = await db.select().from(playbookDomains).where(eq48(playbookDomains.id, playbook.domainId));
+        const [domain] = await db.select().from(playbookDomains).where(eq49(playbookDomains.id, playbook.domainId));
         res.json({
           ...playbook,
           domain: domain || null
@@ -39634,14 +39683,14 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/:playbookId", async (req, res) => {
       try {
         const { playbookId } = req.params;
-        const [playbook] = await db.select().from(playbookLibrary).where(eq48(playbookLibrary.id, playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq49(playbookLibrary.id, playbookId));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const templates = await db.select().from(playbookCommunicationTemplates).where(eq48(playbookCommunicationTemplates.playbookId, playbookId)).orderBy(playbookCommunicationTemplates.sendTiming);
-        const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq48(playbookDecisionTrees.playbookId, playbookId)).orderBy(playbookDecisionTrees.sequence);
-        const [domain] = await db.select().from(playbookDomains).where(eq48(playbookDomains.id, playbook.domainId));
-        const [category] = await db.select().from(playbookCategories).where(eq48(playbookCategories.id, playbook.categoryId));
+        const templates = await db.select().from(playbookCommunicationTemplates).where(eq49(playbookCommunicationTemplates.playbookId, playbookId)).orderBy(playbookCommunicationTemplates.sendTiming);
+        const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq49(playbookDecisionTrees.playbookId, playbookId)).orderBy(playbookDecisionTrees.sequence);
+        const [domain] = await db.select().from(playbookDomains).where(eq49(playbookDomains.id, playbook.domainId));
+        const [category] = await db.select().from(playbookCategories).where(eq49(playbookCategories.id, playbook.categoryId));
         res.json({
           playbook,
           domain,
@@ -39729,11 +39778,11 @@ var init_playbookLibraryRoutes = __esm({
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);
         const coverage = await Promise.all(
           domains.map(async (domain) => {
-            const [playbookCount] = await db.select({ count: sql18`count(*)::int` }).from(playbookLibrary).where(eq48(playbookLibrary.domainId, domain.id));
-            const [drillCount] = await db.select({ count: sql18`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq48(practiceDrills.playbookId, playbookLibrary.id)).where(
+            const [playbookCount] = await db.select({ count: sql18`count(*)::int` }).from(playbookLibrary).where(eq49(playbookLibrary.domainId, domain.id));
+            const [drillCount] = await db.select({ count: sql18`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq49(practiceDrills.playbookId, playbookLibrary.id)).where(
               sql18`${practiceDrills.organizationId} = ${organizationId} AND ${practiceDrills.status} = 'completed' AND ${playbookLibrary.domainId} = ${domain.id}`
             );
-            const [activationCount] = await db.select({ count: sql18`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq48(playbookActivations.playbookId, playbookLibrary.id)).where(
+            const [activationCount] = await db.select({ count: sql18`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq49(playbookActivations.playbookId, playbookLibrary.id)).where(
               sql18`${playbookActivations.organizationId} = ${organizationId} AND ${playbookLibrary.domainId} = ${domain.id}`
             );
             const totalPlaybooks2 = playbookCount?.count || 0;
@@ -39774,7 +39823,7 @@ var init_playbookLibraryRoutes = __esm({
           activation: playbookActivations,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(playbookActivations).leftJoin(playbookLibrary, eq48(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq48(playbookLibrary.domainId, playbookDomains.id)).where(eq48(playbookActivations.organizationId, organizationId)).orderBy(desc24(playbookActivations.activatedAt));
+        }).from(playbookActivations).leftJoin(playbookLibrary, eq49(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq49(playbookLibrary.domainId, playbookDomains.id)).where(eq49(playbookActivations.organizationId, organizationId)).orderBy(desc24(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -39809,14 +39858,14 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { organizationId } = req.params;
         const { status } = req.query;
-        const whereConditions = [eq48(aiOptimizationSuggestions.organizationId, organizationId)];
+        const whereConditions = [eq49(aiOptimizationSuggestions.organizationId, organizationId)];
         if (status) {
-          whereConditions.push(eq48(aiOptimizationSuggestions.status, status));
+          whereConditions.push(eq49(aiOptimizationSuggestions.status, status));
         }
         const suggestions = await db.select({
           suggestion: aiOptimizationSuggestions,
           playbook: playbookLibrary
-        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq48(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql18`${sql18.join(whereConditions, sql18.raw(" AND "))}`).orderBy(desc24(aiOptimizationSuggestions.generatedAt));
+        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq49(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql18`${sql18.join(whereConditions, sql18.raw(" AND "))}`).orderBy(desc24(aiOptimizationSuggestions.generatedAt));
         res.json(suggestions);
       } catch (error) {
         console.error("Error fetching AI suggestions:", error);
@@ -39832,7 +39881,7 @@ var init_playbookLibraryRoutes = __esm({
           reviewedBy,
           reviewedAt: /* @__PURE__ */ new Date(),
           implementedAt: status === "accepted" ? /* @__PURE__ */ new Date() : void 0
-        }).where(eq48(aiOptimizationSuggestions.id, suggestionId)).returning();
+        }).where(eq49(aiOptimizationSuggestions.id, suggestionId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error updating suggestion:", error);
@@ -39893,7 +39942,7 @@ var init_playbookLibraryRoutes = __esm({
           updateData.enrichedPhases = customizations.enrichedPhases;
         }
         updateData.updatedAt = /* @__PURE__ */ new Date();
-        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq48(playbookLibrary.id, playbookId)).returning();
+        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq49(playbookLibrary.id, playbookId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error saving playbook customizations:", error);
@@ -39912,7 +39961,7 @@ var init_playbookLibraryRoutes = __esm({
           updateData.targetResponseSpeed = `${settings.executionTimeout} minutes`;
         }
         updateData.updatedAt = /* @__PURE__ */ new Date();
-        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq48(playbookLibrary.id, playbookId)).returning();
+        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq49(playbookLibrary.id, playbookId)).returning();
         res.json({ success: true, playbook: updated, settingsSaved: settings });
       } catch (error) {
         console.error("Error saving playbook settings:", error);
@@ -39926,11 +39975,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookPrepareItems);
         if (organizationId) {
           query = query.where(and30(
-            eq48(playbookPrepareItems.playbookId, playbookId),
-            eq48(playbookPrepareItems.organizationId, organizationId)
+            eq49(playbookPrepareItems.playbookId, playbookId),
+            eq49(playbookPrepareItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq48(playbookPrepareItems.playbookId, playbookId));
+          query = query.where(eq49(playbookPrepareItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookPrepareItems.sequence);
         res.json(items);
@@ -39957,7 +40006,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookPrepareItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq48(playbookPrepareItems.id, itemId)).returning();
+        const [item] = await db.update(playbookPrepareItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq49(playbookPrepareItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -39976,7 +40025,7 @@ var init_playbookLibraryRoutes = __esm({
           completedAt: /* @__PURE__ */ new Date(),
           completedBy,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq48(playbookPrepareItems.id, itemId)).returning();
+        }).where(eq49(playbookPrepareItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -39989,8 +40038,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/prepare-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookPrepareItems).where(eq48(playbookPrepareItems.id, itemId));
-        await db.delete(playbookPrepareItems).where(eq48(playbookPrepareItems.id, itemId));
+        const [item] = await db.select().from(playbookPrepareItems).where(eq49(playbookPrepareItems.id, itemId));
+        await db.delete(playbookPrepareItems).where(eq49(playbookPrepareItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -40007,11 +40056,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookMonitorItems);
         if (organizationId) {
           query = query.where(and30(
-            eq48(playbookMonitorItems.playbookId, playbookId),
-            eq48(playbookMonitorItems.organizationId, organizationId)
+            eq49(playbookMonitorItems.playbookId, playbookId),
+            eq49(playbookMonitorItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq48(playbookMonitorItems.playbookId, playbookId));
+          query = query.where(eq49(playbookMonitorItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookMonitorItems.sequence);
         res.json(items);
@@ -40038,7 +40087,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookMonitorItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq48(playbookMonitorItems.id, itemId)).returning();
+        const [item] = await db.update(playbookMonitorItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq49(playbookMonitorItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -40051,14 +40100,14 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.patch("/:playbookId/monitor-items/:itemId/toggle", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [current] = await db.select().from(playbookMonitorItems).where(eq48(playbookMonitorItems.id, itemId));
+        const [current] = await db.select().from(playbookMonitorItems).where(eq49(playbookMonitorItems.id, itemId));
         if (!current) {
           return res.status(404).json({ error: "Monitor item not found" });
         }
         const [item] = await db.update(playbookMonitorItems).set({
           isActive: !current.isActive,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq48(playbookMonitorItems.id, itemId)).returning();
+        }).where(eq49(playbookMonitorItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -40071,8 +40120,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/monitor-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookMonitorItems).where(eq48(playbookMonitorItems.id, itemId));
-        await db.delete(playbookMonitorItems).where(eq48(playbookMonitorItems.id, itemId));
+        const [item] = await db.select().from(playbookMonitorItems).where(eq49(playbookMonitorItems.id, itemId));
+        await db.delete(playbookMonitorItems).where(eq49(playbookMonitorItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -40089,11 +40138,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookLearnItems);
         if (organizationId) {
           query = query.where(and30(
-            eq48(playbookLearnItems.playbookId, playbookId),
-            eq48(playbookLearnItems.organizationId, organizationId)
+            eq49(playbookLearnItems.playbookId, playbookId),
+            eq49(playbookLearnItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq48(playbookLearnItems.playbookId, playbookId));
+          query = query.where(eq49(playbookLearnItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookLearnItems.sequence);
         res.json(items);
@@ -40120,7 +40169,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookLearnItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq48(playbookLearnItems.id, itemId)).returning();
+        const [item] = await db.update(playbookLearnItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq49(playbookLearnItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -40133,8 +40182,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/learn-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookLearnItems).where(eq48(playbookLearnItems.id, itemId));
-        await db.delete(playbookLearnItems).where(eq48(playbookLearnItems.id, itemId));
+        const [item] = await db.select().from(playbookLearnItems).where(eq49(playbookLearnItems.id, itemId));
+        await db.delete(playbookLearnItems).where(eq49(playbookLearnItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -40152,23 +40201,23 @@ var init_playbookLibraryRoutes = __esm({
           return res.status(400).json({ error: "organizationId is required" });
         }
         let [score] = await db.select().from(playbookReadinessScores).where(and30(
-          eq48(playbookReadinessScores.playbookId, playbookId),
-          eq48(playbookReadinessScores.organizationId, organizationId)
+          eq49(playbookReadinessScores.playbookId, playbookId),
+          eq49(playbookReadinessScores.organizationId, organizationId)
         ));
         if (!score) {
           score = await recalculateReadinessScore(playbookId, organizationId);
         }
         const prepareItems = await db.select().from(playbookPrepareItems).where(and30(
-          eq48(playbookPrepareItems.playbookId, playbookId),
-          eq48(playbookPrepareItems.organizationId, organizationId)
+          eq49(playbookPrepareItems.playbookId, playbookId),
+          eq49(playbookPrepareItems.organizationId, organizationId)
         ));
         const monitorItems = await db.select().from(playbookMonitorItems).where(and30(
-          eq48(playbookMonitorItems.playbookId, playbookId),
-          eq48(playbookMonitorItems.organizationId, organizationId)
+          eq49(playbookMonitorItems.playbookId, playbookId),
+          eq49(playbookMonitorItems.organizationId, organizationId)
         ));
         const learnItems = await db.select().from(playbookLearnItems).where(and30(
-          eq48(playbookLearnItems.playbookId, playbookId),
-          eq48(playbookLearnItems.organizationId, organizationId)
+          eq49(playbookLearnItems.playbookId, playbookId),
+          eq49(playbookLearnItems.organizationId, organizationId)
         ));
         res.json({
           score,
@@ -40220,8 +40269,8 @@ var init_playbookLibraryRoutes = __esm({
           return res.status(400).json({ error: "Weights must sum to 100" });
         }
         const [existingScore] = await db.select().from(playbookReadinessScores).where(and30(
-          eq48(playbookReadinessScores.playbookId, playbookId),
-          eq48(playbookReadinessScores.organizationId, organizationId)
+          eq49(playbookReadinessScores.playbookId, playbookId),
+          eq49(playbookReadinessScores.organizationId, organizationId)
         ));
         if (existingScore) {
           await db.update(playbookReadinessScores).set({
@@ -40230,7 +40279,7 @@ var init_playbookLibraryRoutes = __esm({
             executeWeight,
             learnWeight,
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq48(playbookReadinessScores.id, existingScore.id));
+          }).where(eq49(playbookReadinessScores.id, existingScore.id));
         } else {
           await db.insert(playbookReadinessScores).values({
             playbookId,
@@ -40251,7 +40300,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/readiness/organization/:organizationId", async (req, res) => {
       try {
         const { organizationId } = req.params;
-        const scores = await db.select().from(playbookReadinessScores).where(eq48(playbookReadinessScores.organizationId, organizationId)).orderBy(desc24(playbookReadinessScores.overallScore));
+        const scores = await db.select().from(playbookReadinessScores).where(eq49(playbookReadinessScores.organizationId, organizationId)).orderBy(desc24(playbookReadinessScores.overallScore));
         res.json(scores);
       } catch (error) {
         console.error("Error fetching organization readiness scores:", error);
@@ -40299,11 +40348,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(executionLearnings);
         if (organizationId) {
           query = query.where(and30(
-            eq48(executionLearnings.playbookId, playbookId),
-            eq48(executionLearnings.organizationId, organizationId)
+            eq49(executionLearnings.playbookId, playbookId),
+            eq49(executionLearnings.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq48(executionLearnings.playbookId, playbookId));
+          query = query.where(eq49(executionLearnings.playbookId, playbookId));
         }
         const learnings = await query.orderBy(desc24(executionLearnings.capturedAt));
         res.json(learnings);
@@ -40320,8 +40369,8 @@ var init_playbookLibraryRoutes = __esm({
           return res.status(400).json({ error: "organizationId is required" });
         }
         const learnings = await db.select().from(executionLearnings).where(and30(
-          eq48(executionLearnings.playbookId, playbookId),
-          eq48(executionLearnings.organizationId, organizationId)
+          eq49(executionLearnings.playbookId, playbookId),
+          eq49(executionLearnings.organizationId, organizationId)
         ));
         if (learnings.length === 0) {
           return res.json({
@@ -40350,7 +40399,7 @@ var init_playbookLibraryRoutes = __esm({
           reviewedAt: /* @__PURE__ */ new Date(),
           status: status || "reviewed",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq48(executionLearnings.id, learningId)).returning();
+        }).where(eq49(executionLearnings.id, learningId)).returning();
         res.json(learning);
       } catch (error) {
         console.error("Error reviewing execution learning:", error);
@@ -40370,13 +40419,13 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        const [playbook] = await db.select().from(playbookLibrary).where(eq48(playbookLibrary.id, playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq49(playbookLibrary.id, playbookId));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
         const [readinessScore] = await db.select().from(playbookReadinessScores).where(and30(
-          eq48(playbookReadinessScores.playbookId, playbookId),
-          eq48(playbookReadinessScores.organizationId, organizationId)
+          eq49(playbookReadinessScores.playbookId, playbookId),
+          eq49(playbookReadinessScores.organizationId, organizationId)
         ));
         const overallScore = readinessScore?.overallScore ?? 0;
         if (overallScore < 50) {
@@ -40421,7 +40470,7 @@ var init_playbookLibraryRoutes = __esm({
           activatedBy: triggeredBy || "system",
           activationReason: "Manual activation from playbook detail page"
         }).returning();
-        const taskSequences = await db.select().from(playbookTaskSequences).where(eq48(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
+        const taskSequences = await db.select().from(playbookTaskSequences).where(eq49(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
         const phases = [
           { name: "Immediate Response", phase: "immediate", startMin: 0, endMin: 2, sequence: 1 },
           { name: "Secondary Actions", phase: "secondary", startMin: 2, endMin: 5, sequence: 2 },
@@ -40526,11 +40575,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookActivations);
         if (organizationId) {
           query = query.where(and30(
-            eq48(playbookActivations.playbookId, playbookId),
-            eq48(playbookActivations.organizationId, organizationId)
+            eq49(playbookActivations.playbookId, playbookId),
+            eq49(playbookActivations.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq48(playbookActivations.playbookId, playbookId));
+          query = query.where(eq49(playbookActivations.playbookId, playbookId));
         }
         const activations = await query.orderBy(desc24(playbookActivations.activatedAt));
         res.json(activations);
@@ -40548,7 +40597,7 @@ var init_playbookLibraryRoutes = __esm({
             completedAt: /* @__PURE__ */ new Date(),
             successRating: successRating || 85,
             lessonsLearned: outcome || "Execution completed successfully"
-          }).where(eq48(playbookActivations.id, activationId));
+          }).where(eq49(playbookActivations.id, activationId));
         }
         if (executionInstanceId) {
           await db.update(executionInstances).set({
@@ -40556,7 +40605,7 @@ var init_playbookLibraryRoutes = __esm({
             completedAt: /* @__PURE__ */ new Date(),
             outcome: outcome || "successful",
             outcomeNotes: `Completed by ${completedBy || "system"}`
-          }).where(eq48(executionInstances.id, executionInstanceId));
+          }).where(eq49(executionInstances.id, executionInstanceId));
         }
         res.json({ success: true, message: "Playbook execution completed" });
       } catch (error) {
@@ -40573,7 +40622,7 @@ __export(practiceDrillRoutes_exports, {
   practiceDrillRouter: () => practiceDrillRouter
 });
 import { Router as Router9 } from "express";
-import { eq as eq49, desc as desc25, and as and31 } from "drizzle-orm";
+import { eq as eq50, desc as desc25, and as and31 } from "drizzle-orm";
 import { z as z7 } from "zod";
 var practiceDrillRouter;
 var init_practiceDrillRoutes = __esm({
@@ -40586,15 +40635,15 @@ var init_practiceDrillRoutes = __esm({
       try {
         const { organizationId } = req.params;
         const { status } = req.query;
-        let conditions = [eq49(practiceDrills.organizationId, organizationId)];
+        let conditions = [eq50(practiceDrills.organizationId, organizationId)];
         if (status) {
-          conditions.push(eq49(practiceDrills.status, status));
+          conditions.push(eq50(practiceDrills.status, status));
         }
         const drills = await db.select({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq49(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq49(playbookLibrary.domainId, playbookDomains.id)).where(and31(...conditions)).orderBy(desc25(practiceDrills.scheduledDate));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq50(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq50(playbookLibrary.domainId, playbookDomains.id)).where(and31(...conditions)).orderBy(desc25(practiceDrills.scheduledDate));
         res.json(drills);
       } catch (error) {
         console.error("Error fetching practice drills:", error);
@@ -40608,11 +40657,11 @@ var init_practiceDrillRoutes = __esm({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq49(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq49(playbookLibrary.domainId, playbookDomains.id)).where(eq49(practiceDrills.id, drillId));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq50(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq50(playbookLibrary.domainId, playbookDomains.id)).where(eq50(practiceDrills.id, drillId));
         if (!drill) {
           return res.status(404).json({ error: "Practice drill not found" });
         }
-        const [performance] = await db.select().from(drillPerformance).where(eq49(drillPerformance.drillId, drillId));
+        const [performance] = await db.select().from(drillPerformance).where(eq50(drillPerformance.drillId, drillId));
         res.json({
           ...drill,
           performance
@@ -40646,7 +40695,7 @@ var init_practiceDrillRoutes = __esm({
         const [updated] = await db.update(practiceDrills).set({
           ...updates,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq49(practiceDrills.id, drillId)).returning();
+        }).where(eq50(practiceDrills.id, drillId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error updating practice drill:", error);
@@ -40660,7 +40709,7 @@ var init_practiceDrillRoutes = __esm({
           status: "in_progress",
           startedAt: /* @__PURE__ */ new Date(),
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq49(practiceDrills.id, drillId)).returning();
+        }).where(eq50(practiceDrills.id, drillId)).returning();
         res.json(drill);
       } catch (error) {
         console.error("Error starting drill:", error);
@@ -40678,8 +40727,8 @@ var init_practiceDrillRoutes = __esm({
           actualDuration: performanceData.actualExecutionTime || 0,
           actualParticipants: performanceData.actualParticipants || [],
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq49(practiceDrills.id, drillId)).returning();
-        const [drillDetails] = await db.select().from(practiceDrills).where(eq49(practiceDrills.id, drillId));
+        }).where(eq50(practiceDrills.id, drillId)).returning();
+        const [drillDetails] = await db.select().from(practiceDrills).where(eq50(practiceDrills.id, drillId));
         console.log("[COMPLETE DRILL] Drill details:", { organizationId: drillDetails.organizationId, playbookId: drillDetails.playbookId });
         const performancePayload = {
           drillId,
@@ -40719,7 +40768,7 @@ var init_practiceDrillRoutes = __esm({
           debriefComplete: true,
           passedDrill: passed ?? void 0,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq49(practiceDrills.id, drillId)).returning();
+        }).where(eq50(practiceDrills.id, drillId)).returning();
         res.json({ drill, passed });
       } catch (error) {
         console.error("Error saving drill debrief:", error);
@@ -40734,7 +40783,7 @@ var init_practiceDrillRoutes = __esm({
           playbook: playbookLibrary,
           domain: playbookDomains,
           drill: practiceDrills
-        }).from(drillPerformance).leftJoin(practiceDrills, eq49(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq49(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq49(playbookLibrary.domainId, playbookDomains.id)).where(eq49(drillPerformance.organizationId, organizationId)).orderBy(desc25(drillPerformance.createdAt));
+        }).from(drillPerformance).leftJoin(practiceDrills, eq50(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq50(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq50(playbookLibrary.domainId, playbookDomains.id)).where(eq50(drillPerformance.organizationId, organizationId)).orderBy(desc25(drillPerformance.createdAt));
         const totalDrills = performances.length;
         const passedDrills = performances.filter((p) => p.performance.passed).length;
         const averageScore = totalDrills > 0 ? Math.round(
@@ -40834,7 +40883,7 @@ var init_practiceDrillRoutes = __esm({
         await db.update(practiceDrills).set({
           status: "cancelled",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq49(practiceDrills.id, drillId));
+        }).where(eq50(practiceDrills.id, drillId));
         res.json({ success: true });
       } catch (error) {
         console.error("Error cancelling drill:", error);
@@ -40851,7 +40900,7 @@ __export(PlaybookExecutor_exports, {
   completeExecution: () => completeExecution,
   getExecutionProgress: () => getExecutionProgress
 });
-import { eq as eq50 } from "drizzle-orm";
+import { eq as eq51 } from "drizzle-orm";
 import pino15 from "pino";
 async function activatePlaybook(organizationId, playbookId, scenarioId, executionPlanId, triggeredBy) {
   log4.info(`\u{1F680} Activating playbook ${playbookId} for scenario ${scenarioId}`);
@@ -40870,7 +40919,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
     };
     const [instance] = await db.insert(executionInstances).values(executionData).returning();
     log4.info({ instanceId: instance.id }, "\u2705 Execution instance created");
-    const stakeholders = await db.select().from(scenarioStakeholders).where(eq50(scenarioStakeholders.scenarioId, scenarioId));
+    const stakeholders = await db.select().from(scenarioStakeholders).where(eq51(scenarioStakeholders.scenarioId, scenarioId));
     for (const stakeholder of stakeholders) {
       const userId = stakeholder.userId;
       if (userId) {
@@ -40903,7 +40952,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
 }
 async function getExecutionProgress(executionId) {
   try {
-    const execution = await db.select().from(executionInstances).where(eq50(executionInstances.id, executionId));
+    const execution = await db.select().from(executionInstances).where(eq51(executionInstances.id, executionId));
     if (!execution.length) return null;
     const instance = execution[0];
     const startedAt = instance.startedAt || /* @__PURE__ */ new Date();
@@ -40933,7 +40982,7 @@ async function completeExecution(executionId, outcome, notes) {
       outcome,
       outcomeNotes: notes,
       actualExecutionTime: await calculateActualTime(executionId)
-    }).where(eq50(executionInstances.id, executionId)).returning();
+    }).where(eq51(executionInstances.id, executionId)).returning();
     log4.info({ executionId, outcome }, "\u2705 Execution completed");
     return updated;
   } catch (error) {
@@ -40942,7 +40991,7 @@ async function completeExecution(executionId, outcome, notes) {
   }
 }
 async function calculateActualTime(executionId) {
-  const [instance] = await db.select().from(executionInstances).where(eq50(executionInstances.id, executionId));
+  const [instance] = await db.select().from(executionInstances).where(eq51(executionInstances.id, executionId));
   if (!instance?.startedAt) return 0;
   return Math.round((Date.now() - instance.startedAt.getTime()) / 1e3 / 60);
 }
@@ -41016,7 +41065,7 @@ __export(triggersSeed_exports, {
   getTriggerStats: () => getTriggerStats,
   seedTriggers: () => seedTriggers
 });
-import { eq as eq51, sql as sql19 } from "drizzle-orm";
+import { eq as eq52, sql as sql19 } from "drizzle-orm";
 function operatorToSymbol(op) {
   const map = {
     "gt": ">",
@@ -41067,7 +41116,7 @@ async function seedTriggers() {
   console.log(`   Found ${totalDataPoints} data points across ${SIGNAL_CATEGORIES.length} signal categories`);
   const DEMO_USER_EMAIL = "system@m-platform.io";
   const DEMO_ORG_NAME = "Innovate Dynamics";
-  let [user] = await db.select().from(users).where(eq51(users.email, DEMO_USER_EMAIL));
+  let [user] = await db.select().from(users).where(eq52(users.email, DEMO_USER_EMAIL));
   if (!user) {
     console.log("   \u{1F4E6} Creating demo system user for trigger seeding...");
     const [newUser] = await db.insert(users).values({
@@ -41079,7 +41128,7 @@ async function seedTriggers() {
     user = newUser;
     console.log(`   \u2705 Created demo user: ${user.email} (${user.id})`);
   }
-  let [org] = await db.select().from(organizations).where(eq51(organizations.name, DEMO_ORG_NAME));
+  let [org] = await db.select().from(organizations).where(eq52(organizations.name, DEMO_ORG_NAME));
   if (!org) {
     console.log("   \u{1F4E6} Creating demo organization for trigger seeding...");
     const [newOrg] = await db.insert(organizations).values({
@@ -41101,12 +41150,12 @@ async function seedTriggers() {
   }
   if (user.organizationId !== org.id) {
     console.log(`   \u{1F517} Linking demo user to demo organization...`);
-    await db.update(users).set({ organizationId: org.id }).where(eq51(users.id, user.id));
+    await db.update(users).set({ organizationId: org.id }).where(eq52(users.id, user.id));
   }
   return seedTriggersForOrg(org.id, user.id, allDataPoints);
 }
 async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
-  const existingTriggers = await db.select().from(executiveTriggers).where(eq51(executiveTriggers.organizationId, organizationId));
+  const existingTriggers = await db.select().from(executiveTriggers).where(eq52(executiveTriggers.organizationId, organizationId));
   if (existingTriggers.length >= 170) {
     console.log(`   \u2705 Already have ${existingTriggers.length} triggers (target: 231)`);
     await seedTriggerSignals(organizationId, createdBy);
@@ -41115,7 +41164,7 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
   console.log(`   Clearing ${existingTriggers.length} existing triggers...`);
   if (existingTriggers.length > 0) {
     await db.delete(playbookTriggerAssociations);
-    await db.delete(executiveTriggers).where(eq51(executiveTriggers.organizationId, organizationId));
+    await db.delete(executiveTriggers).where(eq52(executiveTriggers.organizationId, organizationId));
   }
   const domains = await db.select().from(playbookDomains);
   const domainMap = new Map(domains.map((d) => [d.name, d.id]));
@@ -41172,7 +41221,7 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
     if (matchingPlaybooks.length > 0) {
       await db.update(executiveTriggers).set({
         recommendedPlaybooks: [...category.recommendedPlaybooks || [], ...matchingPlaybooks].slice(0, 5)
-      }).where(eq51(executiveTriggers.id, trigger.id));
+      }).where(eq52(executiveTriggers.id, trigger.id));
     }
     if (triggersCreated % 20 === 0) {
       console.log(`   Created ${triggersCreated}/${allDataPoints.length} triggers...`);
@@ -41185,13 +41234,13 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
 }
 async function seedTriggerSignals(organizationId, createdBy) {
   console.log("   \u{1F4E1} Seeding trigger signals...");
-  const existingSignals = await db.select().from(triggerSignals).where(eq51(triggerSignals.organizationId, organizationId));
+  const existingSignals = await db.select().from(triggerSignals).where(eq52(triggerSignals.organizationId, organizationId));
   if (existingSignals.length >= 80) {
     console.log(`   \u2705 Already have ${existingSignals.length} trigger signals`);
     return;
   }
   if (existingSignals.length > 0) {
-    await db.delete(triggerSignals).where(eq51(triggerSignals.organizationId, organizationId));
+    await db.delete(triggerSignals).where(eq52(triggerSignals.organizationId, organizationId));
   }
   const allDataPoints = getAllDataPoints();
   let signalsCreated = 0;
@@ -41263,7 +41312,7 @@ __export(PreparationUpdateEngine_exports, {
   processCloseOutGate: () => processCloseOutGate,
   recalculateCompoundScore: () => recalculateCompoundScore
 });
-import { eq as eq52, and as and32, count as count8 } from "drizzle-orm";
+import { eq as eq53, and as and32, count as count8 } from "drizzle-orm";
 function extractKeywords(text3) {
   const stopWords = /* @__PURE__ */ new Set(["the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with", "by", "was", "were", "is", "are", "had", "have", "did", "do", "that", "this", "it", "we", "our", "not", "what", "how", "when", "which"]);
   return text3.toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((w) => w.length > 4 && !stopWords.has(w)).slice(0, 8);
@@ -41281,7 +41330,7 @@ function inferOwnerRole(text3) {
 }
 async function processCloseOutGate(outcomeId) {
   try {
-    const [outcome] = await db.select().from(activationOutcomes).where(eq52(activationOutcomes.id, outcomeId)).limit(1);
+    const [outcome] = await db.select().from(activationOutcomes).where(eq53(activationOutcomes.id, outcomeId)).limit(1);
     if (!outcome || !outcome.closeOutCompleted) return;
     const orgId = outcome.organizationId;
     const playbookId = outcome.playbookId;
@@ -41359,8 +41408,8 @@ async function processCloseOutGate(outcomeId) {
       if (update.updateType === "signal_calibration" && update.triggerPattern && (update.signalKeywordsToAdd?.length ?? 0) > 0) {
         try {
           const existing = await db.select().from(signalCalibrationConfig).where(and32(
-            eq52(signalCalibrationConfig.organizationId, orgId),
-            eq52(signalCalibrationConfig.triggerPattern, update.triggerPattern)
+            eq53(signalCalibrationConfig.organizationId, orgId),
+            eq53(signalCalibrationConfig.triggerPattern, update.triggerPattern)
           )).limit(1);
           if (existing.length > 0) {
             const currentWeights = existing[0].keywordWeights ?? {};
@@ -41373,7 +41422,7 @@ async function processCloseOutGate(outcomeId) {
               calibrationCount: (existing[0].calibrationCount ?? 0) + 1,
               lastCalibrated: /* @__PURE__ */ new Date(),
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq52(signalCalibrationConfig.id, existing[0].id));
+            }).where(eq53(signalCalibrationConfig.id, existing[0].id));
           } else {
             const initialWeights = {};
             for (const kw of update.signalKeywordsToAdd ?? []) {
@@ -41399,25 +41448,25 @@ async function processCloseOutGate(outcomeId) {
 async function recalculateCompoundScore(organizationId) {
   try {
     const [closeOutCount] = await db.select({ c: count8() }).from(activationOutcomes).where(and32(
-      eq52(activationOutcomes.organizationId, organizationId),
-      eq52(activationOutcomes.closeOutCompleted, true)
+      eq53(activationOutcomes.organizationId, organizationId),
+      eq53(activationOutcomes.closeOutCompleted, true)
     ));
     const totalCloseOuts = Number(closeOutCount?.c ?? 0);
-    const [updatesCount] = await db.select({ c: count8() }).from(preparationUpdates).where(eq52(preparationUpdates.organizationId, organizationId));
+    const [updatesCount] = await db.select({ c: count8() }).from(preparationUpdates).where(eq53(preparationUpdates.organizationId, organizationId));
     const totalUpdates = Number(updatesCount?.c ?? 0);
     const [appliedCount] = await db.select({ c: count8() }).from(preparationUpdates).where(and32(
-      eq52(preparationUpdates.organizationId, organizationId),
-      eq52(preparationUpdates.status, "applied")
+      eq53(preparationUpdates.organizationId, organizationId),
+      eq53(preparationUpdates.status, "applied")
     ));
     const totalApplied = Number(appliedCount?.c ?? 0);
     const [calCount] = await db.select({ c: count8() }).from(preparationUpdates).where(and32(
-      eq52(preparationUpdates.organizationId, organizationId),
-      eq52(preparationUpdates.updateType, "signal_calibration")
+      eq53(preparationUpdates.organizationId, organizationId),
+      eq53(preparationUpdates.updateType, "signal_calibration")
     ));
     const signalCals = Number(calCount?.c ?? 0);
     const [protCount] = await db.select({ c: count8() }).from(preparationUpdates).where(and32(
-      eq52(preparationUpdates.organizationId, organizationId),
-      eq52(preparationUpdates.updateType, "protocol_suggestion")
+      eq53(preparationUpdates.organizationId, organizationId),
+      eq53(preparationUpdates.updateType, "protocol_suggestion")
     ));
     const protSuggestions = Number(protCount?.c ?? 0);
     const rawScore = totalCloseOuts * SCORE_WEIGHTS.closeOut + totalApplied * SCORE_WEIGHTS.updateApplied + signalCals * SCORE_WEIGHTS.signalCalibration + protSuggestions * SCORE_WEIGHTS.protocolSuggestion;
@@ -41428,7 +41477,7 @@ async function recalculateCompoundScore(organizationId) {
       event: `Close-Out Gate #${totalCloseOuts} completed`,
       scoreDelta: SCORE_WEIGHTS.closeOut
     };
-    const existing = await db.select().from(preparationCompoundScores).where(eq52(preparationCompoundScores.organizationId, organizationId)).limit(1);
+    const existing = await db.select().from(preparationCompoundScores).where(eq53(preparationCompoundScores.organizationId, organizationId)).limit(1);
     if (existing.length > 0) {
       const currentTimeline = existing[0].encodingTimeline ?? [];
       currentTimeline.push(encodingEvent);
@@ -41442,7 +41491,7 @@ async function recalculateCompoundScore(organizationId) {
         monthsToRebuildOnCompetitor: monthsToRebuild,
         encodingTimeline: currentTimeline,
         calculatedAt: /* @__PURE__ */ new Date()
-      }).where(eq52(preparationCompoundScores.organizationId, organizationId));
+      }).where(eq53(preparationCompoundScores.organizationId, organizationId));
     } else {
       await db.insert(preparationCompoundScores).values({
         organizationId,
@@ -41492,7 +41541,7 @@ __export(AdvanceLoopService_exports, {
   getProtocolVersionTimeline: () => getProtocolVersionTimeline,
   measureHypothesesForActivation: () => measureHypothesesForActivation
 });
-import { eq as eq53, and as and33, desc as desc26, count as count9, avg as avg2, sql as sql20 } from "drizzle-orm";
+import { eq as eq54, and as and33, desc as desc26, count as count9, avg as avg2, sql as sql20 } from "drizzle-orm";
 function classifyUpdateRisk(update) {
   if (update.updateType === "signal_calibration") return "low";
   if (update.updateType === "ownership_assignment") return "high";
@@ -41534,7 +41583,7 @@ function bumpVersion(current) {
   return `${parts[0]}.${minor}`;
 }
 async function applyUpdateWithDelta(updateId, orgId, userId) {
-  const [update] = await db.select().from(preparationUpdates).where(eq53(preparationUpdates.id, updateId)).limit(1);
+  const [update] = await db.select().from(preparationUpdates).where(eq54(preparationUpdates.id, updateId)).limit(1);
   if (!update) throw new Error("Preparation update not found");
   if (update.status === "applied") throw new Error("Update already applied");
   const risk = classifyUpdateRisk(update);
@@ -41545,7 +41594,7 @@ async function applyUpdateWithDelta(updateId, orgId, userId) {
   let previousValue = {};
   let newValue = {};
   if (update.playbookId) {
-    const [playbook] = await db.select().from(playbooks).where(eq53(playbooks.id, update.playbookId)).limit(1);
+    const [playbook] = await db.select().from(playbooks).where(eq54(playbooks.id, update.playbookId)).limit(1);
     if (playbook) {
       versionBefore = playbook.version ?? "1.0";
       versionAfter = bumpVersion(versionBefore);
@@ -41566,7 +41615,7 @@ async function applyUpdateWithDelta(updateId, orgId, userId) {
         previousValue = { notes: [] };
         newValue = { encoded: update.suggestionDetail };
       }
-      await db.update(playbooks).set({ version: versionAfter }).where(eq53(playbooks.id, update.playbookId));
+      await db.update(playbooks).set({ version: versionAfter }).where(eq54(playbooks.id, update.playbookId));
     }
   }
   const [delta] = await db.insert(protocolVersionDeltas).values({
@@ -41596,19 +41645,19 @@ async function applyUpdateWithDelta(updateId, orgId, userId) {
     measureByDate,
     status: "measuring"
   }).returning();
-  await db.update(preparationUpdates).set({ status: "applied", appliedAt: /* @__PURE__ */ new Date() }).where(eq53(preparationUpdates.id, updateId));
+  await db.update(preparationUpdates).set({ status: "applied", appliedAt: /* @__PURE__ */ new Date() }).where(eq54(preparationUpdates.id, updateId));
   setImmediate(() => recalculateCompoundScore(orgId));
   return { delta, hypothesis };
 }
 async function measureHypothesesForActivation(outcomeId, orgId) {
   try {
-    const [outcome] = await db.select().from(activationOutcomes).where(eq53(activationOutcomes.id, outcomeId)).limit(1);
+    const [outcome] = await db.select().from(activationOutcomes).where(eq54(activationOutcomes.id, outcomeId)).limit(1);
     if (!outcome || !outcome.actualMinutes) return;
     const measuring = await db.select().from(updateHypotheses).where(
       and33(
-        eq53(updateHypotheses.organizationId, orgId),
-        eq53(updateHypotheses.playbookId, outcome.playbookId),
-        eq53(updateHypotheses.status, "measuring")
+        eq54(updateHypotheses.organizationId, orgId),
+        eq54(updateHypotheses.playbookId, outcome.playbookId),
+        eq54(updateHypotheses.status, "measuring")
       )
     );
     for (const hyp of measuring) {
@@ -41616,8 +41665,8 @@ async function measureHypothesesForActivation(outcomeId, orgId) {
       const threshold = hyp.measurementWindowActivations ?? 3;
       const baselineRows = await db.select({ avgMin: avg2(activationOutcomes.actualMinutes) }).from(activationOutcomes).where(
         and33(
-          eq53(activationOutcomes.organizationId, orgId),
-          eq53(activationOutcomes.playbookId, outcome.playbookId),
+          eq54(activationOutcomes.organizationId, orgId),
+          eq54(activationOutcomes.playbookId, outcome.playbookId),
           sql20`${activationOutcomes.createdAt} < ${hyp.createdAt}`
         )
       );
@@ -41639,9 +41688,9 @@ async function measureHypothesesForActivation(outcomeId, orgId) {
           provenAt: /* @__PURE__ */ new Date(),
           confidenceScore: Math.round(confidence),
           evidenceSummary
-        }).where(eq53(updateHypotheses.id, hyp.id));
+        }).where(eq54(updateHypotheses.id, hyp.id));
       } else {
-        await db.update(updateHypotheses).set({ activationsObserved: observed }).where(eq53(updateHypotheses.id, hyp.id));
+        await db.update(updateHypotheses).set({ activationsObserved: observed }).where(eq54(updateHypotheses.id, hyp.id));
       }
     }
   } catch (err) {
@@ -41653,18 +41702,18 @@ async function getLearningVelocityIndex(orgId) {
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
   const [totalAppliedRow] = await db.select({ c: count9() }).from(preparationUpdates).where(
     and33(
-      eq53(preparationUpdates.organizationId, orgId),
-      eq53(preparationUpdates.status, "applied")
+      eq54(preparationUpdates.organizationId, orgId),
+      eq54(preparationUpdates.status, "applied")
     )
   );
   const [recentAppliedRow] = await db.select({ c: count9() }).from(preparationUpdates).where(
     and33(
-      eq53(preparationUpdates.organizationId, orgId),
-      eq53(preparationUpdates.status, "applied"),
+      eq54(preparationUpdates.organizationId, orgId),
+      eq54(preparationUpdates.status, "applied"),
       sql20`${preparationUpdates.appliedAt} > ${thirtyDaysAgo}`
     )
   );
-  const allHypotheses = await db.select().from(updateHypotheses).where(eq53(updateHypotheses.organizationId, orgId));
+  const allHypotheses = await db.select().from(updateHypotheses).where(eq54(updateHypotheses.organizationId, orgId));
   const proven = allHypotheses.filter((h) => h.status === "proven");
   const measuring = allHypotheses.filter((h) => h.status === "measuring");
   const totalMinutesSaved = proven.reduce((sum, h) => {
@@ -41683,7 +41732,7 @@ async function getLearningVelocityIndex(orgId) {
     provenAt: h.provenAt?.toISOString() ?? ""
   }));
   const monthlyTrend = await buildMonthlyTrend(orgId);
-  const [scoreRow] = await db.select().from(preparationCompoundScores).where(eq53(preparationCompoundScores.organizationId, orgId)).limit(1);
+  const [scoreRow] = await db.select().from(preparationCompoundScores).where(eq54(preparationCompoundScores.organizationId, orgId)).limit(1);
   return {
     updatesAppliedTotal: Number(totalAppliedRow?.c ?? 0),
     updatesAppliedLast30Days: Number(recentAppliedRow?.c ?? 0),
@@ -41709,15 +41758,15 @@ async function buildMonthlyTrend(orgId) {
     const end = new Date(now.getFullYear(), now.getMonth() - i + 1, 0, 23, 59, 59);
     const [appliedRow] = await db.select({ c: count9() }).from(preparationUpdates).where(
       and33(
-        eq53(preparationUpdates.organizationId, orgId),
-        eq53(preparationUpdates.status, "applied"),
+        eq54(preparationUpdates.organizationId, orgId),
+        eq54(preparationUpdates.status, "applied"),
         sql20`${preparationUpdates.appliedAt} BETWEEN ${start} AND ${end}`
       )
     );
     const provenInMonth = await db.select().from(updateHypotheses).where(
       and33(
-        eq53(updateHypotheses.organizationId, orgId),
-        eq53(updateHypotheses.status, "proven"),
+        eq54(updateHypotheses.organizationId, orgId),
+        eq54(updateHypotheses.status, "proven"),
         sql20`${updateHypotheses.provenAt} BETWEEN ${start} AND ${end}`
       )
     );
@@ -41737,8 +41786,8 @@ async function buildMonthlyTrend(orgId) {
 async function getProtocolVersionTimeline(playbookId, orgId) {
   const deltas = await db.select().from(protocolVersionDeltas).where(
     and33(
-      eq53(protocolVersionDeltas.playbookId, playbookId),
-      eq53(protocolVersionDeltas.organizationId, orgId)
+      eq54(protocolVersionDeltas.playbookId, playbookId),
+      eq54(protocolVersionDeltas.organizationId, orgId)
     )
   ).orderBy(desc26(protocolVersionDeltas.appliedAt));
   return deltas;
@@ -41746,16 +41795,16 @@ async function getProtocolVersionTimeline(playbookId, orgId) {
 async function generateDraftFromP0Activation(outcomeId, orgId) {
   try {
     const { activationOutcomes: activationOutcomes3, playbookActivations: playbookActivations3, p0GeneratedProtocols: p0GeneratedProtocols2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq64 } = await import("drizzle-orm");
+    const { eq: eq65 } = await import("drizzle-orm");
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const [outcome] = await db2.select().from(activationOutcomes3).where(eq64(activationOutcomes3.id, outcomeId));
+    const [outcome] = await db2.select().from(activationOutcomes3).where(eq65(activationOutcomes3.id, outcomeId));
     if (!outcome) return;
-    const [activation] = await db2.select().from(playbookActivations3).where(eq64(playbookActivations3.id, outcome.activationId));
+    const [activation] = await db2.select().from(playbookActivations3).where(eq65(playbookActivations3.id, outcome.activationId));
     if (!activation) return;
     const playbookName = activation.playbookName ?? "";
     const isP0 = playbookName.toLowerCase().includes("universal response") || playbookName.toLowerCase().includes("unknown trigger") || playbookName.startsWith("P0-") || activation.playbookId?.toString().startsWith("1000");
     if (!isP0) return;
-    const existing = await db2.select().from(p0GeneratedProtocols2).where(eq64(p0GeneratedProtocols2.activationId, outcome.activationId));
+    const existing = await db2.select().from(p0GeneratedProtocols2).where(eq65(p0GeneratedProtocols2.activationId, outcome.activationId));
     if (existing.length > 0) return;
     const context = activation.activationReason ?? activation.context ?? "";
     const domain = activation.domain ?? "";
@@ -41777,8 +41826,8 @@ async function generateDraftFromP0Activation(outcomeId, orgId) {
 async function getPendingUpdateQueue(orgId) {
   const pending = await db.select().from(preparationUpdates).where(
     and33(
-      eq53(preparationUpdates.organizationId, orgId),
-      eq53(preparationUpdates.status, "pending")
+      eq54(preparationUpdates.organizationId, orgId),
+      eq54(preparationUpdates.status, "pending")
     )
   ).orderBy(desc26(preparationUpdates.createdAt)).limit(50);
   const autoApply = pending.filter((u) => classifyUpdateRisk(u) === "low");
@@ -41800,7 +41849,7 @@ __export(CrossDomainCompoundEngine_exports, {
   runCompoundDetection: () => runCompoundDetection,
   runCompoundDetectionAllOrgs: () => runCompoundDetectionAllOrgs
 });
-import { eq as eq54, and as and34, gte as gte13, lt as lt2 } from "drizzle-orm";
+import { eq as eq55, and as and34, gte as gte13, lt as lt2 } from "drizzle-orm";
 function stakeholderOverlapScore(domainA, domainB) {
   const setA = new Set(DOMAIN_STAKEHOLDERS[domainA] ?? []);
   const setB = new Set(DOMAIN_STAKEHOLDERS[domainB] ?? []);
@@ -41833,7 +41882,7 @@ async function runCompoundDetection(organizationId) {
   try {
     const cutoff = new Date(Date.now() - LOOKBACK_HOURS2 * 60 * 60 * 1e3);
     const subThresholdDetections = await db.select().from(triggerDetections).where(and34(
-      eq54(triggerDetections.organizationId, organizationId),
+      eq55(triggerDetections.organizationId, organizationId),
       gte13(triggerDetections.detectedAt, cutoff),
       gte13(triggerDetections.confidenceScore, SUB_THRESHOLD_MIN),
       lt2(triggerDetections.confidenceScore, SUB_THRESHOLD_MAX + 1)
@@ -41882,8 +41931,8 @@ async function runCompoundDetection(organizationId) {
     }
     if (bestCompoundScore < COMPOUND_FIRE_THRESHOLD) return;
     const existingAlert = await db.select().from(compoundThreatAlerts).where(and34(
-      eq54(compoundThreatAlerts.organizationId, organizationId),
-      eq54(compoundThreatAlerts.status, "active"),
+      eq55(compoundThreatAlerts.organizationId, organizationId),
+      eq55(compoundThreatAlerts.status, "active"),
       gte13(compoundThreatAlerts.detectedAt, cutoff)
     )).limit(1);
     if (existingAlert.length > 0) return;
@@ -41982,10 +42031,10 @@ var TriggerTaxonomyService_exports = {};
 __export(TriggerTaxonomyService_exports, {
   getTriggerTaxonomyRecommendations: () => getTriggerTaxonomyRecommendations
 });
-import { eq as eq55 } from "drizzle-orm";
+import { eq as eq56 } from "drizzle-orm";
 async function getTriggerTaxonomyRecommendations(organizationId, industry, orgSize) {
   try {
-    const configured = await db.select().from(executiveTriggers).where(eq55(executiveTriggers.organizationId, organizationId));
+    const configured = await db.select().from(executiveTriggers).where(eq56(executiveTriggers.organizationId, organizationId));
     const configuredNames = new Set(configured.map((t) => t.name || t.triggerName));
     const recommendations2 = [];
     let totalConfigured = 0;
@@ -42384,14 +42433,14 @@ __export(ActivationIntelligenceService_exports, {
   getTopActivatedProtocols: () => getTopActivatedProtocols,
   getTwelveMinuteScorecard: () => getTwelveMinuteScorecard
 });
-import { eq as eq56, desc as desc27, and as and35, sql as sql21 } from "drizzle-orm";
+import { eq as eq57, desc as desc27, and as and35, sql as sql21 } from "drizzle-orm";
 async function generateExecutiveDecisionBrief(playbookId, organizationId, situationContext) {
-  const [protocol] = await db.select().from(playbookLibrary).where(eq56(playbookLibrary.id, playbookId)).limit(1);
+  const [protocol] = await db.select().from(playbookLibrary).where(eq57(playbookLibrary.id, playbookId)).limit(1);
   if (!protocol) throw new Error(`Protocol ${playbookId} not found`);
   const priorActivations = await db.select().from(playbookActivations).where(
     and35(
-      eq56(playbookActivations.playbookId, playbookId),
-      eq56(playbookActivations.organizationId, organizationId)
+      eq57(playbookActivations.playbookId, playbookId),
+      eq57(playbookActivations.organizationId, organizationId)
     )
   ).orderBy(desc27(playbookActivations.activatedAt)).limit(20);
   const priorCount = priorActivations.length;
@@ -42437,7 +42486,7 @@ async function generateExecutiveDecisionBrief(playbookId, organizationId, situat
   };
 }
 async function composeWarRoom(playbookId, organizationId) {
-  const [protocol] = await db.select().from(playbookLibrary).where(eq56(playbookLibrary.id, playbookId)).limit(1);
+  const [protocol] = await db.select().from(playbookLibrary).where(eq57(playbookLibrary.id, playbookId)).limit(1);
   if (!protocol) throw new Error(`Protocol ${playbookId} not found`);
   const recentStakeholders = await db.select().from(activationStakeholders).limit(500);
   const rolePerf = {};
@@ -42452,7 +42501,7 @@ async function composeWarRoom(playbookId, organizationId) {
       }
     }
   }
-  const contacts = await db.select().from(stakeholderContacts).where(eq56(stakeholderContacts.organizationId, organizationId));
+  const contacts = await db.select().from(stakeholderContacts).where(eq57(stakeholderContacts.organizationId, organizationId));
   const contactMap = {};
   for (const c of contacts) contactMap[c.role] = c;
   function buildParticipant(role, tier, raciType, rank, isRequired) {
@@ -42505,14 +42554,14 @@ async function composeWarRoom(playbookId, organizationId) {
   };
 }
 async function getTwelveMinuteScorecard(activationId) {
-  const [activation] = await db.select().from(playbookActivations).where(eq56(playbookActivations.id, activationId)).limit(1);
+  const [activation] = await db.select().from(playbookActivations).where(eq57(playbookActivations.id, activationId)).limit(1);
   if (!activation) throw new Error(`Activation ${activationId} not found`);
   const startedAt = new Date(activation.activatedAt);
   const now = /* @__PURE__ */ new Date();
   const elapsedSeconds = Math.round((now.getTime() - startedAt.getTime()) / 1e3);
   const elapsedMinutes = elapsedSeconds / 60;
-  const stakeholders = await db.select().from(activationStakeholders).where(eq56(activationStakeholders.activationId, activationId));
-  const tasks4 = await db.select().from(activationTasks).where(eq56(activationTasks.activationId, activationId));
+  const stakeholders = await db.select().from(activationStakeholders).where(eq57(activationStakeholders.activationId, activationId));
+  const tasks4 = await db.select().from(activationTasks).where(eq57(activationTasks.activationId, activationId));
   const tier1 = stakeholders.filter((s) => s.tier === 1);
   const acknowledged = tier1.filter((s) => s.acknowledgedAt !== null);
   const stakeholderResponseRate = tier1.length > 0 ? Math.round(acknowledged.length / tier1.length * 100) : 0;
@@ -42560,7 +42609,7 @@ async function getTwelveMinuteScorecard(activationId) {
   };
 }
 async function getTopActivatedProtocols(organizationId, limit = 10) {
-  const activations = await db.select().from(playbookActivations).where(eq56(playbookActivations.organizationId, organizationId)).orderBy(desc27(playbookActivations.activatedAt)).limit(500);
+  const activations = await db.select().from(playbookActivations).where(eq57(playbookActivations.organizationId, organizationId)).orderBy(desc27(playbookActivations.activatedAt)).limit(500);
   const grouped = {};
   for (const a of activations) {
     if (!grouped[a.playbookId]) grouped[a.playbookId] = [];
@@ -42610,7 +42659,7 @@ __export(ProtocolHealthService_exports, {
   scoreAllProtocols: () => scoreAllProtocols,
   scoreProtocol: () => scoreProtocol
 });
-import { eq as eq57, desc as desc28, and as and36, gte as gte15, inArray as inArray6 } from "drizzle-orm";
+import { eq as eq58, desc as desc28, and as and36, gte as gte15, inArray as inArray6 } from "drizzle-orm";
 function scoreFreshness(daysSinceDrill, daysSinceActivation) {
   const best = Math.min(
     daysSinceDrill ?? 999,
@@ -42695,8 +42744,8 @@ async function scoreProtocol(protocol, organizationId, recentDetectionsByPattern
   const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1e3);
   const drills = await db.select().from(practiceDrills).where(
     and36(
-      eq57(practiceDrills.playbookId, protocol.id),
-      eq57(practiceDrills.organizationId, organizationId)
+      eq58(practiceDrills.playbookId, protocol.id),
+      eq58(practiceDrills.organizationId, organizationId)
     )
   ).orderBy(desc28(practiceDrills.completedAt));
   const completedDrills = drills.filter((d) => d.status === "completed" && d.completedAt);
@@ -42704,8 +42753,8 @@ async function scoreProtocol(protocol, organizationId, recentDetectionsByPattern
   const daysSinceLastDrill = lastDrill?.completedAt ? Math.round((now.getTime() - new Date(lastDrill.completedAt).getTime()) / 864e5) : null;
   const activations = await db.select().from(playbookActivations).where(
     and36(
-      eq57(playbookActivations.playbookId, protocol.id),
-      eq57(playbookActivations.organizationId, organizationId)
+      eq58(playbookActivations.playbookId, protocol.id),
+      eq58(playbookActivations.organizationId, organizationId)
     )
   ).orderBy(desc28(playbookActivations.activatedAt));
   const lastActivation = activations[0];
@@ -42819,7 +42868,7 @@ __export(StakeholderReadinessService_exports, {
   getOrgReadinessDashboard: () => getOrgReadinessDashboard,
   getProtocolRecommendations: () => getProtocolRecommendations
 });
-import { eq as eq58 } from "drizzle-orm";
+import { eq as eq59 } from "drizzle-orm";
 async function buildProfile(contact, role, allStakeholderRows, allDrillRows, orgMedianSeconds) {
   const now = /* @__PURE__ */ new Date();
   const roleRows = allStakeholderRows.filter((s) => s.roleName === role);
@@ -42885,9 +42934,9 @@ async function buildProfile(contact, role, allStakeholderRows, allDrillRows, org
   };
 }
 async function getOrgReadinessDashboard(organizationId) {
-  const contacts = await db.select().from(stakeholderContacts).where(eq58(stakeholderContacts.organizationId, organizationId));
+  const contacts = await db.select().from(stakeholderContacts).where(eq59(stakeholderContacts.organizationId, organizationId));
   const allStakeholderRows = await db.select().from(activationStakeholders).limit(2e3);
-  const allDrillRows = await db.select().from(practiceDrills).where(eq58(practiceDrills.organizationId, organizationId));
+  const allDrillRows = await db.select().from(practiceDrills).where(eq59(practiceDrills.organizationId, organizationId));
   const allResponseTimes = allStakeholderRows.filter((s) => s.responseTimeSeconds !== null).map((s) => s.responseTimeSeconds).sort((a, b) => a - b);
   const orgMedianSeconds = allResponseTimes.length > 0 ? allResponseTimes[Math.floor(allResponseTimes.length / 2)] : null;
   const allRoles = Array.from(/* @__PURE__ */ new Set([
@@ -42935,7 +42984,7 @@ async function getOrgReadinessDashboard(organizationId) {
   };
 }
 async function getProtocolRecommendations(playbookId, organizationId) {
-  const [protocol] = await db.select().from(playbookLibrary).where(eq58(playbookLibrary.id, playbookId)).limit(1);
+  const [protocol] = await db.select().from(playbookLibrary).where(eq59(playbookLibrary.id, playbookId)).limit(1);
   if (!protocol) throw new Error(`Protocol ${playbookId} not found`);
   const dashboard = await getOrgReadinessDashboard(organizationId);
   const tier1Roles = (protocol.tier1Stakeholders ?? []).map(
@@ -42986,7 +43035,7 @@ __export(DebriefFeedbackService_exports, {
   generateProtocolFeedbackReport: () => generateProtocolFeedbackReport,
   getTopProtocolsNeedingFeedback: () => getTopProtocolsNeedingFeedback
 });
-import { eq as eq59, desc as desc30, and as and38, sql as sql24 } from "drizzle-orm";
+import { eq as eq60, desc as desc30, and as and38, sql as sql24 } from "drizzle-orm";
 function extractThemes(texts, topN = 5) {
   if (texts.length === 0) return [];
   const stopWords = /* @__PURE__ */ new Set(["the", "and", "was", "were", "had", "have", "our", "we", "not", "but", "that", "this", "with", "for", "from", "did", "not", "did", "could", "would", "should", "than", "more", "also"]);
@@ -43108,12 +43157,12 @@ function generateProposals(taskInsights, topGaps, topFailed, encodedLessons, tar
   });
 }
 async function generateProtocolFeedbackReport(playbookId, organizationId) {
-  const [protocol] = await db.select().from(playbookLibrary).where(eq59(playbookLibrary.id, playbookId)).limit(1);
+  const [protocol] = await db.select().from(playbookLibrary).where(eq60(playbookLibrary.id, playbookId)).limit(1);
   if (!protocol) throw new Error(`Protocol ${playbookId} not found`);
   const activations = await db.select().from(playbookActivations).where(
     and38(
-      eq59(playbookActivations.playbookId, playbookId),
-      eq59(playbookActivations.organizationId, organizationId)
+      eq60(playbookActivations.playbookId, playbookId),
+      eq60(playbookActivations.organizationId, organizationId)
     )
   ).orderBy(desc30(playbookActivations.activatedAt));
   const activationIds = activations.map((a) => a.id);
@@ -43180,7 +43229,7 @@ async function generateProtocolFeedbackReport(playbookId, organizationId) {
   };
 }
 async function getTopProtocolsNeedingFeedback(organizationId, limit = 10) {
-  const activations = await db.select().from(playbookActivations).where(eq59(playbookActivations.organizationId, organizationId)).orderBy(desc30(playbookActivations.activatedAt)).limit(500);
+  const activations = await db.select().from(playbookActivations).where(eq60(playbookActivations.organizationId, organizationId)).orderBy(desc30(playbookActivations.activatedAt)).limit(500);
   const grouped = {};
   for (const a of activations) {
     if (!grouped[a.playbookId]) grouped[a.playbookId] = [];
@@ -43676,6 +43725,73 @@ Sitemap: ${BASE_URL}/sitemap.xml
 // server/routes.ts
 init_storage();
 init_EnterpriseJobService();
+
+// server/services/AdmissibilityService.ts
+init_db();
+init_schema();
+import { eq as eq3 } from "drizzle-orm";
+var PHASE_WINDOW_MINUTES = {
+  immediate: 60,
+  secondary: 240,
+  "follow-up": 1440
+};
+var AdmissibilityService = class {
+  static async evaluate(activationId, task) {
+    const [activation] = await db.select().from(playbookActivations).where(eq3(playbookActivations.id, activationId)).limit(1);
+    if (!activation) throw new Error("Activation not found");
+    const conditions = [];
+    const authActive = activation.status === "active";
+    conditions.push({
+      label: "Authorization still active",
+      holds: authActive,
+      detail: authActive ? "Executive sign-off has not been revoked or superseded." : `Activation status is "${activation.status}" \u2014 the original authorization is no longer active.`
+    });
+    let protocolUnchanged = true;
+    let protocolDetail = "No change detected to the underlying Readiness Protocol since sign-off.";
+    if (activation.authorizedAt) {
+      const [playbook] = await db.select({ updatedAt: playbookLibrary.updatedAt }).from(playbookLibrary).where(eq3(playbookLibrary.id, activation.playbookId)).limit(1);
+      if (playbook?.updatedAt && new Date(playbook.updatedAt) > new Date(activation.authorizedAt)) {
+        protocolUnchanged = false;
+        protocolDetail = `The Readiness Protocol was updated at ${new Date(playbook.updatedAt).toISOString()} \u2014 after the ${new Date(activation.authorizedAt).toISOString()} sign-off.`;
+      }
+    }
+    conditions.push({ label: "Protocol unchanged since authorization", holds: protocolUnchanged, detail: protocolDetail });
+    const phase = task.phase || "immediate";
+    const windowMinutes = PHASE_WINDOW_MINUTES[phase] ?? PHASE_WINDOW_MINUTES.immediate;
+    let withinWindow = true;
+    let windowDetail = `Task is firing within the ${windowMinutes}-minute window authorized for "${phase}" phase tasks.`;
+    if (activation.authorizedAt) {
+      const elapsedMinutes = (Date.now() - new Date(activation.authorizedAt).getTime()) / 6e4;
+      if (elapsedMinutes > windowMinutes) {
+        withinWindow = false;
+        windowDetail = `${Math.round(elapsedMinutes)} minutes have elapsed since authorization \u2014 beyond the ${windowMinutes}-minute window for "${phase}" phase tasks.`;
+      }
+    }
+    conditions.push({ label: "Within authorized execution window", holds: withinWindow, detail: windowDetail });
+    const verdict = conditions.every((c) => c.holds) ? "admissible" : "held";
+    const [check] = await db.insert(admissibilityChecks).values({
+      activationId,
+      taskDescription: task.taskDescription,
+      ownerRole: task.ownerRole || null,
+      phase: task.phase || null,
+      verdict,
+      conditions
+    }).returning();
+    return { check, conditions };
+  }
+  static async reauthorize(checkId, resolvedBy, resolutionNote) {
+    const [updated] = await db.update(admissibilityChecks).set({
+      verdict: "reauthorized",
+      resolvedBy,
+      resolvedAt: /* @__PURE__ */ new Date(),
+      resolutionNote: resolutionNote || null
+    }).where(eq3(admissibilityChecks.id, checkId)).returning();
+    if (!updated) throw new Error("Admissibility check not found");
+    return updated;
+  }
+};
+
+// server/routes.ts
 init_WebSocketService();
 
 // server/services/DemoOrchestrationService.ts
@@ -44153,7 +44269,7 @@ var nlqService = NaturalLanguageQueryService.getInstance();
 // server/preparedness-scoring.ts
 init_db();
 init_schema();
-import { eq as eq3, and as and3, desc as desc2, count, gte } from "drizzle-orm";
+import { eq as eq4, and as and3, desc as desc2, count, gte } from "drizzle-orm";
 var PreparednessScoring = class {
   /**
    * Calculate comprehensive preparedness score for a user
@@ -44162,14 +44278,14 @@ var PreparednessScoring = class {
     const components = await this.getScoreComponents(userId, organizationId);
     const totalScore = components.scenariosPracticed + components.drillsCompleted + components.triggersCovered + components.playbookReadiness + components.recentActivity;
     const previousScoreData = await db.select().from(preparednessScores).where(and3(
-      eq3(preparednessScores.userId, userId),
-      eq3(preparednessScores.organizationId, organizationId)
+      eq4(preparednessScores.userId, userId),
+      eq4(preparednessScores.organizationId, organizationId)
     )).orderBy(desc2(preparednessScores.calculatedAt)).limit(1);
     const previousScore = previousScoreData[0]?.score || 0;
     const scoreDelta = totalScore - previousScore;
-    const user = await db.select().from(users).where(eq3(users.id, userId)).limit(1);
+    const user = await db.select().from(users).where(eq4(users.id, userId)).limit(1);
     const executiveRole = this.extractExecutiveRole(user[0]?.department || "Executive");
-    const org = await db.select().from(organizations).where(eq3(organizations.id, organizationId)).limit(1);
+    const org = await db.select().from(organizations).where(eq4(organizations.id, organizationId)).limit(1);
     const industry = org[0]?.industry || "general";
     const { industryBenchmark, peerPercentile } = await this.getPeerBenchmark(
       totalScore,
@@ -44230,8 +44346,8 @@ var PreparednessScoring = class {
    */
   async countScenariosCompleted(userId, organizationId) {
     const result = await db.select({ count: count() }).from(whatIfScenarios).where(and3(
-      eq3(whatIfScenarios.createdBy, userId),
-      eq3(whatIfScenarios.organizationId, organizationId)
+      eq4(whatIfScenarios.createdBy, userId),
+      eq4(whatIfScenarios.organizationId, organizationId)
     ));
     return result[0]?.count || 0;
   }
@@ -44240,9 +44356,9 @@ var PreparednessScoring = class {
    */
   async countDrillsCompleted(userId, organizationId) {
     const result = await db.select({ count: count() }).from(preparednessActivities).where(and3(
-      eq3(preparednessActivities.userId, userId),
-      eq3(preparednessActivities.organizationId, organizationId),
-      eq3(preparednessActivities.activityType, "drill_completed")
+      eq4(preparednessActivities.userId, userId),
+      eq4(preparednessActivities.organizationId, organizationId),
+      eq4(preparednessActivities.activityType, "drill_completed")
     ));
     return result[0]?.count || 0;
   }
@@ -44251,9 +44367,9 @@ var PreparednessScoring = class {
    */
   async countTriggersConfigured(userId, organizationId) {
     const result = await db.select({ count: count() }).from(executiveTriggers).where(and3(
-      eq3(executiveTriggers.createdBy, userId),
-      eq3(executiveTriggers.organizationId, organizationId),
-      eq3(executiveTriggers.isActive, true)
+      eq4(executiveTriggers.createdBy, userId),
+      eq4(executiveTriggers.organizationId, organizationId),
+      eq4(executiveTriggers.isActive, true)
     ));
     return result[0]?.count || 0;
   }
@@ -44262,9 +44378,9 @@ var PreparednessScoring = class {
    */
   async countReadyPlaybooks(organizationId) {
     const result = await db.select({ count: count() }).from(strategicScenarios).where(and3(
-      eq3(strategicScenarios.organizationId, organizationId),
-      eq3(strategicScenarios.readinessState, "green"),
-      eq3(strategicScenarios.approvalStatus, "approved")
+      eq4(strategicScenarios.organizationId, organizationId),
+      eq4(strategicScenarios.readinessState, "green"),
+      eq4(strategicScenarios.approvalStatus, "approved")
     ));
     return result[0]?.count || 0;
   }
@@ -44275,7 +44391,7 @@ var PreparednessScoring = class {
     const thirtyDaysAgo = /* @__PURE__ */ new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
     const recentActivities = await db.select({ count: count() }).from(preparednessActivities).where(and3(
-      eq3(preparednessActivities.userId, userId),
+      eq4(preparednessActivities.userId, userId),
       gte(preparednessActivities.completedAt, thirtyDaysAgo)
     ));
     const recentCount = recentActivities[0]?.count || 0;
@@ -44285,7 +44401,7 @@ var PreparednessScoring = class {
    * Get last activity date for user
    */
   async getLastActivityDate(userId) {
-    const activity = await db.select().from(preparednessActivities).where(eq3(preparednessActivities.userId, userId)).orderBy(desc2(preparednessActivities.completedAt)).limit(1);
+    const activity = await db.select().from(preparednessActivities).where(eq4(preparednessActivities.userId, userId)).orderBy(desc2(preparednessActivities.completedAt)).limit(1);
     return activity[0]?.completedAt || null;
   }
   /**
@@ -44293,12 +44409,12 @@ var PreparednessScoring = class {
    */
   async identifyCoverageGaps(userId, organizationId) {
     const highImpactScenarios = await db.select().from(strategicScenarios).where(and3(
-      eq3(strategicScenarios.organizationId, organizationId),
-      eq3(strategicScenarios.impact, "high")
+      eq4(strategicScenarios.organizationId, organizationId),
+      eq4(strategicScenarios.impact, "high")
     ));
     const practicedScenarios = await db.select().from(whatIfScenarios).where(and3(
-      eq3(whatIfScenarios.createdBy, userId),
-      eq3(whatIfScenarios.organizationId, organizationId)
+      eq4(whatIfScenarios.createdBy, userId),
+      eq4(whatIfScenarios.organizationId, organizationId)
     ));
     const gaps = [];
     const categories = ["security", "financial", "operational", "regulatory"];
@@ -44324,8 +44440,8 @@ var PreparednessScoring = class {
    */
   async getPeerBenchmark(userScore, industry, executiveRole) {
     const benchmark = await db.select().from(peerBenchmarks).where(and3(
-      eq3(peerBenchmarks.industry, industry),
-      eq3(peerBenchmarks.executiveRole, executiveRole)
+      eq4(peerBenchmarks.industry, industry),
+      eq4(peerBenchmarks.executiveRole, executiveRole)
     )).orderBy(desc2(peerBenchmarks.calculatedAt)).limit(1);
     if (!benchmark[0]) {
       return { industryBenchmark: 68, peerPercentile: 50 };
@@ -44398,8 +44514,8 @@ var PreparednessScoring = class {
    */
   async getCurrentScore(userId, organizationId) {
     const scoreData = await db.select().from(preparednessScores).where(and3(
-      eq3(preparednessScores.userId, userId),
-      eq3(preparednessScores.organizationId, organizationId)
+      eq4(preparednessScores.userId, userId),
+      eq4(preparednessScores.organizationId, organizationId)
     )).orderBy(desc2(preparednessScores.calculatedAt)).limit(1);
     if (!scoreData[0]) {
       await this.calculatePreparednessScore(userId, organizationId);
@@ -44414,8 +44530,8 @@ var PreparednessScoring = class {
     const startDate = /* @__PURE__ */ new Date();
     startDate.setDate(startDate.getDate() - days);
     return await db.select().from(preparednessScores).where(and3(
-      eq3(preparednessScores.userId, userId),
-      eq3(preparednessScores.organizationId, organizationId),
+      eq4(preparednessScores.userId, userId),
+      eq4(preparednessScores.organizationId, organizationId),
       gte(preparednessScores.calculatedAt, startDate)
     )).orderBy(desc2(preparednessScores.calculatedAt));
   }
@@ -44463,7 +44579,7 @@ import { Router } from "express";
 init_db();
 init_schema();
 init_intelligence_signals();
-import { eq as eq4, desc as desc3, and as and4, sql as sql6, count as count2 } from "drizzle-orm";
+import { eq as eq5, desc as desc3, and as and4, sql as sql6, count as count2 } from "drizzle-orm";
 var IntelligenceSignalService = class {
   /**
    * Get the signal catalog (all 16 categories with metadata)
@@ -44485,34 +44601,34 @@ var IntelligenceSignalService = class {
     try {
       const [alertsResult] = await db.select({ count: count2() }).from(strategicAlerts).where(
         and4(
-          eq4(strategicAlerts.status, "active"),
-          organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`
+          eq5(strategicAlerts.status, "active"),
+          organizationId ? eq5(strategicAlerts.organizationId, organizationId) : sql6`1=1`
         )
       );
       const [criticalAlertsResult] = await db.select({ count: count2() }).from(strategicAlerts).where(
         and4(
-          eq4(strategicAlerts.status, "active"),
-          eq4(strategicAlerts.severity, "critical"),
-          organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`
+          eq5(strategicAlerts.status, "active"),
+          eq5(strategicAlerts.severity, "critical"),
+          organizationId ? eq5(strategicAlerts.organizationId, organizationId) : sql6`1=1`
         )
       );
       const [triggersResult] = await db.select({ count: count2() }).from(executiveTriggers).where(
         and4(
-          eq4(executiveTriggers.isActive, true),
-          organizationId ? eq4(executiveTriggers.organizationId, organizationId) : sql6`1=1`
+          eq5(executiveTriggers.isActive, true),
+          organizationId ? eq5(executiveTriggers.organizationId, organizationId) : sql6`1=1`
         )
       );
       const [dataSourcesResult] = await db.select({ count: count2() }).from(dataSources).where(
         and4(
-          eq4(dataSources.isActive, true),
-          organizationId ? eq4(dataSources.organizationId, organizationId) : sql6`1=1`
+          eq5(dataSources.isActive, true),
+          organizationId ? eq5(dataSources.organizationId, organizationId) : sql6`1=1`
         )
       );
-      const recentAlerts = await db.select().from(strategicAlerts).where(organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(10);
+      const recentAlerts = await db.select().from(strategicAlerts).where(organizationId ? eq5(strategicAlerts.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(10);
       const activeWeakSignals = await db.select().from(weakSignals).where(
         and4(
-          eq4(weakSignals.status, "active"),
-          organizationId ? eq4(weakSignals.organizationId, organizationId) : sql6`1=1`
+          eq5(weakSignals.status, "active"),
+          organizationId ? eq5(weakSignals.organizationId, organizationId) : sql6`1=1`
         )
       ).orderBy(desc3(weakSignals.detectedAt)).limit(20);
       const categoryStatuses = SIGNAL_CATEGORIES.map((cat) => ({
@@ -44587,7 +44703,7 @@ var IntelligenceSignalService = class {
    */
   async getTriggers(organizationId) {
     try {
-      const triggers = await db.select().from(executiveTriggers).where(organizationId ? eq4(executiveTriggers.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(executiveTriggers.createdAt));
+      const triggers = await db.select().from(executiveTriggers).where(organizationId ? eq5(executiveTriggers.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(executiveTriggers.createdAt));
       return triggers;
     } catch (error) {
       console.error("Error fetching triggers:", error);
@@ -44599,7 +44715,7 @@ var IntelligenceSignalService = class {
    */
   async getTrigger(triggerId) {
     try {
-      const [trigger] = await db.select().from(executiveTriggers).where(eq4(executiveTriggers.id, triggerId));
+      const [trigger] = await db.select().from(executiveTriggers).where(eq5(executiveTriggers.id, triggerId));
       return trigger || null;
     } catch (error) {
       console.error("Error fetching trigger:", error);
@@ -44642,14 +44758,14 @@ var IntelligenceSignalService = class {
     if (input.urgency !== void 0) updateData.alertThreshold = input.urgency;
     if (input.isActive !== void 0) updateData.isActive = input.isActive;
     updateData.updatedAt = /* @__PURE__ */ new Date();
-    const [trigger] = await db.update(executiveTriggers).set(updateData).where(eq4(executiveTriggers.id, triggerId)).returning();
+    const [trigger] = await db.update(executiveTriggers).set(updateData).where(eq5(executiveTriggers.id, triggerId)).returning();
     return trigger || null;
   }
   /**
    * Delete a trigger
    */
   async deleteTrigger(triggerId) {
-    await db.delete(executiveTriggers).where(eq4(executiveTriggers.id, triggerId));
+    await db.delete(executiveTriggers).where(eq5(executiveTriggers.id, triggerId));
     return true;
   }
   /**
@@ -44658,8 +44774,8 @@ var IntelligenceSignalService = class {
   async getAlerts(organizationId, limit = 50) {
     try {
       const [alerts, signals] = await Promise.all([
-        db.select().from(strategicAlerts).where(organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(limit),
-        db.select().from(weakSignals).where(organizationId ? eq4(weakSignals.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(weakSignals.detectedAt)).limit(limit)
+        db.select().from(strategicAlerts).where(organizationId ? eq5(strategicAlerts.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(limit),
+        db.select().from(weakSignals).where(organizationId ? eq5(weakSignals.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(weakSignals.detectedAt)).limit(limit)
       ]);
       return {
         strategicAlerts: alerts,
@@ -44679,7 +44795,7 @@ var IntelligenceSignalService = class {
         status: "acknowledged",
         acknowledgedAt: /* @__PURE__ */ new Date(),
         acknowledgedBy: userId
-      }).where(eq4(strategicAlerts.id, alertId)).returning();
+      }).where(eq5(strategicAlerts.id, alertId)).returning();
       return alert || null;
     } catch (error) {
       console.error("Error acknowledging alert:", error);
@@ -44694,7 +44810,7 @@ var IntelligenceSignalService = class {
       const [alert] = await db.update(strategicAlerts).set({
         status: "dismissed",
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq4(strategicAlerts.id, alertId)).returning();
+      }).where(eq5(strategicAlerts.id, alertId)).returning();
       return alert || null;
     } catch (error) {
       console.error("Error dismissing alert:", error);
@@ -44706,7 +44822,7 @@ var IntelligenceSignalService = class {
    */
   async getDataSources(organizationId) {
     try {
-      const sources = await db.select().from(dataSources).where(organizationId ? eq4(dataSources.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(dataSources.createdAt));
+      const sources = await db.select().from(dataSources).where(organizationId ? eq5(dataSources.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(dataSources.createdAt));
       return sources;
     } catch (error) {
       console.error("Error fetching data sources:", error);
@@ -45464,7 +45580,7 @@ import { Router as Router3 } from "express";
 // server/services/LiveIntegrationDispatcher.ts
 init_db();
 init_schema();
-import { eq as eq6, and as and6 } from "drizzle-orm";
+import { eq as eq7, and as and6 } from "drizzle-orm";
 
 // server/services/integrations/adapters/JiraAdapter.ts
 var JiraAdapter = class {
@@ -45917,8 +46033,8 @@ var LiveIntegrationDispatcher = class {
   async getActiveIntegrations(organizationId) {
     const integrations = await db.select().from(enterpriseIntegrations).where(
       and6(
-        eq6(enterpriseIntegrations.organizationId, organizationId),
-        eq6(enterpriseIntegrations.status, "active")
+        eq7(enterpriseIntegrations.organizationId, organizationId),
+        eq7(enterpriseIntegrations.status, "active")
       )
     );
     return integrations.filter((i) => {
@@ -46748,7 +46864,7 @@ init_db();
 init_schema();
 import { Router as Router4 } from "express";
 import { z as z4 } from "zod";
-import { eq as eq7 } from "drizzle-orm";
+import { eq as eq8 } from "drizzle-orm";
 import sgMail2 from "@sendgrid/mail";
 var router4 = Router4();
 function detectDomain(description) {
@@ -47281,7 +47397,7 @@ What went wrong: ${whatWentWrong.join("; ")}`;
     } catch {
       playbook = getPlaybookFallback(incidentType, description);
     }
-    await db.update(incidentAnalyses).set({ generatedPlaybook: playbook }).where(eq7(incidentAnalyses.id, incidentId));
+    await db.update(incidentAnalyses).set({ generatedPlaybook: playbook }).where(eq8(incidentAnalyses.id, incidentId));
     res.json({ playbook });
   } catch (error) {
     console.error("[Playbook Generation] Error:", error.message);
@@ -47413,7 +47529,7 @@ router4.post("/simulate", async (req, res) => {
     }, 1e3);
     const simData = activeSimulations.get(simulationId);
     if (simData) simData.intervalId = interval;
-    await db.update(incidentAnalyses).set({ simulationResults: { simulationId, startedAt: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq7(incidentAnalyses.id, incidentId));
+    await db.update(incidentAnalyses).set({ simulationResults: { simulationId, startedAt: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq8(incidentAnalyses.id, incidentId));
     res.json({ simulationId, status: "running" });
   } catch (error) {
     console.error("[Simulation] Error:", error.message);
@@ -47690,7 +47806,7 @@ Proposed modification: "${scenario}"`;
 });
 router4.get("/:id", async (req, res) => {
   try {
-    const [incident] = await db.select().from(incidentAnalyses).where(eq7(incidentAnalyses.id, req.params.id));
+    const [incident] = await db.select().from(incidentAnalyses).where(eq8(incidentAnalyses.id, req.params.id));
     if (!incident) {
       return res.status(404).json({ error: "Incident not found" });
     }
@@ -48219,7 +48335,7 @@ async function notifyTeamsPlaybookActivation(params) {
 init_SlackNotificationService();
 init_db();
 init_schema();
-import { eq as eq8 } from "drizzle-orm";
+import { eq as eq9 } from "drizzle-orm";
 import { Resend as Resend3 } from "resend";
 function registerActivationRoutes(app2) {
   app2.get("/api/activation/integrations-status", async (req, res) => {
@@ -48302,7 +48418,7 @@ function registerActivationRoutes(app2) {
       (async () => {
         try {
           const orgId = req.orgId || "system";
-          const contacts = await db.select().from(stakeholderContacts).where(eq8(stakeholderContacts.organizationId, orgId));
+          const contacts = await db.select().from(stakeholderContacts).where(eq9(stakeholderContacts.organizationId, orgId));
           const active = contacts.filter((c) => c.isActive);
           if (active.length === 0) return;
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
@@ -48504,7 +48620,7 @@ import passport from "passport";
 import session from "express-session";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
-import { eq as eq9 } from "drizzle-orm";
+import { eq as eq10 } from "drizzle-orm";
 var getOidcConfig = memoize(
   async () => {
     return await client.discovery(
@@ -48559,13 +48675,13 @@ async function upsertUser(claims) {
   const email = (claims["email"] ?? "").toLowerCase().trim();
   let assignedOrgId = null;
   try {
-    const rows = await db.select({ organizationId: allowedEmails.organizationId }).from(allowedEmails).where(eq9(allowedEmails.email, email)).limit(1);
+    const rows = await db.select({ organizationId: allowedEmails.organizationId }).from(allowedEmails).where(eq10(allowedEmails.email, email)).limit(1);
     assignedOrgId = rows[0]?.organizationId ?? null;
   } catch {
   }
   if (assignedOrgId) {
     await storage.addOrgMembership(user.id, assignedOrgId, "member");
-    await db.update(users).set({ organizationId: assignedOrgId, updatedAt: /* @__PURE__ */ new Date() }).where(eq9(users.id, user.id));
+    await db.update(users).set({ organizationId: assignedOrgId, updatedAt: /* @__PURE__ */ new Date() }).where(eq10(users.id, user.id));
   }
   const userOrgs = await storage.getUserOrganizations(user.id);
   if (userOrgs.length === 0) {
@@ -48577,11 +48693,11 @@ async function upsertUser(claims) {
       onboardingCompleted: false
     });
   }
-  const [currentUser] = await db.select({ organizationId: users.organizationId }).from(users).where(eq9(users.id, user.id)).limit(1);
+  const [currentUser] = await db.select({ organizationId: users.organizationId }).from(users).where(eq10(users.id, user.id)).limit(1);
   if (!currentUser?.organizationId) {
     const allOrgs = await storage.getUserOrganizations(user.id);
     if (allOrgs.length > 0) {
-      await db.update(users).set({ organizationId: allOrgs[0].id }).where(eq9(users.id, user.id));
+      await db.update(users).set({ organizationId: allOrgs[0].id }).where(eq10(users.id, user.id));
     }
   }
   return user;
@@ -48592,7 +48708,7 @@ async function isEmailAllowed(email) {
   try {
     const [countRow] = await db.select({ count: allowedEmails.id }).from(allowedEmails).limit(1);
     if (!countRow) return true;
-    const rows = await db.select().from(allowedEmails).where(eq9(allowedEmails.email, email.toLowerCase().trim())).limit(1);
+    const rows = await db.select().from(allowedEmails).where(eq10(allowedEmails.email, email.toLowerCase().trim())).limit(1);
     return rows.length > 0;
   } catch {
     return true;
@@ -48652,13 +48768,13 @@ async function setupAuth(app2) {
       if (req.user && req.user.claims?.email) {
         if (!req.user.dbUserId) {
           const email = req.user.claims.email.toLowerCase().trim();
-          const [existing] = await db.select({ id: users.id, organizationId: users.organizationId }).from(users).where(eq9(users.email, email)).limit(1);
+          const [existing] = await db.select({ id: users.id, organizationId: users.organizationId }).from(users).where(eq10(users.email, email)).limit(1);
           if (existing) {
             req.user.dbUserId = existing.id;
             req.user.organizationId = existing.organizationId;
           }
         } else if (!req.user.organizationId) {
-          const [existing] = await db.select({ organizationId: users.organizationId }).from(users).where(eq9(users.id, req.user.dbUserId)).limit(1);
+          const [existing] = await db.select({ organizationId: users.organizationId }).from(users).where(eq10(users.id, req.user.dbUserId)).limit(1);
           if (existing?.organizationId) {
             req.user.organizationId = existing.organizationId;
           }
@@ -49249,7 +49365,7 @@ function registerDemoAccessRoute(app2) {
 // server/routes/peerReviewRoute.ts
 init_db();
 init_schema();
-import { desc as desc4, eq as eq10 } from "drizzle-orm";
+import { desc as desc4, eq as eq11 } from "drizzle-orm";
 function registerPeerReviewRoute(app2) {
   app2.post("/api/peer-reviews", async (req, res) => {
     try {
@@ -49441,7 +49557,7 @@ function registerPeerReviewRoute(app2) {
       if (req.body.status) updates.status = req.body.status;
       if (req.body.action) updates.action = req.body.action;
       if (req.body.status === "completed") updates.completedAt = /* @__PURE__ */ new Date();
-      const [row] = await db.update(peerReviewActions).set(updates).where(eq10(peerReviewActions.id, req.params.id)).returning();
+      const [row] = await db.update(peerReviewActions).set(updates).where(eq11(peerReviewActions.id, req.params.id)).returning();
       res.json(row);
     } catch (err) {
       console.error("[PeerReviewActions] Update error:", err);
@@ -49453,7 +49569,7 @@ function registerPeerReviewRoute(app2) {
       if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
         return res.status(403).json({ error: "Admin access required." });
       }
-      await db.delete(peerReviewActions).where(eq10(peerReviewActions.id, req.params.id));
+      await db.delete(peerReviewActions).where(eq11(peerReviewActions.id, req.params.id));
       res.json({ success: true });
     } catch (err) {
       console.error("[PeerReviewActions] Delete error:", err);
@@ -51543,7 +51659,7 @@ function registerOrgSetupRoutes(app2) {
 // server/routes/admin-routes.ts
 init_db();
 init_schema();
-import { eq as eq11, desc as desc5, inArray as inArray2 } from "drizzle-orm";
+import { eq as eq12, desc as desc5, inArray as inArray2 } from "drizzle-orm";
 import { z as z5 } from "zod";
 function registerAdminRoutes(app2) {
   app2.get("/api/admin/users", requirePlatformAdmin, async (_req, res) => {
@@ -51572,12 +51688,12 @@ function registerAdminRoutes(app2) {
   app2.delete("/api/admin/users/:id", requirePlatformAdmin, async (req, res) => {
     try {
       const { id } = req.params;
-      const [userRow] = await db.select().from(users).where(eq11(users.id, id)).limit(1);
+      const [userRow] = await db.select().from(users).where(eq12(users.id, id)).limit(1);
       if (!userRow) return res.status(404).json({ error: "User not found" });
       const orgId = userRow.organizationId;
-      await db.delete(users).where(eq11(users.id, id));
+      await db.delete(users).where(eq12(users.id, id));
       if (orgId) {
-        await db.delete(organizations).where(eq11(organizations.id, orgId));
+        await db.delete(organizations).where(eq12(organizations.id, orgId));
       }
       res.json({ success: true });
     } catch (err) {
@@ -51607,7 +51723,7 @@ function registerAdminRoutes(app2) {
   });
   app2.delete("/api/admin/allowlist/:id", requirePlatformAdmin, async (req, res) => {
     try {
-      await db.delete(allowedEmails).where(eq11(allowedEmails.id, req.params.id));
+      await db.delete(allowedEmails).where(eq12(allowedEmails.id, req.params.id));
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -51797,13 +51913,13 @@ function registerAdminRoutes(app2) {
 // server/routes/dynamic-strategy-routes.ts
 init_db();
 init_schema();
-import { eq as eq13, desc as desc7, and as and8 } from "drizzle-orm";
+import { eq as eq14, desc as desc7, and as and8 } from "drizzle-orm";
 async function registerDynamicStrategyRoutes(app2) {
   app2.get("/api/dynamic-strategy/readiness", requireAuth, async (req, res) => {
     try {
       const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json(null);
       }
@@ -51822,7 +51938,7 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json(null);
       }
@@ -51838,11 +51954,11 @@ async function registerDynamicStrategyRoutes(app2) {
       const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { and: and41 } = await import("drizzle-orm");
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
-      const signals = await db.select().from(weakSignals2).where(and41(eq13(weakSignals2.organizationId, user[0].organizationId), eq13(weakSignals2.status, "active"))).orderBy(desc7(weakSignals2.detectedAt)).limit(50);
+      const signals = await db.select().from(weakSignals2).where(and41(eq14(weakSignals2.organizationId, user[0].organizationId), eq14(weakSignals2.status, "active"))).orderBy(desc7(weakSignals2.detectedAt)).limit(50);
       res.json(signals);
     } catch (error) {
       console.error("Error fetching weak signals:", error);
@@ -51853,11 +51969,11 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const { oraclePatterns: oraclePatterns2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
-      const patterns = await db.select().from(oraclePatterns2).where(eq13(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc7(oraclePatterns2.detectedAt)).limit(50);
+      const patterns = await db.select().from(oraclePatterns2).where(eq14(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc7(oraclePatterns2.detectedAt)).limit(50);
       res.json(patterns);
     } catch (error) {
       console.error("Error fetching oracle patterns:", error);
@@ -51868,7 +51984,7 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json({ status: "inactive", message: "Organization setup required" });
       }
@@ -51883,12 +51999,12 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const { activityFeedEvents: activityFeedEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
       const limit = parseInt(req.query.limit) || 20;
-      const events = await db.select().from(activityFeedEvents2).where(eq13(activityFeedEvents2.organizationId, user[0].organizationId)).orderBy(desc7(activityFeedEvents2.createdAt)).limit(limit);
+      const events = await db.select().from(activityFeedEvents2).where(eq14(activityFeedEvents2.organizationId, user[0].organizationId)).orderBy(desc7(activityFeedEvents2.createdAt)).limit(limit);
       res.json(events);
     } catch (error) {
       console.error("Error fetching activity feed:", error);
@@ -51899,7 +52015,7 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const { playbookLearnings: playbookLearnings2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const scenarioId = req.params.id;
-      const learnings = await db.select().from(playbookLearnings2).where(eq13(playbookLearnings2.scenarioId, scenarioId)).orderBy(desc7(playbookLearnings2.extractedAt)).limit(50);
+      const learnings = await db.select().from(playbookLearnings2).where(eq14(playbookLearnings2.scenarioId, scenarioId)).orderBy(desc7(playbookLearnings2.extractedAt)).limit(50);
       res.json(learnings);
     } catch (error) {
       console.error("Error fetching playbook learnings:", error);
@@ -51909,7 +52025,7 @@ async function registerDynamicStrategyRoutes(app2) {
   app2.post("/api/dynamic-strategy/generate-demo-data", requireAuth, async (req, res) => {
     try {
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq14(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json({ success: false, message: "Organization not configured" });
       }
@@ -52048,7 +52164,7 @@ async function registerDynamicStrategyRoutes(app2) {
   app2.get("/api/dynamic-strategy/triggers", requireOrgAccess, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const triggers = await db.select().from(customTriggers).where(eq13(customTriggers.organizationId, orgId)).orderBy(desc7(customTriggers.createdAt));
+      const triggers = await db.select().from(customTriggers).where(eq14(customTriggers.organizationId, orgId)).orderBy(desc7(customTriggers.createdAt));
       res.json(triggers);
     } catch (error) {
       console.error("Error fetching dynamic-strategy triggers:", error);
@@ -52093,7 +52209,7 @@ async function registerDynamicStrategyRoutes(app2) {
         if (req.body[key] !== void 0) updates[key] = req.body[key];
       }
       updates.updatedAt = /* @__PURE__ */ new Date();
-      const [updated] = await db.update(customTriggers).set(updates).where(and8(eq13(customTriggers.id, id), eq13(customTriggers.organizationId, orgId))).returning();
+      const [updated] = await db.update(customTriggers).set(updates).where(and8(eq14(customTriggers.id, id), eq14(customTriggers.organizationId, orgId))).returning();
       if (!updated) return res.status(404).json({ error: "Trigger not found" });
       res.json(updated);
     } catch (error) {
@@ -52105,7 +52221,7 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const orgId = req.orgId;
       const { id } = req.params;
-      const [deleted] = await db.delete(customTriggers).where(and8(eq13(customTriggers.id, id), eq13(customTriggers.organizationId, orgId))).returning();
+      const [deleted] = await db.delete(customTriggers).where(and8(eq14(customTriggers.id, id), eq14(customTriggers.organizationId, orgId))).returning();
       if (!deleted) return res.status(404).json({ error: "Trigger not found" });
       res.json({ success: true });
     } catch (error) {
@@ -52118,12 +52234,12 @@ async function registerDynamicStrategyRoutes(app2) {
 // server/routes/onboarding-routes.ts
 init_db();
 init_schema();
-import { eq as eq14 } from "drizzle-orm";
+import { eq as eq15 } from "drizzle-orm";
 function registerOnboardingRoutes(app2) {
   app2.get("/api/onboarding-session", async (req, res) => {
     try {
       const userId = getUserId(req);
-      const userOrgs = await db.select().from(organizations).where(eq14(organizations.ownerId, userId)).limit(1);
+      const userOrgs = await db.select().from(organizations).where(eq15(organizations.ownerId, userId)).limit(1);
       if (userOrgs.length === 0) {
         return res.json({
           session: null,
@@ -52131,7 +52247,7 @@ function registerOnboardingRoutes(app2) {
         });
       }
       const org = userOrgs[0];
-      const onboarding = await db.select().from(organizationOnboarding).where(eq14(organizationOnboarding.organizationId, org.id)).limit(1);
+      const onboarding = await db.select().from(organizationOnboarding).where(eq15(organizationOnboarding.organizationId, org.id)).limit(1);
       if (onboarding.length === 0) {
         return res.json({
           session: null,
@@ -52163,7 +52279,7 @@ function registerOnboardingRoutes(app2) {
         enabledSignals,
         successMetrics
       } = req.body;
-      let org = await db.select().from(organizations).where(eq14(organizations.ownerId, userId)).limit(1);
+      let org = await db.select().from(organizations).where(eq15(organizations.ownerId, userId)).limit(1);
       if (org.length === 0 && companyName) {
         const [newOrg] = await db.insert(organizations).values({
           name: companyName,
@@ -52181,7 +52297,7 @@ function registerOnboardingRoutes(app2) {
         return res.status(400).json({ message: "Organization required" });
       }
       const orgId = org[0].id;
-      const existingOnboarding = await db.select().from(organizationOnboarding).where(eq14(organizationOnboarding.organizationId, orgId)).limit(1);
+      const existingOnboarding = await db.select().from(organizationOnboarding).where(eq15(organizationOnboarding.organizationId, orgId)).limit(1);
       const onboardingData = {
         currentStep: step || 1,
         completedSteps: step ? Array.from({ length: step }, (_, i) => i + 1) : [],
@@ -52201,7 +52317,7 @@ function registerOnboardingRoutes(app2) {
           ...onboardingData
         });
       } else {
-        await db.update(organizationOnboarding).set(onboardingData).where(eq14(organizationOnboarding.organizationId, orgId));
+        await db.update(organizationOnboarding).set(onboardingData).where(eq15(organizationOnboarding.organizationId, orgId));
       }
       if (companyName || industry || employeeCount || role) {
         await db.update(organizations).set({
@@ -52209,7 +52325,7 @@ function registerOnboardingRoutes(app2) {
           ...industry && { industry },
           ...employeeCount && { size: employeeCount },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq14(organizations.id, orgId));
+        }).where(eq15(organizations.id, orgId));
       }
       res.json({ success: true, organizationId: orgId });
     } catch (error) {
@@ -52226,19 +52342,19 @@ function registerOnboardingRoutes(app2) {
         enabledSignals,
         successMetrics
       } = req.body;
-      const orgs = await db.select().from(organizations).where(eq14(organizations.id, organizationId)).limit(1);
+      const orgs = await db.select().from(organizations).where(eq15(organizations.id, organizationId)).limit(1);
       if (orgs.length === 0) {
         return res.status(404).json({ message: "Organization not found" });
       }
       await db.update(organizations).set({
         onboardingCompleted: true,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq14(organizations.id, organizationId));
+      }).where(eq15(organizations.id, organizationId));
       await db.update(organizationOnboarding).set({
         stage4Learn: true,
         onboardingCompletedAt: /* @__PURE__ */ new Date(),
         lastActivityAt: /* @__PURE__ */ new Date()
-      }).where(eq14(organizationOnboarding.organizationId, organizationId));
+      }).where(eq15(organizationOnboarding.organizationId, organizationId));
       res.json({
         success: true,
         message: "Onboarding completed successfully",
@@ -52255,7 +52371,7 @@ function registerOnboardingRoutes(app2) {
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const orgId = await getOrgIdForUser(userId);
       if (!orgId) return res.status(404).json({ error: "No organization found" });
-      await db.update(organizations).set({ onboardingCompleted: true, updatedAt: /* @__PURE__ */ new Date() }).where(eq14(organizations.id, orgId));
+      await db.update(organizations).set({ onboardingCompleted: true, updatedAt: /* @__PURE__ */ new Date() }).where(eq15(organizations.id, orgId));
       res.json({ success: true });
     } catch (err) {
       console.error("Error completing onboarding:", err);
@@ -52299,7 +52415,7 @@ function registerOnboardingRoutes(app2) {
 // server/routes/execution-sync-routes.ts
 init_db();
 init_storage();
-import { eq as eq17, desc as desc8, sql as sql11 } from "drizzle-orm";
+import { eq as eq18, desc as desc8, sql as sql11 } from "drizzle-orm";
 async function registerExecutionSyncRoutes(app2) {
   console.log("\u{1F4E1} Registering Execution Plan Sync API endpoints...");
   app2.get("/api/sync/templates", requireOrgAccess, async (req, res) => {
@@ -52786,7 +52902,7 @@ async function registerExecutionSyncRoutes(app2) {
   app2.get("/api/pre-approved-resources", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.query.organizationId || req.userId;
-      const resources = await db.select().from(executionPreApprovedResources2).where(eq17(executionPreApprovedResources2.organizationId, organizationId)).orderBy(desc8(executionPreApprovedResources2.createdAt));
+      const resources = await db.select().from(executionPreApprovedResources2).where(eq18(executionPreApprovedResources2.organizationId, organizationId)).orderBy(desc8(executionPreApprovedResources2.createdAt));
       res.json(resources);
     } catch (error) {
       console.error("Failed to fetch pre-approved resources:", error);
@@ -52817,7 +52933,7 @@ async function registerExecutionSyncRoutes(app2) {
   app2.get("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [resource] = await db.select().from(executionPreApprovedResources2).where(eq17(executionPreApprovedResources2.id, id));
+      const [resource] = await db.select().from(executionPreApprovedResources2).where(eq18(executionPreApprovedResources2.id, id));
       if (!resource) {
         return res.status(404).json({ error: "Pre-approved resource not found" });
       }
@@ -52833,7 +52949,7 @@ async function registerExecutionSyncRoutes(app2) {
   app2.patch("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [resource] = await db.update(executionPreApprovedResources2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq17(executionPreApprovedResources2.id, id)).returning();
+      const [resource] = await db.update(executionPreApprovedResources2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq18(executionPreApprovedResources2.id, id)).returning();
       if (!resource) {
         return res.status(404).json({ error: "Pre-approved resource not found" });
       }
@@ -52849,7 +52965,7 @@ async function registerExecutionSyncRoutes(app2) {
   app2.delete("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [deleted] = await db.delete(executionPreApprovedResources2).where(eq17(executionPreApprovedResources2.id, id)).returning();
+      const [deleted] = await db.delete(executionPreApprovedResources2).where(eq18(executionPreApprovedResources2.id, id)).returning();
       if (!deleted) {
         return res.status(404).json({ error: "Pre-approved resource not found" });
       }
@@ -52869,7 +52985,7 @@ async function registerExecutionSyncRoutes(app2) {
         lastActivatedAt: /* @__PURE__ */ new Date(),
         activationCount: sql11`COALESCE(${executionPreApprovedResources2.activationCount}, 0) + 1`,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq17(executionPreApprovedResources2.id, id)).returning();
+      }).where(eq18(executionPreApprovedResources2.id, id)).returning();
       if (!resource) {
         return res.status(404).json({ error: "Pre-approved resource not found" });
       }
@@ -52980,13 +53096,13 @@ async function registerExecutionSyncRoutes(app2) {
 
 // server/routes/decision-coordination-routes.ts
 init_db();
-import { eq as eq18, desc as desc9, and as and12, sql as sql12, asc } from "drizzle-orm";
+import { eq as eq19, desc as desc9, and as and12, sql as sql12, asc } from "drizzle-orm";
 async function registerDecisionCoordinationRoutes(app2) {
   const { decisionTrees: decisionTrees2, activeDecisions: activeDecisions2, decisionLog: decisionLog2, insertDecisionTreeSchema: insertDecisionTreeSchema2, insertDecisionLogSchema: insertDecisionLogSchema2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
   app2.get("/api/decision-trees", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const trees = await db.select().from(decisionTrees2).where(eq18(decisionTrees2.organizationId, organizationId)).orderBy(desc9(decisionTrees2.createdAt));
+      const trees = await db.select().from(decisionTrees2).where(eq19(decisionTrees2.organizationId, organizationId)).orderBy(desc9(decisionTrees2.createdAt));
       res.json(trees);
     } catch (error) {
       console.error("Failed to fetch decision trees:", error);
@@ -52996,7 +53112,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/decision-trees/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [tree] = await db.select().from(decisionTrees2).where(eq18(decisionTrees2.id, id));
+      const [tree] = await db.select().from(decisionTrees2).where(eq19(decisionTrees2.id, id));
       if (!tree) {
         return res.status(404).json({ error: "Decision tree not found" });
       }
@@ -53031,7 +53147,7 @@ async function registerDecisionCoordinationRoutes(app2) {
       const [updated] = await db.update(decisionTrees2).set({
         ...data,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq18(decisionTrees2.id, id)).returning();
+      }).where(eq19(decisionTrees2.id, id)).returning();
       res.json(updated);
     } catch (error) {
       console.error("Failed to update decision tree:", error);
@@ -53041,7 +53157,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/decision-log", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const logs = await db.select().from(decisionLog2).where(eq18(decisionLog2.organizationId, organizationId)).orderBy(desc9(decisionLog2.timestamp)).limit(50);
+      const logs = await db.select().from(decisionLog2).where(eq19(decisionLog2.organizationId, organizationId)).orderBy(desc9(decisionLog2.timestamp)).limit(50);
       res.json(logs);
     } catch (error) {
       console.error("Failed to fetch decision log:", error);
@@ -53071,7 +53187,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/decision-velocity/metrics", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const logs = await db.select().from(decisionLog2).where(eq18(decisionLog2.organizationId, organizationId));
+      const logs = await db.select().from(decisionLog2).where(eq19(decisionLog2.organizationId, organizationId));
       const totalDecisions = logs.length;
       const avgDecisionTime = totalDecisions > 0 ? logs.reduce((sum, d) => sum + (d.decisionTimeMinutes || 0), 0) / totalDecisions : 0;
       const onTimeDecisions = logs.filter((d) => (d.decisionTimeMinutes || 0) <= 20).length;
@@ -53105,7 +53221,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/execution-runs", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const runs = await db.select().from(executionInstances2).where(eq18(executionInstances2.organizationId, organizationId)).orderBy(desc9(executionInstances2.createdAt)).limit(20);
+      const runs = await db.select().from(executionInstances2).where(eq19(executionInstances2.organizationId, organizationId)).orderBy(desc9(executionInstances2.createdAt)).limit(20);
       res.json(runs);
     } catch (error) {
       console.error("Failed to fetch execution runs:", error);
@@ -53115,12 +53231,12 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/execution-runs/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [run] = await db.select().from(executionInstances2).where(eq18(executionInstances2.id, id));
+      const [run] = await db.select().from(executionInstances2).where(eq19(executionInstances2.id, id));
       if (!run) {
         return res.status(404).json({ error: "Execution run not found" });
       }
-      const tasks4 = await db.select().from(executionInstanceTasks2).where(eq18(executionInstanceTasks2.executionInstanceId, id));
-      const checkpoints = await db.select().from(checkpointValidations2).where(eq18(checkpointValidations2.executionInstanceId, id));
+      const tasks4 = await db.select().from(executionInstanceTasks2).where(eq19(executionInstanceTasks2.executionInstanceId, id));
+      const checkpoints = await db.select().from(checkpointValidations2).where(eq19(checkpointValidations2.executionInstanceId, id));
       res.json({
         ...run,
         tasks: tasks4,
@@ -53143,7 +53259,7 @@ async function registerDecisionCoordinationRoutes(app2) {
         status: "running",
         startedAt: /* @__PURE__ */ new Date()
       }).returning();
-      const planTasks = await db.select().from(executionPlanTasks3).where(eq18(executionPlanTasks3.executionPlanId, executionPlanId));
+      const planTasks = await db.select().from(executionPlanTasks3).where(eq19(executionPlanTasks3.executionPlanId, executionPlanId));
       const instanceTasks = await Promise.all(planTasks.map(async (planTask) => {
         const [task] = await db.insert(executionInstanceTasks2).values({
           executionInstanceId: newRun.id,
@@ -53165,14 +53281,14 @@ async function registerDecisionCoordinationRoutes(app2) {
     try {
       const { runId, taskId } = req.params;
       const { status, notes, outcome } = req.body;
-      const [currentTask] = await db.select().from(executionInstanceTasks2).where(eq18(executionInstanceTasks2.id, taskId));
+      const [currentTask] = await db.select().from(executionInstanceTasks2).where(eq19(executionInstanceTasks2.id, taskId));
       if (!currentTask) {
         return res.status(404).json({ error: "Task not found" });
       }
       if (status === "in_progress" && currentTask.planTaskId) {
-        const dependencies = await db.select().from(executionTaskDependencies2).where(eq18(executionTaskDependencies2.taskId, currentTask.planTaskId));
+        const dependencies = await db.select().from(executionTaskDependencies2).where(eq19(executionTaskDependencies2.taskId, currentTask.planTaskId));
         if (dependencies.length > 0) {
-          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq18(executionInstanceTasks2.executionInstanceId, runId));
+          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq19(executionInstanceTasks2.executionInstanceId, runId));
           const dependencyPlanTaskIds = dependencies.map((d) => d.dependsOnTaskId);
           const dependencyInstanceTasks = allInstanceTasks.filter(
             (t) => dependencyPlanTaskIds.includes(t.planTaskId)
@@ -53203,30 +53319,30 @@ async function registerDecisionCoordinationRoutes(app2) {
       }
       if (notes) updateData.notes = notes;
       if (outcome) updateData.outcome = outcome;
-      const [updated] = await db.update(executionInstanceTasks2).set(updateData).where(eq18(executionInstanceTasks2.id, taskId)).returning();
+      const [updated] = await db.update(executionInstanceTasks2).set(updateData).where(eq19(executionInstanceTasks2.id, taskId)).returning();
       if (status === "completed" && currentTask.planTaskId) {
-        const dependentRelations = await db.select().from(executionTaskDependencies2).where(eq18(executionTaskDependencies2.dependsOnTaskId, currentTask.planTaskId));
+        const dependentRelations = await db.select().from(executionTaskDependencies2).where(eq19(executionTaskDependencies2.dependsOnTaskId, currentTask.planTaskId));
         if (dependentRelations.length > 0) {
-          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq18(executionInstanceTasks2.executionInstanceId, runId));
+          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq19(executionInstanceTasks2.executionInstanceId, runId));
           for (const dep of dependentRelations) {
             const dependentInstanceTask = allInstanceTasks.find((t) => t.planTaskId === dep.taskId);
             if (dependentInstanceTask && dependentInstanceTask.status === "pending") {
-              const allDepsForTask = await db.select().from(executionTaskDependencies2).where(eq18(executionTaskDependencies2.taskId, dep.taskId));
+              const allDepsForTask = await db.select().from(executionTaskDependencies2).where(eq19(executionTaskDependencies2.taskId, dep.taskId));
               const allDepsComplete = allDepsForTask.every((d) => {
                 const depTask = allInstanceTasks.find((t) => t.planTaskId === d.dependsOnTaskId);
                 return depTask && (depTask.status === "completed" || depTask.status === "skipped");
               });
               if (allDepsComplete) {
-                await db.update(executionInstanceTasks2).set({ status: "ready", updatedAt: /* @__PURE__ */ new Date() }).where(eq18(executionInstanceTasks2.id, dependentInstanceTask.id));
+                await db.update(executionInstanceTasks2).set({ status: "ready", updatedAt: /* @__PURE__ */ new Date() }).where(eq19(executionInstanceTasks2.id, dependentInstanceTask.id));
               }
             }
           }
         }
       }
-      const allTasks = await db.select().from(executionInstanceTasks2).where(eq18(executionInstanceTasks2.executionInstanceId, runId));
+      const allTasks = await db.select().from(executionInstanceTasks2).where(eq19(executionInstanceTasks2.executionInstanceId, runId));
       const allComplete = allTasks.every((t) => t.status === "completed" || t.status === "skipped");
       if (allComplete) {
-        const startTime = await db.select().from(executionInstances2).where(eq18(executionInstances2.id, runId));
+        const startTime = await db.select().from(executionInstances2).where(eq19(executionInstances2.id, runId));
         const actualTime = startTime[0]?.startedAt ? Math.round(((/* @__PURE__ */ new Date()).getTime() - new Date(startTime[0].startedAt).getTime()) / 6e4) : null;
         await db.update(executionInstances2).set({
           status: "completed",
@@ -53234,7 +53350,7 @@ async function registerDecisionCoordinationRoutes(app2) {
           actualExecutionTime: actualTime,
           outcome: "successful",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq18(executionInstances2.id, runId));
+        }).where(eq19(executionInstances2.id, runId));
       }
       res.json(updated);
     } catch (error) {
@@ -53249,7 +53365,7 @@ async function registerDecisionCoordinationRoutes(app2) {
       const thresholdMs = thresholdHours * 60 * 60 * 1e3;
       const cutoff = new Date(Date.now() - thresholdMs);
       const activeInstances = await db.select().from(executionInstances2).where(and12(
-        eq18(executionInstances2.organizationId, organizationId),
+        eq19(executionInstances2.organizationId, organizationId),
         sql12`${executionInstances2.status} IN ('pending', 'running')`
       ));
       if (!activeInstances.length) return res.json([]);
@@ -53267,7 +53383,7 @@ async function registerDecisionCoordinationRoutes(app2) {
         taskRole: executionPlanTasks3.requiredRoleLabel,
         taskPriority: executionPlanTasks3.priority,
         taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq18(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and12(
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq19(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and12(
         sql12`${executionInstanceTasks2.executionInstanceId} = ANY(${sql12`ARRAY[${sql12.join(instanceIds.map((id) => sql12`${id}::uuid`), sql12`, `)}]`})`,
         sql12`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
         sql12`${executionInstanceTasks2.updatedAt} < ${cutoff}`
@@ -53292,7 +53408,7 @@ async function registerDecisionCoordinationRoutes(app2) {
         status: "in_progress",
         notes: notes || "Escalated via Stuck Task Detector",
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq18(executionInstanceTasks2.id, taskId)).returning();
+      }).where(eq19(executionInstanceTasks2.id, taskId)).returning();
       res.json(updated);
     } catch (error) {
       console.error("Failed to escalate stuck task:", error);
@@ -53320,7 +53436,7 @@ async function registerDecisionCoordinationRoutes(app2) {
         taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
         isParallel: executionPlanTasks3.isParallel,
         phaseId: executionPlanTasks3.phaseId
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq18(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq18(executionInstanceTasks2.executionInstanceId, runId));
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq19(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq19(executionInstanceTasks2.executionInstanceId, runId));
       const isScopedRole = userRole && !["admin", "executive"].includes(userRole.toLowerCase());
       const scopedTasks = isScopedRole ? allTasks.filter((t) => t.taskRole && t.taskRole.toLowerCase().includes(userRole.toLowerCase())) : allTasks;
       const annotated = scopedTasks.map((t) => ({
@@ -53338,7 +53454,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/execution-runs/:runId/context", requireOrgAccess, async (req, res) => {
     try {
       const { runId } = req.params;
-      const [instance] = await db.select().from(executionInstances2).where(eq18(executionInstances2.id, runId));
+      const [instance] = await db.select().from(executionInstances2).where(eq19(executionInstances2.id, runId));
       if (!instance) return res.status(404).json({ error: "Execution not found" });
       const allTasks = await db.select({
         id: executionInstanceTasks2.id,
@@ -53348,7 +53464,7 @@ async function registerDecisionCoordinationRoutes(app2) {
         taskPriority: executionPlanTasks3.priority,
         taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
         phaseId: executionPlanTasks3.phaseId
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq18(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq18(executionInstanceTasks2.executionInstanceId, runId));
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq19(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq19(executionInstanceTasks2.executionInstanceId, runId));
       const total = allTasks.length;
       const completed = allTasks.filter((t) => t.status === "completed" || t.status === "skipped").length;
       const inProgress = allTasks.filter((t) => t.status === "in_progress").length;
@@ -53356,7 +53472,7 @@ async function registerDecisionCoordinationRoutes(app2) {
       const completionPct = total > 0 ? Math.round(completed / total * 100) : 0;
       const phaseLabel = completionPct < 30 ? "IMMEDIATE \u2014 Activate & Align" : completionPct < 65 ? "SECONDARY \u2014 Execute & Coordinate" : completionPct < 90 ? "FOLLOW-UP \u2014 Verify & Close" : "COMPLETION \u2014 Outcome & Capture";
       const phaseGuidance = completionPct < 30 ? "Focus: get all key roles notified and initial tasks started. Speed is the priority \u2014 do not wait for perfect information." : completionPct < 65 ? "Focus: coordinate parallel workstreams, remove blockers, keep stakeholders aligned. Watch for tasks that stop moving." : completionPct < 90 ? "Focus: close open tasks, verify deliverables, confirm outcomes with task owners before marking complete." : "Focus: capture lessons, confirm target met status, seed institutional memory for future activations.";
-      const [plan] = await db.select().from(scenarioExecutionPlans4).where(eq18(scenarioExecutionPlans4.id, instance.executionPlanId));
+      const [plan] = await db.select().from(scenarioExecutionPlans4).where(eq19(scenarioExecutionPlans4.id, instance.executionPlanId));
       const startedMs = instance.startedAt ? new Date(instance.startedAt).getTime() : Date.now();
       const elapsedMinutes = Math.floor((Date.now() - startedMs) / 6e4);
       const targetMinutes = plan?.targetExecutionTime || 12;
@@ -53388,7 +53504,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/execution-coordination/metrics", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const runs = await db.select().from(executionInstances2).where(eq18(executionInstances2.organizationId, organizationId));
+      const runs = await db.select().from(executionInstances2).where(eq19(executionInstances2.organizationId, organizationId));
       const completedRuns = runs.filter((r) => r.status === "completed");
       const avgExecutionTime = completedRuns.length > 0 ? completedRuns.reduce((sum, r) => sum + (r.actualExecutionTime || 0), 0) / completedRuns.length : 0;
       const activeRuns = runs.filter((r) => r.status === "running");
@@ -53407,7 +53523,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/document-templates", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const templates = await db.select().from(documentTemplates2).where(eq18(documentTemplates2.organizationId, organizationId));
+      const templates = await db.select().from(documentTemplates2).where(eq19(documentTemplates2.organizationId, organizationId));
       res.json(templates);
     } catch (error) {
       console.error("Failed to fetch templates:", error);
@@ -53435,7 +53551,7 @@ async function registerDecisionCoordinationRoutes(app2) {
     try {
       const { id } = req.params;
       const { context } = req.body;
-      const [template] = await db.select().from(documentTemplates2).where(eq18(documentTemplates2.id, id));
+      const [template] = await db.select().from(documentTemplates2).where(eq19(documentTemplates2.id, id));
       if (!template) {
         return res.status(404).json({ error: "Template not found" });
       }
@@ -53459,7 +53575,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/strategic-objectives", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const objectives = await db.select().from(strategicObjectives2).where(eq18(strategicObjectives2.organizationId, organizationId)).orderBy(asc(strategicObjectives2.priority));
+      const objectives = await db.select().from(strategicObjectives2).where(eq19(strategicObjectives2.organizationId, organizationId)).orderBy(asc(strategicObjectives2.priority));
       res.json(objectives);
     } catch (error) {
       console.error("Failed to fetch strategic objectives:", error);
@@ -53469,7 +53585,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [objective] = await db.select().from(strategicObjectives2).where(eq18(strategicObjectives2.id, id));
+      const [objective] = await db.select().from(strategicObjectives2).where(eq19(strategicObjectives2.id, id));
       if (!objective) {
         return res.status(404).json({ error: "Strategic objective not found" });
       }
@@ -53507,7 +53623,7 @@ async function registerDecisionCoordinationRoutes(app2) {
       const [updated] = await db.update(strategicObjectives2).set({
         ...req.body,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq18(strategicObjectives2.id, id)).returning();
+      }).where(eq19(strategicObjectives2.id, id)).returning();
       if (!updated) {
         return res.status(404).json({ error: "Strategic objective not found" });
       }
@@ -53520,7 +53636,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.delete("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
     try {
       const { id } = req.params;
-      const [deleted] = await db.delete(strategicObjectives2).where(eq18(strategicObjectives2.id, id)).returning();
+      const [deleted] = await db.delete(strategicObjectives2).where(eq19(strategicObjectives2.id, id)).returning();
       if (!deleted) {
         return res.status(404).json({ error: "Strategic objective not found" });
       }
@@ -53538,14 +53654,14 @@ init_db();
 init_storage();
 init_schema();
 init_magicLinkService();
-import { eq as eq24, desc as desc12, count as count4 } from "drizzle-orm";
+import { eq as eq25, desc as desc12, count as count4 } from "drizzle-orm";
 
 // server/services/trialAccessService.ts
 init_db();
 init_schema();
 import { Resend as Resend7 } from "resend";
 import crypto4 from "crypto";
-import { eq as eq20 } from "drizzle-orm";
+import { eq as eq21 } from "drizzle-orm";
 var NAVY5 = "#0A0F2E";
 var GOLD5 = "#C9A84C";
 var TRIAL_HOURS = 48;
@@ -53684,12 +53800,12 @@ async function createTrialSession(data) {
   return { success: true, token, emailSent };
 }
 async function activateTrialToken(token) {
-  const rows = await db.select().from(trialSessions).where(eq20(trialSessions.token, token)).limit(1);
+  const rows = await db.select().from(trialSessions).where(eq21(trialSessions.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
   const row = rows[0];
   if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
   const trialExpiresAt = new Date(Date.now() + TRIAL_HOURS * 60 * 60 * 1e3);
-  await db.update(trialSessions).set({ activatedAt: /* @__PURE__ */ new Date(), expiresAt: trialExpiresAt }).where(eq20(trialSessions.token, token));
+  await db.update(trialSessions).set({ activatedAt: /* @__PURE__ */ new Date(), expiresAt: trialExpiresAt }).where(eq21(trialSessions.token, token));
   return {
     valid: true,
     data: {
@@ -53718,7 +53834,7 @@ function registerMagicLinkRoutes(app2) {
         return res.status(400).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Invalid unsubscribe token</h2></body></html>`);
       }
       const { stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const result = await db.update(scTable).set({ isActive: false }).where(eq24(scTable.email, email));
+      const result = await db.update(scTable).set({ isActive: false }).where(eq25(scTable.email, email));
       console.log(`\u{1F4ED} Unsubscribed: ${email}`);
       return res.send(`
         <html>
@@ -53880,7 +53996,7 @@ function registerMagicLinkRoutes(app2) {
   app2.get("/api/founding-partner/stats", async (_req, res) => {
     try {
       const TOTAL_SEATS = 12;
-      const [row] = await db.select({ filled: count4() }).from(foundingPartnerApplications).where(eq24(foundingPartnerApplications.status, "accepted"));
+      const [row] = await db.select({ filled: count4() }).from(foundingPartnerApplications).where(eq25(foundingPartnerApplications.status, "accepted"));
       const filled = Number(row?.filled ?? 0);
       res.json({ total: TOTAL_SEATS, filled, remaining: Math.max(0, TOTAL_SEATS - filled) });
     } catch (err) {
@@ -53907,7 +54023,7 @@ function registerMagicLinkRoutes(app2) {
       if (!["pending", "accepted", "rejected"].includes(status)) {
         return res.status(400).json({ error: "status must be pending, accepted, or rejected" });
       }
-      const [updated] = await db.update(foundingPartnerApplications).set({ status }).where(eq24(foundingPartnerApplications.id, req.params.id)).returning();
+      const [updated] = await db.update(foundingPartnerApplications).set({ status }).where(eq25(foundingPartnerApplications.id, req.params.id)).returning();
       if (!updated) return res.status(404).json({ error: "Application not found" });
       res.json({ ok: true, application: updated });
     } catch (err) {
@@ -53934,7 +54050,7 @@ function registerMagicLinkRoutes(app2) {
       return res.status(400).json({ error: "Invalid or expired token.", reason: result.reason });
     }
     const { email, firstName, lastName, company, title } = result.data;
-    const existingByEmail = await db.select({ id: users.id }).from(users).where(eq24(users.email, email)).limit(1);
+    const existingByEmail = await db.select({ id: users.id }).from(users).where(eq25(users.email, email)).limit(1);
     const userId = existingByEmail[0]?.id ?? `ml-${Buffer.from(email).toString("base64").slice(0, 16)}`;
     await storage.upsertUser({ id: userId, email, firstName, lastName });
     let userOrgs = await storage.getUserOrganizations(userId);
@@ -54045,7 +54161,7 @@ function registerMagicLinkRoutes(app2) {
 init_db();
 init_storage();
 init_schema();
-import { eq as eq25, desc as desc13 } from "drizzle-orm";
+import { eq as eq26, desc as desc13 } from "drizzle-orm";
 function registerSignalIntelligenceRoutes(app2) {
   app2.get("/api/signal-monitoring-config", async (req, res) => {
     try {
@@ -54238,8 +54354,8 @@ function registerSignalIntelligenceRoutes(app2) {
   app2.get("/api/coordination-intelligence", requireOrgAccess, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq25(playbookActivations.organizationId, orgId)).orderBy(desc13(playbookActivations.activatedAt)).limit(50);
-      const outcomes = await db.select().from(activationOutcomes).where(eq25(activationOutcomes.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq26(playbookActivations.organizationId, orgId)).orderBy(desc13(playbookActivations.activatedAt)).limit(50);
+      const outcomes = await db.select().from(activationOutcomes).where(eq26(activationOutcomes.organizationId, orgId));
       const outcomeMap = new Map(outcomes.map((o) => [o.activationId, o]));
       const TARGET_MINUTES = 12;
       const INDUSTRY_MINUTES = 43200;
@@ -54458,10 +54574,10 @@ function setupMicrosoftAuth(app2) {
 // server/replit_integrations/chat/storage.ts
 init_db();
 init_schema();
-import { eq as eq26, desc as desc14 } from "drizzle-orm";
+import { eq as eq27, desc as desc14 } from "drizzle-orm";
 var chatStorage = {
   async getConversation(id) {
-    const [conversation] = await db.select().from(conversations).where(eq26(conversations.id, id));
+    const [conversation] = await db.select().from(conversations).where(eq27(conversations.id, id));
     return conversation;
   },
   async getAllConversations() {
@@ -54472,11 +54588,11 @@ var chatStorage = {
     return conversation;
   },
   async deleteConversation(id) {
-    await db.delete(messages).where(eq26(messages.conversationId, id));
-    await db.delete(conversations).where(eq26(conversations.id, id));
+    await db.delete(messages).where(eq27(messages.conversationId, id));
+    await db.delete(conversations).where(eq27(conversations.id, id));
   },
   async getMessagesByConversation(conversationId) {
-    return db.select().from(messages).where(eq26(messages.conversationId, conversationId)).orderBy(messages.createdAt);
+    return db.select().from(messages).where(eq27(messages.conversationId, conversationId)).orderBy(messages.createdAt);
   },
   async createMessage(conversationId, role, content) {
     const [message] = await db.insert(messages).values({ conversationId, role, content }).returning();
@@ -54845,6 +54961,11 @@ var PUBLIC_ROUTES = [
   "/api/unsubscribe",
   // Peer Review Questionnaire — public submission (no auth required to submit feedback)
   "/api/peer-reviews",
+  // Lead-capture + email-export endpoints used by public sales tools — prospects using
+  // these are, by definition, unauthenticated. Without this, conditionalAuth 401s them.
+  "/api/test-drive/email-summary",
+  "/api/situation-scanner/lead",
+  "/api/roi-calculator/email-report",
   // Marketing & Demo Routes - allow prospects to view content
   "/api/tts",
   // Text-to-speech for founder story narration
@@ -55560,7 +55681,7 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq60, desc as desc31, sql as sql25, like, and as and39, asc as asc2, count as count11, gte as gte17, ne as ne2, inArray as inArray7 } from "drizzle-orm";
+import { eq as eq61, desc as desc31, sql as sql25, like, and as and39, asc as asc2, count as count11, gte as gte17, ne as ne2, inArray as inArray7 } from "drizzle-orm";
 function getUserId6(req) {
   if (!req.isAuthenticated()) return void 0;
   return req.user?.dbUserId || req.user?.claims?.sub;
@@ -56233,7 +56354,7 @@ async function seedFlagshipPlaybooks() {
         continue;
       }
       for (const match of matches) {
-        await db.update(playbookLibrary).set(data).where(eq60(playbookLibrary.id, match.id));
+        await db.update(playbookLibrary).set(data).where(eq61(playbookLibrary.id, match.id));
         results.push(`\u2713 Enriched: ${match.name}`);
       }
     } catch (err) {
@@ -56515,8 +56636,8 @@ async function registerRoutes(app2, existingServer) {
       const userOrgs = await storage.getUserOrganizations(userId);
       const orgId = userOrgs?.[0]?.id;
       if (!orgId) return res.json({ activations: [], detections: [], kpis: {}, trends: [] });
-      const activationsData = await db.select().from(playbookActivations3).where(eq60(playbookActivations3.organizationId, orgId)).orderBy(desc31(playbookActivations3.activatedAt)).limit(20);
-      const detectionsData = await db.select().from(triggerDetections3).where(eq60(triggerDetections3.organizationId, orgId)).orderBy(desc31(triggerDetections3.detectedAt)).limit(20);
+      const activationsData = await db.select().from(playbookActivations3).where(eq61(playbookActivations3.organizationId, orgId)).orderBy(desc31(playbookActivations3.activatedAt)).limit(20);
+      const detectionsData = await db.select().from(triggerDetections3).where(eq61(triggerDetections3.organizationId, orgId)).orderBy(desc31(triggerDetections3.detectedAt)).limit(20);
       const totalActivations = activationsData.length;
       const avgResponseTime = 12;
       const playbooksReady = 180;
@@ -57034,7 +57155,7 @@ async function registerRoutes(app2, existingServer) {
       let user = await storage.getUser(userId);
       if (!user && req.user?.claims?.email) {
         const email = req.user.claims.email.toLowerCase().trim();
-        const [byEmail] = await db.select().from(users).where(eq60(users.email, email)).limit(1);
+        const [byEmail] = await db.select().from(users).where(eq61(users.email, email)).limit(1);
         if (byEmail) {
           user = byEmail;
           req.user.dbUserId = byEmail.id;
@@ -57096,7 +57217,7 @@ async function registerRoutes(app2, existingServer) {
       if (!executiveRole || !industryVertical) {
         return res.status(400).json({ error: "executiveRole and industryVertical are required" });
       }
-      await db.update(users).set({ executiveRole, industryVertical, updatedAt: /* @__PURE__ */ new Date() }).where(eq60(users.id, userId));
+      await db.update(users).set({ executiveRole, industryVertical, updatedAt: /* @__PURE__ */ new Date() }).where(eq61(users.id, userId));
       res.json({ success: true });
     } catch (error) {
       console.error("Error updating user profile:", error);
@@ -57146,7 +57267,7 @@ async function registerRoutes(app2, existingServer) {
   app2.get("/api/organizations/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const org = await db.select().from(organizations).where(eq60(organizations.id, id)).limit(1);
+      const org = await db.select().from(organizations).where(eq61(organizations.id, id)).limit(1);
       if (org.length === 0) {
         return res.status(404).json({ message: "Organization not found" });
       }
@@ -57161,7 +57282,7 @@ async function registerRoutes(app2, existingServer) {
       const userId = getUserId6(req);
       if (userId) {
         const userOrgs = await storage.getUserOrganizations(userId);
-        const [userRecord] = await db.select({ organizationId: users.organizationId }).from(users).where(eq60(users.id, userId)).limit(1);
+        const [userRecord] = await db.select({ organizationId: users.organizationId }).from(users).where(eq61(users.id, userId)).limit(1);
         const primaryOrgId = userRecord?.organizationId;
         if (primaryOrgId) {
           userOrgs.sort(
@@ -57209,9 +57330,9 @@ async function registerRoutes(app2, existingServer) {
       if (headquarters !== void 0) updates.headquarters = headquarters;
       if (settings !== void 0) updates.settings = settings;
       if (Object.keys(updates).length > 0) {
-        await db.update(organizations).set(updates).where(eq60(organizations.id, orgId));
+        await db.update(organizations).set(updates).where(eq61(organizations.id, orgId));
       }
-      const [updated] = await db.select().from(organizations).where(eq60(organizations.id, orgId)).limit(1);
+      const [updated] = await db.select().from(organizations).where(eq61(organizations.id, orgId)).limit(1);
       res.json(updated);
     } catch (error) {
       console.error("Error updating current organization:", error);
@@ -57223,11 +57344,11 @@ async function registerRoutes(app2, existingServer) {
       const { id } = req.params;
       const userId = getUserId6(req);
       const updateData = req.body;
-      const existing = await db.select().from(organizations).where(eq60(organizations.id, id)).limit(1);
+      const existing = await db.select().from(organizations).where(eq61(organizations.id, id)).limit(1);
       if (existing.length === 0) {
         return res.status(404).json({ error: "Organization not found" });
       }
-      const updated = await db.update(organizations).set({ ...updateData, updatedAt: /* @__PURE__ */ new Date() }).where(eq60(organizations.id, id)).returning();
+      const updated = await db.update(organizations).set({ ...updateData, updatedAt: /* @__PURE__ */ new Date() }).where(eq61(organizations.id, id)).returning();
       await storage.createActivity({
         userId: userId || "",
         action: `updated organization settings`,
@@ -57438,7 +57559,7 @@ async function registerRoutes(app2, existingServer) {
       const isValidUUID2 = uuidRegex.test(id);
       let scenario = null;
       if (isValidUUID2) {
-        const scenarios3 = await db.select().from(strategicScenarios).where(eq60(strategicScenarios.id, id));
+        const scenarios3 = await db.select().from(strategicScenarios).where(eq61(strategicScenarios.id, id));
         scenario = scenarios3[0];
       } else {
         try {
@@ -57526,13 +57647,13 @@ async function registerRoutes(app2, existingServer) {
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const conditions = [];
       if (organizationId) {
-        conditions.push(eq60(playbooks2.organizationId, organizationId));
+        conditions.push(eq61(playbooks2.organizationId, organizationId));
       }
       if (domain) {
-        conditions.push(eq60(playbooks2.domain, domain));
+        conditions.push(eq61(playbooks2.domain, domain));
       }
       if (category) {
-        conditions.push(eq60(playbooks2.category, category));
+        conditions.push(eq61(playbooks2.category, category));
       }
       if (search) {
         conditions.push(like(playbooks2.name, `%${search}%`));
@@ -57579,8 +57700,8 @@ async function registerRoutes(app2, existingServer) {
       const { organizationId, domain, search, limit = "50" } = req.query;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const conditions = [];
-      if (organizationId) conditions.push(eq60(playbooks2.organizationId, organizationId));
-      if (domain) conditions.push(eq60(playbooks2.domain, domain));
+      if (organizationId) conditions.push(eq61(playbooks2.organizationId, organizationId));
+      if (domain) conditions.push(eq61(playbooks2.domain, domain));
       if (search) conditions.push(like(playbooks2.name, `%${search}%`));
       let query = db.select({
         id: playbooks2.id,
@@ -57681,7 +57802,7 @@ async function registerRoutes(app2, existingServer) {
         preApprovedBudget: playbookLibrary.preApprovedBudget,
         primaryResponseStrategy: playbookLibrary.primaryResponseStrategy,
         industryVertical: playbookLibrary.industryVertical
-      }).from(playbookLibrary).leftJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).where(eq60(playbookLibrary.isActive, true)).orderBy(playbookLibrary.playbookNumber).limit(300);
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).where(eq61(playbookLibrary.isActive, true)).orderBy(playbookLibrary.playbookNumber).limit(300);
       res.json(templates.map((t) => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? t.tier1Stakeholders.length : 8);
         const execMins = t.targetExecutionTime || 240;
@@ -57742,15 +57863,15 @@ async function registerRoutes(app2, existingServer) {
         }
         return res.status(404).json({ message: "Playbook not found" });
       }
-      const [playbook] = await db.select().from(playbooks2).where(eq60(playbooks2.id, id)).limit(1);
+      const [playbook] = await db.select().from(playbooks2).where(eq61(playbooks2.id, id)).limit(1);
       if (playbook) {
         return res.json(playbook);
       }
-      const [template] = await db.select().from(playbookLibrary).where(eq60(playbookLibrary.id, id)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq61(playbookLibrary.id, id)).limit(1);
       if (template) {
         let domainSequence = 1;
         if (template.domainId) {
-          const [domain] = await db.select().from(playbookDomains).where(eq60(playbookDomains.id, template.domainId)).limit(1);
+          const [domain] = await db.select().from(playbookDomains).where(eq61(playbookDomains.id, template.domainId)).limit(1);
           if (domain) {
             domainSequence = domain.sequence || 1;
           }
@@ -57789,12 +57910,12 @@ async function registerRoutes(app2, existingServer) {
       const { playbooks: playbooks2, executiveTriggers: executiveTriggers3 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       let playbookName = "Strategic Response Playbook";
       let playbookDescription = "";
-      const [orgPlaybook] = await db.select().from(playbooks2).where(eq60(playbooks2.id, id)).limit(1);
+      const [orgPlaybook] = await db.select().from(playbooks2).where(eq61(playbooks2.id, id)).limit(1);
       if (orgPlaybook) {
         playbookName = orgPlaybook.name || playbookName;
         playbookDescription = orgPlaybook.description || "";
       } else {
-        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq60(playbookLibrary.id, id)).limit(1);
+        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq61(playbookLibrary.id, id)).limit(1);
         if (libPlaybook) {
           playbookName = libPlaybook.name || playbookName;
           playbookDescription = libPlaybook.description || "";
@@ -57802,7 +57923,7 @@ async function registerRoutes(app2, existingServer) {
       }
       let triggerContext = "";
       if (triggerId && triggerId !== "manual") {
-        const [trigger] = await db.select().from(executiveTriggers3).where(eq60(executiveTriggers3.id, triggerId)).limit(1);
+        const [trigger] = await db.select().from(executiveTriggers3).where(eq61(executiveTriggers3.id, triggerId)).limit(1);
         if (trigger) {
           triggerContext = `This activation was triggered by: "${trigger.name}" (severity: ${trigger.severity || "high"}, category: ${trigger.category || "strategic"}).`;
         }
@@ -57923,13 +58044,13 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!organizationId) {
         return res.status(400).json({ message: "Organization ID is required" });
       }
-      const [template] = await db.select().from(playbookLibrary).where(eq60(playbookLibrary.id, templateId)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq61(playbookLibrary.id, templateId)).limit(1);
       if (!template) {
         return res.status(404).json({ message: "Template not found" });
       }
       let domainSequence = 1;
       if (template.domainId) {
-        const [domain] = await db.select().from(playbookDomains).where(eq60(playbookDomains.id, template.domainId)).limit(1);
+        const [domain] = await db.select().from(playbookDomains).where(eq61(playbookDomains.id, template.domainId)).limit(1);
         if (domain) {
           domainSequence = domain.sequence || 1;
         }
@@ -57994,20 +58115,20 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       };
       let domainName = null;
       let playbookName = null;
-      const [libPlaybook] = await db.select({ domainName: playbookDomains.name, playbookName: playbookLibrary.name }).from(playbookLibrary).leftJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).where(eq60(playbookLibrary.id, id)).limit(1);
+      const [libPlaybook] = await db.select({ domainName: playbookDomains.name, playbookName: playbookLibrary.name }).from(playbookLibrary).leftJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).where(eq61(playbookLibrary.id, id)).limit(1);
       if (libPlaybook) {
         domainName = libPlaybook.domainName;
         playbookName = libPlaybook.playbookName;
       } else {
         const { strategicScenarios: strategicScenarios2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-        const [orgPlaybook] = await db.select().from(strategicScenarios2).where(eq60(strategicScenarios2.id, id)).limit(1);
+        const [orgPlaybook] = await db.select().from(strategicScenarios2).where(eq61(strategicScenarios2.id, id)).limit(1);
         if (orgPlaybook) playbookName = orgPlaybook.name;
       }
       const categories = domainName ? DOMAIN_CATEGORY_MAP[domainName] ?? [] : [];
       let triggers = [];
       if (categories.length > 0) {
         triggers = await db.select().from(executiveTriggers).where(and39(
-          eq60(executiveTriggers.isActive, true),
+          eq61(executiveTriggers.isActive, true),
           inArray7(executiveTriggers.category, categories)
         )).orderBy(desc31(executiveTriggers.lastTriggeredAt), executiveTriggers.name).limit(30);
       }
@@ -58127,7 +58248,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [updated] = await db.update(playbooks2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq60(playbooks2.id, id)).returning();
+      const [updated] = await db.update(playbooks2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq61(playbooks2.id, id)).returning();
       if (!updated) {
         return res.status(404).json({ message: "Playbook not found" });
       }
@@ -58141,7 +58262,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [deleted] = await db.delete(playbooks2).where(eq60(playbooks2.id, id)).returning();
+      const [deleted] = await db.delete(playbooks2).where(eq61(playbooks2.id, id)).returning();
       if (!deleted) {
         return res.status(404).json({ message: "Playbook not found" });
       }
@@ -58228,7 +58349,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           isDemo: true
         });
       }
-      const taskResults = await db.select().from(tasks).where(eq60(tasks.id, taskId));
+      const taskResults = await db.select().from(tasks).where(eq61(tasks.id, taskId));
       const task = taskResults[0];
       if (!task) {
         return res.status(404).json({ message: "Task not found", requestedId: taskId });
@@ -58310,7 +58431,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           const completedAt = /* @__PURE__ */ new Date();
           const timeToResolution = Math.floor((completedAt.getTime() - createdAt.getTime()) / (1e3 * 60));
           const taskValue = calculateTaskValue(task);
-          const scenario = await db.select().from(strategicScenarios).where(eq60(strategicScenarios.id, task.scenarioId)).limit(1);
+          const scenario = await db.select().from(strategicScenarios).where(eq61(strategicScenarios.id, task.scenarioId)).limit(1);
           const organizationId = scenario[0]?.organizationId || "default-org";
           await roiMeasurementService2.trackValueEvent({
             organizationId,
@@ -58361,7 +58482,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!userId) return res.status(401).json({ message: "Unauthorized" });
       const orgId = await getOrgIdForUser5(userId);
       if (!orgId) return res.json([]);
-      const rows = await db.select().from(actionItems).where(and39(eq60(actionItems.organizationId, orgId), sql25`${actionItems.tags}->>'isTaskTemplate' = 'true'`)).orderBy(actionItems.createdAt);
+      const rows = await db.select().from(actionItems).where(and39(eq61(actionItems.organizationId, orgId), sql25`${actionItems.tags}->>'isTaskTemplate' = 'true'`)).orderBy(actionItems.createdAt);
       res.json(rows.map(toTaskTemplate));
     } catch (error) {
       console.error("Error fetching task templates:", error);
@@ -58409,7 +58530,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         dependencies: dependsOn || [],
         tags: { isTaskTemplate: true, status: status || "pending", estimatedMinutes: estimatedMinutes || 15, approvalRequired: approvalRequired || "none", templateId: templateId || null },
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(and39(eq60(actionItems.id, id), eq60(actionItems.organizationId, orgId))).returning();
+      }).where(and39(eq61(actionItems.id, id), eq61(actionItems.organizationId, orgId))).returning();
       if (!row) return res.status(404).json({ message: "Task template not found" });
       res.json(toTaskTemplate(row));
     } catch (error) {
@@ -58424,7 +58545,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       const orgId = await getOrgIdForUser5(userId);
       if (!orgId) return res.status(403).json({ message: "No organization found" });
       const { id } = req.params;
-      await db.delete(actionItems).where(and39(eq60(actionItems.id, id), eq60(actionItems.organizationId, orgId)));
+      await db.delete(actionItems).where(and39(eq61(actionItems.id, id), eq61(actionItems.organizationId, orgId)));
       res.json({ success: true });
     } catch (error) {
       console.error("Error deleting task template:", error);
@@ -59446,7 +59567,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app2.get("/api/strategic-scenarios/:organizationId", async (req, res) => {
     try {
       const { organizationId } = req.params;
-      const scenarios3 = await db.select().from(strategicScenarios).where(eq60(strategicScenarios.organizationId, organizationId));
+      const scenarios3 = await db.select().from(strategicScenarios).where(eq61(strategicScenarios.organizationId, organizationId));
       res.json(scenarios3);
     } catch (error) {
       console.error("Error fetching strategic scenarios:", error);
@@ -59824,7 +59945,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         name: playbookLibrary.name,
         triggerCriteria: playbookLibrary.triggerCriteria,
         domainName: playbookDomains.name
-      }).from(playbookLibrary).leftJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).where(eq60(playbookLibrary.isActive, true));
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).where(eq61(playbookLibrary.isActive, true));
       const scoreMatch = (triggerName, playbookName, triggerCriteria) => {
         const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
         const trigWords = new Set(norm(triggerName).split(" ").filter((w) => w.length > 3));
@@ -61016,16 +61137,16 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
           error: "playbookId and scenarioId are required"
         });
       }
-      const playbook = await db.select().from(playbookLibrary).where(eq60(playbookLibrary.id, playbookId)).limit(1);
+      const playbook = await db.select().from(playbookLibrary).where(eq61(playbookLibrary.id, playbookId)).limit(1);
       if (!playbook || playbook.length === 0) {
         return res.status(404).json({ error: "Playbook not found" });
       }
-      const scenario = await db.select().from(strategicScenarios).where(eq60(strategicScenarios.id, scenarioId)).limit(1);
+      const scenario = await db.select().from(strategicScenarios).where(eq61(strategicScenarios.id, scenarioId)).limit(1);
       if (!scenario || scenario.length === 0) {
         return res.status(404).json({ error: "Scenario not found" });
       }
       const organizationId = scenario[0].organizationId;
-      let executionPlan = await db.select().from(scenarioExecutionPlans).where(eq60(scenarioExecutionPlans.scenarioId, scenarioId)).limit(1);
+      let executionPlan = await db.select().from(scenarioExecutionPlans).where(eq61(scenarioExecutionPlans.scenarioId, scenarioId)).limit(1);
       if (!executionPlan || executionPlan.length === 0) {
         const [newPlan] = await db.insert(scenarioExecutionPlans).values({
           scenarioId,
@@ -61052,8 +61173,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         currentPhase: "immediate",
         startedAt: now
       });
-      const stakeholders = await db.select().from(scenarioStakeholders).where(eq60(scenarioStakeholders.scenarioId, scenarioId));
-      const taskSequences = await db.select().from(playbookTaskSequences).where(eq60(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
+      const stakeholders = await db.select().from(scenarioStakeholders).where(eq61(scenarioStakeholders.scenarioId, scenarioId));
+      const taskSequences = await db.select().from(playbookTaskSequences).where(eq61(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
       const executionTasks = [];
       const taskMap = /* @__PURE__ */ new Map();
       for (let i = 0; i < taskSequences.length; i++) {
@@ -61165,7 +61286,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       const { notificationId } = req.params;
       const acknowledgedAt = /* @__PURE__ */ new Date();
       const notification = await db.query.notifications.findFirst({
-        where: eq60(notifications.id, notificationId)
+        where: eq61(notifications.id, notificationId)
       });
       if (!notification) {
         return res.status(404).json({ error: "Notification not found" });
@@ -61179,7 +61300,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
           acknowledgedAt: acknowledgedAt.toISOString(),
           responseTimeMinutes: responseTime
         }
-      }).where(eq60(notifications.id, notificationId));
+      }).where(eq61(notifications.id, notificationId));
       let coordinationComplete = false;
       if (notification.entityType === "execution_instance" && notification.entityId) {
         const executionStatus = await storage.getExecutionStatus(notification.entityId);
@@ -61647,8 +61768,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   app2.post("/api/detections/:id/acknowledge", async (req, res) => {
     try {
       const { id } = req.params;
-      const { eq: eq64 } = await import("drizzle-orm");
-      await db.update(triggerDetectionsTable).set({ status: "acknowledged" }).where(eq64(triggerDetectionsTable.id, parseInt(id)));
+      const { eq: eq65 } = await import("drizzle-orm");
+      await db.update(triggerDetectionsTable).set({ status: "acknowledged" }).where(eq65(triggerDetectionsTable.id, parseInt(id)));
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ success: false });
@@ -61710,8 +61831,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   app2.get("/api/stakeholder-contacts", async (req, res) => {
     try {
       const organizationId = req.query.organizationId || req.orgId || "system";
-      const { eq: eq64 } = await import("drizzle-orm");
-      const contacts = await db.select().from(stakeholderContactsTable).where(eq64(stakeholderContactsTable.organizationId, organizationId));
+      const { eq: eq65 } = await import("drizzle-orm");
+      const contacts = await db.select().from(stakeholderContactsTable).where(eq65(stakeholderContactsTable.organizationId, organizationId));
       res.json({ success: true, contacts });
     } catch (err) {
       res.status(500).json({ success: false, contacts: [] });
@@ -61741,7 +61862,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   app2.put("/api/stakeholder-contacts/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const { eq: eq64 } = await import("drizzle-orm");
+      const { eq: eq65 } = await import("drizzle-orm");
       const { role, name, email, phone, preferredChannel, slackUserId, slackChannel, isActive, metadata } = req.body;
       const [contact] = await db.update(stakeholderContactsTable).set({
         ...role !== void 0 && { role },
@@ -61753,7 +61874,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         ...slackChannel !== void 0 && { slackChannel },
         ...isActive !== void 0 && { isActive },
         ...metadata !== void 0 && { metadata }
-      }).where(eq64(stakeholderContactsTable.id, parseInt(id))).returning();
+      }).where(eq65(stakeholderContactsTable.id, parseInt(id))).returning();
       res.json({ success: true, contact });
     } catch (err) {
       res.status(500).json({ success: false });
@@ -61762,8 +61883,8 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   app2.delete("/api/stakeholder-contacts/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const { eq: eq64 } = await import("drizzle-orm");
-      await db.delete(stakeholderContactsTable).where(eq64(stakeholderContactsTable.id, parseInt(id)));
+      const { eq: eq65 } = await import("drizzle-orm");
+      await db.delete(stakeholderContactsTable).where(eq65(stakeholderContactsTable.id, parseInt(id)));
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ success: false });
@@ -61962,7 +62083,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name,
         strategicCategory: playbookLibrary.strategicCategory
-      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq60(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
+      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq61(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
       res.json(result);
     } catch (error) {
       console.error("Error fetching task sequences:", error);
@@ -61975,7 +62096,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         domainName: playbookDomains.name,
         playbookCount: sql25`count(distinct ${playbookLibrary.id})`,
         taskCount: sql25`count(${playbookTaskSequences.id})`
-      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq60(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
+      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq61(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
       res.json(result);
     } catch (error) {
       console.error("Error fetching task sequence summary:", error);
@@ -61994,7 +62115,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         activatedAt: playbookActivations.activatedAt,
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name
-      }).from(playbookActivations).innerJoin(playbookLibrary, eq60(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql25`${playbookActivations.activatedAt} DESC`);
+      }).from(playbookActivations).innerJoin(playbookLibrary, eq61(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql25`${playbookActivations.activatedAt} DESC`);
       res.json(result);
     } catch (error) {
       console.error("Error fetching playbook activations:", error);
@@ -62005,7 +62126,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     try {
       const userId = getUserId6(req);
       const orgId = userId ? await getOrgIdForUser5(userId) : null;
-      const whereClause = orgId ? eq60(playbookActivations.organizationId, orgId) : sql25`1=1`;
+      const whereClause = orgId ? eq61(playbookActivations.organizationId, orgId) : sql25`1=1`;
       const rows = await db.select({
         id: playbookActivations.id,
         playbookId: playbookActivations.playbookId,
@@ -62015,7 +62136,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         completedAt: playbookActivations.completedAt,
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name
-      }).from(playbookActivations).innerJoin(playbookLibrary, eq60(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq60(playbookLibrary.domainId, playbookDomains.id)).where(whereClause).orderBy(desc31(playbookActivations.activatedAt)).limit(5);
+      }).from(playbookActivations).innerJoin(playbookLibrary, eq61(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq61(playbookLibrary.domainId, playbookDomains.id)).where(whereClause).orderBy(desc31(playbookActivations.activatedAt)).limit(5);
       const result = rows.map((r) => ({
         ...r,
         playbookDomain: r.domainName,
@@ -62034,12 +62155,12 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       if (!userId) return res.status(401).json({ error: "Not authenticated" });
       const orgId = await getOrgIdForUser5(userId);
       if (!orgId) return res.json({ seeded: false, reason: "no-org" });
-      const [existing] = await db.select({ count: count11() }).from(playbookActivations).where(eq60(playbookActivations.organizationId, orgId));
+      const [existing] = await db.select({ count: count11() }).from(playbookActivations).where(eq61(playbookActivations.organizationId, orgId));
       if ((existing?.count ?? 0) > 0) return res.json({ seeded: false, reason: "already-seeded" });
-      const domainRows = await db.selectDistinct({ domainId: playbookLibrary.domainId }).from(playbookLibrary).where(eq60(playbookLibrary.isActive, true)).limit(4);
+      const domainRows = await db.selectDistinct({ domainId: playbookLibrary.domainId }).from(playbookLibrary).where(eq61(playbookLibrary.isActive, true)).limit(4);
       const pbIds = [];
       for (const { domainId } of domainRows) {
-        const [pb] = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(and39(eq60(playbookLibrary.domainId, domainId), eq60(playbookLibrary.isActive, true))).limit(1);
+        const [pb] = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(and39(eq61(playbookLibrary.domainId, domainId), eq61(playbookLibrary.isActive, true))).limit(1);
         if (pb) pbIds.push(pb.id);
       }
       if (pbIds.length < 2) return res.json({ seeded: false, reason: "insufficient-playbooks" });
@@ -62154,7 +62275,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         try {
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
           if (!apiKey) return;
-          const [userRecord] = await db.select().from(users).where(eq60(users.id, req.user.id)).limit(1);
+          const [userRecord] = await db.select().from(users).where(eq61(users.id, req.user.id)).limit(1);
           if (!userRecord?.email) return;
           const recipientName = [userRecord.firstName, userRecord.lastName].filter(Boolean).join(" ") || userRecord.email.split("@")[0];
           const displayPlaybookName = playbookName || "Strategic Response Playbook";
@@ -62241,6 +62362,97 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
       res.status(500).json({ error: "Failed to create activation record" });
     }
   });
+  app2.post("/api/playbook-activations/authorize", requireOrgAccess2, async (req, res) => {
+    try {
+      const { playbookId, activationReason, situationSummary, triggerEventId, authorizationSnapshot } = req.body;
+      if (!playbookId) return res.status(400).json({ error: "playbookId required" });
+      const [activation] = await db.insert(playbookActivations).values({
+        organizationId: req.user.organizationId,
+        playbookId,
+        activatedBy: req.user.id,
+        activationReason: activationReason || null,
+        situationSummary: situationSummary || null,
+        triggerEventId: triggerEventId || null,
+        authorizedBy: req.user.id,
+        authorizedAt: /* @__PURE__ */ new Date(),
+        authorizationSnapshot: authorizationSnapshot || null,
+        status: "active"
+      }).returning();
+      res.json(activation);
+    } catch (error) {
+      console.error("Error authorizing playbook activation:", error);
+      res.status(500).json({ error: "Failed to authorize activation" });
+    }
+  });
+  app2.post("/api/playbook-activations/:id/admissibility-check", requireOrgAccess2, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { taskDescription, ownerRole, phase } = req.body;
+      if (!taskDescription) return res.status(400).json({ error: "taskDescription required" });
+      const [activation] = await db.select().from(playbookActivations).where(eq61(playbookActivations.id, id)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: "Activation not found" });
+      }
+      const { check, conditions } = await AdmissibilityService.evaluate(id, { taskDescription, ownerRole, phase });
+      res.json({ ...check, conditions });
+    } catch (error) {
+      console.error("Error running admissibility check:", error);
+      res.status(500).json({ error: "Failed to run admissibility check" });
+    }
+  });
+  app2.post("/api/admissibility-checks/:id/reauthorize", requireOrgAccess2, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { resolutionNote } = req.body;
+      const [check] = await db.select().from(admissibilityChecks).where(eq61(admissibilityChecks.id, id)).limit(1);
+      if (!check) return res.status(404).json({ error: "Admissibility check not found" });
+      const [activation] = await db.select().from(playbookActivations).where(eq61(playbookActivations.id, check.activationId)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: "Admissibility check not found" });
+      }
+      const updated = await AdmissibilityService.reauthorize(id, req.user.id, resolutionNote);
+      res.json(updated);
+    } catch (error) {
+      console.error("Error reauthorizing admissibility check:", error);
+      res.status(500).json({ error: "Failed to reauthorize admissibility check" });
+    }
+  });
+  app2.patch("/api/playbook-activations/:id/complete", requireOrgAccess2, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { actualExecutionTime, targetMet, successRating, lessonsLearned } = req.body;
+      const [activation] = await db.select().from(playbookActivations).where(eq61(playbookActivations.id, id)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: "Activation not found" });
+      }
+      const [updated] = await db.update(playbookActivations).set({
+        actualExecutionTime: actualExecutionTime ?? activation.actualExecutionTime,
+        targetMet: targetMet ?? activation.targetMet,
+        successRating: successRating ?? activation.successRating,
+        lessonsLearned: lessonsLearned ?? activation.lessonsLearned,
+        status: "completed",
+        completedAt: /* @__PURE__ */ new Date()
+      }).where(eq61(playbookActivations.id, id)).returning();
+      res.json(updated);
+    } catch (error) {
+      console.error("Error completing playbook activation:", error);
+      res.status(500).json({ error: "Failed to complete playbook activation" });
+    }
+  });
+  app2.get("/api/playbook-activations/:id/admissibility-checks", requireOrgAccess2, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [activation] = await db.select().from(playbookActivations).where(eq61(playbookActivations.id, id)).limit(1);
+      if (!activation || activation.organizationId !== req.user.organizationId) {
+        return res.status(404).json({ error: "Activation not found" });
+      }
+      const checks = await db.select().from(admissibilityChecks).where(eq61(admissibilityChecks.activationId, id)).orderBy(desc31(admissibilityChecks.checkedAt));
+      res.json(checks);
+    } catch (error) {
+      console.error("Error fetching admissibility checks:", error);
+      res.status(500).json({ error: "Failed to fetch admissibility checks" });
+    }
+  });
   const playbookLibraryRoutes = await Promise.resolve().then(() => (init_playbookLibraryRoutes(), playbookLibraryRoutes_exports));
   app2.use("/api/playbook-library", playbookLibraryRoutes.playbookLibraryRouter);
   const practiceDrillRoutes = await Promise.resolve().then(() => (init_practiceDrillRoutes(), practiceDrillRoutes_exports));
@@ -62251,11 +62463,11 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
   app2.get("/api/playbook-library/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const [template] = await db.select().from(playbookLibrary).where(eq60(playbookLibrary.id, id)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq61(playbookLibrary.id, id)).limit(1);
       if (template) {
         let domainSequence = 1;
         if (template.domainId) {
-          const [domain] = await db.select().from(playbookDomains).where(eq60(playbookDomains.id, template.domainId)).limit(1);
+          const [domain] = await db.select().from(playbookDomains).where(eq61(playbookDomains.id, template.domainId)).limit(1);
           if (domain) domainSequence = domain.sequence || 1;
         }
         const sampleData = generateFullPlaybookData(
@@ -62281,7 +62493,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
         });
       }
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [playbook] = await db.select().from(playbooks2).where(eq60(playbooks2.id, id)).limit(1);
+      const [playbook] = await db.select().from(playbooks2).where(eq61(playbooks2.id, id)).limit(1);
       if (playbook) return res.json({ playbook });
       res.status(404).json({ message: "Playbook not found" });
     } catch (error) {
@@ -62293,7 +62505,7 @@ Generate realistic transformation metrics for a startup to Fortune 500 ${industr
     try {
       const { playbookId } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [playbook] = await db.select().from(playbooks2).where(eq60(playbooks2.id, playbookId)).limit(1);
+      const [playbook] = await db.select().from(playbooks2).where(eq61(playbooks2.id, playbookId)).limit(1);
       if (!playbook) return res.status(404).json({ message: "Playbook not found" });
       const isAuthenticated2 = !!req.userId;
       const baseScore = isAuthenticated2 ? 75 : 45;
@@ -62561,14 +62773,14 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1e3);
       const orgs = await db.select().from(orgsTable).where(ne2(orgsTable.name, "System")).orderBy(asc2(orgsTable.createdAt));
       const result = await Promise.all(orgs.map(async (org) => {
-        const [latestUser] = await db.select({ lastLoginAt: usersTable.lastLoginAt }).from(usersTable).where(eq60(usersTable.organizationId, org.id)).orderBy(desc31(usersTable.lastLoginAt)).limit(1);
-        const [det7] = await db.select({ c: count11() }).from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, sevenDaysAgo)));
-        const [det30] = await db.select({ c: count11() }).from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, thirtyDaysAgo)));
-        const [acts] = await db.select({ c: count11() }).from(paTable).where(eq60(paTable.organizationId, org.id));
-        const [contacts] = await db.select({ c: count11() }).from(scTable).where(eq60(scTable.organizationId, org.id));
+        const [latestUser] = await db.select({ lastLoginAt: usersTable.lastLoginAt }).from(usersTable).where(eq61(usersTable.organizationId, org.id)).orderBy(desc31(usersTable.lastLoginAt)).limit(1);
+        const [det7] = await db.select({ c: count11() }).from(tdTable).where(and39(eq61(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, sevenDaysAgo)));
+        const [det30] = await db.select({ c: count11() }).from(tdTable).where(and39(eq61(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, thirtyDaysAgo)));
+        const [acts] = await db.select({ c: count11() }).from(paTable).where(eq61(paTable.organizationId, org.id));
+        const [contacts] = await db.select({ c: count11() }).from(scTable).where(eq61(scTable.organizationId, org.id));
         let taskAcks = 0;
         try {
-          const [ta] = await db.select({ c: count11() }).from(taTable).where(and39(eq60(taTable.organizationId, org.id), gte17(taTable.acknowledgedAt, thirtyDaysAgo)));
+          const [ta] = await db.select({ c: count11() }).from(taTable).where(and39(eq61(taTable.organizationId, org.id), gte17(taTable.acknowledgedAt, thirtyDaysAgo)));
           taskAcks = Number(ta?.c ?? 0);
         } catch {
           taskAcks = 0;
@@ -62633,7 +62845,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app2.get("/api/compound-threats", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const threats = await db.select().from(compoundThreatAlerts).where(eq60(compoundThreatAlerts.organizationId, orgId)).orderBy(desc31(compoundThreatAlerts.detectedAt)).limit(20);
+      const threats = await db.select().from(compoundThreatAlerts).where(eq61(compoundThreatAlerts.organizationId, orgId)).orderBy(desc31(compoundThreatAlerts.detectedAt)).limit(20);
       res.json(threats);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62643,7 +62855,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.orgId;
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const triggers = await db.select().from(executiveTriggers).where(eq60(executiveTriggers.organizationId, orgId)).limit(100);
+      const triggers = await db.select().from(executiveTriggers).where(eq61(executiveTriggers.organizationId, orgId)).limit(100);
       const activeDomains = Array.from(new Set(triggers.filter((t) => t.isActive).map((t) => t.category)));
       const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
 
@@ -62686,7 +62898,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
           if (apiKey) {
             const { stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-            const contacts = await db.select().from(scTable).where(and39(eq60(scTable.organizationId, orgId), eq60(scTable.isActive, true)));
+            const contacts = await db.select().from(scTable).where(and39(eq61(scTable.organizationId, orgId), eq61(scTable.isActive, true)));
             const emails = contacts.map((c) => c.email).filter(Boolean);
             if (emails.length > 0) {
               const { Resend: Resend11 } = await import("resend");
@@ -62757,7 +62969,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   });
   app2.patch("/api/compound-threats/:id/dismiss", requireOrgAccess2, async (req, res) => {
     try {
-      await db.update(compoundThreatAlerts).set({ status: "dismissed" }).where(eq60(compoundThreatAlerts.id, req.params.id));
+      await db.update(compoundThreatAlerts).set({ status: "dismissed" }).where(eq61(compoundThreatAlerts.id, req.params.id));
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62766,7 +62978,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/roi/summary", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq60(playbookActivations.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq61(playbookActivations.organizationId, orgId));
       const completed = activations.filter((a) => a.completedAt && a.actualExecutionTime);
       const avgMinutes = completed.length ? Math.round(completed.reduce((s, a) => s + (a.actualExecutionTime || 0), 0) / completed.length) : 0;
       const industryBenchmark = 4320;
@@ -62774,7 +62986,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const valuePerMinute = 3472;
       const estimatedValuePreserved = Math.round(minutesSavedPerEvent * valuePerMinute * completed.length / 1e6);
       const targetMetCount = activations.filter((a) => a.targetMet).length;
-      const outcomes = await db.select().from(activationOutcomes).where(eq60(activationOutcomes.organizationId, orgId));
+      const outcomes = await db.select().from(activationOutcomes).where(eq61(activationOutcomes.organizationId, orgId));
       const actualCostTotal = outcomes.reduce((sum, o) => sum + parseFloat(o.actualCost || "0"), 0);
       const outcomeBreakdown = {
         contained: outcomes.filter((o) => o.outcomeClassification === "contained").length,
@@ -62802,8 +63014,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/roi/board-report", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq60(playbookActivations.organizationId, orgId)).orderBy(desc31(playbookActivations.activatedAt)).limit(50);
-      const outcomes = await db.select().from(activationOutcomes).where(eq60(activationOutcomes.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq61(playbookActivations.organizationId, orgId)).orderBy(desc31(playbookActivations.activatedAt)).limit(50);
+      const outcomes = await db.select().from(activationOutcomes).where(eq61(activationOutcomes.organizationId, orgId));
       const outcomeMap = new Map(outcomes.map((o) => [o.activationId, o]));
       const events = activations.map((a) => {
         const outcome = outcomeMap.get(a.id);
@@ -62831,7 +63043,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const { scenarioText } = req.body;
       if (!scenarioText) return res.status(400).json({ error: "scenarioText required" });
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId }).from(playbookLibrary).where(eq60(playbookLibrary.isActive, true)).limit(50);
+      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId }).from(playbookLibrary).where(eq61(playbookLibrary.isActive, true)).limit(50);
       const prompt = `You are a strategic execution AI for a startup to Fortune 500 company. Analyze this simulated scenario and score the company's readiness.
 
 SCENARIO: "${scenarioText}"
@@ -62871,7 +63083,7 @@ Respond as JSON: { "surviveScore": 72, "thriveScore": 45, "activatedPlaybooks": 
   });
   app2.get("/api/simulation-analyses", requireOrgAccess2, async (req, res) => {
     try {
-      const analyses = await db.select().from(simulationAnalyses).where(eq60(simulationAnalyses.organizationId, req.orgId)).orderBy(desc31(simulationAnalyses.createdAt)).limit(20);
+      const analyses = await db.select().from(simulationAnalyses).where(eq61(simulationAnalyses.organizationId, req.orgId)).orderBy(desc31(simulationAnalyses.createdAt)).limit(20);
       res.json(analyses);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62909,7 +63121,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         generated = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
       } catch {
       }
-      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: "complete" }).where(eq60(strategicRecordings.id, recording.id));
+      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: "complete" }).where(eq61(strategicRecordings.id, recording.id));
       res.json({ id: recording.id, generatedPlaybooks: generated, status: "complete" });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62917,7 +63129,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
   });
   app2.get("/api/strategic-recordings", requireOrgAccess2, async (req, res) => {
     try {
-      const recordings = await db.select().from(strategicRecordings).where(eq60(strategicRecordings.organizationId, req.orgId)).orderBy(desc31(strategicRecordings.createdAt)).limit(10);
+      const recordings = await db.select().from(strategicRecordings).where(eq61(strategicRecordings.organizationId, req.orgId)).orderBy(desc31(strategicRecordings.createdAt)).limit(10);
       res.json(recordings);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62971,7 +63183,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
   app2.get("/api/task-acknowledgments/:sessionId", async (req, res) => {
     try {
       const { sessionId } = req.params;
-      const acks = await db.select().from(taskAcknowledgments).where(eq60(taskAcknowledgments.sessionId, sessionId)).orderBy(asc2(taskAcknowledgments.acknowledgedAt));
+      const acks = await db.select().from(taskAcknowledgments).where(eq61(taskAcknowledgments.sessionId, sessionId)).orderBy(asc2(taskAcknowledgments.acknowledgedAt));
       res.json(acks);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -62996,7 +63208,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         playbookName: playbookLibrary.name,
         playbookDomainId: playbookLibrary.domainId,
         severityScore: playbookLibrary.severityScore
-      }).from(playbookActivations).leftJoin(playbookLibrary, eq60(playbookActivations.playbookId, playbookLibrary.id)).where(eq60(playbookActivations.organizationId, orgId)).orderBy(desc31(playbookActivations.activatedAt)).limit(50);
+      }).from(playbookActivations).leftJoin(playbookLibrary, eq61(playbookActivations.playbookId, playbookLibrary.id)).where(eq61(playbookActivations.organizationId, orgId)).orderBy(desc31(playbookActivations.activatedAt)).limit(50);
       const total = activations.length;
       const completed = activations.filter((a) => a.completedAt);
       const avgTime = completed.length ? Math.round(completed.reduce((s, a) => s + (a.actualExecutionTime || 12), 0) / completed.length) : null;
@@ -63028,7 +63240,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         return res.status(400).json({ error: "Please describe your scenario (minimum 10 characters)" });
       }
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId }).from(playbookLibrary).where(eq60(playbookLibrary.isActive, true)).limit(60);
+      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId }).from(playbookLibrary).where(eq61(playbookLibrary.isActive, true)).limit(60);
       const prompt = `You are a strategic execution AI for startup to Fortune 500 enterprises. A prospect has described a real threat their organization is facing. Score their execution readiness under TWO conditions.
 
 SCENARIO: "${scenarioText}"
@@ -63198,7 +63410,7 @@ We commit to full cooperation with any regulatory review.
       const orgs = await db.select({ id: orgsTable.id, name: orgsTable.name }).from(orgsTable);
       for (const org of orgs) {
         try {
-          const triggers = await db.select().from(etTable).where(eq60(etTable.organizationId, org.id)).limit(100);
+          const triggers = await db.select().from(etTable).where(eq61(etTable.organizationId, org.id)).limit(100);
           const activeDomains = Array.from(new Set(triggers.filter((t) => t.isActive).map((t) => t.category)));
           if (activeDomains.length < 2) continue;
           const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
@@ -63240,7 +63452,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           if (highConf.length > 0) {
             const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
             if (apiKey) {
-              const contacts = await db.select().from(scTable).where(and39(eq60(scTable.organizationId, org.id), eq60(scTable.isActive, true)));
+              const contacts = await db.select().from(scTable).where(and39(eq61(scTable.organizationId, org.id), eq61(scTable.isActive, true)));
               const emails = contacts.map((c) => c.email).filter(Boolean);
               if (emails.length > 0) {
                 const { Resend: Resend11 } = await import("resend");
@@ -63295,7 +63507,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/org/execution-timelines", requireOrgAccess2, async (req, res) => {
     try {
       const { executionTimelines: etTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const rows = await db.select().from(etTable).where(eq60(etTable.organizationId, req.orgId)).orderBy(desc31(etTable.detectedAt)).limit(50);
+      const rows = await db.select().from(etTable).where(eq61(etTable.organizationId, req.orgId)).orderBy(desc31(etTable.detectedAt)).limit(50);
       res.json(rows);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -63316,7 +63528,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         updates.firstTaskAcknowledgedAt = now;
       } else if (milestone === "completed") {
         updates.executionCompletedAt = now;
-        const [row] = await db.select().from(etTable).where(eq60(etTable.id, id));
+        const [row] = await db.select().from(etTable).where(eq61(etTable.id, id));
         if (row?.detectedAt) {
           const totalMs = now.getTime() - new Date(row.detectedAt).getTime();
           const totalMins = totalMs / 6e4;
@@ -63325,7 +63537,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           updates.status = "completed";
         }
       }
-      await db.update(etTable).set(updates).where(and39(eq60(etTable.id, id), eq60(etTable.organizationId, req.orgId)));
+      await db.update(etTable).set(updates).where(and39(eq61(etTable.id, id), eq61(etTable.organizationId, req.orgId)));
       res.json({ ok: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -63335,9 +63547,9 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { executionTimelines: etTable, playbookActivations: paTable, triggerDetections: tdTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const [timelines, activations, detections] = await Promise.all([
-        db.select().from(etTable).where(eq60(etTable.organizationId, req.orgId)),
-        db.select().from(paTable).where(eq60(paTable.organizationId, req.orgId)),
-        db.select().from(tdTable).where(eq60(tdTable.organizationId, req.orgId))
+        db.select().from(etTable).where(eq61(etTable.organizationId, req.orgId)),
+        db.select().from(paTable).where(eq61(paTable.organizationId, req.orgId)),
+        db.select().from(tdTable).where(eq61(tdTable.organizationId, req.orgId))
       ]);
       const completedTimelines = timelines.filter((t) => t.totalMinutes && t.speedMultiplier);
       const avgResponseMinutes = completedTimelines.length > 0 ? completedTimelines.reduce((s, t) => s + (t.totalMinutes || 0), 0) / completedTimelines.length : 12;
@@ -63367,10 +63579,10 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
       const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1e3);
       const [detections, timelines, activations, contacts] = await Promise.all([
-        db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, req.orgId), gte17(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(30),
-        db.select().from(etTable).where(eq60(etTable.organizationId, req.orgId)).orderBy(desc31(etTable.detectedAt)).limit(20),
-        db.select().from(paTable).where(eq60(paTable.organizationId, req.orgId)).limit(20),
-        db.select().from(scTable).where(and39(eq60(scTable.organizationId, req.orgId), eq60(scTable.isActive, true)))
+        db.select().from(tdTable).where(and39(eq61(tdTable.organizationId, req.orgId), gte17(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(30),
+        db.select().from(etTable).where(eq61(etTable.organizationId, req.orgId)).orderBy(desc31(etTable.detectedAt)).limit(20),
+        db.select().from(paTable).where(eq61(paTable.organizationId, req.orgId)).limit(20),
+        db.select().from(scTable).where(and39(eq61(scTable.organizationId, req.orgId), eq61(scTable.isActive, true)))
       ]);
       const TOTAL_DOMAINS = 9;
       const activeDomains = Array.from(new Set(detections.map((d) => d.triggerDomain).filter(Boolean)));
@@ -63405,8 +63617,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
       const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1e3);
       const [detections, contacts, recentActivity] = await Promise.all([
-        db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, req.orgId), gte17(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10),
-        db.select().from(scTable).where(eq60(scTable.organizationId, req.orgId)),
+        db.select().from(tdTable).where(and39(eq61(tdTable.organizationId, req.orgId), gte17(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10),
+        db.select().from(scTable).where(eq61(scTable.organizationId, req.orgId)),
         db.select().from(salTable).where(gte17(salTable.createdAt, threeDaysAgo)).orderBy(desc31(salTable.createdAt)).limit(20)
       ]);
       const signalsScanned72h = recentActivity.length;
@@ -63451,14 +63663,14 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const orgs = await db.select().from(orgsTable).where(ne2(orgsTable.name, "System"));
       for (const org of orgs) {
         try {
-          const contacts = await db.select().from(scTable).where(and39(eq60(scTable.organizationId, org.id), eq60(scTable.isActive, true)));
+          const contacts = await db.select().from(scTable).where(and39(eq61(scTable.organizationId, org.id), eq61(scTable.isActive, true)));
           const emails = contacts.map((c) => c.email).filter(Boolean);
           if (emails.length === 0) continue;
-          const detections = await db.select().from(tdTable).where(and39(eq60(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10);
-          const [actRow] = await db.select({ c: count11() }).from(paTable).where(and39(eq60(paTable.organizationId, org.id), gte17(paTable.activatedAt, sevenDaysAgo)));
+          const detections = await db.select().from(tdTable).where(and39(eq61(tdTable.organizationId, org.id), gte17(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc31(tdTable.detectedAt)).limit(10);
+          const [actRow] = await db.select({ c: count11() }).from(paTable).where(and39(eq61(paTable.organizationId, org.id), gte17(paTable.activatedAt, sevenDaysAgo)));
           let taskAcks = 0;
           try {
-            const [taRow] = await db.select({ c: count11() }).from(taTable).where(and39(eq60(taTable.organizationId, org.id), gte17(taTable.acknowledgedAt, sevenDaysAgo)));
+            const [taRow] = await db.select({ c: count11() }).from(taTable).where(and39(eq61(taTable.organizationId, org.id), gte17(taTable.acknowledgedAt, sevenDaysAgo)));
             taskAcks = Number(taRow?.c ?? 0);
           } catch {
             taskAcks = 0;
@@ -63611,12 +63823,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           const { triggerSignals: triggerSignals3, executiveTriggers: executiveTriggers3, playbookActivations: playbookActivations3, practiceDrills: practiceDrills2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
           const { count: countFn, avg: avg4 } = await import("drizzle-orm");
           const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-          const { eq: eq64, desc: desc32 } = await import("drizzle-orm");
-          const [sigRow] = await db2.select({ c: countFn() }).from(triggerSignals3).where(eq64(triggerSignals3.organizationId, orgId));
+          const { eq: eq65, desc: desc32 } = await import("drizzle-orm");
+          const [sigRow] = await db2.select({ c: countFn() }).from(triggerSignals3).where(eq65(triggerSignals3.organizationId, orgId));
           signalCount = Number(sigRow?.c ?? 52);
-          const [trigRow] = await db2.select({ c: countFn() }).from(executiveTriggers3).where(eq64(executiveTriggers3.organizationId, orgId));
+          const [trigRow] = await db2.select({ c: countFn() }).from(executiveTriggers3).where(eq65(executiveTriggers3.organizationId, orgId));
           triggerCount = Number(trigRow?.c ?? 231);
-          const [actRow] = await db2.select({ c: countFn() }).from(playbookActivations3).where(eq64(playbookActivations3.organizationId, orgId));
+          const [actRow] = await db2.select({ c: countFn() }).from(playbookActivations3).where(eq65(playbookActivations3.organizationId, orgId));
           activationCount = Number(actRow?.c ?? 0);
         } catch {
         }
@@ -63657,7 +63869,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const orgId = req.user?.organizationId;
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { playbookActivations: playbookActivations3, playbookLibrary: playbookLibrary2, organizations: organizations6 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq64, and: and41 } = await import("drizzle-orm");
+      const { eq: eq65, and: and41 } = await import("drizzle-orm");
       let activation = null;
       let playbook = null;
       let org = null;
@@ -63665,11 +63877,11 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         const [row] = await db2.select({
           activation: playbookActivations3,
           playbook: { name: playbookLibrary2.name, domain: playbookLibrary2.domainId }
-        }).from(playbookActivations3).leftJoin(playbookLibrary2, eq64(playbookActivations3.playbookId, playbookLibrary2.id)).where(eq64(playbookActivations3.id, id)).limit(1);
+        }).from(playbookActivations3).leftJoin(playbookLibrary2, eq65(playbookActivations3.playbookId, playbookLibrary2.id)).where(eq65(playbookActivations3.id, id)).limit(1);
         activation = row?.activation;
         playbook = row?.playbook;
         if (orgId) {
-          const [orgRow] = await db2.select().from(organizations6).where(eq64(organizations6.id, orgId)).limit(1);
+          const [orgRow] = await db2.select().from(organizations6).where(eq65(organizations6.id, orgId)).limit(1);
           org = orgRow;
         }
       } catch {
@@ -63939,6 +64151,143 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ success: false, error: err.message });
     }
   });
+  app2.post("/api/roi-calculator/email-report", async (req, res) => {
+    try {
+      const { email, companyName, industryLabel, totalAnnualValue, netAnnualValue, roiPct, threeYearValue, breakEvenDays, platformCost, shareUrl } = req.body;
+      if (!email || !industryLabel || typeof totalAnnualValue !== "number") {
+        return res.status(400).json({ success: false, error: "email, industryLabel, and totalAnnualValue are required" });
+      }
+      await db.insert(testDriveLeads).values({
+        email: email.trim().toLowerCase(),
+        companyName: companyName?.trim() || null,
+        scenarioId: "roi-calculator",
+        scenarioTitle: `[ROI Calculator] ${industryLabel}`,
+        completedTasks: 1,
+        totalTasks: 1
+      });
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) {
+        console.log(`[ROICalculator] No Resend key \u2014 lead stored without email for ${email}`);
+        return res.json({ success: true, emailSent: false });
+      }
+      const { Resend: Resend11 } = await import("resend");
+      const resend2 = new Resend11(apiKey);
+      const NAVY_R = "#0A0F2E";
+      const GOLD_R = "#C9A84C";
+      const TEAL_R = "#2B8A6E";
+      const fmtC = (n) => n >= 1e9 ? `$${(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `$${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `$${Math.round(n / 1e3)}K` : `$${Math.round(n)}`;
+      const breakEvenLabel = breakEvenDays < 30 ? `${breakEvenDays} days` : `${Math.round(breakEvenDays / 30)} months`;
+      const company = companyName ? ` for ${companyName}` : "";
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+        <body style="margin:0;padding:0;background:#f4f4f4;font-family:'Helvetica Neue',Arial,sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:32px 16px;">
+            <tr><td align="center">
+              <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
+                <tr><td style="background:${NAVY_R};padding:32px 40px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD_R};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
+                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Execution ROI Estimate${company}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">${industryLabel}</div>
+                </td></tr>
+                <tr><td style="height:3px;background:${GOLD_R};"></td></tr>
+                <tr><td style="padding:40px;">
+                  <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    Here is the personalized execution ROI estimate you configured \u2014 the projected annual value of compressing your mobilization cycle from 30 days to 12 minutes.
+                  </p>
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td colspan="3" style="padding:20px;background:#fefce8;border:1px solid #fde68a;text-align:center;">
+                        <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:6px;">Estimated Annual Value</div>
+                        <div style="font-size:34px;font-weight:700;color:${NAVY_R};">${fmtC(totalAnnualValue)}</div>
+                      </td>
+                    </tr>
+                    <tr><td colspan="3" height="8"></td></tr>
+                    <tr>
+                      <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${fmtC(netAnnualValue)}</div>
+                        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Net Annual Value</div>
+                      </td>
+                      <td width="8"></td>
+                      <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${roiPct?.toLocaleString?.() ?? roiPct}%</div>
+                        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">First-Year ROI</div>
+                      </td>
+                      <td width="8"></td>
+                      <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${breakEvenLabel}</div>
+                        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Break-Even</div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div style="padding:20px 24px;background:#f0faf6;border-left:4px solid ${TEAL_R};margin-bottom:28px;">
+                    <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
+                      3-year net value at ${fmtC(platformCost)}/yr platform investment: <strong>${fmtC(threeYearValue)}</strong>. That is the difference between mobilizing from scratch every time a strategic trigger fires, and executing from a pre-staged position in 12 minutes \u2014 a <strong>3,600\xD7 Execution Head Start</strong>.
+                    </p>
+                  </div>
+                  ${shareUrl ? `
+                  <p style="font-size:14px;font-weight:600;color:${NAVY_R};margin:0 0 8px;">Revisit your configuration anytime</p>
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td style="background:#f9fafb;border:1px solid #e5e7eb;padding:12px 16px;">
+                        <a href="${shareUrl}" style="font-size:13px;color:${TEAL_R};word-break:break-all;">${shareUrl}</a>
+                      </td>
+                    </tr>
+                  </table>` : ""}
+                  <p style="font-size:15px;font-weight:600;color:${NAVY_R};margin:0 0 8px;">Founding Partner Program</p>
+                  <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    Our team builds a fully evidenced business case specific to your organization's risk profile and strategic calendar.
+                  </p>
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td style="background:${NAVY_R};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD_R};text-decoration:none;">Apply for Founding Partner Access \u2192</a>
+                      </td>
+                    </tr>
+                  </table>
+                  <p style="font-size:12px;color:#9ca3af;line-height:1.6;margin:0;">
+                    VaughnMartin \xB7 Readiness OS<br>
+                    You received this because you used the ROI Calculator at readinessOS.replit.app<br>
+                    <a href="mailto:pilot@vaughnmartin.com" style="color:#9ca3af;">pilot@vaughnmartin.com</a>
+                  </p>
+                </td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </body>
+        </html>
+      `;
+      const fromAddresses = [
+        "Readiness OS <onboarding@resend.dev>",
+        "Readiness OS <pilot@vaughnmartin.com>"
+      ];
+      let sent = false;
+      for (const from of fromAddresses) {
+        try {
+          const { error } = await resend2.emails.send({
+            from,
+            replyTo: "pilot@vaughnmartin.com",
+            to: [email.trim()],
+            subject: `Your Execution ROI Estimate \u2014 ${industryLabel}`,
+            html
+          });
+          if (!error) {
+            sent = true;
+            break;
+          }
+          console.warn(`[ROICalculator] Sender ${from} rejected: ${error.message}`);
+        } catch (err) {
+          console.warn(`[ROICalculator] Sender ${from} threw: ${err.message}`);
+        }
+      }
+      console.log(`\u2705 [ROICalculator] Lead captured: ${email} \xB7 ${industryLabel} \xB7 email ${sent ? "sent" : "failed"}`);
+      res.json({ success: true, emailSent: sent });
+    } catch (err) {
+      console.error("[ROICalculator] Error:", err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
   app2.post("/api/custom-protocols", async (req, res) => {
     try {
       const userId = req.user?.id ?? null;
@@ -64181,10 +64530,10 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const { scoreProtocol: scoreProtocol2 } = await Promise.resolve().then(() => (init_ProtocolHealthService(), ProtocolHealthService_exports));
       const { playbookLibrary: playbookLibrary2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
+      const { eq: eq65 } = await import("drizzle-orm");
       const orgId = req.query.organizationId || req.user?.organizationId;
       if (!orgId) return res.status(400).json({ error: "organizationId required" });
-      const [protocol] = await db2.select().from(playbookLibrary2).where(eq64(playbookLibrary2.id, req.params.protocolId)).limit(1);
+      const [protocol] = await db2.select().from(playbookLibrary2).where(eq65(playbookLibrary2.id, req.params.protocolId)).limit(1);
       if (!protocol) return res.status(404).json({ error: "Protocol not found" });
       const score = await scoreProtocol2(protocol, orgId, {});
       res.json(score);
@@ -64217,7 +64566,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/organizations/:id/compound-score", requireOrgAccess2, async (req, res) => {
     try {
       const { preparationCompoundScores: pcs } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const rows = await db.select().from(pcs).where(eq60(pcs.organizationId, req.params.id)).limit(1);
+      const rows = await db.select().from(pcs).where(eq61(pcs.organizationId, req.params.id)).limit(1);
       if (rows.length === 0) {
         return res.json({ score: 0, totalCloseOuts: 0, totalUpdatesGenerated: 0, totalUpdatesApplied: 0, signalCalibrationsApplied: 0, ownershipAssignmentsApplied: 0, protocolSuggestionsGenerated: 0, monthsToRebuildOnCompetitor: 0, encodingTimeline: [] });
       }
@@ -64229,7 +64578,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/organizations/:id/preparation-updates", requireOrgAccess2, async (req, res) => {
     try {
       const { preparationUpdates: pu } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const rows = await db.select().from(pu).where(eq60(pu.organizationId, req.params.id)).orderBy(desc31(pu.createdAt)).limit(50);
+      const rows = await db.select().from(pu).where(eq61(pu.organizationId, req.params.id)).orderBy(desc31(pu.createdAt)).limit(50);
       res.json(rows);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64238,7 +64587,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.patch("/api/preparation-updates/:id/apply", requireOrgAccess2, async (req, res) => {
     try {
       const { preparationUpdates: pu } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [updated] = await db.update(pu).set({ status: "applied", appliedAt: /* @__PURE__ */ new Date() }).where(eq60(pu.id, req.params.id)).returning();
+      const [updated] = await db.update(pu).set({ status: "applied", appliedAt: /* @__PURE__ */ new Date() }).where(eq61(pu.id, req.params.id)).returning();
       try {
         const { recalculateCompoundScore: recalculateCompoundScore2 } = await Promise.resolve().then(() => (init_PreparationUpdateEngine(), PreparationUpdateEngine_exports));
         setImmediate(() => recalculateCompoundScore2(req.orgId));
@@ -64251,7 +64600,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   });
   app2.get("/api/organizations/:id/compound-threats", requireOrgAccess2, async (req, res) => {
     try {
-      const threats = await db.select().from(compoundThreatAlerts).where(and39(eq60(compoundThreatAlerts.organizationId, req.params.id), eq60(compoundThreatAlerts.status, "active"))).orderBy(desc31(compoundThreatAlerts.detectedAt)).limit(10);
+      const threats = await db.select().from(compoundThreatAlerts).where(and39(eq61(compoundThreatAlerts.organizationId, req.params.id), eq61(compoundThreatAlerts.status, "active"))).orderBy(desc31(compoundThreatAlerts.detectedAt)).limit(10);
       res.json(threats);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64329,12 +64678,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const { microsoftConnectors: _mc, ...schema } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { protocolVersionDeltas: protocolVersionDeltas2, updateHypotheses: updateHypotheses2, playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, and: and41, desc: desc32 } = await import("drizzle-orm");
-      const recentDeltas = await db2.select().from(protocolVersionDeltas2).where(eq64(protocolVersionDeltas2.organizationId, req.orgId)).orderBy(desc32(protocolVersionDeltas2.appliedAt)).limit(20);
+      const { eq: eq65, and: and41, desc: desc32 } = await import("drizzle-orm");
+      const recentDeltas = await db2.select().from(protocolVersionDeltas2).where(eq65(protocolVersionDeltas2.organizationId, req.orgId)).orderBy(desc32(protocolVersionDeltas2.appliedAt)).limit(20);
       const recentHypotheses = await db2.select().from(updateHypotheses2).where(
         and41(
-          eq64(updateHypotheses2.organizationId, req.orgId),
-          eq64(updateHypotheses2.status, "proven")
+          eq65(updateHypotheses2.organizationId, req.orgId),
+          eq65(updateHypotheses2.status, "proven")
         )
       ).orderBy(desc32(updateHypotheses2.provenAt)).limit(10);
       const feed = [
@@ -64366,8 +64715,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, desc: desc32 } = await import("drizzle-orm");
-      const rows = await db2.select().from(microsoftConnectors2).where(eq64(microsoftConnectors2.organizationId, req.orgId)).orderBy(desc32(microsoftConnectors2.createdAt));
+      const { eq: eq65, desc: desc32 } = await import("drizzle-orm");
+      const rows = await db2.select().from(microsoftConnectors2).where(eq65(microsoftConnectors2.organizationId, req.orgId)).orderBy(desc32(microsoftConnectors2.createdAt));
       res.json(rows);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64377,12 +64726,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, and: and41 } = await import("drizzle-orm");
+      const { eq: eq65, and: and41 } = await import("drizzle-orm");
       const { connectorType, displayName, config, status } = req.body;
       if (!connectorType || !displayName) return res.status(400).json({ error: "connectorType and displayName required" });
-      const [existing] = await db2.select().from(microsoftConnectors2).where(and41(eq64(microsoftConnectors2.organizationId, req.orgId), eq64(microsoftConnectors2.connectorType, connectorType))).limit(1);
+      const [existing] = await db2.select().from(microsoftConnectors2).where(and41(eq65(microsoftConnectors2.organizationId, req.orgId), eq65(microsoftConnectors2.connectorType, connectorType))).limit(1);
       if (existing) {
-        const [updated] = await db2.update(microsoftConnectors2).set({ displayName, config: config ?? existing.config, status: status ?? existing.status, updatedAt: /* @__PURE__ */ new Date() }).where(eq64(microsoftConnectors2.id, existing.id)).returning();
+        const [updated] = await db2.update(microsoftConnectors2).set({ displayName, config: config ?? existing.config, status: status ?? existing.status, updatedAt: /* @__PURE__ */ new Date() }).where(eq65(microsoftConnectors2.id, existing.id)).returning();
         return res.json(updated);
       }
       const [created] = await db2.insert(microsoftConnectors2).values({
@@ -64401,13 +64750,13 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
+      const { eq: eq65 } = await import("drizzle-orm");
       const updates = { updatedAt: /* @__PURE__ */ new Date() };
       if (req.body.status !== void 0) updates.status = req.body.status;
       if (req.body.config !== void 0) updates.config = req.body.config;
       if (req.body.authStatus !== void 0) updates.authStatus = req.body.authStatus;
       if (req.body.lastActivityAt !== void 0) updates.lastActivityAt = /* @__PURE__ */ new Date();
-      const [row] = await db2.update(microsoftConnectors2).set(updates).where(eq64(microsoftConnectors2.id, req.params.id)).returning();
+      const [row] = await db2.update(microsoftConnectors2).set(updates).where(eq65(microsoftConnectors2.id, req.params.id)).returning();
       res.json(row);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64417,8 +64766,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { microsoftEvents: microsoftEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, desc: desc32 } = await import("drizzle-orm");
-      const rows = await db2.select().from(microsoftEvents2).where(eq64(microsoftEvents2.organizationId, req.orgId)).orderBy(desc32(microsoftEvents2.processedAt)).limit(50);
+      const { eq: eq65, desc: desc32 } = await import("drizzle-orm");
+      const rows = await db2.select().from(microsoftEvents2).where(eq65(microsoftEvents2.organizationId, req.orgId)).orderBy(desc32(microsoftEvents2.processedAt)).limit(50);
       res.json(rows);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64446,8 +64795,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       }).returning();
       const { microsoftConnectors: microsoftConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { sql: sql27 } = await import("drizzle-orm");
-      const { eq: eq64 } = await import("drizzle-orm");
-      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql27`events_in_last_24h + 1` }).where(eq64(microsoftConnectors2.id, connectorId));
+      const { eq: eq65 } = await import("drizzle-orm");
+      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql27`events_in_last_24h + 1` }).where(eq65(microsoftConnectors2.id, connectorId));
       res.json(row);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64457,7 +64806,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { microsoftConnectors: microsoftConnectors2, microsoftEvents: microsoftEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, sql: sql27 } = await import("drizzle-orm");
+      const { eq: eq65, sql: sql27 } = await import("drizzle-orm");
       const { connectorId, connectorType, scenarioName } = req.body;
       const eventSets = {
         teams: [
@@ -64496,7 +64845,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         }).returning();
         inserted.push(row);
       }
-      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql27`events_in_last_24h + ${events.length}`, status: "connected" }).where(eq64(microsoftConnectors2.id, connectorId));
+      await db2.update(microsoftConnectors2).set({ lastActivityAt: /* @__PURE__ */ new Date(), eventsInLast24h: sql27`events_in_last_24h + ${events.length}`, status: "connected" }).where(eq65(microsoftConnectors2.id, connectorId));
       res.json({ simulated: inserted.length, events: inserted });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64506,10 +64855,10 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { certificationRecords: certificationRecords2, organizations: organizations6 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
-      let [record] = await db2.select().from(certificationRecords2).where(eq64(certificationRecords2.organizationId, req.orgId)).limit(1);
+      const { eq: eq65 } = await import("drizzle-orm");
+      let [record] = await db2.select().from(certificationRecords2).where(eq65(certificationRecords2.organizationId, req.orgId)).limit(1);
       if (!record) {
-        const [org] = await db2.select().from(organizations6).where(eq64(organizations6.id, req.orgId)).limit(1);
+        const [org] = await db2.select().from(organizations6).where(eq65(organizations6.id, req.orgId)).limit(1);
         const [created] = await db2.insert(certificationRecords2).values({
           organizationId: req.orgId,
           organizationName: org?.name ?? "Your Organization",
@@ -64529,10 +64878,10 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { certificationRecords: certificationRecords2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
+      const { eq: eq65 } = await import("drizzle-orm");
       const { phase, phaseData } = req.body;
       if (!phase) return res.status(400).json({ error: "phase required" });
-      const [existing] = await db2.select().from(certificationRecords2).where(eq64(certificationRecords2.organizationId, req.orgId)).limit(1);
+      const [existing] = await db2.select().from(certificationRecords2).where(eq65(certificationRecords2.organizationId, req.orgId)).limit(1);
       if (!existing) return res.status(404).json({ error: "Certification record not found" });
       const completed = Array.from(/* @__PURE__ */ new Set([...existing.completedPhases ?? [], Number(phase)]));
       const nextPhase = Math.min(Number(phase) + 1, 4);
@@ -64552,7 +64901,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         certificationNumber: certNum,
         expiresAt: expires,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq64(certificationRecords2.organizationId, req.orgId)).returning();
+      }).where(eq65(certificationRecords2.organizationId, req.orgId)).returning();
       res.json(updated);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64585,12 +64934,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { boardFeedback: boardFeedback2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64, desc: desc32, and: and41 } = await import("drizzle-orm");
+      const { eq: eq65, desc: desc32, and: and41 } = await import("drizzle-orm");
       const { member, pageUrl } = req.query;
       let query = db2.select().from(boardFeedback2).orderBy(desc32(boardFeedback2.createdAt));
       const conditions = [];
-      if (member) conditions.push(eq64(boardFeedback2.boardMember, member));
-      if (pageUrl) conditions.push(eq64(boardFeedback2.pageUrl, pageUrl));
+      if (member) conditions.push(eq65(boardFeedback2.boardMember, member));
+      if (pageUrl) conditions.push(eq65(boardFeedback2.pageUrl, pageUrl));
       if (conditions.length > 0) query = query.where(and41(...conditions));
       const rows = await query.limit(500);
       res.json(rows);
@@ -64602,11 +64951,11 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { boardFeedback: boardFeedback2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
+      const { eq: eq65 } = await import("drizzle-orm");
       const updates = {};
       if (req.body.status !== void 0) updates.status = req.body.status;
       if (req.body.founderNote !== void 0) updates.founderNote = req.body.founderNote;
-      const [row] = await db2.update(boardFeedback2).set(updates).where(eq64(boardFeedback2.id, req.params.id)).returning();
+      const [row] = await db2.update(boardFeedback2).set(updates).where(eq65(boardFeedback2.id, req.params.id)).returning();
       res.json(row);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64616,8 +64965,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { boardFeedback: boardFeedback2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
-      await db2.delete(boardFeedback2).where(eq64(boardFeedback2.id, req.params.id));
+      const { eq: eq65 } = await import("drizzle-orm");
+      await db2.delete(boardFeedback2).where(eq65(boardFeedback2.id, req.params.id));
       res.json({ ok: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64706,7 +65055,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     try {
       const { certificationRecords: certificationRecords2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { eq: eq64 } = await import("drizzle-orm");
+      const { eq: eq65 } = await import("drizzle-orm");
       await db2.update(certificationRecords2).set({
         currentPhase: 1,
         completedPhases: [],
@@ -64718,7 +65067,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         certifiedByUserId: null,
         expiresAt: null,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq64(certificationRecords2.organizationId, req.orgId));
+      }).where(eq65(certificationRecords2.organizationId, req.orgId));
       res.json({ ok: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -64774,7 +65123,7 @@ init_triggersSeed();
 // server/seeds/demoScenariosSeed.ts
 init_db();
 init_schema();
-import { eq as eq61, and as and40 } from "drizzle-orm";
+import { eq as eq62, and as and40 } from "drizzle-orm";
 var DEMO_SCENARIOS = [
   {
     name: "DEMO: Competitor Breakthrough Innovation Response",
@@ -65113,7 +65462,7 @@ var DEMO_SCENARIOS = [
 async function seedDemoScenarios() {
   console.log("\u{1F3AD} Seeding 5 Demo Scenarios with Full 4-Phase Configurations...");
   const org = await db.query.organizations.findFirst({
-    where: eq61(organizations.name, "Innovate Dynamics")
+    where: eq62(organizations.name, "Innovate Dynamics")
   });
   if (!org) {
     console.log("\u26A0\uFE0F  Default organization not found, skipping demo scenario seed");
@@ -65126,8 +65475,8 @@ async function seedDemoScenarios() {
   }
   const existingDemos = await db.query.strategicScenarios.findFirst({
     where: and40(
-      eq61(strategicScenarios.organizationId, org.id),
-      eq61(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
+      eq62(strategicScenarios.organizationId, org.id),
+      eq62(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
     )
   });
   if (existingDemos) {
@@ -65137,7 +65486,7 @@ async function seedDemoScenarios() {
   for (const demo of DEMO_SCENARIOS) {
     console.log(`\u251C\u2500 Creating demo: ${demo.name}`);
     const matchingPlaybook = await db.query.playbookLibrary.findFirst({
-      where: eq61(playbookLibrary.name, demo.playbook.name)
+      where: eq62(playbookLibrary.name, demo.playbook.name)
     });
     const [scenario] = await db.insert(strategicScenarios).values({
       organizationId: org.id,
@@ -65240,7 +65589,7 @@ async function seedDemoScenarios() {
 // server/seeds/enrichPlaybooksStartupSeed.ts
 init_db();
 init_schema();
-import { eq as eq62, isNull as isNull4 } from "drizzle-orm";
+import { eq as eq63, isNull as isNull4 } from "drizzle-orm";
 
 // server/seeds/data/enrichedPlaybooksData.json
 var enrichedPlaybooksData_default = [{ playbookNumber: 1, whyItMatters: "In VC-backed entrant situations, incumbents that publish a clear counter-position and tactical pricing response within 72 hours preserve win rates; enterprise SaaS benchmarks show competitive win-rate can drop 10\u201320 percentage points within one quarter when a new, heavily funded alternative is allowed to define the category narrative first. Across B2B funnels, first-touch speed matters: responding to competitive mentions in active opportunities within 1 hour can increase conversion 7x, while delaying beyond 24 hours commonly correlates with materially higher discounting (5\u201310% deeper concessions) and longer sales cycles (10\u201325%) once the challenger anchors price and roadmap expectations.", signalSources: ["Salesforce (or Dynamics) opportunity fields + call notes tagged with competitor name; sudden spike in competitor mentions in Stage 2\u20134 deals", "Gong/Chorus conversation intelligence: keyword alerts for entrant name, pricing claims, and \u201Cswitching\u201D language in customer/prospect calls", "6sense/Demandbase intent + G2 category traffic: abnormal lift in searches/reviews for entrant in your core segment and target account list", 'App/website analytics (Adobe/GA4) + SEM data: surge in comparison-page queries ("[Entrant] vs [Company]") and brand-conquest CPC changes'], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "Strategy Lead", items: ["Pull entrant dossier: funding round size/date, investors, hiring velocity, and target ICP from PitchBook/Crunchbase + LinkedIn headcount trend; summarize in 1-page brief", "Map entrant wedge: pricing page, packaging, integration claims, and 3 differentiators stated in launch materials; capture screenshots/URLs for legal-safe internal use", "Quantify exposure: list top 25 open opportunities + top 25 renewal accounts where entrant overlap is likely (industry/size/use case match) using CRM filters"], deadline: "T+4h", priority: "P0" }, { role: "Competitive Intel (Marketing Ops)", items: ["Set monitoring: alerts for entrant brand terms, comparison searches, and review activity; establish daily digest to Exec Team for next 14 days", "Collect field signal: request 10-min voice notes from 5 AEs and 3 CSMs on what buyers are repeating about entrant (claims, pricing, concerns)", "Spin up war-room doc: single source of truth with known facts, unknowns, and owner for each unknown; time-stamp updates"], deadline: "T+4h", priority: "P0" }], objective: "Confirm the entrant\u2019s actual offer, funding runway, and initial go-to-market wedge to prevent reacting to hype instead of facts.", timeWindow: "0-4h", decisionGate: { title: "Is this entrant an immediate revenue threat in our core segment?", criteria: ["Entrant targets the same ICP (industry + buyer persona) and advertises parity on 2+ must-have features", "At least 5 active deals or 3 renewal accounts show confirmed entrant mention in the last 7 days", "Entrant pricing undercuts by \u226515% on an apples-to-apples package or offers aggressive switching incentives"], escalation: "If 2+ criteria are met, CEO convenes 30-min decision huddle with CMO/CPO/Strategy to authorize Phase-2 actions and allocate up to $150k immediately from the pre-approved budget." }, restrictions: ["No outward-facing statements or social posts about the entrant until Legal and CEO approve; keep all intelligence factual and source-cited.", "Do not change public pricing/packaging in the first 4 hours; only prepare scenarios with modeled margin impact."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "CMO (with Sales Enablement)", items: ["Publish a 1-page battle card: entrant claims vs verified facts, 3 talk tracks, and 2 proof points (case stats, security/compliance, reliability) tailored to core segment", "Stand up competitive FAQ channel for AEs/CSMs with SLA: responses in <2 hours during business time; owner rotation defined", "Create pricing guardrails for deal desk: approved promo levers (term uplift, usage credits, add-on bundling) with maximum concession thresholds by segment"], deadline: "T+24h", priority: "P0" }, { role: "CPO (with Product + Ops)", items: ["Deliver a 90-day acceleration slate: 3 shippable enhancements that neutralize entrant wedge; include effort, dependency, and customer impact score", "Identify \u201Cnon-negotiables\u201D to defend: reliability/SLA, security controls, data migration, admin features\u2014produce a checklist Sales can use in competitive evaluations", "Define fast-track customer feedback loop: schedule 8 customer calls (mix of champions + at-risk) to validate what would trigger a switch and what keeps them"], deadline: "T+24h", priority: "P0" }], objective: "Arm frontline teams with a precise counter-position, controlled discounting rules, and a product credibility narrative tied to the next 90 days.", timeWindow: "4-24h", decisionGate: { title: "Do we trigger tactical pricing and messaging changes for the next 72 hours?", criteria: ["Win-rate risk quantified: pipeline at risk \u2265$2M ARR or \u226515% of current-quarter new ARR target", "At least 2 strategic accounts request competitive pricing match or cite entrant as procurement leverage", "CPO confirms at least 2 acceleration items can ship/launch within 30 days or be credibly previewed"], escalation: "If criteria met, Strategy Lead requests CEO approval to deploy up to $250k for targeted campaigns, competitive enablement, and product acceleration overtime/vendors." }, restrictions: ["No ad hoc discounting outside deal-desk rules; avoid setting a precedent that compresses renewals next quarter.", "Do not promise roadmap items without CPO sign-off and a dated delivery window; every promise must be logged in CRM."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "Marketing (Demand Gen Lead)", items: ["Launch comparison and proof assets: one \u201CWhy [Company] for [core use case]\u201D page and one competitor-neutral evaluation guide emphasizing measurable outcomes (uptime, TCO, time-to-value)", "Run a targeted capture campaign to the top 200 ICP accounts (ABM + LinkedIn + SEM): focus on your differentiator moat and switching-risk mitigations (migration, security, scale)", "Coordinate analyst/press briefing pack (no competitor mudslinging): position category, disclose customer evidence, and pre-brief likely questions about entrant"], deadline: "T+72h", priority: "P0" }, { role: "Operations (RevOps + Customer Success Ops)", items: ["Execute \u201Cprotect list\u201D motions: outreach to top 30 renewal accounts with a structured value recap and renewal-risk check; log reasons and competitor mentions", "Implement deal desk fast lane for competitive deals: same-day pricing approvals and pre-approved levers; track concession rate and competitor disposition in CRM", "Set churn/expansion watch: daily report for 14 days on NPS dips, support severity, and product usage decline among core segment accounts"], deadline: "T+72h", priority: "P0" }], objective: "Proactively shape buyer perception in the core segment with proof-led positioning, targeted competitive capture, and account-specific retention actions.", timeWindow: "24-72h", decisionGate: { title: "Do we escalate to a 30-day structural program (product + pricing + positioning) using the full $500k?", criteria: ["Competitive loss reason appears in \u226510% of closed-lost deals in the last 2 weeks or in \u22655 deals this week", "Retention risk: \u22653 core-segment accounts signal evaluation/switching within 90 days or request early termination discussions", "Campaign indicators show entrant traction: rising comparison searches and CPC inflation \u226520% on core keywords"], escalation: "If met, CEO approves Phase-4 program scope and assigns a single accountable owner (Strategy) with weekly exec reviews; remaining budget up to $500k is allocated across product acceleration, enablement, and targeted retention offers." }, restrictions: ["Do not reference the entrant by name in paid ads unless Legal approves trademark and comparison-language rules for your jurisdictions.", "No negative claims without documented evidence; keep all external messaging centered on your verifiable strengths and customer outcomes."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "Strategy (Program Owner)", items: ["Deliver segment strategy update: refreshed positioning statement, ICP refinement, and moat narrative supported by 3 quantified proof points from customer data", "Stand up ongoing competitive ops: monthly competitor scorecards, win/loss interviews (10 per month), and a maintained objection-handling repository tied to CRM fields", "Run margin + churn modeling to finalize pricing/packaging changes (if any): simulate 3 scenarios and select one with CEO/CMO/CPO sign-off"], deadline: "Day 30", priority: "P0" }, { role: "Product (Acceleration Squad Lead)", items: ["Ship the top 2 wedge-neutralizing improvements and publish release notes with customer-facing benefits mapped to core workflows", "Implement switching-friction reducers: improved onboarding, migration tooling, and admin controls that lower time-to-value and increase lock-in", "Create a 2-quarter roadmap narrative (not a promise list): themes, outcomes, and milestones for Sales/CS to use in strategic account reviews"], deadline: "Day 30", priority: "P0" }], objective: "Institutionalize a durable competitive moat through product differentiation, packaging/pricing resilience, and repeatable competitive operations.", timeWindow: "3-30d", decisionGate: null, restrictions: ["Avoid building entrant-clone features that dilute roadmap; every acceleration item must tie to measurable retention or win-rate lift in the core segment.", "Any pricing/packaging change must include a customer communication plan, renewal protection rules, and a CFO-reviewed margin impact model."] }], communicationAssets: [{ body: "Directors,\n\nA VC-backed startup has entered [Company]\u2019s core segment with a message focused on faster time-to-value and aggressive pricing. We have validated the launch assets, initial ICP targeting, and early field mentions, and we are treating this as a near-term win-rate and renewal-leverage risk. Within the next 24 hours we will deliver a verified competitor dossier, a sales battle card, and deal-desk pricing guardrails to prevent uncontrolled discounting. Within 72 hours we will deploy targeted ABM/SEM capture, publish proof-led evaluation content, and execute a protect-list retention motion for the top renewal accounts.\n\nWe have a pre-approved $500,000 budget; we will only release funds against defined triggers (pipeline/renewal exposure and observed loss reasons) and will report back with leading indicators at 12 hours and weekly for 30 days.\n\n\u2014 CEO/Strategy", type: "board_notification", subject: "Competitive Alert: VC-backed entrant launched into our core segment \u2014 72-hour response plan" }, { body: "Q1: \u201CThey\u2019re funded and cheaper\u2014why shouldn\u2019t we pick them?\u201D\nA1: Funding doesn\u2019t reduce your implementation, security, or operational risk. Anchor on outcomes: [Company] delivers proven uptime/SLA, audited security/compliance, and referenceable deployments in your exact segment. If price is the blocker, use approved levers (term uplift/credits/bundles) rather than lowering list\u2014so you keep flexibility at renewal.\n\nQ2: \u201CThey claim parity on features X and Y\u2014are we behind?\u201D\nA2: Ask for a live demo of X and Y in your workflow plus admin/security controls and migration steps; many entrants demo happy-path only. [Company] differentiates on production-grade scale, governance, and time-to-value tooling; we can also share a dated 90-day enhancement slate approved by Product for the specific gaps that matter in this use case.", type: "sales_battle_card", subject: null }], riskIndicators: { red: ["Two strategic accounts (top 20 ARR) issue competitive bake-off requirements or pricing match ultimatums tied to renewal dates", "Entrant becomes the #1 stated loss reason in weekly win/loss sampling or appears in \u226510% of closed-lost this week", "Gross margin impact forecast deteriorates by >2 points due to uncontrolled discounting or required concessions to hold renewals"], green: ["Competitive mentions are contained to <5% of active Stage 2\u20134 deals and do not increase week-over-week", "Concession rate on competitive deals remains within guardrails (no more than the pre-defined max by segment) while win-rate holds steady", "Top 30 renewal accounts complete value recap calls with no new switching evaluations initiated"], yellow: ["Comparison searches and CPC for core keywords rise 10\u201320% over baseline for 5 consecutive days", "Closed-lost notes cite entrant in \u22655 deals over two weeks, even if not primary loss reason", "CS reports 3+ customers asking for export/migration details or referencing entrant switching incentives"] }, outcomeFraming: { at30days: ["Win-rate in core segment is maintained or improved versus the prior 30-day baseline, with competitive losses explicitly tracked and addressed", "Two wedge-neutralizing product improvements shipped (or credibly previewed with dated milestones) and used in strategic account reviews", "Competitive operations are institutionalized: monthly scorecard, win/loss interview loop, and CRM fields enabling reliable competitor attribution"], at12hours: ["Entrant dossier completed with verified pricing, ICP, and wedge; unknowns have named owners and deadlines", "Protect list finalized (top opportunities + renewals) with assigned AE/CS owners and first outreach scheduled", "Draft battle card + pricing guardrails ready for CEO/CMO/CPO approval and distribution cadence set"], failureModes: ["Panic discounting outside deal desk creates a new price floor that compresses renewals and forces broader repricing", "Overreacting to entrant hype leads to cloning features that don\u2019t drive retention/wins, delaying core roadmap commitments", "Inconsistent field messaging (AEs/CSMs improvising claims) undermines credibility and increases security/procurement friction"] } }, { playbookNumber: 2, whyItMatters: "When an established Fortune 500 entrant launches, incumbent share shifts can occur within one buying cycle; in many B2B categories 50\u201370% of pipeline influenced by major brand announcements converts or stalls within 30\u201360 days. Partnership and positioning windows are short: competitive win-rate changes of 10\u201320 points are commonly observed after new-entry pricing/packaging moves, making first-week message discipline and counter-offers critical.", signalSources: ["Competitive intelligence feed (AlphaSense/Factiva) for SEC filings, press releases, earnings-call transcripts and analyst notes mentioning market entry, SKUs, pricing, and partnerships", "CRM + CPQ telemetry (Salesforce/HubSpot + deal desk) tracking competitor mentions, price-match requests, loss reasons, and discounting deltas by segment", "Digital demand signals (Similarweb/SEMrush + paid search logs) monitoring new brand keywords, landing pages, ad spend, and share-of-search by product category", "Customer/partner voice channels (support tickets, NPS verbatims, CSM call notes in Gong/Zoom transcripts) flagged for entrant mentions, churn risk language, and procurement RFP activity"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "Strategy (Tier 2) + CEO sponsor", items: ["Extract facts: entrant offerings, target segments, GTM model, stated differentiators, pricing signals, and partnership intent from primary sources", "Map overlap to our top 20 accounts and top 3 segments; estimate revenue-at-risk (ARR), pipeline-at-risk, and churn exposure", "Draft 3 options: partner-first, differentiate-and-defend, or hybrid; include assumptions and immediate actions"], deadline: "T+4h", priority: "lead" }, { role: "CFO (Tier 1) + Deal Desk", items: ["Set spend guardrails for the $500,000: max incentive/credits, legal/consulting cap, and marketing reallocation limits", "Approve temporary commercial levers: discount bands, term extensions, and price-protection policy for renewal cohort", "Define rapid ROI thresholds and reporting cadence for any spend within 72 hours"], deadline: "T+4h", priority: "required" }], objective: "Confirm entrant\u2019s scope and timing, quantify exposure by segment, and lock a 72-hour response plan within the $500,000 pre-approved budget.", timeWindow: "0-4h", decisionGate: { title: "Go/No-Go: Activate Market Defense Protocol", criteria: ["Entrant targets at least one of our top 2 segments and has credible distribution/brand advantage (e.g., existing enterprise relationships)", "Pipeline-at-risk exceeds 10% of next-quarter forecast or top-20 account overlap exceeds 5 accounts", "We can articulate a defensible differentiation angle in one sentence with supporting proof points within 24 hours"], escalation: "Escalate to CEO + Board Chair immediately if revenue-at-risk exceeds 15% of next-quarter forecast or if entrant announces below-market pricing." }, restrictions: ["No public statements, pricing changes, or customer communications without CEO + Legal approval.", "No commitments to exclusivity, MFN, or data-sharing in any partnership discussion without Board notification."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "Product (Tier 2) + Operations", items: ["Define differentiation package: 3 capability proof points, roadmap accelerations (\u226490 days), and service-level commitments we can stand behind", "Create a fast-track retention offer framework: onboarding support, migration assistance, and performance guarantees for renewal cohort", "Prepare operational capacity plan for expected spikes in demos, POCs, and customer escalations"], deadline: "T+24h", priority: "lead" }, { role: "Marketing (Tier 2) + Strategy", items: ["Publish internal positioning brief: who we win against, why now, and competitor-neutral messaging aligned to differentiation", "Stand up account-based defense lists (top 20 accounts + lookalikes) and draft targeted enablement assets for Sales/CS", "Build partnership target list (5-8 candidates) including the entrant plus complementary ecosystems; define outreach scripts and objectives"], deadline: "T+24h", priority: "required" }], objective: "Equip teams with a unified narrative, targeted defenses for exposed accounts, and a partnership exploration plan with clear redlines.", timeWindow: "4-24h", decisionGate: { title: "Choice Point: Partner-Track vs Defend-Only", criteria: ["Partnership offers a credible channel expansion or integration advantage within 90 days without diluting differentiation", "Legal/commercial redlines are workable: no exclusivity, limited data access, and clear customer ownership terms", "Defend-only path can sustain win-rate and renewal rates with approved levers and capacity"], escalation: "Escalate to Board + CFO if partnership requires material revenue share, bundling that impacts gross margin >3 points, or any equity discussion." }, restrictions: ["No negative selling or unverified claims about the entrant; all comparisons must be evidence-based and reviewable.", "No roadmap commitments to customers beyond approved deliverables and resourced timelines."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "CEO (Tier 1) + Strategy", items: ["Conduct executive outreach to top 10 at-risk accounts: reaffirm commitments, share proof points, and secure next-step dates", "Initiate partnership exploration with entrant and 2 ecosystem alternatives; set agenda: integration, co-sell boundaries, and pilot criteria", "Approve a 72-hour market message: customer outcomes, reliability, and specialization; ensure alignment across channels"], deadline: "T+72h", priority: "lead" }, { role: "Marketing + Product (Tier 2)", items: ["Launch targeted campaigns for defended segments: case studies, ROI calculator, and competitive-neutral webinars", "Deploy sales enablement updates: objection handling, pricing guidance, and technical differentiation demo path", "Stand up rapid feedback loop: daily win/loss reasons, competitor pricing intel, and customer sentiment dashboard"], deadline: "T+72h", priority: "required" }], objective: "Stabilize customers and pipeline, initiate partnership discussions where advantageous, and execute differentiation and defense in-market.", timeWindow: "24-72h", decisionGate: { title: "Scale Decision: Expand Spend and Commit Resources", criteria: ["Early indicators show stabilizing: renewal save rate \u2265 baseline and no increase in late-stage deal slippage beyond 10%", "Differentiation message resonates: demo-to-proposal conversion improves or holds versus previous 2-week average", "Partnership talks yield a concrete pilot proposal (scope, timeline, governance) or a clear negative decision with rationale"], escalation: "Escalate to Board if additional funding above $500,000 is required or if entrant triggers a price war impacting margin targets." }, restrictions: ["No public partnership announcement or logo usage without signed agreement and Board-notified risk review.", "Discounting must stay within CFO-approved bands and include documented rationale tied to retention or strategic accounts."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "Strategy (Tier 2) + Board oversight", items: ["Complete market defense program: segment strategy, updated ICP, channel strategy, and competitive response playbooks", "Finalize partnership decision(s): pilot results, governance model, and commercial terms; document a walk-away position", "Run a post-mortem on first 30 days: wins/losses, pricing pressure, churn drivers, and corrective actions"], deadline: "Day 30", priority: "lead" }, { role: "Product + Operations (Tier 2)", items: ["Deliver 1-2 high-impact differentiation releases or service upgrades tied to defended segments and measurable outcomes", "Implement customer retention system: churn risk scoring, executive sponsor program, and SLA escalation paths", "Update enablement and process: competitive intel capture in CRM, standardized objection tags, and monthly competitor review cadence"], deadline: "Day 30", priority: "required" }], objective: "Institutionalize market defense, finalize partnership outcomes, and harden differentiation through product, operations, and commercial systems.", timeWindow: "3-30d", decisionGate: null, restrictions: ["Any long-term pricing/packaging changes require CFO approval and Board notification if margin impact exceeds plan thresholds.", "Any integration that touches customer data requires security, privacy, and compliance review before execution."] }], communicationAssets: [{ body: "Today a Fortune 500 company publicly announced entry into our market with initial positioning, distribution advantages, and potential pricing pressure. We have validated the announcement sources and are quantifying overlap across our top segments and top accounts; initial focus is renewals and late-stage pipeline over the next 30\u201360 days. We are activating a 72-hour plan: (1) account stabilization outreach, (2) differentiation proof points and rapid enablement, and (3) partnership exploration with clear redlines (no exclusivity/MFN). We will operate within the $500,000 pre-approved budget and provide an update in 24 hours with quantified revenue-at-risk, recommended posture, and any escalations.", type: "board_notification", label: "Board Alert: Fortune 500 Entrant \u2014 72-Hour Defense + Partnership Track", timing: "Within 6 hours of trigger confirmation", subject: "[Company] Market Dynamics Alert: Fortune 500 entrant announced entry \u2014 exposure and 72-hour plan" }, { body: "Q: \u201CWhy should we stay with [Company] now that a Fortune 500 brand entered?\u201D\nA: \u201CBecause [Company] is specialized for your use case with proven outcomes: (1) fastest time-to-value in our category, (2) reliability and support SLAs tailored to your workflows, and (3) measurable ROI backed by references in your industry. We\u2019ll also offer a transition-safe plan: price protection through renewal and executive sponsorship to remove delivery risk.\u201D\n\nQ: \u201CWill you match their pricing or bundle?\u201D\nA: \u201CWe can be commercially flexible for strategic accounts within approved bands, but we won\u2019t trade away outcomes. If pricing is the main concern, we\u2019ll structure a package with performance guarantees, phased rollout, and services credits so you get a lower-risk path while keeping long-term total cost and adoption in check.\u201D", type: "sales_battle_card", label: "Entrant Response Card: Defend, Differentiate, and Explore Partnerships", timing: "Ready for Sales/CS within 24 hours; refresh daily for 7 days", subject: null }], riskIndicators: { red: ["Churn signals spike: top-20 accounts initiate RFPs, competitive bake-offs, or termination-for-convenience reviews", "Entrant launches aggressive undercut pricing or bundling that compresses our gross margin >3 points to compete", "Key partner or distributor indicates intent to prioritize entrant, limiting our access to enterprise buyers"], green: ["Win-rate and renewal save rate hold within \xB15% of baseline despite entrant mention rates increasing", "Entrant appears focused on adjacent segment or limited geography/channel with no direct overlap to top accounts", "We secure customer reaffirmations: \u226570% of top 10 at-risk accounts schedule next steps within 7 days"], yellow: ["Late-stage deals show >10% increase in slippage or procurement requests referencing entrant pricing/terms", "Support/NPS verbatims show rising concern about vendor viability or roadmap parity", "Entrant announces major channel partnership (e.g., hyperscaler/GSIs) that intersects our primary routes to market"] }, outcomeFraming: { at30days: ["Renewal cohort stabilized and competitive win-rate defended through differentiation, proof points, and disciplined offers", "Partnership decision reached: pilot launched with clear governance or formally declined with alternative ecosystem moves executed", "Structural improvements delivered: updated ICP/positioning, faster release or service upgrades, and continuous competitive sensing embedded in CRM"], at12hours: ["Confirmed entrant scope, segments, and likely GTM; quantified initial exposure (ARR + pipeline) and top at-risk accounts list", "CEO/CFO-approved defense levers and budget guardrails activated; no uncontrolled discounting or messaging drift", "Partner exploration plan defined with redlines and outreach targets; internal narrative ready for enablement"], failureModes: ["Slow, inconsistent response leads to uncontrolled discounting and margin erosion without improving retention or win-rate", "Messaging becomes reactive or negative, undermining trust and increasing churn/RFP volume among enterprise buyers", "Partnership talks proceed without redlines, causing data/commercial risk or channel conflict that weakens long-term differentiation"] } }, { playbookNumber: 3, whyItMatters: "In B2B SaaS competitive-displacement deals, win rates commonly swing 10\u201320 percentage points based on first-response enablement and narrative control within the first 48\u201372 hours. Industry benchmarks also show 5\u201310% of at-risk ARR can be exposed within 30 days of a feature-parity announcement unless retention outreach and roadmap proof points are delivered quickly and consistently.", signalSources: ["Competitive intelligence feed (Crayon/Klue) with automated alerts for launch pages, release notes, pricing, and comparison pages", "G2/Gartner Peer Insights/TrustRadius review monitoring for sudden review volume spikes and feature mentions tied to the launch", "Salesforce/CRM field intel + Gong/Chorus call keyword alerts for competitor product name and newly claimed parity features", "Web analytics and SEO monitoring (GA4/Search Console/Ahrefs) for branded search shifts, comparison-keyword rank changes, and traffic to cancellation/pricing pages"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "CPO", items: ["Run parity diff: map competitor claims to [Company] requirements, edge cases, integrations, and enterprise controls; label each as true parity/partial/marketing claim", "Identify 3 acceleration candidates that defend the most revenue (top differentiators customers buy) and estimate effort with CTO", "Define a customer-safe positioning statement: what is still differentiated, what is coming, and what is not a priority"], deadline: "T+4h", priority: "lead" }, { role: "CMO", items: ["Draft rapid messaging pivot: update talk track to outcome-led differentiation (reliability, TCO, compliance, ecosystem) and remove feature-checklist framing", "Pull top 20 open opps and top 50 renewal accounts to tag as high-risk and assign comms owners with Sales/CS", "Prepare internal FAQ + competitor-claim rebuttals with evidence links (docs, benchmarks, customer logos, security attestations)"], deadline: "T+4h", priority: "required" }], objective: "Confirm the competitor\u2019s actual capabilities versus claims, quantify exposure by segment, and align Tier-1 leaders on a single working narrative and response plan.", timeWindow: "0-4h", decisionGate: { title: "Parity Reality Check & Exposure Classification", criteria: ["At least 80% of competitor claims categorized (true/partial/false) with cited evidence", "Exposure quantified: ARR at risk by segment (new biz, expansion, renewals) with top 10 accounts named", "Single approved narrative and field talk track distributed to Sales leadership"], escalation: "If exposure exceeds $2M ARR or parity is confirmed on 2+ core differentiators, escalate to CEO and call an emergency Tier-1 meeting within 2 hours to authorize acceleration scope and pricing/packaging changes." }, restrictions: ["No public statements that directly name the competitor or make unverifiable performance/security claims without Legal review.", "No roadmap commitments to specific dates for enterprise customers until CTO confirms feasibility and Ops confirms capacity."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "CTO", items: ["Produce a 30/60/90 engineering plan: 2 quick wins, 1 medium initiative, and 1 strategic differentiator; include staffing and dependencies", "Stand up a tiger team with daily standup, release train, and rollback plan; define metrics (cycle time, defect escape, adoption)", "Validate feasibility and risks for any public roadmap statements; align with CPO on what can be promised as 'in progress' vs 'planned'"], deadline: "T+24h", priority: "lead" }, { role: "Sales", items: ["Deploy updated battle card and talk track; run a 30-minute mandatory enablement for AEs/SEs handling competitive deals", "Launch account save plays: top 50 renewals get executive outreach + proof assets; top 20 competitive opps get solution workshop offers", "Create discount/terms guardrails and approval path; track all competitor-driven concessions in CRM with reason codes"], deadline: "T+24h", priority: "required" }], objective: "Enable the field, lock an acceleration plan within the $500,000 budget, and launch targeted retention motions for at-risk accounts.", timeWindow: "4-24h", decisionGate: { title: "Acceleration Scope & Retention Motion Go/No-Go", criteria: ["Tier-1 approves acceleration backlog with budget allocation and delivery owners", "Field enablement delivered and CRM tagging live for competitor-threat tracking", "Top at-risk accounts have named exec sponsors and outreach scheduled within 24 hours"], escalation: "If engineering capacity cannot deliver at least 2 quick wins within 30 days, escalate to CPO/CTO to approve temporary contractors or deprioritize current roadmap items within 12 hours." }, restrictions: ["Use the $500,000 only for acceleration and retention motions that directly protect near-term ARR; no broad brand campaigns.", "All concessions (price, terms, free services) require Sales leader approval and must be logged with expected ARR impact."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "CMO", items: ["Ship updated website and sales collateral: differentiation page, competitor-neutral comparison framework, and customer proof points", "Publish a product update post or webinar invite focused on outcomes and enterprise requirements; include 'what\u2019s new' and 'what\u2019s next' with safe language", "Launch targeted customer comms to admins/champions for at-risk segments emphasizing stability, security, integrations, and support advantages"], deadline: "T+72h", priority: "lead" }, { role: "CPO", items: ["Run customer advisory mini-sessions (5\u201310 key accounts) to validate which parity items matter and refine acceleration priorities", "Deliver a concise roadmap snapshot for Sales/CS with confidence levels and customer impact statements", "Define packaging or bundle adjustments (where allowed) to preserve differentiation and reduce feature-checklist comparisons"], deadline: "T+72h", priority: "required" }], objective: "Control the market narrative without over-claiming, prove momentum through tangible artifacts, and prevent churn by showing clear differentiation and near-term delivery.", timeWindow: "24-72h", decisionGate: { title: "Market Narrative & Account Risk Stabilization", criteria: ["External assets updated and distributed; customer comms sent to all tagged high-risk accounts", "At least 70% of high-risk accounts have two-way engagement (call, workshop, or exec response) within 72 hours", "Competitive pipeline and renewal risk trends reviewed; mitigation actions assigned for any account with elevated churn probability"], escalation: "If churn risk spikes (e.g., 3+ strategic accounts request termination or competitor bake-off within 72 hours), escalate to CEO and authorize an executive-led retention task force and tailored commercial packages." }, restrictions: ["No head-to-head competitive ads or negative messaging; keep communications competitor-neutral and evidence-based.", "Do not announce delivery dates unless already in active development with committed capacity and release criteria."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "Operations", items: ["Implement a recurring competitive war-room cadence (weekly) with dashboards: win/loss, concessions, churn risk, and feature delivery progress", "Create a closed-loop system from field intel to product decisions: standardized intake, triage SLA, and feedback to Sales/CS", "Audit onboarding/support capacity to ensure retention motions don\u2019t degrade SLAs; add temporary coverage if needed within budget"], deadline: "Day 30", priority: "lead" }, { role: "Strategy", items: ["Update competitive landscape and positioning: where parity is acceptable vs where [Company] must lead; define 2 defensible moats", "Quantify ROI of acceleration spend: ARR protected, win-rate changes, CAC payback impact, and roadmap trade-offs", "Recommend next-quarter moves: partnerships/integrations, pricing/packaging refinement, and differentiated enterprise features"], deadline: "Day 30", priority: "required" }], objective: "Deliver accelerated features, institutionalize competitive response, and harden differentiation through product, operations, and go-to-market systems.", timeWindow: "3-30d", decisionGate: null, restrictions: ["No new long-term programs without identifying roadmap trade-offs and an owner for ongoing operating cadence.", "All lessons learned must be codified into enablement, product planning, and customer success playbooks within 30 days."] }], communicationAssets: [{ body: "Today a primary competitor launched a product positioned as matching [Company]\u2019s core capabilities. We have verified initial claims, identified which items are true parity versus partial/marketing claims, and quantified near-term exposure across pipeline and renewals. We are executing a 72-hour plan: (1) accelerate two high-impact deliverables and lock a 30/60/90 roadmap, (2) pivot messaging to outcomes, enterprise readiness, and proven customer results, and (3) run targeted retention outreach to top at-risk accounts with executive sponsorship. We will report daily on win/loss shifts, concession levels, churn signals, and delivery progress.", type: "board_notification", label: "Board Alert: Competitor Feature-Parity Launch Response Plan", timing: "Send within 6 hours of trigger; update at 48 hours", subject: "[Company] competitive response: feature-parity launch and 72-hour stabilization plan" }, { body: "Q: The competitor now has the same core features\u2014why choose [Company]?\nA: Feature lists don\u2019t equal outcomes. [Company] differentiates on enterprise-grade reliability, security/compliance, integrations and admin controls, faster time-to-value, and proven production references; we can show evidence (customer proof, certifications, support SLAs) and a clear near-term roadmap for the few parity gaps that matter.\n\nQ: Should I ask for a discount because of parity?\nA: We will compete, but we won\u2019t trade away long-term value. Use the approved package/terms guardrails, focus on quantifiable ROI (reduced risk, lower operational overhead, faster deployment), and escalate exceptions through Sales leadership with a documented competitor threat and expected ARR impact.", type: "sales_battle_card", label: "Competitive Parity Launch: Field Q&A Card", timing: "Distribute within 12 hours; refresh at 72 hours", subject: null }], riskIndicators: { red: ["Two or more strategic accounts (top 20 by ARR) signal intent to churn or issue formal competitive RFP within 14 days", "Competitive win/loss swings >15 percentage points against the competitor across targeted segments", "Roadmap commitments are missed or quality incidents occur due to acceleration (P1 incidents or rollback events)"], green: ["Win rates in competitive deals remain stable (\xB15%) and concessions do not increase week-over-week", "At-risk renewals show normal engagement and no increase in cancellation/pricing-page traffic", "Engineering delivers at least one quick-win improvement to production with positive early adoption"], yellow: ["3\u20135 key accounts request side-by-side comparisons or bake-offs within one week", "Discounting or free-service requests increase materially and require repeated approvals", "Inbound leads and branded search shift toward comparison terms; demo-to-close cycle lengthens"] }, outcomeFraming: { at30days: ["Two accelerated improvements shipped; measurable reduction in competitor-driven objections on calls and in win/loss notes", "Renewal churn remains within plan; churn drivers categorized and mitigations embedded into CS motions", "Competitive response system operational: dashboards, intake SLAs, enablement refresh cadence, and updated positioning"], at12hours: ["Single approved narrative and talk track in the field; top exposure accounts identified and assigned owners", "Validated parity matrix (claims vs reality) with evidence and a prioritized acceleration shortlist", "Retention outreach underway for top renewals and competitive opportunities with exec sponsorship"], failureModes: ["Public over-commitment to roadmap dates creates credibility loss and increases churn when delivery slips", "Uncontrolled discounting compresses margins without improving win rates, setting a precedent for future renewals", "Acceleration trades off quality, causing incidents that erase differentiation and validate competitor messaging"] } }, { playbookNumber: 4, whyItMatters: "In enterprise tech categories, independent win/loss benchmarks show 60\u201370% of competitive deals are influenced by perceived product leadership, and a high-profile breakthrough launch can swing pipeline sentiment within days. Analyst and social coverage peaks in the first 48 hours; companies that publish a credible technical position and customer impact narrative within 24 hours typically reduce competitive FUD-driven stall rates by ~20\u201330% compared with teams that respond after the first week.", signalSources: ["Competitive intelligence feed (Crunchbase/CB Insights + vendor press release and SEC filings monitor) with keyword alerts for core technology claims", "Analyst relations channel (Gartner/Forrester/IDC inquiry notes + briefing invites) tagged to competitor and category", "Salesforce CRM telemetry (opportunity stage regression, competitor field, churn risk flags) with real-time Slack/Teams alerts", "Digital listening + PR monitoring (Brandwatch/Meltwater + Reddit/Hacker News + LinkedIn) tracking share-of-voice and claim propagation"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "CTO", items: ["Stand up rapid technical review: parse announced claims, benchmarks, patents, architecture hints, and required dependencies", "Define test plan: minimum reproducible evaluation (datasets, workloads, security/compliance constraints, performance metrics)", "Deliver a 1-page technical confidence rating (credible/partial/marketing) and likely time-to-parity scenarios"], deadline: "T+4h", priority: "lead" }, { role: "Head of Strategy", items: ["Run exposure scan: top 20 open opportunities + top 20 renewal accounts mapped to competitor presence and decision timeline", "Model impact bands: best/base/worst on pipeline conversion, ASP pressure, and churn risk over next 90 days", "Draft decision brief for Tier-1: what changed, who is at risk, and initial response options within $500k"], deadline: "T+4h", priority: "required" }], objective: "Validate the competitor\u2019s breakthrough claims and quantify immediate revenue risk across active deals and at-risk customers.", timeWindow: "0-4h", decisionGate: { title: "Is the breakthrough credible and material to near-term revenue?", criteria: ["CTO rates claims as credible/likely based on available evidence and feasibility", "\u226510% of next-2-quarter pipeline or \u22655% of renewals show direct competitive pressure", "There is a plausible path to respond via repositioning, partnership, or accelerated R&D within 30 days"], escalation: "If credible AND material, CEO convenes Tier-1 within 2 hours for go/no-go on response track and budget release." }, restrictions: ["No public or customer-facing statements until legal/PR review and Tier-1 alignment on claim posture.", "Do not reprioritize R&D work or commit roadmap dates without CPO/CTO joint sign-off."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "CPO", items: ["Create feature/benefit delta map: competitor claims vs [Company] capabilities, including non-feature differentiators (TCO, reliability, compliance)", "Define the pivot backlog: 3 candidate initiatives (accelerate, partner, acquire/build) with effort, risk, and expected customer value", "Set internal guidance: what we will/won\u2019t promise; interim roadmap language for Sales and CSM"], deadline: "T+24h", priority: "lead" }, { role: "VP Marketing", items: ["Produce messaging hierarchy: acknowledge market shift, reinforce [Company] advantages, and neutralize competitor FUD with proof points", "Draft sales enablement pack: battle card, objection handling, talk track, and competitive FAQ for SEs", "Prepare analyst brief outline and PR holding statement pending Tier-1 approval"], deadline: "T+24h", priority: "required" }], objective: "Align executives on a technical position, a customer-impact narrative, and immediate commercial countermeasures for active deals.", timeWindow: "4-24h", decisionGate: { title: "Commit response track and allocate the pre-approved $500k", criteria: ["Tier-1 agrees on the primary posture: (A) parity acceleration, (B) reposition to adjacent value, or (C) partner/buy strategy", "Named owners and weekly milestones are assigned for the next 30 days with measurable outputs", "Budget split is approved (e.g., evaluation/prototype, enablement/PR, partner diligence) with procurement path confirmed"], escalation: "If no alignment by T+24h, escalate to Board Chair for an emergency session and temporary freeze on discretionary roadmap changes." }, restrictions: ["No disparagement or unverified counter-claims; only evidence-based comparisons and customer outcomes.", "All sales messaging must match the approved technical confidence rating and approved roadmap language."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "CEO", items: ["Approve and deliver top-customer outreach plan: top 10 accounts get executive calls with the agreed narrative and next steps", "Conduct analyst briefing: share [Company] position, evaluation plan, and near-term commitments without overpromising", "Authorize competitive offer levers for active deals (terms, pilots, services) within guardrails"], deadline: "T+72h", priority: "lead" }, { role: "Head of Sales", items: ["Launch deal-room protocol: red-flag opportunities, SE support, and win-plan templates for competitor-involved deals", "Track and report daily: stage movement, stall reasons, objection themes, and pricing pressure tied to competitor launch", "Deploy customer proof: reference calls, benchmarks, and case studies mapped to competitor claims"], deadline: "T+72h", priority: "required" }], objective: "Stabilize pipeline and customer confidence while shaping market perception with a credible, defensible response.", timeWindow: "24-72h", decisionGate: { title: "Do we need a major repositioning or structural move (partnership/M&A) now?", criteria: ["Pipeline impact remains elevated (e.g., \u226515% of late-stage deals stalled due to competitor claim) after enablement rollout", "Technical evaluation indicates parity would exceed 2 quarters or requires non-trivial platform changes", "There is a credible partner or acquisition target that closes the gap faster than internal build"], escalation: "If criteria met, CEO requests Board authorization for expanded spend beyond $500k and initiates formal partner/M&A process." }, restrictions: ["No bespoke discounts beyond approved thresholds; protect long-term pricing integrity and renewal baselines.", "Customer commitments must be backed by an executable plan; avoid announcing dates tied to unproven engineering work."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "CTO", items: ["Deliver technical artifact: benchmark results, prototype, or integration demonstrating response path and performance targets", "Rebaseline engineering plan: staffing, dependencies, and risk register with weekly executive checkpoints", "Implement competitive telemetry: ongoing monitoring, regression tests, and quarterly tech scans to prevent repeat surprises"], deadline: "Day 30", priority: "lead" }, { role: "COO", items: ["Operationalize GTM changes: packaging, enablement cadence, support readiness, and rollout to regions/segments", "Update financial plan: margin impact, services capacity, and cost controls to stay within approved spend unless reauthorized", "Stand up customer retention program: targeted success plans for at-risk accounts with measurable adoption outcomes"], deadline: "Day 30", priority: "required" }], objective: "Execute the selected R&D pivot and market repositioning, proving progress with measurable artifacts and updated GTM motions.", timeWindow: "3-30d", decisionGate: null, restrictions: ["No release commitments without security, compliance, and reliability sign-offs aligned to enterprise customer requirements.", "Avoid parallel major pivots; enforce single-threaded ownership on the chosen response track to prevent dilution."] }], communicationAssets: [{ body: "Today a key competitor announced a technology they claim materially improves performance and cost in our core category. We initiated a rapid technical assessment led by the CTO and a revenue exposure scan across top pipeline and renewals. Early indicators: credibility rating pending validation tests; initial exposure concentrated in late-stage enterprise deals and two upcoming renewals. Within 24 hours we will finalize our position, approved messaging, and a response track (accelerate parity, reposition, or partner). We will deploy executive customer outreach within 72 hours. Requested: Board availability for a 30-minute update and pre-approval to deploy the $500,000 response budget.", type: "board_notification", label: "Competitor breakthrough launch \u2014 24h board situational update", timing: "Send within 12 hours of trigger; follow with live briefing within 24 hours", subject: "[Company] response to competitor breakthrough technology announcement" }, { body: "Q: \u201CDid we just become obsolete because of their breakthrough?\u201D\nA: \u201CNo. Their announcement highlights a new approach, but customers still need enterprise-grade security, reliability, integrations, and predictable TCO. We are validating the claims with comparable workloads and will share evidence-based results; meanwhile [Company] delivers proven outcomes in production with strong references.\u201D\n\nQ: \u201CDo you have a roadmap date to match this?\u201D\nA: \u201CWe will not speculate. We have an active response plan with engineering leadership, and we can propose near-term alternatives now (configuration, services, or partner options) that achieve the business outcome while we execute the chosen product path.\u201D", type: "sales_battle_card", label: "Breakthrough launch counter \u2014 field Q&A", timing: "Publish to Sales/SEs within 24 hours; refresh at 72 hours with test results", subject: null }], riskIndicators: { red: ["Multiple late-stage opportunities stall or flip to competitor within 14 days citing technology gap", "Renewal churn risk spikes (CSM escalations) and customers demand contractual commitments we cannot support", "Analysts/media position competitor as new category leader and [Company] as lagging, driving inbound cancellations or RFP disqualification"], green: ["Competitive objections are isolated to early-stage deals and do not materially change close plans", "Technical assessment finds claims overstated or not applicable to regulated/enterprise requirements", "Analyst and social narratives remain balanced with limited negative mentions of [Company]"], yellow: ["Late-stage deals request re-evaluation cycles or add competitor proof-of-concept requirements", "Pricing pressure increases (requests for concessions) explicitly tied to competitor\u2019s launch claims", "Key customers ask for written roadmap assurances or threaten to delay renewals pending clarity"] }, outcomeFraming: { at30days: ["Demonstrable response artifact delivered (benchmark/prototype/integration) and shared in controlled customer/analyst settings", "GTM repositioning implemented: updated messaging, packaging guidance, and competitive plays reflected in win plans", "Pipeline stabilization: reduced competitor-driven stalls and improved retention posture for targeted accounts"], at12hours: ["CTO technical confidence rating issued with a defined validation plan and initial feasibility view", "Exposure quantified: named top at-risk opportunities/renewals with owner and mitigation action", "Tier-1 alignment scheduled with a draft posture and budget allocation options within $500k"], failureModes: ["Overreaction: rushed roadmap promises create delivery misses and credibility loss with enterprise buyers", "Underreaction: delayed messaging enables competitor to define the narrative, increasing stall and churn rates", "Fragmented execution: multiple competing pivots dilute engineering focus and produce no compelling proof within 30 days"] } }, { playbookNumber: 5, whyItMatters: "Companies that respond within 12 hours retain an average of 91% of at-risk pipeline. Companies that take 72+ hours retain 58%. (Source: Bain competitive response analysis, 2023.)", signalSources: ["Competitor pricing page changes (web monitoring)", "Press release keywords: 'price reduction,' 'free tier,' 'accessible pricing,' 'value pricing'", "Sales team field reports: 3+ reps report same competitor pricing mention in a single week", "Win/loss data shift: competitor win rate increases 10%+ in a 30-day window"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "CFO", items: ["Pull current gross margin by product line", "Model three response scenarios: (A) Match competitor pricing, (B) Partial match with value reinforcement, (C) Hold price and accelerate value narrative", "For each scenario: calculate 90-day margin impact, customer churn risk, and revenue exposure by segment", "Bring outputs to the Phase 1 decision meeting"], deadline: "within 2 hours", priority: "lead" }, { role: "CMO", items: ["Pull NPS scores from last 18 months segmented by price sensitivity", "Identify which customer segments are highest flight risk vs. highest loyalty", "Flag any pending renewal accounts within 60 days \u2014 these are immediate exposure", "Draft a one-page competitive positioning brief (internal only)"], deadline: "within 2 hours", priority: "lead" }, { role: "Sales Leadership", items: ["Pull all open opportunities where this competitor is present (CRM query)", "Flag deals closing within 30 days \u2014 these become the priority list", "Brief regional VPs: no pricing concessions, no public commentary until Phase 2 decision", "Collect field intelligence: What are customers saying? How is the competitor framing this?"], deadline: "within 3 hours", priority: "required" }], objective: "Understand the full scope before any external communication.", timeWindow: "Hours 0\u20134", decisionGate: { title: "Phase 1 \u2192 Phase 2 Decision Gate", criteria: ["CFO scenario models completed (all three, with numbers)", "CMO has identified the top 20 at-risk accounts", "Sales has quantified the pipeline at risk (dollar amount)", "A response posture has been selected by CEO + CFO: Match / Partial / Hold"], escalation: "If decision cannot be reached, escalate to board chair. Do not proceed without a posture decision." }, restrictions: ["No press releases or public statements", "No customer communications", "No pricing changes", "No social media response"] }, { id: "phase-2", name: "Response Execution", tasks: [{ role: "CFO + Finance (Scenario A: Match)", items: ["Draft board notification memo (notification, not approval)", "Initiate pricing system updates (not live yet \u2014 pending Phase 3 sign-off)", "Activate pre-approved $500K budget for customer retention offers on at-risk accounts"], deadline: "within this phase", priority: "conditional" }, { role: "CMO + Product (Scenario B: Partial Match)", items: ["Identify 2\u20133 value-adds that can be accelerated or repriced at current margin", "Draft 'here's what you get that they don't' customer communication", "Provide sales updated battle card with specific value vs. competitor talking points"], deadline: "within this phase", priority: "conditional" }, { role: "CMO + Sales Leadership (Scenario C: Hold)", items: ["Finalize value narrative: what does the customer get for paying more?", "Draft 3 customer-facing communication versions: account retention, renewal defense, general market", "Brief investor relations if company is public \u2014 they will receive questions"], deadline: "within this phase", priority: "conditional" }, { role: "Legal", items: ["Review any planned communications for compliance (no competitor disparagement)", "Confirm pricing change process if applicable (regulatory requirements by industry)"], deadline: "within this phase", priority: "required" }], objective: "Execute the chosen posture internally. Prepare external-facing assets.", timeWindow: "Hours 4\u20138", decisionGate: { title: "Phase 2 \u2192 Phase 3 Decision Gate", criteria: ["Board has been notified (not consulted \u2014 notified)", "Legal has cleared all external communications", "Sales has received updated battle cards and briefing", "Customer-facing team knows the response posture and their talking points", "Pricing changes (if any) are staged and ready \u2014 not live yet"], escalation: null }, restrictions: [] }, { id: "phase-3", name: "Market Response", tasks: [{ role: "CEO", items: ["Call top 5 accounts personally \u2014 before anything goes public"], deadline: "before anything goes public", priority: "lead" }, { role: "Finance", items: ["Pricing changes go live (if Scenario A or B)"], deadline: "Hour 9", priority: "required" }, { role: "Account Executives", items: ["Contact the at-risk list with the retention communication"], deadline: "Hour 9", priority: "required" }, { role: "Communications", items: ["Press response goes out if competitor made public statements"], deadline: "Hour 10", priority: "required" }, { role: "Customer Success", items: ["Proactively contact all accounts in renewal window"], deadline: "Hour 12", priority: "required" }], objective: "Coordinated external execution with no contradictions across channels.", timeWindow: "Hours 8\u201312", decisionGate: null, restrictions: [] }, { id: "phase-4", name: "72-Hour Sustain", tasks: [{ role: "Sales Leadership", items: ["Daily pipeline review: which at-risk accounts have been contacted? Responses?", "Win/loss tracking begins immediately \u2014 did competitor pricing actually move deals?"], deadline: "daily", priority: "required" }, { role: "CFO", items: ["Review actual vs. projected margin impact at day 7", "If churn exceeds model: trigger secondary response budget (requires board approval above $500K)"], deadline: "day 7", priority: "required" }, { role: "CMO", items: ["Assess: Is the competitor's move gaining traction or stalling?", "Adjust narrative if market response is different than modeled"], deadline: "week 2", priority: "required" }], objective: "Monitor, measure, and adjust. Prevent the situation from drifting.", timeWindow: "Days 2\u20137", decisionGate: null, restrictions: [] }], communicationAssets: [{ body: "Board Members,\n\n[Competitor] announced a [X%] price reduction on [date]. Our response team completed scenario analysis within 4 hours. We have selected [Scenario A/B/C] as our posture.\n\nPipeline at risk: $[X]M across [N] accounts. At-risk accounts have been identified and account executive outreach begins at [time].\n\nProjected 90-day margin impact: [range from CFO model].\n\nNo board action required at this stage. We will provide a full briefing at the next scheduled meeting or sooner if conditions change materially.\n\n[CEO Name]", type: "board_notification", label: "Board Notification", timing: "Hour 6 \u2014 notification, not approval", subject: "Competitive Pricing Action \u2014 [Competitor Name] \u2014 Response Posture Selected" }, { body: `WHEN A CUSTOMER ASKS ABOUT [COMPETITOR]'S NEW PRICING:
@@ -65292,7 +65641,7 @@ async function seedEnrichedPlaybooks() {
         communicationAssets: entry.communicationAssets,
         riskIndicators: entry.riskIndicators,
         outcomeFraming: entry.outcomeFraming
-      }).where(eq62(playbookLibrary.id, row.id));
+      }).where(eq63(playbookLibrary.id, row.id));
       updated++;
     }
     console.log(`\u2705 Enriched content seeded for ${updated} playbooks`);
@@ -65865,7 +66214,7 @@ async function seedProtocolZeroFamily() {
 // server/index.ts
 init_db();
 init_schema();
-import { count as count12, eq as eq63, sql as sql26 } from "drizzle-orm";
+import { count as count12, eq as eq64, sql as sql26 } from "drizzle-orm";
 import pino17 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
@@ -66446,7 +66795,7 @@ server.listen(
             logger13.warn(`\u26A0\uFE0F Domain not found for playbook #${p.playbookNumber}: ${p.name}`);
             continue;
           }
-          const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq63(playbookLibrary.playbookNumber, p.playbookNumber)).limit(1);
+          const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq64(playbookLibrary.playbookNumber, p.playbookNumber)).limit(1);
           if (existing.length === 0) {
             await db.insert(playbookLibrary).values(p);
             added++;
@@ -66611,7 +66960,7 @@ server.listen(
       await seedDemoScenarios();
       logger13.info("\u{1F465} Checking demo stakeholder contacts...");
       try {
-        const [existingContactResult] = await db.select({ count: count12() }).from(stakeholderContacts).where(eq63(stakeholderContacts.organizationId, "system"));
+        const [existingContactResult] = await db.select({ count: count12() }).from(stakeholderContacts).where(eq64(stakeholderContacts.organizationId, "system"));
         const contactCount = Number(existingContactResult?.count || 0);
         if (contactCount === 0) {
           await db.insert(stakeholderContacts).values([

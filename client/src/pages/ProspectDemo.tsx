@@ -101,10 +101,19 @@ const INDUSTRY_SCENARIOS: Record<string, {
   },
 };
 
+function readParamsFromUrl() {
+  const sp = new URLSearchParams(window.location.search);
+  return {
+    company: sp.get("company") || "",
+    industry: sp.get("industry") || "Financial Strategy",
+  };
+}
+
 export default function ProspectDemo() {
   const [, setLocation] = useLocation();
-  const [company, setCompany] = useState("");
-  const [industry, setIndustry] = useState("Financial Strategy");
+  const initial = readParamsFromUrl();
+  const [company, setCompany] = useState(initial.company);
+  const [industry, setIndustry] = useState(initial.industry);
   const [stage, setStage] = useState<"setup" | "alert" | "execution">("setup");
   const [confidence, setConfidence] = useState(0);
   const [clockSeconds, setClockSeconds] = useState(0);

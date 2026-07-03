@@ -505,6 +505,7 @@ export default function StandardNav() {
               { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate', featured: true },
               { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector right now. Protocols already staged.', featured: true },
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
+              { path: '/prospect-brief', icon: FileText, label: 'Executive Briefing Generator', sub: 'A printable, company-specific brief — protocols, triggers, and ROI for your org', featured: true },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>

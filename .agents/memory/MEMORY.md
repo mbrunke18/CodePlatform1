@@ -20,3 +20,4 @@
 - [E2E testing subagent quirks](e2e-test-infra.md) — runTest() can carry a stale cross-run auth block that misfires even on public routes; retries don't clear it
 - [Deleting large functions from big TSX files](large-function-deletion.md) — rename-to-marker + grep for line bounds + sed -i line-range delete when edit tool's exact-match fails on huge blocks
 - [Demo scenario routing](demo-scenario-routing.md) — /demo-experience?s=N clamps silently on bad index; prefer /demo/:scenarioId (string ids, all 3 domains) for new scenario links
+- [PUBLIC_ROUTES allowlist gotcha](public-routes-allowlist.md) — new public POST endpoints silently 401 unless added to PUBLIC_ROUTES in server/authConfig.ts; verify with curl, not just tsc/tests

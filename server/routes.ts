@@ -10398,6 +10398,150 @@ Respond ONLY as JSON with this exact structure:
     }
   });
 
+  // POST /api/roi-calculator/email-report — capture lead + email the personalized ROI estimate
+  app.post('/api/roi-calculator/email-report', async (req: any, res) => {
+    try {
+      const { email, companyName, industryLabel, totalAnnualValue, netAnnualValue, roiPct, threeYearValue, breakEvenDays, platformCost, shareUrl } = req.body;
+      if (!email || !industryLabel || typeof totalAnnualValue !== 'number') {
+        return res.status(400).json({ success: false, error: 'email, industryLabel, and totalAnnualValue are required' });
+      }
+
+      await db.insert(testDriveLeads).values({
+        email: email.trim().toLowerCase(),
+        companyName: companyName?.trim() || null,
+        scenarioId: 'roi-calculator',
+        scenarioTitle: `[ROI Calculator] ${industryLabel}`,
+        completedTasks: 1,
+        totalTasks: 1,
+      });
+
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) {
+        console.log(`[ROICalculator] No Resend key — lead stored without email for ${email}`);
+        return res.json({ success: true, emailSent: false });
+      }
+
+      const { Resend } = await import('resend');
+      const resend = new Resend(apiKey);
+
+      const NAVY_R = '#0A0F2E';
+      const GOLD_R = '#C9A84C';
+      const TEAL_R = '#2B8A6E';
+      const fmtC = (n: number) => n >= 1e9 ? `$${(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `$${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `$${Math.round(n / 1e3)}K` : `$${Math.round(n)}`;
+      const breakEvenLabel = breakEvenDays < 30 ? `${breakEvenDays} days` : `${Math.round(breakEvenDays / 30)} months`;
+      const company = companyName ? ` for ${companyName}` : '';
+
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+        <body style="margin:0;padding:0;background:#f4f4f4;font-family:'Helvetica Neue',Arial,sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:32px 16px;">
+            <tr><td align="center">
+              <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
+                <tr><td style="background:${NAVY_R};padding:32px 40px;">
+                  <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD_R};margin-bottom:8px;">VaughnMartin · Readiness OS</div>
+                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Execution ROI Estimate${company}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">${industryLabel}</div>
+                </td></tr>
+                <tr><td style="height:3px;background:${GOLD_R};"></td></tr>
+                <tr><td style="padding:40px;">
+                  <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    Here is the personalized execution ROI estimate you configured — the projected annual value of compressing your mobilization cycle from 30 days to 12 minutes.
+                  </p>
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td colspan="3" style="padding:20px;background:#fefce8;border:1px solid #fde68a;text-align:center;">
+                        <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:6px;">Estimated Annual Value</div>
+                        <div style="font-size:34px;font-weight:700;color:${NAVY_R};">${fmtC(totalAnnualValue)}</div>
+                      </td>
+                    </tr>
+                    <tr><td colspan="3" height="8"></td></tr>
+                    <tr>
+                      <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${fmtC(netAnnualValue)}</div>
+                        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Net Annual Value</div>
+                      </td>
+                      <td width="8"></td>
+                      <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${roiPct?.toLocaleString?.() ?? roiPct}%</div>
+                        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">First-Year ROI</div>
+                      </td>
+                      <td width="8"></td>
+                      <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${breakEvenLabel}</div>
+                        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Break-Even</div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div style="padding:20px 24px;background:#f0faf6;border-left:4px solid ${TEAL_R};margin-bottom:28px;">
+                    <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
+                      3-year net value at ${fmtC(platformCost)}/yr platform investment: <strong>${fmtC(threeYearValue)}</strong>. That is the difference between mobilizing from scratch every time a strategic trigger fires, and executing from a pre-staged position in 12 minutes — a <strong>3,600× Execution Head Start</strong>.
+                    </p>
+                  </div>
+                  ${shareUrl ? `
+                  <p style="font-size:14px;font-weight:600;color:${NAVY_R};margin:0 0 8px;">Revisit your configuration anytime</p>
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td style="background:#f9fafb;border:1px solid #e5e7eb;padding:12px 16px;">
+                        <a href="${shareUrl}" style="font-size:13px;color:${TEAL_R};word-break:break-all;">${shareUrl}</a>
+                      </td>
+                    </tr>
+                  </table>` : ''}
+                  <p style="font-size:15px;font-weight:600;color:${NAVY_R};margin:0 0 8px;">Founding Partner Program</p>
+                  <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    Our team builds a fully evidenced business case specific to your organization's risk profile and strategic calendar.
+                  </p>
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                    <tr>
+                      <td style="background:${NAVY_R};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD_R};text-decoration:none;">Apply for Founding Partner Access →</a>
+                      </td>
+                    </tr>
+                  </table>
+                  <p style="font-size:12px;color:#9ca3af;line-height:1.6;margin:0;">
+                    VaughnMartin · Readiness OS<br>
+                    You received this because you used the ROI Calculator at readinessOS.replit.app<br>
+                    <a href="mailto:pilot@vaughnmartin.com" style="color:#9ca3af;">pilot@vaughnmartin.com</a>
+                  </p>
+                </td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </body>
+        </html>
+      `;
+
+      const fromAddresses = [
+        'Readiness OS <onboarding@resend.dev>',
+        'Readiness OS <pilot@vaughnmartin.com>',
+      ];
+
+      let sent = false;
+      for (const from of fromAddresses) {
+        try {
+          const { error } = await resend.emails.send({
+            from,
+            replyTo: 'pilot@vaughnmartin.com',
+            to: [email.trim()],
+            subject: `Your Execution ROI Estimate — ${industryLabel}`,
+            html,
+          });
+          if (!error) { sent = true; break; }
+          console.warn(`[ROICalculator] Sender ${from} rejected: ${error.message}`);
+        } catch (err: any) {
+          console.warn(`[ROICalculator] Sender ${from} threw: ${err.message}`);
+        }
+      }
+
+      console.log(`✅ [ROICalculator] Lead captured: ${email} · ${industryLabel} · email ${sent ? 'sent' : 'failed'}`);
+      res.json({ success: true, emailSent: sent });
+    } catch (err: any) {
+      console.error('[ROICalculator] Error:', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   // ── Custom Protocols (Protocol Builder) ──────────────────────────────────
   app.post('/api/custom-protocols', async (req: any, res) => {
     try {

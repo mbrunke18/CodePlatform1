@@ -5,7 +5,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { useLocation, Link } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
-import { AlertTriangle, Clock, TrendingUp, Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { AlertTriangle, Clock, TrendingUp, Shield, ArrowRight, CheckCircle2, Link2, Check, Mail, Loader2 } from 'lucide-react';
+import { apiRequest } from '@/lib/queryClient';
+import { trackEvent } from '@/lib/analytics';
 
 const INDUSTRY_SCENARIOS: Record<string, Array<{ title: string; trigger: string; without: string; with: string; cost: string }>> = {
   financial_services: [
@@ -352,19 +354,64 @@ function FirstUsePaybackCalculator() {
   );
 }
 
+function readROIStateFromUrl(): { inputs: ROIInputs; platformCost: number } {
+  const sp = new URLSearchParams(window.location.search);
+  const num = (key: string, fallback: number) => {
+    const v = sp.get(key);
+    if (v === null) return fallback;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : fallback;
+  };
+  return {
+    inputs: {
+      companySize: sp.get('companySize') || 'enterprise',
+      industry: sp.get('industry') || 'financial_services',
+      annualRevenue: num('annualRevenue', 5000000000),
+      strategicEventsPerYear: num('events', 24),
+      avgResponseTimeHours: num('responseHours', 720),
+      executivesInvolved: 8,
+      avgExecutiveSalary: 400000,
+    },
+    platformCost: num('platformCost', 250000),
+  };
+}
+
+function roiStateToUrl(inputs: ROIInputs, platformCost: number): string {
+  const params = new URLSearchParams({
+    companySize: inputs.companySize,
+    industry: inputs.industry,
+    annualRevenue: String(Math.round(inputs.annualRevenue)),
+    events: String(inputs.strategicEventsPerYear),
+    responseHours: String(inputs.avgResponseTimeHours),
+    platformCost: String(platformCost),
+  });
+  return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+}
+
 export default function ROICalculator() {
   const [, setLocation] = useLocation();
-  const [platformCost, setPlatformCost] = useState(250000);
-  
-  const [inputs, setInputs] = useState<ROIInputs>({
-    companySize: 'enterprise',
-    industry: 'financial_services',
-    annualRevenue: 5000000000, // $5B
-    strategicEventsPerYear: 24,
-    avgResponseTimeHours: 720,
-    executivesInvolved: 8,
-    avgExecutiveSalary: 400000,
-  });
+  const initialROIState = useState(() => readROIStateFromUrl())[0];
+  const [platformCost, setPlatformCost] = useState(initialROIState.platformCost);
+  const [inputs, setInputs] = useState<ROIInputs>(initialROIState.inputs);
+  const [copied, setCopied] = useState(false);
+  const [emailValue, setEmailValue] = useState("");
+  const [emailStatus, setEmailStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  useEffect(() => {
+    const url = roiStateToUrl(inputs, platformCost);
+    window.history.replaceState(null, "", url);
+  }, [inputs, platformCost]);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(roiStateToUrl(inputs, platformCost));
+      setCopied(true);
+      trackEvent("roi_calculator_copy_link", { industry: inputs.industry });
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard access denied — no-op
+    }
+  };
 
   const calculations = useMemo(() => {
     const industryData = INDUSTRY_MULTIPLIERS[inputs.industry];
@@ -680,6 +727,75 @@ export default function ROICalculator() {
                       Readiness OS eliminates the debt. Every protocol pre-staged before the trigger fires.
                     </p>
                   </div>
+
+                  <div className="mb-4" style={{ display: "flex", gap: 8 }}>
+                    <Button
+                      variant="outline"
+                      className="flex-1 border-white/15 text-white/70 hover:text-white hover:bg-white/5"
+                      style={{ fontSize: 12 }}
+                      onClick={handleCopyLink}
+                      data-testid="button-roi-copy-link"
+                    >
+                      {copied ? (
+                        <><Check className="h-3.5 w-3.5 mr-1.5" /> Link Copied</>
+                      ) : (
+                        <><Link2 className="h-3.5 w-3.5 mr-1.5" /> Copy Link</>
+                      )}
+                    </Button>
+                  </div>
+
+                  {emailStatus === "sent" ? (
+                    <div className="mb-4 text-center" style={{ padding: "14px 12px", background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.35)" }}>
+                      <p style={{ fontSize: 12, color: "#2B8A6E", fontWeight: 700 }}>Report sent — check your inbox.</p>
+                    </div>
+                  ) : (
+                    <div className="mb-4">
+                      <Label className="text-white/40 text-[10px] uppercase tracking-widest mb-1.5 block">Email This Report</Label>
+                      <div style={{ display: "flex", gap: 8 }}>
+                        <input
+                          type="email"
+                          value={emailValue}
+                          onChange={(e) => setEmailValue(e.target.value)}
+                          placeholder="you@company.com"
+                          data-testid="input-roi-email"
+                          style={{ flex: 1, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", fontSize: 12, padding: "8px 10px", borderRadius: "0.15rem" }}
+                        />
+                        <Button
+                          className="bg-white/10 hover:bg-white/20 text-white"
+                          style={{ fontSize: 12 }}
+                          disabled={emailStatus === "sending" || !emailValue.includes("@")}
+                          data-testid="button-roi-send-email"
+                          onClick={async () => {
+                            setEmailStatus("sending");
+                            try {
+                              const res = await apiRequest('POST', '/api/roi-calculator/email-report', {
+                                email: emailValue,
+                                industryLabel: INDUSTRY_MULTIPLIERS[inputs.industry]?.label || inputs.industry,
+                                totalAnnualValue: calculations.totalAnnualValue,
+                                netAnnualValue: calculations.netAnnualValue,
+                                roiPct: calculations.roiPct,
+                                threeYearValue: calculations.threeYearValue,
+                                breakEvenDays: calculations.breakEvenDays,
+                                platformCost,
+                                shareUrl: roiStateToUrl(inputs, platformCost),
+                              });
+                              await res.json();
+                              setEmailStatus("sent");
+                              trackEvent("roi_calculator_email_report_sent", { industry: inputs.industry });
+                            } catch {
+                              setEmailStatus("error");
+                              trackEvent("roi_calculator_email_report_error", { industry: inputs.industry });
+                            }
+                          }}
+                        >
+                          {emailStatus === "sending" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Mail className="h-3.5 w-3.5" />}
+                        </Button>
+                      </div>
+                      {emailStatus === "error" && (
+                        <p style={{ fontSize: 10, color: "#F87171", marginTop: 6 }}>Couldn't send that — check the address and try again.</p>
+                      )}
+                    </div>
+                  )}
 
                   <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/request-access')}>
                     Apply for Founding Partner Access →

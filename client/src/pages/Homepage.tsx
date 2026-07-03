@@ -7,6 +7,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { Shield, TrendingUp, Layers } from "lucide-react";
 import heroImg from "@/assets/images/executive-floor-night.png";
+import { trackEvent } from "@/lib/analytics";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -45,11 +46,7 @@ const DM: React.CSSProperties  = { fontFamily: "'Barlow', 'Barlow', sans-serif" 
 const CONTAINER: React.CSSProperties = { maxWidth: 1280, margin: "0 auto", padding: "0 32px", boxSizing: "border-box" as const };
 
 function trackCTA(loc: string) {
-  try {
-    if (typeof window !== "undefined" && (window as any).dataLayer) {
-      (window as any).dataLayer.push({ event: "pilot_cta_click", location: loc });
-    }
-  } catch (_) {}
+  trackEvent("pilot_cta_click", { location: loc });
 }
 
 function useReveal() {
@@ -1794,13 +1791,19 @@ function HomepageFooter() {
       <div style={{ ...CONTAINER }}>
 
         {/* Decision Path strip */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, marginBottom: 52, background: "rgba(255,255,255,0.05)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, marginBottom: 52, background: "rgba(255,255,255,0.05)" }}>
           {[
             { q: "Not ready to commit?", cta: "Explore 12-Minute Experience", href: "/12-minute-experience", accent: "rgba(255,255,255,0.4)" },
+            { q: "Want it built for your company?", cta: "Generate Your Executive Brief", href: "/prospect-brief", accent: TEAL },
             { q: "Ready to evaluate?", cta: "Request Founding Partner Access", href: "/request-access", accent: GOLD },
             { q: "Ready to deploy?", cta: "Apply for Full Access", href: "/request-access", accent: GOLD },
           ].map((p, i) => (
-            <Link key={i} href={p.href} style={{ display: "block", background: FOOTER_NAVY, padding: "20px 24px", textDecoration: "none", borderTop: `2px solid ${i === 1 ? GOLD : "rgba(255,255,255,0.08)"}` }}>
+            <Link
+              key={i}
+              href={p.href}
+              onClick={() => trackEvent("decision_path_click", { step: i + 1, cta: p.cta, href: p.href })}
+              style={{ display: "block", background: FOOTER_NAVY, padding: "20px 24px", textDecoration: "none", borderTop: `2px solid ${i === 2 ? GOLD : i === 1 ? TEAL : "rgba(255,255,255,0.08)"}` }}
+            >
               <div style={{ ...DM, fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.38)", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 6 }}>{p.q}</div>
               <div style={{ ...DM, fontSize: 12, fontWeight: 700, color: p.accent, letterSpacing: "0.04em" }}>{p.cta} →</div>
             </Link>
@@ -2018,6 +2021,7 @@ function EngagementBridge() {
               <Link
                 key={step}
                 href={href}
+                onClick={() => trackEvent("engagement_bridge_click", { step, label, href })}
                 style={{ textDecoration: "none", flex: 1, display: "flex", flexDirection: "column" as const, padding: "28px 24px", borderRight: i < 2 ? "1px solid #E8E4DC" : "none", background: bg, transition: "background 0.15s" }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
@@ -2031,6 +2035,108 @@ function EngagementBridge() {
               </Link>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── GUIDED EVALUATION PATH ───────────────────────────────────────────────────
+function GuidedEvaluationPath() {
+  const steps = [
+    {
+      n: "1",
+      label: "Experience it",
+      cta: "Run the 12-Minute Test Drive",
+      sub: "Pick a scenario, watch the response unfold.",
+      href: "/12-minute-experience",
+      color: GOLD,
+    },
+    {
+      n: "2",
+      label: "Quantify it",
+      cta: "Calculate Your ROI",
+      sub: "Your numbers, your industry, your break-even.",
+      href: "/roi-calculator",
+      color: TEAL,
+    },
+    {
+      n: "3",
+      label: "Document it",
+      cta: "Generate Your Executive Brief",
+      sub: "A shareable one-pager built for your company.",
+      href: "/prospect-brief",
+      color: GOLD_LIGHT,
+    },
+    {
+      n: "4",
+      label: "Commit to it",
+      cta: "Apply for Founding Partner Access",
+      sub: "Start the 90-day validation partnership.",
+      href: "/request-access",
+      color: TEAL_LIGHT,
+    },
+  ];
+  return (
+    <section id="guided-evaluation-path" style={{ background: NAVY_BG, borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "56px 0" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ textAlign: "center" as const, marginBottom: 40 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>
+            Your Evaluation Path
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(24px,2.4vw,34px)", fontWeight: 700, color: "#fff", margin: 0 }}>
+            Four steps. No sales call required until step four.
+          </h2>
+        </div>
+        <style>{`
+          .gep-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+          .gep-arrow { display: flex; align-items: center; justify-content: center; }
+          @media (max-width: 900px) { .gep-grid { grid-template-columns: 1fr; } .gep-arrow { transform: rotate(90deg); margin: 4px 0; } }
+        `}</style>
+        <div className="gep-grid">
+          {steps.map((s, i) => (
+            <div key={s.n} style={{ display: "flex", alignItems: "stretch" }}>
+              <Link
+                href={s.href}
+                data-testid={`link-guided-path-step-${s.n}`}
+                onClick={() => trackEvent("guided_path_click", { step: s.n, label: s.label, href: s.href })}
+                style={{
+                  textDecoration: "none",
+                  flex: 1,
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  padding: "24px 22px",
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderTop: `2px solid ${s.color}`,
+                  transition: "background 0.15s",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                  <div style={{ width: 22, height: 22, borderRadius: "50%", border: `1px solid ${s.color}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ ...DM, fontSize: 10, fontWeight: 800, color: s.color }}>{s.n}</span>
+                  </div>
+                  <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)" }}>
+                    {s.label}
+                  </span>
+                </div>
+                <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: "#fff", lineHeight: 1.35, marginBottom: 8 }}>
+                  {s.cta}
+                </span>
+                <p style={{ ...DM, fontSize: 11.5, color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: "0 0 12px", flex: 1 }}>
+                  {s.sub}
+                </p>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: s.color, letterSpacing: "0.04em" }}>
+                  Go →
+                </span>
+              </Link>
+              {i < steps.length - 1 && (
+                <div className="gep-arrow" style={{ width: 0 }}>
+                  <span style={{ position: "relative", left: -1, zIndex: 1, color: "rgba(255,255,255,0.25)", fontSize: 16, background: NAVY_BG, padding: "0 2px" }}>→</span>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -2201,6 +2307,9 @@ export default function Homepage() {
 
       {/* §6 FEARLESS FINALE — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
+
+      {/* Guided Evaluation Path — sequential self-serve steps before the final ask */}
+      <GuidedEvaluationPath />
 
       {/* §7 FOUNDING PARTNER CLOSE — named offer, specific terms, real commitment */}
       <FoundingPartnerCloseSection />

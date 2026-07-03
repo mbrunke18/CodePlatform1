@@ -33,6 +33,12 @@ export const PUBLIC_ROUTES = [
   // Peer Review Questionnaire — public submission (no auth required to submit feedback)
   '/api/peer-reviews',
 
+  // Lead-capture + email-export endpoints used by public sales tools — prospects using
+  // these are, by definition, unauthenticated. Without this, conditionalAuth 401s them.
+  '/api/test-drive/email-summary',
+  '/api/situation-scanner/lead',
+  '/api/roi-calculator/email-report',
+
   // Marketing & Demo Routes - allow prospects to view content
   '/api/tts', // Text-to-speech for founder story narration
   '/api/scenario-templates',

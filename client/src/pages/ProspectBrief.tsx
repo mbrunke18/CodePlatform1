@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { Printer, ChevronRight, Zap, Shield, TrendingUp, Eye, Activity, BarChart3, ArrowLeft } from "lucide-react";
+import { Printer, ChevronRight, Zap, Shield, TrendingUp, Eye, Activity, BarChart3, ArrowLeft, Link2, Check } from "lucide-react";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import StandardNav from "@/components/layout/StandardNav";
+import { trackEvent } from "@/lib/analytics";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -72,16 +73,41 @@ interface FormData {
   concern: string;
 }
 
+function readFormFromUrl(): FormData | null {
+  const sp = new URLSearchParams(window.location.search);
+  const company = sp.get("company");
+  if (!company) return null;
+  return {
+    company,
+    contactName: sp.get("contactName") || "",
+    contactTitle: sp.get("contactTitle") || "",
+    industry: sp.get("industry") || "Financial Strategy",
+    concern: sp.get("concern") || "",
+  };
+}
+
+function formToUrl(form: FormData): string {
+  const sp = new URLSearchParams();
+  sp.set("company", form.company);
+  if (form.contactName) sp.set("contactName", form.contactName);
+  if (form.contactTitle) sp.set("contactTitle", form.contactTitle);
+  sp.set("industry", form.industry);
+  if (form.concern) sp.set("concern", form.concern);
+  return `${window.location.origin}/prospect-brief?${sp.toString()}`;
+}
+
 export default function ProspectBrief() {
   const [, setLocation] = useLocation();
-  const [stage, setStage] = useState<"form" | "brief">("form");
-  const [form, setForm] = useState<FormData>({
+  const urlForm = readFormFromUrl();
+  const [stage, setStage] = useState<"form" | "brief">(urlForm ? "brief" : "form");
+  const [form, setForm] = useState<FormData>(urlForm || {
     company: "",
     contactName: "",
     contactTitle: "",
     industry: "Financial Strategy",
     concern: "",
   });
+  const [copied, setCopied] = useState(false);
 
   const { data: playbooksRaw } = useQuery<any>({
     queryKey: ["/api/playbook-library"],
@@ -99,7 +125,25 @@ export default function ProspectBrief() {
 
   const handleSubmit = () => {
     if (!form.company.trim()) return;
+    const sp = new URLSearchParams();
+    sp.set("company", form.company);
+    if (form.contactName) sp.set("contactName", form.contactName);
+    if (form.contactTitle) sp.set("contactTitle", form.contactTitle);
+    sp.set("industry", form.industry);
+    if (form.concern) sp.set("concern", form.concern);
+    window.history.replaceState(null, "", `/prospect-brief?${sp.toString()}`);
     setStage("brief");
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(formToUrl(form));
+      setCopied(true);
+      trackEvent("prospect_brief_copy_link", { industry: form.industry });
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard unavailable — silently ignore, Print remains available
+    }
   };
 
   if (stage === "form") {
@@ -216,6 +260,12 @@ export default function ProspectBrief() {
             style={{ padding: "8px 20px", background: "transparent", border: `1px solid rgba(255,255,255,0.2)`, color: "rgba(255,255,255,0.7)", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", cursor: "pointer" }}
           >
             Run Live Demo
+          </button>
+          <button
+            onClick={handleCopyLink}
+            style={{ padding: "8px 20px", background: "transparent", border: `1px solid rgba(255,255,255,0.2)`, color: copied ? TEAL : "rgba(255,255,255,0.7)", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}
+          >
+            {copied ? <Check size={13} /> : <Link2 size={13} />} {copied ? "Link Copied" : "Copy Link"}
           </button>
           <button
             onClick={() => window.print()}
