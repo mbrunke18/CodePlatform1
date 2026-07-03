@@ -463,6 +463,111 @@ Applications close [DATE].
 
 ---
 
+## LINKEDIN GUERRILLA CONTENT ENGINE — LIVE, PERSISTENT CALENDAR
+**This section is the single source of truth for LinkedIn content. Update it in place every week instead of re-deciding the strategy from scratch. The framework question below is closed — do not reopen it in a future session.**
+
+### The framework decision (LOCKED — do not re-litigate)
+Readiness OS is **Readiness Infrastructure, not a crisis tool.** This was already the platform's canonical positioning before this section existed (see "THE STRATEGIC SHIFT" above and the Locked Language Reference). CFOs budget for infrastructure — CRM, ERP, ITSM — because the cost of *not having it* is measured every year. Nobody budgets for a "crisis tool" the same way. The 9 domains a strategic trigger can come from (competitor enters/exits market, CFO or executive departs, new regulation, activist investor files, M&A opportunity, supply chain shift, leadership transition, product issue, board composition change) are framed as **normal business events, not disasters.** They are not crises. They are Tuesday. If a future session (yours or Claude's) starts re-debating "crisis vs. infrastructure vs. opportunity" framing, point it here — it's decided.
+
+### Weekly cadence template (repeat every week, swap the competitor category)
+- **Monday** — Category intelligence: name the gap in that week's competitor category, credit what they do well, show where it stops.
+- **Tuesday** — Situation post: a specific normal-business trigger, the competitor-category alternative's response, where Readiness OS is different.
+- **Wednesday** — Situation post: a second trigger, same structure, different domain (alternate risk/growth).
+- **Thursday** — Architecture or cost post: pre-staged vs. prepared, or price contrast with that week's competitor category.
+- **Friday** — Invitation or practitioner post: Founding Partner Program CTA, or a reflective/memory-and-permanence angle.
+
+Nine competitor categories = nine weeks of content before repeating. Category 1 (this arc): **Strategy Consultants (McKinsey/Bain/BCG)**.
+
+### This week — Friday post (memory / institutional permanence)
+> A consultant leaves. Takes eighteen months of pattern recognition with them.
+>
+> Every activist situation you navigated together. Every 2am ransomware call. Every regulatory response that actually worked. Gone, along with their contract.
+>
+> None of it was written into a system. It lived in their head.
+>
+> We built it differently. Every time a Readiness Protocol runs, we measure what worked and what didn't, and the protocol itself gets updated — not a lessons-learned deck nobody reopens, the actual playbook, permanently better than it was before.
+>
+> 180 protocols getting sharper every time one activates. That knowledge doesn't have a LinkedIn profile. It doesn't take a new job next spring. It's yours, permanently.
+>
+> Consultants sell you their experience for the length of the engagement. We built the system that keeps yours after everyone who built it has moved on.
+>
+> What happened to the playbook the last time someone senior left?
+
+### Next week — Strategy Consultants arc (full week, ready to post)
+
+**Monday — Category intelligence**
+> Every McKinsey deck for the last five years has a slide about this: the world moves faster than committees can decide. Alignment cycles are the bottleneck, not talent or budget.
+>
+> They're right. And then the engagement ends, the deck goes in a shared drive, and you're back to the same committee and the same 30-day mobilization cycle — just with better language to describe it.
+>
+> That's not a knock on the work. Naming the problem was never the business model. Billing by the hour spent in the room is — not making the room unnecessary.
+>
+> We built the thing they describe: 180 Readiness Protocols pre-staged so the response doesn't start with a meeting about who should be in the room. They diagnose the gap every quarter. We closed it once.
+
+**Tuesday — Situation: competitor leaves the market**
+> Your biggest competitor just told the market they're pulling out of your category.
+>
+> Their customers are already getting calls — from someone. Their sales reps' phones are already ringing with recruiters. Their channel partners are already asking who fills the shelf space next quarter.
+>
+> The company that wins that customer base isn't the one with the best product. It's the one that moves in the first two weeks, before the account managers scatter and the relationships go cold.
+>
+> Most companies spend those two weeks in meetings about whose opportunity this even is. Sales? Corporate development? The CEO's office? Nobody owns "a competitor just left" until somebody decides to.
+>
+> We treat it as a Readiness Protocol like any other — stakeholders assigned, outreach sequence built, pricing and migration terms pre-approved, staged before it happens instead of improvised after the press release.
+>
+> A competitor exiting isn't bad news. It's a 12-minute decision away from being the best news you got this quarter.
+
+**Wednesday — Situation: CFO resigns**
+> Your CFO gives notice on a Tuesday. The earnings call is in eleven days.
+>
+> A leadership transition isn't a crisis. It happens to every company eventually. Normal doesn't mean prepared, though.
+>
+> In the scramble: who talks to the board, who talks to the auditors, who talks to the analysts who cover you, what the interim structure looks like, what gets said publicly and when — all of it figured out live, usually by people doing it for the first time, on a deadline nobody chose.
+>
+> The irony: CFOs would never let their own department run this way. Nobody budgets $0 for a finance system and improvises the close. But "what happens when our CFO leaves" gets zero budget and zero system almost everywhere.
+>
+> We pre-stage that Readiness Protocol the same way — board communication sequence, interim authority, analyst messaging, timeline — ready before anyone hands in a resignation letter.
+>
+> A normal business event deserves infrastructure. Not improvisation.
+
+**Thursday — Architecture / cost: pre-staged vs. prepared**
+> Prepared and pre-staged get used like synonyms. They're not the same word.
+>
+> Prepared means you've thought about it — a deck, maybe a binder, a consultant's framework in a shared drive. When the trigger fires, someone still has to open it, translate it into action, assign owners, get everyone aligned. That translation step is where the 30 days go.
+>
+> Pre-staged means the translation already happened. Tasks assigned. Stakeholders notified. Budget approved. The only thing left when the trigger fires is an executive saying yes.
+>
+> A strategy engagement gets you prepared — real value, most companies haven't done even that much. But prepared still means rebuilding the bridge from the deck to the action every time a new situation hits, starting from zero.
+>
+> We charge about the same as one week of that engagement, for a program that pre-stages the response permanently and gets sharper every time it runs.
+>
+> Prepared is a document. Pre-staged is one decision away from execution.
+
+**Friday — Invitation: Founding Partner Program**
+> We're taking a small number of Founding Partners this year. Here's the honest version of the pitch.
+>
+> This isn't a decade-old platform with a thousand logos on the website. It's a 90-day validation partnership — direct access to the team building this, input into which protocols get built first for your industry, and pricing that won't be offered again once this phase closes.
+>
+> $75K, credited 100% to Year 1 if you continue past validation. Same order of magnitude as one week with a strategy firm — except what you get isn't a deck. It's 180 Readiness Protocols pre-staged for your business, live, before the next trigger fires.
+>
+> We're not trying to be everyone's vendor. We're trying to find the handful of companies who feel this the way we do — tired of spending 30 days mobilizing every time something happens that they honestly should have seen coming.
+>
+> If that's you, the way in is a conversation, not a form that sits in a queue.
+>
+> Apply for Founding Partner Access — or just message me and let's talk.
+
+### Guerrilla visibility tactics (separate from the content itself — this is where the actual "no visibility" problem usually lives)
+1. **Comment before you post.** 15 minutes/day of substantive comments (not "Great post!") on 5-8 posts from actual target buyers (PMO directors, GCs, CROs) or on breaking news relevant to a domain (the Microsoft Frontier Company reaction is the model). Pre-audience, this drives more profile visits than your own posts do.
+2. **Reply to every comment on your own posts within the first hour.** This is the single highest-leverage 20 minutes of the week — it extends LinkedIn's algorithm test window and is usually the first thing that gets skipped when content production eats all the time.
+3. **No links in the post body.** LinkedIn suppresses reach on posts with outbound links. If you need to link somewhere, put it in the first comment.
+4. **One post, one claim.** Not a recap of the whole domain — the single sharpest point, per the post above.
+5. **Consistency beats virality pre-launch.** 3-5 posts/week for 8 weeks outperforms one viral post and then silence — especially before there's an audience to carry a spike.
+6. **Turn existing assets into native carousels.** The Executive Brief and the 12-Gap Matrix are already built — a native LinkedIn PDF carousel from either currently gets meaningfully higher dwell time than a text post.
+7. **Personalize every connection request.** After a real comment exchange, send a connection note referencing the specific exchange — never a templated pitch. Cold form-pitches are why "connections" aren't converting to relationships.
+8. **This file is the fix for the session-amnesia problem.** Every AI chat session resets; this document doesn't. Update the "This week" / "Next week" sections above in place as each week executes, and hand this file to any future session (mine or otherwise) instead of re-explaining the strategy from memory.
+
+---
+
 ### Tier 4: Evanta CIO Executive Summit — Priority Conference
 **Events:** Chicago or Dallas (confirm dates)
 **Why Evanta over generic tech conferences:** This is where Fortune 1000 CIOs convene in peer-to-peer format. The audience is the exact buyer described in the three-tier segmentation analysis. The conversation format (peer roundtable, not keynote) matches the Readiness Infrastructure category positioning precisely.
