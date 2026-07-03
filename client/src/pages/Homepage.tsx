@@ -106,9 +106,9 @@ function SectionMarker({ n }: { n: string }) {
 const HP_NAV_ITEMS = [
   { id: 'hp-hero',        label: 'Overview'         },
   { id: 'hp-gap',         label: 'The Gap'          },
+  { id: 'hp-situations',  label: 'Situations'       },
   { id: 'how-it-works',   label: 'How It Executes'  },
   { id: 'hp-proof',       label: 'Proof'            },
-  { id: 'hp-situations',  label: 'Situations'       },
   { id: 'hp-fearless',    label: 'Fearless'         },
   { id: 'hp-cta',         label: 'Get Access'       },
 ];
@@ -618,7 +618,7 @@ function HeroSection() {
       <div style={{ position: "absolute", right: 0, top: 160, width: "58%", height: 1, background: `linear-gradient(to left, transparent 0%, ${GOLD}44 50%, transparent 100%)`, pointerEvents: "none", zIndex: 1 }} />
 
       <div style={{ ...CONTAINER, width: "100%" }}>
-        <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 42%", minHeight: 600, alignItems: "stretch" }}>
+        <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 47%", minHeight: 600, alignItems: "stretch" }}>
 
           {/* LEFT — Headline + CTAs + Stats */}
           <div className="hp-hero-left" style={{ padding: "100px 56px 88px 0", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
@@ -727,21 +727,26 @@ function HeroSection() {
                   </div>
                 ))}
               </div>
-              {/* Fix #1 — What is a Readiness Protocol? */}
-              <div style={{ marginTop: 12, padding: "10px 14px", borderLeft: "2px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.04)" }}>
-                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.42)", fontStyle: "italic" as const }}>
-                  A Readiness Protocol is a pre-built execution package — tasks assigned, owners named, budget allocated, brief written — staged before any trigger fires.{" "}
-                </span>
-                <a href="/how-it-executes" style={{ ...DM, fontSize: 11, color: GOLD, textDecoration: "none", fontStyle: "italic" as const, opacity: 0.8 }}>See how it executes →</a>
+              {/* What is a Readiness Protocol? — kept as a quiet, skimmable link, not a competing block of copy */}
+              <div style={{ marginTop: 10 }}>
+                <a href="/how-it-executes" style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.4)", textDecoration: "none", letterSpacing: "0.02em" }}>
+                  What's a Readiness Protocol? <span style={{ color: GOLD, opacity: 0.85 }}>See how it executes →</span>
+                </a>
               </div>
 
             </Reveal>
           </div>
 
-          {/* RIGHT — Live Simulation Panel */}
-          <div style={{ padding: "32px 0 32px 32px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: 10 }}>
+          {/* RIGHT — Live Simulation Panel — the product itself, not a decoration beside the pitch */}
+          <div style={{ padding: "32px 0 32px 32px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: 12 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
+              <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.75)" }}>
+                Watch It Work — Live
+              </span>
+            </div>
             {/* Browser Chrome Frame */}
-            <div style={{ borderRadius: "6px 6px 0 0", overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.09)" }}>
+            <div style={{ borderRadius: "6px 6px 0 0", overflow: "hidden", boxShadow: "0 28px 72px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.18)" }}>
               <div style={{ background: "rgba(255,255,255,0.055)", padding: "8px 12px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
                 <div style={{ display: "flex", gap: 5, flexShrink: 0 }}>
                   <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
@@ -1366,7 +1371,7 @@ function IDEASection() {
 
   return (
     <section id="how-it-works" className="hp-sec" style={{ background: "#F8F7F4", padding: "100px 0", position: "relative" }}>
-      <SectionMarker n="03" />
+      <SectionMarker n="04" />
 
       <div style={{ ...CONTAINER }}>
         <Reveal>
@@ -1530,7 +1535,7 @@ function CredibilitySection() {
   ];
   return (
     <section id="hp-proof" className="hp-section-reduce" style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
-      <SectionMarker n="04" />
+      <SectionMarker n="05" />
       {/* Subtle grid overlay */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
       <div style={{ ...CONTAINER }}>
@@ -2183,16 +2188,16 @@ export default function Homepage() {
       {/* Bridge — 3 clear paths: experience it / see a scenario / get the brief */}
       <EngagementBridge />
 
-      {/* §3 HOW IT EXECUTES — IDEA Framework, platform in action, distinction from workflow tools */}
+      {/* §3 SITUATIONS — concrete customer scenarios, shown before the mechanism is explained */}
+      <ScenarioCardsRow />
+
+      {/* §4 HOW IT EXECUTES — IDEA Framework, platform in action, distinction from workflow tools */}
       <IDEASection />
       <PlatformScreenshotSection />
       <WorkflowDistinctionSection />
 
-      {/* §4 PROOF — research organizations + outcome stats */}
+      {/* §5 PROOF — research organizations + outcome stats */}
       <CredibilitySection />
-
-      {/* §5 SITUATIONS — live scenarios */}
-      <ScenarioCardsRow />
 
       {/* §6 FEARLESS FINALE — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
