@@ -24,16 +24,40 @@ const TABS = [
   { id: 'coordination',label: 'COORDINATION', icon: Users,     color: NAVY  },
 ];
 
+const PILLARS = [
+  {
+    id: 'growth',
+    name: 'GROWTH & POSITIONING',
+    icon: TrendingUp,
+    color: GOLD,
+    tagline: 'The opportunities worth moving on before someone else does',
+  },
+  {
+    id: 'risk',
+    name: 'RISK & RESILIENCE',
+    icon: Shield,
+    color: '#B43C32',
+    tagline: 'The threats every organization eventually has to answer',
+  },
+  {
+    id: 'transformation',
+    name: 'TRANSFORMATION',
+    icon: Zap,
+    color: TEAL,
+    tagline: 'The planned shifts that still need to move faster than committees allow',
+  },
+];
+
 const SCENARIO_DOMAINS = [
-  { name: 'M&A & Integration',        domain: 'M&A',          exposure: 62, playbooks: 24, lastDrill: '7 days ago',  icon: Building2,    level: 'high',   color: GOLD },
-  { name: 'Competitive Response',      domain: 'Competitive',  exposure: 78, playbooks: 21, lastDrill: '4 days ago',  icon: TrendingUp,   level: 'high',   color: GOLD },
-  { name: 'Regulatory Compliance',     domain: 'Regulatory',   exposure: 55, playbooks: 18, lastDrill: '14 days ago', icon: Shield,       level: 'medium', color: TEAL },
-  { name: 'Digital Transformation',   domain: 'Digital',      exposure: 48, playbooks: 17, lastDrill: '21 days ago', icon: Zap,          level: 'medium', color: TEAL },
-  { name: 'Supply Chain Disruption',  domain: 'Supply',       exposure: 65, playbooks: 15, lastDrill: '10 days ago', icon: Database,     level: 'high',   color: GOLD },
-  { name: 'Leadership Transitions',   domain: 'Leadership',   exposure: 38, playbooks: 12, lastDrill: '30 days ago', icon: Users,        level: 'low',    color: TEAL },
-  { name: 'Market Entry & Expansion', domain: 'Market',       exposure: 52, playbooks: 16, lastDrill: '18 days ago', icon: Globe,        level: 'medium', color: TEAL },
-  { name: 'Emergency & Risk Events',  domain: 'Risk',         exposure: 71, playbooks: 14, lastDrill: '3 days ago',  icon: AlertTriangle,level: 'high',   color: GOLD },
-  { name: 'Talent & Workforce',       domain: 'Talent',       exposure: 41, playbooks: 11, lastDrill: '25 days ago', icon: Activity,     level: 'low',    color: TEAL },
+  { name: 'M&A & Integration',        domain: 'M&A',          exposure: 62, playbooks: 24, lastDrill: '7 days ago',  icon: Building2,    level: 'high',   color: GOLD, pillar: 'growth',        nature: 'Planned',   frequency: 'Infrequent', type: 'Opportunity' },
+  { name: 'Competitive Response',      domain: 'Competitive',  exposure: 78, playbooks: 21, lastDrill: '4 days ago',  icon: TrendingUp,   level: 'high',   color: GOLD, pillar: 'growth',        nature: 'Unplanned', frequency: 'Frequent',   type: 'Opportunity' },
+  { name: 'Market Entry & Expansion', domain: 'Market',       exposure: 52, playbooks: 16, lastDrill: '18 days ago', icon: Globe,        level: 'medium', color: TEAL, pillar: 'growth',        nature: 'Planned',   frequency: 'Infrequent', type: 'Opportunity' },
+  { name: 'Regulatory Compliance',     domain: 'Regulatory',   exposure: 55, playbooks: 18, lastDrill: '14 days ago', icon: Shield,       level: 'medium', color: TEAL, pillar: 'risk',          nature: 'Planned',   frequency: 'Frequent',   type: 'Threat' },
+  { name: 'Supply Chain Disruption',  domain: 'Supply',       exposure: 65, playbooks: 15, lastDrill: '10 days ago', icon: Database,     level: 'high',   color: GOLD, pillar: 'risk',          nature: 'Unplanned', frequency: 'Frequent',   type: 'Threat' },
+  { name: 'Emergency & Risk Events',  domain: 'Risk',         exposure: 71, playbooks: 14, lastDrill: '3 days ago',  icon: AlertTriangle,level: 'high',   color: GOLD, pillar: 'risk',          nature: 'Unplanned', frequency: 'Infrequent', type: 'Threat' },
+  { name: 'Digital Transformation',   domain: 'Digital',      exposure: 48, playbooks: 17, lastDrill: '21 days ago', icon: Zap,          level: 'medium', color: TEAL, pillar: 'transformation',nature: 'Planned',   frequency: 'Infrequent', type: 'Opportunity' },
+  { name: 'Leadership Transitions',   domain: 'Leadership',   exposure: 38, playbooks: 12, lastDrill: '30 days ago', icon: Users,        level: 'low',    color: TEAL, pillar: 'transformation',nature: 'Unplanned', frequency: 'Infrequent', type: 'Opportunity' },
+  { name: 'Talent & Workforce',       domain: 'Talent',       exposure: 41, playbooks: 11, lastDrill: '25 days ago', icon: Activity,     level: 'low',    color: TEAL, pillar: 'transformation',nature: 'Planned',   frequency: 'Frequent',   type: 'Opportunity' },
 ];
 
 const ACTIVE_DRILLS = [
@@ -77,7 +101,7 @@ export default function SituationalHub() {
                 9-Domain <em style={{ color: GOLD, fontStyle: 'italic' }}>Coverage Board</em>
               </h1>
               <p className="text-white/60 max-w-xl">
-                Exposure levels, readiness drills, and pre-staged Readiness Protocols across all 9 strategic domains — M&A, Competitive Response, Regulatory, Supply Chain, Digital Transformation, and beyond.
+                Not just crisis. Every situation an organization will face — <span className="text-white/85 font-medium">planned and unplanned, frequent and rare, threat and opportunity</span> — pre-staged across all 9 domains and 3 strategic pillars: Growth &amp; Positioning, Risk &amp; Resilience, and Transformation.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-wrap">
@@ -139,12 +163,50 @@ export default function SituationalHub() {
                 ))}
               </div>
 
+              {/* Full Spectrum Coverage */}
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-[#0A0F2E]" style={CG}>Every Situation, Covered — Not Just Crisis</h2>
+                <div className="hidden md:flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
+                  <span>Planned <span className="text-[#0A0F2E]/30">/</span> Unplanned</span>
+                  <span className="text-[#E8E4DC]">·</span>
+                  <span>Frequent <span className="text-[#0A0F2E]/30">/</span> Infrequent</span>
+                  <span className="text-[#E8E4DC]">·</span>
+                  <span>Threat <span className="text-[#0A0F2E]/30">/</span> Opportunity</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                {PILLARS.map(p => {
+                  const Icon = p.icon;
+                  const domainsInPillar = SCENARIO_DOMAINS.filter(d => d.pillar === p.id);
+                  return (
+                    <Card key={p.id} className="border-[#E8E4DC] bg-white">
+                      <CardContent className="p-5">
+                        <div className="flex items-center gap-2.5 mb-2">
+                          <div className="p-2" style={{ background: `${p.color}15` }}><Icon className="h-4 w-4" style={{ color: p.color }} /></div>
+                          <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: p.color }}>{p.name}</h3>
+                        </div>
+                        <p className="text-xs text-[#6B7280] mb-4 leading-relaxed">{p.tagline}</p>
+                        <div className="space-y-2">
+                          {domainsInPillar.map(d => (
+                            <div key={d.name} className="flex items-center justify-between text-xs border-t border-[#F0EDE4] pt-2 first:border-0 first:pt-0">
+                              <span className="font-medium text-[#0A0F2E]">{d.name}</span>
+                              <span className="text-[9px] font-bold uppercase tracking-wider text-[#9CA3AF] whitespace-nowrap ml-2">{d.nature} · {d.frequency}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+
               {/* Domain Grid */}
               <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Coverage Across All 9 Strategic Domains</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 {SCENARIO_DOMAINS.map(d => {
                   const lc = getLevelColor(d.level);
                   const Icon = d.icon;
+                  const pillar = PILLARS.find(p => p.id === d.pillar)!;
                   return (
                     <Card key={d.name} className="border-[#E8E4DC] bg-white transition-all cursor-pointer" onClick={() => setActiveTab('exposure')}>
                       <CardContent className="p-5">
@@ -155,6 +217,10 @@ export default function SituationalHub() {
                           </Badge>
                         </div>
                         <h3 className="font-semibold text-[#0A0F2E] mb-1 text-sm leading-tight">{d.name}</h3>
+                        <div className="flex items-center gap-1.5 mb-2">
+                          <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: pillar.color }}>{pillar.name}</span>
+                          <span className="text-[9px] text-[#9CA3AF]">· {d.nature} · {d.frequency} · {d.type}</span>
+                        </div>
                         <div className="space-y-2 mt-2">
                           <div className="flex justify-between text-xs text-[#6B7280]">
                             <span>Readiness</span>
