@@ -53,7 +53,7 @@ function useLiveContext() {
   return data;
 }
 
-export function GuestPreviewBanner() {
+export function GuestPreviewBanner({ hideDefaultStrip = false }: { hideDefaultStrip?: boolean } = {}) {
   const { isAuthenticated, isLoading: authLoading, login } = useAuth();
   const { isTrial, isExpired, isLoading: trialLoading, firstName, timeRemaining } = useTrial();
   const [dismissed, setDismissed] = useState(false);
@@ -159,6 +159,8 @@ export function GuestPreviewBanner() {
   }
 
   // ── Default guest — live monitoring strip ─────────────────────────────────
+  if (hideDefaultStrip) return null;
+
   const currentHeadline = headlines?.[tickerIdx] ?? null;
   const signalCount = liveCtx?.totalToday ?? 0;
   const domainCount = liveCtx?.domainsActive?.length ?? 0;

@@ -898,16 +898,6 @@ export default function StandardNav() {
     );
   };
 
-  const tickerItems = [
-    { text: "THE RESPONSE IS READY BEFORE THE TRIGGER FIRES", color: GOLD },
-    { text: "180 READINESS PROTOCOLS · STAGED AND READY", color: "rgba(255,255,255,0.55)" },
-    { text: "3,600× EXECUTION HEAD START · 30 DAYS COMPRESSED TO 12 MINUTES", color: GOLD },
-    { text: "231 detection thresholds MONITORED · CONTINUOUSLY", color: "rgba(255,255,255,0.55)" },
-    { text: "FOUNDING PARTNER PROGRAM · 90-DAY VALIDATION PARTNERSHIP", color: TEAL },
-    { text: "WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI", color: GOLD },
-    { text: "AI MONITORS · EXECUTIVES AUTHORIZE · EXECUTION PRE-STAGED", color: "rgba(255,255,255,0.55)" },
-  ];
-
   return (
     <>
     <nav
@@ -923,38 +913,6 @@ export default function StandardNav() {
     >
       {/* Gold-to-teal accent line — 3px */}
       <div style={{ height: 3, background: `linear-gradient(90deg, ${GOLD} 0%, ${TEAL} 45%, ${NAVY} 55%, ${TEAL} 65%, ${GOLD} 100%)` }} />
-
-      {/* ── GTM Proof-Point Ticker Strip ── */}
-      <div
-        className="vm-ticker-track hidden lg:block"
-        style={{
-          background: 'rgba(0,0,0,0.38)',
-          borderBottom: '1px solid rgba(201,168,76,0.10)',
-          height: 28,
-          cursor: 'default',
-        }}
-      >
-        <div className="vm-ticker-inner" style={{ height: 28 }}>
-          {/* Doubled for seamless loop */}
-          {[...tickerItems, ...tickerItems].map((item, i) => (
-            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', height: 28 }}>
-              <span
-                style={{
-                  fontSize: 9.5,
-                  fontWeight: 700,
-                  letterSpacing: '0.18em',
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  color: item.color,
-                  padding: '0 28px',
-                }}
-              >
-                {item.text}
-              </span>
-              <span style={{ color: GOLD, opacity: 0.4, fontSize: 8, flexShrink: 0 }}>◆</span>
-            </span>
-          ))}
-        </div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between" style={{ height: navLogoHeight }}>
