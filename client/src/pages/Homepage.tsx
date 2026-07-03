@@ -981,20 +981,16 @@ function HeroSection() {
                 </Link>
               </div>
 
-              {/* Fix #3 — Role-based entry points */}
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, alignItems: "center", marginBottom: 28 }}>
-                <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase" as const, marginRight: 4, whiteSpace: "nowrap" as const }}>See it for:</span>
-                {([
-                  { role: "CEO", href: "/master-demo", hint: "Activist Investor" },
-                  { role: "COO / PMO", href: "/pmo-onboarding", hint: "Operating Architecture" },
-                  { role: "CFO", href: "/roi-calculator", hint: "Execution ROI" },
-                  { role: "General Counsel", href: "/demo/doj-investigation", hint: "Regulatory Response" },
-                ] as const).map(({ role, href, hint }) => (
-                  <a key={role} href={href} style={{ textDecoration: "none", display: "flex", flexDirection: "column" as const, padding: "5px 11px", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.03)" }}>
-                    <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.72)", letterSpacing: "0.06em" }}>{role}</span>
-                    <span style={{ ...DM, fontSize: 9, color: "rgba(255,255,255,0.36)", letterSpacing: "0.04em" }}>{hint}</span>
-                  </a>
-                ))}
+              {/* Role-based entry point — single link into the full 14-role selector */}
+              <div style={{ marginBottom: 28 }}>
+                <Link
+                  href="/role-selector"
+                  onClick={() => trackCTA("hero_role_selector")}
+                  style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 10, padding: "9px 16px", border: "1px solid rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.03)" }}
+                >
+                  <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.32)", letterSpacing: "0.18em", textTransform: "uppercase" as const }}>See it for your seat:</span>
+                  <span style={{ ...DM, fontSize: 12, fontWeight: 700, color: GOLD, letterSpacing: "0.02em" }}>All 14 executive roles →</span>
+                </Link>
               </div>
 
               {/* Situation quick-jump — skip the orientation, go straight to your scenario */}

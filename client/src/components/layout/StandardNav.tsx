@@ -623,6 +623,13 @@ export default function StandardNav() {
         sub: 'Browse all 180 Readiness Protocols by strategic domain, industry, and trigger type.',
         featured: true,
       },
+      {
+        path: '/role-selector',
+        icon: Target,
+        label: 'Choose Your Role — All 14 Executive Seats',
+        sub: 'CEO, CFO, COO, CISO, General Counsel, and 9 more. Pick your seat, run the walkthrough built for it.',
+        featured: true,
+      },
     ];
     const deeperDemos = [
       { path: '/demo/ransomware', icon: Zap, label: 'Risk — Financial Services Ransomware', sub: 'Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours.', domain: 'RISK' },
