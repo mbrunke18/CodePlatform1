@@ -1142,7 +1142,7 @@ function ScenarioCardsRow() {
             </div>
           </div>
           <Link href="/demo-hub" style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.38)", textDecoration: "none", letterSpacing: "0.06em", whiteSpace: "nowrap" as const, flexShrink: 0 }}>
-            See all 19 simulations →
+            See all 13 simulations →
           </Link>
         </div>
 
@@ -2168,7 +2168,7 @@ function FoundingPartnerCloseSection() {
           </div>
           {/* Urgency signal */}
           <div style={{ padding: "24px 28px", border: `1px solid ${GOLD}55`, background: "rgba(201,168,76,0.07)", minWidth: 240, flexShrink: 0 }}>
-            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>Q3 2025 Cohort</div>
+            <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>Q3 2026 Cohort</div>
 
             {/* Seat progress bar */}
             <div style={{ marginBottom: 16 }}>
@@ -2195,7 +2195,7 @@ function FoundingPartnerCloseSection() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
-                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.45)" }}>Cohort closes August 31</span>
+                <span style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.45)" }}>Cohort closes September 30</span>
               </div>
             </div>
           </div>
