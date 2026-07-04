@@ -56363,6 +56363,21 @@ async function seedFlagshipPlaybooks() {
   }
   return results;
 }
+function escapeHtml(value) {
+  return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function sanitizeShareUrl(shareUrl, req) {
+  if (typeof shareUrl !== "string" || !shareUrl) return null;
+  try {
+    const parsed = new URL(shareUrl);
+    const host = req.get?.("host");
+    if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return null;
+    if (host && parsed.host !== host) return null;
+    return parsed.toString();
+  } catch {
+    return null;
+  }
+}
 async function registerRoutes(app2, existingServer) {
   await setupAuth(app2);
   setupMicrosoftAuth(app2);
@@ -56382,6 +56397,13 @@ async function registerRoutes(app2, existingServer) {
     legacyHeaders: false,
     message: { error: "Rate limit exceeded on playbook library. Authenticated access has no limits." },
     skip: (req) => !!req.isAuthenticated?.()
+  });
+  const leadCaptureLimiter = rateLimit({
+    windowMs: 15 * 60 * 1e3,
+    max: 8,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { success: false, error: "Too many requests. Please try again later." }
   });
   registerMarketingImageRoute(app2);
   registerLinkedInProductsRoute(app2);
@@ -63917,11 +63939,18 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
-  app2.post("/api/test-drive/email-summary", async (req, res) => {
+  app2.post("/api/test-drive/email-summary", leadCaptureLimiter, async (req, res) => {
     try {
       const { email, companyName, scenarioId, scenarioTitle, completedTasks, totalTasks } = req.body;
-      if (!email || !scenarioId || !scenarioTitle) {
-        return res.status(400).json({ success: false, error: "email, scenarioId, and scenarioTitle are required" });
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || typeof email !== "string" || !EMAIL_RE.test(email.trim()) || !scenarioId || !scenarioTitle) {
+        return res.status(400).json({ success: false, error: "A valid email, scenarioId, and scenarioTitle are required" });
+      }
+      if (typeof companyName === "string" && companyName.length > 200) {
+        return res.status(400).json({ success: false, error: "companyName is too long" });
+      }
+      if (typeof scenarioTitle === "string" && scenarioTitle.length > 200) {
+        return res.status(400).json({ success: false, error: "scenarioTitle is too long" });
       }
       await db.insert(testDriveLeads).values({
         email: email.trim().toLowerCase(),
@@ -63938,7 +63967,9 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       }
       const { Resend: Resend11 } = await import("resend");
       const resend2 = new Resend11(apiKey);
-      const company = companyName ? ` for ${companyName}` : "";
+      const safeCompanyName = escapeHtml(companyName);
+      const safeScenarioTitle = escapeHtml(scenarioTitle);
+      const company = companyName ? ` for ${safeCompanyName}` : "";
       const completionPct = totalTasks > 0 ? Math.round(completedTasks / totalTasks * 100) : 100;
       const NAVY6 = "#0A0F2E";
       const GOLD6 = "#C9A84C";
@@ -63954,14 +63985,14 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 <tr><td style="background:${NAVY6};padding:32px 40px;">
                   <div style="font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD6};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
                   <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your 12-Minute Execution Summary${company}</div>
-                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Scenario: ${scenarioTitle}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Scenario: ${safeScenarioTitle}</div>
                 </td></tr>
                 <!-- Gold rule -->
                 <tr><td style="height:3px;background:${GOLD6};"></td></tr>
                 <!-- Body -->
                 <tr><td style="padding:40px;">
                   <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px;">
-                    You just ran a live simulation of the <strong>${scenarioTitle}</strong> scenario and completed your 12-minute execution clock. Here is what you demonstrated.
+                    You just ran a live simulation of the <strong>${safeScenarioTitle}</strong> scenario and completed your 12-minute execution clock. Here is what you demonstrated.
                   </p>
                   <!-- Stats -->
                   <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
@@ -64027,7 +64058,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             from,
             replyTo: "pilot@vaughnmartin.com",
             to: [email.trim()],
-            subject: `Your 12-Minute Execution Summary \u2014 ${scenarioTitle}`,
+            subject: `Your 12-Minute Execution Summary \u2014 ${scenarioTitle}`.slice(0, 200),
             html
           });
           if (!error) {
@@ -64043,14 +64074,18 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.json({ success: true, emailSent: sent });
     } catch (err) {
       console.error("[TestDrive] Error:", err.message);
-      res.status(500).json({ success: false, error: err.message });
+      res.status(500).json({ success: false, error: "Failed to process request" });
     }
   });
-  app2.post("/api/situation-scanner/lead", async (req, res) => {
+  app2.post("/api/situation-scanner/lead", leadCaptureLimiter, async (req, res) => {
     try {
       const { email, situationId, situationName, domain, protocolNum, protocol } = req.body;
-      if (!email || !situationId || !situationName) {
-        return res.status(400).json({ success: false, error: "email, situationId, and situationName are required" });
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || typeof email !== "string" || !EMAIL_RE.test(email.trim()) || !situationId || !situationName) {
+        return res.status(400).json({ success: false, error: "A valid email, situationId, and situationName are required" });
+      }
+      if (typeof situationName === "string" && situationName.length > 200) {
+        return res.status(400).json({ success: false, error: "situationName is too long" });
       }
       await db.insert(testDriveLeads).values({
         email: email.trim().toLowerCase(),
@@ -64070,6 +64105,10 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const NAVY_C = "#0A0F2E";
       const GOLD_C = "#C9A84C";
       const TEAL_C = "#2B8A6E";
+      const safeSituationName = escapeHtml(situationName);
+      const safeDomain = escapeHtml(domain);
+      const safeProtocol = escapeHtml(protocol);
+      const safeProtocolNum = escapeHtml(protocolNum);
       const html = `
         <!DOCTYPE html>
         <html>
@@ -64080,23 +64119,23 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
               <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
                 <tr><td style="background:${NAVY_C};padding:32px 40px;">
                   <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD_C};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
-                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Situation Brief: ${situationName}</div>
-                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Protocol #${protocolNum} \u2014 ${protocol}</div>
+                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Situation Brief: ${safeSituationName}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Protocol #${safeProtocolNum} \u2014 ${safeProtocol}</div>
                 </td></tr>
                 <tr><td style="height:3px;background:${GOLD_C};"></td></tr>
                 <tr><td style="padding:40px;">
                   <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 20px;">
-                    You just used the Situation Scanner to see the pre-staged response to <strong>${situationName}</strong>. Here is what you saw \u2014 and what it means.
+                    You just used the Situation Scanner to see the pre-staged response to <strong>${safeSituationName}</strong>. Here is what you saw \u2014 and what it means.
                   </p>
                   <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD_C};margin-bottom:28px;">
                     <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What the response represents</div>
                     <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
-                      Protocol #${protocolNum} was pre-staged before this trigger arrived. When it fires, you don't mobilize \u2014 you authorize. Every task has an owner. Every stakeholder is pre-notified. The 30-day alignment cycle compresses to <strong>12 minutes</strong>.
+                      Protocol #${safeProtocolNum} was pre-staged before this trigger arrived. When it fires, you don't mobilize \u2014 you authorize. Every task has an owner. Every stakeholder is pre-notified. The 30-day alignment cycle compresses to <strong>12 minutes</strong>.
                     </p>
                   </div>
                   <div style="margin-bottom:28px;">
                     <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:${TEAL_C};margin-bottom:8px;">Domain</div>
-                    <div style="font-size:15px;font-weight:700;color:${NAVY_C};">${domain}</div>
+                    <div style="font-size:15px;font-weight:700;color:${NAVY_C};">${safeDomain}</div>
                   </div>
                   <p style="font-size:15px;font-weight:600;color:${NAVY_C};margin:0 0 8px;">Founding Partner Program</p>
                   <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
@@ -64132,7 +64171,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             from,
             replyTo: "pilot@vaughnmartin.com",
             to: [email.trim()],
-            subject: `Your Situation Brief: ${situationName} \u2014 Readiness OS`,
+            subject: `Your Situation Brief: ${situationName} \u2014 Readiness OS`.slice(0, 200),
             html
           });
           if (!error) {
@@ -64148,13 +64187,14 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.json({ success: true, emailSent: sent });
     } catch (err) {
       console.error("[Scanner] Error:", err.message);
-      res.status(500).json({ success: false, error: err.message });
+      res.status(500).json({ success: false, error: "Failed to process request" });
     }
   });
-  app2.post("/api/roi-calculator/email-report", async (req, res) => {
+  app2.post("/api/roi-calculator/email-report", leadCaptureLimiter, async (req, res) => {
     try {
       const { email, companyName, industryLabel, totalAnnualValue, netAnnualValue, roiPct, threeYearValue, breakEvenDays, platformCost, shareUrl } = req.body;
-      if (!email || !industryLabel || typeof totalAnnualValue !== "number") {
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || typeof email !== "string" || !EMAIL_RE.test(email.trim()) || !industryLabel || typeof totalAnnualValue !== "number" || !Number.isFinite(totalAnnualValue)) {
         return res.status(400).json({ success: false, error: "email, industryLabel, and totalAnnualValue are required" });
       }
       await db.insert(testDriveLeads).values({
@@ -64175,9 +64215,18 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const NAVY_R = "#0A0F2E";
       const GOLD_R = "#C9A84C";
       const TEAL_R = "#2B8A6E";
+      const safeNum = (n) => typeof n === "number" && Number.isFinite(n) ? n : 0;
+      const safeNetAnnualValue = safeNum(netAnnualValue);
+      const safeThreeYearValue = safeNum(threeYearValue);
+      const safePlatformCost = safeNum(platformCost);
+      const safeBreakEvenDays = safeNum(breakEvenDays);
+      const safeRoiPct = safeNum(roiPct);
+      const safeCompanyName = escapeHtml(companyName);
+      const safeIndustryLabel = escapeHtml(industryLabel);
+      const safeShareUrl = sanitizeShareUrl(shareUrl, req);
       const fmtC = (n) => n >= 1e9 ? `$${(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `$${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `$${Math.round(n / 1e3)}K` : `$${Math.round(n)}`;
-      const breakEvenLabel = breakEvenDays < 30 ? `${breakEvenDays} days` : `${Math.round(breakEvenDays / 30)} months`;
-      const company = companyName ? ` for ${companyName}` : "";
+      const breakEvenLabel = safeBreakEvenDays < 30 ? `${Math.round(safeBreakEvenDays)} days` : `${Math.round(safeBreakEvenDays / 30)} months`;
+      const company = companyName ? ` for ${safeCompanyName}` : "";
       const html = `
         <!DOCTYPE html>
         <html>
@@ -64189,7 +64238,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 <tr><td style="background:${NAVY_R};padding:32px 40px;">
                   <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD_R};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
                   <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your Execution ROI Estimate${company}</div>
-                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">${industryLabel}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">${safeIndustryLabel}</div>
                 </td></tr>
                 <tr><td style="height:3px;background:${GOLD_R};"></td></tr>
                 <tr><td style="padding:40px;">
@@ -64206,12 +64255,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                     <tr><td colspan="3" height="8"></td></tr>
                     <tr>
                       <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${fmtC(netAnnualValue)}</div>
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${fmtC(safeNetAnnualValue)}</div>
                         <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Net Annual Value</div>
                       </td>
                       <td width="8"></td>
                       <td width="33%" style="padding:14px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${roiPct?.toLocaleString?.() ?? roiPct}%</div>
+                        <div style="font-size:20px;font-weight:700;color:${NAVY_R};">${safeRoiPct.toLocaleString()}%</div>
                         <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;margin-top:4px;">First-Year ROI</div>
                       </td>
                       <td width="8"></td>
@@ -64223,15 +64272,15 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                   </table>
                   <div style="padding:20px 24px;background:#f0faf6;border-left:4px solid ${TEAL_R};margin-bottom:28px;">
                     <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
-                      3-year net value at ${fmtC(platformCost)}/yr platform investment: <strong>${fmtC(threeYearValue)}</strong>. That is the difference between mobilizing from scratch every time a strategic trigger fires, and executing from a pre-staged position in 12 minutes \u2014 a <strong>3,600\xD7 Execution Head Start</strong>.
+                      3-year net value at ${fmtC(safePlatformCost)}/yr platform investment: <strong>${fmtC(safeThreeYearValue)}</strong>. That is the difference between mobilizing from scratch every time a strategic trigger fires, and executing from a pre-staged position in 12 minutes \u2014 a <strong>3,600\xD7 Execution Head Start</strong>.
                     </p>
                   </div>
-                  ${shareUrl ? `
+                  ${safeShareUrl ? `
                   <p style="font-size:14px;font-weight:600;color:${NAVY_R};margin:0 0 8px;">Revisit your configuration anytime</p>
                   <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
                     <tr>
                       <td style="background:#f9fafb;border:1px solid #e5e7eb;padding:12px 16px;">
-                        <a href="${shareUrl}" style="font-size:13px;color:${TEAL_R};word-break:break-all;">${shareUrl}</a>
+                        <a href="${escapeHtml(safeShareUrl)}" style="font-size:13px;color:${TEAL_R};word-break:break-all;">${escapeHtml(safeShareUrl)}</a>
                       </td>
                     </tr>
                   </table>` : ""}
@@ -64269,7 +64318,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             from,
             replyTo: "pilot@vaughnmartin.com",
             to: [email.trim()],
-            subject: `Your Execution ROI Estimate \u2014 ${industryLabel}`,
+            subject: `Your Execution ROI Estimate \u2014 ${industryLabel}`.slice(0, 200),
             html
           });
           if (!error) {
@@ -64285,7 +64334,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.json({ success: true, emailSent: sent });
     } catch (err) {
       console.error("[ROICalculator] Error:", err.message);
-      res.status(500).json({ success: false, error: err.message });
+      res.status(500).json({ success: false, error: "Failed to process request" });
     }
   });
   app2.post("/api/custom-protocols", async (req, res) => {
