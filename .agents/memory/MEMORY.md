@@ -22,3 +22,4 @@
 - [Demo scenario routing](demo-scenario-routing.md) — /demo-experience?s=N clamps silently on bad index; prefer /demo/:scenarioId (string ids, all 3 domains) for new scenario links
 - [PUBLIC_ROUTES allowlist gotcha](public-routes-allowlist.md) — new public POST endpoints silently 401 unless added to PUBLIC_ROUTES in server/authConfig.ts; verify with curl, not just tsc/tests
 - [mark_task_complete state MERGED error](task-complete-state-merged-error.md) — non-retryable platform state error, unrelated to code quality; don't keep retrying, verify work independently and report to user
+- [Server-side email HTML escaping](server-email-html-escaping.md) — HTML email builders (template literals) get zero JSX auto-escaping; escape fields + validate echoed URLs + rate-limit
