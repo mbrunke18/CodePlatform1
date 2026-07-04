@@ -775,9 +775,10 @@ function RealityGapSimulator() {
   const [progress, setProgress] = useState(0); // 0–100 over 9s
   const [started, setStarted] = useState(false);
 
-  // TOTAL_MS = 9000ms simulation window (phase 0: 0–5s, phase 1: 5–9s, phase 2: 9s+)
+  // TOTAL_MS = 11000ms simulation window (phase 0: 0–5s, phase 1: 5–11s, phase 2: 11s+)
   const PHASE0_MS = 5000;
-  const PHASE1_MS = 4000;
+  const PHASE1_MS = 6000; // slowed down so the countdown clock is actually readable (was 4000)
+  const TOTAL_MS = PHASE0_MS + PHASE1_MS;
 
   const runSim = () => {
     setPhase(0);
@@ -786,13 +787,13 @@ function RealityGapSimulator() {
     setProgress(0);
     setStarted(true);
 
-    // Progress bar: tick every 90ms, 100 ticks = 9s
+    // Progress bar: 100 ticks spread across the full simulation window
     let p = 0;
     const pi = setInterval(() => {
       p = Math.min(100, p + 1);
       setProgress(p);
       if (p >= 100) clearInterval(pi);
-    }, 90);
+    }, TOTAL_MS / 100);
 
     // Day counter: 0→30 over PHASE0_MS - 500ms (start early, finish before cut)
     let d = 0;
@@ -802,19 +803,21 @@ function RealityGapSimulator() {
       if (d >= 30) clearInterval(di);
     }, (PHASE0_MS - 500) / 30);
 
-    // Cut to Phase 1
+    // Cut to Phase 1 — clock counts down in visible, trackable steps (~187ms/tick)
     setTimeout(() => {
       setPhase(1);
       let s = 720;
+      const CLOCK_DECREMENT = 24; // seconds per tick (was 6 — too fast to read)
+      const CLOCK_TICKS = 720 / CLOCK_DECREMENT; // 30 ticks
       const si = setInterval(() => {
-        s = Math.max(0, s - 6);
+        s = Math.max(0, s - CLOCK_DECREMENT);
         setMinSecs(s);
         if (s <= 0) clearInterval(si);
-      }, (PHASE1_MS - 400) / 120);
+      }, (PHASE1_MS - 400) / CLOCK_TICKS);
     }, PHASE0_MS);
 
     // Phase 2 result
-    setTimeout(() => setPhase(2), PHASE0_MS + PHASE1_MS);
+    setTimeout(() => setPhase(2), TOTAL_MS);
   };
 
   useEffect(() => {

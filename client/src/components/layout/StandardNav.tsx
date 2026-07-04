@@ -951,6 +951,19 @@ export default function StandardNav() {
           <div className="hidden lg:flex items-center gap-0.5">
             {isAuthenticated && user ? renderProductNavCenter() : (
               <>
+                {/* New Here? Start Here — first-time visitor entry point, styled distinctly to cut through the mega-menu */}
+                <button
+                  onClick={() => navigateTo('/entry')}
+                  className="px-3 py-1.5 text-sm font-bold flex items-center gap-1.5 transition-all"
+                  style={{ color: TEAL, background: 'rgba(43,138,110,0.10)', border: '1px solid rgba(43,138,110,0.35)', borderRadius: '0.15rem', whiteSpace: 'nowrap', marginRight: 4 }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.20)'; }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.10)'; }}
+                  data-testid="nav-start-here"
+                  title="New here? Get pointed to the right starting place"
+                >
+                  <Rocket className="h-3.5 w-3.5" />
+                  New Here? Start Here
+                </button>
                 {/* Flat links */}
                 {[
                   { label: 'How It Works', path: '/how-it-works' },
@@ -1214,6 +1227,15 @@ export default function StandardNav() {
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 px-1">
+                  <Button
+                    onClick={() => navigateTo("/entry")}
+                    className="w-full justify-center h-11 text-sm font-bold"
+                    style={{ background: 'rgba(43,138,110,0.12)', border: `1px solid rgba(43,138,110,0.4)`, color: TEAL }}
+                    data-testid="nav-mobile-start-here"
+                  >
+                    <Rocket className="h-4 w-4 mr-2" />
+                    New Here? Start Here
+                  </Button>
                   <Button
                     onClick={() => navigateTo("/demo-experience")}
                     className="w-full justify-center h-12 text-sm font-bold"
