@@ -68,26 +68,28 @@ make_clip() {
 
 build_intro() {
 # ============================================================================
-# INTRO (33.904s): rewritten for persuasiveness -- names the company and the
+# INTRO (33.381s): rewritten for persuasiveness -- names the company and the
 # product explicitly ("VaughnMartin Readiness OS"), states the concrete cost of
 # the old model (30 days to mobilize) before showing the payoff, and pairs the
 # opening frame with the REAL hero logo graphic so brand identity is unmistakable
-# from second one. Reveal timings are synced to the actual measured narration
-# durations for the new script (see .agents/memory/elevenlabs-voiceover-mixing.md).
+# from second one. The third beat explicitly chains situation -> trigger ->
+# protocol so the connection between the three terms is never left implicit.
+# Reveal timings are synced to the actual measured narration durations for the
+# new script (see .agents/memory/elevenlabs-voiceover-mixing.md).
 # ============================================================================
-INTRO_DUR=33.904
+INTRO_DUR=33.381
 ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=${INTRO_DUR}:r=25" -vf "
 [0:v]drawtext=fontfile=${FONT}:text='EVERY ORGANIZATION FACES SITUATIONS IT DOES NOT EXPECT':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=460:alpha='if(lt(t,0.6),0,1)',
 drawtext=fontfile=${FONT}:text='THE OLD WAY':fontcolor=${REDISH}:fontsize=30:x=(w-text_w)/2:y=600:alpha='if(lt(t,5.458),0,1)',
 drawtext=fontfile=${FONT}:text='30 days just to mobilize -- before a single action is taken':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=650:alpha='if(lt(t,5.458),0,1)',
-drawtext=fontfile=${FONT}:text='VAUGHNMARTIN READINESS OS':fontcolor=${TEAL}:fontsize=30:x=(w-text_w)/2:y=760:alpha='if(lt(t,12.641),0,1)',
-drawtext=fontfile=${FONT}:text='180 Readiness Protocols\, staged before the trigger ever fires':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=810:alpha='if(lt(t,12.641),0,1)',
-drawtext=fontfile=${FONT}:text='EXECUTION STARTS IN 12 MINUTES\, NOT 30 DAYS':fontcolor=${GOLD}:fontsize=38:x=(w-text_w)/2:y=910:alpha='if(lt(t,21.548),0,1)',
-drawtext=fontfile=${FONT}:text='Watch it respond to 3 real situations below':fontcolor=0xB8BCC8:fontsize=24:x=(w-text_w)/2:y=965:alpha='if(lt(t,21.548),0,1)'
+drawtext=fontfile=${FONT}:text='EVERY SITUATION FIRES A TRIGGER':fontcolor=${TEAL}:fontsize=30:x=(w-text_w)/2:y=760:alpha='if(lt(t,12.641),0,1)',
+drawtext=fontfile=${FONT}:text='Matched instantly to one of 180 pre-staged Readiness Protocols':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=810:alpha='if(lt(t,12.641),0,1)',
+drawtext=fontfile=${FONT}:text='EXECUTION STARTS IN 12 MINUTES\, NOT 30 DAYS':fontcolor=${GOLD}:fontsize=38:x=(w-text_w)/2:y=910:alpha='if(lt(t,21.025),0,1)',
+drawtext=fontfile=${FONT}:text='Watch it respond to 3 real situations below':fontcolor=0xB8BCC8:fontsize=24:x=(w-text_w)/2:y=965:alpha='if(lt(t,21.025),0,1)'
 [base];
 $(brand_overlay_hero 130)
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=33.304:d=0.6
+fade=t=out:st=32.781:d=0.6
 " -pix_fmt yuv420p -r 25 cut0_intro.mp4
 }
 
@@ -127,33 +129,38 @@ make_clip transformation_product_launch.jpg cut3_transformation.mp4 "TRANSFORMAT
 
 build_endcard() {
 # ============================================================================
-# End card (48.855s): a full closing arc built to move a buyer to act --
-# depth (180 protocols across every domain) -> cost of not being a customer ->
-# the 3,600x metric -> the locked tagline -> a Founding Partner call to action
-# that names the company explicitly and gives the URL. The hero logo graphic
-# stays on screen for the entire card, since this is the moment a viewer decides
-# whether to remember the brand.
+# End card (61.889s): a full closing arc built to move a buyer to act --
+# depth+breadth (180 protocols, 231 triggers, every team/function, not just the
+# 3 situations shown) -> cost of not being a customer -> the 3,600x metric ->
+# ADVANCE closed-loop learning as a built-in differentiator -> the locked
+# tagline -> a Founding Partner call to action that names the company
+# explicitly and gives the URL. The hero logo graphic stays on screen for the
+# entire card, since this is the moment a viewer decides whether to remember
+# the brand. Beat boundaries below are derived from the actual measured
+# narration durations (see .agents/memory/elevenlabs-voiceover-mixing.md).
 # ============================================================================
-ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=48.855:r=25" -vf "
-[0:v]drawtext=fontfile=${FONT}:text='180 READINESS PROTOCOLS':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-0.6)/0.3\,(12.851-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='Pre-staged across Growth & Positioning\, Risk & Resilience\, Transformation':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(12.851-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-12.851)/0.3\,(25.101-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='30 days you do not have -- accounts lost\, exposure compounding\, competitors moving first':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-13.151)/0.3\,(25.101-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='3\,600X EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-25.101)/0.3\,(33.224-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='30 days compressed to 12 minutes':fontcolor=0xB8BCC8:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-25.401)/0.3\,(33.224-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-33.224)/0.3\,(38.866-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-33.524)/0.3\,(38.866-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-33.824)/0.3\,(38.866-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='THIS IS VAUGHNMARTIN READINESS OS':fontcolor=${GOLD}:fontsize=24:x=(w-text_w)/2:y=445:alpha='min(1\,max(0\,(t-38.866)/0.3))',
-drawbox=x=(w-820)/2:y=490:w=820:h=170:color=${NAVY}@0.9:t=fill:enable='gte(t,38.866)',
-drawbox=x=(w-820)/2:y=490:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,38.866)',
-drawbox=x=(w-820)/2:y=657:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,38.866)',
-drawtext=fontfile=${FONT}:text='REQUEST FOUNDING PARTNER ACCESS':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=545:alpha='min(1\,max(0\,(t-38.866)/0.3))',
-drawtext=fontfile=${FONT}:text='vaughnmartin.com':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,(t-38.866)/0.3))'
+ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=61.889:r=25" -vf "
+[0:v]drawtext=fontfile=${FONT}:text='180 READINESS PROTOCOLS':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-0.6)/0.3\,(13.556-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='231 triggers monitored end-to-end -- across every team\, every function':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(13.556-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='30 days you do not have -- accounts lost\, exposure compounding\, competitors moving first':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='3\,600X EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-25.807)/0.3\,(33.930-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='30 days compressed to 12 minutes':fontcolor=0xB8BCC8:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(33.930-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='AND IT GETS SMARTER EVERY TIME':fontcolor=${GOLD}:fontsize=44:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-33.930)/0.3\,(46.259-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='ADVANCE closes the loop -- proven improvements\, compounding with every activation':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-34.230)/0.3\,(46.259-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-46.259)/0.3\,(51.900-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-46.559)/0.3\,(51.900-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-46.859)/0.3\,(51.900-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='THIS IS VAUGHNMARTIN READINESS OS':fontcolor=${GOLD}:fontsize=24:x=(w-text_w)/2:y=445:alpha='min(1\,max(0\,(t-51.900)/0.3))',
+drawbox=x=(w-820)/2:y=490:w=820:h=170:color=${NAVY}@0.9:t=fill:enable='gte(t,51.900)',
+drawbox=x=(w-820)/2:y=490:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,51.900)',
+drawbox=x=(w-820)/2:y=657:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,51.900)',
+drawtext=fontfile=${FONT}:text='REQUEST FOUNDING PARTNER ACCESS':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=545:alpha='min(1\,max(0\,(t-51.900)/0.3))',
+drawtext=fontfile=${FONT}:text='vaughnmartin.com':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,(t-51.900)/0.3))'
 [base];
 $(brand_overlay_hero 90)
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=48.255:d=0.6
+fade=t=out:st=61.289:d=0.6
 " -pix_fmt yuv420p -r 25 cut4_endcard.mp4
 }
 

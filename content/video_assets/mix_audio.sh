@@ -8,17 +8,26 @@ cd "$(dirname "$0")"
 # See .agents/memory/elevenlabs-voiceover-mixing.md for why this sync rule matters and
 # why output is .m4a (not raw .aac).
 #
-# Every segment also gets a short afade=type=in (150ms) applied BEFORE the adelay shift.
-# Root cause fix for the "audio sounds cut off at the start of every line" complaint:
-# the raw TTS mp3s start at full amplitude with zero attack ramp (verified via
-# showwavespic), which reads as a clipped/truncated word to the ear even though no
-# audio data is actually missing. Ramping 0 -> full over 150ms removes that perceived
-# clip without a perceptible delay to speech onset.
+# Every segment also gets a very short afade=type=in (20ms) applied BEFORE the adelay
+# shift. IMPORTANT: astats RMS analysis showed raw TTS segments are true digital
+# silence (~-88dB) through ~30ms, then have a REAL, legitimate speech onset transient
+# at 30-50ms that jumps straight to near-full loudness (-25dB -> -17dB) -- that is
+# actual spoken content, not a bug. The earlier 150ms fade was too long: it ramped
+# amplitude to only ~27-33% at that exact 30-50ms onset window, actively muffling/
+# swallowing the real first phoneme -- which is why "first word(s) cut off" persisted
+# even after adding a fade. A 20ms fade fully resolves to 100% BEFORE the ~30ms onset,
+# so it only smooths any digital click at t=0 and never touches real speech content.
 
-TOTAL_DUR=153.523
+# TOTAL_DUR and all delays below were recomputed after: (a) shortening the fade
+# (see above), (b) revising intro03 (situation->trigger->protocol chain) and
+# seg09 (breadth: 231 triggers / every team+function, not just the 3 situations
+# shown), and (c) inserting a new seg14 ADVANCE beat between the 3,600x metric
+# and the closing tagline. See build_video.sh build_intro/build_endcard for the
+# matching on-screen caption timings -- the two files must be kept in lockstep.
+TOTAL_DUR=166.034
 
 S=voiceover_segments
-FADEIN="afade=type=in:start_time=0:duration=0.15"
+FADEIN="afade=type=in:start_time=0:duration=0.02"
 
 ffmpeg -y \
   -i ${S}/intro01_situations.mp3 \
@@ -37,28 +46,30 @@ ffmpeg -y \
   -i ${S}/seg09_endcard_depth.mp3 \
   -i ${S}/seg10_endcard_cost.mp3 \
   -i ${S}/seg11_endcard_metric.mp3 \
+  -i ${S}/seg14_endcard_advance.mp3 \
   -i ${S}/seg12_endcard_tagline.mp3 \
   -i ${S}/seg13_endcard_cta.mp3 \
   -filter_complex "
   [0:a]${FADEIN},adelay=900|900[a0];
   [1:a]${FADEIN},adelay=5758|5758[a1];
   [2:a]${FADEIN},adelay=12941|12941[a2];
-  [3:a]${FADEIN},adelay=21848|21848[a3];
-  [4:a]${FADEIN},adelay=34804|34804[a4];
-  [5:a]${FADEIN},adelay=42536|42536[a5];
-  [6:a]${FADEIN},adelay=51913|51913[a6];
-  [7:a]${FADEIN},adelay=62589|62589[a7];
-  [8:a]${FADEIN},adelay=67499|67499[a8];
-  [9:a]${FADEIN},adelay=74133|74133[a9];
-  [10:a]${FADEIN},adelay=86064|86064[a10];
-  [11:a]${FADEIN},adelay=88936|88936[a11];
-  [12:a]${FADEIN},adelay=94447|94447[a12];
-  [13:a]${FADEIN},adelay=105568|105568[a13];
-  [14:a]${FADEIN},adelay=117818|117818[a14];
-  [15:a]${FADEIN},adelay=130069|130069[a15];
-  [16:a]${FADEIN},adelay=138192|138192[a16];
-  [17:a]${FADEIN},adelay=143834|143834[a17];
-  [a0][a1][a2][a3][a4][a5][a6][a7][a8][a9][a10][a11][a12][a13][a14][a15][a16][a17]amix=inputs=18:normalize=0:dropout_transition=0[mixed];
+  [3:a]${FADEIN},adelay=21325|21325[a3];
+  [4:a]${FADEIN},adelay=34281|34281[a4];
+  [5:a]${FADEIN},adelay=42013|42013[a5];
+  [6:a]${FADEIN},adelay=51390|51390[a6];
+  [7:a]${FADEIN},adelay=62066|62066[a7];
+  [8:a]${FADEIN},adelay=66976|66976[a8];
+  [9:a]${FADEIN},adelay=73610|73610[a9];
+  [10:a]${FADEIN},adelay=85541|85541[a10];
+  [11:a]${FADEIN},adelay=88413|88413[a11];
+  [12:a]${FADEIN},adelay=93924|93924[a12];
+  [13:a]${FADEIN},adelay=105045|105045[a13];
+  [14:a]${FADEIN},adelay=118001|118001[a14];
+  [15:a]${FADEIN},adelay=130252|130252[a15];
+  [16:a]${FADEIN},adelay=138375|138375[a16];
+  [17:a]${FADEIN},adelay=150704|150704[a17];
+  [18:a]${FADEIN},adelay=156345|156345[a18];
+  [a0][a1][a2][a3][a4][a5][a6][a7][a8][a9][a10][a11][a12][a13][a14][a15][a16][a17][a18]amix=inputs=19:normalize=0:dropout_transition=0[mixed];
   [mixed]apad=whole_dur=${TOTAL_DUR}[out]
   " -map "[out]" -c:a aac -b:a 192k mixed_voiceover.m4a
 
