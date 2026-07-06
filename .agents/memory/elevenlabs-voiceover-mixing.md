@@ -31,3 +31,24 @@ When building a `-vf "drawtext=...:text='...'..."` filter chain inside a double-
 **Why:** This exact bug recurred twice in the same project (once on "NovaTech's", once on "DOESN'T"/"who's") before being fixed — the fix that actually works is removing the apostrophe from the caption text entirely (e.g. "DOES NOT", "who is"), not trying to escape it.
 
 **How to apply:** Any ffmpeg drawtext caption authored inside a double-quoted `-vf` string — write captions without apostrophes/contractions rather than attempting to escape them.
+
+## Never background long ffmpeg render jobs in this sandbox
+Running a multi-clip ffmpeg build script with `bash build_video.sh &` (backgrounded/disowned) gets silently killed between tool calls in this environment — the process does not survive past the tool call boundary the way a normal disowned shell job would. Each render step (per-clip or per-stage) must be run as its own synchronous, foreground `bash` tool call that completes within that call's timeout, even if that means splitting one script into several sequential tool invocations.
+
+**Why:** A backgrounded full-video build silently died partway through with no error surfaced, wasting a render cycle before the pattern was identified.
+
+**How to apply:** Any task rendering multiple video clips or a long ffmpeg pipeline — call each clip/stage synchronously in its own tool call, never `&`/background/disown a long-running ffmpeg process.
+
+## Raw .aac (ADTS) output misreports duration in ffprobe
+Muxing/mixing audio to a raw `.aac` file (ADTS bitstream, no container) causes `ffprobe` to badly estimate the duration (seen: reported 135.77s for audio that was actually ~121.05s) because ADTS has no duration metadata and ffprobe falls back to bitrate-based estimation. Output intermediate mixed audio to an `.m4a` (mp4 container) instead of `.aac` whenever the duration will be checked or relied on for sync math.
+
+**Why:** The wrong duration reading nearly caused a mis-timed final mux; switching the intermediate file extension/container from `.aac` to `.m4a` fixed the duration report with no change to the actual audio content.
+
+**How to apply:** Any ffmpeg step producing a standalone AAC audio file for later inspection or muxing — use `.m4a` output, not raw `.aac`.
+
+## Do not use `-shortest` when the video has trailing silent/fade time beyond the last narration line
+If the video's final section (e.g. an endcard) is authored with deliberate trailing seconds after the last audio segment ends (for a closing fade-to-black or hold), muxing with `ffmpeg -shortest` truncates the video down to the audio's length — cutting off that closing fade before it completes, since the audio is shorter than the full video. Drop `-shortest` and let the video's full duration win; the trailing portion will just play in silence, which is fine and often the intended effect.
+
+**Why:** Using `-shortest` on this project cut the endcard's closing fade-to-black off before it ever started (video landed ~1.7s short), which was only caught by comparing the muxed output duration against the known/expected silent-video duration.
+
+**How to apply:** Before muxing narration onto a video, compare `ffprobe` durations of the silent video vs. the mixed audio. If the video is intentionally longer (trailing fade/hold), omit `-shortest`; only use it when the video should be trimmed to match audio exactly.
