@@ -70,31 +70,42 @@ make_clip() {
 }
 
 # ============================================================================
-# INTRO v2 (99.197s): FULL REWRITE per potential-customer feedback on the v1
-# video ("explains too quickly... show the product too early... not enough
-# emotional urgency"). Restructured into 3 acts that all play BEFORE any
-# product screen appears, matching the reviewer's suggested arc:
-#   Act 1 (0.6s-29.408s)  -- THE QUESTION: tension, inevitability, no product.
-#   Act 2 (29.408s-64.717s) -- THE OLD WAY: status-quo pain (war room, email,
-#     Teams, spreadsheets, searching, waiting) -- generic, not scenario-specific,
-#     so it reads as universal before the 3 scenario cuts get specific.
-#   Act 3 (64.717s-97.597s) -- THE TURN: "There is another way" -> brand reveal
-#     ("This is Readiness OS") -> product depth numbers (231 triggers / 180
-#     protocols) -> mechanism (system-detected, executive-authorized, no
-#     mobilization gap). The hero logo is deliberately withheld until the
-#     "This is Readiness OS" beat (t=78.637) -- per the reviewer, the brand
-#     reveal should land at the turn, not before it.
-# Each beat uses the same crossfade alpha formula as the scenario cuts
-# (make_clip's OLD_ALPHA/READY_ALPHA pattern) so beats replace each other
-# rather than stack, since there are now 13 sequential beats instead of the
-# old 4-beat "build up" style intro. Timings are derived from the actual
-# measured durations of the v2 narration segments -- see
-# .agents/memory/elevenlabs-voiceover-mixing.md for the sync formula
-# (audio starts caption-fade-start + 0.3s) and content/video_script_v2_draft.md
-# for the full narration script this intro is built from.
+# INTRO v3 (100.858s): further tension rewrite per second round of customer
+# feedback on v2 ("still spends too much time explaining what the platform is
+# before convincing me why I should care -- the opening should not mention
+# the product for the first ~45s, and the reveal should answer 'why care'
+# emotionally before it answers 'what is this' functionally").
+#   Act 1 (0.6s-20.858s) -- THE QUESTION: rewritten as 6 short, staccato
+#     lines (was 3 longer lines) using the reviewer's own suggested wording
+#     almost verbatim ("Every organization believes it's prepared... until
+#     the day preparation is tested... then the same questions surface:
+#     where is the information, who solved this before, why are we
+#     rebuilding what we already knew") -- no product mention.
+#   Act 2 (20.858s-56.167s) -- THE OLD WAY: UNCHANGED content (war room,
+#     email, Teams, spreadsheets, searching, waiting) -- only its absolute
+#     position shifted earlier since Act 1 is now shorter.
+#   Act 3 (56.167s-99.258s) -- THE TURN: "There is another way" -> "Not
+#     software -- organizational capability" -> brand reveal ("This is
+#     Readiness OS") -> NEW emotional beat ("the expertise in the room does
+#     not walk out the door... every team responds like they've done this
+#     before") -> NEW payoff beat ("That's what makes an organization
+#     fearless") -- BEFORE the spec-sheet numbers (231 triggers / 180
+#     protocols) and mechanism close. This reorders the turn so the
+#     emotional payoff (capability, fearless) lands before the functional
+#     detail, directly per the reviewer's "answer why before what" note.
+#     The hero logo is still withheld until the "This is Readiness OS" beat
+#     (t=65.829) so the brand reveal lands at the turn, not before it.
+# Beats use the same crossfade alpha formula as before so they replace each
+# other rather than stack (now 18 sequential beats). Act 1 uses a slightly
+# shorter hold + pause (staccato pacing) than Act 2/3's uniform 0.6s pause,
+# by design, to read as tension rather than narration. Timings are derived
+# from the actual measured durations of the new/reused v2 narration
+# segments -- see .agents/memory/elevenlabs-voiceover-mixing.md for the sync
+# formula (audio starts caption-fade-start + 0.3s) and
+# content/video_script_v2_draft.md for the full narration script.
 # ============================================================================
 build_intro() {
-INTRO_DUR=99.197
+INTRO_DUR=100.858
 
 beat() {
   local START="$1" END="$2" TEXT="$3" SIZE="$4" Y="$5" COLOR="$6"
@@ -103,26 +114,32 @@ beat() {
 
 ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=${INTRO_DUR}:r=25" -vf "
 [0:v]
-$(beat 0.6 11.491 'WHY DID NOT WE KNOW THIS SOONER?' 44 490 white)
-$(beat 11.491 23.297 'THE INFORMATION\, THE LESSONS\, THE PEOPLE ALL EXISTED.' 30 500 white)
-$(beat 23.297 29.408 'YOU HAVE FACED THIS. YOU WILL FACE IT AGAIN. YOU DO NOT KNOW WHEN.' 30 500 0xB8BCC8)
-$(beat 29.408 37.295 'THIS IS WHAT HAPPENS TODAY\, IN ALMOST EVERY ORGANIZATION.' 30 500 white)
-$(beat 37.295 41.969 'A WAR ROOM GETS BUILT FROM SCRATCH -- AFTER THE FACT.' 32 500 ${REDISH})
-$(beat 41.969 50.718 'EMAIL THREADS MULTIPLY. TEAMS CHANNELS FORK. SPREADSHEETS PILE UP.' 28 500 white)
-$(beat 50.718 56.725 'NOBODY OWNS IT YET. EVERYONE IS SEARCHING. EVERYONE IS WAITING.' 30 500 white)
-$(beat 56.725 64.717 'THIRTY DAYS PASS BEFORE THE RESPONSE EVEN TAKES SHAPE.' 32 500 ${REDISH})
-$(beat 64.717 67.197 'THERE IS ANOTHER WAY.' 52 500 ${GOLD})
-$(beat 67.197 78.637 'NOT SOFTWARE.' 40 460 ${GOLD})
-$(beat 67.197 78.637 'ORGANIZATIONAL INFRASTRUCTURE -- STAGED BEFORE THE TRIGGER FIRES.' 26 530 white)
-$(beat 78.637 81.666 'THIS IS READINESS OS.' 52 680 white)
-$(beat 81.666 91.199 '231 TRIGGERS -- 180 READINESS PROTOCOLS' 34 460 ${GOLD})
-$(beat 81.666 91.199 'PRE-STAGED. READY BEFORE YOU NEED THEM.' 26 520 white)
-$(beat 91.199 97.597 'SYSTEM-DETECTED. EXECUTIVE-AUTHORIZED. NO MOBILIZATION GAP.' 28 500 ${TEAL})
+$(beat 0.6 4.443 'EVERY ORGANIZATION BELIEVES IT IS PREPARED.' 40 500 white)
+$(beat 4.443 8.129 'UNTIL THE DAY PREPARATION IS TESTED.' 40 500 white)
+$(beat 8.129 11.267 'THEN THE SAME QUESTIONS SURFACE.' 38 500 0xB8BCC8)
+$(beat 11.267 13.934 'WHERE IS THE INFORMATION?' 44 500 white)
+$(beat 13.934 16.784 'WHO SOLVED THIS BEFORE?' 44 500 white)
+$(beat 16.784 20.858 'WHY ARE WE REBUILDING WHAT WE ALREADY KNEW?' 34 500 ${REDISH})
+$(beat 20.858 28.745 'THIS IS WHAT HAPPENS TODAY\, IN ALMOST EVERY ORGANIZATION.' 30 500 white)
+$(beat 28.745 33.419 'A WAR ROOM GETS BUILT FROM SCRATCH -- AFTER THE FACT.' 32 500 ${REDISH})
+$(beat 33.419 42.169 'EMAIL THREADS MULTIPLY. TEAMS CHANNELS FORK. SPREADSHEETS PILE UP.' 28 500 white)
+$(beat 42.169 48.175 'NOBODY OWNS IT YET. EVERYONE IS SEARCHING. EVERYONE IS WAITING.' 30 500 white)
+$(beat 48.175 56.167 'THIRTY DAYS PASS BEFORE THE RESPONSE EVEN TAKES SHAPE.' 32 500 ${REDISH})
+$(beat 56.167 58.647 'THERE IS ANOTHER WAY.' 52 500 ${GOLD})
+$(beat 58.647 65.829 'NOT SOFTWARE.' 40 460 ${GOLD})
+$(beat 58.647 65.829 'ORGANIZATIONAL CAPABILITY -- BUILT ONCE AND READY ALWAYS.' 26 530 white)
+$(beat 65.829 68.858 'THIS IS READINESS OS.' 52 680 white)
+$(beat 68.858 79.436 'THE EXPERTISE IN THE ROOM DOES NOT WALK OUT THE DOOR.' 28 460 white)
+$(beat 68.858 79.436 'IT IS BUILT IN -- EVERY TEAM RESPONDS LIKE THEY HAVE DONE THIS BEFORE.' 24 530 white)
+$(beat 79.436 83.326 'THAT IS WHAT MAKES AN ORGANIZATION FEARLESS.' 34 500 ${GOLD})
+$(beat 83.326 92.859 '231 TRIGGERS -- 180 READINESS PROTOCOLS' 34 460 ${GOLD})
+$(beat 83.326 92.859 'PRE-STAGED. READY BEFORE YOU NEED THEM.' 26 520 white)
+$(beat 92.859 99.258 'SYSTEM-DETECTED. EXECUTIVE-AUTHORIZED. NO MOBILIZATION GAP.' 28 500 ${TEAL})
 null
 [base];
-$(brand_overlay_hero 130 'gte(t\,78.637)')
+$(brand_overlay_hero 130 'gte(t\,65.829)')
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=98.597:d=0.6
+fade=t=out:st=100.258:d=0.6
 " -pix_fmt yuv420p -r 25 cut0_intro.mp4
 }
 

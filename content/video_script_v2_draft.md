@@ -1,8 +1,12 @@
-# Readiness OS — Video Script v2 (Restructured per customer feedback)
+# Readiness OS — Video Script v3 (Restructured per two rounds of customer feedback)
 
 Restructured from the "3-cut demo" per a potential customer's review: the original opened with
-product screens too early. This version delays the product reveal, builds emotional tension and
-inevitability first, and closes on philosophy (organizational memory) rather than a feature list.
+product screens too early. v2 delayed the product reveal, built emotional tension and
+inevitability first, and closed on philosophy (organizational memory) rather than a feature list.
+v3 (this version) responds to a second round of feedback on v2 (rated 8.7/10, up from 8/10): the
+opening still mentioned the product too soon, and the turn (Act 3) explained "what the platform is"
+before it earned "why to care" — the emotional/capability/fearlessness payoff now lands BEFORE the
+mechanical spec numbers (231 triggers / 180 protocols), not after.
 Written in first person / founder voice per user request — "I" lines represent the founder's own
 perspective and should be reviewed/adjusted by him before recording, since they carry his authority.
 
@@ -12,20 +16,22 @@ closed-loop beat. Everything else — order, framing, opening, and close — is 
 
 ---
 
-## ACT 1 — THE QUESTION (~0:00–0:30)
-Visual: navy screen, slow text reveal, no UI, no logos yet except a small corner mark.
+## ACT 1 — THE QUESTION (~0:00–0:21)
+Visual: navy screen, slow text reveal, no UI, no logos yet except a small corner mark. Rewritten as
+6 short, staccato lines (near-verbatim to the reviewer's own suggested wording) — shorter, punchier
+holds than v2's 3 longer lines, to build tension rather than narrate. Still zero product mention.
 
-> Every organization eventually faces the same moment.
+> Every organization believes it's prepared.
 >
-> The moment right after — when someone finally asks:
+> Until the day preparation is tested.
 >
-> "Why didn't we know this sooner?"
+> Then the same questions surface:
 >
-> The information existed. The lessons existed. The people existed.
+> Where is the information?
 >
-> They simply were not connected before the situation arrived.
+> Who solved this before?
 >
-> You have faced this. You will face it again. You do not know when.
+> Why are we rebuilding what we already knew?
 
 ---
 
@@ -44,14 +50,22 @@ Visual: text-driven "chaos" montage — no screenshots of your product, just the
 
 ---
 
-## ACT 3 — THE TURN (~1:00–1:25)
+## ACT 3 — THE TURN (~1:00–1:43)
 Visual: first appearance of the VaughnMartin logo at full size. This is the reveal beat.
+Re-sequenced per second-round feedback: the mechanical spec numbers (231 triggers / 180 protocols)
+used to land immediately after "This is Readiness OS," explaining "what it is" before the viewer had
+any reason to care. Now the capability and fearlessness payoff — the emotional "why" — lands first;
+the spec numbers close out the act as proof, not as the pitch itself.
 
 > There is another way.
 >
 > Not another piece of software. Organizational infrastructure — built before the trigger fires, so the response is already staged when it does.
 >
 > This is Readiness OS.
+>
+> The expertise in the room does not walk out the door. It's built in — every team responds like they've done this before.
+>
+> That's what makes an organization fearless.
 >
 > Two hundred thirty-one triggers monitored. One hundred eighty Readiness Protocols pre-staged — ready before you need them.
 >
