@@ -1,4 +1,0 @@
-file 'cut1_growth.mp4'
-file 'cut2_risk.mp4'
-file 'cut3_transformation.mp4'
-file 'cut4_endcard.mp4'

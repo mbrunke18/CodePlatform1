@@ -24,3 +24,10 @@ When muxing voiceover onto a video with scripted on-screen text timed to specifi
 Technically correct sync is not enough — a script that just reads section labels aloud ("Growth and positioning.") or strings together disconnected on-screen caption fragments sounds cheesy and tells no story. Write narration as connective tissue with a hook → cost-of-old-way → payoff-of-new-way arc per beat, not a transcript of the UI captions. If a well-paced story script doesn't fit the existing per-cut duration, extend the cut's duration (e.g. hold the "after" state on screen longer) rather than cramming/rushing the read — cramped pacing itself reads as unnatural/cheesy.
 
 **Why:** First-pass voiceover was rejected by the user as "cheesy, doesn't tell a story" even though the mix was technically correct — content quality is a separate axis from mixing quality.
+
+## Apostrophes break ffmpeg drawtext inside double-quoted -vf strings
+When building a `-vf "drawtext=...:text='...'..."` filter chain inside a double-quoted bash string, an apostrophe in the caption text (e.g. "DOESN'T", "who's", "NovaTech's") breaks the single-quoted `text='...'` field early. The remaining filter option text (fontcolor=, alpha=if(...)) then gets swallowed into the text field and renders as garbled literal text on screen instead of being parsed as filter options. Escaping the apostrophe (e.g. `'\\''`) is unreliable in this context.
+
+**Why:** This exact bug recurred twice in the same project (once on "NovaTech's", once on "DOESN'T"/"who's") before being fixed — the fix that actually works is removing the apostrophe from the caption text entirely (e.g. "DOES NOT", "who is"), not trying to escape it.
+
+**How to apply:** Any ffmpeg drawtext caption authored inside a double-quoted `-vf` string — write captions without apostrophes/contractions rather than attempting to escape them.
