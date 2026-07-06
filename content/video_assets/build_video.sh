@@ -119,7 +119,7 @@ build_cut2() {
 make_clip risk_ransomware.jpg cut2_risk.mp4 "RISK & RESILIENCE" \
   "RANSOMWARE HITS PRODUCTION -- REGULATORS WATCHING" \
   "No statement agreed yet. Legal\, comms\, and IT are on three separate calls when the SEC inquiry lands." \
-  "System-detected\, executive-authorized in minutes -- systems isolating\, the SEC notified\, and the customer statement live before the story breaks." \
+  "System-detected\, executive-authorized in minutes -- systems isolating\, the SEC notified\, and the customer statement issued before the story breaks." \
   27.968 5.510 14.600
 }
 
