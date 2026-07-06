@@ -143,28 +143,31 @@ build_endcard() {
 # the brand. Beat boundaries below are derived from the actual measured
 # narration durations (see .agents/memory/elevenlabs-voiceover-mixing.md).
 # ============================================================================
-ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=61.889:r=25" -vf "
+ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=73.166:r=25" -vf "
 [0:v]drawtext=fontfile=${FONT}:text='180 READINESS PROTOCOLS':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-0.6)/0.3\,(13.556-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='One pre-staged for every situation you could face -- across every team\, every function':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(13.556-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='30 days you do not have -- accounts lost\, exposure compounding\, competitors moving first':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='3\,600X EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-25.807)/0.3\,(33.930-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='30 days compressed to 12 minutes':fontcolor=0xB8BCC8:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(33.930-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='AND IT GETS SMARTER EVERY TIME':fontcolor=${GOLD}:fontsize=44:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-33.930)/0.3\,(46.259-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='ADVANCE closes the loop -- proven improvements\, compounding with every activation':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-34.230)/0.3\,(46.259-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-46.259)/0.3\,(51.900-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-46.559)/0.3\,(51.900-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-46.859)/0.3\,(51.900-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='THIS IS VAUGHNMARTIN READINESS OS':fontcolor=${GOLD}:fontsize=24:x=(w-text_w)/2:y=445:alpha='min(1\,max(0\,(t-51.900)/0.3))',
-drawbox=x=(w-820)/2:y=490:w=820:h=170:color=${NAVY}@0.9:t=fill:enable='gte(t,51.900)',
-drawbox=x=(w-820)/2:y=490:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,51.900)',
-drawbox=x=(w-820)/2:y=657:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,51.900)',
-drawtext=fontfile=${FONT}:text='REQUEST FOUNDING PARTNER ACCESS':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=545:alpha='min(1\,max(0\,(t-51.900)/0.3))',
-drawtext=fontfile=${FONT}:text='vaughnmartin.com':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,(t-51.900)/0.3))'
+drawtext=fontfile=${FONT}:text='\$18M in accounts lost. \$22M-\$50M in ransomware exposure. \$3.9M in pipeline gone.':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Modeled from the 3 scenarios shown above -- ransomware figure\: IBM Security\, 2025':fontcolor=0xB8BCC8:fontsize=16:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='3\,600X EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-25.807)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='30 days compressed to 12 minutes':fontcolor=0xB8BCC8:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='\$9.4M in new ARR captured. \$50M in exposure avoided. \$3.9M in pipeline retained.':fontcolor=white:fontsize=22:x=(w-text_w)/2:y=605:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Modeled outcomes for the same 3 scenarios\, applied with Readiness OS':fontcolor=0xB8BCC8:fontsize=16:x=(w-text_w)/2:y=645:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='AND IT GETS SMARTER EVERY TIME':fontcolor=${GOLD}:fontsize=44:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-45.207)/0.3\,(57.536-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='ADVANCE closes the loop -- proven improvements\, compounding with every activation':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-45.507)/0.3\,(57.536-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-57.536)/0.3\,(63.177-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-57.836)/0.3\,(63.177-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-58.136)/0.3\,(63.177-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='THIS IS VAUGHNMARTIN READINESS OS':fontcolor=${GOLD}:fontsize=24:x=(w-text_w)/2:y=445:alpha='min(1\,max(0\,(t-63.177)/0.3))',
+drawbox=x=(w-820)/2:y=490:w=820:h=170:color=${NAVY}@0.9:t=fill:enable='gte(t,63.177)',
+drawbox=x=(w-820)/2:y=490:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,63.177)',
+drawbox=x=(w-820)/2:y=657:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,63.177)',
+drawtext=fontfile=${FONT}:text='REQUEST FOUNDING PARTNER ACCESS':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=545:alpha='min(1\,max(0\,(t-63.177)/0.3))',
+drawtext=fontfile=${FONT}:text='vaughnmartin.com':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,(t-63.177)/0.3))'
 [base];
 $(brand_overlay_hero 90)
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=61.289:d=0.6
+fade=t=out:st=72.566:d=0.6
 " -pix_fmt yuv420p -r 25 cut4_endcard.mp4
 }
 

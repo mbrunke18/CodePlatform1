@@ -94,3 +94,10 @@ A number written as digits in TTS input text (e.g. "1,400") is not guaranteed to
 **Why:** The default (no special prompt) transcription of this exact segment returned "1,400" both before and after the fix, making the bug invisible until the word-spelling prompt was used — the bug was in the audio, not caught by normal QA transcription.
 
 **How to apply:** Whenever asked to do a "quality check" / naturalness pass on narration, run the word-spelling transcription prompt on every segment containing digit-formatted numbers (not just eyeball the normal transcript), and spell out any number in the source text that comes back garbled before regenerating.
+
+## An unescaped literal colon inside `drawtext` caption text silently truncates the caption
+Any literal `:` inside a `drawtext=...:text='...'...` caption string (e.g. "figure: IBM Security, 2025") is parsed by ffmpeg as a filter-option separator, not as text content — everything after that colon is silently dropped from the rendered caption with no warning/error in the ffmpeg log. The render succeeds and looks fine in logs; the bug is only visible by inspecting the actual output frame. This is the same class of bug as the already-documented apostrophe issue above, but for `:` instead of `'`, and (unlike apostrophes) it IS reliably fixable by escaping: write `\:` in the text (matches the existing working pattern `T+12\:00` elsewhere in this project's captions).
+
+**Why:** A footnote citation reading "...ransomware figure: IBM Security, 2025" rendered on screen as "...ransomware figure" with everything from the colon onward missing — caught only by extracting and visually inspecting a frame at that timestamp, not from ffmpeg's stdout/stderr.
+
+**How to apply:** Before shipping any new drawtext caption, scan its text for a literal `:` and escape it as `\:`. After rendering, extract a frame at that caption's visible timestamp (`ffmpeg -ss <t> -frames:v 1 out.jpg`) and read it back to confirm the full string rendered — don't trust the ffmpeg build log alone.

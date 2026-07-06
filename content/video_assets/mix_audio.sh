@@ -30,7 +30,13 @@ cd "$(dirname "$0")"
 # its resulting timing, never the onset/fade approach. See build_video.sh
 # build_intro/build_cut1/build_cut2/build_cut3/build_endcard for the matching
 # on-screen caption timings -- the two files must be kept in lockstep.
-TOTAL_DUR=182.622
+#
+# Recomputed a third time when seg11_endcard_metric grew from a 7.2s pure
+# speed-metric line into a 19.07s line that also states the financial gain
+# achieved WITH the platform (mirroring the financial cost stated WITHOUT it
+# in seg10) -- delta of +11.277s pushed seg14/seg12/seg13's adelay values and
+# TOTAL_DUR later by that same amount. seg10's own window did not need to move.
+TOTAL_DUR=193.899
 
 S=voiceover_segments
 FADEIN="afade=type=in:start_time=0:duration=0.02"
@@ -85,9 +91,9 @@ ffmpeg -y \
   [13:a]${PREPAD},${FADEIN},adelay=121633|121633[a13];
   [14:a]${PREPAD},${FADEIN},adelay=134589|134589[a14];
   [15:a]${PREPAD},${FADEIN},adelay=146840|146840[a15];
-  [16:a]${PREPAD},${FADEIN},adelay=154963|154963[a16];
-  [17:a]${PREPAD},${FADEIN},adelay=167292|167292[a17];
-  [18:a]${PREPAD},${FADEIN},adelay=172933|172933[a18];
+  [16:a]${PREPAD},${FADEIN},adelay=166240|166240[a16];
+  [17:a]${PREPAD},${FADEIN},adelay=178569|178569[a17];
+  [18:a]${PREPAD},${FADEIN},adelay=184210|184210[a18];
   [a0][a1][a2][a3][a4][a5][a6][a7][a8][a9][a10][a11][a12][a13][a14][a15][a16][a17][a18]amix=inputs=19:normalize=0:dropout_transition=0[mixed];
   [mixed]apad=whole_dur=${TOTAL_DUR}[out]
   " -map "[out]" -c:a aac -b:a 192k mixed_voiceover.m4a
