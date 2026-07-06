@@ -19,3 +19,8 @@ When muxing voiceover onto a video with scripted on-screen text timed to specifi
 4. Mux with `-map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest` — `copy` on video avoids re-encoding the already-rendered visual track.
 
 **How to apply:** Any task that adds narration/voiceover to a pre-rendered animated video with timed on-screen text.
+
+## Script content quality, not just technical mixing
+Technically correct sync is not enough — a script that just reads section labels aloud ("Growth and positioning.") or strings together disconnected on-screen caption fragments sounds cheesy and tells no story. Write narration as connective tissue with a hook → cost-of-old-way → payoff-of-new-way arc per beat, not a transcript of the UI captions. If a well-paced story script doesn't fit the existing per-cut duration, extend the cut's duration (e.g. hold the "after" state on screen longer) rather than cramming/rushing the read — cramped pacing itself reads as unnatural/cheesy.
+
+**Why:** First-pass voiceover was rejected by the user as "cheesy, doesn't tell a story" even though the mix was technically correct — content quality is a separate axis from mixing quality.
