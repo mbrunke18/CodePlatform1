@@ -24,3 +24,4 @@
 - [mark_task_complete state MERGED error](task-complete-state-merged-error.md) — non-retryable platform state error, unrelated to code quality; don't keep retrying, verify work independently and report to user
 - [Server-side email HTML escaping](server-email-html-escaping.md) — HTML email builders (template literals) get zero JSX auto-escaping; escape fields + validate echoed URLs + rate-limit
 - [ElevenLabs voiceover + ffmpeg mixing](elevenlabs-voiceover-mixing.md) — secrets need bash tool not code_execution; adelay+amix+apad timing; scene-opening cutoff = TTS cold-start truncation, fix with lead-in+trim not fade tuning
+- [MP4 faststart for mobile playback](mp4-faststart-mobile-playback.md) — curl HEAD/range checks and desktop screenshots don't prove a video plays; check moov atom position when phone playback fails but server checks look fine
