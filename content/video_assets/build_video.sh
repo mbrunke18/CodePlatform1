@@ -20,11 +20,14 @@ brand_overlay_corner() {
   echo "movie=${LOGO_CORNER}[logo];[base][logo]overlay=x=40:y=28[branded];"
 }
 
-# Larger "hero" logo instance used at the two highest-recall moments: the very first
-# frames of the video (intro) and the closing call-to-action (endcard).
+# Larger "hero" logo instance used at the highest-recall moments. Accepts an optional
+# ENABLE_EXPR (ffmpeg enable clause) so the intro can hold the logo back until the
+# "This is Readiness OS" reveal beat, per the restructured narrative (v2): the brand
+# should not appear during the tension/pain acts, only at the turn.
 brand_overlay_hero() {
   local Y="$1"
-  echo "movie=${LOGO_HERO}[hlogo];[base][hlogo]overlay=x=(1920-771)/2:y=${Y}:enable='gte(t,0.05)'[branded];"
+  local ENABLE="${2:-gte(t\,0.05)}"
+  echo "movie=${LOGO_HERO}[hlogo];[base][hlogo]overlay=x=(1920-771)/2:y=${Y}:enable='${ENABLE}'[branded];"
 }
 
 make_clip() {
@@ -66,34 +69,60 @@ make_clip() {
   " -frames:v ${FRAMES} -pix_fmt yuv420p -r ${FPS} "$OUT"
 }
 
+# ============================================================================
+# INTRO v2 (99.197s): FULL REWRITE per potential-customer feedback on the v1
+# video ("explains too quickly... show the product too early... not enough
+# emotional urgency"). Restructured into 3 acts that all play BEFORE any
+# product screen appears, matching the reviewer's suggested arc:
+#   Act 1 (0.6s-29.408s)  -- THE QUESTION: tension, inevitability, no product.
+#   Act 2 (29.408s-64.717s) -- THE OLD WAY: status-quo pain (war room, email,
+#     Teams, spreadsheets, searching, waiting) -- generic, not scenario-specific,
+#     so it reads as universal before the 3 scenario cuts get specific.
+#   Act 3 (64.717s-97.597s) -- THE TURN: "There is another way" -> brand reveal
+#     ("This is Readiness OS") -> product depth numbers (231 triggers / 180
+#     protocols) -> mechanism (system-detected, executive-authorized, no
+#     mobilization gap). The hero logo is deliberately withheld until the
+#     "This is Readiness OS" beat (t=78.637) -- per the reviewer, the brand
+#     reveal should land at the turn, not before it.
+# Each beat uses the same crossfade alpha formula as the scenario cuts
+# (make_clip's OLD_ALPHA/READY_ALPHA pattern) so beats replace each other
+# rather than stack, since there are now 13 sequential beats instead of the
+# old 4-beat "build up" style intro. Timings are derived from the actual
+# measured durations of the v2 narration segments -- see
+# .agents/memory/elevenlabs-voiceover-mixing.md for the sync formula
+# (audio starts caption-fade-start + 0.3s) and content/video_script_v2_draft.md
+# for the full narration script this intro is built from.
+# ============================================================================
 build_intro() {
-# ============================================================================
-# INTRO (38.188s): rewritten a third time to (a) reframe situations as EXPECTED
-# categories with unknown timing rather than things "not expected" -- the
-# organization has faced them, will face them again, and just doesn't know
-# when -- and (b) name the "mobilization gap" explicitly as the cost being
-# eliminated, so the payoff beat reads as "no mobilization gap" rather than a
-# generic speed claim. The third beat still chains trigger -> protocol but now
-# carries real breadth numbers (231 triggers / 180 protocols) instead of vague
-# language, per feedback that the script needed to demonstrate real product
-# depth, not just a generic pitch. Reveal timings are synced to the actual
-# measured narration durations for this script (see
-# .agents/memory/elevenlabs-voiceover-mixing.md for the sync formula).
-# ============================================================================
-INTRO_DUR=38.188
+INTRO_DUR=99.197
+
+beat() {
+  local START="$1" END="$2" TEXT="$3" SIZE="$4" Y="$5" COLOR="$6"
+  echo "drawtext=fontfile=${FONT}:text='${TEXT}':fontcolor=${COLOR}:fontsize=${SIZE}:x=(w-text_w)/2:y=${Y}:alpha='min(1\,max(0\,min((t-${START})/0.3\,(${END}-t)/0.3)))',"
+}
+
 ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=${INTRO_DUR}:r=25" -vf "
-[0:v]drawtext=fontfile=${FONT}:text='YOU HAVE FACED THIS. YOU WILL FACE IT AGAIN. YOU DO NOT KNOW WHEN.':fontcolor=white:fontsize=34:x=(w-text_w)/2:y=460:alpha='if(lt(t,0.6),0,1)',
-drawtext=fontfile=${FONT}:text='THE OLD WAY':fontcolor=${REDISH}:fontsize=30:x=(w-text_w)/2:y=600:alpha='if(lt(t,6.581),0,1)',
-drawtext=fontfile=${FONT}:text='A 30-day mobilization gap -- a war room built from scratch\, after the fact':fontcolor=white:fontsize=28:x=(w-text_w)/2:y=650:alpha='if(lt(t,6.581),0,1)',
-drawtext=fontfile=${FONT}:text='SYSTEM-DETECTED. INSTANTLY MATCHED.':fontcolor=${TEAL}:fontsize=30:x=(w-text_w)/2:y=760:alpha='if(lt(t,14.104),0,1)',
-drawtext=fontfile=${FONT}:text='231 triggers monitored -- matched to one of 180 pre-staged Readiness Protocols':fontcolor=white:fontsize=28:x=(w-text_w)/2:y=810:alpha='if(lt(t,14.104),0,1)',
-drawtext=fontfile=${FONT}:text='NO MOBILIZATION GAP.':fontcolor=${GOLD}:fontsize=38:x=(w-text_w)/2:y=880:alpha='if(lt(t,24.813),0,1)',
-drawtext=fontfile=${FONT}:text='Execution starts in 12 minutes\, not 30 days':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=930:alpha='if(lt(t,24.813),0,1)',
-drawtext=fontfile=${FONT}:text='Watch it respond to 3 situations your team has likely already lived through':fontcolor=0xB8BCC8:fontsize=23:x=(w-text_w)/2:y=975:alpha='if(lt(t,24.813),0,1)'
+[0:v]
+$(beat 0.6 11.491 'WHY DID NOT WE KNOW THIS SOONER?' 44 490 white)
+$(beat 11.491 23.297 'THE INFORMATION\, THE LESSONS\, THE PEOPLE ALL EXISTED.' 30 500 white)
+$(beat 23.297 29.408 'YOU HAVE FACED THIS. YOU WILL FACE IT AGAIN. YOU DO NOT KNOW WHEN.' 30 500 0xB8BCC8)
+$(beat 29.408 37.295 'THIS IS WHAT HAPPENS TODAY\, IN ALMOST EVERY ORGANIZATION.' 30 500 white)
+$(beat 37.295 41.969 'A WAR ROOM GETS BUILT FROM SCRATCH -- AFTER THE FACT.' 32 500 ${REDISH})
+$(beat 41.969 50.718 'EMAIL THREADS MULTIPLY. TEAMS CHANNELS FORK. SPREADSHEETS PILE UP.' 28 500 white)
+$(beat 50.718 56.725 'NOBODY OWNS IT YET. EVERYONE IS SEARCHING. EVERYONE IS WAITING.' 30 500 white)
+$(beat 56.725 64.717 'THIRTY DAYS PASS BEFORE THE RESPONSE EVEN TAKES SHAPE.' 32 500 ${REDISH})
+$(beat 64.717 67.197 'THERE IS ANOTHER WAY.' 52 500 ${GOLD})
+$(beat 67.197 78.637 'NOT SOFTWARE.' 40 460 ${GOLD})
+$(beat 67.197 78.637 'ORGANIZATIONAL INFRASTRUCTURE -- STAGED BEFORE THE TRIGGER FIRES.' 26 530 white)
+$(beat 78.637 81.666 'THIS IS READINESS OS.' 52 680 white)
+$(beat 81.666 91.199 '231 TRIGGERS -- 180 READINESS PROTOCOLS' 34 460 ${GOLD})
+$(beat 81.666 91.199 'PRE-STAGED. READY BEFORE YOU NEED THEM.' 26 520 white)
+$(beat 91.199 97.597 'SYSTEM-DETECTED. EXECUTIVE-AUTHORIZED. NO MOBILIZATION GAP.' 28 500 ${TEAL})
+null
 [base];
-$(brand_overlay_hero 130)
+$(brand_overlay_hero 130 'gte(t\,78.637)')
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=37.588:d=0.6
+fade=t=out:st=98.597:d=0.6
 " -pix_fmt yuv420p -r 25 cut0_intro.mp4
 }
 
@@ -106,6 +135,9 @@ fade=t=out:st=37.588:d=0.6
 # rule exists). Captions below are the on-screen-formatted versions of the same
 # rewritten script used for narration -- kept in lockstep so viewers reading
 # along never see text that contradicts what they hear.
+# These 3 scenario cuts are UNCHANGED from v1 -- the customer feedback that
+# drove the v2 rewrite was about the video's overall sequencing (product shown
+# too early, ending too flat), not about these specific proof beats.
 # ============================================================================
 build_cut1() {
 make_clip growth_market_entry.jpg cut1_growth.mp4 "GROWTH & POSITIONING" \
@@ -133,17 +165,19 @@ make_clip transformation_product_launch.jpg cut3_transformation.mp4 "TRANSFORMAT
 
 build_endcard() {
 # ============================================================================
-# End card (61.889s): a full closing arc built to move a buyer to act --
-# depth+breadth (180 protocols, 231 triggers, every team/function, not just the
-# 3 situations shown) -> cost of not being a customer -> the 3,600x metric ->
-# ADVANCE closed-loop learning as a built-in differentiator -> the locked
-# tagline -> a Founding Partner call to action that names the company
-# explicitly and gives the URL. The hero logo graphic stays on screen for the
-# entire card, since this is the moment a viewer decides whether to remember
-# the brand. Beat boundaries below are derived from the actual measured
-# narration durations (see .agents/memory/elevenlabs-voiceover-mixing.md).
+# End card v2 (90.647s, up from 73.166s in v1): the proof sequence (depth,
+# cost-without-it, 3,600x metric, ADVANCE learning loop) is UNCHANGED from v1
+# -- no complaint from the reviewer about this material. What is NEW is the
+# philosophy close inserted between the ADVANCE beat and the locked tagline:
+# "Organizations do not fail because they lack talented people. They fail
+# because knowledge disappears between events. Readiness OS ensures your
+# experience becomes capability before your next disruption." -- directly
+# per the reviewer's "biggest missed opportunity" note that the video needed
+# a philosophy bigger than document management. The tagline and CTA beats
+# below are simply time-shifted later by +17.481s (the length of the new
+# philosophy insert) -- their own content and internal timing are unchanged.
 # ============================================================================
-ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=73.166:r=25" -vf "
+ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=90.647:r=25" -vf "
 [0:v]drawtext=fontfile=${FONT}:text='180 READINESS PROTOCOLS':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-0.6)/0.3\,(13.556-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='One pre-staged for every situation you could face -- across every team\, every function':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(13.556-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
@@ -155,19 +189,23 @@ drawtext=fontfile=${FONT}:text='\$9.4M in new ARR captured. \$50M in exposure av
 drawtext=fontfile=${FONT}:text='Modeled outcomes for the same 3 scenarios\, applied with Readiness OS':fontcolor=0xB8BCC8:fontsize=16:x=(w-text_w)/2:y=645:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='AND IT GETS SMARTER EVERY TIME':fontcolor=${GOLD}:fontsize=44:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-45.207)/0.3\,(57.536-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='ADVANCE closes the loop -- proven improvements\, compounding with every activation':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-45.507)/0.3\,(57.536-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-57.536)/0.3\,(63.177-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-57.836)/0.3\,(63.177-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-58.136)/0.3\,(63.177-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='THIS IS VAUGHNMARTIN READINESS OS':fontcolor=${GOLD}:fontsize=24:x=(w-text_w)/2:y=445:alpha='min(1\,max(0\,(t-63.177)/0.3))',
-drawbox=x=(w-820)/2:y=490:w=820:h=170:color=${NAVY}@0.9:t=fill:enable='gte(t,63.177)',
-drawbox=x=(w-820)/2:y=490:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,63.177)',
-drawbox=x=(w-820)/2:y=657:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,63.177)',
-drawtext=fontfile=${FONT}:text='REQUEST FOUNDING PARTNER ACCESS':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=545:alpha='min(1\,max(0\,(t-63.177)/0.3))',
-drawtext=fontfile=${FONT}:text='vaughnmartin.com':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,(t-63.177)/0.3))'
+drawtext=fontfile=${FONT}:text='ORGANIZATIONS DO NOT FAIL BECAUSE THEY LACK TALENTED PEOPLE.':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=500:alpha='min(1\,max(0\,min((t-57.536)/0.3\,(62.176-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='THEY FAIL BECAUSE KNOWLEDGE DISAPPEARS BETWEEN EVENTS.':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=500:alpha='min(1\,max(0\,min((t-62.176)/0.3\,(66.659-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='READINESS OS ENSURES YOUR EXPERIENCE BECOMES CAPABILITY':fontcolor=${GOLD}:fontsize=32:x=(w-text_w)/2:y=470:alpha='min(1\,max(0\,min((t-66.659)/0.3\,(75.017-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='BEFORE YOUR NEXT DISRUPTION.':fontcolor=${GOLD}:fontsize=32:x=(w-text_w)/2:y=520:alpha='min(1\,max(0\,min((t-66.659)/0.3\,(75.017-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-75.017)/0.3\,(80.658-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-75.317)/0.3\,(80.658-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-75.617)/0.3\,(80.658-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='THIS IS VAUGHNMARTIN READINESS OS':fontcolor=${GOLD}:fontsize=24:x=(w-text_w)/2:y=445:alpha='min(1\,max(0\,(t-80.658)/0.3))',
+drawbox=x=(w-820)/2:y=490:w=820:h=170:color=${NAVY}@0.9:t=fill:enable='gte(t,80.658)',
+drawbox=x=(w-820)/2:y=490:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,80.658)',
+drawbox=x=(w-820)/2:y=657:w=820:h=3:color=${GOLD}:t=fill:enable='gte(t,80.658)',
+drawtext=fontfile=${FONT}:text='REQUEST FOUNDING PARTNER ACCESS':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=545:alpha='min(1\,max(0\,(t-80.658)/0.3))',
+drawtext=fontfile=${FONT}:text='vaughnmartin.com':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,(t-80.658)/0.3))'
 [base];
 $(brand_overlay_hero 90)
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=72.566:d=0.6
+fade=t=out:st=90.047:d=0.6
 " -pix_fmt yuv420p -r 25 cut4_endcard.mp4
 }
 
