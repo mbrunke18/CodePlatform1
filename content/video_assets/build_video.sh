@@ -14,26 +14,29 @@ make_clip() {
   DOMAIN="$3"
   OLDLINE="$4"
   READYLINE="$5"
-  DUR=12.5
+  DUR=14.3
   FPS=25
   FRAMES=$(python3 -c "print(int($DUR*$FPS))")
-  OLD_END=7.6
-  READY_START=7.9
+  CARD_START=3.4
+  OLD_FADE_END=8.7
+  READY_FADE_START=8.4
+  CROSSFADE_MID=8.55
   FADE_OUT_ST=$(python3 -c "print(${DUR}-0.6)")
+  OLD_ALPHA="min(1\,max(0\,min((t-${CARD_START})/0.3\,(${OLD_FADE_END}-t)/0.3)))"
+  READY_ALPHA="min(1\,max(0\,(t-${READY_FADE_START})/0.3))"
 
   ffmpeg -y -loop 1 -i "$IMG" -vf "
     scale=1920:1080,
     zoompan=z='min(zoom+0.00025,1.15)':d=${FRAMES}:s=1920x1080:fps=${FPS},
     drawbox=x=0:y=0:w=1920:h=130:color=${NAVY}@0.88:t=fill,
     drawtext=fontfile=${FONT}:text='${DOMAIN}':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=45:alpha='if(lt(t,0.6),0,1)',
-    drawbox=x=0:y=800:w=1920:h=280:color=${NAVY}@0.92:t=fill:enable='between(t,4.0,${OLD_END})',
-    drawbox=x=0:y=800:w=8:h=280:color=${REDISH}:t=fill:enable='between(t,4.0,${OLD_END})',
-    drawtext=fontfile=${FONT}:text='OLD MODEL':fontcolor=${REDISH}:fontsize=30:x=80:y=840:enable='between(t,4.0,${OLD_END})',
-    drawtext=fontfile=${FONT}:text='${OLDLINE}':fontcolor=white:fontsize=24:x=80:y=900:enable='between(t,4.0,${OLD_END})',
-    drawbox=x=0:y=800:w=1920:h=280:color=${NAVY}@0.92:t=fill:enable='between(t,${READY_START},${FADE_OUT_ST})',
-    drawbox=x=0:y=800:w=8:h=280:color=${TEAL}:t=fill:enable='between(t,${READY_START},${FADE_OUT_ST})',
-    drawtext=fontfile=${FONT}:text='READINESS OS -- T+12\:00 -- MOBILIZED':fontcolor=${TEAL}:fontsize=28:x=80:y=840:enable='between(t,${READY_START},${FADE_OUT_ST})',
-    drawtext=fontfile=${FONT}:text='${READYLINE}':fontcolor=white:fontsize=24:x=80:y=900:enable='between(t,${READY_START},${FADE_OUT_ST})',
+    drawbox=x=0:y=800:w=1920:h=280:color=${NAVY}@0.92:t=fill:enable='gte(t,${CARD_START})',
+    drawbox=x=0:y=800:w=8:h=280:color=${REDISH}:t=fill:enable='between(t,${CARD_START},${CROSSFADE_MID})',
+    drawbox=x=0:y=800:w=8:h=280:color=${TEAL}:t=fill:enable='gte(t,${CROSSFADE_MID})',
+    drawtext=fontfile=${FONT}:text='OLD MODEL':fontcolor=${REDISH}:fontsize=30:x=80:y=840:alpha='${OLD_ALPHA}',
+    drawtext=fontfile=${FONT}:text='${OLDLINE}':fontcolor=white:fontsize=24:x=80:y=900:alpha='${OLD_ALPHA}',
+    drawtext=fontfile=${FONT}:text='READINESS OS -- T+12\:00 -- MOBILIZED':fontcolor=${TEAL}:fontsize=28:x=80:y=840:alpha='${READY_ALPHA}',
+    drawtext=fontfile=${FONT}:text='${READYLINE}':fontcolor=white:fontsize=24:x=80:y=900:alpha='${READY_ALPHA}',
     fade=t=in:st=0:d=0.6,
     fade=t=out:st=${FADE_OUT_ST}:d=0.6:alpha=0
   " -frames:v ${FRAMES} -pix_fmt yuv420p -r ${FPS} "$OUT"
