@@ -38,8 +38,20 @@ cd "$(dirname "$0")"
 # was 99.197s) introduces. TOTAL_DUR grew from 272.389s (v2) to 274.050s (v3).
 # See content/video_script_v2_draft.md for the full script and the
 # code_execution timing derivation for this rebuild for the arithmetic.
+#
+# v4 ADD: competitive-differentiation beat inserted into Act 3, right after
+# "This is Readiness OS." and before the "expertise in the room" payoff --
+# 3 new segments (a3_hasai/a3_operatingmodel/a3_gap) naming the category this
+# product is NOT (a smarter AI tool) and the gap it closes (operating model
+# to run the AI enterprises already have), per the founder's locked "not
+# competing with Copilot" thesis. Generated via the Replit-managed TTS
+# function (same onwK4e9ZLuTAKqWW03F9 voice) after the raw ElevenLabs API key
+# ran out of quota mid-batch -- voice is fully consistent with every other
+# segment, no stopgap/mismatch needed. Everything from a3_capability onward
+# (and all of Act 4/5) shifts later by +11.515s. TOTAL_DUR grew from 274.050s
+# (v3) to 285.565s (v4).
 # ============================================================================
-TOTAL_DUR=274.050
+TOTAL_DUR=285.565
 
 S=voiceover_segments
 S2=voiceover_segments_v2
@@ -61,6 +73,9 @@ ffmpeg -y \
   -i ${S2}/a3_another.mp3 \
   -i ${S2}/a3_notsoftware.mp3 \
   -i ${S2}/a3_this.mp3 \
+  -i ${S2}/a3_hasai.mp3 \
+  -i ${S2}/a3_operatingmodel.mp3 \
+  -i ${S2}/a3_gap.mp3 \
   -i ${S2}/a3_capability.mp3 \
   -i ${S2}/a3_fearless.mp3 \
   -i ${S2}/a3_numbers.mp3 \
@@ -99,28 +114,31 @@ ffmpeg -y \
   [12:a]${PREPAD},${FADEIN},adelay=58947|58947[a12];
   [13:a]${PREPAD},${FADEIN},adelay=66129|66129[a13];
   [14:a]${PREPAD},${FADEIN},adelay=69158|69158[a14];
-  [15:a]${PREPAD},${FADEIN},adelay=79736|79736[a15];
-  [16:a]${PREPAD},${FADEIN},adelay=83626|83626[a16];
-  [17:a]${PREPAD},${FADEIN},adelay=93159|93159[a17];
-  [18:a]${PREPAD},${FADEIN},adelay=101758|101758[a18];
-  [19:a]${PREPAD},${FADEIN},adelay=109489|109489[a19];
-  [20:a]${PREPAD},${FADEIN},adelay=119833|119833[a20];
-  [21:a]${PREPAD},${FADEIN},adelay=134349|134349[a21];
-  [22:a]${PREPAD},${FADEIN},adelay=139259|139259[a22];
-  [23:a]${PREPAD},${FADEIN},adelay=148349|148349[a23];
-  [24:a]${PREPAD},${FADEIN},adelay=162317|162317[a24];
-  [25:a]${PREPAD},${FADEIN},adelay=165190|165190[a25];
-  [26:a]${PREPAD},${FADEIN},adelay=173078|173078[a26];
-  [27:a]${PREPAD},${FADEIN},adelay=184303|184303[a27];
-  [28:a]${PREPAD},${FADEIN},adelay=197259|197259[a28];
-  [29:a]${PREPAD},${FADEIN},adelay=209510|209510[a29];
-  [30:a]${PREPAD},${FADEIN},adelay=228910|228910[a30];
-  [31:a]${PREPAD},${FADEIN},adelay=241239|241239[a31];
-  [32:a]${PREPAD},${FADEIN},adelay=245879|245879[a32];
-  [33:a]${PREPAD},${FADEIN},adelay=250362|250362[a33];
-  [34:a]${PREPAD},${FADEIN},adelay=258720|258720[a34];
-  [35:a]${PREPAD},${FADEIN},adelay=264361|264361[a35];
-  [a0][a1][a2][a3][a4][a5][a6][a7][a8][a9][a10][a11][a12][a13][a14][a15][a16][a17][a18][a19][a20][a21][a22][a23][a24][a25][a26][a27][a28][a29][a30][a31][a32][a33][a34][a35]amix=inputs=36:normalize=0:dropout_transition=0[mixed];
+  [15:a]${PREPAD},${FADEIN},adelay=73127|73127[a15];
+  [16:a]${PREPAD},${FADEIN},adelay=77488|77488[a16];
+  [17:a]${PREPAD},${FADEIN},adelay=80673|80673[a17];
+  [18:a]${PREPAD},${FADEIN},adelay=91251|91251[a18];
+  [19:a]${PREPAD},${FADEIN},adelay=95141|95141[a19];
+  [20:a]${PREPAD},${FADEIN},adelay=104674|104674[a20];
+  [21:a]${PREPAD},${FADEIN},adelay=113273|113273[a21];
+  [22:a]${PREPAD},${FADEIN},adelay=121004|121004[a22];
+  [23:a]${PREPAD},${FADEIN},adelay=131348|131348[a23];
+  [24:a]${PREPAD},${FADEIN},adelay=145864|145864[a24];
+  [25:a]${PREPAD},${FADEIN},adelay=150774|150774[a25];
+  [26:a]${PREPAD},${FADEIN},adelay=159864|159864[a26];
+  [27:a]${PREPAD},${FADEIN},adelay=173832|173832[a27];
+  [28:a]${PREPAD},${FADEIN},adelay=176705|176705[a28];
+  [29:a]${PREPAD},${FADEIN},adelay=184593|184593[a29];
+  [30:a]${PREPAD},${FADEIN},adelay=195818|195818[a30];
+  [31:a]${PREPAD},${FADEIN},adelay=208774|208774[a31];
+  [32:a]${PREPAD},${FADEIN},adelay=221025|221025[a32];
+  [33:a]${PREPAD},${FADEIN},adelay=240425|240425[a33];
+  [34:a]${PREPAD},${FADEIN},adelay=252754|252754[a34];
+  [35:a]${PREPAD},${FADEIN},adelay=257394|257394[a35];
+  [36:a]${PREPAD},${FADEIN},adelay=261877|261877[a36];
+  [37:a]${PREPAD},${FADEIN},adelay=270235|270235[a37];
+  [38:a]${PREPAD},${FADEIN},adelay=275876|275876[a38];
+  [a0][a1][a2][a3][a4][a5][a6][a7][a8][a9][a10][a11][a12][a13][a14][a15][a16][a17][a18][a19][a20][a21][a22][a23][a24][a25][a26][a27][a28][a29][a30][a31][a32][a33][a34][a35][a36][a37][a38]amix=inputs=39:normalize=0:dropout_transition=0[mixed];
   [mixed]apad=whole_dur=${TOTAL_DUR}[out]
   " -map "[out]" -c:a aac -b:a 192k mixed_voiceover.m4a
 

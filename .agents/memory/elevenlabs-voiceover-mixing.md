@@ -101,3 +101,10 @@ Any literal `:` inside a `drawtext=...:text='...'...` caption string (e.g. "figu
 **Why:** A footnote citation reading "...ransomware figure: IBM Security, 2025" rendered on screen as "...ransomware figure" with everything from the colon onward missing — caught only by extracting and visually inspecting a frame at that timestamp, not from ffmpeg's stdout/stderr.
 
 **How to apply:** Before shipping any new drawtext caption, scan its text for a literal `:` and escape it as `\:`. After rendering, extract a frame at that caption's visible timestamp (`ffmpeg -ss <t> -frames:v 1 out.jpg`) and read it back to confirm the full string rendered — don't trust the ffmpeg build log alone.
+
+## Fallback when the direct ElevenLabs API key hits quota mid-batch: use the Replit-managed `textToSpeech()` tool, not OpenAI TTS
+If the direct `ELEVENLABS_API_KEY` runs out of quota partway through generating a batch of new voiceover segments, OpenAI TTS is not a reliable stopgap in this environment: it fails via both the `AI_INTEGRATIONS_OPENAI_BASE_URL` proxy (400 `INVALID_ENDPOINT` — `/audio/speech` unsupported there) and a direct `OPENAI_API_KEY` (429 `insufficient_quota`). The actual working fallback is the Replit-managed `textToSpeech()` function available in the `code_execution` sandbox (see the `media-generation` skill) — it can target the exact same ElevenLabs voice ID already used for the rest of the video's narration, so there is no voice mismatch across old and new segments, and it worked with zero quota issues.
+
+**Why:** This turned a user-approved "use a different TTS voice as a stopgap" decision (which would have introduced an audible voice mismatch) into a strictly better outcome — same voice, no mismatch — once the Replit-managed tool was tried instead of chasing OpenAI TTS further.
+
+**How to apply:** If ElevenLabs direct-API quota is exhausted mid-project, try the Replit-managed `textToSpeech()` sandbox tool with the project's existing voice ID before falling back to a different voice/vendor.

@@ -63,6 +63,12 @@ the spec numbers close out the act as proof, not as the pitch itself.
 >
 > This is Readiness OS.
 >
+> Every enterprise already has the AI.
+>
+> Almost none have the operating model to run it.
+>
+> That gap is what we close.
+>
 > The expertise in the room does not walk out the door. It's built in — every team responds like they've done this before.
 >
 > That's what makes an organization fearless.

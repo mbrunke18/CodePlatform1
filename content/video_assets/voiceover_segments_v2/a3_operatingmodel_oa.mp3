@@ -1,0 +1,8 @@
+
+        {
+            "error": {
+                "code": "INVALID_ENDPOINT",
+                "message": "Endpoint: 'POST /audio/speech' is not supported."
+            }
+        }
+      

@@ -105,7 +105,7 @@ make_clip() {
 # content/video_script_v2_draft.md for the full narration script.
 # ============================================================================
 build_intro() {
-INTRO_DUR=100.858
+INTRO_DUR=112.373
 
 beat() {
   local START="$1" END="$2" TEXT="$3" SIZE="$4" Y="$5" COLOR="$6"
@@ -129,17 +129,20 @@ $(beat 56.167 58.647 'THERE IS ANOTHER WAY.' 52 500 ${GOLD})
 $(beat 58.647 65.829 'NOT SOFTWARE.' 40 460 ${GOLD})
 $(beat 58.647 65.829 'ORGANIZATIONAL CAPABILITY -- BUILT ONCE AND READY ALWAYS.' 26 530 white)
 $(beat 65.829 68.858 'THIS IS READINESS OS.' 52 680 white)
-$(beat 68.858 79.436 'THE EXPERTISE IN THE ROOM DOES NOT WALK OUT THE DOOR.' 28 460 white)
-$(beat 68.858 79.436 'IT IS BUILT IN -- EVERY TEAM RESPONDS LIKE THEY HAVE DONE THIS BEFORE.' 24 530 white)
-$(beat 79.436 83.326 'THAT IS WHAT MAKES AN ORGANIZATION FEARLESS.' 34 500 ${GOLD})
-$(beat 83.326 92.859 '231 TRIGGERS -- 180 READINESS PROTOCOLS' 34 460 ${GOLD})
-$(beat 83.326 92.859 'PRE-STAGED. READY BEFORE YOU NEED THEM.' 26 520 white)
-$(beat 92.859 99.258 'SYSTEM-DETECTED. EXECUTIVE-AUTHORIZED. NO MOBILIZATION GAP.' 28 500 ${TEAL})
+$(beat 68.858 72.827 'EVERY ENTERPRISE ALREADY HAS THE AI.' 36 500 white)
+$(beat 72.827 77.188 'ALMOST NONE HAVE THE OPERATING MODEL TO RUN IT.' 34 500 ${REDISH})
+$(beat 77.188 80.373 'THAT GAP IS WHAT WE CLOSE.' 44 500 ${GOLD})
+$(beat 80.373 90.951 'THE EXPERTISE IN THE ROOM DOES NOT WALK OUT THE DOOR.' 28 460 white)
+$(beat 80.373 90.951 'IT IS BUILT IN -- EVERY TEAM RESPONDS LIKE THEY HAVE DONE THIS BEFORE.' 24 530 white)
+$(beat 90.951 94.841 'THAT IS WHAT MAKES AN ORGANIZATION FEARLESS.' 34 500 ${GOLD})
+$(beat 94.841 104.374 '231 TRIGGERS -- 180 READINESS PROTOCOLS' 34 460 ${GOLD})
+$(beat 94.841 104.374 'PRE-STAGED. READY BEFORE YOU NEED THEM.' 26 520 white)
+$(beat 104.374 110.773 'SYSTEM-DETECTED. EXECUTIVE-AUTHORIZED. NO MOBILIZATION GAP.' 28 500 ${TEAL})
 null
 [base];
 $(brand_overlay_hero 130 'gte(t\,65.829)')
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=100.258:d=0.6
+fade=t=out:st=111.773:d=0.6
 " -pix_fmt yuv420p -r 25 cut0_intro.mp4
 }
 
@@ -233,7 +236,7 @@ fade=t=out:st=90.047:d=0.6
 build_concat() {
 ffmpeg -y -i cut0_intro.mp4 -i cut1_growth.mp4 -i cut2_risk.mp4 -i cut3_transformation.mp4 -i cut4_endcard.mp4 \
   -filter_complex "[0:v][1:v][2:v][3:v][4:v]concat=n=5:v=1:a=0[outv]" \
-  -map "[outv]" -c:v libx264 -crf 20 -preset medium -pix_fmt yuv420p ../readiness_os_3cut_demo_silent.mp4
+  -map "[outv]" -c:v libx264 -crf 23 -preset ultrafast -pix_fmt yuv420p ../readiness_os_3cut_demo_silent.mp4
 echo "VIDEO DONE"
 }
 

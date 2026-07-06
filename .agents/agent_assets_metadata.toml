@@ -731,3 +731,21 @@ id = "URiv0U4O1G5KGmN-I83g-"
 uri = "file://content/readiness_os_3cut_demo.mp4"
 type = "video"
 title = "Readiness OS 3-Cut Demo (fixed)"
+
+[[outputs]]
+id = "K7Lnq_iPpHU46G1aCRN-i"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_hasai.mp3"
+type = "audio"
+title = "hasai"
+
+[[outputs]]
+id = "KrtoXY_QBiRcCC1ErrI0l"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_operatingmodel.mp3"
+type = "audio"
+title = "operatingmodel"
+
+[[outputs]]
+id = "j4NTcpHAQTPn8egQKlMJm"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_gap.mp3"
+type = "audio"
+title = "gap"
