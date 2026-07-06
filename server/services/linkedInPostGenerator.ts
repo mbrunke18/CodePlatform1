@@ -99,8 +99,8 @@ export async function notifyAdminOfLinkedInPost(detection: {
   const resend = new Resend(resendKey);
   try {
     await resend.emails.send({
-      from: 'Readiness OS Signals <signals@vaughnmartin.com>',
-      replyTo: 'hello@vaughnmartin.com',
+      from: 'Readiness OS <pilot@vaughnmartin.com>',
+      replyTo: 'pilot@vaughnmartin.com',
       to: adminEmail,
       subject: `Post ready — ${detection.triggerName} (${detection.confidenceScore}%)`,
       html,

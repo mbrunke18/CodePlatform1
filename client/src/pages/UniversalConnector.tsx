@@ -653,7 +653,7 @@ export default function UniversalConnector() {
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Mail size={13} color={TEAL} />
             <span style={{ fontSize: 12, color: NAVY, fontWeight: 600 }}>Integration support:</span>
-            <a href="mailto:integrations@vaughnmartin.com" style={{ fontSize: 12, color: TEAL, textDecoration: "none" }}>integrations@vaughnmartin.com</a>
+            <a href="mailto:support@vaughnmartin.com" style={{ fontSize: 12, color: TEAL, textDecoration: "none" }}>support@vaughnmartin.com</a>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Lock size={13} color={MUTED} />

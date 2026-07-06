@@ -271,7 +271,7 @@ export default function AdminProspectBriefs() {
             <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.7 }}>
               Every 15 minutes, Readiness OS scans 248+ data sources. When a signal scores ≥75% confidence, the system checks enrolled prospects,
               applies dedup rules (max 1 per trigger per 48 hours, max 3 per week), and sends a tailored Signal Brief email
-              from <strong>signals@vaughnmartin.com</strong>. Prospects enroll automatically when they submit a Founding Partner application.
+              from <strong>pilot@vaughnmartin.com</strong>. Prospects enroll automatically when they submit a Founding Partner application.
             </div>
           </div>
         </div>

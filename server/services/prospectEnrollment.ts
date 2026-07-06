@@ -190,8 +190,8 @@ export async function notifyMatchingProspects(detections: DetectionBrief[]): Pro
 
         const html = buildBriefEmail(prospect, detection, platformUrl);
         await resend.emails.send({
-          from: 'Readiness OS Signals <signals@vaughnmartin.com>',
-          replyTo: 'hello@vaughnmartin.com',
+          from: 'Readiness OS <pilot@vaughnmartin.com>',
+          replyTo: 'pilot@vaughnmartin.com',
           to: prospect.email,
           subject: `${detection.triggerName} — a prepared organization is already executing`,
           html,
@@ -672,7 +672,7 @@ export async function sendRequestAccessWelcome(prospect: {
   try {
     await resend.emails.send({
       from: 'VaughnMartin Readiness OS <pilot@vaughnmartin.com>',
-      replyTo: 'hello@vaughnmartin.com',
+      replyTo: 'pilot@vaughnmartin.com',
       to: prospect.email,
       subject: `${prospect.firstName}, your Founding Partner application is confirmed`,
       html,

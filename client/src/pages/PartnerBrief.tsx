@@ -325,7 +325,7 @@ export default function PartnerBrief() {
                 </Link>
                 <div style={{ padding: "16px 24px", background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.25)" }}>
                   <div style={{ ...DM, fontSize: 11, fontWeight: 700, color: TEAL, letterSpacing: "0.08em", marginBottom: 4 }}>DIRECT CONTACT</div>
-                  <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>Martin Brunke · Founder · martin@vaughnmartin.com</div>
+                  <div style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>Martin Brunke · Founder · mbrunke@vaughnmartin.com</div>
                 </div>
               </div>
             </div>

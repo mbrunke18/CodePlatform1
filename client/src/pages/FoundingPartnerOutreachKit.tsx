@@ -118,7 +118,7 @@ I'm attaching the Executive Brief — it's a one-page summary of the architectur
 
 The 30-day mobilization problem tends to become urgent the day after a trigger fires. I'd rather have this conversation before that day.
 
-If anything changes: martin@vaughnmartin.com or vaughnmartin.com/request-access.
+If anything changes: mbrunke@vaughnmartin.com or vaughnmartin.com/request-access.
 
 Martin
 

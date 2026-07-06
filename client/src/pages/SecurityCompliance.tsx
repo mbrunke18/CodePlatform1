@@ -65,7 +65,7 @@ const sections = [
       { label: "Enterprise Procurement", detail: "Security questionnaire support available for Founding Partners" },
       { label: "Penetration Testing", detail: "External security assessment planned prior to general availability" },
       { label: "Incident Response", detail: "Documented incident response procedure with named executive DRI" },
-      { label: "Vulnerability Disclosure", detail: "Responsible disclosure program — contact security@vaughnmartin.com" },
+      { label: "Vulnerability Disclosure", detail: "Responsible disclosure program — contact support@vaughnmartin.com" },
     ],
   },
   {
@@ -364,7 +364,7 @@ export default function SecurityCompliance() {
               ))}
             </div>
             <div style={{ marginTop: "1rem", padding: "0.875rem 1rem", background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.2)", fontSize: 11, color: "#6B7280", lineHeight: 1.65 }}>
-              <strong style={{ color: NAVY }}>To request the procurement pack:</strong> Contact <span style={{ color: TEAL }}>martin@vaughnmartin.com</span> with your organization name and the documents required. All materials delivered under mutual NDA within 3 business days.
+              <strong style={{ color: NAVY }}>To request the procurement pack:</strong> Contact <span style={{ color: TEAL }}>mbrunke@vaughnmartin.com</span> with your organization name and the documents required. All materials delivered under mutual NDA within 3 business days.
             </div>
           </div>
 

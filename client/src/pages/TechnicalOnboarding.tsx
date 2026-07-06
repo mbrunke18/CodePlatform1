@@ -698,12 +698,12 @@ export default function TechnicalOnboarding() {
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Mail size={14} color={TEAL} />
             <span style={{ fontSize: 13, color: NAVY, fontWeight: 600 }}>Technical onboarding:</span>
-            <a href="mailto:onboarding@vaughnmartin.com" style={{ fontSize: 13, color: TEAL, textDecoration: "none" }}>onboarding@vaughnmartin.com</a>
+            <a href="mailto:support@vaughnmartin.com" style={{ fontSize: 13, color: TEAL, textDecoration: "none" }}>support@vaughnmartin.com</a>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Shield size={14} color={TEAL} />
             <span style={{ fontSize: 13, color: NAVY, fontWeight: 600 }}>Security questions:</span>
-            <a href="mailto:security@vaughnmartin.com" style={{ fontSize: 13, color: TEAL, textDecoration: "none" }}>security@vaughnmartin.com</a>
+            <a href="mailto:support@vaughnmartin.com" style={{ fontSize: 13, color: TEAL, textDecoration: "none" }}>support@vaughnmartin.com</a>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Clock size={14} color={MUTED} />

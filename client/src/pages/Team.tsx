@@ -232,7 +232,7 @@ export default function Team() {
                   </div>
                 ))}
                 <a
-                  href="mailto:team@vaughnmartin.com"
+                  href="mailto:info@vaughnmartin.com"
                   style={{
                     ...DM, display: "inline-flex", alignItems: "center", justifyContent: "center",
                     gap: 8, marginTop: 8,
