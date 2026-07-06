@@ -145,7 +145,7 @@ build_endcard() {
 # ============================================================================
 ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=61.889:r=25" -vf "
 [0:v]drawtext=fontfile=${FONT}:text='180 READINESS PROTOCOLS':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-0.6)/0.3\,(13.556-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='231 triggers monitored end-to-end -- across every team\, every function':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(13.556-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='One pre-staged for every situation you could face -- across every team\, every function':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(13.556-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='30 days you do not have -- accounts lost\, exposure compounding\, competitors moving first':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='3\,600X EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-25.807)/0.3\,(33.930-t)/0.3)))',
