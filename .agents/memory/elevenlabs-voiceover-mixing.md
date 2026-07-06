@@ -59,3 +59,10 @@ If the video's final section (e.g. an endcard) is authored with deliberate trail
 **Why:** Using `-shortest` on this project cut the endcard's closing fade-to-black off before it ever started (video landed ~1.7s short), which was only caught by comparing the muxed output duration against the known/expected silent-video duration.
 
 **How to apply:** Before muxing narration onto a video, compare `ffprobe` durations of the silent video vs. the mixed audio. If the video is intentionally longer (trailing fade/hold), omit `-shortest`; only use it when the video should be trimmed to match audio exactly.
+
+## "Audio sounds cut off at the start" can be a hard-attack content issue, not a sync bug
+If a user reports narration sounding "cut off" at the start of lines even after caption/audio sync timing has been fixed, inspect the raw TTS segment waveform with `ffmpeg ... showwavespic`. Some TTS output starts speech at full amplitude with zero attack ramp (a vertical wall at t=0 in the waveform), which the ear perceives as a clipped/truncated word even though no audio data is missing and sync is correct. Fix by applying `afade=type=in:start_time=0:duration=0.15` to each segment before the `adelay` shift in the mix filtergraph — this ramps 0→full over 150ms with no perceptible delay to speech onset.
+
+**Why:** A first-round fix that only corrected caption/audio timing (making audio start only once the caption was fully visible) was necessary but insufficient — the user rejected it again for the same "cut off" complaint because the root cause was in the TTS source audio's attack, not the mix timing.
+
+**How to apply:** Any time "cut off"/"clipped" audio complaints persist after sync timing is already correct — check the waveform onset of the raw TTS files first before re-touching timing code.
