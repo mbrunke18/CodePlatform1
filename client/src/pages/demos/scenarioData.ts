@@ -121,7 +121,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 480, label: "T+8:00 — Controlled public statement issued." },
       { simSeconds: 600, label: "T+10:00 — ISS briefing activated. Proxy narrative underway." },
       { simSeconds: 690, label: "T+11:30 — Board votes on response posture." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. Strategic position defended." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. Strategic position defended." },
     ],
     oldModel: [
       { day: "Day 1",   event: "Board Chair learns at 7 AM via CFO call. 47 calls to make. No protocol exists." },
@@ -216,7 +216,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 360, label: "T+6:00 — External market statement ready for open." },
       { simSeconds: 420, label: "T+7:00 — Backup integrity verified. Recovery sequence begun." },
       { simSeconds: 690, label: "T+11:30 — Board briefed. Recovery ETA confirmed." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. Regulators satisfied." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. Regulators satisfied." },
     ],
     oldModel: [
       { day: "Hour 1",  event: "CISO woken up. No protocol. 31 calls to identify who does what." },
@@ -408,7 +408,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 360, label: "T+6:00 — Trade credit insurance activated. Emergency POs issued." },
       { simSeconds: 480, label: "T+8:00 — CEO customer calls complete. Relationships preserved." },
       { simSeconds: 540, label: "T+9:00 — Air freight activated. First alternate shipments ordered." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. Q3 delivery risk reduced by 70%." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. Q3 delivery risk reduced by 70%." },
     ],
     oldModel: [
       { day: "Day 1",   event: "Ops team discovers bankruptcy via trade press. No supplier failure protocol." },
@@ -504,7 +504,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 300, label: "T+5:00 — Media briefing complete. Governor's office satisfied." },
       { simSeconds: 420, label: "T+7:00 — Substation 7-Alpha re-energization begun." },
       { simSeconds: 660, label: "T+11:00 — All 280,000 customers restored." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. No penalties incurred." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. No penalties incurred." },
     ],
     oldModel: [
       { day: "Hour 1",  event: "On-call operator escalates. No protocol. 23 calls to find NERC contact." },
@@ -599,7 +599,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 330, label: "T+5:30 — Consumer hotline live. CNN responded." },
       { simSeconds: 420, label: "T+7:00 — Board briefed. Settlement authority activated." },
       { simSeconds: 690, label: "T+11:30 — Brand recovery brief complete." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. Narrative controlled." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. Narrative controlled." },
     ],
     oldModel: [
       { day: "Hour 2",  event: "Legal debates voluntary vs. mandatory recall. No decision made before FDA deadline." },
@@ -695,7 +695,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 420, label: "T+7:00 — Board briefed. Full regulatory filing roadmap confirmed." },
       { simSeconds: 480, label: "T+8:00 — All 18 EU DPA notifications filed." },
       { simSeconds: 690, label: "T+11:30 — Full forensic assessment delivered to Board." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. Regulators satisfied." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. Regulators satisfied." },
     ],
     oldModel: [
       { day: "Day 1",   event: "Legal debates breach confirmation standard. GDPR clock ticking." },
@@ -791,7 +791,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 300, label: "T+5:00 — FTC coordination request filed." },
       { simSeconds: 330, label: "T+5:30 — Board notified. Investigation strategy briefed." },
       { simSeconds: 420, label: "T+7:00 — Document review protocol established." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. Investigation posture set." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. Investigation posture set." },
     ],
     oldModel: [
       { day: "Day 1",   event: "GC reads CID. No protocol. Outside counsel search begins. Employees unaware of no-contact rule." },
@@ -886,7 +886,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { simSeconds: 270, label: "T+4:30 — Transition Guarantee page live. Paid campaign running." },
       { simSeconds: 360, label: "T+6:00 — Market confidence statement issued to press." },
       { simSeconds: 540, label: "T+9:00 — First outreach wave — 50 accounts contacted." },
-      { simSeconds: 720, label: "T+12:00 — Full activation complete. 23 pipeline accounts in active discussion." },
+      { simSeconds: 720, label: "T+12:00 — Fully mobilized, executing from a staged position. 23 pipeline accounts in active discussion." },
     ],
     oldModel: [
       { day: "Day 1",   event: "Leadership learns about filing at 9 AM via news. No plan exists. Meeting scheduled for Day 3." },
