@@ -55,7 +55,8 @@ make_clip transformation_product_launch.jpg cut3_transformation.mp4 "TRANSFORMAT
   "Go/no-go authorized, campaign live. Launch pulled forward to June 15."
 
 # End card: domains + 3,600x metric + tagline on navy background
-ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=10:r=25" -vf "
+# Duration extended to 17.0s (from 10s) to hold for the closing voiceover lines
+ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=17.0:r=25" -vf "
 drawtext=fontfile=${FONT}:text='GROWTH & POSITIONING':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=260:alpha='if(lt(t,0.6),0,1)',
 drawtext=fontfile=${FONT}:text='RISK & RESILIENCE':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=320:alpha='if(lt(t,1.4),0,1)',
 drawtext=fontfile=${FONT}:text='TRANSFORMATION':fontcolor=${GOLD}:fontsize=34:x=(w-text_w)/2:y=380:alpha='if(lt(t,2.2),0,1)',
@@ -65,7 +66,7 @@ drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC
 drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=728:alpha='if(lt(t,6.3),0,1)',
 drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=788:alpha='if(lt(t,7.0),0,1)',
 fade=t=in:st=0:d=0.6,
-fade=t=out:st=9.2:d=0.7
+fade=t=out:st=16.2:d=0.8
 " -pix_fmt yuv420p -r 25 cut4_endcard.mp4
 
 # Concatenate all four cuts

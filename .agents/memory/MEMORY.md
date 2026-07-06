@@ -23,3 +23,4 @@
 - [PUBLIC_ROUTES allowlist gotcha](public-routes-allowlist.md) — new public POST endpoints silently 401 unless added to PUBLIC_ROUTES in server/authConfig.ts; verify with curl, not just tsc/tests
 - [mark_task_complete state MERGED error](task-complete-state-merged-error.md) — non-retryable platform state error, unrelated to code quality; don't keep retrying, verify work independently and report to user
 - [Server-side email HTML escaping](server-email-html-escaping.md) — HTML email builders (template literals) get zero JSX auto-escaping; escape fields + validate echoed URLs + rate-limit
+- [ElevenLabs voiceover + ffmpeg mixing](elevenlabs-voiceover-mixing.md) — secrets need bash tool not code_execution; pick voice for brand tone; adelay+amix+apad timing pattern
