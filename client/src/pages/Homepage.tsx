@@ -736,11 +736,21 @@ function HeroSection() {
 
           {/* RIGHT — Live Simulation Panel — the product itself, not a decoration beside the pitch */}
           <div style={{ padding: "32px 0 32px 32px", display: "flex", flexDirection: "column", alignItems: "stretch", gap: 12 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
-              <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.75)" }}>
-                Watch It Work — Live
-              </span>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" as const }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.75)" }}>
+                  Watch It Work — Live
+                </span>
+              </div>
+              <Link
+                href="/video"
+                onClick={() => trackCTA("hero_watch_film")}
+                style={{ ...DM, fontSize: 11, fontWeight: 600, color: GOLD, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap" as const }}
+                data-testid="link-watch-demo-film"
+              >
+                ▶ Watch the 3-Min Film →
+              </Link>
             </div>
             {/* Browser Chrome Frame */}
             <div style={{ borderRadius: "6px 6px 0 0", overflow: "hidden", boxShadow: "0 28px 72px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.18)" }}>

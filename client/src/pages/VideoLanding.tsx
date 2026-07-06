@@ -12,7 +12,8 @@ import ThirtySecondSpot from "@/components/marketing/ThirtySecondSpot";
 
 function getInitialTab(loc: string): string {
   if (loc === "/spots" || loc === "/30-second") return "30-second";
-  return "90-second";
+  if (loc === "/90-second") return "90-second";
+  return "full-demo";
 }
 
 export default function VideoLanding() {
@@ -25,8 +26,8 @@ export default function VideoLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Readiness OS - Readiness Infrastructure | 30 Days → 12 Minutes",
-      description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged Readiness Protocols, coordinated stakeholders, instant activation for enterprise organizations.",
+      title: "Watch the Demo - Readiness OS | 30 Days → 12 Minutes",
+      description: "Watch the full narrated Readiness OS platform demo — sourced financial figures, real activation scenarios, and how strategic mobilization compresses from 30 days to 12 minutes.",
       ogTitle: "Readiness OS - The Speed to Execute",
       ogDescription: "180 Readiness Protocols. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Readiness Infrastructure.",
     });
@@ -51,17 +52,25 @@ export default function VideoLanding() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
             </div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: '#F0EDE4', marginBottom: 10, lineHeight: 1.1 }} data-testid="heading-video-hub">
-              Brand Films & <em style={{ color: '#C9A84C' }}>30-Second Spots</em>
+              The Full Demo, <em style={{ color: '#C9A84C' }}>Brand Films & Spots</em>
             </div>
             <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
-              Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Readiness OS.
+              Watch the full narrated platform walkthrough, or browse the cinematic cutdowns built for trade shows, conferences, and broadcast.
             </div>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 py-12">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-lg grid-cols-2 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
+            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
+              <TabsTrigger 
+                value="full-demo" 
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
+                data-testid="tab-full-demo"
+              >
+                <Play className="h-3 w-3 mr-2" />
+                Full Demo
+              </TabsTrigger>
               <TabsTrigger 
                 value="90-second" 
                 className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
@@ -79,6 +88,35 @@ export default function VideoLanding() {
                 30 Seconds
               </TabsTrigger>
             </TabsList>
+
+            <TabsContent value="full-demo" className="mt-0">
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] rounded-none uppercase text-[9px] font-bold tracking-widest px-3 py-1 border-0">Sales & Marketing</Badge>
+                  <h2 className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-full-demo">
+                    "30 Days Compressed to 12 Minutes" — Full Platform Walkthrough
+                  </h2>
+                </div>
+                <p className="text-[#6B7280] text-sm uppercase tracking-widest font-bold">
+                  Purpose: Sales calls · investor meetings · website · founding partner outreach
+                </p>
+              </div>
+              <div className="rounded-none overflow-hidden border border-[#E8E4DC] bg-black">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-auto block"
+                  data-testid="video-full-demo"
+                >
+                  <source src="/videos/readiness-os-demo.mp4" type="video/mp4" />
+                  Your browser does not support embedded video. <a href="/videos/readiness-os-demo.mp4">Download the video instead.</a>
+                </video>
+              </div>
+              <p className="text-[#6B7280] text-xs mt-3 leading-relaxed">
+                Financial figures shown in the video are sourced and cited on-screen — see the video's closing footnotes for methodology.
+              </p>
+            </TabsContent>
 
             <TabsContent value="90-second" className="mt-0">
               <div className="mb-8">
