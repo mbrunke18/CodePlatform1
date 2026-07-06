@@ -118,7 +118,7 @@ make_clip growth_market_entry.jpg cut1_growth.mp4 "GROWTH & POSITIONING" \
 build_cut2() {
 make_clip risk_ransomware.jpg cut2_risk.mp4 "RISK & RESILIENCE" \
   "RANSOMWARE HITS PRODUCTION -- REGULATORS WATCHING" \
-  "No statement agreed yet. Legal\, comms\, and IT are on three separate calls when the SEC inquiry lands." \
+  "No statement agreed yet. Legal\, Communications\, and IT are on three separate calls when the SEC inquiry lands." \
   "System-detected\, executive-authorized in minutes -- systems isolating\, the SEC notified\, and the customer statement issued before the story breaks." \
   27.968 5.510 14.600
 }
