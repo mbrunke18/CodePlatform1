@@ -68,28 +68,32 @@ make_clip() {
 
 build_intro() {
 # ============================================================================
-# INTRO (33.381s): rewritten for persuasiveness -- names the company and the
-# product explicitly ("VaughnMartin Readiness OS"), states the concrete cost of
-# the old model (30 days to mobilize) before showing the payoff, and pairs the
-# opening frame with the REAL hero logo graphic so brand identity is unmistakable
-# from second one. The third beat explicitly chains situation -> trigger ->
-# protocol so the connection between the three terms is never left implicit.
-# Reveal timings are synced to the actual measured narration durations for the
-# new script (see .agents/memory/elevenlabs-voiceover-mixing.md).
+# INTRO (38.188s): rewritten a third time to (a) reframe situations as EXPECTED
+# categories with unknown timing rather than things "not expected" -- the
+# organization has faced them, will face them again, and just doesn't know
+# when -- and (b) name the "mobilization gap" explicitly as the cost being
+# eliminated, so the payoff beat reads as "no mobilization gap" rather than a
+# generic speed claim. The third beat still chains trigger -> protocol but now
+# carries real breadth numbers (231 triggers / 180 protocols) instead of vague
+# language, per feedback that the script needed to demonstrate real product
+# depth, not just a generic pitch. Reveal timings are synced to the actual
+# measured narration durations for this script (see
+# .agents/memory/elevenlabs-voiceover-mixing.md for the sync formula).
 # ============================================================================
-INTRO_DUR=33.381
+INTRO_DUR=38.188
 ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=${INTRO_DUR}:r=25" -vf "
-[0:v]drawtext=fontfile=${FONT}:text='EVERY ORGANIZATION FACES SITUATIONS IT DOES NOT EXPECT':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=460:alpha='if(lt(t,0.6),0,1)',
-drawtext=fontfile=${FONT}:text='THE OLD WAY':fontcolor=${REDISH}:fontsize=30:x=(w-text_w)/2:y=600:alpha='if(lt(t,5.458),0,1)',
-drawtext=fontfile=${FONT}:text='30 days just to mobilize -- before a single action is taken':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=650:alpha='if(lt(t,5.458),0,1)',
-drawtext=fontfile=${FONT}:text='EVERY SITUATION FIRES A TRIGGER':fontcolor=${TEAL}:fontsize=30:x=(w-text_w)/2:y=760:alpha='if(lt(t,12.641),0,1)',
-drawtext=fontfile=${FONT}:text='Matched instantly to one of 180 pre-staged Readiness Protocols':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=810:alpha='if(lt(t,12.641),0,1)',
-drawtext=fontfile=${FONT}:text='EXECUTION STARTS IN 12 MINUTES\, NOT 30 DAYS':fontcolor=${GOLD}:fontsize=38:x=(w-text_w)/2:y=910:alpha='if(lt(t,21.025),0,1)',
-drawtext=fontfile=${FONT}:text='Watch it respond to 3 real situations below':fontcolor=0xB8BCC8:fontsize=24:x=(w-text_w)/2:y=965:alpha='if(lt(t,21.025),0,1)'
+[0:v]drawtext=fontfile=${FONT}:text='YOU HAVE FACED THIS. YOU WILL FACE IT AGAIN. YOU DO NOT KNOW WHEN.':fontcolor=white:fontsize=34:x=(w-text_w)/2:y=460:alpha='if(lt(t,0.6),0,1)',
+drawtext=fontfile=${FONT}:text='THE OLD WAY':fontcolor=${REDISH}:fontsize=30:x=(w-text_w)/2:y=600:alpha='if(lt(t,6.581),0,1)',
+drawtext=fontfile=${FONT}:text='A 30-day mobilization gap -- a war room built from scratch\, after the fact':fontcolor=white:fontsize=28:x=(w-text_w)/2:y=650:alpha='if(lt(t,6.581),0,1)',
+drawtext=fontfile=${FONT}:text='SYSTEM-DETECTED. INSTANTLY MATCHED.':fontcolor=${TEAL}:fontsize=30:x=(w-text_w)/2:y=760:alpha='if(lt(t,14.104),0,1)',
+drawtext=fontfile=${FONT}:text='231 triggers monitored -- matched to one of 180 pre-staged Readiness Protocols':fontcolor=white:fontsize=28:x=(w-text_w)/2:y=810:alpha='if(lt(t,14.104),0,1)',
+drawtext=fontfile=${FONT}:text='NO MOBILIZATION GAP.':fontcolor=${GOLD}:fontsize=38:x=(w-text_w)/2:y=880:alpha='if(lt(t,24.813),0,1)',
+drawtext=fontfile=${FONT}:text='Execution starts in 12 minutes\, not 30 days':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=930:alpha='if(lt(t,24.813),0,1)',
+drawtext=fontfile=${FONT}:text='Watch it respond to 3 situations your team has likely already lived through':fontcolor=0xB8BCC8:fontsize=23:x=(w-text_w)/2:y=975:alpha='if(lt(t,24.813),0,1)'
 [base];
 $(brand_overlay_hero 130)
 [branded]fade=t=in:st=0:d=0.6,
-fade=t=out:st=32.781:d=0.6
+fade=t=out:st=37.588:d=0.6
 " -pix_fmt yuv420p -r 25 cut0_intro.mp4
 }
 
@@ -106,25 +110,25 @@ fade=t=out:st=32.781:d=0.6
 build_cut1() {
 make_clip growth_market_entry.jpg cut1_growth.mp4 "GROWTH & POSITIONING" \
   "LEGACYPOINT FILES CHAPTER 11 -- 1\,400 ACCOUNTS IN PLAY" \
-  "Day one: nobody owns this yet. Salesforce already calling 380 of their accounts." \
-  "Pre-staged and authorized in minutes. 23 target accounts move into outreach immediately." \
-  27.785 8.331 17.709
+  "Day one: nobody owns this yet. Sales is already calling 380 of their accounts -- with no plan and no pricing approved." \
+  "Protocol 31 was already staged. Authorized in minutes -- 23 target accounts move into outreach immediately\, messaging and pricing pre-approved." \
+  32.591 8.331 18.675
 }
 
 build_cut2() {
 make_clip risk_ransomware.jpg cut2_risk.mp4 "RISK & RESILIENCE" \
   "RANSOMWARE HITS PRODUCTION -- REGULATORS WATCHING" \
-  "No statement agreed yet. The SEC inquiry lands first." \
-  "Pre-staged and authorized. Systems isolating\, regulators notified before the story breaks." \
-  23.475 5.510 12.144
+  "No statement agreed yet. Legal\, comms\, and IT are on three separate calls when the SEC inquiry lands." \
+  "System-detected\, executive-authorized in minutes -- systems isolating\, the SEC notified\, and the customer statement live before the story breaks." \
+  27.968 5.510 14.600
 }
 
 build_cut3() {
 make_clip transformation_product_launch.jpg cut3_transformation.mp4 "TRANSFORMATION" \
   "A RIVAL RACES TO LAUNCH FIRST" \
-  "The plan is still in draft while the rival announces." \
-  "Pre-staged and authorized. Launch moves three weeks earlier -- landing first\, not second." \
-  19.504 3.473 8.984
+  "The go-to-market plan is still in draft -- marketing\, product\, and sales have not even agreed on a date." \
+  "Protocol 89 was already staged. Authorized in minutes -- launch moves three weeks earlier\, landing first\, not second." \
+  21.986 3.473 11.361
 }
 
 build_endcard() {
