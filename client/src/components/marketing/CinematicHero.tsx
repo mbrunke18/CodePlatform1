@@ -274,10 +274,10 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-6"
                 >
                   <span className="text-8xl md:text-[10rem] font-bold text-red-500">
-                    72
+                    30
                   </span>
                   <span className="text-4xl md:text-6xl text-red-400 ml-4">
-                    HOURS
+                    DAYS
                   </span>
                 </motion.div>
                 <motion.div
@@ -315,7 +315,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 1.8 }}
                   className="text-2xl md:text-3xl font-bold text-red-400"
                 >
-                  30 DAYS. TOO SLOW.
+                  TOO SLOW.
                 </motion.div>
               </div>
             </Scene>
