@@ -122,9 +122,9 @@ $(beat 13.934 16.784 'WHO SOLVED THIS BEFORE?' 44 500 white)
 $(beat 16.784 20.858 'WHY ARE WE REBUILDING WHAT WE ALREADY KNEW?' 34 500 ${REDISH})
 $(beat 20.858 28.745 'THIS IS WHAT HAPPENS TODAY\, IN ALMOST EVERY ORGANIZATION.' 30 500 white)
 $(beat 28.745 33.419 'WEEKS JUST TO MOBILIZE. FIGURING OUT WHO. WHAT. AND HOW.' 32 500 ${REDISH})
-$(beat 33.419 42.169 'ALIGNMENT CYCLES BEGIN. COORDINATION DELAYS COMPOUND. COMMITTEES STACK UP.' 28 500 white)
-$(beat 42.169 48.175 'WHO HAS THE AUTHORITY? WHERE IS THE LAST RESPONSE PLAN? WHAT GETS DONE FIRST?' 28 500 white)
-$(beat 48.175 56.167 'THIRTY DAYS BEFORE EXECUTION EVEN BEGINS. THAT IS THE MOBILIZATION GAP.' 30 500 ${REDISH})
+$(beat 33.419 42.169 'EMAIL THREADS MULTIPLY. TEAMS CHANNELS FORK. SPREADSHEETS PILE UP.' 28 500 white)
+$(beat 42.169 48.175 'NOBODY OWNS IT YET. EVERYONE IS SEARCHING. EVERYONE IS WAITING.' 30 500 white)
+$(beat 48.175 56.167 'THIRTY DAYS PASS BEFORE THE RESPONSE EVEN TAKES SHAPE.' 32 500 ${REDISH})
 $(beat 56.167 58.647 'THERE IS ANOTHER WAY.' 52 500 ${GOLD})
 $(beat 58.647 65.829 'NOT SOFTWARE.' 40 460 ${GOLD})
 $(beat 58.647 65.829 'ORGANIZATIONAL CAPABILITY -- BUILT ONCE AND READY ALWAYS.' 26 530 white)
@@ -200,19 +200,21 @@ build_endcard() {
 ffmpeg -y -f lavfi -i "color=c=${NAVY}:s=1920x1080:d=90.647:r=25" -vf "
 [0:v]drawtext=fontfile=${FONT}:text='180 READINESS PROTOCOLS':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-0.6)/0.3\,(13.556-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='One pre-staged for every situation you could face -- across every team\, every function':fontcolor=white:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-0.9)/0.3\,(13.556-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='\$18M in accounts lost. \$22M-\$50M in ransomware exposure. \$3.9M in pipeline gone.':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='Modeled from the 3 scenarios shown above -- ransomware figure\: IBM Security\, 2025':fontcolor=0xB8BCC8:fontsize=16:x=(w-text_w)/2:y=600:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='3\,600X EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-25.807)/0.3\,(45.207-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='30 days compressed to 12 minutes':fontcolor=0xB8BCC8:fontsize=26:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='\$9.4M in new ARR captured. \$50M in exposure avoided. \$3.9M in pipeline retained.':fontcolor=white:fontsize=22:x=(w-text_w)/2:y=605:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='Modeled outcomes for the same 3 scenarios\, applied with Readiness OS':fontcolor=0xB8BCC8:fontsize=16:x=(w-text_w)/2:y=645:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='WITHOUT IT':fontcolor=${REDISH}:fontsize=48:x=(w-text_w)/2:y=460:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='The cost is never the event. It is the mobilization.':fontcolor=0xB8BCC8:fontsize=22:x=(w-text_w)/2:y=530:alpha='min(1\,max(0\,min((t-13.556)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='\$47M in ransomware penalties.  -11\% stock lost to activist.  \$59M in supply chain losses.':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=572:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Modeled outcomes -- IBM Security 2025\; Lazard Activism Review\; PwC Supply Chain Research':fontcolor=0xB8BCC8:fontsize=15:x=(w-text_w)/2:y=614:alpha='min(1\,max(0\,min((t-13.856)/0.3\,(25.807-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='3\,600× EXECUTION HEAD START':fontcolor=${GOLD}:fontsize=48:x=(w-text_w)/2:y=455:alpha='min(1\,max(0\,min((t-25.807)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='30 days compressed to 12 minutes':fontcolor=0xB8BCC8:fontsize=26:x=(w-text_w)/2:y=522:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='\$0 in penalties.  Narrative controlled.  +4\% stock recovery.  Supply continuity maintained.':fontcolor=white:fontsize=22:x=(w-text_w)/2:y=570:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='The same 3 situations.  The response already staged.  Ready before the trigger fired.':fontcolor=${TEAL}:fontsize=20:x=(w-text_w)/2:y=614:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='Modeled outcomes for the same 3 scenarios\, applied with Readiness OS':fontcolor=0xB8BCC8:fontsize=15:x=(w-text_w)/2:y=648:alpha='min(1\,max(0\,min((t-26.107)/0.3\,(45.207-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='AND IT GETS SMARTER EVERY TIME':fontcolor=${GOLD}:fontsize=44:x=(w-text_w)/2:y=480:alpha='min(1\,max(0\,min((t-45.207)/0.3\,(57.536-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='ADVANCE closes the loop -- proven improvements\, compounding with every activation':fontcolor=white:fontsize=24:x=(w-text_w)/2:y=560:alpha='min(1\,max(0\,min((t-45.507)/0.3\,(57.536-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='ORGANIZATIONS DO NOT FAIL BECAUSE THEY LACK TALENTED PEOPLE.':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=500:alpha='min(1\,max(0\,min((t-57.536)/0.3\,(62.176-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='THEY FAIL BECAUSE KNOWLEDGE DISAPPEARS BETWEEN EVENTS.':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=500:alpha='min(1\,max(0\,min((t-62.176)/0.3\,(66.659-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='READINESS OS ENSURES YOUR EXPERIENCE BECOMES CAPABILITY':fontcolor=${GOLD}:fontsize=32:x=(w-text_w)/2:y=470:alpha='min(1\,max(0\,min((t-66.659)/0.3\,(75.017-t)/0.3)))',
-drawtext=fontfile=${FONT}:text='BEFORE YOUR NEXT DISRUPTION.':fontcolor=${GOLD}:fontsize=32:x=(w-text_w)/2:y=520:alpha='min(1\,max(0\,min((t-66.659)/0.3\,(75.017-t)/0.3)))',
+drawtext=fontfile=${FONT}:text='BEFORE YOUR NEXT SITUATION.':fontcolor=${GOLD}:fontsize=32:x=(w-text_w)/2:y=520:alpha='min(1\,max(0\,min((t-66.659)/0.3\,(75.017-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='When the Situation Arrives --':fontcolor=0xB8BCC8:fontsize=28:x=(w-text_w)/2:y=440:alpha='min(1\,max(0\,min((t-75.017)/0.3\,(80.658-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='The Response Is Ready':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=490:alpha='min(1\,max(0\,min((t-75.317)/0.3\,(80.658-t)/0.3)))',
 drawtext=fontfile=${FONT}:text='Before the Trigger Fires.':fontcolor=${GOLD}:fontsize=42:x=(w-text_w)/2:y=550:alpha='min(1\,max(0\,min((t-75.617)/0.3\,(80.658-t)/0.3)))',

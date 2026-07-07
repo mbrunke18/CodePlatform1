@@ -108,3 +108,10 @@ If the direct `ELEVENLABS_API_KEY` runs out of quota partway through generating 
 **Why:** This turned a user-approved "use a different TTS voice as a stopgap" decision (which would have introduced an audible voice mismatch) into a strictly better outcome — same voice, no mismatch — once the Replit-managed tool was tried instead of chasing OpenAI TTS further.
 
 **How to apply:** If ElevenLabs direct-API quota is exhausted mid-project, try the Replit-managed `textToSpeech()` sandbox tool with the project's existing voice ID before falling back to a different voice/vendor.
+
+## edge-tts (Microsoft Edge neural TTS) — free backup when Replit textToSpeech is also unavailable
+Install via `uv add edge-tts` (packager_install_tool or code_execution installLanguagePackages). Usage: `import asyncio, edge_tts; await edge_tts.Communicate(text, "en-US-GuyNeural").save(path)`. No API key required, no credits, runs against Microsoft Edge's live neural TTS service. Voice `en-US-GuyNeural` is deep and authoritative — suitable for enterprise video narration. Quality is high but audibly different from the ElevenLabs voice used elsewhere in the video, so only use it as a stopgap for specific segments OR regenerate ALL segments consistently with it to avoid a voice mismatch mid-video.
+
+**Why:** ElevenLabs direct API returned 0 remaining credits; OpenAI TTS returned 429; edge-tts was the only zero-friction free alternative that generated narration without API keys. Replit textToSpeech() via code_execution still worked and produced matching voice — always try that first.
+
+**How to apply:** Try in this order: (1) Replit textToSpeech() in code_execution with the existing ElevenLabs voice ID, (2) edge-tts if (1) also fails — but flag the voice inconsistency to the user.

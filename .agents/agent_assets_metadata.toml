@@ -749,3 +749,27 @@ id = "j4NTcpHAQTPn8egQKlMJm"
 uri = "file://content/video_assets/voiceover_segments_v2/a3_gap.mp3"
 type = "audio"
 title = "gap"
+
+[[outputs]]
+id = "YvKbf6wA6YV866Kq87Lq3"
+uri = "file://content/video_assets/voiceover_segments_v2/a5_capability.mp3"
+type = "audio"
+title = "a5_capability"
+
+[[outputs]]
+id = "vwenGm9I8Be4UyfcAv7Xq"
+uri = "file://content/video_assets/voiceover_segments_v2/a2_warroom.mp3"
+type = "audio"
+title = "a2_warroom"
+
+[[outputs]]
+id = "5XrbstjsIMb6X8P7PRdWW"
+uri = "file://content/video_assets/voiceover_segments/seg10_endcard_cost.mp3"
+type = "audio"
+title = "seg10_cost"
+
+[[outputs]]
+id = "_SJyzUdKI7M0HYkVrRgOA"
+uri = "file://content/video_assets/voiceover_segments/seg11_endcard_metric.mp3"
+type = "audio"
+title = "seg11_metric"

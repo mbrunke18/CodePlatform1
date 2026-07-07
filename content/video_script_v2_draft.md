@@ -40,7 +40,7 @@ Visual: text-driven "chaos" montage — no screenshots of your product, just the
 
 > Here is what happens today, in almost every organization I have ever worked with.
 >
-> A war room gets built from scratch — after the fact.
+> A mobilization assembled from scratch — after the fact.
 >
 > Email threads multiply. Teams channels fork. Spreadsheets get passed around while the moment keeps moving.
 >
@@ -111,7 +111,7 @@ Visual: return to plain navy, no UI — mirrors the opening for a bookend effect
 >
 > They fail because knowledge disappears between events.
 >
-> Readiness OS ensures your experience becomes capability — before your next disruption.
+> Readiness OS ensures your experience becomes capability — before your next situation.
 
 Tagline (unchanged, locked):
 
