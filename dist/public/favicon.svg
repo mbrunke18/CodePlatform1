@@ -1,0 +1,24 @@
+<svg width="64" height="64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="favGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#1a2860"/>
+      <stop offset="100%" stop-color="#0A0F2E"/>
+    </radialGradient>
+    <linearGradient id="favGoldG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DFC178"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#8B6212"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="92" fill="url(#favGrad)"/>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#C9A84C" stroke-width="4"/>
+
+  <text x="100" y="118" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="92" font-weight="700"
+    fill="url(#favGoldG)"
+    letter-spacing="-4">VM</text>
+
+  <circle cx="100" cy="158" r="7" fill="#00E5C4"/>
+</svg>

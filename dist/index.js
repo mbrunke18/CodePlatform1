@@ -16155,8 +16155,8 @@ async function notifyMatchingProspects(detections) {
         if (recentSame.length > 0) continue;
         const html = buildBriefEmail(prospect, detection, platformUrl);
         await resend2.emails.send({
-          from: "Readiness OS Signals <signals@vaughnmartin.com>",
-          replyTo: "hello@vaughnmartin.com",
+          from: "Readiness OS <pilot@vaughnmartin.com>",
+          replyTo: "pilot@vaughnmartin.com",
           to: prospect.email,
           subject: `${detection.triggerName} \u2014 a prepared organization is already executing`,
           html
@@ -16598,7 +16598,7 @@ async function sendRequestAccessWelcome(prospect) {
   try {
     await resend2.emails.send({
       from: "VaughnMartin Readiness OS <pilot@vaughnmartin.com>",
-      replyTo: "hello@vaughnmartin.com",
+      replyTo: "pilot@vaughnmartin.com",
       to: prospect.email,
       subject: `${prospect.firstName}, your Founding Partner application is confirmed`,
       html
@@ -17259,8 +17259,8 @@ async function notifyAdminOfLinkedInPost(detection) {
   const resend2 = new Resend5(resendKey);
   try {
     await resend2.emails.send({
-      from: "Readiness OS Signals <signals@vaughnmartin.com>",
-      replyTo: "hello@vaughnmartin.com",
+      from: "Readiness OS <pilot@vaughnmartin.com>",
+      replyTo: "pilot@vaughnmartin.com",
       to: adminEmail,
       subject: `Post ready \u2014 ${detection.triggerName} (${detection.confidenceScore}%)`,
       html
@@ -66427,6 +66427,7 @@ app.use(
           "https://region1.google-analytics.com",
           "https://stats.g.doubleclick.net"
         ],
+        mediaSrc: ["'self'", "blob:"],
         frameSrc: ["'self'"],
         objectSrc: ["'none'"],
         upgradeInsecureRequests: []
@@ -66547,6 +66548,16 @@ app.use("/screenshots", express2.static(path2.join(process.cwd(), "screenshots")
   setHeaders: (res) => {
     res.setHeader("Cache-Control", "public, max-age=604800");
   }
+}));
+app.use("/videos", (req, res, next) => {
+  res.setHeader("Cache-Control", "public, max-age=3600");
+  res.setHeader("Accept-Ranges", "bytes");
+  res.setHeader("Content-Type", "video/mp4");
+  res.removeHeader("set-cookie");
+  next();
+}, express2.static(path2.join(process.cwd(), "client/public/videos"), {
+  acceptRanges: true,
+  maxAge: "1h"
 }));
 app.get("/pitch-deck.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache");

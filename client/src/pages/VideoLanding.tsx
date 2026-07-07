@@ -256,12 +256,16 @@ export default function VideoLanding() {
                   Purpose: Sales calls · investor meetings · website · founding partner outreach
                 </p>
               </div>
-              <div className="rounded-none overflow-hidden border border-[#E8E4DC] bg-black">
+              <div
+                className="rounded-none overflow-hidden border border-[#E8E4DC] bg-black"
+                style={{ aspectRatio: "16/9", position: "relative" }}
+              >
                 <video
                   controls
                   playsInline
                   preload="metadata"
-                  className="w-full h-auto block"
+                  className="w-full h-full block"
+                  style={{ objectFit: "contain", position: "absolute", inset: 0 }}
                   data-testid="video-full-demo"
                 >
                   <source src="/videos/readiness-os-demo.mp4" type="video/mp4" />
