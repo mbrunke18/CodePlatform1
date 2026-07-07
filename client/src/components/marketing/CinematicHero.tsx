@@ -164,7 +164,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-4"
                 >
                   <span className="text-2xl md:text-3xl text-gray-800 font-light tracking-widest">
-                    DISRUPTION
+                    THE SITUATION
                   </span>
                 </motion.div>
                 <motion.div
@@ -228,7 +228,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="flex flex-col items-center p-4"
                   >
                     <AlertTriangle className="h-10 w-10 text-red-400 mb-2" />
-                    <span className="text-gray-800 text-sm">A crisis strikes.</span>
+                    <span className="text-gray-800 text-sm">A risk surfaces.</span>
                   </motion.div>
                 </div>
                 

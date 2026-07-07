@@ -138,14 +138,14 @@ export function Outro({ progress }: SceneProps) {
             <span className="text-gray-900">17 reports validate the gap</span>
           </div>
           <p className="text-gray-600 text-xs mt-4">
-            $13-20B TAM • Startup to Fortune 500 Target • Compound disruption ready
+            $13-20B TAM • Startup to Fortune 500 Target • Cross-domain situations ready
           </p>
         </motion.div>
       </div>
       
       <NarrationBox 
         headline="The Infrastructure Enterprises Are Missing"
-        description="Trigger-to-Execution Orchestration for startup to Fortune 500. 180 Readiness Protocols, Signal-based monitoring, executive intelligence, and compound disruption response—all in 12 minutes."
+        description="Trigger-to-Execution Orchestration for startup to Fortune 500. 180 Readiness Protocols, Signal-based monitoring, executive intelligence, and cross-domain situation response—all in 12 minutes."
         delay={0.5}
       />
     </div>

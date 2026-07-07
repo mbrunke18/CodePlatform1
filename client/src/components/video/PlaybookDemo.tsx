@@ -11,7 +11,7 @@ interface SceneProps {
 
 const playbooks = [
   { title: "Competitor Product Launch", domain: "Competitive Response", tasks: 24, type: "market" as const },
-  { title: "Data Breach Response", domain: "Crisis Management", tasks: 32, type: "crisis" as const },
+  { title: "Data Breach Response", domain: "Risk & Resilience", tasks: 32, type: "crisis" as const },
   { title: "M&A Integration", domain: "M&A", tasks: 48, type: "ma" as const },
   { title: "Regulatory Change", domain: "Regulatory", tasks: 18, type: "regulatory" as const },
   { title: "Product Launch", domain: "Product Launch", tasks: 36, type: "launch" as const },
@@ -104,7 +104,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Pre-Built Strategic Readiness Protocols"
-        description="180 battle-tested Readiness Protocols eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
+        description="180 battle-tested Readiness Protocols eliminate the chaos of figuring out 'who does what' when a situation demands response."
         delay={0.5}
       />
     </div>

@@ -11,8 +11,8 @@ interface SceneProps {
 
 const integrations = [
   { name: "Jira", icon: SiJira, color: "#0052CC", action: "Creating project & tasks..." },
-  { name: "Slack", icon: SiSlack, color: "#4A154B", action: "Notifying #crisis-response..." },
-  { name: "MS Teams", icon: MessageSquare, color: "#6264A7", action: "Setting up war room..." },
+  { name: "Slack", icon: SiSlack, color: "#4A154B", action: "Notifying #situation-response..." },
+  { name: "MS Teams", icon: MessageSquare, color: "#6264A7", action: "Staging stakeholder channel..." },
   { name: "Salesforce", icon: SiSalesforce, color: "#00A1E0", action: "Logging customer impact..." },
   { name: "ServiceNow", icon: Wrench, color: "#81B5A1", action: "Creating incident ticket..." },
 ];

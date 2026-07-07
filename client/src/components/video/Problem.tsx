@@ -31,7 +31,7 @@ const threeProblems = [
     icon: Brain,
     title: "The Institutional Amnesia",
     pain: "Knowledge walks out the door. Same scramble every time.",
-    cost: "3.5 disruptions every 2 years",
+    cost: "3.5 high-stakes situations every 2 years",
     costDetail: "Same $4.88M cost repeated each time",
     color: "#2B8A6E",
     borderColor: "rgba(168,85,247,0.3)",
