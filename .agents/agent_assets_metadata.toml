@@ -965,3 +965,9 @@ id = "KAcmQvz3ezB17FLrf4PsE"
 uri = "file://content/video_assets/voiceover_segments/seg13_endcard_cta.mp3"
 type = "audio"
 title = "seg13_cta"
+
+[[outputs]]
+id = "DQhho8_A4yHZwsyz_onUT"
+uri = "file://attached_assets/generated_audio/speech_speech.mp3"
+type = "audio"
+title = "speech"
