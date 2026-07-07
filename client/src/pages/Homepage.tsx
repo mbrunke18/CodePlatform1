@@ -785,6 +785,7 @@ function RealityGapSimulator() {
   const [minSecs, setMinSecs] = useState(720);
   const [progress, setProgress] = useState(0); // 0–100 over 9s
   const [started, setStarted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   // TOTAL_MS = 11000ms simulation window (phase 0: 0–5s, phase 1: 5–11s, phase 2: 11s+)
   const PHASE0_MS = 5000;
@@ -831,10 +832,33 @@ function RealityGapSimulator() {
     setTimeout(() => setPhase(2), TOTAL_MS);
   };
 
+  // Start sim when section enters the viewport — not on page load
   useEffect(() => {
-    const t = setTimeout(runSim, 600);
-    return () => clearTimeout(t);
+    const el = sectionRef.current;
+    if (!el) return;
+    let triggered = false;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !triggered) {
+          triggered = true;
+          setTimeout(runSim, 300);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Auto-loop: restart 4 s after completion so clock never freezes at 0:00
+  useEffect(() => {
+    if (phase !== 2) return;
+    const t = setTimeout(runSim, 4000);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   const fmt = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, "0")}`;
 
@@ -863,7 +887,7 @@ function RealityGapSimulator() {
   const afterRevealed  = phase >= 1 ? Math.ceil((720 - minSecs) / 120) : 0;
 
   return (
-    <section id="hp-gap" style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
+    <section ref={sectionRef} id="hp-gap" style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "52px 40px" }}>
 
         {/* Header row */}
@@ -2295,7 +2319,10 @@ function FilmSection() {
         </p>
       </div>
 
-      <CinematicHero />
+      {/* White background required — CinematicHero uses dark gray text throughout */}
+      <div style={{ background: "#F8F7F4" }}>
+        <CinematicHero />
+      </div>
 
       <div style={{ textAlign: "center", padding: "28px 0 64px", background: NAVY }}>
         <Link
