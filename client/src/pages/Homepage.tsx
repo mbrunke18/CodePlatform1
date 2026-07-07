@@ -5,9 +5,10 @@ import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { Link, useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
-import { Shield, TrendingUp, Layers } from "lucide-react";
+import { Shield, TrendingUp, Layers, Play } from "lucide-react";
 import heroImg from "@/assets/images/executive-floor-night.png";
 import { trackEvent } from "@/lib/analytics";
+import CinematicHero from "@/components/marketing/CinematicHero";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -2274,6 +2275,40 @@ function FoundingPartnerCloseSection() {
   );
 }
 
+// ─── 90-SECOND BRAND FILM SECTION ─────────────────────────────────────────────
+function FilmSection() {
+  return (
+    <section style={{ background: NAVY, borderTop: "1px solid rgba(201,168,76,0.15)", paddingTop: 72 }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 40px", textAlign: "center", marginBottom: 40 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
+          <div style={{ width: 32, height: 1, background: GOLD }} />
+          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
+            90-Second Brand Film
+          </span>
+          <div style={{ width: 32, height: 1, background: GOLD }} />
+        </div>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3.2vw, 40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, margin: "0 0 12px" }}>
+          See the 12-Minute Execution Chain
+        </h2>
+        <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 520, margin: "0 auto" }}>
+          Watch how a situation that used to take 30 days to mobilize compresses to 12 minutes — with the response already staged before the trigger fires.
+        </p>
+      </div>
+
+      <CinematicHero />
+
+      <div style={{ textAlign: "center", padding: "28px 0 64px", background: NAVY }}>
+        <Link
+          href="/video"
+          style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, textDecoration: "none", borderBottom: `1px solid rgba(201,168,76,0.35)`, paddingBottom: 3 }}
+        >
+          Watch the Full 4-Minute Platform Walkthrough →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -2303,6 +2338,9 @@ export default function Homepage() {
       {/* §2 THE GAP — animated 30 days vs 12 minutes, then the competitive positioning hook */}
       <RealityGapSimulator />
       <MicrosoftHookStrip />
+
+      {/* §2.5 90-SECOND BRAND FILM — "see it work in 90 seconds" */}
+      <FilmSection />
 
       {/* Bridge — 3 clear paths: experience it / see a scenario / get the brief */}
       <EngagementBridge />
