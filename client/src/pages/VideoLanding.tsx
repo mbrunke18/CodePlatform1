@@ -100,11 +100,6 @@ export default function VideoLanding() {
     setActiveTab(getInitialTab(location));
   }, [location]);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-    }
-  }, []);
 
   useEffect(() => {
     updatePageMetadata({
@@ -275,6 +270,7 @@ export default function VideoLanding() {
                   className="w-full h-full block"
                   style={{ objectFit: "contain", position: "absolute", inset: 0 }}
                   data-testid="video-full-demo"
+                  onLoadedMetadata={() => { if (videoRef.current) videoRef.current.currentTime = 0; }}
                 >
                   <source src="/videos/readiness-os-demo.mp4" type="video/mp4" />
                   Your browser does not support embedded video.{" "}
