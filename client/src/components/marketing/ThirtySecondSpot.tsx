@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sword, Shield, Zap, Play, ArrowRight, RotateCcw } from "lucide-react";
+import { Sword, Shield, Zap, ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "wouter";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 interface SceneProps {
   children: React.ReactNode;
@@ -22,6 +23,59 @@ function Scene({ children }: SceneProps) {
   );
 }
 
+function BrandOutro({ tagline, sub }: { tagline: string; sub?: string }) {
+  return (
+    <div className="text-center flex flex-col items-center gap-5">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.88 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, type: "spring" }}
+      >
+        <VaughnMartinLogo height={64} variant="full" color="dark" noLink />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.35 }}
+      >
+        <div
+          style={{
+            height: 1.5,
+            width: 48,
+            background: "#C9A84C",
+            margin: "0 auto 10px",
+          }}
+        />
+        <p
+          className="text-sm font-bold uppercase tracking-[0.22em] text-[#C9A84C]"
+          style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+        >
+          {tagline}
+        </p>
+        {sub && (
+          <p className="text-xs text-[#6B7280] mt-1 tracking-wide">{sub}</p>
+        )}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.6 }}
+      >
+        <Link href="/request-access">
+          <Button
+            size="lg"
+            className="px-8 py-5 bg-[#0A0F2E] text-[#C9A84C] hover:bg-[#132558] rounded-none font-bold uppercase tracking-widest text-xs border-0"
+          >
+            Apply for Founding Partner Access
+          </Button>
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
+
 type SpotVersion = "offense-defense" | "first-mover" | "360x-faster";
 
 interface ThirtySecondSpotProps {
@@ -32,7 +86,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [hasCompleted, setHasCompleted] = useState(false);
-  
+
   const getScenes = () => {
     switch (version) {
       case "first-mover":
@@ -59,16 +113,16 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
         ];
     }
   };
-  
+
   const scenes = getScenes();
   const totalScenes = scenes.length;
 
   useEffect(() => {
     if (!isPlaying) return;
-    
+
     const timer = setTimeout(() => {
       if (currentScene < totalScenes - 1) {
-        setCurrentScene(prev => prev + 1);
+        setCurrentScene((prev) => prev + 1);
       } else {
         setIsPlaying(false);
         setHasCompleted(true);
@@ -135,7 +189,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               Readiness OS: 180 Readiness Protocols across growth, risk resilience, and transformation.
             </motion.p>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -155,7 +209,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
                 <span className="text-[#C9A84C] font-semibold">TRANSFORMATION</span>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -192,39 +246,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
 
       {currentScene === 4 && (
         <Scene key="scene-4">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="mb-4"
-            >
-              <span className="text-6xl md:text-8xl font-bold text-gray-900">M</span>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              className="mb-6"
-            >
-              <span className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] font-semibold">
-                THE SPEED TO EXECUTE.
-              </span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
-            >
-              <Link href="/request-access">
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-30s">
-                  Apply for Founding Partner Access
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
+          <BrandOutro tagline="The Speed to Execute." />
         </Scene>
       )}
     </>
@@ -318,39 +340,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
 
       {currentScene === 3 && (
         <Scene key="scene-3">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="mb-4"
-            >
-              <span className="text-6xl md:text-8xl font-bold text-gray-900">M</span>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              className="mb-6"
-            >
-              <span className="text-lg text-gray-800">
-                VaughnMartin Readiness OS.
-              </span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
-            >
-              <Link href="/request-access">
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-first-mover">
-                  Apply for Founding Partner Access
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
+          <BrandOutro tagline="Readiness Infrastructure." sub="VaughnMartin · Readiness OS" />
         </Scene>
       )}
     </>
@@ -419,7 +409,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               <br />
               <span className="text-3xl md:text-4xl font-bold text-gray-900">Execution Head Start</span>
             </motion.div>
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -435,50 +425,10 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
 
       {currentScene === 3 && (
         <Scene key="scene-3">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="mb-4"
-            >
-              <span className="text-6xl md:text-8xl font-bold text-gray-900">M</span>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              className="mb-2"
-            >
-              <span className="text-lg text-gray-800 uppercase tracking-widest">
-                Readiness OS
-              </span>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-              className="mb-6"
-            >
-              <span className="text-lg text-gray-800 uppercase tracking-widest">
-                Readiness Infrastructure for the Startup to Fortune 500
-              </span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.8 }}
-            >
-              <Link href="/request-access">
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-360x">
-                  Apply for Founding Partner Access
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
+          <BrandOutro
+            tagline="3,600× Execution Head Start."
+            sub="Startup to Fortune 500 · Readiness Infrastructure"
+          />
         </Scene>
       )}
     </>
@@ -507,21 +457,21 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
   };
 
   return (
-    <div className="relative w-full min-h-[500px] md:min-h-[600px] overflow-hidden" data-testid={`thirty-second-spot-${version}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
-      
+    <div
+      className="relative w-full overflow-hidden bg-white"
+      style={{ minHeight: 520 }}
+      data-testid={`thirty-second-spot-${version}`}
+    >
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#2B8A6E]/10 blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#2B8A6E]/10 blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <div className="relative h-[500px] md:h-[600px] flex items-center justify-center px-6">
-        <AnimatePresence mode="wait">
-          {renderSpot()}
-        </AnimatePresence>
+      <div className="relative flex items-center justify-center px-8" style={{ minHeight: 420 }}>
+        <AnimatePresence mode="wait">{renderSpot()}</AnimatePresence>
       </div>
 
-      <div className="absolute bottom-8 left-0 right-0 flex items-center justify-center gap-4">
+      <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-4">
         <div className="flex gap-2">
           {Array.from({ length: totalScenes }).map((_, i) => (
             <button
@@ -530,28 +480,28 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
                 setCurrentScene(i);
                 setIsPlaying(false);
               }}
-              className={`w-2 h-2 transition-all ${
-                i === currentScene 
-                  ? "w-6 bg-white" 
-                  : i < currentScene 
-                    ? "bg-white/60" 
-                    : "bg-white/30"
+              className={`h-2 rounded-none transition-all ${
+                i === currentScene
+                  ? "w-6 bg-[#0A0F2E]"
+                  : i < currentScene
+                  ? "w-2 bg-[#0A0F2E]/40"
+                  : "w-2 bg-[#0A0F2E]/20"
               }`}
               data-testid={`spot-scene-indicator-${version}-${i}`}
             />
           ))}
         </div>
-        
+
         {hasCompleted && (
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={restart}
-            className="ml-4 flex items-center gap-2 text-gray-800 hover:text-white transition-colors"
+            className="ml-4 flex items-center gap-2 text-[#6B7280] hover:text-[#0A0F2E] transition-colors"
             data-testid={`button-replay-${version}`}
           >
             <RotateCcw className="h-4 w-4" />
-            <span className="text-sm">Replay</span>
+            <span className="text-xs font-bold uppercase tracking-widest">Replay</span>
           </motion.button>
         )}
       </div>
@@ -563,14 +513,14 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             setCurrentScene(totalScenes - 1);
             setHasCompleted(true);
           }}
-          className="absolute bottom-8 right-8 text-gray-800 hover:text-white text-sm transition-colors"
+          className="absolute bottom-6 right-6 text-[#6B7280] hover:text-[#0A0F2E] text-xs font-bold uppercase tracking-widest transition-colors"
           data-testid={`button-skip-${version}`}
         >
           Skip
         </button>
       )}
-      
-      <div className="absolute top-4 left-4 text-gray-800 text-sm">
+
+      <div className="absolute top-4 left-4 text-[#6B7280] text-xs font-bold uppercase tracking-widest">
         30-Second Spot: {getTitle()}
       </div>
     </div>
