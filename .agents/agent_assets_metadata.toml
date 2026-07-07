@@ -736,19 +736,19 @@ title = "Readiness OS 3-Cut Demo (fixed)"
 id = "K7Lnq_iPpHU46G1aCRN-i"
 uri = "file://content/video_assets/voiceover_segments_v2/a3_hasai.mp3"
 type = "audio"
-title = "hasai"
+title = "a3_hasai"
 
 [[outputs]]
 id = "KrtoXY_QBiRcCC1ErrI0l"
 uri = "file://content/video_assets/voiceover_segments_v2/a3_operatingmodel.mp3"
 type = "audio"
-title = "operatingmodel"
+title = "a3_operatingmodel"
 
 [[outputs]]
 id = "j4NTcpHAQTPn8egQKlMJm"
 uri = "file://content/video_assets/voiceover_segments_v2/a3_gap.mp3"
 type = "audio"
-title = "gap"
+title = "a3_gap"
 
 [[outputs]]
 id = "YvKbf6wA6YV866Kq87Lq3"
@@ -773,3 +773,195 @@ id = "_SJyzUdKI7M0HYkVrRgOA"
 uri = "file://content/video_assets/voiceover_segments/seg11_endcard_metric.mp3"
 type = "audio"
 title = "seg11_metric"
+
+[[outputs]]
+id = "9fQUXBda1MAbioTw6bk4p"
+uri = "file://content/video_assets/voiceover_segments_v2/a1_believes.mp3"
+type = "audio"
+title = "a1_believes"
+
+[[outputs]]
+id = "WXPN1XwCXv5FD3y0bm723"
+uri = "file://content/video_assets/voiceover_segments_v2/a1_tested.mp3"
+type = "audio"
+title = "a1_tested"
+
+[[outputs]]
+id = "F9XgyCU7sud7r0ONQ_fti"
+uri = "file://content/video_assets/voiceover_segments_v2/a1_surface.mp3"
+type = "audio"
+title = "a1_surface"
+
+[[outputs]]
+id = "af1zk-CgHaOaL9t8pFKhh"
+uri = "file://content/video_assets/voiceover_segments_v2/a1_where.mp3"
+type = "audio"
+title = "a1_where"
+
+[[outputs]]
+id = "w3R26BIqCmJ2clAzh2W2k"
+uri = "file://content/video_assets/voiceover_segments_v2/a1_who.mp3"
+type = "audio"
+title = "a1_who"
+
+[[outputs]]
+id = "Qhgy3zyvBB5flAYg2Ye1p"
+uri = "file://content/video_assets/voiceover_segments_v2/a1_why.mp3"
+type = "audio"
+title = "a1_why"
+
+[[outputs]]
+id = "h7X2zHFiaJuE44rc2q0_4"
+uri = "file://content/video_assets/voiceover_segments_v2/a2_open.mp3"
+type = "audio"
+title = "a2_open"
+
+[[outputs]]
+id = "Xbu-xzdKuNJ524IzAtvVC"
+uri = "file://content/video_assets/voiceover_segments_v2/a2_chaos.mp3"
+type = "audio"
+title = "a2_chaos"
+
+[[outputs]]
+id = "6gxQ5wUCnQ1WG1bHOYYXG"
+uri = "file://content/video_assets/voiceover_segments_v2/a2_waiting.mp3"
+type = "audio"
+title = "a2_waiting"
+
+[[outputs]]
+id = "mR3qg_EI88RQj6jtN_kuD"
+uri = "file://content/video_assets/voiceover_segments_v2/a2_thirty.mp3"
+type = "audio"
+title = "a2_thirty"
+
+[[outputs]]
+id = "zBFBHZdkhjNnXo1my06Q9"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_another.mp3"
+type = "audio"
+title = "a3_another"
+
+[[outputs]]
+id = "QDetFqubExMwaA-cMWoXI"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_notsoftware.mp3"
+type = "audio"
+title = "a3_notsoftware"
+
+[[outputs]]
+id = "qFnrBI2nis_IdJCPx4Cjm"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_this.mp3"
+type = "audio"
+title = "a3_this"
+
+[[outputs]]
+id = "7cqqTkERhIr-IpHO5Vxh6"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_capability.mp3"
+type = "audio"
+title = "a3_capability"
+
+[[outputs]]
+id = "8pLUKVvpBqU1eradoSkYU"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_fearless.mp3"
+type = "audio"
+title = "a3_fearless"
+
+[[outputs]]
+id = "iIfOXSWf0aYqIbJxbawZm"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_numbers.mp3"
+type = "audio"
+title = "a3_numbers"
+
+[[outputs]]
+id = "ck5sDhwIrN0MfwxSdOj-w"
+uri = "file://content/video_assets/voiceover_segments_v2/a3_mechanism.mp3"
+type = "audio"
+title = "a3_mechanism"
+
+[[outputs]]
+id = "7NZ-O79-HET37yjrIlqkW"
+uri = "file://content/video_assets/voiceover_segments/seg00_growth_hook.mp3"
+type = "audio"
+title = "seg00_growth_hook"
+
+[[outputs]]
+id = "mhM2oREUb-N0HG9f1QS2h"
+uri = "file://content/video_assets/voiceover_segments/seg01_growth_old.mp3"
+type = "audio"
+title = "seg01_growth_old"
+
+[[outputs]]
+id = "5M4jzSTRrkRnuMWnGfg5u"
+uri = "file://content/video_assets/voiceover_segments/seg02_growth_ready.mp3"
+type = "audio"
+title = "seg02_growth_ready_v2"
+
+[[outputs]]
+id = "3dXzitJKh6tyeRRwJI250"
+uri = "file://content/video_assets/voiceover_segments/seg03_risk_hook.mp3"
+type = "audio"
+title = "seg03_risk_hook"
+
+[[outputs]]
+id = "GOfZiqvXZfjqlmWWKETkl"
+uri = "file://content/video_assets/voiceover_segments/seg04_risk_old.mp3"
+type = "audio"
+title = "seg04_risk_old"
+
+[[outputs]]
+id = "DkDqUJfgYbgN6bX_EoHs-"
+uri = "file://content/video_assets/voiceover_segments/seg05_risk_ready.mp3"
+type = "audio"
+title = "seg05_risk_ready"
+
+[[outputs]]
+id = "ePd9ByCxdiGzoVYdTdsYn"
+uri = "file://content/video_assets/voiceover_segments/seg06_transform_hook.mp3"
+type = "audio"
+title = "seg06_transform_hook"
+
+[[outputs]]
+id = "TWZM-xDXDTvIy6hZsXIjk"
+uri = "file://content/video_assets/voiceover_segments/seg07_transform_old.mp3"
+type = "audio"
+title = "seg07_transform_old"
+
+[[outputs]]
+id = "nkgwAberobgGt9X9P-R56"
+uri = "file://content/video_assets/voiceover_segments/seg08_transform_ready.mp3"
+type = "audio"
+title = "seg08_transform_ready"
+
+[[outputs]]
+id = "4veq0-1uA_W2YjNVRpM_H"
+uri = "file://content/video_assets/voiceover_segments/seg09_endcard_depth.mp3"
+type = "audio"
+title = "seg09_endcard_depth"
+
+[[outputs]]
+id = "oKQd_45zwpXKIaJi_0opb"
+uri = "file://content/video_assets/voiceover_segments/seg14_endcard_advance.mp3"
+type = "audio"
+title = "seg14_endcard_advance"
+
+[[outputs]]
+id = "d0CNNgIYKvBAY2_QgbAGU"
+uri = "file://content/video_assets/voiceover_segments_v2/a5_fail.mp3"
+type = "audio"
+title = "a5_fail"
+
+[[outputs]]
+id = "NtvdfRzXtbJsXfuuHQ5ww"
+uri = "file://content/video_assets/voiceover_segments_v2/a5_disappear.mp3"
+type = "audio"
+title = "a5_disappear"
+
+[[outputs]]
+id = "Z81ky1mygvpnLOgbiifTh"
+uri = "file://content/video_assets/voiceover_segments/seg12_endcard_tagline.mp3"
+type = "audio"
+title = "seg12_tagline"
+
+[[outputs]]
+id = "KAcmQvz3ezB17FLrf4PsE"
+uri = "file://content/video_assets/voiceover_segments/seg13_endcard_cta.mp3"
+type = "audio"
+title = "seg13_cta"
