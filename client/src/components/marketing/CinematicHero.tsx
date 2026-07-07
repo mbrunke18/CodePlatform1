@@ -296,16 +296,16 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="flex flex-wrap justify-center gap-4 mb-6"
                 >
                   <div className="flex items-center gap-2 text-gray-800">
-                    <Calendar className="h-5 w-5" />
-                    <span>Meetings to schedule</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-800">
                     <Users className="h-5 w-5" />
-                    <span>Stakeholders to brief</span>
+                    <span>Who needs to be in the room</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-800">
-                    <Mail className="h-5 w-5" />
-                    <span>Tasks to assign</span>
+                    <Clock className="h-5 w-5" />
+                    <span>What they need to decide</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-800">
+                    <CheckCircle className="h-5 w-5" />
+                    <span>Who owns what — and when</span>
                   </div>
                 </motion.div>
                 
