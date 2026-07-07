@@ -4581,6 +4581,28 @@ Each scenario shows: timestamped timeline steps, accumulated dollar cost at each
 
 ---
 
+#### `/video` — `VideoLanding.tsx`
+
+**Brand Films & Spots** — the platform's primary video hub, accessible from the main navigation ("See It Work → See the Full Demo").
+
+**Three-tab layout:**
+1. **Full Demo** (`value="full-demo"`) — serves `client/public/videos/readiness-os-demo.mp4` (58.8 MB, H.264 Constrained Baseline, faststart-encoded so moov atom is at offset 32). The `/videos` route in `server/index.ts` adds `Cache-Control: public, max-age=3600` and `Accept-Ranges: bytes` explicitly — this overrides Helmet defaults and is required for iOS Safari range-based video streaming.
+2. **90 Seconds** (`value="90-second"`) — renders the `<CinematicHero />` animated sequence in-page.
+3. **30 Seconds** (`value="30-second"`) — renders `<SpotSelector />` (defined inline in `VideoLanding.tsx`): three labeled version buttons at the top, one `<ThirtySecondSpot>` displayed full-width below. Switching versions resets and replays the selected spot via a `spotKey` counter.
+
+**ThirtySecondSpot.tsx** (`client/src/components/marketing/ThirtySecondSpot.tsx`):
+- Props: `version?: "offense-defense" | "first-mover" | "360x-faster"`
+- Each version is a sequence of animated scenes driven by `setTimeout`; scene durations defined in `getScenes()`
+- **Final scene of every version** renders `<BrandOutro>` — shows the `VaughnMartinLogo` (seal + wordmark), a gold rule, the spot tagline in gold Barlow Condensed, and an "Apply for Founding Partner Access" CTA. **Never use a raw letter "M"** as a brand monogram here — that was a prior bug.
+- Scene-indicator dots and "Replay" / "Skip" controls at the bottom
+- The `version="offense-defense"` final scene tagline: `"The Speed to Execute."` · `"first-mover"`: `"Readiness Infrastructure."` · `"360x-faster"`: `"3,600× Execution Head Start."`
+
+**URL aliases:** `/video`, `/spots` (opens 30-second tab), `/90-second` (opens 90-second tab) — handled by `getInitialTab()` reading `useLocation()`.
+
+**File:** `client/src/pages/VideoLanding.tsx`, `client/src/components/marketing/ThirtySecondSpot.tsx`
+
+---
+
 #### `/video-brief` — `VideoBrief.tsx`
 
 **"The Cost of Waiting"** — video production storyboard and creative brief.
