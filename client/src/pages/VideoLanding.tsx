@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -94,10 +94,17 @@ function getInitialTab(loc: string): string {
 export default function VideoLanding() {
   const [location] = useLocation();
   const [activeTab, setActiveTab] = useState(() => getInitialTab(location));
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setActiveTab(getInitialTab(location));
   }, [location]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
+  }, []);
 
   useEffect(() => {
     updatePageMetadata({
@@ -261,6 +268,7 @@ export default function VideoLanding() {
                 style={{ aspectRatio: "16/9", position: "relative" }}
               >
                 <video
+                  ref={videoRef}
                   controls
                   playsInline
                   preload="metadata"

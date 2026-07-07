@@ -3,3 +3,4 @@ content/readiness_os_3cut_demo.mp4 filter=lfs diff=lfs merge=lfs -text
 content/readiness_os_3cut_demo_silent.mp4 filter=lfs diff=lfs merge=lfs -text
 client/public/videos/readiness-os-demo.mp4 filter=lfs diff=lfs merge=lfs -text
 dist/public/videos/readiness-os-demo.mp4 filter=lfs diff=lfs merge=lfs -text
+content/readiness_os_3cut_demo_fixed.mp4 filter=lfs diff=lfs merge=lfs -text
