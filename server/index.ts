@@ -183,6 +183,7 @@ app.use(
           "https://region1.google-analytics.com",
           "https://stats.g.doubleclick.net",
         ],
+        mediaSrc: ["'self'", "blob:"],
         frameSrc: ["'self'"],
         objectSrc: ["'none'"],
         upgradeInsecureRequests: [],
