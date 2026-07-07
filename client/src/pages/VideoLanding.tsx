@@ -272,9 +272,9 @@ export default function VideoLanding() {
                   data-testid="video-full-demo"
                   onLoadedMetadata={() => { if (videoRef.current) videoRef.current.currentTime = 0; }}
                 >
-                  <source src="/videos/readiness-os-demo.mp4" type="video/mp4" />
+                  <source src="/api/video/demo" type="video/mp4" />
                   Your browser does not support embedded video.{" "}
-                  <a href="/videos/readiness-os-demo.mp4">Download the video instead.</a>
+                  <a href="/api/video/demo">Download the video instead.</a>
                 </video>
               </div>
               <p className="text-[#6B7280] text-xs mt-3 leading-relaxed">

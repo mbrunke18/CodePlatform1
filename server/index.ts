@@ -13,6 +13,7 @@ if (process.env.SENTRY_DSN) {
 import express, { type Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import path from "path";
+import fs from "fs";
 import { registerRoutes } from "./routes";
 import { serveStatic, log } from "./vite";
 import type { setupVite } from "./vite";
@@ -361,6 +362,43 @@ app.use('/videos', (req, res, next) => {
   acceptRanges: true,
   maxAge: '1h',
 }));
+
+// Video streaming endpoint served through Express (bypasses CDN static layer).
+// The CDN intercepts /videos/* from dist/public/ but never touches /api/* routes.
+// This guarantees Range requests are handled correctly for all browsers.
+app.get('/api/video/demo', (req, res) => {
+  const videoPath = path.join(process.cwd(), 'client/public/videos', 'readiness-os-demo.mp4');
+  if (!fs.existsSync(videoPath)) {
+    res.status(404).json({ error: 'Video not found' });
+    return;
+  }
+  const stat = fs.statSync(videoPath);
+  const fileSize = stat.size;
+  const range = req.headers.range;
+  if (range) {
+    const parts = range.replace(/bytes=/, '').split('-');
+    const start = parseInt(parts[0], 10);
+    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    const chunkSize = end - start + 1;
+    const stream = fs.createReadStream(videoPath, { start, end });
+    res.writeHead(206, {
+      'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': chunkSize,
+      'Content-Type': 'video/mp4',
+      'Cache-Control': 'public, max-age=3600',
+    });
+    stream.pipe(res);
+  } else {
+    res.writeHead(200, {
+      'Content-Length': fileSize,
+      'Content-Type': 'video/mp4',
+      'Accept-Ranges': 'bytes',
+      'Cache-Control': 'public, max-age=3600',
+    });
+    fs.createReadStream(videoPath).pipe(res);
+  }
+});
 
 // Serve standalone HTML files — must match the client/public/ pattern used by other working routes
 app.get('/pitch-deck.html', (_req, res) => {
