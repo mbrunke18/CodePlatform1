@@ -113,10 +113,10 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
     { duration: 4000 },
     { duration: 5000 },
     { duration: 5000 },
-    { duration: 4000 },
-    { duration: 8000 },
+    { duration: 7000 },
+    { duration: 7000 },
     { duration: 5000 },
-    { duration: 4000 },
+    { duration: 5000 },
     { duration: 6000 },
   ];
   const totalScenes = scenes.length;
@@ -323,33 +323,41 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
 
           {currentScene === 3 && (
             <Scene key="scene-3">
-              <div className="text-center">
+              <div className="text-center max-w-4xl">
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="mb-6"
                 >
-                  <span className="text-xl md:text-2xl text-gray-800 uppercase tracking-widest">
-                    What if you could execute in
+                  <span className="text-2xl md:text-3xl text-gray-900 font-light leading-snug">
+                    Organizations don't fail because they lack information.
                   </span>
                 </motion.div>
                 <motion.div
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: 0.5,
-                    type: "spring",
-                    stiffness: 200
-                  }}
-                  className="mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                  className="mb-10"
                 >
-                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
-                    12
+                  <span className="text-2xl md:text-3xl text-gray-900 font-light leading-snug">
+                    They fail because critical knowledge isn't available<br />
+                    <span className="font-semibold">when decisions have to be made.</span>
                   </span>
-                  <span className="text-4xl md:text-6xl text-[#2B8A6E] ml-4">
-                    MINUTES?
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.5, delay: 2.8 }}
+                  className="w-24 h-px bg-[#C9A84C] mx-auto mb-8"
+                />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 3.4 }}
+                >
+                  <span className="text-lg md:text-xl text-[#C9A84C] uppercase tracking-widest font-bold">
+                    Readiness is the ability to turn yesterday's experience<br className="hidden md:block" /> into tomorrow's execution.
                   </span>
                 </motion.div>
               </div>
@@ -397,9 +405,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="bg-gradient-to-br from-red-500/20 to-orange-500/10 border border-red-500/30 p-6"
                   >
                     <Sword className="h-10 w-10 text-red-400 mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-red-400 mb-2">GROWTH & POSITIONING</h3>
-                    <p className="text-gray-800 text-sm mb-2">Market Entry • M&A • Product Launch</p>
-                    <p className="text-[#2B8A6E] text-sm font-medium">Seize opportunities before competitors react.</p>
+                    <h3 className="text-2xl font-bold text-red-400 mb-3">GROWTH & POSITIONING</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">Every market window, M&A opportunity, and product launch has a response — pre-staged before the trigger fires.</p>
                   </motion.div>
 
                   <motion.div
@@ -409,9 +416,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-[#2B8A6E]/30 p-6"
                   >
                     <Shield className="h-10 w-10 text-[#0A0F2E] mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-[#0A0F2E] mb-2">RISK & RESILIENCE</h3>
-                    <p className="text-gray-800 text-sm mb-2">Crisis • Cyber • Regulatory</p>
-                    <p className="text-[#2B8A6E] text-sm font-medium">Protect value when threats emerge.</p>
+                    <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3">RISK & RESILIENCE</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">Institutional knowledge preserved. Crisis protocols ready. The organization moves as one — without convening a committee.</p>
                   </motion.div>
 
                   <motion.div
@@ -421,9 +427,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="bg-gradient-to-br from-[#0A0F2E]/20 to-pink-500/10 border border-[#C9A84C]/30 p-6"
                   >
                     <Zap className="h-10 w-10 text-[#C9A84C] mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-[#C9A84C] mb-2">TRANSFORMATION</h3>
-                    <p className="text-gray-800 text-sm mb-2">Transformation • AI • Innovation</p>
-                    <p className="text-[#2B8A6E] text-sm font-medium">Drive transformation at speed.</p>
+                    <h3 className="text-2xl font-bold text-[#C9A84C] mb-3">TRANSFORMATION</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">Experience becomes repeatable capability. Every activation makes the next response faster, sharper, and more precise.</p>
                   </motion.div>
                 </div>
               </div>
@@ -493,36 +498,39 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="mb-4"
+                  className="mb-3"
                 >
-                  <span className="text-xl md:text-2xl text-gray-800">
-                    17 independent reports confirm: this is the infrastructure enterprises are missing.
+                  <span className="text-sm uppercase tracking-widest text-[#C9A84C] font-bold">
+                    Not another platform.
                   </span>
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
                   className="mb-8"
                 >
-                  <span className="text-lg text-[#2B8A6E]/80">
-                    By design, not by default.
+                  <span className="text-4xl md:text-6xl font-bold text-gray-900">
+                    Readiness Infrastructure.
                   </span>
                 </motion.div>
-                
+
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                  className="w-24 h-px bg-[#C9A84C] mx-auto mb-8"
+                />
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.8 }}
                 >
-                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
-                    TRIGGER-TO-EXECUTION
-                  </span>
-                  <br />
-                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
-                    ORCHESTRATION
-                  </span>
+                  <p className="text-lg md:text-xl text-gray-700 italic mb-2">When the Situation Arrives —</p>
+                  <p className="text-xl md:text-2xl font-bold text-gray-900 mb-1">The Response Is Ready</p>
+                  <p className="text-xl md:text-2xl font-bold text-[#C9A84C]">Before the Trigger Fires.</p>
                 </motion.div>
               </div>
             </Scene>
@@ -547,7 +555,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-4"
                 >
                   <span className="text-xl md:text-2xl text-gray-800 tracking-wide">
-                    Readiness OS — Readiness Infrastructure for the Startup to Fortune 500
+                    Readiness Infrastructure — Startup to Fortune 500
                   </span>
                 </motion.div>
 
@@ -557,8 +565,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="mb-10"
                 >
-                  <span className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] font-semibold uppercase tracking-wider">
-                    TRIGGER TO EXECUTION IN 12 MINUTES.
+                  <span className="text-lg md:text-xl text-[#C9A84C] font-semibold uppercase tracking-wider">
+                    30 DAYS COMPRESSED TO 12 MINUTES. 3,600× EXECUTION HEAD START.
                   </span>
                 </motion.div>
 
