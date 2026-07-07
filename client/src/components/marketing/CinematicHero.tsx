@@ -247,7 +247,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.6, delay: 1.6 }}
                 >
                   <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-                    HOW FAST CAN YOU EXECUTE?
+                    HOW FAST CAN YOU MOBILIZE?
                   </span>
                 </motion.div>
               </div>
@@ -331,7 +331,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-6"
                 >
                   <span className="text-2xl md:text-3xl text-gray-900 font-light leading-snug">
-                    Organizations don't fail because they lack information.
+                    The plan exists. The people exist. The response exists.
                   </span>
                 </motion.div>
                 <motion.div
@@ -341,8 +341,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-10"
                 >
                   <span className="text-2xl md:text-3xl text-gray-900 font-light leading-snug">
-                    They fail because critical knowledge isn't available<br />
-                    <span className="font-semibold">when decisions have to be made.</span>
+                    The problem is the 30 days it takes<br />
+                    <span className="font-semibold">to align them when the trigger fires.</span>
                   </span>
                 </motion.div>
                 <motion.div
@@ -357,7 +357,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.6, delay: 3.4 }}
                 >
                   <span className="text-lg md:text-xl text-[#C9A84C] uppercase tracking-widest font-bold">
-                    Readiness is the ability to turn yesterday's experience<br className="hidden md:block" /> into tomorrow's execution.
+                    Readiness OS pre-stages every response<br className="hidden md:block" /> before the trigger fires.
                   </span>
                 </motion.div>
               </div>
@@ -475,7 +475,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 1 }}
                   className="text-xl text-gray-800 mb-4"
                 >
-                  While others are still scheduling meetings...
+                  While others are still scheduling their first meeting —
                 </motion.div>
                 
                 <motion.div
@@ -484,7 +484,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 1.5 }}
                 >
                   <span className="text-3xl md:text-5xl font-bold text-gray-900">
-                    You've already won.
+                    You're already executing.
                   </span>
                 </motion.div>
               </div>

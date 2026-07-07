@@ -238,7 +238,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.3 }}
               className="text-2xl font-bold text-[#2B8A6E] mt-2"
             >
-              At speed.
+              The response is ready.
             </motion.p>
           </div>
         </Scene>
@@ -332,7 +332,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.6 }}
               className="mt-6"
             >
-              <span className="text-2xl font-bold text-[#2B8A6E]">SPEED WINS.</span>
+              <span className="text-2xl font-bold text-[#2B8A6E]">PREPARATION WINS.</span>
             </motion.div>
           </div>
         </Scene>

@@ -4,10 +4,10 @@ export const modules: ModuleMap = {
   "./components/mockups/hero-explore/BestOutcome.tsx": () => import("../components/mockups/hero-explore/BestOutcome.tsx"),
   "./components/mockups/hero-explore/VariantA.tsx": () => import("../components/mockups/hero-explore/VariantA.tsx"),
   "./components/mockups/hero-explore/VariantB.tsx": () => import("../components/mockups/hero-explore/VariantB.tsx"),
-  "./components/mockups/hero-naming/CommandOS.tsx": () => import("../components/mockups/hero-naming/CommandOS.tsx"),
-  "./components/mockups/hero-naming/ExecutionOS.tsx": () => import("../components/mockups/hero-naming/ExecutionOS.tsx"),
   "./components/mockups/linkedin/LinkedInBanner.tsx": () => import("../components/mockups/linkedin/LinkedInBanner.tsx"),
   "./components/mockups/triggermodels/ModelA.tsx": () => import("../components/mockups/triggermodels/ModelA.tsx"),
   "./components/mockups/triggermodels/ModelB.tsx": () => import("../components/mockups/triggermodels/ModelB.tsx"),
-  "./components/mockups/vmhero/VMHero.tsx": () => import("../components/mockups/vmhero/VMHero.tsx")
+  "./components/mockups/vmhero/VMHero.tsx": () => import("../components/mockups/vmhero/VMHero.tsx"),
+  "./components/mockups/hero-naming/CommandOS.tsx": () => import("../components/mockups/hero-naming/CommandOS.tsx"),
+  "./components/mockups/hero-naming/ExecutionOS.tsx": () => import("../components/mockups/hero-naming/ExecutionOS.tsx")
 };
