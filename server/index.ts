@@ -348,6 +348,20 @@ app.use('/screenshots', express.static(path.join(process.cwd(), 'screenshots'), 
   setHeaders: (res) => { res.setHeader('Cache-Control', 'public, max-age=604800'); }
 }));
 
+// Dedicated video route with iOS-compatible streaming headers
+// Must be registered early so these headers take precedence over Helmet defaults.
+// iOS Safari requires Cache-Control: public (not private) to buffer and play video.
+app.use('/videos', (req, res, next) => {
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.setHeader('Accept-Ranges', 'bytes');
+  res.setHeader('Content-Type', 'video/mp4');
+  res.removeHeader('set-cookie');
+  next();
+}, express.static(path.join(process.cwd(), 'client/public/videos'), {
+  acceptRanges: true,
+  maxAge: '1h',
+}));
+
 // Serve standalone HTML files — must match the client/public/ pattern used by other working routes
 app.get('/pitch-deck.html', (_req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
