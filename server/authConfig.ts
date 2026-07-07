@@ -40,6 +40,7 @@ export const PUBLIC_ROUTES = [
   '/api/roi-calculator/email-report',
 
   // Marketing & Demo Routes - allow prospects to view content
+  '/api/video/demo', // Full demo video — public streaming, no auth required
   '/api/tts', // Text-to-speech for founder story narration
   '/api/scenario-templates',
   '/api/scenario-templates/crisis',
