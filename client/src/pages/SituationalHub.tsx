@@ -37,7 +37,7 @@ const PILLARS = [
     name: 'RISK & RESILIENCE',
     icon: Shield,
     color: '#B43C32',
-    tagline: 'The threats every organization eventually has to answer',
+    tagline: 'Regulatory clocks, supply disruptions, cyber events, and brand threats — pre-staged before the situation arrives',
   },
   {
     id: 'transformation',

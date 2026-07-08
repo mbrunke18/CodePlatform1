@@ -174,54 +174,54 @@ const INDUSTRIES: IndustryGroup[] = [
   {
     label: "Financial Services",
     icon: "🏦",
-    description: "Ransomware, M&A mobilization, trading system recovery, regulatory response",
+    description: "M&A mobilization, capital event execution, activist response, regulatory compliance — and the resilience protocols when trading systems, SWIFT, or FDIC windows demand immediate action",
     scenarioIds: ["ransomware", "acquisition"],
     dedicatedHref: "/financial-demo",
   },
   {
     label: "Pharmaceutical",
     icon: "💊",
-    description: "FDA recalls, product contamination, regulatory windows, distribution holds",
+    description: "Product launch acceleration, pipeline transition, regulatory milestone execution, market entry — and recall readiness for FDA compliance windows",
     scenarioIds: ["pharma"],
     dedicatedHref: "/pharma-demo",
   },
   {
     label: "Manufacturing",
     icon: "⚙️",
-    description: "Supply chain collapse, force majeure, production continuity, supplier failure",
+    description: "Supply chain agility, production scale events, supplier transitions, new facility onboarding — and continuity protocols when critical suppliers go dark",
     scenarioIds: ["supply-chain"],
     dedicatedHref: "/manufacturing-demo",
   },
   {
     label: "Energy & Utilities",
     icon: "⚡",
-    description: "Grid failure, NERC CIP compliance, outage response, infrastructure events",
+    description: "Capacity expansion, regulatory compliance milestones, grid modernization initiatives — and NERC CIP response protocols when infrastructure events require immediate coordination",
     scenarioIds: ["energy"],
     dedicatedHref: "/energy-demo",
   },
   {
     label: "Retail & Consumer",
     icon: "🛒",
-    description: "Food safety crisis, brand threat, product recall, media response window",
+    description: "Seasonal launch execution, brand positioning moves, market expansion, competitive response — and product safety protocols when the media clock is running",
     scenarioIds: ["food-safety"],
     dedicatedHref: "/retail-demo",
   },
   {
     label: "Technology",
     icon: "💻",
-    description: "Data breach, GDPR clock, ransomware, cloud outage, integrity events",
+    description: "Competitive displacement, GTM acceleration, partnership launches, platform transitions — and data governance protocols when breach or GDPR notification clocks start",
     scenarioIds: ["data-breach"],
   },
   {
     label: "Enterprise Software",
     icon: "🚀",
-    description: "Competitor displacement, GTM sprint, market share defense, launch windows",
+    description: "Market entry sprints, competitor displacement windows, product launch acceleration, channel expansion — pre-staged across sales, product, and go-to-market teams",
     scenarioIds: ["market-entry", "product-launch"],
   },
   {
     label: "Luxury & Consumer Brands",
     icon: "💎",
-    description: "Brand crisis, market entry, rapid repositioning, reputation events",
+    description: "Brand positioning campaigns, global market entry, repositioning after leadership change, strategic partnership launches — and reputation protocols when brand value is at stake",
     scenarioIds: [],
     dedicatedHref: "/luxury-demo",
   },
@@ -429,15 +429,22 @@ function IndustryCard({ ind }: { ind: IndustryGroup }) {
 }
 
 // ─── SECTION DIVIDER ──────────────────────────────────────────────────────────
-function DomainGroup({ label, color, scenarios }: { label: string; color: string; scenarios: Scenario[] }) {
+function DomainGroup({ label, color, subtitle, scenarios }: { label: string; color: string; subtitle?: string; scenarios: Scenario[] }) {
   if (scenarios.length === 0) return null;
   return (
-    <div style={{ marginBottom: 44 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
-        <div style={{ width: 3, height: 22, background: color, flexShrink: 0 }} />
-        <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color }}>
-          {label} — {scenarios.length} Scenario{scenarios.length !== 1 ? "s" : ""}
-        </span>
+    <div style={{ marginBottom: 48 }}>
+      <div style={{ marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: subtitle ? 8 : 0 }}>
+          <div style={{ width: 3, height: 22, background: color, flexShrink: 0 }} />
+          <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color }}>
+            {label} — {scenarios.length} Scenario{scenarios.length !== 1 ? "s" : ""}
+          </span>
+        </div>
+        {subtitle && (
+          <p style={{ ...BC, fontSize: 12, color: "rgba(255,255,255,0.40)", lineHeight: 1.55, margin: "0 0 0 13px", maxWidth: 640 }}>
+            {subtitle}
+          </p>
+        )}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
         {scenarios.map(sc => <ScenarioCard key={sc.id} sc={sc} />)}
@@ -484,18 +491,22 @@ export default function DemoHub() {
           </div>
 
           <h1 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, margin: "0 0 14px" }}>
-            Every Demo. One Place.
+            Every Situation, Pre-Staged.<br />
+            <span style={{ color: GOLD, fontStyle: "italic" }}>Growth. Resilience. Transformation.</span>
           </h1>
-          <p style={{ ...BC, fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 580, margin: "0 0 32px", lineHeight: 1.6 }}>
-            Browse by situation type, your industry, or your C-suite role. Every scenario runs live — no login required.
+          <p style={{ ...BC, fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 0 16px", lineHeight: 1.6 }}>
+            These 12 scenarios span the full operational surface — competitive moves, M&A windows, cyber events, regulatory clocks, product launches, workforce realignment. Every one executes in 12 minutes because the protocol was staged before the situation arrived.
+          </p>
+          <p style={{ ...BC, fontSize: 13, color: "rgba(255,255,255,0.36)", maxWidth: 560, margin: "0 0 32px", lineHeight: 1.5 }}>
+            Behind these demos: 180 Readiness Protocols pre-staged across all three strategic domains — for the 15–20 situations every enterprise faces each year.
           </p>
 
           <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 14 }}>
             {[
               { value: "12",  label: "Live Scenarios" },
-              { value: "14",  label: "Executive Roles" },
-              { value: "8",   label: "Industries" },
               { value: "180", label: "Readiness Protocols" },
+              { value: "3",   label: "Strategic Domains" },
+              { value: "231", label: "Monitored Situations" },
             ].map(({ value, label }) => (
               <div key={label} style={{
                 padding: "10px 20px",
@@ -723,9 +734,24 @@ export default function DemoHub() {
                 })}
               </div>
 
-              <DomainGroup label="Growth & Positioning" color={TEAL}     scenarios={growth} />
-              <DomainGroup label="Risk & Resilience"    color="#E74C3C"  scenarios={risk}   />
-              <DomainGroup label="Transformation"       color={GOLD}     scenarios={trans}  />
+              <DomainGroup
+                label="Growth & Positioning"
+                color={TEAL}
+                scenarios={growth}
+                subtitle="Market entry windows, competitive displacement, M&A acceleration, and activist response — situations where speed of execution creates the strategic advantage."
+              />
+              <DomainGroup
+                label="Risk & Resilience"
+                color="#E74C3C"
+                scenarios={risk}
+                subtitle="Regulatory clocks, supply chain failures, cyber events, and brand threats — the high-stakes scenarios that show Readiness OS at its sharpest. These are 7 of 70+ resilience protocols in the full library."
+              />
+              <DomainGroup
+                label="Transformation"
+                color={GOLD}
+                scenarios={trans}
+                subtitle="Product launches, workforce realignment, and digital pivots — planned shifts that still need to move faster than committees allow."
+              />
             </>
           )}
 
