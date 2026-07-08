@@ -144,8 +144,8 @@ async function fetchNOAASevereWeather(): Promise<QuantitativeSignal[]> {
     if (alerts.length === 0) return [];
 
     const extremeAlerts = alerts.filter(a => a.properties.severity === 'Extreme');
-    const affectedAreas = [...new Set(alerts.map(a => a.properties.areaDesc.split(';')[0].trim()))].slice(0, 5);
-    const eventTypes = [...new Set(alerts.map(a => a.properties.event))].slice(0, 4);
+    const affectedAreas = Array.from(new Set(alerts.map(a => a.properties.areaDesc.split(';')[0].trim()))).slice(0, 5);
+    const eventTypes = Array.from(new Set(alerts.map(a => a.properties.event))).slice(0, 4);
 
     const confidence = extremeAlerts.length > 0 ? 83 : 73;
     const impact = extremeAlerts.length >= 3 ? 'critical' : extremeAlerts.length >= 1 ? 'high' : 'medium';

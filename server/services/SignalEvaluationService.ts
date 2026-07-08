@@ -1216,12 +1216,12 @@ export async function evaluateAndPersistSignals(
         await db
           .update(triggerDetections)
           .set({ notificationSent: true, status: timelineStatus })
-          .where(eq(triggerDetections.id, savedDetection.id));
+          .where(eq(triggerDetections.id, savedDetection!.id));
       } else {
         await db
           .update(triggerDetections)
           .set({ status: timelineStatus })
-          .where(eq(triggerDetections.id, savedDetection.id));
+          .where(eq(triggerDetections.id, savedDetection!.id));
       }
 
       detectionsCreated++;

@@ -660,8 +660,8 @@ function StatusDot({ color, pulse }: { color: string; pulse?: boolean }) {
 function Pill({ children, color, bg }: { children: React.ReactNode; color: string; bg: string }) {
   return <span style={{ ...BC, display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: bg, border: `1px solid ${color}33`, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color, borderRadius: "0.15rem", whiteSpace: "nowrap" as const }}>{children}</span>;
 }
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <div style={{ background: NAVY_CARD, border: `1px solid ${BORDER}`, padding: "18px 22px", borderRadius: "0.15rem", ...style }}>{children}</div>;
+function Card({ children, style, onClick }: { children: React.ReactNode; style?: React.CSSProperties; onClick?: () => void }) {
+  return <div style={{ background: NAVY_CARD, border: `1px solid ${BORDER}`, padding: "18px 22px", borderRadius: "0.15rem", ...style }} onClick={onClick}>{children}</div>;
 }
 function Label({ children, color }: { children: React.ReactNode; color?: string }) {
   return <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: color || GOLD, marginBottom: 8 }}>{children}</div>;
@@ -805,17 +805,20 @@ function PanelTriggerPortfolio() {
               <span style={{ ...BC, fontSize: 10, color: MUTED }}>· {group.items.length} triggers</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              {group.items.map((item, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "9px 14px", background: item.active ? `${group.color}08` : "rgba(255,255,255,0.02)", border: `1px solid ${item.active ? group.color + "40" : BORDER}`, borderRadius: "0.15rem" }}>
+              {group.items.map((item, i) => {
+                const isActive = !!(item as any).active;
+                return (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "9px 14px", background: isActive ? `${group.color}08` : "rgba(255,255,255,0.02)", border: `1px solid ${isActive ? group.color + "40" : BORDER}`, borderRadius: "0.15rem" }}>
                   <div style={{ width: 4, height: 4, borderRadius: "50%", background: group.color, flexShrink: 0 }} />
-                  <span style={{ fontSize: 12, color: item.active ? "#fff" : "rgba(255,255,255,0.7)", flex: 1, fontWeight: item.active ? 500 : 400 }}>{item.name}</span>
+                  <span style={{ fontSize: 12, color: isActive ? "#fff" : "rgba(255,255,255,0.7)", flex: 1, fontWeight: isActive ? 500 : 400 }}>{item.name}</span>
                   <span style={{ fontSize: 10, color: MUTED, flexShrink: 0 }}>{item.domain}</span>
                   <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "3px 8px", background: NAVY_MID, border: `1px solid ${BORDER}`, borderRadius: "0.15rem" }}>
                     <ArrowRight size={10} color={MUTED.toString()} />
-                    <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: item.active ? group.color : MUTED }}>Protocol {item.protocol}</span>
+                    <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: isActive ? group.color : MUTED }}>Protocol {item.protocol}</span>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         ))}

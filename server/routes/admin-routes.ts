@@ -304,7 +304,7 @@ export function registerAdminRoutes(app: Express) {
           postText: generateLinkedInPost({
             id: d.id,
             triggerName: d.triggerName,
-            triggerDomain: d.triggerDomain,
+            triggerDomain: d.triggerDomain ?? '',
             signalDescription: d.signalDescription,
             confidenceScore: d.confidenceScore,
             recommendedPlaybook: d.recommendedPlaybook,

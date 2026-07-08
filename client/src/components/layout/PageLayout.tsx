@@ -13,6 +13,8 @@ interface PageLayoutProps {
   showBackButton?: boolean;
   backButtonLabel?: string;
   embedded?: boolean;
+  title?: string;
+  description?: string;
 }
 
 const ROUTE_MAP: Record<string, { label: string; section: string }> = {

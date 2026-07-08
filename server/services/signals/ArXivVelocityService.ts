@@ -40,7 +40,7 @@ const ARXIV_DOMAINS: ArXivDomain[] = [
 ];
 
 function countRecentPapers(xmlText: string, cutoff: Date): { count: number; titles: string[] } {
-  const entries = [...xmlText.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
+  const entries = Array.from(xmlText.matchAll(/<entry>([\s\S]*?)<\/entry>/g));
   const titles: string[] = [];
   let count = 0;
 

@@ -5,6 +5,8 @@ import { Link } from 'wouter';
 interface VaughnMartinLogoProps {
   width?: number;
   height?: number;
+  size?: number | string;
+  theme?: string;
   variant?: 'full' | 'icon-only';
   className?: string;
   color?: 'dark' | 'light';
@@ -12,15 +14,24 @@ interface VaughnMartinLogoProps {
   animated?: boolean;
 }
 
+const SIZE_MAP: Record<string, number> = { xs: 24, sm: 28, md: 36, lg: 48, xl: 64 };
+
 export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
-  width,
-  height = 48,
+  width: widthProp,
+  height: heightProp,
+  size,
+  theme,
   variant = 'full',
   className = '',
-  color = 'dark',
+  color: colorProp = 'dark',
   noLink = false,
   animated = false,
 }) => {
+  const resolvedSize = typeof size === 'string' ? (SIZE_MAP[size] ?? 36) : size;
+  const width = widthProp ?? resolvedSize;
+  const height = heightProp ?? resolvedSize ?? 48;
+  const color = (theme === 'light' || theme === 'white') ? 'light' : colorProp;
+
   const sealColor = color === 'light' ? 'white' : 'navy';
   const sealVariant = variant === 'icon-only' ? 'icon-only' : 'full';
 

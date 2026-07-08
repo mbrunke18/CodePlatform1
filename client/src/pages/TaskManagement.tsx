@@ -175,19 +175,19 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   }
 
   const createTemplateMutation = useMutation({
-    mutationFn: (data: Partial<Task>) => apiRequest('/api/task-templates', { method: 'POST', body: JSON.stringify(data) }),
+    mutationFn: (data: Partial<Task>) => apiRequest('POST', '/api/task-templates', data),
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['/api/task-templates'] }); },
     onError: () => { toast({ title: "Save Failed", description: "Could not save task to server.", variant: "destructive" }); },
   });
 
   const updateTemplateMutation = useMutation({
-    mutationFn: ({ id, data }: { id: string; data: Partial<Task> }) => apiRequest(`/api/task-templates/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+    mutationFn: ({ id, data }: { id: string; data: Partial<Task> }) => apiRequest('PUT', `/api/task-templates/${id}`, data),
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['/api/task-templates'] }); },
     onError: () => { toast({ title: "Update Failed", description: "Could not update task on server.", variant: "destructive" }); },
   });
 
   const deleteTemplateMutation = useMutation({
-    mutationFn: (id: string) => apiRequest(`/api/task-templates/${id}`, { method: 'DELETE' }),
+    mutationFn: (id: string) => apiRequest('DELETE', `/api/task-templates/${id}`),
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['/api/task-templates'] }); },
     onError: () => { toast({ title: "Delete Failed", description: "Could not delete task from server.", variant: "destructive" }); },
   });

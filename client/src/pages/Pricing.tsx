@@ -683,8 +683,8 @@ export default function Pricing() {
                     <li key={item.text} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, lineHeight: 1.45 }}>
                       <span style={{ fontWeight: 700, color: item.icon === "—" ? "#D1D5DB" : col.color, flexShrink: 0, fontSize: 13 }}>{item.icon}</span>
                       <span style={{
-                        color: item.icon === "—" ? "#9CA3AF" : col.label === "Foresight" ? (item.bold ? "#fff" : "rgba(255,255,255,0.65)") : (item.bold ? NAVY : "#4B5563"),
-                        fontWeight: item.bold ? 700 : 400,
+                        color: item.icon === "—" ? "#9CA3AF" : col.label === "Foresight" ? ((item as any).bold ? "#fff" : "rgba(255,255,255,0.65)") : ((item as any).bold ? NAVY : "#4B5563"),
+                        fontWeight: (item as any).bold ? 700 : 400,
                       }}>{item.text}</span>
                     </li>
                   ))}

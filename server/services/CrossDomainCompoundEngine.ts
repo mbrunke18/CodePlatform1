@@ -73,7 +73,7 @@ function stakeholderOverlapScore(domainA: string, domainB: string): number {
   const setA = new Set(DOMAIN_STAKEHOLDERS[domainA] ?? []);
   const setB = new Set(DOMAIN_STAKEHOLDERS[domainB] ?? []);
   let overlap = 0;
-  for (const s of setA) {
+  for (const s of Array.from(setA)) {
     if (setB.has(s)) overlap++;
   }
   const maxSize = Math.max(setA.size, setB.size);

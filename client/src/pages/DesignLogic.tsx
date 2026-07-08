@@ -107,7 +107,7 @@ export default function DesignLogic() {
       {/* ── HEADER ── */}
       <div style={{ background: NAVY, borderBottom: `1px solid ${GOLD}20` }}>
         <div style={{ maxWidth: 760, margin: "0 auto", padding: "28px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <VaughnMartinLogo size="sm" variant="light" />
+          <VaughnMartinLogo size="sm" color="light" />
           <div style={{ textAlign: "right" }}>
             <div style={{ ...BAR_C, fontSize: 9, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>
               Research Brief
@@ -559,7 +559,7 @@ export default function DesignLogic() {
       {/* ── FOOTER ── */}
       <div style={{ background: NAVY, borderTop: `1px solid ${GOLD}20`, padding: "40px 32px" }}>
         <div style={{ maxWidth: 760, margin: "0 auto", display: "flex", flexDirection: "column" as const, alignItems: "center", gap: 16, textAlign: "center" }}>
-          <VaughnMartinLogo size="sm" variant="light" />
+          <VaughnMartinLogo size="sm" color="light" />
           <p style={{ ...BAR, fontSize: 14, color: "rgba(255,255,255,0.45)", maxWidth: 480, lineHeight: 1.7, margin: 0 }}>
             Written accounts of platform design decisions are available for researchers and practitioners
             who prefer written engagement. To send a considered response or continue the exchange:

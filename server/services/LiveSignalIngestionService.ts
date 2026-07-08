@@ -812,7 +812,7 @@ class LiveSignalIngestionService {
       for (const { id } of demoOrgRows) allOrgIds.delete(id);
 
       console.log(`   📡 Multi-org evaluation: ${allOrgIds.size} additional org(s) to evaluate`);
-      for (const orgId of allOrgIds) {
+      for (const orgId of Array.from(allOrgIds)) {
         try {
           const extraDetections = await evaluateAndPersistSignals(signals, orgId!);
           console.log(`   🏢 Org ${orgId}: ${extraDetections} trigger detection(s)`);

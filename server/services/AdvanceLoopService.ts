@@ -151,7 +151,7 @@ export async function applyUpdateWithDelta(
   }
 
   // ── Write version delta ─────────────────────────────────────────────────────
-  const [delta] = await db
+  const [delta] = (await db
     .insert(protocolVersionDeltas as any)
     .values({
       organizationId: orgId,
@@ -166,14 +166,14 @@ export async function applyUpdateWithDelta(
       versionAfter,
       appliedByUserId: userId ?? null,
     })
-    .returning();
+    .returning()) as any[];
 
   // ── Create causal hypothesis ────────────────────────────────────────────────
   const hyp = generateHypothesis(update);
   const measureByDate = new Date();
   measureByDate.setDate(measureByDate.getDate() + 90);
 
-  const [hypothesis] = await db
+  const [hypothesis] = (await db
     .insert(updateHypotheses as any)
     .values({
       organizationId: orgId,
@@ -186,7 +186,7 @@ export async function applyUpdateWithDelta(
       measureByDate,
       status: 'measuring',
     })
-    .returning();
+    .returning()) as any[];
 
   // ── Mark update applied ─────────────────────────────────────────────────────
   await db

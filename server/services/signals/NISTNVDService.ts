@@ -49,7 +49,7 @@ function extractVendorsFromConfig(cve: NVDCve): string[] {
       }
     }
   } catch { /* ok */ }
-  return [...new Set(vendors)].slice(0, 3);
+  return Array.from(new Set(vendors)).slice(0, 3);
 }
 
 function hasPublicExploit(cve: NVDCve): boolean {

@@ -140,7 +140,7 @@ export default function OnboardingWizard() {
             },
           },
         }).catch(() => {}),
-        ...orgData.departments.map(dept =>
+        ...orgData.departments.map((dept: string) =>
           apiRequest('POST', '/api/config/departments', { name: dept, description: `${dept} department` }).catch(() => {})
         ),
         apiRequest('POST', '/api/config/success-metrics', {
@@ -345,7 +345,7 @@ export default function OnboardingWizard() {
                   {['North America', 'EMEA', 'APAC', 'Latin America', 'Global'].map(market => {
                     const active = orgData.primaryMarkets.includes(market);
                     return (
-                      <button key={market} onClick={() => setOrgData({ ...orgData, primaryMarkets: active ? orgData.primaryMarkets.filter(m => m !== market) : [...orgData.primaryMarkets, market] })}
+                      <button key={market} onClick={() => setOrgData({ ...orgData, primaryMarkets: active ? orgData.primaryMarkets.filter((m: string) => m !== market) : [...orgData.primaryMarkets, market] })}
                         style={{ padding: "6px 12px", fontSize: 11, fontWeight: 600, cursor: "pointer", border: `1px solid ${active ? NAVY : BORDER}`, background: active ? NAVY : "#fff", color: active ? "#fff" : MUTED }}>
                         {market}
                       </button>
@@ -362,7 +362,7 @@ export default function OnboardingWizard() {
                 {['Executive', 'Operations', 'Finance', 'Legal', 'Communications', 'IT', 'HR', 'Sales', 'Marketing', 'Risk', 'Compliance'].map(dept => {
                   const active = orgData.departments.includes(dept);
                   return (
-                    <button key={dept} onClick={() => setOrgData({ ...orgData, departments: active ? orgData.departments.filter(d => d !== dept) : [...orgData.departments, dept] })}
+                    <button key={dept} onClick={() => setOrgData({ ...orgData, departments: active ? orgData.departments.filter((d: string) => d !== dept) : [...orgData.departments, dept] })}
                       style={{ padding: "6px 16px", fontSize: 12, fontWeight: 600, cursor: "pointer", transition: "all 0.2s", border: `1px solid ${active ? NAVY : BORDER}`, background: active ? NAVY : "#fff", color: active ? "#fff" : MUTED }}>
                       {dept}
                     </button>
@@ -498,7 +498,7 @@ export default function OnboardingWizard() {
               {PLAYBOOK_OPTIONS.map(pb => {
                 const active = playbookData.selected.includes(pb.name);
                 return (
-                  <button key={pb.name} onClick={() => setPlaybookData({ ...playbookData, selected: active ? playbookData.selected.filter(p => p !== pb.name) : [...playbookData.selected, pb.name] })}
+                  <button key={pb.name} onClick={() => setPlaybookData({ ...playbookData, selected: active ? playbookData.selected.filter((p: string) => p !== pb.name) : [...playbookData.selected, pb.name] })}
                     style={{ padding: "20px 18px", border: `1px solid ${active ? NAVY : BORDER}`, borderLeft: active ? `3px solid ${GOLD}` : `1px solid ${BORDER}`, background: active ? `rgba(10,15,46,0.04)` : "#fff", cursor: "pointer", textAlign: "left", transition: "all 0.2s", position: "relative" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: active ? GOLD : MUTED }}>{pb.domain}</span>

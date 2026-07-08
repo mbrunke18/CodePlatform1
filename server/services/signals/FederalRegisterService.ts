@@ -128,7 +128,7 @@ export async function fetchFederalRegisterSignals(): Promise<QuantitativeSignal[
         recallClass: null, affectedProductType: null, recallScope: null,
         signalEventType: 'regulatory_pipeline',
         metricName: 'Days Until Effective',
-        metricValue: article.effective_on ? Math.round((new Date(article.effective_on).getTime() - Date.now()) / 86400000) : null,
+        metricValue: article.effective_on ? Math.round((new Date(article.effective_on).getTime() - Date.now()) / 86400000) : undefined,
         metricThreshold: 90,
         metricUnit: 'days',
       });

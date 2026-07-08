@@ -92,7 +92,7 @@ signalSourceRegistry.register({
   status: 'active',
   triggersEnabled: ['Financial Distress Signal', 'Market Valuation Shift', 'Earnings Surprise', 'Supply Chain Disruption'],
   requiresApiKey: false,
-  apiKeyEnvVar: undefined,
+  apiKeyEnvVar: null,
   description: 'Keyless economic intelligence layer — CBOE VIX (Yahoo Finance), US Treasury yield curve (10Y-2Y spread), BLS unemployment rate, and HYG-LQD credit spread proxy. Covers market volatility, yield curve inversion, labor market stress, and credit market disruption. No API key required.',
   upgradeNote: null,
 });
@@ -232,7 +232,7 @@ signalSourceRegistry.register({
   status: 'active',
   triggersEnabled: ['Legislation Change', 'Regulatory Enforcement Action'],
   requiresApiKey: false,
-  apiKeyEnvVar: undefined,
+  apiKeyEnvVar: null,
   description: 'Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change. Uses public API access — no key required.',
   upgradeNote: null,
 });

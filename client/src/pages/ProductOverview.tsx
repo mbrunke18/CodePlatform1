@@ -63,7 +63,7 @@ function Heading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Body({ children, muted = false }: { children: React.ReactNode; muted?: boolean }) {
+function Body({ children, muted = false, style }: { children: React.ReactNode; muted?: boolean; style?: React.CSSProperties }) {
   return (
     <p style={{
       fontFamily: "'Barlow', sans-serif",
@@ -72,6 +72,7 @@ function Body({ children, muted = false }: { children: React.ReactNode; muted?: 
       color: muted ? "rgba(10,15,46,0.58)" : "rgba(10,15,46,0.82)",
       lineHeight: 1.7,
       margin: "0 0 12px",
+      ...style,
     }}>
       {children}
     </p>

@@ -674,7 +674,7 @@ export function registerMarketingImageRoute(app: Express): void {
         if (preset.clipHeight) {
           const bodyBox = await body.boundingBox();
           if (bodyBox) {
-            screenshotOpts.clip = {
+            (screenshotOpts as any).clip = {
               x: 0, y: 0,
               width:  bodyBox.width,
               height: Math.min(preset.clipHeight * preset.scale, bodyBox.height),

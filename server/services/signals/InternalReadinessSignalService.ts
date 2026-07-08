@@ -22,7 +22,7 @@ export async function fetchInternalReadinessSignals(organizationId: string): Pro
         id: playbookLibrary.id,
         name: playbookLibrary.name,
         updatedAt: playbookLibrary.updatedAt,
-        domain: playbookLibrary.domain,
+        domain: playbookLibrary.domainId,
       })
       .from(playbookLibrary)
       .where(lt(playbookLibrary.updatedAt, warnCutoff))

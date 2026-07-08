@@ -1,4 +1,17 @@
-export function updatePageMetadata(options: {
+export function updatePageMetadata(optionsOrTitle: {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+} | string, descriptionArg?: string) {
+  const options = typeof optionsOrTitle === 'string'
+    ? { title: optionsOrTitle, description: descriptionArg ?? '' }
+    : optionsOrTitle;
+  return _updatePageMetadata(options);
+}
+
+function _updatePageMetadata(options: {
   title: string;
   description: string;
   ogTitle?: string;
