@@ -831,6 +831,7 @@ function Router() {
         <Route path="/protocol-zero-config" component={lazy(() => import("./pages/ProtocolZeroConfig"))} />
         <Route path="/protocol-browser" component={lazy(() => import("./pages/ProtocolCoverageBrowser"))} />
         <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
+        <Route path="/alert-preview" component={lazy(() => import("./pages/AlertPreview"))} />
         <Route path="/full-experience/:scenarioId?" component={lazy(() => import("./pages/full-experience/FullPlatformExperience"))} />
         {renderRedirects(["/demo-experience", "/full-demo", "/platform-demo", "/guided-demo"], "/full-experience")}
         {renderRedirects(["/demos", "/scenario-hub", "/demo-center", "/experience-center"], "/demo-hub")}

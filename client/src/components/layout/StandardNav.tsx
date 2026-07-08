@@ -84,6 +84,7 @@ const SEARCH_ITEMS = [
   { label: 'Execution Clock', path: '/mission-control', category: 'Execute', icon: Activity },
   { label: 'Full Platform Demo — Complete 9-Step Walkthrough', path: '/demo-experience', category: 'Demo', icon: Play },
   { label: 'Full Scenario Experience Center — 8 Demos', path: '/demo-hub', category: 'Demo', icon: LayoutGrid },
+  { label: 'Executive Alert Preview — See What Arrives in 12 Minutes', path: '/alert-preview', category: 'Demo', icon: Mail },
   { label: 'Master Demo — Activist Investor (CEO)', path: '/master-demo', category: 'Demo', icon: Play },
   { label: 'Demo — Financial Services Ransomware (CISO)', path: '/demo/ransomware', category: 'Demo', icon: Zap },
   { label: 'Demo — Pharma FDA Recall', path: '/demo/pharma', category: 'Demo', icon: AlertCircle },

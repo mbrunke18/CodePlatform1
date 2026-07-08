@@ -30,6 +30,7 @@ const PAGES = [
 
   // Demo Center
   { path: '/demo-hub',            label: 'Demo Hub' },
+  { path: '/alert-preview',       label: 'Alert Preview' },
   { path: '/full-experience',     label: 'Full Platform Experience' },
   { path: '/12-minute-experience',label: '12-Minute Test Drive' },
   { path: '/master-demo',         label: 'Master Demo (Activist)' },
