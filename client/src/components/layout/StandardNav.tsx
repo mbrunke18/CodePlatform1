@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3, CheckCircle } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, AlertTriangle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar, Grid3X3, CheckCircle, Mail } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 
 const MicrosoftIcon = ({ size = 14 }: { size?: number }) => (
