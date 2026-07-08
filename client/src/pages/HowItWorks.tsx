@@ -1,6 +1,7 @@
 import PageLayout from '@/components/layout/PageLayout';
 import ProductShowcase from '@/components/marketing/ProductShowcase';
 import ExecutionProcessDiagram from '@/components/ExecutionProcessDiagram';
+import ReadinessOSFullStoryDiagram from '@/components/ReadinessOSFullStoryDiagram';
 import EnterpriseAIFrameworkDiagram from '@/components/EnterpriseAIFrameworkDiagram';
 import { Button } from "@/components/ui/button";
 import {
@@ -187,19 +188,19 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
+      {/* ── THE COMPLETE READINESS OS STORY DIAGRAM ── */}
       <section style={{ background: OFF, padding: "80px clamp(16px, 4vw, 56px) 100px", borderBottom: `1px solid ${BORDER}` }}>
         <div className="max-w-7xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <SectionLabel text="The Complete Execution Sequence" />
+            <SectionLabel text="The Complete Platform Story" />
             <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16 }}>
-              How 12 Minutes Actually Happens
+              From Preparation to Execution — End to End
             </h2>
-            <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
-              Every step the traditional enterprise spends weeks negotiating — context analysis, role assignment, task orchestration, communications — Readiness OS delivers automatically, end to end, into the tools your teams already use.
+            <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", maxWidth: 680, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
+              The full operating model in a single view: how Readiness OS pre-stages before the trigger, orchestrates across your organization in 12 minutes, and compounds that advantage with every activation.
             </p>
           </div>
-          <ExecutionProcessDiagram className="rounded-none border border-[#E8E4DC]" />
+          <ReadinessOSFullStoryDiagram className="rounded-none border border-[#E8E4DC]" />
         </div>
       </section>
 
