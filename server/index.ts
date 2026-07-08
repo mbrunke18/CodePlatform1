@@ -367,11 +367,20 @@ app.use('/videos', (req, res, next) => {
 // The CDN intercepts /videos/* from dist/public/ but never touches /api/* routes.
 // This guarantees Range requests are handled correctly for all browsers.
 app.get('/api/video/demo', (req, res) => {
-  const videoPath = path.join(process.cwd(), 'client/public/videos', 'readiness-os-demo.mp4');
-  if (!fs.existsSync(videoPath)) {
-    res.status(404).json({ error: 'Video not found' });
+  // Try multiple paths — dev uses client/public/videos/, prod build may use dist/
+  const candidates = [
+    path.join(process.cwd(), 'client/public/videos', 'readiness-os-demo.mp4'),
+    path.join(process.cwd(), 'dist/public/videos', 'readiness-os-demo.mp4'),
+    path.join(process.cwd(), 'dist/videos', 'readiness-os-demo.mp4'),
+    path.join(process.cwd(), 'dist/public', 'readiness-os-demo.mp4'),
+  ];
+  const videoPath = candidates.find(p => fs.existsSync(p));
+  if (!videoPath) {
+    console.error('[video] File not found. Tried:', candidates.map(p => `${p} (${fs.existsSync(p) ? 'EXISTS' : 'MISSING'})`).join(', '));
+    res.status(404).json({ error: 'Video not found', tried: candidates });
     return;
   }
+  console.log('[video] Serving from:', videoPath);
   const stat = fs.statSync(videoPath);
   const fileSize = stat.size;
   const range = req.headers.range;

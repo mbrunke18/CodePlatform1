@@ -951,19 +951,6 @@ export default function StandardNav() {
           <div className="hidden lg:flex items-center gap-0.5">
             {isAuthenticated && user ? renderProductNavCenter() : (
               <>
-                {/* New Here? Start Here — first-time visitor entry point, styled distinctly to cut through the mega-menu */}
-                <button
-                  onClick={() => navigateTo('/entry')}
-                  className="px-3 py-1.5 text-sm font-bold flex items-center gap-1.5 transition-all"
-                  style={{ color: TEAL, background: 'rgba(43,138,110,0.10)', border: '1px solid rgba(43,138,110,0.35)', borderRadius: '0.15rem', whiteSpace: 'nowrap', marginRight: 4 }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.20)'; }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(43,138,110,0.10)'; }}
-                  data-testid="nav-start-here"
-                  title="New here? Get pointed to the right starting place"
-                >
-                  <Rocket className="h-3.5 w-3.5" />
-                  New Here? Start Here
-                </button>
                 {/* Flat links */}
                 {[
                   { label: 'How It Works', path: '/how-it-works' },
@@ -984,28 +971,8 @@ export default function StandardNav() {
                 {renderExperienceDropdown()}
                 {/* The Proof — mega-menu */}
                 {renderEvidenceDropdown()}
-                {/* Partners — flat link */}
-                <button
-                  onClick={() => navigateTo('/channel-partners')}
-                  className="px-3 py-2 text-sm font-semibold transition-all duration-150"
-                  style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap', border: 'none' }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
-                >
-                  Partners
-                </button>
                 {/* Investors — full mega-menu */}
                 {renderInvestorsDropdown()}
-                {/* Pricing — flat link */}
-                <button
-                  onClick={() => navigateTo('/pricing')}
-                  className="px-3 py-2 text-sm font-semibold transition-all duration-150"
-                  style={{ color: 'rgba(255,255,255,0.82)', background: 'transparent', whiteSpace: 'nowrap', border: 'none' }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.07)'; el.style.color = '#fff'; }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.color = 'rgba(255,255,255,0.82)'; }}
-                >
-                  Pricing
-                </button>
               </>
             )}
           </div>

@@ -782,24 +782,25 @@ function HeroSection() {
 function RealityGapSimulator() {
   const [phase, setPhase] = useState<0 | 1 | 2>(0);
   const [dayCount, setDayCount] = useState(0);
-  const [minSecs, setMinSecs] = useState(720);
-  const [progress, setProgress] = useState(0); // 0–100 over 9s
+  const [minSecs, setMinSecs] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [started, setStarted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // TOTAL_MS = 11000ms simulation window (phase 0: 0–5s, phase 1: 5–11s, phase 2: 11s+)
-  const PHASE0_MS = 5000;
-  const PHASE1_MS = 6000; // slowed down so the countdown clock is actually readable (was 4000)
+  // Phase 0: 20s — old model painfully grinding up to 30 days
+  // Phase 1: 15s — Readiness OS clock counts UP from 0:00 → 12:00
+  const PHASE0_MS = 20000;
+  const PHASE1_MS = 15000;
   const TOTAL_MS = PHASE0_MS + PHASE1_MS;
 
   const runSim = () => {
     setPhase(0);
     setDayCount(0);
-    setMinSecs(720);
+    setMinSecs(0);
     setProgress(0);
     setStarted(true);
 
-    // Progress bar: 100 ticks spread across the full simulation window
+    // Progress bar: 100 ticks across full simulation window
     let p = 0;
     const pi = setInterval(() => {
       p = Math.min(100, p + 1);
@@ -807,28 +808,28 @@ function RealityGapSimulator() {
       if (p >= 100) clearInterval(pi);
     }, TOTAL_MS / 100);
 
-    // Day counter: 0→30 over PHASE0_MS - 500ms (start early, finish before cut)
+    // Day counter: 0→30 over PHASE0_MS - 1000ms (finishes before cut)
     let d = 0;
     const di = setInterval(() => {
       d += 1;
       setDayCount(d);
       if (d >= 30) clearInterval(di);
-    }, (PHASE0_MS - 500) / 30);
+    }, (PHASE0_MS - 1000) / 30);
 
-    // Cut to Phase 1 — clock counts down in visible, trackable steps (~187ms/tick)
+    // Cut to Phase 1 — clock counts UP from 0:00 → 12:00 in 30 visible ticks
     setTimeout(() => {
       setPhase(1);
-      let s = 720;
-      const CLOCK_DECREMENT = 24; // seconds per tick (was 6 — too fast to read)
-      const CLOCK_TICKS = 720 / CLOCK_DECREMENT; // 30 ticks
+      let s = 0;
+      const CLOCK_INCREMENT = 24; // seconds added per tick (30 ticks × 24s = 720s = 12:00)
+      const CLOCK_TICKS = 720 / CLOCK_INCREMENT; // 30 ticks
       const si = setInterval(() => {
-        s = Math.max(0, s - CLOCK_DECREMENT);
+        s = Math.min(720, s + CLOCK_INCREMENT);
         setMinSecs(s);
-        if (s <= 0) clearInterval(si);
-      }, (PHASE1_MS - 400) / CLOCK_TICKS);
+        if (s >= 720) clearInterval(si);
+      }, (PHASE1_MS - 600) / CLOCK_TICKS);
     }, PHASE0_MS);
 
-    // Phase 2 result
+    // Phase 2 — complete
     setTimeout(() => setPhase(2), TOTAL_MS);
   };
 
@@ -884,7 +885,7 @@ function RealityGapSimulator() {
 
   // How many list items are revealed based on counter progress
   const beforeRevealed = phase === 0 ? Math.ceil(dayCount / 5) : (phase > 0 ? 6 : 0);
-  const afterRevealed  = phase >= 1 ? Math.ceil((720 - minSecs) / 120) : 0;
+  const afterRevealed  = phase >= 1 ? Math.ceil(minSecs / 120) : 0;
 
   return (
     <section ref={sectionRef} id="hp-gap" style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
@@ -2302,35 +2303,45 @@ function FoundingPartnerCloseSection() {
 // ─── 90-SECOND BRAND FILM SECTION ─────────────────────────────────────────────
 function FilmSection() {
   return (
-    <section style={{ background: NAVY, borderTop: "1px solid rgba(201,168,76,0.15)", paddingTop: 72 }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 40px", textAlign: "center", marginBottom: 40 }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
-          <div style={{ width: 32, height: 1, background: GOLD }} />
-          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
-            90-Second Brand Film
-          </span>
-          <div style={{ width: 32, height: 1, background: GOLD }} />
+    <section style={{ background: NAVY, borderTop: "1px solid rgba(201,168,76,0.15)", padding: "72px 0 64px" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
+            <div style={{ width: 32, height: 1, background: GOLD }} />
+            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
+              Platform Walkthrough
+            </span>
+            <div style={{ width: 32, height: 1, background: GOLD }} />
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3.2vw, 40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, margin: "0 0 12px" }}>
+            See the 12-Minute Execution Chain
+          </h2>
+          <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 520, margin: "0 auto" }}>
+            Watch how a situation that used to take 30 days to mobilize compresses to 12 minutes — with the response already staged before the trigger fires.
+          </p>
         </div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3.2vw, 40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, margin: "0 0 12px" }}>
-          See the 12-Minute Execution Chain
-        </h2>
-        <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 520, margin: "0 auto" }}>
-          Watch how a situation that used to take 30 days to mobilize compresses to 12 minutes — with the response already staged before the trigger fires.
-        </p>
-      </div>
 
-      {/* White background required — CinematicHero uses dark gray text throughout */}
-      <div style={{ background: "#F8F7F4" }}>
-        <CinematicHero />
-      </div>
+        {/* Video player — sources try API endpoint first, then static fallback */}
+        <div style={{ position: "relative", background: "#000", border: "1px solid rgba(201,168,76,0.22)" }}>
+          <video
+            controls
+            preload="metadata"
+            style={{ width: "100%", display: "block", maxHeight: 540 }}
+          >
+            <source src="/api/video/demo" type="video/mp4" />
+            <source src="/videos/readiness-os-demo.mp4" type="video/mp4" />
+            Your browser does not support video playback.
+          </video>
+        </div>
 
-      <div style={{ textAlign: "center", padding: "28px 0 64px", background: NAVY }}>
-        <Link
-          href="/video"
-          style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, textDecoration: "none", borderBottom: `1px solid rgba(201,168,76,0.35)`, paddingBottom: 3 }}
-        >
-          Watch the Full 4-Minute Platform Walkthrough →
-        </Link>
+        <div style={{ textAlign: "center", marginTop: 24 }}>
+          <Link
+            href="/video"
+            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, textDecoration: "none", borderBottom: `1px solid rgba(201,168,76,0.35)`, paddingBottom: 3 }}
+          >
+            Open Full-Screen Walkthrough →
+          </Link>
+        </div>
       </div>
     </section>
   );
