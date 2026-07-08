@@ -744,14 +744,6 @@ function HeroSection() {
                   Watch It Work — Live
                 </span>
               </div>
-              <Link
-                href="/video"
-                onClick={() => trackCTA("hero_watch_film")}
-                style={{ ...DM, fontSize: 11, fontWeight: 600, color: GOLD, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap" as const }}
-                data-testid="link-watch-demo-film"
-              >
-                ▶ Watch the 3-Min Film →
-              </Link>
             </div>
             {/* Browser Chrome Frame */}
             <div style={{ borderRadius: "6px 6px 0 0", overflow: "hidden", boxShadow: "0 28px 72px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.18)" }}>
@@ -2321,17 +2313,8 @@ function FilmSection() {
           </p>
         </div>
 
-        {/* Video player — sources try API endpoint first, then static fallback */}
-        <div style={{ position: "relative", background: "#000", border: "1px solid rgba(201,168,76,0.22)" }}>
-          <video
-            controls
-            preload="metadata"
-            style={{ width: "100%", display: "block", maxHeight: 540 }}
-          >
-            <source src="/api/video/demo" type="video/mp4" />
-            <source src="/videos/readiness-os-demo.mp4" type="video/mp4" />
-            Your browser does not support video playback.
-          </video>
+        <div style={{ border: "1px solid rgba(201,168,76,0.22)", overflow: "hidden" }}>
+          <CinematicHero />
         </div>
 
         <div style={{ textAlign: "center", marginTop: 24 }}>

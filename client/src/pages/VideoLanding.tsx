@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -87,14 +87,13 @@ function SpotSelector() {
 
 function getInitialTab(loc: string): string {
   if (loc === "/spots" || loc === "/30-second") return "30-second";
-  if (loc === "/90-second") return "90-second";
-  return "full-demo";
+  return "90-second";
 }
 
 export default function VideoLanding() {
   const [location] = useLocation();
   const [activeTab, setActiveTab] = useState(() => getInitialTab(location));
-  const videoRef = useRef<HTMLVideoElement>(null);
+
 
   useEffect(() => {
     setActiveTab(getInitialTab(location));
@@ -210,17 +209,9 @@ export default function VideoLanding() {
         <div className="max-w-7xl mx-auto px-6 py-12">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList
-              className="grid w-full max-w-2xl grid-cols-3 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12"
+              className="grid w-full max-w-2xl grid-cols-2 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12"
               data-testid="video-tabs"
             >
-              <TabsTrigger
-                value="full-demo"
-                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
-                data-testid="tab-full-demo"
-              >
-                <Play className="h-3 w-3 mr-2" />
-                Full Demo
-              </TabsTrigger>
               <TabsTrigger
                 value="90-second"
                 className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
@@ -238,50 +229,6 @@ export default function VideoLanding() {
                 30 Seconds
               </TabsTrigger>
             </TabsList>
-
-            {/* ── Full Demo ── */}
-            <TabsContent value="full-demo" className="mt-0">
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-2">
-                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] rounded-none uppercase text-[9px] font-bold tracking-widest px-3 py-1 border-0">
-                    Sales & Marketing
-                  </Badge>
-                  <h2
-                    className="text-2xl font-bold text-[#0A0F2E]"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                    data-testid="heading-full-demo"
-                  >
-                    "30 Days Compressed to 12 Minutes" — Full Platform Walkthrough
-                  </h2>
-                </div>
-                <p className="text-[#6B7280] text-sm uppercase tracking-widest font-bold">
-                  Purpose: Sales calls · investor meetings · website · founding partner outreach
-                </p>
-              </div>
-              <div
-                className="rounded-none overflow-hidden border border-[#E8E4DC] bg-black"
-                style={{ aspectRatio: "16/9", position: "relative" }}
-              >
-                <video
-                  ref={videoRef}
-                  controls
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full block"
-                  style={{ objectFit: "contain", position: "absolute", inset: 0 }}
-                  data-testid="video-full-demo"
-                  onLoadedMetadata={() => { if (videoRef.current) videoRef.current.currentTime = 0; }}
-                >
-                  <source src="/api/video/demo" type="video/mp4" />
-                  Your browser does not support embedded video.{" "}
-                  <a href="/api/video/demo">Download the video instead.</a>
-                </video>
-              </div>
-              <p className="text-[#6B7280] text-xs mt-3 leading-relaxed">
-                Financial figures shown in the video are sourced and cited on-screen — see the
-                video's closing footnotes for methodology.
-              </p>
-            </TabsContent>
 
             {/* ── 90-Second Cinematic ── */}
             <TabsContent value="90-second" className="mt-0">
