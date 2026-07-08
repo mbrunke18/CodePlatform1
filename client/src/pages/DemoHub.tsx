@@ -1,693 +1,811 @@
-import PageLayout from "@/components/layout/PageLayout";
-import ProductShowcase from "@/components/marketing/ProductShowcase";
-import { SCENARIO_GROUPS, SCENARIOS } from "./demos/scenarioData";
-import { roleConfigs, CATEGORY_LABELS, type RoleCategory } from "@/data/roleConfigs";
-import aerialCityImg from "@/assets/images/aerial-city-grid.png";
+import { useState } from "react";
+import { Link } from "wouter";
+import StandardNav from "@/components/layout/StandardNav";
+import { roleConfigs } from "@/data/roleConfigs";
+import { Play, Rocket, ArrowRight, Zap, ChevronRight } from "lucide-react";
 
-const NAVY    = "#0A0F2E";
-const NAVY_BG = "#132558";
-const GOLD    = "#C9A84C";
-const GOLD_LT = "#DFC178";
-const TEAL    = "#2B8A6E";
-const TEAL_LT = "#3BAF8A";
-const W       = "#ffffff";
-const W70     = "rgba(255,255,255,0.70)";
-const W50     = "rgba(255,255,255,0.50)";
-const W25     = "rgba(255,255,255,0.25)";
-const BD      = "rgba(201,168,76,0.22)";
-const GBG     = "rgba(201,168,76,0.06)";
-const BC      = { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif" } as const;
-const CG      = { fontFamily: "'Cormorant Garamond',Georgia,serif" } as const;
-const BAR     = { fontFamily: "'Barlow',sans-serif" } as const;
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const BC   = { fontFamily: "'Barlow Condensed', sans-serif" } as const;
+const CG   = { fontFamily: "'Cormorant Garamond', Georgia, serif" } as const;
 
-const DOMAIN_CONFIG = {
-  growth: {
-    label: "GROWTH & POSITIONING",
-    color: GOLD_LT,
-    bg: "rgba(201,168,76,0.07)",
-    border: "rgba(201,168,76,0.25)",
-    description: "A market window opens. A competitor stumbles. An acquisition target surfaces. Every growth opportunity requires the same capability: mobilize your full organization before the window closes.",
-  },
-  resilience: {
-    label: "RISK & RESILIENCE",
-    color: "#e05252",
-    bg: "rgba(224,82,82,0.07)",
-    border: "rgba(224,82,82,0.22)",
-    description: "A breach at 4 AM. A recall at 7 PM. A filing at 2:47 AM. Every disruption demands the same response: every stakeholder notified, every task assigned, every decision ready — in 12 minutes.",
-  },
-  transformation: {
-    label: "TRANSFORMATION",
-    color: TEAL_LT,
-    bg: "rgba(59,175,138,0.07)",
-    border: "rgba(59,175,138,0.22)",
-    description: "A board mandate lands at midnight. A competitor announces acceleration. A workforce realignment must begin in 48 hours. Transformation is not slow by nature — only by preparation.",
-  },
+// ─── DOMAIN CONFIG ─────────────────────────────────────────────────────────────
+const DOMAIN: Record<string, { color: string; bg: string; border: string }> = {
+  "GROWTH & POSITIONING": { color: TEAL,      bg: "rgba(43,138,110,0.10)",  border: "rgba(43,138,110,0.30)"  },
+  "RISK & RESILIENCE":    { color: "#E74C3C",  bg: "rgba(231,76,60,0.08)",   border: "rgba(231,76,60,0.28)"   },
+  "TRANSFORMATION":       { color: GOLD,       bg: "rgba(201,168,76,0.08)",  border: "rgba(201,168,76,0.28)"  },
 };
 
-function UrgencyBadge({ score, category }: { score: number; category: string }) {
-  let color = score >= 90 ? "#e05252" : score >= 80 ? "#e09040" : GOLD;
-  let label: string;
-  if (category === "GROWTH & POSITIONING") {
-    label = score >= 90 ? "WINDOW: CRITICAL" : score >= 80 ? "WINDOW: NARROWING" : "WINDOW: OPEN";
-    color = score >= 90 ? GOLD_LT : score >= 80 ? GOLD : "rgba(201,168,76,0.7)";
-  } else if (category === "TRANSFORMATION") {
-    label = score >= 90 ? "URGENCY: CRITICAL" : score >= 80 ? "URGENCY: HIGH" : "URGENCY: ELEVATED";
-    color = score >= 90 ? TEAL_LT : score >= 80 ? TEAL_LT : TEAL_LT;
-  } else {
-    label = score >= 90 ? "RISK: CRITICAL" : score >= 80 ? "RISK: HIGH" : "RISK: ELEVATED";
-  }
+const CAT: Record<string, { label: string; color: string; bg: string; border: string }> = {
+  OFFENSE:         { label: "Growth & Positioning", color: TEAL,     bg: "rgba(43,138,110,0.10)",  border: "rgba(43,138,110,0.28)"  },
+  DEFENSE:         { label: "Risk & Resilience",    color: "#E74C3C", bg: "rgba(231,76,60,0.08)",   border: "rgba(231,76,60,0.28)"   },
+  "SPECIAL TEAMS": { label: "Transformation",       color: GOLD,      bg: "rgba(201,168,76,0.08)",  border: "rgba(201,168,76,0.28)"  },
+};
+
+// ─── SCENARIOS ────────────────────────────────────────────────────────────────
+interface Scenario {
+  id: string;
+  name: string;
+  tagline: string;
+  audience: string;
+  domain: string;
+  industry: string;
+  protocol: string;
+  href: string;
+}
+
+const SCENARIOS: Scenario[] = [
+  // GROWTH & POSITIONING
+  {
+    id: "activist",
+    name: "Activist Investor Response",
+    tagline: "Activist files 13D at 2:47 AM — 9.2% stake. Board demands a plan by market open.",
+    audience: "CEO · Board · CFO · GC",
+    domain: "GROWTH & POSITIONING",
+    industry: "Enterprise",
+    protocol: "#031",
+    href: "/master-demo",
+  },
+  {
+    id: "market-entry",
+    name: "Competitor Displacement Sprint",
+    tagline: "LegacyPoint files Chapter 11. 1,400 enterprise accounts in-play. 72-hour window.",
+    audience: "CEO · CRO · CMO · Sales",
+    domain: "GROWTH & POSITIONING",
+    industry: "Enterprise Software",
+    protocol: "#031",
+    href: "/demo/market-entry",
+  },
+  {
+    id: "acquisition",
+    name: "M&A Rapid Response",
+    tagline: "Waypoint Analytics authorizes a sale. LOI required in 48 hours or Blackstone wins it.",
+    audience: "CEO · CFO · M&A · GC",
+    domain: "GROWTH & POSITIONING",
+    industry: "Financial Services",
+    protocol: "#058",
+    href: "/demo/acquisition",
+  },
+  // RISK & RESILIENCE
+  {
+    id: "ransomware",
+    name: "Financial Services Ransomware",
+    tagline: "Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours.",
+    audience: "CISO · CIO · CRO · CEO",
+    domain: "RISK & RESILIENCE",
+    industry: "Financial Services",
+    protocol: "#007",
+    href: "/demo/ransomware",
+  },
+  {
+    id: "pharma",
+    name: "FDA Class I Recall",
+    tagline: "Contaminated batch confirmed. 340,000 units distributed. 72-hour regulatory window.",
+    audience: "CEO · GC · CMO · Ops",
+    domain: "RISK & RESILIENCE",
+    industry: "Pharmaceutical",
+    protocol: "#044",
+    href: "/demo/pharma",
+  },
+  {
+    id: "supply-chain",
+    name: "Supply Chain Collapse",
+    tagline: "Primary supplier files Chapter 11. 60% of Q3 production at risk. No contingency staged.",
+    audience: "COO · CFO · Procurement",
+    domain: "RISK & RESILIENCE",
+    industry: "Manufacturing",
+    protocol: "#062",
+    href: "/demo/supply-chain",
+  },
+  {
+    id: "energy",
+    name: "Energy Grid Failure",
+    tagline: "Grid substation offline. 280K customers. NERC CIP compliance clock started.",
+    audience: "COO · CTO · Regulatory",
+    domain: "RISK & RESILIENCE",
+    industry: "Energy & Utilities",
+    protocol: "#091",
+    href: "/demo/energy",
+  },
+  {
+    id: "food-safety",
+    name: "Food Safety Crisis",
+    tagline: "E.coli outbreak linked to your product. CNN has 45 minutes. No protocol staged.",
+    audience: "CEO · CMO · Legal · Ops",
+    domain: "RISK & RESILIENCE",
+    industry: "Retail & Consumer",
+    protocol: "#054",
+    href: "/demo/food-safety",
+  },
+  {
+    id: "data-breach",
+    name: "Data Breach Response",
+    tagline: "2.3M customer records on the dark web. GDPR 72-hour notification clock running.",
+    audience: "CISO · GC · CMO · CEO",
+    domain: "RISK & RESILIENCE",
+    industry: "Technology",
+    protocol: "#013",
+    href: "/demo/data-breach",
+  },
+  {
+    id: "regulatory",
+    name: "DOJ Investigation",
+    tagline: "Civil Investigative Demand received. Litigation hold must issue today or spoliation risk.",
+    audience: "GC · CEO · CFO · Board",
+    domain: "RISK & RESILIENCE",
+    industry: "Enterprise",
+    protocol: "#078",
+    href: "/demo/regulatory",
+  },
+  // TRANSFORMATION
+  {
+    id: "product-launch",
+    name: "Go-to-Market Sprint",
+    tagline: "Competitor announces 30-day launch window. Board authorizes GTM acceleration.",
+    audience: "CMO · CRO · CTO · CEO",
+    domain: "TRANSFORMATION",
+    industry: "Enterprise Software",
+    protocol: "#089",
+    href: "/demo/product-launch",
+  },
+  {
+    id: "workforce",
+    name: "Workforce Transformation",
+    tagline: "Board approves AI realignment — 6,720 roles, 12 countries, 48-hour mobilization window.",
+    audience: "CHRO · CEO · COO · CFO",
+    domain: "TRANSFORMATION",
+    industry: "Industrial Manufacturing",
+    protocol: "#112",
+    href: "/demo/workforce",
+  },
+];
+
+// ─── INDUSTRIES ────────────────────────────────────────────────────────────────
+interface IndustryGroup {
+  label: string;
+  icon: string;
+  description: string;
+  scenarioIds: string[];
+  dedicatedHref?: string;
+}
+
+const INDUSTRIES: IndustryGroup[] = [
+  {
+    label: "Financial Services",
+    icon: "🏦",
+    description: "Ransomware, M&A mobilization, trading system recovery, regulatory response",
+    scenarioIds: ["ransomware", "acquisition"],
+    dedicatedHref: "/financial-demo",
+  },
+  {
+    label: "Pharmaceutical",
+    icon: "💊",
+    description: "FDA recalls, product contamination, regulatory windows, distribution holds",
+    scenarioIds: ["pharma"],
+    dedicatedHref: "/pharma-demo",
+  },
+  {
+    label: "Manufacturing",
+    icon: "⚙️",
+    description: "Supply chain collapse, force majeure, production continuity, supplier failure",
+    scenarioIds: ["supply-chain"],
+    dedicatedHref: "/manufacturing-demo",
+  },
+  {
+    label: "Energy & Utilities",
+    icon: "⚡",
+    description: "Grid failure, NERC CIP compliance, outage response, infrastructure events",
+    scenarioIds: ["energy"],
+    dedicatedHref: "/energy-demo",
+  },
+  {
+    label: "Retail & Consumer",
+    icon: "🛒",
+    description: "Food safety crisis, brand threat, product recall, media response window",
+    scenarioIds: ["food-safety"],
+    dedicatedHref: "/retail-demo",
+  },
+  {
+    label: "Technology",
+    icon: "💻",
+    description: "Data breach, GDPR clock, ransomware, cloud outage, integrity events",
+    scenarioIds: ["data-breach"],
+  },
+  {
+    label: "Enterprise Software",
+    icon: "🚀",
+    description: "Competitor displacement, GTM sprint, market share defense, launch windows",
+    scenarioIds: ["market-entry", "product-launch"],
+  },
+  {
+    label: "Luxury & Consumer Brands",
+    icon: "💎",
+    description: "Brand crisis, market entry, rapid repositioning, reputation events",
+    scenarioIds: [],
+    dedicatedHref: "/luxury-demo",
+  },
+];
+
+// ─── CARDS ─────────────────────────────────────────────────────────────────────
+function ScenarioCard({ sc }: { sc: Scenario }) {
+  const dom = DOMAIN[sc.domain] ?? DOMAIN["RISK & RESILIENCE"];
+
   return (
-    <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color, background: `${color}15`, border: `1px solid ${color}40`, padding: "2px 8px" }}>
-      {label} · {score}
-    </span>
+    <Link href={sc.href} style={{ textDecoration: "none" }}>
+      <div
+        style={{
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.09)",
+          padding: "22px 22px 20px",
+          cursor: "pointer",
+          transition: "all 0.18s",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column" as const,
+        }}
+        onMouseEnter={e => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.background = "rgba(255,255,255,0.08)";
+          el.style.borderColor = dom.border;
+        }}
+        onMouseLeave={e => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.background = "rgba(255,255,255,0.04)";
+          el.style.borderColor = "rgba(255,255,255,0.09)";
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+          <span style={{
+            ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em",
+            textTransform: "uppercase" as const, color: dom.color,
+            background: dom.bg, border: `1px solid ${dom.border}`, padding: "2px 8px",
+          }}>
+            {sc.domain}
+          </span>
+          <span style={{ ...BC, fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.32)", letterSpacing: "0.1em" }}>
+            Protocol {sc.protocol}
+          </span>
+        </div>
+
+        <div style={{ ...CG, fontSize: 19, fontWeight: 700, color: "#fff", lineHeight: 1.25, marginBottom: 10, flex: 1 }}>
+          {sc.name}
+        </div>
+
+        <p style={{ ...BC, fontSize: 13, color: "rgba(255,255,255,0.58)", lineHeight: 1.5, margin: "0 0 16px" }}>
+          {sc.tagline}
+        </p>
+
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 12 }}>
+          <span style={{ ...BC, fontSize: 10, color: "rgba(255,255,255,0.36)", letterSpacing: "0.06em" }}>
+            {sc.audience}
+          </span>
+          <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: dom.color, letterSpacing: "0.12em", textTransform: "uppercase" as const }}>
+            Run Scenario →
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }
 
-interface ScenarioCardProps {
-  id: string;
-  label: string;
-  icon: string;
-  tagline: string;
-  featured?: boolean;
-  accentColor?: string;
-}
-
-function ScenarioCard({ id, label, icon, tagline, featured = false, accentColor }: ScenarioCardProps) {
-  const sc = SCENARIOS[id];
-  if (!sc) return null;
-  const route = id === "activist" ? "/master-demo" : `/demo/${id}`;
-  const accent = accentColor ?? GOLD;
+function RoleCard({ role }: { role: typeof roleConfigs[0] }) {
+  const Icon = role.icon;
+  const cat = CAT[role.category] ?? CAT.OFFENSE;
 
   return (
-    <a
-      href={route}
-      style={{
-        display: "block", textDecoration: "none",
-        background: featured
-          ? `linear-gradient(135deg, ${accent}12 0%, ${accent}04 100%)`
-          : GBG,
-        border: `1px solid ${featured ? accent + "50" : BD}`,
-        padding: featured ? "32px 28px" : "24px 22px",
-        transition: "border-color 0.2s, background 0.2s",
-        position: "relative", overflow: "hidden",
-      }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = accent + "70";
-        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}10`;
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = featured ? accent + "50" : "rgba(201,168,76,0.22)";
-        (e.currentTarget as HTMLAnchorElement).style.background = featured
-          ? `linear-gradient(135deg, ${accent}12 0%, ${accent}04 100%)`
-          : GBG;
-      }}
-    >
-      {featured && (
-        <div style={{ position: "absolute", top: 14, right: 14 }}>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", color: accent, background: `${accent}18`, border: `1px solid ${accent}40`, padding: "3px 10px" }}>
-            MASTER DEMO
+    <Link href={`/experience/${role.id}`} style={{ textDecoration: "none" }}>
+      <div
+        style={{
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.09)",
+          padding: "20px 20px 18px",
+          cursor: "pointer",
+          transition: "all 0.18s",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column" as const,
+        }}
+        onMouseEnter={e => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.background = "rgba(255,255,255,0.08)";
+          el.style.borderColor = cat.border;
+        }}
+        onMouseLeave={e => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.background = "rgba(255,255,255,0.04)";
+          el.style.borderColor = "rgba(255,255,255,0.09)";
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+          <div style={{
+            width: 34, height: 34,
+            background: cat.bg, border: `1px solid ${cat.border}`,
+            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+          }}>
+            <Icon size={15} style={{ color: cat.color }} />
+          </div>
+          <span style={{
+            ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.18em",
+            textTransform: "uppercase" as const, color: cat.color,
+          }}>
+            {cat.label}
           </span>
+        </div>
+
+        <div style={{ ...BC, fontSize: 14, fontWeight: 800, color: "#fff", lineHeight: 1.3, marginBottom: 8, letterSpacing: "0.01em" }}>
+          {role.title}
+        </div>
+
+        <p style={{ ...BC, fontSize: 12, color: "rgba(255,255,255,0.52)", lineHeight: 1.5, margin: "0 0 12px", flex: 1 }}>
+          {role.situationLine}
+        </p>
+
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 10 }}>
+          <span style={{ ...BC, fontSize: 10, color: TEAL, fontWeight: 700 }}>
+            {role.metricAfter} ← {role.metricBefore}
+          </span>
+          <span style={{ ...BC, fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.12em", textTransform: "uppercase" as const }}>
+            Enter →
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function IndustryCard({ ind }: { ind: IndustryGroup }) {
+  const linked = SCENARIOS.filter(s => ind.scenarioIds.includes(s.id));
+  const primaryHref = ind.dedicatedHref ?? (linked[0]?.href ?? "/demo-hub");
+
+  return (
+    <div style={{
+      background: "rgba(255,255,255,0.04)",
+      border: "1px solid rgba(255,255,255,0.09)",
+      padding: "24px",
+    }}>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 16 }}>
+        <span style={{ fontSize: 28, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{ind.icon}</span>
+        <div>
+          <div style={{ ...BC, fontSize: 15, fontWeight: 800, color: "#fff", letterSpacing: "0.01em", marginBottom: 4 }}>
+            {ind.label}
+          </div>
+          <div style={{ ...BC, fontSize: 11, color: "rgba(255,255,255,0.44)", lineHeight: 1.4 }}>
+            {ind.description}
+          </div>
+        </div>
+      </div>
+
+      {linked.length > 0 && (
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: 6, marginBottom: 14 }}>
+          {linked.map(sc => {
+            const dom = DOMAIN[sc.domain];
+            return (
+              <Link key={sc.id} href={sc.href} style={{ textDecoration: "none" }}>
+                <div
+                  style={{
+                    display: "flex", alignItems: "center", gap: 8,
+                    padding: "8px 10px",
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                    cursor: "pointer",
+                    transition: "background 0.14s",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+                >
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: dom?.color ?? GOLD, flexShrink: 0 }} />
+                  <span style={{ ...BC, fontSize: 12, color: "rgba(255,255,255,0.80)", fontWeight: 700, flex: 1 }}>
+                    {sc.name}
+                  </span>
+                  <ChevronRight size={11} style={{ color: "rgba(255,255,255,0.30)", flexShrink: 0 }} />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       )}
 
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 14 }}>
-        <div style={{ fontSize: featured ? 32 : 24, flexShrink: 0, lineHeight: 1 }}>{icon}</div>
-        <div style={{ flex: 1 }}>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: accent, textTransform: "uppercase", marginBottom: 4 }}>
-            {label} · {sc.category}
-          </div>
-          <div style={{ ...CG, fontSize: featured ? 24 : 20, fontWeight: 600, color: W, lineHeight: 1.2, marginBottom: 4 }}>
-            {sc.name}
-          </div>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", color: W50 }}>
-            Protocol #{sc.protocolNumber} · {sc.audience}
-          </div>
-        </div>
-      </div>
-
-      <div style={{ ...BAR, fontSize: 13, color: W70, lineHeight: 1.6, marginBottom: 14 }}>
-        {tagline}
-      </div>
-
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 14, borderTop: `1px solid rgba(255,255,255,0.07)` }}>
-        <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          <UrgencyBadge score={sc.riskScore} category={sc.category} />
-          <span style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", color: W25 }}>
-            {sc.tasks.length} tasks · {sc.stakeholders.length} stakeholders · 12 min
+      <Link href={primaryHref} style={{ textDecoration: "none" }}>
+        <div
+          style={{
+            display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+            padding: "9px 0",
+            background: "rgba(201,168,76,0.07)",
+            border: "1px solid rgba(201,168,76,0.22)",
+            cursor: "pointer",
+            transition: "all 0.14s",
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.15)"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.07)"; }}
+        >
+          <span style={{ ...BC, fontSize: 10, fontWeight: 800, color: GOLD, letterSpacing: "0.18em", textTransform: "uppercase" as const }}>
+            View {ind.label} Demo →
           </span>
         </div>
-        <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: accent, letterSpacing: "0.1em" }}>
-          Launch →
-        </span>
-      </div>
-    </a>
+      </Link>
+    </div>
   );
 }
 
-const ROLE_CATEGORY_ACCENT: Record<RoleCategory, string> = {
-  OFFENSE: GOLD_LT,
-  DEFENSE: "#e05252",
-  "SPECIAL TEAMS": TEAL_LT,
-};
-
-const FEATURED_ROLE_IDS = ["ceo", "cfo", "ciso", "cio", "cto", "gc"];
-
-function RoleCard({ id }: { id: string }) {
-  const role = roleConfigs.find(r => r.id === id);
-  if (!role) return null;
-  const Icon = role.icon;
-  const accent = ROLE_CATEGORY_ACCENT[role.category];
-
+// ─── SECTION DIVIDER ──────────────────────────────────────────────────────────
+function DomainGroup({ label, color, scenarios }: { label: string; color: string; scenarios: Scenario[] }) {
+  if (scenarios.length === 0) return null;
   return (
-    <a
-      href={`/experience/${role.id}`}
-      style={{
-        display: "block", textDecoration: "none",
-        background: GBG,
-        border: `1px solid ${BD}`,
-        padding: "24px 22px",
-        transition: "border-color 0.2s, background 0.2s",
-        position: "relative", overflow: "hidden",
-      }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = accent + "70";
-        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}10`;
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.22)";
-        (e.currentTarget as HTMLAnchorElement).style.background = GBG;
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 14 }}>
-        <div style={{ width: 40, height: 40, flexShrink: 0, background: `${accent}18`, border: `1px solid ${accent}40`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <Icon size={18} style={{ color: accent }} />
-        </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: accent, textTransform: "uppercase", marginBottom: 4 }}>
-            {CATEGORY_LABELS[role.category]}
-          </div>
-          <div style={{ ...CG, fontSize: 20, fontWeight: 600, color: W, lineHeight: 1.2 }}>
-            {role.title}
-          </div>
-        </div>
-      </div>
-
-      <div style={{ ...BAR, fontSize: 13, color: W70, lineHeight: 1.6, marginBottom: 14, fontStyle: "italic" }}>
-        "{role.hookQuestion}"
-      </div>
-
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 14, borderTop: `1px solid rgba(255,255,255,0.07)` }}>
-        <span style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", color: W25 }}>
-          {role.metricBefore} → {role.metricAfter}
-        </span>
-        <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: accent, letterSpacing: "0.1em" }}>
-          Launch →
+    <div style={{ marginBottom: 44 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+        <div style={{ width: 3, height: 22, background: color, flexShrink: 0 }} />
+        <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color }}>
+          {label} — {scenarios.length} Scenario{scenarios.length !== 1 ? "s" : ""}
         </span>
       </div>
-    </a>
-  );
-}
-
-interface DomainSectionProps {
-  domainKey: "growth" | "resilience" | "transformation";
-  scenarios: { id: string; label: string; icon: string; tagline: string }[];
-}
-
-function DomainSection({ domainKey, scenarios }: DomainSectionProps) {
-  const cfg = DOMAIN_CONFIG[domainKey];
-  return (
-    <div style={{ marginBottom: 56 }}>
-      <div style={{ borderLeft: `3px solid ${cfg.color}`, paddingLeft: 16, marginBottom: 20 }}>
-        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: cfg.color, textTransform: "uppercase", marginBottom: 6 }}>
-          Strategic Domain
-        </div>
-        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: W, lineHeight: 1.1, marginBottom: 10 }}>
-          {cfg.label}
-        </div>
-        <p style={{ ...BAR, fontSize: 13, color: W50, lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
-          {cfg.description}
-        </p>
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-        {scenarios.map(({ id, label, icon, tagline }) => (
-          <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline} accentColor={cfg.color} />
-        ))}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
+        {scenarios.map(sc => <ScenarioCard key={sc.id} sc={sc} />)}
       </div>
     </div>
   );
 }
 
+// ─── PAGE ─────────────────────────────────────────────────────────────────────
+type Tab = "scenarios" | "industry" | "role";
+
 export default function DemoHub() {
-  const totalScenarios = Object.keys(SCENARIOS).length;
+  const [tab, setTab] = useState<Tab>("scenarios");
+  const [domainFilter, setDomainFilter] = useState<string>("all");
+
+  const domains = [
+    { key: "all",                    label: "All Domains",         color: "rgba(255,255,255,0.55)" },
+    { key: "GROWTH & POSITIONING",   label: "Growth & Positioning", color: TEAL     },
+    { key: "RISK & RESILIENCE",      label: "Risk & Resilience",   color: "#E74C3C" },
+    { key: "TRANSFORMATION",         label: "Transformation",      color: GOLD      },
+  ];
+
+  const visible  = domainFilter === "all" ? SCENARIOS : SCENARIOS.filter(s => s.domain === domainFilter);
+  const growth   = visible.filter(s => s.domain === "GROWTH & POSITIONING");
+  const risk     = visible.filter(s => s.domain === "RISK & RESILIENCE");
+  const trans    = visible.filter(s => s.domain === "TRANSFORMATION");
 
   return (
-    <PageLayout>
-      <div style={{ background: NAVY_BG, minHeight: "100vh", color: W }}>
+    <div style={{ background: NAVY, minHeight: "100vh", paddingTop: 70 }}>
+      <StandardNav />
 
-        {/* Hero */}
-        <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}`, position: "relative", overflow: "hidden" }}>
-          <img src={aerialCityImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.09, pointerEvents: "none" }} />
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
-          <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 600, height: 600, background: `radial-gradient(circle, rgba(43,138,110,0.12) 0%, transparent 65%)`, pointerEvents: "none" }} />
-          <div style={{ maxWidth: 960, margin: "0 auto", padding: "72px 28px 56px", position: "relative", zIndex: 1 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-              <span style={{ display: "inline-block", width: 28, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase" }}>
-                Experience Center · {totalScenarios} Full Scenario Simulations · 3 Strategic Domains
-              </span>
-            </div>
-            <h1 style={{ ...CG, fontSize: "clamp(42px,5vw,68px)", fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 14 }}>
-              Any situation.<br/>Any trigger.<br/><em style={{ color: GOLD }}>12 minutes.</em>
-            </h1>
-            <div style={{ ...CG, fontSize: 22, fontStyle: "italic", color: GOLD_LT, lineHeight: 1.4, marginBottom: 24 }}>
-              Growth. Resilience. Transformation. The response is always ready.
-            </div>
-            <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 560, marginBottom: 28 }}>
-              Every situation demands the same capability: your full organization mobilized in 12 minutes. Select a domain and see exactly how Readiness OS responds.
-            </p>
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      <section style={{
+        borderBottom: `2px solid ${GOLD}`,
+        padding: "52px 0 44px",
+        background: "linear-gradient(180deg, rgba(201,168,76,0.06) 0%, transparent 100%)",
+      }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD }} />
+            <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>
+              Demo Center
+            </span>
+          </div>
 
-            {/* Primary CTA — Full Platform Demo */}
-            <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 32 }}>
-              <a
-                href="/demo-experience"
+          <h1 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, margin: "0 0 14px" }}>
+            Every Demo. One Place.
+          </h1>
+          <p style={{ ...BC, fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 580, margin: "0 0 32px", lineHeight: 1.6 }}>
+            Browse by situation type, your industry, or your C-suite role. Every scenario runs live — no login required.
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 14 }}>
+            {[
+              { value: "12",  label: "Live Scenarios" },
+              { value: "14",  label: "Executive Roles" },
+              { value: "8",   label: "Industries" },
+              { value: "180", label: "Readiness Protocols" },
+            ].map(({ value, label }) => (
+              <div key={label} style={{
+                padding: "10px 20px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                display: "flex", alignItems: "baseline", gap: 8,
+              }}>
+                <span style={{ ...CG, fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{value}</span>
+                <span style={{ ...BC, fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.46)", letterSpacing: "0.14em", textTransform: "uppercase" as const }}>
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATURED WALKTHROUGHS ─────────────────────────────────────────── */}
+      <section style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "40px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.28em", color: "rgba(255,255,255,0.38)", textTransform: "uppercase" as const, marginBottom: 16 }}>
+            Start Here — Complete Walkthroughs
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
+            {/* Full Platform Experience */}
+            <Link href="/full-experience" style={{ textDecoration: "none" }}>
+              <div
                 style={{
-                  ...BC, textDecoration: "none",
-                  display: "inline-flex", alignItems: "center", gap: 10,
-                  background: TEAL_LT, color: NAVY,
-                  fontSize: 13, fontWeight: 700, letterSpacing: "0.14em",
-                  padding: "16px 36px", textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                  boxShadow: `0 0 24px rgba(43,138,110,0.35)`,
+                  background: "linear-gradient(135deg, rgba(43,138,110,0.14) 0%, rgba(10,15,46,0.50) 100%)",
+                  border: "1px solid rgba(43,138,110,0.38)",
+                  padding: "26px 26px 22px",
+                  cursor: "pointer",
+                  transition: "all 0.18s",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column" as const,
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(43,138,110,0.65)";
+                  el.style.background  = "linear-gradient(135deg, rgba(43,138,110,0.22) 0%, rgba(10,15,46,0.65) 100%)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(43,138,110,0.38)";
+                  el.style.background  = "linear-gradient(135deg, rgba(43,138,110,0.14) 0%, rgba(10,15,46,0.50) 100%)";
                 }}
               >
-                Begin Full Platform Demo →
-              </a>
-              <div style={{ ...BAR, fontSize: 12, color: W50, lineHeight: 1.5 }}>
-                9 steps · No login required<br/>
-                <span style={{ color: TEAL_LT, fontWeight: 600 }}>3 Phases: Preparation · Response · Advance</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                  <div style={{ width: 36, height: 36, background: "rgba(43,138,110,0.18)", border: "1px solid rgba(43,138,110,0.38)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Play size={16} style={{ color: TEAL }} />
+                  </div>
+                  <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", color: TEAL, textTransform: "uppercase" as const }}>
+                    11 Chapters · No Login
+                  </span>
+                </div>
+                <div style={{ ...CG, fontSize: 21, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.25, flex: 1 }}>
+                  Full Platform Experience
+                </div>
+                <p style={{ ...BC, fontSize: 13, color: "rgba(255,255,255,0.56)", lineHeight: 1.55, margin: "0 0 18px" }}>
+                  Cold open through signal detection, executive authorization, war room execution, all 14 roles as one organization, and final recap. 30 minutes that show everything.
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: TEAL, letterSpacing: "0.14em", textTransform: "uppercase" as const }}>Begin Walkthrough</span>
+                  <ArrowRight size={13} style={{ color: TEAL }} />
+                </div>
               </div>
-            </div>
+            </Link>
 
-            {/* Domain pills */}
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              {(["growth", "resilience", "transformation"] as const).map(key => {
-                const cfg = DOMAIN_CONFIG[key];
-                const count = key === "growth" ? SCENARIO_GROUPS.growth.length
-                            : key === "resilience" ? SCENARIO_GROUPS.resilience.length
-                            : SCENARIO_GROUPS.transformation.length;
-                return (
-                  <a
-                    key={key}
-                    href={`#domain-${key}`}
-                    style={{
-                      ...BC, textDecoration: "none",
-                      fontSize: 10, fontWeight: 700, letterSpacing: "0.2em",
-                      color: cfg.color, background: cfg.bg, border: `1px solid ${cfg.border}`,
-                      padding: "8px 16px", textTransform: "uppercase",
-                    }}
-                  >
-                    {cfg.label} — {count} scenarios
-                  </a>
-                );
-              })}
-            </div>
+            {/* 12-Minute Test Drive */}
+            <Link href="/12-minute-experience" style={{ textDecoration: "none" }}>
+              <div
+                style={{
+                  background: "linear-gradient(135deg, rgba(201,168,76,0.09) 0%, rgba(10,15,46,0.50) 100%)",
+                  border: "1px solid rgba(201,168,76,0.32)",
+                  padding: "26px 26px 22px",
+                  cursor: "pointer",
+                  transition: "all 0.18s",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column" as const,
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(201,168,76,0.58)";
+                  el.style.background  = "linear-gradient(135deg, rgba(201,168,76,0.17) 0%, rgba(10,15,46,0.65) 100%)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.borderColor = "rgba(201,168,76,0.32)";
+                  el.style.background  = "linear-gradient(135deg, rgba(201,168,76,0.09) 0%, rgba(10,15,46,0.50) 100%)";
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                  <div style={{ width: 36, height: 36, background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.32)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Rocket size={16} style={{ color: GOLD }} />
+                  </div>
+                  <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase" as const }}>
+                    4-Step Simulation · 7 Scenarios
+                  </span>
+                </div>
+                <div style={{ ...CG, fontSize: 21, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.25, flex: 1 }}>
+                  12-Minute Test Drive
+                </div>
+                <p style={{ ...BC, fontSize: 13, color: "rgba(255,255,255,0.56)", lineHeight: 1.55, margin: "0 0 18px" }}>
+                  A situation fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. Includes the compound Activist + Regulatory dual-track scenario.
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: "0.14em", textTransform: "uppercase" as const }}>Start Test Drive</span>
+                  <ArrowRight size={13} style={{ color: GOLD }} />
+                </div>
+              </div>
+            </Link>
+
+            {/* How It Executes */}
+            <Link href="/how-it-executes" style={{ textDecoration: "none" }}>
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  padding: "26px 26px 22px",
+                  cursor: "pointer",
+                  transition: "all 0.18s",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column" as const,
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.background   = "rgba(255,255,255,0.08)";
+                  el.style.borderColor  = "rgba(255,255,255,0.20)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.background   = "rgba(255,255,255,0.04)";
+                  el.style.borderColor  = "rgba(255,255,255,0.10)";
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                  <div style={{ width: 36, height: 36, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Zap size={16} style={{ color: "rgba(255,255,255,0.65)" }} />
+                  </div>
+                  <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", color: "rgba(255,255,255,0.48)", textTransform: "uppercase" as const }}>
+                    Animated Chain · 5 Scenarios
+                  </span>
+                </div>
+                <div style={{ ...CG, fontSize: 21, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.25, flex: 1 }}>
+                  How It Executes
+                </div>
+                <p style={{ ...BC, fontSize: 13, color: "rgba(255,255,255,0.56)", lineHeight: 1.55, margin: "0 0 18px" }}>
+                  Animated step-by-step: signal → protocol → tasks staged → stakeholders notified → executive authorizes → 12 minutes. Old Model comparison panel included.
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: "rgba(255,255,255,0.60)", letterSpacing: "0.14em", textTransform: "uppercase" as const }}>See the Chain</span>
+                  <ArrowRight size={13} style={{ color: "rgba(255,255,255,0.60)" }} />
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
+      </section>
 
-        <div style={{ maxWidth: 960, margin: "0 auto", padding: "56px 28px 80px" }}>
-
-          {/* Recommended Path navigator */}
-          <div style={{ marginBottom: 48, background: "rgba(201,168,76,0.06)", border: `1px solid rgba(201,168,76,0.18)`, padding: "20px 28px" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 14 }}>Recommended Path — New Here? Start in Order</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 0, flexWrap: "wrap" }}>
-              {[
-                { step: "01", label: "Why It Exists", sub: "Full Platform Demo", q: "What does this replace?", href: "/demo-experience" },
-                { step: "02", label: "The Full Scope", sub: "Complete Operating Model", q: "Does it cover planned work too?", href: "/demo/planned-unplanned" },
-                { step: "03", label: "How It Executes", sub: "Master Demo — Activist Investor", q: "What does it look like in practice?", href: "/master-demo" },
-                { step: "04", label: "Your ROI", sub: "ROI Calculator", q: "What is the value to my organization?", href: "/roi-calculator" },
-              ].map(({ step, label, sub, q, href }, i, arr) => (
-                <div key={step} style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 180 }}>
-                  <a href={href} style={{ textDecoration: "none", flex: 1 }}>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "8px 12px" }}>
-                      <div style={{ ...BC, fontSize: 18, fontWeight: 700, color: GOLD, opacity: 0.5, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{step}</div>
-                      <div>
-                        <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: W, letterSpacing: "0.06em", lineHeight: 1.2 }}>{label}</div>
-                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 2 }}>{sub}</div>
-                        <div style={{ ...BAR, fontSize: 11, color: W50, marginTop: 4, fontStyle: "italic" }}>{q}</div>
-                      </div>
-                    </div>
-                  </a>
-                  {i < arr.length - 1 && (
-                    <div style={{ ...BC, fontSize: 14, color: "rgba(255,255,255,0.2)", flexShrink: 0, padding: "0 4px" }}>→</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Full Platform Experience — personalized flagship walkthrough */}
-          <a
-            href="/full-experience"
-            id="full-experience-entry"
-            style={{
-              display: "block", textDecoration: "none", marginBottom: 24,
-              background: `linear-gradient(135deg, rgba(201,168,76,0.18) 0%, rgba(10,15,46,0.6) 60%, rgba(43,138,110,0.10) 100%)`,
-              border: `1px solid rgba(201,168,76,0.5)`,
-              padding: "36px 36px 32px",
-              position: "relative", overflow: "hidden",
-              transition: "border-color 0.2s",
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.85)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(201,168,76,0.5)"; }}
-          >
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px)`, backgroundSize: "32px 32px", pointerEvents: "none" }} />
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
-                <div style={{ flex: 1, minWidth: 280 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                    <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-                    <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase" }}>
-                      New · Personalized to Your Industry · ~30 Minutes · No Sign-Up Required
-                    </span>
-                  </div>
-                  <div style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 6 }}>
-                    The Full Platform Experience
-                  </div>
-                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: TEAL_LT, textTransform: "uppercase", marginBottom: 14, opacity: 0.9 }}>
-                    Best for: The deepest, most complete walkthrough of the entire platform
-                  </div>
-                  <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
-                    Pick your industry and situation, then live the entire operating model end to end — before the trigger, the moment it fires, the 12-minute mobilization, and what the platform learns afterward. Every capability, in one continuous narrative built around your world.
-                  </p>
-                  <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                    {[
-                      { v: "10 Chapters", l: "Before → During → After → Advance" },
-                      { v: "6 Industries", l: "Personalized situation at the start" },
-                      { v: "3,600×", l: "Execution head start, shown live" },
-                    ].map(({ v, l }) => (
-                      <div key={v}>
-                        <div style={{ ...BC, fontSize: 18, fontWeight: 700, color: GOLD, letterSpacing: "0.04em", lineHeight: 1 }}>{v}</div>
-                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginTop: 3 }}>{l}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ flexShrink: 0 }}>
-                  <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", color: NAVY, background: GOLD, padding: "14px 32px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-                    Begin Full Experience →
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-
-          {/* Full Platform Demo — start here banner */}
-          <a
-            href="/demo-experience"
-            style={{
-              display: "block", textDecoration: "none", marginBottom: 48,
-              background: `linear-gradient(135deg, rgba(43,138,110,0.18) 0%, rgba(10,15,46,0.6) 60%, rgba(201,168,76,0.10) 100%)`,
-              border: `1px solid rgba(43,138,110,0.45)`,
-              padding: "36px 36px 32px",
-              position: "relative", overflow: "hidden",
-              transition: "border-color 0.2s",
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.75)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.45)"; }}
-          >
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(43,138,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(43,138,110,0.04) 1px, transparent 1px)`, backgroundSize: "32px 32px", pointerEvents: "none" }} />
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
-                <div style={{ flex: 1, minWidth: 280 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                    <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL_LT, flexShrink: 0 }}/>
-                    <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL_LT, textTransform: "uppercase" }}>
-                      Step 01 · What Does This Replace? · 9 Steps · No Login Required
-                    </span>
-                  </div>
-                  <div style={{ ...CG, fontSize: "clamp(26px,3vw,38px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 6 }}>
-                    Full Platform Demo
-                  </div>
-                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 14, opacity: 0.8 }}>
-                    Best for: First conversation · C-suite · Category introduction
-                  </div>
-                  <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
-                    Answers the foundational question: why does the old operating model fail, and what does Readiness OS replace? Walks through the full platform — PREPARATION (how it works day-to-day) → RESPONSE (live 12-minute activation vs. 30-day old model) → ADVANCE (continuous learning). Every capability. One walkthrough.
-                  </p>
-                  <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                    {[
-                      { v: "3 Phases", l: "PREPARATION · RESPONSE · ADVANCE" },
-                      { v: "9 Steps", l: "Full capability walkthrough" },
-                      { v: "3,600×", l: "Contrast shown live" },
-                    ].map(({ v, l }) => (
-                      <div key={v}>
-                        <div style={{ ...BC, fontSize: 18, fontWeight: 700, color: TEAL_LT, letterSpacing: "0.04em", lineHeight: 1 }}>{v}</div>
-                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginTop: 3 }}>{l}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ flexShrink: 0 }}>
-                  <div style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", color: NAVY, background: TEAL_LT, padding: "14px 32px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-                    Begin Full Demo →
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-
-          {/* Complete Operating Model — Planned + Unplanned */}
-          <div style={{ marginBottom: 48 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-              <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL_LT, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: TEAL_LT, textTransform: "uppercase" }}>Step 02 · Does It Cover Planned Work Too? · The Scope of the Platform</span>
-            </div>
-            <a
-              href="/demo/planned-unplanned"
+      {/* ── TABS ──────────────────────────────────────────────────────────── */}
+      <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px", display: "flex" }}>
+          {([
+            { id: "scenarios" as Tab, label: "All Scenarios" },
+            { id: "industry"  as Tab, label: "By Industry" },
+            { id: "role"      as Tab, label: "By Role" },
+          ] as { id: Tab; label: string }[]).map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => { setTab(id); setDomainFilter("all"); }}
               style={{
-                display: "block", textDecoration: "none",
-                background: `linear-gradient(135deg, rgba(43,138,110,0.14) 0%, rgba(10,15,46,0.65) 50%, rgba(201,168,76,0.10) 100%)`,
-                border: `1px solid rgba(43,138,110,0.4)`,
-                borderLeft: `4px solid ${TEAL_LT}`,
-                padding: "32px 36px",
-                position: "relative", overflow: "hidden",
-                transition: "border-color 0.2s",
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.7)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(43,138,110,0.4)"; }}
-            >
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(43,138,110,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(43,138,110,0.03) 1px, transparent 1px)`, backgroundSize: "32px 32px", pointerEvents: "none" }} />
-              <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
-                <div style={{ flex: 1, minWidth: 280 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                    <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: TEAL_LT, background: "rgba(59,175,138,0.12)", border: "1px solid rgba(59,175,138,0.3)", padding: "3px 10px" }}>PLANNED</span>
-                    <span style={{ ...BC, fontSize: 11, color: "rgba(255,255,255,0.4)" }}>+</span>
-                    <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "#f87171", background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)", padding: "3px 10px" }}>UNPLANNED</span>
-                    <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>· 4 Protocols Active · 1 System</span>
-                  </div>
-                  <div style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 600, color: W, lineHeight: 1.15, marginBottom: 6 }}>
-                    The Complete Operating Model
-                  </div>
-                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 14, opacity: 0.8 }}>
-                    Best for: Prospects who already use quarterly planning tools · Dissolves the "we already plan" objection
-                  </div>
-                  <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 560, margin: "0 0 20px" }}>
-                    The same pre-staged infrastructure that responds to unplanned triggers also runs your planned quarterly initiatives — no mode-switching, no second tool. Q3 roadmap running. Ransomware fires at 4:23 AM. CEO makes one authorization. Both tracks execute. Neither stalls. The only demo in the industry that shows planned and unplanned work running simultaneously in one system.
-                  </p>
-                  <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                    {[
-                      { v: "3", l: "Planned initiatives running" },
-                      { v: "12 min", l: "Unplanned response activated" },
-                      { v: "0", l: "Q3 initiatives disrupted" },
-                    ].map(({ v, l }) => (
-                      <div key={v}>
-                        <div style={{ ...BC, fontSize: 20, fontWeight: 700, color: TEAL_LT, letterSpacing: "0.04em", lineHeight: 1 }}>{v}</div>
-                        <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase", marginTop: 3 }}>{l}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ flexShrink: 0, alignSelf: "center" }}>
-                  <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", color: NAVY, background: TEAL_LT, padding: "13px 28px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-                    See the Complete Model →
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          {/* Master Demo — featured */}
-          <div style={{ marginBottom: 64 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-              <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Step 03 · How Does It Execute? · Single Scenario · Every Phase · Full Depth</span>
-            </div>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: "rgba(201,168,76,0.65)", textTransform: "uppercase", marginBottom: 20, paddingLeft: 32 }}>
-              Best for: Evaluation stage · PMO directors · COOs · Anyone who needs to see every step before deciding
-            </div>
-            <ScenarioCard
-              id="activist"
-              label="CEO · Board · Investor Relations"
-              icon="📋"
-              tagline="Elliott Management files a 13D at 2:47 AM demanding 3 board seats. In the old model: 30 days to mobilize. With Readiness OS: full activation in 12 minutes. Every phase — signals detected, protocol matched, war room opened, stakeholders notified, CEO authorizes, execution complete. The definitive proof of how the platform works."
-              featured
-            />
-          </div>
-
-          {/* ── Platform Showcase — bridge between featured demo and domain grids ── */}
-          <ProductShowcase
-            eyebrow="Platform in Action"
-            headline="Watch 12-minute execution across all 3 strategic domains."
-            image="/screenshots/deck_activation.jpg"
-            imageAlt="Readiness OS Activation Console — Live Execution"
-            urlPath="/demo-hub"
-            urlTag="LIVE DEMO"
-            tagColor="#2B8A6E"
-            features={[
-              { color: "#2B8A6E", label: "Growth & Positioning", description: "Competitor displacement, activist investor response, M&A — staged before the trigger fires." },
-              { color: "#C9A84C", label: "Risk & Resilience", description: "Ransomware, FDA recall, supply chain, data breach — 12-minute execution chains, pre-built." },
-              { color: "#4A90C4", label: "Transformation", description: "Go-to-market acceleration, workforce transformation — coordinated rollout across all stakeholders." },
-            ]}
-          />
-
-          {/* Fix #1 — What is a Readiness Protocol? */}
-          <div style={{ marginBottom: 56, padding: "28px 32px", background: "rgba(201,168,76,0.05)", border: `1px solid rgba(201,168,76,0.18)`, borderLeft: `3px solid ${GOLD}` }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 12 }}>What is a Readiness Protocol?</div>
-            <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.7, maxWidth: 720, margin: "0 0 16px" }}>
-              A Readiness Protocol is a pre-built execution package. Before any trigger fires, every protocol already contains: <strong style={{ color: W }}>tasks defined and assigned</strong> to named owners, <strong style={{ color: W }}>budget pre-allocated</strong>, <strong style={{ color: W }}>stakeholders mapped</strong>, and an <strong style={{ color: W }}>execution brief written</strong>. When a trigger fires — or an executive decides to launch a planned initiative — the protocol activates in 12 minutes, not 30 days.
-            </p>
-            <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-              {[
-                { v: "Tasks", l: "Pre-assigned to named owners" },
-                { v: "Budget", l: "Pre-allocated, unlocks at authorization" },
-                { v: "Stakeholders", l: "Mapped and notified automatically" },
-                { v: "Brief", l: "Written before the trigger fires" },
-              ].map(({ v, l }) => (
-                <div key={v} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: GOLD, background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)", padding: "2px 8px", letterSpacing: "0.12em" }}>{v}</span>
-                  <span style={{ ...BAR, fontSize: 11, color: W50 }}>{l}</span>
-                </div>
-              ))}
-            </div>
-            <div style={{ marginTop: 14 }}>
-              <a href="/how-it-executes" style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textDecoration: "none", textTransform: "uppercase", opacity: 0.8 }}>See the full execution chain →</a>
-            </div>
-          </div>
-
-          {/* Growth & Positioning */}
-          <div id="domain-growth">
-            <DomainSection domainKey="growth" scenarios={SCENARIO_GROUPS.growth} />
-          </div>
-
-          {/* Risk & Resilience */}
-          <div id="domain-resilience">
-            <DomainSection domainKey="resilience" scenarios={SCENARIO_GROUPS.resilience} />
-          </div>
-
-          {/* Transformation */}
-          <div id="domain-transformation">
-            <DomainSection domainKey="transformation" scenarios={SCENARIO_GROUPS.transformation} />
-          </div>
-
-          {/* By Role */}
-          <div id="by-role" style={{ marginBottom: 56 }}>
-            <div style={{ borderLeft: `3px solid ${TEAL_LT}`, paddingLeft: 16, marginBottom: 20 }}>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL_LT, textTransform: "uppercase", marginBottom: 6 }}>
-                By Executive Role
-              </div>
-              <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: W, lineHeight: 1.1, marginBottom: 10 }}>
-                Your Seat at the Table
-              </div>
-              <p style={{ ...BAR, fontSize: 13, color: W50, lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
-                Role-specific simulations show exactly what each executive experiences during an activation — their brief, their tasks, their decision moment, their authority.
-              </p>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, marginBottom: 14 }}>
-              {FEATURED_ROLE_IDS.map(id => (
-                <RoleCard key={id} id={id} />
-              ))}
-            </div>
-            <a
-              href="/role-selector"
-              style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16,
-                textDecoration: "none",
-                background: `linear-gradient(135deg, ${TEAL_LT}12 0%, ${TEAL_LT}04 100%)`,
-                border: `1px solid ${TEAL_LT}50`,
-                padding: "22px 26px",
-                transition: "border-color 0.2s, background 0.2s",
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = `${TEAL_LT}80`;
-                (e.currentTarget as HTMLAnchorElement).style.background = `${TEAL_LT}18`;
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = `${TEAL_LT}50`;
-                (e.currentTarget as HTMLAnchorElement).style.background = `linear-gradient(135deg, ${TEAL_LT}12 0%, ${TEAL_LT}04 100%)`;
+                ...BC,
+                fontSize: 12, fontWeight: 800, letterSpacing: "0.12em",
+                textTransform: "uppercase" as const,
+                padding: "16px 26px",
+                background: "transparent", border: "none",
+                borderBottom: tab === id ? `2px solid ${GOLD}` : "2px solid transparent",
+                color: tab === id ? GOLD : "rgba(255,255,255,0.42)",
+                cursor: "pointer",
+                transition: "all 0.14s",
+                marginBottom: -1,
               }}
             >
-              <div>
-                <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: TEAL_LT, textTransform: "uppercase", marginBottom: 4 }}>
-                  Find Your Own Seat
-                </div>
-                <div style={{ ...BAR, fontSize: 15, fontWeight: 700, color: W }}>
-                  Explore all 14 executive roles — CEO, CFO, CIO, CISO, CTO, VP PMO and more
-                </div>
-              </div>
-              <span style={{ ...BC, fontSize: 12, fontWeight: 700, color: TEAL_LT, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>
-                View Role Experience Hub →
-              </span>
-            </a>
-          </div>
-
-          {/* What every simulation shows */}
-          <div style={{ background: GBG, border: `1px solid ${BD}`, padding: "36px 32px", marginBottom: 40 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-              <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>What Every Simulation Shows</span>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
-              {[
-                { step: "01", title: "The Situation Arrives", body: "Real scenario, real company, real time of day. Growth opportunity or disruption — the situation unfolds with full context and stakes." },
-                { step: "02", title: "Signal Detection", body: "4 corroborating signals detected and scored live. Composite urgency score computed in seconds. Domain context applied." },
-                { step: "03", title: "Protocol Matched", body: "The right Readiness Protocol pulled from 180 pre-staged options. Already written. Already waiting. Growth, resilience, or transformation." },
-                { step: "04", title: "War Room Activated", body: "14 tasks pre-assigned. 6 stakeholders notified. Real-time status: STANDBY → ACKNOWLEDGED → EXECUTING." },
-                { step: "05", title: "CEO Authorizes", body: "Executive brief delivered. One decision. Full authority. No committee required. The window stays open." },
-                { step: "06", title: "12 Minutes Complete", body: "Live animated timeline. Full comparison with the 30-day old model. The 3,600× execution head start." },
-                { step: "07", title: "The Outcome", body: "Deliverables generated. Post-activation intelligence. The fearless result of total preparation across every domain." },
-              ].map(({ step, title, body }) => (
-                <div key={step} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <div style={{ ...BC, fontSize: 11, fontWeight: 700, color: GOLD, opacity: 0.55, flexShrink: 0, lineHeight: 1, marginTop: 3 }}>{step}</div>
-                  <div>
-                    <div style={{ ...BAR, fontSize: 13, fontWeight: 700, color: W, marginBottom: 4 }}>{title}</div>
-                    <div style={{ ...BAR, fontSize: 12, color: W50, lineHeight: 1.5 }}>{body}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div style={{ textAlign: "center", padding: "56px 0 24px" }}>
-            <div style={{ ...CG, fontSize: 32, fontStyle: "italic", color: GOLD, lineHeight: 1.4, marginBottom: 10 }}>
-              "The response is ready before the trigger fires."
-            </div>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: W50, marginBottom: 36 }}>
-              Preparation &nbsp;→&nbsp; Readiness &nbsp;→&nbsp; Fearless
-            </div>
-            <a
-              href="/request-access"
-              style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 13, fontWeight: 700, letterSpacing: "0.14em", padding: "16px 48px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}
-            >
-              Apply for Founding Partner Access →
-            </a>
-            <div style={{ ...BC, fontSize: 9, color: W25, letterSpacing: "0.2em", marginTop: 14, textTransform: "uppercase" }}>
-              Founding Partner Program · 90-day validation · Startup to Fortune 500
-            </div>
-          </div>
-
+              {label}
+            </button>
+          ))}
         </div>
       </div>
-    </PageLayout>
+
+      {/* ── TAB CONTENT ───────────────────────────────────────────────────── */}
+      <section style={{ padding: "44px 0 80px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+
+          {/* ALL SCENARIOS */}
+          {tab === "scenarios" && (
+            <>
+              {/* Domain filter pills */}
+              <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 8, marginBottom: 36 }}>
+                {domains.map(d => {
+                  const dom = DOMAIN[d.key];
+                  const active = domainFilter === d.key;
+                  return (
+                    <button
+                      key={d.key}
+                      onClick={() => setDomainFilter(d.key)}
+                      style={{
+                        ...BC,
+                        fontSize: 9, fontWeight: 800, letterSpacing: "0.2em",
+                        textTransform: "uppercase" as const,
+                        padding: "5px 14px",
+                        background: active ? (dom ? dom.bg : "rgba(255,255,255,0.10)") : "transparent",
+                        border: `1px solid ${active ? (dom ? dom.border : "rgba(255,255,255,0.30)") : "rgba(255,255,255,0.14)"}`,
+                        color: active ? d.color : "rgba(255,255,255,0.42)",
+                        cursor: "pointer",
+                        transition: "all 0.13s",
+                      }}
+                    >
+                      {d.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <DomainGroup label="Growth & Positioning" color={TEAL}     scenarios={growth} />
+              <DomainGroup label="Risk & Resilience"    color="#E74C3C"  scenarios={risk}   />
+              <DomainGroup label="Transformation"       color={GOLD}     scenarios={trans}  />
+            </>
+          )}
+
+          {/* BY INDUSTRY */}
+          {tab === "industry" && (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
+              {INDUSTRIES.map(ind => <IndustryCard key={ind.label} ind={ind} />)}
+            </div>
+          )}
+
+          {/* BY ROLE */}
+          {tab === "role" && (
+            <>
+              <p style={{ ...BC, fontSize: 14, color: "rgba(255,255,255,0.48)", marginBottom: 32, lineHeight: 1.6, maxWidth: 620 }}>
+                Pick your seat at the table. Each role enters a live, interactive simulation built specifically for your function — your Readiness Protocol, your stakeholders, your 12-minute outcome.
+              </p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
+                {roleConfigs.map(role => <RoleCard key={role.id} role={role} />)}
+              </div>
+            </>
+          )}
+
+        </div>
+      </section>
+
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────────── */}
+      <section style={{
+        borderTop: "1px solid rgba(201,168,76,0.18)",
+        padding: "52px 0 64px",
+        background: "rgba(201,168,76,0.03)",
+      }}>
+        <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 40px", textAlign: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 32, height: 1, background: GOLD }} />
+            <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
+              Founding Partner Program
+            </span>
+            <div style={{ width: 32, height: 1, background: GOLD }} />
+          </div>
+
+          <h2 style={{ ...CG, fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 700, color: "#fff", margin: "0 0 12px", lineHeight: 1.25 }}>
+            Ready to run this in your organization?
+          </h2>
+          <p style={{ ...BC, fontSize: 15, color: "rgba(255,255,255,0.52)", margin: "0 0 28px", lineHeight: 1.6 }}>
+            A 90-day validation partnership. We map your top 15 situations, stage your first 3 Readiness Protocols, and run your first live trigger together.
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 12, justifyContent: "center" }}>
+            <Link href="/request-access" style={{ textDecoration: "none" }}>
+              <div
+                style={{
+                  ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.2em",
+                  textTransform: "uppercase" as const,
+                  color: NAVY, background: GOLD, border: `1px solid ${GOLD}`,
+                  padding: "13px 28px", cursor: "pointer", transition: "opacity 0.14s",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.88"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+              >
+                Apply for Founding Partner Access
+              </div>
+            </Link>
+
+            <Link href="/executive-brief" style={{ textDecoration: "none" }}>
+              <div
+                style={{
+                  ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.2em",
+                  textTransform: "uppercase" as const,
+                  color: GOLD, background: "transparent", border: "1px solid rgba(201,168,76,0.40)",
+                  padding: "13px 28px", cursor: "pointer", transition: "all 0.14s",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.10)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+              >
+                Download Executive Brief
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
