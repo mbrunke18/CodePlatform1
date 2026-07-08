@@ -371,9 +371,9 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="mb-4"
+                  className="mb-3"
                 >
-                  <span className="text-lg text-gray-800">Readiness OS is the</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#C9A84C]">Readiness Infrastructure</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
@@ -393,7 +393,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-8"
                 >
                   <span className="text-lg text-gray-800">
-                    180 Readiness Protocols across growth, risk resilience, and transformation.
+                    180 Readiness Protocols across Growth & Positioning, Risk & Resilience, and Transformation.
                   </span>
                 </motion.div>
                 
