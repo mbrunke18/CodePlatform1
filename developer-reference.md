@@ -4422,49 +4422,33 @@ Two board-validated phrases now appear in context:
 
 ---
 
-## 73. FirstVisitAdModal — Category-Creation Rebuild — June 10, 2026 (rev 57)
+## 73. FirstVisitAdModal — Now Wraps CinematicHero — July 8, 2026 (rev 61)
 
 ### Purpose
-A cinematic 30-second first-impression modal that fires automatically on the first visit to the Homepage. Uses `localStorage` key `vm_seen_brief` — fires once per browser, never again after the user has seen or skipped it.
+A full-screen first-impression takeover that fires automatically for a visitor's first 3 visits to the Homepage. Uses `localStorage` key `vm_seen_brief` (an incrementing visit counter, not a boolean) — the modal stops firing once the counter reaches `MAX_VISITS = 3`.
 
 ### File
-`client/src/components/FirstVisitAdModal.tsx` — imported and rendered at the top of `Homepage.tsx` return (before `<HomepageNav />`).
+`client/src/components/FirstVisitAdModal.tsx` — imported and rendered at the top of `Homepage.tsx` return (before `<StandardNav />`).
 
-### Design Mandate
-The modal must never frame the product as a crisis-response tool. The emotional arc is: **Recognition → Dismissal of false solutions → Revelation → Fearlessness**. This maps directly to the locked product thesis: Preparation → Readiness → Fearless.
+### Content (changed rev 61)
+The modal's outer shell (visit-counting, 3.5s reveal delay, fixed full-screen wrap, fade-in/out, `?cinematic=1` force-show query param) is unchanged. **The inner content is now `<CinematicHero onSkip={onClose} />`** — the same ~44-second animated brand-film sequence used on `/video`'s "90 Seconds" tab and in the Homepage `FilmSection`. The previous bespoke 4-scene "Recognition → Dismissal → Revelation → Fearlessness" text sequence (`SCENE_DURATIONS`, `fv-s1`–`fv-s4` scene markup) was removed in favor of reusing `CinematicHero` directly, so there is only one brand-film asset to maintain instead of two.
 
-### Scene Structure (30s total)
-| Scene | Duration | Content | Purpose |
-|---|---|---|---|
-| 1 — THE TRUTH | 7.5s | "Every enterprise was built for a world without AI. Committees. Alignment cycles. 30-day mobilization. They existed because humans couldn't process information fast enough to act decisively. AI changed the constraint. The operating model didn't. — Until now." | Creates instant universal recognition in every C-suite viewer without using a crisis narrative |
-| 2 — THE FAILURE OF HALF-MEASURES | 6.5s | "Every vendor bolted AI onto the old model. Faster spreadsheets. Smarter summaries. Better notes from the same slow meetings. The alignment cycle remained." — gold rule — "VaughnMartin rebuilt from first principles." | Names and dismisses the entire AI tools market (Copilot, ChatGPT, etc.) without naming them — positions as a different category entirely |
-| 3 — THE NEW ARCHITECTURE | 8s | Execution chain animating live: 0:00 Signal Detected → 2:00 Executive Decides → 4:15 Tasks Deploy → 12:00 Execution Live | Converts the abstract thesis into a concrete, moving reality. This is what "rebuilt from first principles" looks like. |
-| 4 — FEARLESS | 8s | "When every trigger has a response already staged — when the protocol matches before the phone rings — the organization stops being afraid of what comes next." — gold rule — "The response is ready before the trigger fires." — CTA | Lands on fearlessness as a felt destination, not a claimed attribute |
+**Rationale:** the retired custom sequence ran ~30–50s of pure text/CSS animation before any product visualization; `CinematicHero` gets to a concrete product visual (the 12-minute execution chain) faster and is already the "Primary" video across the platform (see `/video` below), so reusing it here keeps the first impression consistent everywhere a prospect encounters the brand film.
 
-### CTA (Scene 4)
-- **Primary:** "See It Execute — No Login Required →" → routes to `/situation-scanner`
-- **Secondary:** "Continue to site ×" — dismisses modal, sets localStorage flag
-
-### Technical Notes
-- `SCENE_DURATIONS = [7500, 6500, 8000, 8000]` — total 30,000ms
-- All animations are CSS class-toggled (`fv-show`, `fv-active`) via `getElementById` + `setTimeout` — no external animation library
-- Progress bar uses `requestAnimationFrame` against `TOTAL_DURATION` for smooth playback indicator
-- Teal/gold gradient progress bar at bottom
-- Ambient: grid overlay, two radial glows (teal top-right, gold bottom-left), scanline sweep
-- Typography: Cormorant Garamond for editorial lines; Barlow Condensed for labels, times, CTA; Barlow for body
+- A persistent top-right "Skip ×" button (rendered by `FirstVisitAdModal`, not by `CinematicHero`) allows immediate dismissal at any point.
+- `CinematicHero`'s own final-scene CTAs ("Full Platform Demo", "Continue to Site") also call `onClose` via the `onSkip` prop.
+- `CinematicHero`'s internal "Skip" control (bottom-right) jumps to its own final scene rather than closing the modal — this is separate from the modal's dismiss button.
 
 ### NEVER DO
-- Do not open with a crisis scenario (ransomware, activist investor, 3:17 AM). This frames the product as crisis response, which contradicts the thesis.
-- Do not use "AI-powered," "AI-driven," or any retired language in the modal copy.
-- Do not change the emotional arc order. Recognition must precede revelation.
+- Do not reintroduce a second, separately-maintained animated sequence for this modal — reuse `CinematicHero` so the brand-film content stays in one place.
+- Do not use "AI-powered," "AI-driven," or any retired language if the shared `CinematicHero` copy is ever edited.
+- Do not open with a crisis scenario (ransomware, activist investor, 3:17 AM) — `CinematicHero`'s copy is deliberately category-creation, not crisis-response framing.
 
-### Rev 60 Known State
+### Rev 61 Known State
 - Build: ✅ clean
-- Tests: ✅ 208/208 passing
-- Modal: ✅ firing on homepage, correct 4-scene arc, correct CTA destinations
-- Framing: ✅ category-creation (not crisis-response)
-- `/demo-experience`: ✅ live — cold open + 9-step PREPARATION/RESPONSE/ADVANCE journey, ComparisonStrip on all Response steps, live $180K/hr counter, Fearless landing, Founding Partner CTA
-- Homepage hero ghost CTA: ✅ "Experience the Platform →" → `/demo-experience`
+- Tests: ✅ 218/218 passing
+- Modal: ✅ firing on homepage for first 3 visits, now renders `CinematicHero` full-screen with a persistent Skip control
+- `/video` default tab: ✅ changed from "Full Demo" to "90 Seconds" (see `/video` section below) — same underlying rationale, shorter video leads for cold-traffic engagement
 
 ---
 
@@ -4585,9 +4569,9 @@ Each scenario shows: timestamped timeline steps, accumulated dollar cost at each
 
 **Brand Films & Spots** — the platform's primary video hub, accessible from the main navigation ("See It Work → See the Full Demo").
 
-**Three-tab layout:**
-1. **Full Demo** (`value="full-demo"`) — serves `client/public/videos/readiness-os-demo.mp4` (58.8 MB, H.264 Constrained Baseline, faststart-encoded so moov atom is at offset 32). The `/videos` route in `server/index.ts` adds `Cache-Control: public, max-age=3600` and `Accept-Ranges: bytes` explicitly — this overrides Helmet defaults and is required for iOS Safari range-based video streaming.
-2. **90 Seconds** (`value="90-second"`) — renders the `<CinematicHero />` animated sequence in-page.
+**Three-tab layout (default tab changed to "90 Seconds" — rev 61, July 8, 2026):**
+1. **Full Demo** (`value="full-demo"`) — serves `client/public/videos/readiness-os-demo.mp4` (58.8 MB, H.264 Constrained Baseline, faststart-encoded so moov atom is at offset 32). The `/videos` route in `server/index.ts` adds `Cache-Control: public, max-age=3600` and `Accept-Ranges: bytes` explicitly — this overrides Helmet defaults and is required for iOS Safari range-based video streaming. No longer the default tab — reachable by clicking the tab (no dedicated URL alias; `/full-demo` is a separate top-level redirect to `/full-experience`, unrelated to this tab).
+2. **90 Seconds** (`value="90-second"`, badged "Primary") — renders the `<CinematicHero />` animated sequence in-page. **This is now the default tab** for `/video`, `/cinematic`, and `/brand-films` — a 4:45 video was too long as the first thing a cold-traffic visitor sees, so the shorter brand film leads and Full Demo is positioned as the deeper follow-up. `CinematicHero` is also reused as the content of `FirstVisitAdModal` (see Section 73) so there's one shared brand-film asset across the homepage first-visit takeover, the homepage `FilmSection`, and this tab.
 3. **30 Seconds** (`value="30-second"`) — renders `<SpotSelector />` (defined inline in `VideoLanding.tsx`): three labeled version buttons at the top, one `<ThirtySecondSpot>` displayed full-width below. Switching versions resets and replays the selected spot via a `spotKey` counter.
 
 **ThirtySecondSpot.tsx** (`client/src/components/marketing/ThirtySecondSpot.tsx`):
@@ -4597,7 +4581,7 @@ Each scenario shows: timestamped timeline steps, accumulated dollar cost at each
 - Scene-indicator dots and "Replay" / "Skip" controls at the bottom
 - The `version="offense-defense"` final scene tagline: `"The Speed to Execute."` · `"first-mover"`: `"Readiness Infrastructure."` · `"360x-faster"`: `"3,600× Execution Head Start."`
 
-**URL aliases:** `/video`, `/spots` (opens 30-second tab), `/90-second` (opens 90-second tab) — handled by `getInitialTab()` reading `useLocation()`.
+**URL aliases:** `/video`, `/cinematic`, `/brand-films` (all open the 90-second tab, now the default), `/spots` / `/30-second` (opens 30-second tab) — handled by `getInitialTab()` reading `useLocation()`. There is no dedicated alias that opens the Full Demo tab directly; `/full-demo` is a top-level redirect to `/full-experience` and does not render this page.
 
 **File:** `client/src/pages/VideoLanding.tsx`, `client/src/components/marketing/ThirtySecondSpot.tsx`
 

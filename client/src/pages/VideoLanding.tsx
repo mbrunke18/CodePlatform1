@@ -87,8 +87,9 @@ function SpotSelector() {
 
 function getInitialTab(loc: string): string {
   if (loc === "/spots" || loc === "/30-second") return "30-second";
-  if (loc === "/90-second") return "90-second";
-  return "full-demo";
+  // "/full-demo" is a separate redirect (-> /full-experience) registered in App.tsx;
+  // it never reaches this component, so it is intentionally not aliased here.
+  return "90-second";
 }
 
 export default function VideoLanding() {
