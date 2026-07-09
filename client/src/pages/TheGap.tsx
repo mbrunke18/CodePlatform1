@@ -221,23 +221,17 @@ export default function TheGap() {
 
             {/* Results */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              {/* Live counter */}
-              <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', padding: '22px 24px' }}>
-                <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', color: RED, textTransform: 'uppercase', marginBottom: 8 }}>
-                  Cost accumulated since you opened this page
-                </div>
-                <div style={{ fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1 }}>
-                  {fmtFull(evaluationCost)}
-                </div>
-                <div style={{ fontSize: 11, color: 'rgba(239,68,68,0.85)', marginTop: 6 }}>
-                  {mins > 0 ? `${mins}m ${secs}s` : `${secs}s`} elapsed · {fmtFull(Math.round(costPerDay / 24))}/hr at your current model
-                </div>
+              {/* Annual tax — lead figure */}
+              <div style={{ background: 'rgba(239,68,68,0.08)', border: `1.5px solid ${RED}`, padding: '26px 24px' }}>
+                <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', color: RED, textTransform: 'uppercase', marginBottom: 10 }}>Your Annual Mobilization Tax</div>
+                <div style={{ fontSize: 'clamp(36px,5vw,54px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1, marginBottom: 8 }}>{fmt(annualTax)}</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>{inputs.execCount} exec × ${inputs.execHourlyRate}/hr × {hoursPerMob} hrs × {inputs.triggersPerYear} situations/yr</div>
+                <div style={{ fontSize: 12, color: 'rgba(239,68,68,0.9)', fontWeight: 700 }}>{fmtFull(Math.round(costPerDay / 24))}/hr, every hour your response model stays this slow</div>
               </div>
-              {/* Annual tax */}
-              <div style={{ background: NAVY, padding: '22px 24px', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', color: TEAL, textTransform: 'uppercase', marginBottom: 12 }}>Your Annual Mobilization Tax</div>
-                <div style={{ fontSize: 'clamp(30px,4vw,46px)', fontWeight: 700, color: RED, fontFamily: 'monospace', lineHeight: 1, marginBottom: 6 }}>{fmt(annualTax)}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)' }}>{inputs.execCount} exec × ${inputs.execHourlyRate}/hr × {hoursPerMob} hrs × {inputs.triggersPerYear} situations/yr</div>
+              {/* Live counter — secondary, de-emphasized */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', padding: '12px 18px' }}>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)' }}>Accumulated while you've been on this page ({mins > 0 ? `${mins}m ${secs}s` : `${secs}s`})</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: 'rgba(239,68,68,0.85)', fontFamily: 'monospace' }}>{fmtFull(evaluationCost)}</span>
               </div>
               {/* vs Readiness OS */}
               <div style={{ background: 'rgba(43,138,110,0.08)', border: `1.5px solid ${TEAL}`, padding: '20px 24px' }}>
