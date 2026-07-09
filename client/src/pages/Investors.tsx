@@ -451,6 +451,11 @@ export default function Investors() {
                   <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
                 </div>
 
+                <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 20, fontWeight: 600 }}>
+                  Most enterprise software: a better way to do existing work.{' '}
+                  <span style={{ color: '#C9A84C' }}>Readiness OS: a new category based on a structural organizational flaw that has never had a platform.</span>
+                </p>
+
                 <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px,4vw,52px)', fontWeight: 600, color: '#fff', lineHeight: 1.08, marginBottom: 32, letterSpacing: '-0.01em' }}>
                   Enterprise work was designed for a world without AI. Nobody redesigned it.
                 </h2>

@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: July 9, 2026 (§77 — Homepage category-clarity + mobilization-gap linking pass) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: July 9, 2026 (§79 — Category-argument, self-diagnostic & concept-hierarchy pass) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -4770,3 +4770,15 @@ Follow-up to an updated round of investor feedback (score raised to 9.2/10 after
 2. Added a link below that list — "PMO or Transformation Office lead? See the Preparation Architect Guide →" — routing to `/pmo-onboarding`, using the same "Preparation Architect Guide" label already used in `StandardNav.tsx`, `OnboardingHub.tsx`, and `PlatformHub.tsx` (no new terminology introduced).
 
 No other sections touched. **Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct script run).
+
+## 79. Category-Argument, Self-Diagnostic & Concept-Hierarchy Pass — July 9, 2026
+
+Third round of investor feedback (9.2/10 assessment) produced a finished investor one-pager, a sales conversation framework, and a LinkedIn post — none of these were built as-is (per user direction, held for later). Instead, three low-risk pieces of the underlying verbiage that were genuinely missing from the live site were surfaced, using the exact phrasing already validated in those documents so all assets stay consistent:
+
+1. **`Investors.tsx` — SaaS-contrast line added to the Category Argument section.** New lead paragraph directly above the "Enterprise work was designed for a world without AI" headline: "Most enterprise software: a better way to do existing work. Readiness OS: a new category based on a structural organizational flaw that has never had a platform." (second sentence in gold). This is the exact category-argument framing from the investor one-pager's "THE PATTERN INVESTORS PAY ATTENTION TO" section — did not exist anywhere on the live site before this.
+2. **`TheGap.tsx` — self-diagnostic framing added above the 12-gap card grid.** New sentence in the transition banner (just before the 12 gap cards render): "This isn't a feature list — it's a diagnostic. As you read the 12 below, count how many your organization currently faces. Most enterprises recognize 7 or more." Mirrors the sales framework's buyer-signal threshold ("7 or more gaps recognized — buyer") without exposing internal sales-script language (10+/Founding-Partner thresholds stay internal, not shown publicly).
+3. **`replit.md` — new CONCEPT HIERARCHY (LOCKED) rule.** Documents how the three verbiage layers relate so future copy stays consistent: "mobilization is work" (structural insight) → "12 Mobilization Gaps" (diagnostic layer, used on `/the-gap` and in sales conversations) → SaaS-contrast category argument (used on `/investors`). Documentation only, no UI change.
+
+Not built this round (explicitly held per user instruction): the LinkedIn post, the standalone sales-conversation-framework document, and a dedicated investor one-pager page — all three already exist as finished assets outside the site (docx/jpg) and were not requested as site pages.
+
+**Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (initial run raced the dev server during startup and returned 27 false-positive 404s — re-run after server settled confirmed 28/28 passing).

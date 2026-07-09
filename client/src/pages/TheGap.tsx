@@ -227,13 +227,18 @@ export default function TheGap() {
       </section>
 
       {/* ── TRANSITION ── */}
-      <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '20px 48px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ ...BC, color: NAVY, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
-            The 12 Gaps — Today vs. Readiness OS
-          </p>
-          <p style={{ ...BC, color: MUTED, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            15–20 of these situations per enterprise, per year
+      <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '28px 48px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <p style={{ ...BC, color: NAVY, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
+              The 12 Gaps — Today vs. Readiness OS
+            </p>
+            <p style={{ ...BC, color: MUTED, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              15–20 of these situations per enterprise, per year
+            </p>
+          </div>
+          <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.6, maxWidth: 720 }}>
+            This isn't a feature list — it's a diagnostic. As you read the 12 below, count how many your organization currently faces. Most enterprises recognize 7 or more.
           </p>
         </div>
       </section>
