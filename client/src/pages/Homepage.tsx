@@ -2282,6 +2282,7 @@ function FoundingPartnerCloseSection() {
             <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>What we ask of you</div>
             {[
               "C-suite sponsorship — one named executive as the authorization authority",
+              "A PMO / Transformation Office lead to own preparation architecture day-to-day",
               "Identification of 8–12 strategic situations your organization faces annually",
               "Access to 3–5 functional owners for protocol configuration (4 hours total)",
               "One live activation during the 90-day window — real signal, real execution",
@@ -2294,6 +2295,12 @@ function FoundingPartnerCloseSection() {
                 <span style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>{item}</span>
               </div>
             ))}
+            <Link
+              href="/pmo-onboarding"
+              style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 6, marginTop: 4, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", color: GOLD, textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.35)", paddingBottom: 2 }}
+            >
+              PMO or Transformation Office lead? See the Preparation Architect Guide →
+            </Link>
           </div>
         </div>
 

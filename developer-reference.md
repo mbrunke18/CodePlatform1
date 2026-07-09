@@ -4761,3 +4761,12 @@ Surgical response to external investor/reviewer feedback (8.5/10 score; category
 5. **Bug fix found during this pass — FoundingPartnerCloseSection stale seat count.** This section had hardcoded "12 total seats / 4 in review / 8 remaining" — a leftover from before the §76 seat-count sweep (12 → 2), which had not touched `Homepage.tsx`. Rewired to `useQuery(['/api/founding-partner/stats'])`, the same live-data pattern used in `FoundingPartnerProgram.tsx`. Confirmed via the endpoint response (`{"total":2,"filled":0,"remaining":2}`) that it now renders the correct "Applications open now" state. Also added one sentence to the section intro: "Most partners start by mobilizing their single highest-exposure situation, then expand once it's proven." — reinforces the "pick one" narrative at the bottom-of-page conversion point.
 
 **Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct script run), homepage and `/mobilization-gap` both return HTTP 200, `/api/founding-partner/stats` confirmed live.
+
+## 78. Homepage PMO/Transformation Office Beachhead Callout — July 9, 2026
+
+Follow-up to an updated round of investor feedback (score raised to 9.2/10 after §77 shipped). Reviewer's remaining risk point: "buyer ownership remains slightly unclear... my recommendation would be to pick one beachhead — PMO/Transformation Office and COO feel like the most natural initial owners." The platform already has this built (`/pmo-onboarding`, 3-tier ownership model — see the Getting Started / PMO Director Onboarding feature spec), it just wasn't surfaced on the Homepage. Confined to `FoundingPartnerCloseSection` in `Homepage.tsx`:
+
+1. Added a new bullet to the "What we ask of you" list: "A PMO / Transformation Office lead to own preparation architecture day-to-day" — sits directly under the existing "C-suite sponsorship" bullet, naming both halves of the ownership model (executive authorization + operational owner) in one place.
+2. Added a link below that list — "PMO or Transformation Office lead? See the Preparation Architect Guide →" — routing to `/pmo-onboarding`, using the same "Preparation Architect Guide" label already used in `StandardNav.tsx`, `OnboardingHub.tsx`, and `PlatformHub.tsx` (no new terminology introduced).
+
+No other sections touched. **Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct script run).
