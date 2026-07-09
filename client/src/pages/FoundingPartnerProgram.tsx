@@ -357,11 +357,11 @@ export default function FoundingPartnerProgram() {
               </span>
             </div>
 
-            {/* Budget qualifier */}
+            {/* Eligibility qualifier */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 44, padding: '8px 16px', border: '1px solid rgba(43,138,110,0.25)', background: 'rgba(43,138,110,0.05)' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#2B8A6E', flexShrink: 0 }} />
               <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(240,237,228,0.65)' }}>
-                Founding Partner engagements are structured for organizations with operational budgets of <strong style={{ color: 'rgba(240,237,228,0.90)' }}>$50M+</strong>
+                Founding Partner engagements are open to organizations from high-growth startups to Fortune 500 enterprises — <strong style={{ color: 'rgba(240,237,228,0.90)' }}>readiness, not revenue, is the qualifier</strong>
               </span>
             </div>
 
