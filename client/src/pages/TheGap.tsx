@@ -145,6 +145,49 @@ export default function TheGap() {
         </div>
       </section>
 
+      {/* ── TRANSITION ── */}
+      <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '28px 48px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <p style={{ ...BC, color: NAVY, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
+              The 12 Gaps — Today vs. Readiness OS
+            </p>
+            <p style={{ ...BC, color: MUTED, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              15–20 of these situations per enterprise, per year
+            </p>
+          </div>
+          <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.6, maxWidth: 720 }}>
+            This isn't a feature list — it's a diagnostic. As you read the 12 below, count how many your organization currently faces. Most enterprises recognize 7 or more.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 12 GAP CARDS ── */}
+      <section style={{ background: '#fff', padding: '64px 0' }}>
+        <div style={{ maxWidth: 1120, margin: '0 auto', padding: '0 48px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(320px,1fr))', gap: 24 }}>
+          {gaps.map((g) => {
+            const Icon = g.icon;
+            return (
+              <div key={g.n} style={{ border: `1px solid ${BORDER}`, borderRadius: '0.15rem', overflow: 'hidden', background: '#FAFAF9' }}>
+                <div style={{ padding: '16px 22px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ ...BC, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', minWidth: 28 }}>{g.n}</span>
+                  <Icon className="w-4 h-4" style={{ color: NAVY, flexShrink: 0 }} />
+                  <span style={{ ...BC, color: NAVY, fontSize: 14, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{g.name}</span>
+                </div>
+                <div style={{ padding: '14px 22px', borderBottom: `1px solid ${BORDER}`, background: '#FEF9F9' }}>
+                  <p style={{ ...BC, color: PROBLEM, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 5 }}>Today</p>
+                  <p style={{ color: '#374151', fontSize: 13, lineHeight: 1.6 }}>{g.today}</p>
+                </div>
+                <div style={{ padding: '14px 22px' }}>
+                  <p style={{ ...BC, color: TEAL, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 5 }}>Readiness OS</p>
+                  <p style={{ color: '#1F2937', fontSize: 13, lineHeight: 1.6 }}>{g.os}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* ── LIVE COUNTER + CALCULATOR ── */}
       <section style={{ background: '#0F1629', padding: '72px 0 64px', borderBottom: `1px solid rgba(239,68,68,0.2)` }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px' }}>
@@ -223,49 +266,6 @@ export default function TheGap() {
               </button>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── TRANSITION ── */}
-      <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '28px 48px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-            <p style={{ ...BC, color: NAVY, fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
-              The 12 Gaps — Today vs. Readiness OS
-            </p>
-            <p style={{ ...BC, color: MUTED, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              15–20 of these situations per enterprise, per year
-            </p>
-          </div>
-          <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.6, maxWidth: 720 }}>
-            This isn't a feature list — it's a diagnostic. As you read the 12 below, count how many your organization currently faces. Most enterprises recognize 7 or more.
-          </p>
-        </div>
-      </section>
-
-      {/* ── 12 GAP CARDS ── */}
-      <section style={{ background: '#fff', padding: '64px 0' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto', padding: '0 48px', display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(320px,1fr))', gap: 24 }}>
-          {gaps.map((g) => {
-            const Icon = g.icon;
-            return (
-              <div key={g.n} style={{ border: `1px solid ${BORDER}`, borderRadius: '0.15rem', overflow: 'hidden', background: '#FAFAF9' }}>
-                <div style={{ padding: '16px 22px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ ...BC, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', minWidth: 28 }}>{g.n}</span>
-                  <Icon className="w-4 h-4" style={{ color: NAVY, flexShrink: 0 }} />
-                  <span style={{ ...BC, color: NAVY, fontSize: 14, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{g.name}</span>
-                </div>
-                <div style={{ padding: '14px 22px', borderBottom: `1px solid ${BORDER}`, background: '#FEF9F9' }}>
-                  <p style={{ ...BC, color: PROBLEM, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 5 }}>Today</p>
-                  <p style={{ color: '#374151', fontSize: 13, lineHeight: 1.6 }}>{g.today}</p>
-                </div>
-                <div style={{ padding: '14px 22px' }}>
-                  <p style={{ ...BC, color: TEAL, fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 5 }}>Readiness OS</p>
-                  <p style={{ color: '#1F2937', fontSize: 13, lineHeight: 1.6 }}>{g.os}</p>
-                </div>
-              </div>
-            );
-          })}
         </div>
       </section>
 
