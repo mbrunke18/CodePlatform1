@@ -193,7 +193,7 @@ const conversionTerms = [
   },
   {
     term: 'Enterprise SLA',
-    description: '99.9% uptime, 2-hour priority support',
+    description: 'Uptime and response-time commitments defined at contract',
   }
 ];
 
