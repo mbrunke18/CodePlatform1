@@ -213,7 +213,7 @@ export function registerMagicLinkRoutes(app: Express) {
   // ─── Founding Partner Stats (public) ─────────────────────────────────────
   app.get('/api/founding-partner/stats', async (_req, res) => {
     try {
-      const TOTAL_SEATS = 12;
+      const TOTAL_SEATS = 2;
       const [row] = await db
         .select({ filled: count() })
         .from(foundingPartnerApplications)

@@ -353,7 +353,7 @@ export default function FoundingPartnerProgram() {
               <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
                 {partnerStats && partnerStats.filled > 0
                   ? `2026 Founding Partner Cohort · ${partnerStats.filled} of ${partnerStats.total} Spots Filled · ${partnerStats.remaining} Remaining`
-                  : '2026 Founding Partner Cohort · 12 Seats · Applications Now Open'}
+                  : '2026 Founding Partner Cohort · 2 Seats · Applications Now Open'}
               </span>
             </div>
 
@@ -403,13 +403,13 @@ export default function FoundingPartnerProgram() {
               ))}
             </div>
 
-            {/* Readiness Guarantee */}
+            {/* Measured Benchmark Commitment */}
             <div style={{ marginBottom: 36, padding: '20px 24px', border: '1px solid rgba(43,138,110,0.35)', background: 'rgba(43,138,110,0.06)', display: 'flex', alignItems: 'flex-start', gap: 16, maxWidth: 640 }}>
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#2B8A6E', flexShrink: 0, marginTop: 5 }} />
               <div>
-                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>The Readiness Guarantee</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>The Measured Benchmark Commitment</div>
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(240,237,228,0.75)', lineHeight: 1.65, margin: 0 }}>
-                  Your first live activation will be measured. If your first Readiness Protocol execution exceeds 20 minutes, we extend the engagement at no additional charge until the 12-minute target is achieved — or we refund the program fee. The guarantee is simple: <em style={{ color: '#C9A84C' }}>if we can't prove the claim in your environment, you don't pay for it.</em>
+                  Your first live activation is timestamped and measured against the 12-minute target. Every Founding Partner leaves with a board-ready mobilization benchmark — <em style={{ color: '#C9A84C' }}>proof made visible in your own environment, not a claim on a page.</em>
                 </p>
               </div>
             </div>
