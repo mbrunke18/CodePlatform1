@@ -822,7 +822,7 @@ Three purpose-built components added May 2026 (rev 39). Import from `@/component
 | `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
 | `TechnicalArchitecture.tsx` | `/technical-architecture` | Technical credibility asset for investor and enterprise procurement audiences. Four-layer architecture walkthrough: Signal Detection (39 feeds, 15-min cadence, √signals×8 risk formula), Protocol Mapping (231 triggers → 180 protocols, compound logic), Execution Engine (task seeding, authority chains, budget authorization, 90-sec handoff), Institutional Memory (activation records, debrief classification, ROI tracking). Microsoft integration map — 4 live (Teams, Outlook, SharePoint, Entra) vs. 4 roadmap (Copilot Studio, Power Automate, Sentinel, Fabric). Core data model (5 entities). Security summary with links to `/security-compliance`. No auth required. |
 | `SecurityCompliance.tsx` | `/security-compliance` | Procurement-ready security one-pager. 6 sections (Auth, Infrastructure, Monitoring, AI Safety, Trust, Access). **Session additions:** SOC 2 Type II roadmap (3-phase tracker — Controls Inventory ✓, Gap Remediation in progress, Type II Audit Q3 2025 target), DPA & Legal section (data residency, retention schedule, right to deletion, AI data handling, sub-processor list), InfoSec FAQ (6 Q&A pre-answering pen test, data exit, GDPR, AI model access, incident response). Founding Partner CTA at bottom. |
-| `FoundingPartnerProgram.tsx` | `/founding-partner-program` (also `/pilot-program` alias) | Public Founding Partner conversion page. Problem-first hero, "2026 Founding Partner Cohort · 12 Seats" scarcity badge, differentiation strip, inline `ApplicationForm` component (no redirect). Form fields: name, email, company, title, companySize, primaryChallenge, timelineUrgency. On submit: POST `/api/founding-partner/apply` → saves to `founding_partner_applications` table → success state "We'll be in touch within 48 hours." Error fallback shows `founding@vaughnmartin.com`. Questions CTA also shows `founding@vaughnmartin.com`. All public "Founding Partner Access" CTAs across the product route here — never to `/request-access`. |
+| `FoundingPartnerProgram.tsx` | `/founding-partner-program` (also `/pilot-program` alias) | Public Founding Partner conversion page. Problem-first hero, "2026 Founding Partner Cohort · 2 Seats" scarcity badge, eligibility qualifier ("readiness, not revenue" — open to startup through Fortune 500, no revenue/budget floor), differentiation strip, inline `ApplicationForm` component (no redirect). Form fields: firstName, lastName, email, company, title, triggerDomain (optional), message (optional). On submit: POST `/api/founding-partner/apply` → saves to `founding_partner_applications` table → success state "We'll be in touch within 48 hours." Error fallback shows `founding@vaughnmartin.com`. Questions CTA also shows `founding@vaughnmartin.com`. All public "Founding Partner Access" CTAs across the product route here — never to `/request-access`. |
 | `ReadinessBenchmark.tsx` | `/readiness-benchmark` | **Public lead magnet — no auth required.** Free 5-question readiness self-assessment. Peer benchmarks shown above the fold: Typical enterprise score: 22 / Founding Partner avg: 87 / Mobilization gap: 30 days. Questions cover: last mobilization time, protocol staging, trigger monitoring, stakeholder readiness, and debrief practice. Immediate 0–100 score on completion with interpretation band and Founding Partner CTA. Listed in nav: top-level gold "Benchmark" button + "The Proof" dropdown (featured, labeled "Readiness Benchmark — Free"). Also surfaced as a Homepage strip between the ThreeStepSection and MicrosoftHookStrip. Added May 2026. |
 | `ReadinessOracle.tsx` | `/readiness-oracle` | **Strategic Foresight Engine vision page — no auth required.** Describes the Foresight tier capability: Digital Twin simulation, autonomous war-gaming, predictive foresight for triggers that haven't fired yet. Hero: "The response was ready before the trigger was even a pattern." Positioned as co-developed exclusively with Founding Partners. Listed in: StandardNav "What We Do → The Operating Model" (featured, labeled "Strategic Foresight Engine"), Pricing.tsx as Foresight tier differentiator. Added May 2026. |
 | `ProtocolDetail.tsx` | `/playbook/:id` | Full playbook view (renamed from `PlaybookDetail.tsx`). Three tabs: Overview, Performance (auth-gated), Edit Tasks (auth-gated, only shown when `enrichedPhases` exist). Edit Tasks tab: phase accordion editor for name/objective, role task groups (add/remove/rename/edit items), decision gate (title/criteria/escalation), and restrictions. Saves via `PATCH /api/playbook-library/:id/customize` with `{ customizations: { enrichedPhases } }`. Amber dot on tab label = unsaved changes. `useEffect` syncs `editedPhases` from `playbook.enrichedPhases` on load. Helper callbacks: `updatePhase`, `updateTask`, `updateTaskItem`, `addTaskItem`, `removeTaskItem`, `addTaskGroup`, `removeTaskGroup`, `updateCriteria`, `addCriteria`, `removeCriteria`, `updateRestriction`, `addRestriction`, `removeRestriction`. |
@@ -3075,28 +3075,28 @@ The primary public conversion page for enterprise prospects — startup to Fortu
 
 ### Page Structure
 
-1. **Hero** — Problem-first framing: "The response was / before you knew you needed it." with two badges: (a) scarcity badge **"2026 Founding Partner Cohort · 12 Seats · Applications Now Open"** in gold — update the seat count as partners sign; never show a filled count that is inaccurate; (b) budget qualifier **"Founding Partner engagements are structured for organizations with operational budgets of $50M+"** in teal — this is a permanent prospect pre-qualifier, do not remove it
-2. **Differentiation strip** — 4 cards: "Pre-staged, not assembled" / "Pre-committed, not considered" / "Signal-based, not meeting-based" / "Execution in 12 minutes, not 30 days"
+1. **Hero** — Problem-first framing: "The response was / before you knew you needed it." with two badges: (a) scarcity badge **"2026 Founding Partner Cohort · 2 Seats · Applications Now Open"** in gold — update the seat count as partners sign; never show a filled count that is inaccurate; (b) eligibility qualifier **"Founding Partner engagements are open to organizations from high-growth startups to Fortune 500 enterprises — readiness, not revenue, is the qualifier"** in teal — the prior "$50M+ operational budget" revenue floor was removed (retired) so the program matches the platform's stated "startup to Fortune 500" positioning; do not reintroduce a revenue/budget gate here
+2. **Differentiation strip** — 3 cards: "Pre-staged, not assembled" / "Coordination, not capability" / "The response before the trigger"
 3. **Inline ApplicationForm** — no redirect; submits directly to the backend
 4. **Success state** — "We'll be in touch within 48 hours." confirmation in place of the form
 5. **Questions CTA** — `founding@vaughnmartin.com`
 
 ### Inline Application Form
 
-**Fields (all required except timelineUrgency):**
+**Fields (all required except triggerDomain and message):**
 ```
-name            — text input
+firstName       — text input
+lastName        — text input
 email           — email input
 company         — text input
 title           — text input
-companySize     — select: "500–1,000" | "1,000–5,000" | "5,000–20,000" | "20,000+"
-primaryChallenge — select: "Regulatory Pressure" | "M&A / Competitive Disruption" | "Supply Chain Risk" | "Cybersecurity / Crisis Response" | "Board / Investor Pressure" | "Leadership Transition" | "Other"
-timelineUrgency  — select (optional): "Immediate (within 30 days)" | "This quarter" | "Next 6 months" | "Exploring"
+triggerDomain   — select (optional): "Growth & Positioning" | "Risk & Resilience" | "Transformation" | "All Domains"
+message         — textarea (optional): free-text trigger/protocol/question prompt
 ```
 
 **Submit flow:**
 1. Frontend POST to `/api/founding-partner/apply` with form data
-2. Backend validates with Zod → inserts into `founding_partner_applications` table → returns `{ ok: true }`
+2. Backend validates with Zod (`insertFoundingPartnerApplicationSchema`) → inserts into `founding_partner_applications` table → returns success
 3. Frontend flips to success state; form unmounts
 4. Error path shows `founding@vaughnmartin.com` as fallback contact
 
@@ -3107,8 +3107,8 @@ POST /api/founding-partner/apply   ← public, no auth required
 ```
 
 - Located in `server/routes.ts`
-- Validates: `name` (non-empty), `email` (valid format), `company`, `title`, `companySize`, `primaryChallenge`
-- Inserts into `founding_partner_applications` table
+- Validates against `insertFoundingPartnerApplicationSchema` (Zod, derived from the Drizzle table via `createInsertSchema`)
+- Inserts into `founding_partner_applications` table with `status` defaulted to `'pending'`
 - Returns `{ ok: true }` on success; `{ error: "..." }` on failure
 - Never throws a user-visible error — all errors logged server-side and caught by the frontend fallback
 
@@ -3116,19 +3116,20 @@ POST /api/founding-partner/apply   ← public, no auth required
 
 ```ts
 export const foundingPartnerApplications = pgTable('founding_partner_applications', {
-  id:                 uuid('id').primaryKey().defaultRandom(),
-  name:               text('name').notNull(),
-  email:              text('email').notNull(),
-  company:            text('company').notNull(),
-  title:              text('title').notNull(),
-  companySize:        text('company_size').notNull(),
-  primaryChallenge:   text('primary_challenge').notNull(),
-  timelineUrgency:    text('timeline_urgency'),
-  createdAt:          timestamp('created_at').defaultNow(),
+  id:            uuid('id').primaryKey().defaultRandom(),
+  firstName:     text('first_name').notNull(),
+  lastName:      text('last_name').notNull(),
+  email:         text('email').notNull(),
+  company:       text('company').notNull(),
+  title:         text('title').notNull(),
+  triggerDomain: text('trigger_domain').default(''),
+  message:       text('message').default(''),
+  status:        text('status').notNull().default('pending'),
+  createdAt:     timestamp('created_at').defaultNow(),
 });
 ```
 
-Table was created directly via `psql "$DATABASE_URL" -c "CREATE TABLE IF NOT EXISTS ..."` because `npm run db:push` is interactive (pauses on `business_units` table prompt). If the DB is ever re-created from scratch, `npm run db:push` will create the table automatically.
+The `companySize` / `primaryChallenge` / `timelineUrgency` fields from the original schema were retired — the form was simplified to firstName/lastName/email/company/title plus optional triggerDomain and message, consistent with opening the program to any company size (startup to Fortune 500) rather than pre-segmenting applicants. Use `npm run db:push` for any future schema changes to this table.
 
 ### Link Audit (May 10, 2026)
 
@@ -4335,7 +4336,7 @@ Single italic line rendered below `<HeroSimPanel />`: *"This is live — click a
 
 ### Founding Partner Program Scarcity Counter
 
-Scarcity badge text: `"2026 Founding Partner Cohort · [N] of 12 Spots Filled · [12-N] Remaining"`. **Update the filled count in `FoundingPartnerProgram.tsx` as partners sign.** Never display a filled number that is inaccurate — prospects will ask and catch it immediately. While no partners are signed, use `"12 Seats · Applications Now Open"`.
+Scarcity badge text: `"2026 Founding Partner Cohort · [N] of 2 Spots Filled · [2-N] Remaining"`. **Update the filled count in `FoundingPartnerProgram.tsx` as partners sign.** Never display a filled number that is inaccurate — prospects will ask and catch it immediately. While no partners are signed, use `"2 Seats · Applications Now Open"`. **(Corrected from a stale "12 Seats" template — 2 is the actual cohort cap as of July 9, 2026 (§76); the 12-seat figure below in "Rev 52 Known State" is a historical snapshot only.)**
 
 ### Rev 52 Known State
 
@@ -4727,3 +4728,18 @@ Line 1 = "situation" (what the customer faces). Line 3 = "trigger fires" (the pr
 - Seed round: ✅ $500,000, July 2026
 - New pages registered: ✅ `/the-gap`, `/the-cost-of-waiting`, `/video-brief`, `/mobilization-gap`, `/situations-hub`
 - Competitor analysis: ✅ aangine.com confirmed NOT a direct competitor (algorithmic portfolio planning vs. readiness infrastructure — different problem, different buyer)
+
+---
+
+## 76. Founding Partner Program — Legal/Financial Risk Audit + Eligibility Broadening — July 9, 2026
+
+Session-based audit of `/founding-partner-program` (`FoundingPartnerProgram.tsx`) triggered a series of corrections. **All items below reflect the currently live version of the page — this supersedes any conflicting seat count, guarantee, SLA, or budget-qualifier language in earlier sections of this document (e.g., §71/Rev 52 "Known State" snapshots are historical only).**
+
+1. **Refund guarantee removed.** "The Readiness Guarantee" (unconditional refund language) was removed as unbounded legal/financial exposure. Replaced with **"The Measured Benchmark Commitment"** — a non-monetary commitment that the first live activation is timestamped and measured against the 12-minute target, with a board-ready benchmark delivered regardless of outcome. No refund promise remains on the page.
+2. **Seat count corrected 12 → 2, site-wide.** The page previously showed a "12 Seats" scarcity badge inconsistent with the actual 2026 Cohort cap used elsewhere on the platform. Corrected to **"2026 Founding Partner Cohort · 2 Seats"** in `FoundingPartnerProgram.tsx`, and swept across `Pricing.tsx`, `TheCostOfWaiting.tsx`, `FoundingPartnerBrief.tsx`, `RequestAccess.tsx`, `PlatformHub.tsx`, `FoundingPartnerPage.tsx`, `TierComparisonDemo.tsx`, `OnboardingHub.tsx`, and the `TOTAL_SEATS` constant in `server/routes/magic-link-routes.ts`. §71's "12 Seats" references and the §4338 scarcity-counter template below are historical/stale — 2 is current.
+3. **Enterprise SLA softened.** The specific "99.9% uptime, 2-hour priority support" claim in the Enterprise conversion terms was replaced with **"Uptime and response-time commitments defined at contract"** — avoids committing to unverified numeric SLA terms in public marketing copy.
+4. **Eligibility broadened — $50M+ budget qualifier retired.** The page previously carried a hard **"organizations with operational budgets of $50M+"** pre-qualifier in the hero, which contradicted the platform's stated "startup to Fortune 500" positioning (used in this same page's meta description and differentiation strip) and blocked smaller prospects outright. Replaced with: **"Founding Partner engagements are open to organizations from high-growth startups to Fortune 500 enterprises — readiness, not revenue, is the qualifier."** The six "Required" candidate criteria (C-Suite Executive Sponsor, Named Technical Owner, Three Real Situations, Enterprise Tech Stack, Trigger Plausibility, Explicit Commitment) were reviewed and confirmed to gate on operational readiness, not company size or revenue — no changes needed there.
+5. **Pricing and user allotment confirmed unchanged.** The $75K engagement investment and "up to 25 users" allotment apply uniformly to all Founding Partners regardless of company size — these were explicitly confirmed as correct as-is and were not tied to the retired budget qualifier.
+6. **Application form fields are stale in prior doc sections above** (see §60 area — `firstName`/`lastName`/`email`/`company`/`title`/`triggerDomain`/`message`, not the older `companySize`/`primaryChallenge`/`timelineUrgency` fields) — corrected in place in the `FoundingPartnerProgram.tsx` page-structure section and the routes table entry.
+
+**Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct script run — see §"health-check workflow quirk" in agent memory for why the workflow-level health-check can spuriously show failures unrelated to code).
