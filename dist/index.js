@@ -9992,7 +9992,6 @@ var init_CredentialEncryptionService = __esm({
       "creds"
     ];
     CredentialEncryptionService = class _CredentialEncryptionService {
-      static instance;
       static getInstance() {
         if (!_CredentialEncryptionService.instance) {
           _CredentialEncryptionService.instance = new _CredentialEncryptionService();
@@ -12396,10 +12395,9 @@ var init_PostgreSQLJobQueue = __esm({
     PostgreSQLJobQueue = class {
       constructor(queueName) {
         this.queueName = queueName;
+        this.workers = /* @__PURE__ */ new Map();
+        this.isProcessing = false;
       }
-      workers = /* @__PURE__ */ new Map();
-      isProcessing = false;
-      processingInterval;
       /**
        * Add a job to the queue
        */
@@ -12595,13 +12593,9 @@ var init_EnterpriseJobService = __esm({
     init_schema();
     logger2 = pino2({ name: "enterprise-job-service" });
     EnterpriseJobService = class _EnterpriseJobService {
-      static instance;
-      analysisQueue;
-      reportsQueue;
-      alertsQueue;
-      isInitialized = false;
-      isScheduled = false;
       constructor() {
+        this.isInitialized = false;
+        this.isScheduled = false;
         this.analysisQueue = new PostgreSQLJobQueue("analysis");
         this.reportsQueue = new PostgreSQLJobQueue("reports");
         this.alertsQueue = new PostgreSQLJobQueue("alerts");
@@ -13001,11 +12995,12 @@ var init_collaboration_service = __esm({
     "use strict";
     logger3 = pino3({ name: "collaboration-service" });
     CollaborationService = class _CollaborationService {
-      static instance;
-      rooms = /* @__PURE__ */ new Map();
-      userConnections = /* @__PURE__ */ new Map();
-      roomConnections = /* @__PURE__ */ new Map();
-      io = null;
+      constructor() {
+        this.rooms = /* @__PURE__ */ new Map();
+        this.userConnections = /* @__PURE__ */ new Map();
+        this.roomConnections = /* @__PURE__ */ new Map();
+        this.io = null;
+      }
       static getInstance() {
         if (!_CollaborationService.instance) {
           _CollaborationService.instance = new _CollaborationService();
@@ -13255,8 +13250,10 @@ var init_WebSocketService = __esm({
     "use strict";
     init_collaboration_service();
     WebSocketService = class {
-      io = null;
-      userConnections = /* @__PURE__ */ new Map();
+      constructor() {
+        this.io = null;
+        this.userConnections = /* @__PURE__ */ new Map();
+      }
       initialize(httpServer) {
         this.io = new SocketIOServer(httpServer, {
           cors: {
@@ -16638,13 +16635,11 @@ var init_OpenAIService = __esm({
     logger5 = pino5({ name: "openai-service" });
     AI_DISABLED = false;
     OpenAIService = class {
-      client;
-      config;
-      isConfigured = false;
-      requestCount = 0;
-      lastResetTime = Date.now();
-      provider = "openai";
       constructor() {
+        this.isConfigured = false;
+        this.requestCount = 0;
+        this.lastResetTime = Date.now();
+        this.provider = "openai";
         this.config = {
           maxRetries: 3,
           retryDelay: 1e3,
@@ -17831,7 +17826,9 @@ var init_ExecutionPlanSyncService = __esm({
     init_EnterpriseJobService();
     init_db();
     JiraAdapter2 = class {
-      platform = "jira";
+      constructor() {
+        this.platform = "jira";
+      }
       async validateCredentials(credentials) {
         if (!credentials.accessToken || !credentials.cloudId) {
           return false;
@@ -18001,7 +17998,9 @@ var init_ExecutionPlanSyncService = __esm({
       }
     };
     AsanaAdapter = class {
-      platform = "asana";
+      constructor() {
+        this.platform = "asana";
+      }
       async validateCredentials(credentials) {
         if (!credentials.accessToken) return false;
         try {
@@ -18108,7 +18107,9 @@ var init_ExecutionPlanSyncService = __esm({
       }
     };
     MondayAdapter = class {
-      platform = "monday";
+      constructor() {
+        this.platform = "monday";
+      }
       async graphqlRequest(credentials, query, variables2) {
         const response = await fetch("https://api.monday.com/v2", {
           method: "POST",
@@ -18187,7 +18188,9 @@ var init_ExecutionPlanSyncService = __esm({
       }
     };
     MSProjectAdapter = class {
-      platform = "ms_project";
+      constructor() {
+        this.platform = "ms_project";
+      }
       async validateCredentials(credentials) {
         if (!credentials.accessToken) return false;
         try {
@@ -18288,7 +18291,9 @@ var init_ExecutionPlanSyncService = __esm({
       }
     };
     ServiceNowAdapter2 = class {
-      platform = "servicenow";
+      constructor() {
+        this.platform = "servicenow";
+      }
       async validateCredentials(credentials) {
         if (!credentials.apiUrl || !credentials.accessToken) return false;
         try {
@@ -18406,7 +18411,6 @@ var init_ExecutionPlanSyncService = __esm({
       }
     };
     ExecutionPlanSyncService = class {
-      adapters;
       constructor() {
         this.adapters = /* @__PURE__ */ new Map([
           ["jira", new JiraAdapter2()],
@@ -19793,7 +19797,9 @@ var init_PreFlightCheckService = __esm({
     init_schema();
     logger6 = pino8({ name: "pre-flight-check-service" });
     PreFlightCheckService = class {
-      log = logger6;
+      constructor() {
+        this.log = logger6;
+      }
       /**
        * Perform comprehensive pre-flight check before activation
        */
@@ -20044,9 +20050,6 @@ var init_ExecutionOrchestrator = __esm({
     init_SlackNotificationService();
     logger7 = pino9({ name: "execution-orchestrator" });
     ExecutionOrchestrator = class {
-      preflightService;
-      syncService;
-      documentEngine;
       constructor() {
         this.preflightService = new PreFlightCheckService();
         this.syncService = new ExecutionPlanSyncService();
@@ -23399,7 +23402,7 @@ async function fetchInternalReadinessSignals(organizationId) {
       id: playbookLibrary2.id,
       name: playbookLibrary2.name,
       updatedAt: playbookLibrary2.updatedAt,
-      domain: playbookLibrary2.domain
+      domain: playbookLibrary2.domainId
     }).from(playbookLibrary2).where(lt3(playbookLibrary2.updatedAt, warnCutoff)).limit(50);
     const criticalStale = staleProtocols.filter(
       (p) => p.updatedAt && new Date(p.updatedAt) < critCutoff
@@ -24137,7 +24140,7 @@ async function fetchFederalRegisterSignals() {
         recallScope: null,
         signalEventType: "regulatory_pipeline",
         metricName: "Days Until Effective",
-        metricValue: article.effective_on ? Math.round((new Date(article.effective_on).getTime() - Date.now()) / 864e5) : null,
+        metricValue: article.effective_on ? Math.round((new Date(article.effective_on).getTime() - Date.now()) / 864e5) : void 0,
         metricThreshold: 90,
         metricUnit: "days"
       });
@@ -24216,7 +24219,7 @@ function extractVendorsFromConfig(cve) {
     }
   } catch {
   }
-  return [...new Set(vendors)].slice(0, 3);
+  return Array.from(new Set(vendors)).slice(0, 3);
 }
 function hasPublicExploit(cve) {
   return (cve.references || []).some(
@@ -24403,8 +24406,8 @@ async function fetchNOAASevereWeather() {
     });
     if (alerts.length === 0) return [];
     const extremeAlerts = alerts.filter((a) => a.properties.severity === "Extreme");
-    const affectedAreas = [...new Set(alerts.map((a) => a.properties.areaDesc.split(";")[0].trim()))].slice(0, 5);
-    const eventTypes = [...new Set(alerts.map((a) => a.properties.event))].slice(0, 4);
+    const affectedAreas = Array.from(new Set(alerts.map((a) => a.properties.areaDesc.split(";")[0].trim()))).slice(0, 5);
+    const eventTypes = Array.from(new Set(alerts.map((a) => a.properties.event))).slice(0, 4);
     const confidence = extremeAlerts.length > 0 ? 83 : 73;
     const impact = extremeAlerts.length >= 3 ? "critical" : extremeAlerts.length >= 1 ? "high" : "medium";
     signals.push({
@@ -24902,7 +24905,7 @@ var init_CFPBComplaintService = __esm({
 
 // server/services/signals/ArXivVelocityService.ts
 function countRecentPapers(xmlText, cutoff) {
-  const entries = [...xmlText.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
+  const entries = Array.from(xmlText.matchAll(/<entry>([\s\S]*?)<\/entry>/g));
   const titles = [];
   let count13 = 0;
   for (const entry of entries) {
@@ -25042,7 +25045,9 @@ var init_SignalSourceRegistry = __esm({
   "server/services/SignalSourceRegistry.ts"() {
     "use strict";
     SignalSourceRegistryClass = class {
-      sources = /* @__PURE__ */ new Map();
+      constructor() {
+        this.sources = /* @__PURE__ */ new Map();
+      }
       register(source) {
         if (!this.sources.has(source.sourceKey)) {
           this.sources.set(source.sourceKey, {
@@ -25111,7 +25116,7 @@ var init_SignalSourceRegistry = __esm({
       status: "active",
       triggersEnabled: ["Financial Distress Signal", "Market Valuation Shift", "Earnings Surprise", "Supply Chain Disruption"],
       requiresApiKey: false,
-      apiKeyEnvVar: void 0,
+      apiKeyEnvVar: null,
       description: "Keyless economic intelligence layer \u2014 CBOE VIX (Yahoo Finance), US Treasury yield curve (10Y-2Y spread), BLS unemployment rate, and HYG-LQD credit spread proxy. Covers market volatility, yield curve inversion, labor market stress, and credit market disruption. No API key required.",
       upgradeNote: null
     });
@@ -25241,7 +25246,7 @@ var init_SignalSourceRegistry = __esm({
       status: "active",
       triggersEnabled: ["Legislation Change", "Regulatory Enforcement Action"],
       requiresApiKey: false,
-      apiKeyEnvVar: void 0,
+      apiKeyEnvVar: null,
       description: "Official US Congress bill tracking with committee status, floor actions, and passage updates. Monitors bills across AI, cybersecurity, privacy, antitrust, supply chain, and financial regulation. 30-180 day advance warning on legislative change. Uses public API access \u2014 no key required.",
       upgradeNote: null
     });
@@ -25835,9 +25840,11 @@ var init_LiveSignalIngestionService = __esm({
       low: ["minor", "small", "incremental", "gradual", "expected"]
     };
     LiveSignalIngestionService = class {
-      isRunning = false;
-      intervalId = null;
-      lastFetchedUrls = /* @__PURE__ */ new Set();
+      constructor() {
+        this.isRunning = false;
+        this.intervalId = null;
+        this.lastFetchedUrls = /* @__PURE__ */ new Set();
+      }
       async fetchFeed(feed, attempt = 1) {
         try {
           const controller = new AbortController();
@@ -26185,7 +26192,7 @@ var init_LiveSignalIngestionService = __esm({
           const demoOrgRows = await db.select({ id: organizations6.id }).from(organizations6).where(inArray9(organizations6.name, DEMO_ORG_NAMES));
           for (const { id } of demoOrgRows) allOrgIds.delete(id);
           console.log(`   \u{1F4E1} Multi-org evaluation: ${allOrgIds.size} additional org(s) to evaluate`);
-          for (const orgId of allOrgIds) {
+          for (const orgId of Array.from(allOrgIds)) {
             try {
               const extraDetections = await evaluateAndPersistSignals(signals, orgId);
               console.log(`   \u{1F3E2} Org ${orgId}: ${extraDetections} trigger detection(s)`);
@@ -27817,10 +27824,10 @@ var init_NotificationManager = __esm({
     init_WebSocketService();
     RESEND_FROM = "Readiness OS <pilot@vaughnmartin.com>";
     NotificationManager = class {
-      stakeholders = /* @__PURE__ */ new Map();
-      channels = /* @__PURE__ */ new Map();
-      notificationRules = /* @__PURE__ */ new Map();
       constructor() {
+        this.stakeholders = /* @__PURE__ */ new Map();
+        this.channels = /* @__PURE__ */ new Map();
+        this.notificationRules = /* @__PURE__ */ new Map();
         this.initializeDefaultChannels();
         this.loadExecutiveContacts();
       }
@@ -30303,8 +30310,8 @@ var init_NotificationService = __esm({
     init_db();
     init_schema();
     NotificationService = class {
-      resend = null;
       constructor() {
+        this.resend = null;
         this.initializeResend();
       }
       initializeResend() {
@@ -30794,7 +30801,9 @@ var init_ComplianceCheckService = __esm({
     init_schema();
     logger9 = pino12({ name: "compliance-check-service" });
     ComplianceCheckService = class {
-      log = logger9;
+      constructor() {
+        this.log = logger9;
+      }
       /**
        * Check compliance before playbook activation
        */
@@ -30995,9 +31004,11 @@ var init_ApprovalTokenService = __esm({
     init_schema();
     logger10 = pino13({ name: "approval-token-service" });
     ApprovalTokenService = class {
-      log = logger10;
-      // Token expires in 72 hours by default
-      DEFAULT_EXPIRY_HOURS = 72;
+      constructor() {
+        this.log = logger10;
+        // Token expires in 72 hours by default
+        this.DEFAULT_EXPIRY_HOURS = 72;
+      }
       /**
        * Generate approval token for email notification
        */
@@ -31369,9 +31380,11 @@ var init_BackgroundJobService = __esm({
     init_PlaybookLearningService();
     logger11 = pino14({ name: "background-job-service" });
     BackgroundJobService = class {
-      log = logger11;
-      isProcessing = false;
-      processingInterval = null;
+      constructor() {
+        this.log = logger11;
+        this.isProcessing = false;
+        this.processingInterval = null;
+      }
       /**
        * Queue a background job
        */
@@ -31544,9 +31557,11 @@ var init_DataIntegrationManager = __esm({
   "server/integrations/DataIntegrationManager.ts"() {
     "use strict";
     DataIntegrationManager = class {
-      dataSources = /* @__PURE__ */ new Map();
-      triggerMappings = /* @__PURE__ */ new Map();
-      activeConnections = /* @__PURE__ */ new Map();
+      constructor() {
+        this.dataSources = /* @__PURE__ */ new Map();
+        this.triggerMappings = /* @__PURE__ */ new Map();
+        this.activeConnections = /* @__PURE__ */ new Map();
+      }
       /**
        * Register external data sources for real-time monitoring
        */
@@ -34588,12 +34603,14 @@ var init_SignalLearningService = __esm({
           console.error("[SignalLearning] IndustryProfileUpdateJob error:", err);
         }
       }
-      // ── Schedule all recurring learning jobs ───────────────────────────────────
-      // NOTE: Node.js setInterval overflows for values > ~2.1 billion ms (24.8 days).
-      // 30-day and 90-day intervals were causing constant firing (integer overflow → fires immediately).
-      // Monthly/quarterly jobs are now triggered manually via admin API or after Founding Partner activations.
-      // Domain learning (weekly = 604,800,000 ms) is safe and runs automatically.
-      static scheduledOnce = false;
+      static {
+        // ── Schedule all recurring learning jobs ───────────────────────────────────
+        // NOTE: Node.js setInterval overflows for values > ~2.1 billion ms (24.8 days).
+        // 30-day and 90-day intervals were causing constant firing (integer overflow → fires immediately).
+        // Monthly/quarterly jobs are now triggered manually via admin API or after Founding Partner activations.
+        // Domain learning (weekly = 604,800,000 ms) is safe and runs automatically.
+        this.scheduledOnce = false;
+      }
       scheduleRecurringJobs() {
         if (_SignalLearningService.scheduledOnce) {
           console.log("[SignalLearning] Recurring jobs already scheduled \u2014 skipping duplicate call");
@@ -41854,7 +41871,7 @@ function stakeholderOverlapScore(domainA, domainB) {
   const setA = new Set(DOMAIN_STAKEHOLDERS[domainA] ?? []);
   const setB = new Set(DOMAIN_STAKEHOLDERS[domainB] ?? []);
   let overlap = 0;
-  for (const s of setA) {
+  for (const s of Array.from(setA)) {
     if (setB.has(s)) overlap++;
   }
   const maxSize = Math.max(setA.size, setB.size);
@@ -42187,10 +42204,12 @@ var init_Microsoft365SignalService = __esm({
       "critical"
     ];
     Microsoft365SignalService = class {
-      config = null;
-      accessToken = null;
-      tokenExpiry = null;
-      connectorId = null;
+      constructor() {
+        this.config = null;
+        this.accessToken = null;
+        this.tokenExpiry = null;
+        this.connectorId = null;
+      }
       configure(config, connectorId) {
         this.config = config;
         this.connectorId = connectorId || null;
@@ -42377,8 +42396,10 @@ var init_Microsoft365SignalService = __esm({
       }
     };
     SalesforceSignalService = class {
-      configured = false;
-      instanceUrl = null;
+      constructor() {
+        this.configured = false;
+        this.instanceUrl = null;
+      }
       configure(instanceUrl, _accessToken) {
         this.instanceUrl = instanceUrl;
         this.configured = true;
@@ -42394,7 +42415,9 @@ var init_Microsoft365SignalService = __esm({
       }
     };
     ERPSignalService = class {
-      pendingSignals = [];
+      constructor() {
+        this.pendingSignals = [];
+      }
       receiveWebhookPush(payload) {
         const signals = [];
         try {
@@ -43655,6 +43678,7 @@ import * as Sentry from "@sentry/node";
 import express2 from "express";
 import { createServer as createServer2 } from "http";
 import path2 from "path";
+import fs2 from "fs";
 
 // server/routes.ts
 import { createServer } from "http";
@@ -43797,40 +43821,42 @@ init_WebSocketService();
 // server/services/DemoOrchestrationService.ts
 init_WebSocketService();
 var DemoOrchestrationService = class {
-  activeDemo = null;
-  // Pre-defined demo stakeholders with realistic names and roles
-  DEMO_STAKEHOLDERS = [
-    { name: "Sarah Chen", role: "Chief Financial Officer" },
-    { name: "Marcus Johnson", role: "Chief Technology Officer" },
-    { name: "Elena Rodriguez", role: "Chief Operating Officer" },
-    { name: "David Kim", role: "Chief Information Security Officer" },
-    { name: "Jennifer Taylor", role: "Chief Legal Officer" },
-    { name: "Michael Brown", role: "Chief Marketing Officer" },
-    { name: "Lisa Wang", role: "Chief Human Resources Officer" },
-    { name: "James Wilson", role: "VP of Engineering" },
-    { name: "Amanda Garcia", role: "VP of Sales" },
-    { name: "Robert Martinez", role: "VP of Product" },
-    { name: "Emily Anderson", role: "VP of Customer Success" },
-    { name: "Christopher Lee", role: "VP of Finance" },
-    { name: "Jessica Thompson", role: "VP of Operations" },
-    { name: "Daniel White", role: "VP of Security" },
-    { name: "Michelle Harris", role: "VP of Compliance" },
-    { name: "Kevin Clark", role: "Director of IT" },
-    { name: "Ashley Lewis", role: "Director of Risk Management" },
-    { name: "Brian Walker", role: "Director of Communications" },
-    { name: "Nicole Hall", role: "Director of Legal Affairs" },
-    { name: "Ryan Allen", role: "Director of Business Development" },
-    { name: "Sophia Young", role: "Director of Analytics" },
-    { name: "Justin King", role: "Director of Infrastructure" },
-    { name: "Rachel Wright", role: "Director of Strategy" },
-    { name: "Brandon Scott", role: "Director of Supply Chain" },
-    { name: "Victoria Green", role: "Director of Customer Experience" },
-    { name: "Gregory Adams", role: "Director of Data Science" },
-    { name: "Samantha Baker", role: "Director of Enterprise Systems" },
-    { name: "Patrick Nelson", role: "Director of Security Operations" },
-    { name: "Laura Carter", role: "Director of Quality Assurance" },
-    { name: "Timothy Mitchell", role: "Director of Program Management" }
-  ];
+  constructor() {
+    this.activeDemo = null;
+    // Pre-defined demo stakeholders with realistic names and roles
+    this.DEMO_STAKEHOLDERS = [
+      { name: "Sarah Chen", role: "Chief Financial Officer" },
+      { name: "Marcus Johnson", role: "Chief Technology Officer" },
+      { name: "Elena Rodriguez", role: "Chief Operating Officer" },
+      { name: "David Kim", role: "Chief Information Security Officer" },
+      { name: "Jennifer Taylor", role: "Chief Legal Officer" },
+      { name: "Michael Brown", role: "Chief Marketing Officer" },
+      { name: "Lisa Wang", role: "Chief Human Resources Officer" },
+      { name: "James Wilson", role: "VP of Engineering" },
+      { name: "Amanda Garcia", role: "VP of Sales" },
+      { name: "Robert Martinez", role: "VP of Product" },
+      { name: "Emily Anderson", role: "VP of Customer Success" },
+      { name: "Christopher Lee", role: "VP of Finance" },
+      { name: "Jessica Thompson", role: "VP of Operations" },
+      { name: "Daniel White", role: "VP of Security" },
+      { name: "Michelle Harris", role: "VP of Compliance" },
+      { name: "Kevin Clark", role: "Director of IT" },
+      { name: "Ashley Lewis", role: "Director of Risk Management" },
+      { name: "Brian Walker", role: "Director of Communications" },
+      { name: "Nicole Hall", role: "Director of Legal Affairs" },
+      { name: "Ryan Allen", role: "Director of Business Development" },
+      { name: "Sophia Young", role: "Director of Analytics" },
+      { name: "Justin King", role: "Director of Infrastructure" },
+      { name: "Rachel Wright", role: "Director of Strategy" },
+      { name: "Brandon Scott", role: "Director of Supply Chain" },
+      { name: "Victoria Green", role: "Director of Customer Experience" },
+      { name: "Gregory Adams", role: "Director of Data Science" },
+      { name: "Samantha Baker", role: "Director of Enterprise Systems" },
+      { name: "Patrick Nelson", role: "Director of Security Operations" },
+      { name: "Laura Carter", role: "Director of Quality Assurance" },
+      { name: "Timothy Mitchell", role: "Director of Program Management" }
+    ];
+  }
   /**
    * Start a demo activation with simulated stakeholder acknowledgments
    */
@@ -44012,7 +44038,6 @@ function getOpenAI() {
 }
 var pool2 = new Pool2({ connectionString: process.env.DATABASE_URL });
 var NaturalLanguageQueryService = class _NaturalLanguageQueryService {
-  static instance;
   static getInstance() {
     if (!_NaturalLanguageQueryService.instance) {
       _NaturalLanguageQueryService.instance = new _NaturalLanguageQueryService();
@@ -45584,7 +45609,9 @@ import { eq as eq7, and as and6 } from "drizzle-orm";
 
 // server/services/integrations/adapters/JiraAdapter.ts
 var JiraAdapter = class {
-  vendor = "jira";
+  constructor() {
+    this.vendor = "jira";
+  }
   async createTask(payload, config) {
     const cloudId = config.config.cloudId;
     if (!cloudId) {
@@ -45688,7 +45715,9 @@ var JiraAdapter = class {
 
 // server/services/integrations/adapters/SlackAdapter.ts
 var SlackAdapter = class {
-  vendor = "slack";
+  constructor() {
+    this.vendor = "slack";
+  }
   async createTask(payload, config) {
     return this.sendNotification({
       title: `Task: ${payload.title}`,
@@ -45782,7 +45811,9 @@ var SlackAdapter = class {
 
 // server/services/integrations/adapters/SalesforceAdapter.ts
 var SalesforceAdapter = class {
-  vendor = "salesforce";
+  constructor() {
+    this.vendor = "salesforce";
+  }
   async createTask(payload, config) {
     const instanceUrl = config.config.instanceUrl;
     if (!instanceUrl) {
@@ -45892,7 +45923,9 @@ var SalesforceAdapter = class {
 
 // server/services/integrations/adapters/ServiceNowAdapter.ts
 var ServiceNowAdapter = class {
-  vendor = "servicenow";
+  constructor() {
+    this.vendor = "servicenow";
+  }
   getBaseUrl(instanceUrl) {
     return instanceUrl.endsWith("/") ? instanceUrl.slice(0, -1) : instanceUrl;
   }
@@ -46014,8 +46047,8 @@ var ServiceNowAdapter = class {
 
 // server/services/LiveIntegrationDispatcher.ts
 var LiveIntegrationDispatcher = class {
-  adapters = /* @__PURE__ */ new Map();
   constructor() {
+    this.adapters = /* @__PURE__ */ new Map();
     this.registerAdapter(new JiraAdapter());
     this.registerAdapter(new SlackAdapter());
     this.registerAdapter(new SalesforceAdapter());
@@ -46185,8 +46218,8 @@ var liveIntegrationDispatcher = new LiveIntegrationDispatcher();
 
 // server/services/MockSalesforceService.ts
 var MockSalesforceService = class {
-  opportunities = [];
   constructor() {
+    this.opportunities = [];
     this.initializeMockData();
   }
   initializeMockData() {
@@ -46387,12 +46420,11 @@ var mockSalesforce = new MockSalesforceService();
 
 // server/services/TriggerDetectionService.ts
 var TriggerDetectionService = class {
-  salesforceService;
-  monitoring = false;
-  monitoringInterval = null;
-  currentAlerts = /* @__PURE__ */ new Map();
-  alertCallbacks = [];
   constructor() {
+    this.monitoring = false;
+    this.monitoringInterval = null;
+    this.currentAlerts = /* @__PURE__ */ new Map();
+    this.alertCallbacks = [];
     this.salesforceService = mockSalesforce;
   }
   onAlert(callback) {
@@ -47933,8 +47965,10 @@ function randomFloat(min, max) {
   return Math.random() * (max - min) + min;
 }
 var LiveActivationService = class {
-  activations = /* @__PURE__ */ new Map();
-  timers = /* @__PURE__ */ new Map();
+  constructor() {
+    this.activations = /* @__PURE__ */ new Map();
+    this.timers = /* @__PURE__ */ new Map();
+  }
   getPlaybookConfigs() {
     const result = {};
     for (const [key, config] of Object.entries(DEMO_PLAYBOOKS)) {
@@ -51896,7 +51930,7 @@ function registerAdminRoutes(app2) {
         postText: generateLinkedInPost2({
           id: d.id,
           triggerName: d.triggerName,
-          triggerDomain: d.triggerDomain,
+          triggerDomain: d.triggerDomain ?? "",
           signalDescription: d.signalDescription,
           confidenceScore: d.confidenceScore,
           recommendedPlaybook: d.recommendedPlaybook,
@@ -53995,7 +54029,7 @@ function registerMagicLinkRoutes(app2) {
   });
   app2.get("/api/founding-partner/stats", async (_req, res) => {
     try {
-      const TOTAL_SEATS = 12;
+      const TOTAL_SEATS = 2;
       const [row] = await db.select({ filled: count4() }).from(foundingPartnerApplications).where(eq25(foundingPartnerApplications.status, "accepted"));
       const filled = Number(row?.filled ?? 0);
       res.json({ total: TOTAL_SEATS, filled, remaining: Math.max(0, TOTAL_SEATS - filled) });
@@ -54636,10 +54670,9 @@ async function speechToText(audioBuffer, format = "wav") {
   return response.text;
 }
 var SentenceParser = class {
-  buffer = "";
-  seq = 0;
-  segmenter;
   constructor(locale = "en") {
+    this.buffer = "";
+    this.seq = 0;
     this.segmenter = new Intl.Segmenter(locale, { granularity: "sentence" });
   }
   /**
@@ -54967,6 +55000,8 @@ var PUBLIC_ROUTES = [
   "/api/situation-scanner/lead",
   "/api/roi-calculator/email-report",
   // Marketing & Demo Routes - allow prospects to view content
+  "/api/video/demo",
+  // Full demo video — public streaming, no auth required
   "/api/tts",
   // Text-to-speech for founder story narration
   "/api/scenario-templates",
@@ -66559,6 +66594,47 @@ app.use("/videos", (req, res, next) => {
   acceptRanges: true,
   maxAge: "1h"
 }));
+app.get("/api/video/demo", (req, res) => {
+  const candidates = [
+    path2.join(process.cwd(), "client/public/videos", "readiness-os-demo.mp4"),
+    path2.join(process.cwd(), "dist/public/videos", "readiness-os-demo.mp4"),
+    path2.join(process.cwd(), "dist/videos", "readiness-os-demo.mp4"),
+    path2.join(process.cwd(), "dist/public", "readiness-os-demo.mp4")
+  ];
+  const videoPath = candidates.find((p) => fs2.existsSync(p));
+  if (!videoPath) {
+    console.error("[video] File not found. Tried:", candidates.map((p) => `${p} (${fs2.existsSync(p) ? "EXISTS" : "MISSING"})`).join(", "));
+    res.status(404).json({ error: "Video not found", tried: candidates });
+    return;
+  }
+  console.log("[video] Serving from:", videoPath);
+  const stat = fs2.statSync(videoPath);
+  const fileSize = stat.size;
+  const range = req.headers.range;
+  if (range) {
+    const parts = range.replace(/bytes=/, "").split("-");
+    const start = parseInt(parts[0], 10);
+    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    const chunkSize = end - start + 1;
+    const stream = fs2.createReadStream(videoPath, { start, end });
+    res.writeHead(206, {
+      "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+      "Accept-Ranges": "bytes",
+      "Content-Length": chunkSize,
+      "Content-Type": "video/mp4",
+      "Cache-Control": "public, max-age=3600"
+    });
+    stream.pipe(res);
+  } else {
+    res.writeHead(200, {
+      "Content-Length": fileSize,
+      "Content-Type": "video/mp4",
+      "Accept-Ranges": "bytes",
+      "Cache-Control": "public, max-age=3600"
+    });
+    fs2.createReadStream(videoPath).pipe(res);
+  }
+});
 app.get("/pitch-deck.html", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache");
   res.sendFile(path2.resolve("client/public/pitch-deck.html"));
