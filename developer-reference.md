@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: July 9, 2026 (§76 — Founding Partner Program eligibility broadening) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: July 9, 2026 (§77 — Homepage category-clarity + mobilization-gap linking pass) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -3941,6 +3941,10 @@ These were console errors, not visible rendering bugs — but they appear in pro
 
 **Replay button:** Top-right "↺ Replay" resets all state and reruns `runSim()`.
 
+**Category-defining line (added July 9, 2026, §77):** Header now leads with "Every enterprise already owns execution tools. **Nobody owns the mobilization layer.**" (Cormorant Garamond, gold emphasis on the second sentence) — previously this line only existed on `InvestorLanding.tsx`. The old mechanic-description copy ("Watch a strategic situation unfold...") is now demoted to a smaller secondary line beneath it. This directly answers external reviewer feedback that the platform's strongest positioning line was under-leveraged on the homepage.
+
+**Mobilization Gap links (added July 9, 2026, §77):** Two new links to `/mobilization-gap` ("The 12-Gap Matrix" page) were added — one next to the "↺ Replay" button in the header, and one in the phase-2 "RESULT" strip (shown only when `phase === 2`, labeled "See all 12 Mobilization Gaps →"). Previously the "Mobilization Gap" concept was named on this page but never linked to the dedicated page that explains it — the page existed and was `featured: true` in `StandardNav`, but only reachable from the mega-menu.
+
 **Messaging compliance:**
 - "3,600× Execution Head Start" — canonical framing (never "speed advantage")
 - "30 days" → "12 minutes" — locked comparison
@@ -4743,3 +4747,17 @@ Session-based audit of `/founding-partner-program` (`FoundingPartnerProgram.tsx`
 6. **Application form fields are stale in prior doc sections above** (see §60 area — `firstName`/`lastName`/`email`/`company`/`title`/`triggerDomain`/`message`, not the older `companySize`/`primaryChallenge`/`timelineUrgency` fields) — corrected in place in the `FoundingPartnerProgram.tsx` page-structure section and the routes table entry.
 
 **Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct script run — see §"health-check workflow quirk" in agent memory for why the workflow-level health-check can spuriously show failures unrelated to code).
+
+---
+
+## 77. Homepage Category-Clarity + Mobilization-Gap Linking Pass — July 9, 2026
+
+Surgical response to external investor/reviewer feedback (8.5/10 score; category-risk concerns; feature overload; explicit praise for the "12 Mobilization Gaps" concept). Scope was deliberately confined to `Homepage.tsx` only — no changes to `MobilizationGap.tsx`, `MobilizationTax.tsx`, section ordering, or the mega-menu, per architect review.
+
+1. **RealityGapSimulator now links to `/mobilization-gap`.** See §62b for full detail — added the category-defining line ("Every enterprise already owns execution tools. Nobody owns the mobilization layer.") to the section header, plus two new links to the dedicated 12-Gap Matrix page (header + phase-2 result strip). This was previously a dead-end concept mention with no path to the page that explains it.
+2. **ScenarioCardsRow header reframed toward "pick one."** Changed from a generic scenario-browsing prompt to "Which situation is on your desk right now? Pick one — see the full 12-minute response." — directly addresses reviewer feedback that the platform felt like feature overload; steers first-time visitors to commit to a single situation instead of browsing all of them.
+3. **EngagementBridge path 02 CTA reworded.** "Browse All Scenarios →" → "Start with your one situation →" (href unchanged, still routes to `/demo-hub`) — same "pick one" reframe applied to the mid-page conversion path.
+4. **Meta description trimmed.** Removed "248+ data points" from the homepage `<meta name="description">` tag to reduce number repetition reviewers flagged as overwhelming. This does NOT affect the `248+` count anywhere else (ExecutionGapDiagram bottom bar, developer-reference §1, etc. — those are unchanged and still canonical).
+5. **Bug fix found during this pass — FoundingPartnerCloseSection stale seat count.** This section had hardcoded "12 total seats / 4 in review / 8 remaining" — a leftover from before the §76 seat-count sweep (12 → 2), which had not touched `Homepage.tsx`. Rewired to `useQuery(['/api/founding-partner/stats'])`, the same live-data pattern used in `FoundingPartnerProgram.tsx`. Confirmed via the endpoint response (`{"total":2,"filled":0,"remaining":2}`) that it now renders the correct "Applications open now" state. Also added one sentence to the section intro: "Most partners start by mobilizing their single highest-exposure situation, then expand once it's proven." — reinforces the "pick one" narrative at the bottom-of-page conversion point.
+
+**Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct script run), homepage and `/mobilization-gap` both return HTTP 200, `/api/founding-partner/stats` confirmed live.

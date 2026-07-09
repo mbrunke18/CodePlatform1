@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { updatePageMetadata } from "@/lib/seo";
 import { FirstVisitAdModal } from "@/components/FirstVisitAdModal";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
@@ -895,16 +896,25 @@ function RealityGapSimulator() {
                 <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: TEAL }}>LIVE SIMULATION</span>
               </div>
             </div>
-            <p style={{ ...BC, fontSize: 15, color: "rgba(255,255,255,0.72)", letterSpacing: "0.01em", margin: 0 }}>
-              Watch a strategic situation unfold. <span style={{ color: "rgba(255,255,255,0.48)" }}>The left panel shows the old model. The right shows Readiness OS. Runs automatically.</span>
+            <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,2vw,23px)", fontWeight: 600, color: "#F0EDE4", lineHeight: 1.3, marginBottom: 10, maxWidth: 640 }}>
+              Every enterprise already owns execution tools.{" "}
+              <em style={{ color: GOLD, fontStyle: "normal" }}>Nobody owns the mobilization layer.</em>
+            </div>
+            <p style={{ ...BC, fontSize: 13, color: "rgba(255,255,255,0.5)", letterSpacing: "0.01em", margin: 0 }}>
+              Watch a strategic situation unfold — left panel shows the old model, right shows Readiness OS. Runs automatically.
             </p>
           </div>
-          <button
-            onClick={runSim}
-            style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, padding: "7px 18px", background: "transparent", border: "1px solid rgba(255,255,255,0.28)", color: "rgba(255,255,255,0.62)", cursor: "pointer", flexShrink: 0, marginTop: 4 }}
-          >
-            ↺ Replay
-          </button>
+          <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-end", gap: 10, flexShrink: 0, marginTop: 4 }}>
+            <button
+              onClick={runSim}
+              style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, padding: "7px 18px", background: "transparent", border: "1px solid rgba(255,255,255,0.28)", color: "rgba(255,255,255,0.62)", cursor: "pointer" }}
+            >
+              ↺ Replay
+            </button>
+            <Link href="/mobilization-gap" style={{ ...BC, fontSize: 11, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap" as const }}>
+              Explore the 12 Mobilization Gaps →
+            </Link>
+          </div>
         </div>
 
         {/* Progress bar */}
@@ -1080,21 +1090,28 @@ function RealityGapSimulator() {
               <div style={{ ...BC, fontSize: 9, letterSpacing: "0.16em", color: "rgba(255,255,255,0.38)", textTransform: "uppercase" as const, marginTop: 2 }}>Execution Head Start</div>
             </div>
           </div>
-          <a
-            href="/founding-partner-program"
-            style={{
-              ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const,
-              padding: "12px 24px",
-              background: phase === 2 ? GOLD : "transparent",
-              color: phase === 2 ? NAVY : "rgba(255,255,255,0.45)",
-              textDecoration: "none",
-              border: `1px solid ${phase === 2 ? GOLD : "rgba(255,255,255,0.2)"}`,
-              transition: "all 0.6s ease",
-              display: "inline-block", whiteSpace: "nowrap" as const,
-            }}
-          >
-            {phase === 2 ? "Make This Real →" : "Apply for Founding Partner Access →"}
-          </a>
+          <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-end", gap: 8 }}>
+            <a
+              href="/founding-partner-program"
+              style={{
+                ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const,
+                padding: "12px 24px",
+                background: phase === 2 ? GOLD : "transparent",
+                color: phase === 2 ? NAVY : "rgba(255,255,255,0.45)",
+                textDecoration: "none",
+                border: `1px solid ${phase === 2 ? GOLD : "rgba(255,255,255,0.2)"}`,
+                transition: "all 0.6s ease",
+                display: "inline-block", whiteSpace: "nowrap" as const,
+              }}
+            >
+              {phase === 2 ? "Make This Real →" : "Apply for Founding Partner Access →"}
+            </a>
+            {phase === 2 && (
+              <Link href="/mobilization-gap" style={{ ...BC, fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.5)", textDecoration: "none", letterSpacing: "0.04em" }}>
+                See all 12 Mobilization Gaps →
+              </Link>
+            )}
+          </div>
         </div>
 
       </div>
@@ -1166,7 +1183,7 @@ function ScenarioCardsRow() {
               Growth · Risk · Transformation — not just crisis
             </div>
             <div style={{ ...GEO, fontSize: "clamp(18px,2vw,24px)", fontWeight: 700, color: "#fff", lineHeight: 1.25 }}>
-              This isn't a crisis tool. It's the missing layer for every strategic situation your company will face.
+              Which situation is on your desk right now? Pick one — see the full 12-minute response.
             </div>
           </div>
           <Link href="/demo-hub" style={{ ...DM, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.38)", textDecoration: "none", letterSpacing: "0.06em", whiteSpace: "nowrap" as const, flexShrink: 0 }}>
@@ -2034,7 +2051,7 @@ function EngagementBridge() {
                 step: "02",
                 label: "See your specific situation",
                 sub: "Have a scenario in mind? Ransomware, activist investor, supply chain, regulatory deadline — see the protocol that handles it.",
-                cta: "Browse All Scenarios →",
+                cta: "Start with your one situation →",
                 href: "/demo-hub",
                 accentColor: TEAL,
                 bg: "rgba(43,138,110,0.03)",
@@ -2176,6 +2193,14 @@ function GuidedEvaluationPath() {
 
 // ─── FOUNDING PARTNER CLOSE ───────────────────────────────────────────────────
 function FoundingPartnerCloseSection() {
+  const { data: partnerStats } = useQuery<{ total: number; filled: number; remaining: number }>({
+    queryKey: ['/api/founding-partner/stats'],
+    staleTime: 60_000,
+  });
+  const seatTotal = partnerStats?.total ?? 2;
+  const seatFilled = partnerStats?.filled ?? 0;
+  const seatRemaining = partnerStats?.remaining ?? seatTotal;
+  const seatFilledPct = seatTotal > 0 ? Math.round((seatFilled / seatTotal) * 100) : 0;
   return (
     <section id="hp-cta" style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "80px 0 72px" }}>
       <div style={{ ...CONTAINER }}>
@@ -2191,7 +2216,7 @@ function FoundingPartnerCloseSection() {
               <span style={{ color: GOLD }}>Not a Trial. Not a Demo.</span>
             </h2>
             <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, margin: 0, maxWidth: 500 }}>
-              Founding Partners work directly with VaughnMartin to configure Readiness OS against their actual situation library — then operate it live for 90 days with full executive support. The outcome is a measured, documented readiness baseline your board can see.
+              Founding Partners work directly with VaughnMartin to configure Readiness OS against their actual situation library — then operate it live for 90 days with full executive support. The outcome is a measured, documented readiness baseline your board can see. Most partners start by mobilizing their single highest-exposure situation, then expand once it's proven.
             </p>
           </div>
           {/* Urgency signal */}
@@ -2201,14 +2226,16 @@ function FoundingPartnerCloseSection() {
             {/* Seat progress bar */}
             <div style={{ marginBottom: 16 }}>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 6 }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1 }}>12</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{seatTotal}</div>
                 <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.45)" }}>total seats</div>
               </div>
               <div style={{ height: 3, background: "rgba(255,255,255,0.08)", marginBottom: 8 }}>
-                <div style={{ height: 3, width: "33%", background: GOLD }} />
+                <div style={{ height: 3, width: `${seatFilledPct}%`, background: GOLD }} />
               </div>
               <div style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.5)" }}>
-                <span style={{ color: GOLD, fontWeight: 700 }}>4 seats in review</span> · 8 remaining
+                {seatFilled > 0
+                  ? <><span style={{ color: GOLD, fontWeight: 700 }}>{seatFilled} of {seatTotal} filled</span> · {seatRemaining} remaining</>
+                  : <span style={{ color: GOLD, fontWeight: 700 }}>Applications open now</span>}
               </div>
             </div>
 
@@ -2341,7 +2368,7 @@ export default function Homepage() {
   useEffect(() => {
     updatePageMetadata({
       title: "VaughnMartin | Readiness OS — Enterprise Readiness Infrastructure",
-      description: "Readiness OS gives startup to Fortune 500 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 180 Readiness Protocols, 248+ data points, zero improvisation.",
+      description: "Readiness OS gives startup to Fortune 500 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 180 Readiness Protocols. Zero improvisation.",
       ogTitle: "VaughnMartin Readiness OS — End-to-End Organizational Advantage",
       ogDescription: "The response is ready before the trigger fires. Map · Monitor · Decide · Execute · Learn — the complete operating architecture for startup to Fortune 500 execution. 3,600× Execution Head Start.",
     });
