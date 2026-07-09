@@ -853,7 +853,7 @@ export default function TierComparisonDemo() {
             Ready to start with Core?
           </div>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", marginBottom: 28, lineHeight: 1.7 }}>
-            Core is fully operational and demonstrable today. One activation pays for the annual subscription. The Founding Partner Program is open to 12 organizations — yours gets full configuration, protocol customization, and a dedicated go-live path.
+            Core is fully operational and demonstrable today. One activation pays for the annual subscription. The 2026 Founding Partner Program cohort is open to 2 organizations — yours gets full configuration, protocol customization, and a dedicated go-live path.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <button

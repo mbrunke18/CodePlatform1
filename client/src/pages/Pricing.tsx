@@ -512,7 +512,7 @@ export default function Pricing() {
           >
             <div style={{ flex: 1, minWidth: 260 }}>
               <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase", color: TEAL, marginBottom: 8, ...BC }}>
-                Founding Partner Program · Limited to 12 Seats
+                Founding Partner Program · 2026 Cohort · Limited to 2 Seats
               </div>
               <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY, marginBottom: 6, lineHeight: 1.2 }}>
                 Start with a 90-Day Validation Partnership

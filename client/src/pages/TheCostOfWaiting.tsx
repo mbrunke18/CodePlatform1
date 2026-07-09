@@ -626,7 +626,7 @@ export default function TheCostOfWaiting() {
             <em style={{ color: GOLD }}>The cost of Readiness OS is fixed.</em>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, lineHeight: 1.75, marginBottom: 40, maxWidth: 520, margin: '0 auto 40px' }}>
-            12 seats. 90-day validated partnership. $75K — 100% credited at close.
+            2 seats. 90-day validated partnership. $75K — 100% credited at close.
             One situation during your evaluation costs more than three years of membership.
           </p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -641,7 +641,7 @@ export default function TheCostOfWaiting() {
           </div>
 
           <div style={{ marginTop: 40, paddingTop: 32, borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }}>
-            {['12 Founding Partner seats', '90-day validated partnership', 'Direct founder involvement', '$75K · 100% credited at close'].map(s => (
+            {['2 Founding Partner seats', '90-day validated partnership', 'Direct founder involvement', '$75K · 100% credited at close'].map(s => (
               <div key={s} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <CheckCircle style={{ width: 13, height: 13, color: TEAL, flexShrink: 0 }} />
                 <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: 12 }}>{s}</span>

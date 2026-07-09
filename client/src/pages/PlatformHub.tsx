@@ -475,7 +475,7 @@ export default function PlatformHub() {
         {/* ── BOTTOM CTA BAR ── */}
         <div style={{ marginTop: 16, background: NAVY, backgroundImage: "radial-gradient(ellipse at 85% 50%, rgba(201,168,76,0.08) 0%, transparent 55%)", padding: "22px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap", borderTop: `3px solid ${GOLD}` }}>
           <div>
-            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Founding Partner Program · 12 Seats</div>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Founding Partner Program · 2026 Cohort · 2 Seats</div>
             <div style={{ ...SERIF, fontSize: 22, fontWeight: 700, color: "#fff", lineHeight: 1 }}>Ready to close the 30-day gap?</div>
             <div style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>90-day validation partnership · First activation in 30 days · Executive authority preserved</div>
           </div>

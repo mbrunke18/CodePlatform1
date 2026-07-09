@@ -106,7 +106,7 @@ const STRUCTURE = [
 const FAQS = [
   {
     q: "How many Founding Partners are you accepting?",
-    a: "We are accepting a maximum of 12 Founding Partners in the first cohort. This limit is deliberate — each organization receives a dedicated VaughnMartin contact throughout the 90 days, and we cannot maintain that standard at scale.",
+    a: "We are accepting a maximum of 2 Founding Partners in the 2026 cohort. This limit is deliberate — each organization receives a dedicated VaughnMartin contact throughout the 90 days, and we cannot maintain that standard at scale. Future cohorts will open as capacity allows.",
   },
   {
     q: "What happens if a real trigger fires during the 90 days?",
@@ -154,7 +154,7 @@ export default function FoundingPartnerPage() {
         {/* Hero */}
         <div style={{ marginBottom: 64, textAlign: 'center' }}>
           <div style={{ display: 'inline-block', padding: '6px 16px', background: 'rgba(201,168,76,0.1)', border: `1px solid rgba(201,168,76,0.35)`, borderRadius: '0.15rem', ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, marginBottom: 20 }}>
-            Founding Partner Program · Cohort 1 · 12 Organizations Maximum
+            Founding Partner Program · 2026 Cohort · 2 Organizations Maximum
           </div>
           <h1 style={{ ...CG, fontSize: 56, fontWeight: 700, color: NAVY, lineHeight: 1.08, marginBottom: 24 }}>
             A partnership,<br />not a purchase.

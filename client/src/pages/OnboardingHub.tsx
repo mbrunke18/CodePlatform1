@@ -349,7 +349,7 @@ export default function OnboardingHub() {
           <SectionLabel text="Ready to Begin?" />
           <h2 style={{ ...SERIF, fontSize: 36, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Your first activation in 30 days.</h2>
           <p style={{ ...DM, fontSize: 14, color: MUTED, lineHeight: 1.65, marginBottom: 32, maxWidth: 440, marginLeft: "auto", marginRight: "auto" }}>
-            12 Founding Partner seats. 90-day validation partnership. Full team onboarding support included.
+            2 Founding Partner seats in the 2026 cohort. 90-day validation partnership. Full team onboarding support included.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/getting-started" style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontWeight: 800, fontSize: 13, padding: "14px 28px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" }}>

@@ -157,11 +157,11 @@ export default function RequestAccess() {
           <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ width: 28, height: 1.5, background: GOLD, marginBottom: 14 }} />
             <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
-              Founding Partner Program · 12 Seats
+              Founding Partner Program · 2026 Cohort · 2 Seats
             </p>
 
             <h2 style={{ ...CG, fontSize: 34, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 16 }}>
-              The first 12 get what<br />
+              The first 2 get what<br />
               <em style={{ color: GOLD }}>no one can buy later.</em>
             </h2>
 
