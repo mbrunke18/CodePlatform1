@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: July 9, 2026 (§79 — Category-argument, self-diagnostic & concept-hierarchy pass) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: July 10, 2026 (§80 — Documented Admin Access Links: Quick Link & Shareable Group Link) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
