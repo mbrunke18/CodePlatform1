@@ -326,7 +326,7 @@ export default function PrismInsights() {
                         <Progress value={insight.confidence} className="h-1.5" />
                       </div>
                       <div style={{ display: 'flex', gap: 8 }}>
-                        <Button size="sm" style={{ background: 'transparent', color: NAVY, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }} onClick={() => setLocation('/intelligence-control')}>
+                        <Button size="sm" style={{ background: 'transparent', color: NAVY, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }} onClick={() => setLocation('/intelligence-control-center')}>
                           Deep Dive
                         </Button>
                         <Link href="/playbook-library">

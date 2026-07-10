@@ -267,7 +267,7 @@ export default function RoadshowResources() {
               <Button 
                 variant="outline"
                 className="w-full border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none h-12"
-                onClick={() => setLocation('/demo')}
+                onClick={() => setLocation('/industry-demos')}
                 data-testid="button-view-all-demos"
               >
                 Explore Demo Suite

@@ -48,7 +48,7 @@ const ROUTE_MAP: Record<string, { label: string; section: string }> = {
   '/advanced-analytics':       { label: 'Advanced Analytics', section: 'Advance' },
   '/execution-history':        { label: 'Execution History', section: 'Advance' },
   '/enterprise-metrics':       { label: 'Enterprise Metrics', section: 'Advance' },
-  '/audit-logging':            { label: 'Audit Logging', section: 'Advance' },
+  '/audit-logging-center':     { label: 'Audit Logging', section: 'Advance' },
   '/prism-insights':           { label: 'Prism Insights', section: 'Advance' },
   '/dashboard':                { label: 'Executive Dashboard', section: 'Platform' },
   '/readiness-assessment':     { label: 'Readiness Assessment', section: 'Identify' },

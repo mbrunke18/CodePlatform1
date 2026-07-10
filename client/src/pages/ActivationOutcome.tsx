@@ -655,7 +655,7 @@ export default function ActivationOutcome() {
                     </div>
 
                     <div style={{ display: "flex", gap: 10 }}>
-                      <Link href="/living-Readiness Protocols">
+                      <Link href="/living-playbooks">
                         <Button style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 11, fontWeight: 700 }}>
                           View Living Readiness Protocols <ArrowRight className="h-4 w-4 ml-2" />
                         </Button>

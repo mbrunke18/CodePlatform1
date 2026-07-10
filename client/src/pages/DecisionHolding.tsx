@@ -184,7 +184,7 @@ export default function DecisionHolding() {
                   <ArrowRight style={{ width: 14, height: 14, marginLeft: 8 }} />
                 </Button>
               </Link>
-              <Link href="/activation-outcome">
+              <Link href="/authorization-precedents">
                 <Button
                   variant="outline"
                   style={{ borderRadius: 0, border: `1px solid ${NAVY}`, color: NAVY, fontWeight: 600, fontSize: 13, padding: "12px 24px" }}

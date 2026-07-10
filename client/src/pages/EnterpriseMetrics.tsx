@@ -192,7 +192,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-system-health" onClick={() => setLocation('/audit-logging')}>
+                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-system-health" onClick={() => setLocation('/audit-logging-center')}>
                   <Activity className="w-5 h-5 mr-2" />
                   System Health Check
                 </Button>
@@ -200,7 +200,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Scale Resources
                 </Button>
-                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-security-audit" onClick={() => setLocation('/audit-logging')}>
+                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-security-audit" onClick={() => setLocation('/audit-logging-center')}>
                   <Shield className="w-5 h-5 mr-2" />
                   Security Audit
                 </Button>

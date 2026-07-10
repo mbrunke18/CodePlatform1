@@ -47,7 +47,7 @@ export default function TemplatesPage() {
                 <p className="text-sm text-muted-foreground mb-3">
                   {template.count} pre-built Readiness Protocols ready for customization
                 </p>
-                <Link href="/identify/Readiness Protocols">
+                <Link href="/identify/playbooks">
                   <Button variant="outline" size="sm" className="w-full">
                     View Templates <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>

@@ -64,7 +64,7 @@ const phaseDetails = [
     duration: 'Days 30-45',
     objective: 'Build your strategic Readiness Protocol portfolio',
     activities: [
-      { name: 'Browse Readiness Protocol Library', path: '/identify/Readiness Protocols', description: 'Explore 180 Readiness Protocols across 9 strategic domains' },
+      { name: 'Browse Readiness Protocol Library', path: '/identify/playbooks', description: 'Explore 180 Readiness Protocols across 9 strategic domains' },
       { name: 'Select Priority Readiness Protocols', path: '/workspaces/identify', description: 'Choose Readiness Protocols aligned to your strategic priorities' },
       { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each Readiness Protocol' },
       { name: 'Customize Readiness Protocols', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
@@ -124,7 +124,7 @@ const phaseDetails = [
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
       { name: 'Readiness OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
-      { name: 'Expand Readiness Protocol Coverage', path: '/identify/Readiness Protocols', description: 'Add Readiness Protocols for new strategic domains' },
+      { name: 'Expand Readiness Protocol Coverage', path: '/identify/playbooks', description: 'Add Readiness Protocols for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/future-readiness', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/execution-history', description: 'Regular strategic health checks' }
     ],

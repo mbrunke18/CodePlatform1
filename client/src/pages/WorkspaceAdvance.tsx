@@ -113,7 +113,7 @@ const workspaceTools = [
   {
     title: "Readiness Protocol Refinement",
     description: "Update Readiness Protocols based on lessons learned",
-    path: "/living-Readiness Protocols",
+    path: "/living-playbooks",
     icon: RefreshCw,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",

@@ -126,12 +126,16 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// NOTE: ultimate-demo.html / scenario-demo.html are retired pre-rebrand artifacts
+// (old "ExecuteIQ" product name, outdated 166-playbook count, retired "72 hours"
+// framing, retired Offense/Defense/Special Teams labels). Redirect to the current
+// Industry Demos Hub instead of serving the stale static files directly.
 app.get("/ultimate-demo", (_req, res) => {
-  res.sendFile(path.resolve("client/public/ultimate-demo.html"));
+  res.redirect(301, "/industry-demos");
 });
 
 app.get("/scenario-demo", (_req, res) => {
-  res.sendFile(path.resolve("client/public/scenario-demo.html"));
+  res.redirect(301, "/industry-demos");
 });
 
 app.get("/commercial", (_req, res) => {
