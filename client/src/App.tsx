@@ -207,6 +207,7 @@ const FoundingPartnerProgram = lazy(() => import("./pages/FoundingPartnerProgram
 const FoundingPartnerPage = lazy(() => import("./pages/FoundingPartnerPage"));
 const FoundingPartnerBrief = lazy(() => import("./pages/FoundingPartnerBrief"));
 const ReadinessRhythm = lazy(() => import("./pages/ReadinessRhythm"));
+const ReadinessMaturityModel = lazy(() => import("./pages/ReadinessMaturityModel"));
 const StartHere = lazy(() => import("./pages/StartHere"));
 const CostOfInaction = lazy(() => import("./pages/CostOfInaction"));
 const FirstNinetyDays = lazy(() => import("./pages/FirstNinetyDays"));
@@ -860,6 +861,7 @@ function Router() {
         <Route path="/mobilization-brief" component={MobilizationBrief} />
         <Route path="/mobilization-gap" component={MobilizationGap} />
         <Route path="/the-gap" component={TheGap} />
+        <Route path="/readiness-maturity-model" component={ReadinessMaturityModel} />
         <Route path="/the-cost-of-waiting" component={TheCostOfWaiting} />
         <Route path="/video-brief" component={VideoBrief} />
         <Route path="/founding-partner-brief" component={FoundingPartnerBrief} />

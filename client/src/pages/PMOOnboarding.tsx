@@ -168,6 +168,12 @@ export default function PMOOnboarding() {
               You design the readiness.<br />
               <em style={{ color: GOLD }}>The system executes. The C-suite authorizes.</em>
             </h1>
+            <p style={{ ...CG, fontSize: 22, color: GOLD, fontWeight: 700, maxWidth: 680, lineHeight: 1.4, marginBottom: 14, fontStyle: "italic" }}>
+              Readiness OS is project intake for strategic situations. The PMO that owns it never asks its organization to start from scratch again.
+            </p>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.75)", maxWidth: 680, lineHeight: 1.6, marginBottom: 20 }}>
+              Everything your PMO would normally build during project intake for a strategic situation — work identification, roles and responsibilities, dependencies, risk register, budget authorization — Readiness OS builds it before the situation arrives.
+            </p>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 680, lineHeight: 1.7, marginBottom: 36 }}>
               Right now, when a trigger fires, the 30-day mobilization begins — and you are at the center of it. Mapping stakeholders, assigning tasks, drafting briefs, aligning functional leads. All from scratch, under pressure, while the window closes. Readiness OS changes the sequence. You do that work once, in advance, in a calm room. When the trigger fires, the preparation is already done — the executive authorizes in real time, but that is 12 minutes of confirmation, not 30 days of coordination. Your role shifts from reactive mobilizer to preparation architect — and that is a different job entirely.
             </p>

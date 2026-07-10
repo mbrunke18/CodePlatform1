@@ -379,6 +379,9 @@ export default function FoundingPartnerProgram() {
             </div>
 
             <div style={{ maxWidth: 640, marginBottom: 52 }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#C9A84C', lineHeight: 1.75, marginBottom: 16, fontWeight: 600 }}>
+                From Day 1, every strategic situation your organization will face has the intake work already done — work identified, roles assigned, budget authorized, dependencies mapped.
+              </p>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(240,237,228,0.78)', lineHeight: 1.85, marginBottom: 20, fontWeight: 400 }}>
                 180 Readiness Protocols pre-staged. 231 detection thresholds monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
               </p>

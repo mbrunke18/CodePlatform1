@@ -659,9 +659,14 @@ function HeroSection() {
               </p>
 
               {/* Lead — one decisive sentence, not a paragraph */}
-              <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 28px" }}>
-                Most organizations spend 30 days mobilizing after a situation presents itself — scoping from scratch, under pressure, while the strategic window closes. It happens 15–20 times every year.{" "}
+              <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 14px" }}>
+                Most organizations spend 30 days mobilizing after a situation presents itself — work identified, roles assigned, decision rights defined, dependencies mapped, risks flagged, budget approved, all figured out from scratch, under pressure, while the strategic window closes. It happens 15–20 times every year.{" "}
                 <span style={{ color: GOLD, fontWeight: 700 }}>Readiness OS eliminates that entirely. 30 days compressed to 12 minutes.</span>
+              </p>
+
+              {/* Completeness callout — every mobilization question answered before it's asked */}
+              <p style={{ ...DM, color: "rgba(201,168,76,0.85)", fontSize: "clamp(12.5px,1vw,13.5px)", fontWeight: 600, lineHeight: 1.55, maxWidth: 500, margin: "0 0 28px", fontStyle: "italic" as const }}>
+                Every question your organization would normally spend 30 days answering — work, roles, budget, dependencies, risks, authority — answered in advance.
               </p>
 
               {/* Canonical 4-beat narrative — the complete product story, visible above fold */}

@@ -87,6 +87,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Define success criteria — the metrics that prove execution value to the board before the next trigger fires.'
         },
         {
+          id: 'readiness-maturity-model',
+          label: 'Readiness Maturity Model',
+          path: '/readiness-maturity-model',
+          icon: '📊',
+          description: 'Assess where your organization stands on the path from Reactive to Autonomous — and what it will take to level up.'
+        },
+        {
           id: 'readiness-audit',
           label: 'Readiness Audit',
           path: '/playbook-readiness',

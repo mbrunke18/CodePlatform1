@@ -182,6 +182,7 @@ const ALL_RESOURCES = [
       { label: "How It Executes", href: "/how-it-executes" },
       { label: "Demo Hub", href: "/demo-hub" },
       { label: "Shadow Simulator", href: "/simulation-studio" },
+      { label: "Readiness Maturity Model", href: "/readiness-maturity-model" },
       { label: "Readiness Benchmark", href: "/readiness-benchmark" },
     ],
   },

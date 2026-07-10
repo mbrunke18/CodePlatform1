@@ -130,6 +130,9 @@ export default function TheGap() {
           <h1 style={{ ...CG, color: '#fff', fontSize: 'clamp(36px,5vw,60px)', fontWeight: 600, lineHeight: 1.1, marginBottom: 20, maxWidth: 820 }}>
             12 failures. Every situation. <em style={{ color: GOLD }}>Every time.</em><br />And a real-time cost for each one.
           </h1>
+          <p style={{ ...BC, color: GOLD, fontSize: 15, fontWeight: 700, lineHeight: 1.6, maxWidth: 680, marginBottom: 18 }}>
+            These are not coordination failures. They are mobilization questions your organization answers from scratch every time. Readiness OS answers them before the situation arrives.
+          </p>
           <p style={{ color: '#CBD5E1', fontSize: 17, lineHeight: 1.7, maxWidth: 640, marginBottom: 40 }}>
             Not because the people are wrong — because the response was never built before the trigger arrived.
             Below: what your current model costs while you read this, and why no alternative closes all 12 gaps.
