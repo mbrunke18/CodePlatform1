@@ -584,8 +584,12 @@ export default function Investors() {
                 A competitor can license enterprise software on Day 1. They cannot buy the institutional memory of 180 protocols tested against real strategic situations, refined through real executive decisions, and proven through real outcomes. That history is the moat. Every activation deepens it.
               </p>
 
-              <p style={{ fontSize: 15, color: GOLD, lineHeight: 1.75, maxWidth: 720, marginBottom: 28, fontWeight: 700 }}>
+              <p style={{ fontSize: 15, color: GOLD, lineHeight: 1.75, maxWidth: 720, marginBottom: 16, fontWeight: 700 }}>
                 Every organization runs projects with intake infrastructure — work breakdown, resourcing, risk assessment, budget approval. None have ever had that infrastructure for strategic situations. The ADVANCE loop compounds it with every activation, which is why a competitor starting today cannot replicate it by starting later.
+              </p>
+
+              <p style={{ fontSize: 16, color: NAVY, lineHeight: 1.6, maxWidth: 640, marginBottom: 28, fontWeight: 600, fontStyle: 'italic' }}>
+                The institutional memory is the product. The platform is the vehicle.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2, marginBottom: 36 }}>

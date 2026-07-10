@@ -322,8 +322,11 @@ export default function MobilizationTax() {
               <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#fff', marginBottom: 8 }}>
                 Your organization loses <span style={{ color: GOLD }}>{fmt$(annualTax)}/year</span> before it can even execute.
               </div>
-              <div style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)', marginBottom: 28, maxWidth: 480, margin: '0 auto 28px' }}>
+              <div style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)', marginBottom: 20, maxWidth: 480, margin: '0 auto 20px' }}>
                 That's the Mobilization Tax. Readiness OS eliminates it.
+              </div>
+              <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.65)', marginBottom: 28, maxWidth: 560, margin: '0 auto 28px', lineHeight: 1.7 }}>
+                Every situation without Readiness OS costs twice — the Mobilization Tax above, and the window a competitor who was already staged closes while you're still assembling the room.
               </div>
               <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button
