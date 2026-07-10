@@ -29,6 +29,7 @@ VaughnMartin's Readiness OS is coordination infrastructure for high-growth start
 - All text clearly and boldly readable — medium weight minimum, deep navy or dark gray.
 - Brand placement and visual memory is a priority — logo on every key page.
 - Desktop-first layout; mobile adjustments only if non-disruptive.
+- **Continuous oversight/QA mindset required:** treat every change as if a senior engineering review board (senior dev, architect, QA) is checking the work — not just a final review, but throughout. In practice: plan non-trivial work with the architect (code_review skill) before building, re-check at milestones, verify claims independently rather than trusting a single tool/workflow signal (especially flaky ones), and confirm fixes against real rendered output (screenshots, direct script runs, curl) before calling something done. Investor/exec-facing correctness is held to this standard by default given the stakes of missed issues.
 
 ## System Architecture
 
