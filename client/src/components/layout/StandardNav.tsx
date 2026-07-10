@@ -110,6 +110,7 @@ const SEARCH_ITEMS = [
   { label: 'Cost of Delay — Real-Time Mobilization Cost Counter', path: '/cost-of-delay', category: 'Action', icon: DollarSign },
   { label: 'Sector Threat Briefing — Live Signals for Your Industry', path: '/sector-briefing', category: 'Action', icon: AlertTriangle },
   { label: 'Why Readiness OS?', path: '/the-proof', category: 'Learn', icon: Scale },
+  { label: 'Readiness Maturity Model — Which of 5 Levels Are You?', path: '/readiness-maturity-model', category: 'Learn', icon: BarChart3 },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
   { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
 ];
@@ -508,6 +509,7 @@ export default function StandardNav() {
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
               { path: '/prospect-brief', icon: FileText, label: 'Executive Briefing Generator', sub: 'A printable, company-specific brief — protocols, triggers, and ROI for your org', featured: true },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
+              { path: '/readiness-maturity-model', icon: BarChart3, label: 'Readiness Maturity Model', sub: 'Which of 5 levels is your organization at — Reactive to Autonomous?' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
