@@ -216,7 +216,7 @@ export default function ExecutiveBrief() {
           eyebrow="Platform Proof"
           headline="The coordination infrastructure executives have been missing."
           subheadline="Startup to Fortune 500 — 180 protocols ready before you need them."
-          image="/screenshots/protocol_library_v2.jpg"
+          image="/screenshots/new_protocol_library.jpg"
           imageAlt="Readiness OS Protocol Library — 180 Pre-Staged Protocols"
           urlPath="/protocol-library"
           urlTag="180 PROTOCOLS"

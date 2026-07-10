@@ -47,7 +47,7 @@ export default function Ch9Recap({ sc, onRestart }: { sc: DemoScenario; onRestar
 
       <ProductScreenPanel
         eyebrow="See It In The Platform — Your First 90 Days"
-        image="/screenshots/fresh_getting_started.jpg"
+        image="/screenshots/new_getting_started.jpg"
         alt="Getting Started hub showing go-live readiness phases and completion score"
         route="/getting-started"
         callouts={[

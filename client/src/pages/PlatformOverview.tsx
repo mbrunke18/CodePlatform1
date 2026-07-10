@@ -153,7 +153,7 @@ export default function PlatformOverview() {
           eyebrow="Platform Architecture"
           headline="Identify. Detect. Execute. Advance."
           subheadline="End-to-end coordination infrastructure — four stages, one platform."
-          image="/screenshots/new_mission_control.jpg"
+          image="/screenshots/deck_mission_control.jpg"
           imageAlt="Readiness OS Mission Control — Full Platform Command View"
           urlPath="/mission-control"
           urlTag="LIVE"

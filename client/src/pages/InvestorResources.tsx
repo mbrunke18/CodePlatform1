@@ -279,7 +279,7 @@ export default function InvestorResources() {
         eyebrow="The Platform Creating the Category"
         headline="The infrastructure that makes the $15B+ Coordination market real."
         subheadline="180 protocols. Closed-loop learning. A moat that compounds."
-        image="/screenshots/protocol_library_v2.jpg"
+        image="/screenshots/new_protocol_library.jpg"
         imageAlt="Readiness OS Protocol Library — 180 Cross-Industry Protocols"
         urlPath="/protocol-library"
         urlTag="180 PROTOCOLS"

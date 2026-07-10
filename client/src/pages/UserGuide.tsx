@@ -664,7 +664,7 @@ export default function UserGuide() {
           />
 
           <ScreenshotFigure
-            src="/screenshots/protocol_library_v2.jpg"
+            src="/screenshots/new_protocol_library.jpg"
             caption="Readiness Protocol Library — 180 core protocols and 30 compound protocols in a searchable, filterable grid. Each card shows domain, readiness status, activation history, and last-modified date."
           />
 

@@ -95,7 +95,7 @@ export default function HowItWorks() {
         eyebrow="How It Works"
         headline="Preparation replaces coordination. Readiness replaces reaction."
         subheadline="The response is ready before the trigger fires."
-        image="/screenshots/new_mission_control.jpg"
+        image="/screenshots/deck_mission_control.jpg"
         imageAlt="Readiness OS — Full Platform View"
         urlPath="/how-it-works"
         urlTag="PLATFORM"

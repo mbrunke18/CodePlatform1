@@ -421,7 +421,7 @@ export default function Investors() {
               eyebrow="The Platform"
               headline="The infrastructure your portfolio companies don't have."
               subheadline="180 Readiness Protocols. Staged before the trigger fires."
-              image="/screenshots/new_mission_control.jpg"
+              image="/screenshots/deck_mission_control.jpg"
               imageAlt="Readiness OS Mission Control"
               urlPath="/mission-control"
               urlTag="LIVE"

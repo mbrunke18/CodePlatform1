@@ -133,7 +133,7 @@ export default function Contact() {
         <ProductShowcase
           eyebrow="The Platform You're About to Experience"
           headline="The response will be ready before you need us."
-          image="/screenshots/new_mission_control.jpg"
+          image="/screenshots/deck_mission_control.jpg"
           imageAlt="Readiness OS Mission Control — Executive Command Interface"
           urlPath="/mission-control"
           urlTag="LIVE"

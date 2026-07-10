@@ -68,7 +68,7 @@ export default function Ch7Debrief({ sc, chapter, onNext, onBack }: { sc: DemoSc
       {allShown && (
         <ProductScreenPanel
           eyebrow="See It In The Platform — ROI Dashboard"
-          image="/screenshots/roi_calculator_walkthrough.jpg"
+          image="/screenshots/deck_roi_calculator.jpg"
           alt="ROI Dashboard showing cost avoided and financial impact across activations"
           route="/roi-calculator"
           callouts={[

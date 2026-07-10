@@ -29,3 +29,4 @@
 - [Real company names in demo content](demo-content-real-company-risk.md) — never let real firms (Elliott, Blackstone, etc.) be shown taking fabricated actions/quotes in demo/marketing scenarios
 - [Homepage category-clarity structure](homepage-category-clarity.md) — WorkflowDistinctionSection ("not a workflow tool") exists but sits 9th in render order; hero now has a short teaser line
 - [GitHub sync & git-lfs push lessons](github-sync-lfs-lessons.md) — reconnect via GitHub connector (not manual PAT) when push auth is broken; do git push/lfs push via bash tool not code_execution
+- [Dual screenshots directories](dual-screenshots-directories.md) — root `screenshots/` (React app, absolute path) vs `client/public/screenshots/` (static HTML, relative path) have overlapping filenames but different content

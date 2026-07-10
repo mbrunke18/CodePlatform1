@@ -61,7 +61,7 @@ export default function Ch8Advance({ sc, chapter, onNext, onBack }: { sc: DemoSc
 
       <ProductScreenPanel
         eyebrow="See It In The Platform — ADVANCE 2.0"
-        image="/screenshots/fresh_advance_intelligence.jpg"
+        image="/screenshots/new_advance_intelligence.jpg"
         alt="ADVANCE 2.0 Learning Velocity Index dashboard"
         route="/advance-intelligence"
         callouts={[
