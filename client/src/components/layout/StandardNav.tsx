@@ -415,7 +415,7 @@ export default function StandardNav() {
             {[
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
               { path: '/how-it-executes', icon: Zap, label: 'How It Executes', sub: 'Watch the signal → protocol → execution chain in real time', featured: true },
-              { path: '/readiness-rhythm', icon: Activity, label: 'Readiness Operating Rhythm', sub: 'The monthly cadence that sustains preparation — continuous, not one-time', featured: true },
+              { path: '/readiness-rhythm', icon: Activity, label: 'Readiness Operating Rhythm', sub: 'The monthly cadence that sustains preparation — continuous, not one-time' },
               { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
               { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Map · Monitor · Decide · Execute · Learn' },
             ].map(l => megaItem(l))}
@@ -431,9 +431,9 @@ export default function StandardNav() {
             {megaColHeading("Technical Architecture")}
             {[
               { path: '/execution-data-fabric', icon: Layers, label: 'Execution Data Fabric', sub: 'How signals become staged responses — the AI and data architecture', featured: true },
-              { path: '/institutional-memory-engine', icon: Brain, label: 'Institutional Memory Engine', sub: 'The compounding dataset that improves with every activation', featured: true },
-              { path: '/universal-connector', icon: Globe, label: 'Universal Connector', sub: 'Any stack. 55+ pre-built connectors. Live in 15 minutes.', featured: true },
-              { path: '/technical-onboarding', icon: Rocket, label: 'Integration Setup Plan', sub: 'Phased technical guide — identity, signals, execution, Microsoft stack', featured: true },
+              { path: '/institutional-memory-engine', icon: Brain, label: 'Institutional Memory Engine', sub: 'The compounding dataset that improves with every activation' },
+              { path: '/universal-connector', icon: Globe, label: 'Universal Connector', sub: 'Any stack. 55+ pre-built connectors. Live in 15 minutes.' },
+              { path: '/technical-onboarding', icon: Rocket, label: 'Integration Setup Plan', sub: 'Phased technical guide — identity, signals, execution, Microsoft stack' },
             ].map(l => megaItem(l))}
           </div>
 
@@ -442,18 +442,18 @@ export default function StandardNav() {
             {megaColHeading("Inside the Platform")}
             {[
               { path: '/mission-control', icon: Compass, label: 'Mission Control', sub: 'Your interactive operations center — configure, detect, activate', featured: true },
-              { path: '/identify/situation-intents', icon: Target, label: 'Situation Intents', sub: 'Define what your org is watching for — start here', featured: true },
+              { path: '/identify/situation-intents', icon: Target, label: 'Situation Intents', sub: 'Define what your org is watching for — start here' },
               { path: '/workspace', icon: Layers, label: 'Workspace', sub: 'Execute across all 4 IDEA phases' },
               { path: '/situations-hub', icon: Shield, label: '9-Domain Coverage Board', sub: 'Exposure & readiness across all 9 strategic domains' },
-              { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
+              { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark' },
               { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'Signal radar, monitoring & compound situation synthesis' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Intelligence Engine")}
             {[
               { path: '/predictive-intelligence', icon: Target, label: 'Predictive Signal Intelligence', sub: 'Pattern clusters — pre-stage protocols before the trigger fires', featured: true },
-              { path: '/tendency-intelligence', icon: BarChart3, label: 'Organizational Tendency Intelligence', sub: 'Your organization measured against itself', featured: true },
-              { path: '/sector-intelligence', icon: Globe, label: 'Sector Intelligence Library', sub: 'How 203 organizations in your sector have responded', featured: true },
+              { path: '/tendency-intelligence', icon: BarChart3, label: 'Organizational Tendency Intelligence', sub: 'Your organization measured against itself' },
+              { path: '/sector-intelligence', icon: Globe, label: 'Sector Intelligence Library', sub: 'How 203 organizations in your sector have responded' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Execute Phase Tools")}
@@ -504,10 +504,10 @@ export default function StandardNav() {
             {megaColHeading("Tools & Calculators")}
             {[
               { path: '/the-gap', icon: Grid3X3, label: 'The Gap — Live Cost + 12-Gap Matrix', sub: 'Real-time mobilization cost counter + full competitor gap matrix in one view', featured: true },
-              { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate', featured: true },
-              { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector right now. Protocols already staged.', featured: true },
+              { path: '/cost-of-delay', icon: DollarSign, label: 'Cost of Delay', sub: 'Real-time counter — what your mobilization gap costs while you evaluate' },
+              { path: '/sector-briefing', icon: AlertTriangle, label: 'Sector Threat Briefing', sub: 'Live signals in your sector right now. Protocols already staged.' },
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
-              { path: '/prospect-brief', icon: FileText, label: 'Executive Briefing Generator', sub: 'A printable, company-specific brief — protocols, triggers, and ROI for your org', featured: true },
+              { path: '/prospect-brief', icon: FileText, label: 'Executive Briefing Generator', sub: 'A printable, company-specific brief — protocols, triggers, and ROI for your org' },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
               { path: '/readiness-maturity-model', icon: BarChart3, label: 'Readiness Maturity Model', sub: 'Which of 5 levels is your organization at — Reactive to Autonomous?' },
             ].map(l => megaItem(l))}
@@ -526,13 +526,13 @@ export default function StandardNav() {
           <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("The Case for Readiness OS")}
             {[
-              { path: '/mobilization-gap', icon: Grid3X3, label: 'The 12-Gap Matrix', sub: '9 competitor categories. 12 mobilization gaps. Zero alternatives that close all 12.', featured: true },
+              { path: '/mobilization-gap', icon: Grid3X3, label: 'The 12-Gap Matrix', sub: '9 competitor categories. 12 mobilization gaps. Zero alternatives that close all 12.' },
               { path: '/the-case', icon: Scale, label: 'The Case', sub: 'The complete buying argument — problem cost → proof → moat → ROI → decision', featured: true },
-              { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
+              { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer' },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
-              { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M', featured: true },
-              { path: '/proof-story', icon: Scale, label: 'Proof Story', sub: 'Same trigger. Two organizations. One had it pre-staged.', featured: true },
-              { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points', featured: true },
+              { path: '/mobilization-cost', icon: DollarSign, label: 'What One Trigger Costs', sub: 'Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M' },
+              { path: '/proof-story', icon: Scale, label: 'Proof Story', sub: 'Same trigger. Two organizations. One had it pre-staged.' },
+              { path: '/founding-partner-brief', icon: FileText, label: 'Founding Partner Brief', sub: 'What you get in 90 days — milestones, deliverables, proof points' },
             ].map(l => megaItem(l))}
           </div>
         </div>
