@@ -26,3 +26,4 @@
 - [ElevenLabs voiceover + ffmpeg mixing](elevenlabs-voiceover-mixing.md) — secrets need bash tool not code_execution; adelay+amix+apad timing; scene-opening cutoff = TTS cold-start truncation, fix with lead-in+trim not fade tuning
 - [MP4 faststart for mobile playback](mp4-faststart-mobile-playback.md) — curl HEAD/range checks and desktop screenshots don't prove a video plays; check moov atom position when phone playback fails but server checks look fine
 - [health-check workflow spurious 404s](health-check-workflow-quirk.md) — workflow can report 27/28 pages 404 during a healthy app; re-verify with direct `node scripts/health-check.mjs` run before trusting it
+- [GitHub sync & git-lfs push lessons](github-sync-lfs-lessons.md) — reconnect via GitHub connector (not manual PAT) when push auth is broken; do git push/lfs push via bash tool not code_execution
