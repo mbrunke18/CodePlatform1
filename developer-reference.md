@@ -885,6 +885,15 @@ All buttons in `Settings.tsx` have `onClick` handlers as of March 2026:
 | Generate Reports | `button-generate-reports` | Navigate to `/executive-summary` |
 | Slack / Jira / Tableau | (integration buttons) | Navigate to `/integrations` |
 
+### Admin Access Links — Quick Link & Shareable Group Link (`/admin/users`)
+
+**Files:** `server/routes/quickLinkRoute.ts` (token signing + `/api/admin/generate-demo-link`, `/api/admin/generate-group-link`), `server/routes/demoAccessRoute.ts` (`/api/demo-access` redemption), `client/src/pages/AdminPanel.tsx` (UI).
+
+- **Quick Link (`QK-` token):** personalized, single-recipient link (name + email required), 1–168h duration, optionally emailed via Resend.
+- **Shareable Group Link (`GK-` token, platform-admin only):** one multi-use link, no name/email required from clickers. Two independent controls in the admin UI: **link validity window** (3/7/14/30 days — how long the URL itself works) and **per-session length** (24h / 72h / 7 days — how long each individual clicker's session lasts once they land). Stateless HMAC-signed token (`QUICK_LINK_SECRET` env var) — no DB row.
+- **Redemption (`/api/demo-access?token=...`):** public route (allowlisted in `server/authConfig.ts` PUBLIC_ROUTES, covered by `public-routes-allowlist.test.ts`). On a valid token it calls `req.login()` to establish a real Passport session for a shared demo user (`vm-demo-exec-2026`), auto-creating a shared "Readiness OS — Executive Demo Environment" organization if one doesn't exist. It passes the same `requireAuth`/`conditionalAuth` checks as a real logged-in user — full functioning access, not a stub.
+- **Known limitation:** all group-link clickers share the *same* demo org/account — fine for sequential prospect exploration, not for isolated per-company data. Contrast with the separate (currently non-functional) `trial_sessions` magic-link flow in `magic-link-routes.ts` / `trialAccessService.ts`, which sets `req.session.trialToken` but is not recognized by any `requireAuth` check — do not build on that flow without first wiring it into the auth middleware.
+
 ---
 
 ## 18. Try Demo — Experience Design
