@@ -51,6 +51,7 @@ export default function AdminPanel() {
 
   // ── Group link state ───────────────────────────────────────────────────────
   const [groupLinkDays, setGroupLinkDays] = useState(7);
+  const [groupLinkSessionHours, setGroupLinkSessionHours] = useState(72);
   const [generatedGroupLink, setGeneratedGroupLink] = useState<{ url: string; linkExpiresAt: string; linkDays: number; sessionHours: number } | null>(null);
   const [groupLinkCopied, setGroupLinkCopied] = useState(false);
 
@@ -157,7 +158,7 @@ export default function AdminPanel() {
     mutationFn: () =>
       apiRequest("POST", "/api/admin/generate-group-link", {
         linkDays: groupLinkDays,
-        sessionHours: 72,
+        sessionHours: groupLinkSessionHours,
       }).then(res => res.json()),
     onSuccess: (data: any) => {
       setGeneratedGroupLink(data);
@@ -443,7 +444,7 @@ export default function AdminPanel() {
           </div>
           <p style={{ margin: "0 0 1rem", fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.6 }}>
             One link you can send to multiple people. Each person who clicks it gets their own
-            72-hour full access session — no name or email required from them.
+            full access session — no name or email required from them.
             Only you can generate this link.
           </p>
           <div style={{ background: "#fff", border: "1px solid #E8E4DC", borderRadius: 4, padding: "1.5rem" }}>
@@ -461,8 +462,22 @@ export default function AdminPanel() {
                 <option value={14}>14 days</option>
                 <option value={30}>30 days</option>
               </select>
-              <span style={{ fontSize: "0.8125rem", color: "#6B7280" }}>· Each session: 72 hours</span>
+              <label style={{ fontSize: "0.875rem", color: NAVY, fontWeight: 600, whiteSpace: "nowrap", marginLeft: 8 }}>
+                · Each person's session lasts
+              </label>
+              <select
+                value={groupLinkSessionHours}
+                onChange={e => { setGroupLinkSessionHours(Number(e.target.value)); setGeneratedGroupLink(null); }}
+                style={{ padding: "0.5rem 0.75rem", border: "1px solid #D1D5DB", borderRadius: 4, fontSize: "0.875rem", color: NAVY, background: "#fff", cursor: "pointer" }}
+              >
+                <option value={24}>24 hours</option>
+                <option value={72}>72 hours</option>
+                <option value={168}>7 days</option>
+              </select>
             </div>
+            <p style={{ margin: "0 0 12px", fontSize: "0.75rem", color: "#9CA3AF" }}>
+              If someone's session ends before the link itself expires, they can click the same link again to start a new session.
+            </p>
             <button
               onClick={() => generateGroupLink.mutate()}
               disabled={generateGroupLink.isPending}
@@ -486,7 +501,7 @@ export default function AdminPanel() {
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                   <Check size={15} color="#1D4ED8" />
                   <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#1E40AF" }}>
-                    Shareable link ready — anyone with this link gets 72-hour access
+                    Shareable link ready — anyone with this link gets {generatedGroupLink.sessionHours === 168 ? "7-day" : `${generatedGroupLink.sessionHours}-hour`} access
                   </span>
                   <span style={{ marginLeft: "auto", fontSize: "0.75rem", color: "#6B7280" }}>
                     Link expires {new Date(generatedGroupLink.linkExpiresAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
