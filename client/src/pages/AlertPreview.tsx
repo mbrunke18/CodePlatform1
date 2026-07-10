@@ -89,7 +89,7 @@ const SCENARIOS: ScenarioDef[] = [
     domainColor: TEAL,
     urgency: "HIGH",
     urgencyColor: "#C9A84C",
-    situation: "Waypoint Analytics authorizes a sale. LOI required in 48 hours or Blackstone wins it.",
+    situation: "Waypoint Analytics authorizes a sale. LOI required in 48 hours or Ferngate Capital wins it.",
     timestamp: "Today, 9:14 AM",
     roles: [
       { id: "ceo", label: "CEO",            title: "Sarah Chen, Chief Executive Officer" },
@@ -247,7 +247,7 @@ const EMAILS: Record<string, Record<string, EmailContent>> = {
       tasksTotal: 19,
       stagedAgo: "12 minutes ago",
       responseWindow: "47 hours 48 minutes remaining on LOI window",
-      note: "The LOI is drafted, the due diligence team is assembled, and Goldman Sachs is briefed. Every hour without authorization is position ceded to Blackstone. Your decision is the only step remaining.",
+      note: "The LOI is drafted, the due diligence team is assembled, and Goldman Sachs is briefed. Every hour without authorization is position ceded to Ferngate Capital. Your decision is the only step remaining.",
     },
     cfo: {
       to: "James Park, Chief Financial Officer",

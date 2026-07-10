@@ -38,7 +38,7 @@ const SECTIONS: Section[] = [
     entries: [
       { name: '12-Minute Test Drive', path: '/12-minute-experience', desc: 'Trigger to execution in real time — no login needed', tag: 'POPULAR', icon: Rocket },
       { name: 'Full Scenario Experience Center', path: '/demo-hub', desc: '12 complete simulations across all 3 strategic domains', icon: LayoutGrid },
-      { name: 'Master Demo — Activist Investor', path: '/master-demo', desc: 'Elliott Management files 13D. 7-phase CEO walkthrough.', icon: Play },
+      { name: 'Master Demo — Activist Investor', path: '/master-demo', desc: 'Redshire Capital files 13D. 7-phase CEO walkthrough.', icon: Play },
       { name: 'How It Executes', path: '/how-it-executes', desc: 'Animated signal → protocol → 12-minute chain', tag: 'NEW', icon: Zap },
       { name: 'Protocol Builder', path: '/protocol-builder', desc: 'Pre-stage your own Readiness Protocol in 6 steps', icon: ClipboardCheck },
       { name: 'Competitor Displacement Sprint', path: '/demo/market-entry', desc: 'Protocol #31 — LegacyPoint Ch.11, 1,400 accounts in play', icon: TrendingUp },

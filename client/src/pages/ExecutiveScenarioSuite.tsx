@@ -163,15 +163,15 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
     role: 'CFO + CEO',
     roleShort: 'CFO · CEO',
     title: 'Activist Investor. Market Opens in 2h 48min.',
-    synopsis: 'Elliott Management files a Schedule 13D. 9.8% stake. Your stock moves the moment the market opens.',
+    synopsis: 'Redshire Capital files a Schedule 13D. 9.8% stake. Your stock moves the moment the market opens.',
     exposure: '$8–25M proxy fight cost',
     clock: '2h 48min to market open',
     icon: TrendingUp,
     color: '#C9A84C',
     trigger: {
       timestamp: 'MONDAY · 6:42 AM',
-      event: 'Elliott Management files Schedule 13D. 9.8% stake. SEC filing public.',
-      detail: 'Elliott Management has taken a 9.8% stake in your company and filed a Schedule 13D disclosing activist intent. The SEC filing is public. Bloomberg is already running the headline. Market opens in 2 hours and 48 minutes. Your stock will open down or up significantly depending on how the street reads your response. Every minute without a coordinated board and investor relations stance amplifies the movement.',
+      event: 'Redshire Capital files Schedule 13D. 9.8% stake. SEC filing public.',
+      detail: 'Redshire Capital has taken a 9.8% stake in your company and filed a Schedule 13D disclosing activist intent. The SEC filing is public. Bloomberg is already running the headline. Market opens in 2 hours and 48 minutes. Your stock will open down or up significantly depending on how the street reads your response. Every minute without a coordinated board and investor relations stance amplifies the movement.',
       chaos: [
         'Board chair is calling on personal cell — no pre-staged governance response',
         'IR team has no activist defense talking points — drafting from scratch',
@@ -182,7 +182,7 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
     },
     detection: {
       signals: [
-        { label: 'Elliott research activity detected', detail: '3 weeks prior — analyst team making targeted information requests on company' },
+        { label: 'Redshire research activity detected', detail: '3 weeks prior — analyst team making targeted information requests on company' },
         { label: 'Unusual options activity', detail: '10 days prior — above-average call volume in 30-day expirations at 15% premium' },
         { label: 'Proxy advisory firm contact', detail: '6 days prior — ISS and Glass Lewis both receiving preliminary governance inquiries' },
         { label: 'Institutional accumulation pattern', detail: '14 days prior — 13F amendment filings showing coordinated accumulation below 5% disclosure threshold' },

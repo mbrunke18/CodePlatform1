@@ -60,7 +60,7 @@ const SCENARIOS: Scenario[] = [
   {
     id: "acquisition",
     name: "M&A Rapid Response",
-    tagline: "Waypoint Analytics authorizes a sale. LOI required in 48 hours or Blackstone wins it.",
+    tagline: "Waypoint Analytics authorizes a sale. LOI required in 48 hours or Ferngate Capital wins it.",
     audience: "CEO · CFO · M&A · GC",
     domain: "GROWTH & POSITIONING",
     industry: "Financial Services",

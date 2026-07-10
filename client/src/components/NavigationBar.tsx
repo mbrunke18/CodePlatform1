@@ -53,7 +53,7 @@ export default function NavigationBar() {
 
   const demoLinks = [
     { title: "Full Scenario Experience Center", href: "/demo-hub", description: "12 simulations across Growth · Risk · Transformation — the most realistic platform demo in enterprise SaaS.", featured: true },
-    { title: "Master Demo — Activist Investor", href: "/master-demo", description: "Elliott Management files 13D at 2:47 AM — the definitive 7-phase platform walkthrough.", featured: true },
+    { title: "Master Demo — Activist Investor", href: "/master-demo", description: "Redshire Capital files 13D at 2:47 AM — the definitive 7-phase platform walkthrough.", featured: true },
     { title: "Growth — Competitor Displacement Sprint", href: "/demo/market-entry", description: "Competitor files Chapter 11. 1,400 accounts in-play. 72-hour window before Salesforce moves." },
     { title: "Growth — M&A Rapid Response", href: "/demo/acquisition", description: "Acquisition target surfaces. LOI required in 48 hours. Three buyers already in conversations." },
     { title: "Transformation — Go-to-Market Acceleration", href: "/demo/product-launch", description: "Competitor announces launch in 30 days. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes." },

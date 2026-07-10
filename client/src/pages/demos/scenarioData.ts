@@ -60,7 +60,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
   "activist": {
     id: "activist",
     name: "Activist Investor Escalation",
-    tagline: "Elliott Management files 13D. Demands 3 board seats. 2:47 AM.",
+    tagline: "Redshire Capital files 13D. Demands 3 board seats. 2:47 AM.",
     audience: "CEO · Board · Investor Relations",
     category: "RISK & RESILIENCE",
     company: "Meridian Consumer Group",
@@ -70,14 +70,14 @@ export const SCENARIOS: Record<string, DemoScenario> = {
     protocolName: "Activist Investor Defense",
     riskScore: 82,
     triggerTime: "2:47:03 AM EST",
-    triggerHeadline: "Elliott Management LP files Schedule 13D — 8.2% stake in Meridian Consumer Group",
-    triggerContext: "Elliott Management LP has filed a Schedule 13D with the SEC declaring an 8.2% ownership stake in Meridian Consumer Group. Their stated demands: three independent board seats and a full strategic review. A formal public statement was issued simultaneously. ISS proxy fight probability: 87%. The board is asleep. Your advisors are not on retainer. In the old model, it takes 30 days to mobilize a response.",
-    oldModelCost: "Elliott secures 6 institutional allies before you reach Day 30.",
+    triggerHeadline: "Redshire Capital LP files Schedule 13D — 8.2% stake in Meridian Consumer Group",
+    triggerContext: "Redshire Capital LP has filed a Schedule 13D with the SEC declaring an 8.2% ownership stake in Meridian Consumer Group. Their stated demands: three independent board seats and a full strategic review. A formal public statement was issued simultaneously. ISS proxy fight probability: 87%. The board is asleep. Your advisors are not on retainer. In the old model, it takes 30 days to mobilize a response.",
+    oldModelCost: "Redshire secures 6 institutional allies before you reach Day 30.",
     signals: [
-      { time: "2:47:03 AM", source: "SEC EDGAR", headline: "13D FILING — Elliott Management LP, 8.2% stake", detail: "Stated demands: 3 board seats + full strategic review. Engagement deadline: 14 days.", score: 94, severity: "critical" },
-      { time: "2:47:09 AM", source: "Reuters Newswire", headline: "Elliott calls Meridian strategy 'value-destructive'", detail: "Public statement released simultaneously. Demands CEO accountability meeting. Notes 3-year underperformance vs. peer index.", score: 78, severity: "critical" },
+      { time: "2:47:03 AM", source: "SEC EDGAR", headline: "13D FILING — Redshire Capital LP, 8.2% stake", detail: "Stated demands: 3 board seats + full strategic review. Engagement deadline: 14 days.", score: 94, severity: "critical" },
+      { time: "2:47:09 AM", source: "Reuters Newswire", headline: "Redshire calls Meridian strategy 'value-destructive'", detail: "Public statement released simultaneously. Demands CEO accountability meeting. Notes 3-year underperformance vs. peer index.", score: 78, severity: "critical" },
       { time: "2:47:14 AM", source: "Social Signal Monitor", headline: "#MeridianConsumer — 1,240 mentions / 6 minutes", detail: "Sentiment: −78 (hostile). Institutional investor accounts amplifying. Financial media pickup imminent.", score: 61, severity: "high" },
-      { time: "2:47:22 AM", source: "ISS ProxyPulse", headline: "Proxy Fight Probability: HIGH — 87%", detail: "Without coordinated institutional outreach in 72h, Elliott likely secures ≥2 board seats. Glass Lewis watching.", score: 87, severity: "critical" },
+      { time: "2:47:22 AM", source: "ISS ProxyPulse", headline: "Proxy Fight Probability: HIGH — 87%", detail: "Without coordinated institutional outreach in 72h, Redshire likely secures ≥2 board seats. Glass Lewis watching.", score: 87, severity: "critical" },
     ],
     tasks: [
       { id:  1, owner: "CEO",             name: "Marcus Chen",    task: "Review executive brief and authorize full activation",                      timing: "T+0:45",  category: "AUTHORITY"      },
@@ -112,7 +112,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       "Board quorum rules and emergency call logistics pre-set",
     ],
     timeline: [
-      { simSeconds: 0,   label: "T+0:00 — Elliott 13D detected. 4 signals scored in 22 seconds." },
+      { simSeconds: 0,   label: "T+0:00 — Redshire 13D detected. 4 signals scored in 22 seconds." },
       { simSeconds: 45,  label: "T+0:45 — Protocol #47 staged. 14 tasks assigned. Advisors on standby." },
       { simSeconds: 90,  label: "T+1:30 — All 6 stakeholders notified and acknowledged." },
       { simSeconds: 202, label: "T+3:22 — CEO authorizes. Full activation begins." },
@@ -128,7 +128,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { day: "Week 1",  event: "Investment bankers engaged. Goldman, Lazard, Morgan Stanley pitch decks requested." },
       { day: "Week 2",  event: "Proxy advisors briefed. ISS, Glass Lewis engaged. Legal strategy initiated." },
       { day: "Week 3",  event: "Institutional investor mapping completed. Messaging aligned across functions." },
-      { day: "Week 4",  event: "1:1 outreach begins. Elliott already has 6 institutional allies by this point." },
+      { day: "Week 4",  event: "1:1 outreach begins. Redshire already has 6 institutional allies by this point." },
       { day: "Day 30+", event: "Response posture finalized. Counter-narrative issued. Strategic window partially closed." },
     ],
     outcome: {
@@ -148,7 +148,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
         "ISS briefing slot availability confirmed — pre-scheduled relationship worked as designed.",
         "Recommendation: expand Protocol #47 to include sovereign wealth fund monitoring.",
       ],
-      impact: "Elliott's campaign window narrowed by 27 days. Institutional outreach began before Elliott established a counter-narrative.",
+      impact: "Redshire's campaign window narrowed by 27 days. Institutional outreach began before Redshire established a counter-narrative.",
     },
   },
 
@@ -933,10 +933,10 @@ export const SCENARIOS: Record<string, DemoScenario> = {
     triggerTime: "6:44:12 PM EST",
     triggerHeadline: "Waypoint Analytics board authorizes sale process — LOI exclusivity closes in 14 days",
     triggerContext: "Apex Capital's board member receives a confidential text at 6:44 PM: Waypoint Analytics has authorized a formal sale process. Their strategic fit score with Apex has been pre-modeled at 94%. Three other strategic buyers — including a known competitor — have already been contacted. Exclusivity goes to the first credible LOI. In the old model, assembling the deal team, running a financial model, and clearing legal conflicts takes three weeks. The window closes in 14 days.",
-    oldModelCost: "Blackstone submits LOI on Day 12. Apex is still aligning the deal team.",
+    oldModelCost: "Ferngate Capital submits LOI on Day 12. Apex is still aligning the deal team.",
     signals: [
       { time: "6:44:12 PM", source: "Board Member Alert", headline: "Waypoint CEO requests confidential call — sale process authorized", detail: "Confidential text to Apex board member: Waypoint board voted 7-2 to pursue strategic sale. Investment banker engaged. 14-day exclusivity window. Estimated valuation range: $2.1B–$2.6B.", score: 94, severity: "critical" },
-      { time: "6:47:30 PM", source: "M&A Intelligence Feed", headline: "Blackstone and Vista Equity in separate Waypoint conversations", detail: "Two financial sponsors confirmed in process. At least one strategic buyer (Apex competitor Centris Corp) also briefed. Centris M&A team has 3-person deal unit — can move fast.", score: 89, severity: "critical" },
+      { time: "6:47:30 PM", source: "M&A Intelligence Feed", headline: "Ferngate Capital and Corran Equity Partners in separate Waypoint conversations", detail: "Two financial sponsors confirmed in process. At least one strategic buyer (Apex competitor Centris Corp) also briefed. Centris M&A team has 3-person deal unit — can move fast.", score: 89, severity: "critical" },
       { time: "6:51:09 PM", source: "Strategic Fit Analyzer", headline: "Waypoint strategic fit score: 94% — pre-modeled 18 months ago", detail: "Integration analysis flagged Waypoint as Tier 1 acquisition target in Q2 2024. Revenue overlap: 11%. Customer overlap: 23%. EBITDA synergies modeled: $180M in year three.", score: 85, severity: "high" },
       { time: "6:55:44 PM", source: "Financial Intelligence Monitor", headline: "Waypoint Q3: revenue +34%, EBITDA margins expanding — sell-side signal pattern", detail: "Revenue growth accelerating. Gross margin: 71%. Rule of 40: 62. Board sell signal pattern matches 3 prior M&A precedents in the sector. Pre-money valuation estimate: $2.3B.", score: 79, severity: "high" },
     ],
@@ -987,7 +987,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
       { day: "Day 3",   event: "Investment banker search begins. Three firms pitch. Selection takes 4 days." },
       { day: "Week 1",  event: "Financial model being built from scratch. Skadden availability unclear — conflicts check pending." },
       { day: "Day 10",  event: "LOI drafted. Legal review cycle begins. Board hasn't formally authorized." },
-      { day: "Day 12",  event: "Blackstone submits LOI — exclusivity granted. Apex receives courtesy rejection." },
+      { day: "Day 12",  event: "Ferngate Capital submits LOI — exclusivity granted. Apex receives courtesy rejection." },
       { day: "Day 60",  event: "Waypoint acquired by Centris Corp for $2.3B. Apex loses the most strategically aligned target in its sector." },
     ],
     outcome: {
@@ -1002,7 +1002,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
         { label: "Board Authority Confirmed",    sub: "M&A committee mandate secured — no new resolution required" },
       ],
       intelligence: [
-        "LOI submitted 36 hours ahead of estimated Blackstone timeline.",
+        "LOI submitted 36 hours ahead of estimated Ferngate Capital timeline.",
         "Pre-built financial model saved an estimated 11 days of analyst work.",
         "Conflicts pre-cleared: Skadden engaged in 28 minutes vs. 5-day typical turnaround.",
         "Recommendation: extend Tier 1 acquisition target monitoring to 6 additional companies.",
@@ -1297,7 +1297,7 @@ export const SCENARIO_LIST = Object.values(SCENARIOS);
 export const SCENARIO_GROUPS = {
   growth: [
     { id: "market-entry", label: "Enterprise Software",  icon: "🚀", tagline: "Competitor files Chapter 11 — 1,400 accounts in-play in 72 hours" },
-    { id: "acquisition",  label: "Financial Services",   icon: "🤝", tagline: "M&A opportunity: LOI required in 48 hours or Blackstone wins it" },
+    { id: "acquisition",  label: "Financial Services",   icon: "🤝", tagline: "M&A opportunity: LOI required in 48 hours or Ferngate Capital wins it" },
   ],
   resilience: [
     { id: "ransomware",   label: "Financial Services",   icon: "🏦", tagline: "Ransomware hits trading systems at 4:23 AM. SWIFT offline." },

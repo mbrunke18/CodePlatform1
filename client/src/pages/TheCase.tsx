@@ -140,7 +140,7 @@ export default function TheCase() {
       label: "Activist Investor",
       domain: "Growth & Positioning",
       company: "Public Company · $8.2B market cap",
-      trigger: "Elliott Management files 13D at 2:47 AM. Board seat demand. Proxy fight signaled.",
+      trigger: "Redshire Capital files 13D at 2:47 AM. Board seat demand. Proxy fight signaled.",
       without: { time: "3 weeks", cost: "$2.1M in advisory fees. Proxy fight initiated.", headline: "Three weeks of reactive positioning — investor relations scrambling, legal on retainer, no unified response." },
       with: { time: "12 minutes", cost: "Banker briefed, talking points staged, board chair notified — before markets open.", headline: "Pre-staged response. Board chair briefed. Banker engaged. Regulatory filings queued. Unified message deployed." },
     },

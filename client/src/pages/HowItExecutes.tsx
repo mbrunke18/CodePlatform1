@@ -26,7 +26,7 @@ const SCENARIOS = [
   },
   {
     id: "activist", label: "Activist Investor", subtitle: "9.8% stake disclosed — board seat demanded",
-    signal: "SEC Schedule 13D filing detected. Elliott Management — 9.8% stake. Prior campaigns: 4 spin-offs demanded, 3 achieved.",
+    signal: "SEC Schedule 13D filing detected. Redshire Capital — 9.8% stake. Prior campaigns: 4 spin-offs demanded, 3 achieved.",
     signalSource: "SEC EDGAR Monitor · Bloomberg Feed · Activist Tracker",
     protocol: "Activist Defense", protocolNum: "#44",
     tasks: 7, stakeholders: ["CEO", "CFO", "General Counsel", "Board Chair", "Chief IR Officer", "Chief Strategy Officer"],

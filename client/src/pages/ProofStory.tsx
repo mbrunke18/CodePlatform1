@@ -66,7 +66,7 @@ const STORIES = [
     title: "The Activist Who Arrived Late",
     subtitle: "Industrial Conglomerate · NYSE Listed",
     date: "Monday, 7:43 AM",
-    trigger: "SEC Schedule 13D filed. Elliott Management — 9.8% stake. Board seat demanded. Prior campaigns: 4 spin-offs demanded, 3 achieved.",
+    trigger: "SEC Schedule 13D filed. Redshire Capital — 9.8% stake. Board seat demanded. Prior campaigns: 4 spin-offs demanded, 3 achieved.",
     industry: "Manufacturing / Industrials",
     companySize: "$28B annual revenue",
     without: {
@@ -76,8 +76,8 @@ const STORIES = [
         { time: "Day 1",    event: "M&A defense counsel engagement begins. No proxy solicitor retained yet." },
         { time: "Day 3",    event: "First all-hands. No unified message. Sales team fielding calls without guidance." },
         { time: "Day 5",    event: "Investor relations finally briefed. Top 10 institutional holders not yet contacted." },
-        { time: "Day 8",    event: "Elliott issues first public statement. Company has no prepared response." },
-        { time: "Day 12",   event: "Counter-narrative developed. Competitor already in contact with Elliott." },
+        { time: "Day 8",    event: "Redshire issues first public statement. Company has no prepared response." },
+        { time: "Day 12",   event: "Counter-narrative developed. Competitor already in contact with Redshire." },
         { time: "Day 21",   event: "Board governance proposal finalized — 3 weeks too late." },
         { time: "Day 30",   event: "Emergency board seat conceded. Share price down 11% on uncertainty." },
       ],
@@ -87,14 +87,14 @@ const STORIES = [
     with: {
       heading: "With Readiness OS — 12 Minutes",
       timeline: [
-        { time: "7:43 AM",  event: "SEC EDGAR monitor detects 13D filing. Elliott identified. Protocol #44 matched. Risk: 88/100.", tag: "DETECTED" },
+        { time: "7:43 AM",  event: "SEC EDGAR monitor detects 13D filing. Redshire identified. Protocol #44 matched. Risk: 88/100.", tag: "DETECTED" },
         { time: "7:44 AM",  event: "CEO, CFO, General Counsel, Board Chair, Chief IR Officer, Chief Strategy Officer — notified simultaneously.", tag: "NOTIFIED" },
-        { time: "7:45 AM",  event: "Activist defense brief staged — Elliott campaign history, shareholder register, draft company response.", tag: "STAGED" },
-        { time: "7:48 AM",  event: "CEO authorizes. M&A defense counsel, proxy solicitor, IR advisor — all three engaged before Elliott's first call.", tag: "AUTHORIZED" },
+        { time: "7:45 AM",  event: "Activist defense brief staged — Redshire campaign history, shareholder register, draft company response.", tag: "STAGED" },
+        { time: "7:48 AM",  event: "CEO authorizes. M&A defense counsel, proxy solicitor, IR advisor — all three engaged before Redshire's first call.", tag: "AUTHORIZED" },
         { time: "7:51 AM",  event: "Top 10 institutional holder call campaign begins. CEO personally leading. Value creation narrative deployed.", tag: "EXECUTING" },
-        { time: "7:55 AM",  event: "Company response pre-cleared. Board governance enhancements announced — before Elliott's first statement.", tag: "COMPLETE" },
+        { time: "7:55 AM",  event: "Company response pre-cleared. Board governance enhancements announced — before Redshire's first statement.", tag: "COMPLETE" },
       ],
-      outcome: "Company response issued before Elliott's first press statement. Top 10 institutional holders contacted first. Board governance enhancements announced proactively. Elliott's campaign stalled within 30 days.",
+      outcome: "Company response issued before Redshire's first press statement. Top 10 institutional holders contacted first. Board governance enhancements announced proactively. Redshire's campaign stalled within 30 days.",
       cost: "No concessions. Share price recovered +4% within 2 weeks on demonstrated governance strength.",
       headline: "12 minutes. Full activist defense staged. Company leads the narrative.",
     },
@@ -104,7 +104,7 @@ const STORIES = [
       { label: "Company response issued", without: "Day 8", with: "7:55 AM" },
       { label: "Board concessions", without: "Board seat given", with: "None" },
       { label: "Stock impact", without: "-11%", with: "+4% recovery" },
-      { label: "Narrative control", without: "Elliott led", with: "Company led" },
+      { label: "Narrative control", without: "Redshire led", with: "Company led" },
     ],
   },
   {
@@ -298,7 +298,7 @@ export default function ProofStory() {
           tagColor="#2B8A6E"
           features={[
             { color: "#2B8A6E", label: "Ransomware — 12 min", description: "Hospital EHR locked across 3 nodes. CSO authorized at 1:20. Patient care continuity confirmed at 12:00. $18M exposure contained." },
-            { color: "#C9A84C", label: "Activist Investor — 12 min", description: "Elliott Management 13D detected at 0:06. Board briefed, defense posture activated, proxy advisor outreach staged — all in 12 minutes." },
+            { color: "#C9A84C", label: "Activist Investor — 12 min", description: "Redshire Capital 13D detected at 0:06. Board briefed, defense posture activated, proxy advisor outreach staged — all in 12 minutes." },
             { color: "#4A90C4", label: "Supply Chain — 12 min", description: "847 retail partners notified, FDA hold activated, consumer advisory staged — recall contained before public exposure." },
           ]}
         />

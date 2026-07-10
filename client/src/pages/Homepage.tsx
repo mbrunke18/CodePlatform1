@@ -327,7 +327,7 @@ function HeroSimPanel() {
       tasks: 11,
       executive: "Chief Executive Officer",
       steps: [
-        { t: "0:06", action: "SEC 13D filing detected — Elliott Management, 9.2% stake", owner: "System" },
+        { t: "0:06", action: "SEC 13D filing detected — Redshire Capital, 9.2% stake", owner: "System" },
         { t: "1:10", action: "CEO authorizes — board brief and defense protocol staged", owner: "CEO" },
         { t: "2:30", action: "Investment banker engaged, defensive brief to board", owner: "Finance / Legal" },
         { t: "4:00", action: "Shareholder communication drafted and staged", owner: "Comms / IR" },
@@ -652,6 +652,11 @@ function HeroSection() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 32px", color: GOLD, letterSpacing: "-0.01em" }}>
                 Before the Trigger Fires.
               </h2>
+
+              {/* Category clarifier — answer "what is this" before the visitor has to ask */}
+              <p style={{ ...DM, fontSize: 12, fontWeight: 600, letterSpacing: "0.02em", color: "rgba(255,255,255,0.5)", margin: "0 0 20px", textTransform: "uppercase" as const }}>
+                Not project management software. Not GRC. Not another AI layer on the same 30-day cycle.
+              </p>
 
               {/* Lead — one decisive sentence, not a paragraph */}
               <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 28px" }}>
