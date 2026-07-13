@@ -388,6 +388,20 @@ export default function FoundingPartnerProgram() {
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65, marginBottom: 24 }}>
                 2 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
               </p>
+              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', padding: '20px 24px', marginBottom: 16 }}>
+                <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.4)', marginBottom: 16 }}>The Conversation Starts Here</p>
+                {[
+                  "When a significant strategic situation occurs at your organization — what happens in the first 72 hours?",
+                  "How much of that response architecture already existed before the situation arrived?",
+                  "What would change if the organization had already completed that preparation?",
+                ].map((q, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 14, marginBottom: i < 2 ? 14 : 0 }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 13, fontWeight: 700, color: '#C9A84C', flexShrink: 0, marginTop: 1 }}>{i + 1}.</div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4', lineHeight: 1.6, margin: 0 }}>{q}</p>
+                  </div>
+                ))}
+              </div>
+
               <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', borderLeft: '3px solid #C9A84C', padding: '20px 24px' }}>
                 <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 12 }}>The Comparison That Closes the Conversation</p>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4', lineHeight: 1.6, marginBottom: 10 }}>

@@ -658,6 +658,11 @@ function HeroSection() {
                 Not project management software. Not GRC. Not another AI layer on the same 30-day cycle.
               </p>
 
+              {/* Structural insight — operate vs mobilize */}
+              <p style={{ ...DM, fontSize: 12, fontWeight: 700, color: "rgba(240,237,228,0.42)", lineHeight: 1.4, maxWidth: 500, margin: "0 0 14px", letterSpacing: "0.12em", textTransform: "uppercase" as const }}>
+                Organizations were built to operate. Not to mobilize.
+              </p>
+
               {/* Lead — one decisive sentence, not a paragraph */}
               <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 14px" }}>
                 Most organizations spend 30 days mobilizing after a situation presents itself — work identified, roles assigned, decision rights defined, dependencies mapped, risks flagged, budget approved, all figured out from scratch, under pressure, while the strategic window closes. It happens 15–20 times every year.{" "}
@@ -1274,6 +1279,9 @@ function MicrosoftHookStrip() {
           </div>
           <div style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.45)", marginTop: 8, lineHeight: 1.5 }}>
             The orchestration layer that finally makes your $300B+ Microsoft AI investment deliver strategic speed.
+          </div>
+          <div style={{ ...DM, fontSize: 12, fontStyle: "italic", color: "rgba(201,168,76,0.6)", marginTop: 6, lineHeight: 1.5 }}>
+            AI surfaces what's happening faster than ever. It still can't answer: Now what? Who decides? What's the sequence? Readiness OS answers those questions before the trigger fires.
           </div>
         </div>
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, alignItems: "center" }}>
