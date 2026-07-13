@@ -244,6 +244,7 @@ const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
 const ReadinessManifesto = lazy(() => import("./pages/ReadinessManifesto"));
+const EnterpriseReadinessLanguage = lazy(() => import("./pages/EnterpriseReadinessLanguage"));
 const About = lazy(() => import("./pages/About"));
 const Team = lazy(() => import("./pages/Team"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
@@ -608,6 +609,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/founder-story" component={FounderStory} />
         <Route path="/readiness-manifesto" component={ReadinessManifesto} />
+        <Route path="/enterprise-readiness-language" component={EnterpriseReadinessLanguage} />
         <Route path="/team" component={Team} />
         {renderRoutes(["/execution-os-video", "/readiness-video", "/platform-video"], ExecuteIQVideo)}
         <Route path="/why-execution-os-legacy" component={WhyExecuteIQ} />

@@ -31,3 +31,4 @@
 - [GitHub sync & git-lfs push lessons](github-sync-lfs-lessons.md) — reconnect via GitHub connector (not manual PAT) when push auth is broken; do git push/lfs push via bash tool not code_execution
 - [Dual screenshots directories](dual-screenshots-directories.md) — root `screenshots/` (React app, absolute path) vs `client/public/screenshots/` (static HTML, relative path) have overlapping filenames but different content
 - [Terminology replace corrupts routes](terminology-replace-corrupts-routes.md) — a "playbook"→"Readiness Protocol" copy pass rewrote literal route slugs too; re-run a route/link audit after any global rename pass
+- [Three-Architecture Decision](three-architecture-decision.md) — Company=Enterprise Readiness, Product=Strategic Situations, Platform=Readiness OS; never conflate; system-of-record in supporting copy not hero headline

@@ -196,6 +196,11 @@ export default function ReadinessManifesto() {
           <p style={{ ...CG, color: NAVY, fontSize: 16, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.6, marginTop: 28, maxWidth: 680 }}>
             "If organizations begin asking — 'What's our readiness capability?' 'Have we completed situation intake?' 'What's the Mobilization Tax on this event?' 'How long is our mobilization window?' — then you've changed how leaders think. And that's how enduring business ideas are created."
           </p>
+          <div style={{ marginTop: 24 }}>
+            <Link href="/enterprise-readiness-language" style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: NAVY, textDecoration: 'none', borderBottom: `1px solid ${GOLD}`, paddingBottom: 2 }}>
+              Full Glossary — Canonical Definitions for All 8 Terms →
+            </Link>
+          </div>
         </div>
       </section>
 

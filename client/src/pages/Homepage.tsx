@@ -654,8 +654,13 @@ function HeroSection() {
               </h2>
 
               {/* Category clarifier — answer "what is this" before the visitor has to ask */}
-              <p style={{ ...DM, fontSize: 12, fontWeight: 600, letterSpacing: "0.02em", color: "rgba(255,255,255,0.5)", margin: "0 0 20px", textTransform: "uppercase" as const }}>
+              <p style={{ ...DM, fontSize: 12, fontWeight: 600, letterSpacing: "0.02em", color: "rgba(255,255,255,0.5)", margin: "0 0 12px", textTransform: "uppercase" as const }}>
                 Not project management software. Not GRC. Not another AI layer on the same 30-day cycle.
+              </p>
+
+              {/* System of record framing — the architectural claim, one level below the headline */}
+              <p style={{ ...DM, fontSize: 13, color: "rgba(201,168,76,0.72)", lineHeight: 1.55, maxWidth: 510, margin: "0 0 20px", fontStyle: "italic" as const }}>
+                The first enterprise system of record for Strategic Situations — the organizing layer that has never existed.
               </p>
 
               {/* Structural insight — operate vs mobilize */}
@@ -665,7 +670,7 @@ function HeroSection() {
 
               {/* Lead — one decisive sentence, not a paragraph */}
               <p style={{ ...DM, color: "rgba(255,255,255,0.88)", fontSize: "clamp(16px,1.25vw,18px)", lineHeight: 1.65, maxWidth: 520, margin: "0 0 14px" }}>
-                Most organizations spend 30 days mobilizing after a situation presents itself — work identified, roles assigned, decision rights defined, dependencies mapped, risks flagged, budget approved, all figured out from scratch, under pressure, while the strategic window closes. It happens 15–20 times every year.{" "}
+                Most organizations spend 30 days mobilizing after a Strategic Situation presents itself — work identified, roles assigned, decision rights defined, dependencies mapped, risks flagged, budget approved, all figured out from scratch, under pressure, while the strategic window closes. It happens 15–20 times every year.{" "}
                 <span style={{ color: GOLD, fontWeight: 700 }}>Readiness OS eliminates that entirely. 30 days compressed to 12 minutes.</span>
               </p>
 
