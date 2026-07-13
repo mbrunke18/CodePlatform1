@@ -498,6 +498,24 @@ export default function StandardNav() {
             <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
           </div>
         </div>
+        {/* Role-selector strip */}
+        <div style={{ background: '#F8F7F4', borderBottom: '1px solid rgba(10,15,46,0.08)', padding: '8px 22px', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9CA3AF', marginRight: 4, whiteSpace: 'nowrap' }}>Start by role:</span>
+          {[
+            { label: 'C-Suite', color: '#C9A84C', href: '/#audience-paths' },
+            { label: 'PMO Director', color: '#2B8A6E', href: '/#audience-paths' },
+            { label: 'Investor', color: '#132558', href: '/#audience-paths' },
+          ].map(r => (
+            <a
+              key={r.label}
+              href={r.href}
+  
+              style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: r.color, background: 'rgba(255,255,255,0.85)', border: `1px solid ${r.color}30`, padding: '3px 10px', textDecoration: 'none', whiteSpace: 'nowrap', display: 'inline-block' }}
+            >
+              {r.label}
+            </a>
+          ))}
+        </div>
 
         {/* Two columns — Tools first (what a prospect acts on), Case second (validation) */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>

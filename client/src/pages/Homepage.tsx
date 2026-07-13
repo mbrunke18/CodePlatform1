@@ -2105,6 +2105,118 @@ function EngagementBridge() {
   );
 }
 
+// ─── AUDIENCE PATHS — START HERE ─────────────────────────────────────────────
+function AudiencePathsSection() {
+  const paths = [
+    {
+      role: "C-Suite",
+      sub: "CEO · CFO · COO · Board",
+      accent: GOLD,
+      border: `3px solid ${GOLD}`,
+      links: [
+        { label: "The Readiness Manifesto", desc: "Four Laws. The category argument. The language executives will use.", href: "/readiness-manifesto" },
+        { label: "ROI Calculator", desc: "What your mobilization gap costs — your numbers, your industry.", href: "/roi-calculator" },
+        { label: "Proof Story", desc: "Same trigger. Two organizations. One had it pre-staged.", href: "/proof-story" },
+        { label: "Executive Brief", desc: "Board-ready one-pager — thesis, 3,600× metric, ROI case.", href: "/executive-brief" },
+      ],
+      cta: "Apply for Founding Partner Access →",
+      ctaHref: "/request-access",
+    },
+    {
+      role: "PMO Director",
+      sub: "Preparation Architecture Owner",
+      accent: TEAL,
+      border: `3px solid ${TEAL}`,
+      links: [
+        { label: "Preparation Architect Guide", desc: "Your role, your 4-phase go-live path, your governance rhythm.", href: "/pmo-onboarding" },
+        { label: "Protocol Library", desc: "180 situations, pre-staged. Situation Intake, not project intake.", href: "/protocols" },
+        { label: "The 12 Mobilization Gaps", desc: "Diagnose your organization's exposure across all 12 gaps.", href: "/the-gap" },
+        { label: "Getting Started", desc: "4-phase go-live checklist with a live completion score.", href: "/getting-started" },
+      ],
+      cta: "Apply for Founding Partner Access →",
+      ctaHref: "/request-access",
+    },
+    {
+      role: "Investor",
+      sub: "Angel · VC · Strategic Partner",
+      accent: NAVY_BG,
+      border: `3px solid ${NAVY_BG}`,
+      links: [
+        { label: "Investment Thesis", desc: "The argument. The moat. The IP framework. The category.", href: "/investors" },
+        { label: "What One Trigger Costs", desc: "Ransomware $4.5M · Activist $3.2M · Regulatory $5.8M.", href: "/mobilization-cost" },
+        { label: "Competitive Positioning", desc: "Every vendor bolted AI onto the old model. We replaced it.", href: "/platform-reality" },
+        { label: "Founder Story", desc: "Why this. Why now. Why this team.", href: "/founder-story" },
+      ],
+      cta: "Request Investor Materials →",
+      ctaHref: "/investors",
+    },
+  ];
+
+  return (
+    <section id="audience-paths" style={{ background: "#fff", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "72px 0 64px" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ textAlign: "center" as const, marginBottom: 48 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>
+            Start Here
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px,2.6vw,38px)", fontWeight: 700, color: NAVY, margin: "0 0 12px" }}>
+            Three paths in. Pick yours.
+          </h2>
+          <p style={{ ...DM, fontSize: 14, color: "#4B5563", margin: 0, maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>
+            The platform is built for three audiences. Skip the menu — go directly to what matters to you.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+          {paths.map(p => (
+            <div key={p.role} style={{ borderTop: p.border, background: "#FAFAF9", border: "1px solid #E8E4DC", borderTopColor: p.accent, borderTopWidth: 3, padding: "28px 24px 24px", display: "flex", flexDirection: "column" as const }}>
+              <div style={{ marginBottom: 20 }}>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: p.accent, marginBottom: 4 }}>
+                  {p.role}
+                </div>
+                <div style={{ ...DM, fontSize: 11, color: "#6B7280", letterSpacing: "0.06em" }}>{p.sub}</div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 2, flex: 1 }}>
+                {p.links.map(l => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    style={{ textDecoration: "none", padding: "10px 0", borderBottom: "1px solid rgba(10,15,46,0.06)" }}
+                  >
+                    <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{l.label}</div>
+                    <div style={{ ...DM, fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>{l.desc}</div>
+                  </Link>
+                ))}
+              </div>
+
+              <Link
+                href={p.ctaHref}
+                style={{
+                  textDecoration: "none",
+                  marginTop: 20,
+                  display: "block",
+                  textAlign: "center" as const,
+                  padding: "10px 16px",
+                  background: p.accent === NAVY_BG ? NAVY : p.accent,
+                  color: p.accent === GOLD ? NAVY : "#fff",
+                  ...DM,
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                {p.cta}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── GUIDED EVALUATION PATH ───────────────────────────────────────────────────
 function GuidedEvaluationPath() {
   const steps = [
@@ -2429,6 +2541,9 @@ export default function Homepage() {
 
       {/* §6 FEARLESS FINALE — Preparation → Readiness → Fearless */}
       <FearlessFinaleSection />
+
+      {/* Audience Paths — role-based entry points for C-Suite, PMO Director, Investor */}
+      <AudiencePathsSection />
 
       {/* Guided Evaluation Path — sequential self-serve steps before the final ask */}
       <GuidedEvaluationPath />
