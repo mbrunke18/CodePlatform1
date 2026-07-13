@@ -586,8 +586,8 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
             <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-1">
               Built from 20+ years of Fortune 500 transformation. 180 core protocols across Growth & Positioning, Risk & Resilience, and Transformation — every situation your organization will face, pre-staged before the trigger fires.
             </p>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontWeight: 600, fontSize: 15, color: "#0A0F2E", lineHeight: 1.5, maxWidth: 700, marginBottom: 6, marginTop: 10, borderLeft: "2px solid #C9A84C", paddingLeft: 14 }}>
-              This library represents completed Situation Intake for 180 strategic situations — the preparation work your PMO would normally do under pressure, done in advance, before the trigger fires.
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontWeight: 600, fontSize: 15, color: "#0A0F2E", lineHeight: 1.55, maxWidth: 700, marginBottom: 6, marginTop: 10, borderLeft: "2px solid #C9A84C", paddingLeft: 14 }}>
+              Not project intake. Situation intake. The preparation architecture that means your organization never starts from scratch — because the intake work for every one of these situations was already done before the trigger fired.
             </p>
             <p style={{ fontSize: 12, color: "#2B8A6E", fontWeight: 600, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.05em" }}>
               The library grows with every activation.

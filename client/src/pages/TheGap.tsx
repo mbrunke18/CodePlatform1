@@ -153,8 +153,14 @@ export default function TheGap() {
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 260 }}>
             <p style={{ ...BC, color: GOLD, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase' as const, fontWeight: 700, marginBottom: 8 }}>The Mobilization Tax</p>
-            <p style={{ ...CG, color: '#fff', fontSize: 21, fontWeight: 600, lineHeight: 1.4, margin: 0 }}>
-              Before a single execution decision is made, the average enterprise spends <em style={{ color: GOLD }}>$1.7M per strategic situation</em> — on coordination overhead, alignment delays, and improvised mobilization. Across 15–20 situations per year, the annual tax runs <em style={{ color: GOLD }}>$25.5M–$34M</em>.
+            <p style={{ ...CG, color: '#fff', fontSize: 18, fontWeight: 600, lineHeight: 1.6, marginBottom: 12 }}>
+              Leadership time. Outside counsel. Revenue at risk during the mobilization window. Operational disruption. External advisors engaged cold at emergency rates. Compliance and governance costs.
+            </p>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 1.7, marginBottom: 8 }}>
+              Every one of these components runs simultaneously during the 30 days before a single coordinated response action is taken. Across 15 to 20 situations annually that is <strong style={{ color: GOLD }}>$25.5M to $34M per year</strong> in organizational drag that has no line item on any budget and appears on no balance sheet.
+            </p>
+            <p style={{ ...BC, color: TEAL, fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', margin: 0 }}>
+              It is invisible because nobody owns it. Nobody has ever named it. Nobody has ever built a platform to close it. Until now.
             </p>
           </div>
           <div style={{ display: 'flex', flexShrink: 0 }}>

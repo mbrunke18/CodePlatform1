@@ -515,8 +515,11 @@ export default function ROICalculator() {
           <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' as const }}>
             <div style={{ flex: 1, minWidth: 260 }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#C9A84C', fontFamily: "'Barlow Condensed', sans-serif" }}>The Mobilization Tax</span>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#fff', lineHeight: 1.4, margin: '6px 0 0' }}>
-                Every enterprise pays a hidden tax on each strategic situation: assembling authority, aligning teams, and staging a response from scratch. It averages <em style={{ color: '#C9A84C' }}>$1.7M per situation</em> — before any execution decision is made.
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#fff', lineHeight: 1.5, margin: '6px 0 8px' }}>
+                Leadership time. Outside counsel. Revenue at risk during the mobilization window. Operational disruption. External advisors engaged cold at emergency rates.
+              </p>
+              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, color: 'rgba(240,237,228,0.55)', lineHeight: 1.6, margin: 0 }}>
+                It is invisible because nobody owns it. Nobody has ever named it. Nobody has ever built a platform to close it. Until now.
               </p>
             </div>
             {[

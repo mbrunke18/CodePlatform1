@@ -265,10 +265,13 @@ export default function ProofStory() {
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 660, margin: "0 auto 14px", lineHeight: 1.7 }}>
               Four activation narratives — growth opportunities seized, risks contained, transformations executed. Across every domain, two versions of what happened. The only variable: whether the response was pre-staged before the situation required it.
             </p>
-            <div style={{ maxWidth: 660, margin: "0 auto 28px", padding: "14px 20px", background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: "3px solid #C9A84C", textAlign: "left" }}>
+            <div style={{ maxWidth: 660, margin: "0 auto 28px", padding: "18px 22px", background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: "3px solid #C9A84C", textAlign: "left" }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The Mobilization Window</span>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#fff", lineHeight: 1.5, margin: "6px 0 0" }}>
-                Every strategic situation opens a Mobilization Window — the time between signal detection and full team execution. In the old model, that window runs 30 days or more. Readiness OS closes it in 12 minutes.
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#fff", lineHeight: 1.55, margin: "8px 0 8px" }}>
+                Every strategic situation opens a window. The organizations that close it in 12 minutes win the window. The organizations still assembling the room on Day 4 surrender it — to a competitor who was already ready when they were not.
+              </p>
+              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, color: "rgba(240,237,228,0.55)", lineHeight: 1.6, margin: 0 }}>
+                The only question is whether the response existed before the window opened.
               </p>
             </div>
 

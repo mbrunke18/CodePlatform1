@@ -169,10 +169,13 @@ export default function PMOOnboarding() {
               <em style={{ color: GOLD }}>The system executes. The C-suite authorizes.</em>
             </h1>
             <p style={{ ...CG, fontSize: 22, color: GOLD, fontWeight: 700, maxWidth: 680, lineHeight: 1.4, marginBottom: 14, fontStyle: "italic" }}>
-              Readiness OS completes the Situation Intake for 180 strategic situations — before the situations arrive. The PMO that owns it never asks its organization to start from scratch again.
+              Everything your PMO builds during project intake for a planned initiative — Readiness OS builds before strategic situations arrive.
             </p>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.75)", maxWidth: 680, lineHeight: 1.6, marginBottom: 20 }}>
-              Everything your PMO would normally build during project intake for a strategic situation — work identification, roles and responsibilities, dependencies, risk register, budget authorization — Readiness OS builds it before the situation arrives.
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.75)", maxWidth: 680, lineHeight: 1.6, marginBottom: 12 }}>
+              Project intake. Work breakdown. Roles and responsibilities. Dependency mapping. Risk register. Budget authorization. You have spent your career doing that work for planned projects. Strategic situations — which are not projects — have never had that intake work done in advance. Nobody owns it. Nobody built it. The situation arrives and the organization improvises.
+            </p>
+            <p style={{ ...CG, fontSize: 17, color: TEAL, fontWeight: 600, fontStyle: "italic", maxWidth: 680, lineHeight: 1.5, marginBottom: 20 }}>
+              Readiness OS does the intake work for situations, not projects. That is a completely new mandate — and it is defensible, specific, and board-reportable.
             </p>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 680, lineHeight: 1.7, marginBottom: 36 }}>
               Right now, when a trigger fires, the 30-day mobilization begins — and you are at the center of it. Mapping stakeholders, assigning tasks, drafting briefs, aligning functional leads. All from scratch, under pressure, while the window closes. Readiness OS changes the sequence. You do that work once, in advance, in a calm room. When the trigger fires, the preparation is already done — the executive authorizes in real time, but that is 12 minutes of confirmation, not 30 days of coordination. Your role shifts from reactive mobilizer to preparation architect — and that is a different job entirely.
