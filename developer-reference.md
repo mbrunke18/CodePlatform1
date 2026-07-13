@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: July 10, 2026 (§80 — Documented Admin Access Links: Quick Link & Shareable Group Link) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: July 13, 2026 (§81 — July 13 Session: Homepage/Manifesto strategic-content pass + developer-reference catch-up) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -4791,3 +4791,99 @@ Third round of investor feedback (9.2/10 assessment) produced a finished investo
 Not built this round (explicitly held per user instruction): the LinkedIn post, the standalone sales-conversation-framework document, and a dedicated investor one-pager page — all three already exist as finished assets outside the site (docx/jpg) and were not requested as site pages.
 
 **Verification:** typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (initial run raced the dev server during startup and returned 27 false-positive 404s — re-run after server settled confirmed 28/28 passing).
+
+---
+
+## 80. Admin Access Links Formal Changelog Entry — July 10, 2026
+
+Content documented inline at **§17 (lines 888–895)**. Formal changelog entry was omitted when the header was updated. Summary for the record:
+
+- **Quick Link (`QK-` token):** personalized single-recipient link (`/api/admin/generate-demo-link`), name + email required, 1–168h duration, optionally emailed via Resend. File: `server/routes/quickLinkRoute.ts`.
+- **Shareable Group Link (`GK-` token):** multi-use link, no recipient data required. Two independent controls: link validity window (3/7/14/30 days) and per-session length (24h/72h/7 days). Stateless HMAC-signed token (`QUICK_LINK_SECRET` env var) — no DB row. Platform-admin only. File: same route file.
+- **Redemption flow:** `GET /api/demo-access?token=...` — public route (in `PUBLIC_ROUTES` in `authConfig.ts`). Valid token calls `req.login()` for shared demo user `vm-demo-exec-2026`, auto-creating "Readiness OS — Executive Demo Environment" org on first use. Full Passport session — passes all `requireAuth` checks. File: `server/routes/demoAccessRoute.ts`.
+- **Known limitation:** all group-link clickers share the same demo org/account — fine for sequential prospect demos, not for isolated per-company environments.
+
+**Do not confuse with** the separate `trial_sessions` magic-link flow in `magic-link-routes.ts` / `trialAccessService.ts` — that flow sets `req.session.trialToken` but is NOT recognized by any `requireAuth` check. Do not build on it without first wiring it into auth middleware.
+
+**Verification:** typecheck clean, unit tests 218/218, health-check 28/28.
+
+---
+
+## 81. July 13, 2026 — Strategic Content Pass + Manifesto Publication Readiness
+
+Session focused on extracting real value from a 702,000-character ChatGPT strategic conversation and preparing the Readiness Manifesto for external publishing as an evangelism tool. All changes are surgical copy/content additions — no routes added, no schema changes, no new components.
+
+### 1. Homepage — "Start Here" Audience Paths Section (`Homepage.tsx`)
+
+Added a 3-column audience-paths section (id="audience-paths") below the hero, giving first-time visitors a role-specific entry point before they encounter the full platform. Three paths:
+
+- **C-Suite Executive** — 4 curated links: Proof Story, ROI Calculator, Executive Brief, Founding Partner Program
+- **PMO / Transformation Office** — 4 curated links: PMO Onboarding, How It Executes, Protocol Library, Getting Started
+- **Investor** — 4 curated links: Investor Landing, Investor Presentation, Competitive Positioning, Founding Partner Brief
+
+Each column has a role label, brief descriptor, and four styled link items. Responsive grid collapses to single-column on mobile.
+
+### 2. StandardNav — Role-Selector Strip in "The Proof" Dropdown (`StandardNav.tsx`)
+
+Added a "Start by role: C-Suite · PMO Director · Investor" strip to the header area of the "The Proof" mega-menu dropdown. Three inline links routing to the `#audience-paths` anchor on the homepage. Styled as muted uppercase Barlow Condensed with gold separators. No new routes — links to the section anchor added in item 1.
+
+### 3. Homepage — "Organizations Were Built to Operate. Not to Mobilize." (`Homepage.tsx`)
+
+Added a structural-insight label directly above the 30-day mobilization thesis paragraph in the hero sidebar column. Styled as a 12px uppercase muted ivory label (letter-spacing 0.12em, weight 700, opacity 0.42). This is the exact phrase from the strategic conversation that sets up the 30-day evidence sentence with a structural diagnosis before the numbers land.
+
+**Placement:** `client/src/pages/Homepage.tsx` — hero sidebar, immediately before the "Not project management software" category-clarifier line.
+
+### 4. Homepage — AI Paradox Line in MicrosoftHookStrip (`Homepage.tsx`)
+
+Added a second sub-description line to the `MicrosoftHookStrip` component (the "Every enterprise has Microsoft's AI stack. None have the operating model to use it." strip). New italic gold line:
+
+> "AI surfaces what's happening faster than ever. It still can't answer: Now what? Who decides? What's the sequence? Readiness OS answers those questions before the trigger fires."
+
+**Why:** Sharpens competitive positioning against Azure AI/Copilot in a single sentence. Complements the existing Microsoft framing without repeating it.
+
+### 5. FoundingPartnerProgram — Three Discovery Questions (`FoundingPartnerProgram.tsx`)
+
+Added a "The Conversation Starts Here" block immediately before the existing gold-bordered McKinsey comparison block. Three numbered questions in a subdued dark-background card:
+
+1. *When a significant strategic situation occurs at your organization — what happens in the first 72 hours?*
+2. *How much of that response architecture already existed before the situation arrived?*
+3. *What would change if the organization had already completed that preparation?*
+
+**Why:** These are the three questions a prospect answers in their head before another word is spoken. The McKinsey comparison lands harder after a prospect has already self-diagnosed. Source: validated Founding Partner conversation framework from strategic planning session.
+
+**Styling:** Dark near-transparent background, white border, gold numbered markers, Cormorant Garamond body text. Labeled "The Conversation Starts Here" in muted uppercase Barlow Condensed.
+
+### 6. ReadinessManifesto — Author Attribution Section (`ReadinessManifesto.tsx`)
+
+Added a new "About the Author" section between the Preface and the Four Laws. Content:
+
+- **Martin Brunke** — 5 years coaching major college football at Stanford. Championship programs deploy a pre-staged, fully-coordinated response to any situation in under 40 seconds. Different opponent every week. The speed came from preparation, not from the people.
+- 20 years inside Fortune 500 organizations running transformation programs. Same caliber of people. Same category of high-stakes situations. No pre-staged response. Thirty days of mobilization before execution could begin.
+- Readiness OS built to close that gap. 180 Readiness Protocols, 231 detection thresholds, 12 minutes from trigger to full deployment.
+
+**Why:** External visitors arriving via LinkedIn link have no prior context. The author attribution establishes personal credibility (football origin story + corporate experience) before they read the Four Laws, so the laws land as a practitioner's principles rather than marketing copy.
+
+**Styling:** White background section, left gold border bar (3px, full height), "About the Author" label in gold Barlow Condensed, body text in dark gray with NAVY bold for the name.
+
+### 7. ReadinessManifesto — "See It In Practice" Section (`ReadinessManifesto.tsx`)
+
+Added a 4-card navigation bridge section between "The Language We Own" and "The Readiness Sequence" (the final dark CTA section). Four cards on ivory background:
+
+| Card | Destination | Description |
+|------|-------------|-------------|
+| Watch It Execute | `/how-it-executes` | Live situation mobilization in 12 minutes |
+| Read the Proof | `/proof-story` | Side-by-side activation narratives with financial outcomes |
+| Calculate Your ROI | `/roi-calculator` | Mobilization Tax mapped against elimination cost |
+| Diagnose the Gap | `/the-gap` | The 12 Mobilization Gaps diagnostic |
+
+**Why:** Without this section, a reader who finishes the Four Laws hits "Apply for Founding Partner Access" with no intermediate step. The bridge provides paths for different visitor stages: curious, evaluating, quantifying, self-diagnosing. Each card has a gold uppercase label, body description, and dark uppercase arrow CTA.
+
+### 8. ReadinessManifesto — Bottom CTA Updated (`ReadinessManifesto.tsx`)
+
+The two bottom CTAs in the dark Readiness Sequence section were updated:
+- Primary (gold): "Apply for Founding Partner Access →" — unchanged, routes to `/request-access`
+- Secondary (outlined gold): Changed from "The 12 Mobilization Gaps →" (linking `/the-gap`) to **"Founding Partner Program →"** (linking `/founding-partner`) — because The Gap is now reachable via the "See It In Practice" bridge cards above, and the Founding Partner Program is the higher-value conversion path at the bottom of the page.
+
+### Verification
+
+typecheck clean, unit tests 218/218 passing, health-check 28/28 passing (direct `node scripts/health-check.mjs` — workflow-level health-check has known startup-race quirk, see agent memory entry).
