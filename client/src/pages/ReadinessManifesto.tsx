@@ -109,6 +109,25 @@ export default function ReadinessManifesto() {
         </div>
       </section>
 
+      {/* ── AUTHOR ATTRIBUTION ── */}
+      <section style={{ background: '#fff', borderBottom: `1px solid ${BORDER}`, padding: '36px 48px' }}>
+        <div style={{ maxWidth: 820, margin: '0 auto', display: 'flex', gap: 32, alignItems: 'flex-start', flexWrap: 'wrap' as const }}>
+          <div style={{ flexShrink: 0, width: 3, alignSelf: 'stretch', background: GOLD, borderRadius: 2 }} />
+          <div style={{ flex: 1, minWidth: 280 }}>
+            <p style={{ ...BC, color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 10 }}>About the Author</p>
+            <p style={{ color: '#374151', fontSize: 15, lineHeight: 1.8, marginBottom: 10 }}>
+              <strong style={{ color: NAVY }}>Martin Brunke</strong> spent five years coaching major college football at Stanford — watching championship programs deploy a pre-staged, fully-coordinated response to any situation on the field in under 40 seconds. Every game required preparation for a different opponent. Every situation had already been built, practiced, and owned before Saturday. The speed came from the preparation, not from the people.
+            </p>
+            <p style={{ color: '#374151', fontSize: 15, lineHeight: 1.8, marginBottom: 10 }}>
+              He spent the next twenty years inside Fortune 500 organizations running transformation programs — and watched the same caliber of people handle the same category of high-stakes situations from scratch, every time. No pre-staged response. No owned architecture. Thirty days of mobilization before execution could begin.
+            </p>
+            <p style={{ color: '#374151', fontSize: 15, lineHeight: 1.8 }}>
+              Readiness OS is the infrastructure he built to close that gap. <span style={{ color: NAVY, fontWeight: 600 }}>180 Readiness Protocols. 231 detection thresholds. Full organizational deployment in 12 minutes — with the response already staged before the trigger fires.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── FOUR LAWS ── */}
       <section style={{ background: '#fff', padding: '80px 0' }}>
         <div style={{ maxWidth: 920, margin: '0 auto', padding: '0 48px' }}>
@@ -180,6 +199,33 @@ export default function ReadinessManifesto() {
         </div>
       </section>
 
+      {/* ── SEE IT IN PRACTICE ── */}
+      <section style={{ background: IVORY, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, padding: '64px 48px' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ ...BC, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 8 }}>See It In Practice</p>
+          <p style={{ ...CG, color: NAVY, fontSize: 20, fontWeight: 600, lineHeight: 1.4, marginBottom: 8 }}>
+            Readiness OS operationalizes every law in this manifesto.
+          </p>
+          <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, maxWidth: 600, marginBottom: 36 }}>
+            180 Readiness Protocols. 231 detection thresholds. Full organizational deployment in 12 minutes — with executive authorization at every step and the response already staged before the trigger fires.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
+            {[
+              { label: 'Watch It Execute', desc: 'See a live ransomware, activist investor, or supply chain situation mobilize in 12 minutes from trigger to full deployment.', href: '/how-it-executes', cta: 'See the execution chain' },
+              { label: 'Read the Proof', desc: 'Three activation narratives — side-by-side timelines of organizations with and without Readiness OS. Financial outcomes included.', href: '/proof-story', cta: 'Read proof stories' },
+              { label: 'Calculate Your ROI', desc: 'The Mobilization Tax your organization pays today — $1.7M per situation — mapped against the cost of eliminating it permanently.', href: '/roi-calculator', cta: 'Run the calculation' },
+              { label: 'Diagnose the Gap', desc: 'The 12 Mobilization Gaps — the specific points where every enterprise response slows, stalls, or fails under pressure.', href: '/the-gap', cta: 'See the 12 gaps' },
+            ].map(item => (
+              <Link key={item.href} href={item.href} style={{ textDecoration: 'none', display: 'block', background: '#fff', border: `1px solid ${BORDER}`, padding: '24px 24px 20px', transition: 'border-color 0.15s' }}>
+                <div style={{ ...BC, color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, marginBottom: 8 }}>{item.label}</div>
+                <p style={{ color: '#374151', fontSize: 14, lineHeight: 1.7, marginBottom: 16 }}>{item.desc}</p>
+                <div style={{ ...BC, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>{item.cta} →</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── THE READINESS SEQUENCE ── */}
       <section style={{ background: '#0F1629', padding: '64px 0', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
         <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 48px', textAlign: 'center' }}>
@@ -204,8 +250,8 @@ export default function ReadinessManifesto() {
             <Link href="/request-access" style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, textDecoration: 'none', background: GOLD, color: NAVY, padding: '13px 28px', display: 'inline-block' }}>
               Apply for Founding Partner Access →
             </Link>
-            <Link href="/the-gap" style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, textDecoration: 'none', border: '1px solid rgba(201,168,76,0.4)', color: GOLD, padding: '13px 28px', display: 'inline-block' }}>
-              The 12 Mobilization Gaps →
+            <Link href="/founding-partner" style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, textDecoration: 'none', border: '1px solid rgba(201,168,76,0.4)', color: GOLD, padding: '13px 28px', display: 'inline-block' }}>
+              Founding Partner Program →
             </Link>
           </div>
         </div>
