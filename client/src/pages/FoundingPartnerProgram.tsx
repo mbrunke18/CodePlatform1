@@ -385,9 +385,21 @@ export default function FoundingPartnerProgram() {
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(240,237,228,0.78)', lineHeight: 1.85, marginBottom: 20, fontWeight: 400 }}>
                 180 Readiness Protocols pre-staged. 231 detection thresholds monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
               </p>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65, marginBottom: 24 }}>
                 2 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
               </p>
+              <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', borderLeft: '3px solid #C9A84C', padding: '20px 24px' }}>
+                <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 12 }}>The Comparison That Closes the Conversation</p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4', lineHeight: 1.6, marginBottom: 10 }}>
+                  McKinsey charges $75,000 to $300,000 to build a response after your situation has already arrived. The knowledge leaves when the engagement ends. Your next situation starts from zero.
+                </p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4', lineHeight: 1.6, marginBottom: 10 }}>
+                  Readiness OS Founding Partner entry is $75,000. Credited 100% to Year 1. The preparation is built before the situation arrives. The knowledge stays permanently. Every situation after the first one compounds the intelligence from the last.
+                </p>
+                <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 14, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.06em' }}>
+                  Same entry investment. Permanently different outcome.
+                </p>
+              </div>
             </div>
 
             {/* Stats strip */}

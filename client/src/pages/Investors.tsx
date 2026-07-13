@@ -592,6 +592,29 @@ export default function Investors() {
                 The institutional memory is the product. The platform is the vehicle.
               </p>
 
+              {/* IP Framework */}
+              <div style={{ background: NAVY, padding: '28px 32px', marginBottom: 28, borderLeft: `3px solid ${GOLD}` }}>
+                <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 16 }}>The Intellectual Property — Six Concepts That Define a Category</p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px 32px' }}>
+                  {[
+                    { label: 'The Problem', value: 'The Readiness Gap' },
+                    { label: 'The Cost', value: 'The Mobilization Tax' },
+                    { label: 'The Process', value: 'Situation Intake' },
+                    { label: 'The Advantage', value: 'The Mobilization Window' },
+                    { label: 'The Capability', value: 'Enterprise Readiness' },
+                    { label: 'The Platform', value: 'Readiness OS' },
+                  ].map(item => (
+                    <div key={item.label} style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
+                      <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, color: 'rgba(201,168,76,0.55)', letterSpacing: '0.12em', textTransform: 'uppercase' as const, flexShrink: 0 }}>{item.label}:</span>
+                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4' }}>{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, color: 'rgba(240,237,228,0.45)', lineHeight: 1.6, marginTop: 16, marginBottom: 0 }}>
+                  Notice the progression — it feels complete. Every concept supports the next one. This is not software messaging. It is a management philosophy that enterprises can adopt, teach, and eventually expect as part of how they operate.
+                </p>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 2, marginBottom: 36 }}>
                 {[
                   {

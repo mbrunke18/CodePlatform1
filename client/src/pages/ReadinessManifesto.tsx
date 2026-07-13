@@ -16,30 +16,30 @@ const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" }
 const LAWS = [
   {
     number: "I",
-    title: "The response must exist before the trigger fires.",
-    body: "Every organization assumes it will mobilize when the situation arrives. That assumption is the gap. Mobilization is not a response — it is a pre-condition for response. An organization that begins organizing when the trigger fires has already lost the window. The only effective response is one that existed before it was needed.",
-    implication: "All 180 Readiness Protocols are built and owned before any trigger fires. The trigger does not begin the work. It activates what is already prepared.",
+    title: "Every Strategic Situation Begins With Intake",
+    body: "Every important initiative begins with preparation. Projects have intake. Customers have onboarding. Acquisitions have due diligence. Yet the most consequential events an organization faces — a cyberattack, executive departure, regulatory inquiry, activist investor, market disruption — typically begin with no preparation at all. Instead, organizations start by organizing themselves. Strategic situations deserve the same discipline we've long applied to projects.",
+    implication: "180 strategic situations have the intake work already done. Work identified. Roles assigned. Budget authorized. Dependencies mapped. Risks documented. Stakeholders sequenced. Before any trigger fires.",
     color: GOLD,
   },
   {
     number: "II",
-    title: "Preparation is an organizational function, not a crisis response.",
-    body: "Enterprises invest billions in execution capability — talent, technology, process. They invest nothing in the mobilization architecture that determines whether that capability ever reaches a strategic moment. Readiness is not a crisis plan filed in a drawer. It is an ongoing function of the organization — owned, maintained, and improved with every activation. The organizations that treat preparation as infrastructure outperform those that treat it as contingency.",
-    implication: "The Preparation Architect role is not a crisis coordinator. It is the function that makes 12-minute execution structurally possible — through configuration, governance, and continuous improvement before the situation arrives.",
+    title: "The Cost Is the Mobilization Tax",
+    body: "Organizations pay twice for every strategic situation. First, they pay to organize themselves. Then they pay to execute. The first cost is largely invisible — but it drains leadership attention, slows decisions, increases risk, and often allows competitors to move first. Leadership time. Outside counsel. Revenue at risk during the mobilization window. Operational disruption. External advisors engaged cold at emergency rates. That's the Mobilization Tax. It averages $1.7M per situation. Across 15 to 20 situations annually: $25.5M to $34M in organizational drag with no line item on any budget.",
+    implication: "It is invisible because nobody owns it. Nobody has ever named it. Nobody has ever built a platform to close it. Until now.",
     color: TEAL,
   },
   {
     number: "III",
-    title: "Every gap in your mobilization architecture has a cost — whether you measure it or not.",
-    body: "The Mobilization Tax is not a concept. It is a line item that does not appear on any budget because it is never measured. The average enterprise spends $1.7M per strategic situation on coordination overhead, alignment delays, and improvised mobilization — before a single execution decision is made. Across 15–20 situations per year, the annual tax runs $25.5M–$34M. Most enterprises have never calculated this number. The absence of measurement does not mean the absence of cost.",
-    implication: "The 12 Mobilization Gaps are not coordination failures. They are structural absences in the organizational architecture — each one with a measurable cost that Readiness OS eliminates before the next trigger fires.",
+    title: "Competitive Advantage Lives in the Mobilization Window",
+    body: "Every strategic situation creates a window of opportunity. Sometimes it's measured in hours. Sometimes in days. The organizations that capture those windows are rarely the smartest. They're the most prepared. Preparation determines who moves first. The organizations still assembling the room on Day 4 surrender the window — to a competitor who was already ready when they were not.",
+    implication: "The only question is whether the response existed before the window opened. Readiness OS answers that question before the situation arrives.",
     color: GOLD,
   },
   {
     number: "IV",
-    title: "Speed is not the outcome. Fearlessness is.",
-    body: "The 12-minute mobilization is not a speed metric. It is an organizational posture. An organization that can respond to any of 180 strategic situations in 12 minutes is not faster than its competitors — it is different in kind. Speed is the evidence. Readiness is the promise. Fearlessness is the outcome. The fearless organization does not avoid strategic situations. It meets them from a position of preparation — knowing the response was built before the trigger arrived, that authority is clear, teams are staged, and the first 12 minutes are already mapped.",
-    implication: "Every activation on the Readiness OS platform is a proof point — not that the organization responded faster, but that it was ready before it needed to be.",
+    title: "Readiness Is an Enterprise Capability",
+    body: "Readiness isn't a meeting. It isn't a project. It isn't a playbook. It's an operating capability that can be designed, measured, improved, and institutionalized. Organizations have spent decades investing in execution. The next generation of enterprise performance will come from investing in readiness. For twenty years we've optimized execution. We forgot to optimize what happens before execution.",
+    implication: "Readiness OS operationalizes Enterprise Readiness. Every activation makes the next response faster, sharper, and more decisive. The institutional memory compounds. The moat grows with every event.",
     color: TEAL,
   },
 ];
@@ -93,15 +93,18 @@ export default function ReadinessManifesto() {
       {/* ── PREFACE ── */}
       <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '44px 48px' }}>
         <div style={{ maxWidth: 820, margin: '0 auto' }}>
-          <p style={{ ...BC, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 14 }}>The Structural Flaw</p>
-          <p style={{ ...CG, color: NAVY, fontSize: 22, fontWeight: 600, lineHeight: 1.5, marginBottom: 16 }}>
-            Organizations are not organizing work. They are organizing themselves.
+          <p style={{ ...BC, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 14 }}>Core Belief</p>
+          <p style={{ ...CG, color: NAVY, fontSize: 24, fontWeight: 600, lineHeight: 1.45, marginBottom: 20 }}>
+            Organizations don't fail because they lack intelligence.<br />They fail because they haven't engineered readiness.
+          </p>
+          <p style={{ ...CG, color: NAVY, fontSize: 18, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.5, marginBottom: 16, borderLeft: `2px solid ${GOLD}`, paddingLeft: 20 }}>
+            "Organizations are not organizing work. They are organizing themselves."
           </p>
           <p style={{ color: '#374151', fontSize: 15, lineHeight: 1.75, marginBottom: 12 }}>
-            Every time a strategic situation fires, the organization mobilizes: deciding who needs to be in the room, agreeing a plan, aligning stakeholders, authorizing budgets, assembling teams. This is not execution — it is the overhead before execution. It is the 30-day cycle that happens before a single meaningful decision is made.
+            A cyberattack happens. An activist files. An executive departs. A competitor exits your market. And before a single execution decision is made, the organization spends days on the same questions: Who owns it? Who decides? Who needs approval? Who informs Legal? Who informs the Board? Who owns communications? That is not execution — it is the overhead before execution. It is the mobilization cycle every organization runs from scratch, every time.
           </p>
           <p style={{ color: '#374151', fontSize: 15, lineHeight: 1.75 }}>
-            Most enterprise software addresses the work that happens after the organization has assembled. Readiness OS addresses the mobilization itself — the structural organizational function that determines whether capability ever reaches a strategic moment. This is a different category. It is not faster software for the same model. It is a new model.
+            <strong>For decades we've optimized execution. The next competitive advantage belongs to organizations that optimize readiness.</strong>
           </p>
         </div>
       </section>
@@ -143,6 +146,37 @@ export default function ReadinessManifesto() {
               )}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── THE LANGUAGE WE OWN ── */}
+      <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '64px 48px' }}>
+        <div style={{ maxWidth: 860, margin: '0 auto' }}>
+          <p style={{ ...BC, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, marginBottom: 8 }}>The Language We Own</p>
+          <p style={{ ...CG, color: NAVY, fontSize: 20, fontWeight: 600, lineHeight: 1.4, marginBottom: 8 }}>
+            Every category has vocabulary. These are ours.
+          </p>
+          <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, maxWidth: 620, marginBottom: 36 }}>
+            When executives begin using this vocabulary in boardrooms, PMOs, transformation offices, and strategy sessions — the category exists. When they ask "Have we completed situation intake?" the language has taken hold.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1px', background: BORDER }}>
+            {[
+              { term: 'Enterprise Readiness', def: 'The organizational capability to recognize a strategic situation, align the right people, and execute without first organizing yourself.' },
+              { term: 'Situation Intake', def: 'The preparation completed before a strategic situation occurs — ownership, authority, dependencies, budget, risks, communications, governance.' },
+              { term: 'Mobilization Tax', def: 'The hidden cost of organizing under pressure. $1.7M per situation on average. It has no line item on any budget and appears on no balance sheet.' },
+              { term: 'Mobilization Window', def: 'The period in which speed creates competitive advantage. Sometimes measured in hours. Sometimes days. Preparation determines who moves first.' },
+              { term: 'Preparation Architecture', def: 'The organizational design that makes rapid mobilization possible — owned, maintained, and improved with every activation before any trigger fires.' },
+              { term: 'Strategic Situation', def: 'An event requiring coordinated executive action. Not a project. Not a meeting. The most consequential moments an organization faces — and the least prepared for.' },
+            ].map(item => (
+              <div key={item.term} style={{ background: '#fff', padding: '24px 28px' }}>
+                <div style={{ ...BC, color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, marginBottom: 8 }}>{item.term}</div>
+                <p style={{ color: '#374151', fontSize: 14, lineHeight: 1.7, margin: 0 }}>{item.def}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ ...CG, color: NAVY, fontSize: 16, fontStyle: 'italic', fontWeight: 500, lineHeight: 1.6, marginTop: 28, maxWidth: 680 }}>
+            "If organizations begin asking — 'What's our readiness capability?' 'Have we completed situation intake?' 'What's the Mobilization Tax on this event?' 'How long is our mobilization window?' — then you've changed how leaders think. And that's how enduring business ideas are created."
+          </p>
         </div>
       </section>
 

@@ -909,6 +909,9 @@ function RealityGapSimulator() {
             <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(14px,1.4vw,17px)", fontWeight: 400, fontStyle: "italic", color: "rgba(240,237,228,0.55)", lineHeight: 1.3, marginBottom: 8, maxWidth: 560 }}>
               "Organizations are not organizing work. They are organizing themselves."
             </div>
+            <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(11px,1vw,13px)", fontWeight: 700, color: TEAL, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 10 }}>
+              For decades we've optimized execution. The next competitive advantage belongs to organizations that optimize readiness.
+            </div>
             <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,2vw,23px)", fontWeight: 600, color: "#F0EDE4", lineHeight: 1.3, marginBottom: 10, maxWidth: 640 }}>
               Every enterprise already owns execution tools.{" "}
               <em style={{ color: GOLD, fontStyle: "normal" }}>Nobody owns the mobilization layer.</em>
