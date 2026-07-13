@@ -510,6 +510,28 @@ export default function ROICalculator() {
           </div>
         </section>
 
+        {/* ── Mobilization Tax Strip ── */}
+        <div style={{ background: '#0D1640', borderBottom: '1px solid rgba(201,168,76,0.18)', padding: '24px 48px' }}>
+          <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' as const }}>
+            <div style={{ flex: 1, minWidth: 260 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#C9A84C', fontFamily: "'Barlow Condensed', sans-serif" }}>The Mobilization Tax</span>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#fff', lineHeight: 1.4, margin: '6px 0 0' }}>
+                Every enterprise pays a hidden tax on each strategic situation: assembling authority, aligning teams, and staging a response from scratch. It averages <em style={{ color: '#C9A84C' }}>$1.7M per situation</em> — before any execution decision is made.
+              </p>
+            </div>
+            {[
+              { n: '$1.7M',        label: 'Mobilization Tax',  sub: 'per situation · industry avg' },
+              { n: '$25.5M–$34M', label: 'Annual Tax',         sub: '15–20 situations per year'   },
+            ].map((s) => (
+              <div key={s.n} style={{ textAlign: 'center', padding: '14px 28px', borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{s.n}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, color: '#fff', letterSpacing: '0.06em', marginTop: 4 }}>{s.label}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, color: 'rgba(240,237,228,0.5)', marginTop: 2 }}>{s.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <section className="py-16 px-12">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-12 gap-12">

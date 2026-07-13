@@ -243,6 +243,7 @@ const TierComparisonDemo = lazy(() => import("./pages/TierComparisonDemo"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
+const ReadinessManifesto = lazy(() => import("./pages/ReadinessManifesto"));
 const About = lazy(() => import("./pages/About"));
 const Team = lazy(() => import("./pages/Team"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
@@ -399,7 +400,7 @@ const PUBLIC_PATH_PREFIXES = [
   '/executive-brief', '/founding-partner', '/founding-partner-tour', '/contact', '/request-access',
   '/trial-access', '/demo-access', '/proof-story', '/research', '/vs-',
   '/ms-project', '/platform-reality', '/investor', '/investor-tour', '/pitch-deck', '/capabilities',
-  '/founder-story', '/about', '/team', '/roadmap', '/security-compliance',
+  '/founder-story', '/readiness-manifesto', '/about', '/team', '/roadmap', '/security-compliance',
   '/competitive-positioning', '/channel-partners', '/partner-brief',
   '/prospect-', '/explore', '/brand-kit', '/tier-comparison',
   '/cost-of-inaction', '/cost-of-delay', '/first-90-days',
@@ -606,6 +607,7 @@ function Router() {
         <Route path="/our-story" component={OurStory} />
         <Route path="/about" component={About} />
         <Route path="/founder-story" component={FounderStory} />
+        <Route path="/readiness-manifesto" component={ReadinessManifesto} />
         <Route path="/team" component={Team} />
         {renderRoutes(["/execution-os-video", "/readiness-video", "/platform-video"], ExecuteIQVideo)}
         <Route path="/why-execution-os-legacy" component={WhyExecuteIQ} />

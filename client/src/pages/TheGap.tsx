@@ -148,6 +148,31 @@ export default function TheGap() {
         </div>
       </section>
 
+      {/* ── MOBILIZATION TAX ── */}
+      <section style={{ background: '#0F1629', borderBottom: '1px solid rgba(201,168,76,0.2)', padding: '32px 0' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 48px', display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <p style={{ ...BC, color: GOLD, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase' as const, fontWeight: 700, marginBottom: 8 }}>The Mobilization Tax</p>
+            <p style={{ ...CG, color: '#fff', fontSize: 21, fontWeight: 600, lineHeight: 1.4, margin: 0 }}>
+              Before a single execution decision is made, the average enterprise spends <em style={{ color: GOLD }}>$1.7M per strategic situation</em> — on coordination overhead, alignment delays, and improvised mobilization. Across 15–20 situations per year, the annual tax runs <em style={{ color: GOLD }}>$25.5M–$34M</em>.
+            </p>
+          </div>
+          <div style={{ display: 'flex', flexShrink: 0 }}>
+            {[
+              { n: '$1.7M',        label: 'Mobilization Tax',  sub: 'per strategic situation' },
+              { n: '$25.5M–$34M', label: 'Annual Tax',         sub: '15–20 situations/year'  },
+              { n: '$0',           label: 'With Readiness OS', sub: 'pre-staged before trigger' },
+            ].map((s, i) => (
+              <div key={s.n} style={{ padding: '18px 28px', borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none', textAlign: 'center' }}>
+                <div style={{ ...CG, color: i === 2 ? TEAL : GOLD, fontSize: 26, fontWeight: 700, lineHeight: 1, marginBottom: 4 }}>{s.n}</div>
+                <div style={{ ...BC, color: '#fff', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', marginBottom: 2 }}>{s.label}</div>
+                <div style={{ ...BC, color: 'rgba(255,255,255,0.42)', fontSize: 10, letterSpacing: '0.05em' }}>{s.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── TRANSITION ── */}
       <section style={{ background: IVORY, borderBottom: `1px solid ${BORDER}`, padding: '28px 48px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>

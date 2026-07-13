@@ -169,7 +169,7 @@ export default function PMOOnboarding() {
               <em style={{ color: GOLD }}>The system executes. The C-suite authorizes.</em>
             </h1>
             <p style={{ ...CG, fontSize: 22, color: GOLD, fontWeight: 700, maxWidth: 680, lineHeight: 1.4, marginBottom: 14, fontStyle: "italic" }}>
-              Readiness OS is project intake for strategic situations. The PMO that owns it never asks its organization to start from scratch again.
+              Readiness OS completes the Situation Intake for 180 strategic situations — before the situations arrive. The PMO that owns it never asks its organization to start from scratch again.
             </p>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.75)", maxWidth: 680, lineHeight: 1.6, marginBottom: 20 }}>
               Everything your PMO would normally build during project intake for a strategic situation — work identification, roles and responsibilities, dependencies, risk register, budget authorization — Readiness OS builds it before the situation arrives.

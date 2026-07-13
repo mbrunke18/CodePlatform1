@@ -262,9 +262,15 @@ export default function ProofStory() {
             <h1 style={{ ...GEO, fontSize: "clamp(36px,5vw,58px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 18 }}>
               The situation arrives.<br /><em style={{ color: GOLD }}>The response was ready. Or it wasn't.</em>
             </h1>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 660, margin: "0 auto 28px", lineHeight: 1.7 }}>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 660, margin: "0 auto 14px", lineHeight: 1.7 }}>
               Four activation narratives — growth opportunities seized, risks contained, transformations executed. Across every domain, two versions of what happened. The only variable: whether the response was pre-staged before the situation required it.
             </p>
+            <div style={{ maxWidth: 660, margin: "0 auto 28px", padding: "14px 20px", background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: "3px solid #C9A84C", textAlign: "left" }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The Mobilization Window</span>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#fff", lineHeight: 1.5, margin: "6px 0 0" }}>
+                Every strategic situation opens a Mobilization Window — the time between signal detection and full team execution. In the old model, that window runs 30 days or more. Readiness OS closes it in 12 minutes.
+              </p>
+            </div>
 
             {/* Domain coverage strip */}
             <div style={{ display: "flex", justifyContent: "center", gap: 0, maxWidth: 720, margin: "0 auto 24px", border: "1px solid rgba(201,168,76,0.18)" }}>
